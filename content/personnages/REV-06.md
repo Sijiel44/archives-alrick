@@ -127,7 +127,7 @@ Níðor est un **être distinct, avec ses propres responsabilités draconiques**
 
 **Drakon**, grande puissance draconique rencontrée par Orin, est associé dans les scènes aux discussions sur le poids des fonctions et la possibilité d’une vie qui ne soit pas uniquement consacrée au devoir. Il prend avec humour l’image de Heimdall découvrant la pêche. La présence de Drakon dans cette réflexion ne prouve pas à elle seule une formation directe et régulière de Heimdall par lui ; le lien mérite d’être développé à partir des scènes explicites.
 
-La mention de **Terra** dans les souvenirs de campagne est conservée comme relation à rechercher. Les documents disponibles ne permettent pas encore d’identifier avec certitude quel personnage ou quelle puissance est visé par ce nom. Aucune alliance, formation ni rencontre précise n'est donc inventée.
+La mention de **« Terra »** apparaît dans certaines transcriptions dictées, souvent dans des passages où le contexte désigne vraisemblablement **Vaëra** (cofondatrice de la Maison avec Orin et également Revenante). Une relation distincte avec une personne nommée Terra **n’est pas établie**. Il faut confirmer la normalisation du nom avant de lui créer une nouvelle fiche.
 
 ### L'escrime avec Dac et Eamon
 
@@ -169,7 +169,7 @@ Les campagnes récentes évoquent des **parties de pêche avec Heimdall** ; une 
 | **Ostrel** | Travaux liés aux structures anciennes et aux passages dans la Maison au cours des cinq années. |
 | **Vaerdrak** | Dragon ancien : échanges directs sur l’identité, le temps et les structures du Nord ; transmission et recherches de terrain. |
 | **Drakon** | Puissance draconique ; discussions autour du devoir, de la liberté et du plaisir des loisirs. Lien direct avec Heimdall à préciser. |
-| **Terra (nom à confirmer)** | Lien rapporté dans le souvenir de campagne, mais personnage exact et scène non encore retrouvés. |
+| **Vaëra** | Compagne d’Orin, Revenante et membre de la Maison ; partage avec Heimdall la vie du groupe, les échanges et la transmission. La dictée « Terra » peut la désigner : à confirmer pour les passages concernés. |
 
 ## Lieux associés
 
@@ -222,7 +222,7 @@ Avec Eamon et d'autres collaborateurs, Heimdall présente une **proposition** de
 
 **Ne pas transformer une blague en généalogie.** La paternité d’Orin est affective et discutée par Heimdall sur le plan de la chronologie ; Aldren surnommé « petit-fils » n’a pas de lien biologique avec Orin.
 
-**Points documentaires à résoudre.** Vérifier le détail du rôle de contact avec Orin pendant sa retraite auprès d’Yggdrasil et identifier la puissance ou la personne évoquée sous le nom « Terra ».
+**Points documentaires à résoudre.** Vérifier le détail du rôle de contact avec Orin pendant sa retraite auprès d’Yggdrasil et vérifier si « Terra » désigne Vaëra dans les passages dictés, plutôt qu’une personne distincte.
 
 ### Pistes de développement — non jouées
 
@@ -251,6 +251,6 @@ Ces idées proviennent du Compendium ou prolongent ses thèmes ; **elles ne sont
 
 **Repères de source repris du Compendium :** CB38 P06750–07262 et P19467–19961 ; CB39 P02944–04569, P20311–20701 et P40542–41267 ; CB42 P18752–21050.
 
-**À compléter sans inventer :** description physique définitive, portrait officiel, fonctionnement métaphysique de l’héritage des veilleurs, identité de « Terra », rôle précis de relais pendant le séjour d’Orin auprès d’Yggdrasil, chronologie fictive datée.
+**À compléter sans inventer :** description physique définitive, portrait officiel, fonctionnement métaphysique de l’héritage des veilleurs, normalisation de « Terra » / Vaëra, rôle précis de relais pendant le séjour d’Orin auprès d’Yggdrasil, chronologie fictive datée.
 
-**Apports éditoriaux du 27 octobre 2026 :** précisions sur l’ancienneté paradoxale, le choix fondateur et les relations avec Níðor, Orin, Vaerdrak, Drakon, Dac et Eamon ; approfondissement de l’humour de la filiation et de la pêche. Les éléments expressément incertains restent signalés.
+**Apports éditoriaux du 27 octobre 2026 :** précisions sur l’ancienneté paradoxale, le choix fondateur et les relations avec Níðor, Orin, Vaëra, Vaerdrak, Drakon, Dac et Eamon ; approfondissement de l’humour de la filiation et de la pêche. Les éléments expressément incertains restent signalés.
