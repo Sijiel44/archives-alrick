@@ -11,6 +11,13 @@ tags: [alrick, index]
 ## Feuillets disponibles
 
 - [[FAM-06|Harald Forgecœur]]
+- [[REV-01|Bram Vieux-Fer]]
+- [[REV-02|Ragna Pierre-Sèche]]
+- [[REV-03|Kelm Poing-Calme]]
+- [[REV-04|Vaëra]]
+- [[REV-05|Torven Cendreval]]
+- [[REV-07|Haldrek]]
+- [[REV-08|Eamon]]
 - [[REV-06|Heimdall — Le veilleur qui a choisi]]
 - [[REV-16|Aldren — Le Compagnon des Lisières]]
 
