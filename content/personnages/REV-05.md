@@ -156,15 +156,85 @@ Sa faiblesse la plus intéressante serait de **se croire parfois seul à pouvoir
 
 Le **sac médical** a des avantages concrets. La **montre-interface** dépend d'autorisations et ne transforme pas Torven en propriétaire de l'Espace. Les passages, mécanismes de diagnostic et enchantements futurs restent soumis aux essais. Il n'existe **aucun miracle médical automatique** démontré dans les sources.
 
+## Jouer avec Torven — des aventures où sauver change l'histoire
+
+> [!info] Guide de jeu — propositions non jouées
+> Les scénarios, dialogues et personnages secondaires ci-dessous sont des **amorces pour les MJ**, pas des événements déjà survenus. L'objectif est de laisser aux joueurs de véritables décisions d'enquête, d'exploration, de négociation, de protection et de secours. Les soins restent des éléments de **fiction**, pas des protocoles médicaux réels.
+
+### Ce qu'il peut apporter à une campagne
+
+| Rôle de Torven | Possibilités données aux PJ |
+|---|---|
+| **Médecin d'expédition** | Il prépare les soins et demande aux joueurs de repérer les accès, les risques et les routes de retour. |
+| **Commanditaire de secours** | Il confie une extraction ou une enquête sur du matériel disparu, sans préjuger des responsables. |
+| **Directeur d'hôpital** | Il propose des missions pour protéger des patients, accompagner des chercheurs ou renforcer des soins régionaux. |
+| **Formateur** | Il transforme un exercice de combat en choix collectif où une bonne retraite vaut parfois plus qu'une victoire. |
+| **Allié de terrain** | Il peut travailler avec une petite équipe sans que tous les Revenants ni Orin doivent arriver. |
+| **Témoin exigeant** | Il apporte une observation professionnelle et reconnaît ce qui reste à confirmer, notamment lorsqu'un phénomène est mal compris. |
+
+### Six propositions de scénarios
+
+**1. La route des trois dispensaires — enquête civile et logistique (accessible).** Trois villages reçoivent des fournitures avec des retards différents et un registre prétend que les trois livraisons ont été faites. Torven demande aux aventuriers de comparer les parcours, interroger les conducteurs et remonter les stocks. **Indices :** une signature copiée, une route effondrée, un entrepôt plus récent que son propre acte d'ouverture. **Solutions possibles :** corruption, erreur, détournement, panne des transports ou initiative locale pour sauver un quatrième village. La réussite peut être administrative, pas martiale.
+
+**2. Le village qui refuse de recevoir les médecins — diplomatie et confiance (accessible à intermédiaire).** Les habitants d'une vallée ne veulent pas d'une équipe médicale envoyée par une ville voisine. Torven refuse d'envoyer des protecteurs pour les obliger à accepter les soins. Les PJ devront comprendre si cette défiance vient d'une mauvaise expérience, d'un préjugé, d'une différence de tradition, d'une rumeur ou d'un abus réel. L'affaire peut se résoudre par **une alliance entre savoirs locaux et spécialistes**, ou par le respect d'un refus lorsque aucune urgence n'impose une intervention.
+
+**3. Sous les éboulis — secours et exploration (intermédiaire).** Un effondrement coupe un chantier de montagne et laisse plusieurs travailleurs isolés. Torven organise la zone de soins ; les PJ doivent déterminer s'il faut reconnaître une seconde galerie, négocier l'arrêt des travaux, organiser la protection, faire venir des spécialistes ou évacuer sans attendre. **L'issue dépend des risques et des décisions**, pas d'une promesse automatique de sauver tout le monde.
+
+**4. Le remède qui promet tout — enquête de santé et éthique (intermédiaire à élevé).** Une préparation miraculeuse circule sur les marchés. Certains patients disent aller mieux, d'autres rapportent des effets inquiétants. Torven demande une **vérification des preuves, des provenances et des motivations**, sans traiter chaque vendeur de criminel ni accréditer des miracles par avance. Les joueurs doivent empêcher une fraude ou une mise en danger tout en permettant qu'une véritable découverte puisse être évaluée. Aucun ingrédient ni recette dangereuse n'est nécessaire à la partie.
+
+**5. Les blessés de deux bannières — guerre et protection (élevé).** Deux forces rivales ont abandonné leurs blessés dans la même vallée. Torven cherche un couloir sûr pour secourir ceux qui peuvent l'être. Les PJ peuvent négocier une trêve, assurer une couverture, localiser des civils, éviter une reprise des tirs ou obtenir des renforts. **L'éthique des soins n'est pas un prétexte pour négliger la sécurité** ; battre en retraite peut être la bonne décision.
+
+**6. Le premier appel vers le Refuge — grande campagne (très élevé).** Plusieurs maisons de soins éloignées demandent à transférer des personnes à l'hôpital de Torven, mais les rapports se contredisent et certaines institutions ne disposent d'aucune interface autorisée. Torven constitue une équipe chargée de vérifier les cas, d'organiser un transport sûr, de préserver les soins locaux et d'évaluer s'il existe une cause commune. Ragna pourrait comparer les enquêtes ; Vaëra vérifier des informations sensibles ; les aventuriers coordonner les secours, la diplomatie et la sécurité. **Le réseau médical n'est pas considéré comme installé partout** et la Première Ancre n'est pas déclarée coupable par défaut. Les décisions des joueurs peuvent inaugurer — ou retarder — de vraies relations entre établissements.
+
+### Rencontre initiale — « Et comment ramène-t-on les blessés ? »
+
+*Cour d'une maison de soins près d'une route de montagne. Scène proposée, non jouée.*
+
+Un homme vérifie des couvertures, des sangles et des boîtes de fournitures près d'une charrette. Deux escorteurs discutent d'un passage dangereux. Le médecin écoute jusqu'au bout et relève les yeux vers les nouveaux venus.
+
+> — On m'a dit que vous saviez vous battre.
+>
+> Un silence.
+>
+> — Parfait. Alors dites-moi comment vous comptez ramener ceux qui ne pourront plus marcher.
+>
+> Il désigne le trajet dessiné sur la carte.
+>
+> — C'est toujours cette partie du plan qu'on oublie.
+
+Torven peut devenir un allié, un commanditaire ou un simple interlocuteur. Les joueurs peuvent contester l'itinéraire, offrir une solution, refuser la mission ou demander de meilleures informations. Le MJ ne déclenche pas automatiquement une attaque.
+
+### Conseils d'interprétation pour le MJ
+
+- **Voix :** calme, nette, parfois très sèche. Plus la situation est grave, plus il donne des consignes précises.
+- **Empathie :** il écoute un patient même lorsque celui-ci est pénible, inquiet ou incapable de comprendre immédiatement la situation.
+- **Éthique :** il refuse les promesses sans preuve, les interventions injustifiées et les « guérisons » magiques sans conditions démontrées.
+- **Combat :** membre compétent des Revenants, habitué aux conditions dangereuses ; ne pas le réduire à une proie facile ni lui donner d'exploits martiaux non attestés.
+- **Ressources :** sacoche médicale, montre-interface à droits limités, hôpital existant. **Aucun accès instantané depuis n'importe où** sans dispositif autorisé et réellement disponible.
+- **Limites :** matériel, fatigue, temps, formation et coopération. Torven peut se tromper et doit parfois faire appel à plus compétent.
+- **Personnalité :** sérieux envers les malades, plaisantin avec ses amis, capable d'admettre qu'il devrait lui aussi se reposer.
+- **Libre arbitre :** Torven et les PJ peuvent refuser une mission ; ni Orin ni les Revenants ne deviennent des outils d'intervention automatique.
+
+### Amorce pour un JDR conversationnel
+
+*« Nous arrivons dans une vallée où trois dispensaires demandent de l'aide. Torven Cendreval est venu examiner la situation, mais il souhaite que nous menions une reconnaissance et parlions aux habitants. Le MJ joue Torven selon les Archives, tandis que nos personnages décident librement de leurs choix. »*
+
+Les Archives fournissent **des références et des scénarios**, pas encore un moteur autonome de conversation incarnant Torven. Les scènes créées à une autre table ne deviennent canoniques que si le créateur les approuve.
+
 ## À développer (non joué)
 
+- **Choisir ou modifier la jeunesse proposée** : ville, famille, anciennes études et proches, sans tragédie imposée.
 - Programme effectif des premiers apprentis des Revenants.
+- **Déploiement effectif** du réseau hospitalier régional : bâtiments habilités, personnel, coûts, procédures, interfaces autorisées et sécurité. Le principe est établi, les installations restent à confirmer.
 - Cadre de transmission des responsabilités hospitalières lorsque Torven est absent.
 - Scènes montrant ses propres besoins et son droit d'être soigné et protégé.
+- Portrait individuel de Torven, âge et apparence, à valider.
+- Six scénarios proposés ci-dessus, **non joués**.
 
 ## Sources principales
 
 - *Compendium des personnages*, v1.7, **REV-05**, états CB42 et mise à jour **3.4**.
+- *Campagne brute regroupée — Volume 1*, **CB31–34**, formation de secours, outils médicaux augmentés, création hospitalière, gouvernance, transmissions et réseau régional en développement ; **CB34 P13901–14000** (instruments témoins) ; **CB34 P22401–22500 et P31101–31200** (autorisations et transferts).
 - *Campagne Brut 4.2*, **CB42 P18752–19902**, sacoche et transmission.
 - *Continuité de la campagne*, v1.7, **Taagral**, échanges 012–119.
 - *Campagne Brut 4.3*, distinctions entre hôpital public et infirmerie privée.
