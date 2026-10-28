@@ -1,0 +1,59 @@
+import { readFile, readdir, stat } from 'node:fs/promises'
+import path from 'node:path'
+import assert from 'node:assert/strict'
+import { fromHtml } from 'hast-util-from-html'
+import { visit } from 'unist-util-visit'
+
+const root = path.resolve('public')
+const base = new URL('https://sijiel44.github.io/archives-alrick/')
+const walk = async dir => (await Promise.all((await readdir(dir, { withFileTypes: true })).map(e => e.isDirectory() ? walk(path.join(dir, e.name)) : path.join(dir, e.name)))).flat()
+const files = await walk(root)
+const htmlFiles = files.filter(f => f.endsWith('.html'))
+assert(files.includes(path.join(root, 'index.html')), 'Accueil index.html absent : build vide / 404 assuré')
+const pages = new Map()
+for (const file of htmlFiles) {
+  const source = await readFile(file, 'utf8')
+  const refs = [], ids = new Set()
+  visit(fromHtml(source), 'element', node => {
+    if (node.properties?.id) ids.add(String(node.properties.id))
+    for (const key of ['href', 'src']) if (node.properties?.[key]) refs.push(String(node.properties[key]))
+  })
+  pages.set(file, { source, refs, ids })
+}
+let checked = 0
+const failures = []
+const exists = async file => { try { return (await stat(file)).isFile() } catch { return false } }
+async function check(ref, fromFile, checkAnchor = true) {
+  if (/^(data:|mailto:|tel:|javascript:)/.test(ref)) return
+  const relative = path.relative(root, fromFile).split(path.sep).join('/')
+  const pageUrl = new URL(relative.replace(/index\.html$/, ''), base)
+  const url = new URL(ref, pageUrl)
+  if (url.origin !== base.origin) return
+  if (!url.pathname.startsWith(base.pathname)) { failures.push(`${relative} → hors sous-chemin Pages : ${ref}`); return }
+  const target = path.resolve(root, decodeURIComponent(url.pathname.slice(base.pathname.length)))
+  if (target !== root && !target.startsWith(root + path.sep)) { failures.push(`Chemin hors public : ${ref}`); return }
+  const candidates = [target, `${target}.html`, path.join(target, 'index.html')]
+  const found = (await Promise.all(candidates.map(exists))).findIndex(Boolean)
+  if (found < 0) { failures.push(`${relative} → 404 : ${ref}`); return }
+  if (checkAnchor && url.hash && pages.has(candidates[found]) && !pages.get(candidates[found]).ids.has(decodeURIComponent(url.hash.slice(1)))) failures.push(`${relative} → ancre absente : ${ref}`)
+  checked++
+}
+for (const [file, page] of pages) {
+  for (const ref of page.refs) await check(ref, file)
+  if (path.relative(root, file).startsWith('mj' + path.sep)) {
+    assert(page.source.includes('class="spoiler-disclosure"'), `Avertissement MJ absent : ${file}`)
+    assert(page.source.includes('noindex, nofollow, nosnippet'), `noindex MJ absent : ${file}`)
+    assert(!/<details[^>]*\sopen(?:=|\s|>)/.test(page.source), `MJ dévoilé par défaut : ${file}`)
+  }
+}
+for (const file of files.filter(f => f.endsWith('.css'))) {
+  const css = await readFile(file, 'utf8')
+  for (const match of css.matchAll(/url\(["']?([^\s)'";]+)["']?\)/g)) await check(match[1], file, false)
+}
+const index = JSON.parse(await readFile(path.join(root, 'static', 'contentIndex.json'), 'utf8'))
+assert(!Object.keys(index).some(key => key === 'mj' || key.startsWith('mj/')), 'Spoiler MJ dans la recherche')
+const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8')
+assert(!sitemap.includes('/mj/'), 'Page MJ dans le sitemap')
+assert(!files.some(f => /\.(docx|xlsx|csv|zip)$/i.test(f) || /atelier-mj|archives-source|inventaire_592|CONSIGNES_CONFIDENTIELLES/i.test(f)), 'Document source privé présent dans le site')
+assert.equal(failures.length, 0, failures.join('\n'))
+console.log(`${htmlFiles.length} pages HTML, ${checked} liens et ressources internes vérifiés sous /archives-alrick/. Recherche, sitemap et avertissements MJ contrôlés.`)

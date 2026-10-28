@@ -1,0 +1,107 @@
+# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+configuration:
+  pageTitle: Les Archives d’Alrick
+  pageTitleSuffix: " · Archives d’Alrick"
+  enableSPA: true
+  enablePopovers: false
+  analytics: null
+  locale: fr-FR
+  baseUrl: sijiel44.github.io/archives-alrick
+  ignorePatterns: [private, atelier-mj, archives-source, modeles, .obsidian, "**/*.docx", "**/*.xlsx"]
+  theme:
+    fontOrigin: local
+    cdnCaching: false
+    typography:
+      header: Georgia
+      body: Segoe UI
+      code: Consolas
+    colors:
+      lightMode: &alrick
+        light: "#0b141d"
+        lightgray: "#30414e"
+        gray: "#a1adb6"
+        darkgray: "#c7d1d8"
+        dark: "#f3eadb"
+        secondary: "#dcb877"
+        tertiary: "#92b7c2"
+        highlight: "#dcb87718"
+        textHighlight: "#dcb87740"
+      darkMode: *alrick
+plugins:
+  - source: "@quartz-community/note-properties"
+    enabled: true
+    order: 5
+    options:
+      hidePropertiesView: true
+  - source: "@quartz-community/obsidian-flavored-markdown"
+    enabled: true
+    order: 30
+    options:
+      mermaid: false
+      enableInHtmlEmbed: false
+  - source: "@quartz-community/github-flavored-markdown"
+    enabled: true
+    order: 40
+  - source: "@quartz-community/unlisted-pages"
+    enabled: true
+    order: 45
+  - source: "@quartz-community/crawl-links"
+    enabled: true
+    order: 60
+    options:
+      markdownLinkResolution: shortest
+  - source: "@quartz-community/description"
+    enabled: true
+    order: 70
+  - source: "@quartz-themes/core"
+    enabled: true
+    options:
+      theme: its-theme
+      variation: ttrpg-dnd
+      mode: dark
+      themeFonts: false
+      include: [callouts]
+      aspects:
+        base: false
+  - source: "@quartz-community/remove-draft"
+    enabled: true
+  - source: "@quartz-community/explicit-publish"
+    enabled: true
+  - source: "@quartz-community/alias-redirects"
+    enabled: true
+  - source: "@quartz-community/content-index"
+    enabled: true
+    options:
+      enableSiteMap: true
+      enableRSS: false
+  - source: "@quartz-community/content-page"
+    enabled: true
+  - source: "@quartz-community/folder-page"
+    enabled: true
+  - source: "@quartz-community/tag-page"
+    enabled: true
+  - source: "@quartz-community/search"
+    enabled: true
+  - source: "@quartz-community/table-of-contents"
+    enabled: true
+    order: 50
+    layout:
+      position: right
+      priority: 10
+  - source: "@quartz-community/backlinks"
+    enabled: true
+    layout:
+      position: afterBody
+      priority: 10
+layout:
+  byPageType:
+    "404":
+      positions:
+        beforeBody: []
+        right: []
+    folder:
+      positions:
+        right: []
+    tag:
+      positions:
+        right: []
