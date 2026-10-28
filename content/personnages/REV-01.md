@@ -20,7 +20,7 @@ tags: ["personnage", "revenants", "protecteur", "bram", "veteran", "rochebrune",
 *Étude visuelle provisoire issue d’une planche d’ensemble ; **apparence et détails à valider** avant de parler de portrait officiel.*
 
 > [!info] Statut documentaire
-> **Fiche de développement éditorial**, fondée sur le *Compendium des personnages et des relations* v1.7 et les scènes de campagne citées. Les faits joués, les intentions et les pistes narratives sont séparés. **Complément de création du 28 octobre 2026 :** le créateur souhaite établir une enfance ordinaire dans les Montagnes, une première carrière militaire sous Harald Forgecœur, la confiance de Torgarl et une solide amitié réciproque avec Orin. Les détails nouvellement proposés — notamment **Rochebrune**, les anecdotes de formation et les circonstances précises des opérations — sont **à valider avant inscription définitive au canon**. Le portrait proposé est apprécié, mais l'apparence exacte reste à confirmer.
+> **Fiche de développement éditorial**, fondée sur le *Compendium des personnages et des relations* v1.7 et les scènes de campagne citées. Les faits joués, les intentions et les pistes narratives sont séparés. **Lore complémentaire approuvé le 28 octobre 2026 :** le créateur valide une enfance ordinaire dans les Montagnes, **Rochebrume comme bourg d’origine**, les années de formation militaire, les opérations sous Harald Forgecœur, la reconnaissance de Torgarl et l’amitié fondée sur le respect mutuel avec Orin. **Les anecdotes détaillées illustratives, les dialogues reconstitués, les dates, les grades précis et les campagnes non identifiées ne sont pas des scènes jouées.** Le portrait actuel est une direction graphique appréciée, pas encore une description physique intégralement fixée.
 
 *Il a la mauvaise habitude de s'inquiéter à voix haute. C'est souvent ainsi qu'il s'assure que quelqu'un d'autre pourra rentrer vivant.*
 
@@ -32,7 +32,7 @@ Bram Vieux-Fer est le vétéran qui rappelle au groupe qu'un plan comporte **une
 
 - **Condition :** vivant ; membre de plein droit des [[GRP-01|Revenants]]. Aucune condition de « Rappelé » attribuée.
 - **Fonction attestée :** vétéran, protecteur, responsable de terrain selon les missions, transmetteur de discipline et de couverture.
-- **Origines en développement :** les **Montagnes de l’Aube** ; **Rochebrune**, petit bourg de route proche de la région d’Aldhammar, est une **proposition de nouveau lieu** à confirmer dans l’Atlas.
+- **Origines validées :** les **Montagnes de l’Aube**, à **[[GEO-ROCHEBRUME|Rochebrume]]**, bourg de montagne lié aux anciennes routes de la région d’Aldhammar. Le bourg a désormais sa fiche d’Atlas ; son emplacement cartographique précis reste à établir.
 - **Jeunesse et service militaire :** nouvelle direction donnée par le créateur : enfance relativement paisible, attrait précoce pour l’armée, progression par la fiabilité, quelques opérations sous les ordres de Harald Forgecœur et reconnaissance de ses aptitudes par Torgarl. **Grades précis, dates et campagnes détaillées ne sont pas arrêtés.**
 - **Statut extérieur :** la fréquentation de l'entourage princier ne transforme pas Bram en officier nommé d'une nouvelle institution.
 - **Équipement en évolution :** ancienne armure fonctionnelle mais éprouvée ; nouvelle armure commandée à **Mara Vifacier** et **Rempart du Retour** réalisé en CB42.
@@ -40,22 +40,22 @@ Bram Vieux-Fer est le vétéran qui rappelle au groupe qu'un plan comporte **une
 
 ## Avant les Revenants — l'homme des Montagnes
 
-> [!note] Extension narrative proposée, à approuver
-> La provenance précise de Bram, les métiers de sa famille, les scènes de formation et les opérations anciennes développées ci-dessous sont **des propositions nouvelles**, non des passages déjà joués. Elles prolongent les orientations données par le créateur le 28 octobre 2026 : une enfance ordinaire dans les Montagnes de l'Aube, une vocation militaire, quelques opérations sous Harald Forgecœur, une progression rapide grâce à sa fiabilité et la reconnaissance de Torgarl. Les dialogues illustratifs ne sont pas des citations du brut de campagne.
+> [!info] Origines intégrées au lore par validation du créateur
+> **Rochebrume**, l'enfance relativement paisible, la vocation militaire, la carrière sous Harald Forgecœur, la réputation gagnée auprès de Torgarl et l'amitié avec Orin sont **approuvées comme histoire du personnage** le 28 octobre 2026. Ce complément ne prétend pas que les scènes de jeunesse ont été jouées. Les scènes d'entraînement ou d'opérations présentées comme **anecdotes possibles** et les dialogues illustratifs sont des **reconstitutions littéraires**, non des citations de la campagne. Les dates, grades et personnes de la famille restent à déterminer.
 
-### Rochebrune — une enfance sans tragédie
+### Rochebrume — une enfance sans tragédie
 
-**Rochebrune** serait un bourg accroché aux pentes des Montagnes de l'Aube, sur une ancienne route de charrois desservant la région d'**Aldhammar**. Ni forteresse légendaire ni village maudit : quelques maisons solides, des remises pour les mules, des ateliers où l'on refait les ferrures, des greniers dont on parle davantage que des exploits des anciens rois. **Le lieu est proposé pour le lore ; son emplacement exact reste à déterminer et son nom n'est pas encore inscrit comme toponyme établi de l'Atlas.**
+**[[GEO-ROCHEBRUME|Rochebrume]]** est un bourg accroché aux pentes des Montagnes de l'Aube, sur une ancienne route de charrois desservant la région d'**Aldhammar**. Ni forteresse légendaire ni village maudit : quelques maisons solides, des remises pour les mules, des ateliers où l'on refait les ferrures, des greniers dont on parle davantage que des exploits des anciens rois. **Le lieu et son nom sont désormais validés ; son emplacement précis sur la future carte reste à déterminer.**
 
-Bram y aurait grandi **dans une famille ordinaire et un environnement plutôt heureux**. Les adultes travaillent, les enfants aident, le printemps apporte les routes abîmées par le dégel et l'hiver réclame des réserves bien comptées. Sa jeunesse est faite d'outils empruntés, de repas trop bruyants, de courses dans les chemins pentus et de corvées dont il apprend vite qu'elles ne se termineront pas toutes seules. Il n'a pas besoin d'avoir perdu ses parents, vu brûler son village ou grandi au milieu d'une guerre pour être devenu un homme courageux.
+Bram y a grandi **dans une famille ordinaire et un environnement plutôt heureux**. Les adultes travaillent, les enfants aident, le printemps apporte les routes abîmées par le dégel et l'hiver réclame des réserves bien comptées. Sa jeunesse est faite d'outils empruntés, de repas trop bruyants, de courses dans les chemins pentus et de corvées dont il apprend vite qu'elles ne se termineront pas toutes seules. Il n'a pas besoin d'avoir perdu ses parents, vu brûler son village ou grandi au milieu d'une guerre pour être devenu un homme courageux.
 
-Ce qui l'intéresse chez les soldats de passage n'est d'abord ni la gloire ni le sang. Il observe **leur organisation** : les équipements inspectés avant le départ, les sentinelles qui se relaient et surtout la manière dont une patrouille rentre ensemble, même épuisée. Les enfants de Rochebrune imitent les héros en brandissant un bâton ; Bram, lui, finit par demander qui compte les hommes au retour. Cette question, plus tard, deviendra presque sa définition du métier.
+Ce qui l'intéresse chez les soldats de passage n'est d'abord ni la gloire ni le sang. Il observe **leur organisation** : les équipements inspectés avant le départ, les sentinelles qui se relaient et surtout la manière dont une patrouille rentre ensemble, même épuisée. Les enfants de Rochebrume imitent les héros en brandissant un bâton ; Bram, lui, finit par demander qui compte les hommes au retour. Cette question, plus tard, deviendra presque sa définition du métier.
 
-La famille aurait accueilli sa décision d'entrer dans l'armée avec une combinaison de fierté et de moqueries. Il n'aurait pas quitté les siens pour échapper à un destin insupportable, mais **pour servir un royaume dont il connaissait les habitants et les chemins**. Ses retours chez lui — parfois avec trop peu de nouvelles, toujours avec un appétit solide — seraient une part importante de son histoire personnelle, encore ouverte au jeu.
+La décision d'entrer dans l'armée s'inscrit dans une jeunesse familiale ordinaire, que le portrait narratif peut évoquer avec une combinaison de fierté et de moqueries ; les réactions exactes de ses proches restent à raconter. Il n'aurait pas quitté les siens pour échapper à un destin insupportable, mais **pour servir un royaume dont il connaissait les habitants et les chemins**. Ses retours chez lui — parfois avec trop peu de nouvelles, toujours avec un appétit solide — seraient une part importante de son histoire personnelle, encore ouverte au jeu.
 
 ### Les premiers galons — les bottes avant les médailles
 
-À la formation, Bram ne serait pas devenu le meilleur combattant dès le premier jour. Il aurait eu de bonnes épaules, trop d'assurance dans certaines manœuvres et une singulière capacité à remarquer les choses peu héroïques : une sangle usée, une ration insuffisante, une corde mal attachée. On l'aurait d'abord pris pour un homme qui se plaint trop. Puis on se serait aperçu que **ses plaintes préviennent des ennuis véritables**.
+À la formation, Bram n'est pas présenté comme le meilleur combattant dès le premier jour. Il aurait eu de bonnes épaules, trop d'assurance dans certaines manœuvres et une singulière capacité à remarquer les choses peu héroïques : une sangle usée, une ration insuffisante, une corde mal attachée. On l'aurait d'abord pris pour un homme qui se plaint trop. Puis on se serait aperçu que **ses plaintes préviennent des ennuis véritables**.
 
 Une première anecdote pourrait résumer son apprentissage. Au cours d'une marche d'hiver, une section reçoit pour consigne de rejoindre un col avant la nuit. Bram constate qu'un des plus jeunes soldats boite, que les mules tirent mal et que le raccourci « rapide » traverse une pente instable. Plutôt que d'atteindre l'objectif en abandonnant les retardataires, il convainc son supérieur d'emprunter la route de repli, arrive avec toute la section et se fait d'abord reprocher son retard. Lors du contrôle suivant, l'officier comprend pourquoi la patrouille est la seule à avoir rapporté **ses hommes et tout son matériel**. L'épisode serait à écrire comme un souvenir de garnison, pas comme une bataille célèbre.
 
@@ -67,13 +67,13 @@ Au début de sa carrière, Bram participe à **quelques opérations placées sou
 
 Ces missions anciennes pourraient concerner **la sécurité de routes de montagne, la protection de relais et l'escorte de populations ou de ravitaillement**. Une opération possible, à valider, voit la troupe recevoir l'ordre de tenir un passage menacé. Le jeune Bram remarque qu'un groupe de conducteurs de mules risque de rester coincé derrière la ligne de défense. Il demande une courte couverture supplémentaire, fait dégager la route puis rejoint les autres. Il perd une occasion de se distinguer au premier rang, mais permet à des gens de rentrer. **Harald n'a pas besoin de prononcer un grand discours : un bref signe d'approbation lui suffit.**
 
-Bram conserverait de ce service un respect réel pour Harald, non parce que celui-ci appartenait à la famille royale, mais parce qu'il savait reconnaître **le travail discret et l'utilité d'un ordre bien donné**. Leur rencontre joyeuse au manoir, bien des années plus tard, prendrait alors une autre couleur : le père d'Orin découvre un ancien jeune soldat devenu un homme avec lequel il partage immédiatement le même humour.
+Bram conserve de ce service un respect réel pour Harald, non parce que celui-ci appartenait à la famille royale, mais parce qu'il savait reconnaître **le travail discret et l'utilité d'un ordre bien donné**. Leur rencontre joyeuse au manoir, bien des années plus tard, prendrait alors une autre couleur : le père d'Orin découvre un ancien jeune soldat devenu un homme avec lequel il partage immédiatement le même humour.
 
 ### La confiance de Torgarl — être celui qu'on peut envoyer
 
-Les rapports de garnison, les recommandations de supérieurs et les opérations bien conduites finissent par faire remonter le nom de Bram. **Torgarl le Brave** ne reconnaîtrait pas ses aptitudes sur la foi d'un exploit flamboyant : il verrait plutôt la marque d'un homme auquel on peut confier un groupe, une route ou une mission incertaine **sans craindre qu'il cherche la gloire au détriment des autres**.
+Les rapports de garnison, les recommandations de supérieurs et les opérations bien conduites finissent par faire remonter le nom de Bram. **Torgarl le Brave** reconnaît ses aptitudes moins sur la foi d'un exploit flamboyant que dans la fiabilité d'un homme auquel on peut confier un groupe, une route ou une mission incertaine **sans craindre qu'il cherche la gloire au détriment des autres**.
 
-Une scène à retenir pour la version définitive pourrait être celle d'une revue de dossiers : parmi les hommes ayant obtenu de belles victoires, le nom de Bram apparaît plusieurs fois pour des missions achevées avec peu de pertes, un ravitaillement bien géré et des décisions de repli justifiées. Torgarl relève cette récurrence. **Le vieux roi se souvient moins d'une charge héroïque que d'un officier fiable.** Cette reconnaissance peut être formelle ou simplement personnelle ; **aucune décoration, audience ou promotion précise n'est encore canonisée**.
+Une scène à retenir pour la version définitive pourrait être celle d'une revue de dossiers : parmi les hommes ayant obtenu de belles victoires, le nom de Bram apparaît plusieurs fois pour des missions achevées avec peu de pertes, un ravitaillement bien géré et des décisions de repli justifiées. Torgarl relève cette récurrence. **C'est l'image d'un officier fiable, davantage que d'une charge héroïque, qui s'impose dans ce portrait narratif.** La reconnaissance de Torgarl est validée dans son principe ; les circonstances exactes demeurent ouvertes : **aucune décoration, audience ou promotion précise n'est établie**.
 
 À Aldhammar, dans le présent de la campagne, cette estime prend un sens nouveau. Lorsque Torgarl accepte la cape des Revenants, il s'adresse à Bram en compagnon, le salue et plaisante avec lui. Ce sont des **faits joués en CB42** ; ils renforcent l'idée d'une estime mutuelle sans que nous ayons besoin d'inventer une décoration remise autrefois.
 
@@ -143,7 +143,7 @@ Sous ces plaisanteries, il y a une fidélité qui ne demande pas de grandes déc
 - **Mara Vifacier :** commande et échanges avec une artisane qui peut lui dire « non » quand l'essai exige de la prudence.
 - **Harald Forgecœur :** **service militaire dans sa jeunesse**, direction nouvelle souhaitée par le créateur et cohérente avec le souvenir rappelé en CB43 ; reconnaissance non immédiate lors des retrouvailles. Rencontre amicale et échange d'ironie avec le père d'Orin ; ne pas confondre celui-ci avec Harald le lion de feu.
 - **Torgarl le Brave :** ancien souverain dont Bram a gagné l'estime par sa fiabilité, selon le nouveau développement proposé ; aujourd'hui **Revenant d'honneur**, il accepte sa cape au milieu de la compagnie en CB42 et plaisante avec Bram. Les circonstances exactes de la reconnaissance passée restent à confirmer.
-- **Rochebrune :** **lieu de naissance proposé**, à créer ou repositionner dans l'Atlas après validation.
+- **[[GEO-ROCHEBRUME|Rochebrume]] :** bourg d’origine désormais validé, créé comme fiche de lieu ; localisation cartographique précise à fixer.
 - **Kaldrik :** échanges documentés sur protection, réserve et commandement dégradé ; pas de nomination formelle de Kaldrik chez les Revenants.
 
 ## Artefacts et limites
@@ -156,7 +156,7 @@ Sous ces plaisanteries, il y a une fidélité qui ne demande pas de grandes déc
 
 - Formation de recrues : programme envisagé, cohorte non encore constituée.
 - Épisode où une autre personne réussit à protéger Bram, à jouer sans le transformer en victime passive.
-- Fixer le statut géographique de **Rochebrune**, l'histoire familiale et les souvenirs d'enfance proposés.
+- Préciser la position cartographique de **Rochebrume**, les noms des membres de sa famille et les souvenirs d'enfance encore non détaillés.
 - Préciser les **grades** gagnés par Bram, les opérations de jeunesse sous **Harald Forgecœur** et la manière dont **Torgarl** a reconnu ses aptitudes, sans inventer un ordre militaire supplémentaire.
 - Faire vivre son **amitié avec Orin** par une scène de camaraderie qui ne se résume ni au combat ni à un conseil militaire.
 - Retrouvailles ou disputes autour d'une ancienne campagne à vérifier dans le brut avant de préciser des faits.
@@ -168,7 +168,7 @@ Sous ces plaisanteries, il y a une fidélité qui ne demande pas de grandes déc
 - *Continuité de la campagne*, v1.7, **Taagral**, échanges 012–119.
 - *Campagne Brut 4.2*, **CB42 P18752–21841** (Rempart, formation, vie au manoir, Torgarl et retrouvailles avec Harald Forgecœur).
 - *Campagne Brut 4.3*, scène de la conversation avec **Hroldan Trois-Clefs** : Orin précise que Harald n'a pas reconnu Bram, probablement jeune soldat au temps où son père dirigeait ses hommes.
-- **Développement demandé par le créateur le 28 octobre 2026** : enfance paisible dans les Montagnes de l'Aube, carrière militaire, service sous Harald, réputation auprès de Torgarl, amitié et respect entre Bram et Orin. **Rochebrune et les anecdotes de formation sont des propositions à valider.**
+- **Développement approuvé par le créateur le 28 octobre 2026** : enfance paisible dans les Montagnes de l'Aube, **Rochebrume**, carrière militaire, service sous Harald, réputation auprès de Torgarl, amitié et respect entre Bram et Orin. **Les anecdotes spécifiques de formation, leurs dialogues et les détails de missions restent des propositions de mise en récit, non des scènes déjà jouées.**
 
 ## Feuillets liés
 
