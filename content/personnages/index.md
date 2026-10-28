@@ -14,5 +14,7 @@ tags: [alrick, index]
 - [[REV-06|Heimdall — Le veilleur qui a choisi]]
 - [[REV-16|Aldren — Le Compagnon des Lisières]]
 
+Voir également [[GRP-01|Les Revenants]], leur histoire collective et les distinctions entre membres, honorifiques et compagnons.
+
 > [!info] Migration progressive
 > Les autres sujets de ce domaine seront intégrés progressivement, après relecture des sources de campagne.
