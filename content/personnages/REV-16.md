@@ -40,6 +40,8 @@ Leur relation se construit par la confiance et par l'apprentissage. Dans les ent
 
 ## Réseau de liens
 
+- [[GRP-01|Les Revenants]] — compagnie de Heimdall ; Aldren l'accompagne librement **sans en être membre**.
+
 - [[REV-06|Heimdall]] — compagnon et relation d'affection réciproque.
 - **Orin** — à l'origine de sa création et de sa présentation au Mérien.
 - **Eamon** — témoin de ses premières rencontres avec Heimdall et de ses moments d'apaisement.
