@@ -106,6 +106,22 @@ Lors de l'attaque de Taagral, le système médical et les espaces de refuge sont
 
 En CB42, la **nouvelle sacoche médicale** facilite rangement, protection des fournitures et intervention rapide. Elle est réalisée et fait partie des premiers essais de l'équipement des Revenants ; il serait faux de prétendre que Torven découvre seulement à ce moment l'existence des dispositifs d'accès à l'hôpital. La formation envisagée pour les futurs apprentis comprend les secours et l'évacuation, **sans première cohorte déjà recrutée**. (*CB42 P18752–19902.*)
 
+## Celui qui soigne est aussi un homme
+
+### L'autorité d'un professionnel, pas d'un donneur de leçons
+
+Torven préfère quelqu'un qui reconnaît ne pas savoir effectuer un geste à un héros assez sûr de lui pour mettre un malade en danger. Sa rigueur vise à **former des soignants capables de se passer de lui**, non à les humilier. Son humour est sec, parfois excellent, et rarement dirigé contre les personnes vulnérables.
+
+Un patient n'a pas besoin de se montrer courageux, reconnaissant ou poli à tout instant pour mériter les soins. Torven sait qu'une personne souffrante peut être inquiète, confuse, irritable ou silencieuse. Il explique sans infantiliser. Lorsqu'un proche pose une question difficile, il essaie de **ne pas déguiser son incertitude en certitude rassurante**.
+
+### Ses plaisirs ordinaires
+
+Sa vie ne peut pas se réduire aux opérations d'urgence. Je lui proposerais un goût pour les **bonnes tables simples après une garde**, pour la réparation d'un instrument réellement utile et pour les jardins où l'on entend plus les oiseaux que les ordres. Il peut trouver un bonheur discret à revoir une personne qui a repris son métier ou à constater qu'un ancien apprenti sait désormais former quelqu'un à son tour. **Ces préférences personnelles restent à valider**.
+
+### Le piège de l'indispensable
+
+Sa faiblesse la plus intéressante serait de **se croire parfois seul à pouvoir éviter une catastrophe**, précisément parce qu'il connaît le prix d'une erreur. La compagnie lui a appris à faire confiance aux protecteurs ; l'hôpital devra lui apprendre à faire confiance aux équipes, à ses successeurs et à son propre droit au repos. Il peut être malade, épuisé, se tromper ou avoir besoin de soins : il n'est pas une ressource inépuisable.
+
 ## Personnalité et interprétation
 
 **Professionnel avant le héros.** Il observe le patient et les conditions d'intervention avant de promettre une amélioration.
@@ -115,6 +131,16 @@ En CB42, la **nouvelle sacoche médicale** facilite rangement, protection des fo
 **Exigeant sur les limites.** Ses soins ne font pas de lui un faiseur de miracles, ni un être capable de diagnostiquer tout phénomène inconnu.
 
 **Un rôle qui mérite aussi protection.** Il enseigne aux autres comment l'aider : l'avenir de la compagnie ne doit pas dépendre de l'idée que seul le soignant serait sacrifiable pour sauver le reste du groupe.
+
+## La compagnie, les patients et les bâtisseurs
+
+**Orin** a ouvert les possibilités matérielles et magiques ; **Torven** a apporté le regard d'un professionnel qui doit soigner des personnes réelles dans les locaux proposés. La relation n'est pas celle d'un prince donnant des cadeaux à un praticien reconnaissant. Torven peut dire non, demander une modification et rappeler les besoins oubliés. Orin conserve la maîtrise structurelle de l'Espace ; Torven et les équipes compétentes organisent le soin.
+
+**[[REV-01|Bram]]**, **[[REV-03|Kelm]]** et **[[REV-02|Ragna]]** l'aident sur les voies de couverture, de portage, de retraite et de protection. **[[REV-04|Vaëra]]** repère les menaces que les soignants n'ont pas le temps de regarder ; **[[REV-07|Haldrek]]** fait de la préparation et du commandement une responsabilité partagée ; **[[REV-08|Eamon]]** apporte la documentation et la transmission des méthodes. Torven peut être celui qui dit : *« Peu importe qui porte le blessé, tant que quelqu'un sait où il doit aller. »* Cette dernière phrase est une **formulation proposée**, pas un dialogue déjà joué.
+
+**Lethiel, Brégan et Alice** deviennent des partenaires essentiels pour les espaces, les dispositifs, la maintenance et la traçabilité. Un appareil remarquable peut être dangereux si personne ne sait comment l'entretenir, quelles mesures il fournit ou comment l'arrêter. Dans la médecine de Torven, les **techniciens, les patients et les proches ont le droit de donner leur avis**.
+
+**Sa famille et ses anciennes attaches** restent entièrement ouvertes. Un ancien maître, une sœur ou un frère, une personne avec qui il a étudié, une famille encore en vie ou une ville où il aurait exercé peuvent donner de la profondeur à ses retours en dehors de la compagnie, mais **aucune de ces personnes n'est encore canonique**.
 
 ## Relations
 
