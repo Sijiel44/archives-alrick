@@ -41,14 +41,14 @@ La compagnie est une **communauté d'individus**, avec des talents, des faibless
 | Compagnon | Code individuel | Apport principal et caractère de sa place |
 |---|---|---|
 | **Orin / Alrick** | Fiche centrale à créer | Figure fondatrice, compagnon et puissance créatrice ; apprend à transmettre sans devenir indispensable. Son statut princier ou divin ne fait pas des autres ses subordonnés automatiques. |
-| **Bram Vieux-Fer** | REV-01 | Vétéran protecteur ; couvre la retraite, pense aux civils et à ceux qui doivent rentrer. Ironie sèche, soin très concret des autres. |
-| **Ragna Pierre-Sèche** | REV-02 | Tenue du terrain, écoute, coordination, limites de progression, extraction et repli ; autorité sobre capable de recevoir puis de rendre le commandement. |
-| **Kelm Poing-Calme** | REV-03 | Force maîtrisée, défense, protection ; apprend à commander et à transmettre sans confondre puissance et bon jugement. |
-| **Vaëra** | REV-04 | Reconnaissance, discrétion, réseaux et lecture du terrain ; membre à part entière, non simplement « la compagne d'Orin ». |
-| **Torven Cendreval** | REV-05 | Médecin, premiers secours, évacuations et médecine d'expédition ; le sauvetage ne vient pas après la gloire. |
+| **[Bram Vieux-Fer](../personnages/rev-01)** | REV-01 | Vétéran protecteur ; couvre la retraite, pense aux civils et à ceux qui doivent rentrer. Ironie sèche, soin très concret des autres. |
+| **[Ragna Pierre-Sèche](../personnages/rev-02)** | REV-02 | Tenue du terrain, écoute, coordination, limites de progression, extraction et repli ; autorité sobre capable de recevoir puis de rendre le commandement. |
+| **[Kelm Poing-Calme](../personnages/rev-03)** | REV-03 | Force maîtrisée, défense, protection ; apprend à commander et à transmettre sans confondre puissance et bon jugement. |
+| **[Vaëra](../personnages/rev-04)** | REV-04 | Reconnaissance, discrétion, réseaux et lecture du terrain ; membre à part entière, non simplement « la compagne d'Orin ». |
+| **[Torven Cendreval](../personnages/rev-05)** | REV-05 | Médecin, premiers secours, évacuations et médecine d'expédition ; le sauvetage ne vient pas après la gloire. |
 | **[Heimdall](../personnages/rev-06)** | REV-06 | Veilleur devenu personne libre, analyste des passages et chercheur ; conduit ses propres équipes d'étude. |
-| **Haldrek** | REV-07 | Vétéran, préparation et formation ; prévoit les solutions de rechange et enseigne à distinguer une victoire d'une bonne procédure. |
-| **Eamon** | REV-08 | Professeur, artiste, enquêteur et transmetteur ; conserve ses étudiants, sa recherche et le droit de ne pas redevenir l'apprenti d'Orin. |
+| **[Haldrek](../personnages/rev-07)** | REV-07 | Vétéran, préparation et formation ; prévoit les solutions de rechange et enseigne à distinguer une victoire d'une bonne procédure. |
+| **[Eamon](../personnages/rev-08)** | REV-08 | Professeur, artiste, enquêteur et transmetteur ; conserve ses étudiants, sa recherche et le droit de ne pas redevenir l'apprenti d'Orin. |
 
 **Cette liste décrit un noyau attesté, non un organigramme figé.** En mission, le commandement change selon les compétences et les étapes. Un médecin, un éclaireur ou un responsable d'extraction peut détenir l'autorité utile à un moment donné, sans être nommé chef permanent de toute la compagnie.
 
