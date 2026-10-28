@@ -12,5 +12,7 @@ tags: [alrick, index]
 
 - [[O42-01|La Maison et le Palais]]
 
+À distinguer de [[GRP-01|la Compagnie des Revenants]], qui possède ses propres missions et son propre manoir.
+
 > [!info] Migration progressive
 > Les autres sujets de ce domaine seront intégrés progressivement, après relecture des sources de campagne.
