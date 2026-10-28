@@ -16,7 +16,7 @@ tags: ["personnage", "revenants", "demi-orc", "force", "protection", "marteau", 
 # Kelm Poing-Calme
 
 > [!info] Statut documentaire
-> **Fiche approfondie à relire** à partir du *Compendium des personnages et des relations* v1.7 et du récit de Kelm sur la route dans **CB2 P05101–05500**. La ferme familiale, l’incident avec son frère, les leçons paternelles, l’embuscade et l’origine du surnom sont **des scènes déjà racontées en jeu**, et non des propositions inventées. Les amorces d’aventure, le nom possible du relais, les dialogues reconstitués et les destins encore ouverts restent **des propositions non jouées**. Son portrait doit être validé séparément.
+> **Lore complété et approuvé par le créateur le 28 octobre 2026.** La famille de Kelm, la ferme-relais, l’incident avec son frère, les leçons de son père, l’embuscade et son surnom viennent du **récit joué dans CB2 P05101–05500**. Le nom **[[GEO-HAUTES-PATURES|Relais des Hautes-Pâtures]]** est une création ultérieure approuvée pour ce lieu. Les missions régionales, rencontres proposées, dialogues reconstitués et menaces éventuelles ne sont **pas des événements déjà joués**. Son portrait individuel reste à valider séparément.
 
 *Il sait qu'il possède la force de détruire une porte. La question qui l'intéresse est de savoir s'il faut vraiment la briser.*
 
@@ -28,7 +28,7 @@ Kelm Poing-Calme est un homme très grand, extraordinairement fort, dont la bont
 
 - **Origines :** mère **humaine**, père **demi-orc**, selon le récit personnel conservé dans le Compendium. Kelm lui-même est présenté comme **demi-orc** dans la campagne.
 - **Famille :** deux frères et une sœur, **tous vivants** à l'état documentaire connu ; aucun décès ni éloignement définitif à inventer.
-- **Enfance :** ferme familiale servant également de relais, où accueillir un inconnu ne signifiait pas renoncer à la prudence.
+- **Enfance :** **[[GEO-HAUTES-PATURES|Relais des Hautes-Pâtures]]**, ferme familiale devenue étape d’accueil des voyageurs. Le nom a été approuvé dans le lore ; son emplacement précis sur la carte reste inconnu.
 - **Statut :** vivant, membre du noyau des [[GRP-01|Revenants]] ; ni Rappelé ni titulaire d'une charge divine démontrée par ce seul groupe.
 - **Apparence :** carrure imposante et gestes attentifs, traits correspondant à ses origines demi-orques. Couleur de peau, chevelure, marques particulières et âge exact à fixer avant un portrait canonique.
 
@@ -36,13 +36,13 @@ Kelm Poing-Calme est un homme très grand, extraordinairement fort, dont la bont
 
 ### Les terres ouvertes, loin des grandes villes
 
-Kelm ne vient pas d'une forteresse ni d'une lignée de chefs de guerre. Son père, **demi-orc**, s'occupait principalement des troupeaux : il menait les bovins d'un pâturage à l'autre, réparait des clôtures, surveillait les prédateurs et les voleurs, et prêtait main-forte sur les routes. Sa mère, **humaine**, tenait une petite ferme qui faisait aussi office de **relais improvisé pour les voyageurs**, dans une région de terres ouvertes où les nouvelles arrivaient parfois bien après les difficultés.
+Kelm ne vient pas d'une forteresse ni d'une lignée de chefs de guerre. Son père, **demi-orc**, s'occupait principalement des troupeaux : il menait les bovins d'un pâturage à l'autre, réparait des clôtures, surveillait les prédateurs et les voleurs, et prêtait main-forte sur les routes. Sa mère, **humaine**, tenait une petite ferme qui faisait aussi office de **relais improvisé pour les voyageurs**, désormais nommé **[[GEO-HAUTES-PATURES|Relais des Hautes-Pâtures]]** dans le lore. Il se trouve dans une région de terres ouvertes où les nouvelles arrivaient parfois bien après les difficultés.
 
 L'endroit était vivant. Marchands, éleveurs, soldats, gens perdus et caravanes passaient par la maison ; on y trouvait de la soupe, parfois un lit, certainement des discussions, et une méfiance salutaire envers les gens trop pressés d'obtenir la confiance des autres. La mère de Kelm résumait sa philosophie en une phrase qu'il n'a pas oubliée :
 
 > « Nourrir quelqu'un et lui faire confiance sont deux décisions différentes. »
 
-Une belle leçon pour une famille qui ouvrait sa porte sans offrir pour autant sa sécurité au premier inconnu. **L'emplacement précis de la ferme n'est pas identifié** dans l'Atlas ; il ne faut pas la placer automatiquement dans les Montagnes de l'Aube ou près d'Entre-Rives. Ce serait un lieu à définir après validation. *Source : CB2 P05101–05200, récit de Kelm pendant le voyage.*
+Une belle leçon pour une famille qui ouvrait sa porte sans offrir pour autant sa sécurité au premier inconnu. **Le lieu a maintenant sa propre page dans l'Atlas, mais sa région politique exacte reste indéterminée** : il ne faut pas le placer automatiquement dans les Montagnes de l'Aube, à Entre-Rives ou près de Rochebrume. *Source : CB2 P05101–05200, récit de Kelm pendant le voyage ; nom approuvé par le créateur le 28 octobre 2026.*
 
 ### Une famille vivante — et personne ne lui laisse prendre toute la place
 
@@ -53,7 +53,7 @@ Cette famille n'est pas une tragédie passée ou un souvenir idéalisé : elle c
 Lorsqu'Orin annonce qu'il aimerait rencontrer sa sœur, Kelm devient immédiatement méfiant. Névane lui conseille de ne jamais prendre pour innocente une « simple curiosité » du prince. C'est un moment drôle mais révélateur : le guerrier impressionnant redevient, instantanément, **le frère dont la famille connaît toutes les faiblesses**. *Source : CB2 P05301–05400.*
 
 > [!note] Ce qui reste à développer
-> Les **noms des parents, des frères et de la sœur**, les métiers précis de chacun, les routes desservies par la ferme et les liens avec les communautés voisines ne sont pas encore établis. On peut envisager un toponyme comme *le Relais des Hautes-Pâtures* pour le lieu familial, **mais il n'est pas canonique à ce stade**.
+> Les **noms des parents, des frères et de la sœur**, les métiers précis de chacun, les routes desservies par la ferme et les liens avec les communautés voisines ne sont pas encore établis. **Le nom Relais des Hautes-Pâtures est désormais validé** ; la situation géographique et les histoires personnelles de la famille restent ouvertes.
 
 ### Très grand, trop fort — et pas encore assez prudent
 
@@ -151,7 +151,7 @@ L'idée ne signifie pas qu'il dirige déjà une académie autonome ou qu'une pre
 
 ### La famille du relais
 
-Ses **parents, ses deux frères et sa sœur** sont des personnes vivantes, pas des prétextes narratifs destinés à mourir pour le faire évoluer. Ses attaches familiales permettent des retrouvailles joyeuses, des disputes sur le travail, des repas où le puissant protecteur se fait gentiment remettre à sa place et des décisions où **sa vie de Revenant n'efface pas son identité de fils et de frère**.
+Au **[[GEO-HAUTES-PATURES|Relais des Hautes-Pâtures]]**, ses **parents, ses deux frères et sa sœur** sont des personnes vivantes, pas des prétextes narratifs destinés à mourir pour le faire évoluer. Ses attaches familiales permettent des retrouvailles joyeuses, des disputes sur le travail, des repas où le puissant protecteur se fait gentiment remettre à sa place et des décisions où **sa vie de Revenant n'efface pas son identité de fils et de frère**.
 
 ### Orin — apprendre à se faire confiance sans obéir aveuglément
 
@@ -195,13 +195,21 @@ Dans les Revenants, Kelm est respecté **parce qu'il est Kelm**, et non parce qu
 
 ### Quatre aventures à développer
 
-**1. Le relais sans nouvelles — enquête, voyage et retrouvailles.** La route qui dessert une ferme servant de relais a cessé de recevoir des marchandises. Kelm cherche des aventuriers capables de rencontrer les habitants sans débarquer comme une colonne militaire. Sa propre famille peut être concernée **si le MJ le choisit**, sans être automatiquement blessée ou kidnappée. **Pistes :** un changement de pâturage, des traces d'attelage trop lourd, un témoignage incomplet. **Choix :** partir secourir, rassurer un village, rouvrir un passage, comprendre un conflit de commerce. Le lieu précis du relais familial reste à définir.
+**1. Le relais sans nouvelles — enquête, voyage et retrouvailles.** La route qui dessert le **[[GEO-HAUTES-PATURES|Relais des Hautes-Pâtures]]** a cessé de recevoir des marchandises. Kelm cherche des aventuriers capables de rencontrer les habitants sans débarquer comme une colonne militaire. Sa propre famille peut être concernée **si le MJ le choisit**, sans être automatiquement blessée ou kidnappée. **Pistes :** un changement de pâturage, des traces d'attelage trop lourd, un témoignage incomplet. **Choix :** partir secourir, rassurer un village, rouvrir un passage, comprendre un conflit de commerce. Le nom du relais est fixé ; **sa position géographique exacte reste à définir**.
 
 **2. Le jeune géant — entraînement et enquête morale.** Une nouvelle recrue d'une force exceptionnelle a grièvement blessé un autre élève pendant un exercice. Certains exigent son renvoi, d'autres prétendent qu'il ne comprend rien. Kelm demande aux joueurs d'observer l'entraînement et de parler avec les deux protagonistes. **Enjeux :** distinguer accident, négligence et abus ; décider quels apprentissages peuvent réparer la confiance sans effacer les conséquences. Une victoire possible consiste à modifier une méthode de formation, pas à découvrir un méchant caché.
 
 **3. Les quatre personnes à ramener — escorte et commandement.** Kelm prend la tête d'une équipe qui doit faire revenir quatre civils d'un secteur menacé. Les aventuriers connaissent mieux la route que lui ; **il leur cède une partie du commandement s'ils le méritent**. Plusieurs itinéraires sont possibles, avec des compromis entre rapidité, visibilité, coût et sécurité. **Le meilleur résultat peut être de renoncer à l'objectif secondaire** pour ne perdre personne.
 
 **4. Le marteau et la mauvaise solution — combat tactique et artisanat.** Sur un terrain d'entraînement des Revenants, un adversaire protégé par une armure résistante semble invulnérable aux attaques ordinaires. Kelm souhaite démontrer qu'une masse plus lourde n'est pas forcément la meilleure réponse. **Pistes :** environnement, fatigue, équilibre, négociation, secours à la victime, coordination. Le MJ adapte l'ennemi ou en fait un simple automate d'exercice. Les capacités attestées du **Marteau des Quatre États** restent limitées à ses fonctions testées ; aucune nouvelle gemme n'est attribuée d'office.
+
+### Une campagne régionale autour du relais — trame évolutive
+
+Une aventure peut commencer **sans urgence héroïque** : Kelm rentre présenter les aventuriers à sa famille, et chacun découvre son ancienne vie. Les premières scènes appartiennent au quotidien : aide aux animaux, réparation d'un pont, livraison de soins, marchandage difficile et repas du soir où sa sœur le remet gentiment à sa place. **Ces scènes sont proposées ; aucune visite officielle des Revenants au relais n'est encore établie.**
+
+Plus tard, des incidents peuvent compliquer la région : passages fermés, cargaisons faussement déclarées, visiteurs qui en savent trop, querelles entre éleveurs ou témoignages incompatibles. Les joueurs sont invités à **protéger les habitants, comprendre les faits et choisir les interventions proportionnées**. Rien n'oblige le MJ à transformer chaque tension en attaque contre la famille. Les conflits peuvent être ordinaires, locaux ou délibérément provoqués selon la campagne.
+
+Kelm peut diriger une patrouille, demander un avis à Ragna sur les témoignages, solliciter Torven pour des blessés, ou accepter de laisser les personnages joueurs agir sans lui. **Sa famille a aussi ses propres compétences, ses opinions et le droit de refuser l'aide de compagnons trop autoritaires.** Les conséquences, alliances et adversaires restent ouverts.
 
 ### Première rencontre — proposition de scène
 
@@ -238,7 +246,7 @@ Le MJ peut faire de ce pont le début d'une véritable mission, ou simplement la
 
 **Établi :** famille vivante, histoire du surnom, décision d'épargner quelqu'un au moyen d'un contrôle de force, commandement effectivement exercé, marteau réalisé en CB42.
 
-**Ouvert :** noms et relations précises avec chaque membre de sa famille ; emplacement et nom de la ferme-relais ; écoles tactiques qu'il souhaite transmettre ; premiers élèves réellement recrutés ; portrait individuel validé. Les quatre propositions de missions figurant ci-dessus ne sont pas des épisodes de la campagne déjà joués.
+**Ouvert :** noms et relations précises avec chaque membre de sa famille ; **localisation cartographique** du [[GEO-HAUTES-PATURES|Relais des Hautes-Pâtures]], dont le **nom est approuvé** ; écoles tactiques qu'il souhaite transmettre ; premiers élèves réellement recrutés ; portrait individuel validé. Les quatre propositions de missions figurant ci-dessus ne sont pas des épisodes de la campagne déjà joués.
 
 > [!warning] Portrait encore à valider
 > Les premiers essais d'illustration collective ont donné à Kelm des traits trop humains et négligé son origine demi-orque. **Aucun de ces essais n'est utilisé comme portrait officiel.** Sa fiche conserve donc l'emplacement réservé à une illustration individuelle fidèle.
@@ -246,10 +254,11 @@ Le MJ peut faire de ce pont le début d'une véritable mission, ou simplement la
 ## Sources principales
 
 - *Compendium des personnages*, v1.7, **REV-03** (biographie et famille, état CB42).
+- **Lore approuvé par le créateur, 28 octobre 2026** : le nom **Relais des Hautes-Pâtures** comme ferme familiale, des intrigues régionales et des rencontres possibles avec sa famille, sans que ces aventures aient déjà eu lieu.
 - *Campagne brute regroupée — Volume 1*, **CB2 P05101–05500** : récit familial donné par Kelm pendant le voyage, leçon du père, embuscade et surnom, passage à Entre-Rives, rencontre avec Haldrek, désir de transmettre.
 - *Campagne Brut 4.2*, **CB42 P18752–19902**.
 - *Continuité de la campagne*, v1.7, cinq années et crise de Taagral.
 
 ## Feuillets liés
 
-[[GRP-01|Les Revenants]] · [[REV-01|Bram]] · [[REV-02|Ragna]] · [[REV-04|Vaëra]] · [[REV-05|Torven]] · [[REV-07|Haldrek]]
+[[GRP-01|Les Revenants]] · [[GEO-HAUTES-PATURES|Relais des Hautes-Pâtures]] · [[REV-01|Bram]] · [[REV-02|Ragna]] · [[REV-04|Vaëra]] · [[REV-05|Torven]] · [[REV-07|Haldrek]]
