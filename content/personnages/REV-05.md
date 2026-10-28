@@ -66,9 +66,33 @@ Ce passé permettrait d'expliquer son autorité au Mérien sans inventer une bat
 
 Lorsque des compagnons et des éclaireurs reviennent de zones proches du Seuil, Torven suit leur état et les conséquences de ce qu'ils ont traversé. Il intervient dans les soins de Lethrann. Au lieu d'être un médecin qu'on appelle lorsque l'action est terminée, il s'impose comme quelqu'un dont la méthode doit influencer **la façon même de préparer la mission**. (*Compendium REV-05 ; CB2.*)
 
+### Former les Revenants à sauver avant de vaincre
+
+Orin demande à Torven de **circuler d'une équipe à l'autre** pour découvrir comment chacun réagit lorsque survient un blessé au pire moment : plusieurs victimes, informations manquantes, matériel insuffisant, évacuation bloquée ou adversaire prêt à exploiter la désorganisation. Les exercices deviennent de véritables **simulations de secours** où la bataille est une perturbation, et non l'inverse. (*CB31–34, formation aux secours de terrain.*)
+
+L'une des scènes les plus savoureuses survient lorsque **Kelm doit lâcher son marteau pour comprimer une blessure**. Torven lui rappelle qu'il a deux bras et que l'un peut sauver quelqu'un pendant trente secondes ; Kelm obtient au moins le droit de poser son arme à portée. Les rires n'effacent pas l'enseignement : un combattant doit être capable de **changer de fonction** lorsqu'une vie en dépend.
+
+Vaëra imagine les risques encourus par un médecin sous les tirs, Kelm propose de protéger celui qui le protège, et Torven ramène tout le monde à sa vraie question : **combien de personnes rentrent, et pas seulement combien d'ennemis sont vaincus ?**
+
 ### Enseigner à secourir
 
 Orin lui demande d'apprendre aux autres les gestes qui permettront de l'assister. Torven refuse implicitement que le groupe repose sur un unique médecin : **chaque équipe doit comprendre les bases des soins et de l'évacuation**. Les objets magiques qu'il envisage répondent à des besoins observables — éclairer sans gêner, distinguer les fournitures, alerter lorsqu'un patient se dégrade — et non à une recherche de spectacle. La maîtrise technique et les essais demandent du temps.
+
+### La naissance d'un hôpital qui pense aussi aux familles
+
+La construction du Refuge/Hôpital dans l'**Espace sur demande** n'est pas un geste solitaire d'Orin. Les scènes de CB34 montrent un travail collectif avec **Torven, Lethiel, Brégan, Alice, des artisans, des soignants et des témoins**. On commence par les besoins des personnes avant de proposer la magie : accueil, urgences, soins prolongés, pharmacie, laboratoire, quarantaine, espaces de repos et convalescence.
+
+Une personne demande **une pièce où pleurer** après une mauvaise nouvelle. D'autres veulent pouvoir dormir près d'un proche hospitalisé. Torven insiste sur les conditions de travail, les équipes, les lieux d'intimité, les jardins et la santé psychique. **On ne soigne pas seulement une blessure : on reçoit aussi une personne et son entourage**. Aucun enchantement n'a le droit d'effacer automatiquement le deuil ou la souffrance. (*CB34, conception hospitalière, autour de P13901–17000.*)
+
+Torven défend le principe d'une **médecine solide même sans magie**, puis augmentée par des outils compréhensibles. Il préfère une attelle capable de signaler qu'elle exerce trop de pression à une attelle qui repositionnerait seule un membre sans connaître la blessure. Un appareil doit **observer et avertir**, jamais inventer son propre diagnostic. (*CB34 P13901–14000.*)
+
+### Un lieu existant, un réseau encore à développer
+
+Le refuge cesse de n'être qu'un projet de plan : Torven visite réellement l'hôpital avec une équipe, fait modifier certaines circulations, précise des espaces et prépare la prise en charge des patients. Au dernier état, l'hôpital se trouve dans la **partie publique de l'Espace**, tandis que le Palais divin garde une **petite infirmerie domestique**, qui ne le remplace pas. (*CB34, visites de Torven ; CB43, distinction des deux lieux.*)
+
+Le **réseau médical du royaume** demeure un projet d'organisation plus vaste : postes de soins et hôpitaux régionaux, recours à l'établissement central pour les cas complexes, médecins itinérants et interfaces de transfert dans les structures habilitées. **Un transfert serait demandé, vérifié, autorisé, réalisé dans un sas pendant le temps nécessaire, puis refermé**. Il ne faut pas raconter que tous les hôpitaux du monde disposent déjà de portails actifs. (*CB34 P22401–22500 et P31101–31200.*)
+
+Torven défend également une distinction cruciale : Orin peut protéger l'intégrité de **son Espace**, mais **cela n'en fait pas le directeur médical de l'hôpital**. La montre-interface donne accès à des zones permises ; elle n'accorde ni compétence médicale ni droit de nommer sans procédure. La succession doit être **progressive, volontaire et réversible jusqu'à son accomplissement**, et la fonction de dépositaire peut être séparée de la direction de l'établissement.
 
 ### Le refuge-hôpital — la médecine qui se prolonge au-delà d'un équipage
 
