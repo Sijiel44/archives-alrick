@@ -20,7 +20,7 @@ tags: ["personnage", "revenants", "terrain", "ragna", "lok", "écoute", "enquete
 *Étude visuelle provisoire issue d’une planche d’ensemble ; **apparence et détails à valider** avant de parler de portrait officiel.*
 
 > [!info] Statut documentaire
-> **Fiche de développement éditorial**, fondée sur le *Compendium des personnages et des relations* v1.7 et les scènes de campagne citées. **Ajouts proposés par le créateur le 28 octobre 2026, en attente de validation finale :** enfance urbaine dans une certaine aristocratie naine, vocation militaire, rôle pionnier d’une femme dans des corps encore très masculins, enquête et exploration au plus haut niveau, reconnaissance par l’état-major et Torgarl, chaleur discrète et affection protectrice. **Aldhammar comme ville d’origine et la branche de petite noblesse Pierre-Sèche sont des choix éditoriaux proposés, pas des renseignements extraits du brut.** La question d’une blessure intime liée au désir d’enfant est **un secret MJ optionnel non fixé**, volontairement absent de cette page publique. Portrait actuel à valider ; les faits joués et les idées de background restent distingués.
+> **Fiche de développement éditorial**, fondée sur le *Compendium des personnages et des relations* v1.7 et les scènes de campagne citées. **Ajouts proposés par le créateur le 28 octobre 2026, en attente de validation finale :** enfance urbaine dans une certaine aristocratie naine, vocation militaire, rôle pionnier d’une femme dans des corps encore très masculins, enquête et exploration au plus haut niveau, reconnaissance par l’état-major et Torgarl, chaleur discrète et affection protectrice. **Aldhammar comme ville d’origine et la branche de petite noblesse Pierre-Sèche sont des choix éditoriaux proposés, pas des renseignements extraits du brut.** Portrait actuel à valider ; les faits joués et les idées de background restent distingués.
 
 *Elle sait écouter une pierre, un témoin ou un compagnon. Et, lorsqu’elle parle enfin, c’est souvent parce qu’elle a déjà compris ce que les autres n’ont pas encore osé demander.*
 
@@ -156,7 +156,7 @@ Son humour pince-sans-rire se nourrit de cette familiarité. Elle peut écouter 
 
 - **[[GRP-01|Les Revenants]] :** groupe et foyer choisis ; elle n'en est pas une subordonnée perpétuellement silencieuse.
 - **Orin :** le respecte, l'écoute, lui oppose une objection nécessaire et voit en lui un ami capable d'entendre la vérité. Orin reconnaît explicitement en CB42 qu'il voudrait transmettre à d'autres **l'écoute, l'observation et la coordination** que Ragna maîtrise, sans fabriquer une seconde Ragna.
-- **[[REV-01|Bram]] :** amitié ancienne dans la compagnie, humour croisé, confiance de terrain et complémentarité entre protection et lecture du risque. **Proposition intime encore ouverte :** Bram pourrait être l'unique confident d'une blessure personnelle ; cet éventuel secret n'est pas détaillé sur cette page publique ni traité comme fait joué.
+- **[[REV-01|Bram]] :** amitié ancienne dans la compagnie, humour croisé, confiance de terrain et complémentarité entre protection et lecture du risque.
 - **Kelm :** elle surveille les appuis et la juste mesure d'une force immense ; ils apprennent à anticiper les signes de l'autre.
 - **Vaëra :** lecture des déplacements, observation et humour partagé, y compris à Aldhammar.
 - **[[REV-07|Haldrek]] :** commandement réparti, procédure, retour d'expérience ; leurs exigences militaires peuvent se compléter sans jamais obliger Ragna à effacer l'autorité qu'elle a gagnée.
@@ -174,8 +174,6 @@ La Pierre d'Écoute ne crée pas une cartographie absolue du sous-sol. Les appar
 
 - **Valider** Aldhammar comme ville natale et préciser le statut de la **petite noblesse Pierre-Sèche**, sans inventer de famille ou de titres qui contredisent l'Atlas.
 - Préciser son parcours militaire pionnier : promotions, unité, opérations, enquêtes marquantes et manière dont **Torgarl et l'état-major** ont reconnu ses aptitudes.
-- Décider de l'existence et du traitement d'un **secret intime lié à une ancienne blessure**, selon l'option que le créateur envisage. **Aucun diagnostic, indiscrétion ou guérison n'est établi sur le site public.**
-- Choisir si **Bram est effectivement son seul confident** — sans faire de lui un détenteur automatique de son histoire.
 - Sélection d'une première cohorte et formation en binôme ou par spécialités croisées.
 - Développer ses liens personnels et ses plaisirs ordinaires au-delà de la décision tactique.
 - Décider avec les autres des circonstances qui justifient d'abandonner un poste important.
@@ -187,7 +185,7 @@ La Pierre d'Écoute ne crée pas une cartographie absolue du sous-sol. Les appar
 - *Campagne Brut 4.2*, **CB42 P18752–19902** (Pierre d'Écoute, transmission).
 - *Continuité*, v1.7, **Taagral**, échanges 012–119 (commandement réparti).
 - *Campagne Brut 4.3*, début (scènes de repas à Aldhammar).
-- **Orientations proposées par le créateur le 28 octobre 2026 :** excellente enquêtrice et exploratrice militaire, écoute exceptionnelle, passé urbain et aristocratie naine possible, parcours de pionnière respectée par l'état-major et Torgarl, chaleur et humour pince-sans-rire, blessure intime et confidentialité **à décider**. Les scènes de jeunesse et dialogues de formation présents ici sont des **reconstitutions proposées et non jouées**.
+- **Orientations proposées par le créateur le 28 octobre 2026 :** excellente enquêtrice et exploratrice militaire, écoute exceptionnelle, passé urbain et aristocratie naine possible, parcours de pionnière respectée par l'état-major et Torgarl, chaleur et humour pince-sans-rire, Les scènes de jeunesse et dialogues de formation présents ici sont des **reconstitutions proposées et non jouées**.
 
 ## Feuillets liés
 
