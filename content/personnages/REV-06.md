@@ -187,7 +187,7 @@ Les campagnes récentes évoquent des **parties de pêche avec Heimdall** ; une 
 |---|---|
 | **Orin / Alrick** | Père affectif revendiqué par Orin ; Heimdall reconnaît son affection tout en discutant la chronologie. Création et filiation ne valent ni propriété ni obéissance ; leur humour est récurrent. |
 | **[[REV-16|Aldren]]** | Compagnon animal autonome ; présence familière, apprentissage mutuel de la confiance. |
-| **Les Revenants** | Groupe d'appartenance et compagnons de mission ; compétences complémentaires et autonomie des membres. |
+| **[[GRP-01|Les Revenants]]** | Groupe d'appartenance et compagnons de mission ; compétences complémentaires et autonomie des membres. |
 | **Níðor** | Relation majeure de recherche et de confiance : enquêtes sur les passages, travaux des équipes de Heimdall, puis libération du maintien contraint achevée par Orin. **Níðor n’est pas un Revenant**. |
 | **Eamon** | Partenaire d’entraînement à l’épée auprès de Dac, interlocuteur de recherche et de transmission ; « Maisons des Pourquoi ». |
 | **Névane** | Coopération technique, relevés, procédures d'essai et attention aux contraintes de raccordement. |

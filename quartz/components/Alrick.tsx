@@ -7,6 +7,7 @@ export const sections = [
   ["monde", "Le Monde", "Cosmologie", "◇"],
   ["lieux", "Atlas des territoires", "Atlas", "⌂"],
   ["personnages", "Personnages", "Personnages", "♙"],
+  ["groupes", "Groupes et alliances", "Groupes", "⚑"],
   ["magie", "Codex de la magie", "Magie", "✧"],
   ["maison", "Maison divine", "Divin", "✦"],
   ["chroniques", "Chroniques", "Chroniques", "☼"],
@@ -48,7 +49,7 @@ export const Navigation: QuartzComponent = (props) => {
       <a class={`internal mj-link ${current === "mj" ? "active" : ""}`} href={`${base}/mj/`} aria-current={current === "mj" ? "page" : undefined}>
         <span aria-hidden="true">⚿</span> Archives du MJ <span class="spoiler-dot" aria-label="Spoilers">!</span>
       </a>
-      <div class="nav-colophon"><span class="small-star">✧</span><p>Un monde se raconte.<br />Sa mémoire se conserve.</p><small>L’ODYSSÉE D’ORIN · CB42</small></div>
+      <div class="nav-colophon"><span class="small-star">✧</span><p>Un monde se raconte.<br />Sa mémoire se conserve.</p><small>L’ODYSSÉE D’ORIN · CB43</small></div>
     </nav>
   )
 }
@@ -56,7 +57,7 @@ export const Navigation: QuartzComponent = (props) => {
 export const Topbar: QuartzComponent = (props) => (
   <div class="archive-topbar">
     <span>LES ARCHIVES D’ALRICK <i>/</i> <span>{props.fileData.slug === "index" ? "ACCUEIL" : props.fileData.slug?.startsWith("mj/") ? "ARCHIVES DU MJ" : "ENCYCLOPÉDIE"}</span></span>
-    <span class="edition"><span aria-hidden="true">◇</span> Édition pilote · CB42</span>
+    <span class="edition"><span aria-hidden="true">◇</span> Édition pilote · CB43</span>
   </div>
 )
 
@@ -88,7 +89,7 @@ export const Library: QuartzComponent = (props) => {
       </div>
       <span class="hero-caption">MONTAGNES DE L’AUBE<br /><small>Évocation graphique · hors canon</small></span>
     </section>
-    <div class="collection-meta"><span><b>{files.length}</b> fiches pilotes</span><span><b>6</b> domaines de connaissance</span><span>Un univers en cours de transmission</span></div>
+    <div class="collection-meta"><span><b>{files.length}</b> fiches pilotes</span><span><b>{sections.length}</b> domaines de connaissance</span><span>Un univers en cours de transmission</span></div>
     <section class="archive-library" id="bibliotheque" aria-labelledby="library-title">
       <div class="library-heading"><div><span class="eyebrow">LA BIBLIOTHÈQUE</span><h2 id="library-title">Explorer les connaissances</h2></div><span class="library-ornament" aria-hidden="true">— ◇ —</span></div>
       <div class="library-controls"><div class="archive-filters" role="group" aria-label="Filtrer les fiches par domaine"><button type="button" data-filter="all" aria-pressed="true">Tout</button>{sections.map(([slug, , label]) => <button type="button" data-filter={slug} aria-pressed="false">{label}</button>)}</div><label class="library-search"><span aria-hidden="true">⌕</span><span class="sr-only">Rechercher dans les fiches</span><input id="library-search" type="search" placeholder="Un nom, un lieu, un code…" autoComplete="off" /></label></div>
