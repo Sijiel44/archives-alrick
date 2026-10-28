@@ -15,9 +15,9 @@ tags: ["personnage", "revenants", "vaera", "demi-elfe", "narim", "tevaer", "rens
 
 # Vaëra
 
-![Étude individuelle provisoire de Vaëra, proposition avec cheveux châtains, yeux verts et tenue d'éclaireuse.](../images/personnages/vaera-portrait-proposition.webp)
+![Vaëra, étude d'éclaireuse : cheveux châtains aux reflets chauds, yeux verts, vêtements de voyage et équipement d'exploration.](../images/personnages/vaera-portrait-proposition.webp)
 
-*Portrait conceptuel à valider : il suit la nouvelle proposition de chevelure châtain à reflets blonds. Les anciens documents évoquent les cheveux noirs ; arc, carquois et ornements de cette étude ne sont pas des équipements canoniques tant qu'ils n'ont pas été approuvés.*
+*Étude d'exploration, conservée comme **proposition artistique** : l'arc et le carquois visibles sont des accessoires possibles, mais **non caractéristiques de sa spécialité**, qui repose avant tout sur les **dagues, les lames courtes et le projet de lame d'ombre extensible à allonge variable**. L'ancien Compendium indiquait les cheveux noirs ; la nouvelle palette reste à approuver définitivement.*
 
 > [!info] Statut documentaire
 > **Fiche de développement à valider**, rapprochant les éléments documentés dans CB2, CB31–34, CB37–43 et le *Compendium* v1.7 avec les nouvelles orientations du créateur du 28 octobre 2026. La **filiation par un père marchand humain et une mère elfe qui n’a pas élevé Vaëra**, l’enfance et les nuances sociales proposées plus bas demandent encore une confirmation fine. **Attention à la continuité :** le Compendium indique un héritage **elfique et narim**, des **cheveux noirs** et des **yeux verts** ; le créateur propose désormais **un père humain** et des **cheveux châtains tirant vers le blond**. Ces éléments restent explicitement en discussion : aucun portrait ne doit figer l'apparence avant validation. Faits joués, développement de lore et scénarios futurs sont distingués.
@@ -38,6 +38,8 @@ Ses liens avec Orin lui ouvrent parfois des portes politiques et diplomatiques, 
 - **Apparence selon CB43 :** petite silhouette discrète, **cheveux noirs, yeux verts**.
 - **Nouvelle direction visuelle proposée :** **cheveux châtains tirant vers le blond**, yeux verts profonds, peau légèrement halée, traits elfiques fins, grâce naturelle et **musculature athlétique sculptée par l'entraînement** ; visage et regard d'une beauté envoûtante. **Cette palette n'est pas encore le canon physique confirmé**, car les cheveux diffèrent du Compendium.
 - **Niveau martial :** éclaireuse de très haut niveau, redoutable au contact comme dans les approches discrètes ; **aucun score chiffré ni invincibilité automatique**.
+- **Armes de prédilection :** **dagues et lames courtes**, avec un projet de **lame d'ombre extensible à portée/allonge variable**, selon ses fonctions effectivement établies. Un arc peut faire partie d'une mission, mais **n'est pas son arme emblématique**.
+- **Portrait intime fourni par le créateur :** une référence complémentaire montrant Vaëra hors mission, dans un cadre chaleureux et privé ; ce visage n'oblige pas à lui attribuer la tenue représentée comme vêtement habituel.
 - **Appartenances :** membre du noyau des [[GRP-01|Revenants]], compagne d'Orin ; également accueillie dans sa Maison. Aucune attribution automatique de statut de déesse ou de titre souverain.
 - **Compagnon animal :** **Tevaer**, chouette (REV-15), libre de suivre ses propres mouvements. Ne pas la confondre avec Lok, corbeau de Ragna.
 - **Equipements :** lame personnelle et étui adaptés, insigne discret à motif de chouette ; châle adaptatif et vêtements d'Elyra, réalisés et portés selon les scènes.
@@ -73,7 +75,7 @@ Ses premiers contacts avec les **routes clandestines, les fausses identités et 
 
 Le père proposé comme marchand peut demeurer **vivant et actif**, tant que le créateur n'a pas choisi autrement ; c'est une **hypothèse à confirmer**, pas un fait du brut. Il peut être fier de sa fille, désapprouver certaines missions dangereuses, garder son vieux registre de commerce ou continuer à lui écrire sans lui demander de rapport sur Orin.
 
-La relation avec sa mère ne doit pas forcément se résoudre par une révélation grandiose. Une rencontre, une lettre ou le choix assumé de **ne pas chercher** sont tous possibles. Vaëra peut être heureuse aujourd'hui tout en gardant des interrogations sur ses origines.
+**L'histoire de sa mère est réservée à un développement ultérieur**, conformément au souhait du créateur. Sa disparition de l'éducation de Vaëra ne doit pas être automatiquement qualifiée d'abandon volontaire, et aucune explication, identité ou destinée ne doit être arrêtée maintenant. Une rencontre, une lettre ou le choix assumé de **ne pas chercher** restent des possibilités à discuter plus tard. Vaëra peut être heureuse aujourd'hui tout en gardant des interrogations sur ses origines.
 
 ## Des routes clandestines aux portes des palais
 
@@ -149,6 +151,16 @@ Elle peut être charmante, plaisanter, embrasser Orin, puis redevenir en un inst
 
 Le lien amoureux avec Orin ne signifie pas non plus qu'il surgit automatiquement pour venger une insulte ou régler chaque querelle. Vaëra possède **son propre jugement, son réseau et ses propres moyens de protection**.
 
+## Hors mission — un portrait intime de Vaëra
+
+![Portrait intime fourni par le créateur : Vaëra aux yeux verts, cheveux châtains foncés aux reflets dorés, oreilles elfiques, sourire chaleureux et tenue rouge ornée, dans un intérieur éclairé aux lanternes.](../images/personnages/vaera-portrait-intime.webp)
+
+*Portrait fourni par le créateur le 28 octobre 2026. **Référence visuelle de sa facette privée** : charme, tendresse, espièglerie et assurance tranquille. Ses cheveux paraissent ici **châtains foncés avec des reflets chauds**, ce qui enrichit la direction visuelle évoquée précédemment. Cette image ne décrit ni sa tenue habituelle sur le terrain ni un événement intime déjà joué.*
+
+L'éclaireuse que l'on remarque à peine en mission peut être tout autre dans un instant de repos : **expressive, douce, charmeuse, rieuse et sûre d'elle**. Son regard n'a pas besoin d'être menaçant pour révéler sa force. Rien n'oblige à choisir entre cette intimité et l'intelligence d'une professionnelle qui, quelques heures plus tôt, aurait pu conduire une reconnaissance particulièrement risquée.
+
+Les illustrations de terrain et les portraits intimes sont **deux points de vue sur la même personne**, pas deux personnages, ni une preuve que sa vie amoureuse aurait changé son métier.
+
 ## Caractère et présence
 
 **Espiègle et charmeuse.** Une réplique placée au bon moment, un sourire parfaitement innocent ou un commentaire discret suffisent à bouleverser une conversation. Elle aime le jeu, les sous-entendus affectueux et les provocations gentilles, sans abandonner son sens du danger.
@@ -177,7 +189,11 @@ Le lien amoureux avec Orin ne signifie pas non plus qu'il surgit automatiquement
 
 ## Équipement et limites
 
-L'ancienne lame et les dispositifs plus récents ne doivent pas être confondus. La **lame d'ombre extensible** demeure mentionnée dans les premières conceptions : les documents examinés ne permettent pas de présenter toutes ses capacités projetées comme achevées. Le châle adaptatif et la broche de chouette sont, eux, documentés dans les scènes plus récentes. Tevaer reste un animal, jamais un simple élément d'arme.
+**Les dagues et les lames courtes sont les armes qui correspondent le mieux au style de Vaëra** : rapides, adaptées à l'infiltration et au combat rapproché, elles prolongent sa manière d'entrer et de sortir d'une situation sans offrir une cible facile. Elles demeurent distinctes de ses talents de négociatrice, d'enquêtrice et de mage en progression.
+
+Le **projet de lame d'ombre extensible** vise une arme à **allonge variable** : pouvoir modifier la distance utile d'engagement plutôt que manier un arc comme arme de référence. **Le Compendium la maintient en conception** ; les mécanismes exacts, les limites de l'extension, ses éventuels usages à distance et le statut final de fabrication restent à vérifier. Il ne faut ni en déduire des projectiles autonomes, ni considérer une lame d'ombre achevée sans preuve dans le brut. Une arme de jet ou un arc ne sont pas incompatibles avec ses talents, mais **ne définissent pas son profil**.
+
+Le châle adaptatif et la broche de chouette sont documentés dans les scènes plus récentes. **Tevaer n'appartient ni à la lame ni à l'insigne** : leur lien demeure volontaire et l'animal conserve son autonomie.
 
 > [!warning] Apparence à arbitrer avant portrait officiel
 > **Le Compendium CB43 mentionne cheveux noirs et yeux verts ; le créateur propose désormais une chevelure châtain à reflets blonds et confirme les yeux verts, la peau légèrement halée, les traits elfiques, la grâce naturelle et une silhouette athlétique.** Une étude visuelle utilisant cette nouvelle palette peut être exposée comme **proposition non canonique**. Il faudra valider explicitement si la nouvelle couleur des cheveux remplace l'ancienne description. Le père humain et la mère elfe suggérés doivent aussi être articulés à l'héritage « elfique et narim » déjà écrit.
@@ -261,8 +277,8 @@ Le site documentaire peut fournir cette base narrative, mais **ne comporte pas e
 
 ## Pistes ouvertes (non jouées)
 
-- **Confirmer l'origine familiale proposée** : père humain marchand, identité et motifs de la mère elfe absente, ville de naissance et relation aux anciens héritages elfique/narim. Ne pas figer le sort de l'un ou de l'autre sans scène ou accord.
-- **Fixer la description physique** : CB43 mentionne cheveux noirs et yeux verts ; le créateur propose désormais châtain à reflets blonds, peau légèrement halée, traits elfiques et carrure athlétique. Portrait à approuver.
+- **Confirmer les origines familiales proposées** : père humain marchand, ville de naissance et relation aux anciens héritages elfique/narim. **Ne pas développer davantage la mère elfe à ce stade** : son identité, les raisons de son absence et son éventuelle réapparition sont volontairement différées.
+- **Arbitrer la continuité visuelle** : CB43 mentionne cheveux noirs et yeux verts ; le portrait intime fourni par le créateur montre des cheveux châtains foncés aux reflets chauds, et la direction souhaitée comprend un châtain tirant vers le blond, des yeux verts, une peau légèrement halée, des traits elfiques et une carrure athlétique. **La référence privée est intégrée ; le portrait d'exploration reste un complément et non un armement canonique.**
 - Autres contacts que Vaëra accepte de revoir de son propre chef ; ne pas inventer d'adhésions.
 - Missions d'enquête ou d'enseignement librement choisies, sans absorption de son identité par celle d'Orin.
 - Clarifier les pouvoirs exacts de son matériel, la progression magique après quatre Cercles et les emplois nouveaux après CB43. Les six missions suggérées sont **non jouées**.
@@ -271,7 +287,7 @@ Le site documentaire peut fournir cette base narrative, mais **ne comporte pas e
 
 - *Compendium des personnages*, v1.7, **REV-04**, mise à jour explicite **CB43 P14802–15458, P17817–18456, P19363–21327, P22957–23573**.
 - *Campagne brute regroupée — Volume 1*, **CB2**, scènes de sélection et d'entraînement, conversations sur les sang-mêlés et confiance, rapprochement d'Orin et Vaëra, proposition de travail réciproque avec Ylva ; **CB31**, reconnaissance du Nord avec Tevaer ; **CB32**, doctrine des renseignements ; **CB34**, progression et **quatre Cercles stabilisés**.
-- **Orientations du créateur, 28 octobre 2026** : père marchand humain et mère elfique absente proposés, préjugés dans l'enfance, beauté athlétique et coiffure châtain à reflets blonds proposée, collaboration avec Ylva pendant l'ellipse, rôle possible de contact permanent et de commanditaire pour aventuriers. Points de filiation et de couleur de cheveux encore à réconcilier avec le Compendium.
+- **Orientations du créateur, 28 octobre 2026** : père marchand humain et mère elfique absente proposés, préjugés dans l'enfance, beauté athlétique et coiffure châtain à reflets blonds proposée, collaboration avec Ylva pendant l'ellipse, rôle possible de contact permanent et de commanditaire pour aventuriers. **Complément visuel fourni le même jour** : portrait intime, regard vert, chevelure châtain foncé aux reflets chauds ; **dagues et lame d'ombre à allonge variable privilégiées** plutôt que l'arc. L'histoire de la mère est repoussée à une étape ultérieure. Points de filiation et de couleur de cheveux encore à réconcilier avec le Compendium.
 - *Campagne Brut 4.2*, **CB42 P08333–21050** ; *Campagne Brut 4.1*, **CB41 P00904–07108**.
 - *Campagne Brut 3.7–3.9*, épisodes Valbrume, diplomatie et visites.
 - *Continuité*, v1.7, crise de Taagral.
