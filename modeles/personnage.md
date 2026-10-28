@@ -37,7 +37,7 @@ tags: [alrick]
 
 ## Visuels
 
-Image approuvée à déposer dans `content/medias/`. Ne pas attribuer une illustration générique à un personnage canon.
+Image approuvée à déposer dans `content/images/personnages/`. Ne pas attribuer une illustration générique à un personnage canon.
 
 ## Sources
 
