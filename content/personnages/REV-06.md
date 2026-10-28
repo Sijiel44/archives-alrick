@@ -8,11 +8,16 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 derniere_revision_documentaire: "2026-10-27"
 visibilite: "a_valider_avant_publication"
+portrait: "images/personnages/heimdall-portrait.webp"
 description: "Ancien veilleur du Mérien devenu une personne libre, membre des Revenants et de la Maison d’Orin, Heimdall conduit aujourd’hui ses propres recherches sur les structures anciennes."
 tags: ["personnage", "revenants", "maison-d-orin", "merien", "raccords", "recherche", "aldren", "liberte", "nidor", "vaerdrak", "filiation-choisie", "veilleurs"]
 ---
 
 # Heimdall
+
+![Portrait officiel de Heimdall, veilleur des Revenants, aux côtés d’Aldren le loup, dans les Montagnes de l’Aube.](../images/personnages/heimdall-portrait.webp)
+
+*Portrait de référence choisi pour les Archives d’Alrick — Heimdall et Aldren, 27 octobre 2026.*
 
 *Le veilleur qui a choisi de vivre.*
 
@@ -20,9 +25,20 @@ tags: ["personnage", "revenants", "maison-d-orin", "merien", "raccords", "recher
 > Heimdall est une personne nouvelle née au sein d’un héritage très ancien de veille. La mémoire de générations de veilleurs marque son origine, mais il n’est pas la simple addition de ces vies : dans une rencontre où Orin lui laisse le choix, il devient lui-même. Reconnu comme une personne à part entière, il apprend à choisir, à travailler avec d’autres et à s’autoriser une existence qui ne se réduit plus à surveiller des seuils. Après cinq années d'évolution du monde, il dirige ses propres équipes d'étude prudente des structures anciennes.
 
 > [!info] État de la fiche
-> **Référence : REV-06.** Synthèse fondée sur le Compendium des personnages v1.7, la Continuité de campagne v1.7 et les scènes conservées de CB2 à CB43. Dernier état documentaire étudié : après les cinq années d'absence d'Orin et les événements enregistrés jusqu'à CB43. Les descriptions physiques non attestées et les interprétations métaphysiques sont volontairement laissées ouvertes.
+> **Référence : REV-06.** Synthèse fondée sur le Compendium des personnages v1.7, la Continuité de campagne v1.7 et les scènes conservées de CB2 à CB43. Dernier état documentaire étudié : après les cinq années d'absence d'Orin et les événements enregistrés jusqu'à CB43. L’apparence visuelle décrite par le créateur de l’univers le 27 octobre 2026 est désormais fixée dans ses grandes lignes ; le mécanisme métaphysique exact reste ouvert.
 
-## Portrait
+## Apparence — portrait de référence
+
+Heimdall possède l’allure d’un **grand elfe longiligne**, d’une élégance naturelle presque irréelle. Cette comparaison exprime sa silhouette et sa grâce : **elle ne suffit pas à déterminer son espèce**. Quelques **fines écailles draconiques vertes** se dessinent çà et là sur son corps, discrètes et harmonieuses, sans constituer une armure.
+
+Ses yeux sont son trait le plus saisissant : son regard semble **constellé de millions d’étoiles**. Il dégage un charme spontané, une beauté parfois **presque glaçante**, particulièrement lorsqu’il observe en silence ce que d’autres n’ont même pas remarqué.
+
+**Elyra confectionne ses vêtements**, toujours parfaitement taillés, raffinés et sobres, avec de très légères notes de couleur. Lorsqu’il part à l’aventure, il porte **la cape des Revenants** sur les épaules et **une épée à la ceinture**. Hors des missions, Heimdall évoque davantage un **savant attentif**, très observateur, fasciné par les êtres, les phénomènes et les découvertes du monde qui l’entoure.
+
+> [!important] Canon visuel — confirmé par le créateur le 27 octobre 2026
+> Silhouette élancée proche d’un grand elfe, légères écailles draconiques vertes, yeux constellés d’étoiles, vêtements sur mesure d’Elyra, cape des Revenants et épée en voyage. La couleur des cheveux, la coiffure, l’âge apparent précis et les détails du visage ne sont pas encore arrêtés. Les écailles n’établissent pas une filiation draconique particulière.
+
+## Portrait narratif
 
 **Heimdall du Mérien** ne se définit plus par ce qu'il surveille, mais par ce qu'il décide de faire de son attention. Là où d'autres chercheraient une réponse définitive, il apprend à regarder la question, à mesurer ce qu'il ignore et à laisser chaque être libre de choisir sa traversée.
 
@@ -41,7 +57,7 @@ Heimdall est maintenant un chercheur et un responsable de terrain. Sa prudence n
 | **Compagnon** | [[REV-16|Aldren, le loup du Mérien]], compagnon libre, et non propriété |
 | **Lien familial choisi** | Orin se dit son père ; Heimdall reconnaît l’affection mais discute, parfois avec humour, la chronologie et la nature de cette filiation. Aucune filiation biologique. |
 | **Aptitudes montrées** | Analyse des seuils, étude des raccords, coordination technique, apprentissage et transmission |
-| **Équipement documenté** | La **Clé-Œil**, utilisée pour contrôler certaines compatibilités connues et enregistrer volontairement des repères de retour ; aucun passe-partout universel |
+| **Équipement documenté** | La **Clé-Œil** pour les raccords ; la **cape des Revenants** et une **épée** lors des aventures |
 
 ## Histoire et évolution
 
@@ -100,6 +116,15 @@ Lors de l’audience auprès de Vaerdrak, Orin annonce que sa « paternité » e
 
 Vaerdrak refuse alors d’arbitrer ce différend familial exceptionnel. Plus tard, lorsque le dragon souhaite garder Heimdall auprès de lui pour discuter, Orin parle de « garde alternée ». La plaisanterie revient jusque dans les histoires de « petit-fils », lorsqu’il traite affectueusement Aldren comme tel. Ce comique familial ne retire rien à la sincérité du lien ; il évite au contraire que la filiation choisie devienne un titre imposé.
 
+### Orin auprès d’Yggdrasil — présence, mémoire et missions confiées
+
+Au cours de son séjour auprès d’**Yggdrasil**, Orin n’est pas simplement retiré du monde. Il est avant tout là pour **la soutenir et demeurer auprès d’elle**. Il répare ce qu’il peut, oriente parfois certaines divinités vers des lieux plus propices pour continuer leur chemin, **préserve la mémoire de certaines puissances**, et met parfois des divinités en relation avec sa Maison.
+
+**Heimdall est l’un des contacts d’Orin pendant ce séjour.** Orin lui confie plusieurs missions destinées à permettre, à terme, de **délivrer Níðor du fardeau qui le contraint**. Le veilleur doit donc faire preuve d’initiative et de discernement : il travaille avec ses équipes, accomplit ces missions et contribue à la compréhension du dispositif, pendant qu’Orin se tient auprès d’Yggdrasil. Cette relation n’efface pas l’autonomie de Heimdall ; elle montre au contraire qu’Orin peut lui confier des responsabilités réelles.
+
+> [!note] Portée de cette précision
+> Le rôle de Heimdall comme **contact d’Orin et destinataire de missions** pendant le séjour auprès d’Yggdrasil est confirmé par le créateur de l’univers (27 octobre 2026). La fréquence, le moyen exact des communications et la liste exhaustive des missions devront être complétés à partir des scènes. **Níðor est un partenaire distinct ; il n’est pas un Revenant.**
+
 ### Les années d'autonomie — transmettre la recherche
 
 Pendant les cinq années où Orin accompagne Yggdrasil, le monde continue de vivre sans lui. Heimdall et ses collaborateurs gagnent en autonomie : il **dirige ses propres équipes** consacrées à l'étude prudente des structures anciennes, pendant que les Revenants apprennent plus largement à travailler avec une rotation effective du commandement.
@@ -110,14 +135,14 @@ La réussite est collective et précisément limitée : Heimdall n'a pas répar�
 
 ### Níðor — une relation de confiance forgée par la recherche
 
-La relation avec **Níðor** est l'un des grands axes de l'histoire de Heimdall, et non un simple renvoi dans la rubrique « techniques ». Dès les enquêtes sur les anciens passages, leurs échanges portent sur des dispositifs qui maintiennent les distinctions entre réalités. Lorsque Orin est absent auprès d’Yggdrasil, Heimdall ne se contente pas d’attendre : il **organise et dirige des études**, avec des collaborateurs, pour comprendre ce qui retient Níðor dans la fonction de contrefort vivant.
+La relation avec **Níðor** est l'un des grands axes de l'histoire de Heimdall, et non un simple renvoi dans la rubrique « techniques ». Dès les enquêtes sur les anciens passages, leurs échanges portent sur des dispositifs qui maintiennent les distinctions entre réalités. Pendant qu’Orin soutient Yggdrasil, Heimdall ne se contente pas d’attendre : il **organise et dirige des études** avec ses collaborateurs et mène **plusieurs missions confiées par Orin**, afin de comprendre ce qui retient Níðor dans la fonction de contrefort vivant.
 
 Les équipes identifient depuis environ trois années un raccordement fonctionnel manquant, sans pouvoir le reconstituer par la seule force ou par approximation. Après son retour, Orin rassemble les principes nécessaires pour accomplir la réparation et **relever Níðor du maintien permanent**. Le résultat témoigne de la continuité du travail pendant l’absence d’Orin et de la capacité de Heimdall à agir sans dépendre de lui à chaque étape.
 
 Níðor est un **être distinct, avec ses propres responsabilités draconiques**. Il choisit de rejoindre librement la Maison d’Orin, mais **n’est pas membre des Revenants** et n’est pas un suivant personnel soumis à Orin. La relation des deux êtres ne doit donc pas être réduite à une appartenance commune : c’est une coopération née autour d’une liberté à reconquérir.
 
 > [!question] Relais pendant les cinq années — précision à retrouver
-> Un souvenir de campagne signale un rôle de **contact avec Orin pendant sa période auprès d’Yggdrasil**, en lien avec Heimdall et Níðor. Les dossiers consultés confirment le travail collectif de libération, mais pas encore la forme exacte de ces échanges, leur destinataire ou leur fréquence. Ne pas écrire qu'un contact continu ou une communication directe était possible tant que la scène correspondante n'a pas été retrouvée.
+> **Confirmé par le créateur le 27 octobre 2026 :** Heimdall joue bien un rôle de contact auprès d’Orin et reçoit des missions en rapport avec la délivrance de Níðor. Les modalités des échanges restent à documenter ; ne pas inventer de communication permanente ou illimitée.
 
 
 
@@ -127,7 +152,7 @@ Níðor est un **être distinct, avec ses propres responsabilités draconiques**
 
 **Drakon**, grande puissance draconique rencontrée par Orin, est associé dans les scènes aux discussions sur le poids des fonctions et la possibilité d’une vie qui ne soit pas uniquement consacrée au devoir. Il prend avec humour l’image de Heimdall découvrant la pêche. La présence de Drakon dans cette réflexion ne prouve pas à elle seule une formation directe et régulière de Heimdall par lui ; le lien mérite d’être développé à partir des scènes explicites.
 
-La mention de **« Terra »** apparaît dans certaines transcriptions dictées, souvent dans des passages où le contexte désigne vraisemblablement **Vaëra** (cofondatrice de la Maison avec Orin et également Revenante). Une relation distincte avec une personne nommée Terra **n’est pas établie**. Il faut confirmer la normalisation du nom avant de lui créer une nouvelle fiche.
+**Tairin** est une puissance dont il faut conserver la place dans le réseau de relations du personnage. **Correction explicite du créateur : « Terra » était une erreur de dictée pour Tairin, et non pour Vaëra.** Les scènes précises des échanges entre Heimdall et Tairin restent à référencer : ne pas inventer de formation ni de rencontre supplémentaire.
 
 ### L'escrime avec Dac et Eamon
 
@@ -169,7 +194,8 @@ Les campagnes récentes évoquent des **parties de pêche avec Heimdall** ; une 
 | **Ostrel** | Travaux liés aux structures anciennes et aux passages dans la Maison au cours des cinq années. |
 | **Vaerdrak** | Dragon ancien : échanges directs sur l’identité, le temps et les structures du Nord ; transmission et recherches de terrain. |
 | **Drakon** | Puissance draconique ; discussions autour du devoir, de la liberté et du plaisir des loisirs. Lien direct avec Heimdall à préciser. |
-| **Vaëra** | Compagne d’Orin, Revenante et membre de la Maison ; partage avec Heimdall la vie du groupe, les échanges et la transmission. La dictée « Terra » peut la désigner : à confirmer pour les passages concernés. |
+| **Vaëra** | Compagne d’Orin, Revenante et membre de la Maison ; partage avec Heimdall la vie du groupe, les échanges et la transmission. Elle ne doit pas être confondue avec Tairin. |
+| **Tairin** | Grande puissance de l’entourage d’Orin ; à relier à Heimdall, avec scènes de leur relation à sourcer précisément. |
 
 ## Lieux associés
 
@@ -222,7 +248,7 @@ Avec Eamon et d'autres collaborateurs, Heimdall présente une **proposition** de
 
 **Ne pas transformer une blague en généalogie.** La paternité d’Orin est affective et discutée par Heimdall sur le plan de la chronologie ; Aldren surnommé « petit-fils » n’a pas de lien biologique avec Orin.
 
-**Points documentaires à résoudre.** Vérifier le détail du rôle de contact avec Orin pendant sa retraite auprès d’Yggdrasil et vérifier si « Terra » désigne Vaëra dans les passages dictés, plutôt qu’une personne distincte.
+**Points documentaires à résoudre.** Le rôle de Heimdall comme contact d’Orin et destinataire de missions pendant le séjour auprès d’Yggdrasil est confirmé ; préciser les modalités des échanges et les missions particulières. « Terra » désigne **Tairin**, et non Vaëra. La direction artistique est fixée, mais le portrait officiel reste à produire.
 
 ### Pistes de développement — non jouées
 
@@ -235,8 +261,8 @@ Ces idées proviennent du Compendium ou prolongent ses thèmes ; **elles ne sont
 
 ## Portrait et iconographie
 
-> [!note] Apparence non fixée
-> Le Compendium recommande un regard attentif et une silhouette d'épéiste en devenir, **mais ne donne pas de description physique détaillée et validée**. Toute illustration proposée devra être approuvée avant d'être traitée comme le portrait de référence. L'origine mérienne ne signifie pas qu'il soit originaire des Montagnes de l'Aube.
+> [!note] Apparence définie par le créateur
+> **Portrait illustré retenu pour les Archives d’Alrick le 27 octobre 2026.** Heimdall y apparaît grand et longiligne comme un elfe, avec des écailles draconiques vertes discrètes, le regard constellé d’étoiles, les vêtements raffinés d’Elyra, la cape des Revenants et une épée de voyage. Il est représenté près d’Aldren, dans son environnement de savant et d’explorateur. Cette image fixe une interprétation visuelle approuvée, sans établir par elle-même son espèce biologique ou son ascendance.
 
 ## Sources et traçabilité
 
@@ -251,6 +277,12 @@ Ces idées proviennent du Compendium ou prolongent ses thèmes ; **elles ne sont
 
 **Repères de source repris du Compendium :** CB38 P06750–07262 et P19467–19961 ; CB39 P02944–04569, P20311–20701 et P40542–41267 ; CB42 P18752–21050.
 
-**À compléter sans inventer :** description physique définitive, portrait officiel, fonctionnement métaphysique de l’héritage des veilleurs, normalisation de « Terra » / Vaëra, rôle précis de relais pendant le séjour d’Orin auprès d’Yggdrasil, chronologie fictive datée.
+**À compléter sans inventer :** fonctionnement métaphysique exact de l’héritage des veilleurs, modalités et liste des missions pendant le séjour d’Orin auprès d’Yggdrasil, échanges précis avec Tairin, chronologie fictive datée.
 
 **Apports éditoriaux du 27 octobre 2026 :** précisions sur l’ancienneté paradoxale, le choix fondateur et les relations avec Níðor, Orin, Vaëra, Vaerdrak, Drakon, Dac et Eamon ; approfondissement de l’humour de la filiation et de la pêche. Les éléments expressément incertains restent signalés.
+
+
+**Précisions canoniques du créateur — 27 octobre 2026 :** correction du nom **Tairin**, rôle actif d’Orin auprès d’Yggdrasil, rôle de contact et missions confiées à Heimdall pour la future délivrance de Níðor, et définition de l’apparence de Heimdall.
+
+
+**Portrait de référence :** illustration créée pour les Archives d’Alrick, approuvée par le créateur le 27 octobre 2026 ; fichier `content/images/personnages/heimdall-portrait.webp`.
