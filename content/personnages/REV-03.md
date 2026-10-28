@@ -10,7 +10,7 @@ source_brute: "CB2 (origines, famille et route) ; CB31–34 (marteau et exercice
 derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Demi-orc et ancien protecteur de caravanes, Kelm est un Revenant de force exceptionnelle, pour qui protéger, commander et transmettre commencent par savoir retenir un coup."
-tags: ["personnage", "revenants", "demi-orc", "force", "protection", "marteau", "famille", "kelm", "caravanes", "troupeaux", "entres-rives", "ecoute", "commandement", "transmission", "aventures-jouables"]
+tags: ["personnage", "revenants", "demi-orc", "force", "protection", "marteau", "famille", "kelm", "caravanes", "troupeaux", "entre-rives", "ecoute", "commandement", "transmission", "aventures-jouables"]
 ---
 
 # Kelm Poing-Calme
@@ -167,7 +167,7 @@ Haldrek l'a remarqué pour un geste de retenue que beaucoup d'officiers n'auraie
 
 Dans les Revenants, Kelm est respecté **parce qu'il est Kelm**, et non parce qu'il serait devenu le « demi-orc gentil » d'une troupe qui devrait constamment le féliciter de sa retenue.
 
-## Relations
+## Relations — repères rapides
 
 - **Sa famille :** enracinement vivant, à maintenir sans inventer une tragédie destinée à le rendre intéressant.
 - **Orin :** respect, confiance et droit de questionner des solutions trop compliquées.
