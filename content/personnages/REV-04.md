@@ -15,6 +15,10 @@ tags: ["personnage", "revenants", "vaera", "demi-elfe", "narim", "tevaer", "rens
 
 # Vaëra
 
+![Étude individuelle provisoire de Vaëra, proposition avec cheveux châtains, yeux verts et tenue d'éclaireuse.](../images/personnages/vaera-portrait-proposition.webp)
+
+*Portrait conceptuel à valider : il suit la nouvelle proposition de chevelure châtain à reflets blonds. Les anciens documents évoquent les cheveux noirs ; arc, carquois et ornements de cette étude ne sont pas des équipements canoniques tant qu'ils n'ont pas été approuvés.*
+
 > [!info] Statut documentaire
 > **Fiche de développement à valider**, rapprochant les éléments documentés dans CB2, CB31–34, CB37–43 et le *Compendium* v1.7 avec les nouvelles orientations du créateur du 28 octobre 2026. La **filiation par un père marchand humain et une mère elfe qui n’a pas élevé Vaëra**, l’enfance et les nuances sociales proposées plus bas demandent encore une confirmation fine. **Attention à la continuité :** le Compendium indique un héritage **elfique et narim**, des **cheveux noirs** et des **yeux verts** ; le créateur propose désormais **un père humain** et des **cheveux châtains tirant vers le blond**. Ces éléments restent explicitement en discussion : aucun portrait ne doit figer l'apparence avant validation. Faits joués, développement de lore et scénarios futurs sont distingués.
 
