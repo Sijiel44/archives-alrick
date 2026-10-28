@@ -340,7 +340,7 @@ export function renderPage(
   // Mirror --baseDir in local previews; global search builds URLs from this value.
   const basePath =
     componentData.ctx.argv.serve
-      ? (`/${componentData.ctx.argv.baseDir ?? ""}`).replace(/\/$/, "")
+      ? (`/${(componentData.ctx.argv.baseDir ?? "").replace(/^\/+|\/+$/g, "")}`).replace(/\/$/, "")
       : cfg.baseUrl ? new URL(`https://${cfg.baseUrl}`).pathname.replace(/\/$/, "") : ""
   const doc = (
     <html lang={lang} dir={direction}>
