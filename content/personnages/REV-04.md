@@ -17,10 +17,10 @@ tags: ["personnage", "revenants", "vaera", "demi-elfe", "narim", "tevaer", "rens
 
 ![Vaëra, étude d'éclaireuse : cheveux châtains aux reflets chauds, yeux verts, vêtements de voyage et équipement d'exploration.](../images/personnages/vaera-portrait-proposition.webp)
 
-*Étude d'exploration, conservée comme **proposition artistique** : l'arc et le carquois visibles sont des accessoires possibles, mais **non caractéristiques de sa spécialité**, qui repose avant tout sur les **dagues, les lames courtes et le projet de lame d'ombre extensible à allonge variable**. L'ancien Compendium indiquait les cheveux noirs ; la nouvelle palette reste à approuver définitivement.*
+*Illustration d'exploration **approuvée par le créateur**. Elle représente la facette éclaireuse de Vaëra. L'arc et le carquois illustrés peuvent exister dans certaines missions, mais **ne constituent pas son armement emblématique** : celui-ci repose avant tout sur les **dagues, les lames courtes et la lame d'ombre extensible à allonge variable**, dont les fonctions acquises restent à vérifier.*
 
 > [!info] Statut documentaire
-> **Fiche de développement à valider**, rapprochant les éléments documentés dans CB2, CB31–34, CB37–43 et le *Compendium* v1.7 avec les nouvelles orientations du créateur du 28 octobre 2026. La **filiation par un père marchand humain et une mère elfe qui n’a pas élevé Vaëra**, l’enfance et les nuances sociales proposées plus bas demandent encore une confirmation fine. **Attention à la continuité :** le Compendium indique un héritage **elfique et narim**, des **cheveux noirs** et des **yeux verts** ; le créateur propose désormais **un père humain** et des **cheveux châtains tirant vers le blond**. Ces éléments restent explicitement en discussion : aucun portrait ne doit figer l'apparence avant validation. Faits joués, développement de lore et scénarios futurs sont distingués.
+> **Fiche et illustrations approuvées par le créateur en octobre 2026**, à partir des scènes jouées dans CB2, CB31–34, CB37–43 et du *Compendium* v1.7. **Le nouveau lore familial** retient une enfance auprès d'un **père humain marchand**, tandis que **sa mère elfe n'a pas participé à son éducation** ; les raisons de l'absence maternelle, la généalogie et la ville d'origine restent à développer. **Mise à jour visuelle validée :** cheveux châtains aux reflets chauds, yeux verts, teint légèrement halé, traits elfiques et corps athlétique ; cette direction artistique **remplace la mention « cheveux noirs » du Compendium CB43**. La mention antérieure d'ascendance **elfique et narim** demeure à éclaircir, sans inventer une équivalence ethnique. Les épisodes d'enfance reconstitués et les scénarios proposés ne sont **pas des scènes déjà jouées**. L'affiche approuvée graphiquement est distinguée des faits de lore qu'elle ne prouve pas.
 
 *Elle peut traverser une salle sans qu'on la remarque, puis dire une seule phrase qui change toute la conversation.*
 
@@ -34,9 +34,8 @@ Ses liens avec Orin lui ouvrent parfois des portes politiques et diplomatiques, 
 
 ## Identité, apparence et statut
 
-- **Héritages documentés :** **elfique et narim**, selon le dernier Compendium. **Nouvelle proposition du créateur :** une fille de mère elfe et de père **humain marchand** ; cette filiation précise doit encore être reliée aux mentions narim sans effacer l'ancien lore.
-- **Apparence selon CB43 :** petite silhouette discrète, **cheveux noirs, yeux verts**.
-- **Nouvelle direction visuelle proposée :** **cheveux châtains tirant vers le blond**, yeux verts profonds, peau légèrement halée, traits elfiques fins, grâce naturelle et **musculature athlétique sculptée par l'entraînement** ; visage et regard d'une beauté envoûtante. **Cette palette n'est pas encore le canon physique confirmé**, car les cheveux diffèrent du Compendium.
+- **Origines familiales dans le lore approuvé :** père **humain et marchand**, mère **elfe** dont les motifs d'absence pendant l'enfance restent inconnus. Le Compendium antérieur la décrit comme d'héritage **elfique et narim** : le lien exact de ces termes avec sa filiation demande encore une étude sans correction silencieuse.
+- **Apparence physique validée (révision visuelle) :** petite silhouette discrète et athlétique, **cheveux châtains foncés aux reflets chauds pouvant paraître dorés sous la lumière**, **yeux verts**, peau légèrement halée, traits elfiques fins, grâce naturelle et **musculature sculptée par l'entraînement**. Cette version reprend la nouvelle direction donnée par le créateur et **supplante la mention « cheveux noirs »** de CB43 dans les futurs portraits.
 - **Niveau martial :** éclaireuse de très haut niveau, redoutable au contact comme dans les approches discrètes ; **aucun score chiffré ni invincibilité automatique**.
 - **Armes de prédilection :** **dagues et lames courtes**, avec un projet de **lame d'ombre extensible à portée/allonge variable**, selon ses fonctions effectivement établies. Un arc peut faire partie d'une mission, mais **n'est pas son arme emblématique**.
 - **Portrait intime fourni par le créateur :** une référence complémentaire montrant Vaëra hors mission, dans un cadre chaleureux et privé ; ce visage n'oblige pas à lui attribuer la tenue représentée comme vêtement habituel.
@@ -46,14 +45,14 @@ Ses liens avec Orin lui ouvrent parfois des portes politiques et diplomatiques, 
 
 ## Avant les Revenants — l'enfance entre deux mondes
 
-> [!note] Proposition de biographie familiale — à ratifier
-> Le créateur souhaite approfondir le parcours d'une enfant issue de deux peuples, **élevée par un père marchand humain** alors que **sa mère elfe est absente**. Ces éléments sont un **développement nouveau en cours d'approbation**, pas une scène déjà documentée dans CB2. Les anciennes mentions d'héritage **elfique et narim** doivent être réconciliées. La raison précise de l'absence maternelle, l'origine du nom Vaëra, le port ou la ville natale, le nom du père et le statut juridique de la famille **restent ouverts** ; ne pas présumer que sa mère l'a abandonnée sans amour.
+> [!info] Lore familial validé — récits de jeunesse illustratifs
+> Le créateur retient **un père humain marchand qui a élevé Vaëra** et **une mère elfe absente de son éducation**, sans encore préciser pourquoi. Cette trame familiale est **un nouvel ajout approuvé**, et non une scène de jeunesse précédemment jouée dans CB2. Les anciennes mentions **« elfique et narim »** restent documentées ; la raison exacte de l'absence maternelle, l'origine du nom Vaëra, son port ou sa ville de naissance, le nom du père et son statut juridique **restent ouverts**. Les anecdotes proposées ci-dessous sont des **reconstitutions non jouées**, et ne prouvent pas que la mère serait partie volontairement.
 
 ### Une enfant de marchand, élevée par son père
 
-Vaëra aurait grandi entre les ballots, les pesées, les itinéraires inscrits sur des cartes fatiguées et les discussions entre marchands, dans une ville ou un carrefour commercial encore à choisir. **Son père est proposé comme un marchand humain**, ni prince ni chef de guilde, un homme de métier qui sait qu'un bon prix n'efface pas une promesse et qu'il vaut mieux rentrer pauvre que ne pas rentrer.
+Vaëra a grandi auprès de **son père marchand humain** ; on imagine leur quotidien entre les ballots, les pesées, les itinéraires inscrits sur des cartes fatiguées et les discussions entre marchands, dans **une ville ou un carrefour commercial encore à choisir**. Son père n'a pas besoin d'être prince ou chef de guilde : il peut être un homme de métier qui sait qu'un bon prix n'efface pas une promesse et qu'il vaut mieux rentrer pauvre que ne pas rentrer. Ces détails de scènes sont **des propositions de couleur non jouées**.
 
-La mère de Vaëra, d'ascendance elfique, **n'aurait pas participé à son éducation**. Mais pour éviter un cliché, nous garderions son histoire ouverte : séparation volontaire, pressions de sa famille, route dont elle n'a pu revenir, circonstances politiques ou simple décision dont seule Vaëra connaît peut-être une partie. Aucune de ces explications ne doit être imposée avant d'être choisie en jeu. La tendresse du père, elle, peut être pleine et entière : **il ne faut pas qu'une enfance difficile signifie automatiquement une enfance malheureuse**.
+La mère de Vaëra, **elfe**, **n'a pas participé à son éducation**, mais **pourquoi** demeure inconnu. Pour éviter un cliché, nous gardons son histoire ouverte : séparation volontaire, pressions de sa famille, route dont elle n'a pu revenir, circonstances politiques ou décision dont seule Vaëra connaît peut-être une partie. Aucune de ces explications ne doit être imposée avant d'être choisie en jeu. La tendresse du père, elle, peut être pleine et entière : **il ne faut pas qu'une enfance difficile signifie automatiquement une enfance malheureuse**.
 
 On peut imaginer qu'il l'emmène parfois avec lui chez les fournisseurs, lui apprenne à regarder les mains pendant une négociation, à lire un manifeste de chargement, à distinguer un marchand sincère d'un flatteur, et à reconnaître les accents des routes. La jeune fille comprend tôt que **l'information possède un prix**, mais aussi que certaines informations ne devraient pas être à vendre.
 
@@ -73,7 +72,7 @@ Ses premiers contacts avec les **routes clandestines, les fausses identités et 
 
 ### Une histoire qui ne finit pas quand elle quitte son père
 
-Le père proposé comme marchand peut demeurer **vivant et actif**, tant que le créateur n'a pas choisi autrement ; c'est une **hypothèse à confirmer**, pas un fait du brut. Il peut être fier de sa fille, désapprouver certaines missions dangereuses, garder son vieux registre de commerce ou continuer à lui écrire sans lui demander de rapport sur Orin.
+Le père humain marchand peut demeurer **vivant et actif**, tant que le créateur n'a pas décidé autrement ; sa **situation actuelle reste une hypothèse non jouée**. Il peut être fier de sa fille, désapprouver certaines missions dangereuses, garder son vieux registre de commerce ou continuer à lui écrire sans lui demander de rapport sur Orin.
 
 **L'histoire de sa mère est réservée à un développement ultérieur**, conformément au souhait du créateur. Sa disparition de l'éducation de Vaëra ne doit pas être automatiquement qualifiée d'abandon volontaire, et aucune explication, identité ou destinée ne doit être arrêtée maintenant. Une rencontre, une lettre ou le choix assumé de **ne pas chercher** restent des possibilités à discuter plus tard. Vaëra peut être heureuse aujourd'hui tout en gardant des interrogations sur ses origines.
 
@@ -155,7 +154,7 @@ Le lien amoureux avec Orin ne signifie pas non plus qu'il surgit automatiquement
 
 ![Portrait intime fourni par le créateur : Vaëra aux yeux verts, cheveux châtains foncés aux reflets dorés, oreilles elfiques, sourire chaleureux et tenue rouge ornée, dans un intérieur éclairé aux lanternes.](../images/personnages/vaera-portrait-intime.webp)
 
-*Portrait fourni par le créateur le 28 octobre 2026. **Référence visuelle de sa facette privée** : charme, tendresse, espièglerie et assurance tranquille. Ses cheveux paraissent ici **châtains foncés avec des reflets chauds**, ce qui enrichit la direction visuelle évoquée précédemment. Cette image ne décrit ni sa tenue habituelle sur le terrain ni un événement intime déjà joué.*
+*Portrait intime fourni et **validé par le créateur**. Référence pour sa facette privée : charme, tendresse, espièglerie et assurance tranquille. Ses **cheveux châtains foncés aux reflets chauds** font désormais partie de sa direction visuelle approuvée. L'image ne décrit ni sa tenue habituelle en mission ni un événement intime déjà joué.*
 
 L'éclaireuse que l'on remarque à peine en mission peut être tout autre dans un instant de repos : **expressive, douce, charmeuse, rieuse et sûre d'elle**. Son regard n'a pas besoin d'être menaçant pour révéler sa force. Rien n'oblige à choisir entre cette intimité et l'intelligence d'une professionnelle qui, quelques heures plus tôt, aurait pu conduire une reconnaissance particulièrement risquée.
 
@@ -195,8 +194,8 @@ Le **projet de lame d'ombre extensible** vise une arme à **allonge variable** :
 
 Le châle adaptatif et la broche de chouette sont documentés dans les scènes plus récentes. **Tevaer n'appartient ni à la lame ni à l'insigne** : leur lien demeure volontaire et l'animal conserve son autonomie.
 
-> [!warning] Apparence à arbitrer avant portrait officiel
-> **Le Compendium CB43 mentionne cheveux noirs et yeux verts ; le créateur propose désormais une chevelure châtain à reflets blonds et confirme les yeux verts, la peau légèrement halée, les traits elfiques, la grâce naturelle et une silhouette athlétique.** Une étude visuelle utilisant cette nouvelle palette peut être exposée comme **proposition non canonique**. Il faudra valider explicitement si la nouvelle couleur des cheveux remplace l'ancienne description. Le père humain et la mère elfe suggérés doivent aussi être articulés à l'héritage « elfique et narim » déjà écrit.
+> [!info] Révision visuelle validée et continuité
+> Les **deux portraits** et l'**affiche** ont été approuvés par le créateur. Les cheveux châtains aux reflets chauds, les yeux verts, la peau légèrement halée, les traits elfiques et l'allure athlétique constituent **la nouvelle référence visuelle**, en remplacement des cheveux noirs du Compendium CB43. **Les armes dessinées, les noms et toponymes inscrits dans l'affiche ne deviennent pas pour autant des faits historiques** ; les équipements et la filiation demeurent décrits par les sources et les validations spécifiques.
 
 ## Jouer avec Vaëra — enquêtes, missions et campagnes
 
@@ -275,10 +274,21 @@ Si les personnages s'intéressent à elle, elle peut leur confier une observatio
 
 Le site documentaire peut fournir cette base narrative, mais **ne comporte pas encore d'agent IA conversationnel autonome**. Les événements nouveaux créés au fil d'une partie restent propres à cette table jusqu'à décision contraire du créateur.
 
+## Affiche de Vaëra — composition artistique validée
+
+![Affiche fantasy de Vaëra en plusieurs panneaux : portrait d'éclaireuse, ambiance marchande, scènes d'enquête, infiltration, magie et propositions d'aventures.](../images/personnages/vaera-affiche-conceptuelle.webp)
+
+*L'affiche originale est **validée par le créateur comme œuvre d'illustration, de composition et d'ambiance**. Elle accompagne les deux portraits et peut inspirer une future présentation graphique complète du dossier.*
+
+> [!warning] Ce que l'image ne fixe pas dans le canon
+> Le texte intégré à cette affiche générée contient des éléments de **conception artistique non documentés**, notamment **« Port-Clarion »** comme ville d'origine et **« Aric »** comme prénom du père, ainsi que des formulations simplifiées sur la mère et la magie. **Ces noms, détails historiques, appartenances et pouvoirs ne deviennent pas canoniques parce que le graphisme est approuvé.** Les renseignements fiables sont ceux des sections de cette fiche et des sources citées. Une édition textuelle corrigée de l'affiche pourra être préparée si elle doit servir de référence encyclopédique autonome.
+
+Cette distinction permet d'approuver **l'art et l'atmosphère** sans retoucher rétroactivement le passé de Vaëra ni décider à la place du créateur de questions encore ouvertes.
+
 ## Pistes ouvertes (non jouées)
 
-- **Confirmer les origines familiales proposées** : père humain marchand, ville de naissance et relation aux anciens héritages elfique/narim. **Ne pas développer davantage la mère elfe à ce stade** : son identité, les raisons de son absence et son éventuelle réapparition sont volontairement différées.
-- **Arbitrer la continuité visuelle** : CB43 mentionne cheveux noirs et yeux verts ; le portrait intime fourni par le créateur montre des cheveux châtains foncés aux reflets chauds, et la direction souhaitée comprend un châtain tirant vers le blond, des yeux verts, une peau légèrement halée, des traits elfiques et une carrure athlétique. **La référence privée est intégrée ; le portrait d'exploration reste un complément et non un armement canonique.**
+- **À développer plus tard :** nom du père humain marchand, ville de naissance et articulation de l'ancien héritage elfique/narim. **Ne pas développer davantage la mère elfe à ce stade** : son identité, les raisons de son absence et son éventuelle réapparition sont volontairement différées.
+- **Continuité visuelle résolue :** la couleur **châtain foncé à reflets chauds/dorés**, les yeux verts et les deux portraits ont été **validés**. Le changement par rapport aux cheveux noirs de CB43 est volontaire. L'arc représenté dans l'étude d'exploration n'est pas un armement principal validé.
 - Autres contacts que Vaëra accepte de revoir de son propre chef ; ne pas inventer d'adhésions.
 - Missions d'enquête ou d'enseignement librement choisies, sans absorption de son identité par celle d'Orin.
 - Clarifier les pouvoirs exacts de son matériel, la progression magique après quatre Cercles et les emplois nouveaux après CB43. Les six missions suggérées sont **non jouées**.
@@ -287,7 +297,7 @@ Le site documentaire peut fournir cette base narrative, mais **ne comporte pas e
 
 - *Compendium des personnages*, v1.7, **REV-04**, mise à jour explicite **CB43 P14802–15458, P17817–18456, P19363–21327, P22957–23573**.
 - *Campagne brute regroupée — Volume 1*, **CB2**, scènes de sélection et d'entraînement, conversations sur les sang-mêlés et confiance, rapprochement d'Orin et Vaëra, proposition de travail réciproque avec Ylva ; **CB31**, reconnaissance du Nord avec Tevaer ; **CB32**, doctrine des renseignements ; **CB34**, progression et **quatre Cercles stabilisés**.
-- **Orientations du créateur, 28 octobre 2026** : père marchand humain et mère elfique absente proposés, préjugés dans l'enfance, beauté athlétique et coiffure châtain à reflets blonds proposée, collaboration avec Ylva pendant l'ellipse, rôle possible de contact permanent et de commanditaire pour aventuriers. **Complément visuel fourni le même jour** : portrait intime, regard vert, chevelure châtain foncé aux reflets chauds ; **dagues et lame d'ombre à allonge variable privilégiées** plutôt que l'arc. L'histoire de la mère est repoussée à une étape ultérieure. Points de filiation et de couleur de cheveux encore à réconcilier avec le Compendium.
+- **Développements de lore et direction artistique approuvés par le créateur, octobre 2026 :** père humain marchand et mère elfe absente de l'éducation (circonstances non fixées), enfance mêlant préjugés et joies, beauté athlétique et **cheveux châtains aux reflets chauds** validés, quatre Cercles effectivement stabilisés, coopération avec Ylva, possible rôle récurrent de commanditaire pour aventuriers. Les **deux portraits et l'affiche sont validés artistiquement**. **Dagues et lame d'ombre à allonge variable privilégiées** plutôt que l'arc ; capacités futures de la lame non présumées. L'histoire de la mère et le rapport à l'ancienne filiation « elfique et narim » restent ouverts. **Les toponymes et prénoms inventés dans l'affiche n'ont pas été homologués comme lore.**
 - *Campagne Brut 4.2*, **CB42 P08333–21050** ; *Campagne Brut 4.1*, **CB41 P00904–07108**.
 - *Campagne Brut 3.7–3.9*, épisodes Valbrume, diplomatie et visites.
 - *Continuité*, v1.7, crise de Taagral.
