@@ -20,13 +20,13 @@ tags: ["personnage", "revenants", "terrain", "ragna", "lok", "écoute", "enquete
 *Étude visuelle provisoire issue d’une planche d’ensemble ; **apparence et détails à valider** avant de parler de portrait officiel.*
 
 > [!info] Statut documentaire
-> **Fiche de développement éditorial**, fondée sur le *Compendium des personnages et des relations* v1.7 et les scènes de campagne citées. **Ajouts proposés par le créateur le 28 octobre 2026, en attente de validation finale :** enfance urbaine dans une certaine aristocratie naine, vocation militaire, rôle pionnier d’une femme dans des corps encore très masculins, enquête et exploration au plus haut niveau, reconnaissance par l’état-major et Torgarl, chaleur discrète et affection protectrice. **Aldhammar comme ville d’origine et la branche de petite noblesse Pierre-Sèche sont des choix éditoriaux proposés, pas des renseignements extraits du brut.** Portrait actuel à valider ; les faits joués et les idées de background restent distingués.
+> **Fiche de développement éditorial**, fondée sur le *Compendium des personnages et des relations* v1.7 et les scènes de campagne citées. **Développements approuvés par le créateur le 28 octobre 2026 :** enfance urbaine dans une certaine aristocratie naine, vocation militaire, rôle pionnier d’une femme dans des corps encore très masculins, enquête et exploration au plus haut niveau, reconnaissance par l’état-major et Torgarl, chaleur discrète et affection protectrice. **Aldhammar et une famille Pierre-Sèche de petite noblesse sont désormais retenues comme origines de lore ; elles ne correspondent pas à des scènes d'enfance déjà jouées.** Portrait actuel à valider ; les faits joués et les idées de background restent distingués.
 
 *Elle sait écouter une pierre, un témoin ou un compagnon. Et, lorsqu’elle parle enfin, c’est souvent parce qu’elle a déjà compris ce que les autres n’ont pas encore osé demander.*
 
 ## En quelques mots
 
-Ragna Pierre-Sèche est l'une des plus remarquables **exploratrices et enquêtrices militaires** des Montagnes de l'Aube — direction de personnage proposée par le créateur. Elle sait **tenir une position sans s'y condamner**, mais aussi interroger un témoin sans lui voler ses mots, repérer une contradiction dans un récit, et revenir d'une reconnaissance avec une information dont le commandement peut réellement se servir.
+Ragna Pierre-Sèche est l'une des plus remarquables **exploratrices et enquêtrices militaires** des Montagnes de l'Aube, conformément à la direction de personnage validée par le créateur. Elle sait **tenir une position sans s'y condamner**, mais aussi interroger un témoin sans lui voler ses mots, repérer une contradiction dans un récit, et revenir d'une reconnaissance avec une information dont le commandement peut réellement se servir.
 
 Son écoute est sa marque. Elle remarque le sol, les écoulements, les fissures et les sorties possibles, mais tout autant une hésitation, une phrase évitée, une peur que quelqu'un dissimule derrière la colère. **Le silence n'est pas une absence de chaleur** : elle se sent aussi chez elle dans une salle pleine de rires que dans une marche au petit matin. Elle n'a pas besoin de parler davantage que les autres pour profiter de leur compagnie.
 
@@ -35,8 +35,8 @@ Son autorité vient de ce qu'elle a gagné sa place par sa compétence et son ca
 ## Identité et état actuel
 
 - **Condition :** vivante ; Revenante de plein droit.
-- **Origine proposée :** **[[A42-02|Aldhammar]]**, ancienne capitale des Montagnes de l'Aube ; issue d'une **famille de petite aristocratie naine** attachée au service et à la réputation plutôt qu'au faste. L'origine urbaine et le rang précis restent à confirmer par le créateur.
-- **Carrière proposée :** militaire pionnière, spécialiste des reconnaissances, des enquêtes et de l'exploration ; réputation gagnée au sein de l'état-major et estime de **Torgarl le Brave**, sans grade ou décoration inventés.
+- **Origine validée :** **[[A42-02|Aldhammar]]**, ancienne capitale des Montagnes de l'Aube ; issue de la **petite aristocratie naine des Pierre-Sèche**, attachée au service et à la réputation plutôt qu'au faste. Les titres individuels, les noms de ses parents et les droits précis de cette branche restent à écrire.
+- **Carrière validée :** militaire pionnière, spécialiste des reconnaissances, des enquêtes et de l'exploration ; réputation gagnée au sein de l'état-major et estime de **Torgarl le Brave**, sans grade ou décoration inventés.
 - **Rôle :** observation des terrains, **enquête de terrain**, reconnaissance, recoupement des témoignages, écoute, tenue et repli, coordination et commandement de phase selon le besoin.
 - **Compagnon animal :** **Lok**, corbeau à elle, référencé **REV-17** dans le Compendium ; à ne confondre ni avec Halstor ni avec les corbeaux d'ombre des cérémonies.
 - **Équipement :** première cape d'Elyra ; **Pierre d'Écoute** réalisée et testée dans son emploi initial en CB42.
@@ -44,12 +44,12 @@ Son autorité vient de ce qu'elle a gagné sa place par sa compétence et son ca
 
 ## Avant les Revenants — la jeune fille qui voulait voir au-delà des murs
 
-> [!note] Développement proposé au créateur — non joué
-> Les origines urbaines, la petite noblesse, la formation militaire et les enquêtes de jeunesse ci-dessous sont une **nouvelle construction de personnage**, inspirée des orientations données le 28 octobre 2026. Elles ne sont pas des scènes déjà jouées et n'impliquent **aucune réforme officielle de l'armée** ni décoration royale ajoutée rétroactivement. L'objectif est de bâtir une histoire cohérente avant validation, comme pour Bram et Rochebrume.
+> [!info] Développement de lore approuvé — enfance non jouée
+> La provenance à **Aldhammar**, la petite aristocratie des Pierre-Sèche, la formation militaire pionnière, la réputation auprès de l'état-major et de Torgarl sont **approuvées comme histoire du personnage** le 28 octobre 2026. Elles ne proviennent pas de scènes d'enfance déjà jouées : les anecdotes de formation et les dialogues reconstitués restent des **illustrations proposées**. Aucune réforme officielle de l'armée, grade, décoration ou promotion précise n'est créée rétroactivement.
 
 ### Aldhammar — la petite noblesse et les grandes fenêtres
 
-**[[A42-02|Aldhammar]]**, ancienne capitale des Montagnes de l'Aube, serait la ville où Ragna a grandi. On la verrait issue d'une **branche de petite noblesse naine**, les Pierre-Sèche, une famille assez ancienne pour être connue dans les cercles de garnison et les institutions, mais ni immensément puissante ni recluse dans un palais. Le nom familial pourrait évoquer des générations de services administratifs, d'arpentage ou de charges militaires ; **les fonctions exactes des parents, la généalogie et le patrimoine restent à définir**.
+**[[A42-02|Aldhammar]]**, ancienne capitale des Montagnes de l'Aube, est la ville où Ragna a grandi. Elle est issue d'une **branche de petite noblesse naine**, les Pierre-Sèche, une famille assez ancienne pour être connue dans les cercles de garnison et les institutions, mais ni immensément puissante ni recluse dans un palais. Le nom familial pourrait évoquer des générations de services administratifs, d'arpentage ou de charges militaires ; **les fonctions exactes des parents, la généalogie et le patrimoine restent à définir**.
 
 Dans une telle famille, on lui aurait enseigné à se tenir lors d'une réception, à écouter les récits des anciens officiers, à connaître les lignées, les usages et la valeur d'une parole donnée. Tout cela lui aurait été utile plus tard. Mais petite, **Ragna préférait les remparts, les cours intérieures, les cartes étalées sur les tables et les expéditions des patrouilleurs aux journées consacrées uniquement aux convenances**.
 
@@ -248,7 +248,7 @@ Ces amorces peuvent aussi servir de **brief de jeu de rôle conversationnel** : 
 
 ## Projets ouverts, non joués
 
-- **Valider** Aldhammar comme ville natale et préciser le statut de la **petite noblesse Pierre-Sèche**, sans inventer de famille ou de titres qui contredisent l'Atlas.
+- **Préciser** la généalogie et les titres exacts de la **petite noblesse Pierre-Sèche**, dont l'origine à Aldhammar est désormais validée, sans inventer de rang juridique absent des sources.
 - Préciser son parcours militaire pionnier : promotions, unité, opérations, enquêtes marquantes et manière dont **Torgarl et l'état-major** ont reconnu ses aptitudes.
 - Sélection d'une première cohorte et formation en binôme ou par spécialités croisées.
 - Développer ses liens personnels et ses plaisirs ordinaires au-delà de la décision tactique.
@@ -263,7 +263,7 @@ Ces amorces peuvent aussi servir de **brief de jeu de rôle conversationnel** : 
 - *Campagne Brut 4.3*, début (scènes de repas à Aldhammar).
 - *Continuité de la campagne et de l’œuvre*, v1.7, **« Première Ancre et Régent sans Couronne »**, échanges **108–117** (chevilles de seuil, coalition, causes plus anciennes non identifiées).
 - **Précisions du créateur, 28 octobre 2026** : participation de Ragna aux recherches avec **Eamon et Névane**, accompagnement d'Orin durant une partie du combat final, soutien face à l'apparition d'une puissance proche du niveau divin ; détails exacts de l'engagement à recouper avec le brut intégral. Les quatre amorces d'aventure sont des **propositions nouvelles, non jouées**.
-- **Orientations proposées par le créateur le 28 octobre 2026 :** excellente enquêtrice et exploratrice militaire, écoute exceptionnelle, passé urbain et aristocratie naine possible, parcours de pionnière respectée par l'état-major et Torgarl, chaleur et humour pince-sans-rire, Les scènes de jeunesse et dialogues de formation présents ici sont des **reconstitutions proposées et non jouées**.
+- **Lore validé par le créateur les 28 octobre 2026 et dans la présente relecture :** excellente enquêtrice et exploratrice militaire, écoute exceptionnelle, origine à Aldhammar dans la petite noblesse naine, parcours de pionnière respectée par l'état-major et Torgarl, chaleur, humour pince-sans-rire et talent de combattante. Les scènes de jeunesse et dialogues de formation sont des **reconstitutions proposées et non jouées** ; la vie intime encore non fixée demeure hors du dépôt public.
 
 ## Feuillets liés
 
