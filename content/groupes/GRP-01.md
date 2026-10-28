@@ -139,6 +139,22 @@ Des **corbeaux jaillissent des ombres** tandis que le lion de feu **Harald** rug
 > [!important] Ce qui fait une cérémonie chez les Revenants
 > Ces événements associent **un geste accepté**, **des témoins**, **un signe porté librement** et **une mémoire que l’on transmet**. Ils ne prouvent pas l’existence d’un rituel codifié, d’un serment imposé ou d’un ordre de chevalerie. C’est justement leur souplesse qui laisse aux Revenants leur individualité.
 
+## La devise — savoir que l'on ignore
+
+> **Je ne sais rien.**
+>
+> **Nous ne savons pas tout.**
+
+Cette double formule est née d'une discussion entre les Revenants à propos de ce qu'ils souhaitent transmettre. La première phrase est **personnelle** : même un guerrier expérimenté, un professeur ou un veilleur d'une ancienneté prodigieuse doit pouvoir reconnaître les limites de son savoir. La seconde est **collective** : aucun groupe, pas même les Revenants, ne possède à lui seul toutes les réponses. Partir en plusieurs équipes, apprendre des autres, revenir raconter ses erreurs autant que ses découvertes devient alors une méthode pour rester unis sans renoncer à leur liberté. (*Campagne brute regroupée — Volume 1, CB31, échanges sur la devise et la transmission.*)
+
+La devise appartient au récit de la compagnie ; en revanche, **son inscription sur un blason précis reste une proposition artistique**. Les autres mots apparaissant sur le premier projet d'illustration ne doivent pas être pris pour des devises adoptées en jeu.
+
+### Seconde proposition de blason — avec la devise
+
+![Variante du blason des Revenants portant exactement la devise : Je ne sais rien. Nous ne savons pas tout.](../images/groupes/revenants-blason-devise.webp)
+
+*Variante illustrée avec la devise attestée. **Le premier blason est conservé** en tête de cette fiche ; les deux compositions pourront être employées selon le contexte après validation graphique. Les ornements héraldiques restent des interprétations artistiques.*
+
 ## Doctrine — les vertus très concrètes du retour
 
 La compagnie s'est donné une culture de terrain reconnaissable :
@@ -216,9 +232,9 @@ Ces épisodes montrent une compagnie capable de sérieux sans austérité, où l
 
 **Établi :** noyau attesté de neuf personnes ; Névane et Torgarl honorifiques ; **remise initiale des capes et reconnaissance de Névane à Torngard** (CB32) ; **remise de la cape à Torgarl à Aldhammar** (CB42) ; compagnie distincte des Rappelés ; autonomie acquise ; **commande d'armure à Mara pour Bram et adaptation optionnelle des autres équipements**, capes et vêtements d'Elyra ; **intervention collective à Taagral**, soins, repli et commandement distribué ; insignes réalisés en CB42 ; existence d'un manoir sur une île distincte ; premiers essais d'équipement ; visite de Dorsa en CB43.
 
-**À préciser dans les séances ultérieures :** adoption éventuelle d’un blason ou d'une devise officiellement communs ; effets de la résonance magique des plumes ; remise définitive et état de chaque armure ou tenue commandée ; attribution effective du coffret de Haldrek et de celui de Névane ; recrutement et parcours réels des apprentis ; répartition quotidienne des responsabilités du manoir ; missions futures ; nouvelles adhésions formelles.
+**À préciser dans les séances ultérieures :** adoption éventuelle d’un blason officiel et de sa présentation héraldique (la double devise, elle, figure déjà dans les sources de campagne) ; effets de la résonance magique des plumes ; remise définitive et état de chaque armure ou tenue commandée ; attribution effective du coffret de Haldrek et de celui de Névane ; recrutement et parcours réels des apprentis ; répartition quotidienne des responsabilités du manoir ; missions futures ; nouvelles adhésions formelles.
 
-**Ne pas supposer :** que les inscriptions du projet de blason sont des devises adoptées, que les capes donnent automatiquement un pouvoir démontré, que Mara a déjà achevé toutes les commandes individuelles ou que les cérémonies constituent un serment obligatoire ; que tous les anciens compagnons du Mérien sont devenus Revenants ; que les amis, animaux, élèves, Rappelés, divinités et membres de la Maison en font partie ; qu'Orin commande personnellement chaque mission ; que les trois gemmes donnent déjà des pouvoirs spécialisés ; que Dorsa ou Hroldan gère déjà le manoir en vertu de sa seule candidature.
+**Ne pas supposer :** que les inscriptions supplémentaires du premier projet de blason sont des devises adoptées, que les capes donnent automatiquement un pouvoir démontré, que Mara a déjà achevé toutes les commandes individuelles ou que les cérémonies constituent un serment obligatoire ; que tous les anciens compagnons du Mérien sont devenus Revenants ; que les amis, animaux, élèves, Rappelés, divinités et membres de la Maison en font partie ; qu'Orin commande personnellement chaque mission ; que les trois gemmes donnent déjà des pouvoirs spécialisés ; que Dorsa ou Hroldan gère déjà le manoir en vertu de sa seule candidature.
 
 ## Archives et sources
 
