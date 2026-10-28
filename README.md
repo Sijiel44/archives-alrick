@@ -1,6 +1,6 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Première édition de l’encyclopédie JDR, construite avec **Quartz 5** : dix fiches pilotes, six rubriques, recherche, liens entre fiches et Archives du MJ. Design bleu nuit et or adapté au prototype du kit de démarrage.
+Première édition de l’encyclopédie JDR, construite avec **Quartz 5** : onze fiches pilotes, sept rubriques, recherche, liens entre fiches et Archives du MJ. Design bleu nuit et or adapté au prototype du kit de démarrage.
 
 **Cette branche prépare la publication. Aucun déploiement ne se déclenche sur une PR, un push ou une fusion.**
 
@@ -47,7 +47,7 @@ L’avertissement MJ est présent même sur une URL directe et fonctionne sans J
 
 ## Publier après validation
 
-1. Relire les dix fiches pilotes et les deux pages MJ, puis approuver/fusionner la PR vers `main`.
+1. Relire les onze fiches pilotes et les deux pages MJ, puis approuver/fusionner la PR vers `main`.
 2. Dans **Settings → Pages**, choisir **GitHub Actions** comme source. Garder le dépôt privé. GitHub Pages sur dépôt privé exige une offre compatible ; ne pas rendre le dépôt public pour contourner cette condition. [Disponibilité officielle](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages).
 3. Si disponible, protéger l’environnement **`github-pages`** par une validation humaine et limiter les déploiements à `main`.
 4. Dans **Actions → Publier sur GitHub Pages (manuel) → Run workflow**, choisir `main` et cocher la confirmation de relecture et de diffusion du contenu, y compris les spoilers MJ.
@@ -73,3 +73,7 @@ Les huit fiches initiales proviennent du `Alrick_Kit_Demarrage_Quartz5_v0.1.zip`
 ## Fiches enrichies et portraits
 
 Les fiches **REV-06 — Heimdall** et **REV-16 — Aldren** proviennent de l'édition validée en octobre 2026. Le portrait de Heimdall, approuvé par le créateur, est rangé dans `content/images/personnages/` et référencé avec un chemin relatif. Les fichiers image approuvés (WebP, AVIF, PNG, JPG) sont autorisés sous `content/images/`, avec une limite de 3 Mio par fichier. Aucun autre format binaire ne doit entrer dans ce dossier. Les sources brutes et les notes privées demeurent en dehors de `content/`.
+
+## Groupes et alliances
+
+La septième rubrique, `content/groupes/`, rassemble les compagnies, coalitions, suites, conseils et autres collectifs. Première fiche : **GRP-01 — Les Revenants**. Les prochains dossiers envisagés sont la Première Ancre, la suite divine d’Orin et le Conseil des Dix-Huit. Ne jamais déduire l'appartenance à un groupe du seul fait d'avoir participé à ses missions, partagé son logement ou reçu son aide. Pour créer une fiche, utiliser `modeles/groupe.md`, renseigner les faits joués, les listes de membres effectivement attestées et les sources.
