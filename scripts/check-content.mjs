@@ -1,4 +1,4 @@
-import { readFile, readdir } from 'node:fs/promises'
+import { readFile, readdir, stat } from 'node:fs/promises'
 import path from 'node:path'
 import assert from 'node:assert/strict'
 import YAML from 'yaml'
@@ -9,7 +9,13 @@ const codes = new Set()
 let published = 0
 for (const file of files) {
   assert(!/(atelier-mj|archives-source|\.obsidian|private)/i.test(file), `Dossier privé dans content : ${file}`)
-  assert(file.endsWith('.md'), `Média non approuvé : ${file}. Ajouter un contrôle explicite avant import.`)
+  if (!file.endsWith('.md')) {
+    const relative = path.relative('content', file).split(path.sep).join('/')
+    const imageFormat = ['.webp', '.avif', '.png', '.jpg', '.jpeg'].some(ext => relative.toLowerCase().endsWith(ext))
+    assert(relative.startsWith('images/') && imageFormat && !relative.includes('..'), `Média non approuvé : ${file}. Utiliser content/images/.`)
+    assert((await stat(file)).size <= 3 * 1024 * 1024, `Illustration trop lourde (> 3 Mio) : ${file}`)
+    continue
+  }
   const text = await readFile(file, 'utf8')
   const front = text.match(/^---\r?\n([\s\S]*?)\r?\n---/)
   assert(front, `Métadonnées absentes : ${file}`)
