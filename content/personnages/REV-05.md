@@ -1,6 +1,6 @@
 ---
 publish: true
-title: "Torven Cendreval — Soigner avant de compter les victoires"
+title: "Torven Cendreval — Celui qui ramène les vivants"
 code: "REV-05"
 categorie: "personnage"
 sous_categorie: "revenant"
@@ -9,8 +9,8 @@ ancre_documentaire: "CB43"
 source_brute: "CB2 (Mérien et secours) ; CB31–34 (formation médicale et capes) ; CB34 (hôpital et Espace sur demande) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB42 P18752–19902 ; CB43 (hôpital actif, distinct de l’infirmerie privée)"
 derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
-description: "Médecin des Revenants et responsable du secours, Torven organise les soins et les évacuations en faisant passer les vies avant le prestige d'une bataille."
-tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "evacuation", "sacoche"]
+description: "Médecin des Revenants, soignant de terrain et architecte d’une organisation hospitalière, Torven transforme le secours en méthode, en transmission et en responsabilité partagée."
+tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "evacuation", "triage", "refuge", "enseignement", "ingenierie-medicale", "reseau-de-soins", "scenarios-jouables", "sacoche"]
 ---
 
 # Torven Cendreval
@@ -20,13 +20,13 @@ tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "ev
 *Étude visuelle provisoire issue d’une planche d’ensemble ; **apparence et détails à valider** avant de parler de portrait officiel.*
 
 > [!info] Statut documentaire
-> **Fiche de développement éditorial**, fondée sur le *Compendium des personnages et des relations* v1.7 et les scènes de campagne citées. Les faits joués, les intentions et les pistes narratives sont séparés. Les portraits proposés sont des **interprétations artistiques**, pas des descriptions physiques canoniques tant que leur apparence n'a pas été approuvée. Le dernier état du cycle CB43 prime sur les anciennes notes de conception.
+> **Fiche approfondie à valider**, fondée sur le *Compendium* v1.7, CB2, CB31–34 et CB42–43. Le parcours professionnel, le refuge hospitalier, la montre-interface et les décisions d'enseignement proviennent **d'événements joués** ; la jeunesse, la ville d'origine, les parents et les anecdotes de formation ci-dessous sont **des propositions à soumettre au créateur**. L'hôpital est établi ; le réseau régional de transferts n'est pas décrit comme entièrement déployé. Le portrait reste à approuver.
 
 *Il n'a jamais considéré qu'une blessure était moins importante parce qu'on avait remporté le combat.*
 
 ## En quelques mots
 
-**Torven Cendreval** est le médecin de la compagnie, celui qui oblige les guerriers à reconnaître que la sécurité d'une mission ne se mesure pas à la seule défaite de l'adversaire. Son exigence n'est pas théorique : on dispose du matériel à portée, on connaît les voies d'extraction, on établit des responsabilités et on prépare l'après-coup. Il est capable d'un humour sec, mais ses consignes deviennent fermes lorsque quelqu'un souffre.
+**Torven Cendreval** est le médecin des Revenants qui a convaincu ses compagnons que **le secours ne commence pas après la bataille : il change la manière de préparer toute la mission**. Un blessé est pour lui une personne entière, avec ses proches, ses inquiétudes, son travail et son avenir — et non une blessure qu'on efface. Torven est pragmatique, protecteur, parfois mordant, et d'une grande patience avec ceux qui souffrent. Il ne promet pas de miracles. Son ambition est que **la médecine reste possible et digne même quand il n'est pas là**.
 
 ## Situation actuelle
 
@@ -34,7 +34,31 @@ tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "ev
 - **Responsabilités :** médecine de terrain, entraînement aux secours, préparation sanitaire et interface avec les structures de soins.
 - **Lieux distincts :** hôpital de la partie publique de l'Espace sur demande ; petite infirmerie domestique du Palais divin, **qui ne remplace pas l'hôpital**.
 - **Équipement :** sacoche médicale perfectionnée et dispositifs d'accès déjà existants ; montre-interface personnelle à permissions limitées (mise à jour de campagne 3.4).
-- **Apparence :** vêtements pratiques, mains attentives, matériel facile à atteindre ; physique détaillé non fixé par les dossiers.
+- **Apparence :** vêtements pratiques, mains attentives, matériel facile à atteindre ; **espèce/ascendance, âge, traits du visage et silhouette précise non documentés suffisamment** pour figer un portrait.
+- **Origines personnelles :** ville et famille **non attestées** ; pistes nouvelles ci-dessous.
+
+## Avant les Revenants — une enfance possible, sans drame imposé
+
+> [!note] Histoire personnelle proposée, non jouée
+> Le récit disponible ne fixe pas la ville natale de Torven, sa famille, sa fratrie, son ascendance ni les détails de son école. Le cadre suivant est une **proposition de lore**, pas un souvenir de CB2. Il pourra être adopté, corrigé ou rejeté par le créateur.
+
+### L'enfant qui regardait les mains des artisans
+
+Je proposerais une enfance dans **une petite cité de passage**, avec des artisans, des voyageurs et un dispensaire actif. Torven aurait grandi dans une famille de gens de métier, sans grande fortune ni tragédie obligatoire. Il aurait été fasciné moins par les armes que par **la façon dont on répare les choses** : une attelle façonnée par un menuisier, un vêtement réparé, un linge propre préparé avant une naissance, un instrument conçu pour ne pas blesser davantage.
+
+Une anecdote pourrait le montrer face au retour d'une patrouille : les habitants saluent le capitaine ; le jeune Torven demande plutôt le nom de **la personne qui a porté la civière jusqu'à l'infirmerie**. Il découvre ainsi une vérité qui l'accompagnera longtemps : **le travail essentiel ne reçoit pas toujours les louanges**. *Scène de jeunesse illustrative, non jouée.*
+
+### Apprendre à soigner, apprendre à dire « je ne sais pas »
+
+Sa formation proposée mêlerait pratique auprès de soignants, observation des patients, hygiène, suivi des stocks, relais entre les équipes et tournées auprès de communautés éloignées. Un maître lui aurait appris à demander : *Que savons-nous ? Que pouvons-nous faire ? Qui est mieux qualifié pour cette tâche ?* Une médecine honnête n'est pas une succession de miracles, mais une série de décisions que l'on peut expliquer et vérifier.
+
+Une scène possible : Torven tient l'inventaire de fournitures insuffisantes. On lui reproche de perdre du temps à écrire plutôt qu'à courir partout. Il répond que **si personne ne relève aujourd'hui ce qui manque, quelqu'un cherchera demain un bandage absent au pire moment**. *Dialogue proposé, non joué.*
+
+### La route, la pluie et les secours imparfaits
+
+À un moment encore indéterminé, il pourrait avoir choisi les **équipes mobiles, les convois ou une garnison**, découvrant la différence entre les soins dans une salle préparée et la stabilisation d'un patient sur un chemin difficile. Il apprendrait à répartir son matériel, à prévoir le retour, à demander la protection de combattants et à garder l'humilité nécessaire lorsqu'un cas dépasse sa compétence.
+
+Ce passé permettrait d'expliquer son autorité au Mérien sans inventer une bataille fondatrice ni tuer un proche pour lui donner de l'épaisseur. **Il avait déjà une vie, des collègues, des responsabilités et des goûts avant sa rencontre avec Orin.**
 
 ## Histoire et scènes
 
