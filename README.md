@@ -1,37 +1,75 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Encyclopédie vivante de l’univers de jeu de rôle **Alrick / Orin**.
+Première édition de l’encyclopédie JDR, construite avec **Quartz 5** : dix fiches pilotes, six rubriques, recherche, liens entre fiches et Archives du MJ. Design bleu nuit et or adapté au prototype du kit de démarrage.
 
-> **État du projet :** fondations en préparation. Le dépôt ne contient pas encore le site Quartz fonctionnel.
+**Cette branche prépare la publication. Aucun déploiement ne se déclenche sur une PR, un push ou une fusion.**
 
-## Ambition
+## Démarrer sur Windows
 
-Construire un univers partagé pour des campagnes de JDR sur table et, à terme, des aventures grandeur nature. Le site réunira des fiches sur le monde, les personnages, la magie, les lieux, les institutions et les chroniques de campagnes.
+Installer Node.js 24 et Git. Depuis ce dossier :
 
-## Les grandes rubriques envisagées
+```powershell
+npm.cmd ci
+npm.cmd run dev
+```
 
-- **Le Monde et les puissances** — cosmologie, histoire et divinités.
-- **Atlas** — cartes, royaumes, cités et institutions.
-- **Personnages** — portraits, biographies, relations et évolutions.
-- **Codex** — magie, objets et ingénierie.
-- **Maison divine et traditions** — communauté d’Orin, rites et institutions.
-- **Chroniques** — aventures jouées et continuité.
-- **Archives du MJ** — intrigues, révélations, secrets et ressources pour organiser des parties.
+Ouvrir **http://localhost:8080/**. Garder le terminal ouvert ; `Ctrl+C` arrête l’aperçu. Une page HTML ouverte directement depuis l’Explorateur ne remplace pas le serveur Quartz.
 
-## Politique de spoilers
+Pour reproduire le sous-chemin du futur site GitHub Pages :
 
-L’espace « Archives du MJ » sera volontairement **consultable par tous**. Il présentera un avertissement explicite avant les contenus qui dévoilent des mystères ou les ressorts narratifs des aventures. Ce dispositif protège le plaisir de découverte, **pas la confidentialité des informations**.
+```powershell
+npm.cmd run preview:pages
+```
 
-## Méthode de travail
+Ouvrir alors **http://localhost:8080/archives-alrick/**. Ne pas lancer les deux serveurs en même temps sur le port 8080. Le port peut être changé avec `npm.cmd run dev -- --port 8081`.
 
-Les sources de campagne brute sont conservées séparément des synthèses. Une fiche distingue notamment :
-- les faits établis en jeu ;
-- les informations incertaines ou contradictoires ;
-- les propositions de lore encore non jouées ;
-- les éléments destinés aux maîtres du jeu.
+Sur macOS/Linux, utiliser `npm` à la place de `npm.cmd`.
 
-L'objectif technique est de combiner **Obsidian (édition)**, **Markdown (contenu)**, **Quartz (site)**, **GitHub (versions et publication)** et **Codex/ChatGPT (développement et enrichissement)**.
+## Vérifier et construire
 
-## Publication
+```powershell
+npm.cmd test
+```
 
-Le dépôt est actuellement privé. Aucune page publique n'est encore déployée. La publication et le thème graphique seront configurés et testés progressivement.
+Cette commande vérifie les métadonnées, les codes uniques, les dossiers exclus, TypeScript, la génération Quartz, tous les liens et ressources internes sous `/archives-alrick/`, les avertissements MJ et leur exclusion de la recherche et du sitemap. Le résultat déployable se trouve dans `public/` ; ce dossier est généré et ignoré par Git.
+
+Les plugins utilisés sont des paquets npm verrouillés par `package-lock.json` : `npm ci` suffit. Aucun clonage de plugin ou téléchargement de thème au moment de la consultation n’est nécessaire.
+
+## Éditer l’encyclopédie
+
+- Ouvrir **`content/`** comme coffre Obsidian. Les pages conservent les wikiliens.
+- Partir d’un gabarit dans `modeles/`, avec `publish: false` pendant la rédaction.
+- Après relecture, mettre `publish: true` pour inclure une page dans le build. Ce champ ne déploie rien sur Internet.
+- Conserver codes, sources et statuts documentaires. Voir [le contrat éditorial](CONTRAT_EDITORIAL.md).
+- Les pages choisies pour le MJ vont dans `content/mj/` avec `spoilers: true` et `unlisted: true`. Ne pas ajouter de tags ou d’alias qui révéleraient leur contenu ailleurs.
+
+L’avertissement MJ est présent même sur une URL directe et fonctionne sans JavaScript. Il protège la découverte, **pas la confidentialité** : le contenu reste dans le HTML. Les bruts, Word, classeurs, notes personnelles et l’inventaire de 592 sujets ne sont pas inclus dans ce dépôt ni dans le site.
+
+## Publier après validation
+
+1. Relire les dix fiches pilotes et les deux pages MJ, puis approuver/fusionner la PR vers `main`.
+2. Dans **Settings → Pages**, choisir **GitHub Actions** comme source. Garder le dépôt privé. GitHub Pages sur dépôt privé exige une offre compatible ; ne pas rendre le dépôt public pour contourner cette condition. [Disponibilité officielle](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages).
+3. Si disponible, protéger l’environnement **`github-pages`** par une validation humaine et limiter les déploiements à `main`.
+4. Dans **Actions → Publier sur GitHub Pages (manuel) → Run workflow**, choisir `main` et cocher la confirmation de relecture et de diffusion du contenu, y compris les spoilers MJ.
+5. Le workflow reconstruit, vérifie, puis déploie à **https://sijiel44.github.io/archives-alrick/**. Cette adresse est une destination prévue, pas une preuve de publication actuelle.
+
+Les paramètres Pages et l’offre du compte doivent être vérifiés avant le premier lancement. Un dépôt privé ne garantit pas que son site Pages sera privé. Le workflow de CI n’a que `contents: read` ; seul le job de déploiement manuel reçoit `pages: write` et `id-token: write`.
+
+## Accès GitHub et travail par PR
+
+L’autorisation du connecteur GitHub et celle de Git local sont distinctes. Une connexion réussie dans ChatGPT/Codex n’authentifie pas automatiquement `git clone` ou `git push`. Cette première intégration peut être envoyée par le connecteur sans copier de jeton dans les fichiers.
+
+## Corrections des 404 et du thème
+
+- Accueil réel `content/index.md`, lecture des métadonnées activée et filtre `publish` explicite : le build ne peut plus réussir silencieusement sans accueil.
+- Liens relatifs pour les rubriques et les fiches ; `baseUrl` inclut le nom du dépôt.
+- Le mode `--baseDir` est propagé à la recherche globale. La page 404 utilise des chemins d’assets et de retour adaptés au préfixe local ou Pages.
+- `its-theme.ttrpg-dnd` est une **variante**, pas un dépôt à cloner ni un fichier CSS distant. Configuration : `theme: its-theme`, `variation: ttrpg-dnd`, paquet `@quartz-themes/its-theme@1.0.1`. Les encadrés du thème sont conservés ; la mise en page et les couleurs sont propres aux Archives.
+
+## Provenance et limites
+
+Les huit fiches initiales proviennent du `Alrick_Kit_Demarrage_Quartz5_v0.1.zip`. Les références CB42 ont été préservées, sans revérification intégrale du brut. La relecture éditoriale reste nécessaire ; les sujets restant à migrer ne sont pas encore migrés. Le décor montagneux est une évocation graphique hors canon. Voir [UPSTREAM.md](UPSTREAM.md) pour le moteur et les licences.
+
+## Fiches enrichies et portraits
+
+Les fiches **REV-06 — Heimdall** et **REV-16 — Aldren** proviennent de l'édition validée en octobre 2026. Le portrait de Heimdall, approuvé par le créateur, est rangé dans `content/images/personnages/` et référencé avec un chemin relatif. Les fichiers image approuvés (WebP, AVIF, PNG, JPG) sont autorisés sous `content/images/`, avec une limite de 3 Mio par fichier. Aucun autre format binaire ne doit entrer dans ce dossier. Les sources brutes et les notes privées demeurent en dehors de `content/`.

@@ -1,4 +1,5 @@
 ---
+publish: true
 title: "Heimdall — Le veilleur qui a choisi"
 aliases: ["Heimdall", "Heimdall du Mérien", "Le Veilleur"]
 code: "REV-06"
@@ -6,8 +7,9 @@ categorie: "personnage"
 sous_categorie: "revenant"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
+source_brute: "CB2; CB32; CB38 P06750–07262 et P19467–19961; CB39 P02944–04569, P20311–20701 et P40542–41267; CB42 P18752–21050; CB43"
 derniere_revision_documentaire: "2026-10-27"
-visibilite: "a_valider_avant_publication"
+visibilite: "a_relire_avant_publication"
 portrait: "images/personnages/heimdall-portrait.webp"
 description: "Ancien veilleur du Mérien devenu une personne libre, membre des Revenants et de la Maison d’Orin, Heimdall conduit aujourd’hui ses propres recherches sur les structures anciennes."
 tags: ["personnage", "revenants", "maison-d-orin", "merien", "raccords", "recherche", "aldren", "liberte", "nidor", "vaerdrak", "filiation-choisie", "veilleurs"]
