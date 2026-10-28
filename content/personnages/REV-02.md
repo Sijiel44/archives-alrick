@@ -106,9 +106,15 @@ Ce regard s'éclaire avec le nouveau passé proposé : Ragna **pose les question
 
 Au Nord, Ragna regarde le terrain, les fractures, l'eau et les limites de progression. Elle ne remplace pas les spécialistes de géologie **Dagrin** ou **Elda** : son autorité porte sur la traduction de ces risques en décisions utilisables par les compagnons. Un lieu que l'on peut défendre n'est pas forcément un lieu d'où les blessés peuvent sortir. Cette distinction devient essentielle dans les exercices qui préparent la compagnie à agir sans Orin.
 
-### Taagral — commander puis transmettre
+### Taagral — enquête, commandement et tenue face à une puissance supérieure
 
-À Taagral, le transfert de commandement **à Ragna puis depuis Ragna** est une réussite de fonctionnement, non une anomalie que les autres tolèrent. Le groupe accepte que la compétence du moment détermine qui décide. Haldrek structure les procédures ; Bram, Kelm, Torven, Vaëra et les autres remplissent leurs propres tâches. Elle ne transforme pas cette responsabilité en grade permanent imaginaire. (*Continuité v1.7, échanges 012–119.*)
+La guerre de **Taagral** est l'une des épreuves les plus importantes de Ragna. Loin de n'être qu'une observatrice de terrain ou une conseillère placée en retrait, elle y participe à **la conduite des opérations, à l'enquête et aux affrontements**. Dac conserve le commandement militaire général ; au sein de la compagnie, le transfert de commandement **à Ragna puis depuis Ragna** est effectivement joué. Ce partage ne la réduit pas à un rôle d'auxiliaire : elle prend les décisions adaptées à sa phase, puis remet l'autorité à la personne la mieux placée lorsque la situation change. (*Continuité v1.7, « Taagral : crise militaire et doctrine de commandement », échanges 012–119 ; Compendium v1.7, « La Compagnie des Revenants pendant la crise ».*)
+
+**L'enquête sur ce qui se cachait sous le conflit.** Le récit consolidé établit que la **Première Ancre** est une coalition aux objectifs divergents, et que certaines de ses équipes ont retiré des **« chevilles de seuil »**, composants d'anciennes structures dont l'extraction aggrave localement les déséquilibres. Le créateur rappelle également le rôle actif de Ragna **aux côtés d'Eamon et de Névane pour rechercher les éléments dissimulés et suivre la piste de ces manipulations**. Cette précision complète le travail technique d'Eamon et de Névane : Ragna sait relier les informations aux lieux, aux témoignages, aux itinéraires et aux risques de terrain. **Le nom exact de chaque cache et la liste des pièces trouvées par chacun ne sont pas encore vérifiés scène par scène** ; il ne faut pas lui attribuer seule une découverte collective, ni confondre les extractions de la Première Ancre avec les perturbations plus anciennes dont l'origine demeure mystérieuse.
+
+**Combattre sans perdre son calme.** Selon la précision complémentaire du créateur, Ragna se tient **auprès d'Orin pendant une part importante de l'affrontement final**. Elle demeure calme, réactive et capable de le soutenir lorsque l'adversité contraint une **présence d'une puissance proche du rang divin** à se manifester. Ce souvenir souligne son sang-froid, sa valeur au combat et la confiance qu'Orin peut lui accorder dans les moments critiques ; **il ne fixe ni l'identité, ni le rang officiel, ni les capacités précises de cette présence**, et n'affirme pas que Ragna l'aurait forcée à apparaître à elle seule. Le relevé détaillé des gestes de combat reste à rapprocher de la transcription intégrale de la partie.
+
+Ragna ressort de Taagral comme une **officière et enquêtrice complète**, aussi crédible pour reconnaître une anomalie et coordonner une équipe que pour **tenir sa place au premier danger**. Son calme n'est pas une limite à sa puissance ; c'est la discipline qui lui permet de l'employer à bon escient. (*Ajout d'interprétation par le créateur, 28 octobre 2026 ; événements consolidés, sources ci-dessus.*)
 
 ### Pierre d'Écoute — écouter sous ses pieds
 
@@ -117,6 +123,17 @@ La **Pierre d'Écoute** produite en CB42 rend perceptibles **certaines vibration
 ### Le rire en compagnie
 
 Ragna n'est pas condamnée à la gravité. Elle sait répondre à Bram, parfois avec une seule phrase, et interrompre avec affection les débats de terminologie d'Eamon. Les discussions d'Aldhammar après CB42 montrent cette camaraderie au milieu de personnages aux tempéraments éclatants. (*Campagne Brut 4.3, ouverture.*)
+
+## Une combattante qu'il vaut mieux ne pas sous-estimer
+
+On peut se méprendre sur Ragna parce qu'elle ne cherche ni à gagner chaque discussion ni à intimider la salle où elle entre. **Cette discrétion est un choix de comportement, pas un indice de faiblesse.** Les combattants qui ne connaissent d'elle que ses silences peuvent croire qu'elle est la cartographe de la troupe, ou celle qui donne des conseils depuis l'arrière. C'est généralement une erreur d'appréciation.
+
+Ragna a reçu une **formation militaire exigeante**, possède une longue expérience de reconnaissance et de combat et sait changer le déroulement d'un engagement par une décision de terrain : choisir l'angle défendable, repérer le faux repli, empêcher l'adversaire de concentrer ses forces ou reprendre une position au moment où personne ne l'attend. Elle est parfaitement capable **de combattre elle-même, de protéger un compagnon, de conduire une équipe ou de tenir une ligne lorsque la situation l'impose**. L'excellence de ses enquêtes ne lui a rien retiré de celle de ses armes.
+
+**Les Revenants, les professionnels de l'armée et l'état-major savent à qui ils ont affaire.** Ce sont plutôt certains adversaires ou nouveaux venus qui la sous-estiment, en jugeant son calme, son genre ou son absence de démonstration spectaculaire. Le rapport de forces d'une rencontre peut se renverser lorsqu'ils découvrent qu'elle avait déjà compris leur manœuvre. Ne pas la présenter comme invincible, ni lui attribuer une technique magique ou une arme non attestée ; sa supériorité vient d'abord de **l'expérience, de l'enquête, de la préparation et d'un jugement exceptionnel sous pression**.
+
+> [!note] Échelle de puissance pour la mise en scène
+> Ragna est une **combattante de haut niveau à l'échelle du monde joué**, difficile à prendre de vitesse ou à tromper sur son propre terrain. Cela ne constitue **ni un niveau de jeu chiffré**, ni la preuve qu'elle vaincrait chaque Revenant en duel. Les autres membres de la compagnie la respectent précisément parce qu'ils connaissent ses qualités et ses limites.
 
 ## Derrière le silence — chaleur, humour et loyauté
 
@@ -170,6 +187,65 @@ Son humour pince-sans-rire se nourrit de cette familiarité. Elle peut écouter 
 
 La Pierre d'Écoute ne crée pas une cartographie absolue du sous-sol. Les appareils de mesure, les relevés de géologues et les procédures de terrain demeurent nécessaires. L'observation d'un risque n'implique pas qu'elle puisse seule le résoudre.
 
+## Jouer avec Ragna — rencontres et propositions de scénarios
+
+> [!info] Pour les joueurs et les maîtres du jeu
+> Les amorces ci-dessous sont **des possibilités d'aventures non encore jouées**. Elles peuvent être confiées par Ragna, vécues avec elle comme alliée, ou prises en charge par une équipe qu'elle dirige. Elles ne constituent **ni une chronologie canonique ni des événements accomplis**. Le MJ reste libre d'adapter les lieux, les antagonistes, l'échelle du danger et les conséquences aux choix des joueurs. Les éventuels secrets personnels de Ragna ne font pas partie des informations publiques disponibles pour les aventuriers.
+
+### Quel rôle peut-elle avoir pendant une partie ?
+
+| Présence de Ragna | Ce que cela offre au groupe |
+|---|---|
+| **Commanditaire d'une enquête** | Elle demande une vérification indépendante, présente les faits établis, indique ce qu'elle ignore et laisse les joueurs enquêter à leur manière. |
+| **Cheffe d'une petite mission des Revenants** | Elle fixe l'objectif, les limites de sécurité, les moyens et un plan de repli ; les joueurs conduisent réellement les recherches, négociations et choix tactiques. |
+| **Compagne de route** | Elle écoute les hypothèses, partage les indices qu'elle a effectivement relevés et peut intervenir en combat, sans résoudre les énigmes ni voler la place des personnages joueurs. |
+| **Mentore militaire ou d'investigation** | Elle organise un exercice vivant de reconnaissance, de témoignages contradictoires, d'embuscade et d'extraction ; une bonne décision peut valoir davantage qu'une victoire martiale. |
+| **Contact rencontré par hasard** | Une femme calme observe une querelle de garnison, une route fermée ou une étrange marque sur une pierre. Les aventuriers peuvent d'abord ignorer qui elle est et gagner sa confiance. |
+
+Ragna peut agir **avec les Revenants, en petite équipe ou seule**. Elle n'a pas besoin d'Orin pour autoriser chacun de ses déplacements, et ses missions n'ont pas à être des opérations de la Maison divine. Lorsqu'elle commande, elle **écoute les suggestions et peut transférer la responsabilité** à la personne qui possède la compétence du moment. Un ordre raisonnable précise *ce qu'il faut obtenir, ce qu'il ne faut pas risquer et comment rentrer*.
+
+### Quatre amorces de missions prêtes à développer
+
+**1. Le convoi qui n'est jamais arrivé — enquête et exploration, faible à moyenne intensité.** Des caravanes passent d'habitude par un ancien relais des Montagnes de l'Aube. Les registres attestent qu'un convoi a quitté la dernière étape, mais plusieurs témoins donnent des horaires incompatibles. Ragna demande aux aventuriers de retrouver la route empruntée, puis de déterminer s'il faut secourir des personnes, démonter une fausse piste ou simplement corriger un mauvais rapport. **Indices possibles :** une roue réparée avec un bois qui ne vient pas du secteur, deux témoignages indépendants et une carte portant une date erronée. **Issue ouverte :** accident, détournement volontaire, protection d'un fugitif, mauvaise tenue des registres ou anomalie réelle — sans attribuer par défaut toute étrangeté à la Première Ancre.
+
+**2. La garnison des trois versions — enquête sociale et militaire.** Dans un poste de montagne, trois rapports décrivent différemment le même incident. L'un accuse un officier, l'autre les habitants et le troisième une patrouille étrangère. Ragna accueille des aventuriers capables de parler à des personnes que l'uniforme met mal à l'aise. **Déroulement :** écouter sans accuser, comparer traces et horaires, restituer les contradictions aux parties concernées, puis décider ce qui mérite une enquête officielle. **Enjeu :** éviter qu'un préjugé ou une conclusion hâtive transforme une affaire locale en affrontement. Les joueurs peuvent découvrir une négligence, une manœuvre ou un malentendu ; aucun coupable n'est imposé.
+
+**3. La galerie qui répond deux fois — exploration, recherche et tension croissante.** Deux équipes de prospecteurs ont décrit le même écho dans des galeries anciennes à des jours de marche l'une de l'autre. Ragna constitue une mission avec un éclaireur, une personne capable de tenir la ligne et quelqu'un qui sache documenter les observations. Eamon ou Névane peuvent être consultés **si leur disponibilité et leurs propres engagements le permettent**. **Indices :** mesures contradictoires, anciennes marques, témoignage d'un guide local et passage dont la structure semble plus ancienne que le travail connu des mines. **Enjeu :** sécuriser l'accès, vérifier les hypothèses et rendre des conclusions utiles sans décider d'avance qu'il s'agit d'une opération de la Première Ancre. Le groupe peut interrompre l'exploration et revenir mieux préparé : ce peut être une réussite.
+
+**4. Tenir le col, sauver la relève — mission tactique et secours.** Une patrouille blessée doit être évacuée d'un col pendant qu'un petit groupe hostile ou un danger naturel coupe les chemins. Ragna mène une équipe limitée et répartit les rôles : couverture, secours, reconnaissance et liaison avec les autorités compétentes. **Complication :** le passage le mieux défendu n'est pas le plus sûr pour transporter les blessés ; les aventuriers doivent choisir entre préserver une position et sauver les personnes. **Résolution :** négocier, contourner, retarder, tenir brièvement ou battre en retraite. Ragna peut combattre si nécessaire ; son choix préféré demeure celui qui permet aux vivants de rentrer.
+
+Chaque scénario peut devenir une **scène courte, une séance d'enquête ou une expédition de plusieurs sessions**. Aucun de ces lieux, incidents, rapports ou personnages secondaires supplémentaires n'est considéré comme déjà existant dans le canon tant qu'il n'a pas été introduit en jeu.
+
+### Une première rencontre possible
+
+*Maison commune d'un relais de montagne, en fin de journée — ouverture proposée, non jouée.*
+
+Une femme en cape sombre écoute depuis plusieurs minutes deux conducteurs se disputer sur la fermeture d'un col. Elle ne les interrompt pas. Lorsque les aventuriers s'approchent, elle déplace lentement la carte posée devant elle pour qu'ils voient le même embranchement que les autres.
+
+> — Vous avez chacun un bon argument, dit-elle. Ce qui m'intéresse, c'est ce qui s'est réellement passé.
+>
+> Elle marque une pause, puis désigne un trait sur la carte.
+>
+> — Vous êtes passés ici. Pourquoi n'avez-vous pas parlé du pont ?
+
+Si les joueurs présentent leurs observations, elle les prend au sérieux et peut **leur proposer une mission**, quel que soit leur rang. S'ils la reconnaissent comme Revenante, elle ne recherche pas les marques de révérence. S'ils la sous-estiment, elle n'a aucune obligation de révéler son expérience pour les convaincre. **La suite dépend intégralement de leurs choix.**
+
+### Comment la mettre en scène
+
+- **Voix :** calme, précise, peu de paroles inutiles ; humour pince-sans-rire, jamais une caricature de femme froide.
+- **Information :** elle distingue un fait observé, une déduction plausible et une hypothèse encore fragile. Elle dit « je ne sais pas » quand c'est vrai.
+- **Autorité :** elle peut mener une unité, préparer une mission complète et se battre, mais elle n'est pas omnisciente ; l'initiative des joueurs doit compter.
+- **Compagnons :** **Lok**, son corbeau, peut partager une scène de voyage ou de repos, sans devenir automatiquement espion télépathe ou dispositif de surveillance illimitée.
+- **Respect :** les Revenants et l'armée connaissent sa compétence ; des étrangers peuvent la sous-estimer, mais le MJ n'a pas à en faire un gag sexiste systématique.
+- **Échec :** une enquête peut rester ouverte, un témoin peut se tromper sans mentir, et un repli bien conduit peut être la meilleure victoire.
+- **Discrétion :** Ragna ne doit pas offrir d'office aux personnages joueurs l'accès à sa vie privée, ni à des informations qu'elle n'aurait aucune raison de connaître.
+
+### Utiliser cette fiche comme point de départ d'une partie
+
+Un joueur peut remettre au MJ cette simple proposition : *« Nous rencontrons Ragna au cours d'une mission de reconnaissance dans les Montagnes de l'Aube ; notre groupe ne la connaît pas encore, et nous souhaitons enquêter sur une piste qu'elle juge incertaine. »* Le MJ choisit ensuite les indices, la vérité de l'affaire, les risques et les décisions des personnages non joueurs.
+
+Ces amorces peuvent aussi servir de **brief de jeu de rôle conversationnel** : fournir la fiche à l'animateur ou à l'assistant narratif, préciser les joueurs et le niveau de connaissance des personnages, puis **laisser chaque joueur décider de ses actes**. Le site des Archives présente pour l'instant ces idées en texte ; **il ne possède pas encore de moteur de conversation interactif**.
+
 ## Projets ouverts, non joués
 
 - **Valider** Aldhammar comme ville natale et préciser le statut de la **petite noblesse Pierre-Sèche**, sans inventer de famille ou de titres qui contredisent l'Atlas.
@@ -185,6 +261,8 @@ La Pierre d'Écoute ne crée pas une cartographie absolue du sous-sol. Les appar
 - *Campagne Brut 4.2*, **CB42 P18752–19902** (Pierre d'Écoute, transmission).
 - *Continuité*, v1.7, **Taagral**, échanges 012–119 (commandement réparti).
 - *Campagne Brut 4.3*, début (scènes de repas à Aldhammar).
+- *Continuité de la campagne et de l’œuvre*, v1.7, **« Première Ancre et Régent sans Couronne »**, échanges **108–117** (chevilles de seuil, coalition, causes plus anciennes non identifiées).
+- **Précisions du créateur, 28 octobre 2026** : participation de Ragna aux recherches avec **Eamon et Névane**, accompagnement d'Orin durant une partie du combat final, soutien face à l'apparition d'une puissance proche du niveau divin ; détails exacts de l'engagement à recouper avec le brut intégral. Les quatre amorces d'aventure sont des **propositions nouvelles, non jouées**.
 - **Orientations proposées par le créateur le 28 octobre 2026 :** excellente enquêtrice et exploratrice militaire, écoute exceptionnelle, passé urbain et aristocratie naine possible, parcours de pionnière respectée par l'état-major et Torgarl, chaleur et humour pince-sans-rire, Les scènes de jeunesse et dialogues de formation présents ici sont des **reconstitutions proposées et non jouées**.
 
 ## Feuillets liés
