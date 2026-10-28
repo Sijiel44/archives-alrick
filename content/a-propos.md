@@ -8,7 +8,7 @@ Les Archives d’Alrick réunissent les connaissances de l’univers d’Alrick 
 
 ## Une première collection
 
-Cette édition reprend les huit fiches Markdown du **Kit de démarrage Quartz 5 v0.1** et ses six rubriques. Leurs références à CB42 et leurs statuts documentaires sont conservés. Les 592 sujets de l’inventaire ne correspondent pas à 592 fiches déjà disponibles.
+Cette édition a commencé avec les huit fiches Markdown du **Kit de démarrage Quartz 5 v0.1**. Elle comprend désormais **onze fiches pilotes réparties en sept rubriques**, enrichies des deux portraits de compagnons — [[REV-06|Heimdall]] et [[REV-16|Aldren]] — et de la première fiche de groupe, [[GRP-01|Les Revenants]]. Leurs références à CB42 et leurs statuts documentaires sont conservés. Les 592 sujets de l’inventaire ne correspondent pas à 592 fiches déjà disponibles.
 
 Les sources brutes n’ont pas été revérifiées paragraphe par paragraphe lors de cette intégration technique. Les fiches restent des pilotes à relire avant publication. Aucune hypothèse nouvelle n’est ajoutée au canon.
 
