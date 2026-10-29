@@ -8,8 +8,8 @@ Ces archives conservent les faits joués, les incertitudes et les histoires enco
 
 ## État de la publication
 
-148 fiches codées sont publiées : 95 sont validées (vert) et 53 sont en cours de consolidation (jaune). La bibliothèque générale en présente 75. Les autres fiches publiées sont accessibles depuis le [suivi éditorial](/suivi-editorial/) et s’ouvrent après un avertissement lorsqu’elles abordent des révélations de campagne.
+153 fiches codées sont publiées : 101 sont validées (vert) et 52 sont en cours de consolidation (jaune). La bibliothèque générale en présente 75. Les autres fiches publiées sont accessibles depuis le [suivi éditorial](/suivi-editorial/) et s’ouvrent après un avertissement lorsqu’elles abordent des révélations de campagne.
 
-Les 112 entrées rouges restent en chantier et ne sont pas publiées sur le site. Les 592 sujets de l’inventaire donnent une mesure plus large du travail de migration et d’enrichissement à poursuivre.
+Les 107 entrées rouges restent en chantier et ne sont pas publiées sur le site. Les 592 sujets de l’inventaire donnent une mesure plus large du travail de migration et d’enrichissement à poursuivre.
 
 [[a-propos|Découvrir les sources et la méthode →]]
