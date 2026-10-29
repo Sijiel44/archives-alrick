@@ -10,7 +10,7 @@ Les Archives d’Alrick réunissent les connaissances de l’univers d’Alrick 
 
 L’archive rassemble maintenant les fiches issues des campagnes 1 à 4.3 et des dossiers de continuité CB42–CB43, réparties en douze domaines : monde, atlas, personnages, groupes, institutions, cultures, objets, projets, économie, magie, Maison et chroniques. Les 592 sujets de l’inventaire de recherche ne correspondent pas à 592 fiches déjà disponibles.
 
-Au 29 octobre 2026, **273 fiches et index de travail** sont suivis : 95 sont validés pour cette version, 66 sont en cours et 112 restent à reprendre. **148 fiches codées sont publiées** : les jaunes affichent explicitement ce qui est adopté et ce qui reste à mettre en place. Les 15 index éditoriaux sont suivis séparément des fiches; les index de relecture restent en brouillon. Les pages rouges, les propositions non jouées et les index de travail non validés restent en brouillon. Le détail, les liens directs et les corrections attendues figurent dans le [[suivi-editorial|tableau de suivi éditorial]].
+Au 29 octobre 2026, **273 fiches et index de travail** sont suivis : 101 sont validés pour cette version, 65 sont en cours et 107 restent à reprendre. **153 fiches codées sont publiées** : les jaunes affichent explicitement ce qui est adopté et ce qui reste à mettre en place. Les 15 index éditoriaux sont suivis séparément des fiches; les index de relecture restent en brouillon. Les pages rouges, les propositions non jouées et les index de travail non validés restent en brouillon. Le détail, les liens directs et les corrections attendues figurent dans le [[suivi-editorial|tableau de suivi éditorial]].
 
 Les couleurs expriment l’état de vérification, pas une certitude absolue : une fiche verte reste révisable si une source plus récente la corrige. Les sources brutes n’ont pas encore toutes fait l’objet d’une relecture transversale complète; les codes et repères documentaires sont conservés pour permettre ce travail. Aucune hypothèse ne devient canon par simple plausibilité.
 
@@ -20,7 +20,7 @@ Les couleurs expriment l’état de vérification, pas une certitude absolue : u
 - **Jaune — En cours** : base fiable, avec une mise en place ou des détails encore attendus.
 - **Rouge — À reprendre** : contradiction, source, consentement ou décision à résoudre; la fiche reste en brouillon.
 
-Le champ `canon_statut` décrit ensuite le contenu : `faits_joues`, `declaration`, `projet_en_cours`, `hypothese`, `proposition_non_jouee`, `historique` ou `a_verifier`.
+Le champ `canon_statut` décrit ensuite le contenu : `faits_joues`, `lore_valide`, `declaration`, `projet_en_cours`, `hypothese`, `proposition_non_jouee`, `historique` ou `a_verifier`.
 
 « Rappelé » décrit un retour à la vie. « Revenant » décrit une appartenance à la compagnie d’Orin. Les deux sont indépendants, comme le sont parenté, résidence, emploi et allégeance.
 
