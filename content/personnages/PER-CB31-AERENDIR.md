@@ -21,3 +21,4 @@ Il aime fabriquer des objets simples en bois : manches d’outils, boîtes, banc
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P16603–16628; P16701–16718.
+

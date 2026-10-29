@@ -21,3 +21,4 @@ Elle garde des souvenirs vifs d’Alriana, qu’elle décrit comme très têtue 
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P16630–16659.
+

@@ -29,3 +29,4 @@ La connaissance doit rester accessible aux villages concernés; si le dispositif
 ## Sources
 
 - *Campagne Brut 2*, CB2 P10091–10125.
+

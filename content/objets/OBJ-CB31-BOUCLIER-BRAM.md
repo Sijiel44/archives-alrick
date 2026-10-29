@@ -22,3 +22,4 @@ Une scène ultérieure nomme [[REV-01|l’équipement de Bram]] **Rempart du Ret
 
 - *Campagne Brut 3.1*, CB31 P00337–00371.
 - *Campagne Brut 4.2*, tableau des Insignes dans [[GRP-01|Les Revenants]], CB42 P18752–21050.
+

@@ -22,3 +22,4 @@ CB31 la montre collaborant avec Orin sur un projet textile pour Bordociel : atel
 
 - *Campagne Brut 3.1*, CB31 P01825–02483; P16308–16421.
 - [[PROJ-CB31-TEXTILES-BORDOCIEL|Projet textile de Bordociel]].
+

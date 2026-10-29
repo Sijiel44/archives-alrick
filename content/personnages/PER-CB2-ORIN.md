@@ -47,3 +47,4 @@ Voir [[PROJ-CB31-FONDS-ATELIERS|le fonds confié à Astrid]], [[PER-CB31-YLVA|Yl
 - *Campagne Brut 2*, CB2 P00560–00643 (répartition des responsabilités); P08292–08294 (les deux noms entendus au retour à Valbrume).
 - *Campagne Brut 3.1*, CB31 P13280–13355; P13844–13855; P16302–16920.
 - Confirmation du créateur, 29 octobre 2026 : Harald est le père d’Orin; Alrick est son nom d’usage fréquent en voyage.
+

@@ -29,3 +29,4 @@ Ne pas annoncer ce que la pierre contient, ce qu’elle ouvre ni ce qu’elle fe
 ## Sources
 
 - *Campagne Brut 2*, CB2 P00310–00325; P02731–02745.
+

@@ -27,3 +27,4 @@ La composition familiale est rapportée par le récit. La nature exacte de sa fo
 ## Sources
 
 - *Campagne Brut 2*, CB2 P00273–00290; P02693–02723.
+

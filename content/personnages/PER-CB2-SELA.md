@@ -27,3 +27,4 @@ Les noms de ses sœurs et le mode de transmission de sa charge ne sont pas préc
 ## Sources
 
 - *Campagne Brut 2*, CB2 P00273–00290; P02693–02723.
+

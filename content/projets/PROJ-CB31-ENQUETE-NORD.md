@@ -25,3 +25,4 @@ Cette fiche ne contient pas les révélations des scènes suivantes. Le dépôt 
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P04529–06216.
+

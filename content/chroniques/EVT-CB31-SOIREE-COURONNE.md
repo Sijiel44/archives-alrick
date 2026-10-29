@@ -21,3 +21,4 @@ La source ne fixe pas la fréquence, le lieu, les participants, le rituel ni le 
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P12393–12439.
+

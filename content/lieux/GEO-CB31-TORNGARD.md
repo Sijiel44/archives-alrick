@@ -21,3 +21,4 @@ Le lieu est aussi lié à la vie militaire : Orin y reçoit le général Dac et 
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P03966–04175; P05297–05350; P12215–12280.
+

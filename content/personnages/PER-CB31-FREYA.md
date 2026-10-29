@@ -25,3 +25,4 @@ La scène ne précise pas toutes ses fonctions politiques ni l’étendue exacte
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P12130–12188; P16302–16762.
+

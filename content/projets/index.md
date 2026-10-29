@@ -1,6 +1,6 @@
 ---
 publish: false
-title: "Projets et fondations"
+title: "Projets et fondations — brouillons CB2–CB3.2"
 description: "Fiches de travail pour les projets évoqués dans les campagnes, avec leur état d’avancement et les décisions encore ouvertes."
 ---
 
@@ -21,3 +21,6 @@ Ces fiches distinguent proposition, négociation, essai et réalisation. Les pro
 - [[PROJ-CB31-ENQUETE-NORD|Enquête des Montagnes du Nord — note de continuité]]
 - [[PROJ-CB31-PRESENTATIONS-BORDOCIEL|Présentations textiles de Bordociel]]
 - [[PROJ-BORDOCIEL-ACADEMIE|Académie militaire de Bordociel]]
+- [[PROJ-CB32-PROFONDEUR-NORD|Défense en profondeur du Nord]]
+- [[PROJ-CB32-MESURE-MANA|Instrument de mesure du mana]]
+

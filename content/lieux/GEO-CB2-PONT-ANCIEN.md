@@ -41,3 +41,4 @@ Ces éléments ne doivent pas être présentés comme des révélations objectiv
 ## Sources
 
 - *Campagne Brut 2*, CB2 P00054–00237; P02693–02835; P03199–03242.
+

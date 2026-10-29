@@ -8,3 +8,4 @@ description: "Index de travail des événements culturels et repères de lieu is
 
 - [[EVT-CB31-SOIREE-COURONNE|Soirée de la Couronne — rendez-vous hivernal à préciser]]
 - [[PROJ-CB31-PRESENTATIONS-BORDOCIEL|Présentations textiles de Bordociel — événement envisagé]]
+

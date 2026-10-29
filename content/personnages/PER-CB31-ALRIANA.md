@@ -25,3 +25,4 @@ CB31 ne définit pas explicitement son statut actuel. Vérifier d’autres sourc
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P16405–16421; P16647–16659; P16722–16727; P16900–16914.
+

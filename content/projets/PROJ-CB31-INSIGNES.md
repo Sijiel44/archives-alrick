@@ -35,3 +35,4 @@ Le statut officiel du nom collectif, la règle de transmission de chaque insigne
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P00249–00523.
+

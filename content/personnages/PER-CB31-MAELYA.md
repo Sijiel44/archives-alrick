@@ -21,3 +21,4 @@ Elle tient des carnets de termes difficiles à traduire et prend le temps d’en
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P16684–16706.
+

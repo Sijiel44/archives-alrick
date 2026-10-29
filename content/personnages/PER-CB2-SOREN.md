@@ -32,3 +32,4 @@ Le vieux marin Sören de CB1 est une personne distincte. Le mécanisme du pont e
 - *Campagne Brut 2*, CB2 P00273–00290; P02693–02723.
 - Confirmation du créateur, 29 octobre 2026 : le gardien s’appelle Eren; il est distinct du marin Sören de CB1.
 - Voir [[PER-CB1-SOREN|Sören, vieux marin de CB1]]; personnes distinctes.
+

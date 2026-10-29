@@ -29,3 +29,4 @@ La formation doit pouvoir croître sans prendre de terres ni endommager les mili
 ## Sources
 
 - *Campagne Brut 2*, CB2 P10287–10377; P10378–10645.
+

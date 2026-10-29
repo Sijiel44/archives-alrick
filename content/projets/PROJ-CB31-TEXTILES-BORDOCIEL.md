@@ -32,3 +32,4 @@ Bordociel n’existe pas encore au moment de ces échanges. Le projet n’attest
 
 - *Campagne Brut 3.1*, CB31 P01825–02483.
 - Orientation du créateur, 28 octobre 2026 : école militaire future à Bordociel.
+

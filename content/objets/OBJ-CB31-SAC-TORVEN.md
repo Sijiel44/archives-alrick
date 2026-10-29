@@ -23,3 +23,4 @@ Le passage expose des fonctions souhaitées, pas une fabrication ni une liste d�
 - *Campagne Brut 3.1*, CB31 P00404–00433.
 - *Campagne Brut 4.2*, tableau des Insignes dans [[GRP-01|Les Revenants]], CB42 P18752–21050.
 - [[PROJ-CB31-INSIGNES|Insignes des Revenants]].
+

@@ -34,3 +34,4 @@ tags: [alrick, cb1, personnage, brouillon]
 
 - *Campagne Brut 1*, CB1 P01781–01924.
 - Voir aussi [[PER-CB2-SOREN|Eren, gardien du pont (CB2)]]; personnes distinctes.
+

@@ -38,3 +38,4 @@ tags: [edric, valbrume, personnage, cb1, cb2, brouillon]
 - *Campagne Brut 2*, CB2 P00365–00380.
 - *Campagne Brut 3.1*, CB31 P13280–13331.
 - Confirmation du créateur, 29 octobre 2026 : Edric Varen, Edric de CB2 et Edric de Valbrume sont une seule personne; il deviendra duc des années plus tard.
+

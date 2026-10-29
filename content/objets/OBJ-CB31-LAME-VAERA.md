@@ -23,3 +23,4 @@ Cette fiche décrit le concept formulé dans CB31. CB42 mentionne un insigne à 
 - *Campagne Brut 3.1*, CB31 P00047–00104; P00317–00336.
 - *Campagne Brut 4.2*, tableau des Insignes dans [[GRP-01|Les Revenants]], CB42 P18752–21050.
 - [[PROJ-CB31-INSIGNES|Insignes des Revenants]].
+

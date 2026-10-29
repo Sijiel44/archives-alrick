@@ -25,3 +25,4 @@ La source ne fixe pas clairement son espèce, son statut (animal, esprit ou autr
 ## Sources
 
 - *Campagne Brut 2*, CB2 P01503–01522; P01651–01659.
+

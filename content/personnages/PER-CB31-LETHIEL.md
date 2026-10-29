@@ -19,3 +19,4 @@ Lethiel est la fille d’Aerendir et la sœur de Thaëron. Architecte, elle docu
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P16662–16681.
+

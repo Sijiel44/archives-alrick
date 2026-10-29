@@ -15,3 +15,4 @@ Toutes ces fiches sont non publiées et à relire.
 - [[PER-CB31-LETHIEL|Lethiel]] · [[PER-CB31-THAERON|Thaëron]] · [[PER-CB31-MAELYA|Maëlya]]
 - [[PER-CB31-ELYRA|Elyra]] · [[PER-CB31-ASTRID|Astrid]]
 - [[PER-CB31-MARA-VIFACIER|Mara Vifacier]] · [[PER-CB31-DURGAN|Durgan Main-d’Acier]] · [[PER-CB31-YLVA|Ylva]]
+

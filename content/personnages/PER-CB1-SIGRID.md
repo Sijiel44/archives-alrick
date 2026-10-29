@@ -33,3 +33,4 @@ tags: [alrick, cb1, personnage, brouillon]
 
 - *Campagne Brut 1*, CB1 P00139–00229; P00627–00726.
 - *Campagne Brut 3.1*, CB31 P01827–01919.
+

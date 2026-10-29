@@ -25,3 +25,4 @@ La scène montre un mandat accepté et un apport initial remis. Les règles comp
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P13280–13355.
+

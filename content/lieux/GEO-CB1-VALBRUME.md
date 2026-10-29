@@ -30,3 +30,4 @@ tags: [alrick, cb1, lieu, brouillon]
 ## Sources
 
 - *Campagne Brut 1*, CB1 P02752–02888; P03174–03298; P04165–04247.
+

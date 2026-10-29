@@ -47,3 +47,4 @@ La possibilité d’un nouveau retour ne signifie ni immortalité invulnérable,
 
 - [[B42-02|Les Rappelés et la continuité des personnes]]
 - [[A42-02|Aldhammar]]
+
