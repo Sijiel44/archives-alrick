@@ -27,6 +27,10 @@ Quand un élément du récit peut être repris par d’autres MJ, il garde une f
 - [[creatures/CRE-CB39-LIONS-EDRIC-MAELYA|Le lion Édril et la lionne Maërys]]
 - [[jdr-alrick/JDR-CB39-RENDEZ-VOUS|Rendez-vous et promesses à venir]]
 - [[jdr-alrick/JDR-CB39-ENQUETE-CAISSES|Enquête des caisses de Valbrume]]
+- [[maison/O42-13|Lieux et résidences de la Maison divine]]
+- [[maison/O42-16|Personnel et accueils résidentiels]]
+- [[magie/MAG-120|Partenariats industriels et recherche écologique]]
+- [[projets/PROJ-CB43-ETUDE-CONDITIONNELLE-THORGAL|Étude conditionnelle des plans transmise à Thorgal]]
 - [[chroniques/EVT-CB39-MARIAGE-EDRIC-MAELYA|Le mariage d’Édric et Maëlya]]
 - [[suivi-editorial|Suivi éditorial]]
 

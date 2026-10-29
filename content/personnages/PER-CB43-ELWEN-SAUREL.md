@@ -6,7 +6,7 @@ code: "SEC-66"
 categorie: "personnage"
 canon_statut: "lore_valide"
 ancre_documentaire: "CB43"
-source_brute: "CB43 P00205–00221; P00246–00249; CB42 P08980–09089; P17726–17825"
+source_brute: "CB43 P00205–00221; P00246–00249; CB42 P08980–09089; P17726–17825; confirmation du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "publique_avec_avertissement"
 description: "Administrateur issu d’une famille de marchands, chargé de préparer l’organisation de la Maison divine."
@@ -21,9 +21,9 @@ Elwen Saurel est un homme d’une quarantaine d’années issu d’une famille d
 
 Le portrait d’Elwen comme Elfe dans une première version de CB42 est traité comme une incohérence de rédaction concernant ce même personnage. Les descriptions ne désignent pas deux Elwen et aucune transformation n’est retenue. Les sources plus tardives, notamment CB42 et CB4.3, fondent le portrait conservé ici; aucune espèce n’est précisée.
 
-En CB4.3, son propre contrat n’est pas finalisé et son mandat définitif reste à formaliser. Il cherche à construire une organisation durable, où les responsabilités ne reposent pas sur une seule personne.
+En CB4.3, le texte laisse encore son contrat et son mandat à formaliser. Le créateur confirme ensuite que son contrat a été signé dans la partie jouée. Son rôle demeure la coordination administrative de la Maison divine; les limites de délégation, les moyens et les procédures de recours devront être recoupés avec la version de campagne la plus récente.
 
-**État des engagements :** la collaboration est souhaitée, mais le contrat et le mandat définitifs ne sont pas signés. Cette question administrative reste en cours.
+**État des engagements :** contrat signé; poste et responsabilité à suivre séparément des mandats souverains.
 
 ## Sources
 

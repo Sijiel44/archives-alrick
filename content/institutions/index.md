@@ -17,3 +17,4 @@ Les fiches ci-dessous distinguent les institutions adoptées en cours de déploi
 - [[INST-CB32-DEFENSE-RESILIENCE|Défense, sécurité et résilience]]
 - [[INST-CB35-FISCALITE-ROYAUME|Cadre fiscal commun du Royaume]]
 - [[INST-CB36-COLLOQUE-TORNGARD|Grand Colloque de Torngard — actes et commissions]]
+- [[INST-CB43-GARANTIES-SOUVERAINES|Garanties souveraines et mandats de représentation]]

@@ -1,35 +1,36 @@
 ---
-publish: false
-title: "La hache forgée avec Durgan"
+publish: true
+title: "La Hache de la Main d’Or"
 code: "OBJ-CB1-HACHE"
 categorie: "objet"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "CB1"
-source_brute: "CB1 P00991–01031; P01067–01091"
-derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
-description: "Une hache façonnée avec Durgan à partir de plusieurs aciers et marquée d’un motif de corbeau."
-tags: [alrick, cb1, objet, brouillon]
-etat_editorial: en_chantier
+source_brute: "CB1 P00991–01031; P01067–01091; confirmation du créateur, 2026-10-29"
+derniere_revision_documentaire: "2026-10-29"
+visibilite: "publique_avec_avertissement"
+description: "Hache forgée avec Durgan Main-d’Acier à partir de plusieurs aciers, ornée d’un motif de corbeau."
+tags: [alrick, cb1, objet, hache, durgan]
+etat_editorial: valide
+spoilers: true
+unlisted: true
 ---
 
-# La hache forgée avec Durgan
+# La Hache de la Main d’Or
 
-> [!info] Brouillon de migration
-> Fiche non publiée. Ne pas fixer de pouvoirs ou de provenance magique sans autre source.
+> [!warning] Révélation de campagne
+> Cette arme apparaît dans le récit d’Alrick. Son nom et son lien avec Durgan sont confirmés par le créateur.
 
-## Faits rapportés dans la source
+## Origine et fabrication
 
-- La fabrication associe l’acier du père d’Alrick, des aciers choisis par le maître forgeron Durgan et des fragments apportés par le voyageur.
-- Un éclat lié au batelier est conservé à part; une écaille est choisie pour l’ouvrage.
-- Un motif de corbeau est retenu et la hache réapparaît dans la suite du récit.
+La hache est façonnée avec **Durgan Main-d’Acier**, le forgeron d’exception qu’Orin rencontre plus tard à Skalore. Sa fabrication associe l’acier du père d’Alrick, des aciers choisis par Durgan et des fragments apportés par le voyageur. Un éclat lié au batelier est conservé à part; une écaille est retenue pour l’ouvrage. Un motif de corbeau est choisi, puis la hache réapparaît dans la suite du récit.
 
-## Limites et questions
+Le créateur retient le nom **La Hache de la Main d’Or** et souhaite la relier à la fiche de Durgan. Le nom n’est pas donné par la scène de CB1 : il s’agit d’un ajout canonique ultérieur.
 
-- La source ne suffit pas à établir des pouvoirs surnaturels, un nom propre ou une histoire complète de l’arme.
-- « Durgan Main-d’Acier » apparaît dans une proposition ultérieure; le surnom reste à vérifier.
+## Limites établies
+
+Les sources décrivent sa fabrication et son motif, mais ne lui attribuent pas de pouvoir surnaturel particulier. Aucun nom supplémentaire, effet magique ou fonction de chaîne n’est ajouté.
 
 ## Sources
 
 - *Campagne Brut 1*, CB1 P00991–01031; P01067–01091.
-
+- Confirmation du créateur, 29 octobre 2026 : nom **La Hache de la Main d’Or** et lien avec Durgan Main-d’Acier.

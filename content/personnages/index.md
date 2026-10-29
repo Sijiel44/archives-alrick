@@ -11,6 +11,7 @@ tags: [alrick, index]
 ## Feuillets disponibles
 
 - [[FAM-06|Harald Forgecœur]]
+- [[PER-CB31-SIVRA-BRASSEFEUILLE|Sivra Brassefeuille — brasseuse naine d’Entre-Rives]]
 - [[REV-01|Bram Vieux-Fer]]
 - [[REV-02|Ragna Pierre-Sèche]]
 - [[REV-03|Kelm Poing-Calme]]

@@ -1,29 +1,39 @@
 ---
-publish: false
-title: "Brassage expérimental d’Entre-Rives"
+publish: true
+title: "Les bières d’Entre-Rives et de l’abbaye"
 code: "CUL-CB31-BIERES-ENTRE-RIVES"
 categorie: "culture"
-canon_statut: "a_verifier"
+canon_statut: "lore_valide"
 ancre_documentaire: "CB31"
-source_brute: "CB31 P12341–12444"
+source_brute: "CB31 P12341–12444; confirmation du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
-description: "Essais brassicoles ancrés dans les ingrédients locaux d’Entre-Rives, dont une bière brune à la cacahuète et une recette hivernale en développement."
-tags: [entre-rives, biere, brassage, artisanat, culture, cb31, brouillon]
-etat_editorial: en_chantier
+visibilite: "publique_avec_avertissement"
+description: "Bières locales élaborées par Sivra Brassefeuille, brasseuse naine de l’abbaye d’Entre-Rives."
+tags: [entre-rives, biere, brassage, artisanat, culture, abbaye, cb31]
+etat_editorial: valide
+spoilers: true
 ---
 
-# Brassage expérimental d’Entre-Rives
+# Les bières d’Entre-Rives et de l’abbaye
 
-Une brasseuse naine d’Entre-Rives développe des essais à partir d’ingrédients locaux : plantes, fruits, miel et céréales. Orin lui demande de modifier ou d’écarter librement ses idées, afin que les bières expriment le lieu plutôt qu’une commande princière imposée.
+> [!warning] Repère de campagne
+> Les recettes et la fête sont liées aux scènes de CB3.1. Leurs noms et leurs profils gustatifs ont été développés à la demande du créateur.
 
-Une bière brune à la cacahuète a déjà été goûtée et jugée réussie. Une bière brune ou ambrée est encore en préparation pour la **Soirée de la Couronne** : miel discret, notes biscuitées, épices prudentes et évocation légère de conifère. La brasseuse décidera des essais et de la version qu’elle acceptera de signer.
+**Sivra Brassefeuille**, brasseuse naine de l’abbaye d’Entre-Rives, mène les essais brassicoles à partir de plantes, de fruits, de miel et de céréales locaux. Orin lui laisse la maîtrise de son travail : elle peut modifier ou abandonner une recette proposée afin que la bière exprime le lieu et non une commande princière. Voir aussi [[personnages/PER-CB31-SIVRA-BRASSEFEUILLE|la fiche de Sivra]].
 
-## Limites
+## Bières retenues
 
-Le nom de la brasseuse, celui de la gamme et celui de chaque bière ne sont pas fournis. La soirée est mentionnée comme rendez-vous futur; sa fréquence et son statut de tradition annuelle restent à préciser.
+### La Brune des Deux Rives
+
+Cette bière brune à la cacahuète a déjà été goûtée et jugée réussie. Son profil joue sur le malt torréfié, la croûte de pain grillée et une rondeur douce de cacahuète, avec une amertume modérée et une finale chaleureuse. Le nom et ces notes de dégustation sont des créations retenues par le créateur.
+
+### Premiers Flocons
+
+Cette bière ambrée de début d’hiver est associée à la Soirée de la Couronne. Le miel reste discret; les notes de biscuit et de céréale sont soutenues par des épices douces et une évocation légère de conifère. Elle se termine sur une fraîcheur sèche plutôt que sur une forte douceur.
+
+La recette saisonnière peut évoluer d’une année à l’autre selon les ingrédients disponibles et les choix de Sivra; le profil décrit ici est le repère de la maison.
 
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P12341–12444.
-
+- Confirmation du créateur, 29 octobre 2026 : la brasseuse naine travaille à l’abbaye d’Entre-Rives; la bière brune à la cacahuète a été goûtée; le créateur autorise la création de noms et de goûts.

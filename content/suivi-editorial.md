@@ -14,7 +14,7 @@ etat_editorial: en_cours
 - 🟡 **En cours** — socle fiable; mise en place, conséquences ou détails restent à suivre et sont explicitement signalés.
 - 🔴 **À reprendre** — contradiction, identité, consentement, preuve ou décision à reprendre; la fiche reste en brouillon.
 
-**État de l’audit :** 279 pages de travail classées (105 vertes, 67 jaunes, 107 rouges). Parmi elles, 268 entrées portent un code : 264 fiches et quatre index de relecture. Les 15 index éditoriaux sont suivis séparément des fiches; 159 fiches codées sont publiées. Quatre fiches déjà présentes dans la bibliothèque (GRP-01, GEO-HAUTES-PATURES, GEO-ROCHEBRUME, REV-16) sont reprises dans le suivi. Les pages à spoilers demandent une ouverture explicite et restent hors recherche et bibliothèque générale. Cette page de suivi est elle-même protégée par l’avertissement de lecture.
+**État de l’audit :** 285 pages de travail classées (109 vertes, 75 jaunes, 101 rouges). Parmi elles, 274 entrées portent un code : 270 fiches et quatre index de relecture. Les 15 index éditoriaux sont suivis séparément des fiches; 171 fiches codées sont publiées. Quatre fiches déjà présentes dans la bibliothèque (GRP-01, GEO-HAUTES-PATURES, GEO-ROCHEBRUME, REV-16) sont reprises dans le suivi. Les pages à spoilers affichent un avertissement avant le contenu. Les pages de continuité propres au JDR d’Alrick sont aussi non listées; les fiches de monde réutilisables peuvent rester dans la bibliothèque générale derrière leur avertissement. Cette page de suivi est elle-même protégée par un avertissement.
 
 ## Canon déjà confirmé à appliquer
 
@@ -26,7 +26,7 @@ etat_editorial: en_cours
 - La graphie **Ylva** est retenue et la pièce d’Alrick s’intitule **« Un prince... »**.
 - Les quatre fonctions des gardiens et leur transmission sont établies; le rôle exact du vieux pont reste à approfondir.
 - Les Conseils, la Guilde, le secours mutuel, la Charte du Soldat, la justice, l’heure commune, les Jeux universitaires, la défense en profondeur et le Festival des Métiers de la Mer sont adoptés et **en cours de déploiement dans le Royaume**; les fiches ne les présentent pas comme uniformément opérationnels.
-- **Elwen Saurel est un seul personnage** : retenir le portrait masculin de la quarantaine issu d’une famille de marchands; l’ancienne mention d’une Elfe est une incohérence rédactionnelle. Son contrat et son mandat restent à formaliser.
+- **Elwen Saurel est un seul personnage** : retenir le portrait masculin de la quarantaine issu d’une famille de marchands; l’ancienne mention d’une Elfe est une incohérence rédactionnelle. Son contrat est signé; le périmètre de son mandat reste à préciser avec la source la plus récente.
 - **Alriana**, mère d’Orin, a fait confectionner puis offert le gilet fleuri à Harald. Dans le souvenir raconté à Elyra, « sa mère » désigne la mère d’Orin, pas celle de Harald.
 - **Freya** est la mère d’Alriana et la grand-mère d’Orin.
 - **Durgan Main-d’Acier** est l’ami-forgeron d’Orin rencontré à Skalore; il est distinct de Harald.
@@ -47,6 +47,7 @@ Les références de codes anciens qui n’ont pas de fiche correspondante dans l
 - **Fiches validées pour publication avec avertissement :** [[objets/OBJ-CB36-BATEAU-EDRIC|La Flèche de Valbrume]] · [[objets/OBJ-CB39-YACHT-ORINOR|L’Horizon d’Orinor]] · [[objets/OBJ-CB39-NAVIRE-ELSEN|La Patiente]] · [[creatures/CRE-CB39-LIONS-EDRIC-MAELYA|Édril et Maërys]]. Les fiches d’Édric et de Maëlya renvoient aussi à leurs invocations et au navire.
 - **Description :** les pages précisent l’usage, l’apparence et les limites connues des trois coques; les détails non présents dans les sources, comme le gréement de l’Horizon, ne sont pas inventés.
 - **Sources :** CB36 P26398–26536; P26690–26795; CB37 P5244–5336; P10976–11172; CB38 P26800–26834; CB39 P01405–02586; P18557–18850; P18864–19260; P19742–19743; confirmation du créateur, 29 octobre 2026.
+- **Hache :** le créateur retient le nom **La Hache de la Main d’Or** et confirme son lien avec Durgan. La fiche précise les matériaux connus sans lui attribuer de pouvoir magique.
 - **État :** Validé.
 
 ### 🟡 DEV-002 — Promesses et rendez-vous à venir
@@ -106,14 +107,12 @@ Les références de codes anciens qui n’ont pas de fiche correspondante dans l
 - **Sources :** CB39 P26780–26940 ; P33887–34170 · **Destination :** V04 MAG-079 ; V03 REN-53 à REN-56
 - **Fiches/liens :** `MAG-079` (fiche correspondante absente du lot actuel — à créer ou remapper); `REN-53` (fiche correspondante absente du lot actuel — à créer ou remapper); `REN-56` (fiche correspondante absente du lot actuel — à créer ou remapper)
 - **État :** À reprendre.
-### 🔴 DEV-009 — Économie des inventions
+### 🟡 DEV-009 — Économie des inventions
 
-- **À traiter :** Relever propriété intellectuelle, financement, licence, entretien et rachat des parts.
-- **Point de départ :** Le financement initial ou la création d’un prototype ne fixe pas à lui seul les droits publics et privés.
-- **Ajout attendu :** Registre des accords signés et des clauses seulement proposées.
-- **Sources :** CB39 P04572–06381 ; P21701–23500 · **Destination :** V02 INS-005 à INS-006 ; V04 MAG-085
-- **Fiches/liens :** `INS-005` (fiche correspondante absente du lot actuel — à créer ou remapper); `INS-006` (fiche correspondante absente du lot actuel — à créer ou remapper); `MAG-085` (fiche correspondante absente du lot actuel — à créer ou remapper)
-- **État :** À reprendre.
+- **Décision de cadrage :** conserver le principe conditionnel et créer des fiches distinctes pour financement, droits et licences, étude limitée et garanties souveraines. Aucun montant, contrat, licence ou partage de résultats n’est signé ou fixé.
+- **Fiches :** [[magie/MAG-120|MAG-120]]; [[economie/ECON-CB43-FINANCEMENT-COOPERATIONS|financement]]; [[economie/ECON-CB43-DROITS-LICENCES-RESULTATS|droits et licences]]; [[projets/PROJ-CB43-ETUDE-CONDITIONNELLE-THORGAL|étude conditionnelle]]; [[institutions/INST-CB43-GARANTIES-SOUVERAINES|garanties souveraines]].
+- **Sources :** CB42 P14752–15148; confirmations du créateur.
+- **État :** En cours.
 ### 🟡 DEV-010 — Agriculture et conservation
 
 - **À traiter :** Mettre les pertes de stockage en regard de l’eau, des sols, du transport et du travail.
@@ -234,14 +233,12 @@ Les références de codes anciens qui n’ont pas de fiche correspondante dans l
 - **Sources :** CB38 P00680–00749 ; CB41 P07038–07057 · **Destination :** V04 MAG-105 ; V03 SEC-62
 - **Fiches/liens :** `MAG-105` (fiche correspondante absente du lot actuel — à créer ou remapper); `SEC-62` (fiche correspondante absente du lot actuel — à créer ou remapper)
 - **État :** En cours.
-### 🔴 DEV-025 — Mandats d Elwen et Maëron
+### 🟡 DEV-025 — Mandats d’Elwen et Maëron
 
-- **À traiter :** Quels périmètres, moyens, recours et conditions signer ?
-- **Point de départ :** Volonté de collaborer sans engagement définitif
-- **Ajout attendu :** Contrats séparés de la Maison, du Palais et du cabinet
-- **Sources :** CB42 P17726–18750 · **Destination :** V05 O42-07 et O42-08 ; V03 SEC-66 et SEC-67
-- **Fiches/liens :** [[personnages/PER-CB43-ELWEN-SAUREL|SEC-66 — Elwen Saurel — coordination administrative]]; [[personnages/PER-CB42-MAERON-VELD|SEC-67 — Maëron Veld — coordination des résidences]]
-- **État :** À reprendre.
+- **Décision confirmée :** le créateur confirme que les contrats d’Elwen et de Maëron ont été signés dans la partie jouée. Leurs responsabilités, moyens et limites de délégation restent à documenter avec la prochaine source brute.
+- **Fiches :** [[personnages/PER-CB43-ELWEN-SAUREL|Elwen]]; [[personnages/PER-CB42-MAERON-VELD|Maëron]]; [[maison/O42-16|vivier du personnel]].
+- **Sources :** CB42 P17726–18750; confirmation du créateur, 2026-10-29.
+- **État :** En cours.
 ### 🟢 DEV-026 — Portrait d Elwen Saurel
 
 - **Décision :** retenir le portrait masculin d’une quarantaine d’années, issu d’une famille de marchands; traiter l’ancienne mention d’une Elfe comme une incohérence de rédaction concernant le même personnage.
@@ -333,7 +330,11 @@ Les références de codes anciens qui n’ont pas de fiche correspondante dans l
 
 Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien GitHub ouvre la source de chaque fiche. Les fiches rouges ne sont pas disponibles sur le site tant que leur point ouvert n’est pas résolu.
 
-### 🟢 Validé — 105
+### 🟢 Validé — 109
+- 🟢 [`OBJ-CB1-HACHE` — La Hache de la Main d’Or](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB1-HACHE.md) — Nom et lien à Durgan confirmés; aucun pouvoir magique ajouté.
+- 🟢 [`CUL-CB31-BIERES-ENTRE-RIVES` — Les bières d’Entre-Rives et de l’abbaye](https://github.com/Sijiel44/archives-alrick/blob/main/content/cultures/CUL-CB31-BIERES-ENTRE-RIVES.md) — Sivra Brassefeuille, deux bières nommées et profils gustatifs; la bière brune à la cacahuète a déjà été goûtée.
+- 🟢 [`EVT-CB31-SOIREE-COURONNE` — Soirée de la Couronne — fête annuelle des Premières Neiges](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB31-SOIREE-COURONNE.md) — Fête annuelle dès les premiers flocons, au début de l’hiver.
+- 🟢 [`PER-CB31-SIVRA-BRASSEFEUILLE` — Sivra Brassefeuille](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-SIVRA-BRASSEFEUILLE.md) — Brasseuse naine de l’abbaye d’Entre-Rives; accroches de jeu explicitement proposées, non jouées.
 - 🟢 [[lieux/A42-01|Lire la fiche]] · [`A42-01` — La Maison et le Palais sur une même île](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/A42-01.md) — Aucun point bloquant repéré à l’audit; maintenir les sources et renvois.
 - 🟢 [[lieux/A42-03|Lire la fiche]] · [`A42-03` — Les trois exploitations de Corvelis](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/A42-03.md) — Aucun point bloquant repéré à l’audit; maintenir les sources et renvois.
 - 🟢 [[lieux/A42-04|Lire la fiche]] · [`A42-04` — Les résidences et les projets de recherche](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/A42-04.md) — Aucun point bloquant repéré à l’audit; maintenir les sources et renvois.
@@ -440,8 +441,16 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🟢 [[personnages/SEC-54|Lire la fiche]] · [`SEC-54` — Corin d Avarenne](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/SEC-54.md) — Aucun point bloquant repéré à l’audit; maintenir les sources et renvois.
 - 🟢 [[personnages/SEC-61|Lire la fiche]] · [`SEC-61` — Corven](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/SEC-61.md) — Aucun point bloquant repéré à l’audit; maintenir les sources et renvois.
 
-### 🟡 En cours — 67
-- 🟡 [Brouillons de lieux et d’événements — Campagne Brut 3.1](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/index-brouillons-cb31.md) — EVT-CB31-SOIREE-COURONNE — Soirée de la Couronne — rendez-vous hivernal à préciser
+### 🟡 En cours — 75
+- 🟡 [`ECON-CB43-BENEFICIAIRES-RETOMBEES` — Bénéficiaires et retombées des coopérations](https://github.com/Sijiel44/archives-alrick/blob/main/content/economie/ECON-CB43-BENEFICIAIRES-RETOMBEES.md) — Bénéficiaires possibles et retombées à suivre; aucune attribution ou partage de bénéfices n’est déjà arrêté.
+- 🟡 [`MAG-120` — Partenariats industriels et recherche écologique](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-120.md) — Étude limitée et conditionnelle; financement, droits, licences et garanties restent à négocier.
+- 🟡 [`O42-13` — Lieux de la Maison divine et responsabilités](https://github.com/Sijiel44/archives-alrick/blob/main/content/maison/O42-13.md) — Palais et Maison distingués; descriptions des résidences et nouvelles îles attendent CB4.4; intégration de Bregan non jouée.
+- 🟡 [`O42-16` — Vivier des métiers et accueils résidentiels](https://github.com/Sijiel44/archives-alrick/blob/main/content/maison/O42-16.md) — Contrats des personnes recrutées confirmés signés; instantané CB42 à compléter à partir de CB4.4.
+- 🟡 [`ECON-CB43-FINANCEMENT-COOPERATIONS` — Financer les coopérations et les ateliers](https://github.com/Sijiel44/archives-alrick/blob/main/content/economie/ECON-CB43-FINANCEMENT-COOPERATIONS.md) — Cadre proposé; aucun montant ou financement n’est convenu.
+- 🟡 [`ECON-CB43-DROITS-LICENCES-RESULTATS` — Droits, licences et résultats de recherche](https://github.com/Sijiel44/archives-alrick/blob/main/content/economie/ECON-CB43-DROITS-LICENCES-RESULTATS.md) — Cadre proposé; aucun droit commercial ou partage des résultats n’est signé.
+- 🟡 [`PROJ-CB43-ETUDE-CONDITIONNELLE-THORGAL` — Étude conditionnelle transmise à Thorgal](https://github.com/Sijiel44/archives-alrick/blob/main/content/projets/PROJ-CB43-ETUDE-CONDITIONNELLE-THORGAL.md) — Copie limitée à l’étude par des personnes autorisées; aucun transfert de propriété ni diffusion générale.
+- 🟡 [`INST-CB43-GARANTIES-SOUVERAINES` — Garanties souveraines et mandats](https://github.com/Sijiel44/archives-alrick/blob/main/content/institutions/INST-CB43-GARANTIES-SOUVERAINES.md) — Cadre proposé; un délégué ne peut engager un royaume sans mandat explicite.
+- 🟡 [Brouillons de lieux et d’événements — Campagne Brut 3.1](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/index-brouillons-cb31.md) — EVT-CB31-SOIREE-COURONNE — fiche validée; fête annuelle dès les premiers flocons
 - 🟡 [Brouillons d’événements — Campagne Brut 3.2–3.8](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/index-brouillons-cb32.md) — Base fiable; suivre la mise en place, les détails ou les conséquences encore ouverts.
 - 🟡 [Brouillons — continuité CB3.9 à CB4.3](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/index-brouillons-cb39-43.md) — Toutes les fiches restent à relire et ne sont pas publiées.
 - 🟡 [Cultures et pratiques — brouillons CB2–CB3.8](https://github.com/Sijiel44/archives-alrick/blob/main/content/cultures/index.md) — Base fiable; suivre la mise en place, les détails ou les conséquences encore ouverts.
@@ -509,16 +518,14 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🟡 [[personnages/PER-CB43-ELWEN-SAUREL|Lire la fiche]] · [`SEC-66` — Elwen Saurel — coordination administrative](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB43-ELWEN-SAUREL.md) — En CB4.3, son propre contrat n’est pas finalisé et son mandat définitif reste à formaliser. Elle cherche à construire une organisation durable, où les responsabilités ne reposent pas sur une seule personne. CB42 décrit d’abord une Elfe, puis associe le même nom à un homme d’une quarantaine d’années issu de commerçants. Les sources de synthèse conservent cette contradiction sans explication. Le portrait, le genre et l’éventuel lien entre les deux descriptions restent à confirmer; ne pas inventer de transformation ni fusionner plusieurs personnes sans validation.
 - 🟡 [[personnages/PER-CB42-MAERON-VELD|Lire la fiche]] · [`SEC-67` — Maëron Veld — coordination des résidences](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB42-MAERON-VELD.md) — Après les premiers échanges de CB4.2, Maëron souhaite contribuer à la coordination des résidences. **Aucun contrat définitif n’est signé dans CB42** : son périmètre, ses moyens et ses responsabilités restent à formaliser séparément de ceux d’Elwen et des institutions de la Maison.
 
-### 🔴 À reprendre — 107
+### 🔴 À reprendre — 101
 
 - 🔴 [`C42-12` — Préparer la prochaine séance](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/C42-12.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`CUL-CB2-NAHRIM` — Nahrim — pratiques de mémoire, d’eau et de délibération](https://github.com/Sijiel44/archives-alrick/blob/main/content/cultures/CUL-CB2-NAHRIM.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
-- 🔴 [`CUL-CB31-BIERES-ENTRE-RIVES` — Brassage expérimental d’Entre-Rives](https://github.com/Sijiel44/archives-alrick/blob/main/content/cultures/CUL-CB31-BIERES-ENTRE-RIVES.md) — Le nom de la brasseuse, celui de la gamme et celui de chaque bière ne sont pas fournis. La soirée est mentionnée comme rendez-vous futur; sa fréquence et son statut de tradition annuelle restent à préciser.
 - 🔴 [`CUL-CB31-ENTRETIEN-CHAMP` — Entretien hebdomadaire du Champ des Noms](https://github.com/Sijiel44/archives-alrick/blob/main/content/cultures/CUL-CB31-ENTRETIEN-CHAMP.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`EVT-CB1-CHENE` — La fête du géant tombé](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB1-CHENE.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`EVT-CB1-PIERRES` — Déplacement des pierres et voyage des apprentis](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB1-PIERRES.md) — Le calendrier, le nom de l’événement et le caractère obligatoire du voyage restent à vérifier.
 - 🔴 [`EVT-CB2-CERCLE-OMBRES` — Le Cercle des Ombres](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB2-CERCLE-OMBRES.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
-- 🔴 [`EVT-CB31-SOIREE-COURONNE` — Soirée de la Couronne — rendez-vous hivernal à préciser](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB31-SOIREE-COURONNE.md) — La source ne fixe pas la fréquence, le lieu, les participants, le rituel ni le nom de la bière. Il ne faut donc pas encore décrire cette soirée comme une fête annuelle canonisée.
 - 🔴 [`GEO-CB1-BRUMEFER` — Brumefer](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/GEO-CB1-BRUMEFER.md) — > Fiche non publiée. Les détails géographiques et politiques restent à recouper.
 - 🔴 [`GEO-CB1-CHAMP-NOMS` — Le Champ des Noms](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/GEO-CB1-CHAMP-NOMS.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`GEO-CB1-MAISON-ECHOS` — La Maison des Échos](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/GEO-CB1-MAISON-ECHOS.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
@@ -529,21 +536,17 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🔴 [`MAG-106` — Essai de retrait de la blessure d’Elyra](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-106.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`MAG-107` — Pédagogie des Cercles chez Tomas](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-107.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`MAG-117` — Machines agricoles adaptées avec les exploitants](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-117.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
-- 🔴 [`MAG-120` — Partenariats industriels et recherche écologique](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-120.md) — Financement, licences, ateliers locaux et participations éventuellement revendues sont discutés. Les dossiers agronomiques remis en cadeau ne cèdent pas tous les résultats industriels. Garanties souveraines, savoirs locaux et gouvernance scientifique restent à convenir.
 - 🔴 [`MAG-123` — Insignes et équipements des Revenants](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-123.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`MAG-124` — Communications communes des Revenants](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-124.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`MAG-125` — Manoir des Revenants et carte des passages d Aldhammar](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-125.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`MAG-CB2-MERIEN` — Mérien — étude prudente des nœuds](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-CB2-MERIEN.md) — > Les personnages consignent des réactions observées autour du nœud III. La source ne permet pas de conclure qu’il s’agit d’un prisonnier, d’une personne identifiée ou d’une présence qui doit être libérée. Le rapport distingue les observations, les modifications, les hypothèses et les éléments refusés. Les personnages proposent que les décisions appartiennent aux peuples concernés, avec une équipe technique locale et pluridisciplinaire : runistes, gardiens du terrain, archivistes, bâtisseurs et personnes détentrices de savoirs vivants. Le transfert de responsabilité aux habitants est un principe proposé dans la scène; les modalités finales restent à établir.
 - 🔴 [`MAG-CB31-RUNE-TERRAIN` — Rune de contrainte du terrain — exercice d’Orin](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-CB31-RUNE-TERRAIN.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`O42-12` — Pistes de développement pour la vie de la Maison](https://github.com/Sijiel44/archives-alrick/blob/main/content/maison/O42-12.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
-- 🔴 [`O42-13` — Répartition des lieux et responsabilités](https://github.com/Sijiel44/archives-alrick/blob/main/content/maison/O42-13.md) — — Maison divine — Communauté, quartiers, hospitalité et règles communes — Habitants et responsabilités propres ; accueil choisi d’Amelia ; organisation humaine à formaliser avec Elwen — Le tableau reprend la synthèse du volume V05 après CB42. Les cases « à formaliser », « en chantier » ou « à rencontrer » restent ouvertes et ne valent pas décision supplémentaire.
 - 🔴 [`O42-14` — Inventaire fonctionnel des ensembles créés](https://github.com/Sijiel44/archives-alrick/blob/main/content/maison/O42-14.md) — — Recherche — Atelier personnel, Laboratoire des Possibles et séparations sensibles — Créés ; essais et consentement restent à contrôler — Le tableau reprend la synthèse du volume V05 après CB42. Les cases « à formaliser », « en chantier » ou « à rencontrer » restent ouvertes et ne valent pas décision supplémentaire.
 - 🔴 [`O42-15` — Table de suivi des retours à la vie](https://github.com/Sijiel44/archives-alrick/blob/main/content/maison/O42-15.md) — Le tableau reprend la synthèse du volume V05 après CB42. Les cases « à formaliser », « en chantier » ou « à rencontrer » restent ouvertes et ne valent pas décision supplémentaire.
-- 🔴 [`O42-16` — Vivier des métiers et des accueils résidentiels](https://github.com/Sijiel44/archives-alrick/blob/main/content/maison/O42-16.md) — Dossiers RES-01 à RES-21, métier envisagé et dernier état ; contrats d’Elwen et Maëron à formaliser. Le tableau reprend la synthèse du volume V05 après CB42. Les cases « à formaliser », « en chantier » ou « à rencontrer » restent ouvertes et ne valent pas décision supplémentaire.
 - 🔴 [`OBJ-CB1-BRACELETS` — Les bracelets de Garran et Finn](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB1-BRACELETS.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`OBJ-CB1-CARNETS` — Les quatre carnets d’Alrick](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB1-CARNETS.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`OBJ-CB1-GALET` — Le galet anonyme de la collection](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB1-GALET.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
-- 🔴 [`OBJ-CB1-HACHE` — La hache forgée avec Durgan](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB1-HACHE.md) — « Durgan Main-d’Acier » apparaît dans une proposition ultérieure; le surnom reste à vérifier.
 - 🔴 [`OBJ-CB1-LYS` — Lys, la flûte d’Eamon](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB1-LYS.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`OBJ-CB1-MAREES-PIERRE` — Des Marées de Pierre](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB1-MAREES-PIERRE.md) — Il y sépare les observations et les hypothèses, note les heures approximatives de marée, l’orientation du soleil, les statues et les empreintes, et réserve un chapitre aux hypothèses.
 - 🔴 [`OBJ-CB2-PIERRE-POT-LAIT` — La pierre gardée dans le pot de lait](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB2-PIERRE-POT-LAIT.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.

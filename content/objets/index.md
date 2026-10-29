@@ -7,9 +7,9 @@ etat_editorial: en_cours
 
 # Objets et œuvres — brouillons CB1–CB3.9
 
-Ces propositions sont des fiches non publiées et à vérifier. Elles ne constituent pas un inventaire exhaustif. Les fiches de navires distinguent chaque coque, son propriétaire et ses caractéristiques.
+Cet index éditorial n’est pas un inventaire exhaustif. Les statuts des fiches varient; les navires distinguent chaque coque, son propriétaire et ses caractéristiques.
 
-- [[OBJ-CB1-HACHE|La hache forgée avec Durgan]]
+- [[OBJ-CB1-HACHE|La Hache de la Main d’Or]]
 - [[OBJ-CB1-BRACELETS|Les bracelets de Garran et Finn]]
 - [[OBJ-CB1-CARNETS|Les quatre carnets d’Alrick]]
 - [[OBJ-CB1-LYS|Lys, la flûte d’Eamon]]
