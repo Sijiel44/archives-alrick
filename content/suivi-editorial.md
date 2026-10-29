@@ -14,7 +14,7 @@ etat_editorial: en_cours
 - 🟡 **En cours** — socle fiable; mise en place, conséquences ou détails restent à suivre et sont explicitement signalés.
 - 🔴 **À reprendre** — contradiction, identité, consentement, preuve ou décision à reprendre; la fiche reste en brouillon.
 
-**État de l’audit :** 273 pages de travail classées (101 vertes, 65 jaunes, 107 rouges). Parmi elles, 262 entrées portent un code : 258 fiches et quatre index de relecture. Les 15 index éditoriaux sont suivis séparément des fiches; 153 fiches codées sont publiées. Quatre fiches déjà présentes dans la bibliothèque (GRP-01, GEO-HAUTES-PATURES, GEO-ROCHEBRUME, REV-16) sont reprises dans le suivi. Les pages à spoilers demandent une ouverture explicite et restent hors recherche et bibliothèque générale. Cette page de suivi est elle-même protégée par l’avertissement de lecture.
+**État de l’audit :** 279 pages de travail classées (101 vertes, 71 jaunes, 107 rouges). Parmi elles, 268 entrées portent un code : 264 fiches et quatre index de relecture. Les 15 index éditoriaux sont suivis séparément des fiches; 153 fiches codées sont publiées. Quatre fiches déjà présentes dans la bibliothèque (GRP-01, GEO-HAUTES-PATURES, GEO-ROCHEBRUME, REV-16) sont reprises dans le suivi. Les pages à spoilers demandent une ouverture explicite et restent hors recherche et bibliothèque générale. Cette page de suivi est elle-même protégée par l’avertissement de lecture.
 
 ## Canon déjà confirmé à appliquer
 
@@ -32,66 +32,69 @@ etat_editorial: en_cours
 - **Durgan Main-d’Acier** est l’ami-forgeron d’Orin rencontré à Skalore; il est distinct de Harald.
 - Graphies canonisées : **Kharem** (Karim/Kerim), **Aubegrise** (Obgrise) et **Keldrun** (Keldrune). Les anciens codes de travail restent à remapper vers les fiches actuelles lorsque leur correspondance est établie.
 - Les dispositifs de communication, pratiques agricoles, transport guidé, Institut et école militaire de Bordociel sont décrits selon leur avancement réel; aucune mise en service anticipée n’est affirmée.
+- Les fiches de monde décrivent le socle réutilisable; la rubrique « JDR d’Alrick » conserve les événements et pistes de cette campagne, avec avertissement de spoilers.
 
 ## Travaux transversaux du registre — 36 points
 
 Les références de codes anciens qui n’ont pas de fiche correspondante dans le lot actuel sont signalées explicitement. Elles demandent une création ou un remappage, pas une fusion automatique. Les statuts de cette liste décrivent le travail éditorial restant.
 
-### 🔴 DEV-001 — Objets et bénéficiaires
+### 🟡 DEV-001 — Objets, propriétaires et créatures
 
-- **À traiter :** Créer un inventaire qui sépare auteur, propriétaire, destinataire et état actuel.
-- **Point de départ :** Le bateau donné à Édric, le bateau personnel, le yacht d’Orinor, le navire repris avec Elsenne et les lions du couple n’ont pas les mêmes bénéficiaires.
-- **Ajout attendu :** Table des objets liée aux fiches, sans fusion des navires.
-- **Sources :** CB39 P01405–02586 ; P18854–20045 · **Destination :** V04 MAG-052, MAG-071, MAG-084, MAG-087 ; V03 IMP-02
-- **Fiches/liens :** `MAG-052` (fiche correspondante absente du lot actuel — à créer ou remapper); `MAG-071` (fiche correspondante absente du lot actuel — à créer ou remapper); `MAG-084` (fiche correspondante absente du lot actuel — à créer ou remapper); `MAG-087` (fiche correspondante absente du lot actuel — à créer ou remapper); `IMP-02` (fiche correspondante absente du lot actuel — à créer ou remapper)
-- **État :** À reprendre.
-### 🔴 DEV-002 — Promesses et rendez-vous
-
-- **À traiter :** Réunir interlocuteur, durée promise, lieu, condition et résultat joué.
-- **Point de départ :** Semaine de Serah, cols avec Haldor, caravane avec Odrik, visite de Corvelis, jours avec Torgarl et retour à Entre-Rives sont des engagements distincts.
-- **Ajout attendu :** Échéancier relatif, sans dates calendaires inventées.
-- **Sources :** CB39 P06386–08275 · **Destination :** V02 Calendrier actif ; V03 SEC-46, SEC-47, SEC-51, SEC-53
-- **Fiches/liens :** `SEC-46` (fiche correspondante absente du lot actuel — à créer ou remapper); `SEC-47` (fiche correspondante absente du lot actuel — à créer ou remapper); `SEC-51` (fiche correspondante absente du lot actuel — à créer ou remapper); [[personnages/SEC-53|SEC-53 — Lysandra d Avarenne]]
-- **État :** À reprendre.
-### 🔴 DEV-003 — Chaîne des preuves de Valbrume
-
-- **À traiter :** Distinguer constat, témoignage, déduction, décision et risque technique.
-- **Point de départ :** Ordre obsolète authentique, caisses, ancien usage d’un entrepôt et facilitateur vivant ne démontrent pas un commanditaire.
-- **Ajout attendu :** Journal des preuves et des hypothèses concurrentes.
-- **Sources :** CB39 P20311–20701 · **Destination :** V06 C39-04 ; V04 MAG-095
-- **Fiches/liens :** `MAG-095` (fiche correspondante absente du lot actuel — à créer ou remapper)
-- **État :** À reprendre.
-### 🔴 DEV-004 — Statuts de la Maison
-
-- **À traiter :** Suivre pour chaque personne l’invitation, la réponse, les garanties et la dernière décision.
-- **Point de départ :** Braesa réside temporairement ; Nerys est allié ; Elyssane candidate ; les autres demandes ne sont pas des admissions.
-- **Ajout attendu :** Historique individuel des transitions, sans adhésion de groupe.
-- **Sources :** CB39 P25768–26603 · **Destination :** V05 O39-03 ; V03 IMP-38 à IMP-47
-- **Fiches/liens :** `IMP-38` (fiche correspondante absente du lot actuel — à créer ou remapper); `IMP-47` (fiche correspondante absente du lot actuel — à créer ou remapper)
-- **État :** À reprendre.
-### 🔴 DEV-005 — Royaumes et compétences des délégués
-
-- **À traiter :** Distinguer pays, maison commerciale, mandat diplomatique et propriété d’un projet.
-- **Point de départ :** Ysara, Cassian, Elsenne et Lysandra ne peuvent pas chacun engager un royaume entier.
-- **Ajout attendu :** Fiches de juridiction et limites des accords.
-- **Sources :** CB39 P04572–06381 ; P21701–23500 · **Destination :** V02 A39-01 à A39-05 ; V03 SEC-48, SEC-49, SEC-52, SEC-53
-- **Fiches/liens :** `SEC-48` (fiche correspondante absente du lot actuel — à créer ou remapper); `SEC-49` (fiche correspondante absente du lot actuel — à créer ou remapper); `SEC-52` (fiche correspondante absente du lot actuel — à créer ou remapper); [[personnages/SEC-53|SEC-53 — Lysandra d Avarenne]]
-- **État :** À reprendre.
-### 🟡 DEV-006 — Graphies canonisées, références à remapper
-
-- **À traiter :** Appliquer les graphies retenues et remapper les anciens codes de travail vers les fiches actuelles quand leur correspondance est établie.
-- **Décision canonique :** Kharem est la graphie préférée du même personnage parfois écrit Karim ou Kerim. Aubegrise et Keldrun sont les graphies préférées des mêmes lieux parfois écrits Obgrise et Keldrune.
-- **Ajout attendu :** Mettre à jour les renvois sans créer de doublons.
-- **Sources :** CB38 P13922–14081 ; CB39 P07799–08275 · **Destination :** V06 C38-07, C39-06 ; V03 IMP-06, SEC-60
-- **Fiches/liens :** `IMP-06` (fiche correspondante absente du lot actuel — à créer ou remapper); `SEC-60` (fiche correspondante absente du lot actuel — à créer ou remapper)
+- **Décision :** privilégier des fiches centrées sur chaque objet ou créature, en séparant propriétaire, bénéficiaire, créateur et état.
+- **Objets confirmés :** le bateau d’Édric appartient à Édric; le yacht du Palais relève d’Orinor; le navire marchand associé à Elsen appartient à Elsen. Le bateau personnel d’Orin sera un objet distinct, à choisir plus tard.
+- **Créatures :** le lion et la lionne sont des créatures magiques invoquées directement par Édric et Maëlya. **Édril** et **Maërys** sont des propositions de noms, pas encore canonisées.
+- **Fiches créées en brouillon :** [bateau d’Édric](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/objets/OBJ-CB39-BATEAU-EDRIC.md); [yacht d’Orinor](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/objets/OBJ-CB39-YACHT-ORINOR.md); [navire d’Elsen](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/objets/OBJ-CB39-NAVIRE-ELSEN.md); [lion et lionne](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/creatures/CRE-CB39-LIONS-EDRIC-MAELYA.md).
+- **À valider :** noms des lions; nom et caractéristiques des navires; raccord du yacht du Palais de CB42 avec les mentions de CB39. Ne pas confondre le yacht d’Orinor avec le futur bateau personnel d’Orin.
+- **Sources :** CB39 P01405–02586; P18841–20045; CB42 P11616–15761; confirmations du créateur, 2026-10-29.
 - **État :** En cours.
-### 🟡 DEV-007 — Limites nouvelles d’Orin
+### 🟡 DEV-002 — Promesses et rendez-vous à venir
 
-- **À traiter :** Séparer nature divine reconnue, phénomène observé, maîtrise et autorité institutionnelle.
-- **Point de départ :** Réaction des enchantements, densité intérieure et retrait d’une feuille n’équivalent pas à toute-puissance ou à un siège nouveau.
-- **Ajout attendu :** Fiche comparative des observations et des limites.
-- **Sources :** CB39 P14176–14675 ; P26967–30346 ; P39204–40106 · **Destination :** V01 B39-01 à B39-04 ; V04 MAG-080, MAG-081
-- **Fiches/liens :** `MAG-080` (fiche correspondante absente du lot actuel — à créer ou remapper); `MAG-081` (fiche correspondante absente du lot actuel — à créer ou remapper)
+- **Décision :** les engagements sont acceptés comme faisant partie de la continuité; les rencontres elles-mêmes ne sont pas réputées déjà jouées.
+- **À venir :** la caravane avec Odrik, la visite de Corvelis et les rendez-vous connexes pourront se faire lors de la traversée des Montagnes de l’Aube et de l’intégration des lignes ferroviaires.
+- **Dates :** aucune n’est fixée. Ne pas inventer de calendrier ni marquer un rendez-vous comme accompli avant la scène.
+- **Graphies :** le suivi source conserve Odrik et Corvelis; la dictée du 29 octobre donne « Audric » et « Corbelis ». Garder les deux formes en trace de transcription jusqu’à une relecture, sans créer de personnage ou de lieu supplémentaire.
+- **Fiche en brouillon :** [rendez-vous et promesses](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/jdr-alrick/JDR-CB39-RENDEZ-VOUS.md).
+- **Sources :** CB39 P06386–08275; confirmation du créateur, 2026-10-29.
+- **État :** En cours.
+### 🟡 DEV-003 — Chaîne des preuves de Valbrume
+
+- **Décision :** l’enquête continue et reste rattachée à ses enquêteurs. Elle peut progresser sans intervention personnelle d’Orin.
+- **Enquêteurs :** Halstor conduit les vérifications; Vaëra l’appuie et veille aux conséquences diplomatiques.
+- **État des preuves :** un faux ordre a déplacé l’arche; trois caisses ont circulé sans inscription; les personnes qui les ont déplacées ont été payées; la piste mène à un ancien entrepôt intermédiaire. L’usage passé de l’entrepôt par des délégations étrangères ne prouve pas leur implication.
+- **Limite actuelle :** aucun commanditaire n’est établi. Une piste vers des personnages liés à la Première Ronce reste une possibilité narrative non jouée, sans accusation canonique.
+- **Fiche en brouillon :** [enquête des caisses — Halstor et Vaëra](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/jdr-alrick/JDR-CB39-ENQUETE-CAISSES.md).
+- **Sources :** CB39 P20311–20701; confirmation du créateur, 2026-10-29.
+- **État :** En cours.
+### 🟡 DEV-004 — Statuts individuels de la Maison divine
+
+- **Décision :** suivre séparément le statut de chaque personne auprès de la Maison d’Orin et de Terran : allié, résident temporaire, résident de longue durée ou résident permanent, membre, ou candidat à la suite divine de l’une des deux divinités.
+- **Principe :** résidence, alliance, candidature et admission sont des états distincts. Une demande ou une candidature ne vaut pas admission; conserver un historique individuel des décisions.
+- **Pistes de jeu réutilisables :** missions proposées par des divinités, visite ou attaque de la Maison, ou tentative de la rejoindre par des personnages de très haut niveau. Ce sont des possibilités de scénario, pas des événements établis.
+- **Sources :** CB39 P25768–26603; confirmation du créateur, 2026-10-29.
+- **État :** En cours.
+### 🟢 DEV-005 — Mandat limité des délégués
+
+- **Décision confirmée :** un délégué ne peut pas engager tout son royaume sans mandat et légitimité explicites. Une déclaration individuelle ne vaut pas accord souverain.
+- **Application :** Lysandra d’Avarenne peut consulter son royaume avant un engagement; les accords restent circonscrits au mandat effectivement reçu.
+- **Périmètre :** les détails de juridiction et les limites de ces accords appartiennent pour l’instant au récit du JDR d’Alrick; leur reprise dans l’encyclopédie générale n’est pas prioritaire.
+- **Sources :** CB39 P04572–06381; P21701–23500; confirmation du créateur, 2026-10-29.
+- **Fiches/liens :** SEC-48, SEC-49, SEC-52 et SEC-53 restent à créer ou remapper si ces fiches deviennent nécessaires.
+- **État :** Validé.
+### 🟡 DEV-006 — Graphies canonisées, anciens codes à tracer
+
+- **Décision confirmée :** **Kharem** (avec H), **Aubegrise** et **Keldrun** sont les graphies à employer.
+- **Variantes de transcription :** Karim/Kerim, Obgrise et Keldrune peuvent être conservées comme alias de recherche dans les sources; ne pas créer de doublons.
+- **Mise à jour :** appliquer les graphies canonisées dans les nouvelles fiches. Aucune fiche concurrente n’a été repérée pour ces variantes dans le corpus consulté.
+- **À tracer :** les anciens codes `IMP-06` et `SEC-60` n’ont pas de fiche actuelle identifiable. Les garder comme références historiques sans remappage automatique tant que leur origine n’est pas retrouvée.
+- **Sources :** CB38 P13922–14081; CB39 P07799–08275; confirmations du créateur.
+- **État :** En cours.
+### 🟡 DEV-007 — Nature divine et limites d’Orin
+
+- **Fiche de référence :** conserver une fiche continue d’Orin dans le périmètre du **JDR d’Alrick** et la mettre à jour avec les nouveaux volumes, en distinguant les Autorités établies, les aspects décrits par le créateur et les pistes proposées.
+- **Établi :** les cinq Autorités recensées sont Magie, Création, Origine, Existence et Union. Le créateur décrit aussi Orin comme lié à l’accueil, la convivialité, l’écoute, la chaleur partagée et la place laissée aux autres.
+- **Formulation à préciser :** la dictée « dieu lié à l’Église » est conservée sans l’assimiler à une institution, à l’Existence ou à l’Union.
+- **Pistes non canonisées :** jeux, loisirs, rire et bons moments comme sous-natures; domaine guerrier en lien avec Taagral. Les exploits guerriers ne créent pas à eux seuls un nouveau domaine.
+- **Fiche :** [[personnages/PER-CB2-ORIN|PER-CB2-ORIN — portrait d’Orin / Alrick]], désormais rattachée au JDR d’Alrick et protégée par un avertissement de spoilers.
 - **État :** En cours.
 ### 🔴 DEV-008 — Transmission et diversité magique
 
@@ -433,7 +436,14 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🟢 [[personnages/PER-CB31-DURGAN|Lire la fiche]] · [`PER-CB31-DURGAN` — Durgan Main-d’Acier](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-DURGAN.md) — Ami d’Orin rencontré à Skalore, forgeron d’exception; distinct de Harald.
 - 🟢 [[personnages/PER-CB31-FREYA|Lire la fiche]] · [`PER-CB31-FREYA` — Freya — grand-mère d’Orin](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-FREYA.md) — Mère d’Alriana et grand-mère d’Orin; la relation familiale et l’origine du gilet sont confirmées.
 
-### 🟡 En cours — 65
+### 🟡 En cours — 71
+
+- 🟡 [`OBJ-CB39-BATEAU-EDRIC` — Bateau d’Édric Varen](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/objets/OBJ-CB39-BATEAU-EDRIC.md) — Propriété confirmée; nom, coque et histoire restent à préciser.
+- 🟡 [`OBJ-CB39-YACHT-ORINOR` — Yacht du Royaume d’Orinor](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/objets/OBJ-CB39-YACHT-ORINOR.md) — Propriété confirmée; maintenir distinct d’un bateau personnel d’Orin.
+- 🟡 [`OBJ-CB39-NAVIRE-ELSEN` — Navire marchand d’Elsen](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/objets/OBJ-CB39-NAVIRE-ELSEN.md) — Propriété confirmée; séparer la coque des savoir-faire partagés.
+- 🟡 [`CRE-CB39-LIONS-EDRIC-MAELYA` — Lion et lionne invoqués par Édric et Maëlya](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/creatures/CRE-CB39-LIONS-EDRIC-MAELYA.md) — Créatures magiques établies; noms proposés à valider.
+- 🟡 [`JDR-CB39-RENDEZ-VOUS` — Rendez-vous et promesses à venir](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/jdr-alrick/JDR-CB39-RENDEZ-VOUS.md) — Engagements acceptés; rencontres futures, sans date.
+- 🟡 [`JDR-CB39-ENQUETE-CAISSES` — Enquête des caisses de Valbrume](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/jdr-alrick/JDR-CB39-ENQUETE-CAISSES.md) — Enquête de Halstor et Vaëra toujours en cours.
 
 - 🟡 [[lieux/A42-02|Lire la fiche]] · [`A42-02` — Aldhammar, une capitale habitée](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/A42-02.md) — La famille se rassemble à Aldhammar pour accueillir Harald Forgecœur. Orin souhaite conduire la restauration avec les artisans locaux. Sigrun Pierreval accepte les premières démarches ; Dagna Veine-de-Pierre a été recommandée, mais son acceptation n’est pas encore acquise. GEO-ROCHEBRUME — Rochebrume — petit bourg des anciennes routes de la région d'Aldhammar, lieu d'origine validé de Bram Vieux-Fer. La distance et l'emplacement cartographique restent à définir.
 - 🟡 [Brouillons de lieux et d’événements — Campagne Brut 3.1](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/index-brouillons-cb31.md) — EVT-CB31-SOIREE-COURONNE — Soirée de la Couronne — rendez-vous hivernal à préciser
@@ -469,11 +479,11 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🟡 [[institutions/INST-CB32-SECOURS-AVENTURIERS|Lire la fiche]] · [`INST-CB32-SECOURS-AVENTURIERS` — Secours mutuel et Guilde des Aventuriers](https://github.com/Sijiel44/archives-alrick/blob/main/content/institutions/INST-CB32-SECOURS-AVENTURIERS.md) — La Guilde des Aventuriers et le secours mutuel sont **adoptés**; leur déploiement se met en route à l’échelle du Royaume. Les membres, les antennes et les mécanismes de certification restent à constituer. À préciser : qui certifie les niveaux de risque, qui finance les renforts et comment l’autorité locale conserve la maîtrise de son territoire.
 - 🟡 [[institutions/INST-CB35-FISCALITE-ROYAUME|Lire la fiche]] · [`INST-CB35-FISCALITE-ROYAUME` — Cadre fiscal commun du Royaume](https://github.com/Sijiel44/archives-alrick/blob/main/content/institutions/INST-CB35-FISCALITE-ROYAUME.md) — CB3.5 ouvre un chantier de fiscalité qui n’est pas encore rédigé. Le cadre proposé commence par **90 jours d’inventaire** : 45 jours pour relever les prélèvements existants, puis 45 jours pour décider lesquels conserver, remplacer ou supprimer progressivement. Une révision générale est envisagée après un an.
 - 🟡 [[magie/MAG-112|Lire la fiche]] · [`MAG-112` — Conservatoire botanique du Palais](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-112.md) — Extension de la serre en zones climatiques et collections, avec eau et pépinières. L’inventaire, la provenance, les conditions de culture et les risques restent à établir avec Lévara ; aucune libre dissémination de plantes rares n’est supposée.
-- 🟡 [[magie/MAG-116|Lire la fiche]] · [`MAG-116` — Yacht personnel du Palais et essais de Thaléa](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-116.md) — Base fiable; suivre la mise en place, les détails ou les conséquences encore ouverts.
+- 🟡 [[magie/MAG-116|Lire la fiche]] · [`MAG-116` — Yacht personnel du Palais et essais de Thaléa](https://github.com/Sijiel44/archives-alrick/blob/main/content/magie/MAG-116.md) — Yacht d’Orinor; propriété confirmée, distinguer de tout bateau personnel d’Orin.
 - 🟡 [[maison/O42-01|Lire la fiche]] · [`O42-01` — La Maison divine et le Palais d’Orin](https://github.com/Sijiel44/archives-alrick/blob/main/content/maison/O42-01.md) — Base fiable; suivre la mise en place, les détails ou les conséquences encore ouverts.
 - 🟡 [[objets/OBJ-CB38-LYRE-TAIRIN|Lire la fiche]] · [`OBJ-CB38-LYRE-TAIRIN` — Lyre de voyage destinée à Tairin](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB38-LYRE-TAIRIN.md) — Orin la choisit pour Tairin et l’achète personnellement, en dehors de la commande d’instruments destinée à la Maison. La scène établit l’achat et l’intention du cadeau; elle ne montre pas encore sa remise à Tairin.
 - 🟡 [[personnages/PER-CB1-SOREN|Lire la fiche]] · [`PER-CB1-SOREN` — Sören — vieux marin et témoin d’une cité engloutie](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB1-SOREN.md) — Les inscriptions sont fragmentaires; leur interprétation doit rester une hypothèse.
-- 🟡 [[personnages/PER-CB2-ORIN|Lire la fiche]] · [`PER-CB2-ORIN` — Orin — prince et voyageur sous le nom d’Alrick](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB2-ORIN.md) — Les projets d’Entre-Rives et les accords avec les Nahrim restent à distinguer des réalisations achevées.
+- 🟡 [[personnages/PER-CB2-ORIN|Lire la fiche]] · [`PER-CB2-ORIN` — Orin — prince et voyageur sous le nom d’Alrick](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB2-ORIN.md) — Portrait continu du JDR d’Alrick; aspects d’accueil confirmés, pistes ludiques et guerrières explicitement non canonisées.
 - 🟡 [[personnages/PER-CB42-LYSANDRA-DAVARENNE|Lire la fiche]] · [`PER-CB42-LYSANDRA-DAVARENNE` — Lysandra d’Avarenne — suivi agricole à Corvelis](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB42-LYSANDRA-DAVARENNE.md) — Base fiable; suivre la mise en place, les détails ou les conséquences encore ouverts.
 - 🟡 [[personnages/PER-CB42-SIGRUN-VAREK|Lire la fiche]] · [`PER-CB42-SIGRUN-VAREK` — Sigrun Varek — passage commercial oriental](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB42-SIGRUN-VAREK.md) — Sigrun Varek est l’interlocutrice d’un projet de passage commercial oriental. Un tunnel et deux bastions ont été envisagés, mais les reconnaissances de terrain, les accords et la définition du périmètre restent à faire. Une mission d’étude est proposée avec des Revenants; ce n’est pas encore une autorisation de construire. Les personnes affectées doivent aussi accepter leur mission, et Sigrun doit confirmer les accès et les interlocuteurs.
 - 🟡 [[personnages/PER-CB43-DORSA-VAUN|Lire la fiche]] · [`PER-CB43-DORSA-VAUN` — Dorsa Vaun — logistique résidentielle](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB43-DORSA-VAUN.md) — Base fiable; suivre la mise en place, les détails ou les conséquences encore ouverts.
