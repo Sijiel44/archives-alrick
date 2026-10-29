@@ -1,6 +1,7 @@
 ---
 publish: true
 spoilers: true
+unlisted: true
 title: "Ragna Pierre-Sèche — Celle qui écoute avant de décider"
 code: "REV-02"
 categorie: "personnage"

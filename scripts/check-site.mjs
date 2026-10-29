@@ -1,6 +1,7 @@
 import { readFile, readdir, stat } from 'node:fs/promises'
 import path from 'node:path'
 import assert from 'node:assert/strict'
+import YAML from 'yaml'
 import { fromHtml } from 'hast-util-from-html'
 import { visit } from 'unist-util-visit'
 
@@ -52,6 +53,23 @@ for (const file of files.filter(f => f.endsWith('.css'))) {
 }
 const index = JSON.parse(await readFile(path.join(root, 'static', 'contentIndex.json'), 'utf8'))
 assert(!Object.keys(index).some(key => key === 'mj' || key.startsWith('mj/')), 'Spoiler MJ dans la recherche')
+const sourceFiles = await walk(path.resolve('content'))
+for (const file of sourceFiles.filter(f => f.endsWith('.md'))) {
+  const source = await readFile(file, 'utf8')
+  const front = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  if (!front) continue
+  const fm = YAML.parse(front[1])
+  const relative = path.relative(path.resolve('content'), file).split(path.sep).join('/')
+  if (fm.publish !== true || fm.spoilers !== true || relative.startsWith('mj/')) continue
+  const slug = relative.replace(/\.md$/, '')
+  assert(fm.unlisted === true, `Fiche publique à spoilers non masquée des index : ${relative}`)
+  const htmlPath = path.join(root, `${slug}.html`)
+  const html = await readFile(htmlPath, 'utf8')
+  assert(html.includes('class="spoiler-disclosure"'), `Avertissement public absent : ${relative}`)
+  assert(html.includes('noindex, nofollow, nosnippet'), `Indexation publique non bloquée : ${relative}`)
+  assert(!/<details[^>]*\sopen(?:=|\s|>)/.test(html), `Fiche à spoilers ouverte par défaut : ${relative}`)
+  assert(!Object.keys(index).some(key => key === slug), `Fiche publique à spoilers présente dans la recherche : ${relative}`)
+}
 const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8')
 assert(!sitemap.includes('/mj/'), 'Page MJ dans le sitemap')
 assert(!files.some(f => /\.(docx|xlsx|csv|zip)$/i.test(f) || /atelier-mj|archives-source|inventaire_592|CONSIGNES_CONFIDENTIELLES/i.test(f)), 'Document source privé présent dans le site')

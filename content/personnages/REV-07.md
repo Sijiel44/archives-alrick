@@ -1,6 +1,7 @@
 ---
 publish: true
 spoilers: true
+unlisted: true
 title: "Haldrek — L’homme qui prépare le retour"
 code: "REV-07"
 categorie: "personnage"

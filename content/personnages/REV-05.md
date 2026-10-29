@@ -1,6 +1,7 @@
 ---
 publish: true
 spoilers: true
+unlisted: true
 title: "Torven Cendreval — Celui qui ramène les vivants"
 code: "REV-05"
 categorie: "personnage"

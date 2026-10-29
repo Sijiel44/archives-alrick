@@ -1,6 +1,7 @@
 ---
 publish: true
 spoilers: true
+unlisted: true
 title: "Eamon — Le professeur qui emporte les histoires"
 code: "REV-08"
 categorie: "personnage"

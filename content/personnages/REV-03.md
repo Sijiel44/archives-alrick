@@ -1,6 +1,7 @@
 ---
 publish: true
 spoilers: true
+unlisted: true
 title: "Kelm Poing-Calme — Celui qui choisit sa force"
 code: "REV-03"
 categorie: "personnage"

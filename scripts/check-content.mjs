@@ -31,7 +31,9 @@ for (const file of files) {
   if (file.split(path.sep).includes('mj')) {
     assert(fm.spoilers === true && fm.unlisted === true, `Protections anti-spoilers absentes : ${file}`)
     assert(!fm.tags && !fm.aliases, `Un tag ou alias pourrait exposer un extrait MJ : ${file}`)
-  } else assert(fm.spoilers !== true, `Les spoilers doivent être rangés dans content/mj : ${file}`)
+  } else if (fm.spoilers === true) {
+    assert(fm.unlisted === true, `Une fiche publique à spoilers doit être masquée des index et accessible par lien après avertissement : ${file}`)
+  }
 }
 assert(published > 0, 'Aucune page choisie pour le build')
 console.log(`${published} pages choisies explicitement, ${codes.size} codes uniques ; périmètre et métadonnées MJ vérifiés.`)

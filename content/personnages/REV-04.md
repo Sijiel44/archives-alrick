@@ -1,6 +1,7 @@
 ---
 publish: true
 spoilers: true
+unlisted: true
 title: "Vaëra — Celle que l’on ne voit venir qu’au dernier instant"
 code: "REV-04"
 categorie: "personnage"

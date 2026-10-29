@@ -1,6 +1,7 @@
 ---
 publish: true
 spoilers: true
+unlisted: true
 title: "Bram Vieux-Fer — Celui qui veille au retour des autres"
 code: "REV-01"
 categorie: "personnage"

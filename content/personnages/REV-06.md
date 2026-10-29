@@ -1,6 +1,7 @@
 ---
 publish: true
 spoilers: true
+unlisted: true
 title: "Heimdall — Le veilleur qui a choisi"
 aliases: ["Heimdall", "Heimdall du Mérien", "Le Veilleur"]
 code: "REV-06"

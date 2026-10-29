@@ -6,6 +6,7 @@
 ---
 publish: true
 spoilers: true
+unlisted: true
 title: "Harald Forgecœur"
 code: "FAM-06"
 categorie: "personnage"
