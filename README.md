@@ -1,6 +1,6 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Première édition de l’encyclopédie JDR, construite avec **Quartz 5** : dix-huit fiches pilotes, sept rubriques, recherche, liens entre fiches et Archives du MJ. Design bleu nuit et or adapté au prototype du kit de démarrage.
+Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dernier suivi éditorial compte **171 fiches codées approuvées** (109 vertes et 62 jaunes) parmi **285 entrées de travail**. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
 
 **Cette branche prépare la publication. Aucun déploiement ne se déclenche sur une PR, un push ou une fusion.**
 
@@ -47,10 +47,10 @@ L’avertissement MJ est présent même sur une URL directe et fonctionne sans J
 
 ## Publier après validation
 
-1. Relire les dix-huit fiches pilotes et les deux pages MJ, puis approuver/fusionner la PR vers `main`.
-2. Dans **Settings → Pages**, choisir **GitHub Actions** comme source. Garder le dépôt privé. GitHub Pages sur dépôt privé exige une offre compatible ; ne pas rendre le dépôt public pour contourner cette condition. [Disponibilité officielle](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages).
+1. Relire les fiches modifiées, les guides publics et les pages à spoilers; vérifier les tests et approuver/fusionner seulement le lot concerné.
+2. Dans **Settings → Pages**, vérifier que **GitHub Actions** est la source. **Le dépôt est actuellement public** : ne jamais y placer les documents bruts privés, secrets du MJ, sauvegardes personnelles ou contenus non approuvés. Les avertissements de spoilers n'assurent aucune confidentialité.
 3. Si disponible, protéger l’environnement **`github-pages`** par une validation humaine et limiter les déploiements à `main`.
-4. Dans **Actions → Publier sur GitHub Pages (manuel) → Run workflow**, choisir `main` et cocher la confirmation de relecture et de diffusion du contenu, y compris les spoilers MJ.
+4. Vérifier la stratégie de déploiement des workflows avant fusion : un lot explicitement approuvé peut utiliser le marqueur `.github/pages-publication-approved.txt`; un déploiement manuel reste possible si le workflow le permet. Ne pas modifier le marqueur sans décision sur les fiches nouvellement approuvées.
 5. Le workflow reconstruit, vérifie, puis déploie à **https://sijiel44.github.io/archives-alrick/**. Cette adresse est une destination prévue, pas une preuve de publication actuelle.
 
 Les paramètres Pages et l’offre du compte doivent être vérifiés avant le premier lancement. Un dépôt privé ne garantit pas que son site Pages sera privé. Le workflow de CI n’a que `contents: read` ; seul le job de déploiement manuel reçoit `pages: write` et `id-token: write`.
@@ -68,7 +68,7 @@ L’autorisation du connecteur GitHub et celle de Git local sont distinctes. Une
 
 ## Provenance et limites
 
-Les huit fiches initiales proviennent du `Alrick_Kit_Demarrage_Quartz5_v0.1.zip`. Les références CB42 ont été préservées, sans revérification intégrale du brut. La relecture éditoriale reste nécessaire ; les sujets restant à migrer ne sont pas encore migrés. Le décor montagneux est une évocation graphique hors canon. Voir [UPSTREAM.md](UPSTREAM.md) pour le moteur et les licences.
+Les huit fiches initiales proviennent du `Alrick_Kit_Demarrage_Quartz5_v0.1.zip`. **Depuis, le contenu a été largement enrichi** ; de nombreuses références CB42–43 ont été revues, mais l'audit exhaustif des bruts et des 645 sujets reste à mener. Les sujets restant à migrer ne sont pas encore migrés. Le décor montagneux est une évocation graphique hors canon. Voir [UPSTREAM.md](UPSTREAM.md) pour le moteur et les licences.
 
 ## Fiches enrichies et portraits
 
@@ -81,3 +81,13 @@ La septième rubrique, `content/groupes/`, rassemble les compagnies, coalitions,
 ## Revenants — fiches individuelles en révision
 
 Les sept nouvelles fiches `REV-01`, `REV-02`, `REV-03`, `REV-04`, `REV-05`, `REV-07`, `REV-08` complètent `REV-06` (Heimdall). La distinction Revenants/Rappelés reste explicite. Cinq portraits sont des **concepts artistiques provisoires**, et non des portraits officiels ; les études de Kelm et Vaëra ont été écartées pour incohérence physique avec les sources. La branche éditoriale doit rester en brouillon jusqu'à validation du contenu et des visuels. La fusion ne déclenche aucun déploiement public.
+
+
+## Quatre portes d'entrée (édition du 29 octobre 2026)
+
+- `content/univers/index.md` — socle du monde réutilisable.
+- `content/odyssee/index.md` — histoire et continuité propres à Orin.
+- `content/jouer/index.md` — démarrage de nouveaux héros et aides de table.
+- `content/mj-ia/index.md` — méthode et prompt de MJ assisté par IA.
+
+Les pages existantes ne sont **pas dupliquées**. Les métadonnées `portee`, `public_cible`, `usage_en_jeu` et `periode` sont conseillées pour les prochaines révisions ; elles ne modifient pas le niveau de preuve ni la visibilité. Voir `CONTRAT_EDITORIAL.md`.
