@@ -5,7 +5,7 @@ code: "PROJ-CB38-AGRICULTURE-PRATIQUES"
 categorie: "projet"
 canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
-source_brute: "CB38 P09346–09365; P09547–09585; P16041"
+source_brute: "CB38 P09346–09365; P09547–09585; P16041; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
 description: "Documentation agricole préparée pour les cultivateurs, artisans et ingénieurs, reliant sols, rotations, stockage, outils et entretien."
@@ -26,8 +26,9 @@ L’agriculture est reliée au transport, aux marchés, au capital et au réinve
 
 ## État
 
-La documentation est préparée et transmise à Torgarl pour lancer les travaux. Les pratiques, les formations et le déploiement dans les territoires restent à suivre.
+Les documents agricoles sont déposés et transmis à Torgarl. Leur application commence à se mettre en place dans les territoires; les pratiques, les formations et la portée du déploiement varieront selon les besoins locaux.
 
 ## Sources
 
 - *Campagne Brut 3.8*, CB38 P09346–09365; P09547–09585; P16041.
+- Précision du créateur, 29 octobre 2026 : les pratiques agricoles sont déposées et commencent à être mises en œuvre.

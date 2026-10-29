@@ -5,10 +5,10 @@ code: "EVT-CB37-FESTIVAL-METIERS-MER"
 categorie: "evenement"
 canon_statut: "projet_en_cours"
 ancre_documentaire: "CB37"
-source_brute: "CB37 P27002–27020; P27021–27075"
+source_brute: "CB37 P27002–27020; P27021–27075; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Rencontre tournante envisagée pour les traditions maritimes, les métiers, l’artisanat et l’ingénierie de la mer."
+description: "Festival maritime adopté, avec règles établies et mise en place à organiser."
 tags: [festival, mer, artisans, ports, concours, cb37, brouillon]
 ---
 
@@ -18,12 +18,13 @@ tags: [festival, mer, artisans, ports, concours, cb37, brouillon]
 
 Le festival est conçu comme une rencontre entre les traditions maritimes, l’artisanat, l’ingénierie et les personnes qui vivent de la mer. Il ne doit appartenir ni à Orin ni à un port unique; son identité doit rester assez large pour accueillir des villes et des métiers différents.
 
-Un concours tous les cinq ans est proposé. La rotation des villes hôtes et un prix collectif confié pour cinq ans sont développés dans l’échange qui suit, mais leur statut exact reste à confirmer. Le prix envisagé serait fabriqué par plusieurs métiers et rendu à l’édition suivante; sa forme n’est pas choisie.
+Le principe et les règles définitives sont actés : le concours se tient tous les cinq ans, change de ville hôte et s’appuie sur un prix collectif transmis à l’édition suivante. Le prix réunit plusieurs métiers; son exécution et la préparation des premières éditions restent à organiser.
 
 ## Statut
 
-Le festival est un projet culturel et professionnel. Aucun lieu, calendrier de première édition, règlement ou lauréat n’est établi.
+Le festival est adopté. Sa mise en place est en cours; les lieux et calendriers des premières éditions restent à organiser. Le projet ne dépend pas uniquement d’Orin et peut avancer avec Thorgal et les institutions du Royaume des Montagnes de l’Aube.
 
 ## Sources
 
 - *Campagne Brut 3.7*, CB37 P27002–27020; P27021–27075.
+- Précision du créateur, 29 octobre 2026 : les règles définitives sont adoptées; leur mise en place est en cours à l’échelle du Royaume.

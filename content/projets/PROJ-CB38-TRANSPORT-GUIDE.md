@@ -5,7 +5,7 @@ code: "PROJ-CB38-TRANSPORT-GUIDE"
 categorie: "projet"
 canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
-source_brute: "CB38 P12501–13190; P15216–15783"
+source_brute: "CB38 P12501–13190; P15216–15783; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
 description: "Système de transport pour personnes et marchandises, construit autour de la sécurité, de lignes guidées et d’une maintenance accessible."
@@ -28,8 +28,9 @@ La proposition relie sept cités et prévoit une compagnie ferroviaire ainsi qu�
 
 ## État et limites
 
-Le document développe une architecture et des principes de conception; il ne confirme pas que le monorail fonctionne déjà, que la ligne est construite ou que les sept cités sont desservies. Les tracés, coûts, autorités de réseau et calendriers restent à établir.
+Le réseau entre en phase de mise en place. La campagne ne confirme pas encore que la ligne complète est construite ou que les sept cités sont toutes desservies. Les tracés, coûts, autorités de réseau et calendriers restent à établir.
 
 ## Sources
 
 - *Campagne Brut 3.8*, CB38 P12501–13190; P15216–15783.
+- Précision du créateur, 29 octobre 2026 : le déploiement du transport guidé est en cours; la source ne permet pas encore de supposer que toutes les lignes et cités sont desservies.

@@ -5,7 +5,7 @@ code: "PROJ-CB38-RESEAUX-COMMUNICATION"
 categorie: "projet"
 canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
-source_brute: "CB38 P10602–10667; P10669–11150; P11380–11720; P12420–12440"
+source_brute: "CB38 P10602–10667; P10669–11150; P11380–11720; P12420–12440; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
 description: "Architecture de communication répartie entre conversation locale, messagerie par relais, bijoux adressés, urgences et diffusion à sens unique."
@@ -24,10 +24,11 @@ Les réseaux sont conçus pour appartenir à leurs territoires. La compatibilit�
 
 ## État et limites
 
-Les premiers dispositifs personnels ont été testés puis distribués aux Revenants. Les relais et la messagerie longue distance sont conçus comme une infrastructure; leur couverture complète n’est pas établie. La portée locale indiquée dans la source est d’environ dix kilomètres en bonnes conditions.
+Les premiers dispositifs personnels ont été testés puis distribués aux Revenants. Le déploiement des communications est en cours. Les relais et la messagerie longue distance se mettent en place, mais la couverture complète n’est pas établie. La portée locale indiquée dans la source est d’environ dix kilomètres en bonnes conditions.
 
 Une diffusion à sens unique, comparable à une radio, est ensuite imaginée pour les nouvelles, annonces, histoires, cours et alertes. Ses émetteurs puissants exigeraient attribution de fréquence, alimentation, relais, entretien et règles contre les interférences; elle reste une piste de conception.
 
 ## Sources
 
 - *Campagne Brut 3.8*, CB38 P10602–10667; P10669–11150; P11380–11720; P12420–12440.
+- Précision du créateur, 29 octobre 2026 : le déploiement des communications est en cours.

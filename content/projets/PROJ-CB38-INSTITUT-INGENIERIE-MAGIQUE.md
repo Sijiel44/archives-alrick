@@ -5,7 +5,7 @@ code: "PROJ-CB38-INSTITUT-INGENIERIE-MAGIQUE"
 categorie: "projet"
 canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
-source_brute: "CB38 P18408–18461; P18465–18482; P18704–18774"
+source_brute: "CB38 P18408–18461; P18465–18482; P18704–18774; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
 description: "Projet d’un institut public de recherche appliquée, de prototypage et de coopération entre métiers, distinct d’une école qui enseigne."
@@ -26,8 +26,9 @@ La discussion distingue le brevet de base des adaptations, produits dérivés et
 
 ## État
 
-Le texte développe le projet, les équipements et les principes de propriété intellectuelle. Il ne montre pas encore l’institut construit, doté d’un statut juridique ou ouvert aux artisans.
+La création de l’institut est en cours. Orin ne le met pas en place seul : les institutions concernées doivent se former et organiser leur fonctionnement. L’ouverture et les modalités d’accueil des artisans suivront cette construction institutionnelle.
 
 ## Sources
 
 - *Campagne Brut 3.8*, CB38 P18408–18461; P18465–18482; P18704–18774.
+- Précision du créateur, 29 octobre 2026 : les institutions construisent l’Institut; il n’est pas encore pleinement établi et Orin ne le met pas directement en place.

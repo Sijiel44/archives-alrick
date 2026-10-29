@@ -1,0 +1,23 @@
+---
+publish: false
+title: "Margha Trois-Mers — cheffe des cuisines du yacht"
+code: "PER-CB42-RES-16-MARGHA-TROIS-MERS"
+categorie: "personnage"
+canon_statut: "a_verifier"
+ancre_documentaire: "CB42"
+source_brute: "CB42 P10837–10840"
+derniere_revision_documentaire: "2026-10-29"
+visibilite: "brouillon"
+description: "Orque de 59 ans, cuisinière expérimentée des équipages marchands et spécialiste du ravitaillement en mer."
+tags: [margha, trois-mers, cuisine, mer, yacht, cb42, brouillon]
+---
+
+# Margha Trois-Mers
+
+Margha est une Orque vivante de 59 ans. Elle a cuisiné pour des équipages de navires marchands, sait faire avec des ressources limitées et connaît la conservation des denrées et le ravitaillement pour les longues traversées.
+
+Le dossier envisage de lui confier les cuisines du yacht, sans confirmer dans cet extrait sa nomination.
+
+## Sources
+
+- *Campagne Brut 4.2*, CB42 P10837–10840.
