@@ -5,10 +5,12 @@ code: "PER-CB1-EDRIC"
 categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB1"
-source_brute: "CB1 P02843–02888; P02965–03071; CB2 P00365–00380; CB31 P13280–13331; CB37 P08630; P16629–16630; CB39 P01031–01840; confirmations du créateur, 2026-10-29"
+source_brute: "CB1 P02843–02888; P02965–03071; CB2 P00365–00380; CB31 P13280–13331; CB36 P26398–26536; P26690–26795; CB37 P5244–5336; P08630; P10976–11172; P16629–16630; CB38 P26800–26834; CB39 P01031–01840; confirmations du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "publique"
-description: "Edric Varen, devenu duc de Valbrume, passe de la logistique d’Entre-Rives à la gestion de projets et d’investissements du Royaume."
+visibilite: "publique_avec_avertissement"
+spoilers: true
+unlisted: true
+description: "Edric Varen, devenu duc de Valbrume, possède La Flèche de Valbrume et peut invoquer le lion Édril et la lionne Maërys avec Maëlya."
 tags: [edric, valbrume, personnage, cb1, cb2]
 etat_editorial: valide
 ---
@@ -16,7 +18,7 @@ etat_editorial: valide
 # Edric Varen
 
 > [!info] Continuité
-> Edric Varen, l’Edric de CB2 et **Edric de Valbrume** sont une seule personne. Plusieurs années après ses premières apparitions, il est devenu duc de Valbrume; CB3.7 le désigne comme duc depuis la veille.
+> Edric Varen, l’Edric de CB2 et **Edric de Valbrume** désignent une seule personne. Plusieurs années après ses premières apparitions, il devient duc de Valbrume; CB3.7 le désigne comme duc depuis la veille.
 
 ## Faits rapportés dans la source
 
@@ -39,6 +41,7 @@ etat_editorial: valide
 - *Campagne Brut 1*, CB1 P02843–02888; P02965–03071.
 - *Campagne Brut 2*, CB2 P00365–00380.
 - *Campagne Brut 3.1*, CB31 P13280–13331.
-- Confirmation du créateur, 29 octobre 2026 : Edric Varen, Edric de CB2 et Edric de Valbrume sont une seule personne; il deviendra duc des années plus tard.
-- *Campagne Brut 3.7*, CB37 P08630; P16629–16630 : sa nomination est réalisée et son titre est en usage.
+- Confirmation du créateur, 29 octobre 2026 : Edric Varen, Edric de CB2 et Edric de Valbrume sont une seule personne; il est duc de Valbrume.
+- *Campagne Brut 3.6–3.8*, CB36 P26398–26536; P26690–26795; CB37 P5244–5336; P08630; P10976–11172; P16629–16630; CB38 P26800–26834 : création, amélioration, don du navire et usage du titre ducal.
 - *Campagne Brut 3.9*, CB39 P01031–01840 : mariage d’Édric et Maëlya célébré à Valbrume.
+- Confirmation du créateur, 29 octobre 2026 : le couple peut chacun invoquer le lion Édril et la lionne Maërys, qui les protègent.

@@ -1,13 +1,13 @@
 ---
 publish: false
-title: "Objets et œuvres — brouillons CB1–CB3.8"
+title: "Objets et œuvres — index de travail CB1–CB3.9"
 description: "Index de travail des objets remarquables relevés dans les campagnes, avec leur état et leurs limites."
 etat_editorial: en_cours
 ---
 
-# Objets et œuvres — brouillons CB1–CB3.8
+# Objets et œuvres — brouillons CB1–CB3.9
 
-Ces propositions sont des fiches non publiées et à vérifier. Elles ne constituent pas un inventaire exhaustif.
+Ces propositions sont des fiches non publiées et à vérifier. Elles ne constituent pas un inventaire exhaustif. Les fiches de navires distinguent chaque coque, son propriétaire et ses caractéristiques.
 
 - [[OBJ-CB1-HACHE|La hache forgée avec Durgan]]
 - [[OBJ-CB1-BRACELETS|Les bracelets de Garran et Finn]]
@@ -28,6 +28,9 @@ Ces propositions sont des fiches non publiées et à vérifier. Elles ne constit
 - [[OBJ-CB38-LYRE-TAIRIN|Lyre de voyage destinée à Tairin]]
 - [[OBJ-CB38-BIJOU-COMMUNICATION|Bijoux de communication des Revenants]]
 
+- [[OBJ-CB36-BATEAU-EDRIC|La Flèche de Valbrume — navire d’Édric]]
+- [[OBJ-CB39-YACHT-ORINOR|L’Horizon d’Orinor — yacht royal]]
+- [[OBJ-CB39-NAVIRE-ELSEN|La Patiente — navire marchand d’Elsen]]
 
 ## CB42 — équipements et objets techniques
 
