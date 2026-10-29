@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Rendez-vous et promesses à venir"
 code: "JDR-CB39-RENDEZ-VOUS"
 categorie: "chronique"
@@ -7,7 +7,7 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB39 · continuité du créateur"
 source_brute: "CB39 P06386–08275; confirmations du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Engagements acceptés dont les rencontres et les voyages restent à jouer, sans date fixée."
 tags: [rendez-vous, promesses, voyage, rail, jdr-alrick]
 etat_editorial: en_cours
