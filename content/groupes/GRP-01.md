@@ -41,7 +41,7 @@ La compagnie est une **communauté d'individus**, avec des talents, des faibless
 
 | Compagnon | Code individuel | Apport principal et caractère de sa place |
 |---|---|---|
-| **Orin / Alrick** | Fiche centrale à créer | Figure fondatrice, compagnon et puissance créatrice ; apprend à transmettre sans devenir indispensable. Son statut princier ou divin ne fait pas des autres ses subordonnés automatiques. |
+| **[Orin / Alrick](../personnages/per-cb2-orin)** | PER-CB2-ORIN | Figure fondatrice, compagnon et puissance créatrice ; apprend à transmettre sans devenir indispensable. Son statut princier ou divin ne fait pas des autres ses subordonnés automatiques. |
 | **[Bram Vieux-Fer](../personnages/rev-01)** | REV-01 | Vétéran protecteur ; couvre la retraite, pense aux civils et à ceux qui doivent rentrer. Ironie sèche, soin très concret des autres. |
 | **[Ragna Pierre-Sèche](../personnages/rev-02)** | REV-02 | Tenue du terrain, écoute, coordination, limites de progression, extraction et repli ; autorité sobre capable de recevoir puis de rendre le commandement. |
 | **[Kelm Poing-Calme](../personnages/rev-03)** | REV-03 | Force maîtrisée, défense, protection ; apprend à commander et à transmettre sans confondre puissance et bon jugement. |
