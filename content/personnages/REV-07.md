@@ -17,10 +17,10 @@ tags: ["personnage", "revenants", "veteran", "haldrek", "commandement", "longue-
 
 ![Nouvelle étude individuelle de Haldrek : capitaine vétéran au regard sévère, barbe poivre et sel, cape militaire bleue, tenue de cuir et pièces d'armure devant une garnison des Montagnes de l'Aube.](../images/personnages/haldrek-portrait-capitaine-proposition.webp)
 
-*Portrait individuel **proposé à validation** : vétéran à l'allure de capitaine, au regard expérimenté, avec vêtements de service et cape de couleur froide. **La barbe, les traits, les couleurs, le motif héraldique et les armes de l'image ne sont pas canoniques tant que le créateur ne les a pas approuvés**. Cette illustration ne fixe ni l'ascendance du personnage, ni un titre déjà signé à Bordeciel.*
+*Portrait individuel **approuvé par le créateur** : Haldrek prend ici l'allure d'un capitaine vétéran au regard expérimenté, dans une tenue militaire sobre. **Ce portrait constitue sa référence artistique validée** ; les accessoires décoratifs ne prouvent pas à eux seuls un objet historique, une décoration officielle ni une nomination déjà signée à Bordeciel.*
 
 > [!info] Statut documentaire
-> **Fiche de développement approfondie pour validation.** Les entraînements menés par Haldrek, y compris auprès d’Orin et lors des exercices de Tairin et Drakon, les colloques, ses fonctions chez les Revenants et ses interventions à Taagral sont fondés sur la **campagne jouée**. **Orientations nouvelles du créateur :** une enfance réellement vécue dans la caserne et auprès de ses parents, le lien affectif presque filial avec Orin, un éventuel passé sous Harald Forgecœur et la direction future de l’**académie militaire de Bordeciel**. **La proposition de jeunesse, la collaboration avec Harald et les nominations futures ne doivent pas être présentées comme des scènes déjà jouées.** Les scénarios restent des amorces inédites. La nouvelle illustration est une étude individuelle non encore approuvée. Dernier état CB43 prioritaire.
+> **Fiche approfondie approuvée par le créateur et prête à être publiée.** Les entraînements menés par Haldrek, y compris auprès d’Orin et lors des exercices de Tairin et Drakon, les colloques, ses fonctions chez les Revenants et ses interventions à Taagral sont fondés sur la **campagne jouée**. **Orientations nouvelles du créateur :** une enfance réellement vécue dans la caserne et auprès de ses parents, le lien affectif presque filial avec Orin, un éventuel passé sous Harald Forgecœur et la direction future de l’**académie militaire de Bordeciel**. **La jeunesse en caserne est retenue comme développement de lore validé**, mais ses anecdotes reconstituées restent des scènes non jouées ; la collaboration possible avec Harald et la nomination future à Bordeciel restent des pistes, non des événements accomplis. Les scénarios sont des amorces inédites. **Le portrait individuel est approuvé comme référence visuelle.** Dernier état CB43 prioritaire.
 
 *Il pose toujours la même question, parfois avant même qu'Orin ait terminé sa phrase : « Et si le plan ne fonctionne pas ? »*
 
@@ -45,7 +45,7 @@ Au cours des colloques, il montre aussi une dimension politique : la société p
 ## Avant Orin — l'enfant de la caserne
 
 > [!info] Origines proposées et direction du personnage
-> **L'enfance au sein de la vie militaire, avec ses deux parents présents dans son horizon quotidien, est une nouvelle direction voulue par le créateur.** Il faut la distinguer du capitaine et formateur déjà attesté par la campagne. Les noms, métiers précis et devenirs de ses parents, sa ville natale, son espèce, ses anciennes unités et les dates de ses promotions ne sont pas définis ; **aucun parent n'est déclaré mort**. Les anecdotes ci-dessous servent à proposer son atmosphère et ne sont pas des scènes jouées.
+> **L'enfance au sein de la vie militaire, avec ses deux parents présents dans son horizon quotidien, est un développement de lore approuvé par le créateur.** Il faut la distinguer du capitaine et formateur déjà attesté par la campagne. Les noms, métiers précis et devenirs de ses parents, sa ville natale, son espèce, ses anciennes unités et les dates de ses promotions ne sont pas définis ; **aucun parent n'est déclaré mort**. Les anecdotes ci-dessous servent à proposer son atmosphère et ne sont pas des scènes jouées.
 
 ### Grandir là où les soldats rentrent le soir
 
@@ -341,7 +341,7 @@ Le site peut fournir ces fiches et amorces, **mais n'anime pas automatiquement l
 - Remise documentée du coffret et usages de la longue-vue après CB42.
 - **Entraînement quotidien déjà assuré chez les Revenants** ; développer les curricula de Bordeciel, les premiers formateurs et les apprentis dans de futures scènes.
 - Rencontre éventuelle avec Hroldan et confirmation, ou non, d'une histoire commune.
-- **Neuf amorces de missions pour MJ**, dont trois ouvertes autour de Bordeciel, d'une éventuelle direction et de l'hypothèse Harald ; elles sont **proposées et non jouées**.
+- **Neuf amorces de missions pour MJ**, dont trois ouvertes autour de Bordeciel, d'une éventuelle direction et de l'hypothèse Harald ; ces idées sont **approuvées comme possibilités jouables, mais aucun des événements n'a déjà eu lieu**.
 
 ## Sources principales
 
