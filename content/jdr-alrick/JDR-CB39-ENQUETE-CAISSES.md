@@ -23,11 +23,16 @@ unlisted: true
 
 ## Éléments établis
 
-- **Halstor** conduit l’enquête; **Vaëra** contribue à l’analyse des preuves et aux précautions diplomatiques.
+- [[personnages/REV-14|Halstor]] conduit l’enquête; [[personnages/REV-04|Vaëra]] contribue à l’analyse des preuves et aux précautions diplomatiques.
 - Un faux ordre a provoqué le déplacement de l’arche de cérémonie. Trois caisses ont ensuite été ajoutées au trajet sans être inscrites aux mouvements officiels de Valbrume.
 - Les manutentionnaires, le charretier et l’homme d’entrepôt qui les ont déplacées sont identifiés; ils ont été payés.
 - La chaîne logistique mène à un ancien entrepôt intermédiaire hors du réseau ducal principal.
 - Plusieurs délégations étrangères ont utilisé cet entrepôt par le passé. Ce rapprochement ne constitue pas une preuve d’implication et aucune délégation ni personne n’est désignée comme coupable.
+
+## Personnages liés
+
+- [[personnages/REV-14|Halstor]] — enquêteur responsable.
+- [[personnages/REV-04|Vaëra]] — appui à l’enquête et vigilance diplomatique.
 
 ## Conduite de l’enquête
 
