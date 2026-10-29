@@ -170,3 +170,10 @@ body .page footer.archive-footer { margin: 0 5% 0 calc(248px + 5%); padding: 25p
   .archive-button { padding: 10px 12px; gap: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } .archive-grid .archive-card:hover { transform: none; } }
+
+/* Workflow editorial status: color is paired with a text label for accessibility. */
+.editorial-link.internal { border-left: 2px solid #aab7bf; }
+.document-meta .editorial-status { display: inline-flex; align-items: center; gap: 7px; border: 1px solid currentColor; border-radius: 999px; padding: 3px 9px; }
+.editorial-status--valide { color: #8fcea2 !important; }
+.editorial-status--en_cours { color: #e4c66f !important; }
+.editorial-status--en_chantier { color: #e7897e !important; }

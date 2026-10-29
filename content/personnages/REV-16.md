@@ -8,9 +8,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB2 — rencontre d’Aldren et Heimdall au Mérien ; Compendium REV-16 v1.7"
 derniere_revision_documentaire: "2026-10-27"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique"
 description: "Loup du Mérien devenu le compagnon libre de Heimdall, Aldren accompagne sans posséder ni être possédé."
 tags: ["compagnon", "loup", "heimdall", "revenants", "merien", "liberte"]
+etat_editorial: en_cours
 ---
 
 # Aldren, le Compagnon des Lisières

@@ -1,5 +1,7 @@
 ---
 publish: true
+spoilers: true
+unlisted: true
 title: "Bram Vieux-Fer — Celui qui veille au retour des autres"
 code: "REV-01"
 categorie: "personnage"
@@ -8,12 +10,20 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB2 (Mérien et Lethrann) ; CB31-32 (commande Mara, capes) ; CB34 (entraînements des Revenants) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB39 P26390–26474 ; CB42 P18752–21841 ; CB43 (échanges à Aldhammar)"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
-description: "Vétéran des Montagnes de l’Aube, ancien jeune soldat sous Harald Forgecœur, Bram est devenu le protecteur au franc-parler des Revenants et un ami d’Orin fondé sur le respect mutuel."
+visibilite: "publique_avec_avertissement"
+description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "protecteur", "bram", "veteran", "rochebrune", "harald-forgecoeur", "torgarl", "orin", "amitie", "repli", "armure", "mara"]
+etat_editorial: en_cours
 ---
 
 # Bram Vieux-Fer
+
+## Mise à jour de continuité — CB42
+
+> **État établi dans le registre :** ; Bram participe à la transmission et aux nouveaux aménagements de la compagnie. Le Rempart du Retour améliore protection, arrimage et aide au déplacement d’un blessé. Les premiers essais des insignes sont réalisés. Les apprentis ne sont pas encore recrutés. Il est encore présent à la scène finale d’Aldhammar.
+>
+> **Repère de source :** CB42 P18752–21841.
+
 
 ![Portrait provisoire de Bram Vieux-Fer, interprétation artistique non canonique.](../images/personnages/bram-concept.webp)
 

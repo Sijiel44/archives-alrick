@@ -1,26 +1,36 @@
 ---
 publish: true
+spoilers: true
+unlisted: true
 title: "Haldrek — L’homme qui prépare le retour"
 code: "REV-07"
 categorie: "personnage"
 sous_categorie: "revenant"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
-source_brute: "CB2 (préparation du Mérien) ; CB31–34 (doctrine, entraînements avec Orin, Tairin et Drakon, projet de Bordeciel) ; continuité Taagral échanges 012–119 ; CB39 P02944–04569 ; CB42 P19455–21050 ; CB43 (Hroldan) ; orientations du créateur octobre 2026 (enfance, direction future et lien avec Orin)"
+source_brute: "CB2 (préparation du Mérien) ; CB31–34 (doctrine, entraînements avec Orin, Tairin et Drakon, projet de Bordociel) ; continuité Taagral échanges 012–119 ; CB39 P02944–04569 ; CB42 P19455–21050 ; CB43 (Hroldan) ; orientations du créateur octobre 2026 (enfance, direction future et lien avec Orin)"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
-description: "Capitaine vétéran, entraîneur des Revenants et futur directeur pressenti de l’académie de Bordeciel, Haldrek forme Orin et ses compagnons au commandement, à la discipline et au retour des missions."
+visibilite: "publique_avec_avertissement"
+description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "veteran", "haldrek", "commandement", "longue-vue", "formation", "procedure", "academie", "ethique-militaire", "preparation-civile", "discipline", "doctrine", "autonomie", "transmission", "scenarios-jouables", "bordeciel", "tairin", "drakon", "harald-forgecoeur", "dac", "academie-militaire"]
+etat_editorial: en_cours
 ---
 
 # Haldrek
 
+## Mise à jour de continuité — CB42
+
+> **État établi dans le registre :** ; Absent lors d’une partie des discussions sur les apprentis, Haldrek doit encore être consulté. Sa longue-vue et son insigne sont réalisés puis gardés dans un coffret. Il rejoint ensuite explicitement la cérémonie de Torgarl à Aldhammar. Le brut ne décrit pas séparément la remise de son coffret ; ne pas transformer l’absence initiale en absence finale.
+>
+> **Repère de source :** CB42 P19455–21050.
+
+
 ![Nouvelle étude individuelle de Haldrek : capitaine vétéran au regard sévère, barbe poivre et sel, cape militaire bleue, tenue de cuir et pièces d'armure devant une garnison des Montagnes de l'Aube.](../images/personnages/haldrek-portrait-capitaine-proposition.webp)
 
-*Portrait individuel **approuvé par le créateur** : Haldrek prend ici l'allure d'un capitaine vétéran au regard expérimenté, dans une tenue militaire sobre. **Ce portrait constitue sa référence artistique validée** ; les accessoires décoratifs ne prouvent pas à eux seuls un objet historique, une décoration officielle ni une nomination déjà signée à Bordeciel.*
+*Portrait individuel **approuvé par le créateur** : Haldrek prend ici l'allure d'un capitaine vétéran au regard expérimenté, dans une tenue militaire sobre. **Ce portrait constitue sa référence artistique validée** ; les accessoires décoratifs ne prouvent pas à eux seuls un objet historique, une décoration officielle ni une nomination déjà signée à Bordociel.*
 
 > [!info] Statut documentaire
-> **Fiche approfondie approuvée par le créateur et prête à être publiée.** Les entraînements menés par Haldrek, y compris auprès d’Orin et lors des exercices de Tairin et Drakon, les colloques, ses fonctions chez les Revenants et ses interventions à Taagral sont fondés sur la **campagne jouée**. **Orientations nouvelles du créateur :** une enfance réellement vécue dans la caserne et auprès de ses parents, le lien affectif presque filial avec Orin, un éventuel passé sous Harald Forgecœur et la direction future de l’**académie militaire de Bordeciel**. **La jeunesse en caserne est retenue comme développement de lore validé**, mais ses anecdotes reconstituées restent des scènes non jouées ; la collaboration possible avec Harald et la nomination future à Bordeciel restent des pistes, non des événements accomplis. Les scénarios sont des amorces inédites. **Le portrait individuel est approuvé comme référence visuelle.** Dernier état CB43 prioritaire.
+> **Fiche approfondie approuvée par le créateur et prête à être publiée.** Les entraînements menés par Haldrek, y compris auprès d’Orin et lors des exercices de Tairin et Drakon, les colloques, ses fonctions chez les Revenants et ses interventions à Taagral sont fondés sur la **campagne jouée**. **Orientations nouvelles du créateur :** une enfance réellement vécue dans la caserne et auprès de ses parents, le lien affectif presque filial avec Orin, un éventuel passé sous Harald Forgecœur et la direction future de l’**académie militaire de Bordociel**. **La jeunesse en caserne est retenue comme développement de lore validé**, mais ses anecdotes reconstituées restent des scènes non jouées ; la collaboration possible avec Harald et la nomination future à Bordociel restent des pistes, non des événements accomplis. Les scénarios sont des amorces inédites. **Le portrait individuel est approuvé comme référence visuelle.** Dernier état CB43 prioritaire.
 
 *Il pose toujours la même question, parfois avant même qu'Orin ait terminé sa phrase : « Et si le plan ne fonctionne pas ? »*
 
@@ -37,7 +47,7 @@ Au cours des colloques, il montre aussi une dimension politique : la société p
 - **Statut :** vivant ; Revenant de plein droit, **pas** entraîneur extérieur à la compagnie.
 - **Rôle actuel :** **capitaine vétéran et Revenant**, **responsable principal de l'entraînement opérationnel régulier des Revenants**, coordinateur de formations et de missions, instructeur d'Orin, conseiller militaire et pédagogue du commandement.
 - **Taagral :** selon la précision du créateur, **adjoint de coordination de terrain auprès du général Dac**, plutôt en retrait des démonstrations spectaculaires ; le **commandement militaire général reste à Dac**, et un grade permanent d'état-major n'est pas créé rétroactivement.
-- **Académie de Bordeciel :** **direction future souhaitée et confiée en intention par Orin**, possiblement comme directeur principal ou l'un des directeurs avec Torgarl et d'autres responsables. **Le poste formel, les statuts définitifs et l'ouverture de l'école ne sont pas encore joués**.
+- **Académie de Bordociel :** **direction future souhaitée et confiée en intention par Orin**, possiblement comme directeur principal ou l'un des directeurs avec Torgarl et d'autres responsables. **Le poste formel, les statuts définitifs et l'ouverture de l'école ne sont pas encore joués**.
 - **Harald Forgecœur :** collaboration militaire antérieure **envisagée** avec le père d'Orin, à confirmer par la chronologie et une scène ou validation explicite.
 - **Équipement :** longue-vue et insigne optique **achevés et placés dans un coffret** en CB42 ; la remise effective du coffret n'est pas montrée séparément dans le brut examiné.
 - **Apparence :** vétéran en tenue de terrain, arme d'exercice ou instrument d'observation ; **espèce/ascendance exacte, âge, cicatrices, couleur des cheveux et proches familiaux non déterminés avec certitude**. Le portrait collectif reste une suggestion artistique.
@@ -115,10 +125,10 @@ Il remarque Kelm non parce qu'il possède un marteau impressionnant, mais **parc
 
 Lors des exercices de la compagnie, Haldrek organise préparation, observation, communications et situations de contrainte. Orin s'amuse à perturber la défense par une multiplication de doubles et de tactiques inattendues. La réaction intéressante n'est pas le nombre de coups portés, mais la capacité des Revenants à établir des vérifications lorsque **même un message ou un visage connu peut être falsifié**. La meilleure leçon de l'exercice est que personne, pas même Haldrek, ne doit être irremplaçable. (*Campagne regroupée, CB33–34.*)
 
-### Bordeciel — l'école militaire qu'il pourrait diriger
+### Bordociel — l'école militaire qu'il pourrait diriger
 
 > [!info] Orthographe et état institutionnel
-> Les archives écrivent **Bordeciel** (et non « Bordociel »). **La ville et l'académie sont dans les projets de développement du royaume ; la fondation et l'ouverture effective de l'établissement ne sont pas encore des événements joués.** Le créateur souhaite qu'Haldrek en soit **le directeur ou l'un des directeurs**, sans abandonner les Revenants. Cette orientation est retenue pour la préparation du lore, **mais la nomination, les co-directeurs, les statuts et la date d'ouverture restent à établir dans la campagne**.
+> Les archives écrivent **Bordociel** (et non « Bordociel »). **La ville et l'académie sont dans les projets de développement du royaume ; la fondation et l'ouverture effective de l'établissement ne sont pas encore des événements joués.** Le créateur souhaite qu'Haldrek en soit **le directeur ou l'un des directeurs**, sans abandonner les Revenants. Cette orientation est retenue pour la préparation du lore, **mais la nomination, les co-directeurs, les statuts et la date d'ouverture restent à établir dans la campagne**.
 
 Depuis plusieurs années, **Orin, Torgarl et Haldrek travaillent à la formation militaire**. Le colloque ne commence pas à partir d'une page vierge : il reprend leurs discussions sur **une grande académie qui ne serait surtout pas une fabrique à officiers persuadés que la guerre suit fidèlement leurs cartes**. Haldrek doit contribuer au programme par ses véritables spécialités : **observation de l'adversaire, adaptation, ravitaillement, retraite, fausses informations, peur, erreurs de classification, campagnes ratées et leçons des victoires**. (*CB32 P07301–07400.*)
 
@@ -134,9 +144,9 @@ Le cursus qu'ils élaborent peut inclure :
 - **Contre-tactique et adversaire qui apprend**, exercices où réussir l'objectif apparent peut être une erreur si les blessés, les routes ou la transmission sont abandonnés.
 - **Méthodes des Revenants**, accueillies comme expériences utiles mais **non obligatoires pour toutes les unités de l'armée**.
 
-Haldrek n'a pas besoin d'abandonner sa compagnie pour accepter ce futur rôle : **former des équipes capables d'agir sans son regard permanent** est justement la condition pour qu'il puisse enseigner à Bordeciel, repartir avec ses compagnons ou déléguer une partie de l'école à des responsables qualifiés.
+Haldrek n'a pas besoin d'abandonner sa compagnie pour accepter ce futur rôle : **former des équipes capables d'agir sans son regard permanent** est justement la condition pour qu'il puisse enseigner à Bordociel, repartir avec ses compagnons ou déléguer une partie de l'école à des responsables qualifiés.
 
-**Les futures séances à Bordeciel** devront nous permettre de jouer la véritable fondation, le choix des enseignants, les premiers élèves, les bâtiments, le budget, le dialogue avec les autorités civiles et la première promotion. Jusqu'à ces scènes, ce sont **un projet mûri et un rôle pressenti**, pas une académie déjà inaugurée.
+**Les futures séances à Bordociel** devront nous permettre de jouer la véritable fondation, le choix des enseignants, les premiers élèves, les bâtiments, le budget, le dialogue avec les autorités civiles et la première promotion. Jusqu'à ces scènes, ce sont **un projet mûri et un rôle pressenti**, pas une académie déjà inaugurée.
 
 ### L'académie et le colloque — préparer des citoyens, pas une armée de conscrits
 
@@ -238,7 +248,7 @@ Cette relation **ne remplace ni Harald Forgecœur ni Elyan Corbeau-Gris**. Elle 
 
 **Harald Forgecœur** pourrait avoir connu Haldrek durant leurs années de service, voire partagé un temps de responsabilité militaire avec lui. **C'est une hypothèse de lore, pas une campagne commune déjà vérifiée**. Elle mérite d'être examinée plus tard avec la chronologie de Harald.
 
-**Bordeciel et Torgarl** : Haldrek participe déjà à la réflexion sur le cursus et **est pressenti par Orin pour la future direction de l'académie militaire**. Il pourra demander le soutien de professionnels d'autres métiers et de responsables pédagogiques, sans se transformer en administrateur omnipotent.
+**Bordociel et Torgarl** : Haldrek participe déjà à la réflexion sur le cursus et **est pressenti par Orin pour la future direction de l'académie militaire**. Il pourra demander le soutien de professionnels d'autres métiers et de responsables pédagogiques, sans se transformer en administrateur omnipotent.
 
 **Hroldan** pourrait constituer un fil passionnant. Son nom évoque peut-être à cet homme une ancienne relation, mais il **refuse de la confirmer avant une rencontre avec Haldrek**. Il ne faut ni inventer d'ancienne camaraderie, ni décider d'avance qu'ils se reconnaîtront.
 
@@ -255,7 +265,7 @@ Cette relation **ne remplace ni Harald Forgecœur ni Elyan Corbeau-Gris**. Elle 
 
 ## Ressources et limites
 
-L'insigne optique aide à **observer et comparer** ; il ne révèle pas par magie la vraie nature de tous les phénomènes. L'expérience de Haldrek n'est pas une solution instantanée aux structures anciennes. **Son autorité d'entraîneur régulier des Revenants est reconnue ; la direction de l'académie de Bordeciel est un choix d'avenir approuvé en intention, non une nomination formelle déjà jouée.** Sa relation à Orin et sa valeur au combat ne lui confèrent ni pouvoirs divins ni commandement universel.
+L'insigne optique aide à **observer et comparer** ; il ne révèle pas par magie la vraie nature de tous les phénomènes. L'expérience de Haldrek n'est pas une solution instantanée aux structures anciennes. **Son autorité d'entraîneur régulier des Revenants est reconnue ; la direction de l'académie de Bordociel est un choix d'avenir approuvé en intention, non une nomination formelle déjà jouée.** Sa relation à Orin et sa valeur au combat ne lui confèrent ni pouvoirs divins ni commandement universel.
 
 ## Jouer avec Haldrek — le maître des missions qui peuvent mal tourner
 
@@ -287,9 +297,9 @@ L'insigne optique aide à **observer et comparer** ; il ne révèle pas par magi
 
 **6. Le nom dans le vieux registre — Hroldan, mémoire et passé (élevé, long cours).** Hroldan souhaite rencontrer un capitaine nommé Haldrek dont le nom évoque peut-être une autre époque. Il hésite car **plusieurs hommes ont porté ce nom**. Les aventuriers peuvent servir d'intermédiaires, rechercher des inscriptions ou organiser une rencontre respectueuse. **Leur tâche n'est pas de « découvrir qu'ils étaient frères d'armes »** : la relation peut être totalement inexistante, indirecte ou importante, selon la future décision du créateur. Haldrek doit pouvoir choisir lui-même ce qu'il souhaite raconter.
 
-### Trois scénarios supplémentaires — Haldrek et Bordeciel
+### Trois scénarios supplémentaires — Haldrek et Bordociel
 
-**7. Les fondations ne tiennent pas toutes sur des plans — fondation d'académie (intermédiaire).** Le groupe arrive à **Bordeciel** alors que les préparatifs de la future école militaire avancent. Les aventuriers peuvent aider Haldrek à **inspecter des bâtiments proposés, comprendre les besoins des habitants, évaluer l'accès à l'eau et aux soins, et écouter les futurs instructeurs**. Plusieurs équipes défendent des programmes différents : prestigieux duels d'officiers, formation à l'extraction ou enseignements civils accessibles. Haldrek et Torgarl doivent choisir une proposition viable. **Cette installation, la présence des élèves et toute date d'ouverture restent des événements à jouer**, pas une école déjà en service.
+**7. Les fondations ne tiennent pas toutes sur des plans — fondation d'académie (intermédiaire).** Le groupe arrive à **Bordociel** alors que les préparatifs de la future école militaire avancent. Les aventuriers peuvent aider Haldrek à **inspecter des bâtiments proposés, comprendre les besoins des habitants, évaluer l'accès à l'eau et aux soins, et écouter les futurs instructeurs**. Plusieurs équipes défendent des programmes différents : prestigieux duels d'officiers, formation à l'extraction ou enseignements civils accessibles. Haldrek et Torgarl doivent choisir une proposition viable. **Cette installation, la présence des élèves et toute date d'ouverture restent des événements à jouer**, pas une école déjà en service.
 
 **8. Le maître qui refuse de choisir son successeur — direction et transmission (élevé).** Une première promotion ou équipe d'instructeurs **future et non encore créée** doit apprendre à conduire un exercice sans Haldrek. Une décision mal comprise provoque des tensions entre formateurs, militaires et représentants civils. Le MJ peut demander aux PJ de comparer les rapports, organiser une nouvelle simulation ou défendre le droit d'un instructeur compétent à corriger son supérieur. **L'enjeu : rendre la nouvelle école durable sans lier chaque décision au seul Haldrek**.
 
@@ -336,19 +346,19 @@ Le site peut fournir ces fiches et amorces, **mais n'anime pas automatiquement l
 
 - **Enfance de caserne retenue comme direction du lore**, avec ses parents dans son entourage ; fixer plus tard les professions, les noms, les âges et les épisodes personnels sans leur attribuer de décès ou de guerre inventés.
 - **Service éventuel auprès de Harald Forgecœur** : vérifier les âges, les unités et les périodes ; rien n'est encore joué ou confirmé.
-- **Bordeciel** : jouer la fondation de l'académie, préciser le rôle de directeur principal ou de codirecteur confié en intention à Haldrek, ses collègues, les bâtiments, les cursus et le fonctionnement réel.
+- **Bordociel** : jouer la fondation de l'académie, préciser le rôle de directeur principal ou de codirecteur confié en intention à Haldrek, ses collègues, les bâtiments, les cursus et le fonctionnement réel.
 - **Développer la vie ordinaire** du vétéran : proches, métiers de jeunesse, habitudes et humour hors service.
 - Remise documentée du coffret et usages de la longue-vue après CB42.
-- **Entraînement quotidien déjà assuré chez les Revenants** ; développer les curricula de Bordeciel, les premiers formateurs et les apprentis dans de futures scènes.
+- **Entraînement quotidien déjà assuré chez les Revenants** ; développer les curricula de Bordociel, les premiers formateurs et les apprentis dans de futures scènes.
 - Rencontre éventuelle avec Hroldan et confirmation, ou non, d'une histoire commune.
-- **Neuf amorces de missions pour MJ**, dont trois ouvertes autour de Bordeciel, d'une éventuelle direction et de l'hypothèse Harald ; ces idées sont **approuvées comme possibilités jouables, mais aucun des événements n'a déjà eu lieu**.
+- **Neuf amorces de missions pour MJ**, dont trois ouvertes autour de Bordociel, d'une éventuelle direction et de l'hypothèse Harald ; ces idées sont **approuvées comme possibilités jouables, mais aucun des événements n'a déjà eu lieu**.
 
 ## Sources principales
 
 - *Compendium des personnages*, v1.7, **REV-07**, actualisations CB39 et CB42.
-- **Précisions du créateur, octobre 2026** : enfance dans la vie de caserne, rôle de mentor d'Orin avec affection presque filiale, responsabilité des entraînements quotidiens des Revenants, coordination auprès du général Dac à Taagral, pressenti pour la direction de l'école militaire de **Bordeciel** ; **collaboration possible avec Harald Forgecœur à vérifier**. Les anecdotes d'enfance et scènes proposées sont non jouées.
+- **Précisions du créateur, octobre 2026** : enfance dans la vie de caserne, rôle de mentor d'Orin avec affection presque filiale, responsabilité des entraînements quotidiens des Revenants, coordination auprès du général Dac à Taagral, pressenti pour la direction de l'école militaire de **Bordociel** ; **collaboration possible avec Harald Forgecœur à vérifier**. Les anecdotes d'enfance et scènes proposées sont non jouées.
 - *Campagne brute regroupée — Volume 1*, **CB2 P04101–04200** (préparation des candidats), **CB2 P05301–05400** (recrutement et formation de Kelm), **CB31 P00501–00600 et P03401–03500** (longue-vue et autonomie), **CB32 P02101–02200, P08801–08900 et P09901–10000** (transmission, préparation civile, refus et contrôle des ordres), **CB33–34** (exercices, commandement et documentation).
-- *Campagne brute regroupée*, **CB2** (préparation et entraînement au Mérien), **CB31 P16201–16300** (secours dans le cursus de Bordeciel), **CB32 P02101–02200 et P07301–07400** (répartition des formations et travail déjà engagé avec Torgarl), **CB33 P04901–05000** (exercice avec Tairin et Drakon sous le regard de Haldrek), **CB33–34** (entraînement d'Orin et des Revenants) ; *Continuité*, Taagral, échanges 012–119.
+- *Campagne brute regroupée*, **CB2** (préparation et entraînement au Mérien), **CB31 P16201–16300** (secours dans le cursus de Bordociel), **CB32 P02101–02200 et P07301–07400** (répartition des formations et travail déjà engagé avec Torgarl), **CB33 P04901–05000** (exercice avec Tairin et Drakon sous le regard de Haldrek), **CB33–34** (entraînement d'Orin et des Revenants) ; *Continuité*, Taagral, échanges 012–119.
 - *Campagne Brut 4.2*, **CB42 P19455–21050**.
 - *Campagne Brut 4.3*, entretien Hroldan (ne pas inventer de parenté d'armes).
 - **Nouveau portrait individuel** créé en octobre 2026, **proposition artistique non canonique jusqu'à approbation** ; la grande affiche conceptuelle a été écartée car elle comportait des ajouts biographiques non vérifiés.

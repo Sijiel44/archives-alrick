@@ -9,11 +9,12 @@
 5. Une nouvelle fiche doit posséder un **code stable et unique**, un titre humain, une catégorie, un état documentaire, et ses sources. Le dossier où elle se trouve n'est pas une preuve de son statut canonique.
 6. L'IA prépare des **propositions de modifications** ; la validation éditoriale précède la publication.
 7. Le code `CB42` indique une session source ; ne pas le confondre avec une date du calendrier fictif. Les dates de fichiers ne datent pas les événements du monde.
-8. Les spoilers choisis sont permis dans `content/mj/`, avec `spoilers: true`, `unlisted: true` et un avertissement sur chaque page. Les joueurs peuvent y accéder volontairement. Les notes personnelles, le brut et l’inventaire de travail restent hors site et hors dépôt. Cette politique remplace celle du kit initial, conformément au projet de partage de l’univers.
+8. Les fiches destinées surtout au MJ peuvent être accessibles aux joueurs sur choix. Toute page avec `spoilers: true` — y compris hors de `content/mj/` — affiche d’abord un avertissement replié derrière une action explicite. Toute fiche à spoilers publiée porte aussi `unlisted: true` : elle reste accessible par son URL et ses liens éditoriaux, mais ne paraît pas dans la recherche, le sitemap ou la bibliothèque générale. Les pages de `content/mj/` restent également non répertoriées et averties. Les notes personnelles, le brut et l’inventaire de travail restent hors site et hors dépôt. Cette politique remplace celle du kit initial, conformément au projet de partage de l’univers.
 
 ## Valeurs permises pour `canon_statut`
 
 - `faits_joues` — événement ou constat attesté en scène ;
+- `lore_valide` — ajout de lore explicitement approuvé par le créateur, en distinguant les détails joués des propositions d’ambiance ;
 - `declaration` — affirmation d'un personnage, pas garantie que le monde l'ait démontrée ;
 - `projet_en_cours` — accord et intention, sans réalisation finale ;
 - `hypothese` — explication incertaine ou de recherche ;
@@ -42,3 +43,34 @@ Les fiches individuelles accueillent une section **« En jeu — rencontrer, int
 **Obligations :** préserver le libre arbitre des joueurs et du PNJ, ne jamais présenter des missions proposées comme aventures déjà jouées, ne pas fixer automatiquement l'identité d'un adversaire ou la cause d'une anomalie, ne pas attribuer de pouvoirs sans source. Les actes en scène, les témoignages du créateur, les interprétations et les propositions d'aventures restent identifiables séparément. Ne pas réintroduire sous forme de scénario public des révélations personnelles confiées au MJ : **notre dépôt GitHub et ses éventuelles pages MJ sont publics**. Conserver les notes vraiment confidentielles hors du dépôt et limiter les fiches publiées à des amorces sans révélations cachées.
 
 Le site Quartz présente actuellement des **textes et des liens**, pas un personnage IA autonome. Une future expérience de dialogue exigera une fonctionnalité distincte et la définition de son périmètre, sans confondre simulation et canon.
+
+
+## Procédure d’enrichissement d’un nouvel épisode
+
+1. **Inventorier les sources.** Relever le nom exact, la version, le rôle (source primaire, synthèse ou index), l’intégrité et les limites de chaque document. Les repères de paragraphes restent propres à leur fichier brut ; les tableaux reçoivent des repères distincts.
+2. **Lire l’état directeur et les mises à jour récentes.** Commencer par l’index et le registre, puis les compléments les plus récents des volumes concernés. Un état « actif » ancien ne remplace pas une correction plus récente.
+3. **Mettre à jour le registre avant de créer des fiches.** Réutiliser les codes existants, chercher les homonymes et noter les variantes. Attribuer un nouveau code seulement après avoir vérifié qu’aucune personne, aucun lieu, objet ou institution ne possède déjà une fiche.
+4. **Rédiger les fiches avec leurs preuves.** Pour chaque fait, conserver le statut, la citation, la source, les conditions, les limites et la personne qui connaît l’information en jeu. Séparer scènes jouées, paroles rapportées, déclarations, capacités, projets, contrats, hypothèses et propositions.
+5. **Signaler les points ouverts.** Ne résoudre aucune contradiction par vraisemblance seule. Présenter au créateur les décisions qui changent une identité, une filiation, une chronologie, une compétence, une obligation ou le statut d’un projet.
+6. **Contrôler les relations et les accès.** Vérifier les liens, les doublons et les catégories. Si une fiche publiée contient des révélations, ajouter `spoilers: true` et `unlisted: true` : la page exige un choix explicite avant lecture et n’est pas indexée. Les pages `content/mj/` reçoivent les deux protections.
+7. **Faire une relecture globale avant publication.** Comparer les fiches au registre et aux six volumes, relire les statuts et contradictions, vérifier chaque lien et chaque avertissement, puis publier seulement le lot approuvé.
+
+
+## Code couleur et publication par état éditorial
+
+Chaque fiche à code stable porte `etat_editorial`, affiché en tête avec un point coloré et un libellé. La couleur ne remplace jamais le texte :
+
+- `valide` — **vert** : faits et sources suffisamment recoupés; aucune question bloquante à arbitrer pour cette version.
+- `en_cours` — **jaune** : base fiable, mais mise en place, conséquences, calendrier ou détails restent en cours. Le texte doit distinguer clairement ce qui est acquis de ce qui reste à faire.
+- `en_chantier` — **rouge** : contradiction, identité, consentement, preuve ou décision de canon à reprendre. La fiche reste en brouillon et n'est pas publiée.
+
+`publish: true` autorise la mise en ligne d'une fiche verte ou jaune; le jaune doit conserver ses réserves visibles. Les propositions non jouées et les fiches rouges ne sont pas publiées. Les pages à spoilers affichent un avertissement fermé et restent non répertoriées. `visibilite` vaut `publique`, `publique_avec_avertissement`, `a_relire_avant_publication` ou `brouillon` selon l'accès choisi. Le tableau [Suivi éditorial](/suivi-editorial) fournit les liens, points à reprendre et références de source.
+
+## Boucle de suivi
+
+Après chaque nouvel épisode ou correction :
+
+1. **En chantier (rouge)** : isoler le fait qui bloque, la source et la décision requise; ne pas compléter par vraisemblance.
+2. **En cours (jaune)** : inscrire ce qui est adopté ou joué, le responsable, les conditions, l'échéance relative et le résultat encore attendu.
+3. **Validé (vert)** : recouper noms, relations, sources et renvois, retirer les anciennes étiquettes de brouillon, puis actualiser le tableau.
+4. Refaire une lecture transversale des fiches liées et du registre avant toute publication d'un nouveau lot.

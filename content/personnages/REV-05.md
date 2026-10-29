@@ -1,5 +1,7 @@
 ---
 publish: true
+spoilers: true
+unlisted: true
 title: "Torven Cendreval — Celui qui ramène les vivants"
 code: "REV-05"
 categorie: "personnage"
@@ -8,12 +10,20 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB2 (Mérien et secours) ; CB31–34 (formation médicale et capes) ; CB34 (hôpital et Espace sur demande) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB42 P18752–19902 ; CB43 (hôpital actif, distinct de l’infirmerie privée)"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
-description: "Médecin des Revenants et directeur de l’hôpital de l’Espace sur demande, Torven incarne une médecine de terrain devenue institution, avec un futur intérêt possible pour la magie et l’ascension par l’œuvre."
+visibilite: "publique_avec_avertissement"
+description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "evacuation", "triage", "refuge", "enseignement", "ingenierie-medicale", "reseau-de-soins", "scenarios-jouables", "sacoche", "colloque", "directeur-hopital", "magie-medicale", "ascension-proposee"]
+etat_editorial: en_cours
 ---
 
 # Torven Cendreval
+
+## Mise à jour de continuité — CB42
+
+> **État établi dans le registre :** ; Torven demeure soignant et interlocuteur de l’hôpital, distinct de l’infirmerie du Palais. Une nouvelle sacoche médicale perfectionne rangement et protection des fournitures ; les dispositifs d’accès à l’hôpital existaient déjà. La transmission envisagée inclut secours et évacuation.
+>
+> **Repère de source :** CB42 P18752–19902.
+
 
 ![Nouveau portrait conceptuel de Torven Cendreval : médecin de terrain aux cheveux bruns et barbe courte, en tenue bleu sombre, tenant une bande de soin auprès d'une sacoche et de fioles médicales.](../images/personnages/torven-portrait-medecin-proposition.webp)
 

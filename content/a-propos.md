@@ -1,24 +1,26 @@
 ---
 title: "La mémoire d’un monde"
-description: "Sources, méthode et état de cette première édition des Archives d’Alrick."
+description: "Sources, méthode et état des fiches des Archives d’Alrick."
 publish: true
 ---
 
 Les Archives d’Alrick réunissent les connaissances de l’univers d’Alrick / Orin pour préparer et partager des parties de jeu de rôle sur table et, à terme, des aventures grandeur nature.
 
-## Une première collection
+## État de l’archive
 
-Cette édition a commencé avec les huit fiches Markdown du **Kit de démarrage Quartz 5 v0.1**. Elle comprend désormais **dix-huit fiches pilotes réparties en sept rubriques**, enrichies des deux portraits de compagnons — [[REV-06|Heimdall]] et [[REV-16|Aldren]] — et de la première fiche de groupe, [[GRP-01|Les Revenants]]. Les références CB42 des huit fiches initiales restent conservées ; les sept nouvelles fiches individuelles des Revenants sont rédigées jusqu'au dernier état examiné après CB43. Cinq études visuelles provisoires demandent une validation du créateur ; Kelm et Vaëra n'ont pas encore de portrait conforme aux faits établis. Les 592 sujets de l’inventaire ne correspondent pas à 592 fiches déjà disponibles.
+L’archive rassemble maintenant les fiches issues des campagnes 1 à 4.3 et des dossiers de continuité CB42–CB43, réparties en douze domaines : monde, atlas, personnages, groupes, institutions, cultures, objets, projets, économie, magie, Maison et chroniques. Les 592 sujets de l’inventaire de recherche ne correspondent pas à 592 fiches déjà disponibles.
 
-Les sources brutes n’ont pas été revérifiées paragraphe par paragraphe lors de cette intégration technique. Les fiches restent des pilotes à relire avant publication. Aucune hypothèse nouvelle n’est ajoutée au canon.
+Au 29 octobre 2026, **273 fiches et index de travail** sont suivis : 95 sont validés pour cette version, 66 sont en cours et 112 restent à reprendre. **148 fiches codées sont publiées** : les jaunes affichent explicitement ce qui est adopté et ce qui reste à mettre en place. Les 15 index éditoriaux sont suivis séparément des fiches; les index de relecture restent en brouillon. Les pages rouges, les propositions non jouées et les index de travail non validés restent en brouillon. Le détail, les liens directs et les corrections attendues figurent dans le [[suivi-editorial|tableau de suivi éditorial]].
+
+Les couleurs expriment l’état de vérification, pas une certitude absolue : une fiche verte reste révisable si une source plus récente la corrige. Les sources brutes n’ont pas encore toutes fait l’objet d’une relecture transversale complète; les codes et repères documentaires sont conservés pour permettre ce travail. Aucune hypothèse ne devient canon par simple plausibilité.
 
 ## Lire les statuts
 
-- **Fait joué** : scène ou constat recensé dans les sources de campagne.
-- **Déclaration** : affirmation d’un personnage, qui peut être incomplète.
-- **Projet en cours** : intention ou accord dont la réalisation n’est pas acquise.
-- **Hypothèse** : explication encore incertaine.
-- **Proposition non jouée** : préparation pour une partie future.
+- **Vert — Validé** : faits et sources suffisamment recoupés pour cette version.
+- **Jaune — En cours** : base fiable, avec une mise en place ou des détails encore attendus.
+- **Rouge — À reprendre** : contradiction, source, consentement ou décision à résoudre; la fiche reste en brouillon.
+
+Le champ `canon_statut` décrit ensuite le contenu : `faits_joues`, `declaration`, `projet_en_cours`, `hypothese`, `proposition_non_jouee`, `historique` ou `a_verifier`.
 
 « Rappelé » décrit un retour à la vie. « Revenant » décrit une appartenance à la compagnie d’Orin. Les deux sont indépendants, comme le sont parenté, résidence, emploi et allégeance.
 

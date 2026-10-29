@@ -8,6 +8,11 @@ export const sections = [
   ["lieux", "Atlas des territoires", "Atlas", "⌂"],
   ["personnages", "Personnages", "Personnages", "♙"],
   ["groupes", "Groupes et alliances", "Groupes", "⚑"],
+  ["institutions", "Institutions", "Institutions", "⚖"],
+  ["cultures", "Cultures et traditions", "Cultures", "♫"],
+  ["objets", "Objets et œuvres", "Objets", "⌑"],
+  ["projets", "Projets et recherches", "Projets", "⚙"],
+  ["economie", "Économie et finances", "Économie", "↗"],
   ["magie", "Codex de la magie", "Magie", "✧"],
   ["maison", "Maison divine", "Divin", "✦"],
   ["chroniques", "Chroniques", "Chroniques", "☼"],
@@ -49,6 +54,9 @@ export const Navigation: QuartzComponent = (props) => {
       <a class={`internal mj-link ${current === "mj" ? "active" : ""}`} href={`${base}/mj/`} aria-current={current === "mj" ? "page" : undefined}>
         <span aria-hidden="true">⚿</span> Archives du MJ <span class="spoiler-dot" aria-label="Spoilers">!</span>
       </a>
+      <a class={`internal editorial-link ${current === "suivi-editorial" ? "active" : ""}`} href={`${base}/suivi-editorial`} aria-current={current === "suivi-editorial" ? "page" : undefined}>
+        <span aria-hidden="true">●</span> Suivi éditorial
+      </a>
       <div class="nav-colophon"><span class="small-star">✧</span><p>Un monde se raconte.<br />Sa mémoire se conserve.</p><small>L’ODYSSÉE D’ORIN · CB43</small></div>
     </nav>
   )
@@ -57,19 +65,25 @@ export const Navigation: QuartzComponent = (props) => {
 export const Topbar: QuartzComponent = (props) => (
   <div class="archive-topbar">
     <span>LES ARCHIVES D’ALRICK <i>/</i> <span>{props.fileData.slug === "index" ? "ACCUEIL" : props.fileData.slug?.startsWith("mj/") ? "ARCHIVES DU MJ" : "ENCYCLOPÉDIE"}</span></span>
-    <span class="edition"><span aria-hidden="true">◇</span> Édition pilote · CB43</span>
+    <span class="edition"><span aria-hidden="true">◇</span> Archives vivantes · CB43</span>
   </div>
 )
 
 export const PageIntro: QuartzComponent = (props) => {
   const { fileData } = props
   const fm = fileData.frontmatter
+  const hasSpoilers = fileData.slug?.startsWith("mj/") || fm?.spoilers === true
   if (fileData.slug === "index" || fileData.slug === "404") return null
   return <div class="archive-intro" id="archive-content" tabIndex={-1}>
     <a class="internal back-link" href={`${root(props)}/`}>← Retour à la bibliothèque</a>
-    <span class="eyebrow">{fileData.slug?.startsWith("mj/") ? "DERRIÈRE LE RÉCIT · SPOILERS" : "LES FEUILLETS DE L’ODYSSÉE"}</span>
+    <span class="eyebrow">{hasSpoilers ? "AVERTISSEMENT · SPOILERS" : "LES FEUILLETS DE L’ODYSSÉE"}</span>
     <h1>{fm?.title}</h1>
-    {fm?.code && <div class="document-meta"><span>{String(fm.code)}</span><span>État documentaire : {String(fm.ancre_documentaire ?? "à préciser")}</span><span>Fiche pilote · à relire</span></div>}
+    {fm?.code && (() => {
+      const state = String(fm.etat_editorial ?? "en_chantier")
+      const labels: Record<string, string> = { valide: "Validé", en_cours: "En cours", en_chantier: "À reprendre" }
+      const label = labels[state] ?? "À reprendre"
+      return <div class="document-meta"><span>{String(fm.code)}</span><span>État documentaire : {String(fm.ancre_documentaire ?? "à préciser")}</span><span class={`editorial-status editorial-status--${state}`}><span aria-hidden="true">●</span> {label}</span></div>
+    })()}
   </div>
 }
 
@@ -89,7 +103,7 @@ export const Library: QuartzComponent = (props) => {
       </div>
       <span class="hero-caption">MONTAGNES DE L’AUBE<br /><small>Évocation graphique · hors canon</small></span>
     </section>
-    <div class="collection-meta"><span><b>{files.length}</b> fiches pilotes</span><span><b>{sections.length}</b> domaines de connaissance</span><span>Un univers en cours de transmission</span></div>
+    <div class="collection-meta"><span><b>{files.length}</b> fiches de la bibliothèque</span><span><b>{sections.length}</b> domaines de connaissance</span><span>Un univers en cours de transmission</span></div>
     <section class="archive-library" id="bibliotheque" aria-labelledby="library-title">
       <div class="library-heading"><div><span class="eyebrow">LA BIBLIOTHÈQUE</span><h2 id="library-title">Explorer les connaissances</h2></div><span class="library-ornament" aria-hidden="true">— ◇ —</span></div>
       <div class="library-controls"><div class="archive-filters" role="group" aria-label="Filtrer les fiches par domaine"><button type="button" data-filter="all" aria-pressed="true">Tout</button>{sections.map(([slug, , label]) => <button type="button" data-filter={slug} aria-pressed="false">{label}</button>)}</div><label class="library-search"><span aria-hidden="true">⌕</span><span class="sr-only">Rechercher dans les fiches</span><input id="library-search" type="search" placeholder="Un nom, un lieu, un code…" autoComplete="off" /></label></div>
@@ -109,4 +123,4 @@ export const Library: QuartzComponent = (props) => {
 }
 Library.afterDOMLoaded = script
 
-export const Colophon: QuartzComponent = (props) => <footer class="archive-footer"><span>LES ARCHIVES D’ALRICK <i>✧</i> L’Odyssée d’Orin</span><span>Édition pilote · <a class="internal" href={`${root(props)}/a-propos`}>Sources & méthode</a></span></footer>
+export const Colophon: QuartzComponent = (props) => <footer class="archive-footer"><span>LES ARCHIVES D’ALRICK <i>✧</i> L’Odyssée d’Orin</span><span>Archives vivantes · <a class="internal" href={`${root(props)}/a-propos`}>Sources & méthode</a></span></footer>
