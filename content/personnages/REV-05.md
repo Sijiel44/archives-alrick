@@ -9,8 +9,8 @@ ancre_documentaire: "CB43"
 source_brute: "CB2 (Mérien et secours) ; CB31–34 (formation médicale et capes) ; CB34 (hôpital et Espace sur demande) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB42 P18752–19902 ; CB43 (hôpital actif, distinct de l’infirmerie privée)"
 derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
-description: "Médecin des Revenants, soignant de terrain et architecte d’une organisation hospitalière, Torven transforme le secours en méthode, en transmission et en responsabilité partagée."
-tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "evacuation", "triage", "refuge", "enseignement", "ingenierie-medicale", "reseau-de-soins", "scenarios-jouables", "sacoche"]
+description: "Médecin des Revenants et directeur de l’hôpital de l’Espace sur demande, Torven incarne une médecine de terrain devenue institution, avec un futur intérêt possible pour la magie et l’ascension par l’œuvre."
+tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "evacuation", "triage", "refuge", "enseignement", "ingenierie-medicale", "reseau-de-soins", "scenarios-jouables", "sacoche", "colloque", "directeur-hopital", "magie-medicale", "ascension-proposee"]
 ---
 
 # Torven Cendreval
@@ -20,18 +20,21 @@ tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "ev
 *Étude visuelle provisoire issue d’une planche d’ensemble ; **apparence et détails à valider** avant de parler de portrait officiel.*
 
 > [!info] Statut documentaire
-> **Fiche approfondie à valider**, fondée sur le *Compendium* v1.7, CB2, CB31–34 et CB42–43. Le parcours professionnel, le refuge hospitalier, la montre-interface et les décisions d'enseignement proviennent **d'événements joués** ; la jeunesse, la ville d'origine, les parents et les anecdotes de formation ci-dessous sont **des propositions à soumettre au créateur**. L'hôpital est établi ; le réseau régional de transferts n'est pas décrit comme entièrement déployé. Le portrait reste à approuver.
+> **Fiche approfondie en attente de validation**, fondée sur le *Compendium* v1.7 et les scènes CB2, CB31–34, CB42–43. Les responsabilités de Torven dans les Revenants, sa **direction médicale effective de l’hôpital**, sa présentation devant la famille royale et les débats de colloque sont **joués et documentés**. **Nouvelles pistes du créateur (28 octobre 2026) :** souhait de se former personnellement aux arts magiques auprès d’Orin et hypothèse lointaine d’une ascension liée au soin. **Ce sont des développements proposés, non accomplis.** La jeunesse et les anecdotes de formation sont également des propositions. Le grand réseau de soins est un objectif de déploiement, non un réseau déjà achevé ; le portrait actuel reste à approuver.
 
 *Il n'a jamais considéré qu'une blessure était moins importante parce qu'on avait remporté le combat.*
 
 ## En quelques mots
 
-**Torven Cendreval** est le médecin des Revenants qui a convaincu ses compagnons que **le secours ne commence pas après la bataille : il change la manière de préparer toute la mission**. Un blessé est pour lui une personne entière, avec ses proches, ses inquiétudes, son travail et son avenir — et non une blessure qu'on efface. Torven est pragmatique, protecteur, parfois mordant, et d'une grande patience avec ceux qui souffrent. Il ne promet pas de miracles. Son ambition est que **la médecine reste possible et digne même quand il n'est pas là**.
+**Torven Cendreval** est à la fois **le médecin essentiel des Revenants et le directeur médical de l’hôpital public de l’Espace sur demande**. Il a convaincu ses compagnons que **le secours ne commence pas après la bataille : il change la manière de préparer toute la mission**. Un blessé est pour lui une personne entière, avec ses proches, ses inquiétudes, son travail et son avenir — et non une blessure qu'on efface. Torven est pragmatique, protecteur, parfois mordant, et d'une grande patience avec ceux qui souffrent. Il ne promet pas de miracles. Son ambition est que **la médecine reste possible et digne même quand il n'est pas là**.
 
 ## Situation actuelle
 
 - **Statut :** vivant et Revenant de plein droit ; soignant de référence de la compagnie.
-- **Responsabilités :** médecine de terrain, entraînement aux secours, préparation sanitaire et interface avec les structures de soins.
+- **Responsabilités parmi les Revenants :** **autorité professionnelle sur la préparation sanitaire**, organisation du secours, formation croisée des compagnons, coordination médicale, évacuation et suivi des blessés ; pas de commandement militaire exclusif inventé.
+- **Responsabilités à l’hôpital :** **directeur médical en exercice**, organisant équipes, soins, accès fonctionnels, sécurité des patients, formation, maintenance des dispositifs médicaux avec les professionnels concernés et préparation de la relève. Ce rôle demeure distinct de la propriété de l’Espace par Orin.
+- **Au colloque :** porte-parole médical de l’établissement, des soignants et d’une doctrine de santé publique qui refuse de confondre dignité humaine et productivité.
+- **Aspirations possibles, non jouées :** apprentissage personnel de la magie médicale avec Orin ; une lointaine voie d’ascension par l’œuvre et le domaine du soin, **sans titre ni pouvoir divin actuel**.
 - **Lieux distincts :** hôpital de la partie publique de l'Espace sur demande ; petite infirmerie domestique du Palais divin, **qui ne remplace pas l'hôpital**.
 - **Équipement :** sacoche médicale perfectionnée et dispositifs d'accès déjà existants ; montre-interface personnelle à permissions limitées (mise à jour de campagne 3.4).
 - **Apparence :** vêtements pratiques, mains attentives, matériel facile à atteindre ; **espèce/ascendance, âge, traits du visage et silhouette précise non documentés suffisamment** pour figer un portrait.
@@ -98,6 +101,28 @@ Torven défend également une distinction cruciale : Orin peut protéger l'inté
 
 Dans le développement de l'**Espace sur demande**, Torven devient référent médical du **Refuge/Hôpital**. Il présente ses exigences devant la famille royale et le colloque ; sa montre-interface permet de **demander l'accès à des espaces autorisés**, pas d'en posséder les portes ni de s'imposer comme seul dépositaire irremplaçable. Sa succession est conçue comme un processus progressif et volontaire pour que l'hôpital puisse fonctionner sans lui. (*Compendium, mise à jour 3.4 ; Continuité.*)
 
+### Le colloque — quand le médecin devient une voix du royaume
+
+Les colloques et les échanges avec les délégations donnent à Torven une importance **politique et civique**, sans lui attribuer de charge ministérielle. Là où les débats pourraient se perdre en prouesses de magie, il ramène l'assemblée à **ce qui fonctionne effectivement pour les patients, le personnel et les familles**.
+
+Pendant les réflexions sur l'enseignement et la reconnaissance des métiers, **médecine et secours** sont explicitement considérés comme une voie professionnelle importante. Torven approuve la reconnaissance des savoirs pratiques mais rappelle qu'il existe des métiers pour lesquels **une vérification rigoureuse des compétences reste nécessaire**. Il ne s'agit ni de distribuer un diplôme à chaque guérisseur improvisé, ni de rejeter les soignants expérimentés parce qu'ils n'ont pas suivi l'école d'une capitale. (*CB32 P03901–04000 et suites.*)
+
+Au cours de la **présentation médicale de CB34 devant la famille royale et les invités**, Orin confie la visite de l'hôpital à Torven. Celui-ci utilise **sa montre-interface**, qui authentifie la demande sans lui transférer la propriété de l'Espace, **ouvre le passage autorisé et conduit le groupe** dans un établissement déjà immense : ailes de soin, consultation, laboratoire, jardins, espaces pour les proches et possibilité d'extension. Son premier commentaire n'est pas de s'enorgueillir du bâtiment : c'est de rappeler que **les moyens humains constituent le problème décisif**.
+
+Il commence la démonstration par **les lits, les rangements, les attelles et le matériel non magique**, puis montre les instruments assistés par des Cercles, leurs alertes, leurs modes dégradés et leurs limites. Lorsque la **plaque d'imagerie anatomique interne** attire l'attention des visiteurs, il explique précisément ce qu'elle permet d'observer — os, muscles, certaines lésions et tissus — puis rappelle qu'elle **ne lit pas les pensées, ne pose aucun diagnostic et ne décide d'aucun traitement**. Les essais sont prometteurs, mais encore insuffisants pour prétendre à une validation définitive. *Une image est une mesure, pas un diagnostic.* (*CB34 P30801–31100.*)
+
+Cette présentation fait également de l'hôpital **un cas pratique majeur du Traité d'ingénierie magique** : les outils de soin, les systèmes d'air, les sécurités et les accès doivent être documentés, vérifiables et réparables, et certaines recherches peuvent être adaptées hors du domaine médical. **Le bâtiment n'est pas le modèle unique à copier partout** ; Torven tient au contraire à distinguer un bon principe d'une architecture adaptée à tous les lieux. (*CB34 P30801–31200.*)
+
+#### « On ne soigne pas pour produire »
+
+Dans le débat économique sur les services publics, Torven prend la parole pour affirmer une doctrine qui mérite d'être conservée. Oui, les soins coûtent, et oui, éviter une invalidité, une infection grave ou une épidémie peut préserver le travail, les familles et la prospérité d'une région. Mais **la justification fondamentale des soins est la dignité des personnes**, pas leur utilité fiscale.
+
+Il demande que l'ordre des deux idées soit écrit sans ambiguïté :
+
+> « ON NE SOIGNE PAS POUR PRODUIRE. »
+
+La population peut ensuite bénéficier de meilleures conditions de vie et d'une activité économique plus stable, **comme conséquence de soins dignes**, non comme condition pour les recevoir. Ce passage, discuté avec Orin et Édric, donne à Torven une parole propre dans l'organisation du royaume. (*CB34 P38601–38700.*)
+
 ### Taagral — quand l'extraction devient une victoire
 
 Lors de l'attaque de Taagral, le système médical et les espaces de refuge sont engagés dans les opérations : **Torven coordonne l'usage médical de l'Espace sur demande**. Les blessés doivent être stabilisés, transportés et suivis ; un portail ou refuge magique ne supprime pas le besoin d'un plan d'extraction par les voies ordinaires. La doctrine des Revenants traite avec sérieux les redditions, les prisonniers et l'aide aux civils. (*Continuité v1.7, échanges 012–119 ; Compendium, crise de Taagral.*)
@@ -105,6 +130,24 @@ Lors de l'attaque de Taagral, le système médical et les espaces de refuge sont
 ### La sacoche améliorée et l'enseignement des futurs apprentis (CB42)
 
 En CB42, la **nouvelle sacoche médicale** facilite rangement, protection des fournitures et intervention rapide. Elle est réalisée et fait partie des premiers essais de l'équipement des Revenants ; il serait faux de prétendre que Torven découvre seulement à ce moment l'existence des dispositifs d'accès à l'hôpital. La formation envisagée pour les futurs apprentis comprend les secours et l'évacuation, **sans première cohorte déjà recrutée**. (*CB42 P18752–19902.*)
+
+## Deux responsabilités, une même vocation
+
+### Chez les Revenants — une place dans les décisions
+
+Torven **n'est pas un prestataire de soins attaché aux guerriers**. Il est Revenant de plein droit, participe à leurs discussions et possède une compétence sans laquelle beaucoup de missions n'auraient simplement pas été envisageables. Son jugement détermine **quelles ressources préparer, combien de blessés une extraction peut prendre en charge, où doit se trouver une équipe de secours et ce que signifie « rentrer tous »**.
+
+Lorsqu'un combat doit protéger une évacuation, il parle comme un professionnel que **Bram, Ragna, Kelm, Haldrek, Vaëra et les autres doivent écouter**, et non comme quelqu'un dont les remarques arrivent après les décisions importantes. Ce poids est un **rôle de fait et une autorité de compétence**, pas un pouvoir de veto constitutionnel ou un commandement général que les sources n'auraient pas attribué.
+
+La formation collective le montre bien : il se déplace entre plusieurs groupes, impose aux élèves des exercices de secours qui bousculent les rôles, apprend à Kelm à abandonner un instant son marteau pour comprimer une plaie, et rappelle que protéger **le médecin lui-même** fait partie de la mission. Il ne veut pas devenir le seul homme capable de soigner : sa véritable réussite sera que **chaque équipe conserve des chances de ramener un blessé même en son absence**.
+
+### À l'hôpital — directeur médical, et non gardien d'un sac merveilleux
+
+L'établissement situé dans la **partie publique de l'Espace sur demande** est de très grande ampleur. Torven en est **le directeur médical actuel**, ce qui engage une responsabilité humaine bien au-delà de ses interventions personnelles : politique des soins, composition et formation des équipes, organisation des services, continuité des soins, conditions des soignants, coordination avec les artisans et les laboratoires, logistique sanitaire et travail avec les interlocuteurs des établissements régionaux.
+
+La **montre-interface** lui permet de demander un accès authentifié, de gérer dans son périmètre les autorisations des soignants, des chercheurs, des résidents et des patients, et de conduire les visites ou opérations prévues. **Elle ne lui donne pas la propriété de l'Espace**. Orin demeure responsable de l'intégrité du domaine ; les décisions médicales appartiennent à Torven et aux personnels qualifiés. **Un futur détenteur de la montre ne sera pas automatiquement médecin-chef** si la compétence, la confiance et la succession ne sont pas établies.
+
+Torven doit aussi veiller à ce que l'hôpital devienne une **institution vivante**, non l'œuvre figée d'un seul homme : recrutement de soignants aux traditions différentes, formation continue, maintenance, travail avec les médecins locaux, étude des innovations et possibilité d'accueillir plus tard des patients de régions éloignées dans un réseau autorisé. **Le déploiement complet de ce réseau reste un chantier**, pas un pouvoir de téléportation générale déjà accordé.
 
 ## Celui qui soigne est aussi un homme
 
@@ -155,6 +198,50 @@ Sa faiblesse la plus intéressante serait de **se croire parfois seul à pouvoir
 ## Équipement, pouvoirs et prudence
 
 Le **sac médical** a des avantages concrets. La **montre-interface** dépend d'autorisations et ne transforme pas Torven en propriétaire de l'Espace. Les passages, mécanismes de diagnostic et enchantements futurs restent soumis aux essais. Il n'existe **aucun miracle médical automatique** démontré dans les sources.
+
+## Aspirations — la magie au service du soin, puis peut-être davantage
+
+> [!note] Développements proposés par le créateur, non joués
+> Torven **n'a pas encore demandé en scène à Orin de lui enseigner personnellement la magie**. Il n'est pas attesté comme mage autonome de plusieurs Cercles et **aucune ascension divine n'est engagée ni confirmée pour lui**. Les trajectoires ci-dessous sont des **pistes ouvertes**, construites à partir de son intérêt réel pour l'ingénierie médicale et de la cosmologie des Ascendants, de l'Œuvre et des Domaines.
+
+### Oser enfin poser la question à Orin
+
+Torven travaille depuis longtemps avec des **instruments augmentés par la magie**. Il voit les avantages immenses qu'ils apportent, mais connaît aussi leurs dépendances, les risques d'erreur et ce que les soignants ignorent encore de leur fonctionnement. Jusqu'ici, **il formule les besoins et contrôle les usages** tandis qu'Orin, Brégan et les spécialistes de l'ingénierie traduisent ces besoins en systèmes techniques.
+
+La nouvelle aspiration serait toute simple, et d'autant plus personnelle : **Torven aimerait apprendre lui-même les principes magiques**, avec Orin, parce qu'il ne veut pas toujours devoir solliciter un autre spécialiste pour comprendre une limite, stabiliser un effet d'assistance ou proposer une adaptation au chevet d'un patient.
+
+Cela peut commencer dans les deux sens : **Orin lui enseigne l'intention, la sécurité, la lecture des Cercles et les limites de ses propres capacités ; Torven enseigne à Orin le raisonnement clinique, les responsabilités du soignant et les conséquences humaines d'une invention**. Orin ne pourrait pas simplement lui offrir « la guérison » comme un sort tout prêt.
+
+La progression possible doit comporter des étapes vérifiables. **D'abord**, apprendre à lire et à entretenir l'architecture d'un instrument, y compris lorsqu'on ne possède pas de mana propre. **Puis**, si une aptitude personnelle se manifeste effectivement, tester un premier Cercle dans des conditions contrôlées, distinguer un effet d'observation d'une intervention sur le vivant, et documenter les limites. **Enfin seulement**, envisager des usages médicaux plus ambitieux, soumis à l'avis des autres soignants et au consentement des personnes concernées. **Ces étapes sont proposées, aucune n'est réputée réussie.**
+
+> [!tip] Scène possible — non jouée
+> Après une journée de travail, Torven observe les mains d'Orin parcourir un schéma de Cercle.
+>
+> « J'aimerais que tu m'apprennes », dit-il enfin.
+>
+> Orin lève les yeux : « À faire de la magie ? »
+>
+> « À comprendre assez pour ne pas toujours t'appeler lorsqu'un patient a besoin d'autre chose qu'un bon instrument. »
+>
+> Il hésite, puis ajoute : « Et, si j'en suis capable, à faire mieux. Pas plus impressionnant. Mieux. »
+
+Cette conversation est **une proposition d'ouverture**, pas un dialogue déjà joué ni une promesse faite par Orin.
+
+### L'hôpital comme œuvre et possible Ancrage
+
+Dans la Bible cosmologique, l'**Ascension de l'Œuvre** est une voie où une réalisation — cité, tradition, école ou institution — devient durablement un **Ancrage** lié à la personne qui l'a construite. L'**Ascension du Domaine** suppose qu'un être incarne progressivement une fonction identifiable. Ces deux voies pourraient un jour concerner Torven **si** l'hôpital, les générations de soignants et les vies effectivement aidées bâtissent une mémoire et un lien spirituel qui dépassent son existence individuelle.
+
+Son domaine possible ne serait pas forcément « toute guérison », que nul ne devrait s'arroger automatiquement, mais quelque chose de plus personnel : **le secours apporté à temps, le droit au soin, l'hospitalité des blessés, la convalescence, la transmission du savoir médical et la dignité des patients**. Une telle orientation lui donnerait un sens propre, distinct des fonctions d'Orin et des autres puissances.
+
+L'Espace sur demande pourrait, **très loin dans la campagne**, devenir le lieu d'un **hôpital à dimension sacrée ou divine**, sans cesser d'être accessible aux personnes ordinaires. L'établissement devrait alors rester **un lieu de soin**, non un sanctuaire qui exige la dévotion des patients. Les médecins pourraient continuer à exercer sans être prêtres ; les soins ne dépendraient pas de prières adressées à Torven.
+
+### Le chemin n'est ni automatique ni sans risques
+
+La cosmologie distingue **héros consacré, Ascendant, puissance naissante et divinité pleinement établie**. L'influence d'une œuvre, la gratitude des malades, un grand hôpital, un pouvoir conféré par Orin ou une éventuelle pratique de la magie **ne suffisent pas isolément** à transformer Torven en dieu. Il faudrait des événements propres, des Ancrages réels, une transformation éventuellement reconnue, des conséquences et un choix du personnage.
+
+Une ascension potentielle pourrait mettre en conflit **le droit des patients à des soins libres**, les prières qu'on commence à adresser au médecin et les attentes irréalistes envers celui qui a déjà tant de difficultés à se reposer. Il pourrait même **refuser une élévation** si elle menaçait de faire de chaque soignant un serviteur ou de chaque patient un fidèle obligé.
+
+Le danger intéressant n'est donc pas « Torven va-t-il devenir assez puissant pour guérir tout le monde ? », mais **« saura-t-il protéger l'autonomie des soignants et la dignité des malades si son œuvre devient plus grande que lui ? »**. Aucun rang d'étoiles, miracle nouveau, immortalité ou culte institué n'est attribué à Torven à ce stade.
 
 ## Jouer avec Torven — des aventures où sauver change l'histoire
 
@@ -226,6 +313,8 @@ Les Archives fournissent **des références et des scénarios**, pas encore un m
 - **Choisir ou modifier la jeunesse proposée** : ville, famille, anciennes études et proches, sans tragédie imposée.
 - Programme effectif des premiers apprentis des Revenants.
 - **Déploiement effectif** du réseau hospitalier régional : bâtiments habilités, personnel, coûts, procédures, interfaces autorisées et sécurité. Le principe est établi, les installations restent à confirmer.
+- **À jouer éventuellement :** une demande d’enseignement magique adressée personnellement à Orin, puis une progression graduelle **sans présumer l’accès aux Cercles**.
+- **Voie très lointaine proposée :** Ascension de l’Œuvre/Domaine par l’hôpital et le soin, **sans aucune ascension actuelle, titre divin ni pouvoir miraculeux acquis**.
 - Cadre de transmission des responsabilités hospitalières lorsque Torven est absent.
 - Scènes montrant ses propres besoins et son droit d'être soigné et protégé.
 - Portrait individuel de Torven, âge et apparence, à valider.
@@ -234,6 +323,9 @@ Les Archives fournissent **des références et des scénarios**, pas encore un m
 ## Sources principales
 
 - *Compendium des personnages*, v1.7, **REV-05**, états CB42 et mise à jour **3.4**.
+- *Campagne brute regroupée — Volume 1*, **CB34 P30801–31200** (présentation de l’hôpital par Torven, montre-interface, imagerie, hospitalité et futur réseau), **CB34 P38601–38700** (réflexion économique, doctrine « On ne soigne pas pour produire »).
+- *Bible du monde et des puissances*, v1.7, **états intermédiaires et voies d’ascension** (Ascension de l’Œuvre, du Domaine, culte vivant) : **contexte cosmologique**, non preuve d’une ascension de Torven.
+- **Précision du créateur, octobre 2026 :** importance de Torven aux colloques, responsabilité de directeur hospitalier, envie possible d’étudier personnellement la magie avec Orin, éventuelle voie très lointaine d’ascension liée aux soins. Ces deux dernières sont **proposées et non jouées**.
 - *Campagne brute regroupée — Volume 1*, **CB31–34**, formation de secours, outils médicaux augmentés, création hospitalière, gouvernance, transmissions et réseau régional en développement ; **CB34 P13901–14000** (instruments témoins) ; **CB34 P22401–22500 et P31101–31200** (autorisations et transferts).
 - *Campagne Brut 4.2*, **CB42 P18752–19902**, sacoche et transmission.
 - *Continuité de la campagne*, v1.7, **Taagral**, échanges 012–119.
