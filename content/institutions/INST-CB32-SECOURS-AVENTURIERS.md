@@ -1,14 +1,14 @@
 ---
 publish: false
-title: "Secours mutuel et Guilde des Aventuriers — projet"
+title: "Secours mutuel et Guilde des Aventuriers"
 code: "INST-CB32-SECOURS-AVENTURIERS"
 categorie: "institution"
-canon_statut: "a_verifier"
+canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P08327–08719"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Modèle de secours local, régional et royal, avec entraide préautorisée et qualifications communes pour les aventuriers."
+description: "Guilde et secours mutuel adoptés, avec déploiement progressif, entraide graduée et qualifications communes à organiser."
 tags: [secours, aventuriers, guildes, entraide, qualification, cb32, brouillon]
 ---
 
@@ -26,9 +26,8 @@ La Guilde des Aventuriers devrait pouvoir remplacer, compléter ou transmettre d
 
 ## Statut et questions ouvertes
 
-Le passage expose une architecture proposée. Il ne confirme ni la fondation de la guilde, ni ses membres, ni ses pouvoirs. À décider : qui certifie les niveaux de risque, qui finance les renforts et comment l’autorité locale conserve la maîtrise de son territoire.
+La Guilde des Aventuriers et le secours mutuel sont **adoptés**; leur déploiement se met en route à l’échelle du Royaume. Les membres, les antennes et les mécanismes de certification restent à constituer. À préciser : qui certifie les niveaux de risque, qui finance les renforts et comment l’autorité locale conserve la maîtrise de son territoire.
 
 ## Sources
 
 - *Campagne Brut 3.2*, CB32 P08327–08719.
-

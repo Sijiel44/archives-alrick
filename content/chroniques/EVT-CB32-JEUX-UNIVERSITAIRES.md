@@ -1,14 +1,14 @@
 ---
 publish: false
-title: "Jeux universitaires du Royaume — événement envisagé"
+title: "Jeux universitaires du Royaume"
 code: "EVT-CB32-JEUX-UNIVERSITAIRES"
 categorie: "evenement"
-canon_statut: "a_verifier"
+canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P04184–04367; P09115–09413"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Proposition de rencontres et d’épreuves interuniversitaires qui font pratiquer, jouer, améliorer et transmettre."
+description: "Rencontres et épreuves interuniversitaires adoptées, en cours de lancement dans le Royaume."
 tags: [jeux-universitaires, universite, concours, culture, cb32, brouillon]
 ---
 
@@ -22,9 +22,8 @@ Le texte évoque une coupe générale, des défis interuniversitaires et un gran
 
 ## Statut et questions ouvertes
 
-Les Jeux sont une proposition de vie universitaire; ni leur création ni une périodicité ne sont établies. À décider : disciplines, lieux d’accueil, critères de sécurité, participation des établissements éloignés et articulation avec la préparation civile.
+Les Jeux sont **adoptés** et en cours de lancement dans le Royaume. Le texte ne fixe pas encore de périodicité. À préciser : disciplines, lieux d’accueil, critères de sécurité, participation des établissements éloignés et articulation avec la préparation civile.
 
 ## Sources
 
 - *Campagne Brut 3.2*, CB32 P04184–04367; P09115–09413.
-

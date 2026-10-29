@@ -1,12 +1,12 @@
 ---
 publish: false
-title: "Institutions — brouillons CB3.2"
-description: "Propositions d’institutions, de droit et de service public relevées dans Campagne Brut 3.2."
+title: "Institutions et services publics — brouillons CB3.2–CB3.6"
+description: "Institutions adoptées en cours de déploiement, projets administratifs et principes de service public issus des campagnes."
 ---
 
-# Institutions — brouillons CB3.2
+# Institutions et services publics
 
-Les fiches ci-dessous décrivent des propositions discutées dans la scène. Elles ne signifient pas que ces institutions ou règles sont déjà fondées.
+Les fiches ci-dessous distinguent les institutions adoptées en cours de déploiement des chantiers qui restent en conception. Les dispositifs du colloque de CB3.2 sont adoptés par le créateur et se mettent en place progressivement dans le Royaume.
 
 - [[INST-CB32-CONSEILS-ROYAUME|Conseils et Grand Conseil du Royaume]]
 - [[INST-CB32-EDUCATION-TRANSMISSION|Administration de l’éducation et de la transmission]]
@@ -14,4 +14,5 @@ Les fiches ci-dessous décrivent des propositions discutées dans la scène. Ell
 - [[INST-CB32-CHARTE-SOLDAT|Charte du Soldat]]
 - [[INST-CB32-JUSTICE-INFORMATION|Justice, presse et information publique]]
 - [[INST-CB32-DEFENSE-RESILIENCE|Défense, sécurité et résilience]]
-
+- [[INST-CB35-FISCALITE-ROYAUME|Cadre fiscal commun du Royaume]]
+- [[INST-CB36-COLLOQUE-TORNGARD|Grand Colloque de Torngard — actes et commissions]]

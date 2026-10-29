@@ -1,14 +1,14 @@
 ---
 publish: false
-title: "Charte du Soldat — principes proposés"
+title: "Charte du Soldat"
 code: "INST-CB32-CHARTE-SOLDAT"
 categorie: "institution"
-canon_statut: "a_verifier"
+canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P09458–10270"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Projet de règles sur l’obéissance, le refus d’un ordre manifestement interdit, le contrôle et la responsabilité."
+description: "Charte adoptée en cours de mise en place, sur l’obéissance, le refus d’un ordre interdit, le contrôle et la responsabilité."
 tags: [charte-du-soldat, armee, ordres, responsabilite, cb32, brouillon]
 ---
 
@@ -24,9 +24,8 @@ Les prisonniers restent des personnes : la vengeance ne les transforme pas en ci
 
 ## Statut et questions ouvertes
 
-Ces principes sont débattus comme une **Charte du Soldat à écrire**; aucune adoption formelle n’est établie. Il reste à définir les mécanismes de signalement, les délais, la protection contre les représailles et l’examen des ordres ambigus.
+La **Charte du Soldat est adoptée** et sa mise en place commence à l’échelle du Royaume. Les principes d’obéissance responsable, de refus circonscrit et de contrôle sont retenus. Les mécanismes de signalement, les délais, la protection contre les représailles et l’examen des ordres ambigus restent à organiser.
 
 ## Sources
 
 - *Campagne Brut 3.2*, CB32 P09458–10270.
-

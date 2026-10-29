@@ -1,14 +1,14 @@
 ---
 publish: false
-title: "Conseils et Grand Conseil du Royaume — projet"
+title: "Conseils et Grand Conseil du Royaume"
 code: "INST-CB32-CONSEILS-ROYAUME"
 categorie: "institution"
-canon_statut: "a_verifier"
+canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P00266–00918; P03429–03710"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Projet de représentation par quatre conseils et un Grand Conseil, associé à une administration commune relevant de la Couronne."
+description: "Institutions adoptées, en cours de mise en place : quatre conseils de représentation et un Grand Conseil, associés à une administration commune relevant de la Couronne."
 tags: [conseils, grand-conseil, couronne, representation, institution, cb32, brouillon]
 ---
 
@@ -33,9 +33,10 @@ La Couronne y est décrite comme garante du royaume, non comme sa propriétaire.
 
 ## Statut et questions ouvertes
 
-La scène présente une **proposition institutionnelle à formaliser**, pas une réforme déjà promulguée. À confirmer : composition et sélection des quatre conseils, compétences précises, règles de saisine, contrôle de la Couronne et procédure d’arbitrage. Le texte emploie plusieurs formulations provisoires pour les noms de l’administration.
+Les quatre Conseils et le Grand Conseil sont **adoptés**. Leur mise en place est en cours à l’échelle du Royaume. L’architecture décrite ci-dessus sert de cadre retenu, même si sa composition détaillée et ses procédures restent à organiser.
+
+Restent à préciser : sélection des membres, compétences opérationnelles, règles de saisine, contrôle de la Couronne et procédure d’arbitrage.
 
 ## Sources
 
 - *Campagne Brut 3.2*, CB32 P00266–00918; P03429–03710.
-

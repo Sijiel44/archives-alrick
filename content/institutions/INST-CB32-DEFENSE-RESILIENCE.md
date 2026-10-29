@@ -3,12 +3,12 @@ publish: false
 title: "Défense, sécurité et résilience — principes communs"
 code: "INST-CB32-DEFENSE-RESILIENCE"
 categorie: "institution"
-canon_statut: "a_verifier"
+canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P07299–08174; P08327–09458"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Socle proposé qui distingue défense extérieure, sécurité intérieure et secours tout en organisant leur coopération."
+description: "Socle adopté qui distingue défense extérieure, sécurité intérieure et secours tout en organisant leur coopération."
 tags: [defense, securite, resilience, secours, armee, cb32, brouillon]
 ---
 
@@ -24,13 +24,12 @@ La défense est présentée comme une responsabilité commune, non comme un moye
 
 La préparation civile comprend condition physique, entraînement aux risques locaux et capacité à donner l’alerte, sans constituer une conscription. Tout le monde peut avoir un rôle sans être tenu de se militariser. La réponse locale doit pouvoir s’appuyer sur des renforts régionaux et royaux, puis passer le relais et reconstruire.
 
-La scène propose une heure commune d’entraînement et des jeux réalistes mais sûrs; leur fréquence et leur adoption restent à décider. Les mécanismes détaillés de défense en profondeur sont consignés dans [[PROJ-CB32-PROFONDEUR-NORD|le projet de défense du Nord]].
+L’heure commune d’entraînement et les Jeux universitaires sont adoptés et en cours de lancement. Les mécanismes détaillés de défense en profondeur sont consignés dans [[PROJ-CB32-PROFONDEUR-NORD|la doctrine de défense du Nord]].
 
 ## Statut
 
-Il s’agit d’un premier socle commun discuté au colloque, pas d’une doctrine déjà promulguée.
+Le socle commun de sécurité et de résilience est adopté; la mise en œuvre se déploie progressivement dans le Royaume.
 
 ## Sources
 
 - *Campagne Brut 3.2*, CB32 P07299–08174; P08327–09458.
-

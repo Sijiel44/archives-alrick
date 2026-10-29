@@ -1,14 +1,14 @@
 ---
 publish: false
-title: "Défense en profondeur du Nord — projet"
+title: "Défense en profondeur du Nord"
 code: "PROJ-CB32-PROFONDEUR-NORD"
 categorie: "projet"
-canon_statut: "a_verifier"
+canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P07784–08383"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Projet de défense contre un ennemi adaptatif, organisé par fonctions successives qui doivent acheter du temps et préserver les civils."
+description: "Doctrine adoptée, en déploiement progressif, organisée par fonctions successives pour préserver les civils et acheter du temps."
 tags: [defense, nord, profondeur, doctrine, cb32, brouillon]
 ---
 
@@ -26,9 +26,8 @@ La proposition distingue plusieurs statuts au-delà de la frontière : territoir
 
 Le projet refuse de traiter les civils comme du terrain ou de coloniser pour légitimer après coup une position militaire. Il examine les forces, faiblesses, moyens manquants et savoirs transmissibles à partir d’une situation du Nord.
 
-La scène appelle cela un projet; aucun déploiement, tracé définitif ni ordre opérationnel n’est confirmé.
+Le créateur confirme l’adoption de la défense en profondeur et son lancement progressif à l’échelle du Royaume. La doctrine est retenue; cela ne signifie pas que les ouvrages, les effectifs, le tracé ou tous les ordres opérationnels soient déjà en place.
 
 ## Sources
 
 - *Campagne Brut 3.2*, CB32 P07784–08383.
-

@@ -1,14 +1,14 @@
 ---
 publish: false
-title: "Administration de l’éducation et de la transmission — projet"
+title: "Administration de l’éducation et de la transmission"
 code: "INST-CB32-EDUCATION-TRANSMISSION"
 categorie: "institution"
-canon_statut: "a_verifier"
+canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P03730–05864"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Projet d’un réseau d’éducation accessible, adapté aux territoires et reliant apprentissage pratique, écoles et universités."
+description: "Administration adoptée, en cours de déploiement, pour relier apprentissage pratique, écoles et universités dans les territoires."
 tags: [education, transmission, universite, savoirs, institution, cb32, brouillon]
 ---
 
@@ -24,13 +24,12 @@ Les passerelles entre filières, le droit à l’erreur et le droit d’essayer 
 
 Les pistes comprennent un recensement des savoirs et des obstacles d’accès, des routes du savoir, un passeport de compétences ou carnet de parcours, des maisons de maîtres et de transmission, des bourses de mobilité et de haute maîtrise, et un tour des cuisines pour apprendre par le déplacement. Le financement porte aussi sur les maîtres, le transport, le logement, le matériel, l’apprentissage et l’installation après formation, pas uniquement sur les bâtiments prestigieux.
 
-Deux appellations apparaissent dans la scène : **Administration royale de l’éducation et de la transmission** et **Administration royale des savoirs et de la transmission**. Le texte parle d’une fondation en cours, sans établir encore son statut juridique ni son déploiement.
+Deux appellations apparaissent dans la scène : **Administration royale de l’éducation et de la transmission** et **Administration royale des savoirs et de la transmission**. Le créateur confirme l’adoption de l’administration et son déploiement progressif à l’échelle du Royaume. La fondation n’implique pas que toutes les écoles, bourses et passerelles soient déjà opérationnelles.
 
 ## Statut et points ouverts
 
-C’est un programme en construction, pas un réseau national déjà achevé. À préciser : nom officiel, tutelle, niveaux financés, critères d’accès, reconnaissance des compétences et relation entre établissements locaux et universités.
+Programme adopté, en cours de mise en place. À préciser : nom officiel entre les deux formulations, tutelle, niveaux financés, critères d’accès, reconnaissance des compétences et relation entre établissements locaux et universités.
 
 ## Sources
 
 - *Campagne Brut 3.2*, CB32 P03730–05864.
-

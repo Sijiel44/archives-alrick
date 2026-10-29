@@ -1,14 +1,14 @@
 ---
 publish: false
-title: "Heure commune d’entraînement — proposition civique"
+title: "Heure commune d’entraînement"
 code: "CUL-CB32-HEURE-COMMUNE"
 categorie: "culture"
-canon_statut: "a_verifier"
+canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P08747–09115"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Proposition d’un temps partagé pour bouger, apprendre et réagir face aux risques, sans imposer le service militaire."
+description: "Temps commun adopté et en cours de mise en place pour bouger, apprendre et réagir aux risques, sans conscription."
 tags: [entrainement, preparation-civile, communaute, cb32, brouillon]
 ---
 
@@ -22,9 +22,8 @@ La préparation civile n’est pas une conscription. Chacun peut avoir un rôle 
 
 ## Statut et questions ouvertes
 
-Il s’agit d’une pratique proposée, pas d’une coutume déjà instituée. La scène ne fixe pas son calendrier : le mot « heure » désigne une durée, pas une fréquence hebdomadaire. Restent à définir l’organisation locale, les activités adaptées à l’âge et aux capacités, et la coordination avec les services de secours.
+La pratique est **adoptée** et se met en place à l’échelle du Royaume. « Heure » désigne la durée, pas une fréquence hebdomadaire déjà fixée. Restent à définir l’organisation locale, les activités adaptées à l’âge et aux capacités, et la coordination avec les services de secours.
 
 ## Sources
 
 - *Campagne Brut 3.2*, CB32 P08747–09115.
-

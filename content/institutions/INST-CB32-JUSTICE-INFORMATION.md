@@ -1,14 +1,14 @@
 ---
 publish: false
-title: "Justice, presse et information publique — projet"
+title: "Justice, presse et information publique"
 code: "INST-CB32-JUSTICE-INFORMATION"
 categorie: "institution"
-canon_statut: "a_verifier"
+canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P10270–12108"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Propositions contre les procédures-bâillons et pour une information qui distingue faits établis, allégations et culpabilité."
+description: "Règles de justice et d’information adoptées, avec procédures et protections encore à mettre en place."
 tags: [justice, presse, procedure-baillon, proces-equitable, cb32, brouillon]
 ---
 
@@ -26,9 +26,8 @@ Après jugement, le texte propose une transparence par défaut sur les élément
 
 ## Statut et questions ouvertes
 
-La scène formule un projet de règles, pas une loi déjà entrée en vigueur. À préciser : voies de recours, seuil de l’abus délibéré, exceptions de sécurité publique et protections des personnes concernées.
+Les règles de justice et d’information exposées ici sont **adoptées**, avec un déploiement en cours dans le Royaume. Les procédures détaillées restent à rédiger : voies de recours, seuil de l’abus délibéré, exceptions de sécurité publique et protections des personnes concernées.
 
 ## Sources
 
 - *Campagne Brut 3.2*, CB32 P10270–12108.
-

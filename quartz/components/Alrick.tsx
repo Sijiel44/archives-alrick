@@ -8,6 +8,7 @@ export const sections = [
   ["lieux", "Atlas des territoires", "Atlas", "⌂"],
   ["personnages", "Personnages", "Personnages", "♙"],
   ["groupes", "Groupes et alliances", "Groupes", "⚑"],
+  ["economie", "Économie et finances", "Économie", "↗"],
   ["magie", "Codex de la magie", "Magie", "✧"],
   ["maison", "Maison divine", "Divin", "✦"],
   ["chroniques", "Chroniques", "Chroniques", "☼"],

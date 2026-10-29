@@ -1,6 +1,6 @@
 ---
 publish: false
-title: "Projets et fondations — brouillons CB2–CB3.2"
+title: "Projets et fondations — brouillons CB2–CB3.8"
 description: "Fiches de travail pour les projets évoqués dans les campagnes, avec leur état d’avancement et les décisions encore ouvertes."
 ---
 
@@ -23,4 +23,12 @@ Ces fiches distinguent proposition, négociation, essai et réalisation. Les pro
 - [[PROJ-BORDOCIEL-ACADEMIE|Académie militaire de Bordociel]]
 - [[PROJ-CB32-PROFONDEUR-NORD|Défense en profondeur du Nord]]
 - [[PROJ-CB32-MESURE-MANA|Instrument de mesure du mana]]
-
+- [[PROJ-CB34-TRAITE-INGENIERIE-MAGIQUE|Traité d’ingénierie magique — architecture spatiale]]
+- [[PROJ-CB37-MANDAT-COMMERCIAL-HRAFNMARK|Mandat exploratoire de commerce avec Hrafnmark]]
+- [[PROJ-CB38-RESEAUX-COMMUNICATION|Réseaux de communication et d’alerte]]
+- [[PROJ-CB38-TRANSPORT-GUIDE|Réseau de transport guidé — projet des sept cités]]
+- [[PROJ-CB38-INDUSTRIE-OUTILS|Ingénierie magique industrielle et outils réparables]]
+- [[PROJ-CB38-REGULATION-THERMIQUE|Régulation thermique réversible]]
+- [[PROJ-CB38-INSTITUT-INGENIERIE-MAGIQUE|Institut de conception et d’ingénierie magique]]
+- [[PROJ-CB38-AGRICULTURE-PRATIQUES|Agriculture — pratiques, outils et documentation]]
+- [[PROJ-CB38-ACCES-EAU|La Source — accès à l’eau et continuité de service]]
