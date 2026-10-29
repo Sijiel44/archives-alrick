@@ -61,7 +61,7 @@ for (const file of sourceFiles.filter(f => f.endsWith('.md'))) {
   const fm = YAML.parse(front[1])
   const relative = path.relative(path.resolve('content'), file).split(path.sep).join('/')
   if (fm.publish !== true || fm.spoilers !== true || relative.startsWith('mj/')) continue
-  const slug = relative.replace(/\.md$/, '')
+  const slug = relative.replace(/\.md$/, '').toLowerCase()
   assert(fm.unlisted === true, `Fiche publique à spoilers non masquée des index : ${relative}`)
   const htmlPath = path.join(root, `${slug}.html`)
   const html = await readFile(htmlPath, 'utf8')

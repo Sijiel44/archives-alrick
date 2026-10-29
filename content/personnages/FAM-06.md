@@ -1,8 +1,3 @@
-## Mise à jour de continuité — CB42
-
-> **État établi dans le registre :** Rappelé vivant et proche familial sans admission dans la compagnie ; Harald Forgecœur revient à une vie corporelle par consentement après contact via le lion et entretien dans un réceptacle sans conscience préalable. Il choisit un corps qui ne vieillit pas, garde son histoire et ses cicatrices significatives, mais peut être blessé ou tué. Tout nouveau retour dépend de son choix. Il retrouve marteau, proches et Aldhammar ; il ne récupère ni couronne ni titre par effet du rappel. Il est invité libre, pas membre confirmé de la compagnie. Il recommande Hroldan Trois-Clefs sans que celui-ci soit revenu. La fiche ancienne « Défunt » devient historique.
->
-> **Repère de source :** CB42 P16231–21841.
 ---
 publish: true
 spoilers: true
@@ -18,6 +13,13 @@ visibilite: "a_relire_avant_publication"
 description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "forgecoeur", "rappeles", "aldhammar"]
 ---
+
+## Mise à jour de continuité — CB42
+
+> **État établi dans le registre :** Rappelé vivant et proche familial sans admission dans la compagnie ; Harald Forgecœur revient à une vie corporelle par consentement après contact via le lion et entretien dans un réceptacle sans conscience préalable. Il choisit un corps qui ne vieillit pas, garde son histoire et ses cicatrices significatives, mais peut être blessé ou tué. Tout nouveau retour dépend de son choix. Il retrouve marteau, proches et Aldhammar ; il ne récupère ni couronne ni titre par effet du rappel. Il est invité libre, pas membre confirmé de la compagnie. Il recommande Hroldan Trois-Clefs sans que celui-ci soit revenu. La fiche ancienne « Défunt » devient historique.
+>
+> **Repère de source :** CB42 P16231–21841.
+
 
 
 > [!info] État documentaire
