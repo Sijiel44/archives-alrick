@@ -59,7 +59,7 @@ Les références de codes anciens qui n’ont pas de fiche correspondante dans l
 ### 🟡 DEV-003 — Chaîne des preuves de Valbrume
 
 - **Décision :** l’enquête continue et reste rattachée à ses enquêteurs. Elle peut progresser sans intervention personnelle d’Orin.
-- **Enquêteurs :** Halstor conduit les vérifications; Vaëra l’appuie et veille aux conséquences diplomatiques.
+- **Enquêteurs :** [[personnages/REV-14|Halstor]] conduit les vérifications; [[personnages/REV-04|Vaëra]] l’appuie et veille aux conséquences diplomatiques.
 - **État des preuves :** un faux ordre a déplacé l’arche; trois caisses ont circulé sans inscription; les personnes qui les ont déplacées ont été payées; la piste mène à un ancien entrepôt intermédiaire. L’usage passé de l’entrepôt par des délégations étrangères ne prouve pas leur implication.
 - **Limite actuelle :** aucun commanditaire n’est établi. Une piste vers des personnages liés à la Première Ronce reste une possibilité narrative non jouée, sans accusation canonique.
 - **Fiche en brouillon :** [enquête des caisses — Halstor et Vaëra](https://github.com/Sijiel44/archives-alrick/blob/codex/suivi-editorial-dev001-007/content/jdr-alrick/JDR-CB39-ENQUETE-CAISSES.md).
