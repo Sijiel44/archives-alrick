@@ -11,6 +11,8 @@ tags: [alrick, index]
 ## Feuillets disponibles
 
 - [[O42-01|La Maison et le Palais]]
+- [[O42-13|Lieux de la Maison divine, résidences et responsabilités]]
+- [[O42-16|Vivier des métiers et accueils résidentiels]]
 
 À distinguer de [[GRP-01|la Compagnie des Revenants]], qui possède ses propres missions et son propre manoir.
 

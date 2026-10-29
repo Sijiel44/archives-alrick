@@ -33,3 +33,4 @@ Ces fiches distinguent proposition, négociation, essai et réalisation. Les pro
 - [[PROJ-CB38-INSTITUT-INGENIERIE-MAGIQUE|Institut de conception et d’ingénierie magique]]
 - [[PROJ-CB38-AGRICULTURE-PRATIQUES|Agriculture — pratiques, outils et documentation]]
 - [[PROJ-CB38-ACCES-EAU|La Source — accès à l’eau et continuité de service]]
+- [[PROJ-CB43-ETUDE-CONDITIONNELLE-THORGAL|Étude conditionnelle des plans transmise à Thorgal]]
