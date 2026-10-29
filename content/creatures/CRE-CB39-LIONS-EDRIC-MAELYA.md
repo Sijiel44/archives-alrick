@@ -1,37 +1,37 @@
 ---
-publish: false
-title: "Le lion et la lionne magiques d’Édric et Maëlya"
+publish: true
+title: "Le lion Édril et la lionne Maërys"
 code: "CRE-CB39-LIONS-EDRIC-MAELYA"
 categorie: "creature"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB39"
 source_brute: "CB39 P01405–02586; confirmation du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
-description: "Deux créatures magiques que le couple peut invoquer directement; des noms restent à choisir."
+visibilite: "publique_avec_avertissement"
+description: "Édric et Maëlya peuvent chacun invoquer le lion Édril et la lionne Maërys, qui les protègent en cas de danger."
 tags: [creatures, lions, magie, edric, maelya, jdr-alrick]
-etat_editorial: en_chantier
+etat_editorial: valide
 portee: "jdr_alrick"
 spoilers: true
 unlisted: true
 ---
 
-# Le lion et la lionne magiques d’Édric et Maëlya
+# Le lion Édril et la lionne Maërys
 
-> [!warning] Brouillon — noms proposés
-> Leur présence et leur invocation sont établies. Les noms ci-dessous sont des suggestions, pas des noms canoniques.
+> [!warning] Révélation de campagne
+> Cette fiche révèle une capacité magique propre à Édric et Maëlya dans le récit d’Alrick.
 
-Édric et Maëlya peuvent invoquer directement ces deux créatures magiques : un lion et une lionne. Leur apparition accompagne le mariage du couple. Elles se manifestent comme une densité de magie, baignées d’une lumière fauve et parcourues de lignes anciennes. Elles peuvent suivre et protéger le couple. Ce sont des créatures invoquées, pas des objets de propriété. Les bijoux offerts ne sont pas une condition nécessaire à leur invocation.
+**Édric et Maëlya peuvent chacun invoquer le lion Édril et la lionne Maërys.** Les deux créatures peuvent protéger l’un ou l’autre en cas de danger. Leur première apparition accompagne le mariage du couple. Elles se manifestent comme une densité de magie, baignées d’une lumière fauve et parcourues de lignes anciennes. Ce sont des créatures invoquées, pas des objets de propriété; les bijoux offerts ne sont pas une condition nécessaire à leur invocation.
 
-## Noms proposés
+## Noms canonisés
 
-- **Édril**, pour le lion — une forme qui rappelle Édric sans reprendre son nom.
-- **Maërys**, pour la lionne — une forme qui rappelle Maëlya sans la confondre avec elle.
+- **Édril**, pour le lion.
+- **Maërys**, pour la lionne.
 
-Ces deux noms restent à valider. La fiche n’attribue pas encore d’autres capacités, de tempérament fixe ni d’origine magique précise.
+Les noms **Édril** et **Maërys** sont validés par le créateur. La fiche ne leur attribue pas d’autres capacités, de tempérament fixe ni d’origine magique précise.
 
 ## Sources
 
 - *Campagne Brut 3.9*, CB39 P01405–02586.
-- Confirmation du créateur, 29 octobre 2026 : le lion et la lionne sont des créatures magiques directement invoquées par Édric et Maëlya.
+- Confirmation du créateur, 29 octobre 2026 : le lion et la lionne sont des créatures magiques directement invoquées par Édric et Maëlya; chacun peut invoquer le lion comme la lionne.
 
