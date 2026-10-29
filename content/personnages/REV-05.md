@@ -17,10 +17,10 @@ tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "ev
 
 ![Nouveau portrait conceptuel de Torven Cendreval : médecin de terrain aux cheveux bruns et barbe courte, en tenue bleu sombre, tenant une bande de soin auprès d'une sacoche et de fioles médicales.](../images/personnages/torven-portrait-medecin-proposition.webp)
 
-*Nouvelle **étude individuelle à valider** : Torven est montré au travail, avec bande de soin, instruments et matériel médical dans une sacoche accessible, une tenue solide et des détails discrets de métier. **La couleur des cheveux, la barbe, les traits, les accessoires précis et les insignes visibles sont une proposition artistique**, non des éléments physiques canoniques. Aucun cercle magique actif ni statut divin n'est représenté comme déjà acquis.*
+*Portrait individuel **approuvé par le créateur** : Torven est montré au travail avec bande de soin, instruments et sacoche médicale. **Cette composition devient sa référence artistique de personnage** ; les insignes décoratifs et les capacités non visibles dans les scènes ne deviennent pas pour autant des objets ou pouvoirs attestés. Aucun rang divin ni maîtrise magique personnelle n'est acquis par la validation de l'image.*
 
 > [!info] Statut documentaire
-> **Fiche approfondie en attente de validation**, fondée sur le *Compendium* v1.7 et les scènes CB2, CB31–34, CB42–43. Les responsabilités de Torven dans les Revenants, sa **direction médicale effective de l’hôpital**, sa présentation devant la famille royale et les débats de colloque sont **joués et documentés**. **Nouvelles pistes du créateur (28 octobre 2026) :** souhait de se former personnellement aux arts magiques auprès d’Orin et hypothèse lointaine d’une ascension liée au soin. **Ce sont des développements proposés, non accomplis.** La jeunesse et les anecdotes de formation sont également des propositions. Le grand réseau de soins est un objectif de déploiement, non un réseau déjà achevé ; le portrait actuel reste à approuver.
+> **Fiche approfondie approuvée par le créateur**, fondée sur le *Compendium* v1.7 et les scènes CB2, CB31–34, CB42–43. Les responsabilités de Torven dans les Revenants, sa **direction médicale effective de l’hôpital**, sa présentation devant la famille royale et les débats de colloque sont **joués et documentés**. **Directions futures approuvées par le créateur :** Torven pourrait demander à Orin un apprentissage magique, et, à très long terme, suivre une possible ascension liée au soin et à l'hôpital. **Ces événements ne sont ni joués, ni garantis, ni accomplis.** La jeunesse et les anecdotes de formation sont également des propositions. Le grand réseau de soins est un objectif de déploiement, non un réseau déjà achevé ; le portrait actuel reste à approuver.
 
 *Il n'a jamais considéré qu'une blessure était moins importante parce qu'on avait remporté le combat.*
 
@@ -325,7 +325,7 @@ Les Archives fournissent **des références et des scénarios**, pas encore un m
 - **Voie très lointaine proposée :** Ascension de l’Œuvre/Domaine par l’hôpital et le soin, **sans aucune ascension actuelle, titre divin ni pouvoir miraculeux acquis**.
 - Cadre de transmission des responsabilités hospitalières lorsque Torven est absent.
 - Scènes montrant ses propres besoins et son droit d'être soigné et protégé.
-- **Portrait médical individuel proposé** : version plus détaillée avec sacoche, fioles et bande de soin, en attente d'approbation du créateur ; âge et apparence à confirmer.
+- **Portrait médical individuel approuvé** : composition détaillée avec sacoche, fioles et bande de soin ; les futurs détails biographiques comme l'âge exact restent à confirmer.
 - Six scénarios proposés ci-dessus, **non joués**.
 
 ## Sources principales
