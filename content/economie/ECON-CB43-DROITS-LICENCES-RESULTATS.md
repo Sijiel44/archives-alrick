@@ -11,7 +11,7 @@ visibilite: "publique_avec_avertissement"
 description: "Sépare plans préexistants, droit d’étude, licences commerciales et propriété des résultats."
 tags: [licences, droits, inventions, recherche, economie, cb42]
 etat_editorial: en_cours
-spoilers: true
+spoilers: false
 ---
 
 # Droits, licences et résultats de recherche

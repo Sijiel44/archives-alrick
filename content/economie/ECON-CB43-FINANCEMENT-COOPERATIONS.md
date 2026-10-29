@@ -11,7 +11,7 @@ visibilite: "publique_avec_avertissement"
 description: "Cadre proposé pour séparer dons, fonds publics, capitaux privés et coûts d’entretien des projets."
 tags: [financement, cooperation, ateliers, projets, cb42]
 etat_editorial: en_cours
-spoilers: true
+spoilers: false
 ---
 
 # Financer les coopérations et les ateliers

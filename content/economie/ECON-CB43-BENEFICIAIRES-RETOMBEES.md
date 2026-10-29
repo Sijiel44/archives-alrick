@@ -11,7 +11,7 @@ visibilite: "publique_avec_avertissement"
 description: "Identifie les bénéficiaires possibles et les retombées à suivre sans inventer de partage déjà convenu."
 tags: [beneficiaires, retombees, cooperation, agriculture, recherche, cb42]
 etat_editorial: en_cours
-spoilers: true
+spoilers: false
 ---
 
 # Bénéficiaires et retombées des coopérations

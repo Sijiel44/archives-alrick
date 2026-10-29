@@ -11,7 +11,7 @@ visibilite: "publique_avec_avertissement"
 description: "Proposition de contrôle des engagements publics, garanties de royaume et responsabilités de partenariat."
 tags: [mandat, garanties, souveraineté, institutions, contrats, cb42]
 etat_editorial: en_cours
-spoilers: true
+spoilers: false
 ---
 
 # Garanties souveraines et mandats de représentation

@@ -11,7 +11,7 @@ visibilite: "publique_avec_avertissement"
 description: "Brasseuse naine de l’abbaye d’Entre-Rives, maîtresse de ses recettes et de ses expérimentations."
 tags: [sivra, entre-rives, abbaye, brasseuse, artisanat, cb31]
 etat_editorial: valide
-spoilers: true
+spoilers: false
 ---
 
 # Sivra Brassefeuille

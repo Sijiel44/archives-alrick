@@ -11,7 +11,7 @@ visibilite: "publique_avec_avertissement"
 description: "Fête annuelle qui ouvre l’hiver dès les premiers flocons, avec feu, biscuits épicés, miel et bière de saison."
 tags: [couronne, hiver, premieres-neiges, biere, fete, evenement, cb31]
 etat_editorial: valide
-spoilers: true
+spoilers: false
 ---
 
 # La Soirée de la Couronne — fête des Premières Neiges

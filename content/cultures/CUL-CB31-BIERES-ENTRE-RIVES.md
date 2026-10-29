@@ -11,7 +11,7 @@ visibilite: "publique_avec_avertissement"
 description: "Bières locales élaborées par Sivra Brassefeuille, brasseuse naine de l’abbaye d’Entre-Rives."
 tags: [entre-rives, biere, brassage, artisanat, culture, abbaye, cb31]
 etat_editorial: valide
-spoilers: true
+spoilers: false
 ---
 
 # Les bières d’Entre-Rives et de l’abbaye
