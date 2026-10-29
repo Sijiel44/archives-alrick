@@ -1,25 +1,29 @@
 ---
-publish: false
-title: "Durgan Main-d’Acier — maître forgeron"
+publish: true
+title: "Durgan Main-d’Acier — forgeron d’exception"
 code: "PER-CB31-DURGAN"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "lore_valide"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P03504–03643"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
-description: "Maître forgeron de Skalor et ami de longue date d’Orin, Durgan privilégie l’apprentissage d’une arme ordinaire avant toute adaptation."
-tags: [durgan, forgeron, skalor, kelm, entrainement, cb31, brouillon]
-etat_editorial: en_chantier
+spoilers: true
+unlisted: true
+visibilite: "publique_avec_avertissement"
+description: "Forgeron d’exception et ami d’Orin rencontré à Skalore, Durgan Main-d’Acier est distinct de Harald Forgecœur."
+tags: [durgan, forgeron, skalore, kelm, entrainement, cb31]
+etat_editorial: valide
 ---
 
 # Durgan Main-d’Acier
 
-Durgan travaille dans une ancienne forge de Skalor. Ami de longue date d’Orin et maître forgeron, il observe Kelm apprendre à manier un marteau ordinaire avant de discuter d’un modèle à masse variable.
+Durgan Main-d’Acier est un ami d’Orin, rencontré à Skalore. C’est un forgeron d’exception qui travaille dans une ancienne forge. Il observe Kelm apprendre à manier un marteau ordinaire avant de discuter d’un modèle à masse variable. Durgan est une personne distincte de Harald Forgecœur.
 
 Sa règle de travail est claire : la magie ne remplace pas la maîtrise de l’outil de base. La commande personnalisée reste une étape future, conditionnée par les progrès de Kelm.
 
 ## Sources
+
+- **Canon confirmé par le créateur :** le surnom Main-d’Acier est retenu; Durgan est l’ami-forgeron rencontré à Skalore, distinct de Harald.
 
 - *Campagne Brut 3.1*, CB31 P03504–03643.
 - [[OBJ-CB31-MARTEAU-KELM|Marteau de Kelm]].
