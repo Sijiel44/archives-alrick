@@ -1,6 +1,6 @@
 ---
 publish: false
-title: "Valbrume / Valebrume — ville à recouper"
+title: "Valbrume"
 code: "GEO-CB1-VALBRUME"
 categorie: "lieu"
 canon_statut: "a_verifier"
@@ -12,10 +12,10 @@ description: "Une ville d’artisans et de marins, connue dans CB1 par une fête
 tags: [alrick, cb1, lieu, brouillon]
 ---
 
-# Valbrume / Valebrume — ville à recouper
+# Valbrume
 
-> [!warning] Variante de nom
-> Le récit écrit « Valebrume » dans la scène de la fête et « Valbrume » dans des passages ultérieurs. Cette fiche conserve la divergence au lieu de la résoudre arbitrairement.
+> [!info] Graphie canonique confirmée
+> Le créateur confirme **Valbrume** comme graphie arrêtée (29 octobre 2026). « Valebrume » et « Valbrumme » sont des variantes de source, pas des lieux distincts.
 
 ## Faits rapportés dans la source
 
@@ -24,7 +24,7 @@ tags: [alrick, cb1, lieu, brouillon]
 
 ## Limites et questions
 
-- Ne pas fixer la graphie canonique avant recoupement; ne pas conclure qu’il existe deux villes.
+- Ne pas traiter « Valebrume » ou « Valbrumme » comme une autre ville.
 - Le concours d’inventions et le projet de navire restent des projets dans les passages cités, pas des réalisations attestées.
 
 ## Sources

@@ -6,7 +6,7 @@ categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P15333–17304; CB42 P20026–21257"
-derniere_revision_documentaire: "2026-10-22"
+derniere_revision_documentaire: "2026-10-29"
 visibilite: "a_relire_avant_publication"
 description: "Harald Forgecœur a retrouvé une vie corporelle par un rappel consenti d’Orin ; il conserve son autonomie. Il n’entre pas automatiquement dans la compagnie des Revenants."
 tags: ["personnage", "forgecoeur", "rappeles", "aldhammar"]
@@ -22,6 +22,7 @@ Harald Forgecœur a retrouvé une vie corporelle par un rappel consenti d’Orin
 
 - **Existence :** vivant, Rappelé par Orin.
 - **Parenté :** membre de la famille Forgecœur.
+- **Lien avec Orin :** son père, confirmé explicitement par le créateur le 29 octobre 2026. Orin voyage souvent sous le nom d’**Alrick** pour éviter les complications dues à son rang de prince; ce nom d’usage ne désigne pas une autre personne.
 - **Appartenance aux Revenants :** aucune admission automatique attestée.
 - **Titre :** son retour ne restaure pas automatiquement un titre ancien.
 
@@ -40,6 +41,7 @@ La possibilité d’un nouveau retour ne signifie ni immortalité invulnérable,
 
 - **Source brute :** CB42 P15333–17304; CB42 P20026–21257
 - **État consolidé :** documents de référence du 22 octobre 2026.
+- **Confirmation de continuité par le créateur :** Harald est le père d’Orin; Alrick est le nom qu’Orin utilise souvent en voyage.
 
 ## Fiches liées
 

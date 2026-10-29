@@ -1,10 +1,10 @@
 ---
 publish: false
-title: "Objets et œuvres — brouillons CB1"
-description: "Index de travail des objets remarquables relevés dans Campagne Brut 1."
+title: "Objets et œuvres — brouillons CB1–CB2"
+description: "Index de travail des objets remarquables relevés dans Campagne Brut 1 et 2."
 ---
 
-# Objets et œuvres — brouillons CB1
+# Objets et œuvres — brouillons CB1–CB2
 
 Ces propositions sont des fiches non publiées et à vérifier. Elles ne constituent pas un inventaire exhaustif.
 
@@ -14,3 +14,4 @@ Ces propositions sont des fiches non publiées et à vérifier. Elles ne constit
 - [[OBJ-CB1-LYS|Lys, la flûte d’Eamon]]
 - [[OBJ-CB1-MAREES-PIERRE|Des Marées de Pierre]]
 - [[OBJ-CB1-GALET|Le galet anonyme de la collection]]
+- [[OBJ-CB2-PIERRE-POT-LAIT|La pierre gardée dans le pot de lait]]

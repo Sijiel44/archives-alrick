@@ -26,9 +26,11 @@ tags: [alrick, cb1, personnage, brouillon]
 ## Limites et questions
 
 - Le texte ne donne ni nom complet ni fonction officielle à Sören.
+- CB2 présente un autre personnage appelé Sören comme le quatrième gardien du vieux pont. **La continuité entre les deux Sö(r)en n’est pas attestée**; leurs fiches restent séparées jusqu’à confirmation.
 - Ne pas publier la localisation de la cité : le voyageur choisit explicitement de ne pas la révéler.
 - Les inscriptions sont fragmentaires; leur interprétation doit rester une hypothèse.
 
 ## Sources
 
 - *Campagne Brut 1*, CB1 P01781–01924.
+- Voir aussi [[PER-CB2-SOREN|Sören, gardien du pont (CB2)]]; homonymie à résoudre.
