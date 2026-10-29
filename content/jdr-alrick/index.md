@@ -19,6 +19,14 @@ Quand un élément du récit peut être repris par d’autres MJ, il garde une f
 ## Points d’entrée
 
 - [[personnages/PER-CB2-ORIN|Orin / Alrick — portrait de campagne]]
+- [[personnages/PER-CB1-EDRIC|Édric de Valbrume — duc, anciennement Édric Varen]]
+- [[personnages/PER-CB31-MAELYA|Maëlya — collectrice de mots et de langues]]
+- [[objets/OBJ-CB36-BATEAU-EDRIC|La Flèche de Valbrume — navire d’Édric]]
+- [[objets/OBJ-CB39-YACHT-ORINOR|L’Horizon d’Orinor — yacht royal]]
+- [[objets/OBJ-CB39-NAVIRE-ELSEN|La Patiente — navire marchand d’Elsen]]
+- [[creatures/CRE-CB39-LIONS-EDRIC-MAELYA|Le lion Édril et la lionne Maërys]]
+- [[jdr-alrick/JDR-CB39-RENDEZ-VOUS|Rendez-vous et promesses à venir]]
+- [[jdr-alrick/JDR-CB39-ENQUETE-CAISSES|Enquête des caisses de Valbrume]]
 - [[chroniques/EVT-CB39-MARIAGE-EDRIC-MAELYA|Le mariage d’Édric et Maëlya]]
 - [[suivi-editorial|Suivi éditorial]]
 
