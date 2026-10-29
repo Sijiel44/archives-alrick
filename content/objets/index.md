@@ -1,6 +1,6 @@
 ---
 publish: false
-title: "Objets et œuvres — brouillons CB1–CB3.8"
+title: "Objets et œuvres — index de travail CB1–CB3.9"
 description: "Index de travail des objets remarquables relevés dans les campagnes, avec leur état et leurs limites."
 etat_editorial: en_cours
 ---
@@ -28,9 +28,9 @@ Ces propositions sont des fiches non publiées et à vérifier. Elles ne constit
 - [[OBJ-CB38-LYRE-TAIRIN|Lyre de voyage destinée à Tairin]]
 - [[OBJ-CB38-BIJOU-COMMUNICATION|Bijoux de communication des Revenants]]
 
-- [[OBJ-CB39-BATEAU-EDRIC|Bateau d’Édric Varen]]
-- [[OBJ-CB39-YACHT-ORINOR|Yacht d’Orinor]]
-- [[OBJ-CB39-NAVIRE-ELSEN|Navire marchand d’Elsen]]
+- [[OBJ-CB36-BATEAU-EDRIC|La Flèche de Valbrume — navire d’Édric]]
+- [[OBJ-CB39-YACHT-ORINOR|L’Horizon d’Orinor — yacht royal]]
+- [[OBJ-CB39-NAVIRE-ELSEN|La Patiente — navire marchand d’Elsen]]
 
 ## CB42 — équipements et objets techniques
 
