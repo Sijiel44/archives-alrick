@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Ouvrage collectif des ateliers d’Orinor"
 code: "OBJ-CB39-OUVRAGE-ATELIERS-ORINOR"
 categorie: "objet"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB39"
 source_brute: "CB39 P00326–00350"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Œuvre de mariage réalisée collectivement par des ateliers d’Orinor et remise à Édric et Maëlya au nom de leur royaume."
-tags: [orinor, cadeau, edric, maelya, artisanat, diplomatie, cb39, brouillon]
+tags: [orinor, cadeau, edric, maelya, artisanat, diplomatie, cb39]
+etat_editorial: valide
 ---
 
 # Ouvrage collectif des ateliers d’Orinor

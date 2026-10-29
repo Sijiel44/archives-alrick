@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Ingénierie magique industrielle et outils réparables"
 code: "PROJ-CB38-INDUSTRIE-OUTILS"
 categorie: "projet"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P07657–08270; P10384; P16041–17619"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Principes pour employer la magie comme soutien de production, avec réparabilité locale, essais, licences et économies de ressources."
-tags: [ingenierie, industrie, magie, outils, maintenance, cb38, brouillon]
+tags: [ingenierie, industrie, magie, outils, maintenance, cb38]
+etat_editorial: en_cours
 ---
 
 # Ingénierie magique industrielle et outils réparables

@@ -2,6 +2,7 @@
 publish: false
 title: "Objets et œuvres — brouillons CB1–CB3.8"
 description: "Index de travail des objets remarquables relevés dans les campagnes, avec leur état et leurs limites."
+etat_editorial: en_cours
 ---
 
 # Objets et œuvres — brouillons CB1–CB3.8

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Réseaux d’auberges et tourisme de montagne"
 code: "PROJ-CB37-RESEAUX-TAVERNES-MONTAGNE"
 categorie: "economie"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB37"
 source_brute: "CB37 P21229–21264"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Pistes d’investissement local pour des auberges et des domaines de montagne, en partenariat avec les territoires."
-tags: [auberges, montagne, tourisme, investissement, partenariats, cb37, brouillon]
+tags: [auberges, montagne, tourisme, investissement, partenariats, cb37]
+etat_editorial: en_cours
 ---
 
 # Réseaux d’auberges et tourisme de montagne

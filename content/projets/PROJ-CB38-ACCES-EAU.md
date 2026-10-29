@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "La Source — accès à l’eau et continuité de service"
 code: "PROJ-CB38-ACCES-EAU"
 categorie: "projet"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P09366–09386; P09494–09508; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Dossiers de conception pour une source d’eau potable, ses usages, ses réseaux et la continuité du service en cas de panne."
-tags: [eau-potable, source, reseaux, sante, maintenance, cb38, brouillon]
+tags: [eau-potable, source, reseaux, sante, maintenance, cb38]
+etat_editorial: en_cours
 ---
 
 # La Source — accès à l’eau et continuité de service

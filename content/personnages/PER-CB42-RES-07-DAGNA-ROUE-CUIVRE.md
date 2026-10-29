@@ -8,9 +8,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10652–10655"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Repères de personnage et de continuité après CB42."
 tags: [dagna, roue-de-cuivre, ingenierie, artisanat, cercles-magiques, cb42, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Dagna Roue-de-Cuivre

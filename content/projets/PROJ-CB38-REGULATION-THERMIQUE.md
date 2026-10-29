@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Régulation thermique réversible"
 code: "PROJ-CB38-REGULATION-THERMIQUE"
 categorie: "projet"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P08979–10384"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Système de régulation chaud-froid étudié pour être réversible, testable et utilisable sans dépendance à un mage permanent."
-tags: [temperature, regulation, magie, licences, cb38, brouillon]
+tags: [temperature, regulation, magie, licences, cb38]
+etat_editorial: en_cours
 ---
 
 # Régulation thermique réversible

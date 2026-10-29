@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Elyan Corbeau-Gris — mage et compagnon de recherche"
 code: "PER-CB43-ELYAN-CORBEAU-GRIS"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P04361–04594; P06862–06921; P09207; P21081"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Mage connu d’Orin depuis l’enfance, associé aux échanges avec Veylan et Eryndel sur la magie."
-tags: [elyan, corbeau-gris, mage, recherche, veylan, cb43, brouillon]
+tags: [elyan, corbeau-gris, mage, recherche, veylan, cb43]
+etat_editorial: valide
 ---
 
 # Elyan Corbeau-Gris

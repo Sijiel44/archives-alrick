@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Un village de maisons sculptées, de familles et d’histoires conservées dans le bois et les pierres."
 tags: [alrick, cb1, lieu, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Brumefer

@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P10670–11068"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Programme d’observation des nœuds du Mérien qui privilégie des équipes plurielles, la documentation et l’absence de contact forcé."
 tags: [merien, magie, recherche, nœuds, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Mérien — étude prudente des nœuds

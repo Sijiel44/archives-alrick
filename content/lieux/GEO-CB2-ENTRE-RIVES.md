@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00327–00549; P01459–01849; P08150–08179"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Une ville en projet autour du vieux pont, dont les fondations associent plusieurs peuples, mais dont le développement reste partiel et négocié."
 tags: [entre-rives, lieu, fondation, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Entre-Rives

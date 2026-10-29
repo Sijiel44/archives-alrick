@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Sigrun Varek — passage commercial oriental"
 code: "PER-CB42-SIGRUN-VAREK"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P02762; P02840–02888"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Interlocutrice d’un projet de passage commercial oriental, où tunnel et bastions sont envisagés avant toute reconnaissance ou autorisation de construire."
-tags: [sigrun, varek, commerce, tunnel, reconnaissance, cb42, brouillon]
+tags: [sigrun, varek, commerce, tunnel, reconnaissance, cb42]
+etat_editorial: en_cours
 ---
 
 # Sigrun Varek

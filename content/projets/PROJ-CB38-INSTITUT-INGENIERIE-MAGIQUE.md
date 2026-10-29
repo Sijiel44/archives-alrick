@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Institut de conception et d’ingénierie magique"
 code: "PROJ-CB38-INSTITUT-INGENIERIE-MAGIQUE"
 categorie: "projet"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P18408–18461; P18465–18482; P18704–18774; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Projet d’un institut public de recherche appliquée, de prototypage et de coopération entre métiers, distinct d’une école qui enseigne."
-tags: [institut, ingenierie-magique, recherche, prototypage, licences, cb38, brouillon]
+tags: [institut, ingenierie-magique, recherche, prototypage, licences, cb38]
+etat_editorial: en_cours
 ---
 
 # Institut de conception et d’ingénierie magique

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Maël Torvenn — luthier"
 code: "PER-CB38-MAEL-TORVENN"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P00201–00587; P00588–00600"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Luthier de Valbrume, attentif aux gestes des musiciens et à la fabrication d’instruments sobres, solides et faits pour être joués."
-tags: [mael, torvenn, luthier, musique, torngard, cb38, brouillon]
+tags: [mael, torvenn, luthier, musique, torngard, cb38]
+etat_editorial: valide
 ---
 
 # Maël Torvenn

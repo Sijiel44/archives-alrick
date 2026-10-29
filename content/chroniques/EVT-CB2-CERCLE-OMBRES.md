@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00811–00840; P01601–01659"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Assemblée nahrim où enfants, anciens, bergers, chefs et visiteurs peuvent faire entendre des questions et des propositions."
 tags: [nahrim, assemblee, culture, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Le Cercle des Ombres

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Sariel Varn — représentante du Conseil d’Orinor"
 code: "PER-CB39-SARIEL-VARN"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB39"
 source_brute: "CB39 P00031; P00081–00142; P19945–19948"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Représentante du Conseil d’Orinor, attentive à la séparation des responsabilités et à la capacité des institutions de contredire le souverain."
-tags: [sariel, varn, orinor, conseil, diplomatie, cb39, brouillon]
+tags: [sariel, varn, orinor, conseil, diplomatie, cb39]
+etat_editorial: valide
 ---
 
 # Sariel Varn

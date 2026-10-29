@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Les Veillées de Torngard"
 code: "CUL-CB36-VEILLEES-TORNGARD"
 categorie: "culture"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB36"
 source_brute: "CB36 P12157–12535"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Rencontres de récits, d’artisanat et de cuisine nées autour du colloque puis devenues une pratique communautaire."
-tags: [veillees, torngard, cuisine, artisanat, recits, cb36, brouillon]
+tags: [veillees, torngard, cuisine, artisanat, recits, cb36]
+etat_editorial: valide
 ---
 
 # Les Veillées de Torngard

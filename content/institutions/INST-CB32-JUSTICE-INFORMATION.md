@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Justice, presse et information publique"
 code: "INST-CB32-JUSTICE-INFORMATION"
 categorie: "institution"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P10270–12108"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Règles de justice et d’information adoptées, avec procédures et protections encore à mettre en place."
-tags: [justice, presse, procedure-baillon, proces-equitable, cb32, brouillon]
+tags: [justice, presse, procedure-baillon, proces-equitable, cb32]
+etat_editorial: en_cours
 ---
 
 # Justice, presse et information publique

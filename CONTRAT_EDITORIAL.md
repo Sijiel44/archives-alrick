@@ -14,6 +14,7 @@
 ## Valeurs permises pour `canon_statut`
 
 - `faits_joues` — événement ou constat attesté en scène ;
+- `lore_valide` — ajout de lore explicitement approuvé par le créateur, en distinguant les détails joués des propositions d’ambiance ;
 - `declaration` — affirmation d'un personnage, pas garantie que le monde l'ait démontrée ;
 - `projet_en_cours` — accord et intention, sans réalisation finale ;
 - `hypothese` — explication incertaine ou de recherche ;
@@ -53,3 +54,23 @@ Le site Quartz présente actuellement des **textes et des liens**, pas un person
 5. **Signaler les points ouverts.** Ne résoudre aucune contradiction par vraisemblance seule. Présenter au créateur les décisions qui changent une identité, une filiation, une chronologie, une compétence, une obligation ou le statut d’un projet.
 6. **Contrôler les relations et les accès.** Vérifier les liens, les doublons et les catégories. Si une fiche publiée contient des révélations, ajouter `spoilers: true` et `unlisted: true` : la page exige un choix explicite avant lecture et n’est pas indexée. Les pages `content/mj/` reçoivent les deux protections.
 7. **Faire une relecture globale avant publication.** Comparer les fiches au registre et aux six volumes, relire les statuts et contradictions, vérifier chaque lien et chaque avertissement, puis publier seulement le lot approuvé.
+
+
+## Code couleur et publication par état éditorial
+
+Chaque fiche à code stable porte `etat_editorial`, affiché en tête avec un point coloré et un libellé. La couleur ne remplace jamais le texte :
+
+- `valide` — **vert** : faits et sources suffisamment recoupés; aucune question bloquante à arbitrer pour cette version.
+- `en_cours` — **jaune** : base fiable, mais mise en place, conséquences, calendrier ou détails restent en cours. Le texte doit distinguer clairement ce qui est acquis de ce qui reste à faire.
+- `en_chantier` — **rouge** : contradiction, identité, consentement, preuve ou décision de canon à reprendre. La fiche reste en brouillon et n'est pas publiée.
+
+`publish: true` autorise la mise en ligne d'une fiche verte ou jaune; le jaune doit conserver ses réserves visibles. Les propositions non jouées et les fiches rouges ne sont pas publiées. Les pages à spoilers affichent un avertissement fermé et restent non répertoriées. `visibilite` vaut `publique`, `publique_avec_avertissement`, `a_relire_avant_publication` ou `brouillon` selon l'accès choisi. Le tableau [Suivi éditorial](/suivi-editorial) fournit les liens, points à reprendre et références de source.
+
+## Boucle de suivi
+
+Après chaque nouvel épisode ou correction :
+
+1. **En chantier (rouge)** : isoler le fait qui bloque, la source et la décision requise; ne pas compléter par vraisemblance.
+2. **En cours (jaune)** : inscrire ce qui est adopté ou joué, le responsable, les conditions, l'échéance relative et le résultat encore attendu.
+3. **Validé (vert)** : recouper noms, relations, sources et renvois, retirer les anciennes étiquettes de brouillon, puis actualiser le tableau.
+4. Refaire une lecture transversale des fiches liées et du registre avant toute publication d'un nouveau lot.

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Jeux universitaires du Royaume"
 code: "EVT-CB32-JEUX-UNIVERSITAIRES"
 categorie: "evenement"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P04184–04367; P09115–09413"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Rencontres et épreuves interuniversitaires adoptées, en cours de lancement dans le Royaume."
-tags: [jeux-universitaires, universite, concours, culture, cb32, brouillon]
+tags: [jeux-universitaires, universite, concours, culture, cb32]
+etat_editorial: en_cours
 ---
 
 # Jeux universitaires du Royaume

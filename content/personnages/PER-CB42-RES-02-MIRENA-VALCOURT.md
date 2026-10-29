@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Mirena Valcourt — intendante"
 code: "RES-02"
@@ -8,9 +8,11 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10580–10583; CB43 P00205–00227"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
-tags: [mirena, valcourt, intendance, palais-divin, hospitalite, cb42, cb43, brouillon]
+tags: [mirena, valcourt, intendance, palais-divin, hospitalite, cb42, cb43]
+etat_editorial: valide
+unlisted: true
 ---
 
 # Mirena Valcourt

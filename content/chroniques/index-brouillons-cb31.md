@@ -2,6 +2,7 @@
 publish: false
 title: "Brouillons de lieux et d’événements — Campagne Brut 3.1"
 description: "Index de travail des événements culturels et repères de lieu issus de Campagne Brut 3.1."
+etat_editorial: en_cours
 ---
 
 # Brouillons d’événements — Campagne Brut 3.1

@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00560–00643; CB31 P05432–05972"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Vieux mineur lié depuis des siècles à Torgarl, Dagrin est chargé de coordonner l’étude et le chantier autour du vieux pont."
 tags: [dagrin, veine-sombre, personnage, mineur, entre-rives, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Dagrin Veine-Sombre

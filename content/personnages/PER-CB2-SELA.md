@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00273–00290; P02693–02723"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Cordière et bâtisseuse de structures suspendues, Sela est associée à la fonction de témoigner parmi les gardiens du vieux pont."
 tags: [sela, personnage, gardienne, pont, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Sela

@@ -2,6 +2,7 @@
 publish: false
 title: "Brouillons de lieux — Campagne Brut 3.1"
 description: "Index de travail des lieux importants relevés dans Campagne Brut 3.1."
+etat_editorial: en_cours
 ---
 
 # Brouillons de lieux — Campagne Brut 3.1

@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P16630–16659"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Tante d’Orin et mère de Maëlya, Serelya connaît les marchés, les auberges, les fêtes locales et aime danser."
 tags: [serelya, famille, fetes, danse, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Serelya

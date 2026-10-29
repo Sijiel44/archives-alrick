@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Agriculture — pratiques, outils et documentation"
 code: "PROJ-CB38-AGRICULTURE-PRATIQUES"
 categorie: "projet"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P09346–09365; P09547–09585; P16041; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Documentation agricole préparée pour les cultivateurs, artisans et ingénieurs, reliant sols, rotations, stockage, outils et entretien."
-tags: [agriculture, sols, rotation, outils, documentation, cb38, brouillon]
+tags: [agriculture, sols, rotation, outils, documentation, cb38]
+etat_editorial: en_cours
 ---
 
 # Agriculture — pratiques, outils et documentation

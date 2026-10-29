@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Sören — vieux marin et témoin d’une cité engloutie"
 code: "PER-CB1-SOREN"
 categorie: "personnage"
@@ -7,15 +7,16 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB1"
 source_brute: "CB1 P01781–01924"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique"
 description: "Un marin âgé revient depuis quarante ans sur un site englouti, sans en avoir encore remarqué les empreintes de bâtisseurs."
-tags: [alrick, cb1, personnage, brouillon]
+tags: [alrick, cb1, personnage]
+etat_editorial: en_cours
 ---
 
 # Sören — vieux marin et témoin d’une cité engloutie
 
-> [!info] Brouillon de migration
-> Fiche non publiée. Le site archéologique est volontairement privé de localisation dans le récit.
+> [!info] Repère de continuité
+> Le site archéologique reste volontairement sans localisation dans le récit.
 
 ## Faits rapportés dans la source
 

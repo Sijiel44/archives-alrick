@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Dorsa Vaun — logistique résidentielle"
 code: "PER-CB43-DORSA-VAUN"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P00257–00267; P00630–00646; P00863–01045; P01259"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Naine de 68 ans, ancienne responsable de fournitures dans une maison de guilde, engagée dans une mission d’observation auprès du manoir des Revenants."
-tags: [dorsa, vaun, logistique, revenants, approvisionnement, cb43, brouillon]
+tags: [dorsa, vaun, logistique, revenants, approvisionnement, cb43]
+etat_editorial: en_cours
 ---
 
 # Dorsa Vaun

@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P00249–00523"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Objets conçus pour soutenir les responsabilités des Revenants et être transmis avec la charge qu’ils servent."
 tags: [revenants, insignes, objets, transmission, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Insignes des Revenants

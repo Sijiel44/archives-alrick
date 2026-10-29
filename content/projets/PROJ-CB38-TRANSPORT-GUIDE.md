@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Réseau de transport guidé — projet des sept cités"
 code: "PROJ-CB38-TRANSPORT-GUIDE"
 categorie: "projet"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P12501–13190; P15216–15783; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Système de transport pour personnes et marchandises, construit autour de la sécurité, de lignes guidées et d’une maintenance accessible."
-tags: [transport, monorail, fret, voyageurs, sept-cites, cb38, brouillon]
+tags: [transport, monorail, fret, voyageurs, sept-cites, cb38]
+etat_editorial: en_cours
 ---
 
 # Réseau de transport guidé — projet des sept cités

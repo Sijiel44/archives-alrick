@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Mandat exploratoire de commerce avec Hrafnmark"
 code: "PROJ-CB37-MANDAT-COMMERCIAL-HRAFNMARK"
 categorie: "projet"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB37"
 source_brute: "CB37 P30090–30140; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Développement des échanges avec Hrafnmark, territoire du Royaume des Montagnes de l’Aube."
-tags: [commerce, hrafnmark, jarldoms, skeldvik, ports, cb37, brouillon]
+tags: [commerce, hrafnmark, jarldoms, skeldvik, ports, cb37]
+etat_editorial: en_cours
 ---
 
 # Mandat exploratoire de commerce avec Hrafnmark

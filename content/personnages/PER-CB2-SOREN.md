@@ -1,15 +1,16 @@
 ---
-publish: false
+publish: true
 title: "Eren — gardien chargé de transmettre"
 code: "PER-CB2-SOREN"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00273–00290; P02693–02723; confirmation du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Mécanicien du bois et des roues, Eren porte la fonction de transmettre parmi les gardiens du vieux pont."
-tags: [eren, personnage, gardien, pont, cb2, brouillon]
+tags: [eren, personnage, gardien, pont, cb2]
+etat_editorial: valide
 ---
 
 # Eren

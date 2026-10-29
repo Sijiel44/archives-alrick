@@ -2,6 +2,7 @@
 publish: false
 title: "Institutions et services publics — brouillons CB3.2–CB3.6"
 description: "Institutions adoptées en cours de déploiement, projets administratifs et principes de service public issus des campagnes."
+etat_editorial: en_cours
 ---
 
 # Institutions et services publics

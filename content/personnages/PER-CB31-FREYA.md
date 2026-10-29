@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P12130–12188; P16302–16762"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Grand-mère d’Orin et mère d’Alriana, Freya est une reine dont la vie familiale apparaît derrière le titre de Femme des Liens."
 tags: [freya, reine, alriana, orin, famille, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Freya

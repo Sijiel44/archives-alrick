@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "Index directeur v2.3; registre de recherche v2.3; Compendium V03 v1.6"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Index de travail des 37 profils ajoutés et des 37 fiches de personnes actualisées après CB42."
 tags: [personnages, cb42, index, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Personnages — révision CB42

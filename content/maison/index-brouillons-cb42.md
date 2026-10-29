@@ -7,9 +7,10 @@ canon_statut: "brouillons"
 ancre_documentaire: "CB42"
 source_brute: "Index directeur et registre v2.3; V01/V05"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Navigation des fiches associées au bilan CB42; tous les liens pointent vers des brouillons à relire."
-tags: [index-maison-cb42, cb42, index, brouillon]
+tags: [index-maison-cb42, cb42, index]
+etat_editorial: en_cours
 ---
 
 # Maison et Palais — index de relecture CB42

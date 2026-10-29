@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Conseils et Grand Conseil du Royaume"
 code: "INST-CB32-CONSEILS-ROYAUME"
 categorie: "institution"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P00266–00918; P03429–03710"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Institutions adoptées, en cours de mise en place : quatre conseils de représentation et un Grand Conseil, associés à une administration commune relevant de la Couronne."
-tags: [conseils, grand-conseil, couronne, representation, institution, cb32, brouillon]
+tags: [conseils, grand-conseil, couronne, representation, institution, cb32]
+etat_editorial: en_cours
 ---
 
 # Conseils et Grand Conseil du Royaume

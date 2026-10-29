@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P00337–00371"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Concept d’un bouclier compact conçu pour couvrir une autre personne pendant un déplacement."
 tags: [bram, bouclier, protection, insigne, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Bouclier de voyage de Bram

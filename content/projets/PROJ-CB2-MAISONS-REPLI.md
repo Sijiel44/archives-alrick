@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P10127–10170"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Projet de petites maisons utiles au quotidien et convertibles en abris locaux lors d’une crise."
 tags: [merien, projet, refuge, entraide, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Maisons de Repli

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Lysandra d’Avarenne — suivi agricole à Corvelis"
 code: "PER-CB42-LYSANDRA-DAVARENNE"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P02769; P02843; P07267–07294"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Interlocutrice agricole de Corvelis, qui accueille une visite de terrain pour examiner récoltes, pertes et irrigation."
-tags: [lysandra, davarenne, corvelis, agriculture, irrigation, cb42, brouillon]
+tags: [lysandra, davarenne, corvelis, agriculture, irrigation, cb42]
+etat_editorial: en_cours
 ---
 
 # Lysandra d’Avarenne

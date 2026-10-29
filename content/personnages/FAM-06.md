@@ -9,9 +9,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P15333–17304; CB42 P20026–21257; CB42 P16231–21841"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "forgecoeur", "rappeles", "aldhammar"]
+etat_editorial: en_cours
 ---
 
 ## Mise à jour de continuité — CB42

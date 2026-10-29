@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P16662–16681; P16743–16920"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Cousin d’Orin, Thaëron compose de la musique et travaille avec sa sœur Lethiel, architecte."
 tags: [thaeron, musique, composition, famille, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Thaëron

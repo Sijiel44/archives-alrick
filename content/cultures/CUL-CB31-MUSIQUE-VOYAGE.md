@@ -1,15 +1,16 @@
 ---
-publish: false
+publish: true
 title: "« Un prince... » — pièce musicale d’Alrick"
 code: "CUL-CB31-MUSIQUE-VOYAGE"
 categorie: "culture"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P16764–16920"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Pièce à la flûte d’Alrick, intitulée « Un prince... », qui relie la forêt, le désert nahrim et sa famille des Montagnes de l’Aube."
-tags: [alrick, orin, musique, flute, nahrim, famille, cb31, brouillon]
+tags: [alrick, orin, musique, flute, nahrim, famille, cb31]
+etat_editorial: valide
 ---
 
 # « Un prince... »

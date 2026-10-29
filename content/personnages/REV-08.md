@@ -10,9 +10,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB1–2 (apprentissage, récits et Skalor) ; CB31–34 (adhésion, ateliers, entraînement à l’épée) ; CB37 P00515–02025, P06702–07442 ; CB38 P19260–19466 ; CB41 P02040–02084 ; CB42 P18752–19902 ; CB43 P01075–01157 (Dorsa)"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "professeur", "artiste", "eamon", "nevane", "archives", "enseignement", "skalor"]
+etat_editorial: en_cours
 ---
 
 # Eamon

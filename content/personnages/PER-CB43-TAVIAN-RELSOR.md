@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P00261–00263; P02290–02305"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Demi-elfe de 36 ans, ancien secrétaire itinérant de délégations marchandes, reçu pour le secrétariat personnel d’Orin."
 tags: [tavian, relsor, secretariat, diplomatie, voyages, cb43, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Tavian Relsor

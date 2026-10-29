@@ -10,9 +10,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB2 (origines, famille et route) ; CB31–34 (marteau et exercices) ; CB42 P18752–19902 (Marteau des Quatre États, apprentis) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral)"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "demi-orc", "force", "protection", "marteau", "famille", "kelm", "caravanes", "troupeaux", "entre-rives", "ecoute", "commandement", "transmission", "aventures-jouables"]
+etat_editorial: en_cours
 ---
 
 # Kelm Poing-Calme

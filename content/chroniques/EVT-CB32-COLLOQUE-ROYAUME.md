@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Colloque du Royaume — décisions et mise en œuvre"
 code: "EVT-CB32-COLLOQUE-ROYAUME"
 categorie: "evenement"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P00001–00918; P03429–05898; P07299–12108"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Colloque dont les dispositifs institutionnels sont adoptés et en cours de déploiement dans le Royaume."
-tags: [colloque, royaume, institutions, education, defense, cb32, brouillon]
+tags: [colloque, royaume, institutions, education, defense, cb32]
+etat_editorial: en_cours
 ---
 
 # Colloque du Royaume

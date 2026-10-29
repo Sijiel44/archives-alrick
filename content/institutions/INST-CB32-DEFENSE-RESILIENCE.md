@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Défense, sécurité et résilience — principes communs"
 code: "INST-CB32-DEFENSE-RESILIENCE"
 categorie: "institution"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P07299–08174; P08327–09458"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Socle adopté qui distingue défense extérieure, sécurité intérieure et secours tout en organisant leur coopération."
-tags: [defense, securite, resilience, secours, armee, cb32, brouillon]
+tags: [defense, securite, resilience, secours, armee, cb32]
+etat_editorial: en_cours
 ---
 
 # Défense, sécurité et résilience

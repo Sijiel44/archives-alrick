@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P00434–00462"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Concept d’une clé qui évalue si deux lieux peuvent être reliés, sans forcer l’ouverture d’un passage."
 tags: [heimdall, cle, passages, magie, insigne, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Clé de Heimdall

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Orvak Main-de-Velours — maître d’hôtel des réceptions"
 code: "RES-11"
@@ -8,9 +8,11 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10765–10768; CB43 P00205–00227"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
-tags: [orvak, main-de-velours, reception, protocole, palais-divin, cb42, cb43, brouillon]
+tags: [orvak, main-de-velours, reception, protocole, palais-divin, cb42, cb43]
+etat_editorial: valide
+unlisted: true
 ---
 
 # Orvak Main-de-Velours

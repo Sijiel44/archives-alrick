@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P00682–01090; P02201–02400; CB32 P00927"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Jeune forgeronne d’Entre-Rives, Mara restaure une armure ancienne et adapte son travail aux besoins concrets des Revenants."
 tags: [mara, armure, forge, entre-rives, revenants, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Mara Vifacier

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Le vieux pont et ses quatre gardiens"
 code: "GEO-CB2-PONT-ANCIEN"
 categorie: "lieu"
@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00054–00237; P02693–02835; P03199–03242; confirmation du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Un pont ancien surveillé par quatre gardiens et lié à des pierres, une tradition vivante et un mystère dont plusieurs éléments restent inconnus."
-tags: [pont, gardiens, entre-rives, cb2, mystere, brouillon]
+tags: [pont, gardiens, entre-rives, cb2, mystere]
+etat_editorial: en_cours
 ---
 
 # Le vieux pont et ses quatre gardiens

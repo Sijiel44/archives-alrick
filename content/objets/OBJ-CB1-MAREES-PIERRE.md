@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Un cahier d’observations sur une cité engloutie, conçu pour transmettre aussi les incertitudes."
 tags: [alrick, cb1, objet, documentation, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Des Marées de Pierre

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Mirelda Chêneclair — tonnelière et expérimentatrice"
 code: "PER-CB43-MIRELDA-CHENECLAIR"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P19431–19520; P20577; P20663; P23009"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Artisane tonnelière, passionnée par les levures sauvages, le bois et la fermentation, dont les essais dépassent parfois la pression prévue."
-tags: [mirelda, cheneclair, tonnellerie, fermentation, artisanat, cb43, brouillon]
+tags: [mirelda, cheneclair, tonnellerie, fermentation, artisanat, cb43]
+etat_editorial: en_cours
 ---
 
 # Mirelda Chêneclair

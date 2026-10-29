@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P04464–04685; P06522–07251"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Recherche d’un instrument qui mesure la réponse et la stabilité d’un système magique sans perturber ce qu’il observe."
 tags: [mana, mesure, magie, recherche, runes, cb32, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Instrument de mesure du mana

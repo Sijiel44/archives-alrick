@@ -8,9 +8,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10566–10569; CB43 P00219"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Repères de personnage et de continuité après CB42."
 tags: [dorrik, valeclef, hospitalite, protocole, maison-divine, cb42, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Dorrik Valeclef

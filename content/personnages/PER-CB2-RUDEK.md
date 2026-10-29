@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00273–00290; P02693–02723"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Tailleur de pierre, mari et père, Rudek est associé à la fonction de séparer parmi les quatre gardiens du vieux pont."
 tags: [rudek, personnage, gardien, pont, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Rudek

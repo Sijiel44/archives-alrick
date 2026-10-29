@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P10172–10243"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Proposition d’archives vivantes qui conservent les raisons, les désaccords, les inconnues et les changements autant que les faits."
 tags: [merien, projet, archives, transmission, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Maisons des Pourquoi

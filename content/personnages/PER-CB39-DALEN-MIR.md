@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Dalen Mir — infrastructures et administration territoriale"
 code: "PER-CB39-DALEN-MIR"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB39"
 source_brute: "CB39 P00031; P00081–00142; P02981; P19947"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Membre de la délégation d’Orinor chargé des infrastructures et de l’administration territoriale, attentif aux routes et aux méthodes locales."
-tags: [dalen, mir, orinor, infrastructures, administration-territoriale, cb39, brouillon]
+tags: [dalen, mir, orinor, infrastructures, administration-territoriale, cb39]
+etat_editorial: valide
 ---
 
 # Dalen Mir

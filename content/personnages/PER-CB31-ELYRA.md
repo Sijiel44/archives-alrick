@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P01825–02483; P16308–16421"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Artisane elfe, Elyra conçoit des vêtements adaptés aux personnes et porte un projet de transmission textile à Bordociel."
 tags: [elyra, textile, artisanat, bordociel, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Elyra

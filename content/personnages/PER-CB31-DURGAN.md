@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P03504–03643"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Maître forgeron de Skalor et ami de longue date d’Orin, Durgan privilégie l’apprentissage d’une arme ordinaire avant toute adaptation."
 tags: [durgan, forgeron, skalor, kelm, entrainement, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Durgan Main-d’Acier

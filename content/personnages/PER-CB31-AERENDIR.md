@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P16603–16628; P16701–16718"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Oncle d’Orin, Aerendir parcourt les territoires et aime fabriquer de ses mains de petits objets utiles."
 tags: [aerendir, famille, artisanat, voyage, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Aerendir

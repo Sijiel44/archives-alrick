@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Yse Korr — commandante de la coopération militaire"
 code: "PER-CB39-YSE-KORR"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB39"
 source_brute: "CB39 P00031; P00081–00142; P05289; P19948"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Commandante d’Orinor chargée de la coopération militaire et de la sécurité des routes."
-tags: [yse, korr, orinor, commandement, routes, cb39, brouillon]
+tags: [yse, korr, orinor, commandement, routes, cb39]
+etat_editorial: valide
 ---
 
 # Yse Korr

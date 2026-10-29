@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Une hache façonnée avec Durgan à partir de plusieurs aciers et marquée d’un motif de corbeau."
 tags: [alrick, cb1, objet, brouillon]
+etat_editorial: en_chantier
 ---
 
 # La hache forgée avec Durgan

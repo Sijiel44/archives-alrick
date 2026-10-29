@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Lyre de voyage destinée à Tairin"
 code: "OBJ-CB38-LYRE-TAIRIN"
 categorie: "objet"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P00521–00587"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Petite lyre de voyage à sept cordes, choisie par Orin pour Tairin et achetée à titre personnel."
-tags: [lyre, tairin, musique, mael-torvenn, cb38, brouillon]
+tags: [lyre, tairin, musique, mael-torvenn, cb38]
+etat_editorial: en_cours
 ---
 
 # Lyre de voyage destinée à Tairin

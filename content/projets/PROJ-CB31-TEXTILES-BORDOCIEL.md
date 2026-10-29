@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P01825–02483"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Projet d’ateliers, de formation textile et d’échanges culturels à Bordociel, porté avec Elyra; la ville et ses institutions ne sont pas encore établies."
 tags: [bordociel, textile, elyra, artisanat, projet, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Projet textile de Bordociel

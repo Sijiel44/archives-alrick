@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P04298–04594; P06533–06921"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Chercheur associé à la Maison de Veylan, dont la rencontre avec Orin ouvre des échanges sur les Cercles et le travail magique."
 tags: [eryndel, formules-inachevees, recherche, magie, veylan, cb43, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Eryndel des Formules Inachevées

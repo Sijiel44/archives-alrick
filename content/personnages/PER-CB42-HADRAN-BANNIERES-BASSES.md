@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Hadran des Bannières Basses — stratège"
 code: "PER-CB42-HADRAN-BANNIERES-BASSES"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P02800; P09550–09658"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Chef militaire ayant livré de grandes batailles, qui confronte les dirigeants à la question des conditions réelles de fin d’une guerre."
-tags: [hadran, bannieres-basses, guerre, strategie, cb42, brouillon]
+tags: [hadran, bannieres-basses, guerre, strategie, cb42]
+etat_editorial: valide
 ---
 
 # Hadran des Bannières Basses

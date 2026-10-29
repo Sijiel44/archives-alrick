@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Mariage d’Édric et Maëlya à Valbrume"
 code: "EVT-CB39-MARIAGE-EDRIC-MAELYA"
 categorie: "evenement"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB39"
 source_brute: "CB39 P01031–01840"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Célébration du mariage d’Édric et Maëlya à Valbrume, après plusieurs semaines de préparatifs et de visites diplomatiques."
-tags: [edric, maelya, mariage, valbrume, orinor, cb39, brouillon]
+tags: [edric, maelya, mariage, valbrume, orinor, cb39]
+etat_editorial: valide
 ---
 
 # Mariage d’Édric et Maëlya à Valbrume

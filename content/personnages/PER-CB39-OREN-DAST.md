@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Oren Dast — finances et développement d’Orinor"
 code: "PER-CB39-OREN-DAST"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB39"
 source_brute: "CB39 P00031; P00081–00142; P02026; P02614; P19945–19948"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Membre de la délégation d’Orinor chargé des finances et du développement, avec un intérêt marqué pour les chiffres et les questions pratiques."
-tags: [oren, dast, orinor, finances, developpement, cb39, brouillon]
+tags: [oren, dast, orinor, finances, developpement, cb39]
+etat_editorial: valide
 ---
 
 # Oren Dast

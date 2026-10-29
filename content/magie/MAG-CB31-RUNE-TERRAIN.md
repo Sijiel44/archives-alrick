@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P13771–13843"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Exercice où Orin combine une rune préparée au terrain, au mouvement et à l’information pour immobiliser plusieurs adversaires, puis l’efface."
 tags: [orin, rune, combat, terrain, entrainement, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Rune de contrainte du terrain

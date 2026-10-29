@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31–CB32"
 source_brute: "CB31 P16100–16300; CB32 P07657–07695; orientations du créateur, 28 octobre 2026"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Projet d’école militaire à Bordociel où Haldrek doit prendre en charge la formation, avec des programmes élaborés avec Orin et Torgarl."
 tags: [bordociel, academie, haldrek, torgarl, formation, projet, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Académie militaire de Bordociel

@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB39–CB43"
 source_brute: "CB39; CB42; CB43"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Index des nouvelles fiches de personnages et de leurs statuts de candidature dans les campagnes 3.9 à 4.3."
 tags: [index, personnages, cb39, cb42, cb43, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Personnages — brouillons CB3.9 à CB4.3

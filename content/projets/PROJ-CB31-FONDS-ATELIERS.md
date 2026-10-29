@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P13280–13355"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Fonds initial en lingots destiné aux études, aux jeunes artisans et au lancement d’ateliers, sous la direction autonome d’Astrid."
 tags: [astrid, fonds, bourses, artisans, ateliers, projet, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Fonds d’études et d’ateliers

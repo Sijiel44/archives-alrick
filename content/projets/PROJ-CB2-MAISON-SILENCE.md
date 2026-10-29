@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P01803–01820"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Projet d’un lieu pour copier des livres, apprendre des langues, accueillir des voyageurs et résoudre les désaccords sans coercition."
 tags: [entre-rives, projet, monastere, culture, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Maison du Silence

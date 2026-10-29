@@ -10,9 +10,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB2 (préparation du Mérien) ; CB31–34 (doctrine, entraînements avec Orin, Tairin et Drakon, projet de Bordociel) ; continuité Taagral échanges 012–119 ; CB39 P02944–04569 ; CB42 P19455–21050 ; CB43 (Hroldan) ; orientations du créateur octobre 2026 (enfance, direction future et lien avec Orin)"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "veteran", "haldrek", "commandement", "longue-vue", "formation", "procedure", "academie", "ethique-militaire", "preparation-civile", "discipline", "doctrine", "autonomie", "transmission", "scenarios-jouables", "bordeciel", "tairin", "drakon", "harald-forgecoeur", "dac", "academie-militaire"]
+etat_editorial: en_cours
 ---
 
 # Haldrek

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Armure de Harald — Dain, son nom d’aventure de jeunesse"
 code: "OBJ-CB31-ARMURE-PERE-ORIN"
 categorie: "objet"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P00682–01090; CB32 P00927; confirmation du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Armure de Harald, restaurée par Mara et marquée de sept runes serties de rubis; Dain était son nom d’aventure dans sa jeunesse."
-tags: [armure, mara, orin, runes, rubis, cb31, brouillon]
+tags: [armure, mara, orin, runes, rubis, cb31]
+etat_editorial: valide
 ---
 
 # Armure de Harald Forgecœur

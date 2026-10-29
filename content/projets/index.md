@@ -2,6 +2,7 @@
 publish: false
 title: "Projets et fondations — brouillons CB2–CB3.8"
 description: "Fiches de travail pour les projets évoqués dans les campagnes, avec leur état d’avancement et les décisions encore ouvertes."
+etat_editorial: en_cours
 ---
 
 # Projets et fondations

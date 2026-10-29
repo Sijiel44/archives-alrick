@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Une œuvre collective de pierres, de cloches et de lanternes qui conserve les gestes des ateliers et des apprentis."
 tags: [alrick, cb1, lieu, culture, brouillon]
+etat_editorial: en_chantier
 ---
 
 # La Maison des Échos

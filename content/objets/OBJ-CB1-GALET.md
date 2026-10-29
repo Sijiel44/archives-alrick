@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Un galet conservé depuis des décennies dont le registre ne connaît qu’une provenance incertaine."
 tags: [alrick, cb1, objet, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Le galet anonyme de la collection

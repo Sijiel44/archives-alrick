@@ -7,10 +7,11 @@ canon_statut: "a_verifier"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P21094–21559"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 spoilers: true
 description: "Repères de personnage et de continuité après CB42."
 tags: [sec_76, cb42, brouillon, dagna, veine, pierre]
+etat_editorial: en_chantier
 ---
 
 # Dagna Veine-de-Pierre

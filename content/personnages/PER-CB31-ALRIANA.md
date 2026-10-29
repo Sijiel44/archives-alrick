@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P16405–16421; P16647–16659; P16722–16727; P16900–16914"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Fille de Freya et mère d’Orin, Alriana est évoquée par les vêtements conservés et les souvenirs de sa famille."
 tags: [alriana, freya, orin, famille, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Alriana

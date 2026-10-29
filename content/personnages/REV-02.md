@@ -10,9 +10,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB2 (Mérien) ; CB31–34 (capes, entraînements) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB39 P01405–01993 (Lok) ; CB42 P18752–19902 (Pierre d’Écoute) ; CB43 (échanges à Aldhammar)"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "terrain", "ragna", "lok", "écoute", "enquete", "exploration", "aldhammar", "aristocratie-naine", "pionniere", "torgarl", "coordination", "pierre"]
+etat_editorial: en_cours
 ---
 
 # Ragna Pierre-Sèche

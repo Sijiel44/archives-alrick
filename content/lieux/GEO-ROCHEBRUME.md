@@ -9,9 +9,10 @@ canon_statut: "lore_valide"
 ancre_documentaire: "CB43"
 source_brute: "Développement de lore approuvé par le créateur le 28 octobre 2026 ; cohérence avec les souvenirs de Harald Forgecœur et Bram dans CB42 et CB43"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique"
 description: "Petit bourg des Montagnes de l’Aube, proche des anciennes routes de la région d’Aldhammar et village natal du vétéran Bram Vieux-Fer."
 tags: ["lieu", "montagnes-de-laube", "rochebrume", "aldhammar", "bram", "routes", "bourg", "origines"]
+etat_editorial: en_cours
 ---
 
 # Rochebrume

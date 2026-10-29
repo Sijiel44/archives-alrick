@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Dispositif d’accès au pavillon d’arrivée — Harald"
 code: "OBJ-CB43-ACCES-PALAIS-HARALD"
 categorie: "objet"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P00125–00130"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Dispositif runique personnel qui permet à Harald d’ouvrir un passage vers le pavillon d’arrivée, sans accès aux espaces privés ou protégés."
-tags: [harald, acces, palais-divin, teleportation, securite, cb43, brouillon]
+tags: [harald, acces, palais-divin, teleportation, securite, cb43]
+etat_editorial: valide
 ---
 
 # Dispositif d’accès au pavillon d’arrivée — Harald

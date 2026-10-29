@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Grand Colloque de Torngard — actes et commissions"
 code: "INST-CB36-COLLOQUE-TORNGARD"
 categorie: "institution"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB36"
 source_brute: "CB36 P11661–12144"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Bilan du Grand Colloque de Torngard : commissions permanentes et assemblée de révision après la fin des grands travaux."
-tags: [grand-colloque, torngard, commissions, revision, cb36, brouillon]
+tags: [grand-colloque, torngard, commissions, revision, cb36]
+etat_editorial: valide
 ---
 
 # Grand Colloque de Torngard — actes et commissions

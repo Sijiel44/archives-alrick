@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Palais divin — espaces d’accueil et de résidence"
 code: "GEO-CB43-PALAIS-DIVIN"
 categorie: "lieu"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P00189–00227; P07394–07418"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Résidence de la Maison divine désormais composée de lieux d’accueil et d’espaces de vie distincts, avec des équipes encore à compléter."
-tags: [palais-divin, maison-divine, residence, accueil, cb43, brouillon]
+tags: [palais-divin, maison-divine, residence, accueil, cb43]
+etat_editorial: en_cours
 ---
 
 # Palais divin

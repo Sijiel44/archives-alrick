@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P01827–01919"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Habitude collective du village : entretenir chaque semaine le Champ des Noms, avec la participation des enfants."
 tags: [champ-des-noms, memoire, village, transmission, culture, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Entretien hebdomadaire du Champ des Noms

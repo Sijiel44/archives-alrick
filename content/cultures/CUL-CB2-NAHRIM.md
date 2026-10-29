@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00662–00732; P00811–00840; P01247–01269; P01459–01659"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "CB2 associe les Nahrim à une mémoire du désert, au partage conscient de l’eau et à des assemblées où les voix peuvent se contredire."
 tags: [nahrim, culture, eau, desert, cercle-des-ombres, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Nahrim

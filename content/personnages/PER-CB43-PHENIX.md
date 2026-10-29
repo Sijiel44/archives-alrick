@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P07394–07418; P09127–09308"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Jeune être ailé et parlant, qui explore encore ce que signifie son nom et choisit ses propres déplacements."
 tags: [phenix, ailes, compagnon, magie, orinor, cb43, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Phénix

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Festival des Métiers de la Mer"
 code: "EVT-CB37-FESTIVAL-METIERS-MER"
 categorie: "evenement"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB37"
 source_brute: "CB37 P27002–27020; P27021–27075; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Festival maritime adopté, avec règles établies et mise en place à organiser."
-tags: [festival, mer, artisans, ports, concours, cb37, brouillon]
+tags: [festival, mer, artisans, ports, concours, cb37]
+etat_editorial: en_cours
 ---
 
 # Festival des Métiers de la Mer

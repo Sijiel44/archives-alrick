@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Secours mutuel et Guilde des Aventuriers"
 code: "INST-CB32-SECOURS-AVENTURIERS"
 categorie: "institution"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P08327–08719"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Guilde et secours mutuel adoptés, avec déploiement progressif, entraide graduée et qualifications communes à organiser."
-tags: [secours, aventuriers, guildes, entraide, qualification, cb32, brouillon]
+tags: [secours, aventuriers, guildes, entraide, qualification, cb32]
+etat_editorial: en_cours
 ---
 
 # Secours mutuel et Guilde des Aventuriers

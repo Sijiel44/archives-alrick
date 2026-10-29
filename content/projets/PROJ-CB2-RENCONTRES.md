@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P01937–01978"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Proposition d’une rencontre tous les cinq ans pour partager des innovations, avec des critères valorisant aussi la transmission et la coopération."
 tags: [evenement, projet, artisanat, culture, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Rencontre créative quinquennale

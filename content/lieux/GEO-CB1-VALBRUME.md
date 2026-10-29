@@ -1,15 +1,16 @@
 ---
-publish: false
+publish: true
 title: "Valbrume"
 code: "GEO-CB1-VALBRUME"
 categorie: "lieu"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "CB1"
 source_brute: "CB1 P02752–02888; P03174–03298; P04165–04247"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique"
 description: "Une ville d’artisans et de marins, connue dans CB1 par une fête collective et des projets de chantier."
-tags: [alrick, cb1, lieu, brouillon]
+tags: [alrick, cb1, lieu]
+etat_editorial: valide
 ---
 
 # Valbrume

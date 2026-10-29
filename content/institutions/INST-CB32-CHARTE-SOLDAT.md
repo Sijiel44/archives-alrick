@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Charte du Soldat"
 code: "INST-CB32-CHARTE-SOLDAT"
 categorie: "institution"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P09458–10270"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Charte adoptée en cours de mise en place, sur l’obéissance, le refus d’un ordre interdit, le contrôle et la responsabilité."
-tags: [charte-du-soldat, armee, ordres, responsabilite, cb32, brouillon]
+tags: [charte-du-soldat, armee, ordres, responsabilite, cb32]
+etat_editorial: en_cours
 ---
 
 # Charte du Soldat

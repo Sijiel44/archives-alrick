@@ -2,6 +2,7 @@
 publish: true
 title: "Économie et finances"
 description: "Institutions financières, investissements et activités économiques du Royaume, avec leurs statuts et limites."
+etat_editorial: en_cours
 ---
 
 # Économie et finances

@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P10091–10125"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Projet de jardins pilotes associant semences, usages locaux, transmission par les cultivateurs et espaces d’expérimentation."
 tags: [merien, projet, agriculture, savoir, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Jardins de Transmission du Mérien

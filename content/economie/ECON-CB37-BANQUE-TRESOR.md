@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Banque, Trésor et conflits d’intérêts"
 code: "ECON-CB37-BANQUE-TRESOR"
 categorie: "economie"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB37"
 source_brute: "CB37 P16590–16649"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Principes de séparation entre investissement privé, fonction d’intendant et décisions financières publiques."
-tags: [banque, tresor, edric, conflits-interets, investissements, cb37, brouillon]
+tags: [banque, tresor, edric, conflits-interets, investissements, cb37]
+etat_editorial: en_cours
 ---
 
 # Banque, Trésor et conflits d’intérêts

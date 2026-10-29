@@ -10,9 +10,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB2 (Mérien et secours) ; CB31–34 (formation médicale et capes) ; CB34 (hôpital et Espace sur demande) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB42 P18752–19902 ; CB43 (hôpital actif, distinct de l’infirmerie privée)"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "evacuation", "triage", "refuge", "enseignement", "ingenierie-medicale", "reseau-de-soins", "scenarios-jouables", "sacoche", "colloque", "directeur-hopital", "magie-medicale", "ascension-proposee"]
+etat_editorial: en_cours
 ---
 
 # Torven Cendreval

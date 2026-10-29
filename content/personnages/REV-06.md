@@ -11,10 +11,11 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB2; CB32; CB38 P06750–07262 et P19467–19961; CB39 P02944–04569, P20311–20701 et P40542–41267; CB42 P18752–21050; CB43"
 derniere_revision_documentaire: "2026-10-27"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 portrait: "images/personnages/heimdall-portrait.webp"
 description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "maison-d-orin", "merien", "raccords", "recherche", "aldren", "liberte", "nidor", "vaerdrak", "filiation-choisie", "veilleurs"]
+etat_editorial: en_cours
 ---
 
 # Heimdall

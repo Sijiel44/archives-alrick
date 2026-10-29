@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-29"
 visibilite: "a_relire_avant_publication"
 description: "Les habitants de Valbrume se rassemblent pour transformer un grand chêne tombé en œuvre commune."
 tags: [alrick, cb1, evenement, brouillon]
+etat_editorial: en_chantier
 ---
 
 # La fête du géant tombé

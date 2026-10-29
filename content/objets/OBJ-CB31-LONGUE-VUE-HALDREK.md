@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P00463–00497"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Projet d’instrument pour comparer des observations sans étiqueter magiquement des personnes comme ennemies."
 tags: [haldrek, longue-vue, observation, insigne, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Longue-vue de Haldrek

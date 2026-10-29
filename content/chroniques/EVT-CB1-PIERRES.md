@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Une pratique de transmission lie les pierres de la Maison des Échos aux voyages de formation des apprentis."
 tags: [alrick, cb1, evenement, culture, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Déplacement des pierres et voyage des apprentis

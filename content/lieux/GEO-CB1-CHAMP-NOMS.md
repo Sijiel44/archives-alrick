@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Un lieu de mémoire où des pierres portent les noms et les actes de personnes disparues."
 tags: [alrick, cb1, lieu, memoire, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Le Champ des Noms

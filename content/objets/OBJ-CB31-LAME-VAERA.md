@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P00047–00104; P00317–00336"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Concept d’une lame sombre à longueur variable, pensé pour la discrétion et lié à une chouette libre de rester auprès de Vaëra."
 tags: [vaera, lame, insigne, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Lame d’ombre de Vaëra

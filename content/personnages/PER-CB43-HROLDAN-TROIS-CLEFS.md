@@ -8,9 +8,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P00139–00141; P00639; P00870–00885; P01191–01259; CB42 P19455–19655"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Repères de personnage et de continuité après CB42."
 tags: [hroldan, trois-clefs, logistique, harald, intendance, revenants, cb43, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Hroldan Trois-Clefs

@@ -8,9 +8,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10865–10868"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Repères de personnage et de continuité après CB42."
 tags: [naeline, fendrelune, protocole, arts, rappel, cb42, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Naëline Fendrelune

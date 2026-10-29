@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Maëlya — collectrice de mots et de langues"
 code: "PER-CB31-MAELYA"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P16684–16706; CB39 P01031–01840"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Cousine d’Orin, Maëlya voyage pour recueillir les expressions locales et les mots difficiles à traduire."
-tags: [maelya, langues, culture, famille, cb31, brouillon]
+tags: [maelya, langues, culture, famille, cb31]
+etat_editorial: valide
 ---
 
 # Maëlya

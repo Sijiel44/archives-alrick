@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P01503–01522; P01651–01659"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Nahal, décrit comme une présence liée à l’eau et dotée d’oreilles, accompagne le gardien de l’eau dans une scène nahrim."
 tags: [nahal, creature, eau, nahrim, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Nahal

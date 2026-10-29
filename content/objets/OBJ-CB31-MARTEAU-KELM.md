@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P00170–00240; P00291–00316"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Projet de marteau à masse variable, envisagé après l’apprentissage d’une arme ordinaire."
 tags: [kelm, marteau, arme, insigne, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Marteau de Kelm

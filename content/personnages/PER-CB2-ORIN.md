@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Orin — prince et voyageur sous le nom d’Alrick"
 code: "PER-CB2-ORIN"
 categorie: "personnage"
@@ -7,15 +7,16 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00560–00643; P08292–08294; CB31 P13280–13355; P13844–13855; P16302–16920; confirmation du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Orin, prince engagé dans la construction de liens entre peuples, voyage souvent sous le nom d’Alrick pour éviter que son rang ne complique ses déplacements."
-tags: [alrick, orin, personnage, prince, cb2, brouillon]
+tags: [alrick, orin, personnage, prince, cb2]
+etat_editorial: en_cours
 ---
 
 # Orin
 
-> [!info] Brouillon de référence
-> Le créateur confirme que **Harald est le père d’Orin** et qu’Orin utilise souvent **Alrick** comme nom de voyage pour ne pas être accaparé par les égards dus à un prince. La fiche reste en brouillon pour revue d’ensemble.
+> [!info] Faits établis et limites
+> Le créateur confirme que **Harald est le père d’Orin** et qu’Orin utilise souvent **Alrick** comme nom de voyage pour ne pas être accaparé par les égards dus à un prince. Les éléments encore incertains sont signalés séparément et restent à confirmer.
 
 ## Identité
 

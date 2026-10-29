@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Réseaux de communication et d’alerte"
 code: "PROJ-CB38-RESEAUX-COMMUNICATION"
 categorie: "projet"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P10602–10667; P10669–11150; P11380–11720; P12420–12440; précision du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Architecture de communication répartie entre conversation locale, messagerie par relais, bijoux adressés, urgences et diffusion à sens unique."
-tags: [communication, relais, messagerie, urgence, reseaux, cb38, brouillon]
+tags: [communication, relais, messagerie, urgence, reseaux, cb38]
+etat_editorial: en_cours
 ---
 
 # Réseaux de communication et d’alerte

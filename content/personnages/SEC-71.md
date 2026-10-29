@@ -7,10 +7,11 @@ canon_statut: "a_verifier"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P13465–15148"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 spoilers: true
 description: "Repères de personnage et de continuité après CB42."
 tags: [sec_71, cb42, brouillon, hélène, varrec]
+etat_editorial: en_chantier
 ---
 
 # Hélène Varrec

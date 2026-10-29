@@ -9,9 +9,10 @@ canon_statut: "lore_valide"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P05101–05500 — récit personnel de Kelm sur la route ; nom 'Relais des Hautes-Pâtures' et développement local proposés puis approuvés par le créateur le 28 octobre 2026"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique"
 description: "Ferme-relais familiale de Kelm Poing-Calme, dans une région de terres ouvertes, mêlant élevage, accueil des voyageurs et solidarité rurale."
 tags: ["lieu", "ferme-relais", "hautes-patures", "kelm", "famille", "caravanes", "elevage", "scenarios", "routes"]
+etat_editorial: en_cours
 ---
 
 # Le Relais des Hautes-Pâtures

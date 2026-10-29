@@ -7,10 +7,11 @@ canon_statut: "a_verifier"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P08129–08468"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 spoilers: true
 description: "Repères de personnage et de continuité après CB42."
 tags: [ren_64, cb42, brouillon, vardhena]
+etat_editorial: en_chantier
 ---
 
 # Vardhena

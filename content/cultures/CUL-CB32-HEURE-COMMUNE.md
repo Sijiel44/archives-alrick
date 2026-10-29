@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Heure commune d’entraînement"
 code: "CUL-CB32-HEURE-COMMUNE"
 categorie: "culture"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P08747–09115"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Temps commun adopté et en cours de mise en place pour bouger, apprendre et réagir aux risques, sans conscription."
-tags: [entrainement, preparation-civile, communaute, cb32, brouillon]
+tags: [entrainement, preparation-civile, communaute, cb32]
+etat_editorial: en_cours
 ---
 
 # Heure commune d’entraînement

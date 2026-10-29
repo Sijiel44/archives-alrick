@@ -2,6 +2,7 @@
 publish: false
 title: "Cultures et pratiques — brouillons CB2–CB3.8"
 description: "Fiches de travail consacrées aux pratiques, coutumes et institutions des peuples de l’univers."
+etat_editorial: en_cours
 ---
 
 # Cultures et pratiques

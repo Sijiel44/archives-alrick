@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P12446–12610; P13844–13855"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Ylva entraîne Orin à la discrétion et à l’infiltration réaliste en tenant compte de son armure et de son tempérament."
 tags: [ylva, entrainement, discretion, orin, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Ylva

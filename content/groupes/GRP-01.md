@@ -9,9 +9,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB2 (Mérien, Lethrann) ; CB31 P00601–00900, P02201–02400 (Mara, Elyra) ; CB32 P01101–01300, P02901–03300 (capes, cérémonies, ateliers) ; CB34 (entraînement) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB36 (cinq années d’autonomie) ; CB42 P18752–21050 (manoir, insignes et honneurs) ; CB43 P01075–01157 (Dorsa)"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique"
 description: "Compagnie libre d’Orin, forgée dans les voyages et devenue capable de conduire ses propres missions : neuf compagnons au noyau attesté, des liens d’honneur et une doctrine du retour."
 tags: ["alrick", "groupe", "revenants", "compagnie", "orin", "merien", "transmission", "manoir", "insignes", "honneur"]
+etat_editorial: en_cours
 ---
 
 ![Projet de blason des Revenants : une cape bleu nuit entourant deux corbeaux et deux lions d’or devant les Montagnes de l’Aube.](../images/groupes/revenants-blason-proposition.webp)

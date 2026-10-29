@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Edric de Valbrume — duc, anciennement Edric Varen"
 code: "PER-CB1-EDRIC"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB1"
 source_brute: "CB1 P02843–02888; P02965–03071; CB2 P00365–00380; CB31 P13280–13331; CB37 P08630; P16629–16630; CB39 P01031–01840; confirmations du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique"
 description: "Edric Varen, devenu duc de Valbrume, passe de la logistique d’Entre-Rives à la gestion de projets et d’investissements du Royaume."
-tags: [edric, valbrume, personnage, cb1, cb2, brouillon]
+tags: [edric, valbrume, personnage, cb1, cb2]
+etat_editorial: valide
 ---
 
 # Edric Varen

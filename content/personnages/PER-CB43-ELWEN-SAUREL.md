@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Elwen Saurel — coordination administrative"
 code: "SEC-66"
@@ -8,9 +8,11 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P00205–00221; P00246–00249; CB42 P08980–09089; P17726–17825"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
-tags: [elwen, saurel, administration, maison-divine, recrutement, cb43, brouillon]
+tags: [elwen, saurel, administration, maison-divine, recrutement, cb43]
+etat_editorial: en_cours
+unlisted: true
 ---
 
 # Elwen Saurel

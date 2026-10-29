@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Bijoux de communication des Revenants"
 code: "OBJ-CB38-BIJOU-COMMUNICATION"
 categorie: "objet"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P10602–10768; P10768–11044"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Appareils personnels de communication testés puis distribués d’abord aux Revenants, avec consentement d’appel et canal d’urgence séparé."
-tags: [bijou, communication, revenants, urgence, consentement, cb38, brouillon]
+tags: [bijou, communication, revenants, urgence, consentement, cb38]
+etat_editorial: valide
 ---
 
 # Bijoux de communication des Revenants

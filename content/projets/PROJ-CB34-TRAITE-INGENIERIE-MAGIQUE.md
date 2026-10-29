@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Traité d’ingénierie magique — architecture spatiale"
 code: "PROJ-CB34-TRAITE-INGENIERIE-MAGIQUE"
 categorie: "projet"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB34"
 source_brute: "CB34 P13500–13631; P16234–16345"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Méthode en cours de construction pour analyser, reproduire et transmettre des systèmes magiques complexes sans confondre un exemple avec une loi universelle."
-tags: [ingenierie-magique, cercles, architecture, methode, cb34, brouillon]
+tags: [ingenierie-magique, cercles, architecture, methode, cb34]
+etat_editorial: en_cours
 ---
 
 # Traité d’ingénierie magique — architecture spatiale

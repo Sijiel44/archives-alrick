@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P12393–12439"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Rendez-vous de la Couronne associé aux premières neiges et à une bière de saison en cours de création."
 tags: [couronne, hiver, premiere-neige, biere, evenement, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Soirée de la Couronne

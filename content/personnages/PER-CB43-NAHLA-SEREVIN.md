@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P00251–00275; P00320–00430"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Humaine de 43 ans, ancienne administratrice de réseaux commerciaux au Mérien, reçue en entretien pour le cabinet d’Orin."
 tags: [nahla, serevin, merien, administration, cabinet, cb43, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Nahla Serevin

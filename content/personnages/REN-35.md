@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Hrogar Mont Brisé"
 code: "REN-35"
 categorie: "personnage"
@@ -7,15 +7,17 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10512–10696"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique_avec_avertissement"
 spoilers: true
 description: "Repères de personnage et de continuité après CB42."
-tags: [ren_35, cb42, personnage, brouillon]
+tags: [ren_35, cb42, personnage]
+etat_editorial: valide
+unlisted: true
 ---
 
 # Hrogar Mont Brisé
 
-> [!warning] Brouillon de continuité
+> [!info] Repère de continuité
 > État documentaire préparé à partir du registre v2.3 et du Compendium après CB42. Les propositions, fonctions et décisions restent distinctes.
 
 ## État établi après CB42

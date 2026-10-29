@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P12341–12444"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Essais brassicoles ancrés dans les ingrédients locaux d’Entre-Rives, dont une bière brune à la cacahuète et une recette hivernale en développement."
 tags: [entre-rives, biere, brassage, artisanat, culture, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Brassage expérimental d’Entre-Rives

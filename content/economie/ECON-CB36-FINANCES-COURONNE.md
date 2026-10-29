@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Finances de la Couronne et séparation des patrimoines"
 code: "ECON-CB36-FINANCES-COURONNE"
 categorie: "economie"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB36"
 source_brute: "CB36 P00092–01532"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Méthode de budgétisation qui distingue la personne du souverain, la fonction royale, le patrimoine de la Couronne et le budget du territoire."
-tags: [finances, couronne, budget, patrimoine, remuneration, cb36, brouillon]
+tags: [finances, couronne, budget, patrimoine, remuneration, cb36]
+etat_editorial: en_cours
 ---
 
 # Finances de la Couronne et séparation des patrimoines

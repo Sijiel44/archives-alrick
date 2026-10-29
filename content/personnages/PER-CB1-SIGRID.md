@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Une femme âgée de Brumefer guide le voyageur vers le Champ des Noms et veille sur ses pierres commémoratives."
 tags: [alrick, cb1, personnage, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Sigrid — gardienne du Champ des Noms

@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P04529–06216"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Plan de reconnaissance, de mesure et de recoupement des rapports du Nord, sans réduire des observations disparates à une menace unique."
 tags: [nord, enquete, mines, reconnaissance, projet, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Enquête des Montagnes du Nord

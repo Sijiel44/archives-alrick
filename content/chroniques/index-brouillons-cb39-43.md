@@ -2,6 +2,7 @@
 publish: false
 title: "Brouillons — continuité CB3.9 à CB4.3"
 description: "Index de relecture des événements, lieux et projets dont l’état évolue dans les campagnes 3.9 à 4.3."
+etat_editorial: en_cours
 ---
 
 # Brouillons — continuité CB3.9 à CB4.3

@@ -10,9 +10,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB2 (Mérien et Lethrann) ; CB31-32 (commande Mara, capes) ; CB34 (entraînements des Revenants) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB39 P26390–26474 ; CB42 P18752–21841 ; CB43 (échanges à Aldhammar)"
 derniere_revision_documentaire: "2026-10-28"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "protecteur", "bram", "veteran", "rochebrune", "harald-forgecoeur", "torgarl", "orin", "amitie", "repli", "armure", "mara"]
+etat_editorial: en_cours
 ---
 
 # Bram Vieux-Fer

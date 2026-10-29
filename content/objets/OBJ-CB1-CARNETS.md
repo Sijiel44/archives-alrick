@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Un ensemble de carnets sépare le journal personnel, les savoir-faire, les portraits et le récit du voyage."
 tags: [alrick, cb1, objet, documentation, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Les quatre carnets d’Alrick

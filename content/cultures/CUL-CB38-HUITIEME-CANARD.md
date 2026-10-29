@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Le Huitième Canard"
 code: "CUL-CB38-HUITIEME-CANARD"
 categorie: "culture"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB38"
 source_brute: "CB38 P01385–02070; P02888–02936"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Histoire collective née à la taverne de Garrik, où un canard fictif devient le prétexte à raconter, cuisiner et broder ensemble."
-tags: [huitieme-canard, garrik, taverne, recit, cuisine, cb38, brouillon]
+tags: [huitieme-canard, garrik, taverne, recit, cuisine, cb38]
+etat_editorial: valide
 ---
 
 # Le Huitième Canard

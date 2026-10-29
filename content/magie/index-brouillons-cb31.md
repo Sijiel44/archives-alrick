@@ -2,6 +2,7 @@
 publish: false
 title: "Brouillons de magie — Campagne Brut 3.1"
 description: "Index de travail des pratiques et expériences magiques rapportées dans Campagne Brut 3.1."
+etat_editorial: en_cours
 ---
 
 # Brouillons de magie — Campagne Brut 3.1

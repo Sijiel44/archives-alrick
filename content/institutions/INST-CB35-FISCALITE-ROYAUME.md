@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Cadre fiscal commun du Royaume"
 code: "INST-CB35-FISCALITE-ROYAUME"
 categorie: "institution"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB35"
 source_brute: "CB35 P00008–00012; P00619–00650; P35927"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Réforme fiscale en préparation, avec inventaire des prélèvements, classification et révision avant toute harmonisation définitive."
-tags: [fiscalite, royaume, budget, administration, cb35, brouillon]
+tags: [fiscalite, royaume, budget, administration, cb35]
+etat_editorial: en_cours
 ---
 
 # Cadre fiscal commun du Royaume

@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P00404–00433"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Projet de sac médical qui stabilise le matériel et garde une place disponible pour les besoins imprévus."
 tags: [torven, soins, sac, insigne, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Sac de soins de Torven

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Administration de l’éducation et de la transmission"
 code: "INST-CB32-EDUCATION-TRANSMISSION"
 categorie: "institution"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P03730–05864"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Administration adoptée, en cours de déploiement, pour relier apprentissage pratique, écoles et universités dans les territoires."
-tags: [education, transmission, universite, savoirs, institution, cb32, brouillon]
+tags: [education, transmission, universite, savoirs, institution, cb32]
+etat_editorial: en_cours
 ---
 
 # Administration de l’éducation et de la transmission

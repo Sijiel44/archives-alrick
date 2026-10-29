@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P03966–04175; P05297–05350; P12215–12280"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Lieu de retour d’Orin dans les Montagnes, où le palais, les quartiers de son père et les liens avec les vétérans se croisent."
 tags: [torngard, palais, garnison, famille, montagnes-de-l-aube, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Torngard

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Maëron Veld — coordination des résidences"
 code: "SEC-67"
@@ -8,9 +8,11 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P08719; P08846–08985; P09233–09268; T4R5; CB43 P00221; CB42 P09231–18750"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
-tags: [maeron, veld, intendance, residences, valbrume, cb42, cb43, brouillon]
+tags: [maeron, veld, intendance, residences, valbrume, cb42, cb43]
+etat_editorial: en_cours
+unlisted: true
 ---
 
 # Maëron Veld

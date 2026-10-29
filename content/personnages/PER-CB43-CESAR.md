@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "César — le chat parlant du Palais divin"
 code: "PER-CB43-CESAR"
 categorie: "personnage"
@@ -7,9 +7,10 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P00665–00707"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Chat argenté du Palais divin, capable de parler et invité à contribuer à une atmosphère chaleureuse."
-tags: [cesar, chat, palais-divin, hospitalite, cb43, brouillon]
+tags: [cesar, chat, palais-divin, hospitalite, cb43]
+etat_editorial: valide
 ---
 
 # César

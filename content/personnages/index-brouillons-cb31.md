@@ -2,6 +2,7 @@
 publish: false
 title: "Brouillons de personnages — Campagne Brut 3.1"
 description: "Index de travail des personnages et liens familiaux relevés dans Campagne Brut 3.1."
+etat_editorial: en_cours
 ---
 
 # Brouillons de personnages — Campagne Brut 3.1

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Ancien palais royal d’Aldhammar"
 code: "GEO-CB43-ANCIEN-PALAIS-ALDHAMMAR"
 categorie: "lieu"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P00001–00063; P00125–00136"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Ancien palais royal qui reprend vie comme résidence familiale, tandis que sa restauration et ses usages se poursuivent."
-tags: [aldhammar, palais, famille, restauration, cb43, brouillon]
+tags: [aldhammar, palais, famille, restauration, cb43]
+etat_editorial: en_cours
 ---
 
 # Ancien palais royal d’Aldhammar

@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P16405–16434"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Gilet à motifs floraux conservé parmi les affaires de Harald, associé à Alriana et à un souvenir familial dont le texte présente une contradiction."
 tags: [harald, alriana, vetement, famille, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Gilet fleuri de Harald

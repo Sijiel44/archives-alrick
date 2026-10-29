@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Défense en profondeur du Nord"
 code: "PROJ-CB32-PROFONDEUR-NORD"
 categorie: "projet"
@@ -7,9 +7,10 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB32"
 source_brute: "CB32 P07784–08383"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "publique"
 description: "Doctrine adoptée, en déploiement progressif, organisée par fonctions successives pour préserver les civils et acheter du temps."
-tags: [defense, nord, profondeur, doctrine, cb32, brouillon]
+tags: [defense, nord, profondeur, doctrine, cb32]
+etat_editorial: en_cours
 ---
 
 # Défense en profondeur du Nord

@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P10040–10089"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Proposition de cartographie locale et de signalétique légère, pensée pour rester sous le contrôle des communautés concernées."
 tags: [merien, projet, cartographie, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Chemins Vivants du Mérien

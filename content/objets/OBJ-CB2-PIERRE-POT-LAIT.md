@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00310–00325; P02731–02745"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Une pierre liée au mystère du vieux pont reste confinée dans un pot de lait, son rôle exact étant encore inconnu."
 tags: [objet, pierre, pont, mystere, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # La pierre gardée dans le pot de lait

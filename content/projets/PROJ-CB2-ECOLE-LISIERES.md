@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P10287–10377; P10378–10645"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Projet d’apprentissage distribué dans les communautés du Mérien, conçu pour soutenir la transmission sans confisquer les savoirs locaux."
 tags: [merien, projet, ecole, transmission, cb2, brouillon]
+etat_editorial: en_chantier
 ---
 
 # École des Lisières

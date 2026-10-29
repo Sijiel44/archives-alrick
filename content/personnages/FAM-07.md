@@ -7,9 +7,10 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P16302–16762"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "brouillon"
+visibilite: "a_relire_avant_publication"
 description: "Branche familiale du Sud réunie autour de Freya, grand-mère d’Orin, et de la mémoire d’Alriana."
 tags: [famille, alriana, freya, orin, sud, cb31, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Famille d’Alriana autour de Freya

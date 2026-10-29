@@ -10,6 +10,7 @@ derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
 description: "Une flûte conçue avec l’aide d’un vieux luthier, qu’Eamon nomme Lys."
 tags: [alrick, cb1, objet, eamon, brouillon]
+etat_editorial: en_chantier
 ---
 
 # Lys, la flûte d’Eamon
