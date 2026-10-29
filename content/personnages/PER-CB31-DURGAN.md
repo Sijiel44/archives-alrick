@@ -26,5 +26,3 @@ Sa règle de travail est claire : la magie ne remplace pas la maîtrise de l’o
 - **Canon confirmé par le créateur :** le surnom Main-d’Acier est retenu; Durgan est l’ami-forgeron rencontré à Skalore, distinct de Harald.
 
 - *Campagne Brut 3.1*, CB31 P03504–03643.
-- [[OBJ-CB31-MARTEAU-KELM|Marteau de Kelm]].
-
