@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Les caisses de Valbrume — enquête de Halstor et Vaëra"
 code: "JDR-CB39-ENQUETE-CAISSES"
 categorie: "chronique"
@@ -7,7 +7,7 @@ canon_statut: "faits_joues"
 ancre_documentaire: "CB39"
 source_brute: "CB39 P20311–20701"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Enquête en cours menée par Halstor et Vaëra sur un faux ordre, trois caisses et un ancien entrepôt."
 tags: [enquete, valbrume, halstor, vaera, premiere-ronce, jdr-alrick]
 etat_editorial: en_cours
