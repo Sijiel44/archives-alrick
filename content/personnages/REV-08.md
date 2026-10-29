@@ -1,5 +1,6 @@
 ---
 publish: true
+spoilers: true
 title: "Eamon — Le professeur qui emporte les histoires"
 code: "REV-08"
 categorie: "personnage"
@@ -9,11 +10,18 @@ ancre_documentaire: "CB43"
 source_brute: "CB1–2 (apprentissage, récits et Skalor) ; CB31–34 (adhésion, ateliers, entraînement à l’épée) ; CB37 P00515–02025, P06702–07442 ; CB38 P19260–19466 ; CB41 P02040–02084 ; CB42 P18752–19902 ; CB43 P01075–01157 (Dorsa)"
 derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
-description: "Artiste et professeur de Skalor devenu Revenant par choix, Eamon relie les voyages, l'enseignement et la mémoire vécue ; il n'a pas renoncé à ses étudiants ni à ses recherches."
+description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "professeur", "artiste", "eamon", "nevane", "archives", "enseignement", "skalor"]
 ---
 
 # Eamon
+
+## Mise à jour de continuité — CB42
+
+> **État établi dans le registre :** ; Eamon discute enseignement transversal, histoire et analyse. La grande bibliothèque et les îles universitaires l’intéressent sans nomination automatique à leur direction. Il reçoit un carnet de recherche à annotation, classement et copie contrôlée. Son rôle dans la compagnie et son intérêt scientifique ne sont pas un contrat de responsable de toute l’université.
+>
+> **Repère de source :** CB42 P18752–19902.
+
 
 ![Portrait provisoire de Eamon, interprétation artistique non canonique.](../images/personnages/eamon-concept.webp)
 

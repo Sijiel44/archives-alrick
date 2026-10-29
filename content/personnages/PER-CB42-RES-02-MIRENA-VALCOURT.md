@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Mirena Valcourt — intendante"
-code: "PER-CB42-RES-02-MIRENA-VALCOURT"
+code: "RES-02"
 categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10580–10583; CB43 P00205–00227"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Intendante expérimentée, chargée dans CB4.3 de l’intendance domestique du Palais divin et de la sélection de son personnel."
+description: "Repères de personnage et de continuité après CB42."
 tags: [mirena, valcourt, intendance, palais-divin, hospitalite, cb42, cb43, brouillon]
 ---
 

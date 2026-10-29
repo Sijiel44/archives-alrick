@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Nerys Silvenaine — maintenance magique"
-code: "PER-CB42-RES-13-NERYS-SILVENAINE"
+code: "RES-13"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10794–10797"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Elfe de 214 ans, spécialiste des enchantements domestiques et des architectures magiques."
+description: "Repères de personnage et de continuité après CB42."
 tags: [nerys, silvenaine, magie, maintenance, architecture-magique, cb42, brouillon]
 ---
 

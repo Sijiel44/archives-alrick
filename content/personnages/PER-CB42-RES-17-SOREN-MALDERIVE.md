@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Soren Malderive — commissaire de bord"
-code: "PER-CB42-RES-17-SOREN-MALDERIVE"
+code: "RES-17"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10850–10853"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Humain de 38 ans, ancien responsable des passagers et des cargaisons de navires de commerce."
+description: "Repères de personnage et de continuité après CB42."
 tags: [soren, malderive, navigation, logistique, yacht, cb42, brouillon]
 ---
 

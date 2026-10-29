@@ -34,3 +34,19 @@ Toutes les fiches restent à relire et ne sont pas publiées.
 ## Personnages
 
 - [[../personnages/index-brouillons-cb39-43|Index des personnages CB3.9 à CB4.3]].
+
+
+## CB42 — chroniques de continuité
+
+- [[C42-01]]
+- [[C42-02]]
+- [[C42-03]]
+- [[C42-04]]
+- [[C42-05]]
+- [[C42-06]]
+- [[C42-07]]
+- [[C42-08]]
+- [[C42-09]]
+- [[C42-10]]
+- [[C42-11]]
+- [[C42-12]]

@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Éren Valombre — valet itinérant"
-code: "PER-CB42-RES-08-EREN-VALOMBRE"
+code: "RES-08"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10666–10669; CB43 P02303"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Demi-elfe et ancien officier de maison, proposé comme assistant personnel itinérant d’Orin."
+description: "Repères de personnage et de continuité après CB42."
 tags: [eren, valombre, valet, protocole, voyages, cb42, brouillon]
 ---
 

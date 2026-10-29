@@ -26,3 +26,8 @@ Ces propositions sont des fiches non publiées et à vérifier. Elles ne constit
 - [[OBJ-CB31-LONGUE-VUE-HALDREK|Longue-vue de Haldrek]]
 - [[OBJ-CB38-LYRE-TAIRIN|Lyre de voyage destinée à Tairin]]
 - [[OBJ-CB38-BIJOU-COMMUNICATION|Bijoux de communication des Revenants]]
+
+
+## CB42 — équipements et objets techniques
+
+- [[M42-02]]

@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Orvak Main-de-Velours — maître d’hôtel des réceptions"
-code: "PER-CB42-RES-11-ORVAK-MAIN-DE-VELOURS"
+code: "RES-11"
 categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10765–10768; CB43 P00205–00227"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Orc de 71 ans, ancien garde devenu responsable de réception dans plusieurs maisons nobles du Sud."
+description: "Repères de personnage et de continuité après CB42."
 tags: [orvak, main-de-velours, reception, protocole, palais-divin, cb42, cb43, brouillon]
 ---
 

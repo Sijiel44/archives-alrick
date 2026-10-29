@@ -1,5 +1,6 @@
 ---
 publish: true
+spoilers: true
 title: "Haldrek — L’homme qui prépare le retour"
 code: "REV-07"
 categorie: "personnage"
@@ -9,11 +10,18 @@ ancre_documentaire: "CB43"
 source_brute: "CB2 (préparation du Mérien) ; CB31–34 (doctrine, entraînements avec Orin, Tairin et Drakon, projet de Bordociel) ; continuité Taagral échanges 012–119 ; CB39 P02944–04569 ; CB42 P19455–21050 ; CB43 (Hroldan) ; orientations du créateur octobre 2026 (enfance, direction future et lien avec Orin)"
 derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
-description: "Capitaine vétéran, entraîneur des Revenants et futur directeur pressenti de l’académie de Bordociel, Haldrek forme Orin et ses compagnons au commandement, à la discipline et au retour des missions."
+description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "veteran", "haldrek", "commandement", "longue-vue", "formation", "procedure", "academie", "ethique-militaire", "preparation-civile", "discipline", "doctrine", "autonomie", "transmission", "scenarios-jouables", "bordeciel", "tairin", "drakon", "harald-forgecoeur", "dac", "academie-militaire"]
 ---
 
 # Haldrek
+
+## Mise à jour de continuité — CB42
+
+> **État établi dans le registre :** ; Absent lors d’une partie des discussions sur les apprentis, Haldrek doit encore être consulté. Sa longue-vue et son insigne sont réalisés puis gardés dans un coffret. Il rejoint ensuite explicitement la cérémonie de Torgarl à Aldhammar. Le brut ne décrit pas séparément la remise de son coffret ; ne pas transformer l’absence initiale en absence finale.
+>
+> **Repère de source :** CB42 P19455–21050.
+
 
 ![Nouvelle étude individuelle de Haldrek : capitaine vétéran au regard sévère, barbe poivre et sel, cape militaire bleue, tenue de cuir et pièces d'armure devant une garnison des Montagnes de l'Aube.](../images/personnages/haldrek-portrait-capitaine-proposition.webp)
 

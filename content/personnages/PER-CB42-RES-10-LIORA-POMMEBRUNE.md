@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Liora Pommebrune — première femme de chambre"
-code: "PER-CB42-RES-10-LIORA-POMMEBRUNE"
+code: "RES-10"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10752–10755"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Petite-gens de 47 ans, issue d’une famille d’aubergistes, expérimentée dans l’entretien des appartements et l’accueil."
+description: "Repères de personnage et de continuité après CB42."
 tags: [liora, pommebrune, hospitalite, intendance, cb42, brouillon]
 ---
 

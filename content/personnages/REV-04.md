@@ -1,5 +1,6 @@
 ---
 publish: true
+spoilers: true
 title: "Vaëra — Celle que l’on ne voit venir qu’au dernier instant"
 code: "REV-04"
 categorie: "personnage"
@@ -9,11 +10,18 @@ ancre_documentaire: "CB43"
 source_brute: "CB2 (réseaux, confiance et origines) ; CB31–34 (capes, entraînements) ; CB37 P12846–13288 ; CB38 P21839–23395 ; CB39 P00078–01212, P02944–04569, P20311–20701, P28048–30346 ; CB41 P00904–07108 ; CB42 P08333–21050 ; CB43 P14802–15458, P17817–18456, P19363–21327, P22957–23573"
 derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
-description: "Revenante, éclaireuse, combattante, mage en progression et agente de renseignement proche d’Ylva, Vaëra unit indépendance, douceur et intelligence des routes, des cours et des secrets."
+description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "vaera", "demi-elfe", "narim", "tevaer", "renseignement", "ylva", "espionnage", "marchands", "famille", "orin", "magie", "cercles", "maison", "missions-jouables"]
 ---
 
 # Vaëra
+
+## Mise à jour de continuité — CB42
+
+> **État établi dans le registre :** ; Vaëra reste conjointe d’Orin et membre de la compagnie. Elle partage le Palais sans perdre sa vie propre, accompagne Vardhena puis les visites agricoles et les discussions botaniques. Son nouveau matériel comprend un insigne et un étui pour son couteau existant, avec chouette discrète ; Tevaer ne reçoit aucun lien forcé. La présence au Palais n’en fait ni gouvernante ni déesse automatiquement.
+>
+> **Repère de source :** CB42 P08333–21050.
+
 
 ![Vaëra, étude d'éclaireuse : cheveux châtains aux reflets chauds, yeux verts, vêtements de voyage et équipement d'exploration.](../images/personnages/vaera-portrait-proposition.webp)
 

@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Saëlor Feuilledor — accueil des hôtes"
-code: "PER-CB42-RES-04-SAELOR-FEUILLEDOR"
+code: "RES-04"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10609–10612"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Elfe ayant travaillé dans des maisons où l’hospitalité s’exprime par les langues, les traditions et l’aménagement des chambres."
+description: "Repères de personnage et de continuité après CB42."
 tags: [saelor, feuilledor, hospitalite, elfes, cb42, brouillon]
 ---
 

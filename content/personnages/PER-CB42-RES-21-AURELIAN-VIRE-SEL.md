@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Aurélian Vire-Sel — chef itinérant"
-code: "PER-CB42-RES-21-AURELIAN-VIRE-SEL"
+code: "RES-21"
 categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P12182–12185; P12331–12339; CB43 P00219"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Gnome revenu après plus d’un siècle, chef itinérant passionné de gastronomie, de voyages et des traditions culinaires."
+description: "Repères de personnage et de continuité après CB42."
 tags: [aurelian, vire-sel, cuisine, gastronomie, voyages, rappel, cb42, cb43, brouillon]
 ---
 

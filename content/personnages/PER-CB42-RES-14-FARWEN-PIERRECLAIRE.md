@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Farwen Pierreclaire — gouvernante d’Aldhammar"
-code: "PER-CB42-RES-14-FARWEN-PIERRECLAIRE"
+code: "RES-14"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10807–10810"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Naine de 168 ans, issue d’une famille d’artisans de l’ancienne capitale et candidate à la gouvernance d’Aldhammar."
+description: "Repères de personnage et de continuité après CB42."
 tags: [farwen, pierreclaire, aldhammar, intendance, nains, cb42, brouillon]
 ---
 

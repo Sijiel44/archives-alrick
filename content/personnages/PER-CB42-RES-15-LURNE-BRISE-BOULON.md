@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Lurne Brise-Boulon — navigateur et cartographe"
-code: "PER-CB42-RES-15-LURNE-BRISE-BOULON"
+code: "RES-15"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10823–10826"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Gnome de 109 ans, navigateur de navires marchands et spécialiste de la cartographie côtière et des instruments de mesure."
+description: "Repères de personnage et de continuité après CB42."
 tags: [lurne, brise-boulon, navigation, cartographie, mer, cb42, brouillon]
 ---
 

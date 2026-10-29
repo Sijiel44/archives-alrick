@@ -1,5 +1,6 @@
 ---
 publish: true
+spoilers: true
 title: "Kelm Poing-Calme — Celui qui choisit sa force"
 code: "REV-03"
 categorie: "personnage"
@@ -9,11 +10,18 @@ ancre_documentaire: "CB43"
 source_brute: "CB2 (origines, famille et route) ; CB31–34 (marteau et exercices) ; CB42 P18752–19902 (Marteau des Quatre États, apprentis) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral)"
 derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
-description: "Demi-orc et ancien protecteur de caravanes, Kelm est un Revenant de force exceptionnelle, pour qui protéger, commander et transmettre commencent par savoir retenir un coup."
+description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "demi-orc", "force", "protection", "marteau", "famille", "kelm", "caravanes", "troupeaux", "entre-rives", "ecoute", "commandement", "transmission", "aventures-jouables"]
 ---
 
 # Kelm Poing-Calme
+
+## Mise à jour de continuité — CB42
+
+> **État établi dans le registre :** ; Kelm reçoit le Marteau des Quatre États, qui fait varier masse effective et transmission d’effort avec sécurités de transition. La transmission discutée porte sur la force contrôlée ; aucun quota d’apprentis n’est fixé.
+>
+> **Repère de source :** CB42 P18752–19902.
+
 
 > [!info] Statut documentaire
 > **Lore complété et approuvé par le créateur le 28 octobre 2026.** La famille de Kelm, la ferme-relais, l’incident avec son frère, les leçons de son père, l’embuscade et son surnom viennent du **récit joué dans CB2 P05101–05500**. Le nom **[[GEO-HAUTES-PATURES|Relais des Hautes-Pâtures]]** est une création ultérieure approuvée pour ce lieu. Les missions régionales, rencontres proposées, dialogues reconstitués et menaces éventuelles ne sont **pas des événements déjà joués**. Son portrait individuel reste à valider séparément.

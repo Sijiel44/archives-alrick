@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Dagna Roue-de-Cuivre — ingénieure itinérante"
-code: "PER-CB42-RES-07-DAGNA-ROUE-CUIVRE"
+code: "RES-07"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10652–10655"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Naine issue d’une famille d’artisans, formée aux pompes, aux systèmes de levage et aux installations portuaires."
+description: "Repères de personnage et de continuité après CB42."
 tags: [dagna, roue-de-cuivre, ingenierie, artisanat, cercles-magiques, cb42, brouillon]
 ---
 

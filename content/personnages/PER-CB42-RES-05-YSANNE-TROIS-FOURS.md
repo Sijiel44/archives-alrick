@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Ysanne des Trois-Fours — cuisinière"
-code: "PER-CB42-RES-05-YSANNE-TROIS-FOURS"
+code: "RES-05"
 categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10623–10626; P12331–12339; CB43 P00219"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Ancienne cuisinière d’une maison de repas populaire, revenue dans l’histoire comme responsable culinaire du Palais divin."
+description: "Repères de personnage et de continuité après CB42."
 tags: [ysanne, trois-fours, cuisine, hospitalite, palais-divin, cb42, cb43, brouillon]
 ---
 

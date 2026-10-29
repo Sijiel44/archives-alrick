@@ -65,10 +65,11 @@ export const Topbar: QuartzComponent = (props) => (
 export const PageIntro: QuartzComponent = (props) => {
   const { fileData } = props
   const fm = fileData.frontmatter
+  const hasSpoilers = fileData.slug?.startsWith("mj/") || fm?.spoilers === true
   if (fileData.slug === "index" || fileData.slug === "404") return null
   return <div class="archive-intro" id="archive-content" tabIndex={-1}>
     <a class="internal back-link" href={`${root(props)}/`}>← Retour à la bibliothèque</a>
-    <span class="eyebrow">{fileData.slug?.startsWith("mj/") ? "DERRIÈRE LE RÉCIT · SPOILERS" : "LES FEUILLETS DE L’ODYSSÉE"}</span>
+    <span class="eyebrow">{hasSpoilers ? "AVERTISSEMENT · SPOILERS" : "LES FEUILLETS DE L’ODYSSÉE"}</span>
     <h1>{fm?.title}</h1>
     {fm?.code && <div class="document-meta"><span>{String(fm.code)}</span><span>État documentaire : {String(fm.ancre_documentaire ?? "à préciser")}</span><span>Fiche pilote · à relire</span></div>}
   </div>

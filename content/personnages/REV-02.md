@@ -1,5 +1,6 @@
 ---
 publish: true
+spoilers: true
 title: "Ragna Pierre-Sèche — Celle qui écoute avant de décider"
 code: "REV-02"
 categorie: "personnage"
@@ -9,11 +10,18 @@ ancre_documentaire: "CB43"
 source_brute: "CB2 (Mérien) ; CB31–34 (capes, entraînements) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB39 P01405–01993 (Lok) ; CB42 P18752–19902 (Pierre d’Écoute) ; CB43 (échanges à Aldhammar)"
 derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
-description: "Revenante, exploratrice et enquêtrice d’exception, Ragna a gagné le respect de l’état-major des Montagnes par son écoute, ses enquêtes et son autorité calme."
+description: "Repères de personnage et de continuité après CB42."
 tags: ["personnage", "revenants", "terrain", "ragna", "lok", "écoute", "enquete", "exploration", "aldhammar", "aristocratie-naine", "pionniere", "torgarl", "coordination", "pierre"]
 ---
 
 # Ragna Pierre-Sèche
+
+## Mise à jour de continuité — CB42
+
+> **État établi dans le registre :** ; Ragna participe à la préparation d’une petite cohorte et propose de tester les nouveaux objets au manoir. Sa Pierre d’Écoute aide à percevoir certaines vibrations transmises par le terrain, sans lecture des pensées ni écoute générale. La formation valorise coordination et écoute.
+>
+> **Repère de source :** CB42 P18752–19902.
+
 
 ![Portrait provisoire de Ragna Pierre-Sèche, interprétation artistique non canonique.](../images/personnages/ragna-concept.webp)
 

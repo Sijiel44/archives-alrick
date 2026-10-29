@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Silan de Sept-Ponts — secrétaire itinérant"
-code: "PER-CB42-RES-09-SILAN-SEPT-PONTS"
+code: "RES-09"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10737–10740"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Demi-elfe de 63 ans, ancien secrétaire de marchands de Valbrume, doté d’une mémoire remarquable des visages."
+description: "Repères de personnage et de continuité après CB42."
 tags: [silan, sept-ponts, secretariat, valbrume, voyages, cb42, brouillon]
 ---
 

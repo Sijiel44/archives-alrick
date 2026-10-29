@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Maëron Veld — coordination des résidences"
-code: "PER-CB42-MAERON-VELD"
+code: "SEC-67"
 categorie: "personnage"
 canon_statut: "projet_en_cours"
 ancre_documentaire: "CB42"
-source_brute: "CB42 P08719; P08846–08985; P09233–09268; T4R5; CB43 P00221"
+source_brute: "CB42 P08719; P08846–08985; P09233–09268; T4R5; CB43 P00221; CB42 P09231–18750"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Humain de Valbrume, ancien intendant d’une grande demeure accueillant des délégations étrangères, recruté pour coordonner les résidences."
+description: "Repères de personnage et de continuité après CB42."
 tags: [maeron, veld, intendance, residences, valbrume, cb42, cb43, brouillon]
 ---
 
@@ -16,7 +17,7 @@ tags: [maeron, veld, intendance, residences, valbrume, cb42, cb43, brouillon]
 
 Maëron Veld est un Humain de Valbrume qui a dirigé l’intendance d’une grande demeure accueillant régulièrement des délégations étrangères. Il possède une solide expérience de la gestion des équipes, des approvisionnements et des budgets.
 
-En CB4.2, il signe un contrat associé à la coordination des résidences. En CB4.3, sa collaboration avec Elwen est de nouveau présentée comme proposée et leurs mandats définitifs restent à formaliser : le contrat ne fixe donc pas à lui seul tous les périmètres et responsabilités de la Maison.
+Après les premiers échanges de CB4.2, Maëron souhaite contribuer à la coordination des résidences. **Aucun contrat définitif n’est signé dans CB42** : son périmètre, ses moyens et ses responsabilités restent à formaliser séparément de ceux d’Elwen et des institutions de la Maison.
 
 ## Sources
 

@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Naëline Fendrelune — dame de compagnie"
-code: "PER-CB42-RES-18-NAELINE-FENDRELUNE"
+code: "RES-18"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10865–10868"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Demi-elfe décédée, ancienne dame de compagnie de plusieurs générations d’une famille princière; son dossier propose un rappel."
+description: "Repères de personnage et de continuité après CB42."
 tags: [naeline, fendrelune, protocole, arts, rappel, cb42, brouillon]
 ---
 

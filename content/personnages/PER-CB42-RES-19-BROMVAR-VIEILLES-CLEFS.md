@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Bromvar des Vieilles Clefs — concierge royal"
-code: "PER-CB42-RES-19-BROMVAR-VIEILLES-CLEFS"
+code: "RES-19"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10878–10881"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Nain décédé, ancien concierge d’une résidence royale, proposé pour un rappel et la gestion d’une grande demeure."
+description: "Repères de personnage et de continuité après CB42."
 tags: [bromvar, vieilles-clefs, concierge, residence-royale, rappel, cb42, brouillon]
 ---
 

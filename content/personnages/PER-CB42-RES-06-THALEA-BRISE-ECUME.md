@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Thaléa Brise-Écume — navigatrice"
-code: "PER-CB42-RES-06-THALEA-BRISE-ECUME"
+code: "RES-06"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10638–10641"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Elfe des côtes et ancienne capitaine de navires marchands et d’exploration, proposée pour commander le yacht."
+description: "Repères de personnage et de continuité après CB42."
 tags: [thalea, brise-ecume, navigation, mer, yacht, cb42, brouillon]
 ---
 

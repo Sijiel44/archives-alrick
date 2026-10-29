@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Margha Trois-Mers — cheffe des cuisines du yacht"
-code: "PER-CB42-RES-16-MARGHA-TROIS-MERS"
+code: "RES-16"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10837–10840"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Orque de 59 ans, cuisinière expérimentée des équipages marchands et spécialiste du ravitaillement en mer."
+description: "Repères de personnage et de continuité après CB42."
 tags: [margha, trois-mers, cuisine, mer, yacht, cb42, brouillon]
 ---
 

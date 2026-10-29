@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Vaska Perledombre — intendante des approvisionnements"
-code: "PER-CB42-RES-12-VASKA-PERLEDOMBRE"
+code: "RES-12"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10781–10784"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Gobeline de 84 ans, négociante spécialisée dans le ravitaillement des caravanes, ateliers et petites communautés."
+description: "Repères de personnage et de continuité après CB42."
 tags: [vaska, perledombre, approvisionnement, logistique, cb42, brouillon]
 ---
 

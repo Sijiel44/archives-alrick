@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Brakka Mainfranche — aide itinérante"
-code: "PER-CB42-RES-03-BRAKKA-MAINFRANCHE"
+code: "RES-03"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10594–10597"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Demi-orque issue du travail caravanier, capable d’organiser bagages, hébergements et protection d’un voyage."
+description: "Repères de personnage et de continuité après CB42."
 tags: [brakka, mainfranche, caravanes, voyages, cb42, brouillon]
 ---
 

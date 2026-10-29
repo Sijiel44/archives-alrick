@@ -1,14 +1,15 @@
 ---
 publish: false
+spoilers: true
 title: "Dorrik Valeclef — maître d’hôtel"
-code: "PER-CB42-RES-01-DORRIK-VALECLEF"
+code: "RES-01"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10566–10569; CB43 P00219"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
-description: "Nain et ancien maître d’hôtel d’une demeure princière, dont le profil est proposé pour organiser le protocole et les grandes tables."
+description: "Repères de personnage et de continuité après CB42."
 tags: [dorrik, valeclef, hospitalite, protocole, maison-divine, cb42, brouillon]
 ---
 
