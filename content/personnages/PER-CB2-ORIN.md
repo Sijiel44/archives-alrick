@@ -35,7 +35,7 @@ Au Mérien, il laisse également aux habitants la possibilité d’examiner, de 
 
 Orin confie à Astrid un fonds pour les études et les ateliers, lui remet un premier apport et lui laisse l’autonomie de choisir les bénéficiaires. Il poursuit sa formation au combat avec Torgarl et Ylva, en travaillant la préparation du terrain, la discrétion et le retour vivant des compagnons. Une rencontre familiale au Sud le montre aussi comme Alrick, musicien et voyageur, au-delà de ses responsabilités princières.
 
-Voir [[PROJ-CB31-FONDS-ATELIERS|le fonds confié à Astrid]], [[PER-CB31-YLVA|Ylva]] et [[FAM-07|la famille d’Alriana autour de Freya]].
+Pour le fonds confié à Astrid, Ylva et la famille d’Alriana autour de Freya, consultez le [[suivi-editorial|suivi éditorial]] : les fiches correspondantes restent en relecture.
 
 ## Limites et questions
 
