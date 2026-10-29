@@ -6,11 +6,11 @@ categorie: "personnage"
 sous_categorie: "revenant"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
-source_brute: "CB2 (sélection des candidats et Lethrann) ; CB31–34 (doctrine, capes et exercices) ; CB39 P02944–04569 (réserve Valbrume) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB42 P19455–21050 (longue-vue et cérémonie) ; CB43 (Hroldan et la vérification des souvenirs)"
+source_brute: "CB2 (préparation du Mérien) ; CB31–34 (doctrine, entraînements avec Orin, Tairin et Drakon, projet de Bordeciel) ; continuité Taagral échanges 012–119 ; CB39 P02944–04569 ; CB42 P19455–21050 ; CB43 (Hroldan) ; orientations du créateur octobre 2026 (enfance, direction future et lien avec Orin)"
 derniere_revision_documentaire: "2026-10-28"
 visibilite: "a_relire_avant_publication"
-description: "Capitaine vétéran et Revenant de plein droit, Haldrek forge l’autonomie des équipes, enseigne le commandement responsable et contribue à la doctrine militaire et civique du royaume."
-tags: ["personnage", "revenants", "veteran", "haldrek", "commandement", "longue-vue", "formation", "procedure", "academie", "ethique-militaire", "preparation-civile", "discipline", "doctrine", "autonomie", "transmission", "scenarios-jouables"]
+description: "Capitaine vétéran, entraîneur des Revenants et futur directeur pressenti de l’académie de Bordeciel, Haldrek forme Orin et ses compagnons au commandement, à la discipline et au retour des missions."
+tags: ["personnage", "revenants", "veteran", "haldrek", "commandement", "longue-vue", "formation", "procedure", "academie", "ethique-militaire", "preparation-civile", "discipline", "doctrine", "autonomie", "transmission", "scenarios-jouables", "bordeciel", "tairin", "drakon", "harald-forgecoeur", "dac", "academie-militaire"]
 ---
 
 # Haldrek
@@ -20,7 +20,7 @@ tags: ["personnage", "revenants", "veteran", "haldrek", "commandement", "longue-
 *Étude visuelle provisoire issue d’une planche d’ensemble ; **apparence et détails à valider** avant de parler de portrait officiel.*
 
 > [!info] Statut documentaire
-> **Nouvelle fiche approfondie à soumettre au créateur.** Les fonctions militaires, les dialogues de doctrine, les entraînements et les interventions à Taagral, Valbrume et au colloque viennent des **événements joués** ; les origines familiales, les souvenirs de jeunesse et les six scénarios proposés sont **non joués et non validés**. Sa date de naissance, sa famille, son espèce, sa ville natale et ses anciennes campagnes précises ne sont pas fixées. Le portrait provisoire ne fournit pas de preuve canonique concernant son physique. Dernier état CB43 prioritaire.
+> **Fiche de développement approfondie pour validation.** Les entraînements menés par Haldrek, y compris auprès d’Orin et lors des exercices de Tairin et Drakon, les colloques, ses fonctions chez les Revenants et ses interventions à Taagral sont fondés sur la **campagne jouée**. **Orientations nouvelles du créateur :** une enfance réellement vécue dans la caserne et auprès de ses parents, le lien affectif presque filial avec Orin, un éventuel passé sous Harald Forgecœur et la direction future de l’**académie militaire de Bordeciel**. **La proposition de jeunesse, la collaboration avec Harald et les nominations futures ne doivent pas être présentées comme des scènes déjà jouées.** Les scénarios restent des amorces inédites. La nouvelle illustration est une étude individuelle non encore approuvée. Dernier état CB43 prioritaire.
 
 *Il pose toujours la même question, parfois avant même qu'Orin ait terminé sa phrase : « Et si le plan ne fonctionne pas ? »*
 
@@ -35,41 +35,77 @@ Au cours des colloques, il montre aussi une dimension politique : la société p
 ## Identité et état
 
 - **Statut :** vivant ; Revenant de plein droit, **pas** entraîneur extérieur à la compagnie.
-- **Rôle :** **capitaine vétéran et Revenant**, conseiller de préparation opérationnelle, combattant expérimenté, observateur tactique, instructeur de commandement et de transmission des responsabilités, interlocuteur des débats de doctrine militaire.
-- **Autorité réelle :** mentor, chef d'équipe selon les missions, chargé d'apprendre à d'autres à prendre et rendre le commandement ; **aucune direction permanente de toute l'armée ou de la future académie n'est établie**.
+- **Rôle actuel :** **capitaine vétéran et Revenant**, **responsable principal de l'entraînement opérationnel régulier des Revenants**, coordinateur de formations et de missions, instructeur d'Orin, conseiller militaire et pédagogue du commandement.
+- **Taagral :** selon la précision du créateur, **adjoint de coordination de terrain auprès du général Dac**, plutôt en retrait des démonstrations spectaculaires ; le **commandement militaire général reste à Dac**, et un grade permanent d'état-major n'est pas créé rétroactivement.
+- **Académie de Bordeciel :** **direction future souhaitée et confiée en intention par Orin**, possiblement comme directeur principal ou l'un des directeurs avec Torgarl et d'autres responsables. **Le poste formel, les statuts définitifs et l'ouverture de l'école ne sont pas encore joués**.
+- **Harald Forgecœur :** collaboration militaire antérieure **envisagée** avec le père d'Orin, à confirmer par la chronologie et une scène ou validation explicite.
 - **Équipement :** longue-vue et insigne optique **achevés et placés dans un coffret** en CB42 ; la remise effective du coffret n'est pas montrée séparément dans le brut examiné.
 - **Apparence :** vétéran en tenue de terrain, arme d'exercice ou instrument d'observation ; **espèce/ascendance exacte, âge, cicatrices, couleur des cheveux et proches familiaux non déterminés avec certitude**. Le portrait collectif reste une suggestion artistique.
 
-## Avant Orin — devenir officier sans cesser d'apprendre
+## Avant Orin — l'enfant de la caserne
 
-> [!note] Proposition de passé personnel, non jouée
-> Le *Compendium* et les scènes connues décrivent Haldrek déjà vétéran et capitaine, **sans renseigner sa famille, sa jeunesse, son lieu de naissance ni ses campagnes militaires anciennes**. Le cadre suivant est une piste éditoriale pour lui donner une vie avant les Revenants. Il ne crée ni unité militaire historique nommée, ni promotion datée, ni parent décédé, ni nouveau lieu officiellement cartographié.
+> [!info] Origines proposées et direction du personnage
+> **L'enfance au sein de la vie militaire, avec ses deux parents présents dans son horizon quotidien, est une nouvelle direction voulue par le créateur.** Il faut la distinguer du capitaine et formateur déjà attesté par la campagne. Les noms, métiers précis et devenirs de ses parents, sa ville natale, son espèce, ses anciennes unités et les dates de ses promotions ne sont pas définis ; **aucun parent n'est déclaré mort**. Les anecdotes ci-dessous servent à proposer son atmosphère et ne sont pas des scènes jouées.
 
-### Un enfant de garnison ou de ville de passage ?
+### Grandir là où les soldats rentrent le soir
 
-Une origine qui lui irait serait une **petite ville de garnison, au carrefour de routes fréquentées par marchands, éleveurs et soldats**, dans un territoire encore à choisir. Il n'aurait pas grandi dans une légende : des voisins qui travaillent, des fêtes de quartier, des militaires de passage, des querelles de ravitaillement, des familles qui ont besoin que les chemins restent ouverts. Dans ce milieu, le prestige des armes côtoierait la réalité des métiers qui les rendent possibles.
+Haldrek n'a pas simplement découvert l'armée à l'âge de s'engager. **Il a grandi dans son environnement**, enfant circulant entre les bâtiments d'une garnison, les cours d'entraînement, les écuries ou ateliers, les salles où l'on tient les registres de rationnement et les maisons des familles. Il voit les départs, mais aussi **les retours** : des militaires qui arrivent sales et fatigués, dont les noms ne figurent sur aucun chant héroïque, et à qui quelqu'un offre pourtant une chaise et un repas.
 
-Ses proches n'ont pas à être une longue lignée de capitaines. Un père ou une mère habitués à organiser des transports, un artisan sachant réparer un outil, un instituteur ou un ancien garde pourraient lui avoir transmis la valeur des choses **qui fonctionnent sans spectacle**. **Aucune de ces options n'est encore arrêtée**, et ses parents, sa fratrie ou ses relations sentimentales peuvent tout à fait être vivants.
+**Ses parents occupent une place dans cette enfance**, sans être nécessairement tous deux officiers : l'un peut servir dans les rangs, l'autre travailler auprès des artisans, de l'administration ou des familles. La caserne n'est pas une institution qui l'arrache à eux ; c'est aussi **le quartier où il a des voisins, des habitudes et des gens auxquels il tient**. Nous choisirons plus tard leurs métiers, leur caractère et leur histoire plutôt que de les réduire à une tragédie commode.
 
-On peut imaginer un enfant curieux qui observe les mouvements dans une cour d'entraînement et remarque moins la force des coups que **les lacets défaits, les mauvais placements et les camarades oubliés derrière**. Il n'est pas nécessaire qu'il ait été sérieux toute sa jeunesse : il pourrait aussi avoir eu le goût des mauvais paris, des jeux d'adresse et des plaisanteries jusqu'au jour où quelqu'un lui a demandé d'en assumer les conséquences. *Couleur d'enfance proposée, non jouée.*
+Enfant, il aurait pu s'asseoir sur une marche pour regarder les exercices, imiter maladroitement les gestes des anciens avec un bâton trop grand, puis apprendre à ramasser le matériel après la leçon. **Il n'est pas né maître de la discipline.** Un jeune Haldrek impatient, joueur, parfois fier de se montrer plus habile qu'un autre, est plus intéressant qu'un futur capitaine déjà parfait.
 
-### La première leçon : un ordre ne suffit pas à faire un plan
+### La première leçon : connaître ceux qu'on commande
 
-Son apprentissage militaire pourrait s'être fait par étapes : marche, garde, lectures de cartes, transmissions, logistique, secours, tir ou escrime selon les traditions de son unité, puis commandement de petites patrouilles. Il apprendrait **à vérifier si chacun a compris une mission**, à réfléchir aux sorties possibles et à accepter de se faire corriger par une personne moins gradée.
+Une scène de jeunesse **proposée et non jouée** : Haldrek, à peine adolescent, est chargé de transmettre un message entre deux postes. Il arrive vite, très fier de lui, sans s'être assuré que la personne qui devait le remplacer a compris l'horaire, la position et la consigne. Le service est interrompu pendant plusieurs minutes. Un adulte ne lui reproche pas sa vitesse ; il lui demande **qui aurait pris sa place s'il n'était pas revenu**.
 
-Une anecdote fictive le montrerait jeune sous-officier recevant un ordre simple : garder un passage jusqu'au matin. Il exécute parfaitement la consigne et constate à l'aube qu'une route voisine est restée sans protection. Le problème n'était pas de manquer de courage ; c'était **de ne pas avoir demandé ce que la mission devait réellement empêcher**. Le formateur n'a pas besoin de le punir : il lui demande d'écrire un plan que d'autres sauront reprendre lorsqu'il devra partir. *Scène illustrative proposée, pas opération canonique.*
+Cet apprentissage peut avoir pris bien d'autres formes, mais la leçon rejoint directement le Haldrek que nous connaissons : **une mission n'est pas accomplie simplement parce qu'un individu a parfaitement exécuté son propre geste.**
 
-### Du soldat compétent au capitaine qui forme des capitaines
+Plus tard, comme recrue puis soldat, il aurait appris les marches, la garde, les armes, la lecture de cartes et la logistique. Son caractère s'affirme dans **l'effort et la camaraderie**, pas dans une succession obligatoire de catastrophes. Il découvre le travail de l'escouade, puis celui de la patrouille et les difficultés de transmettre un ordre quand un supérieur est absent.
 
-Son véritable talent mûrirait lorsqu'il commencerait à **former d'autres personnes plutôt qu'à accumuler des preuves de sa propre valeur**. Il peut avoir appris dans des unités différentes, auprès de chefs estimables et d'autres trop attachés à l'apparence d'un succès ; aucune campagne, blessure ou mort de camarade n'est indispensable à ce passé.
+### Du jeune soldat au capitaine
 
-À terme, Haldrek serait devenu un homme vers qui l'on se tourne pour les opérations où **l'erreur de transmission ou l'absence du commandant risque de tuer davantage que l'ennemi lui-même**. Lorsqu'il rencontre Orin et les candidats de l'expédition du Mérien, cette conviction n'est pas nouvelle : **c'est déjà sa manière d'exercer le métier militaire**.
+Haldrek **devient capitaine avant les événements du Mérien**. Son autorité a été gagnée en sachant entraîner, organiser, écouter les objections utiles et **ramener les hommes qu'il conduit**. Les grades intermédiaires, les engagements précis et la date de sa promotion restent ouverts.
+
+Il a pu connaître d'anciens chefs exigeants, servir plusieurs garnisons ou participer à des campagnes. **Nous ne devons pas en inventer les batailles, les morts et les décorations comme des faits passés**. Il est possible de lui offrir des souvenirs vivants : un premier commandement mal préparé puis corrigé, une fête de promotion où ses camarades rient de sa raideur, ou une lettre de ses parents qu'il garde dans ses affaires. Chacune de ces anecdotes demeure **une proposition**.
+
+### La piste Harald Forgecœur — une génération de chefs
+
+Le créateur envisage **qu'Haldrek ait servi pendant un temps auprès de [[FAM-06|Harald Forgecœur]]**, père d'Orin, à une époque où il était déjà capitaine ou en passe de le devenir. Cela pourrait expliquer une compréhension instinctive entre Haldrek et la famille royale, ainsi que certaines ressemblances de style : exigence, sens de l'honneur, protection des hommes et refus des effets de manche inutiles.
+
+**Mais ce service commun n'est pas encore attesté comme épisode joué.** La chronologie exacte devra être confrontée à la vie de Harald, aux années de service d'Haldrek et aux périodes d'Orin avant toute affirmation selon laquelle ils auraient combattu ensemble, ou selon laquelle Harald aurait été son supérieur. Leur **éventuelle collaboration est une piste de lore à valider**, et non une camaraderie déjà prouvée par leur seul métier.
 
 ## Histoire
 
 ### Bien choisir une équipe, y compris ceux qui ne partent pas
 
 Lors des préparatifs de l'expédition du **Mérien**, Haldrek évalue les candidats, mais refuse de transformer la sélection en jugement de valeur sur leur personne. Ceux qui restent ne deviennent pas des « recalés » sans avenir. Il travaille sur la protection d'Entre-Rives, les voies de retour et la possibilité qu'un chef tombe ou doive céder sa place. (*Compendium REV-07 ; CB2.*)
+
+### Orin et Haldrek — le maître qui peut corriger un prince
+
+Avant le départ pour le **Mérien**, Haldrek ne se contente pas d'évaluer les candidats et de coordonner leurs exercices. **Il entraîne aussi Orin lui-même.** Cette responsabilité rend leur confiance exceptionnelle : le prince accepte qu'un militaire expérimenté lui dise qu'une idée est mauvaise, qu'il manque une étape de préparation ou qu'il faut recommencer une manœuvre. Haldrek, de son côté, **connaît l'élève et l'homme**, suffisamment pour voir quand Orin s'apprête à transformer une difficulté raisonnable en expérience démesurée.
+
+Leur relation est plus profonde qu'un contrat entre un instructeur et un souverain. Ils **se reconnaissent comme deux chefs**, capables de s'estimer et de se contredire, mais une affection presque filiale s'est installée : Haldrek peut éprouver à l'égard d'Orin **la fierté et l'inquiétude d'un ancien qui l'a vu grandir dans son métier**, tandis qu'Orin reçoit ses corrections comme celles d'un compagnon de longue confiance.
+
+Il ne s'agit pas de remplacer **Harald Forgecœur, son père**, ni **Elyan Corbeau-Gris, son grand-père et mentor mage**. Haldrek possède une place bien distincte : **celle du capitaine qui a formé le chef de terrain**, avec lequel Orin peut parfois redevenir un élève sans cesser d'être un prince.
+
+Les scènes du Mérien démontrent l'autonomie qu'Orin lui reconnaît, et les dialogues de CB31–34 témoignent d'une complicité respectueuse, souvent teintée d'ironie. **La qualification affective presque filiale est une précision nouvelle du créateur**, pas un titre officiel de parenté.
+
+### Tairin et Drakon — le vétéran au milieu des puissances
+
+La confiance d'Orin se voit particulièrement dans ses entraînements avec **Tairin et Drakon**. Ceux-ci travaillent à des échelles de mouvement et de puissance qui dépassent largement une pratique militaire ordinaire. **Haldrek participe pourtant réellement à la préparation, aux consignes et aux débriefings**, parce que même une puissance formidable a besoin d'un objectif précis et de conditions permettant de comprendre ses erreurs.
+
+Lors d'un exercice autour d'un promontoire et d'une chute contrôlée, Haldrek demande à Orin de lui expliquer **ce qui s'est passé**, plutôt que de déclarer simplement l'épreuve réussie ou ratée. Lorsque Tairin annonce qu'il compte déplacer le promontoire, Haldrek l'interrompt d'un mot : **« Objectif. »** Tairin doit alors énoncer le résultat attendu. Le capitaine conserve sa méthode sans se laisser impressionner par la nature de ses interlocuteurs. (*CB33 P04901–05000, exercice avec Tairin et Drakon.*)
+
+Il ne rivalise pas en puissance avec ces êtres et **n'acquiert aucun rang divin par leur fréquentation**. Sa valeur, irremplaçable dans cette scène, consiste à savoir **transformer un affrontement spectaculaire en apprentissage reproductible**. Il n'est pas celui qui projette la montagne ; il est celui qui demande ce que le prince devait apprendre avant qu'elle ne commence à bouger.
+
+### L'entraîneur quotidien des Revenants
+
+**Haldrek est le responsable principal des entraînements opérationnels de la compagnie**, tant qu'il est présent et disponible. Ce n'est pas seulement une compétence qu'il exerce occasionnellement : **Orin lui fait confiance pour préparer et coordonner régulièrement le travail collectif**. Les Revenants n'attendent pas un ordre du prince pour s'entraîner, et chacun développe sa spécialité — Bram la couverture, Ragna l'observation, Kelm la maîtrise de la force, Vaëra l'approche discrète, Torven le secours, Heimdall les passages et Eamon la transmission.
+
+Haldrek coordonne **les objectifs, les équipes, les situations d'échec, les relais de commandement, les consignes de sécurité et les retours d'expérience**. Il peut lui-même combattre ou prendre le commandement d'un groupe, mais sa réussite se mesure aussi au moment où **ses compagnons savent se passer de lui**.
+
+**Torgarl** apporte une autre dimension : confrontation et entraînement supérieur, doctrine de combat et exigence. Les deux peuvent travailler ensemble sans que l'un efface l'autre. Le rôle d'Haldrek est déjà formulé lors des discussions sur les Revenants : **entraînement opérationnel, autonomie des équipes, transmission et retour d'expérience**. (*CB32 P02101–02200 ; CB42, état des entraînements et projets d'apprentis.*)
 
 ### Celui qui a vu le contrôle de Kelm
 
@@ -78,6 +114,29 @@ Il remarque Kelm non parce qu'il possède un marteau impressionnant, mais **parc
 ### Les entraînements contre Orin
 
 Lors des exercices de la compagnie, Haldrek organise préparation, observation, communications et situations de contrainte. Orin s'amuse à perturber la défense par une multiplication de doubles et de tactiques inattendues. La réaction intéressante n'est pas le nombre de coups portés, mais la capacité des Revenants à établir des vérifications lorsque **même un message ou un visage connu peut être falsifié**. La meilleure leçon de l'exercice est que personne, pas même Haldrek, ne doit être irremplaçable. (*Campagne regroupée, CB33–34.*)
+
+### Bordeciel — l'école militaire qu'il pourrait diriger
+
+> [!info] Orthographe et état institutionnel
+> Les archives écrivent **Bordeciel** (et non « Bordociel »). **La ville et l'académie sont dans les projets de développement du royaume ; la fondation et l'ouverture effective de l'établissement ne sont pas encore des événements joués.** Le créateur souhaite qu'Haldrek en soit **le directeur ou l'un des directeurs**, sans abandonner les Revenants. Cette orientation est retenue pour la préparation du lore, **mais la nomination, les co-directeurs, les statuts et la date d'ouverture restent à établir dans la campagne**.
+
+Depuis plusieurs années, **Orin, Torgarl et Haldrek travaillent à la formation militaire**. Le colloque ne commence pas à partir d'une page vierge : il reprend leurs discussions sur **une grande académie qui ne serait surtout pas une fabrique à officiers persuadés que la guerre suit fidèlement leurs cartes**. Haldrek doit contribuer au programme par ses véritables spécialités : **observation de l'adversaire, adaptation, ravitaillement, retraite, fausses informations, peur, erreurs de classification, campagnes ratées et leçons des victoires**. (*CB32 P07301–07400.*)
+
+Le maître d'instruction pourrait désormais devenir **le directeur opérationnel principal de l'école**, ou prendre place dans une direction partagée avec **Torgarl** et les autres acteurs compétents. La répartition souhaitable serait claire : Torgarl apporte l'expérience royale, la doctrine supérieure et sa haute exigence ; Haldrek conduit **la pédagogie des opérations, la formation des responsables et l'évaluation des équipes**. La direction administrative, les diplômes et les responsabilités civiles devront être définis sans inventer une nomination déjà signée.
+
+Le cursus qu'ils élaborent peut inclure :
+
+- **Condition physique, sens du terrain et discipline**, sans se limiter à savoir porter les armes.
+- **Préparation des missions**, cartographie, transmissions, ravitaillement, reconnaissance, retours et retraites.
+- **Relève du commandement**, décision sous fatigue, désaccord motivé et devoir d'alerte.
+- **Secours et extraction**, du soldat au chef de corps, avec Torven et les autres soignants ; Torgarl a déjà exigé que **nul ne quitte l'école incapable d'aider un camarade jusqu'à l'arrivée d'un plus compétent**. (*CB31 P16201–16300.*)
+- **Éthique et droit de la guerre**, protection des civils, reddition, refus des actes manifestement interdits et recours à une autorité habilitée.
+- **Contre-tactique et adversaire qui apprend**, exercices où réussir l'objectif apparent peut être une erreur si les blessés, les routes ou la transmission sont abandonnés.
+- **Méthodes des Revenants**, accueillies comme expériences utiles mais **non obligatoires pour toutes les unités de l'armée**.
+
+Haldrek n'a pas besoin d'abandonner sa compagnie pour accepter ce futur rôle : **former des équipes capables d'agir sans son regard permanent** est justement la condition pour qu'il puisse enseigner à Bordeciel, repartir avec ses compagnons ou déléguer une partie de l'école à des responsables qualifiés.
+
+**Les futures séances à Bordeciel** devront nous permettre de jouer la véritable fondation, le choix des enseignants, les premiers élèves, les bâtiments, le budget, le dialogue avec les autorités civiles et la première promotion. Jusqu'à ces scènes, ce sont **un projet mûri et un rôle pressenti**, pas une académie déjà inaugurée.
 
 ### L'académie et le colloque — préparer des citoyens, pas une armée de conscrits
 
@@ -113,9 +172,15 @@ Ceux qui voient sa prudence comme de la peur se trompent. Lorsqu'un ennemi cherc
 
 Dans les entraînements contre Orin, les doubles, les ruptures magiques et les pièges montrent qu'aucune routine n'est suffisante. Haldrek accepte que ses compagnons trouvent de meilleures solutions que lui et rappelle ensuite qu'une **bonne improvisation ne dispense pas d'un compte rendu correct**. (*CB32–34, exercices des Revenants.*)
 
-### Taagral — l'instruction à l'épreuve du réel
+### Taagral — l'homme discret auprès du général Dac
 
-À Taagral, Haldrek rappelle que la circulation de l'information et le commandement de remplacement ne sont pas des formalités. **Dac** commande l'opération militaire d'ensemble, tandis que Ragna, Bram, Kelm et les autres prennent différentes responsabilités. Haldrek insiste : **une initiative heureuse n'est pas toujours une bonne procédure**. Son autorité sert à rendre les équipes autonomes, non à s'attribuer le résultat de chaque action. (*Continuité, Taagral, échanges 012–119.*)
+À **Taagral**, Haldrek occupe une place fondamentale, mais peu spectaculaire : **il travaille à la coordination de terrain auprès du général Dac**, dans une position de **second opérationnel de fait** selon la précision du créateur. **Dac conserve le commandement général de la réponse militaire organisée** ; Haldrek soutient cette conduite, suit les informations, aide à préserver les relais de responsabilité et veille à ce que les équipes disposent d'objectifs et de voies de retour compréhensibles.
+
+Il serait faux de raconter qu'Haldrek aurait commandé toute la bataille ou qu'il aurait été le héros de chaque affrontement. Son excellence s'exprime dans **les transmissions, les changements de phase, l'anticipation des ruptures et la capacité à faire agir les autres**. Ragna, Bram, Kelm, Torven et les autres remplissent des tâches propres, sans attendre que le prince leur dicte chaque geste. Orin intervient comme réserve stratégique lorsque la puissance nécessaire dépasse les moyens ordinaires. (*Continuité v1.7, « Taagral : crise militaire et doctrine de commandement », échanges 012–119.*)
+
+**La qualification d'adjoint/second de terrain est une précision apportée aujourd'hui par le créateur** : elle reconnaît le rôle de soutien déjà compatible avec les scènes, **sans inventer un décret de nomination comme adjoint permanent au général Dac**. Haldrek conserve sa propre appartenance aux Revenants.
+
+Sa manière de faire éclaire ce qu'il transmet ensuite : **une initiative heureuse ne démontre pas que le système de communication était bon**. Pour lui, un succès qui ne peut être expliqué ou repris est une leçon incomplète.
 
 ### Valbrume — réserve n'est pas absence
 
@@ -149,6 +214,14 @@ Sa faiblesse possible est celle des excellents planificateurs : **vouloir rendre
 
 ## Liens de confiance et camaraderies
 
+### Orin — une confiance de chef et une affection presque filiale
+
+La relation n'est pas née au sommet de la puissance d'Orin : **elle s'enracine dans les années de formation et les épreuves partagées**. Haldrek a entraîné le jeune Alrick / Orin, lui a appris à regarder les issues, à prendre une correction et à respecter des gens dont la compétence n'a rien à voir avec le rang. Le prince ne lui a pas confié l'entraînement quotidien des Revenants par confort : **il sait qui est Haldrek, comment il forme et pourquoi il sait dire non**.
+
+Il existe entre eux une affection **presque filiale sans parenté de sang**, proche de celle d'un vieux capitaine envers un jeune commandant qu'il a vu acquérir la confiance nécessaire pour décider. Orin reconnaît l'expérience du vétéran ; Haldrek reconnaît dans Orin un chef qui doit parfois apprendre **à laisser les autres décider sans lui**.
+
+Cette relation **ne remplace ni Harald Forgecœur ni Elyan Corbeau-Gris**. Elle complète l'histoire d'Orin en lui donnant une figure d'autorité militaire et de camaraderie protectrice. Ils peuvent s'opposer dans un exercice, sourire devant les absurdités de l'autre et s'asseoir ensuite à la même table, sans qu'aucun protocole de cour soit nécessaire.
+
 **Orin / Alrick** lui offre des raisons quotidiennes de soupirer et d'être fier. Haldrek peut contester une idée invraisemblable même lorsqu'elle vient d'un prince ou d'un être dont la puissance progresse à grande vitesse. Sa fidélité est **un droit de contradiction exercé avec affection**, et non une soumission.
 
 **[[REV-03|Kelm]]** est l'un des meilleurs exemples de son enseignement. Haldrek a vu en lui un homme qui **ralentissait volontairement une frappe** pour ne pas mettre une personne en danger, puis lui a confié une petite équipe à ramener entière. Voir Kelm développer son propre commandement confirme que **le bon maître rend son élève libre**.
@@ -161,7 +234,11 @@ Sa faiblesse possible est celle des excellents planificateurs : **vouloir rendre
 
 **Torgarl le Brave** développe une formation supérieure au combat et une doctrine de confrontation, tandis que Haldrek possède le domaine propre de **l'entraînement opérationnel et de l'autonomie des équipes**. Il ne prend pas sa place et n'en dépend pas à chaque exercice.
 
-**Dac** détient la conduite d'opérations militaires dans les situations où elle lui revient ; Haldrek reste un compagnon et spécialiste opérationnel, non le chef automatiquement placé au-dessus de l'état-major.
+**Le général Dac** reste le commandant militaire d'ensemble dans les situations comme Taagral ; Haldrek y intervient **comme coordinateur et second de terrain de fait**, non comme chef permanent au-dessus de l'état-major. Leur coopération peut avoir été forte même lorsqu'elle n'a pas attiré les regards des chroniqueurs.
+
+**Harald Forgecœur** pourrait avoir connu Haldrek durant leurs années de service, voire partagé un temps de responsabilité militaire avec lui. **C'est une hypothèse de lore, pas une campagne commune déjà vérifiée**. Elle mérite d'être examinée plus tard avec la chronologie de Harald.
+
+**Bordeciel et Torgarl** : Haldrek participe déjà à la réflexion sur le cursus et **est pressenti par Orin pour la future direction de l'académie militaire**. Il pourra demander le soutien de professionnels d'autres métiers et de responsables pédagogiques, sans se transformer en administrateur omnipotent.
 
 **Hroldan** pourrait constituer un fil passionnant. Son nom évoque peut-être à cet homme une ancienne relation, mais il **refuse de la confirmer avant une rencontre avec Haldrek**. Il ne faut ni inventer d'ancienne camaraderie, ni décider d'avance qu'ils se reconnaîtront.
 
@@ -178,7 +255,7 @@ Sa faiblesse possible est celle des excellents planificateurs : **vouloir rendre
 
 ## Ressources et limites
 
-L'insigne optique aide à **observer et comparer** ; il ne révèle pas par magie la vraie nature de tous les phénomènes. L'expérience de Haldrek n'est pas une solution instantanée aux structures anciennes. Son projet d'académie ou de formation ne vaut pas automatiquement une nomination à un poste permanent.
+L'insigne optique aide à **observer et comparer** ; il ne révèle pas par magie la vraie nature de tous les phénomènes. L'expérience de Haldrek n'est pas une solution instantanée aux structures anciennes. **Son autorité d'entraîneur régulier des Revenants est reconnue ; la direction de l'académie de Bordeciel est un choix d'avenir approuvé en intention, non une nomination formelle déjà jouée.** Sa relation à Orin et sa valeur au combat ne lui confèrent ni pouvoirs divins ni commandement universel.
 
 ## Jouer avec Haldrek — le maître des missions qui peuvent mal tourner
 
@@ -247,18 +324,21 @@ Le site peut fournir ces fiches et amorces, **mais n'anime pas automatiquement l
 
 ## Pistes ouvertes
 
-- **Origine, famille, lieux et anciens engagements militaires** : départager la piste d'une ville de garnison et d'autres idées, sans fabriquer de guerre ou de tragédie.
+- **Enfance de caserne retenue comme direction du lore**, avec ses parents dans son entourage ; fixer plus tard les professions, les noms, les âges et les épisodes personnels sans leur attribuer de décès ou de guerre inventés.
+- **Service éventuel auprès de Harald Forgecœur** : vérifier les âges, les unités et les périodes ; rien n'est encore joué ou confirmé.
+- **Bordeciel** : jouer la fondation de l'académie, préciser le rôle de directeur principal ou de codirecteur confié en intention à Haldrek, ses collègues, les bâtiments, les cursus et le fonctionnement réel.
 - **Développer la vie ordinaire** du vétéran : proches, métiers de jeunesse, habitudes et humour hors service.
 - Remise documentée du coffret et usages de la longue-vue après CB42.
-- Développement d'un cursus opérationnel pour futurs apprentis.
+- **Entraînement quotidien déjà assuré chez les Revenants** ; développer les curricula de Bordeciel, les premiers formateurs et les apprentis dans de futures scènes.
 - Rencontre éventuelle avec Hroldan et confirmation, ou non, d'une histoire commune.
 - Six amorces de missions pour MJ, **proposées et non jouées**.
 
 ## Sources principales
 
 - *Compendium des personnages*, v1.7, **REV-07**, actualisations CB39 et CB42.
+- **Précisions du créateur, octobre 2026** : enfance dans la vie de caserne, rôle de mentor d'Orin avec affection presque filiale, responsabilité des entraînements quotidiens des Revenants, coordination auprès du général Dac à Taagral, pressenti pour la direction de l'école militaire de **Bordeciel** ; **collaboration possible avec Harald Forgecœur à vérifier**. Les anecdotes d'enfance et scènes proposées sont non jouées.
 - *Campagne brute regroupée — Volume 1*, **CB2 P04101–04200** (préparation des candidats), **CB2 P05301–05400** (recrutement et formation de Kelm), **CB31 P00501–00600 et P03401–03500** (longue-vue et autonomie), **CB32 P02101–02200, P08801–08900 et P09901–10000** (transmission, préparation civile, refus et contrôle des ordres), **CB33–34** (exercices, commandement et documentation).
-- *Campagne brute regroupée*, **CB2**, **CB33–34** ; *Continuité*, Taagral, échanges 012–119.
+- *Campagne brute regroupée*, **CB2** (préparation et entraînement au Mérien), **CB31 P16201–16300** (secours dans le cursus de Bordeciel), **CB32 P02101–02200 et P07301–07400** (répartition des formations et travail déjà engagé avec Torgarl), **CB33 P04901–05000** (exercice avec Tairin et Drakon sous le regard de Haldrek), **CB33–34** (entraînement d'Orin et des Revenants) ; *Continuité*, Taagral, échanges 012–119.
 - *Campagne Brut 4.2*, **CB42 P19455–21050**.
 - *Campagne Brut 4.3*, entretien Hroldan (ne pas inventer de parenté d'armes).
 
