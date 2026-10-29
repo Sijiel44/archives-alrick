@@ -15,9 +15,9 @@ tags: ["personnage", "revenants", "veteran", "haldrek", "commandement", "longue-
 
 # Haldrek
 
-![Portrait provisoire de Haldrek, interprétation artistique non canonique.](../images/personnages/haldrek-concept.webp)
+![Nouvelle étude individuelle de Haldrek : capitaine vétéran au regard sévère, barbe poivre et sel, cape militaire bleue, tenue de cuir et pièces d'armure devant une garnison des Montagnes de l'Aube.](../images/personnages/haldrek-portrait-capitaine-proposition.webp)
 
-*Étude visuelle provisoire issue d’une planche d’ensemble ; **apparence et détails à valider** avant de parler de portrait officiel.*
+*Portrait individuel **proposé à validation** : vétéran à l'allure de capitaine, au regard expérimenté, avec vêtements de service et cape de couleur froide. **La barbe, les traits, les couleurs, le motif héraldique et les armes de l'image ne sont pas canoniques tant que le créateur ne les a pas approuvés**. Cette illustration ne fixe ni l'ascendance du personnage, ni un titre déjà signé à Bordeciel.*
 
 > [!info] Statut documentaire
 > **Fiche de développement approfondie pour validation.** Les entraînements menés par Haldrek, y compris auprès d’Orin et lors des exercices de Tairin et Drakon, les colloques, ses fonctions chez les Revenants et ses interventions à Taagral sont fondés sur la **campagne jouée**. **Orientations nouvelles du créateur :** une enfance réellement vécue dans la caserne et auprès de ses parents, le lien affectif presque filial avec Orin, un éventuel passé sous Harald Forgecœur et la direction future de l’**académie militaire de Bordeciel**. **La proposition de jeunesse, la collaboration avec Harald et les nominations futures ne doivent pas être présentées comme des scènes déjà jouées.** Les scénarios restent des amorces inédites. La nouvelle illustration est une étude individuelle non encore approuvée. Dernier état CB43 prioritaire.
@@ -287,6 +287,16 @@ L'insigne optique aide à **observer et comparer** ; il ne révèle pas par magi
 
 **6. Le nom dans le vieux registre — Hroldan, mémoire et passé (élevé, long cours).** Hroldan souhaite rencontrer un capitaine nommé Haldrek dont le nom évoque peut-être une autre époque. Il hésite car **plusieurs hommes ont porté ce nom**. Les aventuriers peuvent servir d'intermédiaires, rechercher des inscriptions ou organiser une rencontre respectueuse. **Leur tâche n'est pas de « découvrir qu'ils étaient frères d'armes »** : la relation peut être totalement inexistante, indirecte ou importante, selon la future décision du créateur. Haldrek doit pouvoir choisir lui-même ce qu'il souhaite raconter.
 
+### Trois scénarios supplémentaires — Haldrek et Bordeciel
+
+**7. Les fondations ne tiennent pas toutes sur des plans — fondation d'académie (intermédiaire).** Le groupe arrive à **Bordeciel** alors que les préparatifs de la future école militaire avancent. Les aventuriers peuvent aider Haldrek à **inspecter des bâtiments proposés, comprendre les besoins des habitants, évaluer l'accès à l'eau et aux soins, et écouter les futurs instructeurs**. Plusieurs équipes défendent des programmes différents : prestigieux duels d'officiers, formation à l'extraction ou enseignements civils accessibles. Haldrek et Torgarl doivent choisir une proposition viable. **Cette installation, la présence des élèves et toute date d'ouverture restent des événements à jouer**, pas une école déjà en service.
+
+**8. Le maître qui refuse de choisir son successeur — direction et transmission (élevé).** Une première promotion ou équipe d'instructeurs **future et non encore créée** doit apprendre à conduire un exercice sans Haldrek. Une décision mal comprise provoque des tensions entre formateurs, militaires et représentants civils. Le MJ peut demander aux PJ de comparer les rapports, organiser une nouvelle simulation ou défendre le droit d'un instructeur compétent à corriger son supérieur. **L'enjeu : rendre la nouvelle école durable sans lier chaque décision au seul Haldrek**.
+
+**9. Un nom dans les anciennes campagnes — Harald Forgecœur (enquête de mémoire, optionnelle).** Une archive militaire évoque une affectation à laquelle **Haldrek et Harald auraient pu participer**. Les PJ sont chargés de vérifier dates, garnisons, noms de capitaines et témoignages. **Aucun service commun n'est préétabli** ; l'issue peut révéler un simple rapprochement de dates, une erreur de nom, des échanges administratifs ou une collaboration réelle **si le créateur la confirme**. La mission permet aussi de découvrir quel jeune officier était Haldrek sans transformer sa jeunesse en saga de morts et de batailles inventées.
+
+Ces trois pistes viennent **en complément des six précédentes**. Elles sont non jouées ; le fonctionnement de l'école, les noms des élèves et la mémoire exacte du service de Harald restent ouverts.
+
 ### Première scène — « Vous avez prévu de revenir ? »
 
 *Cour de garnison, entre deux départs. Rencontre proposée, non jouée.*
@@ -331,7 +341,7 @@ Le site peut fournir ces fiches et amorces, **mais n'anime pas automatiquement l
 - Remise documentée du coffret et usages de la longue-vue après CB42.
 - **Entraînement quotidien déjà assuré chez les Revenants** ; développer les curricula de Bordeciel, les premiers formateurs et les apprentis dans de futures scènes.
 - Rencontre éventuelle avec Hroldan et confirmation, ou non, d'une histoire commune.
-- Six amorces de missions pour MJ, **proposées et non jouées**.
+- **Neuf amorces de missions pour MJ**, dont trois ouvertes autour de Bordeciel, d'une éventuelle direction et de l'hypothèse Harald ; elles sont **proposées et non jouées**.
 
 ## Sources principales
 
@@ -341,6 +351,7 @@ Le site peut fournir ces fiches et amorces, **mais n'anime pas automatiquement l
 - *Campagne brute regroupée*, **CB2** (préparation et entraînement au Mérien), **CB31 P16201–16300** (secours dans le cursus de Bordeciel), **CB32 P02101–02200 et P07301–07400** (répartition des formations et travail déjà engagé avec Torgarl), **CB33 P04901–05000** (exercice avec Tairin et Drakon sous le regard de Haldrek), **CB33–34** (entraînement d'Orin et des Revenants) ; *Continuité*, Taagral, échanges 012–119.
 - *Campagne Brut 4.2*, **CB42 P19455–21050**.
 - *Campagne Brut 4.3*, entretien Hroldan (ne pas inventer de parenté d'armes).
+- **Nouveau portrait individuel** créé en octobre 2026, **proposition artistique non canonique jusqu'à approbation** ; la grande affiche conceptuelle a été écartée car elle comportait des ajouts biographiques non vérifiés.
 
 ## Feuillets liés
 
