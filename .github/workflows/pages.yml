@@ -1,5 +1,12 @@
 name: Publier sur GitHub Pages (manuel)
 on:
+  # Publication toujours manuelle dans l'interface GitHub, ou par signal explicite de lot revu.
+  # Les modifications ordinaires des fiches ne déclenchent AUCUN déploiement.
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/pages-publication-approved.txt'
   workflow_dispatch:
     inputs:
       contenu_revu:
@@ -14,7 +21,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    if: github.ref == 'refs/heads/main' && inputs.contenu_revu == true
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.contenu_revu == true)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
