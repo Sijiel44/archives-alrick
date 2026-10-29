@@ -5,53 +5,39 @@ unlisted: true
 title: "Harald Forgecœur"
 code: "FAM-06"
 categorie: "personnage"
-canon_statut: "faits_joues"
+canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P15333–17304; CB42 P20026–21257; CB42 P16231–21841"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "publique_avec_avertissement"
-description: "Repères de personnage et de continuité après CB42."
-tags: ["personnage", "forgecoeur", "rappeles", "aldhammar"]
-etat_editorial: en_cours
+description: "Grand guerrier, général, maître forgeron et runiste; Harald est un Rappelé au parcours singulier."
+tags: ["personnage", "forgecoeur", "rappeles", "revenants", "terran", "runes", "forge", "aldhammar"]
+etat_editorial: valide
 ---
 
-## Mise à jour de continuité — CB42
+## Identité et statut
 
-> **État établi dans le registre :** Rappelé vivant et proche familial sans admission dans la compagnie ; Harald Forgecœur revient à une vie corporelle par consentement après contact via le lion et entretien dans un réceptacle sans conscience préalable. Il choisit un corps qui ne vieillit pas, garde son histoire et ses cicatrices significatives, mais peut être blessé ou tué. Tout nouveau retour dépend de son choix. Il retrouve marteau, proches et Aldhammar ; il ne récupère ni couronne ni titre par effet du rappel. Il est invité libre, pas membre confirmé de la compagnie. Il recommande Hroldan Trois-Clefs sans que celui-ci soit revenu. La fiche ancienne « Défunt » devient historique.
->
-> **Repère de source :** CB42 P16231–21841.
+Harald Forgecœur est le père d’Orin, qui prend souvent **Alrick** comme nom de voyage pour éviter les complications liées à son rang princier. Harald est l’un des **Rappelés** : il a connu la mort, puis est revenu en prenant possession du corps de **Harald le Lion**. Plus tard, Orin l’a rappelé dans son propre corps rajeuni. Ce sont deux étapes distinctes de son retour; la seconde correspond à la vie corporelle qu’il mène aujourd’hui.
 
+Cette histoire singulière ne fait pas de lui un membre automatique des **Revenants**. « Rappelé » décrit son retour à la vie; « Revenant » désigne l’appartenance à la compagnie. Harald n’a pas encore rejoint cette compagnie et aucun titre ancien ne lui a été restitué par son retour.
 
+## Capacités et réputation
 
-> [!info] État documentaire
-> Faits joués recensés après **CB42**. Vérifier les sources avant publication auprès des joueurs.
+Harald est considéré comme le plus grand guerrier de son temps. Il est redoutable au combat et d’une intelligence remarquable en matière de stratégie et de conduite des armées. **Terran**, dieu de la sagesse guerrière, reconnaissait déjà ses qualités guerrières avant et indépendamment de sa relation avec Orin.
 
-Harald Forgecœur a retrouvé une vie corporelle par un rappel consenti d’Orin ; il conserve son autonomie. Il n’entre pas automatiquement dans la compagnie des Revenants.
+Il est aussi un forgeron exceptionnel et un runiste de très haut niveau. Une grande partie de ses écrits runiques se trouve dans la bibliothèque de **Skalore**; son ouvrage figure parmi les références runiques les plus remarquables qui y sont conservées.
 
-## Situation actuelle
+## Situation et pistes d’avenir
 
-- **Existence :** vivant, Rappelé par Orin.
-- **Parenté :** membre de la famille Forgecœur.
-- **Lien avec Orin :** son père, confirmé explicitement par le créateur le 29 octobre 2026. Orin voyage souvent sous le nom d’**Alrick** pour éviter les complications dues à son rang de prince; ce nom d’usage ne désigne pas une autre personne.
-- **Appartenance aux Revenants :** aucune admission automatique attestée.
-- **Titre :** son retour ne restaure pas automatiquement un titre ancien.
+Harald commence actuellement un voyage accompagné de **Phénix** et d’un ancien camarade. Ce compagnon pourrait chercher à travailler avec les Rappelés; son identité et la suite de sa démarche restent à préciser.
 
-## Épisode marquant
-
-Harald reprend contact par le lion, puis au moyen d’un réceptacle. Avec Freya, il choisit une nouvelle vie corporelle. La famille le retrouve ensuite au palais d’Aldhammar.
-
-## Verrous de continuité
-
-> [!warning] Ne pas confondre
-> La catégorie **Rappelé** décrit un retour à la vie ; la catégorie **Revenant** décrit une appartenance à la compagnie d’Orin. La première n’entraîne pas la seconde.
-
-La possibilité d’un nouveau retour ne signifie ni immortalité invulnérable, ni résurrection automatique.
+Harald pourrait plus tard rejoindre les Revenants avec lui. Il pourrait aussi croiser des aventuriers et intervenir dans leurs histoires au fil de ses voyages. Ce sont des pistes de développement, pas des événements déjà joués ni des engagements établis.
 
 ## Sources et traçabilité
 
-- **Source brute :** CB42 P15333–17304; CB42 P20026–21257
-- **État consolidé :** documents de référence du 22 octobre 2026.
-- **Confirmation de continuité par le créateur :** Harald est le père d’Orin; Alrick est le nom qu’Orin utilise souvent en voyage.
+- **Sources de campagne :** CB42 P15333–17304; CB42 P20026–21841.
+- **Canon confirmé par le créateur :** relation père-fils avec Orin; deux étapes du retour de Harald; compétences guerrières, stratégiques, runiques et de forge; reconnaissance par Terran; voyage actuel et pistes d’avenir.
+- **Repère de continuité :** la fiche « Défunt » est historique. Harald vit aujourd’hui dans son propre corps rajeuni.
 
 ## Fiches liées
 

@@ -4,12 +4,12 @@ spoilers: true
 title: "Elwen Saurel — coordination administrative"
 code: "SEC-66"
 categorie: "personnage"
-canon_statut: "projet_en_cours"
+canon_statut: "lore_valide"
 ancre_documentaire: "CB43"
 source_brute: "CB43 P00205–00221; P00246–00249; CB42 P08980–09089; P17726–17825"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "publique_avec_avertissement"
-description: "Repères de personnage et de continuité après CB42."
+description: "Administrateur issu d’une famille de marchands, chargé de préparer l’organisation de la Maison divine."
 tags: [elwen, saurel, administration, maison-divine, recrutement, cb43]
 etat_editorial: en_cours
 unlisted: true
@@ -17,16 +17,16 @@ unlisted: true
 
 # Elwen Saurel
 
-Elwen Saurel participe à la préparation administrative de la Maison divine et rassemble les candidatures. Elle repère les fonctions manquantes et propose de distinguer le travail du Palais divin, de la Maison divine et du manoir des Revenants.
+Elwen Saurel est un homme d’une quarantaine d’années issu d’une famille de marchands. Il participe à la préparation administrative de la Maison divine et rassemble les candidatures. Il repère les fonctions manquantes et propose de distinguer le travail du Palais divin, de la Maison divine et du manoir des Revenants.
 
-En CB4.3, son propre contrat n’est pas finalisé et son mandat définitif reste à formaliser. Elle cherche à construire une organisation durable, où les responsabilités ne reposent pas sur une seule personne.
+Le portrait d’Elwen comme Elfe dans une première version de CB42 est traité comme une incohérence de rédaction concernant ce même personnage. Les descriptions ne désignent pas deux Elwen et aucune transformation n’est retenue. Les sources plus tardives, notamment CB42 et CB4.3, fondent le portrait conservé ici; aucune espèce n’est précisée.
 
-## Portrait contradictoire
+En CB4.3, son propre contrat n’est pas finalisé et son mandat définitif reste à formaliser. Il cherche à construire une organisation durable, où les responsabilités ne reposent pas sur une seule personne.
 
-CB42 décrit d’abord une Elfe, puis associe le même nom à un homme d’une quarantaine d’années issu de commerçants. Les sources de synthèse conservent cette contradiction sans explication. Le portrait, le genre et l’éventuel lien entre les deux descriptions restent à confirmer; ne pas inventer de transformation ni fusionner plusieurs personnes sans validation.
-
-**État des engagements :** la collaboration est souhaitée, mais le contrat et le mandat définitifs ne sont pas signés.
+**État des engagements :** la collaboration est souhaitée, mais le contrat et le mandat définitifs ne sont pas signés. Cette question administrative reste en cours.
 
 ## Sources
 
 - *Campagne Brut 4.3*, CB43 P00205–00221; P00246–00249.
+- *Campagne Brut 4.2*, CB42 P08980–09089; P17726–17825.
+- **Canon confirmé par le créateur :** les deux portraits concernent le même Elwen; retenir le portrait masculin de la quarantaine et traiter l’ancienne mention d’une Elfe comme une incohérence rédactionnelle.
