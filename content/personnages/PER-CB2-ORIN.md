@@ -5,7 +5,7 @@ code: "PER-CB2-ORIN"
 categorie: "personnage"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
-source_brute: "CB2 P00560–00643; P08292–08294; confirmation du créateur, 2026-10-29"
+source_brute: "CB2 P00560–00643; P08292–08294; CB31 P13280–13355; P13844–13855; P16302–16920; confirmation du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
 description: "Orin, prince engagé dans la construction de liens entre peuples, voyage souvent sous le nom d’Alrick pour éviter que son rang ne complique ses déplacements."
@@ -30,6 +30,12 @@ Orin cherche à répartir la responsabilité plutôt qu’à tout concentrer sur
 
 Au Mérien, il laisse également aux habitants la possibilité d’examiner, de transformer ou de refuser ses propositions. Ce sont des choix et des projets situés dans la campagne, pas la preuve d’un accord universel.
 
+## Développements de CB3.1
+
+Orin confie à Astrid un fonds pour les études et les ateliers, lui remet un premier apport et lui laisse l’autonomie de choisir les bénéficiaires. Il poursuit sa formation au combat avec Torgarl et Ylva, en travaillant la préparation du terrain, la discrétion et le retour vivant des compagnons. Une rencontre familiale au Sud le montre aussi comme Alrick, musicien et voyageur, au-delà de ses responsabilités princières.
+
+Voir [[PROJ-CB31-FONDS-ATELIERS|le fonds confié à Astrid]], [[PER-CB31-YLVA|Ylva]] et [[FAM-07|la famille d’Alriana autour de Freya]].
+
 ## Limites et questions
 
 - Les titres officiels, l’étendue du pouvoir princier et la succession ne sont pas détaillés ici.
@@ -39,4 +45,5 @@ Au Mérien, il laisse également aux habitants la possibilité d’examiner, de 
 ## Sources
 
 - *Campagne Brut 2*, CB2 P00560–00643 (répartition des responsabilités); P08292–08294 (les deux noms entendus au retour à Valbrume).
+- *Campagne Brut 3.1*, CB31 P13280–13355; P13844–13855; P16302–16920.
 - Confirmation du créateur, 29 octobre 2026 : Harald est le père d’Orin; Alrick est son nom d’usage fréquent en voyage.

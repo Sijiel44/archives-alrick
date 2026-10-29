@@ -5,7 +5,7 @@ code: "GEO-CB2-PONT-ANCIEN"
 categorie: "lieu"
 canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
-source_brute: "CB2 P00054–00237; P02693–02835; P03199–03242"
+source_brute: "CB2 P00054–00237; P02693–02835; P03199–03242; confirmation du créateur, 2026-10-29"
 derniere_revision_documentaire: "2026-10-29"
 visibilite: "brouillon"
 description: "Un pont ancien surveillé par quatre gardiens et lié à des pierres, une tradition vivante et un mystère dont plusieurs éléments restent inconnus."
@@ -19,7 +19,7 @@ tags: [pont, gardiens, entre-rives, cb2, mystere, brouillon]
 
 ## Le lieu et la responsabilité
 
-Les récits évoquent un ancien pont et quatre pierres confiées à quatre lignées ou responsabilités de gardiens. Maelin, Rudek, Sela et Sören reviennent après de longs voyages et placent les pierres lors d’une cérémonie. L’enquête qui suit relie leurs rôles à **maintenir, séparer, témoigner et transmettre**.
+Les récits évoquent un ancien pont et quatre pierres confiées à quatre lignées de gardiens. Maelin, Rudek, Sela et Eren reviennent après de longs voyages et placent les pierres lors d’une cérémonie. Leurs rôles établis sont **maintenir, séparer, témoigner et transmettre**, et leur transmission est également établie par le créateur. Le document source appelle Eren « Sören ».
 
 Les pierres sont comprises comme des témoins de concordance entre les fonctions, non comme des clés. Les archives, les rêves, l’expérience des gardiens et les légendes doivent être conservés ensemble; une légende reste enregistrée comme légende, pas élevée au rang de preuve.
 
