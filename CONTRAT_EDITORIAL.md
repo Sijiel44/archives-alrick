@@ -28,6 +28,27 @@ Ces valeurs caractérisent une **fiche dominante**. Une page contenant plusieurs
 
 **Présentation narrative** en tête, **état vérifié** immédiatement dessous, **limites/contraintes**, **éléments ouverts**, **sources**, **liens**. Les gabarits spécialisés enrichissent ensuite l'identité, les relations ou les fonctions, sans changer les champs communs.
 
+## Quatre parcours — même source, différents usages
+
+Les Archives proposent désormais quatre portes d'entrée, sans dupliquer le canon : **Univers** (socle partageable), **Odyssée d'Orin** (campagne fondatrice), **Jouer dans ce monde** (aides aux joueurs et MJ) et **MJ assisté par IA** (prompts et procédures de continuité).
+
+Les nouvelles métadonnées sont **recommandées pour toute fiche créée ou révisée à partir de maintenant**. Elles ne sont pas exigées rétrospectivement sur toutes les fiches historiques :
+
+- `portee: "univers_partage"` ou `portee: "jdr_alrick"` : à quoi le texte appartient prioritairement ; `mixte` seulement si les parties sont clairement séparées ;
+- `public_cible: ["lecteurs", "joueurs", "mj"]` : pour qui la fiche est utile, sans fournir d'autorisation d'accès ;
+- `usage_en_jeu: ["reference", "decouverte", "rencontre", "scenario", "chronique", "continuite", "prompt"]` : les usages proposés, indépendants de la vérité canonique ;
+- `periode` : préciser l'époque **uniquement lorsqu'elle est connue** ; ne pas déduire le calendrier fictif de la date des messages.
+
+Ces champs **ne remplacent jamais** `canon_statut`, `etat_editorial`, `source_brute`, `spoilers`, `unlisted` ou `publish`. Une page peut offrir des scénarios non joués tout en décrivant des faits canoniques, si chaque partie porte clairement son statut. Les pages généralistes peuvent pointer vers des événements de campagne avec avertissement ; elles ne doivent pas révéler implicitement les secrets dans leur titre ou leur résumé.
+
+### Versions indépendantes de campagne
+
+Une autre table, avec ou sans IA, peut prendre l'univers comme point de départ. Ses choix et découvertes vont dans **son propre journal**, jamais automatiquement dans le canon de l'Odyssée d'Orin. Une IA ne doit pas prétendre avoir consulté le site entier : fournir un noyau documentaire daté et les fiches pertinentes pour chaque scène. Le prompt proposé est un outil, pas une règle officielle ni une mémoire persistante.
+
+### Corrections prioritaires CB43
+
+L'**Espace sur demande** désigne l'ensemble du domaine avec ses îles et transports ; la **Maison divine** désigne la communauté ; le **Palais divin** est la résidence personnelle d'Orin sur l'île de la Maison. Les îles publiques et des Revenants sont distinctes. Les Gardiennes du Passage, la mer intérieure, les maisons de fonction et la gare agrandie sont attestées dans CB43 ; les nouvelles îles de loisirs et demeures détaillées attendent la source CB4.4. **Elyan Corbeau-Gris est FAM-08 dans le Compendium**, grand-père maternel et mentor d'Orin ; sa fiche web PER-CB43 ne désigne pas un autre individu.
+
 ## Illustrations et portraits
 
 Les illustrations web validées sont rangées dans `content/images/` (sous-dossiers par domaine). Formats acceptés : WebP, AVIF, PNG ou JPG, avec une limite de **3 Mio par fichier**. Les images SVG, documents sources, archives et autres fichiers binaires non approuvés restent exclus du site. Une page Markdown peut faire référence à une image locale avec un chemin relatif, par exemple `![Heimdall](../images/personnages/heimdall-portrait.webp)` depuis `content/personnages/REV-06.md`. Le contrôle du site doit vérifier que chaque image publiée est disponible à son URL finale. Les illustrations officielles doivent être approuvées par le créateur ; une image conceptuelle ne devient pas canonique par sa seule présence dans le dépôt.
