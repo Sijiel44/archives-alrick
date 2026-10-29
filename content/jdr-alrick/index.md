@@ -16,6 +16,12 @@ Les fiches des rubriques générales décrivent ce qui peut servir de cadre à d
 
 Quand un élément du récit peut être repris par d’autres MJ, il garde une fiche dans la rubrique générale et reçoit ici un renvoi vers la scène ou la continuité d’origine. Les faits joués, les projets futurs et les idées non canonisées restent séparés.
 
+## À la frontière de la campagne fondatrice
+
+Les [[univers/index|pages d'univers]] décrivent le cadre réutilisable ; [[jouer/index|le guide du joueur]] invite à y mener une autre histoire, et [[mj-ia/index|le guide de MJ assisté par IA]] prévoit une sauvegarde indépendante. Ces parcours ne modifient pas la continuité d'Orin.
+
+**Dernier arrêt documenté dans les sources CB43 :** au Palais divin, après la visite des caves de Mirelda et Odran, avant le déjeuner attendu avec Édric et Maëlya. Une nouvelle séance ou le futur brut CB4.4 pourra dépasser cet état, mais ne doit pas être supposé déjà décrit ici.
+
 ## Points d’entrée
 
 - [[personnages/PER-CB2-ORIN|Orin / Alrick — portrait de campagne]]

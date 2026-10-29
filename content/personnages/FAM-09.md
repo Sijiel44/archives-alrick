@@ -24,6 +24,14 @@ unlisted: true
 
 Freya accompagne la vérification du réceptacle, de la continuité personnelle et du consentement de Harald Forgecœur. Elle distingue la protection de l’âme d’une obligation de recommencer à vivre. Sa présence au Palais et son aide ne constituent pas une adhésion nouvelle à la Maison.
 
+## Parenté et rôle personnel
+
+**Freya est la mère d'Alriana et la grand-mère maternelle d'Orin.** Elle est la compagne d'**Elyan Corbeau-Gris** (FAM-08 dans le Compendium), grand-père maternel et mentor d'Orin. La « Femme des Liens » possède des choix et responsabilités qui ne se résument pas au statut de grand-mère ou à la Maison divine d'Orin.
+
+La présence de Freya auprès d'Orin ou au Palais ne constitue pas à elle seule une adhésion formelle à sa Maison. Voir [[FAM-07|Famille d'Alriana]] et [[PER-CB43-ELYAN-CORBEAU-GRIS|Elyan Corbeau-Gris]].
+
+**Source complémentaire :** Compendium V03, FAM-08 et FAM-09, états CB43.
+
 ## Sources
 
 - *Compendium des personnages et des relations (V03), état après CB42*, CB42 P16231–16613.

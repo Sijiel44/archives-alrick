@@ -10,6 +10,11 @@ derniere_revision_documentaire: "AAAA-MM-JJ"
 visibilite: "a_relire_avant_publication"
 description: "Résumé en une phrase"
 tags: [alrick]
+portee: "univers_partage"
+public_cible: ["lecteurs", "joueurs", "mj"]
+usage_en_jeu: ["reference", "rencontre"]
+# periode: "À préciser uniquement si attestée"
+
 ---
 
 # Nom du personnage
@@ -17,6 +22,10 @@ tags: [alrick]
 ## Présentation
 
 Écrire une description élégante, claire et utilisable pendant la partie.
+
+## Portée et usage
+
+Distinguer le portrait **réutilisable par d'autres MJ**, l'évolution propre à **l'Odyssée d'Orin** et les **amorces inédites**. Ne pas déplacer le code historique ou transformer un scénario proposé en scène jouée. Si la fiche contient des spoilers, renseigner `spoilers: true` et `unlisted: true` et éviter de divulguer le secret dans le titre public.
 
 ## Faits attestés
 
