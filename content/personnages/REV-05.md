@@ -15,9 +15,9 @@ tags: ["personnage", "revenants", "medecin", "torven", "hopital", "secours", "ev
 
 # Torven Cendreval
 
-![Portrait provisoire de Torven Cendreval, interprétation artistique non canonique.](../images/personnages/torven-concept.webp)
+![Nouveau portrait conceptuel de Torven Cendreval : médecin de terrain aux cheveux bruns et barbe courte, en tenue bleu sombre, tenant une bande de soin auprès d'une sacoche et de fioles médicales.](../images/personnages/torven-portrait-medecin-proposition.webp)
 
-*Étude visuelle provisoire issue d’une planche d’ensemble ; **apparence et détails à valider** avant de parler de portrait officiel.*
+*Nouvelle **étude individuelle à valider** : Torven est montré au travail, avec bande de soin, instruments et matériel médical dans une sacoche accessible, une tenue solide et des détails discrets de métier. **La couleur des cheveux, la barbe, les traits, les accessoires précis et les insignes visibles sont une proposition artistique**, non des éléments physiques canoniques. Aucun cercle magique actif ni statut divin n'est représenté comme déjà acquis.*
 
 > [!info] Statut documentaire
 > **Fiche approfondie en attente de validation**, fondée sur le *Compendium* v1.7 et les scènes CB2, CB31–34, CB42–43. Les responsabilités de Torven dans les Revenants, sa **direction médicale effective de l’hôpital**, sa présentation devant la famille royale et les débats de colloque sont **joués et documentés**. **Nouvelles pistes du créateur (28 octobre 2026) :** souhait de se former personnellement aux arts magiques auprès d’Orin et hypothèse lointaine d’une ascension liée au soin. **Ce sont des développements proposés, non accomplis.** La jeunesse et les anecdotes de formation sont également des propositions. Le grand réseau de soins est un objectif de déploiement, non un réseau déjà achevé ; le portrait actuel reste à approuver.
@@ -273,6 +273,14 @@ Le danger intéressant n'est donc pas « Torven va-t-il devenir assez puissant p
 
 **6. Le premier appel vers le Refuge — grande campagne (très élevé).** Plusieurs maisons de soins éloignées demandent à transférer des personnes à l'hôpital de Torven, mais les rapports se contredisent et certaines institutions ne disposent d'aucune interface autorisée. Torven constitue une équipe chargée de vérifier les cas, d'organiser un transport sûr, de préserver les soins locaux et d'évaluer s'il existe une cause commune. Ragna pourrait comparer les enquêtes ; Vaëra vérifier des informations sensibles ; les aventuriers coordonner les secours, la diplomatie et la sécurité. **Le réseau médical n'est pas considéré comme installé partout** et la Première Ancre n'est pas déclarée coupable par défaut. Les décisions des joueurs peuvent inaugurer — ou retarder — de vraies relations entre établissements.
 
+### Deux fils de campagne autour de sa destinée — à utiliser plus tard
+
+**7. La leçon qu'il n'osait pas demander — formation et confiance (intermédiaire à élevé).** Torven souhaite rencontrer Orin pour commencer à étudier ce qu'un médecin doit savoir de la magie, mais hésite à lui demander du temps. Les aventuriers peuvent être témoins d'un besoin de terrain, apporter des observations utiles, aider à sécuriser un essai technique ou assurer le suivi d'un patient, **sans forcer Orin à enseigner** ni supposer qu'un Cercle personnel sera réussi. L'intérêt est dans la rencontre entre deux savoirs, pas dans la récompense d'un sort de guérison automatique.
+
+**8. Le sanctuaire que personne n'avait demandé — œuvre, croyance et liberté (campagne de très haut niveau).** Des personnes sauvées grâce à l'hôpital commencent, dans une période fictive à définir, à traiter Torven comme une figure sacrée. Des responsables voudraient transformer un secteur de soin en sanctuaire et des patients craignent de devoir remercier ou prier pour être admis. Les PJ peuvent enquêter sur l'origine de cette ferveur, aider à préserver l'indépendance des équipes et demander conseil aux autorités compétentes. **L'existence d'une transformation cosmique reste une possibilité, pas la solution imposée.** Une conclusion heureuse peut être que l'hôpital conserve sa vocation sans devenir divin, ou qu'il accueille une vraie transformation sans faire de la foi une condition d'accès aux soins.
+
+Ces deux fils ne sont **ni joués ni canoniques** ; ils peuvent être omis entièrement si l'évolution choisie pour Torven demeure mortelle et strictement médicale.
+
 ### Rencontre initiale — « Et comment ramène-t-on les blessés ? »
 
 *Cour d'une maison de soins près d'une route de montagne. Scène proposée, non jouée.*
@@ -317,7 +325,7 @@ Les Archives fournissent **des références et des scénarios**, pas encore un m
 - **Voie très lointaine proposée :** Ascension de l’Œuvre/Domaine par l’hôpital et le soin, **sans aucune ascension actuelle, titre divin ni pouvoir miraculeux acquis**.
 - Cadre de transmission des responsabilités hospitalières lorsque Torven est absent.
 - Scènes montrant ses propres besoins et son droit d'être soigné et protégé.
-- Portrait individuel de Torven, âge et apparence, à valider.
+- **Portrait médical individuel proposé** : version plus détaillée avec sacoche, fioles et bande de soin, en attente d'approbation du créateur ; âge et apparence à confirmer.
 - Six scénarios proposés ci-dessus, **non joués**.
 
 ## Sources principales
