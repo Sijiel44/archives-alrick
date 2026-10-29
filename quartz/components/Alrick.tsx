@@ -11,6 +11,7 @@ export const sections = [
   ["institutions", "Institutions", "Institutions", "⚖"],
   ["cultures", "Cultures et traditions", "Cultures", "♫"],
   ["objets", "Objets et œuvres", "Objets", "⌑"],
+  ["creatures", "Créatures magiques", "Créatures", "✤"],
   ["projets", "Projets et recherches", "Projets", "⚙"],
   ["economie", "Économie et finances", "Économie", "↗"],
   ["magie", "Codex de la magie", "Magie", "✧"],
@@ -51,6 +52,9 @@ export const Navigation: QuartzComponent = (props) => {
       ))}
       <div class="nav-divider" />
       <span class="nav-caption">DERRIÈRE LE RÉCIT</span>
+      <a class={`internal story-link ${current === "jdr-alrick" ? "active" : ""}`} href={`${base}/jdr-alrick/`} aria-current={current === "jdr-alrick" ? "page" : undefined}>
+        <span aria-hidden="true">✎</span> JDR d’Alrick <span class="spoiler-dot" aria-label="Spoilers">!</span>
+      </a>
       <a class={`internal mj-link ${current === "mj" ? "active" : ""}`} href={`${base}/mj/`} aria-current={current === "mj" ? "page" : undefined}>
         <span aria-hidden="true">⚿</span> Archives du MJ <span class="spoiler-dot" aria-label="Spoilers">!</span>
       </a>
@@ -64,7 +68,7 @@ export const Navigation: QuartzComponent = (props) => {
 
 export const Topbar: QuartzComponent = (props) => (
   <div class="archive-topbar">
-    <span>LES ARCHIVES D’ALRICK <i>/</i> <span>{props.fileData.slug === "index" ? "ACCUEIL" : props.fileData.slug?.startsWith("mj/") ? "ARCHIVES DU MJ" : "ENCYCLOPÉDIE"}</span></span>
+    <span>LES ARCHIVES D’ALRICK <i>/</i> <span>{props.fileData.slug === "index" ? "ACCUEIL" : props.fileData.slug?.startsWith("mj/") ? "ARCHIVES DU MJ" : props.fileData.slug?.startsWith("jdr-alrick") ? "JDR D’ALRICK" : "ENCYCLOPÉDIE"}</span></span>
     <span class="edition"><span aria-hidden="true">◇</span> Archives vivantes · CB43</span>
   </div>
 )
