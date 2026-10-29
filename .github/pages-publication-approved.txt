@@ -12,3 +12,4 @@ A42-02, CUL-CB32-HEURE-COMMUNE, ECON-CB36-FINANCES-COURONNE, ECON-CB37-BANQUE-TR
 
 Le tableau des liens, des points ouverts et des sources est dans content/suivi-editorial.md. Les fiches rouges, les index de relecture et les propositions non jouées ne sont pas approuvés à la publication.
 # Synchronisation d’accueil (2026-10-29) : liste mise à jour à 153 fiches approuvées.
+# Relance de publication (29 octobre 2026) : renvoi de la fiche Durgan corrigé; liste approuvée inchangée.
