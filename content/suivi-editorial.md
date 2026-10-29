@@ -14,18 +14,23 @@ etat_editorial: en_cours
 - 🟡 **En cours** — socle fiable; mise en place, conséquences ou détails restent à suivre et sont explicitement signalés.
 - 🔴 **À reprendre** — contradiction, identité, consentement, preuve ou décision à reprendre; la fiche reste en brouillon.
 
-**État de l’audit :** 273 pages de travail classées (95 vertes, 66 jaunes, 112 rouges). Parmi elles, 262 entrées portent un code : 258 fiches et quatre index de relecture. Les 15 index éditoriaux sont suivis séparément des fiches; 148 fiches codées sont publiées. Quatre fiches déjà présentes dans la bibliothèque (GRP-01, GEO-HAUTES-PATURES, GEO-ROCHEBRUME, REV-16) sont reprises dans le suivi. Les pages à spoilers demandent une ouverture explicite et restent hors recherche et bibliothèque générale. Cette page de suivi est elle-même protégée par l’avertissement de lecture.
+**État de l’audit :** 273 pages de travail classées (101 vertes, 65 jaunes, 107 rouges). Parmi elles, 262 entrées portent un code : 258 fiches et quatre index de relecture. Les 15 index éditoriaux sont suivis séparément des fiches; 153 fiches codées sont publiées. Quatre fiches déjà présentes dans la bibliothèque (GRP-01, GEO-HAUTES-PATURES, GEO-ROCHEBRUME, REV-16) sont reprises dans le suivi. Les pages à spoilers demandent une ouverture explicite et restent hors recherche et bibliothèque générale. Cette page de suivi est elle-même protégée par l’avertissement de lecture.
 
 ## Canon déjà confirmé à appliquer
 
 - **Serah Denvar** est conservée sous cette graphie.
 - **Valbrume** est la graphie arrêtée; « Valebrume » et « Valbrumme » sont des variantes de transcription.
-- **Harald est le père d’Orin**; Orin prend souvent **Alrick** comme nom de voyage.
+- **Harald Forgecœur est le père d’Orin**; Orin prend souvent **Alrick** comme nom de voyage. Harald est un Rappelé : il est d’abord revenu dans le corps de Harald le Lion, puis Orin l’a rappelé dans son propre corps rajeuni. Son éventuelle entrée chez les Revenants reste une piste, pas un fait.
 - **Sören le marin** et **Eren, gardien du pont**, sont deux personnes distinctes.
 - **Edric Varen**, l’Edric de CB2 et le futur **Edric de Valbrume** sont une même personne.
 - La graphie **Ylva** est retenue et la pièce d’Alrick s’intitule **« Un prince... »**.
 - Les quatre fonctions des gardiens et leur transmission sont établies; le rôle exact du vieux pont reste à approfondir.
 - Les Conseils, la Guilde, le secours mutuel, la Charte du Soldat, la justice, l’heure commune, les Jeux universitaires, la défense en profondeur et le Festival des Métiers de la Mer sont adoptés et **en cours de déploiement dans le Royaume**; les fiches ne les présentent pas comme uniformément opérationnels.
+- **Elwen Saurel est un seul personnage** : retenir le portrait masculin de la quarantaine issu d’une famille de marchands; l’ancienne mention d’une Elfe est une incohérence rédactionnelle. Son contrat et son mandat restent à formaliser.
+- **Alriana**, mère d’Orin, a fait confectionner puis offert le gilet fleuri à Harald. Dans le souvenir raconté à Elyra, « sa mère » désigne la mère d’Orin, pas celle de Harald.
+- **Freya** est la mère d’Alriana et la grand-mère d’Orin.
+- **Durgan Main-d’Acier** est l’ami-forgeron d’Orin rencontré à Skalore; il est distinct de Harald.
+- Graphies canonisées : **Kharem** (Karim/Kerim), **Aubegrise** (Obgrise) et **Keldrun** (Keldrune). Les anciens codes de travail restent à remapper vers les fiches actuelles lorsque leur correspondance est établie.
 - Les dispositifs de communication, pratiques agricoles, transport guidé, Institut et école militaire de Bordociel sont décrits selon leur avancement réel; aucune mise en service anticipée n’est affirmée.
 
 ## Travaux transversaux du registre — 36 points
@@ -72,14 +77,14 @@ Les références de codes anciens qui n’ont pas de fiche correspondante dans l
 - **Sources :** CB39 P04572–06381 ; P21701–23500 · **Destination :** V02 A39-01 à A39-05 ; V03 SEC-48, SEC-49, SEC-52, SEC-53
 - **Fiches/liens :** `SEC-48` (fiche correspondante absente du lot actuel — à créer ou remapper); `SEC-49` (fiche correspondante absente du lot actuel — à créer ou remapper); `SEC-52` (fiche correspondante absente du lot actuel — à créer ou remapper); [[personnages/SEC-53|SEC-53 — Lysandra d Avarenne]]
 - **État :** À reprendre.
-### 🔴 DEV-006 — Noms et filiations incertains
+### 🟡 DEV-006 — Graphies canonisées, références à remapper
 
-- **À traiter :** Rouvrir les cas Karim/Kharem, Obgrise/Aubegrise et Keldrun/Keldrune à partir de citations.
-- **Point de départ :** Des proximités de fonction ou de graphie restent insuffisantes pour fusionner deux identités.
-- **Ajout attendu :** Décision explicite ou maintien du statut non tranché.
+- **À traiter :** Appliquer les graphies retenues et remapper les anciens codes de travail vers les fiches actuelles quand leur correspondance est établie.
+- **Décision canonique :** Kharem est la graphie préférée du même personnage parfois écrit Karim ou Kerim. Aubegrise et Keldrun sont les graphies préférées des mêmes lieux parfois écrits Obgrise et Keldrune.
+- **Ajout attendu :** Mettre à jour les renvois sans créer de doublons.
 - **Sources :** CB38 P13922–14081 ; CB39 P07799–08275 · **Destination :** V06 C38-07, C39-06 ; V03 IMP-06, SEC-60
 - **Fiches/liens :** `IMP-06` (fiche correspondante absente du lot actuel — à créer ou remapper); `SEC-60` (fiche correspondante absente du lot actuel — à créer ou remapper)
-- **État :** À reprendre.
+- **État :** En cours.
 ### 🟡 DEV-007 — Limites nouvelles d’Orin
 
 - **À traiter :** Séparer nature divine reconnue, phénomène observé, maîtrise et autorité institutionnelle.
@@ -232,14 +237,13 @@ Les références de codes anciens qui n’ont pas de fiche correspondante dans l
 - **Sources :** CB42 P17726–18750 · **Destination :** V05 O42-07 et O42-08 ; V03 SEC-66 et SEC-67
 - **Fiches/liens :** [[personnages/PER-CB43-ELWEN-SAUREL|SEC-66 — Elwen Saurel — coordination administrative]]; [[personnages/PER-CB42-MAERON-VELD|SEC-67 — Maëron Veld — coordination des résidences]]
 - **État :** À reprendre.
-### 🔴 DEV-026 — Portrait d Elwen Saurel
+### 🟢 DEV-026 — Portrait d Elwen Saurel
 
-- **À traiter :** Quel portrait retenir après confirmation explicite ?
-- **Point de départ :** Elfe féminine puis homme d’une quarantaine d’années
-- **Ajout attendu :** Conserver la contradiction en attendant la confirmation
+- **Décision :** retenir le portrait masculin d’une quarantaine d’années, issu d’une famille de marchands; traiter l’ancienne mention d’une Elfe comme une incohérence de rédaction concernant le même personnage.
+- **Limite :** aucune espèce n’est précisée; ne pas inventer de transformation.
 - **Sources :** CB42 P08980–09089 ; CB42 P17726–17825 · **Destination :** V03 SEC-66
 - **Fiches/liens :** [[personnages/PER-CB43-ELWEN-SAUREL|SEC-66 — Elwen Saurel — coordination administrative]]
-- **État :** À reprendre.
+- **État :** Validé.
 ### 🔴 DEV-027 — Effet mémoriel du retrait d existence
 
 - **À traiter :** Quelles conséquences et quel consentement avant un autre essai ?
@@ -324,7 +328,7 @@ Les références de codes anciens qui n’ont pas de fiche correspondante dans l
 
 Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien GitHub ouvre la source de chaque fiche. Les fiches rouges ne sont pas disponibles sur le site tant que leur point ouvert n’est pas résolu.
 
-### 🟢 Validé — 95
+### 🟢 Validé — 101
 
 - 🟢 [[lieux/A42-01|Lire la fiche]] · [`A42-01` — La Maison et le Palais sur une même île](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/A42-01.md) — Aucun point bloquant repéré à l’audit; maintenir les sources et renvois.
 - 🟢 [[lieux/A42-03|Lire la fiche]] · [`A42-03` — Les trois exploitations de Corvelis](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/A42-03.md) — Aucun point bloquant repéré à l’audit; maintenir les sources et renvois.
@@ -422,7 +426,14 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🟢 [[personnages/SEC-54|Lire la fiche]] · [`SEC-54` — Corin d Avarenne](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/SEC-54.md) — Aucun point bloquant repéré à l’audit; maintenir les sources et renvois.
 - 🟢 [[personnages/SEC-61|Lire la fiche]] · [`SEC-61` — Corven](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/SEC-61.md) — Aucun point bloquant repéré à l’audit; maintenir les sources et renvois.
 
-### 🟡 En cours — 66
+- 🟢 [[personnages/FAM-06|Lire la fiche]] · [`FAM-06` — Harald Forgecœur](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/FAM-06.md) — Père d’Orin, Rappelé en deux étapes, stratège et guerrier exceptionnel, maître forgeron et runiste; les pistes futures restent distinguées des faits.
+- 🟢 [[personnages/FAM-07|Lire la fiche]] · [`FAM-07` — Famille d’Alriana autour de Freya](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/FAM-07.md) — Freya est la mère d’Alriana et la grand-mère d’Orin; les autres parentés nommées restent limitées aux éléments de CB31.
+- 🟢 [[objets/OBJ-CB31-GILET-HARALD|Lire la fiche]] · [`OBJ-CB31-GILET-HARALD` — Gilet fleuri de Harald](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB31-GILET-HARALD.md) — Vêtement de Harald confectionné et offert par Alriana, la mère d’Orin; la formulation du souvenir à Elyra est éclaircie.
+- 🟢 [[personnages/PER-CB31-ALRIANA|Lire la fiche]] · [`PER-CB31-ALRIANA` — Alriana — mère d’Orin](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-ALRIANA.md) — Fille de Freya et mère d’Orin; elle a fait confectionner et offert le gilet à Harald.
+- 🟢 [[personnages/PER-CB31-DURGAN|Lire la fiche]] · [`PER-CB31-DURGAN` — Durgan Main-d’Acier](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-DURGAN.md) — Ami d’Orin rencontré à Skalore, forgeron d’exception; distinct de Harald.
+- 🟢 [[personnages/PER-CB31-FREYA|Lire la fiche]] · [`PER-CB31-FREYA` — Freya — grand-mère d’Orin](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-FREYA.md) — Mère d’Alriana et grand-mère d’Orin; la relation familiale et l’origine du gilet sont confirmées.
+
+### 🟡 En cours — 65
 
 - 🟡 [[lieux/A42-02|Lire la fiche]] · [`A42-02` — Aldhammar, une capitale habitée](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/A42-02.md) — La famille se rassemble à Aldhammar pour accueillir Harald Forgecœur. Orin souhaite conduire la restauration avec les artisans locaux. Sigrun Pierreval accepte les premières démarches ; Dagna Veine-de-Pierre a été recommandée, mais son acceptation n’est pas encore acquise. GEO-ROCHEBRUME — Rochebrume — petit bourg des anciennes routes de la région d'Aldhammar, lieu d'origine validé de Bram Vieux-Fer. La distance et l'emplacement cartographique restent à définir.
 - 🟡 [Brouillons de lieux et d’événements — Campagne Brut 3.1](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/index-brouillons-cb31.md) — EVT-CB31-SOIREE-COURONNE — Soirée de la Couronne — rendez-vous hivernal à préciser
@@ -442,7 +453,6 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🟡 [[chroniques/EVT-CB32-COLLOQUE-ROYAUME|Lire la fiche]] · [`EVT-CB32-COLLOQUE-ROYAUME` — Colloque du Royaume — décisions et mise en œuvre](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB32-COLLOQUE-ROYAUME.md) — Événement raconté dans CB32; nom officiel, participants complets, durée et calendrier restent à préciser. Les décisions sont adoptées; l’administration et les dispositifs se mettent en place.
 - 🟡 [[chroniques/EVT-CB32-JEUX-UNIVERSITAIRES|Lire la fiche]] · [`EVT-CB32-JEUX-UNIVERSITAIRES` — Jeux universitaires du Royaume](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB32-JEUX-UNIVERSITAIRES.md) — Les Jeux sont **adoptés** et en cours de lancement dans le Royaume. Le texte ne fixe pas encore de périodicité. À préciser : disciplines, lieux d’accueil, critères de sécurité, participation des établissements éloignés et articulation avec la préparation civile.
 - 🟡 [[chroniques/EVT-CB37-FESTIVAL-METIERS-MER|Lire la fiche]] · [`EVT-CB37-FESTIVAL-METIERS-MER` — Festival des Métiers de la Mer](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB37-FESTIVAL-METIERS-MER.md) — Le principe et les règles définitives sont actés : le concours se tient tous les cinq ans, change de ville hôte et s’appuie sur un prix collectif transmis à l’édition suivante. Le prix réunit plusieurs métiers; son exécution et la préparation des premières éditions restent à organiser. Le festival est adopté. Sa mise en place est en cours; les lieux et calendriers des premières éditions restent à organiser. Le projet ne dépend pas uniquement d’Orin et peut avancer avec Thorgal et les institutions du Royaume des Montagnes de l’Aube.
-- 🟡 [[personnages/FAM-06|Lire la fiche]] · [`FAM-06` — Harald Forgecœur](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/FAM-06.md) — Base fiable; suivre la mise en place, les détails ou les conséquences encore ouverts.
 - 🟡 [[lieux/GEO-CB2-PONT-ANCIEN|Lire la fiche]] · [`GEO-CB2-PONT-ANCIEN` — Le vieux pont et ses quatre gardiens](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/GEO-CB2-PONT-ANCIEN.md) — > [!warning] Hypothèse en cours
 - 🟡 [[lieux/GEO-CB43-ANCIEN-PALAIS-ALDHAMMAR|Lire la fiche]] · [`GEO-CB43-ANCIEN-PALAIS-ALDHAMMAR` — Ancien palais royal d’Aldhammar](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/GEO-CB43-ANCIEN-PALAIS-ALDHAMMAR.md) — Base fiable; suivre la mise en place, les détails ou les conséquences encore ouverts.
 - 🟡 [[lieux/GEO-CB43-PALAIS-DIVIN|Lire la fiche]] · [`GEO-CB43-PALAIS-DIVIN` — Palais divin — espaces d’accueil et de résidence](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/GEO-CB43-PALAIS-DIVIN.md) — Le personnel s’organise progressivement : Mirena dirige l’intendance domestique, Orvak l’accueil et le service, et Ysanne et Aurélian ont accepté leurs responsabilités culinaires. Les équipes d’entretien, de réception, de cuisine, de jardins et de maintenance restent à compléter.
@@ -491,7 +501,7 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🟡 [[personnages/PER-CB43-ELWEN-SAUREL|Lire la fiche]] · [`SEC-66` — Elwen Saurel — coordination administrative](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB43-ELWEN-SAUREL.md) — En CB4.3, son propre contrat n’est pas finalisé et son mandat définitif reste à formaliser. Elle cherche à construire une organisation durable, où les responsabilités ne reposent pas sur une seule personne. CB42 décrit d’abord une Elfe, puis associe le même nom à un homme d’une quarantaine d’années issu de commerçants. Les sources de synthèse conservent cette contradiction sans explication. Le portrait, le genre et l’éventuel lien entre les deux descriptions restent à confirmer; ne pas inventer de transformation ni fusionner plusieurs personnes sans validation.
 - 🟡 [[personnages/PER-CB42-MAERON-VELD|Lire la fiche]] · [`SEC-67` — Maëron Veld — coordination des résidences](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB42-MAERON-VELD.md) — Après les premiers échanges de CB4.2, Maëron souhaite contribuer à la coordination des résidences. **Aucun contrat définitif n’est signé dans CB42** : son périmètre, ses moyens et ses responsabilités restent à formaliser séparément de ceux d’Elwen et des institutions de la Maison.
 
-### 🔴 À reprendre — 112
+### 🔴 À reprendre — 107
 
 - 🔴 [`C42-12` — Préparer la prochaine séance](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/C42-12.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`CUL-CB2-NAHRIM` — Nahrim — pratiques de mémoire, d’eau et de délibération](https://github.com/Sijiel44/archives-alrick/blob/main/content/cultures/CUL-CB2-NAHRIM.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
@@ -501,7 +511,6 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🔴 [`EVT-CB1-PIERRES` — Déplacement des pierres et voyage des apprentis](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB1-PIERRES.md) — Le calendrier, le nom de l’événement et le caractère obligatoire du voyage restent à vérifier.
 - 🔴 [`EVT-CB2-CERCLE-OMBRES` — Le Cercle des Ombres](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB2-CERCLE-OMBRES.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`EVT-CB31-SOIREE-COURONNE` — Soirée de la Couronne — rendez-vous hivernal à préciser](https://github.com/Sijiel44/archives-alrick/blob/main/content/chroniques/EVT-CB31-SOIREE-COURONNE.md) — La source ne fixe pas la fréquence, le lieu, les participants, le rituel ni le nom de la bière. Il ne faut donc pas encore décrire cette soirée comme une fête annuelle canonisée.
-- 🔴 [`FAM-07` — Famille d’Alriana autour de Freya](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/FAM-07.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`GEO-CB1-BRUMEFER` — Brumefer](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/GEO-CB1-BRUMEFER.md) — > Fiche non publiée. Les détails géographiques et politiques restent à recouper.
 - 🔴 [`GEO-CB1-CHAMP-NOMS` — Le Champ des Noms](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/GEO-CB1-CHAMP-NOMS.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`GEO-CB1-MAISON-ECHOS` — La Maison des Échos](https://github.com/Sijiel44/archives-alrick/blob/main/content/lieux/GEO-CB1-MAISON-ECHOS.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
@@ -532,7 +541,6 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🔴 [`OBJ-CB2-PIERRE-POT-LAIT` — La pierre gardée dans le pot de lait](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB2-PIERRE-POT-LAIT.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`OBJ-CB31-BOUCLIER-BRAM` — Bouclier de voyage de Bram — concept d’insigne](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB31-BOUCLIER-BRAM.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`OBJ-CB31-CLE-HEIMDALL` — Clé de Heimdall — concept d’insigne](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB31-CLE-HEIMDALL.md) — La clé proposée pose une question sur la possibilité de relier deux lieux. Elle ne crée pas de passage de force et ne garantit pas qu’un lien soit sûr ou réalisable. CB42 décrit ensuite la **Clé-Œil** de Heimdall, qui vérifie certaines compatibilités et certains repères sans forcer un passage. Elle semble développer cette même limite de conception; la continuité exacte reste à vérifier.
-- 🔴 [`OBJ-CB31-GILET-HARALD` — Gilet fleuri de Harald — souvenir familial](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB31-GILET-HARALD.md) — description: "Gilet à motifs floraux conservé parmi les affaires de Harald, associé à Alriana et à un souvenir familial dont le texte présente une contradiction." Un gilet à motifs floraux ayant appartenu à Harald est conservé parmi ses anciennes affaires. La scène dit d’abord qu’il lui aurait été offert par sa mère, puis nomme Alriana, la mère d’Orin, dans ce souvenir. Le lien exact entre ces deux indications est contradictoire et reste à clarifier.
 - 🔴 [`OBJ-CB31-LAME-VAERA` — Lame d’ombre de Vaëra — concept d’insigne](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB31-LAME-VAERA.md) — Cette fiche décrit le concept formulé dans CB31. CB42 mentionne un insigne à lame discrète et une petite chouette, tout en précisant qu’il ne remplace pas nécessairement le couteau existant de Vaëra. Il s’agit probablement de l’évolution du concept; la continuité exacte reste à confirmer.
 - 🔴 [`OBJ-CB31-LONGUE-VUE-HALDREK` — Longue-vue de Haldrek — concept d’insigne](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB31-LONGUE-VUE-HALDREK.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`OBJ-CB31-MARTEAU-KELM` — Marteau de Kelm — concept d’insigne](https://github.com/Sijiel44/archives-alrick/blob/main/content/objets/OBJ-CB31-MARTEAU-KELM.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
@@ -546,11 +554,8 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 - 🔴 [`PER-CB2-SELA` — Sela — gardienne chargée de témoigner](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB2-SELA.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`PER-CB2-TORGARL` — Torgarl — partenaire de fondation](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB2-TORGARL.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`PER-CB31-AERENDIR` — Aerendir — voyageur et artisan du bois](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-AERENDIR.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
-- 🔴 [`PER-CB31-ALRIANA` — Alriana — mère d’Orin](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-ALRIANA.md) — La scène évoque un gilet à motifs floraux conservé parmi les affaires de Harald. Elle dit d’abord qu’il lui aurait été offert par sa mère, puis nomme Alriana; cette contradiction est à résoudre avant de fixer la relation au vêtement.
 - 🔴 [`PER-CB31-ASTRID` — Astrid — responsable du fonds d’études et d’ateliers](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-ASTRID.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
-- 🔴 [`PER-CB31-DURGAN` — Durgan Main-d’Acier — maître forgeron](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-DURGAN.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`PER-CB31-ELYRA` — Elyra — artisane et conceptrice textile](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-ELYRA.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
-- 🔴 [`PER-CB31-FREYA` — Freya — reine, Femme des Liens et grand-mère d’Orin](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-FREYA.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`PER-CB31-LETHIEL` — Lethiel — architecte](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-LETHIEL.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`PER-CB31-MARA-VIFACIER` — Mara Vifacier — armurière et forgeronne](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-MARA-VIFACIER.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
 - 🔴 [`PER-CB31-SERELYA` — Serelya — tante d’Orin, amie des marchés et des fêtes](https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/PER-CB31-SERELYA.md) — À vérifier contre la source brute; expliciter la correction ou décision qui permettrait de lever le statut.
