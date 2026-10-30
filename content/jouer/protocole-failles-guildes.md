@@ -85,4 +85,4 @@ La même institution peut offrir d'autres missions : escorte, exploration, enqu�
 
 - [[INST-CB32-SECOURS-AVENTURIERS|Secours mutuel et Guilde des Aventuriers]] : adoption, secours gradués, certifications selon le risque en déploiement, CB32 P08327–08719.
 - [[GRP-01|Revenants]] ; [[REV-01|Bram]] ; [[REV-03|Kelm]] ; [[REV-05|Torven]].
-- [[monde/failles-entre-couronnes|Failles entre Couronnes]] (dossier de relecture). Les scènes et étiquettes A/B/C proposées ici ne sont pas des faits joués.
+- [[monde/failles-et-ruptures|Failles et ruptures imprévisibles]] (référence publique). Les scènes et étiquettes A/B/C proposées ici ne sont pas des faits joués.
