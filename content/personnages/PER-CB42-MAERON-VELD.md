@@ -4,14 +4,14 @@ spoilers: true
 title: "Maëron Veld — coordination des résidences"
 code: "SEC-67"
 categorie: "personnage"
-canon_statut: "projet_en_cours"
+canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
-source_brute: "CB42 P08719; P08846–08985; P09233–09268; T4R5; CB43 P00221; CB42 P09231–18750; confirmation du créateur, 2026-10-29"
-derniere_revision_documentaire: "2026-10-29"
+source_brute: "CB42 P08719, P08846–08985, P09233–09268, T4R5 ; CB43 P00221, P12107–12132, P14523–14801, P18613–18719 ; Compendium V03 SEC-67"
+derniere_revision_documentaire: "2026-10-30"
 visibilite: "publique_avec_avertissement"
 description: "Repères de personnage et de continuité après CB42."
 tags: [maeron, veld, intendance, residences, valbrume, cb42, cb43]
-etat_editorial: en_cours
+etat_editorial: valide
 unlisted: true
 ---
 
@@ -19,11 +19,11 @@ unlisted: true
 
 Maëron Veld est un Humain de Valbrume qui a dirigé l’intendance d’une grande demeure accueillant régulièrement des délégations étrangères. Il possède une solide expérience de la gestion des équipes, des approvisionnements et des budgets.
 
-Après les premiers échanges de CB4.2, Maëron souhaite contribuer à la coordination des résidences. Le texte de CB42 conserve alors un périmètre en préparation. Le créateur confirme ensuite que son contrat a été signé dans la partie jouée. Son rôle de coordination des résidences doit rester distinct de celui d’Elwen et des institutions de la Maison; ses moyens, limites de délégation et procédures de recours sont à reprendre dans la prochaine source de campagne.
+Les premiers échanges de CB42 présentaient le poste comme **envisagé**. En **CB43, Maëron signe son contrat** pour la coordination des **résidences privées, services techniques et grands besoins matériels d’Orin**. Il suit notamment le quartier résidentiel, les besoins de la gare et les recrutements techniques. Il **ne reçoit pas autorité sur les demeures indépendantes des divinités**. Il demeure distinct d’Elwen, de Nahla et des administrations des royaumes.
 
-**État des engagements :** contrat signé selon la confirmation du créateur; le tableau complet des fonctions et responsabilités sera actualisé à partir du prochain document brut.
+**État des engagements :** contrat signé en CB43 ; limites d’autorité explicites ; les recrutements techniques et l’exploitation de certaines installations restent à compléter.
 
 ## Sources
 
 - *Campagne Brut 4.2*, CB42 P08719; P08846–08985; P09233–09268; T4R5.
-- *Campagne Brut 4.3*, CB43 P00221.
+- *Campagne Brut 4.3*, CB43 P00221, P12107–12132, P14523–14801 et P18613–18719 ; *Compendium V03*, SEC-67.
