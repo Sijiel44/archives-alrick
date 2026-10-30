@@ -1,8 +1,8 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dernier suivi éditorial compte **171 fiches codées approuvées** (109 vertes et 62 jaunes) parmi **285 entrées de travail**. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
+Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **177 fiches codées approuvées** (171 du lot initial + 4 Déchéance + 2 Bible), auxquelles s'ajoutent trois guides 5d6 expérimentaux (109 vertes et 62 jaunes) parmi **285 entrées de travail**. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
 
-**Cette branche prépare la publication. Aucun déploiement ne se déclenche sur une PR, un push ou une fusion.**
+**Publication active :** le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. Une PR seule ne publie rien.
 
 ## Démarrer sur Windows
 
@@ -151,3 +151,12 @@ Le prototype 5d6 ajoute :
 Page d'explication : `content/jouer/progression-voies-incidents.md` — **proposition_non_jouee**, `en_cours`, publiée comme pilote. Le contenu ne transforme pas les capacités ou objets proposés en lore établi, ne canonise pas les niveaux des personnages CB et ne remplace pas encore le mini-système Déchéance 2d6.
 
 Les notes MJ restent en stockage local, sans sécurisation sur appareil partagé. La recherche passe par **l'index public existant** qui exclut les fiches à spoilers ; elle n'ouvre pas les archives privées.
+
+
+## Audit du site et nouvelle architecture de l'accueil (30 octobre 2026)
+
+La page d'accueil `content/index.md` a été simplifiée : quatre parcours de navigation prioritaires, présentation du système 5d6 en test, puis renvoi vers la nouvelle page `content/bibliotheque.md` qui conserve la recherche et les filtres sur les fiches publiques. La navigation range les treize domaines dans un volet repliable ; les dossiers à révélations sont séparés.
+
+L'inventaire a contrôlé **331 pages Markdown** dans `content/`. **Aucune fiche non publiée ne possède `etat_editorial: valide`** : aucune fiche encore masquée n'a été rendue publique sans nouvelle relecture. Les dossiers en chantier (dont MAG-106 et les courants divins) requièrent une comparaison avec les sources.
+
+Voir [AUDIT_SITE_2026-10-30.md](AUDIT_SITE_2026-10-30.md) pour les constats, risques, décisions et priorités de travail. Le compteur 177 concerne les **fiches codées**, et non la somme de toutes les pages de navigation ou des brouillons.

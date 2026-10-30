@@ -2,11 +2,12 @@ function setupLibrary() {
   const input = document.querySelector<HTMLInputElement>("#library-search")
   if (!input) return
   const cards = Array.from(document.querySelectorAll<HTMLAnchorElement>(".archive-card"))
+  const categorySelect = document.querySelector<HTMLSelectElement>("#library-category")!
   const filters = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter]"))
   const empty = document.querySelector<HTMLElement>(".empty-library")!
   const count = document.querySelector<HTMLElement>("#library-count")!
   const reset = document.querySelector<HTMLButtonElement>("#reset-library")!
-  let category = "all"
+  let category = categorySelect.value || "all"
   const normalize = (value: string) => value.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLocaleLowerCase("fr")
   const update = () => {
     const query = normalize(input.value.trim())
@@ -22,8 +23,9 @@ function setupLibrary() {
   const controller = new AbortController()
   const options = { signal: controller.signal }
   input.addEventListener("input", update, options)
+  categorySelect.addEventListener("change", () => {category = categorySelect.value;update()}, options)
   filters.forEach((button) => button.addEventListener("click", () => { category = button.dataset.filter!; update() }, options))
-  reset.addEventListener("click", () => { category = "all"; input.value = ""; update(); input.focus() }, options)
+  reset.addEventListener("click", () => { category = "all"; categorySelect.value = "all"; input.value = ""; update(); input.focus() }, options)
   window.addCleanup(() => controller.abort())
 }
 document.addEventListener("nav", setupLibrary)

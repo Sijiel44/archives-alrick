@@ -14,7 +14,15 @@ etat_editorial: en_cours
 - 🟡 **En cours** — socle fiable; mise en place, conséquences ou détails restent à suivre et sont explicitement signalés.
 - 🔴 **À reprendre** — contradiction, identité, consentement, preuve ou décision à reprendre; la fiche reste en brouillon.
 
-**État de l’audit :** 285 pages de travail classées (109 vertes, 75 jaunes, 101 rouges). Parmi elles, 274 entrées portent un code : 270 fiches et quatre index de relecture. Les 15 index éditoriaux sont suivis séparément des fiches; 171 fiches codées sont publiées. Quatre fiches déjà présentes dans la bibliothèque (GRP-01, GEO-HAUTES-PATURES, GEO-ROCHEBRUME, REV-16) sont reprises dans le suivi. Les pages à spoilers affichent un avertissement avant le contenu et sont non listées; elles restent accessibles par lien éditorial. Les fiches de monde réutilisables sans révélation d’intrigue peuvent figurer dans la bibliothèque générale. Cette page de suivi est elle-même protégée par un avertissement.
+**État de l'audit initial (historique, 29 octobre 2026) :** 285 pages de travail classées (109 vertes, 75 jaunes, 101 rouges). Parmi elles, 274 entrées portent un code : 270 fiches et quatre index de relecture. Les 15 index éditoriaux sont suivis séparément des fiches; 177 fiches codées sont actuellement approuvées pour publication (171 du lot initial, quatre Déchéance et deux Bible). Quatre fiches déjà présentes dans la bibliothèque (GRP-01, GEO-HAUTES-PATURES, GEO-ROCHEBRUME, REV-16) sont reprises dans le suivi. Les pages à spoilers affichent un avertissement avant le contenu et sont non listées; elles restent accessibles par lien éditorial. Les fiches de monde réutilisables sans révélation d’intrigue peuvent figurer dans la bibliothèque générale. Cette page de suivi est elle-même protégée par un avertissement.
+
+## Vérification de publication du 30 octobre 2026
+
+Un inventaire direct des **331 documents Markdown présents dans `content/`** a vérifié les états `publish`, `etat_editorial` et `canon_statut` : **aucune fiche masquée ne porte `etat_editorial: valide`**. Les pages non publiées restent `en_chantier` ou des index de relecture. En particulier, **MAG-106** comporte un fait joué mais n'a pas encore sa validation éditoriale ; les dossiers de travail des **sept courants**, des **Failles**, des **Dix-Huit** et des **dragons** sont à comparer à leurs références publiques consolidées avant tout autre arbitrage. Les anciens documents de Déchéance marqués `historique` ne doivent pas être republiés.
+
+**Travail de site effectué :** l'[[bibliotheque|accès à la bibliothèque]] est maintenant distinct de l'accueil ; la navigation donne priorité aux quatre parcours. Les trois guides de jeu 5d6 publiés sont toujours en phase d'essai et ne font pas partie du compte des 177 fiches codées.
+
+**Note de méthode :** le suivi historique vert/jaune/rouge ne doit pas être réinterprété comme un nouvel inventaire : une nouvelle fiche créée après octobre 2026 n'augmente pas rétroactivement les comptes de l'audit CB43. Pour l'état des prochaines tâches, voir la synthèse de l'audit du site publiée dans le dépôt.
 
 ## Canon déjà confirmé à appliquer
 

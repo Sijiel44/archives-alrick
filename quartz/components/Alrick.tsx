@@ -41,32 +41,46 @@ export const Brand: QuartzComponent = (props) => (
 export const Navigation: QuartzComponent = (props) => {
   const base = root(props)
   const current = props.fileData.slug?.split("/")[0]
-  return (
-    <nav class="archive-nav" aria-label="Rubriques des archives">
-      <span class="nav-caption">LA BIBLIOTHÈQUE</span>
-      <a class={`internal ${current === "index" ? "active" : ""}`} href={`${base}/`} aria-current={current === "index" ? "page" : undefined}>
-        <span aria-hidden="true">☷</span> Toutes les archives
+  const mainLinks = [
+    ["index", "/", "Accueil", "⌂"],
+    ["univers", "/univers/", "Découvrir le monde", "✦"],
+    ["odyssee", "/odyssee/", "Lire l’Odyssée", "☼"],
+    ["jouer", "/jouer/", "Jouer dans cet univers", "⚔"],
+    ["mj-ia", "/mj-ia/", "MJ assisté par IA", "✧"],
+    ["bibliotheque", "/bibliotheque", "Bibliothèque des fiches", "☷"],
+  ]
+  return <nav class="archive-nav" aria-label="Parcours et bibliothèque des Archives">
+    <span class="nav-caption">COMMENCER</span>
+    {mainLinks.map(([slug, url, title, icon]) =>
+      <a class={`internal ${current === slug ? "active" : ""}`} href={`${base}${url}`}
+        aria-current={current === slug ? "page" : undefined} key={slug}>
+        <span aria-hidden="true">{icon}</span>{title}
       </a>
-      {sections.map(([slug, title, , icon]) => (
-        <a class={`internal ${current === slug ? "active" : ""}`} href={`${base}/${slug}/`} aria-current={current === slug ? "page" : undefined}>
-          <span aria-hidden="true">{icon}</span>{title}
-        </a>
-      ))}
-      <a class="internal" href={`${base}/jouer/atelier-5d6`}><span aria-hidden="true">⚄</span> Atelier de jeu 5d6</a>
-      <div class="nav-divider" />
-      <span class="nav-caption">DERRIÈRE LE RÉCIT</span>
-      <a class={`internal story-link ${current === "jdr-alrick" ? "active" : ""}`} href={`${base}/jdr-alrick/`} aria-current={current === "jdr-alrick" ? "page" : undefined}>
-        <span aria-hidden="true">✎</span> JDR d’Alrick <span class="spoiler-dot" aria-label="Spoilers">!</span>
-      </a>
-      <a class={`internal mj-link ${current === "mj" ? "active" : ""}`} href={`${base}/mj/`} aria-current={current === "mj" ? "page" : undefined}>
-        <span aria-hidden="true">⚿</span> Archives du MJ <span class="spoiler-dot" aria-label="Spoilers">!</span>
-      </a>
-      <a class={`internal editorial-link ${current === "suivi-editorial" ? "active" : ""}`} href={`${base}/suivi-editorial`} aria-current={current === "suivi-editorial" ? "page" : undefined}>
-        <span aria-hidden="true">●</span> Suivi éditorial
-      </a>
-      <div class="nav-colophon"><span class="small-star">✧</span><p>Un monde se raconte.<br />Sa mémoire se conserve.</p><small>L’ODYSSÉE D’ORIN · CB43</small></div>
-    </nav>
-  )
+    )}
+    <a class="internal nav-atelier" href={`${base}/jouer/atelier-5d6`}>
+      <span aria-hidden="true">⚄</span> Atelier de jeu 5d6
+    </a>
+    <details class="nav-domains">
+      <summary>Explorer les 13 domaines <span aria-hidden="true">⌄</span></summary>
+      <div class="nav-domains-links">
+        {sections.filter(([slug]) => slug !== "univers" && slug !== "jouer").map(([slug, title, , icon]) =>
+          <a class={`internal ${current === slug ? "active" : ""}`} href={`${base}/${slug}/`}
+            aria-current={current === slug ? "page" : undefined} key={slug}>
+            <span aria-hidden="true">{icon}</span>{title}
+          </a>
+        )}
+      </div>
+    </details>
+    <details class="nav-domains nav-secrets">
+      <summary>Dossiers de campagne <span class="spoiler-dot" aria-label="Contient des révélations">!</span></summary>
+      <div class="nav-domains-links">
+        <a class="internal story-link" href={`${base}/jdr-alrick/`}>Continuité d’Alrick · spoilers</a>
+        <a class="internal mj-link" href={`${base}/mj/`}>Archives du MJ · spoilers</a>
+        <a class="internal editorial-link" href={`${base}/suivi-editorial`}>Suivi éditorial · spoilers</a>
+      </div>
+    </details>
+    <div class="nav-colophon"><span class="small-star">✧</span><p>Un monde à découvrir.<br />D’autres histoires à vivre.</p><a class="internal" href={`${base}/a-propos`}>Sources et méthode</a></div>
+  </nav>
 }
 
 export const Topbar: QuartzComponent = (props) => (
@@ -95,37 +109,74 @@ export const PageIntro: QuartzComponent = (props) => {
 }
 
 export const Library: QuartzComponent = (props) => {
-  if (props.fileData.slug !== "index") return null
-  const files = props.allFiles.filter((f) => f.frontmatter?.code && f.frontmatter?.publish === true && !f.slug?.startsWith("mj/") && !f.unlisted)
-    .sort((a, b) => String(a.frontmatter?.title).localeCompare(String(b.frontmatter?.title), "fr"))
+  const isHome = props.fileData.slug === "index"
+  const isCatalog = props.fileData.slug === "bibliotheque"
+  if (!isHome && !isCatalog) return null
   const base = root(props)
-  return <div id="archive-content" tabIndex={-1}>
-    <section class="archive-hero" aria-labelledby="odyssee-title">
+  if (isHome) return <div id="archive-content" tabIndex={-1}>
+    <section class="archive-hero home-hero" aria-labelledby="alrick-home-title">
       <div class="hero-engraving" aria-hidden="true" />
       <div class="hero-copy">
-        <span class="eyebrow"><span aria-hidden="true">✧</span> LE MONDE SE SOUVIENT</span>
-        <h1 id="odyssee-title">L’Odyssée<br /><em>d’Orin</em></h1>
-        <p>Entre montagne, magie et mémoire.<br />Les êtres, les lieux et les mystères d’un monde façonné par ses histoires.</p>
-        <div class="hero-actions"><a class="archive-button" href="#bibliotheque">Ouvrir les archives <span aria-hidden="true">↗</span></a><a class="internal text-button" href={`${base}/chroniques/`}>Lire les chroniques <span aria-hidden="true">→</span></a></div>
+        <span class="eyebrow"><span aria-hidden="true">✧</span> UN UNIVERS À EXPLORER ET À JOUER</span>
+        <h1 id="alrick-home-title">Les Archives<br /><em>d’Alrick</em></h1>
+        <p>Un monde de royaumes, de magie et de légendes. Découvrez sa mémoire, suivez le voyage d’Orin ou vivez votre propre aventure.</p>
+        <div class="hero-actions">
+          <a class="archive-button internal" href={`${base}/jouer/`}>Commencer une aventure <span aria-hidden="true">→</span></a>
+          <a class="internal text-button" href={`${base}/univers/`}>Explorer l’univers <span aria-hidden="true">→</span></a>
+        </div>
       </div>
       <span class="hero-caption">MONTAGNES DE L’AUBE<br /><small>Évocation graphique · hors canon</small></span>
     </section>
-    <div class="collection-meta"><span><b>{files.length}</b> fiches de la bibliothèque</span><span><b>{sections.length}</b> domaines de connaissance</span><span>Un univers en cours de transmission</span></div>
+    <section class="home-paths" aria-labelledby="home-paths-title">
+      <span class="eyebrow">QUELLE HISTOIRE SOUHAITEZ-VOUS VIVRE ?</span>
+      <h2 id="home-paths-title">Choisissez votre point de départ</h2>
+      <div class="home-path-grid">
+        <a class="home-path internal" href={`${base}/univers/`}><span class="home-path-icon" aria-hidden="true">✦</span><h3>Découvrir l’univers</h3><p>Peuples, royaumes, dieux, créatures, traditions et mystères.</p><span class="home-path-link">Explorer le monde →</span></a>
+        <a class="home-path internal" href={`${base}/jouer/`}><span class="home-path-icon" aria-hidden="true">⚔</span><h3>Jouer une aventure</h3><p>Créer un héros, essayer les règles 5d6 et partir avec son groupe.</p><span class="home-path-link">Commencer à jouer →</span></a>
+        <a class="home-path internal" href={`${base}/odyssee/`}><span class="home-path-icon" aria-hidden="true">☼</span><h3>Lire l’Odyssée d’Orin</h3><p>Suivre la campagne fondatrice, ses rencontres et ses conséquences.</p><span class="home-path-link">Découvrir le récit →</span></a>
+        <a class="home-path internal" href={`${base}/mj-ia/`}><span class="home-path-icon" aria-hidden="true">✧</span><h3>Préparer un MJ avec IA</h3><p>Choisir les bonnes sources et garder la continuité de sa partie.</p><span class="home-path-link">Préparer sa séance →</span></a>
+      </div>
+    </section>
+    <section class="home-quickstart" aria-labelledby="home-start-title">
+      <div><span class="eyebrow">PRÊT À JOUER ?</span><h2 id="home-start-title">Créer un personnage en quelques étapes</h2>
+        <p>Choisissez quatre caractéristiques, lancez cinq dés à six faces, puis faites évoluer votre personnage à travers ses rencontres. L’Atelier 5d6 et la progression libre restent des outils en test.</p></div>
+      <a class="archive-button internal" href={`${base}/jouer/atelier-5d6`}>Ouvrir l’Atelier 5d6 <span aria-hidden="true">→</span></a>
+    </section>
+    <section class="home-library-link" aria-labelledby="home-library-title">
+      <div><span class="eyebrow">POUR APPROFONDIR</span><h2 id="home-library-title">Une encyclopédie à consulter à votre rythme</h2>
+        <p>La bibliothèque rassemble les fiches publiques de l’univers. Recherchez un personnage, un lieu, une institution ou une tradition sans parcourir tout le site.</p></div>
+      <a class="internal home-catalog-link" href={`${base}/bibliotheque`}>Ouvrir la bibliothèque complète →</a>
+    </section>
+  </div>
+  const files = props.allFiles.filter(f =>
+    f.frontmatter?.code && f.frontmatter?.publish === true && !f.slug?.startsWith("mj/") && !f.unlisted && f.frontmatter?.spoilers !== true
+  ).sort((a,b)=>String(a.frontmatter?.title).localeCompare(String(b.frontmatter?.title),"fr"))
+  return <div class="archive-library-page">
     <section class="archive-library" id="bibliotheque" aria-labelledby="library-title">
-      <div class="library-heading"><div><span class="eyebrow">LA BIBLIOTHÈQUE</span><h2 id="library-title">Explorer les connaissances</h2></div><span class="library-ornament" aria-hidden="true">— ◇ —</span></div>
-      <div class="library-controls"><div class="archive-filters" role="group" aria-label="Filtrer les fiches par domaine"><button type="button" data-filter="all" aria-pressed="true">Tout</button>{sections.map(([slug, , label]) => <button type="button" data-filter={slug} aria-pressed="false">{label}</button>)}</div><label class="library-search"><span aria-hidden="true">⌕</span><span class="sr-only">Rechercher dans les fiches</span><input id="library-search" type="search" placeholder="Un nom, un lieu, un code…" autoComplete="off" /></label></div>
-      <p class="sr-only" id="library-count" role="status" aria-live="polite">{files.length} fiches</p>
-      <div class="archive-grid">{files.map((file) => {
-        const section = sections.find(([slug]) => file.slug?.startsWith(slug + "/")) ?? ["univers", "Autres fiches", "Univers", "◇"]
-        const fm = file.frontmatter!
-        return <a class="archive-card internal" href={`${base}/${file.slug}`} data-category={section[0]} data-search={`${fm.title} ${fm.code} ${fm.description}`}>
+      <div class="library-heading"><div><span class="eyebrow">RECHERCHE ET CONSULTATION</span><h2 id="library-title">Explorer toutes les fiches accessibles</h2></div><span class="library-ornament" aria-hidden="true">— ◇ —</span></div>
+      <p>Les fiches contenant des révélations sont volontairement absentes de ce catalogue. Elles restent accessibles depuis leur parcours narratif, après avertissement.</p>
+      <div class="library-controls">
+        <label class="library-category-select">Domaine
+          <select id="library-category">
+            <option value="all">Tous les domaines</option>
+            {sections.map(([slug, , label])=><option value={slug} key={slug}>{label}</option>)}
+          </select>
+        </label>
+        <label class="library-search"><span aria-hidden="true">⌕</span><span class="sr-only">Rechercher dans les fiches</span><input id="library-search" type="search" placeholder="Un nom, un lieu, un code…" autoComplete="off"/></label>
+      </div>
+      <p id="library-count" role="status" aria-live="polite">{files.length} fiches consultables</p>
+      <div class="archive-grid">{files.map(file=>{
+        const section=sections.find(([slug])=>file.slug?.startsWith(slug+"/"))??["univers","Autres fiches","Univers","◇"]
+        const fm=file.frontmatter!
+        return <a class="archive-card internal" key={file.slug} href={`${base}/${file.slug}`}
+          data-category={section[0]} data-search={`${fm.title} ${fm.code} ${fm.description}`}>
           <div class="card-top"><span class="card-icon" aria-hidden="true">{section[3]}</span><span class="card-category">{section[2]}</span></div>
-          <span class="card-code">{String(fm.code)}</span><h3>{String(fm.title)}</h3><p>{String(fm.description)}</p><span class="card-bottom">Consulter la fiche <span aria-hidden="true">↗</span></span>
+          <span class="card-code">{String(fm.code)}</span><h3>{String(fm.title)}</h3><p>{String(fm.description)}</p>
+          <span class="card-bottom">Consulter la fiche <span aria-hidden="true">↗</span></span>
         </a>
       })}</div>
-      <div class="empty-library" hidden><span aria-hidden="true">◇</span><h3>Aucun feuillet ne correspond.</h3><p>Essayez un autre nom ou explorez tous les domaines.</p><button type="button" id="reset-library">Réinitialiser la recherche</button></div>
+      <div class="empty-library" hidden><span aria-hidden="true">◇</span><h3>Aucun feuillet ne correspond.</h3><p>Essayez un autre mot ou revenez à tous les domaines.</p><button type="button" id="reset-library">Réinitialiser les filtres</button></div>
     </section>
-    <aside class="mj-invitation"><span class="seal" aria-hidden="true">⚿</span><div><span class="eyebrow">POUR LES MAÎTRES DU JEU</span><h2>De l’autre côté de l’histoire</h2><p>Repères de continuité et préparations. Ces feuillets peuvent révéler les secrets de l’aventure.</p></div><a class="internal" href={`${base}/mj/`}>Archives du MJ <span aria-hidden="true">→</span></a></aside>
   </div>
 }
 Library.afterDOMLoaded = script
