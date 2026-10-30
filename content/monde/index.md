@@ -45,6 +45,7 @@ La Déchéance **ne signifie pas** que tous les démons, toutes les Failles ou l
 - [[monde/menaces-et-antagonismes|Menaces, monstres et antagonistes]] — repères publics sur les adversaires, les créatures et la cruauté, sans créer de nouveaux dieux.
 - [[monde/dix-huit-grandes-puissances|Les Dix-Huit — répertoire harmonisé]] : **fiche de référence publiée**, domaines vérifiés dans B39-05 ; les biographies individuelles restent à enrichir.
 - [[monde/courants-et-antagonismes|Les sept courants divins]] — fiche de référence validée : sensibilités politiques, positions mouvantes et dérives possibles, sans partis ennemis automatiques.
+  - [[monde/courants/jardiniers|Jardiniers]] · [[monde/courants/legislateurs|Législateurs]] · [[monde/courants/heritiers|Héritiers]] · [[monde/courants/liberateurs|Libérateurs]] · [[monde/courants/preservateurs|Préservateurs]] · [[monde/courants/conquerants|Conquérants]] · [[monde/courants/devoreurs|Dévoreurs]] — **une fiche et un emblème par courant**.
 - **Démonologie générale et bestiaire hostile :** études toujours ouvertes ; la **Déchéance et son premier répertoire de Seigneurs/Princes** sont désormais validés séparément. Les autres prototypes d'antagonistes demeurent à instruire.
 
 Les puissances divines peuvent avoir des opposants sincères, des rivaux et de vrais ennemis ; leurs antagonistes ne doivent pas être déduits du seul nom d'une Autorité. Le Silence et Níðor ne sont pas des méchants génériques.
@@ -53,7 +54,7 @@ Les puissances divines peuvent avoir des opposants sincères, des rivaux et de v
 
 La [[monde/passages-entre-couronnes|fiche canonique des passages]] résume les **Portes, Failles, Reflets, Confluences, Routes saisonnières et Passages vivants** (Bible fondamentale S09, pages source 85–87). Les Failles sont des ouvertures dangereuses liées à des blessures de la réalité, et la **magie de la Faille** est une voie ancienne documentée (S09, page source 12). Elle peut attirer des entités ou provoquer des conséquences graves ; elle n'est **pas automatiquement maléfique**.
 
-La gestion courante d'incidents, les équipes de fermeture, les **tables d'apparition aléatoire** et les nouvelles créatures constituent des **propositions de développement**, en relecture hors du site public. La [[institutions/INST-CB32-SECOURS-AVENTURIERS|Guilde des Aventuriers et les secours gradués]] offrent une base institutionnelle déjà adoptée, mais leur déploiement reste progressif.
+Les [[monde/failles-et-ruptures|Failles et leurs conséquences]] peuvent maintenant être décrites de la rupture locale à la catastrophe majeure **imprévisible**. Les [[jouer/evenements-aleatoires-failles|tables d'incidents]] et [[jouer/protocole-failles-guildes|missions de secours et de guilde]] sont disponibles comme **outils de jeu facultatifs**, sans établir de procédure universelle de fermeture. La [[institutions/INST-CB32-SECOURS-AVENTURIERS|Guilde des Aventuriers et les secours gradués]] offrent une base institutionnelle déjà adoptée, mais leur déploiement reste progressif.
 
 Les rapports sur les anomalies du Nord ne démontrent pas automatiquement une Faille, une action de Níðor ou une manœuvre de la Première Ancre.
 
