@@ -3,13 +3,16 @@ publish: false
 title: "Jouer la Déchéance — prototype de progression pour PJ et PNJ"
 description: "Mécanique facultative de tentation, pouvoir rapide, seuils, contreparties et retours difficiles."
 categorie: "guide"
-canon_statut: "proposition_non_jouee"
+canon_statut: "historique"
 etat_editorial: en_chantier
 portee: "univers_partage"
 public_cible: ["mj", "joueurs"]
 usage_en_jeu: ["scenario", "regles", "prompt"]
 tags: [decheance, corruption, joueurs, regles, pouvoir, pacte, proposition]
 ---
+
+> [!important] **Archive de conception — version remplacée**
+> Cette page conserve les **premières propositions**, non publiées, avec leurs hésitations historiques. Le créateur a validé ultérieurement le socle et les règles dans [[jouer/decheance-systeme|SYS-DECH-01 — mini-système v1.0 validé]]. **Le document approuvé prévaut** : les avertissements « non canonique » dans la présente archive décrivent son état au moment de la rédaction, pas l'état actuel des Archives.
 
 # Jouer la Déchéance — prototype d'essai
 
