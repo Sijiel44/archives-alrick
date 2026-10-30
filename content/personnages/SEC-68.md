@@ -1,44 +1,36 @@
 ---
-publish: false
-title: "Célianne"
+publish: true
+title: "Célianne — Botaniste indépendante"
 code: "SEC-68"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P10583–17704"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
-tags: [sec_68, cb42, brouillon, célianne]
-etat_editorial: en_chantier
+description: "Célianne est la fille adulte de **Mirena Valcourt**. Elle étudie les plantes médicinales et cultive un intérêt personnel pour la botanique."
+tags: [sec_68, cb42, célianne]
+etat_editorial: valide
+unlisted: true
 ---
 
-# Célianne
+# Célianne — Botaniste indépendante
 
-> [!warning] Brouillon de continuité
-> Synthèse issue du registre directeur après CB42. Avant publication, relire la fiche dans le volume indiqué et vérifier que chaque élément conserve son statut.
+## Identité, parcours et caractère
 
-## Synthèse attestée
+Célianne est la fille adulte de **Mirena Valcourt**. Elle étudie les plantes médicinales et cultive un intérêt personnel pour la botanique.
 
-Fille adulte de Mirena Valcourt, elle étudie les plantes médicinales et garde ses propres intérêts botaniques. Mirena demande explicitement que son emploi de gouvernante n’engage pas sa fille. Aucun poste de serre ni appartenance à la Maison n’est signé pour Célianne. Piste proposée : une rencontre volontaire avec Lévara après avoir défini ce qu’elle souhaite apprendre.
+## Situation établie dans les documents
 
-## Statut documentaire
+Mirena précise qu’accepter la gouvernance domestique du Palais n’engage **en rien** sa fille. Célianne n’a signé aucun poste de serre, contrat ni appartenance à la Maison.
 
-- **État du registre :** Profil proposé puis actualisation selon les scènes.
-- **Avancement :** Libre de ses études et de son avenir.
-- **Connaissance en jeu :** À préciser par affirmation. Les personnages ne connaissent pas automatiquement tout le contenu de cette fiche.
-- **Qualité du renvoi :** Fiche principale.
+## Limites et suites ouvertes
 
-## Source
+Une rencontre volontaire avec Lévara et la transmission de connaissances botaniques sont des possibilités à discuter avec Célianne ; aucune mission imposée n'est attestée.
 
-- *Compendium des personnages et des relations*, SEC-68 Célianne — CB42 P10583–17704.
+Les éventuelles nouvelles aventures sont à jouer ; elles ne font pas partie des faits déjà établis.
 
-## Fiches liées
+## Sources et adresse de classement
 
-- O42-07 ; O42-10.
-
-## À compléter
-
-- Reprendre les formulations exactes du volume thématique et ajouter les faits ultérieurs sans effacer cet état.
-- Distinguer toute proposition de développement d’un événement joué ou d’une décision canonique.
+*Compendium des personnages et des relations* v1.7, **SEC-68**, et renvois de la fiche précédente : CB42 P10583–17704. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.
