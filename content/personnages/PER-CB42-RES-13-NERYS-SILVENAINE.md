@@ -1,36 +1,38 @@
 ---
 publish: false
 spoilers: true
-title: "Nerys Silvenaine — Profil de maintenance magique"
+title: "Nerys Silvenaine — Entretien des ouvrages enchantés"
 code: "RES-13"
 categorie: "personnage"
-canon_statut: "proposition_non_jouee"
+canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
-source_brute: "CB42 P10794–10797"
+source_brute: "CB42 P10794–10797 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
-description: "Portrait préparatoire : Elfe vivante de 214 ans, formée aux enchantements domestiques et à l’architecture magique ; elle connaît les installations de chauffage, écla"
+description: "Nerys Silvenaine est une Elfe vivante de 214 ans formée aux enchantements domestiques et à l'architecture magique (chauffage, éclairage, protections et entretien)."
 tags: [nerys, silvenaine, magie, maintenance, architecture-magique, cb42]
 etat_editorial: en_cours
 unlisted: true
 ---
 
-# Nerys Silvenaine — Profil de maintenance magique
+# Nerys Silvenaine — Entretien des ouvrages enchantés
 
-## Métier, histoire et caractère
+## Biographie établie
 
-Portrait préparatoire : Elfe vivante de 214 ans, formée aux enchantements domestiques et à l’architecture magique ; elle connaît les installations de chauffage, éclairage, protection et entretien.
+Nerys Silvenaine est une Elfe vivante de 214 ans formée aux enchantements domestiques et à l'architecture magique (chauffage, éclairage, protections et entretien).
 
-## Situation vérifiée
+**Décision canonique du créateur — 30 octobre 2026 :** cette personne **existe réellement dans l'univers**. Son portrait de référence peut être employé pour de futures rencontres. Il n'est pas pour autant établi qu'Orin la connaît ou lui a proposé un travail.
 
-La responsabilité de maintenance magique figure parmi les **postes envisagés en CB42**. Les données consultées ne prouvent ni entretien personnel avec elle, ni embauche, ni accès à une installation du Palais.
+## Situation au dernier point de reprise
 
-## Limites, relations et perspectives
+Elle ne possède **aucun contrat de maintenance du Palais**, et aucun accès aux installations n'est prouvé. Elle est distincte de toute autre Nerys, notamment la puissance du Dernier Phare.
 
-Ne pas confondre Nerys Silvenaine avec les autres Nerys de l’univers, notamment la puissance du Dernier Phare. Toute attribution de nouveaux Cercles exige une scène ou une source distincte.
+## Statut éditorial et continuité
 
-**Dossier relu, toujours non publié** : les engagements ou l’existence en scène nécessitent encore une décision, une rencontre ou une source claire.
+**Existence : validée comme lore du monde. Rencontre avec Orin : non jouée. Contrat : aucun confirmé.** Les détails secondaires encore absents ne sont pas des événements rétroactifs ; ils pourront être développés pour une autre campagne en les distinguant des scènes jouées.
+
+Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
 ## Sources
 
-*Compendium des personnages et des relations* v1.7, **RES-13** ; renvois conservés : CB42 P10794–10797. Ce code documentaire ne fixe ni allégeance, ni état de Rappelé, ni appartenance aux Revenants.
+*Compendium des personnages et des relations* v1.7, entrée **RES-13** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.
