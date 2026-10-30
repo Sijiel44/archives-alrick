@@ -67,6 +67,14 @@ Pour le fonds confié à Astrid, Ylva et la famille d’Alriana autour de Freya,
 
 Cette fiche suit Orin et Alrick dans le **JDR d’Alrick**. Ses aventures et son évolution divine appartiennent à cette continuité de campagne. Les éléments réutilisables dans d’autres parties doivent aussi recevoir une fiche dans les rubriques générales de l’univers.
 
+## Une tragédie ancienne et la question des Failles — hypothèse non jouée
+
+Le parcours d'Orin reste traversé par le **deuil de sa compagne et de son enfant**, ainsi que par le souvenir d'une **ligne défendue jusqu'à la mort par son père** au cours de l'invasion évoquée dans les anciens récits. Le poids humain de ces événements ne doit pas être réduit à une explication technique ou à un antagoniste commode.
+
+**Piste ouverte par le créateur le 30 octobre 2026 :** il serait possible qu'une **Faille majeure**, soudaine et difficile à anticiper, ait contribué à cette catastrophe. **Cela n'a pas été confirmé comme cause jouée par les sources actuellement recoupées**. La fiche ne déclare donc ni qu'un Déchu a créé cette Faille, ni qu'Orin a découvert cette origine, ni que les morts peuvent être « expliqués » par un seul complot.
+
+Cette piste pourrait à terme éclairer pourquoi les ruptures du monde le touchent personnellement, tout en laissant entière la question de la culpabilité, de la mémoire des victimes et de la responsabilité des commandants. Voir [[monde/failles-et-ruptures|les Failles et leur gravité]].
+
 ## Limites et questions
 
 - Les titres officiels, l’étendue du pouvoir princier et la succession ne sont pas détaillés ici.
