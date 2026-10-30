@@ -2,6 +2,8 @@
 
 **Audit éditorial : 29 octobre 2026, après PR #22 et publication du lot Bible MON-005 / MON-PASS-01.**
 
+**Mise à jour du 30 octobre 2026 :** l'Atelier 5d6, sa progression expérimentale et ses profils JSON ont été publiés comme **outils de playtest** (PR24–25), sans passer le système général en canon. La page d'accueil a été réorganisée et le catalogue complet isolé. Une vérification des **331 fichiers Markdown** n'a trouvé **aucune fiche non publiée déjà `etat_editorial: valide`** ; la priorité suivante est donc une **validation éditoriale sourcée** des dossiers en chantier. Voir [AUDIT_SITE_2026-10-30.md](AUDIT_SITE_2026-10-30.md).
+
 Ce document est un **plan de travail**, pas un récit de la campagne d'Orin, pas une loi du monde, pas une liste de contenus approuvés automatiquement pour la publication. Les codes CB désignent des **sessions sources**, pas des dates du calendrier.
 
 ## A. Ce qui est stabilisé
@@ -75,3 +77,12 @@ Ce document est un **plan de travail**, pas un récit de la campagne d'Orin, pas
 6. Après fusion, contrôle **indépendant** de la réussite du déploiement et du rendu public.
 
 **Sources principales du plan :** fichiers et CI du dépôt `Sijiel44/archives-alrick`, PR #20–22 ; V01 *Bible du monde et des puissances* v1.7 (B39-05/B39-06, S09 passages) ; V02 *Atlas* v1.8 ; INST-CB32-SECOURS-AVENTURIERS ; registres directeurs v2.4.
+
+
+## D. Priorités techniques et de parcours (30 octobre 2026)
+
+1. **P0 — Vérifier les quatre entrées et le catalogue en navigateur réel**, surtout sur mobile, après chaque déploiement. Les tests actuels vérifient la génération, les liens, le contenu public et les protections spoilers, pas tous les clics ni la performance perçue.
+2. **P1 — Relire les brouillons prioritaires** : MAG-106, les sept courants, Failles et dossiers de lieux CB1–43 ; sélectionner les éléments véritablement approuvables sans attribuer des faits non joués à la campagne.
+3. **P1 — Généraliser les modèles de fiches PJ/PNJ/créatures** autour des niveaux 1–12 et des voies libres **uniquement comme paramètres optionnels**, avec source et version. Les fichiers JSON d'essai n'ont aucune autorité canonique.
+4. **P2 — Tester les combats, la magie et les incidents de 3 échecs**, puis décider d'un système général unique ou de modules distincts ; harmoniser la Déchéance 2d6 seulement après arbitrage.
+5. **P2 — Audit ergonomique et d'accessibilité** : taille de typographie, longueur de navigation, formulation des filtres, clavier, repli mobile, profils et recherche. Ajouter un test automatique de l'accueil et de la bibliothèque séparée.
