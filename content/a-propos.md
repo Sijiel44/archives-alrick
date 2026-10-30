@@ -70,6 +70,6 @@ Le dossier composite des **Failles** reste non publié : son **socle confirmé**
 
 ## Réconciliation Atlas et personnages après CB43 (30 octobre 2026)
 
-Le compte actuel est de **216 fiches codées approuvées** : **198** avant le lot, puis **9 nouveaux dossiers de l'Atlas** et **9 biographies nouvelles ou rendues publiables**. Les contrats de Nahla, Tavian, Thaléa, Elwen et Maëron sont rapportés à leur état réel ; Borin demeure mort et non rappelé. Les fiches sensibles restent derrière un avertissement et non listées.
+Le compte actuel est de **216 fiches codées approuvées** : **198** avant le lot, puis **10 fiches de lieux** (neuf nouvelles et Entre-Rives promue) et **8 biographies**. Les contrats de Nahla, Tavian, Thaléa, Elwen et Maëron sont rapportés à leur état réel ; Borin demeure mort et non rappelé. Les fiches sensibles restent derrière un avertissement et non listées.
 
 L'[[lieux/index|Atlas]] relie les Sept Grandes Cités, les ensembles du Mérien et Orinor, un schéma explicitement non métrique et une table des échanges. Les **645 sujets du registre v2.4** sont un inventaire de sources, pas un catalogue de 645 pages qui seraient toutes publiables immédiatement. Les anciennes couleurs 109/75/101 sur 285 sont **un état historique** et non le résultat de l'audit des 645 sujets. La réconciliation détaillée et ses limites sont décrites dans la documentation du dépôt.
