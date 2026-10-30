@@ -1,23 +1,35 @@
 ---
 publish: true
-title: "Groupes et alliances"
-description: "Compagnies, coalitions, ordres, cercles et institutions qui façonnent le monde d'Alrick."
-tags: [alrick, index, groupes]
+title: "Groupes, compagnies et alliances"
+description: "Collectifs du monde, fonctions attestées et affiliations distinctes."
+tags: [univers, groupes, index]
+portee: "mixte"
+public_cible: ["lecteurs", "joueurs", "mj"]
+usage_en_jeu: ["reference", "rencontre", "scenario"]
 ---
 
-*Les individus écrivent leurs histoires. Les groupes dessinent les chemins sur lesquels elles se rencontrent.*
+# Groupes, compagnies et alliances
 
-## Compagnies et coalitions
+Un groupe est une communauté de choix, de responsabilités ou d'intérêts. **Une participation ponctuelle, un logement partagé, une alliance diplomatique et une appartenance formelle ne sont pas équivalents**.
 
-- [[GRP-01|Les Revenants — La compagnie qui choisit de revenir]] : compagnons d'Orin, autonomie, insignes, manoir et doctrine du retour.
+## Compagnie documentée
 
-## Dossiers à développer
+- [[GRP-01|Les Revenants — la compagnie qui choisit de revenir]] : groupe libre lié à l'Odyssée d'Orin, avec noyau attesté, statuts honorifiques et missions propres. Le nom de la compagnie ne signifie pas que ses membres sont tous morts et revenus à la vie.
 
-- **La Première Ancre** — coalition composite de maisons, cultes et puissances ; membres, buts divergents et statut des contacts restent à préciser.
-- **La suite divine d'Orin** — entourages et fonctions au sein de la Maison, à distinguer de la compagnie des Revenants et de la résidence personnelle du Palais.
-- **Le Conseil des Dix-Huit Grandes Puissances** — cercle divin et institution du monde, distinct de la Maison et des compagnies itinérantes.
+## Institutions et collectifs à distinguer
 
-> [!note] Classement, non allégeance
-> Une fiche de groupe décrit les liens, les institutions et les choix attestés. Être présent dans une réunion, résider dans un lieu ou figurer dans le même dossier documentaire ne signifie pas appartenir à l'organisation.
+- [[institutions/index|Les Conseils et institutions du Royaume]] : mandats de droit public, non compagnies privées.
+- [[maison/index|La Maison divine]] : communauté et lieux de vie, **distincte du Palais personnel d'Orin** et de sa compagnie.
+- [[monde/index|Les Grandes Puissances]] : dossiers de cosmologie et de relations divines, sans équivalence automatique entre Conseil, Maison et suite.
 
-Pour les institutions et leurs lieux de vie, voir aussi [[maison/index|Maisons et traditions divines]] et [[monde/index|Le Monde]].
+## Dossiers à développer, non canonisés par ce seul index
+
+- **La Première Ancre** : coalitions et liens à documenter avec prudence, sans inventer des membres ou des accords.
+- **Suites divines et compagnies alliées** : à décrire selon leurs choix, affiliations et sources propres.
+- **Conseil des Dix-Huit** : à migrer depuis la Bible du monde avant de présenter une liste publique exhaustive.
+
+## Pour une nouvelle aventure
+
+Un personnage peut chercher à entrer dans une compagnie, servir une cité, travailler avec une guilde ou simplement coopérer pour une mission. Ces liens se gagnent en scène ; ils ne sont pas accordés automatiquement par la présence d'une fiche.
+
+[[personnages/index|Personnages]] · [[institutions/index|Institutions]] · [[jouer/index|Commencer à jouer]]
