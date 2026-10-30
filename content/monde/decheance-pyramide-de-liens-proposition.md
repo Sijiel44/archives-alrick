@@ -3,7 +3,7 @@ publish: false
 title: "La Pyramide de Déchéance — chaînes d'emprise, tributs et suzerains"
 description: "Le pouvoir du Déchu finit par dépendre de la chute d'autres êtres, d'un réseau de dépendance et de ses Ancrages."
 categorie: "guide"
-canon_statut: "proposition_non_jouee"
+canon_statut: "historique"
 etat_editorial: en_chantier
 visibilite: "a_relire_avant_publication"
 portee: "univers_partage"
@@ -12,6 +12,9 @@ usage_en_jeu: ["reference", "scenario", "rencontre"]
 source_brute: "Concept proposé par le créateur le 29 octobre 2026 ; en continuité avec les dossiers non canoniques Déchéance et règles expérimentales PR22 ; Bible V01 S09 p. 63–64 (ascension et Ancrages)"
 tags: [decheance, pyramide, vassaux, pactes, asservissement, cultes, ancrages, antagonistes, proposition]
 ---
+
+> [!important] **Archive de conception — version remplacée**
+> Cette page conserve les **premières propositions**, non publiées, avec leurs hésitations historiques. Le créateur a validé ultérieurement le socle et les règles dans [[monde/decheance-canon|MON-DECH-01 — Tribut des Chutes validé]]. **Le document approuvé prévaut** : les avertissements « non canonique » dans la présente archive décrivent son état au moment de la rédaction, pas l'état actuel des Archives.
 
 # La Pyramide de Déchéance — vivre de la chute des autres
 
