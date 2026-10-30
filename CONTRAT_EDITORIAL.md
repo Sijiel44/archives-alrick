@@ -49,6 +49,20 @@ Une autre table, avec ou sans IA, peut prendre l'univers comme point de départ.
 
 L'**Espace sur demande** désigne l'ensemble du domaine avec ses îles et transports ; la **Maison divine** désigne la communauté ; le **Palais divin** est la résidence personnelle d'Orin sur l'île de la Maison. Les îles publiques et des Revenants sont distinctes. Les Gardiennes du Passage, la mer intérieure, les maisons de fonction et la gare agrandie sont attestées dans CB43 ; les nouvelles îles de loisirs et demeures détaillées attendent la source CB4.4. **Elyan Corbeau-Gris est FAM-08 dans le Compendium**, grand-père maternel et mentor d'Orin ; sa fiche web PER-CB43 ne désigne pas un autre individu.
 
+## Index de rubriques et navigation sans faux canon
+
+Les treize rubriques thématiques possèdent des **index de lecture** reliés par la porte [[univers/index|Univers]]. Ces index sans code documentaire :
+
+1. peuvent être publiés **sans modifier le décompte des fiches codées** approuvées ;
+2. proposent comme liens de lecture **seulement les fiches déjà approuvées pour publication** ; les pages rouges ou brouillons restent citées en tant que *sujets à migrer*, sans lien de publication ;
+3. signalent avant les liens que certaines fiches publiques ouvrent des **avertissements de spoilers** ;
+4. conservent la distinction entre **fait joué, lore validé, déclaration, hypothèse, proposition et chantier** ;
+5. n'inventent ni placement cartographique, ni période, ni droits d'accès, ni capacités magiques, ni chiffres de règles à partir de titres ou de résumés.
+
+Une rubrique **publique** peut expliquer qu'un thème existe dans la Bible, l'Atlas ou le Codex sans présenter son dossier source encore non migré comme une page accessible. Toute nouvelle fiche se rattache à une rubrique et, selon sa portée, à l'un des quatre parcours ; elle n'a pas besoin de recopier l'histoire entière d'Orin.
+
+**Exemple de méthode pour les sciences magiques :** le guide [[univers/magie-pour-jouer|Comprendre la magie]] cite les codes MAG du volume V04, mais n'est pas une fiche technique codée nouvelle et ne fixe pas de caractéristiques de jeu.
+
 ## Illustrations et portraits
 
 Les illustrations web validées sont rangées dans `content/images/` (sous-dossiers par domaine). Formats acceptés : WebP, AVIF, PNG ou JPG, avec une limite de **3 Mio par fichier**. Les images SVG, documents sources, archives et autres fichiers binaires non approuvés restent exclus du site. Une page Markdown peut faire référence à une image locale avec un chemin relatif, par exemple `![Heimdall](../images/personnages/heimdall-portrait.webp)` depuis `content/personnages/REV-06.md`. Le contrôle du site doit vérifier que chaque image publiée est disponible à son URL finale. Les illustrations officielles doivent être approuvées par le créateur ; une image conceptuelle ne devient pas canonique par sa seule présence dans le dépôt.
