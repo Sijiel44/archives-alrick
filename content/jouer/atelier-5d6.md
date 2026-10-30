@@ -30,7 +30,7 @@ Le mode MJ accepte un **profil** (objet JSON avec nom et quatre caractéristique
 
 ```json
 {
-  "schema": "alrick.sheet.v1",
+  "schema": "alrick.sheet.v2",
   "name": "Gardien du vieux col (exemple)",
   "kind": "pnj",
   "profession": "Gardien",
