@@ -1,20 +1,41 @@
 ---
-publish: false
-title: "Institutions et services publics — brouillons CB3.2–CB3.6"
-description: "Institutions adoptées en cours de déploiement, projets administratifs et principes de service public issus des campagnes."
-etat_editorial: en_cours
+publish: true
+title: "Institutions, droit et services publics"
+description: "Conseils, école, justice, secours et défense : distinguer l'adoption des réformes de leur déploiement."
+tags: [univers, institutions, droit, index]
+portee: "univers_partage"
+public_cible: ["lecteurs", "joueurs", "mj"]
+usage_en_jeu: ["reference", "decouverte", "scenario"]
 ---
 
-# Institutions et services publics
+# Institutions, droit et services publics
 
-Les fiches ci-dessous distinguent les institutions adoptées en cours de déploiement des chantiers qui restent en conception. Les dispositifs du colloque de CB3.2 sont adoptés par le créateur et se mettent en place progressivement dans le Royaume.
+Les institutions structurent le quotidien du Royaume : elles ont des mandats, des responsables, des moyens et des limites. Elles ne sont pas une simple extension de la volonté d'Orin.
 
-- [[INST-CB32-CONSEILS-ROYAUME|Conseils et Grand Conseil du Royaume]]
-- [[INST-CB32-EDUCATION-TRANSMISSION|Administration de l’éducation et de la transmission]]
-- [[INST-CB32-SECOURS-AVENTURIERS|Secours mutuel et Guilde des Aventuriers]]
-- [[INST-CB32-CHARTE-SOLDAT|Charte du Soldat]]
-- [[INST-CB32-JUSTICE-INFORMATION|Justice, presse et information publique]]
-- [[INST-CB32-DEFENSE-RESILIENCE|Défense, sécurité et résilience]]
-- [[INST-CB35-FISCALITE-ROYAUME|Cadre fiscal commun du Royaume]]
-- [[INST-CB36-COLLOQUE-TORNGARD|Grand Colloque de Torngard — actes et commissions]]
-- [[INST-CB43-GARANTIES-SOUVERAINES|Garanties souveraines et mandats de représentation]]
+> [!important] Adoption ne signifie pas achèvement
+> Plusieurs cadres ont été **adoptés au colloque**, mais leur mise en œuvre demeure progressive dans le Royaume. Une école, une commission, un bureau de secours ou un dispositif militaire ne doit pas être décrit comme fonctionnant partout simplement parce que son principe a été accepté.
+
+## Représentation et administration
+
+- [[INST-CB32-CONSEILS-ROYAUME|Conseils et Grand Conseil du Royaume]] — représentation et droits de saisine.
+- [[INST-CB36-COLLOQUE-TORNGARD|Le Grand Colloque de Torngard]] — actes et commissions observés.
+- [[INST-CB35-FISCALITE-ROYAUME|Le cadre fiscal commun]] — réforme encore en préparation.
+
+## Apprendre, soigner et secourir
+
+- [[INST-CB32-EDUCATION-TRANSMISSION|Éducation et transmission]] — apprentissage, savoirs pratiques et continuité des écoles.
+- [[INST-CB32-SECOURS-AVENTURIERS|Secours mutuel et Guilde des Aventuriers]] — entraide et réponse graduée.
+
+## Justice et sécurité
+
+- [[INST-CB32-JUSTICE-INFORMATION|Justice, presse et information publique]] — procédures, recours et garanties.
+- [[INST-CB32-DEFENSE-RESILIENCE|Défense, sécurité et résilience]] — rôles distincts, responsabilité civile et doctrine du repli.
+- [[PROJ-CB32-PROFONDEUR-NORD|Défense en profondeur du Nord]] — doctrine adoptée dont le déploiement reste à suivre.
+
+## Mandats particuliers
+
+- [[INST-CB43-GARANTIES-SOUVERAINES|Garanties souveraines]] — cadre **conditionnel**, non décision financière déjà signée.
+
+## Pour d'autres campagnes
+
+Ces institutions peuvent servir d'alliés, d'interlocuteurs, de contraintes ou de lieux d'enquête. Un agent peut agir selon son mandat et sa conscience, même si une règle a été décidée ailleurs. Pour la suite des projets institutionnels, voir [[projets/index|les projets et chantiers]] et [[economie/index|l'économie]].
