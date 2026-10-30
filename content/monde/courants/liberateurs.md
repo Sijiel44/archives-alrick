@@ -18,7 +18,7 @@ tags: [divinites, courants, neuvieme-couronne, liberateurs]
 
 # Les Libérateurs
 
-![Symbole éditorial des Les Libérateurs, non obligatoire pour les cultes.](../../static/images/courants/liberateurs.svg)
+![Symbole éditorial des Les Libérateurs, non obligatoire pour les cultes.](https://sijiel44.github.io/archives-alrick/static/images/courants/liberateurs.svg)
 
 *Qu'aucune naissance ne soit une vieille servitude.*
 
