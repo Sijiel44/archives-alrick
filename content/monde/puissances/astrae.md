@@ -1,6 +1,6 @@
 ---
 publish: true
-title: "Astraë — Étoiles, routes célestes et horizons"
+title: "Astraë — Étoiles et routes célestes"
 code: "DIV-13"
 categorie: "monde"
 canon_statut: "lore_valide"
@@ -12,13 +12,13 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: ["joueurs", "mj", "lecteurs"]
 usage_en_jeu: ["reference", "decouverte", "scenario"]
-description: "Astraë, Grande Puissance des étoiles, routes célestes et horizons : portrait, limitations, relations aux courants et possibilités de jeu."
+description: "Astraë, Grande Puissance des étoiles et routes célestes : portrait, limitations, relations aux courants et possibilités de jeu."
 tags: [grandes-puissances, astrae, divin, voies, couronnes]
 ---
 
 # Astraë
 
-*Étoiles, routes célestes et horizons.*
+*Étoiles et routes célestes.*
 
 > [!info] Domaines canoniques, approfondissements distincts
 > **Astraë** est l'une des **Dix-Huit Grandes Puissances**, et non une divinité supplémentaire. Son domaine et ses inclinations politiques proviennent de la Bible. Les nuances de caractère proposées ci-dessous sont des **approfondissements de création compatibles avec le cadre**, non des dialogues ou exploits déjà joués. Les exemples de rites et de quêtes sont **des possibilités locales pour MJ**, pas des cultes institués partout.
@@ -27,7 +27,7 @@ tags: [grandes-puissances, astrae, divin, voies, couronnes]
 
 Elle regarde d'abord les routes possibles, puis leur coût. Elle se passionne pour les itinéraires que nul marin, messager ou voyageur n'a encore tracés ; une carte ne doit jamais devenir une prison.
 
-**Domaine reconnu :** Étoiles, routes célestes et horizons. La puissance du domaine n'interdit ni les choix personnels, ni les désaccords avec d'autres Autorités.
+**Domaine reconnu :** Étoiles et routes célestes. La puissance du domaine n'interdit ni les choix personnels, ni les désaccords avec d'autres Autorités.
 
 ## Ce que sa présence peut rendre possible
 
