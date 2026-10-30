@@ -126,3 +126,12 @@ Deux **fiches canoniques sourcées** s'ajoutent aux 175 fiches codées déjà ap
 **Total : 177 fiches codées approuvées** (171 lot initial + quatre Déchéance + deux Bible). Les six Grandes Puissances moins détaillées restent à enrichir. Les hypothèses de Failles récurrentes, antagonistes hors Déchéance, bestiaire et démonologie restent des **chantiers non canoniques** tant que les arbitrages ne sont pas effectués.
 
 Un audit éditorial et les prochaines priorités figurent dans [PLAN_DEVELOPPEMENT_UNIVERS.md](PLAN_DEVELOPPEMENT_UNIVERS.md). Le workflow Pages est déclenché uniquement après modification explicite du marqueur d'approbation ; un build réussi ne garantit pas à lui seul la disponibilité publique.
+
+
+## Atelier 5d6 / Base 12 — pilote expérimental, deux pages publiques
+
+Deux pages **non codées**, en `etat_editorial: en_cours` / `canon_statut: proposition_non_jouee`, s'ajoutent aux **177 fiches codées approuvées** (ce compteur ne change pas) :
+- `content/jouer/systeme-5d6-base12.md` : explication du système **5d6 / Base 12** en test ; **ne remplace ni les jets CB historiques ni le module Déchéance 2d6**.
+- `content/jouer/atelier-5d6.md` : interface PJ / MJ / MJ-IA, sauvegarde `localStorage`, fiches PNJ/créatures **importables en JSON**, profils fictifs, dés et journal, contexte IA à copier. **Sans backend ni accès automatique aux fiches de l'encyclopédie**.
+
+Implémentation : `quartz/components/Atelier5d6.tsx` + `quartz/components/scripts/atelier5d6.inline.ts` ; test de structure intégré à `scripts/check-site.mjs`. Sur ordinateur partagé, **les notes locales ne sont pas des données secrètes protégées**. Le contenu est une version pilote à tester auprès d'un petit groupe avant canonisation mécanique.
