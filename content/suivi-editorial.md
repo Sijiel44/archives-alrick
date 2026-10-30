@@ -10,7 +10,7 @@ etat_editorial: en_cours
 
 ## État actuel — Extension lore du 30 octobre 2026
 
-**255 fiches codées approuvées après le premier lot CB44 (245 auparavant).** Le répertoire publié reste distinct des outils de scénario facultatifs. Sept pages de sensibilité divine utilisent des emblèmes **créés pour les Archives**, non issus d'une tradition canonique universelle. Les six Grandes Puissances disposent de portraits de travail ; leurs rites et aventures proposés ne sont pas des scènes jouées. Trois dragons individuels ont été créés et leurs noms vérifiés **sans collision dans la recherche du dépôt**.
+**259 fiches codées approuvées après les quatre grandes fiches de saison CB44 (255 auparavant).** Le répertoire publié reste distinct des outils de scénario facultatifs. Sept pages de sensibilité divine utilisent des emblèmes **créés pour les Archives**, non issus d'une tradition canonique universelle. Les six Grandes Puissances disposent de portraits de travail ; leurs rites et aventures proposés ne sont pas des scènes jouées. Trois dragons individuels ont été créés et leurs noms vérifiés **sans collision dans la recherche du dépôt**.
 
 La fiche technique MAG-106 subsiste comme **repère interne**, mais l'intitulé public devient **« Une blessure disparue, un souvenir effacé »**. L'épisode est aussi documenté dans les fiches d'**Elyra, Orin et leurs Autorités**, conservées avec les protections nécessaires.
 
@@ -677,3 +677,10 @@ La relecture des 40 biographies a reçu trois réponses de canon : **huit existe
 ## Première intégration de la Campagne brute 4.4
 
 La transcription **CB44** de 135 messages et chapitres **CCCX–CCCLXXIII** a été lue. Les **10 biographies nouvelles** approuvées portent le total à **255 fiches codées**. Des dossiers de reprise, un journal de canon, un état des nouvelles îles et une chronique historisée sont ajoutés séparément des fiches codées. Les anciens tableaux CB42/CB43 restent des **instantanés historiques**, mais le point de reprise actuel se situe **auprès d'Elyan**, chapitre CCCLXXIII. Les numéros de chapitre ne sont pas des dates fictives ; l'archive locale compte **64 numéros distincts** entre CCCX et CCCLXXIII et conserve les titres répétés. Le DOCX intégral et les fragments Markdown ont été exportés en paquet utilisateur, **sans avoir encore été transférés sur GitHub**. Voir `docs/SOURCES_CAMPAGNES_PUBLIQUES.md`.
+
+
+## Réconciliation documentaire : saisons, recherche du MJ et archives brutes
+
+**Quatre nouvelles fiches de lieux codées et validées**, soit **259 codes publiés** (255 précédemment), décrivent chaque domaine saisonnier de l'Île des Divertissements : **Hiver, Printemps, Été et Automne**. Elles conservent les attractions construites, les canards saisonniers distincts des illusions et la séparation géographique avec l'île publique. Les amorces pour les autres MJ ne sont pas des scènes jouées d'Orin.
+
+Le **prompt de reprise après CB44** et le **protocole de consultation documentaire** sont disponibles dans `content/mj/reprise-cb44.md` et `docs/PROTOCOLE_RECHERCHE_AVANT_REPONSE_JDR.md`. La présence des **quinze Word bruts**, de CB1 à CB4.4, a été inventoriée dans `docs/INVENTAIRE_SOURCES_CB01_CB44_2026-10-30.md`. **Leur import intégral sur GitHub reste distinct et n'est pas réalisé par ce lot.** Le dernier point jouable demeure **la question d'Elyan à Orin**.
