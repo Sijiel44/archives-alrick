@@ -16,6 +16,65 @@ type Sheet = {
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[] }
+// Tables d'incidents de playtest : une suggestion à interpréter, jamais un malus automatique supplémentaire.
+const INCIDENTS: Record<Exclude<Domain,"autre">,string[]> = {
+  magie: [
+    "Une résonance perturbe un objet proche : le groupe doit sécuriser le lieu.",
+    "Le sort laisse une signature facile à suivre par un observateur compétent.",
+    "L'énergie résiduelle attire une créature curieuse, pas nécessairement hostile.",
+    "Une propriété inattendue du lieu complique le prochain essai.",
+    "L'échec révèle que la formule employée vient d'une tradition différente.",
+    "Un témoin reconnaît le phénomène et demande une faveur en échange de son aide.",
+    "L'effet a échoué, mais un symbole ancien devient visible quelques secondes.",
+    "Un allié comprend ce qui manque et peut proposer un autre rituel.",
+    "Une conséquence gênante met au jour une ancienne protection oubliée.",
+    "Le faux départ révèle comment arrêter le sort sans danger.",
+    "Une trace de magie attire plus tard l'attention d'un possible mentor.",
+    "Le raté fait apparaître une issue inattendue, à vérifier avant de l'utiliser."
+  ],
+  melee: [
+    "Une arme ou prise reste coincée dans le décor ; il faut se repositionner.",
+    "L'adversaire comprend la garde et exploite une ouverture visible.",
+    "La mêlée renverse un objet important qu'il faudra protéger.",
+    "Le choc bloque momentanément un passage pour tous.",
+    "Un appui cède : l'environnement devient un enjeu de la scène.",
+    "Un témoin intervient, mais son intention est incertaine.",
+    "Une parade ratée révèle la faiblesse de l'armure ennemie.",
+    "Un camarade voit une ouverture pour protéger un civil.",
+    "Le terrain offre un détour plus sûr que l'assaut frontal.",
+    "La collision pousse l'ennemi loin d'une personne menacée.",
+    "Un rival hésite, laissant envisager une issue négociée.",
+    "Un coup manqué brise une vieille entrave utile aux héros."
+  ],
+  tir: [
+    "Le projectile se perd et dévoile votre position.",
+    "Une mauvaise trajectoire oblige à sécuriser des témoins.",
+    "La cible change de couvert ; la prochaine position doit être choisie.",
+    "La corde ou le mécanisme exige une inspection avant un autre tir.",
+    "Le tir touche un obstacle qui modifie les lignes de vue.",
+    "Une silhouette surgit dans le champ : suspendre le tir devient prudent.",
+    "Le projectile signale une trace cachée dans le décor.",
+    "Le rebond révèle un mécanisme ou une surface inhabituelle.",
+    "L'impact détache une pièce du décor et ouvre une piste.",
+    "Un allié repère un meilleur angle de tir.",
+    "Un son attire l'attention d'un renfort allié possible.",
+    "La flèche manque sa cible mais coupe un lien entravant un passage."
+  ],
+  nego: [
+    "Le ton employé offense un témoin ; il faudra restaurer la confiance.",
+    "Une information est mal interprétée et la discussion se crispe.",
+    "Le partenaire exige une garantie que personne n'avait prévue.",
+    "Un rival profite publiquement du malentendu.",
+    "Une ancienne querelle refait surface au mauvais moment.",
+    "Un accord semble proche mais révèle un coût caché.",
+    "La réaction hostile montre à quel point un sujet est sensible.",
+    "Un interlocuteur secondaire se révèle moins opposé qu'annoncé.",
+    "Le refus dévoile la véritable priorité de l'autre partie.",
+    "Une porte se ferme mais une médiation indépendante devient possible.",
+    "Un témoin décide de partager discrètement une information utile.",
+    "La négociation échoue, mais une nouvelle alliance se dessine pour plus tard."
+  ]
+}
 const STORAGE = "archives-alrick-atelier-5d6-v1"
 const STATS: Stat[] = ["physique", "agilite", "esprit", "presence"]
 const clamp = (n: unknown, min: number, max: number, def: number) => {
@@ -196,6 +255,15 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       }
     }
     refreshRoster();refreshPoints();refreshStreaks();renderAI();persist()
+  }
+  function trackFailure(sheet:Sheet,domain:Domain,failed:boolean):string {
+    if(domain==="autre")return ""
+    if(!failed){sheet.streaks[domain]=0;return ""}
+    sheet.streaks[domain]=Math.min(3,sheet.streaks[domain]+1)
+    if(sheet.streaks[domain]<3)return ""
+    sheet.streaks[domain]=0
+    const face=1+Math.floor(Math.random()*12)
+    return `Incident ${domain} [1d12 = ${face}] : ${INCIDENTS[domain][face-1]} (suggestion optionnelle du MJ)`
   }
   function roll(){
     const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
