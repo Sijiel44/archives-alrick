@@ -47,7 +47,7 @@ La carte générale doit tenir compte des **passages connus** entre les Couronne
 
 ## Le rôle des guildes et des secours
 
-La [[INST-CB32-SECOURS-AVENTURIERS|Guilde des Aventuriers et les secours mutuels]] ont été adoptés comme orientations institutionnelles, avec un **déploiement progressif**. Ils offrent une base crédible pour des missions de reconnaissance, de secours ou de protection en cas de phénomène dangereux.
+La [[institutions/INST-CB32-SECOURS-AVENTURIERS|Guilde des Aventuriers et les secours mutuels]] ont été adoptés comme orientations institutionnelles, avec un **déploiement progressif**. Ils offrent une base crédible pour des missions de reconnaissance, de secours ou de protection en cas de phénomène dangereux.
 
 En revanche, **aucun protocole universel de fermeture**, aucune échelle de danger officiellement chiffrée, aucune fréquence fixe d'ouverture en ville et aucune procédure d'intervention divine automatique ne sont encore établis dans ce dossier. Des aventures peuvent **proposer** ces situations sans les rendre canoniques pour toutes les Couronnes.
 
