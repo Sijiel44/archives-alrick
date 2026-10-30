@@ -28,6 +28,10 @@ Le créateur a confirmé le **30 octobre 2026** huit existences de personnages e
 
 [[jdr-alrick/arbitrages-compendium-20261030|Lire les arbitrages sourcés et les limites (révélations de campagne)]].
 
+## Sources et archives de campagne
+
+[[jdr-alrick/archives-campagnes|Archives des séances, chapitres privés et futures chroniques historisées]] — méthode d'indexation de CB44 et des campagnes suivantes. Les bruts intégraux demeurent hors du dépôt public ; les nouveaux récits ne sont publiés qu'après relecture.
+
 ## Points d’entrée
 
 - [[personnages/PER-CB2-ORIN|Orin / Alrick — portrait de campagne]]
