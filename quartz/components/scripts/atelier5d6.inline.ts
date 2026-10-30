@@ -1,10 +1,17 @@
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
+type Domain = "magie" | "melee" | "tir" | "nego" | "autre"
+const DOMAINS: Domain[] = ["magie", "melee", "tir", "nego", "autre"]
+const makeStreaks = (): Record<Domain,number> => ({magie:0,melee:0,tir:0,nego:0,autre:0})
+const validSourceRef = (v:unknown):string => typeof v==="string" && /^(personnages|creatures)\/[A-Za-z0-9-]{2,100}$/.test(v) ? v : ""
 type Mode = "pj" | "mj" | "ia"
 type Sheet = {
   id: string; name: string; kind: Role; profession: string; skill: number
   stats: Record<Stat, number>; pv: number; pvMax: number
   mana: number; manaMax: number; emprise: number
+  level: number; vocation: string; talents: string; boons: string; curses: string; items: string
+  sourceRef: string; sourceTitle: string
+  streaks: Record<Domain,number>; lastIncident: string
   notes: string; gmNotes: string
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
@@ -21,7 +28,8 @@ function fresh(kind: Role = "pj"): Sheet {
   return { id: uniqueId(), name: kind === "pj" ? "Mon personnage" : "Nouveau profil",
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
-    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, notes:"", gmNotes:"" }
+    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, vocation:"", talents:"", boons:"", curses:"", items:"",
+    sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -31,13 +39,21 @@ function validateSheet(raw: unknown): Sheet | null {
   if (!values || typeof values !== "object" || !STATS.every(key => Number.isFinite(Number(values[key])))) return null
   const kind: Role = obj.kind === "pnj" || obj.kind === "creature" ? obj.kind : "pj"
   const pvMax = clamp(obj.pvMax, 1, 999, 12), manaMax = clamp(obj.manaMax, 0, 999, 0)
+  const priorStreaks = obj.streaks && typeof obj.streaks==="object" ? obj.streaks as Record<string,unknown> : {}
+  const streaks = makeStreaks()
+  for(const d of DOMAINS)streaks[d]=clamp(priorStreaks[d],0,2,0)
   return {id:uniqueId(),name:clean(obj.name,90),kind, profession:clean(obj.profession,90),
     skill:clamp(obj.skill,0,2,0),
     stats:{physique:clamp(values.physique,1,12,3),agilite:clamp(values.agilite,1,12,3),
       esprit:clamp(values.esprit,1,12,3),presence:clamp(values.presence,1,12,3)},
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
     mana:clamp(obj.mana,0,manaMax,0),manaMax,
-    emprise:clamp(obj.emprise,0,12,0),notes:clean(obj.notes,2500),gmNotes:clean(obj.gmNotes,2500)}
+    emprise:clamp(obj.emprise,0,12,0),level:clamp(obj.level,1,12,1),
+    vocation:clean(obj.vocation,160),talents:clean(obj.talents,1600),boons:clean(obj.boons,1400),
+    curses:clean(obj.curses,1400),items:clean(obj.items,1400),
+    sourceRef:validSourceRef(obj.sourceRef),sourceTitle:clean(obj.sourceTitle,160),
+    streaks,lastIncident:clean(obj.lastIncident,500),
+    notes:clean(obj.notes,2500),gmNotes:clean(obj.gmNotes,2500)}
 }
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
@@ -99,6 +115,18 @@ function setupAtelier5d6() {
     for(const k of STATS) q<HTMLInputElement>(`[data-stat="${k}"]`).value=String(s.stats[k])
     q<HTMLSelectElement>("[data-roll-skill]").value=String(s.skill)
     refreshPoints()
+    const source=q<HTMLElement>("[data-source-meta]")
+    source.textContent=s.sourceRef
+      ? `Source : ${s.sourceTitle || s.sourceRef} (${s.sourceRef}). Les statistiques 5d6 sont une adaptation libre non canonique.`
+      : "Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions."
+    refreshStreaks()
+  }
+  function refreshStreaks(){
+    const s=current()
+    q<HTMLElement>("[data-streaks]").textContent=`Échecs suivis : ${DOMAINS.filter(d=>d!=="autre").map(d=>`${d} ${s.streaks[d]}/3`).join(" · ")}. Trois échecs du même type déclenchent un incident d12 facultatif.`
+    const box=q<HTMLElement>("[data-incident]")
+    box.hidden=!s.lastIncident
+    box.textContent=s.lastIncident
   }
   function refreshMode(){
     host.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.mode===state.mode)))
@@ -159,9 +187,15 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "emprise":s.emprise=clamp(el.value,0,12,0);break
         case "notes":s.notes=clean(el.value,2500);break
         case "gmNotes":s.gmNotes=clean(el.value,2500);break
+        case "level":s.level=clamp(el.value,1,12,1);break
+        case "vocation":s.vocation=clean(el.value,160);break
+        case "talents":s.talents=clean(el.value,1600);break
+        case "boons":s.boons=clean(el.value,1400);break
+        case "curses":s.curses=clean(el.value,1400);break
+        case "items":s.items=clean(el.value,1400);break
       }
     }
-    refreshRoster();refreshPoints();renderAI();persist()
+    refreshRoster();refreshPoints();refreshStreaks();renderAI();persist()
   }
   function roll(){
     const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
@@ -173,6 +207,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const skill=clamp(q<HTMLSelectElement>("[data-roll-skill]").value,0,2,0)
     const target=clamp(q<HTMLSelectElement>("[data-roll-target]").value,15,30,21)
     const situation=clamp(q<HTMLSelectElement>("[data-roll-situation]").value,-2,2,0)
+    const chosenDomain=q<HTMLSelectElement>("[data-roll-domain]").value
+    const domain:Domain=DOMAINS.includes(chosenDomain as Domain)?chosenDomain as Domain:"autre"
     const dice=Array.from({length:5},()=>1+Math.floor(Math.random()*6))
     const natural=dice.reduce((a,b)=>a+b,0), total=natural+s.stats[stat]+skill+situation
     let outcome="",detail="",favorable=false
@@ -187,12 +223,16 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const result=q<HTMLElement>("[data-result]")
     result.dataset.outcome=favorable?"success":"failure"
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
-    state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:outcome})
+    const incident = natural===5 ? "" : trackFailure(s,domain,!favorable)
+    if(incident)detail += "\n"+incident
+    s.lastIncident=incident
+    result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
+    state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:incident ? `${outcome} · ${incident}` : outcome})
     state.log=state.log.slice(0,20)
-    refreshLog();persist();message("Jet ajouté au journal local.")
+    refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
   function exportSheets(){
-    const blob=new Blob([JSON.stringify({schema:"alrick.sheets.v1",created:new Date().toISOString(),sheets:state.sheets},null,2)],{type:"application/json"})
+    const blob=new Blob([JSON.stringify({schema:"alrick.sheets.v2",created:new Date().toISOString(),sheets:state.sheets},null,2)],{type:"application/json"})
     const url=URL.createObjectURL(blob),a=document.createElement("a")
     a.href=url;a.download="archives-alrick-fiches-5d6.json";document.body.append(a);a.click();a.remove()
     setTimeout(()=>URL.revokeObjectURL(url),1500)
