@@ -79,3 +79,8 @@ L'[[lieux/cb44-iles-et-quatre-saisons|Île des Divertissements, l'Île de Bréga
 ### L'Île des Divertissements : quatre territoires pour d'autres campagnes
 
 Les constructions jouées dans CB44 sont maintenant présentées comme **lieux du monde réutilisables** : [[lieux/GEO-CB44-HIVER|Hiver]], [[lieux/GEO-CB44-PRINTEMPS|Printemps]], [[lieux/GEO-CB44-ETE|Été]] et [[lieux/GEO-CB44-AUTOMNE|Automne]]. Chacune possède des attractions, une ambiance, des enjeux de service et de maintenance, et des amorces **non jouées** pour un MJ indépendant. Les événements spécifiques à Orin restent dans [[jdr-alrick/cb44-bilan-et-reprise|sa continuité]].
+
+
+### L'exploitation du parc des quatre saisons
+
+La [[lieux/parc-des-quatre-saisons-services|fiche transversale d'accueil et de fonctionnement]] rassemble transports, logements, restaurants, métiers, maintenance et exigences de sécurité. Elle est pensée pour les **autres MJ**, pas comme une continuation automatique de l'histoire d'Orin. Les informations personnelles de sa campagne sont réservées à [[jdr-alrick/verrous-de-reprise-apres-cb44|sa continuité]].
