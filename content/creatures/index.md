@@ -31,6 +31,12 @@ La présence de **créatures de Faille** est déjà mentionnée dans l'Atlas his
 
 Les futurs dossiers de travail distingueront **monstres hostiles**, **créatures asservies**, **êtres libres venus d'ailleurs** et **espèces encore inconnues**. Les propositions inspirées des mythes, les créatures de combat et les statistiques resteront hors canon jusqu'à validation.
 
+## Les créatures Déchues
+
+Le système de [[monde/decheance-canon|Déchéance]] peut transformer des créatures, jusqu'aux dragons majeurs. **Vaeldrûn**, un dragon Déchu de la galerie approuvée, est un antagoniste possible de très haut niveau ; ce n'est pas un modèle de tous les dragons. Drakon, Aurélion et Níðor ne deviennent pas Déchus pour autant.
+
+Une créature **asservie de force** peut être dangereuse tout en demeurant une victime ; la libération ne doit pas être confondue avec l'élimination d'une espèce.
+
 ## Règles de prudence pour les nouvelles fiches
 
 - Distinguer **espèce**, **individu** et **relation particulière** avec un personnage.
