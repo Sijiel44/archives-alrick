@@ -29,6 +29,15 @@ Le volume de référence V01 distingue notamment :
 - [[B42-02|Les Rappelés et la continuité des personnes]] — **révélation de campagne**, accessible après avertissement.
 - [[B42-03|Évolution d'une nature divine]] — **révélation de campagne**, accessible après avertissement.
 
+## Menaces et forces antagonistes
+
+- [[monde/menaces-et-antagonismes|Menaces, monstres et antagonistes]] — repères publics sur les adversaires, les créatures et la cruauté, sans créer de nouveaux dieux.
+- **Les Dix-Huit — répertoire détaillé :** consolidation en préparation à partir de B39-05. Le répertoire des noms est établi, mais la profondeur des profils et les secrets sont inégaux.
+- **Les sept courants de la Neuvième Couronne :** socle politique présent dans la Bible ; dossiers spécifiques à relire avant publication.
+- **Démonologie, dieux du chaos et bestiaire hostile :** chantiers de création. De nouveaux adversaires sont étudiés **hors canon** dans des fiches de travail non publiées.
+
+Les puissances divines peuvent avoir des opposants sincères, des rivaux et de vrais ennemis ; leurs antagonistes ne doivent pas être déduits du seul nom d'une Autorité. Le Silence et Níðor ne sont pas des méchants génériques.
+
 ## Pour jouer dans cet univers
 
 Un personnage peut connaître les traditions de son peuple sans connaître les secrets des puissances. Une légende, une hypothèse savante, une déclaration divine et un fait observé ne doivent pas recevoir le même niveau de certitude.
