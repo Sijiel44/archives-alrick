@@ -18,7 +18,7 @@ tags: [divinites, courants, neuvieme-couronne, jardiniers]
 
 # Les Jardiniers
 
-![Symbole éditorial des Les Jardiniers, non obligatoire pour les cultes.](../../images/courants/jardiniers.svg)
+![Symbole éditorial des Les Jardiniers, non obligatoire pour les cultes.](../../static/images/courants/jardiniers.svg)
 
 *Faire grandir sans définir à la place.*
 
