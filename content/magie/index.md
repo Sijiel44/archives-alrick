@@ -41,3 +41,8 @@ Ces codes sont encore des **entrées du Codex source**, et non autant de fiches 
 Le Codex décrit des observations, des essais, des hypothèses et des systèmes d'ingénierie. Il ne définit pas encore un barème universel de points de mana, de seuils de réussite, de dégâts ou de niveaux de personnages. L'[[MAG-106|expérience d'Elyra : une blessure disparue et un souvenir effacé]] est un **fait joué validé**, **accessible après avertissement de spoilers**. Il montre un effet mémoriel inattendu et un problème de consentement, **pas** une technique sûre ou reproductible par les mages ordinaires.
 
 [[univers/index|Explorer l'univers]] · [[jouer/index|Démarrer un personnage]] · [[mj-ia/index|Jouer avec une IA]]
+
+
+## Verrous spécifiques à la reprise CB44
+
+Le dernier état documentaire du personnage Orin confirme **cinq Autorités : Magie, Création, Origine, Existence et Union** (rappel au début de *Campagne Brut 4.3*), sans qu'il devienne omniscient ou une Dix-Neuvième Grande Puissance. Le transfert envisagé d'une part d'Autorité à Damaric **n'est pas réalisé**. Les capacités d'**Amelia** restent limitées par ce qui a été démontré sur ses Cercles (voir [[M42-01]]). La promenade du yacht personnel en CB44 complète [[MAG-116]] sans valoir essai océanique ou vol. Les tests, domaines et limites du protagoniste doivent être vérifiés dans [[jdr-alrick/verrous-de-reprise-apres-cb44|le dossier de reprise]], et **ne constituent pas une règle universelle de magie pour tous les PJ**.
