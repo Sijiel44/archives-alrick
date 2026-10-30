@@ -1,44 +1,36 @@
 ---
-publish: false
-title: "Odris Ferren"
+publish: true
+title: "Odris Ferren — Mécanicien des eaux de Corvelis"
 code: "SEC-74"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P13877–15331"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
-tags: [sec_74, cb42, brouillon, odris, ferren]
-etat_editorial: en_chantier
+description: "Odris, âgé d’environ 68 ans, connaît les vannes, essieux, semoirs et réseaux d’eau du domaine de Mara Belden. Il défend des solutions réparables par les gens du lieu"
+tags: [sec_74, cb42, odris, ferren]
+etat_editorial: valide
+unlisted: true
 ---
 
-# Odris Ferren
+# Odris Ferren — Mécanicien des eaux de Corvelis
 
-> [!warning] Brouillon de continuité
-> Synthèse issue du registre directeur après CB42. Avant publication, relire la fiche dans le volume indiqué et vérifier que chaque élément conserve son statut.
+## Métier, histoire et caractère
 
-## Synthèse attestée
+Odris, âgé d’environ 68 ans, connaît les vannes, essieux, semoirs et réseaux d’eau du domaine de Mara Belden. Il défend des solutions réparables par les gens du lieu.
 
-Âgé de soixante-huit ans, il connaît les mécanismes et les réseaux d’eau de l’exploitation de Mara. Il explique pourquoi les vannes, essieux ou semoirs ont été placés et conçus ainsi. Il repère le défaut du chariot en dévers et exige des commandes ordinaires utilisables sans enchantement. Son expertise contribue aux plans et à la réparabilité locale ; aucun poste permanent chez Orin n’est proposé.
+## Situation vérifiée
 
-## Statut documentaire
+**Il participe aux évaluations techniques** et repère, avec Hervald, le défaut du chariot en dévers. Il exige des commandes utilisables même sans enchantement, et contribue aux dessins d’amélioration.
 
-- **État du registre :** Profil proposé puis actualisation selon les scènes.
-- **Avancement :** Rencontré et coévaluateur des améliorations.
-- **Connaissance en jeu :** À préciser par affirmation. Les personnages ne connaissent pas automatiquement tout le contenu de cette fiche.
-- **Qualité du renvoi :** Fiche principale.
+## Limites, relations et perspectives
 
-## Source
+Aucun poste permanent auprès d’Orin n’est proposé ou accepté. Les prototypes d’atelier ne prouvent pas leur déploiement dans toutes les exploitations.
 
-- *Compendium des personnages et des relations*, SEC-74 Odris Ferren — CB42 P13877–15331.
+Les autres pistes sont des propositions non jouées et ne doivent pas devenir des réussites rétroactives.
 
-## Fiches liées
+## Sources
 
-- O42-07 ; O42-10.
-
-## À compléter
-
-- Reprendre les formulations exactes du volume thématique et ajouter les faits ultérieurs sans effacer cet état.
-- Distinguer toute proposition de développement d’un événement joué ou d’une décision canonique.
+*Compendium des personnages et des relations* v1.7, **SEC-74** ; renvois conservés : CB42 P13877–15331. Ce code documentaire ne fixe ni allégeance, ni état de Rappelé, ni appartenance aux Revenants.
