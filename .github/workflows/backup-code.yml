@@ -1,0 +1,49 @@
+name: Sauvegarder le code public des Archives
+
+# Archive du code uniquement : aucune source Word privee n'est dans ce depot.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 5 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: archive-code-public
+  cancel-in-progress: false
+
+jobs:
+  bundle:
+    name: Exporter branches, tags et historique Git
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Recuperer le depot sans conserver d'identifiants
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Fabriquer une sauvegarde Git portable
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p sauvegarde
+          git fetch --prune origin '+refs/heads/*:refs/remotes/origin/*'
+          git fetch --tags origin
+          git bundle create sauvegarde/archives-alrick.bundle --all
+          git bundle verify sauvegarde/archives-alrick.bundle
+          git show-ref > sauvegarde/refs.txt
+          git log -1 --format='%H %cI %s' > sauvegarde/dernier-commit.txt
+          sha256sum sauvegarde/archives-alrick.bundle > sauvegarde/SHA256SUMS.txt
+
+      - name: Conserver temporairement le bundle dans Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: sauvegarde-code-${{ github.run_number }}
+          path: sauvegarde/
+          if-no-files-found: error
+          retention-days: 30

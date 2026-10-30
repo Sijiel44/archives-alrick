@@ -4,6 +4,10 @@ Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre par
 
 **Publication active :** le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. Une PR seule ne publie rien.
 
+## Continuité et sauvegardes
+
+Le guide [Continuité, sauvegardes et reprise](docs/CONTINUITE_SAUVEGARDES.md) décrit les branches de checkpoint, l'archive Git automatique hebdomadaire dans Actions et le script de sauvegarde locale pour Windows (`scripts/Sauvegarde-Alrick.ps1`). **Les sources Word/Excel privées et les exports ChatGPT doivent rester hors de ce dépôt public**. Les artefacts GitHub expirent après 30 jours : conserver une copie indépendante.
+
 ## Démarrer sur Windows
 
 Installer Node.js 24 et Git. Depuis ce dossier :
