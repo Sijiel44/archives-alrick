@@ -43,3 +43,14 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Pas de données privées, aucun nouveau fichier MJ source, aucun profil de créature canonisé, aucune transmission de fiche à une IA.
 # Le nombre de fiches CODÉES approuvées reste 177 ; seul le nombre de pages publiques non codées augmente de deux.
 # Exiger npm test, vérification des modes et intégrité des pages construites, puis contrôles du workflow Pages après fusion.
+
+
+# Lot pilote 5d6 v1.1 explicitement demandé après essais positifs du créateur.
+# Ajouter page non codée publish:true content/jouer/progression-voies-incidents.md (proposition_non_jouee, en_cours).
+# Enrichir les pages déjà approuvées jouer/systeme-5d6-base12 et jouer/atelier-5d6, sans les déclarer canoniques.
+# Bouton Réinitialiser la fiche ACTIVE après confirmation ; les autres fiches et journal général restent intacts.
+# Répertoire par index public sans spoilers et liens vers fiches ; adaptation 5d6 non canonique, sans attribuer de stats vérifiées.
+# Export JSON v2 rétrocompatible avec v1 ; profils de démonstration dans quartz/static/atelier5d6-profils-demo.json marqués non canoniques.
+# Tables d'incidents 1d12 et progression en 12 niveaux = mécaniques de test, aucun fait CB1-43 réécrit.
+# Total fiches codées approuvées maintenu à 177. Préserver les protections des pages MJ.
+# Déployer seulement après CI npm test réussie, contrôles du contenu public et du workflow Pages.
