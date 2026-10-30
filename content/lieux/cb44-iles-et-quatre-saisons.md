@@ -65,3 +65,8 @@ Aucune carte numériquement précise, distance en kilomètres ou emprise géogra
 ## Sources et état
 
 *Campagne Brut 4.4*, surtout CCCXVIII et CCCLIII–CCCLXXII. Voir [[jdr-alrick/cb44-bilan-et-reprise|bilan et reprise]], [[GEO-CB43-PALAIS-DIVIN|Palais divin]] et [[jdr-alrick/cb44-journal-canon|journal de réconciliation]]. Les lieux sont réutilisables comme inspirations dans d'autres campagnes, mais les faits de l'Odyssée n'imposent pas leur propre histoire aux autres joueurs.
+
+
+## Les coulisses du parc
+
+Au-delà des quatre paysages, voir [[lieux/parc-des-quatre-saisons-services|Accueil, hébergement, transports, ateliers, entretien et métiers]] : un site conçu pour rester vivant sous la responsabilité de Damaric, mais dont tous les recrutements et l'inauguration extérieure ne sont pas décrits comme achevés par CB44.
