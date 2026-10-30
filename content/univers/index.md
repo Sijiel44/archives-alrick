@@ -35,6 +35,8 @@ L'univers d'Alrick n'est pas seulement le décor de l'Odyssée d'Orin. Ses régi
 - [[objets/index|Objets et œuvres]] — fabrication, propriété, instruments et artefacts.
 - [[projets/index|Projets et fondations]] — infrastructures, recherches et travaux en cours.
 - [[creatures/index|Créatures et compagnons]] — individus particuliers et futur bestiaire.
+- [[monde/decheance-canon|Déchéance et pyramide des Chutes]] — nouveau lore de contre-ascension, avec jeu possible chez les Déchus.
+- [[monde/menaces-et-antagonismes|Menaces et antagonistes]] — factions, dieux hostiles, monstres et dangers, sans introduire de nouveaux personnages comme canon.
 
 ## IV. Choisir une autre lecture
 

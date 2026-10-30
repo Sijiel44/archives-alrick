@@ -24,6 +24,12 @@ Pour éviter de saturer la conversation avec des centaines de fiches, choisir **
 
 Le site contient aussi des brouillons internes et des révélations. **Ne pas tenter de les utiliser comme des faits établis** ou comme des informations accessibles aux joueurs.
 
+## Mode optionnel : Déchéance
+
+Pour une campagne de tentation, d'antagonistes ou d'enquête sur les pactes, fournir à l'IA le [[monde/decheance-canon|socle canonique]], puis [[jouer/decheance-systeme|le mini-système 2d6]]. Réserver au MJ le [[monde/dechus-hierarchie|répertoire des Seigneurs et Princes]] et les [[jouer/decheance-aventures|scénarios détaillés]], protégés par avertissement.
+
+Les joueurs conservent leurs décisions ; aucun pacte ni progression imposés par le MJ. L'IA suit **Emprise, branches actives, Ancrages, captifs et conséquences** dans le journal de la partie, sans publier ses victoires ou trahisons dans le canon de l'Odyssée d'Orin.
+
 ## Préparer le contexte
 
 1. Choisir une **époque** et une **région** dans [[univers/index|les archives d'univers]].

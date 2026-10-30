@@ -37,9 +37,18 @@ Les descriptions des **rubriques** sont des guides de lecture, pas des règles n
 - Déterminer ce que les gens du lieu savent vraiment, ce qu'ils supposent et ce qu'ils ignorent.
 - Conserver les conséquences dans le journal de **votre propre campagne**, sans modifier le canon de celle d'Orin.
 
+## Jouer avec la Déchéance
+
+Un mini-système optionnel déjà disponible permet de jouer des Déchus ou leurs adversaires :
+
+- [[jouer/decheance-systeme|Règles de la Déchéance (2d6)]] — création rapide de PJ, dons, Emprise de 0 à 12, combats légers, pyramide et ruptures de pactes.
+- [[jouer/decheance-aventures|Cinq aventures contre les Déchus et trois aventures sombres]] — **révélations MJ**, à découvrir seulement si souhaité.
+
+**Ce module est validé pour son thème**, sans prétendre remplacer la totalité des règles historiques du JDR Alrick.
+
 ## Règles et calculs
 
-Les documents de campagne comportent déjà des usages de jets de dés, de magie, de mana et de Cercles. **Un système universel de caractéristiques, seuils, combats et progression n'est pas encore formalisé ici.** Il sera extrait et validé séparément, plutôt que fabriqué comme s'il était déjà canonique.
+Les documents de campagne comportent déjà des usages de jets de dés, de magie, de mana et de Cercles. **En dehors du mini-système optionnel de Déchéance, un système universel de caractéristiques, seuils, combats et progression n'est pas encore formalisé ici.** Il sera extrait et validé séparément, plutôt que fabriqué comme s'il était déjà canonique.
 
 ## Poursuivre
 

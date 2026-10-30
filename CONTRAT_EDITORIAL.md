@@ -11,6 +11,16 @@
 7. Le code `CB42` indique une session source ; ne pas le confondre avec une date du calendrier fictif. Les dates de fichiers ne datent pas les événements du monde.
 8. Les fiches destinées surtout au MJ peuvent être accessibles aux joueurs sur choix. Toute page avec `spoilers: true` — y compris hors de `content/mj/` — affiche d’abord un avertissement replié derrière une action explicite. Toute fiche à spoilers publiée porte aussi `unlisted: true` : elle reste accessible par son URL et ses liens éditoriaux, mais ne paraît pas dans la recherche, le sitemap ou la bibliothèque générale. Les pages de `content/mj/` restent également non répertoriées et averties. Les notes personnelles, le brut et l’inventaire de travail restent hors site et hors dépôt. Cette politique remplace celle du kit initial, conformément au projet de partage de l’univers.
 
+## Module de Déchéance — validation de création (29 octobre 2026)
+
+**Nouveau lore explicitement adopté** : la Déchéance comme contre-ascension et la **Pyramide du Tribut des Chutes** ; le répertoire inaugural de **3 Seigneurs et 9 Princes**, sans lien automatique avec les Dix-Huit ou les Archétypes. Les fiches d'univers `MON-DECH-01` et `ANT-DECH-01` portent `canon_statut: lore_valide` car approuvées par le créateur, **pas** `faits_joues`. Elles n'annoncent aucune rencontre ou défaite dans la campagne d'Orin.
+
+Le mini-système optionnel `SYS-DECH-01` est **approuvé comme module de règles** (2d6, Emprise, tribut, repli), pas comme règle rétroactive des scènes CB. Le recueil `Q-DECH-01` est un **ouvrage de scénarios approuvé pour publication** mais reste `canon_statut: proposition_non_jouee` : son contenu n'est ni une chronologie ni un ensemble de faits accomplis.
+
+Les anciens dossiers `*-proposition.md` ou `*-prototype-*.md` non publiés sont **archives de conception**, supplantées par ces quatre fiches pour la Déchéance. Les autres idées sur les Failles, les factions, les avatars et le bestiaire restent proposées et ne sont pas canonisées par contagion.
+
+Pour les pages MJ `ANT-DECH-01` et `Q-DECH-01`, appliquer `spoilers: true`, `unlisted: true` et `visibilite: publique_avec_avertissement` ; aucune annonce de révélations dans les sommaires publics.
+
 ## Valeurs permises pour `canon_statut`
 
 - `faits_joues` — événement ou constat attesté en scène ;

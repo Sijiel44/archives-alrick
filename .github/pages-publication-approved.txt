@@ -17,3 +17,13 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Approbation du créateur (29 octobre 2026) : publication des quatre portes de navigation Univers, Odyssée, Jouer et MJ-IA après validation de la CI. Ce sont quatre pages non codées, sans changement des 171 fiches de canon approuvées. Corrections documentaires de cette PR validées pour le lot, sans nouveau brut privé.
 
 # Lot navigation d'univers approuvé pour publication (29 octobre 2026) : treize index thématiques, guide non codé "Comprendre la magie", et raccord des parcours Univers/Jouer/MJ-IA. Les 171 codes de fiches approuvées sont inchangés. Les pages en chantier (publish: false) ne sont pas ouvertes et les avertissements de campagne sont conservés.
+
+
+# Nouveau lot de publication explicitement approuvé — Déchéance et jeu (29 octobre 2026)
+# Ce lot AJOUTE 4 pages codées au périmètre initial des 171 fiches : total après publication 175 fiches codées approuvées, dont 171 fiches historiques précédemment sélectionnées + 4 ajouts ci-dessous. Ne pas convertir ces ajouts en modifications du nombre initial 109 vert / 62 jaune du registre CB43.
+# MON-DECH-01 — lore_valide : principe cosmologique de Déchéance et Tribut des Chutes, création approuvée et pas fait joué.
+# ANT-DECH-01 — lore_valide, spoilers:true, unlisted:true : répertoire MJ des 3 Seigneurs et 9 Princes Déchus, pas de rencontre jouée.
+# SYS-DECH-01 — lore_valide de module de règles : 2d6, Emprise, branches, combats, module optionnel, non-rétroactif.
+# Q-DECH-01 — proposition_non_jouee, spoilers:true, unlisted:true : recueil VALIDÉ POUR PUBLICATION de 8 aventures fictives, sans transformation de leurs scènes en faits de campagne.
+# Les autres dossiers anciens *-proposition.md sur la Déchéance restent publish:false et sont des archives de conception. Les autres prototypes d'antagonistes, Failles et bestiaire restent publish:false sans canonisation automatique.
+# La publication est permise après vérification automatique des métadonnées, de la construction Quartz et des liens, et conserve les avertissements de révélation.

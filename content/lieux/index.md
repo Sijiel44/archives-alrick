@@ -37,6 +37,14 @@ Une **ville existante**, une **route discutée**, une **gare construite** et une
 
 L'**Espace sur demande** comprend plusieurs îles et transports. La **Maison divine** est une communauté sur l'une de ces îles, et le **Palais divin** la résidence personnelle d'Orin. Ni un passage ni un train ne donnent accès à toutes les zones privées.
 
+## Anomalies et risques de passage — sujet de travail
+
+L'Atlas historique mentionne la **Concorde des Huit Feux** et la stabilisation d'une ancienne Faille, ainsi que des **créatures de Faille** dans le récit des famines de l'Est. Les datations anciennes de l'Ère de la Reprise sont explicitement **à réconcilier** avec la campagne actuelle.
+
+Les nouvelles propositions de **missions de guilde, Failles au cœur des villages, postes de surveillance et incidents plus nombreux au Nord** attendent leur validation. Elles ne permettent pas de dessiner des zones de danger chiffrées ni de décréter que chaque trace étrange du Nord est une Faille active.
+
+Pour organiser ces événements sans confondre scénario et carte réelle, voir [[monde/index|les passages entre Couronnes et le travail cosmologique]].
+
 ## Atlas documentaire et chantier de migration
 
 Le volume V02 traite aussi les Montagnes de l'Aube, le Mérien, Entre-Rives, Torngard et les autres royaumes. Certaines pages correspondantes sont **encore en chantier** dans le dépôt : elles ne figurent pas ici comme lectures validées tant que leurs sources et statuts n'ont pas été réconciliés.

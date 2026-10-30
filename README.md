@@ -100,3 +100,18 @@ La porte `content/univers/index.md` dessert désormais les **treize index de dom
 Le guide `content/univers/magie-pour-jouer.md` présente les distinctions du Codex (mana, maîtrise, Cercles, traditions, ingénierie), **sans ajouter de règle numérique ni prétendre que le bestiaire et la cosmologie sont entièrement migrés**.
 
 Les titres des fiches non publiées peuvent être cités comme **sujets en chantier**, mais leurs pages `publish: false` ne sont pas ouvertes par les index publics. Les fiches à révélations conservent leur avertissement. Les guides/index **ne sont pas des fiches codées** et ne modifient pas les 171 codes du lot éditorial approuvé. Le statut des sujets à migrer demeure suivi séparément.
+
+
+## Nouveau lore et module de jeu — Déchéance (29 octobre 2026)
+
+Après la consolidation CB43, le créateur a validé un **nouveau principe d'univers** : la **Déchéance**, voie de contre-ascension et de dépendance pyramidale au *Tribut des Chutes*. Le premier répertoire de créatures et personnes antagonistes compte **3 Seigneurs Déchus et 9 Princes Déchus** (leur existence et leurs traits sont du **lore créé et approuvé**, **pas des rencontres déjà jouées**).
+
+Quatre nouvelles pages **codées** s'ajoutent aux **171 fiches initialement approuvées**, soit **175 pages codées approuvées à ce stade** :
+- `content/monde/decheance-canon.md` — **MON-DECH-01**, loi du monde, approuvée.
+- `content/monde/dechus-hierarchie.md` — **ANT-DECH-01**, personnages majeurs, **spoilers + non répertorié**.
+- `content/jouer/decheance-systeme.md` — **SYS-DECH-01**, mini-système **optionnel** à 2d6, non rétroactif.
+- `content/jouer/decheance-aventures.md` — **Q-DECH-01**, huit aventures publiables comme **propositions non jouées**, **spoilers + non répertorié**.
+
+Les autres dossiers de la branche concernant les Failles, les sociétés antagonistes, les créatures mythologiques ou les premières versions de Déchéance ne deviennent **pas automatiquement canoniques** et demeurent `publish: false` tant que leur statut n'est pas arbitré. Cette approbation n'ajoute aucune séance après CB43, ni un dix-neuvième siège parmi les Dix-Huit.
+
+Les liens se trouvent depuis les rubriques `monde/index.md` et `jouer/index.md`. Les aventures indépendantes ne réécrivent jamais les conséquences de l'Odyssée d'Orin.
