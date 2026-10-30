@@ -37,6 +37,13 @@ Les descriptions des **rubriques** sont des guides de lecture, pas des règles n
 - Déterminer ce que les gens du lieu savent vraiment, ce qu'ils supposent et ce qu'ils ignorent.
 - Conserver les conséquences dans le journal de **votre propre campagne**, sans modifier le canon de celle d'Orin.
 
+## Système général en cours de test : 5d6 / Base 12
+
+- [[jouer/systeme-5d6-base12|Lire les règles 5d6 / Base 12]] — quatre caractéristiques, douze points de création, six difficultés, critiques et réserves en multiples de trois.
+- [[jouer/atelier-5d6|Ouvrir l’Atelier interactif]] — fiches PJ, profils PNJ/créatures importables pour le MJ et export de contexte pour un MJ assisté par IA. **En test, sauvegarde locale, sans serveur.**
+
+Ce système est **expérimental** et ne remplace pas rétroactivement les jets de la campagne d’Orin. La Déchéance garde pour l’instant son mini-système 2d6 autonome.
+
 ## Jouer avec la Déchéance
 
 Un mini-système optionnel déjà disponible permet de jouer des Déchus ou leurs adversaires :
@@ -48,7 +55,7 @@ Un mini-système optionnel déjà disponible permet de jouer des Déchus ou leur
 
 ## Règles et calculs
 
-Les documents de campagne comportent déjà des usages de jets de dés, de magie, de mana et de Cercles. **En dehors du mini-système optionnel de Déchéance, un système universel de caractéristiques, seuils, combats et progression n'est pas encore formalisé ici.** Il sera extrait et validé séparément, plutôt que fabriqué comme s'il était déjà canonique.
+Les documents de campagne comportent déjà des usages de jets de dés, de magie, de mana et de Cercles. ****Le 5d6 / Base 12 est en test ; aucun système universel n’est encore officialisé ni appliqué rétroactivement.**n n'est pas encore formalisé ici.** Il sera extrait et validé séparément, plutôt que fabriqué comme s'il était déjà canonique.
 
 ## Poursuivre
 

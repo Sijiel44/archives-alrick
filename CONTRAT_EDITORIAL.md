@@ -128,3 +128,12 @@ Après chaque nouvel épisode ou correction :
 Le total passe à **177 fiches codées approuvées**. Ce nouveau lot **ne canonise pas** les systèmes de fermeture des Failles, la fréquence d'apparition, les factions antagonistes en atelier ni les scénarios non joués. Les anciens dossiers de travail non publiés doivent rester `publish:false`.
 
 Le contrôle `npm test` vérifie le contenu, les types, la génération Quartz, les liens et les protections anti-spoilers dans les pages construites, **pas le déploiement externe**. Vérifier GitHub Pages séparément.
+
+
+## Publication pilote des règles 5d6 et de leur atelier (29 octobre 2026)
+
+Le créateur demande une **page du système** et un **outil interactif avec modes PJ, MJ et MJ assisté par IA**. Publication autorisée pour **essai**, sans validation universelle des calculs : la page `jouer/systeme-5d6-base12` et `jouer/atelier-5d6` sont des **pages non codées** de `canon_statut: proposition_non_jouee` et `etat_editorial: en_cours`. Les **177 fiches codées** approuvées restent inchangées.
+
+Le système 5d6 **n'annule pas** les règles 2d6 du module Déchéance ni les événements et usages attestés de CB1–43. L'atelier produit des fiches locales et des profils fictifs chiffrés, mais **ne lit pas le Compendium depuis le site** et n'atteste aucun rang ou score canonique de personnage.
+
+Les **exports JSON**, les notes MJ stockées localement et les prompts copiés sont sous le contrôle de l'utilisateur. Les données enregistrées dans un navigateur partagé ne sont **pas secrètes** ; ne pas envoyer des secrets d'Odyssée dans un contexte IA sans choix explicite. Aucune API IA n'est appelée.

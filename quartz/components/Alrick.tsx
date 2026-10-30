@@ -52,6 +52,7 @@ export const Navigation: QuartzComponent = (props) => {
           <span aria-hidden="true">{icon}</span>{title}
         </a>
       ))}
+      <a class="internal" href={`${base}/jouer/atelier-5d6`}><span aria-hidden="true">⚄</span> Atelier de jeu 5d6</a>
       <div class="nav-divider" />
       <span class="nav-caption">DERRIÈRE LE RÉCIT</span>
       <a class={`internal story-link ${current === "jdr-alrick" ? "active" : ""}`} href={`${base}/jdr-alrick/`} aria-current={current === "jdr-alrick" ? "page" : undefined}>
