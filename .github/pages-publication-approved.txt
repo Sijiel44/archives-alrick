@@ -134,3 +134,13 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # L'archive DOCX originale + 135 fichiers messages Markdown a été créée séparément pour transfert via GitHub Desktop.
 # Le lot ne publie ni nouveaux faits après la dernière réplique d'Elyan ni décisions de futures séances.
 # Contrôler CI, 255 codes uniques, avertissements, liens et Pages après fusion.
+
+# Lot 08 — Consolidation Atlas et reprise CB44, 30 octobre 2026.
+# +4 fiches codées de lieu (GEO-CB44-HIVER, GEO-CB44-PRINTEMPS, GEO-CB44-ETE, GEO-CB44-AUTOMNE).
+# Périmètre approuvé : 259 fiches codées uniques = 255 (après la PR36) + 4 saisons.
+# Four-season island = site construit en CB44, destiné au réemploi par les MJ sans imposer l'Odyssée d'Orin.
+# Les attractions et petits canards-esprits sont distingués des animaux féeriques illusoires et des scènes futures.
+# Nouveau prompt `content/mj/reprise-cb44.md` : dernière parole Elyan « Comment vas-tu, mon garçon ? » ; aucune réponse d'Orin jouée.
+# docs/PROTOCOLE_RECHERCHE_AVANT_REPONSE_JDR.md : contrôle réel des fiches et sources, jamais de faux accès GitHub.
+# docs/INVENTAIRE_SOURCES_CB01_CB44_2026-10-30.md : présence des 15 DOCX reçus ; originaux complets pas encore sur GitHub.
+# L'index et les guides non codés ne changent pas le compteur. Contrôler npm test / liens / 259 codes avant fusion.
