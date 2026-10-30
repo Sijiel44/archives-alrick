@@ -104,6 +104,41 @@ Une guérison magique instantanée ne suffirait pas. Il faudrait **rompre les pa
 
 Le **pardon des victimes est libre** et ne devient pas automatiquement obligatoire parce que le Déchu tente de changer.
 
+
+## Pyramide de Déchéance — verrou de progression (ESSAI)
+
+**Principe proposé :** au-delà d'un stade, un Déchu ne peut plus grandir par ses seuls renoncements. Il lui faut une **chaîne de chutes liées** : des êtres eux-mêmes entrés dans la Déchéance et capables, à terme, de déchoir d'autres êtres. **Un prisonnier, un subordonné non corrompu, un adepte sincère ou une victime conditionnée ne comptent pas automatiquement comme « recrutement réussi ».**
+
+L'Emprise **0–12** reste une **jauge expérimentale**, pas un système de calcul canonique :
+
+| Passage proposé | Condition de progression en plus du coût personnel | Conséquence |
+|---|---|---|
+| **0 → 1–5** Tentation et Fêlure | Aucun dépendant nécessaire | La faveur est rapide, le prix est encore personnel |
+| **5 → 6** Rupture | **Une Chute liée distincte et attestée** : un autre être engagé dans la Déchéance, avec pacte et conséquences réelles | L'individu découvre que son pouvoir dépend désormais d'autrui |
+| **8 → 9** Déchéance | **Deux branches distinctes**, dont au moins un **Lieur** capable de provoquer une autre Chute | Le Déchu devient un maître de réseau ; les branchements créent conflits et trahisons |
+| **11 → 12** Abîme | **Trois branches durables**, dont au moins une **chaîne à deux générations** (un lieutenant a lui-même engendré une Chute) | Le pouvoir dépend de sa pyramide ; une rébellion peut l'amputer |
+
+**Ce sont des seuils de playtest**, non des lois absolues. Le MJ peut préférer un déclencheur narratif sans compter les branches, surtout pour une divinité ou un dragon. L'idée durable est la **nécessité croissante de recruter ou de capturer des liens**, non les nombres.
+
+### Pourquoi dix serviteurs ne valent pas dix Chutes
+
+- **Chute liée** : la personne a réellement traversé une transformation de Déchéance ; elle peut chercher à progresser, recruter, rompre ou trahir.
+- **Serviteur ordinaire** : il travaille pour un maître Déchu mais n'est pas surnaturellement corrompu ; **aucun gain pyramidal automatique**.
+- **Captif asservi** : peut alimenter une **réserve coercitive**, dangereuse et instable, selon le scénario ; **n'est pas moralement coupable** de son asservissement et ne satisfait pas nécessairement une condition de Chute liée.
+- **Lieur** : disciple qui parvient à faire basculer une autre personne ; sa branche remonte un tribut selon les conditions de pacte, mais sa loyauté est incertaine.
+
+**Rendement décroissant proposé** : accumuler des subalternes directs n'augmente plus indéfiniment le pouvoir. Il faut déléguer, et donc laisser des lieutenants devenir eux-mêmes puissants. Le maître obtient une **source durable mais vulnérable** : libérer une branche, rompre un Ancrage ou provoquer une révolte peut interrompre le tribut.
+
+### Résoudre une promotion sans priver les joueurs de choix
+
+Un PJ qui approche un seuil voit son pacte exiger **une nouvelle Chute**. Le MJ expose l'offre et ses conséquences, sans imposer l'acte. Refuser laisse le personnage **au plafond actuel**, avec ses pouvoirs acquis mais sans nouveau rang de Déchéance. Un joueur peut alors rechercher une autre source de progrès, une rupture du pacte, ou accepter de devenir l'antagoniste de son propre monde.
+
+**Les PJ Déchus peuvent se retrouver en concurrence** pour les mêmes Chutes ; cette rivalité doit être approuvée par le groupe. Aucun joueur n'est contraint d'être corrompu pour faire progresser un autre PJ. Les PNJ peuvent refuser les offres et les victimes gardent des possibilités de secours.
+
+**Le tribut n'est pas la foi divine** : avoir des fidèles ne donne pas ces points à un dieu. Un dieu Déchu aurait à maintenir des liens de prédation spécifiques. Le **seuil de Déchéance ne remplace pas** les rangs à étoiles de la société divine.
+
+Voir [[monde/decheance-pyramide-de-liens-proposition|La Pyramide de Déchéance : Tribut des Chutes, liens et suzerains]] (non publiée).
+
 ## Interaction avec les Failles
 
 Une Faille peut servir d'occasion pour un pacte ou révéler une créature transformée ; **les Failles ne transmettent pas automatiquement la Déchéance**. Fermer une Faille n'augmente pas la Déchéance. Une créature envoyée sous contrainte par un maître peut être hostile et néanmoins libérable. La Guilde des Aventuriers n'a pas à tenir un registre de « races impures ».
