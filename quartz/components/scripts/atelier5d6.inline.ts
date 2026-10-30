@@ -261,10 +261,18 @@ RÈGLES EN TEST : 5d6 + caractéristique + compétence (0,1,2) + situation (-2,0
 Difficultés 15,18,21,24,27,30 ; critiques sur les 5 dés naturels :
 5 = échec critique exceptionnel, 6-7 = échec critique mineur, 27-29 = critique favorable possible, 30 = succès exceptionnel si l'action est réalisable.
 Base 12 : PV et mana d'essai, sans modifier les lois du Codex.
+Progression pilote : niveaux 1–12, voies librement combinables, talents narratifs, bénédictions, malédictions et objets à effets non plats.
+Après 3 échecs de même catégorie (magie, mêlée, tir ou négociation), proposer un incident narratif d12 facultatif ; un 5 naturel ne se cumule pas à l'incident.
 
 PERSONNAGE ACTIF : ${s.name} (${s.kind}), ${s.profession}.
 Physique ${s.stats.physique}, Agilité ${s.stats.agilite}, Esprit ${s.stats.esprit}, Présence ${s.stats.presence}.
 Spécialité +${s.skill}, PV ${s.pv}/${s.pvMax}, mana ${s.mana}/${s.manaMax}, Emprise ${s.emprise}/12.
+Niveau ${s.level}/12 ; voies : ${s.vocation || "aucune"}.
+Talents : ${s.talents || "aucun"}.
+Bénédictions / avantages conditionnels : ${s.boons || "aucun"}.
+Malédictions / limites : ${s.curses || "aucune"}.
+Objets à effet narratif : ${s.items || "aucun"}.
+Référence de la fiche : ${s.sourceRef || "adaptation sans source"} — ${s.sourceTitle || ""} (scores 5d6 non canoniques).
 Notes du personnage : ${s.notes || "aucune"}.
 
 AUTRES FICHES LOCALES (sans notes secrètes) :
@@ -358,6 +366,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   host.addEventListener("input",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if(el?.dataset?.field || el?.dataset?.stat)changeField(el)
+    if(el?.hasAttribute("data-reference-query"))renderRefs()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
