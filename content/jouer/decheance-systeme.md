@@ -106,6 +106,8 @@ L'**ascension divine traditionnelle** décrite par la Bible suit ses propres voi
 | **8 → 9** | **Deux branches distinctes**, dont au moins un **Lieur** ayant lui-même suscité une Chute |
 | **11 → 12** | **Trois branches durables**, dont au moins une **chaîne à deux générations** de Chutes liées |
 
+**Aucun saut de seuil ne permet d'éviter la pyramide :** si un pacte de +2 ou +3 ferait passer de 5 à 7, de 8 à 10 ou de 11 à 12 sans les branches requises, **l'Emprise plafonne au seuil inférieur** et le gain excédentaire n'est pas obtenu. Le MJ annonce le blocage avant l'offre.
+
 **Un être ne compte qu'une fois pour le seuil correspondant ;** on ne peut pas fabriquer artificiellement plusieurs branches à partir de la même personne. Détruire une branche après l'avoir utilisée ne permet pas de la recompter. Le MJ suit les **relations actives** et non un nombre de simples adeptes.
 
 **Captifs :** une personne asservie contre sa volonté peut être retenue comme **Ancrage captif** par un antagoniste et contribuer à la puissance fictionnelle du maître ; elle **ne satisfait pas automatiquement** la condition de Chute liée. Son statut de victime demeure distinct d'un choix volontaire de corruption.
@@ -117,6 +119,14 @@ L'**ascension divine traditionnelle** décrite par la Bible suit ses propres voi
 **Une charge de Tribut** peut être dépensée après un jet pour obtenir **+2 au total** ou pour tenir une faveur un instant plus longtemps. Pas plus d'**une charge par jet**. Les charges **non dépensées expirent à la fin de la séance**. Le tribut ne crée pas de pouvoir ni de rang supplémentaire ; c'est un carburant fragile.
 
 Lorsqu'un seuil manque, l'Emprise **plafonne** et les dons acquis restent, sauf si le personnage doit renégocier un pacte. Un joueur n'est jamais obligé de corrompre un autre PJ ; il peut choisir de rester au plafond, de changer d'objectif ou de chercher à sortir de la Déchéance.
+
+### Contrôle et résistance — option surnaturelle (PNJ seulement par défaut)
+
+Un **Lieur** disposant d'un véritable reliquaire ou d'une marque rituelle peut tenter d'imposer temporairement un ordre à un **PNJ fictif**. Il lui faut **un Ancrage identifié, une cible à portée du rite et du temps pour agir** ; ce n'est pas un pouvoir social ordinaire. Sur **2d6 + Esprit ou Lien** contre **10**, il peut imposer **une seule action courte** liée au domaine du pacte, à condition que la résistance du personnage n'ait pas déjà rompu le lien. À **7–9**, l'ordre est partiel ou laisse une ouverture aux alliés ; à **6 ou moins**, le rite échoue et dévoile son Ancrage.
+
+**Résister ou délier :** la cible peut tester **2d6 + Esprit ou Lien** contre **10** ; un allié qui agit pour la protéger peut lui donner **avantage**. Un Ancrage physiquement soustrait, un pacte rompu ou un lieur mis hors de portée **met fin à l'ordre**. Le MJ peut remplacer les dés par une épreuve de sauvetage et d'enquête.
+
+**Limite essentielle :** une action imposée sous contrôle **ne crée pas de Chute liée volontaire** et ne rapporte **aucune progression pyramidale**. Le contrôle d'un **personnage joueur** est exclu par défaut : aucun jet ne permet de lui confisquer ses décisions sans accord explicite de la personne qui l'incarne.
 
 ## 7. Rompre une branche et lutter contre un Seigneur
 
