@@ -137,3 +137,13 @@ Le créateur demande une **page du système** et un **outil interactif avec mode
 Le système 5d6 **n'annule pas** les règles 2d6 du module Déchéance ni les événements et usages attestés de CB1–43. L'atelier produit des fiches locales et des profils fictifs chiffrés, mais **ne lit pas le Compendium depuis le site** et n'atteste aucun rang ou score canonique de personnage.
 
 Les **exports JSON**, les notes MJ stockées localement et les prompts copiés sont sous le contrôle de l'utilisateur. Les données enregistrées dans un navigateur partagé ne sont **pas secrètes** ; ne pas envoyer des secrets d'Odyssée dans un contexte IA sans choix explicite. Aucune API IA n'est appelée.
+
+
+
+## Extension pilote 5d6 (réinitialisation, niveaux, références, incidents d12)
+
+**Demande du créateur** : généraliser progressivement le système 5d6 lors de l'édition des fiches et de nouvelles campagnes, introduire des niveaux et voies combinables, ainsi que récompenses et effets aléatoires narratifs. La première **mise en œuvre testable** ajoute ces champs et l'outil de référence sans attribuer de statistiques canoniques aux personnages.
+
+**Une page non codée approuvée comme pilote de travail** : `content/jouer/progression-voies-incidents.md` (`publish:true`, `canon_statut: proposition_non_jouee`, `etat_editorial: en_cours`). Les deux pages 5d6 existantes sont enrichies ; le compteur **177 fiches codées** ne change pas.
+
+**Important** : les classes restent des **voies ouvertes**, le niveau ne donne pas de +1 systématique, l'équipement ne procure pas de bonus plat canonique. Les 48 suggestions d'incidents et les profils JSON d'exemple sont **des inventions expérimentales**, sans valeur de fait joué. La recherche de référence passe par l'index **public filtré** ; les fiches à spoilers et les dossiers MJ doivent rester exclus. Un import de fiche chiffrée ne transforme jamais ses capacités en canon.
