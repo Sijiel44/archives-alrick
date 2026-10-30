@@ -75,7 +75,7 @@ for (const file of sourceFiles.filter(f => f.endsWith('.md'))) {
 // L'accueil est un portail de choix ; le catalogue complet n'y figure plus.
 const homepageHtml = await readFile(path.join(root, 'index.html'), 'utf8')
 const catalogHtml = await readFile(path.join(root, 'bibliotheque.html'), 'utf8')
-for(const token of ['id="alrick-home-title"', 'id="home-paths-title"', 'class="home-path-grid"', 'href="/archives-alrick/bibliotheque"']){
+for(const token of ['id="alrick-home-title"', 'id="home-paths-title"', 'class="home-path-grid"', 'home-catalog-link', 'bibliotheque']){
   assert(homepageHtml.includes(token), `Accueil guidé incomplet : ${token}`)
 }
 assert(!homepageHtml.includes('class="archive-grid"'), 'Catalogue exhaustif encore sur l’accueil')
