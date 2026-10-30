@@ -23,6 +23,35 @@ Cet outil est une **première version testable**, inspirée du [[jouer/systeme-5
 
 **MJ assisté par IA :** préparer un **contexte structuré à copier** dans une conversation d'IA, avec la fiche active, un extrait facultatif du répertoire et les consignes de continuité. **Le site n'envoie aucune information à ChatGPT ni à un service distant.**
 
+
+## Modèle minimal de fichier JSON
+
+Le mode MJ accepte un **profil** (objet JSON avec nom et quatre caractéristiques), un **tableau** de profils, ou un export du répertoire de l'Atelier. Exemple fictif, librement modifiable :
+
+```json
+{
+  "schema": "alrick.sheet.v1",
+  "name": "Gardien du vieux col (exemple)",
+  "kind": "pnj",
+  "profession": "Gardien",
+  "skill": 1,
+  "stats": {
+    "physique": 4,
+    "agilite": 2,
+    "esprit": 3,
+    "presence": 3
+  },
+  "pv": 12,
+  "pvMax": 12,
+  "mana": 0,
+  "manaMax": 0,
+  "emprise": 0,
+  "notes": "Création fictive, non canonique."
+}
+```
+
+L'export de l'Atelier utilise `alrick.sheets.v1` (un conteneur avec plusieurs profils). Seuls les fichiers **JSON explicites** sont acceptés ; les documents Word, PDF ou fiches des Archives ne sont **pas encore importés automatiquement**. Une étape future pourrait proposer une conversion **après validation du canon et des caractéristiques**.
+
 ## Fonctionnement et confidentialité
 
 Les fiches et les derniers jets sont enregistrés dans le **stockage local de ce navigateur**. Il n'y a ni compte, ni synchronisation entre appareils, ni sauvegarde sur nos serveurs. Utiliser **Exporter JSON** pour conserver sa progression ; l'import accepte des profils compatibles avec le format `alrick.sheet.v1`. La mémoire du navigateur peut disparaître si vous effacez ses données ou utilisez la navigation privée.
