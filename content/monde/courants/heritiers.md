@@ -18,7 +18,7 @@ tags: [divinites, courants, neuvieme-couronne, heritiers]
 
 # Les Héritiers
 
-![Symbole éditorial des Les Héritiers, non obligatoire pour les cultes.](https://sijiel44.github.io/archives-alrick/static/images/courants/heritiers.svg)
+![Symbole éditorial des Héritiers, non obligatoire pour les cultes.](https://sijiel44.github.io/archives-alrick/static/images/courants/heritiers.svg)
 
 *Donner une demeure aux histoires interrompues.*
 
