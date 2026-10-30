@@ -19,6 +19,12 @@ Le site possède déjà des fiches d'**individus liés à la campagne d'Orin**, 
 > [!warning] Exemple personnel avec révélation de campagne
 > [[CRE-CB39-LIONS-EDRIC-MAELYA|Une fiche sur des compagnons magiques particuliers]] est disponible après avertissement. Ses capacités appartiennent aux personnages documentés et ne sont pas attribuées automatiquement à tous les animaux semblables.
 
+## Un bestiaire hostile à construire
+
+La Bible donne une fonction aux monstres — écologique, mythologique, religieuse, historique ou narrative. Nous préparons une première banque de **prédateurs, créatures d'horreur et menaces liées aux passages**. Les prototypes ne sont pas encore canoniques et ne figurent pas parmi les fiches publiques validées.
+
+Pour le moment, lire [[monde/menaces-et-antagonismes|les principes de conception des adversaires]], puis les fiches de créatures déjà disponibles après avertissement.
+
 ## Règles de prudence pour les nouvelles fiches
 
 - Distinguer **espèce**, **individu** et **relation particulière** avec un personnage.
