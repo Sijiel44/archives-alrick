@@ -13,7 +13,7 @@ tags: [5d6, des, personnage, mj, pnj, creatures, atelier]
 
 # Atelier de jeu 5d6
 
-Cet outil est une **première version testable**, inspirée du [[jouer/systeme-5d6-base12|système 5d6 / Base 12]]. Il est conçu pour les campagnes **indépendantes**, qu'elles soient menées par un MJ humain ou assistées par IA.
+Cet outil est une **version pilote évolutive**, inspirée du [[jouer/systeme-5d6-base12|système 5d6 / Base 12]]. Il est conçu pour les campagnes **indépendantes**, qu'elles soient menées par un MJ humain ou assistées par IA.
 
 ## Trois modes, un même jeu
 
@@ -51,6 +51,24 @@ Le mode MJ accepte un **profil** (objet JSON avec nom et quatre caractéristique
 ```
 
 L'export de l'Atelier utilise `alrick.sheets.v1` (un conteneur avec plusieurs profils). Seuls les fichiers **JSON explicites** sont acceptés ; les documents Word, PDF ou fiches des Archives ne sont **pas encore importés automatiquement**. Une étape future pourrait proposer une conversion **après validation du canon et des caractéristiques**.
+
+## Nouveautés de l'Atelier v1.1
+
+- **Réinitialiser cette fiche…** : remet à zéro le personnage actif **après confirmation**, sans toucher aux autres fiches ni au journal général. Exporter son JSON avant toute remise à zéro.
+- **Niveau 1–12 et voies libres** : suivre l'expérience, les talents et la vocation sans imposer une classe unique ou un bonus brut de statistiques.
+- **Bénédictions, malédictions et objets singuliers** : consigner les possibilités narratives et leurs limites sans fabriquer d'équipement « +1 ».
+- **Incidents d12** : après trois échecs dans la même catégorie (magie, mêlée, tir, négociation), l'Atelier suggère une conséquence aléatoire facultative, parfois favorable plus tard. Les échecs sur 5 naturel ne cumulent pas une deuxième catastrophe.
+- **Références des Archives** : le MJ recherche les fiches **publiquement indexées** des personnages et créatures, les consulte sans téléchargement et peut créer une **adaptation 5d6** ; les notes et statistiques chiffrées créées restent hypothétiques.
+
+[[jouer/progression-voies-incidents|Lire le projet de progression, voies et événements aléatoires]].
+
+## Profils JSON d'essai à importer
+
+Trois exemples compatibles sont disponibles : **Eren (adaptation chiffrée non canonique à partir d'une fiche publique)**, une gardienne de relais fictive et un fauve fictif.
+
+[Télécharger les trois fiches JSON de démonstration](https://sijiel44.github.io/archives-alrick/static/atelier5d6-profils-demo.json)
+
+Ils ne fixent **aucune statistique canonique** de personnage ou créature. Le format de l'export est désormais `alrick.sheets.v2` ; les anciens exports `alrick.sheets.v1` restent importables.
 
 ## Fonctionnement et confidentialité
 
