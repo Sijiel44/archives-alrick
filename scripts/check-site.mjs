@@ -101,6 +101,25 @@ const demoData = JSON.parse(await readFile(path.join(root, 'static', 'atelier5d6
 assert(demoData.schema === 'alrick.sheets.v2' && Array.isArray(demoData.sheets) && demoData.sheets.length === 3, 'Profils JSON d’essai absents ou invalides')
 assert(demoData.sheets.every(s => typeof s.name === 'string' && Object.keys(s.stats ?? {}).length === 4), 'Profils 5d6 invalides')
 
+// Lot éditorial : chaque courant, Grande Puissance et dragon créé possède une page construite.
+const currents = ['jardiniers','legislateurs','heritiers','liberateurs','preservateurs','conquerants','devoreurs']
+for(const slug of currents){
+ const page = await readFile(path.join(root,'monde','courants',slug+'.html'),'utf8')
+ assert(page.includes('Emblème') || page.includes('emblème'), `Courant sans repère graphique : ${slug}`)
+ const svg=await readFile(path.join(root,'images','courants',slug+'.svg'),'utf8')
+ assert(svg.includes('<svg') && svg.includes('<title'),`Emblème SVG absent ou non accessible : ${slug}`)
+}
+for(const slug of ['astrae','aionel','nymea','orevan','syrka','dhorea'])
+  assert((await readFile(path.join(root,'monde','puissances',slug+'.html'),'utf8')).length>1000,`Fiche de puissance absente : ${slug}`)
+for(const slug of ['thessoryn','velmora','orzeyl'])
+  assert((await readFile(path.join(root,'creatures','dragons',slug+'.html'),'utf8')).length>1000,`Dragon absent : ${slug}`)
+const elyraHtml=await readFile(path.join(root,'personnages','PER-CB31-ELYRA.html'),'utf8')
+assert(elyraHtml.includes('Elyra'), 'La fiche Elyra est absente')
+const ruptureHtml=await readFile(path.join(root,'monde','failles-et-ruptures.html'),'utf8')
+assert(ruptureHtml.includes('imprévisib') || ruptureHtml.includes('impr&eacute;visib'), 'Les Failles imprévisibles sont absentes')
+for(const slug of ['evenements-aleatoires-failles','protocole-failles-guildes'])
+  assert((await readFile(path.join(root,'jouer',slug+'.html'),'utf8')).length>1000,`Guide de jeu Faille absent : ${slug}`)
+
 const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8')
 assert(!sitemap.includes('/mj/'), 'Page MJ dans le sitemap')
 assert(!files.some(f => /\.(docx|xlsx|csv|zip)$/i.test(f) || /atelier-mj|archives-source|inventaire_592|CONSIGNES_CONFIDENTIELLES/i.test(f)), 'Document source privé présent dans le site')
