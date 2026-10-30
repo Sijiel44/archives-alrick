@@ -44,7 +44,7 @@ Les pages **Accueil**, **Découvrir l'univers**, **Lire l'Odyssée**, **Jouer da
 
 - Les quatre portes figurent sur l'accueil ; la bibliothèque complète est sur une page distincte.
 - Les treize domaines sont regroupés dans une navigation repliable.
-- Aucun débordement horizontal n'a été détecté sur les vingt pages-écrans échantillonnées à ces deux largeurs.
+- Aucun débordement horizontal n'a été détecté sur les dix-neuf pages échantillonnées à chacune de ces deux largeurs (38 rendus en tout).
 - À partir des scripts compilés de l'artefact, le filtre de domaine et la recherche du catalogue ont été testés en format ordinateur et mobile : sélection de « Magie », recherche sans résultat, affichage du panneau vide, puis réinitialisation **fonctionnent**.
 - Aucun incident JavaScript n'a été relevé dans **ces tests isolés**. Cela ne prouve pas le fonctionnement de tous les modules JS (navigation Quartz, recherche globale, atelier 5d6, import/export JSON) en ligne.
 
