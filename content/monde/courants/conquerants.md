@@ -18,7 +18,7 @@ tags: [divinites, courants, neuvieme-couronne, conquerants]
 
 # Les Conquérants
 
-![Symbole éditorial des Les Conquérants, non obligatoire pour les cultes.](https://sijiel44.github.io/archives-alrick/static/images/courants/conquerants.svg)
+![Symbole éditorial des Conquérants, non obligatoire pour les cultes.](https://sijiel44.github.io/archives-alrick/static/images/courants/conquerants.svg)
 
 *Tenir la terre avant qu'un autre ne s'en empare.*
 
