@@ -1,5 +1,6 @@
 ---
 publish: true
+visibilite: "publique"
 title: "Île des Divertissements — Le royaume de l’Hiver"
 code: "GEO-CB44-HIVER"
 categorie: "lieu"
