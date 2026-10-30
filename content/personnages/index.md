@@ -35,6 +35,12 @@ Voir [[groupes/GRP-01|la fiche collective des Revenants]] pour leur noyau attest
 > [!important] Statuts indépendants
 > Un **Revenant** appartient à la compagnie d'Orin ; un **Rappelé** est une personne morte revenue à la vie. Ni le code documentaire d'une ancienne fiche, ni l'emploi, ni le logement, ni l'aide reçue ne démontrent l'appartenance à une compagnie ou à la Maison divine.
 
+## Quatre gardiens du vieux pont — correspondances canoniques
+
+Les fonctions d'Entre-Rives ont été confirmées par le créateur après l'examen du Compendium : **Maelin — Maintenir ; Rudek — Séparer ; Sela — Témoigner ; Eren — Transmettre**. Leurs fiches personnelles sont à avertissement de spoilers et restent non listées. **Eren n'est pas le marin Sören de CB1**. Ces attributions ne décrivent pas tous les mécanismes du pont ni une relève héréditaire imposée.
+
+Voir [[jdr-alrick/arbitrages-compendium-20261030|la continuité et les sources]] (révélations de la campagne).
+
 ## Pour un nouveau MJ
 
 Un même personnage peut être rencontré à travers son métier, ses choix et ses relations locales, sans que le joueur soit impliqué dans la campagne d'Orin. Les propositions de rencontres doivent être distinguées des aventures déjà jouées.
