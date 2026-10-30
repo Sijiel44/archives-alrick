@@ -122,3 +122,15 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Aucun repas, voyage, Rappel, contrat supplémentaire ou rituel n'est ajouté rétroactivement. Le point de reprise après CB43 demeure inchangé.
 # Total attendu : 245 fiches codées (244 après la PR33 + Margha), plus une page de continuité non codée avec avertissement.
 # Exiger CI et déploiement GitHub Pages vérifiés après fusion ; les dossiers Word V03/V06/V08 ne sont pas transférés au dépôt public.
+
+# Lot 07 — CB44 : analyse de la transcription 4.4 et reprise, 30 octobre 2026.
+# 135 messages, chapitres CCCX–CCCLXXIII ; la scène finale est le thé avec Elyan. Orin n'a PAS encore répondu à « Comment vas-tu, mon garçon ? ».
+# 10 biographies nouvelles approuvées (Eshma, Saëran, Ilyth, Damaric, Brégan, Héloïne, Berrik, Selya, Odran, Thalassar).
+# Total approuvé attendu : 255 fiches codées = 245 antérieures + 10 nouvelles.
+# Bilan et journal CB44, fiche d'Atlas des îles et chronique littéraire créés sans code ; avertissement spoilers et unlisted.
+# Le parc des quatre saisons et l'île de Brégan sont construits ; Damaric dirige le parc ; Brégan rejoint PERSONNELLEMENT la Maison ; pas de fusion institutionnelle forcée.
+# Odran n'a signé aucun poste général ; Eshma, Saëran, Ilyth gardent leurs engagements définitifs ouverts ; Orinor est encore à visiter.
+# Autorisation du créateur : publier volontairement les bruts de campagne ; aucune source intégrale CB44 n'est encore poussée dans cette branche.
+# L'archive DOCX originale + 135 fichiers messages Markdown a été créée séparément pour transfert via GitHub Desktop.
+# Le lot ne publie ni nouveaux faits après la dernière réplique d'Elyan ni décisions de futures séances.
+# Contrôler CI, 255 codes uniques, avertissements, liens et Pages après fusion.

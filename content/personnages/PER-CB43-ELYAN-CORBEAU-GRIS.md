@@ -8,7 +8,7 @@ categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB43"
 source_brute: "Compendium V03 FAM-08; CB43 P04348–04698, P05559–08839, P16643–16872, P22047–22278"
-derniere_revision_documentaire: "2026-10-29"
+derniere_revision_documentaire: "2026-10-30"
 visibilite: "publique_avec_avertissement"
 description: "Grand-père maternel et mentor mage d'Orin, Elyan conserve son identité propre, ses recherches et sa liberté."
 tags: [elyan, corbeau-gris, grand-pere, alriana, freya, orin, mage, mentor, veylan, cb43]
@@ -46,3 +46,10 @@ Elyan peut aider à comprendre un principe magique ou poser une question décisi
 - *Compendium des personnages et des relations*, V03 **FAM-08**, état CB43 et historique CB3.3.
 - *Campagne Brut 4.3*, CB43 P04348–04698 ; P05559–08839 ; P16643–16872 ; P22047–22278.
 - [[FAM-07|Famille d’Alriana]] · [[FAM-09|Freya]] · [[PER-CB2-ORIN|Orin / Alrick]] · [[GEO-CB43-PALAIS-DIVIN|Palais divin]].
+
+
+## CB44 — Dernière scène jouée, non conclue
+
+Après les travaux consacrés aux îles de loisirs et à la Maison, Orin souhaite passer une journée **sans nouveau programme**. Il retrouve Elyan dans un salon calme donnant sur les jardins. Son grand-père préfère aujourd'hui le thé et les biscuits aux leçons de magie. Après quelques plaisanteries, il pose la question **« Comment vas-tu, mon garçon ? »**, puis précise qu'il s'adresse à **Orin en tant que personne, non au dieu, au prince ou au bâtisseur**. **La réponse d'Orin n'est pas encore jouée.**
+
+Ne pas faire d'Elyan un subordonné permanent, un organisateur de missions improvisées ou un porte-voix de Veylan à ce point de reprise. Source : *Campagne Brut 4.4*, CCCLXXIII, message 135 ; [[jdr-alrick/cb44-bilan-et-reprise|reprise sans ellipse]].

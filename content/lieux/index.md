@@ -69,3 +69,8 @@ Pour distinguer les passages réellement établis des hypothèses régionales, l
 Le volume V02 traite aussi les Montagnes de l'Aube, le Mérien, Entre-Rives, Torngard et les autres royaumes. Les fiches régionales ci-dessus sont une première **validation sourcée**, pas un atlas exhaustif : plusieurs villages, villes secondaires, routes et institutions du répertoire restent en chantier. Ils ne figurent pas ici comme des destinations validées sans relecture.
 
 [[cultures/index|Peuples et cultures]] · [[institutions/index|Institutions]] · [[jouer/index|Choisir une région de départ]]
+
+
+## Actualité de l'Espace sur demande après CB44
+
+L'[[lieux/cb44-iles-et-quatre-saisons|Île des Divertissements, l'Île de Brégan et la géographie des quatre saisons]] sont désormais des lieux réalisés, **distincts** de l'île publique, du Palais et des projets de royaumes extérieurs. Les prolongements ferroviaires réalisés à l'intérieur de l'Espace sur demande ne prouvent pas la mise en service du réseau du royaume. Voir [[jdr-alrick/cb44-bilan-et-reprise|état de la campagne]].

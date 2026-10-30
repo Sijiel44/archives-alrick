@@ -1,6 +1,6 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **245 fiches codées approuvées** (216 avant la relecture du Compendium + **28 biographies validées**), auxquelles s'ajoutent les guides de jeu expérimentaux **non canoniques**. L’ancien décompte des fiches jaunes/rouges sur 285 entrées est un état historique, pas la classification actuelle des 645 sujets. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
+Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **255 fiches codées approuvées** (216 avant la relecture du Compendium + **28 biographies validées**), auxquelles s'ajoutent les guides de jeu expérimentaux **non canoniques**. L’ancien décompte des fiches jaunes/rouges sur 285 entrées est un état historique, pas la classification actuelle des 645 sujets. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
 
 **Publication active :** le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. Une PR seule ne publie rien.
 
@@ -180,7 +180,7 @@ Voir [AUDIT_SITE_2026-10-30.md](AUDIT_SITE_2026-10-30.md) pour les constats, ris
 
 Au terme du **lot précédent**, le compte était de **198 fiches codées approuvées**, contre **180 avant ce lot**. Les nouveaux dossiers : sept courants (**7**), six Grandes Puissances (**6**), trois dragons (**3**), une fiche de Failles (**1**), et Elyra (**1**). Deux guides jouables sans codes sont également activés : `jouer/evenements-aleatoires-failles` et `jouer/protocole-failles-guildes`, tous deux `canon_statut: proposition_non_jouee`.
 
-Les anciennes sections du README conservent les chiffres des **lots historiques** ; **245** est le total actualisé après l'arbitrage Margha du 30 octobre 2026. MAG-106 demeure un code interne, et son titre affiché est une formulation narrative. Les personnages d'Orin et les révélations restent exclus du répertoire public sans avertissement. Les sept symboles SVG sont des **emblèmes éditoriaux** et non des armes héraldiques établies. Les trois dragons sont des **créations originales de monde**, non des rencontres rétroactives.
+Les anciennes sections du README conservent les chiffres des **lots historiques** ; **255** est le total actualisé après le premier lot CB44. MAG-106 demeure un code interne, et son titre affiché est une formulation narrative. Les personnages d'Orin et les révélations restent exclus du répertoire public sans avertissement. Les sept symboles SVG sont des **emblèmes éditoriaux** et non des armes héraldiques établies. Les trois dragons sont des **créations originales de monde**, non des rencontres rétroactives.
 
 Les Failles peuvent être totalement imprévisibles. Le système de guilde ne contrôle pas toutes les Failles ; les dieux et les Veilleurs n'ont aucune obligation d'intervenir en permanence. Aucun événement historique de l'Odyssée n'a été redéfini comme Faille sans preuve source.
 
@@ -197,3 +197,8 @@ La réconciliation nominative des 40 anciens brouillons aboutit à **28 fiches v
 ## Arbitrages de canon après les 40 dossiers — 30 octobre 2026
 
 Le créateur confirme huit personnes existantes malgré leur absence de rencontre ou d'emploi, et valide **Margha Trois-Mers comme cuisinière de bord recrutée**. Il fixe les quatre fonctions des gardiens d'Entre-Rives. Les **huit profils restent en chantier hors publication**, leurs biographies pouvant servir à de futures campagnes ; aucun nouveau Rappel, contrat ou scène n'est créé. La fiche de Margha est publiée avec avertissement, portant le total de **244 à 245 fiches codées**. Voir [la continuité sourcée](content/jdr-alrick/arbitrages-compendium-20261030.md).
+
+
+## CB44 intégrée — mise à jour du 30 octobre 2026
+
+Le dossier `jdr-alrick/cb44-bilan-et-reprise` fixe **la reprise exacte** de la campagne : Elyan attend la réponse d'Orin à une question personnelle. La première réconciliation de CB44 comprend **10 biographies** nouvelles (soit **255 fiches codées approuvées**), un dossier d'Atlas des îles, un journal de changements canoniques et une **chronique historisée** des scènes familiales. Les projets et les rôles encore indécis restent signalés. Le créateur a autorisé la publication volontaire des campagnes brutes : l'index et le Word intégral de CB44 ont été préparés à part pour dépôt dans `sources/campagnes/CB44/`, **sans prétendre qu'ils sont déjà poussés sur GitHub**. Voir [procédure](docs/SOURCES_CAMPAGNES_PUBLIQUES.md).

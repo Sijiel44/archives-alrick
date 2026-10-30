@@ -46,3 +46,12 @@ Voir [[jdr-alrick/arbitrages-compendium-20261030|la continuité et les sources]]
 Un même personnage peut être rencontré à travers son métier, ses choix et ses relations locales, sans que le joueur soit impliqué dans la campagne d'Orin. Les propositions de rencontres doivent être distinguées des aventures déjà jouées.
 
 [[cultures/index|Cultures]] · [[groupes/index|Groupes]] · [[jouer/index|Inventer son héros]]
+
+
+## Nouveaux personnages et engagements après CB44
+
+**Divinités et rencontres :** [[personnages/PER-CB44-ESHMA-PREMIER-DEGEL|Eshma du Premier Dégel]], [[personnages/PER-CB44-SAERAN-MESURES-LOYALES|Saëran des Mesures Loyales]], [[personnages/PER-CB44-ILYTH-CARTES-INACHEVEES|Ilyth des Cartes Inachevées]], [[personnages/PER-CB44-DAMARIC-JEUX-OUVRAGE|Damaric des Jeux Après l'Ouvrage]], [[personnages/PER-CB44-BREGAN-BATISSEURS|Brégan des Bâtisseurs]] et [[personnages/PER-CB44-THALASSAR-MERS|Thalassar]] (conseil marin). Leurs degrés d'engagement diffèrent : **Brégan rejoint personnellement la Maison ; Damaric dirige le parc ; Eshma, Saëran et Ilyth gardent des questions ouvertes.**
+
+**Caves et métiers :** [[personnages/PER-CB44-ODRAN-VALCENDRE|Odran Valcendre]] accepte une étude préparatoire d'Aurignac sans contrat général ; [[personnages/PER-CB44-HELOINE-VALCIR|Héloïne Valcir]], [[personnages/PER-CB44-BERRIK-TROIS-TONNEAUX|Berrik Trois-Tonneaux]] et [[personnages/PER-CB44-SELYA-VIGNEBRUME|Selya Vignebrume]] ont accepté leurs recrutements dans des fonctions distinctes.
+
+Toutes ces **nouvelles biographies de CB44** sont placées derrière un avertissement et non listées dans la bibliothèque générale. Voir [[jdr-alrick/cb44-bilan-et-reprise|bilan/reprise]] et [[jdr-alrick/cb44-journal-canon|journal de changement]].
