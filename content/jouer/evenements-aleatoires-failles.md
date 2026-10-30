@@ -116,4 +116,4 @@ Consigne recommandée : « Après une transition de voyage, décide si un jet es
 ## Références
 
 - Bible V01 : catégories de passages, magie de la Faille.
-- [[monde/failles-entre-couronnes|Failles entre Couronnes]] et [[jouer/protocole-failles-guildes|Missions de guilde]] : projets de formalisation non publiés.
+- [[monde/failles-et-ruptures|Failles et ruptures imprévisibles]] et [[jouer/protocole-failles-guildes|Missions de guilde]] : guides de jeu proposés, sans administration officielle.
