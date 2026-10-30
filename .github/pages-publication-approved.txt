@@ -77,7 +77,7 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 
 
 # Lot 03 — enrichissement des courants, puissances, dragons et Failles avec accord de création du 30 octobre 2026.
-# Publier 7 pages codées content/monde/courants/{jardiniers,legislateurs,heritiers,liberateurs,preservateurs,conquerants,devoreurs}.md et 7 SVG éditoriaux content/images/courants/*.svg.
+# Publier 7 pages codées content/monde/courants/{jardiniers,legislateurs,heritiers,liberateurs,preservateurs,conquerants,devoreurs}.md et 7 SVG éditoriaux quartz/static/images/courants/*.svg.
 # Publier 6 portraits codés content/monde/puissances/{astrae,aionel,nymea,orevan,syrka,dhorea}.md : domaines canoniques, approfondissements, rites proposés.
 # Publier 3 dragons individuels originaux à noms vérifiés non réutilisés dans content/creatures/dragons/{thessoryn,velmora,orzeyl}.md ; aucune rencontre CB inventée.
 # Publier MON-FAI-02 content/monde/failles-et-ruptures.md : possibilité de Failles imprévisibles, catastrophes graves, veille non omnisciente, exploitation par Déchus sous conditions de Chutes liées.
