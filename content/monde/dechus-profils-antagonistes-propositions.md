@@ -3,13 +3,16 @@ publish: false
 title: "Les Déchus — premiers visages de l'antagonisme"
 description: "Propositions d'antagonistes mortels, cultuels, divins et draconiques issus de la future mécanique de Déchéance."
 categorie: "guide"
-canon_statut: "proposition_non_jouee"
+canon_statut: "historique"
 etat_editorial: en_chantier
 portee: "univers_partage"
 public_cible: ["mj"]
 usage_en_jeu: ["rencontre", "scenario"]
 tags: [dechus, antagonistes, dragons, dieux, cultes, personnages, propositions]
 ---
+
+> [!important] **Archive de conception — version remplacée**
+> Cette page conserve les **premières propositions**, non publiées, avec leurs hésitations historiques. Le créateur a validé ultérieurement le socle et les règles dans [[monde/dechus-hierarchie|ANT-DECH-01 — répertoire validé des Seigneurs et Princes]]. **Le document approuvé prévaut** : les avertissements « non canonique » dans la présente archive décrivent son état au moment de la rédaction, pas l'état actuel des Archives.
 
 # Les Déchus — galerie d'antagonistes proposés
 
