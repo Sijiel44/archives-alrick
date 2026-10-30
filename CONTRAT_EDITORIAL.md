@@ -147,3 +147,12 @@ Les **exports JSON**, les notes MJ stockées localement et les prompts copiés s
 **Une page non codée approuvée comme pilote de travail** : `content/jouer/progression-voies-incidents.md` (`publish:true`, `canon_statut: proposition_non_jouee`, `etat_editorial: en_cours`). Les deux pages 5d6 existantes sont enrichies ; le compteur **177 fiches codées** ne change pas.
 
 **Important** : les classes restent des **voies ouvertes**, le niveau ne donne pas de +1 systématique, l'équipement ne procure pas de bonus plat canonique. Les 48 suggestions d'incidents et les profils JSON d'exemple sont **des inventions expérimentales**, sans valeur de fait joué. La recherche de référence passe par l'index **public filtré** ; les fiches à spoilers et les dossiers MJ doivent rester exclus. Un import de fiche chiffrée ne transforme jamais ses capacités en canon.
+
+
+## Validation de sources et publication contrôlée — Lot 02 du 30 octobre 2026
+
+Le créateur autorise l'**enrichissement autonome des noms et possibilités de jeu**, à condition de préserver les faits existants et d'éviter les doublons. Cette autorisation **ne vaut pas** création rétroactive de scènes, de liens familiaux, de titres ou de statuts nouveaux pour des personnages déjà joués.
+
+Après lecture directe des documents : `MAG-106` (`faits_joues`, spoilers, `unlisted:true`, CB42 pages source 95–97), `MON-COUR-01` (`lore_valide`, courants et proximités de la Bible V01 Tome III) et `MON-ARCH-01` (`lore_valide`, trois Archétypes et limites du Conseil) sont **explicitement approuvés dans le lot**. Les amorces nouvelles sont identifiées **`proposition_non_jouee` au niveau de leur section**, sans promotion de ces scènes au canon. Les travaux composites sur les Failles restent `publish:false` ; `MON-PASS-01` conserve seul le socle publié.
+
+Le total publié autorisé passe de **177 à 180 fiches codées**. Les fiches à spoilers ne sont ni répertoriées, ni incluses dans l'index de recherche, même si leur URL peut être suivie volontairement après avertissement. Les archives remplacées et les projets de fermeture des Failles demeurent non publiés.

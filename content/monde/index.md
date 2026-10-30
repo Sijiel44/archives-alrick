@@ -16,7 +16,7 @@ La *Bible du monde et des puissances* rassemble les fondements de cet univers : 
 
 Le volume de référence V01 distingue notamment :
 
-- **Origines du monde et cosmologie** — Silence, Yggdrasil, fondements anciens et récits d'origine.
+- **Origines du monde et cosmologie** — Silence, Yggdrasil et [[monde/puissances-et-dragons|trois Archétypes draconiques autonomes]], distincts des Dix-Huit.
 - **Grandes Puissances et Couronnes** — [[monde/dix-huit-grandes-puissances|les Dix-Huit Grandes Puissances (MON-005)]], les Couronnes (MON-026 à MON-033), leurs domaines et leurs rapports.
 - **Histoire et temps** — Chronologie des Grands Âges (MON-012), calendrier (MON-013), destinées et prophéties (MON-035).
 - **Croyances et pratiques** — dieux, bénédictions et traditions (MON-034), sans imposer à chaque peuple une doctrine unique.
@@ -44,7 +44,7 @@ La Déchéance **ne signifie pas** que tous les démons, toutes les Failles ou l
 
 - [[monde/menaces-et-antagonismes|Menaces, monstres et antagonistes]] — repères publics sur les adversaires, les créatures et la cruauté, sans créer de nouveaux dieux.
 - [[monde/dix-huit-grandes-puissances|Les Dix-Huit — répertoire harmonisé]] : **fiche de référence publiée**, domaines vérifiés dans B39-05 ; les biographies individuelles restent à enrichir.
-- **Les sept courants de la Neuvième Couronne :** socle politique présent dans la Bible ; dossiers spécifiques à relire avant publication.
+- [[monde/courants-et-antagonismes|Les sept courants divins]] — fiche de référence validée : sensibilités politiques, positions mouvantes et dérives possibles, sans partis ennemis automatiques.
 - **Démonologie générale et bestiaire hostile :** études toujours ouvertes ; la **Déchéance et son premier répertoire de Seigneurs/Princes** sont désormais validés séparément. Les autres prototypes d'antagonistes demeurent à instruire.
 
 Les puissances divines peuvent avoir des opposants sincères, des rivaux et de vrais ennemis ; leurs antagonistes ne doivent pas être déduits du seul nom d'une Autorité. Le Silence et Níðor ne sont pas des méchants génériques.

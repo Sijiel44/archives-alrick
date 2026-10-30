@@ -19,6 +19,8 @@ L'univers d'Alrick n'est pas seulement le décor de l'Odyssée d'Orin. Ses régi
 
 - [[monde/index|Cosmologie et puissances]] — origines, Couronnes, croyances, questions encore ouvertes.
 - [[monde/dix-huit-grandes-puissances|Les Dix-Huit Grandes Puissances]] — liste de référence et domaines harmonisés.
+- [[monde/courants-et-antagonismes|Sept courants divins]] — sensibilités et tensions autour de la Neuvième Couronne.
+- [[monde/puissances-et-dragons|Les Archétypes draconiques]] — Drakon, Aurélion et Níðor, leurs volontés et les limites du Conseil.
 - [[monde/passages-entre-couronnes|Passages entre Couronnes]] — Portes, Failles, Reflets et autres traversées établies.
 - [[lieux/index|Atlas et territoires]] — lieux habités, villes, routes, passages et géographie de domaine.
 - [[magie/index|Arts magiques et ingénierie]] — Cercles, pratiques, expériences et limites de la connaissance.

@@ -65,3 +65,12 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # AUDIT_SITE_2026-10-30.md constitue un rapport de planification, pas une fiche de lore ni un fait joué.
 # Les fiches MAG-106, courants, Failles, personnages et lieux a_verifier demeurent publish:false en attente de relecture.
 # Conserver les pages MJ spoilers:true / unlisted:true ; CI npm test, contrôle des liens et verdict GitHub Pages exigés avant annonce de déploiement.
+
+# Lot 02 (30 octobre 2026) : validation sourcée des fiches de magie, courants et puissances.
+# Publier MAG-106 après relecture Campagne Brut 4.2 p.95–97, faits_joues, spoilers:true, unlisted:true, avertissement fermé.
+# Publier MON-COUR-01 content/monde/courants-et-antagonismes.md, lore_valide, Bible V01 Grand Conseil Tome III partie XII.
+# Publier MON-ARCH-01 content/monde/puissances-et-dragons.md, lore_valide, Drakon, Aurélion, Níðor + limites du Conseil.
+# Enrichir MON-PASS-01 existant avec des propositions explicites d'aventures/observations; ne pas publier le composite failles-entre-couronnes.md.
+# Garder dossiers de conception déchus historiques, autres spéculations politiques et prototypes en publish:false.
+# Fiches codées approuvées : 180 = 177 antérieures + 3 validées dans ce lot. Un scénario proposé ne devient jamais un fait CB.
+# Exiger npm test + contrôle spoilers/noindex/catalogue + déploiement Pages après fusion.

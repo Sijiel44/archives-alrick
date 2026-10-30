@@ -56,6 +56,14 @@ Les douze premières figures possèdent déjà des développements fondateurs pl
 
 Le nom **« Aion »** rencontré dans certains textes renvoie à **Aionel** et ne désigne pas une dix-neuvième puissance. Il n'existe pas dans ce répertoire de Grande Puissance indépendante de la Guerre ajoutée au Conseil : **Hadran** demeure une puissance secondaire à distinguer des Dix-Huit.
 
+## Le Conseil et les courants divins
+
+Le **Grand Conseil** possède **dix-huit sièges égaux**. **Veylan** y préside comme *Premier Écoutant* sans veto ni voix supplémentaire ; **Maëtra** certifie les décisions. Les Archétypes draconiques ne siègent pas et les Fondements ne relèvent pas de sa juridiction ordinaire.
+
+Les Grandes Puissances sont traversées par des **sensibilités politiques**, notamment au sujet de la Neuvième Couronne. La [[monde/courants-et-antagonismes|fiche des sept courants]] décrit **Jardiniers, Législateurs, Héritiers, Libérateurs, Préservateurs, Conquérants et Dévoreurs** avec les inclinations **non irrévocables** des Dix-Huit. Il ne faut jamais assigner une divinité à un camp unique sur la seule base de son domaine.
+
+[[monde/puissances-et-dragons|Fondements et Archétypes draconiques]] explique pourquoi Drakon, Aurélion et Níðor peuvent participer à une crise sans être subordonnés au Conseil.
+
 ## Puissance ne veut pas dire moralité
 
 Une Autorité divine n'est pas nécessairement bonne parce qu'elle possède un siège. Ses décisions, intérêts et méthodes doivent être jugés sur leurs conséquences ; ses fidèles peuvent différer d'elle ou se diviser. Inversement, **aucune des Dix-Huit n'est déclarée Déchue** dans le nouveau [[monde/decheance-canon|système de Déchéance]].

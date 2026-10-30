@@ -15,7 +15,7 @@ Ce document est un **plan de travail**, pas un récit de la campagne d'Orin, pas
 - **Six passages entre Couronnes** : typologie de la Bible S09 et limites de la magie de la Faille.
 - **Guilde des Aventuriers et secours mutuels** : projet **adopté mais à déploiement progressif** en CB32 ; ne pas le présenter comme une administration déjà installée partout.
 
-**Publication approuvée : 177 fiches codées** (171 du lot initial, quatre Déchéance, deux Bible). Ne pas compter les index non codés comme fiches de registre. Le chiffre n'efface pas les sujets du registre directeur v2.4 (**645 sujets**) qui ne sont pas tous migrés.
+**Publication approuvée : 180 fiches codées** (171 du lot initial, quatre Déchéance, deux Bible). Ne pas compter les index non codés comme fiches de registre. Le chiffre n'efface pas les sujets du registre directeur v2.4 (**645 sujets**) qui ne sont pas tous migrés.
 
 ## B. Priorités proposées pour les prochains chantiers
 
@@ -86,3 +86,10 @@ Ce document est un **plan de travail**, pas un récit de la campagne d'Orin, pas
 3. **P1 — Généraliser les modèles de fiches PJ/PNJ/créatures** autour des niveaux 1–12 et des voies libres **uniquement comme paramètres optionnels**, avec source et version. Les fichiers JSON d'essai n'ont aucune autorité canonique.
 4. **P2 — Tester les combats, la magie et les incidents de 3 échecs**, puis décider d'un système général unique ou de modules distincts ; harmoniser la Déchéance 2d6 seulement après arbitrage.
 5. **P2 — Audit ergonomique et d'accessibilité** : taille de typographie, longueur de navigation, formulation des filtres, clavier, repli mobile, profils et recherche. Ajouter un test automatique de l'accueil et de la bibliothèque séparée.
+
+
+## E. Lot 02 achevé — Sources prioritaires (30 octobre 2026)
+
+Trois fiches ont reçu une validation directe des documents et sont publiables : **MAG-106** (scène d'Elyra, accès avec avertissement), **MON-COUR-01** (sept courants et nuances politiques) et **MON-ARCH-01** (trois Archétypes et règles de consultation du Conseil). Le socle des **Failles**, déjà publié sous **MON-PASS-01**, est enrichi d'amorces non jouées. **Total de 180 fiches codées approuvées** après ce lot.
+
+**À traiter ensuite :** fiches individuelles des six Grandes Puissances moins détaillées (Astraë, Aionel, Nyméa, Orévan, Syrka, Dhoréa), géographie de l'Atlas et institutions locales, puis profils de dragons contemporains. Les noms de nouvelles créations peuvent être décidés en cours de travail, mais vérifier à chaque fois qu'ils ne doublonnent pas un personnage ou lieu déjà attesté. Les prototypes de guérison mémorielle, les fermetures de Failles et les alliances diplomatiques non jouées restent des questions ouvertes.

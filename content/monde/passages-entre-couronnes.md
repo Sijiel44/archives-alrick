@@ -45,6 +45,30 @@ L'Atlas conserve une tradition relative à la **Concorde des Huit Feux** et à l
 
 La carte générale doit tenir compte des **passages connus** entre les Couronnes, mais aussi des routes, montagnes, mers, ressources et limites de connaissances. Il serait trompeur de dessiner une carte exhaustive des Failles actives à partir des seules descriptions de la Bible.
 
+## Lire un incident de passage — guide de jeu proposé
+
+Une scène de Faille ne doit pas être traitée automatiquement comme une invasion, ni comme une démonstration du pouvoir d'Orin. Avant d'introduire une créature ennemie, le MJ peut examiner **quatre questions** :
+
+1. **Que constate-t-on ?** Une blessure visible, un Reflet intermittent, une route saisonnière hors calendrier, ou seulement une rumeur ? La nature exacte du passage peut rester inconnue.
+2. **Qui est exposé ?** Voyageurs, habitants, animaux, ouvriers, familles déplacées, secouristes et personnes traversant involontairement le seuil.
+3. **Quelles preuves sont disponibles ?** Mesures locales, témoignages contradictoires, objets passés de l'autre côté, archives d'une Porte ancienne. Une croyance ne vaut pas mesure.
+4. **Que peut-on faire sans aggraver la situation ?** Balisage, évacuation, observation, demande de renfort et recherche d'une personne compétente. **Fermer** et **stabiliser** n'ont pas de procédure commune démontrée.
+
+Ces questions constituent une **méthode proposée pour les MJ**, **pas un protocole de guilde déjà entré en vigueur**. Une équipe peut parfois être obligée de renoncer à un franchissement ou d'organiser d'abord la sécurité des habitants.
+
+### Six complications d'aventure — non jouées
+
+| Départ de scène | Difficulté humaine ou matérielle |
+|---|---|
+| Une **Porte** utilisée depuis longtemps cesse de répondre | La route commerciale dépend de son entretien, mais nul ne connaît son dernier intervenant |
+| Une **Faille** apparaît au bord d'une mine | Il faut d'abord secourir les travailleurs et déterminer si la structure est encore stable |
+| Un **Reflet** semble montrer une autre rive | Un enfant reconnaît une silhouette ; rien ne prouve qu'elle puisse être atteinte |
+| Une **Confluence** brouille les repères d'un sentier | Des guides se contredisent, sans qu'une frontière entre mondes ait été franchie |
+| Une **Route saisonnière** s'ouvre plus tard que prévu | Des voyageurs affamés ont attendu en vain : le sauvetage passe avant la découverte |
+| Un **Passage vivant** refuse de transporter le groupe | L'être a peut-être ses propres motifs et n'est pas un objet à contraindre |
+
+**Aucun de ces événements n'est réputé avoir eu lieu dans la campagne fondatrice.** Les lieux et organisations précis dépendront des fiches de l'Atlas et des choix du MJ.
+
 ## Le rôle des guildes et des secours
 
 La [[institutions/INST-CB32-SECOURS-AVENTURIERS|Guilde des Aventuriers et les secours mutuels]] ont été adoptés comme orientations institutionnelles, avec un **déploiement progressif**. Ils offrent une base crédible pour des missions de reconnaissance, de secours ou de protection en cas de phénomène dangereux.

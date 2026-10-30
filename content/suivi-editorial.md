@@ -14,7 +14,7 @@ etat_editorial: en_cours
 - 🟡 **En cours** — socle fiable; mise en place, conséquences ou détails restent à suivre et sont explicitement signalés.
 - 🔴 **À reprendre** — contradiction, identité, consentement, preuve ou décision à reprendre; la fiche reste en brouillon.
 
-**État de l'audit initial (historique, 29 octobre 2026) :** 285 pages de travail classées (109 vertes, 75 jaunes, 101 rouges). Parmi elles, 274 entrées portent un code : 270 fiches et quatre index de relecture. Les 15 index éditoriaux sont suivis séparément des fiches; 177 fiches codées sont actuellement approuvées pour publication (171 du lot initial, quatre Déchéance et deux Bible). Quatre fiches déjà présentes dans la bibliothèque (GRP-01, GEO-HAUTES-PATURES, GEO-ROCHEBRUME, REV-16) sont reprises dans le suivi. Les pages à spoilers affichent un avertissement avant le contenu et sont non listées; elles restent accessibles par lien éditorial. Les fiches de monde réutilisables sans révélation d’intrigue peuvent figurer dans la bibliothèque générale. Cette page de suivi est elle-même protégée par un avertissement.
+**État de l'audit initial (historique, 29 octobre 2026) :** 285 pages de travail classées (109 vertes, 75 jaunes, 101 rouges). Parmi elles, 274 entrées portent un code : 270 fiches et quatre index de relecture. Les 15 index éditoriaux sont suivis séparément des fiches; 180 fiches codées sont actuellement approuvées pour publication (171 du lot initial, quatre Déchéance, deux Bible et trois fiches supplémentaires vérifiées au 30 octobre 2026). Quatre fiches déjà présentes dans la bibliothèque (GRP-01, GEO-HAUTES-PATURES, GEO-ROCHEBRUME, REV-16) sont reprises dans le suivi. Les pages à spoilers affichent un avertissement avant le contenu et sont non listées; elles restent accessibles par lien éditorial. Les fiches de monde réutilisables sans révélation d’intrigue peuvent figurer dans la bibliothèque générale. Cette page de suivi est elle-même protégée par un avertissement.
 
 ## Vérification de publication du 30 octobre 2026
 
@@ -23,6 +23,16 @@ Un inventaire direct des **331 documents Markdown présents dans `content/`** a 
 **Travail de site effectué :** l'[[bibliotheque|accès à la bibliothèque]] est maintenant distinct de l'accueil ; la navigation donne priorité aux quatre parcours. Les trois guides de jeu 5d6 publiés sont toujours en phase d'essai et ne font pas partie du compte des 177 fiches codées.
 
 **Note de méthode :** le suivi historique vert/jaune/rouge ne doit pas être réinterprété comme un nouvel inventaire : une nouvelle fiche créée après octobre 2026 n'augmente pas rétroactivement les comptes de l'audit CB43. Pour l'état des prochaines tâches, voir la synthèse de l'audit du site publiée dans le dépôt.
+
+## Lot de relecture des sources — 30 octobre 2026
+
+- **MAG-106 — Elyra :** **validé et publié avec avertissement** (`spoilers:true`, `unlisted:true`), après recoupement direct avec *Campagne Brut 4.2*, pages source 95–97 ; le souvenir de la piqûre a disparu lors d'un retrait d'existence, sans démontrer de technique universelle et sans accord pour la perte de mémoire.
+- **MON-COUR-01 — sept courants :** **validé et publié** à partir du Grand Conseil des Dieux, Tome III v1.2, partie XII, pages source 130–139. Les proximités des Dix-Huit sont circonstancielles ; aucun courant ne représente à lui seul le bien ou le mal.
+- **MON-ARCH-01 — Fondements et Archétypes :** **validé et publié** depuis la Bible V01, Tome II et Tome III. Les trois Archétypes ne siègent pas parmi les Dix-Huit et ne sont pas automatiquement soumis aux décisions du Conseil.
+- **Failles — dossier composite :** `publish:false` maintenu. Les six formes de passage et la magie de Faille sont **déjà publiées dans MON-PASS-01** ; les modalités récurrentes, méthodes de fermeture, incidents et missions sont des propositions distinctes, **non jouées**.
+- **Dix-Huit — ancienne synthèse de travail :** conserver hors publication pour éviter un doublon de MON-005 et la publication de parties non arbitrées.
+
+**Total approuvé au terme du lot : 180 fiches codées.** Les fiches déjà en ligne ne deviennent pas des scènes de la campagne lorsqu'on leur ajoute une amorce d'aventure.
 
 ## Canon déjà confirmé à appliquer
 
