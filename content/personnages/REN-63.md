@@ -1,44 +1,36 @@
 ---
-publish: false
-title: "Sévrane"
+publish: true
+title: "Sévrane — Dernières lumières des lieux abandonnés"
 code: "REN-63"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P07616–07864"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
-tags: [ren_63, cb42, brouillon, sévrane]
-etat_editorial: en_chantier
+description: "Sévrane est une divinité associée aux foyers quittés, aux sanctuaires déserts et aux maisons où personne ne revient. Elle porte une lampe brodée, des vêtements sombr"
+tags: [ren_63, cb42, sévrane]
+etat_editorial: valide
+unlisted: true
 ---
 
-# Sévrane
+# Sévrane — Dernières lumières des lieux abandonnés
 
-> [!warning] Brouillon de continuité
-> Synthèse issue du registre directeur après CB42. Avant publication, relire la fiche dans le volume indiqué et vérifier que chaque élément conserve son statut.
+## Portrait et parcours
 
-## Synthèse attestée
+Sévrane est une divinité associée aux foyers quittés, aux sanctuaires déserts et aux maisons où personne ne revient. Elle porte une lampe brodée, des vêtements sombres de voyage et une longue tresse ; son domaine n’est **pas la guerre**.
 
-Elle veille sur foyers quittés, sanctuaires désertés et maisons où personne ne revient. Sa lampe brodée est entourée de trois cercles incomplets. Elle porte des vêtements sombres de voyage et une longue tresse. Elle ne réclame ni territoire ni fidèles.
+## Situation documentaire vérifiée
 
-## Statut documentaire
+**Invitée et accueillie**, elle apprécie son séjour dans le domaine d’Orin et aide spontanément un nouvel arrivant à trouver les espaces communs. Ce geste atteste sa présence et son autonomie.
 
-- **État du registre :** Profil proposé puis actualisation selon les scènes.
-- **Avancement :** Invitée de la Maison sans adhésion.
-- **Connaissance en jeu :** À préciser par affirmation. Les personnages ne connaissent pas automatiquement tout le contenu de cette fiche.
-- **Qualité du renvoi :** Fiche principale.
+## Limites d’autorité et développement
 
-## Source
+Sévrane n’a ni accepté une adhésion à la Maison, ni poste officiel, ni commandement. Aucun territoire ni culte obligatoire ne lui est attribué par la seule invitation.
 
-- *Compendium des personnages et des relations*, REN-63 Sévrane — CB42 P07616–07864.
+Les prochains projets ou exercices restent à jouer et à sourcer.
 
-## Fiches liées
+## Sources
 
-- O42-07 ; O42-10.
-
-## À compléter
-
-- Reprendre les formulations exactes du volume thématique et ajouter les faits ultérieurs sans effacer cet état.
-- Distinguer toute proposition de développement d’un événement joué ou d’une décision canonique.
+*Compendium des personnages et des relations* v1.7, **REN-63** ; documents CB cités précédemment : CB42 P07616–07864. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.
