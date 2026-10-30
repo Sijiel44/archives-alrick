@@ -1,10 +1,10 @@
 ---
-publish: false
-title: "Alerte de Faille — missions de guilde et secours"
+publish: true
+title: "Secours aux passages — missions et guildes d’aventuriers"
 description: "Dispositif jouable de missions, certification, prise en charge des civils et coordination avec les Revenants."
 categorie: "guide"
 canon_statut: "proposition_non_jouee"
-etat_editorial: en_chantier
+etat_editorial: en_cours
 portee: "univers_partage"
 public_cible: ["mj", "joueurs"]
 usage_en_jeu: ["scenario", "reference"]
@@ -12,7 +12,7 @@ source_brute: "Socle : INST-CB32-SECOURS-AVENTURIERS, CB32 P08327–08719; Reven
 tags: [failles, aventuriers, secours, contrat, guildes, revenants]
 ---
 
-# Alerte de Faille — le travail des aventuriers
+# Secours aux passages — le travail des aventuriers
 
 > [!warning] Système de jeu proposé, non canon administratif
 > La **Guilde des Aventuriers et les secours mutuels sont adoptés avec déploiement progressif** en CB32. Le dispositif de contrats de Faille, les niveaux d'alerte et les procédures détaillées ci-dessous sont **des options MJ**, pas une loi déjà appliquée dans toutes les cités.
@@ -43,6 +43,19 @@ Un courrier arrive au relais ; une garde civile demande du renfort ; un village 
 | **C — Crise majeure** | Coordination régionale, évacuations multiples, danger magique élevé | « Un aventurier débutant peut fermer seul une blessure cosmique » |
 
 Ces **lettres sont des étiquettes de scénario provisoires**, pas des qualifications officielles validées dans CB32. Le socle attesté demande premiers secours, extraction, cartographie, signalement, protection des civils, droit, repli, coordination et renforts ; des qualifications additionnelles selon le risque restent en développement.
+
+## Veilleurs, guildes et coordination sans toute-puissance
+
+**La surveillance ne garantit pas l'alerte.** Une garde ou une équipe de guilde peut observer un passage ancien pendant des saisons sans rien détecter, puis être surprise par une rupture qui n'avait laissé aucun indice. Le contrat doit donc prévoir **évacuation, repli, messages et accueil des survivants**, même quand l'origine du danger reste inconnue.
+
+La veille pourrait réunir trois métiers différents :
+- **Veille du terrain :** guides, gardes, artisans et observateurs, capables de reconnaître des changements locaux sans les interpréter tous comme des Failles ;
+- **Étude des seuils :** mages formés, ingénieurs, archivistes, équipes de reconnaissance, parfois **Heimdall** s'il accepte librement d'intervenir. Sa **Clé-Œil** n'est pas un détecteur universel ;
+- **Protection exceptionnelle :** une Grande Puissance, un Archétype ou une autre autorité peut intervenir selon ses propres choix, sa compétence et les conditions du lieu ; **aucune astreinte divine permanente n'est créée**.
+
+**Règle de contrat recommandée :** dès que la sécurité d'autrui devient l'enjeu principal, faire passer le sauvetage **avant** l'étude du phénomène. Une mission de guilde ne doit pas devenir une chasse au monstre qui oublie les gens.
+
+**Organisation proposée, non encore officialisée :** un registre des signalements tenu localement, une possibilité de relais régional, et une qualification limitée aux compétences réellement vérifiées. Les guildes peuvent partager des connaissances, **pas monopoliser l'accès à un passage ni s'attribuer les pouvoirs de police**.
 
 ## Exemple collectif : Bram, Kelm et Torven
 
