@@ -3,7 +3,7 @@ publish: false
 title: "La Déchéance — voie de puissance et corruption de l'être"
 description: "Proposition cosmologique détaillée : progression, pertes, dieux et dragons déchus, cultes, serviteurs et opposition à l'ascension."
 categorie: "guide"
-canon_statut: "proposition_non_jouee"
+canon_statut: "historique"
 etat_editorial: en_chantier
 visibilite: "a_relire_avant_publication"
 portee: "univers_partage"
@@ -12,6 +12,9 @@ usage_en_jeu: ["reference", "scenario"]
 source_brute: "Proposition de création du 29 octobre 2026; compatibilité vérifiée avec Bible V01 v1.7, S09 pages source 27-28, 63-64 (ascensions, dragons), et avec le chantier Démonologie PR22"
 tags: [decheance, dechus, corruption, ascension, dieux, dragons, antagonistes, proposition]
 ---
+
+> [!important] **Archive de conception — version remplacée**
+> Cette page conserve les **premières propositions**, non publiées, avec leurs hésitations historiques. Le créateur a validé ultérieurement le socle et les règles dans [[monde/decheance-canon|MON-DECH-01 — Déchéance validée]]. **Le document approuvé prévaut** : les avertissements « non canonique » dans la présente archive décrivent son état au moment de la rédaction, pas l'état actuel des Archives.
 
 # La Déchéance — une voie de puissance qui dévore son porteur
 
