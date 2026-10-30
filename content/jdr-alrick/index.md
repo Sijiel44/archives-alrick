@@ -30,6 +30,10 @@ Le créateur a confirmé le **30 octobre 2026** huit existences de personnages e
 
 ## Reprendre le jeu après CB44
 
+- [[jdr-alrick/verrous-de-reprise-apres-cb44|Verrous de continuité : personnages, Maison, Autorités, contrat et point de reprise]] — dossier MJ prioritaire pour éviter tout faux raccord.
+- [Registre d'import des quinze campagnes](https://github.com/Sijiel44/archives-alrick/blob/main/sources/campagnes/README.md) — **registre déjà présent**, bruts complets préparés hors dépôt et encore à téléverser.
+
+
 - [[mj/reprise-cb44|Prompt de reprise CB44 : recherche des Archives avant réponse, dictée et chapitres]]
 - [Protocole de recherche du MJ](https://github.com/Sijiel44/archives-alrick/blob/main/docs/PROTOCOLE_RECHERCHE_AVANT_REPONSE_JDR.md) — méthode détaillée, limites de preuve et statuts canoniques
 

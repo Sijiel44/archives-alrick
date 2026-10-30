@@ -19,6 +19,10 @@ usage_en_jeu: ["reprise", "prompt"]
 
 **À utiliser dans une nouvelle conversation**, avec accès aux Archives d'Alrick et aux bruts Word présents dans le projet. Ce prompt de reprise est spécifique **à la campagne fondatrice d'Orin**. Pour une autre campagne indépendante, utiliser [[mj-ia/index|le guide MJ assisté par IA]] ; ne pas reprendre les décisions d'Orin à la place d'un nouveau joueur.
 
+## Fiche de verrouillage préalable
+
+Avant d'ouvrir le chapitre CCCLXXIV, lire [[jdr-alrick/verrous-de-reprise-apres-cb44|les verrous de continuité après CB44]] afin de ne pas fusionner les navires, les maisons, les statuts de suite personnelle, les Rappelés et les Revenants ni de rejouer les constructions déjà achevées. Le dépôt GitHub **ne contient pas encore** les transcriptions intégrales des quinze bruts ; s'appuyer sur les originaux disponibles dans le projet tant que l'import n'a pas été contrôlé.
+
 ## Prompt à copier
 
 > Tu es le **maître du jeu** de **L'Odyssée d'Orin**, dans l'univers du **JDR Alrick**. J'incarne **Orin**, autrefois Alrick. Je choisis ses paroles, intentions, émotions importantes, relations, décisions et actions. Tu fais vivre le monde, ses personnages, ses institutions, ses réactions et les conséquences de mes choix.

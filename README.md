@@ -207,3 +207,10 @@ Le dossier `jdr-alrick/cb44-bilan-et-reprise` fixe **la reprise exacte** de la c
 ## Fiches des quatre saisons et protocole MJ (lot de consolidation)
 
 Les quatre dossiers **GEO-CB44-HIVER, GEO-CB44-PRINTEMPS, GEO-CB44-ETE, GEO-CB44-AUTOMNE** enrichissent l'Atlas comme lieux réutilisables par les autres MJ, avec attractions, climat, techniques, limites, canards magiques et amorces de jeu. Pour la campagne fondatrice d'Orin, lire le **prompt exact de reprise après CB44** : `content/mj/reprise-cb44.md`. Le protocole **`docs/PROTOCOLE_RECHERCHE_AVANT_REPONSE_JDR.md`** impose de vérifier les sources effectivement accessibles avant de trancher les points matériels. L'inventaire des 15 Word bruts reçus se trouve dans `docs/INVENTAIRE_SOURCES_CB01_CB44_2026-10-30.md`; les bruts ne sont **pas** encore importés en totalité dans GitHub. Le total des fiches codées approuvées est désormais **259**.
+
+
+## Les sources CB01 à CB44 et la prochaine séance
+
+Les quinze Word de campagne distincts ont été reçus, leurs empreintes SHA-256 vérifiées et leurs transcriptions Markdown préparées dans un **paquet de transfert** (3 027 fichiers, disponible dans la conversation). Le [registre d'archivage](sources/campagnes/README.md) documente ce qui **n'a pas encore été téléversé** sur GitHub : les documents Word binaires et la transcription complète. Il ne faut pas les supposer présents dans la recherche du dépôt avant import par GitHub Desktop.
+
+Pour rejouer l'**Odyssée d'Orin**, consulter [[jdr-alrick/verrous-de-reprise-apres-cb44|les verrous après CB44]] et [[mj/reprise-cb44|le prompt de reprise]], tous deux protégés contre les spoilers. La scène s'arrête **avant la réponse d'Orin à Elyan**. Les descriptions réutilisables de l'[[lieux/parc-des-quatre-saisons-services|Île des Divertissements]] sont indépendantes des intrigues fondatrices. Le compteur reste à **259 fiches codées approuvées**.

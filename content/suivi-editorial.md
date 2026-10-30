@@ -684,3 +684,10 @@ La transcription **CB44** de 135 messages et chapitres **CCCX–CCCLXXIII** a é
 **Quatre nouvelles fiches de lieux codées et validées**, soit **259 codes publiés** (255 précédemment), décrivent chaque domaine saisonnier de l'Île des Divertissements : **Hiver, Printemps, Été et Automne**. Elles conservent les attractions construites, les canards saisonniers distincts des illusions et la séparation géographique avec l'île publique. Les amorces pour les autres MJ ne sont pas des scènes jouées d'Orin.
 
 Le **prompt de reprise après CB44** et le **protocole de consultation documentaire** sont disponibles dans `content/mj/reprise-cb44.md` et `docs/PROTOCOLE_RECHERCHE_AVANT_REPONSE_JDR.md`. La présence des **quinze Word bruts**, de CB1 à CB4.4, a été inventoriée dans `docs/INVENTAIRE_SOURCES_CB01_CB44_2026-10-30.md`. **Leur import intégral sur GitHub reste distinct et n'est pas réalisé par ce lot.** Le dernier point jouable demeure **la question d'Elyan à Orin**.
+
+
+## Préparation de reprise après le dépôt des quinze bruts
+
+Le créateur a fourni **15 Word distincts**, de CB1 à CB4.4. Les quinze fichiers ont été **validés par SHA-256**, et un paquet local de **3 027 fichiers** a été généré : originaux inchangés, transcriptions Markdown, index de chapitres et de messages, manifestes. La transcription complète et les originaux **n'ont pas encore été poussés dans ce dépôt par les outils connectés**. Le registre de transfert `sources/campagnes/README.md` liste l'état honnête du chantier et fournit les étapes GitHub Desktop.
+
+La [[jdr-alrick/verrous-de-reprise-apres-cb44|fiche de verrous avant jeu]] synchronise les personnages, les statuts de la Maison, les cinq Autorités, les bateaux, les contrats, les projets et la dernière scène avec Elyan. Des corrections **CB44** ont été ajoutées à `O42-01`, `O42-02` et `MAG-116` tout en préservant leurs instantanés antérieurs. L'[[lieux/parc-des-quatre-saisons-services|atlas des coulisses et services du parc]] est ajouté comme guide d'univers **sans code supplémentaire**. Compteur conservé : **259 fiches codées**, les nouveaux guides étant non codés.

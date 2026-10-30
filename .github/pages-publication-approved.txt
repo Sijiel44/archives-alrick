@@ -144,3 +144,13 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # docs/PROTOCOLE_RECHERCHE_AVANT_REPONSE_JDR.md : contrôle réel des fiches et sources, jamais de faux accès GitHub.
 # docs/INVENTAIRE_SOURCES_CB01_CB44_2026-10-30.md : présence des 15 DOCX reçus ; originaux complets pas encore sur GitHub.
 # L'index et les guides non codés ne changent pas le compteur. Contrôler npm test / liens / 259 codes avant fusion.
+
+# Lot 09 — Avant reprise : sources CB01–CB44, corrections CB44 et lieux partagés.
+# Nombre de fiches codées approuvées : **259 INCHANGÉ** ; aucune fiche codée nouvelle.
+# +1 guide public non codé : lieux/parc-des-quatre-saisons-services.md (équipements, métiers, maintenance).
+# +1 fiche MJ protégée non codée : jdr-alrick/verrous-de-reprise-apres-cb44.md (spoilers et unlisted).
+# Actualise Maison O42-01 et O42-02, magie MAG-116 et les index ; préserve les historiques CB42/CB43.
+# Registre sources/campagnes/README.md : 15 Word reçus, 15 transcriptions et >3000 fragments générés dans un ZIP hors dépôt.
+# CLAUSE IMPORTANTE : Aucun des 15 Word originaux ni la transcription Markdown complète n'a été téléversé au GitHub via la présente PR.
+# Scene de reprise : CB44 CCCLXXIII, Elyan demande « Comment vas-tu, mon garçon ? » ; Orin n'a pas encore répondu.
+# Après la fusion, vérifier npm test, 259 codes et absence de publicité accidentelle du dossier MJ.
