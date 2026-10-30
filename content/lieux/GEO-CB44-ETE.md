@@ -12,7 +12,7 @@ ancre_documentaire: "CB44"
 source_brute: "Campagne Brut 4.4, chapitres CCCLXVII–CCCLXXII"
 derniere_revision_documentaire: "2026-10-30"
 description: "Description du domaine ete et de ses attractions développées en CB44, destinée à être réutilisée dans d'autres aventures."
-tags: ["ete", "mer", "oceank", "plage", "attractions-aquatiques"]
+tags: ["ete", "mer", "ocean", "plage", "attractions-aquatiques"]
 ---
 
 # Île des Divertissements — Les côtes de l’Été
