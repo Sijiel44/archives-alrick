@@ -28,6 +28,11 @@ Le créateur a confirmé le **30 octobre 2026** huit existences de personnages e
 
 [[jdr-alrick/arbitrages-compendium-20261030|Lire les arbitrages sourcés et les limites (révélations de campagne)]].
 
+## Reprendre le jeu après CB44
+
+- [[mj/reprise-cb44|Prompt de reprise CB44 : recherche des Archives avant réponse, dictée et chapitres]]
+- [Protocole de recherche du MJ](https://github.com/Sijiel44/archives-alrick/blob/main/docs/PROTOCOLE_RECHERCHE_AVANT_REPONSE_JDR.md) — méthode détaillée, limites de preuve et statuts canoniques
+
 ## CB44 : nouveaux dossiers de continuité
 
 - [[jdr-alrick/cb44-bilan-et-reprise|CB44 — Bilan et reprise exacte auprès d'Elyan]]
