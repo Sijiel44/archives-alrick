@@ -1,6 +1,6 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **177 fiches codées approuvées** (171 du lot initial + 4 Déchéance + 2 Bible), auxquelles s'ajoutent trois guides 5d6 expérimentaux (109 vertes et 62 jaunes) parmi **285 entrées de travail**. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
+Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **180 fiches codées approuvées** (171 du lot initial + 4 Déchéance + 2 Bible), auxquelles s'ajoutent trois guides 5d6 expérimentaux (109 vertes et 62 jaunes) parmi **285 entrées de travail**. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
 
 **Publication active :** le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. Une PR seule ne publie rien.
 
@@ -123,14 +123,14 @@ Deux **fiches canoniques sourcées** s'ajoutent aux 175 fiches codées déjà ap
 - **MON-005** `content/monde/dix-huit-grandes-puissances.md` — répertoire vérifié des **18 Grandes Puissances**, depuis V01 B39-05/B39-06.
 - **MON-PASS-01** `content/monde/passages-entre-couronnes.md` — six catégories de passages décrites dans V01 S09, dont les Failles.
 
-**Total : 177 fiches codées approuvées** (171 lot initial + quatre Déchéance + deux Bible). Les six Grandes Puissances moins détaillées restent à enrichir. Les hypothèses de Failles récurrentes, antagonistes hors Déchéance, bestiaire et démonologie restent des **chantiers non canoniques** tant que les arbitrages ne sont pas effectués.
+**Total : 180 fiches codées approuvées** (171 lot initial + quatre Déchéance + deux Bible). Les six Grandes Puissances moins détaillées restent à enrichir. Les hypothèses de Failles récurrentes, antagonistes hors Déchéance, bestiaire et démonologie restent des **chantiers non canoniques** tant que les arbitrages ne sont pas effectués.
 
 Un audit éditorial et les prochaines priorités figurent dans [PLAN_DEVELOPPEMENT_UNIVERS.md](PLAN_DEVELOPPEMENT_UNIVERS.md). Le workflow Pages est déclenché uniquement après modification explicite du marqueur d'approbation ; un build réussi ne garantit pas à lui seul la disponibilité publique.
 
 
 ## Atelier 5d6 / Base 12 — pilote expérimental, deux pages publiques
 
-Deux pages **non codées**, en `etat_editorial: en_cours` / `canon_statut: proposition_non_jouee`, s'ajoutent aux **177 fiches codées approuvées** (ce compteur ne change pas) :
+Deux pages **non codées**, en `etat_editorial: en_cours` / `canon_statut: proposition_non_jouee`, s'ajoutent aux **180 fiches codées approuvées** (ce compteur ne change pas) :
 - `content/jouer/systeme-5d6-base12.md` : explication du système **5d6 / Base 12** en test ; **ne remplace ni les jets CB historiques ni le module Déchéance 2d6**.
 - `content/jouer/atelier-5d6.md` : interface PJ / MJ / MJ-IA, sauvegarde `localStorage`, fiches PNJ/créatures **importables en JSON**, profils fictifs, dés et journal, contexte IA à copier. **Sans backend ni accès automatique aux fiches de l'encyclopédie**.
 
@@ -160,3 +160,13 @@ La page d'accueil `content/index.md` a été simplifiée : quatre parcours de na
 L'inventaire a contrôlé **331 pages Markdown** dans `content/`. **Aucune fiche non publiée ne possède `etat_editorial: valide`** : aucune fiche encore masquée n'a été rendue publique sans nouvelle relecture. Les dossiers en chantier (dont MAG-106 et les courants divins) requièrent une comparaison avec les sources.
 
 Voir [AUDIT_SITE_2026-10-30.md](AUDIT_SITE_2026-10-30.md) pour les constats, risques, décisions et priorités de travail. Le compteur 177 concerne les **fiches codées**, et non la somme de toutes les pages de navigation ou des brouillons.
+
+
+## Relecture sourcée et publication ciblée (30 octobre 2026)
+
+- `MAG-106` : essai de retrait d'existence d'Elyra en CB42, **faits joués**, mais **spoilers et non répertorié** ; vérification dans *Campagne Brut 4.2*, pages source 95–97.
+- `MON-COUR-01` : `content/monde/courants-et-antagonismes.md`, **lore_valide**, courants et inclinations politiques de la Bible V01, Tome III v1.2.
+- `MON-ARCH-01` : `content/monde/puissances-et-dragons.md`, **lore_valide**, Drakon, Aurélion, Níðor et limites du Conseil.
+- `MON-PASS-01` : enrichi de méthodes d'observation et d'aventures **proposées, non jouées** ; le dossier composite `failles-entre-couronnes.md` reste `publish:false`.
+
+**180 fiches codées approuvées** au total (177 existantes + 3). Les autres dossiers `en_chantier` ou `a_verifier` ne sont **pas** promus en bloc. Le nouveau canon décrit les principes vérifiés, tandis que les suggestions de jeu sont toujours labellisées comme telles.
