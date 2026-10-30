@@ -19,12 +19,17 @@ Une première série de fiches tirées de **l'Atlas V02 v1.8**, recoupée avec l
 - [[GEO-001|Les Montagnes de l'Aube]] — sept grandes cités, peuples et institutions ; le rail extérieur demeure un programme.
 - [[GEO-008|Torngard]] — capitale royale et suites du Grand Colloque.
 - [[GEO-007|Skalor]] — bâtisseurs, arts et Hall des Pierres.
+- [[GEO-011|Aldhammar]] — ancienne capitale et revitalisation, sans transfert du siège royal.
+- [[GEO-009|Forgeciel]] — métallurgie, métiers, coopérations avec les dragons et recherches.
+- [[GEO-012|Keldrun]] — cols orientaux, caravaniers, contrôles et communautés alliées.
+- [[GEO-010|Nacrecombe]] — lac souterrain, métiers et relations entre Nains et Alfes.
+- **Dornaël** — septième grande cité de l'Atlas, encore sans fiche locale suffisamment vérifiée.
 - [[GEO-CB1-VALBRUME|Valbrume]] — navigation, commerce, traditions de chartes et duché d'Édric.
 - [[GEO-021|Le Mérien et Entre-Rives]] — villages, mémoire, droits d'eau, terroir et coopérations.
 - [[GEO-CB2-ENTRE-RIVES|Entre-Rives]] — de la fondation CB2 aux réalisations rapportées après cinq années.
 - [[GEO-002|Orinor]] — royaume distinct, ports, institutions et étude du terroir d'Aurignac.
 
-**Cartes :** [[atlas-schema-regional|voir le schéma non métrique et la méthode de cartographie]]. Les positions, routes commerciales précises, distances, voies ferrées à inaugurer et zones de Failles ne sont pas dessinées tant que les sources ne le permettent pas.
+**Cartes :** [[atlas-schema-regional|schéma non métrique et méthode de cartographie]] ; [[atlas-circulations-echanges|réseaux marchands, cols et projets de transport]]. Les positions, routes commerciales précises, distances, voies ferrées à inaugurer et zones de Failles ne sont pas dessinées tant que les sources ne le permettent pas.
 
 ## Découvrir les lieux accessibles
 
