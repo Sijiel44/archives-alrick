@@ -70,6 +70,16 @@ for (const file of sourceFiles.filter(f => f.endsWith('.md'))) {
   assert(!/<details[^>]*\sopen(?:=|\s|>)/.test(html), `Fiche à spoilers ouverte par défaut : ${relative}`)
   assert(!Object.keys(index).some(key => key === slug), `Fiche publique à spoilers présente dans la recherche : ${relative}`)
 }
+// Contrat de publication de l'Atelier 5d6 : les modes et les champs doivent exister dans le HTML.
+// Les tests de navigateur réels restent nécessaires pour les interactions et le stockage local.
+const atelierFile = path.join(root, 'jouer', 'atelier-5d6.html')
+const atelierHtml = await readFile(atelierFile, 'utf8')
+for (const token of ['id="atelier-5d6"', 'data-mode="pj"', 'data-mode="mj"', 'data-mode="ia"', 'data-import', 'data-ai-prompt', 'data-roll']) {
+  assert(atelierHtml.includes(token), `Outil Atelier 5d6 incomplet dans le build : ${token}`)
+}
+const rulesHtml = await readFile(path.join(root, 'jouer', 'systeme-5d6-base12.html'), 'utf8')
+assert(rulesHtml.includes('5d6'), 'La page des règles 5d6 est absente du HTML final')
+
 const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8')
 assert(!sitemap.includes('/mj/'), 'Page MJ dans le sitemap')
 assert(!files.some(f => /\.(docx|xlsx|csv|zip)$/i.test(f) || /atelier-mj|archives-source|inventaire_592|CONSIGNES_CONFIDENTIELLES/i.test(f)), 'Document source privé présent dans le site')
