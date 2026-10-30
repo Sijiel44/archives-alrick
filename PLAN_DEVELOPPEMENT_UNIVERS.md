@@ -1,5 +1,8 @@
 # Les Archives d'Alrick — audit et priorités de développement
 
+**État opérationnel après le lot Atlas et biographies du 30 octobre 2026 : 216 fiches codées approuvées.** Ne pas utiliser les anciennes étapes de ce plan (177, 180, 198) comme compteur actuel ; elles décrivent leurs lots respectifs. Voir [le diagnostic des 645 sujets et la méthode d'Atlas](docs/RECONCILIATION_645_ET_ATLAS_2026-10-30.md). Restent à réconcilier notamment Dornaël, les villes et partenaires non encore détaillés, les alias des fiches de personnages et les cartes géographiques exactes.
+
+
 **Audit éditorial : 29 octobre 2026, après PR #22 et publication du lot Bible MON-005 / MON-PASS-01.**
 
 **Mise à jour du 30 octobre 2026 :** l'Atelier 5d6, sa progression expérimentale et ses profils JSON ont été publiés comme **outils de playtest** (PR24–25), sans passer le système général en canon. La page d'accueil a été réorganisée et le catalogue complet isolé. Une vérification des **331 fichiers Markdown** n'a trouvé **aucune fiche non publiée déjà `etat_editorial: valide`** ; la priorité suivante est donc une **validation éditoriale sourcée** des dossiers en chantier. Voir [AUDIT_SITE_2026-10-30.md](AUDIT_SITE_2026-10-30.md).
