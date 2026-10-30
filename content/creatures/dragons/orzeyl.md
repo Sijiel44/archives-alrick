@@ -16,7 +16,7 @@ description: "Orzeyl, dragon libre aux intérêts singuliers, vivant dans les gr
 tags: [dragons, creature, individu, orzeyl, aventure]
 ---
 
-# Orzeyl, Le Bâtisseur des Veines Profondes
+# Orzeyl — Le Bâtisseur des Veines Profondes
 
 > [!info] Nouveau personnage d'univers, sans rencontre rétroactive
 > **Dragon individuel de création originale.** Son existence et sa personnalité sont ajoutées au répertoire des êtres de l'univers à la demande du créateur. **Aucun voyage, pacte, affrontement ou lien familial avec Orin n'est déclaré déjà joué.** Orzeyl n'est ni un Archétype cosmique ni un siège supplémentaire du Conseil.
