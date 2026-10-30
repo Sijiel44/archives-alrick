@@ -22,6 +22,12 @@ Les [[univers/index|pages d'univers]] décrivent le cadre réutilisable ; [[joue
 
 **Dernier arrêt documenté dans les sources CB43 :** au Palais divin, après la visite des caves de Mirelda et Odran, avant le déjeuner attendu avec Édric et Maëlya. Une nouvelle séance ou le futur brut CB4.4 pourra dépasser cet état, mais ne doit pas être supposé déjà décrit ici.
 
+## Décisions de canon après le Compendium V03
+
+Le créateur a confirmé le **30 octobre 2026** huit existences de personnages encore non rencontrés, l'identité de **Margha** comme cuisinière engagée à bord du yacht et les **quatre fonctions exactes** des gardiens du pont d'Entre-Rives. Ces décisions **ne créent aucune scène supplémentaire** et ne changent pas le point de reprise.
+
+[[jdr-alrick/arbitrages-compendium-20261030|Lire les arbitrages sourcés et les limites (révélations de campagne)]].
+
 ## Points d’entrée
 
 - [[personnages/PER-CB2-ORIN|Orin / Alrick — portrait de campagne]]
