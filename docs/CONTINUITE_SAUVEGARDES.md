@@ -13,7 +13,7 @@ Les fichiers Word, XLSX, exports ChatGPT, biographies personnelles non publiées
 
 ## Sauvegarde automatique du code sur GitHub
 
-Le workflow [`backup-code.yml`](../.github/workflows/backup-code.yml) s'exécute **chaque dimanche** et manuellement depuis l'onglet *Actions → Sauvegarder le code public des Archives → Run workflow*.
+Le workflow [`backup-code.yml`](../.github/workflows/backup-code.yml) s'exécute **après chaque push sur `main`**, **chaque dimanche** et manuellement depuis l'onglet *Actions → Sauvegarder le code public des Archives → Run workflow*.
 
 - Récupère branches et tags distants, puis produit un `archives-alrick.bundle` avec l'historique Git.
 - Vérifie le bundle et calcule son SHA256.
