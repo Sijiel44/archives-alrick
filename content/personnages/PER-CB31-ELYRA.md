@@ -40,5 +40,5 @@ Orin lit et modifie l'architecture d'un dispositif enchanté grâce à son **Aut
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P01825–02483; P16308–16421.
-- [[PROJ-CB31-TEXTILES-BORDOCIEL|Projet textile de Bordociel]].
+- *Projet textile de Bordociel* — dossier de travail CB31, non publié ; voir le résumé établi dans cette fiche..
 
