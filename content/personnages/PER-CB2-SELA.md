@@ -1,31 +1,36 @@
 ---
-publish: false
-title: "Sela — gardienne chargée de témoigner"
+publish: true
+title: "Sela — Cordière et bâtisseuse de liaisons suspendues"
 code: "PER-CB2-SELA"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00273–00290; P02693–02723"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
-description: "Cordière et bâtisseuse de structures suspendues, Sela est associée à la fonction de témoigner parmi les gardiens du vieux pont."
-tags: [sela, personnage, gardienne, pont, cb2, brouillon]
-etat_editorial: en_chantier
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
+description: "Sela est une **femme** formée dans les cités fluviales, spécialisée dans les cordages, fibres, tensions et ouvrages suspendus. Ses deux sœurs participent à la scène "
+tags: [sela, personnage, gardienne, pont, cb2]
+etat_editorial: valide
+unlisted: true
+spoilers: true
 ---
 
-# Sela
+# Sela — Cordière et bâtisseuse de liaisons suspendues
 
-## Portrait documentaire
+## Métier, histoire et caractère
 
-Sela fabrique des cordes et construit des structures suspendues. Elle revient de son voyage avec les autres gardiens; deux de ses sœurs sont présentes dans le récit.
+Sela est une **femme** formée dans les cités fluviales, spécialisée dans les cordages, fibres, tensions et ouvrages suspendus. Ses deux sœurs participent à la scène où les gardiens sont présentés.
 
-La fonction qui lui est associée dans l’interprétation du groupe est **témoigner**. Cette fonction implique la mémoire de ce qui est observé, sans que le récit donne encore un règlement complet ni un mandat individuel définitif.
+## Situation vérifiée
 
-## Limites
+Elle prend part aux voyages, à la comparaison des rêves et à la réflexion sur la garde du vieux pont. Ses compétences diffèrent de celles de Maelin, charpentière, et de Rudek, tailleur de pierre.
 
-Les noms de ses sœurs et le mode de transmission de sa charge ne sont pas précisés. La fonction provient de la lecture en cours des quatre pierres et des rêves partagés.
+## Limites, relations et perspectives
+
+La nature exacte de sa charge, son héritage et ses obligations futures restent à élucider. Les inquiétudes de ses sœurs ne doivent pas être effacées au nom d’une mission grandiose.
+
+Les autres pistes sont des propositions non jouées et ne doivent pas devenir des réussites rétroactives.
 
 ## Sources
 
-- *Campagne Brut 2*, CB2 P00273–00290; P02693–02723.
-
+*Compendium des personnages et des relations* v1.7, **SEC-21** ; renvois conservés : CB2 P00273–00290; P02693–02723. Ce code documentaire ne fixe ni allégeance, ni état de Rappelé, ni appartenance aux Revenants.
