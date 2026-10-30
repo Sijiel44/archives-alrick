@@ -15,3 +15,5 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Publication approuvée (29 octobre 2026) : quatre fiches vertes ajoutées (hache, bières, fête annuelle et Sivra), trois dossiers existants passent au jaune et cinq cadres conditionnels sont ajoutés au suivi.
 
 # Approbation du créateur (29 octobre 2026) : publication des quatre portes de navigation Univers, Odyssée, Jouer et MJ-IA après validation de la CI. Ce sont quatre pages non codées, sans changement des 171 fiches de canon approuvées. Corrections documentaires de cette PR validées pour le lot, sans nouveau brut privé.
+
+# Lot navigation d'univers approuvé pour publication (29 octobre 2026) : treize index thématiques, guide non codé "Comprendre la magie", et raccord des parcours Univers/Jouer/MJ-IA. Les 171 codes de fiches approuvées sont inchangés. Les pages en chantier (publish: false) ne sont pas ouvertes et les avertissements de campagne sont conservés.
