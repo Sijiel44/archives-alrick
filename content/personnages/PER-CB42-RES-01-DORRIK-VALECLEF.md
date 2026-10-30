@@ -1,26 +1,36 @@
 ---
 publish: false
 spoilers: true
-title: "Dorrik Valeclef — maître d’hôtel"
+title: "Dorrik Valeclef — Ancien maître d’hôtel, rappel envisagé"
 code: "RES-01"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "proposition_non_jouee"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10566–10569; CB43 P00219"
-derniere_revision_documentaire: "2026-10-29"
+derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
-description: "Repères de personnage et de continuité après CB42."
-tags: [dorrik, valeclef, hospitalite, protocole, maison-divine, cb42, brouillon]
-etat_editorial: en_chantier
+description: "Portrait préparatoire : Nain décédé qui aurait servi près de quatre-vingts ans dans une demeure princière, maître du protocole, de la table et du confort des invités."
+tags: [dorrik, valeclef, hospitalite, protocole, maison-divine, cb42]
+etat_editorial: en_cours
+unlisted: true
 ---
 
-# Dorrik Valeclef
+# Dorrik Valeclef — Ancien maître d’hôtel, rappel envisagé
 
-Dorrik est un Nain dont le dossier le présente comme un ancien maître d’hôtel ayant servi près de quatre-vingts ans dans une demeure princière naine. Sa réputation vient de son attention aux besoins des invités et de son savoir-faire de protocole, de table et d’accueil.
+## Identité, parcours et caractère
 
-Le dossier envisage pour lui la fonction de maître d’hôtel principal de la Maison divine. Le profil le marque comme **rappel potentiel**. Cette mention ne suffit pas, à elle seule, à confirmer son retour à la vie ni un engagement; les sources consultées ne fixent pas encore son statut actuel.
+Portrait préparatoire : Nain décédé qui aurait servi près de quatre-vingts ans dans une demeure princière, maître du protocole, de la table et du confort des invités.
 
-## Sources
+## Situation établie dans les documents
 
-- *Campagne Brut 4.2*, CB42 P10566–10569.
-- *Campagne Brut 4.3*, CB43 P00219 (organisation du palais; aucune confirmation nominative de Dorrik dans ce passage).
+En CB42, son dossier de recrutement et l’éventualité d’un Rappel sont évoqués. **Aucun consentement au retour, retour à la vie, rencontre ou contrat confirmé** ne découle de cette simple proposition.
+
+## Limites et suites ouvertes
+
+Ne pas l’écrire comme maître d’hôtel principal déjà engagé. Une éventuelle scène de Rappel doit respecter son propre consentement et son indépendance.
+
+**Page maintenue hors publication :** ce profil ou ses engagements nécessitent une rencontre, une validation éditoriale ou une décision explicite. Les informations de présentation ne valent pas canon jouée.
+
+## Sources et adresse de classement
+
+*Compendium des personnages et des relations* v1.7, **RES-01**, et renvois de la fiche précédente : CB42 P10566–10569; CB43 P00219. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.

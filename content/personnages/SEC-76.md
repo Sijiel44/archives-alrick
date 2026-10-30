@@ -1,44 +1,36 @@
 ---
 publish: false
-title: "Dagna Veine-de-Pierre"
+title: "Dagna Veine-de-Pierre — Architecte recommandée pour Aldhammar"
 code: "SEC-76"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "declaration"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P21094–21559"
-derniere_revision_documentaire: "2026-10-29"
+derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
-tags: [sec_76, cb42, brouillon, dagna, veine, pierre]
-etat_editorial: en_chantier
+description: "Dagna Veine-de-Pierre est présentée comme une Naine d’une famille de tailleurs de pierre, expérimentée dans les demeures anciennes, salles de guilde et terrasses patrimon"
+tags: [sec_76, cb42, dagna, veine, pierre]
+etat_editorial: en_cours
+unlisted: true
 ---
 
-# Dagna Veine-de-Pierre
+# Dagna Veine-de-Pierre — Architecte recommandée pour Aldhammar
 
-> [!warning] Brouillon de continuité
-> Synthèse issue du registre directeur après CB42. Avant publication, relire la fiche dans le volume indiqué et vérifier que chaque élément conserve son statut.
+## Identité, parcours et caractère
 
-## Synthèse attestée
+Dagna Veine-de-Pierre est présentée comme une Naine d’une famille de tailleurs de pierre, expérimentée dans les demeures anciennes, salles de guilde et terrasses patrimoniales.
 
-Naine d’une famille de tailleurs de pierre, expérimentée dans les maisons historiques, salles de guilde et terrasses. Astrid recommande son jugement et prévient qu’elle refusera des ordres contradictoires de toute la famille. Elle doit pouvoir proposer son équipe, son budget et une restauration respectueuse du patrimoine. La décision de la contacter est prise ; aucun entretien ni acceptation du chantier n’est joué. Elle est distincte de Dagna Roue-de-Cuivre RES-07.
+## Situation établie dans les documents
 
-## Statut documentaire
+**Astrid la recommande** pour Aldhammar et prévient qu’elle voudra un budget cohérent, la liberté de choisir son équipe et des ordres non contradictoires. Le contact est décidé, mais **aucun entretien ni mandat accepté** n’est attesté.
 
-- **État du registre :** Profil proposé puis actualisation selon les scènes.
-- **Avancement :** Recommandée et invitation à transmettre.
-- **Connaissance en jeu :** À préciser par affirmation. Les personnages ne connaissent pas automatiquement tout le contenu de cette fiche.
-- **Qualité du renvoi :** Fiche principale.
+## Limites et suites ouvertes
 
-## Source
+Son statut actuel est celui d’une professionnelle recommandée, non d’une architecte nommée. Elle ne doit pas être fusionnée avec Dagna Roue-de-Cuivre.
 
-- *Compendium des personnages et des relations*, SEC-76 Dagna Veine-de-Pierre — CB42 P21094–21559.
+**Page maintenue hors publication :** ce profil ou ses engagements nécessitent une rencontre, une validation éditoriale ou une décision explicite. Les informations de présentation ne valent pas canon jouée.
 
-## Fiches liées
+## Sources et adresse de classement
 
-- O42-07 ; O42-10.
-
-## À compléter
-
-- Reprendre les formulations exactes du volume thématique et ajouter les faits ultérieurs sans effacer cet état.
-- Distinguer toute proposition de développement d’un événement joué ou d’une décision canonique.
+*Compendium des personnages et des relations* v1.7, **SEC-76**, et renvois de la fiche précédente : CB42 P21094–21559. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.

@@ -1,25 +1,36 @@
 ---
-publish: false
+publish: true
 spoilers: true
-title: "Bromvar des Vieilles Clefs — concierge royal"
+title: "Bromvar des Vieilles Clefs — Rappelé libre"
 code: "RES-19"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10878–10881"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
-description: "Repères de personnage et de continuité après CB42."
-tags: [bromvar, vieilles-clefs, concierge, residence-royale, rappel, cb42, brouillon]
-etat_editorial: en_chantier
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
+description: "Bromvar est un Nain autrefois concierge d’une résidence royale, attentif à la mémoire et à l’entretien des bâtiments. Il a été **Rappelé** : son retour à la vie et sa ren"
+tags: [bromvar, vieilles-clefs, concierge, residence-royale, rappel, cb42]
+etat_editorial: valide
+unlisted: true
 ---
 
-# Bromvar des Vieilles Clefs
+# Bromvar des Vieilles Clefs — Rappelé libre
 
-Bromvar est un Nain décédé dont le dossier envisage le rappel. Ancien concierge et gardien d’une résidence royale, il connaissait les bâtiments, les habitudes de leurs occupants et les métiers qui permettent d’entretenir une grande demeure.
+## Identité, parcours et caractère
 
-Son rappel éventuel ne vaut pas embauche; les sources consultées ne confirment pas la réalisation de ces étapes.
+Bromvar est un Nain autrefois concierge d’une résidence royale, attentif à la mémoire et à l’entretien des bâtiments. Il a été **Rappelé** : son retour à la vie et sa rencontre sont confirmés par CB42 puis CB43.
 
-## Sources
+## Situation établie dans les documents
 
-- *Campagne Brut 4.2*, CB42 P10878–10881.
+Il souhaite découvrir les lieux avant de s’engager. **Aucun contrat permanent de concierge ou d’intendant n’est signé.** Il ne doit pas être affecté par défaut au renfort des équipes.
+
+## Limites et suites ouvertes
+
+Son statut de Rappelé ne le fait ni Revenant ni membre de la Maison divine. L’étude d’un bâtiment ancien serait un projet futur, non une mission déjà acceptée.
+
+Les éventuelles nouvelles aventures sont à jouer ; elles ne font pas partie des faits déjà établis.
+
+## Sources et adresse de classement
+
+*Compendium des personnages et des relations* v1.7, **RES-19**, et renvois de la fiche précédente : CB42 P10878–10881. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.

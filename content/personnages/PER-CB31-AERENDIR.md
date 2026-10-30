@@ -1,25 +1,36 @@
 ---
-publish: false
-title: "Aerendir — voyageur et artisan du bois"
+publish: true
+title: "Aerendir — Oncle d’Orin et artisan des territoires"
 code: "PER-CB31-AERENDIR"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P16603–16628; P16701–16718"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
-description: "Oncle d’Orin, Aerendir parcourt les territoires et aime fabriquer de ses mains de petits objets utiles."
-tags: [aerendir, famille, artisanat, voyage, cb31, brouillon]
-etat_editorial: en_chantier
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
+description: "Aerendir est vivant, oncle maternel d’Orin, fils de Freya et père de Lethiel et Thaëron. Il aime les forêts, les villages et les terres cultivées, et parcourt les domaine"
+tags: [aerendir, famille, artisanat, voyage, cb31]
+etat_editorial: valide
+spoilers: true
+unlisted: true
 ---
 
-# Aerendir
+# Aerendir — Oncle d’Orin et artisan des territoires
 
-Aerendir est un oncle d’Orin et le père de Lethiel et Thaëron. Il préfère les espaces ouverts, les villages et les routes aux cours royales. Il part parfois plusieurs mois inspecter des domaines et revient volontiers couvert de boue.
+## Identité, parcours et caractère
 
-Il aime fabriquer des objets simples en bois : manches d’outils, boîtes, bancs et jouets. Cette pratique nourrit son intérêt pour la transmission et les territoires concrets.
+Aerendir est vivant, oncle maternel d’Orin, fils de Freya et père de Lethiel et Thaëron. Il aime les forêts, les villages et les terres cultivées, et parcourt les domaines pendant de longs mois. Il fabrique de ses mains des manches d’outils, boîtes, bancs et jouets, préférant l’utilité à la pompe princière.
 
-## Sources
+## Situation établie dans les documents
 
-- *Campagne Brut 3.1*, CB31 P16603–16628; P16701–16718.
+Les retrouvailles familiales sont jouées. Sa parenté et sa pratique du bois sont attestées ; aucun nouveau rang politique, ministère, pouvoir magique ou mandat de gouverneur ne lui est attribué.
 
+## Limites et suites ouvertes
+
+Les parcours futurs de villages avec Orin et les missions de rénovation locale sont des pistes proposées, pas des épisodes accomplis.
+
+Les éventuelles nouvelles aventures sont à jouer ; elles ne font pas partie des faits déjà établis.
+
+## Sources et adresse de classement
+
+*Compendium des personnages et des relations* v1.7, **FAM-12**, et renvois de la fiche précédente : CB31 P16603–16628; P16701–16718. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.

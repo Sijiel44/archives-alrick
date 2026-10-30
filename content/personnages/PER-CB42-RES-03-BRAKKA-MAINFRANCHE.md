@@ -1,25 +1,36 @@
 ---
 publish: false
 spoilers: true
-title: "Brakka Mainfranche — aide itinérante"
+title: "Brakka Mainfranche — Profil d’accompagnement itinérant"
 code: "RES-03"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "proposition_non_jouee"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10594–10597"
-derniere_revision_documentaire: "2026-10-29"
+derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
-description: "Repères de personnage et de continuité après CB42."
-tags: [brakka, mainfranche, caravanes, voyages, cb42, brouillon]
-etat_editorial: en_chantier
+description: "Brakka est décrite dans un portrait préparatoire comme une Demi-orque vivante ayant travaillé auprès d’une compagnie de caravanes, expérimentée dans les bagages, les halt"
+tags: [brakka, mainfranche, caravanes, voyages, cb42]
+etat_editorial: en_cours
+unlisted: true
 ---
 
-# Brakka Mainfranche
+# Brakka Mainfranche — Profil d’accompagnement itinérant
 
-Brakka est une Demi-orque vivante, ancienne employée d’une compagnie de caravanes. Son expérience couvre l’organisation des bagages et des haltes, la protection d’un convoi et l’improvisation lorsqu’un trajet se complique.
+## Identité, parcours et caractère
 
-Le dossier la propose pour l’accompagnement des voyages et l’accueil itinérant des invités. Il s’agit d’une candidature de CB4.2; aucun contrat ni affectation achevée n’est établi par cet extrait.
+Brakka est décrite dans un portrait préparatoire comme une Demi-orque vivante ayant travaillé auprès d’une compagnie de caravanes, expérimentée dans les bagages, les haltes et la protection des convois.
 
-## Sources
+## Situation établie dans les documents
 
-- *Campagne Brut 4.2*, CB42 P10594–10597.
+Ce profil a été **proposé** en CB42 pour l’aide personnelle et l’accueil itinérant. Aucune rencontre jouée, réponse personnelle ni signature d’embauche ne sont établies. Son existence dans le monde et son histoire détaillée restent à confirmer par le créateur ou une future séance.
+
+## Limites et suites ouvertes
+
+Ne pas transformer son dossier RES en appartenance à la compagnie des Revenants ni en salaire signé.
+
+**Page maintenue hors publication :** ce profil ou ses engagements nécessitent une rencontre, une validation éditoriale ou une décision explicite. Les informations de présentation ne valent pas canon jouée.
+
+## Sources et adresse de classement
+
+*Compendium des personnages et des relations* v1.7, **RES-03**, et renvois de la fiche précédente : CB42 P10594–10597. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.

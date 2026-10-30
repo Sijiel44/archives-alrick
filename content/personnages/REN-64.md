@@ -1,44 +1,36 @@
 ---
-publish: false
-title: "Vardhena"
+publish: true
+title: "Vardhena — Défense des retraites et protection des civils"
 code: "REN-64"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P08129–08468"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
-tags: [ren_64, cb42, brouillon, vardhena]
-etat_editorial: en_chantier
+description: "Vardhena est une divinité des remparts tenus, des replis protégés et des derniers défenseurs, portant armure souvent réparée, épée courte et bouclier marqué par la m"
+tags: [ren_64, cb42, vardhena]
+etat_editorial: valide
+unlisted: true
 ---
 
-# Vardhena
+# Vardhena — Défense des retraites et protection des civils
 
-> [!warning] Brouillon de continuité
-> Synthèse issue du registre directeur après CB42. Avant publication, relire la fiche dans le volume indiqué et vérifier que chaque élément conserve son statut.
+## Portrait et parcours
 
-## Synthèse attestée
+Vardhena est une divinité des remparts tenus, des replis protégés et des derniers défenseurs, portant armure souvent réparée, épée courte et bouclier marqué par la mémoire des retraites.
 
-Grande, solide, en armure sombre souvent réparée, elle porte épée courte et bouclier marqué de retraites réussies. Elle protège les défenseurs qui restent pour permettre aux autres de vivre. Elle refuse que son nom exige de mourir pour sauver l’orgueil d’un chef.
+## Situation documentaire vérifiée
 
-## Statut documentaire
+Elle séjourne dans le domaine d’Orin et échange avec d’autres invités sur les blessures et la protection des civils. En CB43, elle **propose un exercice d’évacuation des blessés** ; ses modalités restent à définir.
 
-- **État du registre :** Profil proposé puis actualisation selon les scènes.
-- **Avancement :** Séjour d observation sans admission ni commandement.
-- **Connaissance en jeu :** À préciser par affirmation. Les personnages ne connaissent pas automatiquement tout le contenu de cette fiche.
-- **Qualité du renvoi :** Fiche principale.
+## Limites d’autorité et développement
 
-## Source
+Vardhena **n’accepte aucun commandement permanent ni appartenance à la Maison** par sa simple présence. Son domaine n’oblige pas quiconque à mourir pour l’orgueil d’un chef.
 
-- *Compendium des personnages et des relations*, REN-64 Vardhena — CB42 P08129–08468.
+Les prochains projets ou exercices restent à jouer et à sourcer.
 
-## Fiches liées
+## Sources
 
-- O42-07 ; O42-10.
-
-## À compléter
-
-- Reprendre les formulations exactes du volume thématique et ajouter les faits ultérieurs sans effacer cet état.
-- Distinguer toute proposition de développement d’un événement joué ou d’une décision canonique.
+*Compendium des personnages et des relations* v1.7, **REN-64** ; documents CB cités précédemment : CB42 P08129–08468. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.

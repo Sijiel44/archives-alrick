@@ -1,44 +1,36 @@
 ---
-publish: false
-title: "Téodan Veyre"
+publish: true
+title: "Téodan Veyre — Comptes agricoles et mesures de Corvelis"
 code: "SEC-69"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P13521–15148"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
-tags: [sec_69, cb42, brouillon, téodan, veyre]
-etat_editorial: en_chantier
+description: "Téodan Veyre est un jeune homme venu aux études de Corvelis avec des carnets de surfaces, rendements, coûts, dépenses, pertes et historiques agricoles. Lysandra le p"
+tags: [sec_69, cb42, téodan, veyre]
+etat_editorial: valide
+unlisted: true
 ---
 
-# Téodan Veyre
+# Téodan Veyre — Comptes agricoles et mesures de Corvelis
 
-> [!warning] Brouillon de continuité
-> Synthèse issue du registre directeur après CB42. Avant publication, relire la fiche dans le volume indiqué et vérifier que chaque élément conserve son statut.
+## Portrait et parcours
 
-## Synthèse attestée
+Téodan Veyre est un jeune homme venu aux études de Corvelis avec des carnets de surfaces, rendements, coûts, dépenses, pertes et historiques agricoles. Lysandra le présente aux interlocuteurs de l’atelier.
 
-Jeune homme muni d’une sacoche de documents et de carnets. Lysandra le présente avec Mara. Il apporte les surfaces, dépenses, rendements, pertes et historiques réels des domaines. Il étudie aussi les coûts et durées de vie des machines. Sa fonction ne lui donne pas autorité pour signer un traité au nom de Corvelis. Piste proposée : comparer les projections d’Orin aux premiers relevés d’une saison réelle.
+## Situation documentaire vérifiée
 
-## Statut documentaire
+Il fournit les **relevés réels** et contribue à comparer les solutions techniques, la durée de vie des machines et leur entretien. L’étude est entamée avec les exploitants et les artisans ; l’avenir économique ne se déduit pas de simulations seules.
 
-- **État du registre :** Profil proposé puis actualisation selon les scènes.
-- **Avancement :** Interlocuteur rencontré et études en cours.
-- **Connaissance en jeu :** À préciser par affirmation. Les personnages ne connaissent pas automatiquement tout le contenu de cette fiche.
-- **Qualité du renvoi :** Fiche principale.
+## Limites d’autorité et développement
 
-## Source
+Sa fonction de gestion ou d’étude ne lui donne **aucun mandat pour signer des traités au nom de Corvelis** ou décider seul de l’avenir des exploitations.
 
-- *Compendium des personnages et des relations*, SEC-69 Téodan Veyre — CB42 P13521–15148.
+Les prochains projets ou exercices restent à jouer et à sourcer.
 
-## Fiches liées
+## Sources
 
-- O42-07 ; O42-10.
-
-## À compléter
-
-- Reprendre les formulations exactes du volume thématique et ajouter les faits ultérieurs sans effacer cet état.
-- Distinguer toute proposition de développement d’un événement joué ou d’une décision canonique.
+*Compendium des personnages et des relations* v1.7, **SEC-69** ; documents CB cités précédemment : CB42 P13521–15148. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.
