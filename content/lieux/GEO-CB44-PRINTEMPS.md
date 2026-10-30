@@ -29,7 +29,7 @@ Le printemps réunit des promenades, des attractions narratives, des spectacles 
 | Nom | Contenu attesté | Type d'expérience |
 | --- | --- | --- |
 | **Montagne d'Orinor — Les Mines du Premier Feu** | Parcours rapide souterrain à travers une cité minière imaginaire, forges, ponts, cristaux et grandes roues ; hommage aux bâtisseurs nains | Histoire des métiers et sensations |
-| **Le Voyage d'Elarion** | Nacelles plus douces au milieu des fleurs et cascades ; conte original d'un jeune Elfe découvrant le monde pour apprendre à créer | Promenade narrative, art et découverte |
+| **Parcours elfique d'Elarion** (*intitulé descriptif*) | Nacelles plus douces au milieu des fleurs et cascades ; conte original d'un jeune Elfe découvrant le monde pour apprendre à créer | Promenade narrative, art et découverte |
 | **Le Jardin oublié de Níðor / La Porte du Dernier Gardien** | Vallée et porte anciennes, inscriptions, ruines, gardien draconique **illusoire** et questions sur ce qui mérite d'être protégé | Exploration, dilemmes, écoute |
 | **L'Envol des Dragons** | Sièges et plateformes mobiles avec maintien physique, illusions sensorielles de vol et différentes apparences draconiques | Vol simulé sans chute réelle |
 | **La Poursuite du Dragon-Canard** | Monorail rapide à inversions et vrilles ; un bibliothécaire, un livre emprunté et un dragon transformé par le récit en gigantesque Dragon-Canard | Sensations et comédie |
