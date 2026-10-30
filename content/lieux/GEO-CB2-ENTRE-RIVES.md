@@ -1,43 +1,49 @@
 ---
-publish: false
-title: "Entre-Rives — fondation en cours"
+publish: true
+title: "Entre-Rives — Le pont, les villages et les terres vivantes"
 code: "GEO-CB2-ENTRE-RIVES"
 categorie: "lieu"
-canon_statut: "a_verifier"
-ancre_documentaire: "CB2"
-source_brute: "CB2 P00327–00549; P01459–01849; P08150–08179"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
-description: "Une ville en projet autour du vieux pont, dont les fondations associent plusieurs peuples, mais dont le développement reste partiel et négocié."
-tags: [entre-rives, lieu, fondation, cb2, brouillon]
-etat_editorial: en_chantier
+canon_statut: "lore_valide"
+ancre_documentaire: "CB2 · CB38 · V02 GEO-021"
+source_brute: "Campagne Brut 2, CB2 P00327–00549, P01459–01849, P08150–08179 ; Campagne Brut 3.8, CB38 P22580–23590 ; Atlas V02 v1.8, A38-07 et XXI"
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique"
+description: "Une fondation autour d'un ancien pont devenue un pôle de villages, de terroir et de transmission, sans effacer les autonomies du Mérien."
+tags: [entre-rives, lieu, fondation, agriculture, merien]
+etat_editorial: "valide"
+portee: "univers_partage"
+public_cible: ["lecteurs", "joueurs", "mj"]
+usage_en_jeu: ["reference", "decouverte", "scenario"]
 ---
 
-# Entre-Rives
+# Entre-Rives — Le pont, les villages et les terres vivantes
 
-> [!info] État du lieu
-> CB2 décrit un chantier de fondation, des plans et des négociations. Il ne faut pas présenter la ville comme achevée ni les propositions adressées aux Nahrim comme un traité accepté.
+## Au commencement : un projet autour du pont
 
-## Une fondation autour du pont
+Les premières scènes de **CB2** présentent une fondation autour d'un vieux pont, de cours d'eau et de terres partagées. Moulin, espaces agricoles, ateliers, auberge, jardins et logements sont envisagés ; ces plans initiaux ne prouvent pas que **chaque bâtiment a été achevé** dès leur présentation.
 
-Le projet associe le vieux pont, les cours d’eau et les terres proches. Les plans évoquent des espaces agricoles, un moulin, des ateliers, une auberge, des jardins et des maisons pour les gardiens et leurs familles. Ces éléments sont décrits comme une vision à construire, non comme un inventaire de bâtiments achevés.
+La démarche associe Orin, des bâtisseurs, des gardiens et des communautés appelées à décider de leur propre avenir. Elle cherche un **lieu habité et transmissible**, pas un simple poste militaire.
 
-Torgarl partage la responsabilité politique avec Orin; Dagrin doit coordonner l’étude du terrain et les compétences nécessaires. Les quatre voyageurs sont consultés sur la responsabilité de garder le pont. L’équipe présente la fondation comme un milieu habité, une école de travail et une mémoire partagée, pas comme une simple fortification.
+## Ce qui change pendant les années suivantes
 
-## Développement interculturel
+Le récit avance ensuite de **cinq années**. Dans le bilan rapporté par **Karim et Nassim** en CB38, Entre-Rives et Belle-Rive disposent d'une filière de terroir qui s'est développée : élevage, lait, affinage, caves et transmission autour du fromage **Dragon d'Or**. La fondation ne doit donc plus être décrite uniquement comme un chantier immobile de CB2.
 
-La proposition prévoit des droits d’habitation et de travail pour les familles nahrim, ainsi que des représentants de la communauté dans les décisions. Les Nahrim demandent à examiner les comptes, les ressources en eau, la garde de la route et la charte transmise aux générations suivantes. Leur première réponse ouvre une négociation; elle ne vaut pas accord final.
+Il faut néanmoins distinguer **le progrès attesté d'une filière** de la construction de tous les quartiers, écoles, ouvrages ou établissements autrefois proposés.
 
-La démarche laisse aussi aux familles et artisans une place dans le choix de leurs quartiers. Le récit insiste sur l’autonomie locale et sur la nécessité que les routes apportent des ressources sans assécher le désert.
+## Peuples, chartes et accords
 
-## Limites et questions
+Les questions nahrim — accès à l'eau, représentation, travail, comptes, charte et pérennité des engagements — sont abordées avec sérieux. **Une proposition de coopération n'est pas un traité signé par l'ensemble du Mérien**. Les villages voisins ne perdent pas leur spécificité en participant à un marché commun.
 
-- La ville est encore en développement dans les scènes examinées.
-- La liste des bâtiments et les plans d’urbanisme sont des propositions; leur réalisation doit être établie séparément.
-- Les droits proposés, les représentants désignés, les routes commerciales et les accords des Nahrim restent à canoniser.
-- Les scènes ultérieures disent que Mérien n’a pas officiellement accepté l’ensemble des propositions et que le travail continue.
+## Activités et institutions
+
+Le **pôle agricole**, l'**École des Lisières** et les services financiers associés sont des projets structurés, dont l'ouverture et les moyens doivent être justifiés séparément. Le terroir et les échanges réels ne rendent pas automatiquement ces institutions opérationnelles.
+
+## En jeu — pistes non jouées
+
+- Un nouvel atelier souhaite se fournir en lait sans fragiliser les autres familles productrices.
+- Des usagers du pont débattent de l'entretien et des péages.
+- Une délégation propose un échange de savoir-faire tout en conservant ses propres usages de l'eau.
 
 ## Sources
 
-- *Campagne Brut 2*, CB2 P00327–00549; P01459–01849; P08150–08179.
-
+*Campagne Brut 2*, CB2 P00327–00549, P01459–01849 et P08150–08179 ; *Campagne Brut 3.8*, CB38 P22580–23590 ; *Atlas V02 v1.8*, A38-07 et XXI. Voir [[GEO-021|le Mérien et Entre-Rives]].

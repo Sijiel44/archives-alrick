@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="770" viewBox="0 0 1120 770" role="img" aria-labelledby="atlas-title atlas-desc">
+<title id="atlas-title">Schéma documentaire des grands ensembles du monde d’Alrick</title>
+<desc id="atlas-desc">Schéma non métrique, sans route ni distance. Le Nord d’Aubegrise est indiqué au-dessus des Montagnes de l’Aube et la constellation de Bordeciel et le Mérien en dessous. Orinor est dans un encart géographique non localisé. Les sept cités des Montagnes sont listées sans positions exactes.</desc>
+<defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#13222d"/><stop offset="1" stop-color="#202d31"/></linearGradient>
+<linearGradient id="card" x2="1" y2="0"><stop stop-color="#233942"/><stop offset="1" stop-color="#2e423c"/></linearGradient>
+</defs>
+<rect width="1120" height="770" fill="url(#bg)"/>
+<rect x="25" y="22" width="1070" height="726" rx="20" fill="none" stroke="#bb9b69" stroke-width="2"/>
+<g font-family="Georgia, 'Times New Roman', serif" fill="#f4e7cd">
+<text x="60" y="78" font-size="38" font-weight="bold">Atlas des grands ensembles</text>
+<text x="60" y="110" font-size="18" fill="#e5bd86">SCHÉMA DOCUMENTAIRE • NI ÉCHELLE, NI FRONTIÈRES, NI ROUTES FIXÉES</text>
+<text x="63" y="151" font-size="17">NORD — constellation d’Aubegrise</text>
+<rect x="61" y="170" width="672" height="113" rx="14" fill="url(#card)" stroke="#7996a0" stroke-width="2"/>
+<text x="87" y="204" font-size="24" font-weight="bold">Aubegrise et sa constellation</text>
+<text x="87" y="232" font-size="17">Taagral · Rivebrume · Sylvehaute · Froides-Rives · Sept-Ponts</text>
+<text x="87" y="262" font-size="15" fill="#c8d1cd">Localisations et liens à fixer à partir du relief et des voies réelles</text>
+<text x="63" y="325" font-size="17">CŒUR — Montagnes de l’Aube</text>
+<rect x="61" y="344" width="672" height="177" rx="14" fill="url(#card)" stroke="#c99d62" stroke-width="2.4"/>
+<text x="87" y="378" font-size="26" font-weight="bold">Les Sept Grandes Cités</text>
+<text x="87" y="418" font-size="19">Torngard · Aldhammar · Skalor · Forgeciel</text>
+<text x="87" y="448" font-size="19">Keldrun · Nacrecombe · Dornaël</text>
+<text x="87" y="485" font-size="15" fill="#c8d1cd">Torngard : siège actuel de la Couronne ; Aldhammar : ancienne capitale</text>
+<text x="63" y="563" font-size="17">LISIÈRE MÉRIDIONALE — constellation de Bordeciel</text>
+<rect x="61" y="582" width="672" height="123" rx="14" fill="url(#card)" stroke="#81a79d" stroke-width="2"/>
+<text x="87" y="615" font-size="24" font-weight="bold">Bordeciel, Entre-Rives et le Mérien</text>
+<text x="87" y="642" font-size="17">Kharven · Riveclaire · Rochemoisson · Elenrith</text>
+<text x="87" y="671" font-size="15" fill="#c8d1cd">Axes et appartenances à ne pas confondre ; réseaux à vérifier</text>
+<rect x="770" y="170" width="284" height="347" rx="14" fill="#29343a" stroke="#a39eb6" stroke-width="2"/>
+<text x="790" y="204" font-size="20" font-weight="bold">Autres ensembles</text>
+<text x="790" y="246" font-size="24">Valbrume</text>
+<text x="790" y="273" font-size="16" fill="#c8d1cd">Porte fluviale et maritime</text>
+<text x="790" y="299" font-size="16" fill="#c8d1cd">du royaume des Montagnes</text>
+<path d="M790 324 H1034" stroke="#798586"/>
+<text x="790" y="357" font-size="24">Orinor</text>
+<text x="790" y="385" font-size="16" fill="#c8d1cd">Royaume souverain distinct</text>
+<text x="790" y="413" font-size="16" fill="#c8d1cd">Encart NON positionné</text>
+<text x="790" y="445" font-size="16" fill="#c8d1cd">Routes, ports, terroirs :</text>
+<text x="790" y="469" font-size="16" fill="#c8d1cd">cartographie à compléter</text>
+<rect x="771" y="550" width="283" height="154" rx="14" fill="#172a32" stroke="#65797b"/>
+<text x="790" y="579" font-size="19" font-weight="bold">Règle de lecture</text>
+<text x="790" y="608" font-size="15">Les boîtes indiquent des</text>
+<text x="790" y="632" font-size="15">ensembles documentaires,</text>
+<text x="790" y="656" font-size="15">pas des frontières, cartes</text>
+<text x="790" y="680" font-size="15">ou trajets à l’échelle.</text>
+<text x="60" y="733" font-size="14" fill="#d5b998">Source : Atlas V02 v1.8, section XXI, repères de la future carte ; lecture après CB43.</text>
+</g>
+</svg>

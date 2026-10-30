@@ -12,6 +12,25 @@ usage_en_jeu: ["reference", "decouverte"]
 
 Les régions de l'univers sont d'abord des lieux habités : villes, bourgs, routes, relais, ponts et communautés. On peut y démarrer une aventure **sans rencontrer Orin** et sans connaître les épisodes de sa campagne.
 
+## Explorer les grandes régions
+
+Une première série de fiches tirées de **l'Atlas V02 v1.8**, recoupée avec les mises au point des campagnes CB38 à CB43, permet de préparer des parties **sans imposer l'itinéraire d'Orin**.
+
+- [[GEO-001|Les Montagnes de l'Aube]] — sept grandes cités, peuples et institutions ; le rail extérieur demeure un programme.
+- [[GEO-008|Torngard]] — capitale royale et suites du Grand Colloque.
+- [[GEO-007|Skalor]] — bâtisseurs, arts et Hall des Pierres.
+- [[GEO-011|Aldhammar]] — ancienne capitale et revitalisation, sans transfert du siège royal.
+- [[GEO-009|Forgeciel]] — métallurgie, métiers, coopérations avec les dragons et recherches.
+- [[GEO-012|Keldrun]] — cols orientaux, caravaniers, contrôles et communautés alliées.
+- [[GEO-010|Nacrecombe]] — lac souterrain, métiers et relations entre Nains et Alfes.
+- **Dornaël** — septième grande cité de l'Atlas, encore sans fiche locale suffisamment vérifiée.
+- [[GEO-CB1-VALBRUME|Valbrume]] — navigation, commerce, traditions de chartes et duché d'Édric.
+- [[GEO-021|Le Mérien et Entre-Rives]] — villages, mémoire, droits d'eau, terroir et coopérations.
+- [[GEO-CB2-ENTRE-RIVES|Entre-Rives]] — de la fondation CB2 aux réalisations rapportées après cinq années.
+- [[GEO-002|Orinor]] — royaume distinct, ports, institutions et étude du terroir d'Aurignac.
+
+**Cartes :** [[atlas-schema-regional|schéma non métrique et méthode de cartographie]] ; [[atlas-circulations-echanges|réseaux marchands, cols et projets de transport]]. Les positions, routes commerciales précises, distances, voies ferrées à inaugurer et zones de Failles ne sont pas dessinées tant que les sources ne le permettent pas.
+
 ## Découvrir les lieux accessibles
 
 ### Villes et vie locale
@@ -47,6 +66,6 @@ Pour distinguer les passages réellement établis des hypothèses régionales, l
 
 ## Atlas documentaire et chantier de migration
 
-Le volume V02 traite aussi les Montagnes de l'Aube, le Mérien, Entre-Rives, Torngard et les autres royaumes. Certaines pages correspondantes sont **encore en chantier** dans le dépôt : elles ne figurent pas ici comme lectures validées tant que leurs sources et statuts n'ont pas été réconciliés.
+Le volume V02 traite aussi les Montagnes de l'Aube, le Mérien, Entre-Rives, Torngard et les autres royaumes. Les fiches régionales ci-dessus sont une première **validation sourcée**, pas un atlas exhaustif : plusieurs villages, villes secondaires, routes et institutions du répertoire restent en chantier. Ils ne figurent pas ici comme des destinations validées sans relecture.
 
 [[cultures/index|Peuples et cultures]] · [[institutions/index|Institutions]] · [[jouer/index|Choisir une région de départ]]

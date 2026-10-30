@@ -10,7 +10,7 @@ etat_editorial: en_cours
 
 ## État actuel — Extension lore du 30 octobre 2026
 
-**198 fiches codées approuvées après le lot de courants, puissances, dragons, Failles et Elyra.** Le répertoire publié reste distinct des outils de scénario facultatifs. Sept pages de sensibilité divine utilisent des emblèmes **créés pour les Archives**, non issus d'une tradition canonique universelle. Les six Grandes Puissances disposent de portraits de travail ; leurs rites et aventures proposés ne sont pas des scènes jouées. Trois dragons individuels ont été créés et leurs noms vérifiés **sans collision dans la recherche du dépôt**.
+**216 fiches codées approuvées après le lot Atlas et biographies CB43 (198 auparavant).** Le répertoire publié reste distinct des outils de scénario facultatifs. Sept pages de sensibilité divine utilisent des emblèmes **créés pour les Archives**, non issus d'une tradition canonique universelle. Les six Grandes Puissances disposent de portraits de travail ; leurs rites et aventures proposés ne sont pas des scènes jouées. Trois dragons individuels ont été créés et leurs noms vérifiés **sans collision dans la recherche du dépôt**.
 
 La fiche technique MAG-106 subsiste comme **repère interne**, mais l'intitulé public devient **« Une blessure disparue, un souvenir effacé »**. L'épisode est aussi documenté dans les fiches d'**Elyra, Orin et leurs Autorités**, conservées avec les protections nécessaires.
 
@@ -657,3 +657,9 @@ Les liens « Lire la fiche » ouvrent le site pour les fiches publiées. Le lien
 2. Quand la base est fiable mais que le projet avance, garder 🟡 et inscrire responsables, conditions, échéance relative et résultat constaté.
 3. Passer en 🟢 après vérification des sources, noms, liens et limites; retirer alors les anciennes étiquettes de brouillon.
 4. À chaque nouvel épisode, mettre à jour les fiches concernées et le présent tableau ensemble. Publier seulement les fiches vertes et les jaunes qui séparent sans ambiguïté l’acquis du travail restant.
+
+## Lot Atlas et biographies CB43 — 30 octobre 2026
+
+Ce lot approuve **18 fiches supplémentaires** : **9 nouvelles fiches de lieux codées depuis V02**, **1 ancienne fiche de lieu (Entre-Rives) revalidée**, et **8 biographies nouvelles ou publiées** (Borin, Beren, Mara Ventrevent, Larek, Nahla, Tavian, Thaléa et Reginald). Les textes supplémentaires d'Elwen, Maëron et Valbrume mettent à jour des fiches déjà publiques et ne changent pas le compteur. L'état antérieur est conservé dans les sections datées.
+
+**Rapprochement du registre** : 645 sujets uniques, dont 136 trouvés sur une page publique par rapprochement conservateur de code/titre, 49 trouvés dans un brouillon et 460 sans lien simple à ce stade. **Sans lien simple ne veut pas dire sujet absent du site**. Les alias et dossiers composites nécessitent une revue manuelle ; le CSV détaillé reste privé. Sources : V02 v1.8, V03 v1.7, CB2, CB38 et CB43. Le dossier public de méthode est `docs/RECONCILIATION_645_ET_ATLAS_2026-10-30.md`.

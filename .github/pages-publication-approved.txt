@@ -86,3 +86,18 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Ne PAS convertir l'attaque où la famille d'Orin fut frappée en Faille historique; hypothèse non jouée uniquement, sans responsable Déchu déclaré.
 # Pas de lois de guildes définitivement validées, pas de surveillance divine universelle, pas de nouveaux sièges parmi les Dix-Huit.
 # Total des fiches codées approuvées après ce lot : 198 = 180 + 18. Contrôler les 7 SVG, les liens, spoilers, images et pages dans CI avant publication.
+
+
+# Lot 04 — Atlas des grandes régions, rapprochement documentaire et biographies CB43 (30 octobre 2026).
+# Demande explicite de poursuivre les points 4 et 5 : concilier les fiches du registre et construire l'Atlas avant le bestiaire, les aventures et les tests de jeu.
+# 9 NOUVELLES fiches codées de lieu approuvées pour publication : GEO-001 Montagnes de l'Aube ; GEO-002 Orinor ; GEO-007 Skalor ; GEO-008 Torngard ; GEO-009 Forgeciel ; GEO-010 Nacrecombe ; GEO-011 Aldhammar ; GEO-012 Keldrun ; GEO-021 Mérien et Entre-Rives.
+# 1 fiche de lieu existante promue après recoupement de CB2 et CB38 : GEO-CB2-ENTRE-RIVES. GEO-CB1-VALBRUME est enrichie sans changer son code ni son statut déjà publié.
+# 8 fiches de personnages nouvellement approuvées ou promues : FAM-04 Borin, RES-26 Beren, RES-27 Mara Ventrevent, RES-28 Larek, PER-CB43-NAHLA-SEREVIN (registre RES-22), PER-CB43-TAVIAN-RELSOR (registre RES-24), RES-06 Thaléa, SEC-64 Reginald.
+# RELECTURES sans supplément de compteur : SEC-66 Elwen et SEC-67 Maëron, contrats CB43 signés et compétences séparées.
+# 2 guides Atlas NON codés : lieux/atlas-schema-regional.md et lieux/atlas-circulations-echanges.md ; 1 schéma SVG explicitement non métrique dans quartz/static/images/atlas/.
+# Total documentaire CODÉ approuvé après ce lot : 216 = 198 + 9 + 1 + 8.
+# Protections obligatoires : les nouvelles biographies relatives à la campagne sont spoilers:true, unlisted:true, visibilite:publique_avec_avertissement.
+# Ne pas publier les 645 intitulés privés ; registre détaillé hors dépôt public. Les 109/75/101 restent un état historique des 285 fiches initiales.
+# Les routes, tunnels, lignes de train, écoles, banques, traités et études non réalisés conservent leur statut de PROJETS. Une carte schématique n'ajoute aucune position, distance ou frontière canonique.
+# Ce lot n'autorise aucune promotion des autres pages rouges/jaunes non relues, des secrets MJ, du bestiaire de travail, des scénarios ou du système 5d6 expérimental.
+# Exiger CI réussie, contrôles de liens et spoilers, puis vérification séparée de GitHub Pages après fusion.
