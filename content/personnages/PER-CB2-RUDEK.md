@@ -1,31 +1,36 @@
 ---
-publish: false
-title: "Rudek — gardien chargé de séparer"
+publish: true
+title: "Rudek — Tailleur de pierre parmi les gardiens"
 code: "PER-CB2-RUDEK"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00273–00290; P02693–02723"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
-description: "Tailleur de pierre, mari et père, Rudek est associé à la fonction de séparer parmi les quatre gardiens du vieux pont."
-tags: [rudek, personnage, gardien, pont, cb2, brouillon]
-etat_editorial: en_chantier
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
+description: "Rudek, tailleur de pierre d’Entre-Rives, est **vivant, marié et père d’un garçon**. Sa famille est présente lors de la présentation des personnes associées au vieux "
+tags: [rudek, personnage, gardien, pont, cb2]
+etat_editorial: valide
+unlisted: true
+spoilers: true
 ---
 
-# Rudek
+# Rudek — Tailleur de pierre parmi les gardiens
 
-## Portrait documentaire
+## Métier, histoire et caractère
 
-Rudek est tailleur de pierre. Il revient de son voyage auprès de son épouse et de son fils et prend part à la cérémonie des quatre pierres.
+Rudek, tailleur de pierre d’Entre-Rives, est **vivant, marié et père d’un garçon**. Sa famille est présente lors de la présentation des personnes associées au vieux pont.
 
-Le groupe associe provisoirement sa fonction à **séparer** : préserver des limites et des distinctions utiles. Cette lecture appartient à l’enquête des personnages et ne constitue pas une explication complète du pont.
+## Situation vérifiée
 
-## Limites
+Il participe aux observations, aux comparaisons de rêves et aux discussions sur les quatre fonctions de garde. Son métier lui permet de parler des fondations et des forces du terrain sans se perdre dans les théories.
 
-Les sources ne précisent pas encore le nom de sa famille ni la transmission de sa charge. La fonction de gardien est attestée dans la scène; son mécanisme reste une interprétation en cours.
+## Limites, relations et perspectives
+
+Le rapprochement de Rudek avec le rôle de « séparer » est **une hypothèse interprétative du groupe**. Le mécanisme du pont et la transmission de la fonction ne sont pas entièrement démontrés.
+
+Les autres pistes sont des propositions non jouées et ne doivent pas devenir des réussites rétroactives.
 
 ## Sources
 
-- *Campagne Brut 2*, CB2 P00273–00290; P02693–02723.
-
+*Compendium des personnages et des relations* v1.7, **SEC-20** ; renvois conservés : CB2 P00273–00290; P02693–02723. Ce code documentaire ne fixe ni allégeance, ni état de Rappelé, ni appartenance aux Revenants.
