@@ -32,7 +32,7 @@ Les joueurs conservent leurs décisions ; aucun pacte ni progression imposés pa
 
 ## Atelier de fiches et de contexte 5d6
 
-[[jouer/atelier-5d6|L’Atelier interactif]] permet de créer une fiche de PJ, de sélectionner ou d’importer des PNJ/créatures, de lancer des 5d6 et de **copier un texte de contexte** pour cette campagne. L’outil **n’appelle aucun modèle IA** et ne transmet rien automatiquement ; l’utilisateur choisit quoi copier. Les données restent localement dans le navigateur. La règle 5d6 est en phase de test, tandis que le module Déchéance 2d6 demeure disponible.
+[[jouer/atelier-5d6|L’Atelier interactif]] permet de créer une fiche de PJ, de sélectionner ou d’importer des PNJ/créatures, de lancer des 5d6 et de **copier un texte de contexte** pour cette campagne. L’outil **n’appelle aucun modèle IA** et ne transmet rien automatiquement ; l’utilisateur choisit quoi copier. Les données restent localement dans le navigateur. La version pilote ajoute un **niveau de 1 à 12**, des voies libres, des talents et des effets de quête, ainsi qu'un **index des références publiques** pour retrouver les personnages et créatures sans télécharger leurs fiches. Les profils chiffrés demeurent des adaptations non canoniques. La règle 5d6 est en phase de test, tandis que le module Déchéance 2d6 demeure disponible.
 
 ## Préparer le contexte
 
