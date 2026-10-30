@@ -1,6 +1,6 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **198 fiches codées approuvées** (171 du lot initial + 4 Déchéance + 2 Bible), auxquelles s'ajoutent trois guides 5d6 expérimentaux (109 vertes et 62 jaunes) parmi **285 entrées de travail**. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
+Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **216 fiches codées approuvées** (198 avant le lot Atlas + **18 fiches nouvelles ou réconciliées**), auxquelles s'ajoutent les guides de jeu expérimentaux **non canoniques**. L’ancien décompte des fiches jaunes/rouges sur 285 entrées est un état historique, pas la classification actuelle des 645 sujets. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
 
 **Publication active :** le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. Une PR seule ne publie rien.
 
@@ -178,9 +178,13 @@ Voir [AUDIT_SITE_2026-10-30.md](AUDIT_SITE_2026-10-30.md) pour les constats, ris
 
 ## Lot éditorial — Failles, courants et nouveaux portraits (30 octobre 2026)
 
-Le compte actuel est de **198 fiches codées approuvées**, contre **180 avant ce lot**. Les nouveaux dossiers : sept courants (**7**), six Grandes Puissances (**6**), trois dragons (**3**), une fiche de Failles (**1**), et Elyra (**1**). Deux guides jouables sans codes sont également activés : `jouer/evenements-aleatoires-failles` et `jouer/protocole-failles-guildes`, tous deux `canon_statut: proposition_non_jouee`.
+Au terme du **lot précédent**, le compte était de **198 fiches codées approuvées**, contre **180 avant ce lot**. Les nouveaux dossiers : sept courants (**7**), six Grandes Puissances (**6**), trois dragons (**3**), une fiche de Failles (**1**), et Elyra (**1**). Deux guides jouables sans codes sont également activés : `jouer/evenements-aleatoires-failles` et `jouer/protocole-failles-guildes`, tous deux `canon_statut: proposition_non_jouee`.
 
-Les anciennes sections du README conservent les chiffres des **lots historiques** ; **198** est le dernier total. MAG-106 demeure un code interne, et son titre affiché est une formulation narrative. Les personnages d'Orin et les révélations restent exclus du répertoire public sans avertissement. Les sept symboles SVG sont des **emblèmes éditoriaux** et non des armes héraldiques établies. Les trois dragons sont des **créations originales de monde**, non des rencontres rétroactives.
+Les anciennes sections du README conservent les chiffres des **lots historiques** ; **216** est le total actualisé après la réconciliation Atlas/CB43. MAG-106 demeure un code interne, et son titre affiché est une formulation narrative. Les personnages d'Orin et les révélations restent exclus du répertoire public sans avertissement. Les sept symboles SVG sont des **emblèmes éditoriaux** et non des armes héraldiques établies. Les trois dragons sont des **créations originales de monde**, non des rencontres rétroactives.
 
 Les Failles peuvent être totalement imprévisibles. Le système de guilde ne contrôle pas toutes les Failles ; les dieux et les Veilleurs n'ont aucune obligation d'intervenir en permanence. Aucun événement historique de l'Odyssée n'a été redéfini comme Faille sans preuve source.
 
+
+## Réconciliation des 645 sujets et Atlas régional — 30 octobre 2026
+
+**216 fiches codées approuvées** après ajout/relecture de **9 fiches Atlas** et de **9 biographies ou validations de biographies** : les codes et liens sont vérifiés contre V02, V03, CB2, CB38 et CB43. Une page publique n'est pas une reproduction intégrale des volumes privés. Consulter [le diagnostic des 645 sujets](docs/RECONCILIATION_645_ET_ATLAS_2026-10-30.md) et [l'Atlas](content/lieux/index.md). Les anciennes statistiques couleur décrivent un inventaire partiel historique ; les **465 sujets sans correspondance automatique** ne sont **pas** automatiquement 465 fiches absentes. Les bruts et le CSV détaillé restent hors du dépôt public.
