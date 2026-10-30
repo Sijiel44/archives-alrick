@@ -106,7 +106,7 @@ const currents = ['jardiniers','legislateurs','heritiers','liberateurs','preserv
 for(const slug of currents){
  const page = await readFile(path.join(root,'monde','courants',slug+'.html'),'utf8')
  assert(page.includes('Emblème') || page.includes('emblème'), `Courant sans repère graphique : ${slug}`)
- const svg=await readFile(path.join(root,'images','courants',slug+'.svg'),'utf8')
+ const svg=await readFile(path.join(root,'static','images','courants',slug+'.svg'),'utf8')
  assert(svg.includes('<svg') && svg.includes('<title'),`Emblème SVG absent ou non accessible : ${slug}`)
 }
 for(const slug of ['astrae','aionel','nymea','orevan','syrka','dhorea'])
