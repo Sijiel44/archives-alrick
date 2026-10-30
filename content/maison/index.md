@@ -33,3 +33,8 @@ La **mer intérieure**, les **Gardiennes du Passage**, le quartier résidentiel 
 Une présence à la Maison ne fait d'une personne ni une divinité, ni une employée, ni une Revenante, ni une résidente permanente.
 
 [[lieux/index|Atlas]] · [[groupes/index|Groupes]] · [[odyssee/index|L'Odyssée d'Orin]]
+
+
+## Les nouveaux engagements de CB44
+
+**Brégan rejoint personnellement la Maison** sans que cela fusionne d'office les fidèles, ateliers et institutions de sa Maison d'origine. Sa **nouvelle île avec première résidence et train** est bâtie. **Damaric accepte la direction de l'Île des Divertissements**. Trois recrutements supplémentaires sont acceptés pour les caves et réceptions (Héloïne, Berrik, Selya), documentés dans [[O42-16|le vivier actualisé]]. Eshma envisage son lien à la Maison sans avoir pris d'engagement définitif. Voir [[jdr-alrick/cb44-bilan-et-reprise|état CB44]] et [[lieux/cb44-iles-et-quatre-saisons|géographie des îles]].
