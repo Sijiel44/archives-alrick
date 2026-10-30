@@ -72,6 +72,19 @@ for (const file of sourceFiles.filter(f => f.endsWith('.md'))) {
 }
 // Contrat de publication de l'Atelier 5d6 : les modes et les champs doivent exister dans le HTML.
 // Les tests de navigateur réels restent nécessaires pour les interactions et le stockage local.
+// L'accueil est un portail de choix ; le catalogue complet n'y figure plus.
+const homepageHtml = await readFile(path.join(root, 'index.html'), 'utf8')
+const catalogHtml = await readFile(path.join(root, 'bibliotheque.html'), 'utf8')
+for(const token of ['id="alrick-home-title"', 'id="home-paths-title"', 'class="home-path-grid"', 'href="/archives-alrick/bibliotheque"']){
+  assert(homepageHtml.includes(token), `Accueil guidé incomplet : ${token}`)
+}
+assert(!homepageHtml.includes('class="archive-grid"'), 'Catalogue exhaustif encore sur l’accueil')
+for(const token of ['id="library-search"', 'id="library-category"', 'class="archive-grid"']){
+  assert(catalogHtml.includes(token), `Bibliothèque dédiée incomplète : ${token}`)
+}
+const publicCatalogCards = (catalogHtml.match(/class="archive-card internal"/g) ?? []).length
+assert(publicCatalogCards > 20, 'Le nouveau catalogue ne contient pas les fiches publiques attendues')
+
 const atelierFile = path.join(root, 'jouer', 'atelier-5d6.html')
 const atelierHtml = await readFile(atelierFile, 'utf8')
 for (const token of ['id="atelier-5d6"', 'data-mode="pj"', 'data-mode="mj"', 'data-mode="ia"', 'data-import', 'data-ai-prompt', 'data-roll']) {
