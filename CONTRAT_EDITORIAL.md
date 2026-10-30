@@ -156,3 +156,15 @@ Le créateur autorise l'**enrichissement autonome des noms et possibilités de j
 Après lecture directe des documents : `MAG-106` (`faits_joues`, spoilers, `unlisted:true`, CB42 pages source 95–97), `MON-COUR-01` (`lore_valide`, courants et proximités de la Bible V01 Tome III) et `MON-ARCH-01` (`lore_valide`, trois Archétypes et limites du Conseil) sont **explicitement approuvés dans le lot**. Les amorces nouvelles sont identifiées **`proposition_non_jouee` au niveau de leur section**, sans promotion de ces scènes au canon. Les travaux composites sur les Failles restent `publish:false` ; `MON-PASS-01` conserve seul le socle publié.
 
 Le total publié autorisé passe de **177 à 180 fiches codées**. Les fiches à spoilers ne sont ni répertoriées, ni incluses dans l'index de recherche, même si leur URL peut être suivie volontairement après avertissement. Les archives remplacées et les projets de fermeture des Failles demeurent non publiés.
+
+
+## Extension du 30 octobre 2026 — accès et création non rétroactive
+
+Le créateur autorise la création de personnages, dragons, symboles graphiques et approfondissements originaux **sans validation de chaque nom**, à condition de vérifier les doublons et de conserver la cohérence du monde. **Les codes documentaires ne doivent pas être placés dans les titres publics ou en tête des récits**, mais restent utiles comme identifiants internes, pour les sources et pour le contrôle de version.
+
+**Publication de 18 fiches codées nouvelles :** sept courants (COUR-01 à COUR-07), six Autorités (DIV-13 à DIV-18), trois dragons (DRG-01 à DRG-03), une Faille (MON-FAI-02), Elyra (PER-CB31-ELYRA). Elles viennent s'ajouter aux **180 fiches codées précédemment approuvées**, soit **198**. Elyra, les scènes d'Orin et l'expérience issue de MAG-106 restent sous avertissement et hors index public ordinaire.
+
+Les symboles SVG des courants sont **des repères visuels d'interface**, non des blasons cultuels universels. Les ambitions et votes des sept courants ne deviennent ni lois définitives ni personnages ennemis automatiques.
+
+**Outils proposés en ligne :** `jouer/evenements-aleatoires-failles.md` et `jouer/protocole-failles-guildes.md` (proposition_non_jouee / en_cours). Les Guildes, Heimdall, Níðor et les Grandes Puissances peuvent intervenir, sans réseau omniscient ni fermeture universelle. La Déchéance exige de véritables **Chutes liées** et pas la seule douleur des victimes. L'hypothèse d'une Faille dans le passé de deuil d'Orin n'est **pas canonisée comme événement joué**.
+
