@@ -1,36 +1,38 @@
 ---
 publish: false
 spoilers: true
-title: "Vaska Perledombre — Profil d’approvisionnements"
+title: "Vaska Perledombre — Négociante et approvisionnements"
 code: "RES-12"
 categorie: "personnage"
-canon_statut: "proposition_non_jouee"
+canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
-source_brute: "CB42 P10781–10784"
+source_brute: "CB42 P10781–10784 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
-description: "Vaska est présentée comme une **Gobeline de 84 ans**, négociante habituée au ravitaillement de caravanes, d’ateliers et de petites communautés. Elle connaît les diff"
+description: "Vaska est une Gobeline vivante de 84 ans, négociante expérimentée dans le ravitaillement des caravanes, ateliers et petites communautés."
 tags: [vaska, perledombre, approvisionnement, logistique, cb42]
 etat_editorial: en_cours
 unlisted: true
 ---
 
-# Vaska Perledombre — Profil d’approvisionnements
+# Vaska Perledombre — Négociante et approvisionnements
 
-## Portrait et parcours
+## Biographie établie
 
-Vaska est présentée comme une **Gobeline de 84 ans**, négociante habituée au ravitaillement de caravanes, d’ateliers et de petites communautés. Elle connaît les difficultés de fournisseurs et de transport.
+Vaska est une Gobeline vivante de 84 ans, négociante expérimentée dans le ravitaillement des caravanes, ateliers et petites communautés.
 
-## Situation documentaire vérifiée
+**Décision canonique du créateur — 30 octobre 2026 :** cette personne **existe réellement dans l'univers**. Son portrait de référence peut être employé pour de futures rencontres. Il n'est pas pour autant établi qu'Orin la connaît ou lui a proposé un travail.
 
-La fonction d’intendante des approvisionnements du domaine d’Orin est **une proposition de dossier en CB42**, non un emploi accepté en scène.
+## Situation au dernier point de reprise
 
-## Limites d’autorité et développement
+L'intendance des approvisionnements du domaine d'Orin reste **un emploi envisagé**, non accepté. Elle n'a pas de pouvoir sur les fournisseurs, le Palais ou Mirena.
 
-Ne pas lui attribuer un contrat, des stocks au Palais, une autorité sur Mirena ou une place chez les Revenants. Une rencontre et la discussion des conditions demeurent des suites ouvertes.
+## Statut éditorial et continuité
 
-**En chantier, hors publication :** les profils et statuts définitifs devront être confirmés sans forcer une nouvelle décision en jeu.
+**Existence : validée comme lore du monde. Rencontre avec Orin : non jouée. Contrat : aucun confirmé.** Les détails secondaires encore absents ne sont pas des événements rétroactifs ; ils pourront être développés pour une autre campagne en les distinguant des scènes jouées.
+
+Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
 ## Sources
 
-*Compendium des personnages et des relations* v1.7, **RES-12** ; documents CB cités précédemment : CB42 P10781–10784. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.
+*Compendium des personnages et des relations* v1.7, entrée **RES-12** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.
