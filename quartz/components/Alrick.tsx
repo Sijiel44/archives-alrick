@@ -5,6 +5,8 @@ import script from "./scripts/alrick.inline"
 
 export const sections = [
   ["monde", "Le Monde", "Cosmologie", "◇"],
+  ["univers", "Explorer l’univers", "Univers", "✦"],
+  ["jouer", "Jouer dans ce monde", "Jouer", "⚔"],
   ["lieux", "Atlas des territoires", "Atlas", "⌂"],
   ["personnages", "Personnages", "Personnages", "♙"],
   ["groupes", "Groupes et alliances", "Groupes", "⚑"],
@@ -113,7 +115,7 @@ export const Library: QuartzComponent = (props) => {
       <div class="library-controls"><div class="archive-filters" role="group" aria-label="Filtrer les fiches par domaine"><button type="button" data-filter="all" aria-pressed="true">Tout</button>{sections.map(([slug, , label]) => <button type="button" data-filter={slug} aria-pressed="false">{label}</button>)}</div><label class="library-search"><span aria-hidden="true">⌕</span><span class="sr-only">Rechercher dans les fiches</span><input id="library-search" type="search" placeholder="Un nom, un lieu, un code…" autoComplete="off" /></label></div>
       <p class="sr-only" id="library-count" role="status" aria-live="polite">{files.length} fiches</p>
       <div class="archive-grid">{files.map((file) => {
-        const section = sections.find(([slug]) => file.slug?.startsWith(slug + "/"))!
+        const section = sections.find(([slug]) => file.slug?.startsWith(slug + "/")) ?? ["univers", "Autres fiches", "Univers", "◇"]
         const fm = file.frontmatter!
         return <a class="archive-card internal" href={`${base}/${file.slug}`} data-category={section[0]} data-search={`${fm.title} ${fm.code} ${fm.description}`}>
           <div class="card-top"><span class="card-icon" aria-hidden="true">{section[3]}</span><span class="card-category">{section[2]}</span></div>
