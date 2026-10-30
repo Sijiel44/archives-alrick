@@ -29,12 +29,23 @@ Le volume de référence V01 distingue notamment :
 - [[B42-02|Les Rappelés et la continuité des personnes]] — **révélation de campagne**, accessible après avertissement.
 - [[B42-03|Évolution d'une nature divine]] — **révélation de campagne**, accessible après avertissement.
 
+## La Déchéance — contre-ascension canonique
+
+La **Déchéance** est désormais un **nouveau principe de monde validé** : elle offre de la puissance rapidement, puis réclame la **chute d'autres êtres**. Ses Seigneurs dépendent de pyramides de Princes, de lieurs et d'Ancrages ; des captifs forcés peuvent être des victimes et non des coupables.
+
+- [[monde/decheance-canon|La Déchéance et le Tribut des Chutes]] — loi d'univers, pouvoirs, limites, divinités et dragons Déchus.
+- [[monde/dechus-hierarchie|Trois Seigneurs et neuf Princes Déchus]] — **dossier MJ avec avertissement** : galerie canonique créée, rencontres et lieux non joués.
+- [[jouer/decheance-systeme|Jouer la Déchéance]] — mini-système optionnel à 2d6.
+- [[jouer/decheance-aventures|Huit aventures liées aux Déchus]] — **dossier MJ avec avertissement**, scénarios non joués.
+
+La Déchéance **ne signifie pas** que tous les démons, toutes les Failles ou les puissances chaotiques sont malfaisants. Aucun des Dix-Huit ni des trois Archétypes draconiques n'est déclaré Déchu.
+
 ## Menaces et forces antagonistes
 
 - [[monde/menaces-et-antagonismes|Menaces, monstres et antagonistes]] — repères publics sur les adversaires, les créatures et la cruauté, sans créer de nouveaux dieux.
 - **Les Dix-Huit — répertoire détaillé :** consolidation en préparation à partir de B39-05. Le répertoire des noms est établi, mais la profondeur des profils et les secrets sont inégaux.
 - **Les sept courants de la Neuvième Couronne :** socle politique présent dans la Bible ; dossiers spécifiques à relire avant publication.
-- **Démonologie, dieux du chaos et bestiaire hostile :** chantiers de création. De nouveaux adversaires sont étudiés **hors canon** dans des fiches de travail non publiées.
+- **Démonologie générale et bestiaire hostile :** études toujours ouvertes ; la **Déchéance et son premier répertoire de Seigneurs/Princes** sont désormais validés séparément. Les autres prototypes d'antagonistes demeurent à instruire.
 
 Les puissances divines peuvent avoir des opposants sincères, des rivaux et de vrais ennemis ; leurs antagonistes ne doivent pas être déduits du seul nom d'une Autorité. Le Silence et Níðor ne sont pas des méchants génériques.
 
