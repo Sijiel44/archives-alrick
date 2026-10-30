@@ -16,7 +16,7 @@ description: "Thessoryn, dragon libre aux intérêts singuliers, vivant dans les
 tags: [dragons, creature, individu, thessoryn, aventure]
 ---
 
-# Thessoryn, Le Cartographe des Marées Obliques
+# Thessoryn — Le Cartographe des Marées Obliques
 
 > [!info] Nouveau personnage d'univers, sans rencontre rétroactive
 > **Dragon individuel de création originale.** Son existence et sa personnalité sont ajoutées au répertoire des êtres de l'univers à la demande du créateur. **Aucun voyage, pacte, affrontement ou lien familial avec Orin n'est déclaré déjà joué.** Thessoryn n'est ni un Archétype cosmique ni un siège supplémentaire du Conseil.
