@@ -1,44 +1,36 @@
 ---
-publish: false
-title: "Sigrun Pierreval"
+publish: true
+title: "Sigrun Pierreval — Mémoire et intendance d’Aldhammar"
 code: "SEC-65"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P08699–08977"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
-tags: [sec_65, cb42, brouillon, sigrun, pierreval]
-etat_editorial: en_chantier
+description: "Sigrun Pierreval est une Naine originaire d’Aldhammar, connaissant les familles de forge, les réserves, les usages et les difficultés matérielles du vieux palais. El"
+tags: [sec_65, cb42, sigrun, pierreval]
+etat_editorial: valide
+unlisted: true
 ---
 
-# Sigrun Pierreval
+# Sigrun Pierreval — Mémoire et intendance d’Aldhammar
 
-> [!warning] Brouillon de continuité
-> Synthèse issue du registre directeur après CB42. Avant publication, relire la fiche dans le volume indiqué et vérifier que chaque élément conserve son statut.
+## Portrait et parcours
 
-## Synthèse attestée
+Sigrun Pierreval est une Naine originaire d’Aldhammar, connaissant les familles de forge, les réserves, les usages et les difficultés matérielles du vieux palais. Elle se souvient de Harald et d’Orin enfant.
 
-Naine née à Aldhammar, issue de familles liées aux forges et aux réserves du vieux palais, elle connaît les usages, artisans et difficultés des bâtiments anciens. Elle se souvient de Harald et d’Orin enfant. Elle souhaite travailler à Aldhammar plutôt que prendre l’intendance du nouveau Palais divin.
+## Situation documentaire vérifiée
 
-## Statut documentaire
+Elle accepte **les premières démarches de préparation sur place** : retrouver des employés, consulter les artisans et dresser un état des lieux. Elle souhaite s’occuper d’Aldhammar plutôt que d’être gouvernante du Palais divin.
 
-- **État du registre :** Profil proposé puis actualisation selon les scènes.
-- **Avancement :** Premières démarches acceptées pour Aldhammar.
-- **Connaissance en jeu :** À préciser par affirmation. Les personnages ne connaissent pas automatiquement tout le contenu de cette fiche.
-- **Qualité du renvoi :** Fiche principale.
+## Limites d’autorité et développement
 
-## Source
+Le chantier achevé, un budget adopté, un effectif recruté et une direction définitive entièrement contractualisée ne sont pas démontrés. Ne pas la confondre avec Dagna Veine-de-Pierre ni Farwen Pierreclaire.
 
-- *Compendium des personnages et des relations*, SEC-65 Sigrun Pierreval — CB42 P08699–08977.
+Les prochains projets ou exercices restent à jouer et à sourcer.
 
-## Fiches liées
+## Sources
 
-- O42-07 ; O42-10.
-
-## À compléter
-
-- Reprendre les formulations exactes du volume thématique et ajouter les faits ultérieurs sans effacer cet état.
-- Distinguer toute proposition de développement d’un événement joué ou d’une décision canonique.
+*Compendium des personnages et des relations* v1.7, **SEC-65** ; documents CB cités précédemment : CB42 P08699–08977. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.
