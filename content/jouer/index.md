@@ -22,7 +22,7 @@ Ces échelles sont des **propositions de jeu**, pas des niveaux numériques déj
 
 ## Choisir un angle d'aventure dans les Archives
 
-- **Voyager** : [[lieux/index|Atlas]], puis [[cultures/index|vie quotidienne]] pour découvrir ce que les gens connaissent et pratiquent.
+- **Voyager** : [[lieux/index|Atlas]], [[monde/passages-entre-couronnes|passages entre Couronnes]], puis [[cultures/index|vie quotidienne]] pour découvrir ce que les gens connaissent et pratiquent.
 - **Travailler ou enquêter** : [[economie/index|économie]], [[institutions/index|institutions]] et [[projets/index|chantiers]] pour obtenir des interlocuteurs et des difficultés concrètes.
 - **Étudier ou expérimenter** : [[univers/magie-pour-jouer|premiers repères de magie]], puis [[magie/index|Codex]] pour les réalisations et hypothèses.
 - **Rencontrer des alliés** : [[personnages/index|personnages]] et [[groupes/index|groupes]], avec avertissement pour les révélations de la campagne fondatrice.
