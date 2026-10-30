@@ -42,7 +42,8 @@ function validateSheet(raw: unknown): Sheet | null {
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
   if (!root) return
-  const q = <T extends HTMLElement>(selector: string) => root.querySelector<T>(selector)!
+  const host: HTMLElement = root
+  const q = <T extends HTMLElement>(selector: string) => host.querySelector<T>(selector)!
   const status = q<HTMLElement>("[data-status]")
   const message = (s: string) => { status.textContent = s }
   let state: State = {sheets:[fresh()],activeId:"",mode:"pj",log:[]}
@@ -91,7 +92,7 @@ function setupAtelier5d6() {
   }
   function setForm() {
     const s=current()
-    root.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>("[data-field]").forEach(el=>{
+    host.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>("[data-field]").forEach(el=>{
       const key=el.dataset.field as keyof Sheet
       el.value=String(s[key] ?? "")
     })
@@ -100,7 +101,7 @@ function setupAtelier5d6() {
     refreshPoints()
   }
   function refreshMode(){
-    root.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.mode===state.mode)))
+    host.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.mode===state.mode)))
     q<HTMLElement>("[data-mj-tools]").hidden=state.mode==="pj"
     q<HTMLElement>("[data-ai-only]").hidden=state.mode!=="ia"
     renderAI()
@@ -182,7 +183,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     else if(total>=target){outcome="Réussite";detail="L'action réussit dans les limites des moyens disponibles.";favorable=true}
     else if(target-total<=2){outcome="Échec de justesse";detail="Le MJ peut proposer une réussite avec contrepartie."}
     else {outcome="Échec";detail="L'action échoue, avec conséquences adaptées à la situation."}
-    root.querySelectorAll<HTMLElement>("[data-die]").forEach((e,i)=>{e.textContent=String(dice[i])})
+    host.querySelectorAll<HTMLElement>("[data-die]").forEach((e,i)=>{e.textContent=String(dice[i])})
     const result=q<HTMLElement>("[data-result]")
     result.dataset.outcome=favorable?"success":"failure"
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
@@ -198,11 +199,11 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     message("Fichier JSON exporté : conserve-le pour retrouver tes fiches sur un autre appareil.")
   }
   const controller=new AbortController(), opts={signal:controller.signal}
-  root.addEventListener("input",e=>{
+  host.addEventListener("input",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if(el?.dataset?.field || el?.dataset?.stat)changeField(el)
   },opts)
-  root.addEventListener("change",e=>{
+  host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if(el?.dataset?.field || el?.dataset?.stat)changeField(el)
     if(el?.hasAttribute("data-ai-roster"))renderAI()
@@ -228,7 +229,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       }).catch(()=>message("Import refusé : JSON absent, invalide ou format non reconnu."))
     }
   },opts)
-  root.addEventListener("click",e=>{
+  host.addEventListener("click",e=>{
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
