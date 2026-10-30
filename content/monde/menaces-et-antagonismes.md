@@ -37,9 +37,15 @@ En revanche, un antagoniste peut aussi **mentir, exploiter, tuer ou réduire aut
 
 Cette progression est un **outil pour MJ**, non un système de niveaux déjà chiffré. Les joueurs n'ont pas à commencer par sauver l'existence.
 
+## Une menace désormais définie : les Déchus
+
+La Déchéance est un **mécanisme surnaturel de contre-ascension** qui exige, à haut niveau, d'entraîner d'autres êtres dans sa chute. Le répertoire inaugural comprend **trois Seigneurs et neuf Princes Déchus**, sans faire des Dix-Huit ou des Archétypes draconiques des ennemis.
+
+[[monde/decheance-canon|Comprendre la Déchéance]] · [[monde/dechus-hierarchie|Découvrir les figures majeures — avertissement MJ]] · [[jouer/decheance-systeme|Module de jeu]]
+
 ## Ce qui doit encore être créé
 
-Les archives possèdent les règles de cohérence, des tensions entre courants divins et des récits de dangers anciens. Le **répertoire de grands antagonistes**, une démonologie détaillée et un **bestiaire jouable** restent à développer et valider. Les nouvelles propositions ne sont pas des rencontres canoniques tant qu'elles n'ont pas été approuvées ou jouées.
+Les archives possèdent les règles de cohérence, des tensions entre courants divins et des récits de dangers anciens. Le premier **répertoire de Déchus** est validé ; une démonologie plus large, d'autres lignées d'antagonistes et un **bestiaire jouable** complet restent à développer. L'existence d'un antagoniste de la galerie validée ne signifie pas qu'un personnage de la campagne fondatrice l'a rencontré ; les scénarios restent des propositions non jouées.
 
 Pour commencer, choisir [[lieux/index|un territoire]], [[cultures/index|des habitants]], puis [[institutions/index|des autorités qui peuvent agir]]. Les menaces prennent alors un sens local avant de devenir un grand récit.
 
