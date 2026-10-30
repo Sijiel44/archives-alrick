@@ -1,5 +1,6 @@
 ---
 publish: true
+visibilite: "publique"
 title: "Île des Divertissements — La forêt de l’Automne"
 code: "GEO-CB44-AUTOMNE"
 categorie: "lieu"
