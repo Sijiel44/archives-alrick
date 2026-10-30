@@ -1,25 +1,36 @@
 ---
 publish: false
 spoilers: true
-title: "Edran Veille-au-Feu — gardien de phare"
+title: "Edran Veille-au-Feu — Gardien de phare proposé"
 code: "RES-20"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "proposition_non_jouee"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10891–10894"
-derniere_revision_documentaire: "2026-10-29"
+derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
-description: "Repères de personnage et de continuité après CB42."
-tags: [edran, veille-au-feu, phare, sauvetage, mer, rappel, cb42, brouillon]
-etat_editorial: en_chantier
+description: "Portrait préparatoire : Humain décédé dont le passé envisagé concerne le maintien d’un phare isolé et l’aide aux naufragés. Silence, longues veilles et secours des marins"
+tags: [edran, veille-au-feu, phare, sauvetage, mer, rappel, cb42]
+etat_editorial: en_cours
+unlisted: true
 ---
 
-# Edran Veille-au-Feu
+# Edran Veille-au-Feu — Gardien de phare proposé
 
-Edran est un Humain décédé dont le dossier suggère un rappel. Il aurait vécu sur une côte isolée, entretenu un phare et accueilli les marins perdus; il quittait parfois son poste pour porter secours aux naufragés.
+## Identité, parcours et caractère
 
-Un rappel et la création d’un poste dans la Maison restent à décider séparément.
+Portrait préparatoire : Humain décédé dont le passé envisagé concerne le maintien d’un phare isolé et l’aide aux naufragés. Silence, longues veilles et secours des marins guident cette proposition.
 
-## Sources
+## Situation établie dans les documents
 
-- *Campagne Brut 4.2*, CB42 P10891–10894.
+Le profil suggère un possible Rappel et un rôle lié au yacht ou aux côtes, mais **aucune réponse personnelle ni résurrection ne sont établies**.
+
+## Limites et suites ouvertes
+
+Il n’est ni Rappelé attesté, ni capitaine ou gardien recruté dans la campagne en cours.
+
+**Page maintenue hors publication :** ce profil ou ses engagements nécessitent une rencontre, une validation éditoriale ou une décision explicite. Les informations de présentation ne valent pas canon jouée.
+
+## Sources et adresse de classement
+
+*Compendium des personnages et des relations* v1.7, **RES-20**, et renvois de la fiche précédente : CB42 P10891–10894. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.
