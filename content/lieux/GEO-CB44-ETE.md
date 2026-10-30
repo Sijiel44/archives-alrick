@@ -1,5 +1,6 @@
 ---
 publish: true
+visibilite: "publique"
 title: "Île des Divertissements — Les côtes de l’Été"
 code: "GEO-CB44-ETE"
 categorie: "lieu"
