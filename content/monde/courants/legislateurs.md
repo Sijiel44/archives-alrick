@@ -18,7 +18,7 @@ tags: [divinites, courants, neuvieme-couronne, legislateurs]
 
 # Les Législateurs
 
-![Symbole éditorial des Les Législateurs, non obligatoire pour les cultes.](../../images/courants/legislateurs.svg)
+![Symbole éditorial des Les Législateurs, non obligatoire pour les cultes.](../../static/images/courants/legislateurs.svg)
 
 *Écrire des droits avant que la force n'écrive des chaînes.*
 
