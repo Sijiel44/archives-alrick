@@ -26,6 +26,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
         </select>
       </label>
       <button type="button" data-new>Nouvelle fiche</button>
+      <button type="button" data-reset>Réinitialiser cette fiche…</button>
       <button type="button" data-export>Exporter JSON</button>
       <label>Importer JSON
         <input type="file" accept=".json,application/json" data-import aria-label="Importer un fichier de personnages JSON"/>
@@ -44,6 +45,13 @@ export const Atelier5d6: QuartzComponent = (props) => {
             <select data-field="skill"><option value="0">Non formé (+0)</option><option value="1">Formé (+1)</option><option value="2">Expert (+2)</option></select>
           </label>
         </div>
+        <div class="atelier-fields">
+          <label>Niveau (1 à 12)<input type="number" data-field="level" min={1} max={12} step={1} value={1}/></label>
+          <label>Voie(s) / vocation libre<input data-field="vocation" type="text" maxLength={160} placeholder="Éclaireur et artisan, mage et diplomate…"/></label>
+        </div>
+        <label class="atelier-wide">Talents acquis (capacités, conditions et limites)
+          <textarea data-field="talents" rows={2} maxLength={1600} placeholder="Ex. : Pisteur — repérer une ancienne piste même sous la pluie"></textarea>
+        </label>
         <fieldset class="atelier-stats">
           <legend>Caractéristiques <span data-points>12 / 12 points</span></legend>
           {attributes.map(([key, label, help]) => <label class="atelier-stat" key={key}>
@@ -62,6 +70,14 @@ export const Atelier5d6: QuartzComponent = (props) => {
         <label class="atelier-wide">Attaches, équipement ou traits
           <textarea data-field="notes" rows={3} maxLength={2500} placeholder="Un souvenir, une compétence, un objet..."></textarea>
         </label>
+        <div class="atelier-fields">
+          <label>Bénédictions / avantages conditionnels<textarea data-field="boons" rows={2} maxLength={1400} placeholder="Ex. : écouter les rêves d'un allié à la pleine lune"/></label>
+          <label>Malédictions / contraintes<textarea data-field="curses" rows={2} maxLength={1400} placeholder="Ex. : la lumière des Portes révèle toujours votre passage"/></label>
+        </div>
+        <label class="atelier-wide">Objets et effets narratifs (pas d'équipement +1)
+          <textarea data-field="items" rows={2} maxLength={1400} placeholder="Ex. : une lampe qui révèle la dernière trace d'une Faille"></textarea>
+        </label>
+        <p class="atelier-hint" data-source-meta>Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions.</p>
         <div data-mj-tools hidden>
           <label class="atelier-wide">Notes réservées au MJ (sur cet appareil uniquement)
             <textarea data-field="gmNotes" rows={2} maxLength={2500} placeholder="Motivations, secrets, rencontres possibles..."></textarea>
@@ -76,6 +92,14 @@ export const Atelier5d6: QuartzComponent = (props) => {
             </label>
             <button type="button" data-add-template>Créer ce profil</button>
             <button type="button" data-delete>Supprimer la fiche active</button>
+          </div>
+          <div class="atelier-reference">
+            <h4>Références des Archives (sans téléchargement)</h4>
+            <p class="atelier-hint">Recherche dans l'index <strong>public, hors spoilers</strong>. Lire une fiche ou créer une adaptation 5d6 avec des caractéristiques de départ fictives ; aucune statistique n'est déduite de la biographie.</p>
+            <label>Rechercher un personnage ou une créature
+              <input type="search" data-reference-query placeholder="Nom, titre ou sujet…" maxLength={120}/>
+            </label>
+            <div class="atelier-ref-results" data-reference-results role="status" aria-live="polite">Recherche prête.</div>
           </div>
           <p class="atelier-hint">Profils fictifs et <strong>non canoniques</strong>. Leurs chiffres servent uniquement à tester le système 5d6.</p>
         </div>
@@ -102,6 +126,15 @@ export const Atelier5d6: QuartzComponent = (props) => {
               <option value="30">30 — Exceptionnelle</option>
             </select>
           </label>
+          <label>Type d'action
+            <select data-roll-domain>
+              <option value="autre">Autre</option>
+              <option value="magie">Sort / rituel</option>
+              <option value="melee">Combat rapproché</option>
+              <option value="tir">Tir / longue distance</option>
+              <option value="nego">Négociation</option>
+            </select>
+          </label>
           <label>Situation
             <select data-roll-situation><option value="0">0 — Neutre</option><option value="2">+2 — Avantage</option><option value="-2">−2 — Désavantage</option></select>
           </label>
@@ -111,6 +144,8 @@ export const Atelier5d6: QuartzComponent = (props) => {
         </div>
         <button type="button" class="atelier-roll" data-roll>Lancer les 5 dés</button>
         <div class="atelier-result" data-result role="status" aria-live="polite">Choisis la difficulté puis lance les cinq dés.</div>
+        <p class="atelier-hint" data-streaks>Échecs suivis : aucun.</p>
+        <div class="atelier-incident" data-incident role="status" aria-live="polite" hidden></div>
         <h4>Journal des jets</h4>
         <ol class="atelier-log" data-log><li>Aucun jet enregistré.</li></ol>
         <button type="button" data-clear-log>Effacer le journal</button>
@@ -166,6 +201,12 @@ Atelier5d6.css = `
 .atelier-privacy{font-size:.82rem;color:#c4cfd6;border-top:1px solid rgba(220,184,119,.25);padding-top:.8rem}
 .atelier-check{flex-direction:row!important;align-items:center;gap:.5rem!important}
 .atelier-check input{width:auto}
+.atelier-ref-results{border:1px solid #526570;border-radius:8px;padding:.5rem;max-height:240px;overflow:auto;margin-top:.55rem}
+.atelier-ref-results>div{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;justify-content:space-between;border-bottom:1px solid rgba(187,213,225,.18);padding:.5rem .1rem}
+.atelier-ref-results>div:last-child{border-bottom:none}
+.atelier-ref-results a{font-size:.85rem}
+.atelier-ref-results button{font-size:.8rem}
+.atelier-incident{background:#282c3f;border:1px solid #dcb877;padding:.7rem;margin:.6rem 0;border-radius:8px}
 .atelier [hidden]{display:none!important}
 @media(max-width:850px){.atelier-grid{grid-template-columns:1fr}}
 @media(max-width:480px){.atelier-fields{grid-template-columns:1fr}.atelier{padding:.7rem}.atelier-die{width:42px;height:42px}}
