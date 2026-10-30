@@ -1,36 +1,38 @@
 ---
 publish: false
 spoilers: true
-title: "Brakka Mainfranche — Profil d’accompagnement itinérant"
+title: "Brakka Mainfranche — Caravanes et accueil itinérant"
 code: "RES-03"
 categorie: "personnage"
-canon_statut: "proposition_non_jouee"
+canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
-source_brute: "CB42 P10594–10597"
+source_brute: "CB42 P10594–10597 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
-description: "Brakka est décrite dans un portrait préparatoire comme une Demi-orque vivante ayant travaillé auprès d’une compagnie de caravanes, expérimentée dans les bagages, les halt"
+description: "Brakka est une Demi-orque vivante, ancienne employée d'une compagnie de caravanes, habituée à organiser bagages, hébergements et protection de convois."
 tags: [brakka, mainfranche, caravanes, voyages, cb42]
 etat_editorial: en_cours
 unlisted: true
 ---
 
-# Brakka Mainfranche — Profil d’accompagnement itinérant
+# Brakka Mainfranche — Caravanes et accueil itinérant
 
-## Identité, parcours et caractère
+## Biographie établie
 
-Brakka est décrite dans un portrait préparatoire comme une Demi-orque vivante ayant travaillé auprès d’une compagnie de caravanes, expérimentée dans les bagages, les haltes et la protection des convois.
+Brakka est une Demi-orque vivante, ancienne employée d'une compagnie de caravanes, habituée à organiser bagages, hébergements et protection de convois.
 
-## Situation établie dans les documents
+**Décision canonique du créateur — 30 octobre 2026 :** cette personne **existe réellement dans l'univers**. Son portrait de référence peut être employé pour de futures rencontres. Il n'est pas pour autant établi qu'Orin la connaît ou lui a proposé un travail.
 
-Ce profil a été **proposé** en CB42 pour l’aide personnelle et l’accueil itinérant. Aucune rencontre jouée, réponse personnelle ni signature d’embauche ne sont établies. Son existence dans le monde et son histoire détaillée restent à confirmer par le créateur ou une future séance.
+## Situation au dernier point de reprise
 
-## Limites et suites ouvertes
+Le service itinérant d'Orin est un **poste évoqué**, non une rencontre ni une embauche. Elle n'a pas été recrutée ni admise chez les Revenants.
 
-Ne pas transformer son dossier RES en appartenance à la compagnie des Revenants ni en salaire signé.
+## Statut éditorial et continuité
 
-**Page maintenue hors publication :** ce profil ou ses engagements nécessitent une rencontre, une validation éditoriale ou une décision explicite. Les informations de présentation ne valent pas canon jouée.
+**Existence : validée comme lore du monde. Rencontre avec Orin : non jouée. Contrat : aucun confirmé.** Les détails secondaires encore absents ne sont pas des événements rétroactifs ; ils pourront être développés pour une autre campagne en les distinguant des scènes jouées.
 
-## Sources et adresse de classement
+Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
-*Compendium des personnages et des relations* v1.7, **RES-03**, et renvois de la fiche précédente : CB42 P10594–10597. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.
+## Sources
+
+*Compendium des personnages et des relations* v1.7, entrée **RES-03** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.
