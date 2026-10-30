@@ -15,6 +15,10 @@ Orin, voyageur connu sous le nom d'**Alrick**, a traversé les royaumes, rencont
 > [!warning] Avertissement de campagne
 > Les pages du dossier personnel peuvent révéler des identités, des relations, des événements récents ou des enquêtes en cours. Ouvrez-les seulement si vous souhaitez connaître la continuité d'Orin.
 
+## La dernière aventure : CB44
+
+La campagne brute 4.4 poursuit l'Odyssée jusqu'au **chapitre CCCLXXIII** : création d'îles, nouvelles amitiés, activités communes et grands projets d'un monde vivant. Les **faits joués et le point de reprise** sont conservés dans [[jdr-alrick/cb44-bilan-et-reprise|le bilan CB44]]. Une première [[chroniques/cb44-la-bicoque-le-canard-et-les-caves|chronique historisée]] rend accessibles les scènes familiales d'ouverture sans remplacer leur texte source.
+
 ## Suivre les aventures
 
 - [[jdr-alrick/index|Dossier de campagne et continuité]] — accès aux scènes et aux événements.
