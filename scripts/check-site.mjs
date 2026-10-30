@@ -80,6 +80,14 @@ for (const token of ['id="atelier-5d6"', 'data-mode="pj"', 'data-mode="mj"', 'da
 const rulesHtml = await readFile(path.join(root, 'jouer', 'systeme-5d6-base12.html'), 'utf8')
 assert(rulesHtml.includes('5d6'), 'La page des règles 5d6 est absente du HTML final')
 
+const atelierVersion = await readFile(path.join(root, 'jouer', 'atelier-5d6.html'), 'utf8')
+for (const token of ['data-reset', 'data-field="level"', 'data-field="vocation"', 'data-field="boons"', 'data-field="curses"', 'data-roll-domain', 'data-reference-query', 'data-reference-results', 'data-incident']) {
+  assert(atelierVersion.includes(token), `Atelier v1.1 : contrôle HTML absent : ${token}`)
+}
+const demoData = JSON.parse(await readFile(path.join(root, 'static', 'atelier5d6-profils-demo.json'), 'utf8'))
+assert(demoData.schema === 'alrick.sheets.v2' && Array.isArray(demoData.sheets) && demoData.sheets.length === 3, 'Profils JSON d’essai absents ou invalides')
+assert(demoData.sheets.every(s => typeof s.name === 'string' && Object.keys(s.stats ?? {}).length === 4), 'Profils 5d6 invalides')
+
 const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8')
 assert(!sitemap.includes('/mj/'), 'Page MJ dans le sitemap')
 assert(!files.some(f => /\.(docx|xlsx|csv|zip)$/i.test(f) || /atelier-mj|archives-source|inventaire_592|CONSIGNES_CONFIDENTIELLES/i.test(f)), 'Document source privé présent dans le site')
