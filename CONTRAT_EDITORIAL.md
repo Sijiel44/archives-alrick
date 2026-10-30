@@ -119,3 +119,12 @@ Après chaque nouvel épisode ou correction :
 2. **En cours (jaune)** : inscrire ce qui est adopté ou joué, le responsable, les conditions, l'échéance relative et le résultat encore attendu.
 3. **Validé (vert)** : recouper noms, relations, sources et renvois, retirer les anciennes étiquettes de brouillon, puis actualiser le tableau.
 4. Refaire une lecture transversale des fiches liées et du registre avant toute publication d'un nouveau lot.
+
+
+## Lot documentaire suivant — Grandes Puissances et passages (29 octobre 2026)
+
+**MON-005** (Dix-Huit Grandes Puissances, Bible V01 B39-05/B39-06) et **MON-PASS-01** (six catégories de passages, V01 S09 p. 12, 85–87) sont deux **fiches `lore_valide` approuvées** et publiables, sans secrets nouveaux de l'Odyssée.
+
+Le total passe à **177 fiches codées approuvées**. Ce nouveau lot **ne canonise pas** les systèmes de fermeture des Failles, la fréquence d'apparition, les factions antagonistes en atelier ni les scénarios non joués. Les anciens dossiers de travail non publiés doivent rester `publish:false`.
+
+Le contrôle `npm test` vérifie le contenu, les types, la génération Quartz, les liens et les protections anti-spoilers dans les pages construites, **pas le déploiement externe**. Vérifier GitHub Pages séparément.

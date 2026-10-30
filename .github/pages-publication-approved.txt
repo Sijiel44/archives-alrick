@@ -27,3 +27,10 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Q-DECH-01 — proposition_non_jouee, spoilers:true, unlisted:true : recueil VALIDÉ POUR PUBLICATION de 8 aventures fictives, sans transformation de leurs scènes en faits de campagne.
 # Les autres dossiers anciens *-proposition.md sur la Déchéance restent publish:false et sont des archives de conception. Les autres prototypes d'antagonistes, Failles et bestiaire restent publish:false sans canonisation automatique.
 # La publication est permise après vérification automatique des métadonnées, de la construction Quartz et des liens, et conserve les avertissements de révélation.
+
+
+# Lot documentaire complémentaire approuvé par le créateur — 29 octobre 2026 : 2 références canoniques de la Bible, publication après tests.
+# MON-005 — content/monde/dix-huit-grandes-puissances.md : lore_valide, V01 B39-05/B39-06, répertoire harmonisé des 18 noms et domaines; sans nouveaux secrets de campagne.
+# MON-PASS-01 — content/monde/passages-entre-couronnes.md : lore_valide, V01 S09 p. 12, 85–87, six types de passage et limites de la magie de la Faille; incident récurrent et procédures non déclarés réalisés.
+# Total de fiches codées approuvées après ce lot : 177 = 171 initiales + 4 Déchéance (PR22) + 2 références Bible.
+# Les anciens fichiers à publish:false (Failles imaginées, intrigues et bestiaire proposés, répertoire de travail et courants secrets) ne sont PAS promus; les deux pages MJ Déchéance restent spoilers:true unlisted:true.

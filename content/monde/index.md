@@ -17,7 +17,7 @@ La *Bible du monde et des puissances* rassemble les fondements de cet univers : 
 Le volume de référence V01 distingue notamment :
 
 - **Origines du monde et cosmologie** — Silence, Yggdrasil, fondements anciens et récits d'origine.
-- **Grandes Puissances et Couronnes** — les Dix-Huit Grandes Puissances (MON-005), les Couronnes (MON-026 à MON-033), leurs domaines et leurs rapports.
+- **Grandes Puissances et Couronnes** — [[monde/dix-huit-grandes-puissances|les Dix-Huit Grandes Puissances (MON-005)]], les Couronnes (MON-026 à MON-033), leurs domaines et leurs rapports.
 - **Histoire et temps** — Chronologie des Grands Âges (MON-012), calendrier (MON-013), destinées et prophéties (MON-035).
 - **Croyances et pratiques** — dieux, bénédictions et traditions (MON-034), sans imposer à chaque peuple une doctrine unique.
 
@@ -43,7 +43,7 @@ La Déchéance **ne signifie pas** que tous les démons, toutes les Failles ou l
 ## Menaces et forces antagonistes
 
 - [[monde/menaces-et-antagonismes|Menaces, monstres et antagonistes]] — repères publics sur les adversaires, les créatures et la cruauté, sans créer de nouveaux dieux.
-- **Les Dix-Huit — répertoire détaillé :** consolidation en préparation à partir de B39-05. Le répertoire des noms est établi, mais la profondeur des profils et les secrets sont inégaux.
+- [[monde/dix-huit-grandes-puissances|Les Dix-Huit — répertoire harmonisé]] : **fiche de référence publiée**, domaines vérifiés dans B39-05 ; les biographies individuelles restent à enrichir.
 - **Les sept courants de la Neuvième Couronne :** socle politique présent dans la Bible ; dossiers spécifiques à relire avant publication.
 - **Démonologie générale et bestiaire hostile :** études toujours ouvertes ; la **Déchéance et son premier répertoire de Seigneurs/Princes** sont désormais validés séparément. Les autres prototypes d'antagonistes demeurent à instruire.
 
@@ -51,9 +51,9 @@ Les puissances divines peuvent avoir des opposants sincères, des rivaux et de v
 
 ## Les passages entre Couronnes : un socle déjà documenté
 
-La *Bible fondamentale* (S09, pages source 85–87) classe les **Portes, Failles, Reflets, Confluences, Routes saisonnières et Passages vivants**. Les Failles sont des ouvertures dangereuses liées à des blessures de la réalité, et la **magie de la Faille** est une voie ancienne documentée (S09, page source 12). Elle peut attirer des entités ou provoquer des conséquences graves ; elle n'est **pas automatiquement maléfique**.
+La [[monde/passages-entre-couronnes|fiche canonique des passages]] résume les **Portes, Failles, Reflets, Confluences, Routes saisonnières et Passages vivants** (Bible fondamentale S09, pages source 85–87). Les Failles sont des ouvertures dangereuses liées à des blessures de la réalité, et la **magie de la Faille** est une voie ancienne documentée (S09, page source 12). Elle peut attirer des entités ou provoquer des conséquences graves ; elle n'est **pas automatiquement maléfique**.
 
-La gestion courante d'incidents, les équipes de fermeture, les **tables d'apparition aléatoire** et les nouvelles créatures constituent des **propositions de développement**, en relecture hors du site public. La [[INST-CB32-SECOURS-AVENTURIERS|Guilde des Aventuriers et les secours gradués]] offrent une base institutionnelle déjà adoptée, mais leur déploiement reste progressif.
+La gestion courante d'incidents, les équipes de fermeture, les **tables d'apparition aléatoire** et les nouvelles créatures constituent des **propositions de développement**, en relecture hors du site public. La [[institutions/INST-CB32-SECOURS-AVENTURIERS|Guilde des Aventuriers et les secours gradués]] offrent une base institutionnelle déjà adoptée, mais leur déploiement reste progressif.
 
 Les rapports sur les anomalies du Nord ne démontrent pas automatiquement une Faille, une action de Níðor ou une manœuvre de la Première Ancre.
 

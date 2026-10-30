@@ -115,3 +115,14 @@ Quatre nouvelles pages **codées** s'ajoutent aux **171 fiches initialement appr
 Les autres dossiers de la branche concernant les Failles, les sociétés antagonistes, les créatures mythologiques ou les premières versions de Déchéance ne deviennent **pas automatiquement canoniques** et demeurent `publish: false` tant que leur statut n'est pas arbitré. Cette approbation n'ajoute aucune séance après CB43, ni un dix-neuvième siège parmi les Dix-Huit.
 
 Les liens se trouvent depuis les rubriques `monde/index.md` et `jouer/index.md`. Les aventures indépendantes ne réécrivent jamais les conséquences de l'Odyssée d'Orin.
+
+
+## Complément de la Bible publié après PR #22 (29 octobre 2026)
+
+Deux **fiches canoniques sourcées** s'ajoutent aux 175 fiches codées déjà approuvées :
+- **MON-005** `content/monde/dix-huit-grandes-puissances.md` — répertoire vérifié des **18 Grandes Puissances**, depuis V01 B39-05/B39-06.
+- **MON-PASS-01** `content/monde/passages-entre-couronnes.md` — six catégories de passages décrites dans V01 S09, dont les Failles.
+
+**Total : 177 fiches codées approuvées** (171 lot initial + quatre Déchéance + deux Bible). Les six Grandes Puissances moins détaillées restent à enrichir. Les hypothèses de Failles récurrentes, antagonistes hors Déchéance, bestiaire et démonologie restent des **chantiers non canoniques** tant que les arbitrages ne sont pas effectués.
+
+Un audit éditorial et les prochaines priorités figurent dans [PLAN_DEVELOPPEMENT_UNIVERS.md](PLAN_DEVELOPPEMENT_UNIVERS.md). Le workflow Pages est déclenché uniquement après modification explicite du marqueur d'approbation ; un build réussi ne garantit pas à lui seul la disponibilité publique.
