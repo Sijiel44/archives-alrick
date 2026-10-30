@@ -38,7 +38,7 @@ jobs:
           git bundle verify sauvegarde/archives-alrick.bundle
           git show-ref > sauvegarde/refs.txt
           git log -1 --format='%H %cI %s' > sauvegarde/dernier-commit.txt
-          sha256sum sauvegarde/archives-alrick.bundle > sauvegarde/SHA256SUMS.txt
+          (cd sauvegarde && sha256sum archives-alrick.bundle > SHA256SUMS.txt)
 
       - name: Conserver temporairement le bundle dans Actions
         uses: actions/upload-artifact@v4
