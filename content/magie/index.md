@@ -38,6 +38,6 @@ Ces codes sont encore des **entrées du Codex source**, et non autant de fiches 
 
 ## Ce qui n'est pas une règle de jeu
 
-Le Codex décrit des observations, des essais, des hypothèses et des systèmes d'ingénierie. Il ne définit pas encore un barème universel de points de mana, de seuils de réussite, de dégâts ou de niveaux de personnages. Les effets non maîtrisés, notamment MAG-106 sur le retrait d'existence et la mémoire, restent **en chantier** et ne doivent pas être reproduits comme recettes sûres.
+Le Codex décrit des observations, des essais, des hypothèses et des systèmes d'ingénierie. Il ne définit pas encore un barème universel de points de mana, de seuils de réussite, de dégâts ou de niveaux de personnages. L'[[MAG-106|essai de retrait d'existence concernant Elyra (MAG-106)]] est un **fait joué validé**, **accessible après avertissement de spoilers**. Il montre un effet mémoriel inattendu et un problème de consentement, **pas** une technique sûre ou reproductible par les mages ordinaires.
 
 [[univers/index|Explorer l'univers]] · [[jouer/index|Démarrer un personnage]] · [[mj-ia/index|Jouer avec une IA]]
