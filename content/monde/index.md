@@ -38,6 +38,14 @@ Le volume de référence V01 distingue notamment :
 
 Les puissances divines peuvent avoir des opposants sincères, des rivaux et de vrais ennemis ; leurs antagonistes ne doivent pas être déduits du seul nom d'une Autorité. Le Silence et Níðor ne sont pas des méchants génériques.
 
+## Les passages entre Couronnes : un socle déjà documenté
+
+La *Bible fondamentale* (S09, pages source 85–87) classe les **Portes, Failles, Reflets, Confluences, Routes saisonnières et Passages vivants**. Les Failles sont des ouvertures dangereuses liées à des blessures de la réalité, et la **magie de la Faille** est une voie ancienne documentée (S09, page source 12). Elle peut attirer des entités ou provoquer des conséquences graves ; elle n'est **pas automatiquement maléfique**.
+
+La gestion courante d'incidents, les équipes de fermeture, les **tables d'apparition aléatoire** et les nouvelles créatures constituent des **propositions de développement**, en relecture hors du site public. La [[INST-CB32-SECOURS-AVENTURIERS|Guilde des Aventuriers et les secours gradués]] offrent une base institutionnelle déjà adoptée, mais leur déploiement reste progressif.
+
+Les rapports sur les anomalies du Nord ne démontrent pas automatiquement une Faille, une action de Níðor ou une manœuvre de la Première Ancre.
+
 ## Pour jouer dans cet univers
 
 Un personnage peut connaître les traditions de son peuple sans connaître les secrets des puissances. Une légende, une hypothèse savante, une déclaration divine et un fait observé ne doivent pas recevoir le même niveau de certitude.
