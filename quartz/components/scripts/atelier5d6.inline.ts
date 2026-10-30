@@ -1,14 +1,80 @@
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
+type Domain = "magie" | "melee" | "tir" | "nego" | "autre"
+const DOMAINS: Domain[] = ["magie", "melee", "tir", "nego", "autre"]
+const makeStreaks = (): Record<Domain,number> => ({magie:0,melee:0,tir:0,nego:0,autre:0})
+const validSourceRef = (v:unknown):string => typeof v==="string" && /^(personnages|creatures)\/[A-Za-z0-9-]{2,100}$/.test(v) ? v : ""
 type Mode = "pj" | "mj" | "ia"
 type Sheet = {
   id: string; name: string; kind: Role; profession: string; skill: number
   stats: Record<Stat, number>; pv: number; pvMax: number
   mana: number; manaMax: number; emprise: number
+  level: number; vocation: string; talents: string; boons: string; curses: string; items: string
+  sourceRef: string; sourceTitle: string
+  streaks: Record<Domain,number>; lastIncident: string
   notes: string; gmNotes: string
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[] }
+// Tables d'incidents de playtest : une suggestion à interpréter, jamais un malus automatique supplémentaire.
+const INCIDENTS: Record<Exclude<Domain,"autre">,string[]> = {
+  magie: [
+    "Une résonance perturbe un objet proche : le groupe doit sécuriser le lieu.",
+    "Le sort laisse une signature facile à suivre par un observateur compétent.",
+    "L'énergie résiduelle attire une créature curieuse, pas nécessairement hostile.",
+    "Une propriété inattendue du lieu complique le prochain essai.",
+    "L'échec révèle que la formule employée vient d'une tradition différente.",
+    "Un témoin reconnaît le phénomène et demande une faveur en échange de son aide.",
+    "L'effet a échoué, mais un symbole ancien devient visible quelques secondes.",
+    "Un allié comprend ce qui manque et peut proposer un autre rituel.",
+    "Une conséquence gênante met au jour une ancienne protection oubliée.",
+    "Le faux départ révèle comment arrêter le sort sans danger.",
+    "Une trace de magie attire plus tard l'attention d'un possible mentor.",
+    "Le raté fait apparaître une issue inattendue, à vérifier avant de l'utiliser."
+  ],
+  melee: [
+    "Une arme ou prise reste coincée dans le décor ; il faut se repositionner.",
+    "L'adversaire comprend la garde et exploite une ouverture visible.",
+    "La mêlée renverse un objet important qu'il faudra protéger.",
+    "Le choc bloque momentanément un passage pour tous.",
+    "Un appui cède : l'environnement devient un enjeu de la scène.",
+    "Un témoin intervient, mais son intention est incertaine.",
+    "Une parade ratée révèle la faiblesse de l'armure ennemie.",
+    "Un camarade voit une ouverture pour protéger un civil.",
+    "Le terrain offre un détour plus sûr que l'assaut frontal.",
+    "La collision pousse l'ennemi loin d'une personne menacée.",
+    "Un rival hésite, laissant envisager une issue négociée.",
+    "Un coup manqué brise une vieille entrave utile aux héros."
+  ],
+  tir: [
+    "Le projectile se perd et dévoile votre position.",
+    "Une mauvaise trajectoire oblige à sécuriser des témoins.",
+    "La cible change de couvert ; la prochaine position doit être choisie.",
+    "La corde ou le mécanisme exige une inspection avant un autre tir.",
+    "Le tir touche un obstacle qui modifie les lignes de vue.",
+    "Une silhouette surgit dans le champ : suspendre le tir devient prudent.",
+    "Le projectile signale une trace cachée dans le décor.",
+    "Le rebond révèle un mécanisme ou une surface inhabituelle.",
+    "L'impact détache une pièce du décor et ouvre une piste.",
+    "Un allié repère un meilleur angle de tir.",
+    "Un son attire l'attention d'un renfort allié possible.",
+    "La flèche manque sa cible mais coupe un lien entravant un passage."
+  ],
+  nego: [
+    "Le ton employé offense un témoin ; il faudra restaurer la confiance.",
+    "Une information est mal interprétée et la discussion se crispe.",
+    "Le partenaire exige une garantie que personne n'avait prévue.",
+    "Un rival profite publiquement du malentendu.",
+    "Une ancienne querelle refait surface au mauvais moment.",
+    "Un accord semble proche mais révèle un coût caché.",
+    "La réaction hostile montre à quel point un sujet est sensible.",
+    "Un interlocuteur secondaire se révèle moins opposé qu'annoncé.",
+    "Le refus dévoile la véritable priorité de l'autre partie.",
+    "Une porte se ferme mais une médiation indépendante devient possible.",
+    "Un témoin décide de partager discrètement une information utile.",
+    "La négociation échoue, mais une nouvelle alliance se dessine pour plus tard."
+  ]
+}
 const STORAGE = "archives-alrick-atelier-5d6-v1"
 const STATS: Stat[] = ["physique", "agilite", "esprit", "presence"]
 const clamp = (n: unknown, min: number, max: number, def: number) => {
@@ -21,7 +87,8 @@ function fresh(kind: Role = "pj"): Sheet {
   return { id: uniqueId(), name: kind === "pj" ? "Mon personnage" : "Nouveau profil",
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
-    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, notes:"", gmNotes:"" }
+    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, vocation:"", talents:"", boons:"", curses:"", items:"",
+    sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -31,13 +98,21 @@ function validateSheet(raw: unknown): Sheet | null {
   if (!values || typeof values !== "object" || !STATS.every(key => Number.isFinite(Number(values[key])))) return null
   const kind: Role = obj.kind === "pnj" || obj.kind === "creature" ? obj.kind : "pj"
   const pvMax = clamp(obj.pvMax, 1, 999, 12), manaMax = clamp(obj.manaMax, 0, 999, 0)
+  const priorStreaks = obj.streaks && typeof obj.streaks==="object" ? obj.streaks as Record<string,unknown> : {}
+  const streaks = makeStreaks()
+  for(const d of DOMAINS)streaks[d]=clamp(priorStreaks[d],0,2,0)
   return {id:uniqueId(),name:clean(obj.name,90),kind, profession:clean(obj.profession,90),
     skill:clamp(obj.skill,0,2,0),
     stats:{physique:clamp(values.physique,1,12,3),agilite:clamp(values.agilite,1,12,3),
       esprit:clamp(values.esprit,1,12,3),presence:clamp(values.presence,1,12,3)},
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
     mana:clamp(obj.mana,0,manaMax,0),manaMax,
-    emprise:clamp(obj.emprise,0,12,0),notes:clean(obj.notes,2500),gmNotes:clean(obj.gmNotes,2500)}
+    emprise:clamp(obj.emprise,0,12,0),level:clamp(obj.level,1,12,1),
+    vocation:clean(obj.vocation,160),talents:clean(obj.talents,1600),boons:clean(obj.boons,1400),
+    curses:clean(obj.curses,1400),items:clean(obj.items,1400),
+    sourceRef:validSourceRef(obj.sourceRef),sourceTitle:clean(obj.sourceTitle,160),
+    streaks,lastIncident:clean(obj.lastIncident,500),
+    notes:clean(obj.notes,2500),gmNotes:clean(obj.gmNotes,2500)}
 }
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
@@ -46,6 +121,53 @@ function setupAtelier5d6() {
   const q = <T extends HTMLElement>(selector: string) => host.querySelector<T>(selector)!
   const status = q<HTMLElement>("[data-status]")
   const message = (s: string) => { status.textContent = s }
+  const publicRefs = new Map<string,{title:string,description:string}>()
+  let refsLoaded = false
+  let refsLoading = false
+  const rootPath = window.location.pathname.includes("/jouer/") ? window.location.pathname.split("/jouer/")[0] : ""
+  const normalize = (s:string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("fr")
+  function renderRefs(){
+    const box=q<HTMLElement>("[data-reference-results]")
+    box.replaceChildren()
+    const query=normalize(q<HTMLInputElement>("[data-reference-query]").value.trim())
+    if(!refsLoaded){box.textContent=refsLoading?"Chargement de l'index public…":"Index public indisponible.";return}
+    const matches=Array.from(publicRefs.entries()).filter(([slug,item])=> !query || normalize(item.title+" "+item.description+" "+slug).includes(query))
+      .sort((a,b)=>a[1].title.localeCompare(b[1].title,"fr")).slice(0,15)
+    if(!matches.length){box.textContent="Aucun personnage ou créature public ne correspond à cette recherche.";return}
+    for(const [slug,item] of matches){
+      const row=document.createElement("div")
+      const link=document.createElement("a")
+      link.textContent=item.title
+      link.href=`${rootPath}/${slug}`
+      link.target="_blank"
+      link.rel="noopener noreferrer"
+      link.title="Ouvrir la fiche publique sans télécharger"
+      const button=document.createElement("button")
+      button.type="button";button.dataset.adaptRef=slug
+      button.textContent="Créer adaptation 5d6"
+      row.append(link,button);box.append(row)
+    }
+  }
+  async function loadPublicRefs(signal:AbortSignal){
+    if(refsLoaded || refsLoading)return
+    refsLoading=true;renderRefs()
+    try{
+      const response=await fetch(`${rootPath}/static/contentIndex.json`,{signal})
+      if(!response.ok)throw Error("Index non accessible")
+      const data:unknown=await response.json()
+      if(!data || typeof data!=="object" || Array.isArray(data))throw Error("Format d'index incompatible")
+      for(const [slug,obj] of Object.entries(data as Record<string,unknown>)){
+        if(!validSourceRef(slug) || !obj || typeof obj!=="object")continue
+        const value=obj as Record<string,unknown>
+        if(typeof value.title!=="string" || !value.title.trim())continue
+        publicRefs.set(slug,{title:clean(value.title,160),description:clean(value.description,240)})
+      }
+      refsLoaded=true
+      renderRefs()
+    }catch{
+      if(!signal.aborted)q<HTMLElement>("[data-reference-results]").textContent="Recherche indisponible. Les fiches peuvent être consultées depuis la Bibliothèque."
+    }finally{refsLoading=false}
+  }
   let state: State = {sheets:[fresh()],activeId:"",mode:"pj",log:[]}
   try {
     const data = localStorage.getItem(STORAGE)
@@ -99,12 +221,25 @@ function setupAtelier5d6() {
     for(const k of STATS) q<HTMLInputElement>(`[data-stat="${k}"]`).value=String(s.stats[k])
     q<HTMLSelectElement>("[data-roll-skill]").value=String(s.skill)
     refreshPoints()
+    const source=q<HTMLElement>("[data-source-meta]")
+    source.textContent=s.sourceRef
+      ? `Source : ${s.sourceTitle || s.sourceRef} (${s.sourceRef}). Les statistiques 5d6 sont une adaptation libre non canonique.`
+      : "Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions."
+    refreshStreaks()
+  }
+  function refreshStreaks(){
+    const s=current()
+    q<HTMLElement>("[data-streaks]").textContent=`Échecs suivis : ${DOMAINS.filter(d=>d!=="autre").map(d=>`${d} ${s.streaks[d]}/3`).join(" · ")}. Trois échecs du même type déclenchent un incident d12 facultatif.`
+    const box=q<HTMLElement>("[data-incident]")
+    box.hidden=!s.lastIncident
+    box.textContent=s.lastIncident
   }
   function refreshMode(){
     host.querySelectorAll<HTMLButtonElement>("[data-mode]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.mode===state.mode)))
     q<HTMLElement>("[data-mj-tools]").hidden=state.mode==="pj"
     q<HTMLElement>("[data-ai-only]").hidden=state.mode!=="ia"
     renderAI()
+    if(state.mode!=="pj")void loadPublicRefs(controller.signal)
   }
   function refreshLog(){
     const log=q<HTMLOListElement>("[data-log]")
@@ -126,10 +261,18 @@ RÈGLES EN TEST : 5d6 + caractéristique + compétence (0,1,2) + situation (-2,0
 Difficultés 15,18,21,24,27,30 ; critiques sur les 5 dés naturels :
 5 = échec critique exceptionnel, 6-7 = échec critique mineur, 27-29 = critique favorable possible, 30 = succès exceptionnel si l'action est réalisable.
 Base 12 : PV et mana d'essai, sans modifier les lois du Codex.
+Progression pilote : niveaux 1–12, voies librement combinables, talents narratifs, bénédictions, malédictions et objets à effets non plats.
+Après 3 échecs de même catégorie (magie, mêlée, tir ou négociation), proposer un incident narratif d12 facultatif ; un 5 naturel ne se cumule pas à l'incident.
 
 PERSONNAGE ACTIF : ${s.name} (${s.kind}), ${s.profession}.
 Physique ${s.stats.physique}, Agilité ${s.stats.agilite}, Esprit ${s.stats.esprit}, Présence ${s.stats.presence}.
 Spécialité +${s.skill}, PV ${s.pv}/${s.pvMax}, mana ${s.mana}/${s.manaMax}, Emprise ${s.emprise}/12.
+Niveau ${s.level}/12 ; voies : ${s.vocation || "aucune"}.
+Talents : ${s.talents || "aucun"}.
+Bénédictions / avantages conditionnels : ${s.boons || "aucun"}.
+Malédictions / limites : ${s.curses || "aucune"}.
+Objets à effet narratif : ${s.items || "aucun"}.
+Référence de la fiche : ${s.sourceRef || "adaptation sans source"} — ${s.sourceTitle || ""} (scores 5d6 non canoniques).
 Notes du personnage : ${s.notes || "aucune"}.
 
 AUTRES FICHES LOCALES (sans notes secrètes) :
@@ -159,9 +302,24 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "emprise":s.emprise=clamp(el.value,0,12,0);break
         case "notes":s.notes=clean(el.value,2500);break
         case "gmNotes":s.gmNotes=clean(el.value,2500);break
+        case "level":s.level=clamp(el.value,1,12,1);break
+        case "vocation":s.vocation=clean(el.value,160);break
+        case "talents":s.talents=clean(el.value,1600);break
+        case "boons":s.boons=clean(el.value,1400);break
+        case "curses":s.curses=clean(el.value,1400);break
+        case "items":s.items=clean(el.value,1400);break
       }
     }
-    refreshRoster();refreshPoints();renderAI();persist()
+    refreshRoster();refreshPoints();refreshStreaks();renderAI();persist()
+  }
+  function trackFailure(sheet:Sheet,domain:Domain,failed:boolean):string {
+    if(domain==="autre")return ""
+    if(!failed){sheet.streaks[domain]=0;return ""}
+    sheet.streaks[domain]=Math.min(3,sheet.streaks[domain]+1)
+    if(sheet.streaks[domain]<3)return ""
+    sheet.streaks[domain]=0
+    const face=1+Math.floor(Math.random()*12)
+    return `Incident ${domain} [1d12 = ${face}] : ${INCIDENTS[domain][face-1]} (suggestion optionnelle du MJ)`
   }
   function roll(){
     const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
@@ -173,6 +331,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const skill=clamp(q<HTMLSelectElement>("[data-roll-skill]").value,0,2,0)
     const target=clamp(q<HTMLSelectElement>("[data-roll-target]").value,15,30,21)
     const situation=clamp(q<HTMLSelectElement>("[data-roll-situation]").value,-2,2,0)
+    const chosenDomain=q<HTMLSelectElement>("[data-roll-domain]").value
+    const domain:Domain=DOMAINS.includes(chosenDomain as Domain)?chosenDomain as Domain:"autre"
     const dice=Array.from({length:5},()=>1+Math.floor(Math.random()*6))
     const natural=dice.reduce((a,b)=>a+b,0), total=natural+s.stats[stat]+skill+situation
     let outcome="",detail="",favorable=false
@@ -187,12 +347,16 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const result=q<HTMLElement>("[data-result]")
     result.dataset.outcome=favorable?"success":"failure"
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
-    state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:outcome})
+    const incident = natural===5 ? "" : trackFailure(s,domain,!favorable)
+    if(incident)detail += "\n"+incident
+    s.lastIncident=incident
+    result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
+    state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:incident ? `${outcome} · ${incident}` : outcome})
     state.log=state.log.slice(0,20)
-    refreshLog();persist();message("Jet ajouté au journal local.")
+    refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
   function exportSheets(){
-    const blob=new Blob([JSON.stringify({schema:"alrick.sheets.v1",created:new Date().toISOString(),sheets:state.sheets},null,2)],{type:"application/json"})
+    const blob=new Blob([JSON.stringify({schema:"alrick.sheets.v2",created:new Date().toISOString(),sheets:state.sheets},null,2)],{type:"application/json"})
     const url=URL.createObjectURL(blob),a=document.createElement("a")
     a.href=url;a.download="archives-alrick-fiches-5d6.json";document.body.append(a);a.click();a.remove()
     setTimeout(()=>URL.revokeObjectURL(url),1500)
@@ -202,10 +366,12 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   host.addEventListener("input",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if(el?.dataset?.field || el?.dataset?.stat)changeField(el)
+    if(el?.hasAttribute("data-reference-query"))renderRefs()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if(el?.dataset?.field || el?.dataset?.stat)changeField(el)
+    if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
     if(el?.hasAttribute("data-active")){state.activeId=el.value;render();persist()}
     if(el?.hasAttribute("data-import") && el instanceof HTMLInputElement) {
@@ -234,6 +400,30 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
     if(button.dataset.mode){state.mode=button.dataset.mode as Mode;refreshMode();persist();return}
+    if(button.hasAttribute("data-reset")){
+      const before=current(), label=before.name||"Sans nom"
+      if(!window.confirm(`Réinitialiser entièrement « ${label} » ? Toutes ses statistiques, ses effets, ses notes et ses incidents locaux seront remplacés par les valeurs de départ. Cette action n'est pas annulable sans sauvegarde JSON.`))return
+      const reset=fresh(before.kind)
+      reset.id=before.id
+      state.sheets=state.sheets.map(s=>s.id===state.activeId?reset:s)
+      const incidentBox=q<HTMLElement>("[data-result]")
+      incidentBox.textContent="La fiche a été réinitialisée. Les autres personnages et le journal général sont conservés."
+      incidentBox.removeAttribute("data-outcome")
+      host.querySelectorAll<HTMLElement>("[data-die]").forEach(e=>{e.textContent="–"})
+      render();persist();message("Fiche réinitialisée après confirmation. Pense à exporter une copie pour sauvegarder.");return
+    }
+    if(button.dataset.adaptRef){
+      const ref=button.dataset.adaptRef, meta=publicRefs.get(ref)
+      if(!meta){message("Référence indisponible dans l'index public.");return}
+      if(state.sheets.length>=60){message("Limite de 60 fiches locales atteinte.");return}
+      const sheet=fresh(ref.startsWith("creatures/")?"creature":"pnj")
+      sheet.name=meta.title.slice(0,90)
+      sheet.profession="Adaptation d'une fiche publique (valeurs à définir)"
+      sheet.sourceRef=ref;sheet.sourceTitle=meta.title
+      sheet.notes="Les statistiques 5d6 sont fictives, non tirées de la fiche de référence. Valider avec le MJ avant jeu."
+      state.sheets.push(sheet);state.activeId=sheet.id
+      render();persist();message("Référence ouverte en adaptation 5d6. Aucun chiffre canonique n'a été inventé.");return
+    }
     if(button.hasAttribute("data-new")){
       if(state.sheets.length>=60){message("Limite de 60 fiches. Exporte et supprime des profils inutilisés.");return}
       const sheet=fresh(state.mode==="pj"?"pj":"pnj")

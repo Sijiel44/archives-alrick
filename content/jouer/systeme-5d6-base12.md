@@ -92,6 +92,12 @@ Pour une attaque, une esquive, une négociation ou un secours : **même jet**, a
 
 **Données privées :** les fiches créées restent uniquement sur l'appareil (sauf export volontaire). Sur un ordinateur partagé, tout utilisateur du même navigateur pourrait les consulter. **Ne pas inclure de secrets de campagne ou de renseignements personnels sensibles**.
 
+## Progression, voies libres et événements aléatoires
+
+Le [[jouer/progression-voies-incidents|dossier de progression 5d6]] propose **12 niveaux** en quatre paliers, des voies combinables et des talents qui ouvrent des possibilités plutôt que des bonus chiffrés. Les quêtes peuvent accorder des bénédictions, des malédictions ou des objets à effets circonstanciels ; ce sont des propositions, **pas** des objets du canon déjà attribués aux héros.
+
+L'[[jouer/atelier-5d6|Atelier]] permet d'enregistrer ces éléments dans la fiche. Il propose aussi un incident **1d12** à la troisième tentative manquée d'une même famille (magie, mêlée, tir, négociation), selon le choix du MJ. Cette option ne remplace ni les conséquences déjà annoncées ni les limites du monde.
+
 ## Sources et statut
 
 - **Source de conception :** règles de 5d6, critiques sur 5 / 30 et inspiration base 12 proposées par le créateur, puis ajustements de difficulté et caractéristiques discutés en octobre 2026.

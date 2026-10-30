@@ -40,6 +40,7 @@ Les descriptions des **rubriques** sont des guides de lecture, pas des règles n
 ## Système général en cours de test : 5d6 / Base 12
 
 - [[jouer/systeme-5d6-base12|Lire les règles 5d6 / Base 12]] — quatre caractéristiques, douze points de création, six difficultés, critiques et réserves en multiples de trois.
+- [[jouer/progression-voies-incidents|Progression libre, bénédictions, objets et incidents d12]] — **en expérimentation**, sans classes fermées ni équipements +1.
 - [[jouer/atelier-5d6|Ouvrir l’Atelier interactif]] — fiches PJ, profils PNJ/créatures importables pour le MJ et export de contexte pour un MJ assisté par IA. **En test, sauvegarde locale, sans serveur.**
 
 Ce système est **expérimental** et ne remplace pas rétroactivement les jets de la campagne d’Orin. La Déchéance garde pour l’instant son mini-système 2d6 autonome.

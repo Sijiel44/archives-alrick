@@ -1,0 +1,83 @@
+{
+  "schema": "alrick.sheets.v2",
+  "reference": "Profils de démonstration — chiffres inventés uniquement pour le système 5d6; aucune statistique canonique",
+  "sheets": [
+    {
+      "name": "Eren — adaptation 5d6 d'essai",
+      "kind": "pnj",
+      "profession": "Interlocuteur de terrain (adaptation ludique)",
+      "skill": 1,
+      "level": 2,
+      "vocation": "Gardien",
+      "stats": {
+        "physique": 2,
+        "agilite": 3,
+        "esprit": 4,
+        "presence": 3
+      },
+      "pv": 12,
+      "pvMax": 12,
+      "mana": 0,
+      "manaMax": 0,
+      "emprise": 0,
+      "sourceRef": "personnages/PER-CB2-SOREN",
+      "sourceTitle": "Eren — gardien chargé de transmettre",
+      "notes": "Seuls le nom et la référence proviennent de la fiche publique. Tous les niveaux, compétences et chiffres 5d6 sont fictifs, non canoniques.",
+      "talents": "",
+      "boons": "",
+      "curses": "",
+      "items": "",
+      "gmNotes": ""
+    },
+    {
+      "name": "Gardienne d'un relais — profil générique d'essai",
+      "kind": "pnj",
+      "profession": "Gardienne de relais",
+      "skill": 1,
+      "level": 1,
+      "vocation": "Veille / hospitalité",
+      "stats": {
+        "physique": 3,
+        "agilite": 2,
+        "esprit": 3,
+        "presence": 4
+      },
+      "pv": 12,
+      "pvMax": 12,
+      "mana": 0,
+      "manaMax": 0,
+      "emprise": 0,
+      "notes": "Personnage d'exercice sans identité canonique. Peut accorder une chambre en échange d'un service, selon le scénario.",
+      "talents": "Reconnaît les signes de danger sur les routes qu'elle connaît.",
+      "boons": "",
+      "curses": "",
+      "items": "Clé du relais : permet d'ouvrir des issues réservées au personnel.",
+      "gmNotes": ""
+    },
+    {
+      "name": "Fauve des brumes — créature générique d'essai",
+      "kind": "creature",
+      "profession": "Prédateur fictif",
+      "skill": 0,
+      "level": 2,
+      "vocation": "Prédateur / fuite",
+      "stats": {
+        "physique": 5,
+        "agilite": 4,
+        "esprit": 2,
+        "presence": 1
+      },
+      "pv": 12,
+      "pvMax": 12,
+      "mana": 0,
+      "manaMax": 0,
+      "emprise": 0,
+      "notes": "Créature d'exercice non canonique, distincte des créatures de la campagne et des êtres venus des Failles.",
+      "talents": "Distingue les vibrations sur les pierres sans avoir une connaissance surnaturelle des personnes.",
+      "boons": "",
+      "curses": "",
+      "items": "",
+      "gmNotes": ""
+    }
+  ]
+}
