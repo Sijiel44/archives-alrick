@@ -6,9 +6,9 @@ title: "Palais divin — résidence d’Orin dans l’Espace sur demande"
 code: "GEO-CB43-PALAIS-DIVIN"
 categorie: "lieu"
 canon_statut: "faits_joues"
-ancre_documentaire: "CB42; CB43"
+ancre_documentaire: "CB42; CB43; CB44"
 source_brute: "CB42 P04346–05862, P18149–18750; CB43 P00189–00227, P07394–07418, P11975–12379, P22957–23573; Atlas V02 A43-01 A43-02; Maison V05 O43-01"
-derniere_revision_documentaire: "2026-10-29"
+derniere_revision_documentaire: "2026-10-30"
 visibilite: "publique_avec_avertissement"
 description: "Palais réellement créé et habité; les extensions et l'organisation des équipes restent en évolution."
 tags: [palais-divin, maison-divine, orin, espace-sur-demande, residence, cb42, cb43]
@@ -52,3 +52,10 @@ Hospitalité, travail, résidence, appartenance à la Maison divine, à une comp
 - *Codex de la magie*, MAG-108 ; *Maison et traditions*, O42-01, O42-02, O42-13 et O43-01.
 - *Atlas*, A43-01 et A43-02 ; *Campagne Brut 4.3*, passages CB43 cités dans l'en-tête.
 - [[O42-01|Maison divine et Palais]] · [[O42-02|Îles et accès]] · [[O42-13|Lieux et responsabilités]] · [[MAG-108|Création du Palais]].
+
+
+## Visites réellement jouées en CB44
+
+Édric et Maëlya sont reçus pour le déjeuner, puis visitent le Jardin des Origines, le grand salon, les caves et le yacht. L'anneau du Huitième Canard est remis à Maëlya ; Édric découvre la reproduction magique de ses bouteilles. Le réseau intérieur et les Gardiennes de la mer intérieure sont également visités, sans voyage vers Orinor. **Il serait désormais incorrect de présenter le déjeuner avec Édric et Maëlya comme un rendez-vous futur.**
+
+Source : *Campagne Brut 4.4*, CCCX–CCCXXVI. Voir [[jdr-alrick/cb44-bilan-et-reprise|CB44 — bilan]].
