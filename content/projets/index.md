@@ -31,7 +31,7 @@ Un chantier façonne le paysage et offre des emplois, des conflits, des découve
 ## Protection et institutions
 
 - [[PROJ-CB32-PROFONDEUR-NORD|Défense en profondeur du Nord]] — doctrine adoptée, avec mise en œuvre graduelle.
-- [[PROJ-BORDOCIEL-ACADEMIE|Académie militaire de Bordociel]] — distinguer projet, établissement et nominations futures.
+- **Académie militaire de Bordociel** — dossier encore en chantier, non publié ; vérifier l'état réel du projet et les nominations avant de le rendre accessible.
 
 ## Ce qui n'est pas encore une réalisation
 
