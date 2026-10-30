@@ -18,6 +18,8 @@ L'univers d'Alrick n'est pas seulement le décor de l'Odyssée d'Orin. Ses régi
 ## I. Comprendre le monde
 
 - [[monde/index|Cosmologie et puissances]] — origines, Couronnes, croyances, questions encore ouvertes.
+- [[monde/dix-huit-grandes-puissances|Les Dix-Huit Grandes Puissances]] — liste de référence et domaines harmonisés.
+- [[monde/passages-entre-couronnes|Passages entre Couronnes]] — Portes, Failles, Reflets et autres traversées établies.
 - [[lieux/index|Atlas et territoires]] — lieux habités, villes, routes, passages et géographie de domaine.
 - [[magie/index|Arts magiques et ingénierie]] — Cercles, pratiques, expériences et limites de la connaissance.
 - [[univers/magie-pour-jouer|Comprendre la magie]] — premiers repères publics, sans statistiques inventées.
