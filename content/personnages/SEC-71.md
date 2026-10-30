@@ -1,44 +1,36 @@
 ---
-publish: false
-title: "Hélène Varrec"
+publish: true
+title: "Hélène Varrec — Exploitante agricole de Corvelis"
 code: "SEC-71"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P13465–15148"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
-tags: [sec_71, cb42, brouillon, hélène, varrec]
-etat_editorial: en_chantier
+description: "Hélène dirige une exploitation agricole qui sert de comparaison pendant les études de Corvelis. Elle participe à la journée d’atelier avec une responsable des cultur"
+tags: [sec_71, cb42, hélène, varrec]
+etat_editorial: valide
+unlisted: true
 ---
 
-# Hélène Varrec
+# Hélène Varrec — Exploitante agricole de Corvelis
 
-> [!warning] Brouillon de continuité
-> Synthèse issue du registre directeur après CB42. Avant publication, relire la fiche dans le volume indiqué et vérifier que chaque élément conserve son statut.
+## Identité et parcours
 
-## Synthèse attestée
+Hélène dirige une exploitation agricole qui sert de comparaison pendant les études de Corvelis. Elle participe à la journée d’atelier avec une responsable des cultures et un mécanicien, apportant une expérience locale concrète.
 
-Son domaine donne un cas de comparaison utile sans représenter un modèle parfait pour toutes les terres. Elle participe à la journée d’atelier avec une responsable des cultures et un mécanicien. Elle apprécie la distinction entre apport technique et domination du travail local. Aucune prise de contrôle ni signature industrielle n’est établie.
+## État vérifié
 
-## Statut documentaire
+**Elle est rencontrée et prend part à l’étude comparative.** Son domaine est un cas utile, sans prétendre convenir à toutes les terres, et elle tient à ce que l’aide technique n’efface ni les savoir-faire ni les droits des producteurs.
 
-- **État du registre :** Profil proposé puis actualisation selon les scènes.
-- **Avancement :** Rencontrée et participante à l étude comparative.
-- **Connaissance en jeu :** À préciser par affirmation. Les personnages ne connaissent pas automatiquement tout le contenu de cette fiche.
-- **Qualité du renvoi :** Fiche principale.
+## Limites et suites ouvertes
 
-## Source
+Aucun transfert de propriété, contrat industriel, conversion imposée du domaine ni rendement futur garanti ne sont attestés.
 
-- *Compendium des personnages et des relations*, SEC-71 Hélène Varrec — CB42 P13465–15148.
+Les activités proposées à partir de ces faits ne sont pas de nouvelles scènes jouées.
 
-## Fiches liées
+## Sources documentaires
 
-- O42-07 ; O42-10.
-
-## À compléter
-
-- Reprendre les formulations exactes du volume thématique et ajouter les faits ultérieurs sans effacer cet état.
-- Distinguer toute proposition de développement d’un événement joué ou d’une décision canonique.
+*Compendium des personnages et des relations* v1.7, **SEC-71** ; références du brouillon : CB42 P13465–15148. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.
