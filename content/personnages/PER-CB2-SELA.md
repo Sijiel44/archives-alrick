@@ -5,7 +5,7 @@ code: "PER-CB2-SELA"
 categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB2"
-source_brute: "CB2 P00273–00290; P02693–02723"
+source_brute: "CB2 P00273–00290; P02693–02723 ; Campagne brute regroupée Vol. 1, CB2 fonctions ; arbitrage du créateur 2026-10-30, question 3A"
 derniere_revision_documentaire: "2026-10-30"
 visibilite: "publique_avec_avertissement"
 description: "Sela est une **femme** formée dans les cités fluviales, spécialisée dans les cordages, fibres, tensions et ouvrages suspendus. Ses deux sœurs participent à la scène "
@@ -27,7 +27,7 @@ Elle prend part aux voyages, à la comparaison des rêves et à la réflexion su
 
 ## Limites, relations et perspectives
 
-La nature exacte de sa charge, son héritage et ses obligations futures restent à élucider. Les inquiétudes de ses sœurs ne doivent pas être effacées au nom d’une mission grandiose.
+**Témoigner** est la fonction canonique de Sela parmi les quatre gardiens, **confirmée par le créateur le 30 octobre 2026**. Cela établit la correspondance de sa fonction, non les secrets entiers du pont ni un serment irrévocable. Les inquiétudes de ses sœurs et son autonomie restent essentielles.
 
 Les autres pistes sont des propositions non jouées et ne doivent pas devenir des réussites rétroactives.
 
