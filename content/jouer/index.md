@@ -70,3 +70,8 @@ Les documents de campagne comportent déjà des usages de jets de dés, de magie
 ## Poursuivre
 
 [[univers/index|Découvrir le monde]] · [[mj-ia/index|Jouer avec une IA]] · [[odyssee/index|Découvrir la campagne fondatrice]]
+
+
+## Des lieux de loisir dans une campagne indépendante
+
+L'[[lieux/cb44-iles-et-quatre-saisons|Île des Divertissements]] et sa [[lieux/parc-des-quatre-saisons-services|vie quotidienne et technique]] permettent une aventure fondée sur les métiers, l'hospitalité, les voyages, le merveilleux ou l'entretien d'ouvrages. Les quatre régions sont décrites dans l'Atlas ; les événements personnels d'Orin restent séparés dans son propre dossier de continuité. L'usage du lieu n'oblige ni à incarner Orin, ni à suivre son calendrier de voyage.
