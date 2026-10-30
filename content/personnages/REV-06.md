@@ -50,6 +50,14 @@ Ses yeux sont son trait le plus saisissant : son regard semble **constellé de m
 > [!important] Canon visuel — confirmé par le créateur le 27 octobre 2026
 > Silhouette élancée proche d’un grand elfe, légères écailles draconiques vertes, yeux constellés d’étoiles, vêtements sur mesure d’Elyra, cape des Revenants et épée en voyage. La couleur des cheveux, la coiffure, l’âge apparent précis et les détails du visage ne sont pas encore arrêtés. Les écailles n’établissent pas une filiation draconique particulière.
 
+## Veiller sans être une alarme de toutes les Failles
+
+Sa formation, sa mémoire composite des veilleurs et ses travaux d'étude des **raccords** en font une personne particulièrement pertinente pour examiner une **structure de passage**. La **Clé-Œil** lui permet d'établir volontairement certains repères de retour et de vérifier des raccords, mais elle **ne force pas tous les accès**.
+
+Il serait cohérent qu'une guilde ou une communauté **l'invite à enquêter** après une anomalie de Faille. Cela demeure une **possibilité de mission**, non une obligation, un contrat déjà signé ou un pouvoir de prévision infaillible. Même Heimdall peut manquer une rupture qui apparaît **sans indice**. Il est d'abord **une personne libre** et un Revenant par choix, et non un instrument de détection.
+
+Voir [[monde/failles-et-ruptures|les Failles et les limites des Veilleurs]] et [[jouer/protocole-failles-guildes|l'organisation possible des missions]].
+
 ## Portrait narratif
 
 **Heimdall du Mérien** ne se définit plus par ce qu'il surveille, mais par ce qu'il décide de faire de son attention. Là où d'autres chercheraient une réponse définitive, il apprend à regarder la question, à mesurer ce qu'il ignore et à laisser chaque être libre de choisir sa traversée.
