@@ -20,6 +20,10 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_prepare_campagne.py' -v
       - run: npm ci
       - run: npm test
       # Aucun artefact Pages ni déploiement sur les branches et PR.
