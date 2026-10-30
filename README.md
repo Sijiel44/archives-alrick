@@ -1,6 +1,6 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **255 fiches codées approuvées** (216 avant la relecture du Compendium + **28 biographies validées**), auxquelles s'ajoutent les guides de jeu expérimentaux **non canoniques**. L’ancien décompte des fiches jaunes/rouges sur 285 entrées est un état historique, pas la classification actuelle des 645 sujets. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
+Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **259 fiches codées approuvées**, dont quatre nouveaux dossiers Atlas détaillant l'Hiver, le Printemps, l'Été et l'Automne de l'Île des Divertissements. L’ancien décompte des fiches jaunes/rouges sur 285 entrées est un état historique, pas la classification actuelle des 645 sujets. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
 
 **Publication active :** le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. Une PR seule ne publie rien.
 
@@ -202,3 +202,8 @@ Le créateur confirme huit personnes existantes malgré leur absence de rencontr
 ## CB44 intégrée — mise à jour du 30 octobre 2026
 
 Le dossier `jdr-alrick/cb44-bilan-et-reprise` fixe **la reprise exacte** de la campagne : Elyan attend la réponse d'Orin à une question personnelle. La première réconciliation de CB44 comprend **10 biographies** nouvelles (soit **255 fiches codées approuvées**), un dossier d'Atlas des îles, un journal de changements canoniques et une **chronique historisée** des scènes familiales. Les projets et les rôles encore indécis restent signalés. Le créateur a autorisé la publication volontaire des campagnes brutes : l'index et le Word intégral de CB44 ont été préparés à part pour dépôt dans `sources/campagnes/CB44/`, **sans prétendre qu'ils sont déjà poussés sur GitHub**. Voir [procédure](docs/SOURCES_CAMPAGNES_PUBLIQUES.md).
+
+
+## Fiches des quatre saisons et protocole MJ (lot de consolidation)
+
+Les quatre dossiers **GEO-CB44-HIVER, GEO-CB44-PRINTEMPS, GEO-CB44-ETE, GEO-CB44-AUTOMNE** enrichissent l'Atlas comme lieux réutilisables par les autres MJ, avec attractions, climat, techniques, limites, canards magiques et amorces de jeu. Pour la campagne fondatrice d'Orin, lire le **prompt exact de reprise après CB44** : `content/mj/reprise-cb44.md`. Le protocole **`docs/PROTOCOLE_RECHERCHE_AVANT_REPONSE_JDR.md`** impose de vérifier les sources effectivement accessibles avant de trancher les points matériels. L'inventaire des 15 Word bruts reçus se trouve dans `docs/INVENTAIRE_SOURCES_CB01_CB44_2026-10-30.md`; les bruts ne sont **pas** encore importés en totalité dans GitHub. Le total des fiches codées approuvées est désormais **259**.

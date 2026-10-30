@@ -74,3 +74,8 @@ Le volume V02 traite aussi les Montagnes de l'Aube, le Mérien, Entre-Rives, Tor
 ## Actualité de l'Espace sur demande après CB44
 
 L'[[lieux/cb44-iles-et-quatre-saisons|Île des Divertissements, l'Île de Brégan et la géographie des quatre saisons]] sont désormais des lieux réalisés, **distincts** de l'île publique, du Palais et des projets de royaumes extérieurs. Les prolongements ferroviaires réalisés à l'intérieur de l'Espace sur demande ne prouvent pas la mise en service du réseau du royaume. Voir [[jdr-alrick/cb44-bilan-et-reprise|état de la campagne]].
+
+
+### L'Île des Divertissements : quatre territoires pour d'autres campagnes
+
+Les constructions jouées dans CB44 sont maintenant présentées comme **lieux du monde réutilisables** : [[lieux/GEO-CB44-HIVER|Hiver]], [[lieux/GEO-CB44-PRINTEMPS|Printemps]], [[lieux/GEO-CB44-ETE|Été]] et [[lieux/GEO-CB44-AUTOMNE|Automne]]. Chacune possède des attractions, une ambiance, des enjeux de service et de maintenance, et des amorces **non jouées** pour un MJ indépendant. Les événements spécifiques à Orin restent dans [[jdr-alrick/cb44-bilan-et-reprise|sa continuité]].

@@ -28,6 +28,17 @@ Le domaine d'Orin n'est **pas un seul palais agrandi sans limites**. Il comporte
 - **Île des Divertissements (également Île des Loisirs)** : **nouveau territoire réellement construit**, composé de quatre grands ensembles saisonniers. Le récit emploie les deux appellations ; une harmonisation éditoriale officielle peut être menée ultérieurement.
 - **Île de Brégan** : **créée pendant CB44**, séparée des autres domaines par la mer intérieure, avec une première demeure, un accès personnel et une liaison ferroviaire. Elle accueille la présence personnelle du dieu des Bâtisseurs ; l'implantation complète de sa Maison n'est pas automatiquement actée.
 
+## Explorer les quatre saisons en détail
+
+Les quatre grandes régions disposent maintenant de fiches descriptives autonomes destinées aux **MJ et joueurs d'autres campagnes**. Elles reprennent les attractions, lieux de repos, hébergements et besoins de maintenance, sans obliger à rejouer la campagne d'Orin.
+
+- [[lieux/GEO-CB44-HIVER|Hiver — Trois sommets, pistes, palais des glaces, patinoire et village enneigé]]
+- [[lieux/GEO-CB44-PRINTEMPS|Printemps — Jardins, dragons illusoires, contes, théâtre participatif et attractions ferroviaires]]
+- [[lieux/GEO-CB44-ETE|Été — Plages, bassins, voyages marins, spectacles et restaurant sous la mer]]
+- [[lieux/GEO-CB44-AUTOMNE|Automne — Forêt des histoires, manoir, rivière des souvenirs, vergers et ateliers techniques]]
+
+**Précision sur les créatures :** la plupart des faons, dragons, fées, renards et animaux merveilleux des attractions sont **des illusions enchantées**. En revanche, les **quatre canards saisonniers**, inspirés du Huitième Canard, sont décrits dans CB44 comme de **petits esprits magiques autonomes**, et non de simples animations projetées. Les créatures représentées ne prouvent pas l'existence de nouvelles espèces biologiques.
+
 ## L'île des quatre saisons
 
 | Région | Ambiance et installations jouées | Limite de canon |
