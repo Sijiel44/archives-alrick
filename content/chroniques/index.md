@@ -12,6 +12,11 @@ usage_en_jeu: ["chronique", "continuite"]
 
 Cette rubrique conserve les scènes et transformations **de la campagne d'Orin**. Elle ne signifie pas qu'un autre groupe de joueurs doit vivre les mêmes événements ni les reproduire à l'identique.
 
+## Premières chroniques historisées
+
+- [[chroniques/cb44-la-bicoque-le-canard-et-les-caves|CB44 — La bicoque, le Huitième Canard et le secret des caves]] — premier récit littéraire sourcé, distinct de la transcription intégrale.
+- [[jdr-alrick/cb44-bilan-et-reprise|CB44 — Bilan et point de reprise]] — la vérité de continuité avant toute adaptation.
+
 ## Événements et moments déjà documentés
 
 - [[EVT-CB31-SOIREE-COURONNE|La Soirée de la Couronne]] — fête reconnue des Premières Neiges, née d'une histoire de la campagne.
@@ -23,7 +28,7 @@ Cette rubrique conserve les scènes et transformations **de la campagne d'Orin**
 
 Les codes CB1, CB2, CB31, CB42 ou CB43 renvoient aux **sources et séances**. Ils ne sont pas les dates du calendrier fictif et ne prouvent pas, à eux seuls, l'ordre de tous les événements. Une scène reconstituée ou une proposition de mission n'est pas un épisode vécu.
 
-Le dernier point de reprise vérifié dans les bruts disponibles se situe après **CB43**, au Palais divin, à la fin de la visite des caves par Mirelda et Odran, avant le déjeuner prévu avec Édric et Maëlya. Une séance ultérieure n'est pas automatiquement intégrée.
+Le dernier point de reprise vérifié est **CB44, chapitre CCCLXXIII**, auprès d'Elyan Corbeau-Gris, dont la question personnelle attend encore la réponse d'Orin. Le déjeuner avec Édric et Maëlya est donc une scène **déjà jouée**.
 
 ## Distinguer campagne et univers
 
