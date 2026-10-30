@@ -121,6 +121,53 @@ function setupAtelier5d6() {
   const q = <T extends HTMLElement>(selector: string) => host.querySelector<T>(selector)!
   const status = q<HTMLElement>("[data-status]")
   const message = (s: string) => { status.textContent = s }
+  const publicRefs = new Map<string,{title:string,description:string}>()
+  let refsLoaded = false
+  let refsLoading = false
+  const rootPath = window.location.pathname.includes("/jouer/") ? window.location.pathname.split("/jouer/")[0] : ""
+  const normalize = (s:string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("fr")
+  function renderRefs(){
+    const box=q<HTMLElement>("[data-reference-results]")
+    box.replaceChildren()
+    const query=normalize(q<HTMLInputElement>("[data-reference-query]").value.trim())
+    if(!refsLoaded){box.textContent=refsLoading?"Chargement de l'index public…":"Index public indisponible.";return}
+    const matches=Array.from(publicRefs.entries()).filter(([slug,item])=> !query || normalize(item.title+" "+item.description+" "+slug).includes(query))
+      .sort((a,b)=>a[1].title.localeCompare(b[1].title,"fr")).slice(0,15)
+    if(!matches.length){box.textContent="Aucun personnage ou créature public ne correspond à cette recherche.";return}
+    for(const [slug,item] of matches){
+      const row=document.createElement("div")
+      const link=document.createElement("a")
+      link.textContent=item.title
+      link.href=`${rootPath}/${slug}`
+      link.target="_blank"
+      link.rel="noopener noreferrer"
+      link.title="Ouvrir la fiche publique sans télécharger"
+      const button=document.createElement("button")
+      button.type="button";button.dataset.adaptRef=slug
+      button.textContent="Créer adaptation 5d6"
+      row.append(link,button);box.append(row)
+    }
+  }
+  async function loadPublicRefs(signal:AbortSignal){
+    if(refsLoaded || refsLoading)return
+    refsLoading=true;renderRefs()
+    try{
+      const response=await fetch(`${rootPath}/static/contentIndex.json`,{signal})
+      if(!response.ok)throw Error("Index non accessible")
+      const data:unknown=await response.json()
+      if(!data || typeof data!=="object" || Array.isArray(data))throw Error("Format d'index incompatible")
+      for(const [slug,obj] of Object.entries(data as Record<string,unknown>)){
+        if(!validSourceRef(slug) || !obj || typeof obj!=="object")continue
+        const value=obj as Record<string,unknown>
+        if(typeof value.title!=="string" || !value.title.trim())continue
+        publicRefs.set(slug,{title:clean(value.title,160),description:clean(value.description,240)})
+      }
+      refsLoaded=true
+      renderRefs()
+    }catch{
+      if(!signal.aborted)q<HTMLElement>("[data-reference-results]").textContent="Recherche indisponible. Les fiches peuvent être consultées depuis la Bibliothèque."
+    }finally{refsLoading=false}
+  }
   let state: State = {sheets:[fresh()],activeId:"",mode:"pj",log:[]}
   try {
     const data = localStorage.getItem(STORAGE)
@@ -192,6 +239,7 @@ function setupAtelier5d6() {
     q<HTMLElement>("[data-mj-tools]").hidden=state.mode==="pj"
     q<HTMLElement>("[data-ai-only]").hidden=state.mode!=="ia"
     renderAI()
+    if(state.mode!=="pj")void loadPublicRefs(controller.signal)
   }
   function refreshLog(){
     const log=q<HTMLOListElement>("[data-log]")
@@ -314,6 +362,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if(el?.dataset?.field || el?.dataset?.stat)changeField(el)
+    if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
     if(el?.hasAttribute("data-active")){state.activeId=el.value;render();persist()}
     if(el?.hasAttribute("data-import") && el instanceof HTMLInputElement) {
@@ -342,6 +391,30 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
     if(button.dataset.mode){state.mode=button.dataset.mode as Mode;refreshMode();persist();return}
+    if(button.hasAttribute("data-reset")){
+      const before=current(), label=before.name||"Sans nom"
+      if(!window.confirm(`Réinitialiser entièrement « ${label} » ? Toutes ses statistiques, ses effets, ses notes et ses incidents locaux seront remplacés par les valeurs de départ. Cette action n'est pas annulable sans sauvegarde JSON.`))return
+      const reset=fresh(before.kind)
+      reset.id=before.id
+      state.sheets=state.sheets.map(s=>s.id===state.activeId?reset:s)
+      const incidentBox=q<HTMLElement>("[data-result]")
+      incidentBox.textContent="La fiche a été réinitialisée. Les autres personnages et le journal général sont conservés."
+      incidentBox.removeAttribute("data-outcome")
+      host.querySelectorAll<HTMLElement>("[data-die]").forEach(e=>{e.textContent="–"})
+      render();persist();message("Fiche réinitialisée après confirmation. Pense à exporter une copie pour sauvegarder.");return
+    }
+    if(button.dataset.adaptRef){
+      const ref=button.dataset.adaptRef, meta=publicRefs.get(ref)
+      if(!meta){message("Référence indisponible dans l'index public.");return}
+      if(state.sheets.length>=60){message("Limite de 60 fiches locales atteinte.");return}
+      const sheet=fresh(ref.startsWith("creatures/")?"creature":"pnj")
+      sheet.name=meta.title.slice(0,90)
+      sheet.profession="Adaptation d'une fiche publique (valeurs à définir)"
+      sheet.sourceRef=ref;sheet.sourceTitle=meta.title
+      sheet.notes="Les statistiques 5d6 sont fictives, non tirées de la fiche de référence. Valider avec le MJ avant jeu."
+      state.sheets.push(sheet);state.activeId=sheet.id
+      render();persist();message("Référence ouverte en adaptation 5d6. Aucun chiffre canonique n'a été inventé.");return
+    }
     if(button.hasAttribute("data-new")){
       if(state.sheets.length>=60){message("Limite de 60 fiches. Exporte et supprime des profils inutilisés.");return}
       const sheet=fresh(state.mode==="pj"?"pj":"pnj")
