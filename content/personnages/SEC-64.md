@@ -1,44 +1,37 @@
 ---
-publish: false
-title: "Reginald"
+publish: true
+spoilers: true
+unlisted: true
+title: "Reginald — Le tavernier d’un souvenir d’enfance"
 code: "SEC-64"
 categorie: "personnage"
-canon_statut: "a_verifier"
-ancre_documentaire: "V03 · CB42"
-source_brute: "CB42 P00531–00819"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
-spoilers: true
-description: "Repères de personnage et de continuité après CB42."
-tags: [sec_64, cb42, brouillon, reginald]
-etat_editorial: en_chantier
+canon_statut: "faits_joues"
+etat_editorial: "valide"
+ancre_documentaire: "V03 · SEC-64 · CB42"
+source_brute: "Compendium V03 v1.7, SEC-64 ; Campagne Brut 4.2, CB42 P00531–00819"
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
+portee: "jdr_alrick"
+public_cible: ["lecteurs", "mj"]
+usage_en_jeu: ["reference", "continuite"]
+description: "Tavernier évoqué par les souvenirs d'Orin et de Corven, sans situation actuelle confirmée."
+tags: [reginald, taverne, enfance, cb42]
 ---
 
-# Reginald
+# Reginald — Le tavernier d’un souvenir d’enfance
 
-> [!warning] Brouillon de continuité
-> Synthèse issue du registre directeur après CB42. Avant publication, relire la fiche dans le volume indiqué et vérifier que chaque élément conserve son statut.
+## Ce que la campagne établit
 
-## Synthèse attestée
+Reginald tient la taverne associée au souvenir des **premières bières racontées par Orin et Corven**. Le récit entremêle maladresse, rencontre avec une jeune Naine non nommée et réaction des adultes. Ce personnage existe dans la mémoire évoquée en CB42 ; sa présence effective dans une scène présente de la campagne n'est **pas** attestée.
 
-Sa taverne est le cadre des premières bières racontées par Orin et Corven. Le souvenir mêle maladresse, rencontre avec une jeune Naine non nommée et intervention des adultes. Le brut ne confirme ni sa présence actuelle ni une nouvelle scène de service. Garder cette fiche comme mémoire d’enfance, sans le confondre avec Garrik.
+## État et limites
 
-## Statut documentaire
+Ni son âge actuel, ni la situation de sa taverne aujourd'hui, ni une nouvelle fonction auprès d'Orin ne sont confirmés. **Reginald n'est pas Garrik**. Les deux taverniers ne doivent pas être fusionnés par commodité.
 
-- **État du registre :** Profil proposé puis actualisation selon les scènes.
-- **Avancement :** Personne évoquée sans situation actuelle confirmée.
-- **Connaissance en jeu :** À préciser par affirmation. Les personnages ne connaissent pas automatiquement tout le contenu de cette fiche.
-- **Qualité du renvoi :** Fiche principale.
+## Utilisation en jeu — proposée
+
+Une enquête dans les lieux de l'enfance peut chercher des archives ou des témoins ; la rencontre de Reginald aujourd'hui serait un **nouvel événement à jouer**, pas une scène déjà accomplie.
 
 ## Source
 
-- *Compendium des personnages et des relations*, SEC-64 Reginald — CB42 P00531–00819.
-
-## Fiches liées
-
-- O42-07 ; O42-10.
-
-## À compléter
-
-- Reprendre les formulations exactes du volume thématique et ajouter les faits ultérieurs sans effacer cet état.
-- Distinguer toute proposition de développement d’un événement joué ou d’une décision canonique.
+*Compendium V03 v1.7*, SEC-64 ; *Campagne Brut 4.2*, CB42 P00531–00819.
