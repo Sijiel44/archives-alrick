@@ -1,6 +1,6 @@
 ---
 publish: true
-title: "Nyméa — Rêves, imaginaire, récits et visions"
+title: "Nyméa — Rêves, imaginaire et récits"
 code: "DIV-15"
 categorie: "monde"
 canon_statut: "lore_valide"
@@ -12,13 +12,13 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: ["joueurs", "mj", "lecteurs"]
 usage_en_jeu: ["reference", "decouverte", "scenario"]
-description: "Nyméa, Grande Puissance des rêves, imaginaire, récits et visions : portrait, limitations, relations aux courants et possibilités de jeu."
+description: "Nyméa, Grande Puissance des rêves, de l'imaginaire et des récits : portrait, limitations, relations aux courants et possibilités de jeu."
 tags: [grandes-puissances, nymea, divin, voies, couronnes]
 ---
 
 # Nyméa
 
-*Rêves, imaginaire, récits et visions.*
+*Rêves, imaginaire et récits.*
 
 > [!info] Domaines canoniques, approfondissements distincts
 > **Nyméa** est l'une des **Dix-Huit Grandes Puissances**, et non une divinité supplémentaire. Son domaine et ses inclinations politiques proviennent de la Bible. Les nuances de caractère proposées ci-dessous sont des **approfondissements de création compatibles avec le cadre**, non des dialogues ou exploits déjà joués. Les exemples de rites et de quêtes sont **des possibilités locales pour MJ**, pas des cultes institués partout.
@@ -27,7 +27,7 @@ tags: [grandes-puissances, nymea, divin, voies, couronnes]
 
 Elle prend au sérieux les histoires que d'autres traitent de mensonges. Les rêves révèlent parfois une peur, un désir ou un chemin intérieur, mais ils n'ont pas à gouverner l'identité du rêveur.
 
-**Domaine reconnu :** Rêves, imaginaire, récits et visions. La puissance du domaine n'interdit ni les choix personnels, ni les désaccords avec d'autres Autorités.
+**Domaine reconnu :** Rêves, imaginaire et récits. La puissance du domaine n'interdit ni les choix personnels, ni les désaccords avec d'autres Autorités.
 
 ## Ce que sa présence peut rendre possible
 
