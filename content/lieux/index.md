@@ -43,7 +43,7 @@ L'Atlas historique mentionne la **Concorde des Huit Feux** et la stabilisation d
 
 Les nouvelles propositions de **missions de guilde, Failles au cœur des villages, postes de surveillance et incidents plus nombreux au Nord** attendent leur validation. Elles ne permettent pas de dessiner des zones de danger chiffrées ni de décréter que chaque trace étrange du Nord est une Faille active.
 
-Pour organiser ces événements sans confondre scénario et carte réelle, voir [[monde/index|les passages entre Couronnes et le travail cosmologique]].
+Pour distinguer les passages réellement établis des hypothèses régionales, lire [[monde/passages-entre-couronnes|la fiche de référence sur les passages entre Couronnes]].
 
 ## Atlas documentaire et chantier de migration
 
