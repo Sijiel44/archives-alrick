@@ -13,7 +13,6 @@ derniere_revision_documentaire: "2026-10-30"
 portee: "jdr_alrick"
 public_cible: ["mj"]
 usage_en_jeu: ["reprise", "prompt"]
-tags: [orin, jdr, reprise, prompt, recherche, chapitres, cb44]
 ---
 
 # Reprendre L'Odyssée d'Orin — après CB44
