@@ -34,3 +34,12 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # MON-PASS-01 — content/monde/passages-entre-couronnes.md : lore_valide, V01 S09 p. 12, 85–87, six types de passage et limites de la magie de la Faille; incident récurrent et procédures non déclarés réalisés.
 # Total de fiches codées approuvées après ce lot : 177 = 171 initiales + 4 Déchéance (PR22) + 2 références Bible.
 # Les anciens fichiers à publish:false (Failles imaginées, intrigues et bestiaire proposés, répertoire de travail et courants secrets) ne sont PAS promus; les deux pages MJ Déchéance restent spoilers:true unlisted:true.
+
+
+# Publication pilote explicitement approuvée : outil de jeu PJ/MJ/MJ IA (29 octobre 2026).
+# Page non codée : content/jouer/systeme-5d6-base12.md — version d'essai 5d6/base12, proposition_non_jouee, en_cours.
+# Page non codée : content/jouer/atelier-5d6.md — outil 100% client avec fiche locale, dés, import/export JSON, modes PJ/MJ/MJ IA ; proposition_non_jouee, en_cours.
+# Le module Déchéance 2d6 existant reste en vigueur comme option autonome, aucun ancien jet CB n'est remplacé.
+# Pas de données privées, aucun nouveau fichier MJ source, aucun profil de créature canonisé, aucune transmission de fiche à une IA.
+# Le nombre de fiches CODÉES approuvées reste 177 ; seul le nombre de pages publiques non codées augmente de deux.
+# Exiger npm test, vérification des modes et intégrité des pages construites, puis contrôles du workflow Pages après fusion.
