@@ -16,7 +16,7 @@ description: "Velmora, dragon libre aux intérêts singuliers, vivant dans les h
 tags: [dragons, creature, individu, velmora, aventure]
 ---
 
-# Velmora, La Patiente des Brumes Hautes
+# Velmora — La Patiente des Brumes Hautes
 
 > [!info] Nouveau personnage d'univers, sans rencontre rétroactive
 > **Dragon individuel de création originale.** Son existence et sa personnalité sont ajoutées au répertoire des êtres de l'univers à la demande du créateur. **Aucun voyage, pacte, affrontement ou lien familial avec Orin n'est déclaré déjà joué.** Velmora n'est ni un Archétype cosmique ni un siège supplémentaire du Conseil.
