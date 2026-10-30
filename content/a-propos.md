@@ -23,6 +23,14 @@ Les couleurs expriment l’état de vérification, pas une certitude absolue : u
 
 Ces portes sont des **vues sur des fiches communes**, et non quatre encyclopédies indépendantes. Les métadonnées de portée, de public et d'usage pourront être ajoutées au fil des révisions sans changer les codes documentaires.
 
+## Grandes rubriques et migration
+
+Les index thématiques [[monde/index|monde]], [[lieux/index|atlas]], [[cultures/index|cultures]], [[institutions/index|institutions]], [[economie/index|économie]], [[magie/index|magie]], [[objets/index|objets]], [[projets/index|projets]], [[creatures/index|créatures]], [[personnages/index|personnages]], [[groupes/index|groupes]], [[maison/index|Maison]] et [[chroniques/index|chroniques]] sont organisés comme **portes de lecture**. Une page d'index n'est pas une validation du contenu de tous les dossiers encore en migration.
+
+Les rubriques d'univers distinguent les **fiches publiées** des sujets seulement présents dans les volumes de référence. Les dossiers marqués `publish: false` et `en_chantier` ne doivent pas être listés comme pages accessibles. Les révélations personnelles peuvent être indiquées comme liens à ouvrir sur choix, sans reproduire le secret dans l'index.
+
+[[univers/magie-pour-jouer|Le guide initial de la magie]] résume des notions du Codex mais ne crée ni puissance nouvelle ni règle de calcul officielle.
+
 ## Lire les statuts
 
 - **Vert — Validé** : faits et sources suffisamment recoupés pour cette version.
