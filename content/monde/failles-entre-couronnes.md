@@ -14,6 +14,9 @@ tags: [failles, couronnes, passages, yggdrasil, magie, aventures]
 
 # Les failles entre les Couronnes
 
+> [!important] **Archive de travail — ne pas publier telle quelle**
+> Les six passages de la Bible figurent déjà dans [[monde/passages-entre-couronnes|MON-PASS-01, référence canonique publiée]]. La méthode d'observation et les amorces de jeu y ont été ajoutées en octobre 2026, clairement identifiées comme **propositions non jouées**. Cette archive conserve des hypothèses plus détaillées (fréquence régionale, alertes, fermeture) qui exigent **une décision éditoriale supplémentaire**. Ne pas activer `publish:true` sur ce fichier composite.
+
 > [!warning] Source et proposition séparées
 > **Les Failles, passages et magies associées existent déjà dans la Bible.** Leur survenue aléatoire dans n'importe quelle ville, leur fréquence au Nord, les dispositifs de détection, les classes opérationnelles et les missions de fermeture proposées ci-dessous sont **à développer et valider**. Cette fiche reste non publiée pendant la relecture.
 
