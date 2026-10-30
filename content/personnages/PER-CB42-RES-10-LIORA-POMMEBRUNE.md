@@ -1,36 +1,38 @@
 ---
 publish: false
 spoilers: true
-title: "Liora Pommebrune — Profil du service des appartements"
+title: "Liora Pommebrune — Hospitalité et appartements"
 code: "RES-10"
 categorie: "personnage"
-canon_statut: "proposition_non_jouee"
+canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
-source_brute: "CB42 P10752–10755"
+source_brute: "CB42 P10752–10755 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
-description: "Portrait préparatoire : femme du Petit Peuple de 47 ans, issue d’une famille d’aubergistes, ayant élevé trois enfants et travaillé dans de grandes maisons. Elle se d"
+description: "Liora est une femme vivante du Petit Peuple de 47 ans, issue d'aubergistes, ayant élevé trois enfants et travaillé dans de grandes maisons."
 tags: [liora, pommebrune, hospitalite, intendance, cb42]
 etat_editorial: en_cours
 unlisted: true
 ---
 
-# Liora Pommebrune — Profil du service des appartements
+# Liora Pommebrune — Hospitalité et appartements
 
-## Identité et parcours
+## Biographie établie
 
-Portrait préparatoire : femme du Petit Peuple de 47 ans, issue d’une famille d’aubergistes, ayant élevé trois enfants et travaillé dans de grandes maisons. Elle se distingue par son attention aux appartements et aux visiteurs.
+Liora est une femme vivante du Petit Peuple de 47 ans, issue d'aubergistes, ayant élevé trois enfants et travaillé dans de grandes maisons.
 
-## État vérifié
+**Décision canonique du créateur — 30 octobre 2026 :** cette personne **existe réellement dans l'univers**. Son portrait de référence peut être employé pour de futures rencontres. Il n'est pas pour autant établi qu'Orin la connaît ou lui a proposé un travail.
 
-Le dossier CB42 l’envisage pour le soin du linge et des appartements. Cette fonction n’est **ni proposée directement en scène avec une réponse attestée, ni signée** dans les passages retenus.
+## Situation au dernier point de reprise
 
-## Limites et suites ouvertes
+La fonction liée au soin des appartements et du linge reste **à discuter directement avec elle**. Aucun contrat ni entretien joué.
 
-Son éventuel emploi, ses conditions de travail et ses choix familiaux nécessitent une rencontre et son consentement.
+## Statut éditorial et continuité
 
-**Page non publiée après relecture :** le portrait proposé reste à confirmer par une rencontre ou une décision du créateur.
+**Existence : validée comme lore du monde. Rencontre avec Orin : non jouée. Contrat : aucun confirmé.** Les détails secondaires encore absents ne sont pas des événements rétroactifs ; ils pourront être développés pour une autre campagne en les distinguant des scènes jouées.
 
-## Sources documentaires
+Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
-*Compendium des personnages et des relations* v1.7, **RES-10** ; références du brouillon : CB42 P10752–10755. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.
+## Sources
+
+*Compendium des personnages et des relations* v1.7, entrée **RES-10** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.

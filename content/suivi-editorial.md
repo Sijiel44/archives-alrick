@@ -10,7 +10,7 @@ etat_editorial: en_cours
 
 ## État actuel — Extension lore du 30 octobre 2026
 
-**244 fiches codées approuvées après la relecture du Compendium V03 (216 auparavant).** Le répertoire publié reste distinct des outils de scénario facultatifs. Sept pages de sensibilité divine utilisent des emblèmes **créés pour les Archives**, non issus d'une tradition canonique universelle. Les six Grandes Puissances disposent de portraits de travail ; leurs rites et aventures proposés ne sont pas des scènes jouées. Trois dragons individuels ont été créés et leurs noms vérifiés **sans collision dans la recherche du dépôt**.
+**245 fiches codées approuvées après l'arbitrage Margha du 30 octobre 2026 (244 auparavant).** Le répertoire publié reste distinct des outils de scénario facultatifs. Sept pages de sensibilité divine utilisent des emblèmes **créés pour les Archives**, non issus d'une tradition canonique universelle. Les six Grandes Puissances disposent de portraits de travail ; leurs rites et aventures proposés ne sont pas des scènes jouées. Trois dragons individuels ont été créés et leurs noms vérifiés **sans collision dans la recherche du dépôt**.
 
 La fiche technique MAG-106 subsiste comme **repère interne**, mais l'intitulé public devient **« Une blessure disparue, un souvenir effacé »**. L'épisode est aussi documenté dans les fiches d'**Elyra, Orin et leurs Autorités**, conservées avec les protections nécessaires.
 
@@ -667,3 +667,8 @@ Ce lot approuve **18 fiches supplémentaires** : **9 nouvelles fiches de lieux c
 ## Lot Compendium V03 — quarante fiches relues
 
 **40 dossiers anciens examinés individuellement** : 28 biographies source-vérifiées et approuvées pour une publication avec avertissement, 12 dossiers maintenus hors diffusion. Le total des fiches codées approuvées est désormais de **244**. Les corrections n'impliquent ni recrutement supplémentaire, ni Rappel automatiquement consenti, ni admission aux Revenants. Le rapport `docs/AUDIT_COMPENDIUM_40_PERSONNAGES_2026-10-30.md` consigne le contrôle agrégé ; le tableau nominatif complet et les questions de canon demeurent dans l'archive privée.
+
+
+## Arbitrages du créateur du 30 octobre 2026 — état actuel
+
+La relecture des 40 biographies a reçu trois réponses de canon : **huit existences validées** malgré l'absence de rencontre, **Margha identifiée comme cuisinière engagée du yacht**, et **Maelin / Rudek / Sela / Eren** confirmés dans les quatre fonctions **Maintenir / Séparer / Témoigner / Transmettre**. Les huit dossiers de casting restent **non publiés**, avec `canon_statut: lore_valide` et `etat_editorial: en_cours` (leur existence est fixée, pas leur contrat). **Margha seule ajoute une fiche codée publiable** : total **245**. Le registre `jdr-alrick/arbitrages-compendium-20261030` conserve les limites des décisions ; aucune nouvelle scène jouée n'est créée.

@@ -5,7 +5,7 @@ code: "PER-CB2-MAELIN"
 categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB2"
-source_brute: "CB2 P00273–00290; P02693–02723"
+source_brute: "CB2 P00273–00290; P02693–02723 ; Campagne brute regroupée Vol. 1, CB2 fonctions ; arbitrage du créateur 2026-10-30, question 3A"
 derniere_revision_documentaire: "2026-10-30"
 visibilite: "publique_avec_avertissement"
 description: "**Maelin est une femme, charpentière**, fille d’un batelier et d’une tisseuse. Elle a un frère cadet qui travaille aux quais de Skalor. Sa mère lui rappelle encore d"
@@ -27,7 +27,7 @@ Elle rejoint les autres personnes associées aux **quatre fonctions de garde du 
 
 ## Limites et suites ouvertes
 
-Le rapprochement entre Maelin et la fonction de « maintenir » est une **lecture provisoire du groupe**, non une définition cosmologique démontrée. Le document brut regroupé la nomme explicitement *charpentière* et le Compendium confirme le féminin : l’ancien portrait web au masculin était erroné.
+**Maintenir** est la fonction canonique confiée à Maelin parmi les quatre gardiens : cette correspondance, d'abord proposée dans CB2, est **validée par le créateur le 30 octobre 2026**. Maelin demeure une personne et une charpentière, et le serment ne peut l'enfermer dans un devoir héréditaire forcé. La nature exacte des pierres et du mécanisme du pont n'est pas démontrée par cette confirmation.
 
 Les activités proposées à partir de ces faits ne sont pas de nouvelles scènes jouées.
 

@@ -1,36 +1,38 @@
 ---
 publish: false
 spoilers: true
-title: "Farwen Pierreclaire — Profil d’intendance pour Aldhammar"
+title: "Farwen Pierreclaire — Savoirs domestiques d’Aldhammar"
 code: "RES-14"
 categorie: "personnage"
-canon_statut: "proposition_non_jouee"
+canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
-source_brute: "CB42 P10807–10810"
+source_brute: "CB42 P10807–10810 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
-description: "Portrait préparatoire : Naine vivante de 168 ans, issue d’une famille artisanale de l’ancienne capitale, connaissant boiseries, textiles et entretien des demeures so"
+description: "Farwen est une Naine vivante de 168 ans issue d'une famille d'artisans de l'ancienne capitale ; elle connaît l'entretien des demeures souterraines, le bois et les textiles."
 tags: [farwen, pierreclaire, aldhammar, intendance, nains, cb42]
 etat_editorial: en_cours
 unlisted: true
 ---
 
-# Farwen Pierreclaire — Profil d’intendance pour Aldhammar
+# Farwen Pierreclaire — Savoirs domestiques d’Aldhammar
 
-## Identité et parcours
+## Biographie établie
 
-Portrait préparatoire : Naine vivante de 168 ans, issue d’une famille artisanale de l’ancienne capitale, connaissant boiseries, textiles et entretien des demeures souterraines.
+Farwen est une Naine vivante de 168 ans issue d'une famille d'artisans de l'ancienne capitale ; elle connaît l'entretien des demeures souterraines, le bois et les textiles.
 
-## État vérifié
+**Décision canonique du créateur — 30 octobre 2026 :** cette personne **existe réellement dans l'univers**. Son portrait de référence peut être employé pour de futures rencontres. Il n'est pas pour autant établi qu'Orin la connaît ou lui a proposé un travail.
 
-La fonction de gouvernante ou responsable domestique d’Aldhammar apparaît dans le dossier des profils préparatoires de CB42. **Aucune rencontre jouée ni signature** ne l’établit au poste.
+## Situation au dernier point de reprise
 
-## Limites et suites ouvertes
+Le poste de gouvernante ou d'intendance à Aldhammar reste **non proposé en personne et non signé**. Elle est distincte de Sigrun Pierreval et de Dagna Veine-de-Pierre.
 
-Ne pas confondre l’intendance patrimoniale en cours de préparation par Sigrun Pierreval, l’architecte recommandée Dagna Veine-de-Pierre et l’emploi encore proposé à Farwen.
+## Statut éditorial et continuité
 
-**Page non publiée après relecture :** le portrait proposé reste à confirmer par une rencontre ou une décision du créateur.
+**Existence : validée comme lore du monde. Rencontre avec Orin : non jouée. Contrat : aucun confirmé.** Les détails secondaires encore absents ne sont pas des événements rétroactifs ; ils pourront être développés pour une autre campagne en les distinguant des scènes jouées.
 
-## Sources documentaires
+Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
-*Compendium des personnages et des relations* v1.7, **RES-14** ; références du brouillon : CB42 P10807–10810. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.
+## Sources
+
+*Compendium des personnages et des relations* v1.7, entrée **RES-14** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.

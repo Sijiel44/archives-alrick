@@ -5,7 +5,7 @@ code: "PER-CB2-RUDEK"
 categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB2"
-source_brute: "CB2 P00273–00290; P02693–02723"
+source_brute: "CB2 P00273–00290; P02693–02723 ; Campagne brute regroupée Vol. 1, CB2 fonctions ; arbitrage du créateur 2026-10-30, question 3A"
 derniere_revision_documentaire: "2026-10-30"
 visibilite: "publique_avec_avertissement"
 description: "Rudek, tailleur de pierre d’Entre-Rives, est **vivant, marié et père d’un garçon**. Sa famille est présente lors de la présentation des personnes associées au vieux "
@@ -27,7 +27,7 @@ Il participe aux observations, aux comparaisons de rêves et aux discussions sur
 
 ## Limites, relations et perspectives
 
-Le rapprochement de Rudek avec le rôle de « séparer » est **une hypothèse interprétative du groupe**. Le mécanisme du pont et la transmission de la fonction ne sont pas entièrement démontrés.
+**Séparer** est la fonction canonique de Rudek parmi les quatre gardiens, **confirmée par le créateur le 30 octobre 2026**. Cette attribution n'explique pas à elle seule le fonctionnement du verrou, le sens de chacune des pierres ou les modalités de succession. Rudek conserve sa famille, son métier et le droit de participer aux décisions.
 
 Les autres pistes sont des propositions non jouées et ne doivent pas devenir des réussites rétroactives.
 

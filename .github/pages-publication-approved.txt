@@ -113,3 +113,12 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Les anciens codes et chemins sont conservés pour la continuité des liens ; les différences de nom/codage sont relevées par le tableau privé.
 # Ceci n'autorise aucune publication des 12 dossiers non confirmés, de la liste détaillée des 645 sujets, ni des notes et transcriptions privées du MJ.
 # Le succès CI et le contrôle post-déploiement de GitHub Pages restent obligatoires.
+
+
+# Lot 06 — Décisions explicites de canon du créateur du 30 octobre 2026.
+# 1A : huit personnes des anciens profils RES-01,03,07,10,12,13,14,20 existent déjà ; aucune rencontre ni signature ; Dorrik et Edran décédés et NON Rappelés. Leurs fiches restent publish:false.
+# 2A : RES-16 Margha Trois-Mers est la cuisinière du yacht dont le recrutement est mentionné en CB43. publish:true, spoilers:true, unlisted:true, sans inventer une signature ou un second cuisinier.
+# 3A : Maelin = Maintenir, Rudek = Séparer, Sela = Témoigner, Eren = Transmettre. Eren distinct du marin Sören de CB1. Le fonctionnement des quatre pierres et la relève restent des questions distinctes.
+# Aucun repas, voyage, Rappel, contrat supplémentaire ou rituel n'est ajouté rétroactivement. Le point de reprise après CB43 demeure inchangé.
+# Total attendu : 245 fiches codées (244 après la PR33 + Margha), plus une page de continuité non codée avec avertissement.
+# Exiger CI et déploiement GitHub Pages vérifiés après fusion ; les dossiers Word V03/V06/V08 ne sont pas transférés au dépôt public.
