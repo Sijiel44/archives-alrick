@@ -55,3 +55,8 @@ Les pages publiques, y compris celles à avertissement, ne peuvent protéger un 
 ## Les autres portes
 
 [[jouer/index|Jouer son propre héros]] · [[univers/index|Explorer l'univers]] · [[odyssee/index|Suivre Orin]]
+
+
+## Une reprise distincte pour l'Odyssée d'Orin
+
+La campagne fondatrice dispose d'un [[mj/reprise-cb44|prompt de reprise sourcé après CB44]], avec son point de scène exact, un chapitrage romain continu et une méthode de vérification dans les Archives. **Ce prompt ne doit pas être imposé à un nouveau groupe** : un MJ indépendant peut utiliser les [[lieux/GEO-CB44-HIVER|fiches des quatre saisons]] comme cadre de jeu sans prendre Orin pour son protagoniste ni reproduire les événements de l'Odyssée.
