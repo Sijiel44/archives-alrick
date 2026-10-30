@@ -18,7 +18,7 @@ tags: [divinites, courants, neuvieme-couronne, devoreurs]
 
 # Les Dévoreurs
 
-![Symbole éditorial des Les Dévoreurs, non obligatoire pour les cultes.](../../images/courants/devoreurs.svg)
+![Symbole éditorial des Les Dévoreurs, non obligatoire pour les cultes.](../../static/images/courants/devoreurs.svg)
 
 *Prendre à la Couronne ce qu'elle n'a pas encore reçu.*
 
