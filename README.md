@@ -135,3 +135,19 @@ Deux pages **non codées**, en `etat_editorial: en_cours` / `canon_statut: propo
 - `content/jouer/atelier-5d6.md` : interface PJ / MJ / MJ-IA, sauvegarde `localStorage`, fiches PNJ/créatures **importables en JSON**, profils fictifs, dés et journal, contexte IA à copier. **Sans backend ni accès automatique aux fiches de l'encyclopédie**.
 
 Implémentation : `quartz/components/Atelier5d6.tsx` + `quartz/components/scripts/atelier5d6.inline.ts` ; test de structure intégré à `scripts/check-site.mjs`. Sur ordinateur partagé, **les notes locales ne sont pas des données secrètes protégées**. Le contenu est une version pilote à tester auprès d'un petit groupe avant canonisation mécanique.
+
+
+
+## Atelier v1.1 — fiches évolutives et références publiques (pilote)
+
+Le prototype 5d6 ajoute :
+- une **réinitialisation confirmée de la fiche active**, préservant les autres fiches et le journal ;
+- des champs **niveau 1–12, voies libres, talents, bénédictions, malédictions et objets narratifs** ;
+- un suivi de **trois échecs** dans une même catégorie (magie, mêlée, tir, négociation), déclenchant un événement fictionnel optionnel **1d12**, parfois favorable ;
+- une **recherche directe dans `static/contentIndex.json`**, filtrée aux fiches publiques Personnages / Créatures. Le bouton d'adaptation enregistre la **source** tout en précisant que les statistiques sont fictives ;
+- trois **profils JSON d'essai** `quartz/static/atelier5d6-profils-demo.json` dont un est référencé à une fiche publique et **n'en prétend pas reproduire les valeurs canoniques** ;
+- une évolution de l'export vers **`alrick.sheets.v2`**, tout en préservant l'import des profils v1.
+
+Page d'explication : `content/jouer/progression-voies-incidents.md` — **proposition_non_jouee**, `en_cours`, publiée comme pilote. Le contenu ne transforme pas les capacités ou objets proposés en lore établi, ne canonise pas les niveaux des personnages CB et ne remplace pas encore le mini-système Déchéance 2d6.
+
+Les notes MJ restent en stockage local, sans sécurisation sur appareil partagé. La recherche passe par **l'index public existant** qui exclut les fiches à spoilers ; elle n'ouvre pas les archives privées.
