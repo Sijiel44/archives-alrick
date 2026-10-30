@@ -45,7 +45,7 @@ Les **Dix-Huit** sont les Grandes Autorités divines reconnues par le répertoir
 
 Ces Autorités **se rencontrent sans se confondre**. Cernara peut s'intéresser au vivant animal, aux habitats et aux déplacements de la faune, tandis que Dhoréa aborde les plantes, les sols et les cultures. Osaryn accompagne les fins et le passage ; Kagen s'intéresse à l'identité qui demeure ou évolue. Une décision peut donc engager plusieurs puissances, qui ne sont pas tenues d'être du même avis.
 
-Les douze premières figures possèdent déjà des développements fondateurs plus détaillés. **Les six dernières** complètent le répertoire harmonisé et feront l'objet de portraits progressifs. Cette différence de documentation n'est **pas une différence de rang**.
+Les douze premières figures possèdent déjà des développements fondateurs plus détaillés. **Les six dernières** complètent le répertoire harmonisé. Leurs portraits complémentaires sont désormais accessibles plus bas, avec les créations nouvelles nettement séparées de la Bible. Cette différence de documentation n'est **pas une différence de rang**.
 
 ## Place dans la cosmologie
 
@@ -69,6 +69,19 @@ Les Grandes Puissances sont traversées par des **sensibilités politiques**, no
 Une Autorité divine n'est pas nécessairement bonne parce qu'elle possède un siège. Ses décisions, intérêts et méthodes doivent être jugés sur leurs conséquences ; ses fidèles peuvent différer d'elle ou se diviser. Inversement, **aucune des Dix-Huit n'est déclarée Déchue** dans le nouveau [[monde/decheance-canon|système de Déchéance]].
 
 Les rivalités divines et les questions liées aux Couronnes font partie de la matière du monde, mais les révélations sur des alliances, des secrets et les décisions de la campagne fondatrice relèvent de leurs dossiers spécifiques.
+
+## Six portraits complémentaires
+
+Les six Autorités dont les domaines avaient été stabilisés sans portrait développé possèdent maintenant des pages de lecture qui distinguent **faits de la Bible**, **interprétations compatibles** et **propositions de quêtes** :
+
+- [[monde/puissances/astrae|Astraë]] — étoiles, horizons et routes célestes.
+- [[monde/puissances/aionel|Aionel]] — temps, continuité et prudence.
+- [[monde/puissances/nymea|Nyméa]] — rêve, imaginaire et récits.
+- [[monde/puissances/orevan|Orévan]] — voyages, exils et passages.
+- [[monde/puissances/syrka|Syrka]] — flammes, foyers et renouvellement.
+- [[monde/puissances/dhorea|Dhoréa]] — sols, végétaux, cultures et montagnes.
+
+Ces développements **n'ajoutent aucune divinité** au Conseil et ne fixent pas universellement un temple, un culte ou un nouveau miracle. Les signes de Faille que certaines peuvent percevoir ne constituent **pas** un réseau de surveillance infaillible.
 
 ## État de développement des fiches
 

@@ -31,6 +31,16 @@ La présence de **créatures de Faille** est déjà mentionnée dans l'Atlas his
 
 Les futurs dossiers de travail distingueront **monstres hostiles**, **créatures asservies**, **êtres libres venus d'ailleurs** et **espèces encore inconnues**. Les propositions inspirées des mythes, les créatures de combat et les statistiques resteront hors canon jusqu'à validation.
 
+## Trois dragons individuels à rencontrer
+
+Des dragons libres possèdent désormais des **fiches distinctes des Archétypes** : leur existence s'ajoute à l'univers, mais **aucune rencontre dans la campagne fondatrice n'est inventée**.
+
+- [[creatures/dragons/thessoryn|Thessoryn]] — cartographe des marées et des routes changeantes ;
+- [[creatures/dragons/velmora|Velmora]] — dragonne réservée des hautes brumes, indépendante et protectrice ;
+- [[creatures/dragons/orzeyl|Orzeyl]] — bâtisseur des galeries et des refuges de pierre.
+
+Les noms ont été vérifiés **sans occurrence dans le dépôt avant création**. Ces personnages ne représentent pas toutes les espèces de dragons et n'ont pas de pouvoirs absolus sur les Failles. Leurs statistiques 5d6 pourront être élaborées séparément.
+
 ## Les créatures Déchues
 
 Le système de [[monde/decheance-canon|Déchéance]] peut transformer des créatures, jusqu'aux dragons majeurs. **Vaeldrûn**, un dragon Déchu de la galerie approuvée, est un antagoniste possible de très haut niveau ; ce n'est pas un modèle de tous les dragons. Drakon, Aurélion et Níðor ne deviennent pas Déchus pour autant.

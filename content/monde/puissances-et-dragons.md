@@ -63,6 +63,12 @@ Níðor n'est pas automatiquement l'ennemi d'Aurélion : l'un garde les possibil
 
 **Contradiction propre :** le secret sauve parfois ; il peut aussi priver les habitants du savoir nécessaire pour choisir. Une porte refusée peut cacher une catastrophe — ou une injustice ancienne encore à réparer.
 
+## Un monde qui se déchire sans demander la permission
+
+Une Faille est une blessure de la réalité. **Níðor** peut reconnaître certains seuils dont l'ouverture menacerait des lois anciennes, et **Aurélion** certaines blessures des racines et des passages vivants. Cela ne signifie pas qu'ils perçoivent **toutes** les Failles : certaines surgissent sans signe préalable, et un drame ne prouve pas automatiquement la négligence d'un Archétype.
+
+La [[monde/failles-et-ruptures|fiche sur les ruptures des Couronnes]] distingue les observations possibles des **catastrophes imprévisibles** et des ouvertures volontairement exploitées. La responsabilité d'un être se démontre par ses choix et ses actes, non par son domaine cosmique.
+
 ## Ce que le Conseil peut décider — et ne peut pas décider
 
 Le [[monde/dix-huit-grandes-puissances|Grand Conseil des Dix-Huit]] se réunit au **Cercle sans Trône**. La Bible le décrit comme une **assemblée nécessaire, mais non un gouvernement du monde**.

@@ -1,6 +1,6 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **180 fiches codées approuvées** (171 du lot initial + 4 Déchéance + 2 Bible), auxquelles s'ajoutent trois guides 5d6 expérimentaux (109 vertes et 62 jaunes) parmi **285 entrées de travail**. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
+Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **198 fiches codées approuvées** (171 du lot initial + 4 Déchéance + 2 Bible), auxquelles s'ajoutent trois guides 5d6 expérimentaux (109 vertes et 62 jaunes) parmi **285 entrées de travail**. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
 
 **Publication active :** le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. Une PR seule ne publie rien.
 
@@ -174,3 +174,13 @@ Voir [AUDIT_SITE_2026-10-30.md](AUDIT_SITE_2026-10-30.md) pour les constats, ris
 - `MON-PASS-01` : enrichi de méthodes d'observation et d'aventures **proposées, non jouées** ; le dossier composite `failles-entre-couronnes.md` reste `publish:false`.
 
 **180 fiches codées approuvées** au total (177 existantes + 3). Les autres dossiers `en_chantier` ou `a_verifier` ne sont **pas** promus en bloc. Le nouveau canon décrit les principes vérifiés, tandis que les suggestions de jeu sont toujours labellisées comme telles.
+
+
+## Lot éditorial — Failles, courants et nouveaux portraits (30 octobre 2026)
+
+Le compte actuel est de **198 fiches codées approuvées**, contre **180 avant ce lot**. Les nouveaux dossiers : sept courants (**7**), six Grandes Puissances (**6**), trois dragons (**3**), une fiche de Failles (**1**), et Elyra (**1**). Deux guides jouables sans codes sont également activés : `jouer/evenements-aleatoires-failles` et `jouer/protocole-failles-guildes`, tous deux `canon_statut: proposition_non_jouee`.
+
+Les anciennes sections du README conservent les chiffres des **lots historiques** ; **198** est le dernier total. MAG-106 demeure un code interne, et son titre affiché est une formulation narrative. Les personnages d'Orin et les révélations restent exclus du répertoire public sans avertissement. Les sept symboles SVG sont des **emblèmes éditoriaux** et non des armes héraldiques établies. Les trois dragons sont des **créations originales de monde**, non des rencontres rétroactives.
+
+Les Failles peuvent être totalement imprévisibles. Le système de guilde ne contrôle pas toutes les Failles ; les dieux et les Veilleurs n'ont aucune obligation d'intervenir en permanence. Aucun événement historique de l'Odyssée n'a été redéfini comme Faille sans preuve source.
+

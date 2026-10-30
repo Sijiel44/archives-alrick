@@ -39,3 +39,8 @@ Les institutions structurent le quotidien du Royaume : elles ont des mandats, de
 ## Pour d'autres campagnes
 
 Ces institutions peuvent servir d'alliés, d'interlocuteurs, de contraintes ou de lieux d'enquête. Un agent peut agir selon son mandat et sa conscience, même si une règle a été décidée ailleurs. Pour la suite des projets institutionnels, voir [[projets/index|les projets et chantiers]] et [[economie/index|l'économie]].
+
+
+## Faire face aux Failles
+
+[[institutions/INST-CB32-SECOURS-AVENTURIERS|Guilde des Aventuriers et secours]] · [[jouer/protocole-failles-guildes|Missions et coordination de terrain]] · [[monde/failles-et-ruptures|Risques et interventions]] (missions proposées, non faits joués).

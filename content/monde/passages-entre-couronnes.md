@@ -69,6 +69,12 @@ Ces questions constituent une **méthode proposée pour les MJ**, **pas un proto
 
 **Aucun de ces événements n'est réputé avoir eu lieu dans la campagne fondatrice.** Les lieux et organisations précis dépendront des fiches de l'Atlas et des choix du MJ.
 
+## Approfondir les Failles
+
+[[monde/failles-et-ruptures|Quand les Couronnes se déchirent]] développe les ruptures pouvant frapper **sans avertissement**, leurs conséquences jusqu'à la catastrophe régionale, le rôle limité de la veille divine et les exploitations possibles par les Déchus. Pour le jeu, le [[jouer/evenements-aleatoires-failles|générateur d'incidents]] propose des tables facultatives ; le [[jouer/protocole-failles-guildes|guide des missions de guilde]] traite les secours, l'enquête et le repli.
+
+Les tables et les propositions de mission **ne sont ni des événements déjà joués ni des procédures administratives universelles**.
+
 ## Le rôle des guildes et des secours
 
 La [[institutions/INST-CB32-SECOURS-AVENTURIERS|Guilde des Aventuriers et les secours mutuels]] ont été adoptés comme orientations institutionnelles, avec un **déploiement progressif**. Ils offrent une base crédible pour des missions de reconnaissance, de secours ou de protection en cas de phénomène dangereux.

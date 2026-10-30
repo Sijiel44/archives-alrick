@@ -74,3 +74,15 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Garder dossiers de conception déchus historiques, autres spéculations politiques et prototypes en publish:false.
 # Fiches codées approuvées : 180 = 177 antérieures + 3 validées dans ce lot. Un scénario proposé ne devient jamais un fait CB.
 # Exiger npm test + contrôle spoilers/noindex/catalogue + déploiement Pages après fusion.
+
+
+# Lot 03 — enrichissement des courants, puissances, dragons et Failles avec accord de création du 30 octobre 2026.
+# Publier 7 pages codées content/monde/courants/{jardiniers,legislateurs,heritiers,liberateurs,preservateurs,conquerants,devoreurs}.md et 7 SVG éditoriaux quartz/static/images/courants/*.svg.
+# Publier 6 portraits codés content/monde/puissances/{astrae,aionel,nymea,orevan,syrka,dhorea}.md : domaines canoniques, approfondissements, rites proposés.
+# Publier 3 dragons individuels originaux à noms vérifiés non réutilisés dans content/creatures/dragons/{thessoryn,velmora,orzeyl}.md ; aucune rencontre CB inventée.
+# Publier MON-FAI-02 content/monde/failles-et-ruptures.md : possibilité de Failles imprévisibles, catastrophes graves, veille non omnisciente, exploitation par Déchus sous conditions de Chutes liées.
+# Publier Elyra PER-CB31-ELYRA avec spoilers:true, unlisted:true ; intitulés publics narratifs pour MAG-106, renvois dans Orin et Autorités.
+# Publier deux guides NON codés pour MJ, événements aléatoires et missions de guilde, avec canon_statut proposition_non_jouee, etat_editorial en_cours.
+# Ne PAS convertir l'attaque où la famille d'Orin fut frappée en Faille historique; hypothèse non jouée uniquement, sans responsable Déchu déclaré.
+# Pas de lois de guildes définitivement validées, pas de surveillance divine universelle, pas de nouveaux sièges parmi les Dix-Huit.
+# Total des fiches codées approuvées après ce lot : 198 = 180 + 18. Contrôler les 7 SVG, les liens, spoilers, images et pages dans CI avant publication.

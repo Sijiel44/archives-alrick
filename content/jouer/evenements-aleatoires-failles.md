@@ -1,17 +1,19 @@
 ---
-publish: false
-title: "Failles et incidents imprévus — générateur de scènes"
+publish: true
+title: "L’imprévu aux portes du monde — tables de Failles pour MJ"
 description: "Outil facultatif de génération d'incidents, aléas, escalade, secours et suites pour les MJ."
 categorie: "guide"
 canon_statut: "proposition_non_jouee"
-etat_editorial: en_chantier
+etat_editorial: en_cours
 portee: "univers_partage"
 public_cible: ["mj"]
 usage_en_jeu: ["scenario", "prompt"]
 tags: [failles, aleatoire, guildes, rencontres, incident, table]
 ---
 
-# Générateur d'incidents de Faille — outil MJ
+# L’imprévu aux portes du monde
+
+*Tables facultatives pour les maîtres de jeu.*
 
 > [!warning] Option de jeu non canonique
 > Les **Failles** sont un phénomène déjà documenté par la Bible. **Ces jets et tables sont de nouvelles propositions**, sans valeur de règle officielle ni confirmation que les Failles sont fréquentes dans tous les royaumes.
@@ -95,6 +97,12 @@ Ce n'est pas une classification officielle d'espèces. Les entrées peuvent êtr
 
 Le MJ peut **cesser à toute étape**. Une mission sans combat reste valide ; une rencontre à trois contre une créature puissante peut imposer fuite et extraction plutôt que victoire.
 
+## Un événement majeur sans annonce préalable
+
+**Table facultative de gravité (1d6) après qu'une Faille est établie :** 1–2, trouble bref avec observation ; 3–4, évacuation ou sauvetage local ; 5, crise prolongée mettant des quartiers ou des routes en péril ; **6, rupture majeure** pouvant exiger la coordination régionale ou royale. **Cette répartition est un choix de séance, pas une fréquence canonique du monde.** Un résultat de 6 ne doit pas provoquer une destruction automatique irréversible de la campagne des PJ sans cadre et conséquences jouables.
+
+Une rupture peut également apparaître **sans aucun jet préalable, sans avertissement et sans témoin divin** si le MJ l'a placée comme événement scénaristique. Les veilleurs peuvent parfois réagir vite ; ils ne garantissent pas une prédiction.
+
 ## Un autre tirage pour l'Odyssée d'Orin
 
 La même table peut donner à Orin une raison **facultative** de voyager comme Alrick. Une première mission peut associer Bram, Kelm, Torven et des aventuriers de passage. Le MJ ne transforme pas ces options en scène jouée avant les décisions du joueur.
@@ -108,4 +116,4 @@ Consigne recommandée : « Après une transition de voyage, décide si un jet es
 ## Références
 
 - Bible V01 : catégories de passages, magie de la Faille.
-- [[monde/failles-entre-couronnes|Failles entre Couronnes]] et [[jouer/protocole-failles-guildes|Missions de guilde]] : projets de formalisation non publiés.
+- [[monde/failles-et-ruptures|Failles et ruptures imprévisibles]] et [[jouer/protocole-failles-guildes|Missions de guilde]] : guides de jeu proposés, sans administration officielle.

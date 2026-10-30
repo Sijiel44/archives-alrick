@@ -45,6 +45,15 @@ Les descriptions des **rubriques** sont des guides de lecture, pas des règles n
 
 Ce système est **expérimental** et ne remplace pas rétroactivement les jets de la campagne d’Orin. La Déchéance garde pour l’instant son mini-système 2d6 autonome.
 
+## Partir à la rencontre de Failles et de veilleurs
+
+Les [[monde/failles-et-ruptures|Failles peuvent surgir sans signe]] et créer des urgences allant d'un témoin perdu à une catastrophe majeure. Deux outils libres aident les MJ à garder leurs décisions :
+
+- [[jouer/evenements-aleatoires-failles|Tables d'événements et de Failles imprévues]] — hasard facultatif, sans fréquence canonique de ruptures ;
+- [[jouer/protocole-failles-guildes|Missions de guilde et secours]] — reconnaître, évacuer, protéger, demander un relais, éviter de confondre étude et urgence vitale.
+
+Ces outils **ne créent pas d'organisations officielles omniscientes** ni d'incidents de l'Odyssée déjà joués.
+
 ## Jouer avec la Déchéance
 
 Un mini-système optionnel déjà disponible permet de jouer des Déchus ou leurs adversaires :
