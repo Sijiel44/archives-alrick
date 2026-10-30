@@ -18,7 +18,7 @@ tags: [divinites, courants, neuvieme-couronne, preservateurs]
 
 # Les Préservateurs
 
-![Symbole éditorial des Les Préservateurs, non obligatoire pour les cultes.](../../images/courants/preservateurs.svg)
+![Symbole éditorial des Les Préservateurs, non obligatoire pour les cultes.](../../static/images/courants/preservateurs.svg)
 
 *Avant d'ouvrir, comprendre ce que l'ouverture coûte.*
 
