@@ -116,3 +116,86 @@ Les adversaires sont pensés pour que **l'histoire puisse commencer à hauteur h
 
 - *Bible du monde et des puissances*, Charte (peuples et antagonistes) ; Grand Conseil (sept courants, divinités secondaires et démonologie encore à construire).
 - Le dossier **Première Ancre** ne doit pas être assimilé globalement à ces personnages.
+
+## Développements opérationnels — arcs et rencontres proposés
+
+> [!warning] Toujours hors canon
+> Les lieutenants, lieux et événements ci-dessous approfondissent **les six prototypes**, mais aucun n'est situé dans la chronologie de la campagne fondatrice. Chaque arc peut être joué en trois séances ou en fragments indépendants. Les noms de lieux restent génériques afin de ne pas inventer la géographie officielle.
+
+### Sárveth — de la gratitude à la tyrannie
+
+**Arc 1, L'asile :** un poste frontalier accueillant des réfugiés distribue des vivres gratuitement et exige un registre de famille. Les joueurs découvrent que les enfants de certaines maisons sont « temporairement transférés ».
+
+**Arc 2, La dette :** un chef de garnison hésite à appliquer un ordre de rafle. La population lui doit réellement sa survie lors d'une famine antérieure ; les héros doivent comprendre cette loyauté sans justifier la séquestration.
+
+**Arc 3, Les portes fermées :** Sárveth choisit de faire mourir des opposants plutôt que perdre sa réputation. Les joueurs peuvent sauver des otages, exposer des preuves, couper les approvisionnements de ses milices ou l'affronter.
+
+**Ressources / limites :** réseau de registres et de passeurs, administration disciplinée, loyauté de survivants ; dépendance à la coopération des intendants, à la circulation des vivres et à une image de protecteur.
+
+**Danger distinctif :** il accepte une reddition puis la viole. Il ne se repent pas nécessairement. Sa chute n'efface pas les problèmes d'accueil des réfugiés.
+
+### Vézraël — le secours empoisonné
+
+**Arc 1, La promesse :** des marins oublient pourquoi ils se sont juré assistance mutuelle. Les archives indiquent pourtant qu'ils ont sauvé un équipage ensemble.
+
+**Arc 2, Les sceaux :** une officiant sincère fait appel à Vézraël pour libérer des personnes d'engagements abusifs. Elle ne sait pas que la divinité retire aussi des souvenirs essentiels.
+
+**Arc 3, Le choix :** la déesse offre aux PJ d'effacer une dette morale réelle en échange d'un oubli imposé à un tiers. On peut la combattre par témoignages, preuve des conséquences et, si l'arc le permet, un rite de rupture **à concevoir**, non une magie canonique garantie.
+
+**Ressources / limites :** clients reconnaissants, pactes, archivistes corrompus ; la mémoire partagée de plusieurs témoins peut rendre les falsifications détectables.
+
+**Danger distinctif :** la victime ne sait parfois plus qu'elle a perdu quelque chose. Les PJ doivent respecter son consentement lorsqu'ils restaurent une identité, s'ils découvrent une voie possible.
+
+### Kharvokh — l'enthousiasme de brûler
+
+**Arc 1, Les cadeaux :** un village reçoit du bois, du pain et une magnifique fête ; les organisateurs demandent en échange de brûler les registres des dettes et la mémoire des morts.
+
+**Arc 2, Le sourire :** les fidèles les moins puissants apprennent que la prochaine « libération » détruira les greniers avant l'hiver. Le dieu sait que des enfants mourront.
+
+**Arc 3, La fournaise :** un cercle de disciples essaie de lui refuser le seuil d'une cité ; il ordonne leur exécution exemplaire. La fermeture des accès, l'extinction des feux et la protection des personnes deviennent des objectifs de combat séparés.
+
+**Ressources / limites :** prédicateurs, foyers et passages volontairement ouverts ; son influence n'est pas automatiquement planétaire, et ses relais peuvent rompre avec lui.
+
+**Danger distinctif :** il rit des morts, sans être un simple personnage comique. Une alliance de circonstance n'est pas une rédemption.
+
+### Isméria — le miracle payé par d'autres
+
+**Arc 1, La récolte :** une région affamée devient fertile après une seule nuit. Les familles remercient la thaumaturge.
+
+**Arc 2, L'absence :** les enfants d'un hameau racontent ne plus se souvenir de plusieurs années ; d'autres vieillissent de façon inhabituelle. La cause reste d'abord une enquête, non un diagnostic magique certain.
+
+**Arc 3, Le calcul :** Isméria dispose des preuves que son appareil prend à certains pour donner à d'autres. Elle préfère dissimuler l'information et maintenir la récolte. Les PJ choisissent la sauvegarde immédiate, un arrêt risqué ou la recherche d'un nouvel équilibre.
+
+**Ressources / limites :** laboratoire, gratitude publique, dépendance alimentaire ; dispositif local et entretien spécialisé, pas modification universelle du temps.
+
+**Danger distinctif :** démanteler son œuvre ne nourrit pas automatiquement la population. Il faut aussi organiser secours et agriculture.
+
+### La Gueule des Trois Gués — un monstre, pas un avocat
+
+**Arc 1, Le disparu :** un convoi s'arrête après avoir entendu une voix familière dans une brume de rivière.
+
+**Arc 2, Les griffures :** le monstre laisse des traces **sur la face intérieure** des bornes du passage ; plusieurs voies de fuite semblent conduire au même gué.
+
+**Arc 3, La nuit du gué :** chasser, détourner, piéger ou fuir la créature avant une nouvelle caravane. Un combat peut être fatal si les aventuriers refusent le repli.
+
+**Ressources / limites :** imitation de voix, terrain qu'il connaît ; dépendance proposée à un secteur de passages anciens, pas téléportation libre partout.
+
+**Danger distinctif :** il n'a aucun besoin d'un discours philosophique. Ses victimes sont le cœur moral de la quête ; l'affronter est parfois nécessaire.
+
+### Les Verriers de l'Ultime Nuit — l'horreur de sauver malgré soi
+
+**Arc 1, La rue silencieuse :** une cité conserve des habitants parfaitement immobiles derrière des fenêtres transparentes.
+
+**Arc 2, Les apprentis :** des novices croient préserver les mourants ; certains apprennent qu'une personne saine a été enfermée contre sa volonté.
+
+**Arc 3, Le cristal final :** la dirigeante menace de détruire les réceptacles si on lui retire son autorité. Libérer les captifs sans les briser exige une solution propre à l'aventure.
+
+**Ressources / limites :** ateliers, dispositifs rituels, promesse d'immortalité ; dépendance au maintien des cristaux et à leurs gardiens.
+
+**Danger distinctif :** les dirigeants préfèrent la captivité à la liberté d'autrui ; les disciples peuvent rester persuadés d'avoir bien fait. Tous les captifs ne veulent pas la même vie après leur retour.
+
+## Leur place dans un monde de Failles
+
+Ces antagonistes n'ont **pas besoin** d'être responsables des Failles. Ils peuvent exploiter leurs conséquences : rançon sur les routes, trafic de créatures étrangères, recrutement de personnes déplacées, falsification de preuves, culte d'une porte ancienne. **Le hasard d'une ouverture doit parfois rester du hasard.** Attribuer toutes les brèches à un seul ennemi rendrait le monde artificiellement petit.
+
+Les antagonistes peuvent croiser les nouvelles [[monde/antagonistes-factions-propositions|factions proposées]] dans **une campagne indépendante**, mais les liens sont à décider par le MJ et à consigner dans sa propre continuité. N'inventer ni mandat de Maëtra, ni adhésion aux Dévoreurs, ni intervention automatique d'Orin.
