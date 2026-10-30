@@ -93,3 +93,18 @@ Ce document est un **plan de travail**, pas un récit de la campagne d'Orin, pas
 Trois fiches ont reçu une validation directe des documents et sont publiables : **MAG-106** (scène d'Elyra, accès avec avertissement), **MON-COUR-01** (sept courants et nuances politiques) et **MON-ARCH-01** (trois Archétypes et règles de consultation du Conseil). Le socle des **Failles**, déjà publié sous **MON-PASS-01**, est enrichi d'amorces non jouées. **Total de 180 fiches codées approuvées** après ce lot.
 
 **À traiter ensuite :** fiches individuelles des six Grandes Puissances moins détaillées (Astraë, Aionel, Nyméa, Orévan, Syrka, Dhoréa), géographie de l'Atlas et institutions locales, puis profils de dragons contemporains. Les noms de nouvelles créations peuvent être décidés en cours de travail, mais vérifier à chaque fois qu'ils ne doublonnent pas un personnage ou lieu déjà attesté. Les prototypes de guérison mémorielle, les fermetures de Failles et les alliances diplomatiques non jouées restent des questions ouvertes.
+
+
+## F. Chantier monde/guildes approfondi — 30 octobre 2026
+
+**Livré dans le nouveau lot :** sept fiches de courants + sept sceaux graphiques, six portraits de Grandes Puissances, trois dragons individuels, un dossier de gravité et d'imprévisibilité des Failles, deux outils de jeu publiés (incidents facultatifs et missions de guilde), enrichissement de la Guilde/Heimdall et de la continuité d'Elyra/Orin. **Total actualisé : 198 fiches codées approuvées.**
+
+**À vérifier ensuite, avant l'Atlas :**
+1. **Niveaux de responsabilité des guildes et procédures de secours** — arbitrer contrats, financement, certifications et autorité politique locale.
+2. **Veille cosmologique et limites techniques** — approfondir les méthodes possibles d'observation, de secours, d'étude, de stabilisation, et les exceptions imprévisibles.
+3. **Déchus et Failles** — scénarios de sabotage établissant réellement les liens surnaturels et leurs coûts, pas simple collecte de tristesse.
+4. **Portraits individuels et culture draconique** — nouvelles rencontres possibles, coutumes, décisions autonomes et limites.
+5. **Passage Atlas** : seulement après fixation des routes, relais et compétences locales ; ne pas dessiner de réseau de Failles prévisibles prétendument exhaustif.
+
+Les hypothèses reliant l'ancienne tragédie familiale d'Orin à une Faille majeure doivent rester **non jouées / à vérifier** tant que les archives de l'invasion n'en apportent pas la preuve.
+
