@@ -22,6 +22,20 @@ La **Neuvième Couronne**, pousse nouvelle d'Yggdrasil, n'a pas encore choisi sa
 
 La *Bible du monde* distingue **sept sensibilités**. Ce sont des **courants idéologiques**, non sept États, panthéons, armées ou partis fermés. Une divinité peut défendre une idée d'un courant dans une affaire et la contredire dans une autre. Les **Dix-Huit** ne se partagent pas en sept équipes permanentes.
 
+## Explorer chaque sensibilité
+
+Chaque courant dispose désormais de sa **fiche propre**, avec un emblème de lecture (créé pour le site, **non imposé aux cultes**) et une tension jouable :
+
+| Courant | Une question à poser aux joueurs |
+|---|---|
+| [[monde/courants/jardiniers|Jardiniers]] | Peut-on protéger sans décider à la place de ceux qui grandissent ? |
+| [[monde/courants/legislateurs|Législateurs]] | Comment protéger par la loi sans enfermer une identité ? |
+| [[monde/courants/heritiers|Héritiers]] | Que préserver d'un passé qu'on ne peut pas ramener intact ? |
+| [[monde/courants/liberateurs|Libérateurs]] | Comment libérer sans abandonner les plus fragiles ? |
+| [[monde/courants/preservateurs|Préservateurs]] | Quand l'attente devient-elle une faute ? |
+| [[monde/courants/conquerants|Conquérants]] | Quelle différence entre protéger et occuper ? |
+| [[monde/courants/devoreurs|Dévoreurs]] | Peut-on appeler protection une prédation qui prive un monde de naissance ? |
+
 ## Les sept visions établies
 
 | Courant | Ce qu'il entend défendre | Le danger qu'il peut créer |
