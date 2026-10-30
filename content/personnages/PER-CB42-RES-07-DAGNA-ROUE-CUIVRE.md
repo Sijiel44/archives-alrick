@@ -1,25 +1,36 @@
 ---
 publish: false
 spoilers: true
-title: "Dagna Roue-de-Cuivre — ingénieure itinérante"
+title: "Dagna Roue-de-Cuivre — Profil d’ingénieure itinérante"
 code: "RES-07"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "proposition_non_jouee"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10652–10655"
-derniere_revision_documentaire: "2026-10-29"
+derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
-description: "Repères de personnage et de continuité après CB42."
-tags: [dagna, roue-de-cuivre, ingenierie, artisanat, cercles-magiques, cb42, brouillon]
-etat_editorial: en_chantier
+description: "Portrait proposé en CB42 : Naine issue d’une famille d’artisans, ayant travaillé sur des pompes, systèmes de levage et équipements portuaires, désireuse d’apprendre davan"
+tags: [dagna, roue-de-cuivre, ingenierie, artisanat, cercles-magiques, cb42]
+etat_editorial: en_cours
+unlisted: true
 ---
 
-# Dagna Roue-de-Cuivre
+# Dagna Roue-de-Cuivre — Profil d’ingénieure itinérante
 
-Dagna est une Naine vivante issue d’une famille d’artisans. Elle a travaillé sur des pompes, des appareils de levage et des installations portuaires. Elle maîtrise les bases mécaniques et souhaite approfondir sa formation aux Cercles magiques.
+## Identité, parcours et caractère
 
-Son dossier envisage une fonction d’ingénieure itinérante chargée de la maintenance des installations magiques et mécaniques. Cette affectation n’est pas confirmée dans la fiche de candidature.
+Portrait proposé en CB42 : Naine issue d’une famille d’artisans, ayant travaillé sur des pompes, systèmes de levage et équipements portuaires, désireuse d’apprendre davantage les Cercles magiques.
 
-## Sources
+## Situation établie dans les documents
 
-- *Campagne Brut 4.2*, CB42 P10652–10655.
+La fonction de responsable technique mobile du yacht et des installations reste une **candidature imaginée**, sans rencontre, nomination ni responsabilité démontrées en scène.
+
+## Limites et suites ouvertes
+
+Dagna Roue-de-Cuivre est **distincte de Dagna Veine-de-Pierre**, architecte du patrimoine d’Aldhammar. Une formation et des essais seraient des développements proposés.
+
+**Page maintenue hors publication :** ce profil ou ses engagements nécessitent une rencontre, une validation éditoriale ou une décision explicite. Les informations de présentation ne valent pas canon jouée.
+
+## Sources et adresse de classement
+
+*Compendium des personnages et des relations* v1.7, **RES-07**, et renvois de la fiche précédente : CB42 P10652–10655. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.
