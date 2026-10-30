@@ -130,6 +130,20 @@ Leurs pactes peuvent d'abord apporter une solution réelle : arrêter une famine
 
 **Le choix de devenir Déchu ne doit pas être confondu avec une maladie mentale.** Cynisme, perte d'empathie et obsession sont ici des **effets fantastiques spécifiques**, non une description des personnes malades, endeuillées, victimes de violence ou handicapées.
 
+
+## La pyramide d'emprise — développement du concept
+
+Le créateur propose que **la progression avancée d'un Déchu exige d'en entraîner d'autres dans leur chute**. Ce système parasitaire, appelé provisoirement **Tribut des Chutes**, formerait des **chaînes de dépendance** : le pactisé devient lieur, le lieur cherche de nouveaux pactisés, et des maîtres plus puissants tirent leur force de branches entières.
+
+À la **Rupture**, un Déchu pourrait devoir obtenir une première Chute liée ; à la **Déchéance**, entretenir plusieurs branches ; près de **l'Abîme**, maintenir une pyramide à plusieurs générations. **Les seuils chiffrés sont expérimentaux**, détaillés dans le prototype de règles, et ne deviennent pas une loi cosmologique avant arbitrage.
+
+La pyramide rend les Déchus **plus dangereux mais aussi vulnérables** : une branche libérée, un pacte dénoncé, un Ancrage rompu ou un lieutenant rebelle peut affaiblir un seigneur. Un cultiste non corrompu et une **victime asservie contre son gré** ne sont pas automatiquement des Déchus ayant choisi le mal. La capture coercitive peut produire une réserve de puissance **différente et instable**, sans transformer la victime en coupable.
+
+Ce mécanisme peut concerner un **dieu Déchu** ou un **dragon Déchu** sans que tous les dieux, dragons ou membres d'un culte deviennent corrompus par affiliation. Aucun siège supplémentaire des Dix-Huit n'est créé.
+
+- [[monde/decheance-pyramide-de-liens-proposition|La Pyramide de Déchéance — dossier d'univers (non publié)]].
+- [[jouer/decheance-prototype-regles|Jouer la Déchéance — seuils de recrutement expérimentaux]].
+
 ## IX. Questions majeures à valider
 
 1. La Déchéance est-elle un **principe cosmique autonome**, un dérèglement de voies existantes, ou un ensemble de phénomènes présentant la même signature ?
