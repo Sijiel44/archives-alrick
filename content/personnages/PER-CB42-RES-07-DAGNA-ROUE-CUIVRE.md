@@ -1,36 +1,38 @@
 ---
 publish: false
 spoilers: true
-title: "Dagna Roue-de-Cuivre — Profil d’ingénieure itinérante"
+title: "Dagna Roue-de-Cuivre — Ingénierie et systèmes de levage"
 code: "RES-07"
 categorie: "personnage"
-canon_statut: "proposition_non_jouee"
+canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
-source_brute: "CB42 P10652–10655"
+source_brute: "CB42 P10652–10655 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
 visibilite: "a_relire_avant_publication"
-description: "Portrait proposé en CB42 : Naine issue d’une famille d’artisans, ayant travaillé sur des pompes, systèmes de levage et équipements portuaires, désireuse d’apprendre davan"
+description: "Dagna est une Naine issue d'une famille d'artisans, ayant travaillé sur les pompes, systèmes de levage et équipements portuaires, et intéressée par l'étude des Cercles."
 tags: [dagna, roue-de-cuivre, ingenierie, artisanat, cercles-magiques, cb42]
 etat_editorial: en_cours
 unlisted: true
 ---
 
-# Dagna Roue-de-Cuivre — Profil d’ingénieure itinérante
+# Dagna Roue-de-Cuivre — Ingénierie et systèmes de levage
 
-## Identité, parcours et caractère
+## Biographie établie
 
-Portrait proposé en CB42 : Naine issue d’une famille d’artisans, ayant travaillé sur des pompes, systèmes de levage et équipements portuaires, désireuse d’apprendre davantage les Cercles magiques.
+Dagna est une Naine issue d'une famille d'artisans, ayant travaillé sur les pompes, systèmes de levage et équipements portuaires, et intéressée par l'étude des Cercles.
 
-## Situation établie dans les documents
+**Décision canonique du créateur — 30 octobre 2026 :** cette personne **existe réellement dans l'univers**. Son portrait de référence peut être employé pour de futures rencontres. Il n'est pas pour autant établi qu'Orin la connaît ou lui a proposé un travail.
 
-La fonction de responsable technique mobile du yacht et des installations reste une **candidature imaginée**, sans rencontre, nomination ni responsabilité démontrées en scène.
+## Situation au dernier point de reprise
 
-## Limites et suites ouvertes
+La responsabilité technique itinérante du yacht et des installations n'est **ni proposée directement à Dagna dans une scène jouée, ni acceptée**. Elle demeure distincte de Dagna Veine-de-Pierre.
 
-Dagna Roue-de-Cuivre est **distincte de Dagna Veine-de-Pierre**, architecte du patrimoine d’Aldhammar. Une formation et des essais seraient des développements proposés.
+## Statut éditorial et continuité
 
-**Page maintenue hors publication :** ce profil ou ses engagements nécessitent une rencontre, une validation éditoriale ou une décision explicite. Les informations de présentation ne valent pas canon jouée.
+**Existence : validée comme lore du monde. Rencontre avec Orin : non jouée. Contrat : aucun confirmé.** Les détails secondaires encore absents ne sont pas des événements rétroactifs ; ils pourront être développés pour une autre campagne en les distinguant des scènes jouées.
 
-## Sources et adresse de classement
+Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
-*Compendium des personnages et des relations* v1.7, **RES-07**, et renvois de la fiche précédente : CB42 P10652–10655. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.
+## Sources
+
+*Compendium des personnages et des relations* v1.7, entrée **RES-07** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.
