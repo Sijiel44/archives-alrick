@@ -1,44 +1,36 @@
 ---
-publish: false
-title: "Hervald Trois-Sillons"
+publish: true
+title: "Hervald Trois-Sillons — Cultivateur des essais de Corvelis"
 code: "SEC-73"
 categorie: "personnage"
-canon_statut: "a_verifier"
+canon_statut: "faits_joues"
 ancre_documentaire: "V03 · CB42"
 source_brute: "CB42 P13877–15331"
-derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+derniere_revision_documentaire: "2026-10-30"
+visibilite: "publique_avec_avertissement"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
-tags: [sec_73, cb42, brouillon, hervald, trois, sillons]
-etat_editorial: en_chantier
+description: "Hervald, cultivateur de 76 ans à la barbe blanche courte, confronte les inventions aux sols. Il connaît les racines, les effets du terrain et les adaptations que les"
+tags: [sec_73, cb42, hervald, trois, sillons]
+etat_editorial: valide
+unlisted: true
 ---
 
-# Hervald Trois-Sillons
+# Hervald Trois-Sillons — Cultivateur des essais de Corvelis
 
-> [!warning] Brouillon de continuité
-> Synthèse issue du registre directeur après CB42. Avant publication, relire la fiche dans le volume indiqué et vérifier que chaque élément conserve son statut.
+## Identité et parcours
 
-## Synthèse attestée
+Hervald, cultivateur de 76 ans à la barbe blanche courte, confronte les inventions aux sols. Il connaît les racines, les effets du terrain et les adaptations que les ouvriers apprennent par expérience.
 
-Cultivateur de soixante-seize ans, larges épaules, grandes mains et barbe blanche courte. Avec Odris, il restitue le sens des adaptations anciennes et met les machines à l’épreuve. Il pousse le chariot sur mauvais terrain et oblige à corriger l’assistance en dévers avant d’approuver. Il discute racines et sols avec Vaëra. Piste proposée : lui demander ce que l’essai aura changé dans le travail quotidien après une récolte.
+## État vérifié
 
-## Statut documentaire
+Il **participe aux essais** et pousse le chariot sur mauvais terrain, repérant la faiblesse de l’assistance en dévers. Avec Odris, il exige que les corrections soient utiles avant de valider l’intérêt de la technique. Il échange aussi avec Vaëra sur les plantes et les sols.
 
-- **État du registre :** Profil proposé puis actualisation selon les scènes.
-- **Avancement :** Rencontré et essais réalisés.
-- **Connaissance en jeu :** À préciser par affirmation. Les personnages ne connaissent pas automatiquement tout le contenu de cette fiche.
-- **Qualité du renvoi :** Fiche principale.
+## Limites et suites ouvertes
 
-## Source
+Les résultats d’une récolte entière, l’adoption générale des machines et un poste officiel d’expert auprès d’Orin restent des étapes non établies.
 
-- *Compendium des personnages et des relations*, SEC-73 Hervald Trois-Sillons — CB42 P13877–15331.
+Les activités proposées à partir de ces faits ne sont pas de nouvelles scènes jouées.
 
-## Fiches liées
+## Sources documentaires
 
-- O42-07 ; O42-10.
-
-## À compléter
-
-- Reprendre les formulations exactes du volume thématique et ajouter les faits ultérieurs sans effacer cet état.
-- Distinguer toute proposition de développement d’un événement joué ou d’une décision canonique.
+*Compendium des personnages et des relations* v1.7, **SEC-73** ; références du brouillon : CB42 P13877–15331. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.
