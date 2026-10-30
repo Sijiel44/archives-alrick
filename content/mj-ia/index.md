@@ -12,6 +12,18 @@ usage_en_jeu: ["prompt", "continuite", "demarrage"]
 
 Une IA peut aider à interpréter les personnages, raconter des scènes et conserver la continuité. Le site fournit **des références**, mais n'est pas en lui-même un agent qui lit toutes les pages ou mémorise durablement une partie.
 
+## Dossier documentaire minimal selon l'aventure
+
+Pour éviter de saturer la conversation avec des centaines de fiches, choisir **un petit ensemble versionné** :
+
+1. **Cadre** : [[univers/index|porte de l'univers]], puis [[monde/index|cosmologie]] si le sujet le demande.
+2. **Lieu et société** : [[lieux/index|territoires]], [[cultures/index|pratiques locales]] et [[institutions/index|mandats]] pertinents.
+3. **Spécialités** : [[univers/magie-pour-jouer|magie]] ou [[economie/index|économie]] si la scène l'exige.
+4. **Personnages** : ouvrir les fiches concernées, mais ne communiquer à un PNJ que ce qu'il peut effectivement savoir.
+5. **Sauvegarde** : garder les décisions de **cette campagne** dans un journal distinct de l'Odyssée d'Orin.
+
+Le site contient aussi des brouillons internes et des révélations. **Ne pas tenter de les utiliser comme des faits établis** ou comme des informations accessibles aux joueurs.
+
 ## Préparer le contexte
 
 1. Choisir une **époque** et une **région** dans [[univers/index|les archives d'univers]].

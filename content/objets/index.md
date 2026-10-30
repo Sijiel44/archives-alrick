@@ -1,37 +1,40 @@
 ---
-publish: false
-title: "Objets et œuvres — index de travail CB1–CB3.9"
-description: "Index de travail des objets remarquables relevés dans les campagnes, avec leur état et leurs limites."
-etat_editorial: en_cours
+publish: true
+title: "Objets, œuvres et inventions"
+description: "Provenance, fabrication, propriété et limites des objets de l'univers; certains exemples révèlent la campagne d'Orin."
+tags: [univers, objets, artisanat, index]
+portee: "mixte"
+public_cible: ["lecteurs", "joueurs", "mj"]
+usage_en_jeu: ["reference", "rencontre"]
 ---
 
-# Objets et œuvres — brouillons CB1–CB3.9
+# Objets, œuvres et inventions
 
-Cet index éditorial n’est pas un inventaire exhaustif. Les statuts des fiches varient; les navires distinguent chaque coque, son propriétaire et ses caractéristiques.
+Les objets ont une **origine**, un **fabricant**, un **propriétaire**, une **fonction** et parfois des limites magiques. Une arme singulière, un outil de voyage et un bâtiment naval ne doivent pas devenir des objets génériques disponibles dans toutes les boutiques.
 
-- [[OBJ-CB1-HACHE|La Hache de la Main d’Or]]
-- [[OBJ-CB1-BRACELETS|Les bracelets de Garran et Finn]]
-- [[OBJ-CB1-CARNETS|Les quatre carnets d’Alrick]]
-- [[OBJ-CB1-LYS|Lys, la flûte d’Eamon]]
-- [[OBJ-CB1-MAREES-PIERRE|Des Marées de Pierre]]
-- [[OBJ-CB1-GALET|Le galet anonyme de la collection]]
-- [[OBJ-CB2-PIERRE-POT-LAIT|La pierre gardée dans le pot de lait]]
-- [[OBJ-CB31-ARMURE-PERE-ORIN|Armure de Harald — Dain, son nom d’aventure de jeunesse]]
-- [[OBJ-CB31-GILET-HARALD|Gilet fleuri de Harald]]
-- [[OBJ-CB31-LAME-VAERA|Lame d’ombre de Vaëra]]
-- [[OBJ-CB31-MARTEAU-KELM|Marteau de Kelm]]
-- [[OBJ-CB31-BOUCLIER-BRAM|Bouclier de voyage de Bram]]
-- [[OBJ-CB31-PIERRE-RAGNA|Pierre de seuil de Ragna]]
-- [[OBJ-CB31-SAC-TORVEN|Sac de soins de Torven]]
-- [[OBJ-CB31-CLE-HEIMDALL|Clé de Heimdall]]
-- [[OBJ-CB31-LONGUE-VUE-HALDREK|Longue-vue de Haldrek]]
-- [[OBJ-CB38-LYRE-TAIRIN|Lyre de voyage destinée à Tairin]]
-- [[OBJ-CB38-BIJOU-COMMUNICATION|Bijoux de communication des Revenants]]
+## Artisanat, souvenirs et pièces remarquables
 
-- [[OBJ-CB36-BATEAU-EDRIC|La Flèche de Valbrume — navire d’Édric]]
-- [[OBJ-CB39-YACHT-ORINOR|L’Horizon d’Orinor — yacht royal]]
-- [[OBJ-CB39-NAVIRE-ELSEN|La Patiente — navire marchand d’Elsen]]
+> [!warning] Exemples tirés de la campagne d'Orin
+> Ces fiches personnelles sont publiées avec **avertissement de révélations**. Elles peuvent inspirer un MJ, sans lui donner le droit de dupliquer librement les possessions ou les secrets des personnages.
 
-## CB42 — équipements et objets techniques
+- [[OBJ-CB1-HACHE|La Hache de la Main d'Or]] — fabrication documentée avec Durgan ; **aucun pouvoir magique inventé**.
+- [[OBJ-CB31-GILET-HARALD|Le gilet fleuri de Harald]] — pièce familiale, histoire et propriétaire établis.
+- [[OBJ-CB31-ARMURE-PERE-ORIN|L'armure de Harald]] — équipement personnel de continuité.
+- [[OBJ-CB38-BIJOU-COMMUNICATION|Bijoux de communication des Revenants]] — dispositifs et accès propres à une compagnie.
 
-- [[M42-02]]
+## Navires : ne pas confondre les coques
+
+- [[OBJ-CB36-BATEAU-EDRIC|La Flèche de Valbrume]] — navire d'Édric.
+- [[OBJ-CB39-YACHT-ORINOR|L'Horizon d'Orinor]] — navire royal d'Orinor.
+- [[OBJ-CB39-NAVIRE-ELSEN|La Patiente]] — navire marchand d'Elsen.
+- [[MAG-116|Le yacht personnel du Palais]] — encore une autre coque, distincte du yacht royal.
+
+## Ce qui reste en chantier
+
+La rubrique de travail contient aussi des carnets, outils, bijoux, armes et prototypes encore **non validés pour publication**. Ils sont conservés dans le dépôt comme brouillons, et ne sont pas ici proposés comme objets canoniques pleinement décrits.
+
+## En jeu
+
+Pour créer un objet destiné à une nouvelle partie, établir ce qui a **réellement été construit**, ce qui fonctionne en essai, son accès, son entretien et sa propriété. Un projet de lame évolutive, par exemple, n'accorde pas à tout éclaireur une arme achevée.
+
+[[magie/index|Magie et ingénierie]] · [[projets/index|Projets et travaux]] · [[jouer/index|Démarrer son propre héros]]

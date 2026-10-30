@@ -91,3 +91,12 @@ Les sept nouvelles fiches `REV-01`, `REV-02`, `REV-03`, `REV-04`, `REV-05`, `REV
 - `content/mj-ia/index.md` — méthode et prompt de MJ assisté par IA.
 
 Les pages existantes ne sont **pas dupliquées**. Les métadonnées `portee`, `public_cible`, `usage_en_jeu` et `periode` sont conseillées pour les prochaines révisions ; elles ne modifient pas le niveau de preuve ni la visibilité. Voir `CONTRAT_EDITORIAL.md`.
+
+
+## Rubriques d'univers consolidées — 29 octobre 2026
+
+La porte `content/univers/index.md` dessert désormais les **treize index de domaines** : monde, lieux, cultures, institutions, magie, économie, objets, projets, créatures, personnages, groupes, Maison et chroniques. Les anciens index de travail de cultures, institutions, objets et projets ont été **réécrits pour être publiables** avec uniquement des renvois à des fiches déjà approuvées.
+
+Le guide `content/univers/magie-pour-jouer.md` présente les distinctions du Codex (mana, maîtrise, Cercles, traditions, ingénierie), **sans ajouter de règle numérique ni prétendre que le bestiaire et la cosmologie sont entièrement migrés**.
+
+Les titres des fiches non publiées peuvent être cités comme **sujets en chantier**, mais leurs pages `publish: false` ne sont pas ouvertes par les index publics. Les fiches à révélations conservent leur avertissement. Les guides/index **ne sont pas des fiches codées** et ne modifient pas les 171 codes du lot éditorial approuvé. Le statut des sujets à migrer demeure suivi séparément.
