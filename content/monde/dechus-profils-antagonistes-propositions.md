@@ -103,6 +103,19 @@ tags: [dechus, antagonistes, dragons, dieux, cultes, personnages, propositions]
 | Isméria, heures restituées | Oui, si elle sacrifie sciemment l'autonomie d'autrui pour nourrir son miracle | La magie du Temps n'est pas rendue officiellement capable de ce mécanisme |
 | La Ménagerie des Chaînes Muettes | Plutôt **asservissement forcé** des captifs, responsabilité du Maître d'Étain | Les captifs ne sont pas coupables de leur transformation |
 
+
+## Pyramides possibles pour trois antagonistes — propositions de scénario
+
+La **Pyramide de Déchéance** permet de distinguer le chef, les **Lieurs** et les êtres captifs, sans considérer tous les serviteurs comme moralement Déchus.
+
+- **Halvéra, la Bienfaitrice des Oubliés** : des intendants du refuge pourraient proposer des pactes de sécurité à d'autres villages. La hiérarchie la nourrit tant que ses relais imposent leur hospitalité. **Libérer un établissement** peut interrompre une branche sans affronter immédiatement Halvéra.
+- **Nérékhal, la Dernière Flamme du Refuge** : une divinité mineure Déchue pourrait placer des prêtres-lieurs dans des foyers où elle sauve réellement des familles avant de réclamer leur soumission. Les fidèles libres **ne sont pas** automatiquement de la matière à tribut.
+- **Vaeldrûn, dragon des Couronnes Perdues** : ses lieutenants chercheraient à voler les noms et allégeances d'autres créatures ; les captifs pourraient être **asservis sans être volontairement Déchus**. Délier des relais et détruire des Ancrages affaiblirait la pyramide avant une confrontation de haut niveau.
+
+Ces organisations **ne sont pas établies dans la campagne d'Orin**. Un lieutenant peut trahir, un captif peut être sauvé, et le maître peut demeurer profondément cruel.
+
+Voir [[monde/decheance-pyramide-de-liens-proposition|La Pyramide de Déchéance]].
+
 ## Deux configurations de campagne
 
 **Héros contre un Déchu :** au début, enquête et sauvetage ; ensuite, corruption de lieux et affrontement des lieutenants ; enfin, démantèlement d'Ancrages puis intervention contre l'être majeur. La progression laisse de vraies victoires aux débutants.
