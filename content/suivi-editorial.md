@@ -10,7 +10,7 @@ etat_editorial: en_cours
 
 ## État actuel — Extension lore du 30 octobre 2026
 
-**245 fiches codées approuvées après l'arbitrage Margha du 30 octobre 2026 (244 auparavant).** Le répertoire publié reste distinct des outils de scénario facultatifs. Sept pages de sensibilité divine utilisent des emblèmes **créés pour les Archives**, non issus d'une tradition canonique universelle. Les six Grandes Puissances disposent de portraits de travail ; leurs rites et aventures proposés ne sont pas des scènes jouées. Trois dragons individuels ont été créés et leurs noms vérifiés **sans collision dans la recherche du dépôt**.
+**255 fiches codées approuvées après le premier lot CB44 (245 auparavant).** Le répertoire publié reste distinct des outils de scénario facultatifs. Sept pages de sensibilité divine utilisent des emblèmes **créés pour les Archives**, non issus d'une tradition canonique universelle. Les six Grandes Puissances disposent de portraits de travail ; leurs rites et aventures proposés ne sont pas des scènes jouées. Trois dragons individuels ont été créés et leurs noms vérifiés **sans collision dans la recherche du dépôt**.
 
 La fiche technique MAG-106 subsiste comme **repère interne**, mais l'intitulé public devient **« Une blessure disparue, un souvenir effacé »**. L'épisode est aussi documenté dans les fiches d'**Elyra, Orin et leurs Autorités**, conservées avec les protections nécessaires.
 
@@ -672,3 +672,8 @@ Ce lot approuve **18 fiches supplémentaires** : **9 nouvelles fiches de lieux c
 ## Arbitrages du créateur du 30 octobre 2026 — état actuel
 
 La relecture des 40 biographies a reçu trois réponses de canon : **huit existences validées** malgré l'absence de rencontre, **Margha identifiée comme cuisinière engagée du yacht**, et **Maelin / Rudek / Sela / Eren** confirmés dans les quatre fonctions **Maintenir / Séparer / Témoigner / Transmettre**. Les huit dossiers de casting restent **non publiés**, avec `canon_statut: lore_valide` et `etat_editorial: en_cours` (leur existence est fixée, pas leur contrat). **Margha seule ajoute une fiche codée publiable** : total **245**. Le registre `jdr-alrick/arbitrages-compendium-20261030` conserve les limites des décisions ; aucune nouvelle scène jouée n'est créée.
+
+
+## Première intégration de la Campagne brute 4.4
+
+La transcription **CB44** de 135 messages et chapitres **CCCX–CCCLXXIII** a été lue. Les **10 biographies nouvelles** approuvées portent le total à **255 fiches codées**. Des dossiers de reprise, un journal de canon, un état des nouvelles îles et une chronique historisée sont ajoutés séparément des fiches codées. Les anciens tableaux CB42/CB43 restent des **instantanés historiques**, mais le point de reprise actuel se situe **auprès d'Elyan**, chapitre CCCLXXIII. Les numéros de chapitre ne sont pas des dates fictives ; l'archive locale compte **64 numéros distincts** entre CCCX et CCCLXXIII et conserve les titres répétés. Le DOCX intégral et les fragments Markdown ont été exportés en paquet utilisateur, **sans avoir encore été transférés sur GitHub**. Voir `docs/SOURCES_CAMPAGNES_PUBLIQUES.md`.
