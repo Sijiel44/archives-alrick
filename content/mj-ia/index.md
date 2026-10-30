@@ -30,6 +30,10 @@ Pour une campagne de tentation, d'antagonistes ou d'enquête sur les pactes, fou
 
 Les joueurs conservent leurs décisions ; aucun pacte ni progression imposés par le MJ. L'IA suit **Emprise, branches actives, Ancrages, captifs et conséquences** dans le journal de la partie, sans publier ses victoires ou trahisons dans le canon de l'Odyssée d'Orin.
 
+## Atelier de fiches et de contexte 5d6
+
+[[jouer/atelier-5d6|L’Atelier interactif]] permet de créer une fiche de PJ, de sélectionner ou d’importer des PNJ/créatures, de lancer des 5d6 et de **copier un texte de contexte** pour cette campagne. L’outil **n’appelle aucun modèle IA** et ne transmet rien automatiquement ; l’utilisateur choisit quoi copier. Les données restent localement dans le navigateur. La règle 5d6 est en phase de test, tandis que le module Déchéance 2d6 demeure disponible.
+
 ## Préparer le contexte
 
 1. Choisir une **époque** et une **région** dans [[univers/index|les archives d'univers]].
