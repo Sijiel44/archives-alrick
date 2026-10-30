@@ -43,6 +43,14 @@ Cette partie concerne le récit d’Alrick et doit être enrichie au fil des nou
 
 Les jeux, les loisirs, le rire et les bons moments peuvent devenir des sous-natures divines d’Orin. Un domaine guerrier, en lien avec Taagral, est également une piste. Ces possibilités restent proposées et ne sont pas présentées comme des domaines acquis.
 
+## L'Autorité de l'Existence : un fait observé et sa limite
+
+À **Valbrume**, dans l'atelier d'**Elyra**, Orin fait disparaître une **piqûre superficielle** après un consentement limité à l'expérience physique. Il agit sur l'**existence de la blessure**, et non sur un processus ordinaire de guérison. Un effet inattendu apparaît : Elyra ne se souvient plus d'avoir subi la piqûre. Elle fait remarquer à Orin que son accord ne portait pas sur l'effacement de sa mémoire.
+
+Ce **fait joué en CB42** ne signifie pas qu'Orin peut effacer universellement tous les événements, ni qu'il peut retirer des traumas, changer le passé collectif ou transformer une action non consentie en soin. La disparition d'un souvenir est **une limite à étudier**, pas une technique validée.
+
+Cet épisode est également repris dans [[PER-CB31-ELYRA|la fiche d'Elyra]], dans [[MAG-106|le récit de l'expérience]] et dans [[B42-01|les Autorités au quotidien]]. Il concerne l'Autorité d'**Existence**, distincte de celle sur la **Magie**, exercée ensuite sur un dispositif enchanté.
+
 ## Ce que CB2 montre
 
 Orin cherche à répartir la responsabilité plutôt qu’à tout concentrer sur lui-même. Pour le projet d’Entre-Rives, il s’appuie sur Torgarl comme autorité politique, confie la logistique à Edric et demande à Dagrin de coordonner le travail d’ingénierie et de relevé. Il valorise l’apprentissage et la participation locale.
