@@ -14,6 +14,9 @@ tags: [divinites, dragons, drakon, aurelion, nidor, bregran, maetra, tairin, ori
 
 # Grandes Puissances et dragons — bilan de continuité
 
+> [!important] **Dossier composite de conception, non destiné à une publication directe**
+> Les principes confirmés ont désormais une synthèse publique [[monde/puissances-et-dragons|MON-ARCH-01 — Fondements et Archétypes draconiques]], avec les [[monde/dix-huit-grandes-puissances|Dix-Huit]] et les [[monde/courants-et-antagonismes|sept courants]]. Les exemples de futurs conflits, les variantes de transcription et les orientations non jouées doivent rester distincts des faits établis. Cette archive est conservée avec `publish:false`.
+
 > [!warning] Relecture avant publication
 > Le socle cosmologique est attesté dans la **Bible V01**. Les rapprochements narratifs et les prochaines tensions sont des **pistes de développement**, non des faits joués. Les variantes de noms dans les transcriptions ne créent pas automatiquement de nouveaux personnages.
 
@@ -112,4 +115,4 @@ Aucun de ces portraits n'est attribué à Drakon, Aurélion, Níðor ou à un dr
 
 - *Bible du monde et des puissances* V01, annexe « Architecture des Puissances » et *Grandes Puissances* ; B39-05 et B43-02.
 - Atlas V02 ; continuité CB41–43 pour les échanges d'Orin, les limites de son pouvoir et les décisions du Conseil.
-- [[monde/dix-huit-puissances-repertoire|Répertoire des Dix-Huit]] — dossier de travail, non publié.
+- [[monde/dix-huit-grandes-puissances|Répertoire des Dix-Huit]] — référence approuvée et publiée.
