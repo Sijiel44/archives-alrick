@@ -120,7 +120,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
       <h3>Contexte pour MJ assisté par IA</h3>
       <p>Génère un texte contenant les règles de base et la fiche active. Le bouton <strong>Copier</strong> transmet uniquement à ton presse-papiers ; rien n'est envoyé automatiquement à une IA.</p>
       <label class="atelier-check"><input type="checkbox" data-ai-roster/> Inclure les autres personnages locaux dans le contexte (sans notes réservées au MJ)</label>
-      <label class="atelier-wide">Contexte à copier<textarea readonly data-ai-prompt rows={12} aria-label="Contexte pour MJ IA"></textarea></label>
+      <label class="atelier-wide">Contexte à copier<textarea readOnly data-ai-prompt rows={12} aria-label="Contexte pour MJ IA"></textarea></label>
       <div class="atelier-toolbar"><button type="button" data-ai-refresh>Actualiser</button><button type="button" data-ai-copy>Copier le contexte</button></div>
       <p class="atelier-hint">Le MJ IA doit encore lire les références appropriées, respecter les limites de connaissance des PNJ et ne jamais décider à la place du joueur.</p>
     </section>
