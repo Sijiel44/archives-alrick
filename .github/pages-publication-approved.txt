@@ -101,3 +101,15 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Les routes, tunnels, lignes de train, écoles, banques, traités et études non réalisés conservent leur statut de PROJETS. Une carte schématique n'ajoute aucune position, distance ou frontière canonique.
 # Ce lot n'autorise aucune promotion des autres pages rouges/jaunes non relues, des secrets MJ, du bestiaire de travail, des scénarios ou du système 5d6 expérimental.
 # Exiger CI réussie, contrôles de liens et spoilers, puis vérification séparée de GitHub Pages après fusion.
+
+
+# Lot 05 — Révision des 40 brouillons de personnages du Compendium V03 après CB43 (30 octobre 2026).
+# Le créateur demande de compléter la relecture des 40 sujets tout en demandant uniquement les arbitrages de canon essentiels.
+# 40/40 fiches web relues, leurs sources rapprochées du Compendium V03 v1.7 et des scènes CB1–43.
+# 28 fiches approuvées comme faits joués explicitement attestés : publish:true, etat_editorial:valide, spoilers:true, unlisted:true et visibilite:publique_avec_avertissement.
+# 12 dossiers préparatoires / recommandations / contacts non engagés : publish:false, etat_editorial:en_cours, maintenus hors diffusion.
+# Total approuvé : 244 fiches codées = 216 précédentes + 28 biographies, sans inclure les 12 dossiers non publiés.
+# Corrections majeures : charpentière Maelin (féminin attesté), Rappelés vivants mais libres de tout emploi, nouveaux contrats déjà signés, recherche assistée non équivalente à autonomie de huit Cercles.
+# Les anciens codes et chemins sont conservés pour la continuité des liens ; les différences de nom/codage sont relevées par le tableau privé.
+# Ceci n'autorise aucune publication des 12 dossiers non confirmés, de la liste détaillée des 645 sujets, ni des notes et transcriptions privées du MJ.
+# Le succès CI et le contrôle post-déploiement de GitHub Pages restent obligatoires.
