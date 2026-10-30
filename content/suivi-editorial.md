@@ -8,6 +8,17 @@ visibilite: "publique_avec_avertissement"
 etat_editorial: en_cours
 ---
 
+## État actuel — Extension lore du 30 octobre 2026
+
+**198 fiches codées approuvées après le lot de courants, puissances, dragons, Failles et Elyra.** Le répertoire publié reste distinct des outils de scénario facultatifs. Sept pages de sensibilité divine utilisent des emblèmes **créés pour les Archives**, non issus d'une tradition canonique universelle. Les six Grandes Puissances disposent de portraits de travail ; leurs rites et aventures proposés ne sont pas des scènes jouées. Trois dragons individuels ont été créés et leurs noms vérifiés **sans collision dans la recherche du dépôt**.
+
+La fiche technique MAG-106 subsiste comme **repère interne**, mais l'intitulé public devient **« Une blessure disparue, un souvenir effacé »**. L'épisode est aussi documenté dans les fiches d'**Elyra, Orin et leurs Autorités**, conservées avec les protections nécessaires.
+
+**Failles :** caractère parfois imprévisible et possibilité de graves catastrophes ajoutés aux principes du monde. Les tableurs d'incidents et missions de guilde sont désormais publiés comme **outils de MJ facultatifs** ; ni détecteur universel, ni fermeture garantie. Le lien possible entre une grande Faille et les pertes familiales d'Orin reste une **hypothèse de continuité non confirmée**, pas un événement réécrit. Un Déchu peut exploiter des deuils pour provoquer des Chutes surnaturelles, mais **le chagrin seul n'est pas un tribut**.
+
+Le travail de l'Atlas est volontairement **ajourné** jusqu'à la consolidation des institutions de secours, de la veille, des Failles et des dragons individuels. Les anciennes sections de suivi ci-dessous restent des instantanés **historiques** et peuvent décrire un état dépassé.
+
+
 ## Lire les couleurs
 
 - 🟢 **Validé** — faits et sources recoupés pour cette version; aucun arbitrage bloquant repéré.
