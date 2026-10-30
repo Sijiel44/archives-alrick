@@ -1,5 +1,6 @@
 ---
 publish: true
+visibilite: "publique"
 title: "Île des Divertissements — Les vallées du Printemps"
 code: "GEO-CB44-PRINTEMPS"
 categorie: "lieu"
