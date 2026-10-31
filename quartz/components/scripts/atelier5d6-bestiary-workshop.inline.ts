@@ -253,6 +253,7 @@ function startBestiary(){
       return
     }
     const action=button.dataset.action
+    host.dataset.lastAction=action??"" // diagnostic des contrôles de l'Atelier
     if(action==="new"){
       if(storageDamaged){
         if(!window.confirm("La sauvegarde locale existante est illisible. La remplacer par une nouvelle partie ? Exportez d’abord les données si vous souhaitez essayer de les récupérer."))return
