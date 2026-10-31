@@ -41,6 +41,7 @@ Les descriptions des **rubriques** sont des guides de lecture, pas des règles n
 
 - [[jouer/systeme-5d6-base12|Lire les règles 5d6 / Base 12]] — quatre caractéristiques, douze points de création, six difficultés, critiques et réserves en multiples de trois.
 - [[jouer/progression-voies-incidents|Progression libre, bénédictions, objets et incidents d12]] — **en expérimentation**, sans classes fermées ni équipements +1.
+- [[jouer/echelle-existences-niveaux-affinites|Échelle des existences 1–25 et affinités]] — progression, puissance divine et limites du classement ; module en conception.
 - [[jouer/bestiaire-evolutif-25|Bestiaire évolutif 1–25]] — cinq familles de profils de créatures adaptables, résistances innées et grades d'équipement, sans espèces canoniques nouvelles.
 - [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier : 12 indices de groupe et 24 nouvelles amorces]] — compagnies, certifications, journal de missions et récompenses dans l'Atelier ; prototypes sans spoilers.
 - [[jouer/atelier-5d6|Ouvrir l’Atelier interactif]] — fiches PJ, profils PNJ/créatures importables pour le MJ et export de contexte pour un MJ assisté par IA. **En test, sauvegarde locale, sans serveur.**
