@@ -2,7 +2,7 @@
 
 **Dépôt :** [Sijiel44/archives-alrick](https://github.com/Sijiel44/archives-alrick)  
 **Date :** 31 octobre 2026  
-**Statut :** développement expérimental en PR brouillon ; tests et réserves documentés ci-dessous. **Ni fusion, ni publication.**  
+**Statut :** développement expérimental en PR brouillon ; CI complète verte, tests d'interface manuels non réalisés. **Ni fusion, ni publication.**  
 **Branche :** `rules/m02-atelier-capacites-5d6-20261031`  
 **PR :** [#59](https://github.com/Sijiel44/archives-alrick/pull/59)  
 **Base de travail :** [#58 — M01](https://github.com/Sijiel44/archives-alrick/pull/58), elle-même empilée sur [#57 — audit](https://github.com/Sijiel44/archives-alrick/pull/57).
@@ -74,6 +74,14 @@ Les exemples extrêmes de M01 ne sont **pas des obligations**. Le coût croissan
 - Le script est ajouté à `npm test` après les tests de probabilités, progression, opposition et origines.
 - Premier workflow PR #59 `#41237994340` : `npm ci` **réussi**, `npm test` **échoué au contrôle TypeScript** (imports inutilisés et garde de types). Corrections apportées au commit `eb7411d72defba69edbc96ab06d89451af5929c5`. Nouveau workflow `#41238047005` lancé.
 - **Ne pas considérer le build, les tests M02 ou un playtest humain comme réussis tant que leur résultat n'est pas établi par CI.** Ajouter ici l'URL de la dernière exécution confirmée lors de la revue.
+
+**Validation automatisée concluante — 31 octobre 2026 :** [workflow GitHub Actions #41238369944](https://github.com/Sijiel44/archives-alrick/actions/runs/41238369944), commit `c0fc43410f3af4408e9c8226198668b51b6dd6e9` : **SUCCÈS** pour `npm ci`, `npm test`, la vérification TypeScript, le build Quartz et le contrôle des liens. La suite a contrôlé **367 pages de contenu**, compilé **454 fichiers Markdown**, émis **1 195 fichiers**, vérifié **1 106 pages HTML et 63 148 liens**. Les tests des probabilités, des oppositions et du parcours historique, ainsi que M01 et M02, sont **verts**. La sortie M02 certifiée est :
+
+```json
+{"result":"OK","test":"M02","checkedLevels":[1,5,10,15,20,25],"validation":"M01 shared budget","legacy":"explicit reversible snapshot","xp":"anti-repeat","milestones":5}
+```
+
+**Attention à la portée de ce résultat :** tests automatisés et compilation réussis, mais **aucun essai humain de navigateur ni campagne de migration sur l'ensemble des vraies fiches anciennes n'est revendiqué**. Les validations UI sur ordinateur et mobile restent à effectuer avant M04. Les anciens échecs de CI sont historiques et corrigés, pas l'état courant de M02.
 
 ## 12. Difficultés et limites
 
