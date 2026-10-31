@@ -60,7 +60,7 @@ for(const item of missions.missions){
   assert(Array.isArray(item.certifications) && item.certifications.every(x=>typeof x==='string'))
 }
 const script=await readFile('quartz/components/scripts/atelier5d6.inline.ts','utf8')
-assert(script.includes('const STORAGE = "archives-alrick-atelier-5d6-v1"'),'Clé de sauvegarde historique modifiée')
+assert(script.includes('const LEGACY_STORAGE = "archives-alrick-atelier-5d6-v1"') && script.includes('const STORAGE = "archives-alrick-atelier-5d6-v2"') && script.includes('localStorage.getItem(LEGACY_STORAGE)'),'Lecture rétrocompatible des sauvegardes historiques absente')
 assert(script.includes('const maxStatCredits = (level:number) => 12+6*(level-1)'),'Règle des six crédits absente')
 assert(script.includes('alrick.campaign.v1'),'Sauvegarde de campagne absente')
 assert(!script.includes('const total=natural+s.stats[stat]+skill+situation+'),'Ne pas introduire de bonus numérique additionnel non équilibré')
