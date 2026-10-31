@@ -1404,7 +1404,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       state.mode=button.dataset.mode as Mode
       q<HTMLButtonElement>("[data-opposition-apply]").hidden=!pendingImpact || state.mode==="pj"
       q<HTMLButtonElement>("[data-opposition-counter]").hidden=!pendingCounter || state.mode==="pj"
-      refreshMode();renderAffinities();renderMedia();persist();return
+      refreshMode();renderAffinities();renderMedia();grimoirePanel.render();persist();return
     }
     if(button.hasAttribute("data-opposition-counter")){
       if(state.mode==="pj"){message("Le MJ doit valider les ripostes des autres fiches.");return}
