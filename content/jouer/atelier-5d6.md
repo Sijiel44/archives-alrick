@@ -19,6 +19,10 @@ Cet outil est une **version pilote évolutive**, inspirée du [[jouer/systeme-5d
 
 ## Trois modes, un même jeu
 
+**Expérience progressive (prototype) :** les fiches conservent un compteur d'XP cumulés. Les seuils sont `5 × (niveau − 1)³` (5 XP au niveau 2, 320 au niveau 5, 60 835 au niveau 24). Une mission de rang `r` accomplie ou terminée par un repli responsable attribue `10 × r` XP aux PJ membres de la compagnie au moment du débriefing. Le MJ peut ajuster ce montant ; l'accès aux niveaux 21–24 demande aussi une épreuve narrative approuvée individuellement. Les membres absents doivent être retirés de la liste de participants de la compagnie avant d'enregistrer la mission.
+
+## Trois modes, un même jeu
+
 **Sauvegarde complète :** utiliser « Exporter toute la campagne » pour conserver ensemble personnages, inventaires, modèles d'objets, compagnies, certifications et missions. « Importer sauvegarde complète » remplace la campagne locale **après confirmation** ; exporter d'abord l'état actuel. L'ancien export des fiches `alrick.sheets.v2` reste disponible pour importer des personnages individuellement. Les données restent dans le navigateur.
 
 **Extension pilote :** le personnage possède maintenant un champ de description et un portrait facultatif importé depuis l'appareil (image réduite et enregistrée localement dans la fiche et son export JSON). La progression individuelle va de **1 à 24**, avec **+6 points de caractéristiques** et **+2 points de maîtrise** par niveau nouvellement atteint, chaque maîtrise étant plafonnée à 12. Les points peuvent rester en réserve. **PV maximum : +6** par nouveau niveau de 2 à 12, **+12** de 13 à 20, puis **+24** de 21 à 24 ; même progression de mana maximum **uniquement si une réserve magique existe déjà**. Une caractéristique reste plafonnée à **12**. Six crédits non investis peuvent être convertis volontairement en un point de talent à valider par le MJ. Les niveaux 21 à 24 exigent une **autorisation MJ** d'ascension exceptionnelle. Ces propositions de progression sont expérimentales et ne doivent pas être attribuées rétroactivement aux personnages canoniques.
