@@ -9,11 +9,58 @@ const DOMAINS: Domain[] = ["magie", "melee", "tir", "nego", "autre"]
 const makeStreaks = (): Record<Domain,number> => ({magie:0,melee:0,tir:0,nego:0,autre:0})
 const validSourceRef = (v:unknown):string => typeof v==="string" && /^(personnages|creatures)\/[A-Za-z0-9-]{2,100}$/.test(v) ? v : ""
 type Mode = "pj" | "mj" | "ia"
+const ITEM_CATEGORIES = {monnaie:"🪙",arme:"⚔️",armure:"🛡️",artefact:"✨",consommable:"🧪",ingredient:"🌿",outil:"🔧",munition:"🏹",livre:"📜",bijou:"💍",provision:"🥖",materiau:"🪵",quete:"🗝️",autre:"🎒"} as const
+type ItemCategory = keyof typeof ITEM_CATEGORIES
+type GameItem = {id:string;templateId:string;name:string;category:ItemCategory;quantity:number;description:string;value:string}
+type Group = {id:string;name:string;rank:number;members:string[];certifications:string[];awards:string[]}
+type Mission = {id:string;level:number;title:string;category:string;brief:string;reward:string;certifications:string[];statut:string}
+type MissionEntry = {id:string;groupId:string;missionId:string;category:string;rank:number;status:"terminee"|"repli"|"echouee";summary:string;reward:string;date:string}
+const CERTIFICATIONS = [
+  ["premiers-secours","Premiers secours et extraction"],["orientation","Orientation, navigation et rapports"],
+  ["protection-civile","Protection des civils et discipline"],["reconnaissance-avancee","Reconnaissance en terrain dangereux"],
+  ["risques-magiques","Risques magiques et runes"],["intervention-specialisee","Intervention spécialisée / crise majeure"]
+] as const
+const maxStatCredits = (level:number) => 12+6*(level-1)
+const levelResourceGain = (level:number) => level>=21?24:level>=13?12:6
+const gainBetween = (first:number,last:number) => {
+  let gain=0
+  for(let l=first+1;l<=last;l++)gain+=levelResourceGain(l)
+  return gain
+}
+function validatedItem(raw:unknown):GameItem|null{
+  if(!raw||typeof raw!=="object")return null
+  const o=raw as Record<string,unknown>
+  if(typeof o.name!=="string"||!o.name.trim())return null
+  const cat=typeof o.category==="string"&&o.category in ITEM_CATEGORIES?o.category as ItemCategory:"autre"
+  return {id:typeof o.id==="string"?o.id.slice(0,80):uniqueId(),templateId:clean(o.templateId,80),
+    name:clean(o.name,90),category:cat,quantity:clamp(o.quantity,1,999,1),
+    description:clean(o.description,600),value:clean(o.value,100)}
+}
+function validatedGroup(raw:unknown):Group|null{
+  if(!raw||typeof raw!=="object")return null
+  const o=raw as Record<string,unknown>
+  if(typeof o.name!=="string"||!o.name.trim())return null
+  return {id:clean(o.id,80)||uniqueId(),name:clean(o.name,90),rank:clamp(o.rank,1,12,1),
+    members:Array.isArray(o.members)?o.members.filter((x:unknown):x is string=>typeof x==="string").slice(0,60).map(x=>x.slice(0,100)):[],
+    certifications:Array.isArray(o.certifications)?o.certifications.filter((x:unknown):x is string=>typeof x==="string"&&CERTIFICATIONS.some(c=>c[0]===x)).slice(0,6):[],
+    awards:Array.isArray(o.awards)?o.awards.filter((x:unknown):x is string=>typeof x==="string").slice(-30).map(x=>x.slice(0,280)):[]}
+}
+function validatedEntry(raw:unknown):MissionEntry|null{
+  if(!raw||typeof raw!=="object")return null
+  const o=raw as Record<string,unknown>
+  if(!["terminee","repli","echouee"].includes(String(o.status)))return null
+  return {id:clean(o.id,80)||uniqueId(),groupId:clean(o.groupId,80),missionId:clean(o.missionId,80),
+    category:clean(o.category,90),rank:clamp(o.rank,1,12,1),
+    status:o.status as MissionEntry["status"],summary:clean(o.summary,1200),
+    reward:clean(o.reward,280),date:clean(o.date,30)}
+}
+
 type Sheet = {
   id: string; name: string; kind: Role; profession: string; skill: number
   stats: Record<Stat, number>; pv: number; pvMax: number
   mana: number; manaMax: number; emprise: number
   level: number; highestLevel: number; masteries: Record<Mastery,number>
+  ascensionAuthorized:boolean; ascensionWitness:string; inventory:GameItem[]
   description: string; portrait: string
   vocation: string; talents: string; boons: string; curses: string; items: string
   sourceRef: string; sourceTitle: string
@@ -21,7 +68,8 @@ type Sheet = {
   notes: string; gmNotes: string
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
-type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[] }
+type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
+  groups:Group[]; activeGroupId:string; templates:GameItem[]; missionLog:MissionEntry[] }
 // Tables d'incidents de playtest : une suggestion à interpréter, jamais un malus automatique supplémentaire.
 const INCIDENTS: Record<Exclude<Domain,"autre">,string[]> = {
   magie: [
@@ -93,7 +141,8 @@ function fresh(kind: Role = "pj"): Sheet {
   return { id: uniqueId(), name: kind === "pj" ? "Mon personnage" : "Nouveau profil",
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
-    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
+    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, ascensionWitness:"", inventory:[],
+    description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
 }
 function validateSheet(raw: unknown): Sheet | null {
@@ -119,7 +168,10 @@ function validateSheet(raw: unknown): Sheet | null {
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
     mana:clamp(obj.mana,0,manaMax,0),manaMax,
     emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,24,level),
-    masteries,description:clean(obj.description,1200),portrait,
+    masteries,ascensionAuthorized:obj.ascensionAuthorized===true||level>20,
+    ascensionWitness:clean(obj.ascensionWitness,300),
+    inventory:Array.isArray(obj.inventory)?obj.inventory.slice(0,150).map(validatedItem).filter((x):x is GameItem=>x!==null):[],
+    description:clean(obj.description,1200),portrait,
     vocation:clean(obj.vocation,160),talents:clean(obj.talents,1600),boons:clean(obj.boons,1400),
     curses:clean(obj.curses,1400),items:clean(obj.items,1400),
     sourceRef:validSourceRef(obj.sourceRef),sourceTitle:clean(obj.sourceTitle,160),
@@ -180,7 +232,8 @@ function setupAtelier5d6() {
       if(!signal.aborted)q<HTMLElement>("[data-reference-results]").textContent="Recherche indisponible. Les fiches peuvent être consultées depuis la Bibliothèque."
     }finally{refsLoading=false}
   }
-  let state: State = {sheets:[fresh()],activeId:"",mode:"pj",log:[]}
+  let state: State = {sheets:[fresh()],activeId:"",mode:"pj",log:[],
+    groups:[],activeGroupId:"",templates:[],missionLog:[]}
   try {
     const data = localStorage.getItem(STORAGE)
     if (data) {
@@ -198,6 +251,11 @@ function setupAtelier5d6() {
         }
       }
       state.mode = parsed.mode === "mj" || parsed.mode === "ia" ? parsed.mode : "pj"
+      if(Array.isArray(parsed.groups))state.groups=parsed.groups.slice(0,20).map(validatedGroup).filter((x):x is Group=>x!==null)
+      if(Array.isArray(parsed.templates))state.templates=parsed.templates.slice(0,150).map(validatedItem).filter((x):x is GameItem=>x!==null)
+      if(Array.isArray(parsed.missionLog))state.missionLog=parsed.missionLog.slice(-400).map(validatedEntry).filter((x):x is MissionEntry=>x!==null)
+      state.activeGroupId=typeof parsed.activeGroupId==="string" && state.groups.some(g=>g.id===parsed.activeGroupId)
+        ?parsed.activeGroupId:(state.groups[0]?.id??"")
       if (Array.isArray(parsed.log)) state.log = parsed.log.slice(0,20).filter((x):x is Roll =>
         !!x && typeof x === "object" && typeof x.text === "string" && typeof x.name === "string" &&
         Array.isArray(x.dice) && x.dice.length === 5 && x.dice.every((d:unknown)=>typeof d==="number" && d>=1 && d<=6)
@@ -214,9 +272,9 @@ function setupAtelier5d6() {
     const s=current()
     const used=STATS.reduce((acc,k)=>acc+s.stats[k],0)
     const el=q<HTMLElement>("[data-points]")
-    const limit=12+s.highestLevel-1
+    const limit=maxStatCredits(s.highestLevel)
     const legal=s.kind!=="pj" || (used>=12 && used<=limit && (s.highestLevel!==1 || (used===12 && STATS.every(k=>s.stats[k]<=5))))
-    el.textContent=s.kind==="pj" ? `${used} / ${limit} points · ${limit-used} en réserve` : `${used} points (MJ)`
+    el.textContent=s.kind==="pj" ? `${used} / ${Math.min(48,limit)} caractéristiques · ${limit-used} points non investis (plafond 12)` : `${used} points (MJ)`
     el.style.color=!legal ? "#e7ac9c" : ""
     const masteryUsed=totalMasteries(s.masteries), masteryLimit=2*(s.highestLevel-1)
     const masteryEl=q<HTMLElement>("[data-mastery-points]")
@@ -318,7 +376,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       const before=s.stats[stat],next=clamp(el.value,1,12,before)
       s.stats[stat]=next
       const used=STATS.reduce((sum,k)=>sum+s.stats[k],0)
-      if(s.kind==="pj" && (used>12+s.highestLevel-1 || (s.highestLevel===1 && next>5))){
+      if(s.kind==="pj" && (used>maxStatCredits(s.highestLevel) || (s.highestLevel===1 && next>5))){
         s.stats[stat]=before;el.value=String(before)
         message("Points de caractéristique insuffisants ou limite de création dépassée.")
       }
@@ -377,7 +435,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   }
   function roll(){
     const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
-    if(s.kind==="pj"&&(used<12||used>12+s.highestLevel-1||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
+    if(s.kind==="pj"&&(used<12||used>maxStatCredits(s.highestLevel)||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
       message("Répartition invalide : 12 points à la création, puis +1 caractéristique et +2 maîtrises par niveau, plafonds à 12.")
       return
     }
