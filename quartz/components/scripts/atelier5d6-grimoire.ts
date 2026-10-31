@@ -118,38 +118,62 @@ export function normalizeGrimoire(raw:unknown):Grimoire{
   return g
 }
 export function libraryFor(g:Grimoire):Spell[]{return [...DEMO_SPELLS,...g.personalSpells]}
-export function eligibility(sheet:MagicSheet,spell:Spell):string[]{
+
+/** Activation d'une architecture préfabriquée ≠ apprentissage ou reconstruction de celle-ci. */
+export function eligibility(sheet:MagicSheet,spell:Spell,matrix?:PreparedMatrix):string[]{
   const errors:string[]=[]
-  const known=sheet.grimoire.known.find(x=>x.id===spell.id)
-  if(!known)errors.push("Sort non appris et non validé par le MJ")
-  if(spell.circle!==null&&!sheet.grimoire.circlesAttested.includes(spell.circle))errors.push("Cercle "+spell.circle+" non attesté")
-  if((sheet.masteries.magie??0)<spell.minimumMastery)errors.push("Maîtrise Magie "+spell.minimumMastery+" requise")
-  if(spell.requiredAffinityRank>0&&(sheet.affinities.find(x=>x.id===spell.domain)?.rank??0)<spell.requiredAffinityRank)errors.push("Affinité "+spell.domain+" "+spell.requiredAffinityRank+" requise")
-  if(spell.requiresPreparation&&!known?.prepared)errors.push("Préparation requise")
-  if(sheet.mana<spell.manaCost)errors.push("Mana insuffisant")
-  if(spell.concentration&&sheet.grimoire.effects.some(x=>x.concentration))errors.push("Une concentration est déjà active")
+  if(spell.circle===9&&!sheet.grimoire.divineNinthApproved)
+    errors.push("Neuvième Cercle : pratique réservée aux divins, autorisation MJ requise")
+  if(matrix){
+    if(matrix.spellId!==spell.id||matrix.architectureCircle!==spell.circle)
+      errors.push("Architecture de matrice incompatible")
+    if(!sheet.inventory?.some(x=>x.id===matrix.itemId))
+      errors.push("Objet préparé absent de l'inventaire")
+    if(matrix.charges<1)errors.push("Matrice épuisée")
+    if(!sheet.grimoire.circlesAttested.includes(matrix.activationCircle))
+      errors.push("Cercle d'activation "+matrix.activationCircle+" non attesté")
+    if(matrix.energySource==="caster"&&sheet.mana<spell.manaCost)
+      errors.push("Mana insuffisant pour l'activation")
+    // Ni sort appris, ni maîtrise de conception, ni Cercle supérieur exigés ici.
+    if(matrix.architectureCircle===9&&!sheet.grimoire.divineNinthApproved)
+      errors.push("Matrice IX : accès divin non validé")
+  }else{
+    const known=sheet.grimoire.known.find(x=>x.id===spell.id)
+    if(!known)errors.push("Sort non appris et non validé par le MJ")
+    if(spell.circle!==null&&!sheet.grimoire.circlesAttested.includes(spell.circle))
+      errors.push("Cercle "+spell.circle+" non attesté pour l'incantation autonome")
+    if((sheet.masteries.magie??0)<spell.minimumMastery)
+      errors.push("Maîtrise Magie "+spell.minimumMastery+" requise")
+    if(spell.requiredAffinityRank>0&&(sheet.affinities.find(x=>x.id===spell.domain)?.rank??0)<spell.requiredAffinityRank)
+      errors.push("Affinité "+spell.domain+" "+spell.requiredAffinityRank+" requise")
+    if(spell.requiresPreparation&&!known?.prepared)errors.push("Préparation requise")
+    if(sheet.mana<spell.manaCost)errors.push("Mana insuffisant")
+  }
+  if(spell.concentration&&sheet.grimoire.effects.some(x=>x.concentration))
+    errors.push("Une concentration est déjà active")
   return errors
 }
-export function resolveSpellCast(sheet:MagicSheet,spell:Spell,target:MagicSheet|null,aim:string,dice:number[]){
-  const errors=eligibility(sheet,spell)
+export function resolveSpellCast(sheet:MagicSheet,spell:Spell,target:MagicSheet|null,aim:string,dice:number[],matrix?:PreparedMatrix){
+  const errors=eligibility(sheet,spell,matrix)
   if(!aim.trim())errors.push("Cible ou intention manquante")
   if(dice.length!==5||dice.some(n=>!Number.isInteger(n)||n<1||n>6))errors.push("Jet 5d6 invalide")
   if(errors.length)return {ok:false,errors}
   const natural=dice.reduce((a,b)=>a+b,0)
-  // Les maîtrises complémentaires 0..12 ne donnent pas ici de bonus universel au jet.
-  const skill=Math.min(2,Math.floor((sheet.masteries.magie??0)/6))
+  // Une matrice fonctionne grâce à sa conception ; la maîtrise du porteur ne s'y substitue pas.
+  const skill=matrix?0:Math.min(2,Math.floor((sheet.masteries.magie??0)/6))
   const total=natural+sheet.stats.esprit+skill
   const resistance=spell.resistance&&target?resistanceScore(target,spell.resistance):0
   const threshold=Math.max(spell.difficulty,resistance)
-  const rank=sheet.affinities.find(a=>a.id===spell.domain)?.rank??0
+  const rank=matrix?0:(sheet.affinities.find(a=>a.id===spell.domain)?.rank??0)
   const opposition=spell.resistance?resolveOpposition({natural,total,difficulty:spell.difficulty,resistance,
-    damageBase:spell.baseImpact||1,mastery:attackMastery(sheet.masteries,"magie"),level:sheet.level,
+    damageBase:spell.baseImpact||1,mastery:matrix?0:attackMastery(sheet.masteries,"magie"),level:matrix?1:sheet.level,
     protection:target?effectiveProtection(target,spell.resistance):0,mode:spell.resistance==="mental"?"mental":"magie",
     affinityBonus:spell.effect==="degats"?affinityImpactBonus(rank):0}):null
   const success=opposition?opposition.success:natural>7&&total>=threshold
   const glancing=!!opposition?.glancing
   const result=natural<=7?"Échec critique":success?"Réussite":glancing?"Contact sans pénétration":"Échec"
-  return {ok:true,errors:[],natural,total,threshold,success,glancing,result,damage:spell.effect==="degats"?(opposition?.damage??0):0,
+  return {ok:true,errors:[],natural,total,threshold,success,glancing,result,
+    damage:spell.effect==="degats"?(opposition?.damage??0):0,
     absorbed:opposition?.absorbed??0,critical:natural>=27,affinityRank:rank}
 }
 export function recordSpellEvent(g:Grimoire,event:Omit<SpellEvent,"id"|"at">){
