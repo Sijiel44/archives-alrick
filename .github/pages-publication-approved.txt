@@ -201,3 +201,17 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Les fichiers de villes GEO-007 à GEO-013 ne sont que COMPLÉTÉS, jamais remplacés ; date de tournée Orin non avancée.
 # Maintenir les liens de source, les limitations des guildes et du système 5d6.
 # Contrôler avant fusion CI, liens, avertissements des propositions, Pages et sauvegarde.
+
+
+# Lot 15 — Villages candidats et bestiaire rural, 30 octobre 2026
+# 14 VILLAGES PROPOSÉS et NON LOCALISÉS, 2 par Sept Grande Cité, aucune nouvelle fiche de lieu avec CODE canonique.
+# 28 PNJ PRECRÉES et non rencontrés, 28 quêtes villageoises NON JOUÉES, 14 contrats de guilde facultatifs.
+# Total Atlas villes+villages : 78 profils PJ/MJ préparatoires, 63 quêtes locales, +14 avis de guilde.
+# 7 MONSTRES/CRÉATURES PRÉPARATOIRES, AUCUNE ESPÈCE CANONIQUE NOUVELLE, aucune statistique officielle 5d6.
+# 3 mini-aventures de secours/combat au col, dans une forge et sur un lac souterrain ; pas de dénouement imposé.
+# Guilde : déploiement PROGRESSIF, A/B/C = etiquette narrative MJ, aucune antenne villageoise déclarée fondée.
+# Le bestiaire non publié antérieur reste séparé ; nouvelles fiches PUBLIQUES = propositions non jouées.
+# Aucun ruisseau, kilométrage, route, population, traité, ancien village ou création divine inventé comme fait établi.
+# FICHES CODEES APPROUVÉES : 263 INCHANGÉ, confirmées par tests avant fusion.
+# Dernier point de reprise CB44 CCCLXXIII auprès d'Elyan préservé ; tournée et Orinor toujours à venir.
+# Contrôler CI, liens, métadonnées, galerie si ajoutée, publication Pages et sauvegarde.
