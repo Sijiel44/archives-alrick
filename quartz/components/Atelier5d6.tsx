@@ -81,7 +81,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <button type="button" data-clear-portrait>Retirer le portrait</button>
         </div>
         <div class="atelier-fields">
-          <label>Niveau (1 à 24)<input type="number" data-field="level" min={1} max={24} step={1} value={1}/></label>
+          <label>Niveau (1 à 25)<input type="number" data-field="level" min={1} max={25} step={1} value={1}/></label>
           <label>Voie(s) / vocation libre<input data-field="vocation" type="text" maxLength={160} placeholder="Éclaireur et artisan, mage et diplomate…"/></label>
         </div>
         <div class="atelier-fields">
@@ -99,7 +99,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
             <span><strong>{label}</strong><small>{help}</small></span>
             <input type="number" data-stat={key} value={3} min={1} max={12} step={1} aria-label={label}/>
           </label>)}
-          <small class="atelier-hint">Au niveau 1 : 12 points (1 à 5 par caractéristique). Puis +6 points par niveau, chaque caractéristique étant plafonnée à 12. Les crédits excédentaires restent en réserve, sans bonus de jet automatique. Les niveaux 21–24 exigent une validation divine exceptionnelle.</small>
+          <small class="atelier-hint">Au niveau 1 : 12 points (1 à 5 par caractéristique). Puis +6 points par niveau, chaque caractéristique étant plafonnée à 12. Les crédits excédentaires restent en réserve, sans bonus de jet automatique. Les niveaux 21–25 exigent cinq validations divines exceptionnelles.</small>
         </fieldset>
         <fieldset class="atelier-stats">
           <legend>Maîtrises spécialisées — <span data-mastery-points>0 / 0 points</span></legend>
@@ -111,7 +111,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
         </fieldset>
         <div class="atelier-toolbar">
           <button type="button" data-convert-credits>Convertir 6 crédits excédentaires en 1 point de talent</button>
-          <label>Points de talent utilisés<input type="number" data-talent-spent min={0} max={23} step={1} value={0}/></label>
+          <label>Points de talent utilisés<input type="number" data-talent-spent min={0} max={24} step={1} value={0}/></label>
         </div>
         <p data-talent-points class="atelier-hint">Talents : 0 / 0 utilisés.</p>
         <div class="atelier-fields atelier-resources">
@@ -132,16 +132,19 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <textarea data-field="items" rows={2} maxLength={1400} placeholder="Ex. : une lampe qui révèle la dernière trace d'une Faille"></textarea>
         </label>
         <p class="atelier-hint" data-source-meta>Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions.</p>
-        <p data-ascension-status class="atelier-hint">Niveaux 21–24 : validation exceptionnelle requise.</p>
+        <p data-ascension-status class="atelier-hint">Niveaux 21–25 : validation exceptionnelle requise.</p>
         <p class="atelier-hint">Défenses du personnage : <span data-resistance-summary>Calcul des résistances physiques, magiques et mentales…</span></p>
         <div data-mj-tools hidden>
           <fieldset class="atelier-stats">
             <legend>MJ : résistances et protections de cette fiche</legend>
-            <p class="atelier-hint">La résistance fixe le score minimal à atteindre. La protection absorbe des dégâts après un coup réussi. Réglages non canoniques, plafonnés pour le playtest.</p>
+            <p class="atelier-hint">La résistance et la protection naturelles augmentent avec le niveau, même sans équipement. Les grades 0–5 apportent des protections supplémentaires, sans remplacer les réglages MJ.</p>
             <div class="atelier-fields">
               {resistanceKinds.map(([key,label])=><div key={key}>
                 <label>Bonus de résistance — {label}<input data-defense-resistance={key} type="number" min={0} max={8} step={1} value={0}/></label>
-                <label>Protection — {label}<input data-defense-protection={key} type="number" min={0} max={60} step={1} value={0}/></label>
+                <label>Protection supplémentaire MJ — {label}<input data-defense-protection={key} type="number" min={0} max={60} step={1} value={0}/></label>
+                <label>Grade d'équipement (0–5) — {label}
+                  <input data-defense-gear={key} type="number" min={0} max={5} step={1} value={0}/>
+                </label>
               </div>)}
             </div>
           </fieldset>
@@ -156,6 +159,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
               <option value="22">22 — Deuxième épreuve</option>
               <option value="23">23 — Troisième épreuve</option>
               <option value="24">24 — Quatrième épreuve</option>
+              <option value="25">25 — Cinquième épreuve</option>
             </select>
           </label>
           <p class="atelier-hint" data-divine-history>Aucune épreuve divine consignée.</p>
@@ -253,11 +257,11 @@ export const Atelier5d6: QuartzComponent = (props) => {
               </select>
             </label>
           </div>
-          <p data-opposition-preview class="atelier-hint">Le MJ fixe les conditions avant le jet. La résistance ne peut pas être ignorée par une réussite critique.</p>
+          <p data-opposition-preview class="atelier-hint">Un jet héroïque naturel 27–30 peut toucher une défense supérieure sans la percer, mais n\u0027inflige normalement aucun PV ni effet. Un 30 naturel peut parfois causer 1 PV si l\u0027impact dépasse toutes les protections.</p>
           <p data-opposition-result class="atelier-hint" role="status">Mode opposition désactivé : jet classique inchangé.</p>
           <button type="button" data-opposition-apply hidden>MJ : confirmer l'application des dégâts à la cible</button>
           <button type="button" data-opposition-counter hidden>MJ : préparer une riposte avec un nouveau jet</button>
-          <small class="atelier-hint">Sans dégâts automatiques sur échec. Une riposte demande une action, des moyens et un jet distincts. Une cible à 0 PV est hors de combat, pas automatiquement morte.</small>
+          <small class="atelier-hint">Contact n\u0027est pas blessure : une élite peut être touchée sans être affectée. La riposte demande toujours un nouveau jet. Une cible à 0 PV est hors de combat, pas automatiquement morte.</small>
         </fieldset>
         <div class="atelier-dice-row" aria-label="Cinq dés à six faces">
           {[1,2,3,4,5].map((n)=><span class="atelier-die" data-die={n} key={n} aria-label={`Dé ${n}`}>–</span>)}
