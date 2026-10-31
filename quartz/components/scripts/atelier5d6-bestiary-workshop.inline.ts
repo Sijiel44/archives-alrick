@@ -311,6 +311,7 @@ function startBestiary(){
     }
   },opts)
   render()
-  window.addCleanup(()=>controller.abort())
+  host.dataset.initialized="true" // signal de recette : données ET événements interactifs prêts.
+  window.addCleanup(()=>{host.dataset.initialized="false";controller.abort()})
 }
 document.addEventListener("nav",startBestiary)
