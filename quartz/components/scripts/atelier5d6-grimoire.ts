@@ -81,7 +81,7 @@ export function normalizeGrimoire(raw:unknown):Grimoire{
   if(Array.isArray(o.effects))for(const row of o.effects.slice(-80)){
     if(!row||typeof row!=="object")continue
     const p=row as Record<string,unknown>
-    if(!idOk(p.id)||!catalog.has(p.spellId)||!["round","scene","permanent"].includes(String(p.duration)))continue
+    if(!idOk(p.id)||!catalog.has(String(p.spellId))||!["round","scene","permanent"].includes(String(p.duration)))continue
     g.effects.push({id:p.id,spellId:String(p.spellId),target:str(p.target,150),
       duration:p.duration as SpellDuration,remaining:bounded(p.remaining,0,999,0),
       concentration:p.concentration===true,upkeepMana:bounded(p.upkeepMana,0,99,0),startedAt:str(p.startedAt,40)})
@@ -168,7 +168,6 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
   const query=<T extends HTMLElement>(s:string)=>root.querySelector<T>(s)!
   const selected=()=>libraryFor(args.getSheet().grimoire)
   const find=(id:string)=>selected().find(x=>x.id===id)
-  const active=()=>args.getSheet().grimoire
   const notify=(s:string)=>{args.message(s);query<HTMLElement>("[data-grimoire-status]").textContent=s}
   function render(){
     const sheet=args.getSheet(),g=sheet.grimoire,mj=args.isMJ()
