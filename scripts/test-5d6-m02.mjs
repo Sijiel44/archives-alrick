@@ -66,7 +66,7 @@ assert.equal(draft.sheet.level,5)
 assert.equal(draft.sheet.xp,400)
 assert.equal(m.evaluateSheet(draft.sheet).valid,true)
 assert.ok(m.evaluateSheet(draft.sheet).spent<=24)
-assert.ok(draft.summary.includes("ateliers")||draft.summary.includes("Ateliers"))
+assert.ok(draft.summary.includes("maison d’artisans")||draft.summary.includes("maison d\u0027artisans"))
 let milestone=fresh(25)
 milestone.xp=14400
 assert.equal(m.eligibleLevel(milestone,21),false)
