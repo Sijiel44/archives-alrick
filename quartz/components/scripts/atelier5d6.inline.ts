@@ -3,8 +3,9 @@ import {generateCreatureProfile} from "./atelier5d6-bestiary"
 import type {CreatureArchetype} from "./atelier5d6-bestiary"
 import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
 import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,buildOrigin,
-  affinityRankLimit,affinityImpactBonus,divinePowerMinimumLevel} from "./atelier5d6-origins"
-import type {Affinity,AffinityId,Power,PowerGrade,OriginMastery} from "./atelier5d6-origins"
+  affinityRankLimit,affinityImpactBonus,divinePowerMinimumLevel,
+  buildEducationProfile,EDUCATION_PATHS,LITERACY_LEVELS} from "./atelier5d6-origins"
+import type {Affinity,AffinityId,Power,PowerGrade,OriginMastery,EducationId,LiteracyLevel} from "./atelier5d6-origins"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
 type Mastery = OriginMastery
@@ -66,6 +67,29 @@ function validatedEntry(raw:unknown):MissionEntry|null{
     reward:clean(o.reward,280),date:clean(o.date,30)}
 }
 
+type MediaRights="own"|"open"|"public"|"permission"
+type MediaFormat="square"|"portrait"|"landscape"|"banner"
+type SheetArtwork={id:string;url:string;source:string;title:string;author:string;
+  rights:MediaRights;license:string;format:MediaFormat}
+type PowerUse={id:string;name:string;domain:AffinityId;manaCost:number;target:string;at:string}
+function externalHttps(value:unknown):string{
+  if(typeof value!=="string"||value.length>1600)return ""
+  try{
+    const u=new URL(value)
+    if(u.protocol!=="https:"||!u.hostname||u.username||u.password||
+      /^(localhost|127\.|10\.|192\.168\.|169\.254\.|172\.(?:1[6-9]|2\d|3[01])\.|\[?::1\]?)/i.test(u.hostname))return ""
+    return u.href
+  }catch{return ""}
+}
+function validatedArtwork(raw:unknown):SheetArtwork|null{
+  if(!raw||typeof raw!=="object")return null
+  const p=raw as Record<string,unknown>,url=externalHttps(p.url),source=externalHttps(p.source)
+  const rights=["own","open","public","permission"].includes(String(p.rights))?p.rights as MediaRights:null
+  const format=["square","portrait","landscape","banner"].includes(String(p.format))?p.format as MediaFormat:"square"
+  const title=clean(p.title,160).trim(),license=clean(p.license,240).trim(),author=clean(p.author,140).trim()
+  if(!url||!source||!rights||!title||!license||!author)return null
+  return {id:uniqueId(),url,source,title,author,rights,license,format}
+}
 type Defenses = Record<ResistanceKind,number>
 const freshDefenses=():Defenses=>({physique:0,magie:0,mental:0})
 const DEFENSE_KINDS:ResistanceKind[]=["physique","magie","mental"]
@@ -82,7 +106,9 @@ type Sheet = {
   sourceRef: string; sourceTitle: string
   streaks: Record<Domain,number>; lastIncident: string
   notes: string; gmNotes: string; lifeSteps:string[]; lifeSummary:string
+  education:EducationId|""; literacy:LiteracyLevel|""; backstory:string;connections:string;goal:string
   affinities:Affinity[]; powers:Power[]
+  externalMedia:SheetArtwork[];powerHistory:PowerUse[]
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
@@ -163,7 +189,8 @@ function fresh(kind: Role = "pj"): Sheet {
     convertedCredits:0,talentPointsSpent:0,xp:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"",
-    lifeSteps:[],lifeSummary:"",affinities:[],powers:[] }
+    lifeSteps:[],lifeSummary:"",education:"",literacy:"",backstory:"",connections:"",goal:"",
+    affinities:[],powers:[],externalMedia:[],powerHistory:[] }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -235,7 +262,18 @@ function validateSheet(raw: unknown): Sheet | null {
     sourceRef:validSourceRef(obj.sourceRef),sourceTitle:clean(obj.sourceTitle,160),
     streaks,lastIncident:clean(obj.lastIncident,500),
     notes:clean(obj.notes,2500),gmNotes:clean(obj.gmNotes,2500),
-    lifeSteps,lifeSummary:clean(obj.lifeSummary,1600),affinities,powers}
+    lifeSteps,lifeSummary:clean(obj.lifeSummary,1600),
+    education:EDUCATION_PATHS.some(x=>x.id===obj.education)?obj.education as EducationId:"",
+    literacy:LITERACY_LEVELS.some(x=>x.id===obj.literacy)?obj.literacy as LiteracyLevel:"",
+    backstory:clean(obj.backstory,4000),connections:clean(obj.connections,600),
+    goal:clean(obj.goal,600),affinities,powers,
+    externalMedia:Array.isArray(obj.externalMedia)?obj.externalMedia.slice(0,30)
+      .map(validatedArtwork).filter((v):v is SheetArtwork=>v!==null):[],
+    powerHistory:Array.isArray(obj.powerHistory)?obj.powerHistory.slice(-80)
+      .filter((v:unknown):v is Record<string,unknown>=>!!v&&typeof v==="object")
+      .map(p=>({id:uniqueId(),name:clean(p.name,90),domain:AFFINITY_DOMAINS.some(x=>x[0]===p.domain)?p.domain as AffinityId:"magie",
+        manaCost:clamp(p.manaCost,0,999,0),target:clean(p.target,150),at:clean(p.at,40)}))
+      .filter(v=>v.name.length>0):[]}
 }
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
@@ -577,13 +615,67 @@ function setupAtelier5d6() {
     const target=q<HTMLElement>("[data-origin-preview]")
     if(choices.some(x=>!x)){target.textContent="Choisir les "+(4-choices.filter(Boolean).length)+" périodes de vie restantes.";return}
     try{
-      const result=buildOrigin(choices)
+      const education=q<HTMLSelectElement>("[data-origin-education]").value as EducationId
+      const literacy=q<HTMLSelectElement>("[data-origin-literacy]").value as LiteracyLevel
+      const raw=buildOrigin(choices)
+      if(!education||!literacy){target.textContent="Les quatre périodes sont prêtes. Choisir encore une éducation et un rapport à l'écrit.";return}
+      const result=buildEducationProfile(raw,education,literacy)
       target.textContent="Niveau 5 · 36 PV · "+(result.manaMax?"36 mana d'essai · ":"")+
         "Phys "+result.stats.physique+" · Agi "+result.stats.agilite+
         " · Esp "+result.stats.esprit+" · Prés "+result.stats.presence+
         " · "+Object.entries(result.masteries).filter(([,v])=>v>0).map(([k,v])=>k+" "+v).join(", ")+
         ". Parcours : "+result.summary.replaceAll("\n"," | ")
     }catch{target.textContent="Parcours invalide : vérifier les quatre choix."}
+  }
+  function renderMedia(){
+    const sheet=current(),grid=q<HTMLElement>("[data-media-gallery]")
+    grid.replaceChildren()
+    if(!sheet.externalMedia.length){
+      const p=document.createElement("p");p.className="atelier-hint"
+      p.textContent="Aucune image liée. Ajouter un lien HTTPS de source vérifiée."
+      grid.append(p)
+    }
+    for(const artwork of sheet.externalMedia){
+      const figure=document.createElement("figure");figure.className="atelier-media-card"
+      figure.dataset.format=artwork.format;figure.setAttribute("role","listitem")
+      const button=document.createElement("button");button.type="button"
+      button.dataset.mediaView=artwork.id;button.title="Agrandir : "+artwork.title
+      const img=document.createElement("img");img.loading="lazy";img.decoding="async"
+      img.referrerPolicy="no-referrer";img.alt=artwork.title
+      img.src=artwork.url
+      img.onerror=()=>{button.disabled=true;button.textContent="Image externe indisponible — ouvrir la source"}
+      button.append(img);figure.append(button)
+      const caption=document.createElement("figcaption")
+      caption.textContent=artwork.title+" · "+artwork.author+" · "+artwork.license
+      figure.append(caption)
+      const link=document.createElement("a");link.href=artwork.source
+      link.rel="noopener noreferrer";link.referrerPolicy="no-referrer"
+      link.target="_blank";link.textContent="Voir la source et les conditions"
+      figure.append(link)
+      if(state.mode!=="pj"){
+        const remove=document.createElement("button");remove.type="button"
+        remove.dataset.mediaRemove=artwork.id;remove.textContent="Retirer le lien"
+        figure.append(remove)
+      }
+      grid.append(figure)
+    }
+  }
+  function renderPowerHistory(){
+    const sheet=current(),log=q<HTMLOListElement>("[data-power-history]"),
+      selector=q<HTMLSelectElement>("[data-power-cast]"),selected=selector.value
+    selector.replaceChildren(new Option("Choisir une capacité",""))
+    for(const power of sheet.powers){
+      if(power.approvedByGM)selector.add(new Option(power.name+" · "+power.manaCost+" mana",power.id))
+    }
+    if(sheet.powers.some(x=>x.id===selected))selector.value=selected
+    log.replaceChildren()
+    for(const event of sheet.powerHistory.slice(-12).reverse()){
+      const li=document.createElement("li")
+      li.textContent=event.at+" — "+event.name+" : "+event.target+
+        " · "+event.manaCost+" mana dépensé(s) (effet à résoudre avec le MJ)."
+      log.append(li)
+    }
+    if(!sheet.powerHistory.length){const li=document.createElement("li");li.textContent="Aucune capacité utilisée.";log.append(li)}
   }
   function renderAffinities(){
     const sheet=current(),list=q<HTMLUListElement>("[data-affinity-list]"),powers=q<HTMLUListElement>("[data-power-list]")
@@ -610,6 +702,7 @@ function setupAtelier5d6() {
       powers.append(li)
     }
     if(!sheet.powers.length){const li=document.createElement("li");li.textContent="Aucune capacité spéciale enregistrée.";powers.append(li)}
+    renderPowerHistory()
     const selector=q<HTMLSelectElement>("[data-roll-affinity]"),chosen=selector.value
     selector.replaceChildren(new Option("Sans affinité",""))
     for(const a of sheet.affinities)selector.add(new Option(affinityLabel(a.id)+" · rang "+a.rank,a.id))
@@ -632,7 +725,7 @@ function setupAtelier5d6() {
       "Aucun bonus à la précision, aucun mana ou effet cosmique automatique.":
       "Sélectionner une affinité validée sur cette fiche. Sans sélection, aucun bonus d'impact."
   }
-  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities()}
+  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities();renderMedia()}
   function renderAI(){
     const s=current(), include=q<HTMLInputElement>("[data-ai-roster]").checked
     const group=state.groups.find(g=>g.members.includes(s.id))
@@ -656,6 +749,9 @@ Spécialité +${s.skill}, PV ${s.pv}/${s.pvMax}, mana ${s.mana}/${s.manaMax}, Em
 Niveau ${s.level}/25 ; voies : ${s.vocation || "aucune"}.
 Crédits convertis : ${s.convertedCredits}; points de talents attribués ${s.talentPointsSpent}/${Math.floor(s.convertedCredits/6)}. Pouvoirs à valider par le MJ.
 Description : ${s.description || "non renseignée"}.
+Éducation : ${s.education || "non renseignée"} ; lecture : ${s.literacy || "non renseignée"}.
+Biographie personnelle : ${s.backstory || "non renseignée"}.
+Attaches : ${s.connections || "non renseignées"} ; objectif : ${s.goal || "non renseigné"}.
 Parcours des quatre premières périodes : ${s.lifeSummary || "création libre, non précisé"}. 
 Affinités conditionnelles approuvées : ${affinities || "aucune"}.
 Pouvoirs et limitations approuvés localement : ${powers || "aucun"}. Aucune Autorité divine supplémentaire par défaut.
@@ -738,6 +834,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
           }
           s.xp=clamp(el.value,0,999999,s.xp);break
         }
+        case "education":
+          s.education=EDUCATION_PATHS.some(x=>x.id===el.value)?el.value as EducationId:"";break
+        case "literacy":
+          s.literacy=LITERACY_LEVELS.some(x=>x.id===el.value)?el.value as LiteracyLevel:"";break
+        case "backstory":s.backstory=clean(el.value,4000);break
+        case "connections":s.connections=clean(el.value,600);break
+        case "goal":s.goal=clean(el.value,600);break
         case "notes":s.notes=clean(el.value,2500);break
         case "gmNotes":s.gmNotes=clean(el.value,2500);break
         case "level":{
@@ -987,7 +1090,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
       el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
-    if(el?.hasAttribute("data-origin-choice"))renderOriginPreview()
+    if(el?.hasAttribute("data-origin-choice")||
+       el?.hasAttribute("data-origin-education")||
+       el?.hasAttribute("data-origin-literacy"))renderOriginPreview()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -995,7 +1100,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
-    if(el?.hasAttribute("data-origin-choice"))renderOriginPreview()
+    if(el?.hasAttribute("data-origin-choice")||
+       el?.hasAttribute("data-origin-education")||
+       el?.hasAttribute("data-origin-literacy"))renderOriginPreview()
     if(el?.hasAttribute("data-roll-affinity")||el?.hasAttribute("data-roll-affinity-enabled"))refreshAffinityPreview()
     if(el?.hasAttribute("data-opposition-enabled")||el?.hasAttribute("data-opposition-target")||
        el?.hasAttribute("data-opposition-kind")||el?.hasAttribute("data-opposition-mode")||
@@ -1107,9 +1214,87 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
+    if(button.dataset.hubNav){
+      const id=button.dataset.hubNav
+      const selected=host.querySelector<HTMLDetailsElement>(`[data-hub="${id}"]`)
+      if(!selected)return
+      host.querySelectorAll<HTMLDetailsElement>(".atelier-hub-section[data-hub]").forEach(el=>{
+        el.open=el===selected
+      })
+      host.querySelectorAll<HTMLButtonElement>("[data-hub-nav]").forEach(el=>
+        el.setAttribute("aria-current",String(el===button)))
+      selected.scrollIntoView({block:"start",behavior:"smooth"})
+      return
+    }
+    if(button.hasAttribute("data-media-close")){
+      q<HTMLDialogElement>("[data-media-lightbox]").close();return
+    }
+    if(button.dataset.mediaView){
+      const item=current().externalMedia.find(v=>v.id===button.dataset.mediaView)
+      if(!item)return
+      q<HTMLImageElement>("[data-media-large]").src=item.url
+      q<HTMLImageElement>("[data-media-large]").alt=item.title
+      q<HTMLElement>("[data-media-caption]").textContent=item.title+" · "+item.author+" · "+item.license
+      q<HTMLDialogElement>("[data-media-lightbox]").showModal()
+      return
+    }
+    if(button.dataset.mediaRemove){
+      const sheet=current(),item=sheet.externalMedia.find(v=>v.id===button.dataset.mediaRemove)
+      if(!item||!window.confirm("Retirer le lien de l'image « "+item.title+" » ?"))return
+      sheet.externalMedia=sheet.externalMedia.filter(v=>v.id!==item.id)
+      renderMedia();persist();message("Lien d'image retiré de la fiche.");return
+    }
+    if(button.hasAttribute("data-media-add")){
+      const sheet=current()
+      if(sheet.externalMedia.length>=30){message("La galerie contient déjà 30 illustrations.");return}
+      const row=validatedArtwork({
+        url:q<HTMLInputElement>("[data-media-url]").value,
+        source:q<HTMLInputElement>("[data-media-source]").value,
+        title:q<HTMLInputElement>("[data-media-title]").value,
+        author:q<HTMLInputElement>("[data-media-author]").value,
+        license:q<HTMLInputElement>("[data-media-license]").value,
+        rights:q<HTMLSelectElement>("[data-media-rights]").value,
+        format:q<HTMLSelectElement>("[data-media-format]").value
+      })
+      if(!row){message("Image refusée : vérifier les deux liens HTTPS, la description, l'auteur, la licence et le droit d'usage déclaré.");return}
+      sheet.externalMedia.push(row)
+      for(const key of ["url","source","title","author","license"])
+        q<HTMLInputElement>(`[data-media-${key}]`).value=""
+      q<HTMLSelectElement>("[data-media-rights]").value=""
+      renderMedia();persist()
+      message("Image distante liée localement à la fiche, sans copie sur GitHub.");return
+    }
+    if(button.hasAttribute("data-power-cast-action")){
+      const sheet=current(),power=sheet.powers.find(x=>x.id===q<HTMLSelectElement>("[data-power-cast]").value)
+      if(!power||!power.approvedByGM){message("Choisir une capacité enregistrée et validée.");return}
+      const target=clean(q<HTMLInputElement>("[data-power-target]").value.trim(),150)
+      if(target.length<3){message("Décrire la cible ou l'intention de cette capacité.");return}
+      if(sheet.level<divinePowerMinimumLevel(power.grade)){
+        message("Cette capacité exige un niveau plus élevé.");return
+      }
+      if(power.grade==="divin"&&sheet.kind==="pj"&&(!sheet.ascensionAuthorized||sheet.divineLimit<sheet.level)){
+        message("Épreuve divine du PJ non validée.");return
+      }
+      if(sheet.mana<power.manaCost){message("Mana insuffisant pour cette capacité : "+sheet.mana+"/"+power.manaCost+".");return}
+      if(!window.confirm("Préparer « "+power.name+" » ? "+
+        power.manaCost+" mana seront retirés et l'action consignée. La réussite reste à résoudre au dé / par le MJ."))return
+      sheet.mana-=power.manaCost
+      sheet.powerHistory.push({id:uniqueId(),name:power.name,domain:power.domain,
+        manaCost:power.manaCost,target,at:new Date().toLocaleString("fr-CA")})
+      sheet.powerHistory=sheet.powerHistory.slice(-80)
+      q<HTMLInputElement>('[data-field="mana"]').value=String(sheet.mana)
+      q<HTMLInputElement>("[data-power-target]").value=""
+      renderPowerHistory();renderAI();persist()
+      message("Action consignée : "+power.name+", "+power.manaCost+" mana. Résoudre séparément les effets et les résistances.");return
+    }
     if(button.hasAttribute("data-origin-clear")){
       q<HTMLInputElement>("[data-origin-name]").value=""
       for(const step of ORIGIN_STEPS)q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value=""
+      q<HTMLSelectElement>("[data-origin-education]").value=""
+      q<HTMLSelectElement>("[data-origin-literacy]").value=""
+      q<HTMLTextAreaElement>("[data-origin-story]").value=""
+      q<HTMLInputElement>("[data-origin-connections]").value=""
+      q<HTMLInputElement>("[data-origin-goal]").value=""
       renderOriginPreview();message("Parcours de vie vidé, sans changement de fiche.");return
     }
     if(button.hasAttribute("data-origin-build")){
@@ -1117,13 +1302,23 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       const name=clean(q<HTMLInputElement>("[data-origin-name]").value.trim(),90)
       if(!name){message("Donner d'abord un nom au personnage.");return}
       let origin
-      try{origin=buildOrigin(ORIGIN_STEPS.map(step=>q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value))}
+      try{
+        origin=buildEducationProfile(
+          buildOrigin(ORIGIN_STEPS.map(step=>q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value)),
+          q<HTMLSelectElement>("[data-origin-education]").value as EducationId,
+          q<HTMLSelectElement>("[data-origin-literacy]").value as LiteracyLevel
+        )
+      }
       catch{message("Il faut répondre aux quatre questions du parcours de vie.");return}
       const sheet=fresh("pj")
       sheet.name=name;sheet.level=sheet.highestLevel=origin.level
       sheet.stats=origin.stats
       sheet.masteries=origin.masteries
       sheet.lifeSteps=origin.lifeSteps;sheet.lifeSummary=origin.summary
+      sheet.education=origin.education;sheet.literacy=origin.literacy
+      sheet.backstory=clean(q<HTMLTextAreaElement>("[data-origin-story]").value,4000)
+      sheet.connections=clean(q<HTMLInputElement>("[data-origin-connections]").value,600)
+      sheet.goal=clean(q<HTMLInputElement>("[data-origin-goal]").value,600)
       sheet.profession=origin.profession;sheet.vocation=origin.profession
       sheet.pv=sheet.pvMax=origin.pvMax
       sheet.mana=sheet.manaMax=origin.manaMax
@@ -1136,6 +1331,11 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       q<HTMLDetailsElement>('[data-hub="origines"]').open=false
       q<HTMLInputElement>("[data-origin-name]").value=""
       for(const step of ORIGIN_STEPS)q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value=""
+      q<HTMLSelectElement>("[data-origin-education]").value=""
+      q<HTMLSelectElement>("[data-origin-literacy]").value=""
+      q<HTMLTextAreaElement>("[data-origin-story]").value=""
+      q<HTMLInputElement>("[data-origin-connections]").value=""
+      q<HTMLInputElement>("[data-origin-goal]").value=""
       renderOriginPreview()
       message("Aventurier niveau 5 créé sans remplacer les autres fiches. "+sheet.name+
         " commence avec "+sheet.pvMax+" PV et "+sheet.xp+" XP de parcours initial.")
@@ -1200,7 +1400,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       state.mode=button.dataset.mode as Mode
       q<HTMLButtonElement>("[data-opposition-apply]").hidden=!pendingImpact || state.mode==="pj"
       q<HTMLButtonElement>("[data-opposition-counter]").hidden=!pendingCounter || state.mode==="pj"
-      refreshMode();renderAffinities();persist();return
+      refreshMode();renderAffinities();renderMedia();persist();return
     }
     if(button.hasAttribute("data-opposition-counter")){
       if(state.mode==="pj"){message("Le MJ doit valider les ripostes des autres fiches.");return}

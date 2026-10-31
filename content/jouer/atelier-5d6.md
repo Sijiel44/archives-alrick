@@ -13,6 +13,12 @@ tags: [5d6, des, personnage, mj, pnj, creatures, atelier]
 
 # Atelier de jeu 5d6
 
+> **Nouvelle ergonomie :** des boutons de navigation permettent de passer directement à la création, à la fiche et aux dés, aux capacités, à l'inventaire, à la galerie et aux missions. Le questionnaire propose des familles d'agriculteurs, de marins, d'artistes et d'autres milieux, puis la scolarité, le niveau de lecture et une histoire personnelle. Les **liens d'images externes HTTPS** peuvent être présentés en vignette, portrait, paysage ou bannière avec auteur, source et droits ; la galerie est **locale** et non automatiquement publiée. Les pouvoirs permettent désormais de **confirmer une dépense de mana et enregistrer un usage**, sans décider automatiquement de sa réussite.
+
+> **Tables partagées en direct :** voir l'[[jouer/architecture-tables-multijoueur|architecture envisagée]]. Le site actuel n'a **pas encore de comptes, de salles synchronisées ni de sécurité serveur des rôles**.
+
+
+
 > **Nouveau : création d'aventuriers par l'histoire personnelle.** Le [[jouer/parcours-de-vie-affinites|parcours des quatre premières périodes de vie]] propose des questions sur la famille (marchands, guerriers, nobles…), l'éducation, l'épreuve de jeunesse et la vocation. Il crée **une nouvelle fiche niveau 5**, automatiquement dotée de 36 points de caractéristiques investis au total, 8 maîtrises, 36 PV et de son récit. Le même hub repliable réunit désormais la fiche, le lancer des 5d6, les affinités validées, les capacités conditionnelles, l'inventaire et les missions. La création libre et les anciennes fiches sont conservées.
 
 > Les affinités et capacités spéciales sont des **règles expérimentales** : le MJ local documente leur origine et leurs limites. Une affinité utilisée pour un effet magique compatible peut ajouter **2 dégâts par rang** à l'impact seulement, **pas** au jet de précision, et aucun pouvoir divin ou Cercle n'est accordé automatiquement.
