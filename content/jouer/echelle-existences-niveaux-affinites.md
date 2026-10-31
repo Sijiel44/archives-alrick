@@ -65,7 +65,7 @@ Les niveaux **21–25** ne sont **pas cinq grades de divinité officiellement in
 
 - **Aucune espèce ne reçoit des niveaux gratuits pour son âge ou son sang.** Les longues vies donnent néanmoins **davantage de possibilités** d'apprendre, d'échouer, de transmettre, de répéter, de voyager et de devenir maître. L'expérience réelle — et ses interruptions — prévaut.
 - **Humains, gobelins et autres peuples à vie courte :** beaucoup d'adultes sans formation particulière se situent vers **3–4** ; dépasser 8–10 exige un parcours moins fréquent.
-- **Elf es, nains et autres peuples à longue vie :** leurs jeunes peuvent également être 2–5 ; avec les décennies ou siècles de pratique, rencontrer des anciens **8–14**, voire davantage, devient plausible, mais ni universel ni automatique.
+- **Elfes, nains et autres peuples à longue vie :** leurs jeunes peuvent également être 2–5 ; avec les décennies ou siècles de pratique, rencontrer des anciens **8–14**, voire davantage, devient plausible, mais ni universel ni automatique.
 - **Orques :** la piste d'une longévité pouvant approcher **150–200 ans** est **proposée par le créateur et à vérifier dans le canon biologique** avant d'en faire une règle d'espèce. Des maîtres orques de haut niveau doivent néanmoins être possibles.
 - **Magie, métier, politique, art et soin comptent autant que guerre :** une personne peut être niveau 12 sans être capable de vaincre une milice. Le niveau exprime l'accomplissement général et les capacités concrètes de sa voie, non la seule violence.
 
