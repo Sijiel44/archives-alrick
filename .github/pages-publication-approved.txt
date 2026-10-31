@@ -190,3 +190,14 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Le courant des Lanternes d'Orin reste un PROJET, sans culte officiellement fondé.
 # Le voyage d'Orinor et la tournée des villes n'ont pas commencé à la fin de CB44.
 # Vérifier CI, absence de liens cassés, visas MJ, validité des SVG et publication Pages.
+
+# Lot 14 — 14 PNJ proposés, 14 quêtes nouvelles et deux campagnes itinérantes (30 octobre 2026)
+# Aucun nouveau code : 263 fiches codées approuvées, compteur inchangé.
+# Sept compléments de rencontres non codés, deux PNJ et deux quêtes par Grande Cité.
+# Total des carnets 50 PNJ précréés (36 + 14), 35 quêtes (21 + 14), TOUS NON JOUÉS.
+# "Les Registres des Sept Cités" = enquête / documents, aucun crime devenu canon.
+# "La Veille des Sept Cités" = une Faille locale possible, imprévisible, sans Déchéance obligatoire.
+# 14 idées de villages dans un cahier de conception : aucune localisation ni existence canonique nouvelle.
+# Les fichiers de villes GEO-007 à GEO-013 ne sont que COMPLÉTÉS, jamais remplacés ; date de tournée Orin non avancée.
+# Maintenir les liens de source, les limitations des guildes et du système 5d6.
+# Contrôler avant fusion CI, liens, avertissements des propositions, Pages et sauvegarde.

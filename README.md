@@ -233,3 +233,8 @@ Le [[lieux/sept-grandes-cites-illustrees|portail de découverte des Sept Cités]
 ## Quartiers jouables et 21 quêtes des Sept Cités
 
 Les [[lieux/sept-cites-carnets-de-terrain|carnets de terrain et sept plans]] complètent les panoramas des Sept Cités avec **42 adresses fictives de jeu**, **36 profils préparatoires** et **21 petites quêtes sans issue imposée**. L'[[jouer/quetes-sept-cites|index des quêtes]] facilite l'usage PJ/MJ. Les sept nouveaux SVG décrivent des **liens symboliques entre secteurs**, sans carte à l'échelle. Tous les nouveaux bâtiments, écoles, guildes et PNJ sont **des propositions non jouées**, non une extension rétroactive des scènes de la campagne fondatrice. Total : **263 fiches codées, inchangé**.
+
+
+## Sept Cités — enquête itinérante, Faille et futurs villages
+
+Les [[jouer/quetes-sept-cites|35 quêtes locales]] et **50 profils de PNJ préparatoires** dessinent des aventures indépendantes. Deux squelettes de campagne couvrent plusieurs villes : [[jouer/les-registres-des-sept-cites|une enquête]] et [[jouer/la-veille-des-sept-cites|une opération de secours après une Faille]]. Un [[lieux/villages-sept-cites-cahier-creation|cahier de 14 villages candidats]] prépare leur création future, sans géographie inventée. **Aucun événement nouveau de l'Odyssée d'Orin ; total inchangé de 263 fiches codées.**

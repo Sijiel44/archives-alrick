@@ -139,3 +139,8 @@ Pour un groupe externe, les quêtes sont des **amorces facultatives** et leurs r
 
 - [[GEO-007|Skalor — fiche canonique et compléments urbains]] ; [[lieux/sept-grandes-cites-illustrees|portail illustré des Sept Cités]].
 - *Atlas V02 v1.7–v1.8*, descriptions des Montagnes de l'Aube ; les **noms propres ajoutés dans cette fiche sont proposés** et ne réécrivent pas les sources.
+
+
+## Deux nouveaux habitants et deux quêtes pour Skalor
+
+[[lieux/skalor-rencontres-et-quetes-2|Nouvelles rencontres et missions de Skalor]] complète les six adresses et les premiers PNJ de ce carnet avec **deux personnes précréées** et **deux histoires indépendantes non jouées**. Les indices peuvent servir à [[jouer/les-registres-des-sept-cites|une enquête à travers les villes]] ou à [[jouer/la-veille-des-sept-cites|une aventure de secours après une Faille]], sans forcer une rencontre d'Orin.

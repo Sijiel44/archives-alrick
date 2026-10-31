@@ -718,3 +718,12 @@ La notice `docs/REGISTRE_SIX_VOLUMES_HISTORIQUES_CB42_2026-10-30.md` donne les e
 **Périmètre :** prolongement de l'Atlas après la PR42, **263 codes approuvés inchangés**. Sept plans **SVG relationnels** (sans nord, échelle ni localisation des points), sept carnets de terrain non codés, **42 établissements proposés**, **36 profils de PNJ préparatoires** (dont les six déjà décrits à Dornaël), **21 quêtes locales indépendantes** et un index de missions pour les autres MJ. Les sept villes codées GEO-007 à GEO-013 conservent leurs faits historiques ; les carnets sont explicitement du **matériel de scénario non joué**.
 
 Les écoles et guildes mentionnées dans ce lot ne sont **pas des institutions officiellement fondées ni des propriétés transférées**. Le possible culte des Lanternes d'Orin à Dornaël conserve son dossier optionnel à spoilers. La prochaine tournée d'Orin est toujours à venir **après Orinor** et la scène CB44 CCCLXXIII reste ouverte auprès d'Elyan.
+
+
+## Lot 14 — Deux PNJ et deux quêtes par cité ; aventures itinérantes
+
+**Réconciliation éditoriale :** sur la base des Sept Grandes Cités déjà documentées, **14 nouveaux PNJ préparatoires** et **14 affaires supplémentaires** sont décrits en sept compléments non codés. Leur total de préparation atteint **50 PNJ** (36 + 14) et **35 quêtes** (21 + 14), sans qu'un seul de ces nouveaux profils devienne une personne canoniquement rencontrée par Orin.
+
+Deux squelettes indépendants sont ajoutés : **Les Registres des Sept Cités**, enquête de provenance et de contrats avec plusieurs explications possibles, et **La Veille des Sept Cités**, secours après **une** Faille imprévisible sans cause unique imposée ni association automatique à la Déchéance. La **Guilde des Aventuriers** conserve son déploiement progressif ; aucune souveraineté supplémentaire ne lui est donnée.
+
+Un [[lieux/villages-sept-cites-cahier-creation|cahier de 14 villages candidats]] ébauche une création ultérieure, **sans lieux fondés, coordonnées, voies ou distances inventées**. Les sept fiches urbaines sont seulement complétées d'orientation. **263 fiches codées approuvées, nombre inchangé.** Aucun événement n'est ajouté après CB44 CCCLXXIII, et la future tournée des Sept Cités reste postérieure au voyage vers Orinor.

@@ -102,3 +102,8 @@ L'encyclopédie présente [[lieux/GEO-025|la Ligue des Trois-Fleuves]], [[lieux/
 ## Les villes sont désormais illustrées
 
 La [[lieux/sept-grandes-cites-illustrees|galerie des Sept Grandes Cités]] propose un panorama et trois vignettes par ville, toutes illustrations originales hébergées par le site. **Dornaël** possède aussi cinq dossiers thématiques ; les six autres grandes villes ont des quartiers et des amorces pour des MJ indépendants. Les propositions non jouées (notamment les Lanternes d'Orin) conservent leurs limites et ne modifient pas le déroulement de l'Odyssée.
+
+
+## Aventures indépendantes à travers les Sept Cités
+
+Les [[jouer/les-registres-des-sept-cites|Registres]] et la [[jouer/la-veille-des-sept-cites|Veille des Sept Cités]] offrent deux campagnes différentes, enquête ou secours de Faille, avec **35 petites quêtes et 50 PNJ préparatoires**. Le [[lieux/villages-sept-cites-cahier-creation|cahier des villages]] propose quatorze pistes non cartographiées. Ces scénarios ne remplacent aucun fait joué de l'Odyssée ; le compteur de fiches codées reste **263**.

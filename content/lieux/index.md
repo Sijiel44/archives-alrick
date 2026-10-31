@@ -102,3 +102,8 @@ Le registre V02 disposait de codes sans dossier web propre : [[lieux/GEO-025|**L
 ## Plans, bâtiments et habitants : nouveaux carnets des Sept Cités
 
 [[lieux/sept-cites-carnets-de-terrain|Les sept plans schématiques et carnets de terrain]] présentent **42 auberges, écoles, guildes, ateliers et lieux de rencontre proposés**, **36 profils de personnages préparatoires** et **21 petites quêtes**. Les villes existantes conservent leur histoire : **les nouvelles adresses ne sont ni des constructions canoniquement achevées ni des rencontres déjà vécues par Orin**. Voir également [[jouer/quetes-sept-cites|le catalogue des missions locales]].
+
+
+## Nouvelles aventures interurbaines et villages à venir
+
+[[jouer/les-registres-des-sept-cites|Une enquête de registres]] et [[jouer/la-veille-des-sept-cites|une mission face à une Faille imprévisible]] font voyager les PJ entre les compétences des Sept Cités, sans routes ni temps de trajet inventés. Les **14 nouveaux profils proposés** et **14 nouvelles quêtes** portent les carnets à **50 PNJ préparatoires et 35 quêtes**. Le [[lieux/villages-sept-cites-cahier-creation|cahier des 14 villages candidats]] prépare la prochaine étape sans déclarer de nouveaux bourgs canoniques.

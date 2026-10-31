@@ -89,3 +89,8 @@ Le [[jouer/decheance-systeme|mini-système de Déchéance 2d6]] demeure un modul
 ## 21 courtes missions dans les Sept Grandes Cités
 
 [[jouer/quetes-sept-cites|Catalogue des 21 petites quêtes]] : eau et tourisme à Dornaël, mémoire à Aldhammar, apprentis bâtisseurs à Skalor, cohabitation à Nacrecombe, dangers des forges à Forgeciel, cols à Keldrun et délibérations à Torngard. Les [[lieux/sept-cites-carnets-de-terrain|carnets des sept villes]] fournissent 42 adresses et 36 PNJ facultatifs. **Tous ces épisodes sont non joués et ne changent pas la continuité d'Orin.**
+
+
+## Traverser les Sept Cités : deux aventures non jouées
+
+[[jouer/les-registres-des-sept-cites|Les Registres des Sept Cités]] proposent une enquête sur documents et contrats ; [[jouer/la-veille-des-sept-cites|La Veille des Sept Cités]] une crise de Faille et des secours spécialisés. Le [[jouer/quetes-sept-cites|catalogue des 35 quêtes locales]] est désormais enrichi par **14 PNJ précréés supplémentaires**, soit **50 profils facultatifs** dans les sept villes, sans aucun rôle rétroactif dans l'Odyssée.
