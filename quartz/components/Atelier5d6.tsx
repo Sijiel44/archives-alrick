@@ -393,6 +393,14 @@ export const Atelier5d6: QuartzComponent = (props) => {
         <label>Origine et limites de l'affinité<input data-affinity-witness type="text" maxLength={300} placeholder="Formation, nature, bénédiction, limites…"/></label>
         <button type="button" data-affinity-grant>MJ : attribuer ou modifier cette affinité</button>
         <p class="atelier-hint">Repères : affinité 1 aux niveaux 1–8, 2 aux niveaux 9–12, 3 aux niveaux 13–16, 4 aux niveaux 17–20 et 5 aux niveaux 21–25.</p>
+        <h3>Activer une capacité en jeu</h3>
+        <p class="atelier-hint">Le registre permet de dépenser le mana et de noter l'utilisation d'un sort ou d'une capacité : les dégâts, conditions et oppositions demeurent soumis au MJ et aux jets 5d6. L'activation ne réussit pas automatiquement.</p>
+        <div class="atelier-fields">
+          <label>Capacité connue<select data-power-cast><option value="">Aucune capacité</option></select></label>
+          <label>Intention / cible<input data-power-target type="text" maxLength={150} placeholder="Sur quoi ou qui agit le personnage ?"/></label>
+        </div>
+        <button type="button" data-power-cast-action>Préparer / dépenser le mana et consigner l'action</button>
+        <ol data-power-history class="atelier-log"><li>Aucune utilisation enregistrée.</li></ol>
         <h3>Capacités individuelles approuvées</h3>
         <ul data-power-list class="atelier-inventory-list"><li>Aucune capacité spéciale enregistrée.</li></ul>
         <div class="atelier-fields">
@@ -438,6 +446,49 @@ export const Atelier5d6: QuartzComponent = (props) => {
       </div>
       <p class="atelier-hint">Pour un transfert, sélectionner « Transférer » dans la liste d'inventaire puis le personnage destinataire. Pas de synchronisation entre joueurs distants.</p>
     </section>
+    </details>
+    <details class="atelier-hub-section" data-hub="galerie">
+      <summary>🖼️ Galerie illustrée — images hébergées à l'extérieur</summary>
+      <section class="atelier-panel">
+        <h3>Illustrations de la fiche active</h3>
+        <p class="atelier-hint">L'image reste sur le serveur d'origine. Le lien source, l'auteur et le droit d'utilisation doivent être indiqués ; un crédit ne remplace pas l'autorisation. Certaines plateformes empêchent l'affichage externe.</p>
+        <div class="atelier-fields">
+          <label>Adresse directe de l'image HTTPS<input data-media-url type="url" maxLength={1600} placeholder="https://exemple.org/image.webp"/></label>
+          <label>Page source HTTPS<input data-media-source type="url" maxLength={1600} placeholder="https://exemple.org/oeuvre"/></label>
+          <label>Titre / description alternative<input data-media-title type="text" maxLength={160} placeholder="Personnage sur un pont, lumière du matin"/></label>
+          <label>Auteur ou organisme<input data-media-author type="text" maxLength={140} placeholder="Nom du créateur"/></label>
+          <label>Format<select data-media-format>
+            <option value="square">Carré — bibliothèque</option>
+            <option value="portrait">Portrait — fiche de personnage</option>
+            <option value="landscape">Paysage — illustration</option>
+            <option value="banner">Bannière — panoramique</option>
+          </select></label>
+          <label>Droits déclarés<select data-media-rights>
+            <option value="">Choisir les droits vérifiés</option>
+            <option value="own">Création personnelle</option>
+            <option value="open">Licence ouverte vérifiée</option>
+            <option value="public">Domaine public vérifié</option>
+            <option value="permission">Autorisation explicite de l'auteur</option>
+          </select></label>
+        </div>
+        <label class="atelier-wide">Licence / autorisation et ses conditions<input data-media-license type="text" maxLength={240} placeholder="Ex. : CC BY 4.0, nom du créateur et lien de licence"/></label>
+        <button type="button" data-media-add>Ajouter ce lien d'image à la fiche locale</button>
+        <p class="atelier-hint">Un clic agrandit l'image ; la source s'affiche sous chaque illustration. Les liens sont enregistrés dans le JSON de la fiche, pas publiés automatiquement dans les Archives.</p>
+        <div data-media-gallery class="atelier-media-grid" role="list"></div>
+      </section>
+    </details>
+    <dialog data-media-lightbox class="atelier-media-lightbox" aria-label="Agrandissement de l'image">
+      <button type="button" data-media-close>Fermer l'image ×</button>
+      <img data-media-large alt="Image agrandie" referrerPolicy="no-referrer"/>
+      <p data-media-caption></p>
+    </dialog>
+    <details class="atelier-hub-section" data-hub="tables">
+      <summary>👥 Tables en ligne — préparation de la future partie synchronisée</summary>
+      <div class="atelier-hub-inner">
+        <p><strong>Cette version fonctionne localement uniquement.</strong> Elle ne crée pas de comptes ni de salons partagés. Pour les futures tables, nous prévoyons des pseudonymes, avatars facultatifs, invitations, rôles validés par serveur et dés synchronisés.</p>
+        <p>Le MJ devra pouvoir consulter les fiches autorisées, les jets et le journal de séance. Un mode IA facultatif pourra recevoir un contexte explicitement sélectionné.</p>
+        <a href="./architecture-tables-multijoueur">Lire le plan du système de tables et de sessions</a>
+      </div>
     </details>
     <details class="atelier-hub-section" data-hub="compagnies">
       <summary>🧭 Compagnies, missions et récompenses</summary>
@@ -549,6 +600,22 @@ Atelier5d6.css = `
 .atelier-hub-section[open]>summary{border-bottom:1px solid rgba(187,213,225,.18);background:rgba(220,184,119,.05)}
 .atelier-hub-inner{padding:.7rem}
 .atelier-hub-section>.atelier-panel{margin:.7rem}
+.atelier-quicknav{display:flex;flex-wrap:wrap;gap:.42rem;margin:.75rem 0;padding:.55rem;background:rgba(12,32,43,.75);border:1px solid rgba(220,184,119,.25);border-radius:10px}
+.atelier .atelier-quicknav button{flex:1 1 138px;padding:.6rem;border-radius:7px;background:#183443;font-size:.87rem}
+.atelier .atelier-quicknav button[aria-current="true"]{background:#6b5533;border-color:#e5bd7d}
+.atelier-hub-section{scroll-margin-top:4rem}
+.atelier-media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;padding:.8rem 0}
+.atelier-media-card{display:flex;flex-direction:column;gap:.3rem;border:1px solid #455d6a;border-radius:9px;padding:.45rem;background:#102938;min-width:0}
+.atelier-media-card[data-format="banner"]{grid-column:span 2}
+.atelier-media-card img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:7px}
+.atelier-media-card[data-format="portrait"] img{aspect-ratio:3/4}
+.atelier-media-card[data-format="landscape"] img{aspect-ratio:16/9}
+.atelier-media-card[data-format="banner"] img{aspect-ratio:21/9}
+.atelier-media-card figcaption{font-size:.76rem;overflow-wrap:anywhere}
+.atelier-media-card a{font-size:.74rem}
+.atelier .atelier-media-lightbox{width:min(95vw,900px);max-height:95vh;padding:1rem;border:1px solid #ccab73;border-radius:12px;background:#10242d;color:#f2ece2}
+.atelier-media-lightbox::backdrop{background:rgba(0,0,0,.84)}
+.atelier-media-lightbox img{max-width:100%;max-height:72vh;object-fit:contain;display:block;margin:1rem auto}
 .atelier [hidden]{display:none!important}
 @media(max-width:850px){.atelier-grid{grid-template-columns:1fr}}
 @media(max-width:480px){.atelier-fields{grid-template-columns:1fr}.atelier{padding:.7rem}.atelier-die{width:42px;height:42px}}
