@@ -1,4 +1,6 @@
 import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,innateProtection,equipmentProtection} from "./atelier5d6-opposition"
+import {generateCreatureProfile} from "./atelier5d6-bestiary"
+import type {CreatureArchetype} from "./atelier5d6-bestiary"
 import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
@@ -643,7 +645,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
             el.value=String(s.level)
             message("XP insuffisants pour atteindre ce niveau. Le MJ peut valider une exception narrative.");return
           }
-          if(next>20&&(!s.ascensionAuthorized||next>s.divineLimit||s.ascensionWitness.trim().length<15)){
+          if(next>20&&s.kind==="pj"&&(!s.ascensionAuthorized||next>s.divineLimit||s.ascensionWitness.trim().length<15)){
             el.value=String(s.level)
             message("Ascension divine refusée : chaque palier exige une autorisation du MJ et un témoignage de l'épreuve (15 caractères minimum).")
             return
@@ -1145,6 +1147,30 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(!window.confirm("Supprimer cette fiche locale ? Exporte d'abord le JSON si nécessaire."))return
       state.sheets=state.sheets.filter(s=>s.id!==state.activeId);state.activeId=state.sheets[0].id
       render();persist();message("Fiche supprimée.");return
+    }
+    if(button.hasAttribute("data-bestiary-create")){
+      if(state.mode==="pj"){message("Génération de créatures réservée au MJ.");return}
+      if(state.sheets.length>=60){message("Répertoire de fiches plein (60 maximum).");return}
+      const lvl=clamp(q<HTMLInputElement>("[data-bestiary-level]").value,1,25,1)
+      const type=q<HTMLSelectElement>("[data-bestiary-archetype]").value as CreatureArchetype
+      const result=generateCreatureProfile(lvl,type)
+      const sheet=fresh("creature")
+      const names:Record<CreatureArchetype,string>={faune:"Faune",predateur:"Prédateur",gardien:"Gardien",mystique:"Mystique",colosse:"Colosse"}
+      sheet.name="Prototype "+(names[type]??"Créature")+" · niveau "+lvl
+      sheet.profession="Profil de bestiaire libre — non canonique"
+      sheet.level=sheet.highestLevel=lvl
+      sheet.stats=result.stats
+      sheet.pv=sheet.pvMax=result.pvMax
+      sheet.mana=sheet.manaMax=result.manaMax
+      sheet.masteries[type==="mystique"?"magie":type==="predateur"?"arcs":"lames"]=result.mastery
+      sheet.equipmentGrades.physique=result.equipmentPhysical
+      sheet.equipmentGrades.magie=result.equipmentMagic
+      sheet.resistanceBonus.physique=result.resistancePhysical
+      sheet.resistanceBonus.magie=result.resistanceMagic
+      sheet.notes="Génération de test à partir d'un archétype générique. Ni espèce ni personnalité canonique. Le MJ personnalise habitat, comportement, faiblesses et objectifs."
+      state.sheets.push(sheet);state.activeId=sheet.id
+      render();persist()
+      message("Créature niveau "+lvl+" créée et enregistrée localement. Ajuster le profil avant la partie.");return
     }
     if(button.hasAttribute("data-add-template")){
       if(state.sheets.length>=60){message("Limite de 60 fiches.");return}
