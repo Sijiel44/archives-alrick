@@ -166,6 +166,25 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <label class="atelier-wide">Témoignage MJ de l'épreuve exceptionnelle (obligatoire)
             <textarea data-field="ascensionWitness" rows={2} maxLength={300} placeholder="Mentor, rituel, pacte, coût réel et conséquence du monde..."></textarea>
           </label>
+          <fieldset class="atelier-stats">
+            <legend>Bestiaire évolutif MJ — niveaux 1 à 25</legend>
+            <p class="atelier-hint">Créer une fiche de créature à partir d'un archétype générique. Sa vie, ses résistances innées, ses spécialisations et son éventuelle protection progressent automatiquement. Il ne s'agit ni d'une nouvelle espèce canonique, ni d'un pouvoir divin accordé par défaut.</p>
+            <div class="atelier-fields">
+              <label>Archétype
+                <select data-bestiary-archetype>
+                  <option value="faune">Faune — peu offensive</option>
+                  <option value="predateur">Prédateur — rapide</option>
+                  <option value="gardien">Gardien — blindé</option>
+                  <option value="mystique">Mystique — mana et défense magique</option>
+                  <option value="colosse">Colosse — endurance très élevée</option>
+                </select>
+              </label>
+              <label>Niveau de la créature (1–25)
+                <input type="number" data-bestiary-level min={1} max={25} step={1} value={1}/>
+              </label>
+            </div>
+            <button type="button" data-bestiary-create>MJ : générer une créature évolutive</button>
+          </fieldset>
           <div class="atelier-toolbar">
             <label>Profil de démonstration
               <select data-template>
