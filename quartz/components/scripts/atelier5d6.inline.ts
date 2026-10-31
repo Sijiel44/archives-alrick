@@ -549,7 +549,7 @@ RÈGLES EN TEST : 5d6 + caractéristique + compétence (0,1,2) + situation (-2,0
 Difficultés 15,18,21,24,27,30 ; critiques sur les 5 dés naturels :
 5 = échec critique exceptionnel, 6-7 = échec critique mineur, 27-29 = critique favorable possible, 30 = succès exceptionnel si l'action est réalisable.
 Base 12 : PV et mana d'essai, sans modifier les lois du Codex.
-Progression pilote : niveaux 1–25 (+6 points de caractéristique cumulés et +2 maîtrises par niveau). Le maximum reste 12 par caractéristique; le surplus demeure non investi. Au-delà de 20, autorisation exceptionnelle du MJ. Ressources +6/+12/+24 selon le palier, sans effet rétroactif sur le canon. Les maîtrises sont suivies mais ne remplacent pas encore les compétences +0/+1/+2 des jets. Voies libres, talents narratifs et effets conditionnels.
+Progression pilote : niveaux 1–25 (+6 crédits de caractéristiques et +2 maîtrises par niveau). Maximum 12 par caractéristique; excédents en réserve. Niveaux 21–25 : cinq épreuves approuvées par le MJ pour les héros. PV par niveau +6/+12/+24 puis +36 au niveau 25. Hauts niveaux : résistance naturelle et absorption innée, équipement gradé 0–5. La maîtrise augmente les dégâts, pas automatiquement les chances de toucher. Contact exceptionnel naturel 27–30 possible sans franchir la résistance : généralement 0 PV, parfois 1 PV maximal sur 30 si toutes les protections sont surmontées. Aucun effet mental ou magique imposé par simple contact. Les maîtrises sont suivies mais ne remplacent pas encore les compétences +0/+1/+2 des jets. Voies libres, talents narratifs et effets conditionnels.
 Après 3 échecs de même catégorie (magie, mêlée, tir ou négociation), proposer un incident narratif d12 facultatif ; un 5 naturel ne se cumule pas à l'incident.
 
 PERSONNAGE ACTIF : ${s.name} (${s.kind}), ${s.profession}.
@@ -566,7 +566,7 @@ Objets à effet narratif : ${s.items || "aucun"}.
 Inventaire (noms et quantités) : ${inventory || "aucun"}.
 Compagnie : ${group ? group.name+" (rang "+group.rank+"/12)" : "aucune"}.
 Certifications reconnues par la table : ${group?.certifications.join(", ") || "aucune"}.
-Niveaux 21–25 : ascension exceptionnelle approuvée par le MJ, sans capacités divines automatiques.
+Niveaux 21–25 : cinq épreuves d'ascension à valider par le MJ, sans capacités divines automatiques. Résistances : physique ${resistanceScore(s,"physique")} / magie ${resistanceScore(s,"magie")} / mental ${resistanceScore(s,"mental")} ; absorptions : ${effectiveProtection(s,"physique")} / ${effectiveProtection(s,"magie")} / ${effectiveProtection(s,"mental")}.
 Référence de la fiche : ${s.sourceRef || "adaptation sans source"} — ${s.sourceTitle || ""} (scores 5d6 non canoniques).
 Notes du personnage : ${s.notes || "aucune"}.
 
