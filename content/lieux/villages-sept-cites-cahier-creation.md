@@ -1,7 +1,7 @@
 ---
 publish: true
 title: "Villages voisins des Sept Cités — Cahier de création à valider"
-description: "Quatorze amorces de villages de proximité, sans placement géographique imposé ni fondation rétroactive."
+description: "Cahier des 14 villages proposés, désormais développés dans des fiches avec PNJ, quêtes, contrats et bestiaire, mais sans carte canonique."
 canon_statut: "proposition_non_jouee"
 etat_editorial: "valide"
 visibilite: "publique"
@@ -98,3 +98,9 @@ Les villages de montagne existants qui possèdent déjà une fiche doivent être
 Les deux campagnes itinérantes proposées peuvent utiliser ces villages comme escales **uniquement après validation de leur existence** : [[jouer/les-registres-des-sept-cites|Les Registres des Sept Cités]] et [[jouer/la-veille-des-sept-cites|La Veille des Sept Cités]].
 
 **État éditorial :** idées de villages à développer ultérieurement, **non encore fiches géographiques canoniques**.
+
+## Développement jouable de ce cahier
+
+Les **14 villages candidats** disposent désormais chacun de leur propre [[lieux/villages-sept-cites-portail|fiche complète de jeu]] : description des rues et usages, métiers, auberge proposée, **deux personnages**, **deux quêtes** et **un avis de guilde possible**. Tous demeurent des **idées de localités non confirmées dans le canon**, sans route ni temps de déplacement prouvé.
+
+**En chiffres pour ce dossier :** 28 nouveaux PNJ et 28 petites quêtes, plus 14 demandes facultatives de guilde. Les [[creatures/bestiaire-villages-sept-cites|sept créatures développées]] ne sont **pas des espèces attestées** des Montagnes de l'Aube. Trois [[jouer/aventures-guilde-villages-sept-cites|mini-aventures de guilde]] proposent action, secours et danger réel, sans guerre inventée ni Déchéance obligatoire.

@@ -727,3 +727,14 @@ Les écoles et guildes mentionnées dans ce lot ne sont **pas des institutions o
 Deux squelettes indépendants sont ajoutés : **Les Registres des Sept Cités**, enquête de provenance et de contrats avec plusieurs explications possibles, et **La Veille des Sept Cités**, secours après **une** Faille imprévisible sans cause unique imposée ni association automatique à la Déchéance. La **Guilde des Aventuriers** conserve son déploiement progressif ; aucune souveraineté supplémentaire ne lui est donnée.
 
 Un [[lieux/villages-sept-cites-cahier-creation|cahier de 14 villages candidats]] ébauche une création ultérieure, **sans lieux fondés, coordonnées, voies ou distances inventées**. Les sept fiches urbaines sont seulement complétées d'orientation. **263 fiches codées approuvées, nombre inchangé.** Aucun événement n'est ajouté après CB44 CCCLXXIII, et la future tournée des Sept Cités reste postérieure au voyage vers Orinor.
+
+
+## Lot 15 — Les 14 villages candidats deviennent jouables (30 octobre 2026)
+
+Développement des **14 noms proposés après PR44** : deux associés par identité culturelle/économique à chacune des Sept Grandes Cités ; **aucun emplacement, voie ou distance géographique canonique** ajouté. Chaque village a une fiche non codée avec **vie de village, métiers, auberge/lieu de rencontre, deux PNJ précréés, deux petites quêtes et un contrat d'aventuriers**. Bilan du lot : **28 PNJ proposés, 28 quêtes locales et 14 contrats de guilde**. Depuis les dossiers des sept villes : **78 profils de PNJ préparatoires** (50 + 28) et **63 quêtes locales** (35 + 28), plus **14 contrats supplémentaires** ; il ne s'agit pas de rencontres ou d'incidents joués par Orin.
+
+**Bestiaire MJ expérimental : sept fiches NON CANONIQUES** — Mâche-Rune, Chasses-Faim, Harpiste creuse, Garde-Cendre, Ver des Frontières (banque ancienne non publiée), Lamproie de nacre et Cerf des Brumes froides (nouveaux concepts). Écologie, traces, danger, tactiques et repli, mais **pas de PV officiels**. Lieux de présence éventuelle : **suggestions seulement**.
+
+La [[jouer/contrats-guilde-sept-cites-villages|guilde]] reçoit un tableau de 14 interventions proposées et trois [[jouer/aventures-guilde-villages-sept-cites|petites aventures]] d'action et de secours ; son **déploiement reste progressif**, les lettres A/B/C sont des **étiquettes de préparation MJ**, sans bureau officiel ouvert dans chaque village ni primes royales inventées.
+
+**Compteur de fiches codées approuvées INCHANGÉ : 263.** Les pages sont du matériel éditorial approuvé pour usage en jeu, et non de nouvelles fiches de lore validé. Les lieux historiques restent à rechercher dans le V02 et le registre avant de dessiner une carte. CB44 CCCLXXIII et le voyage futur vers Orinor/les Sept Cités demeurent inchangés.

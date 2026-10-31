@@ -238,3 +238,8 @@ Les [[lieux/sept-cites-carnets-de-terrain|carnets de terrain et sept plans]] com
 ## Sept Cités — enquête itinérante, Faille et futurs villages
 
 Les [[jouer/quetes-sept-cites|35 quêtes locales]] et **50 profils de PNJ préparatoires** dessinent des aventures indépendantes. Deux squelettes de campagne couvrent plusieurs villes : [[jouer/les-registres-des-sept-cites|une enquête]] et [[jouer/la-veille-des-sept-cites|une opération de secours après une Faille]]. Un [[lieux/villages-sept-cites-cahier-creation|cahier de 14 villages candidats]] prépare leur création future, sans géographie inventée. **Aucun événement nouveau de l'Odyssée d'Orin ; total inchangé de 263 fiches codées.**
+
+
+## Les villages vivent — Atlas rural et contrats de guilde
+
+Le [[lieux/villages-sept-cites-portail|portail de 14 villages candidats]] présente deux localités **proposées** autour de chacune des Sept Grandes Cités : **28 nouveaux PNJ**, **28 quêtes de village** et [[jouer/contrats-guilde-sept-cites-villages|14 contrats d'aventuriers]]. Trois [[jouer/aventures-guilde-villages-sept-cites|aventures de guilde]] développent l'escorte, le sauvetage aquatique et la crise industrielle. Le [[creatures/bestiaire-villages-sept-cites|bestiaire de sept monstres et animaux]] est expérimental et n'officialise aucune espèce. L'Atlas conserve **263 fiches codées**, sans nouvelles localités cartographiées ni événements inventés dans la campagne d'Orin.

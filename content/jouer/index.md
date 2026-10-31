@@ -94,3 +94,8 @@ Le [[jouer/decheance-systeme|mini-système de Déchéance 2d6]] demeure un modul
 ## Traverser les Sept Cités : deux aventures non jouées
 
 [[jouer/les-registres-des-sept-cites|Les Registres des Sept Cités]] proposent une enquête sur documents et contrats ; [[jouer/la-veille-des-sept-cites|La Veille des Sept Cités]] une crise de Faille et des secours spécialisés. Le [[jouer/quetes-sept-cites|catalogue des 35 quêtes locales]] est désormais enrichi par **14 PNJ précréés supplémentaires**, soit **50 profils facultatifs** dans les sept villes, sans aucun rôle rétroactif dans l'Odyssée.
+
+
+## Quatorze villages et les contrats de la guilde d'aventuriers
+
+Le [[lieux/villages-sept-cites-portail|portail des villages]] propose 14 localités candidates avec vie quotidienne, **28 PNJ**, **28 quêtes indépendantes** et [[jouer/contrats-guilde-sept-cites-villages|14 contrats d'aventuriers]] qui partent des Sept Grandes Cités vers les communautés. Trois [[jouer/aventures-guilde-villages-sept-cites|mini-aventures d'action et de secours]] montrent comment jouer une embuscade au col, une crise dans une forge ou un sauvetage sur un lac souterrain ; le [[creatures/bestiaire-villages-sept-cites|bestiaire optionnel]] n'est pas du lore déjà rencontré par Orin.

@@ -56,3 +56,8 @@ Revenir aux [[lieux/sept-cites-carnets-de-terrain|plans et lieux de rencontre]] 
 ## Deux campagnes itinérantes alternatives
 
 **[[jouer/les-registres-des-sept-cites|Les Registres des Sept Cités]]** organise une enquête de six à neuf séances. **[[jouer/la-veille-des-sept-cites|La Veille des Sept Cités]]** organise une mission de secours autour d'une Faille locale et imprévisible. Ces deux cadres sont indépendants, sans résultats déjà joués ni passage obligé par la Déchéance.
+
+
+## 28 quêtes rurales complémentaires
+
+Les **35 quêtes des villes** ci-dessus restent distinctes des [[jouer/quetes-villages-sept-cites|28 nouvelles quêtes des 14 villages candidats]]. Le total des petites quêtes civiles et rurales préparées passe ainsi à **63**, avec **14 contrats de guilde supplémentaires**, qui peuvent constituer des séances d'action indépendantes. L'[[jouer/aventures-guilde-villages-sept-cites|atelier de trois aventures]] fournit des déroulés plus complets.
