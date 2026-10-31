@@ -71,6 +71,14 @@ Les 5 dés ont **7 776 combinaisons**. Le jet naturel 5 reste un échec exceptio
 
 **Conclusion :** additionner systématiquement les maîtrises jusqu'à +12 ferait disparaître toute incertitude à difficulté 21–30 pour de nombreux héros. **Ne pas activer cette règle** sans revoir la granularité, les résistances adverses, les coûts des pouvoirs, la progression des créatures et les seuils des affrontements de très haut niveau. Une prouesse inconcevable reste inconcevable sans capacités ni conditions compatibles avec le lore.
 
+## Défense et dégâts : deuxième banc de test
+
+Le module `quartz/components/scripts/atelier5d6-opposition.ts` calcule des scores de résistance distincts : physique (meilleure des caractéristiques Physique et Agilité), magique (Esprit), mentale (meilleure d'Esprit et Présence), auxquels s'ajoutent entraînement défensif partiel, expérience et bonus MJ de 0–8. Les personnages des niveaux 21–24 obtiennent un supplément de défense de playtest ; la résistance finale est plafonnée à 45.
+
+Le jet doit atteindre le **maximum** de la difficulté ordinaire, de la résistance de cible et du seuil MJ. Aucun critique ne traverse une défense non franchie. Sur réussite offensive : `base d'impact + maîtrise (0–12) + palier de dégâts − protection`. Sur négociation/mental : **aucun PV automatique**. À au moins cinq points sous le seuil, une riposte est **possible mais jamais gratuite**, et requiert une action et son propre jet. Les dégâts sont appliqués aux PV uniquement sur confirmation MJ.
+
+Le banc `scripts/test-5d6-opposition.mjs` utilise les fonctions TypeScript réellement exécutées par l'Atelier, via esbuild ; il couvre également les 7 776 combinaisons des dés. Les chiffres sont des prototypes et n'attribuent ni immunité, ni pouvoir divin, ni Cercle magique.
+
 ## Plan de tests de table avant équilibrage final
 
 1. **Niveaux 1–4** : comparer un habitant (1, sans spécialité), un novice (3) et un spécialiste novice (5 + compétence) sur exploration, secours et conflit.
