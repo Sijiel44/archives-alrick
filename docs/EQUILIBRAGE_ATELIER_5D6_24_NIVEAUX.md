@@ -39,6 +39,23 @@ Les PV et le mana montent selon **+6 par niveau jusqu'au niveau 12**, **+12 des 
 
 **Migration :** la sauvegarde conserve le `highestLevel`, les réserves de PV/mana, portraits, dons, notes et les champs historiques. Lors d'une mise à jour de l'outil, les anciens niveaux n'attribuent pas automatiquement un « rappel » de PV ou mana : seul un **nouveau niveau** applique la nouvelle progression.
 
+## Expérience : paliers de plus en plus longs
+
+L'Atelier enregistre des **XP cumulés**, séparés des niveaux de groupe. Le seuil proposé pour accéder au niveau `n` est `5 × (n − 1)³`, sans plafond d'expérience fictif imposé au monde.
+
+| Niveau atteint | XP cumulés nécessaires |
+|---:|---:|
+| 2 | 5 |
+| 3 | 40 |
+| 5 | 320 |
+| 12 | 6 655 |
+| 20 | 34 295 |
+| 24 | 60 835 |
+
+Les missions réussies ou conclues par un repli responsable accordent, **à titre de playtest**, `10 × rang de mission` XP aux personnages joueurs actuellement membres de la compagnie. Un échec n'en accorde pas automatiquement. Le MJ peut corriger l'expérience en mode MJ ; la progression des niveaux 21 à 24 reste **conditionnée aux épreuves divines**, même avec assez d'XP.
+
+Ce barème est volontairement raide et doit être éprouvé en campagne longue : il peut nécessiter des gains plus élevés pour des arcs majeurs (pas pour les petites tâches répétitives), afin que le système récompense l'importance narrative plutôt que le « farming » de contrats.
+
 ## Vraies probabilités des 5d6 (énumération exhaustive)
 
 Les 5 dés ont **7 776 combinaisons**. Le jet naturel 5 reste un échec exceptionnel quels que soient les bonus. Le banc d'essai exécutable est `scripts/test-5d6-balance.mjs`, lancé par `npm test`.
