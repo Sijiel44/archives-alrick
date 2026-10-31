@@ -700,3 +700,14 @@ Trois **codes de lieu** GEO-025, GEO-027 et GEO-028 ont été créés à partir 
 Une nouvelle page de [[creatures/dragons-et-souverainetes|sociétés draconiques]], un [[jouer/antagonistes-sans-decheance|guide d'antagonistes non Déchus]], un [[jouer/aventure-pilote-les-registres-du-col|one-shot indépendant]] et un [[jouer/playtest-5d6-probabilites|rapport de probabilités exactes du 5d6]] sont publiés. Les exemples de jeu sont des **propositions non jouées**, la chronologie d'Orin reste inchangée.
 
 La notice `docs/REGISTRE_SIX_VOLUMES_HISTORIQUES_CB42_2026-10-30.md` donne les empreintes SHA-256 des six Word joints (majoritairement **après CB42**, et non la version canonique finale). Le ZIP des originaux est disponible dans la conversation mais **n'est pas poussé en binaire sur GitHub**. Le triage `docs/AUDIT_FICHES_A_RECONCILIER_CB42_CB44_2026-10-30.md` détaille le lot relu et les prochaines décisions ; **aucun audit exhaustif de 645 sujets n'est revendiqué**.
+
+
+## Atlas illustré des Sept Grandes Cités — complément des quartiers
+
+- **Nouveau code approuvé : GEO-013 Dornaël**, cité canonique des Premières Eaux, avec hydroéconomie et tradition communautaire attestées. Le compteur passe de **262 à 263 fiches codées uniques** après validation de cette publication.
+- **Cinq sous-fiches non codées** sur Dornaël : eau et ouvrages, métiers et runes, institutions, projet de Lanternes d'Orin (**spoilers, non joué**), profils de rencontres et missions (**tous proposés**).
+- **Six fiches codées existantes prolongées** sans effacement ni changement d'identité : Aldhammar GEO-011, Skalor GEO-007, Nacrecombe GEO-010, Forgeciel GEO-009, Keldrun GEO-012 et Torngard GEO-008. Chacune reçoit six quartiers proposés, des PNJ facultatifs et des missions non jouées.
+- **28 illustrations SVG originales hébergées dans le site** : une image principale et trois vignettes pour chacune des Sept Cités. Portail [[lieux/sept-grandes-cites-illustrees|illustré]] et styles CSS responsive créés. Aucune image Pinterest ou externe dont le droit de réutilisation est incertain n'est copiée.
+- Le format de galerie pourra être utilisé dans les portraits et les dossiers de personnage **après vérification des apparences et de la confidentialité**. Voir `docs/CHARTE_ILLUSTRATIONS_GALERIES_ALRICK.md`.
+
+**Statut :** les changements de géographie validés sont du lore d'univers ; les noms de quartiers ajoutés, fonctions nouvelles, six profils par ville et secte des Lanternes d'Orin sont clairement des **propositions non jouées**. La scène d'Elyan (CB44 CCCLXXIII) et le voyage d'Orinor à venir restent inchangés.

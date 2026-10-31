@@ -165,3 +165,16 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Relecture jaunes/rouges ciblée documentée : ne pas prétendre à une réconciliation exhaustive des 645 sujets.
 # Dernière scène CB44 avec Elyan conservée ; pas de nouveau contenu joué inventé.
 # Vérifier tests, métadonnées, 262 codes, pages publiques et absence de divulgation de spoilers avant publication.
+
+# Lot 11 — Atlas des Sept Cités : Dornaël et galeries, 30 octobre 2026
+# Nouveau code de lieu GEO-013 — Dornaël, Sept Cités. Compteur approuvé prévu : 263 (262 avant).
+# Dornaël : 1 grande fiche canonique avec distinctions explicites des projets, 5 sous-fiches non codées.
+# Un seul dossier optionnel à spoilers : dornael-lanternes-orin.md (unlisted, sans tags ni aliases) ; culte NON fondé.
+# Six fiches urbaines existantes complétées sans remplacement : GEO-007, 008, 009, 010, 011, 012.
+# Quartiers inventés = PROPOSITIONS ; PNJ préparatoires = NON JOUÉS ; missions = amorces et non aventures d'Orin.
+# 28 illustrations SVG originales dans quartz/static/images/atlas/ (7 panoramas + 21 vignettes).
+# CSS responsive et galerie carrée cliquable ; aucun Pinterest ou hotlink tiers non autorisé.
+# Portail illustré des Sept Cités et charte visuelle ; plus tard, portraits des puissances et Revenants après vérification.
+# Vérifier l'absence de faux détails de population, lieux, frontières, runes et culte déclaré factuel.
+# Aucun événement ajouté après CB44 CCCLXXIII ; la tournée après Orinor demeure FUTURE.
+# Contrôler CI, le compteur 263, le build, les URL des SVG et Pages après fusion.
