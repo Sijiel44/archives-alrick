@@ -10,6 +10,7 @@ const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms))
 const root=path.resolve("public"),tmp=await mkdtemp(path.join(tmpdir(),"m041-"))
 const downloads=path.join(tmp,"downloads");await mkdir(downloads)
 let server,chrome,ws,nextId=0,dialogs=0,checks=0
+const runtimeErrors=[]
 const pending=new Map()
 function cdp(method,params={}){
   return new Promise((resolve,reject)=>{
@@ -128,6 +129,9 @@ async function start(){
   await new Promise((resolve,reject)=>{ws.once("open",resolve);ws.once("error",reject)})
   ws.on("message",raw=>{
     const x=JSON.parse(raw.toString())
+    if(x.method==="Runtime.exceptionThrown"){
+      runtimeErrors.push(x.params?.exceptionDetails?.exception?.description||x.params?.exceptionDetails?.text||"Erreur JS")
+    }
     if(x.method==="Page.javascriptDialogOpening"){
       dialogs++
       void cdp("Page.handleJavaScriptDialog",{accept:true})
