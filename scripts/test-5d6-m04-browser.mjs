@@ -215,6 +215,11 @@ try{
   await test("Export/import JSON propre au Bestiaire",async()=>{
     const n=await runJS('document.querySelector("[data-active]").options.length')
     await installDownloadRecorder()
+    try{
+      const target=await cdp("Runtime.evaluate",{expression:'document.querySelector("#bestiary-workshop")'})
+      const events=await cdp("DOMDebugger.getEventListeners",{objectId:target.result.objectId})
+      console.log("Écouteurs sur la racine Bestiaire",events.listeners?.map(e=>({type:e.type,scriptId:e.scriptId,useCapture:e.useCapture})))
+    }catch(error){console.log("Inspection DOMDebugger indisponible",String(error))}
     console.log("Avant export Bestiaire",await browserFn(()=>({ready:document.readyState,
       recorder:window.__alrickRecorderInstalled,initialized:document.querySelector('#bestiary-workshop')?.dataset.initialized,button:document.querySelector("[data-action=export]")?.outerHTML,
       statuses:document.querySelectorAll("#bestiary-workshop").length,
