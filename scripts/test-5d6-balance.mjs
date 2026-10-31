@@ -13,8 +13,8 @@ assert.equal(counts.get(30),1)
 const chance=(target,bonus)=>{
   let successes=0
   for(const [natural,count] of counts){
-    // Le cinq naturel demeure un échec exceptionnel, quels que soient les bonus.
-    if(natural!==5 && natural+bonus>=target)successes+=count
+    // Les naturels 5–7 échouent obligatoirement, même avec de gros bonus.
+    if(natural>7 && natural+bonus>=target)successes+=count
   }
   return successes/7776
 }
@@ -22,7 +22,7 @@ const almost=(value,expected)=>assert(Math.abs(value-expected)<0.0001,`Chance at
 almost(chance(21,3),.5)
 almost(chance(21,1),.30516975308641975)
 almost(chance(30,12),.5)
-almost(chance(30,24),7775/7776)
+almost(chance(30,24),7755/7776)
 assert(chance(27,6)<chance(27,12))
 assert(chance(36,12)<.1)
 assert(chance(42,14)<.01)
