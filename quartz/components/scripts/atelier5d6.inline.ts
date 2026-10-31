@@ -2,15 +2,15 @@ import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,inna
 import {generateCreatureProfile} from "./atelier5d6-bestiary"
 import type {CreatureArchetype} from "./atelier5d6-bestiary"
 import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
-import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,buildOrigin,
+import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,
   affinityRankLimit,affinityImpactBonus,divinePowerMinimumLevel,
-  buildEducationProfile,EDUCATION_PATHS,LITERACY_LEVELS} from "./atelier5d6-origins"
+  EDUCATION_PATHS,LITERACY_LEVELS} from "./atelier5d6-origins"
 import type {Affinity,AffinityId,Power,PowerGrade,OriginMastery,EducationId,LiteracyLevel} from "./atelier5d6-origins"
 import {newDevelopment,evaluateSheet,transact,grantAward,approveMilestone,eligibleLevel,draftFromLifePath,
-  migrateLegacy,nextStatPrice,nextMasteryPrice,effectiveBonus} from "./atelier5d6-m02"
+  migrateLegacy,nextStatPrice} from "./atelier5d6-m02"
 import type {Development,AbilityDefinition,M02Sheet} from "./atelier5d6-m02"
 import {effectiveStat,effectiveMastery,experienceRequired} from "./atelier5d6-progression"
-import type {ExperienceEvent,ExperienceDomain,StatName} from "./atelier5d6-progression"
+import type {ExperienceEvent,ExperienceDomain} from "./atelier5d6-progression"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
 type Mastery = OriginMastery
@@ -36,7 +36,6 @@ const CERTIFICATIONS = [
 ] as const
 const maxStatCredits = (level:number) => 12+6*(level-1)
 const xpRequired = (level:number) => level<=1?0:5*(level-1)**3
-const missionXpReward = (rank:number) => 10*rank
 const levelResourceGain = (level:number) => level>=25?36:level>=21?24:level>=13?12:6
 const gainBetween = (first:number,last:number) => {
   let gain=0
@@ -679,7 +678,7 @@ function setupAtelier5d6() {
         if(participant?.kind!=="pj"||participant.ruleset!=="m02")continue
         const event:ExperienceEvent={id:entry.id+"-"+id,pattern:"mission-"+mission.id,
           domain:"exploration",difficulty:Math.max(1,Math.min(12,mission.level)),
-          scope:"ordinaire",approved:state.mode!=="pj"}
+          scope:"ordinaire",approved:true}
         try{applyM02(participant,grantAward(asM02(participant),event));totalGranted++}
         catch{/* Répétition protégée par le registre d'accomplissements M01. */}
       }
@@ -1014,7 +1013,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     q<HTMLButtonElement>("[data-opposition-counter]").hidden=true
   }
   function roll(){
-    const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
+    const s=current()
     if(s.ruleset==="m02"&&!evaluateSheet(asM02(s)).valid){
       message("Répartition M02 invalide : corrigez la fiche avant de lancer un jet.")
       return
