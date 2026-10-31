@@ -23,7 +23,7 @@ Une première série de fiches tirées de **l'Atlas V02 v1.8**, recoupée avec l
 - [[GEO-009|Forgeciel]] — métallurgie, métiers, coopérations avec les dragons et recherches.
 - [[GEO-012|Keldrun]] — cols orientaux, caravaniers, contrôles et communautés alliées.
 - [[GEO-010|Nacrecombe]] — lac souterrain, métiers et relations entre Nains et Alfes.
-- **Dornaël** — septième grande cité de l'Atlas, encore sans fiche locale suffisamment vérifiée.
+- [[GEO-013|Dornaël — la Cité des Premières Eaux]] — septième grande cité : grande fiche, eau, runes, institutions et propositions religieuses balisées.
 - [[GEO-CB1-VALBRUME|Valbrume]] — navigation, commerce, traditions de chartes et duché d'Édric.
 - [[GEO-021|Le Mérien et Entre-Rives]] — villages, mémoire, droits d'eau, terroir et coopérations.
 - [[GEO-CB2-ENTRE-RIVES|Entre-Rives]] — de la fondation CB2 aux réalisations rapportées après cinq années.
@@ -89,3 +89,11 @@ La [[lieux/parc-des-quatre-saisons-services|fiche transversale d'accueil et de f
 ### Trois ensembles géographiques documentés depuis le V02 historique
 
 Le registre V02 disposait de codes sans dossier web propre : [[lieux/GEO-025|**Ligue des Trois-Fleuves**]] (fleuves, commerce, institutions), [[lieux/GEO-027|**Vael-Sur**]] (souverainetés draconiques et conseils mixtes) et [[lieux/GEO-028|**Empire de la Chaîne écarlate**]] (captivité et exploitation draconique, accusations historiques à vérifier). Les trois fiches conservent leurs limites de carte et des amorces **explicitement non jouées**.
+
+
+## Explorer les Sept Grandes Cités avec leurs images
+
+[[lieux/sept-grandes-cites-illustrees|Galerie des Sept Cités]] — **sept illustrations panoramiques et vingt et une vignettes carrées** hébergées avec les Archives, et des compléments de quartiers sur les sept villes. Leurs noms et les personnages préparatoires restent distincts du canon des lieux.
+
+- [[GEO-013|Dornaël]] : [[lieux/dornael-eaux-et-ouvrages|eau]], [[lieux/dornael-metiers-et-runes|runes et métiers]], [[lieux/dornael-institutions-et-vie-civique|institutions]], [[lieux/dornael-personnages-et-missions|missions et PNJ]], [[lieux/dornael-lanternes-orin|dévotion envisagée à Orin]] (**dossier à spoilers, non encore joué**).
+- [[GEO-011|Aldhammar]], [[GEO-007|Skalor]], [[GEO-010|Nacrecombe]], [[GEO-009|Forgeciel]], [[GEO-012|Keldrun]] et [[GEO-008|Torngard]] : désormais six secteurs de ville proposés, une image principale et trois vignettes sur chaque fiche.

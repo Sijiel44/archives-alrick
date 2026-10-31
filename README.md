@@ -223,3 +223,8 @@ L'Atlas comprend désormais la **Ligue des Trois-Fleuves**, **Vael-Sur** et **l'
 Le nouveau [[jouer/playtest-5d6-probabilites|rapport 5d6]] donne les probabilités exactes des 7 776 résultats et un protocole PJ/MJ/MJ-IA, sans proclamer l'équilibrage final. Le module Déchéance 2d6 garde son statut de mini-système approuvé séparé.
 
 Les **six Word reçus, après CB42**, sont répertoriés avec SHA-256 dans `docs/REGISTRE_SIX_VOLUMES_HISTORIQUES_CB42_2026-10-30.md` ; une sauvegarde ZIP des originaux existe dans la conversation, **pas encore en binaire dans ce dépôt**. Le lot ne remplace pas les volumes plus récents et ne change pas la reprise CB44 auprès d'Elyan.
+
+
+## Atlas visuel des Sept Cités — Dornaël et quartiers
+
+Le [[lieux/sept-grandes-cites-illustrees|portail de découverte des Sept Cités]] permet désormais de naviguer entre **28 illustrations originales auto-hébergées** (7 grandes vues et 21 vignettes), avec galeries carrées cliquables directement dans les fiches. Dornaël (GEO-013) devient un dossier de ville détaillé et reçoit **cinq sous-fiches** sur eau, métiers et runes, institutions, dévotion optionnelle et missions. Les six autres cités existantes conservent leur canon, enrichi par quartiers, activités et personnages **proposés, non joués**. Compteur prévu après validation : **263 fiches codées**. Les images sont des **études d'ambiance**, non un relevé des rues ou des constructions historiques. Voir `docs/CHARTE_ILLUSTRATIONS_GALERIES_ALRICK.md`.
