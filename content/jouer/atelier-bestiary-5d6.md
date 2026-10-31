@@ -23,7 +23,7 @@ En **mode rapide**, choisis le niveau, la catégorie, l'archétype et le rôle. 
 
 Le **mode guidé** ajoute description, ressources et protections. Le **mode expert** donne accès à toutes les caractéristiques, maîtrises, défenses et capacités déclaratives, avec leurs bonus effectifs. Les changements numériques sont recalculés localement sans recharger la page. Les valeurs générées peuvent être rétablies volontairement.
 
-La sauvegarde est locale dans ton navigateur, sous une clé distincte des personnages, campagnes et fiches historiques. Tu peux créer, dupliquer, supprimer après confirmation, importer ou exporter des JSON au format **alrick.bestiary.v1**. L'export « vers l'Atelier 5d6 » génère un fichier de personnage/PNJ à **importer volontairement** dans l'Atelier principal, sans modifier ses propres sauvegardes. Après import, vérifier l'adaptation des caractéristiques et du budget : une créature n'est pas un PJ.
+La sauvegarde est locale dans ton navigateur, sous une clé distincte des personnages, campagnes et fiches historiques. Tu peux créer, dupliquer, supprimer après confirmation, importer ou exporter des JSON au format **alrick.bestiary.v1**. L'export « vers l'Atelier 5d6 » génère un fichier de personnage/PNJ à **importer volontairement** dans l'Atelier principal, sans modifier ses propres sauvegardes. L'import identifie explicitement le profil comme M03 Bestiaire : il reste hors du budget de développement M02 d'un PJ, tout en utilisant le combat M03. La fiche importée est protégée contre les achats de progression ; le MJ confirme séparément tout changement de PV. L'original complet est conservé dans le champ bestiarySource pour assurer les allers-retours et conserver les notes et capacités narratives.
 
 ## Principes de calcul
 
@@ -33,7 +33,8 @@ La distribution repose sur les **7 776 combinaisons exactes** de cinq dés à si
 - Bonus effectif de maîtrise : floor(log2(1 + rang))
 - Attaque de référence : 5d6 + E(Physique) + M(maîtrise combat) + circonstance
 - Défense physique : 15 + E(max(Physique, Agilité)) + M(meilleure maîtrise défensive) + bonus MJ
-- Protection : protection innée M03 + équipement M03 + protection contextuelle M03 à rendement décroissant
+- Résistance de l'archétype : les champs resistancePhysical et resistanceMagic du générateur alimentent les **bonus de défense** (+0–8), jamais la protection absorbante.
+- Protection : protection innée M03 + équipement M03 + protection contextuelle M03 à rendement décroissant, modifiable indépendamment de la résistance.
 - Dégâts attendus : somme des dégâts calculés par M03 sur chaque naturel, pondérée par ses occurrences parmi 7 776 issues
 
 Le calcul de dangerosité utilise un groupe fictif à niveau, profil, équipement et taille choisis. Il estime une durée **théorique**, pas une durée réelle de séance. Les catégories indicatives sont **non calibrées par des playtests** et les effets magiques, consommations, positions, tours complexes, négociations et objectifs alternatifs ne sont pas simulés.
