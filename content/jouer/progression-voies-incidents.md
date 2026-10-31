@@ -18,9 +18,9 @@ tags: [5d6, progression, niveaux, voies, incidents, aleatoire, objets, prototype
 
 ## I. Pourquoi douze niveaux ?
 
-La progression actuelle de l'outil porte sur **24 niveaux** ; les douze niveaux racontés ci-dessous sont les archives d'un premier prototype de règles et ne doivent pas être réappliqués comme limite. Les niveaux **21–24** forment des paliers de puissance divine exceptionnellement rares et conditionnés par la narration, sans statut cosmologique automatique. Les points de caractéristiques excédentaires peuvent être transformés en talents narratifs à raison de six pour un, sous validation MJ.
+La progression actuelle de l'outil porte sur **25 niveaux** ; les douze niveaux racontés ci-dessous sont les archives d'un premier prototype de règles et ne doivent pas être réappliqués comme limite. Les niveaux **21–25** forment des paliers de puissance divine exceptionnellement rares et conditionnés par la narration, sans statut cosmologique automatique. Les points de caractéristiques excédentaires peuvent être transformés en talents narratifs à raison de six pour un, sous validation MJ.
 
-> **Évolution du prototype (octobre 2026).** Les 12 niveaux décrits dans cette section représentent **l'ancien palier expérimental**, conservé pour référence. L'[[jouer/atelier-5d6|Atelier]] accepte désormais **24 niveaux individuels** : +6 points de caractéristiques et +2 points de maîtrise à chaque niveau gagné, sans bonus automatique de maîtrise aux jets tant que l'équilibrage n'est pas validé. Les **12 indices collectifs** appartiennent au [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier]], et ne sont pas des grades officiels.
+> **Évolution du prototype (octobre 2026).** Les 12 niveaux décrits dans cette section représentent **l'ancien palier expérimental**, conservé pour référence. L'[[jouer/atelier-5d6|Atelier]] accepte désormais **25 niveaux individuels** : +6 points de caractéristiques et +2 points de maîtrise à chaque niveau gagné, sans bonus automatique de maîtrise aux jets tant que l'équilibrage n'est pas validé. Les **12 indices collectifs** appartiennent au [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier]], et ne sont pas des grades officiels.
 
 La base **12** sert déjà aux ressources de l'[[jouer/systeme-5d6-base12|Atelier 5d6]]. Nous pouvons organiser la progression en **quatre paliers de trois niveaux** :
 
