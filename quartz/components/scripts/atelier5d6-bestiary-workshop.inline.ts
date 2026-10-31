@@ -23,6 +23,7 @@ function startBestiary(){
   }
   const pct=(n:number)=>(100*n).toFixed(2).replace(".",",")+" %"
   let cards:BestiaryCard[]=[]
+  let storageDamaged=false
   try{
     const raw=localStorage.getItem(BESTIARY_STORAGE)
     if(raw){
@@ -30,12 +31,13 @@ function startBestiary(){
       if(!Array.isArray(data)||data.length>60)throw Error("Stockage invalide")
       cards=data.map(validateBestiaryCard)
     }
-  }catch{msg("Sauvegarde locale illisible : aucune fiche ancienne n'a été remplacée. Exportez vos données avant toute suppression.")}
+  }catch{storageDamaged=true;msg("Sauvegarde locale illisible : données conservées sans écrasement. Utilisez « Nouvelle fiche » pour repartir après confirmation.")}
   if(!cards.length)cards=[createBestiaryCard(5,"predateur")]
   let active=cards[0].id
   let mode:"rapide"|"guide"|"expert"="rapide"
   const current=()=>cards.find(x=>x.id===active)??cards[0]
   function persist(){
+    if(storageDamaged)return // Évite de détruire silencieusement un stockage corrompu.
     try{localStorage.setItem(BESTIARY_STORAGE,JSON.stringify(cards))}
     catch{msg("Stockage saturé ou indisponible. Exportez vos créations pour les conserver.")}
   }
@@ -73,7 +75,7 @@ function startBestiary(){
     const v=evaluateMatchup(c,level,profile,grade,count,situation)
     const sides=v.creature,other=v.opponent
     one<HTMLElement>("[data-formula]").textContent="Jet d'attaque de "+c.name+" = "+describeFormula(c)
-    one<HTMLElement>("[data-math]").textContent=[
+    const mathLines=[
       "Attaque de la créature : "+pct(sides.hits)+" de réussite ; "+pct(sides.contacts)+" de contact.",
       "Dégâts attendus par attaque de la créature : "+sides.expectedDamage.toFixed(2)+".",
       "Attaques du groupe : "+pct(other.hits)+" de réussite ; "+pct(other.woundChance)+" de blessures réelles.",
@@ -86,7 +88,11 @@ function startBestiary(){
         effectiveProtectionM03(toDefense(c),"physique")+".",
       "Décompte exact : somme sur les 26 naturels de 5 à 30, pondérée par leurs occurrences parmi 7 776 combinaisons.",
       v.assumptions
-    ].join("\n")
+    ]
+    const math=one<HTMLElement>("[data-math]")
+    math.replaceChildren(...mathLines.map(line=>{
+      const p=document.createElement("p");p.textContent=line;return p
+    }))
     const turns=v.roundsEstimate===null?"aucun dommage : blocage possible":v.roundsEstimate.toFixed(1)+" rounds théoriques"
     let classification="non déterminée"
     if(v.roundsEstimate===null)classification="blocage mécanique"
@@ -248,6 +254,10 @@ function startBestiary(){
     }
     const action=button.dataset.action
     if(action==="new"){
+      if(storageDamaged){
+        if(!window.confirm("La sauvegarde locale existante est illisible. La remplacer par une nouvelle partie ? Exportez d’abord les données si vous souhaitez essayer de les récupérer."))return
+        storageDamaged=false
+      }
       if(cards.length>=60){msg("Limite de 60 fiches atteinte.");return}
       const c=createBestiaryCard(5,"faune")
       cards.push(c);active=c.id;persist();render();msg("Nouvelle fiche non canonique.")
