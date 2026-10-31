@@ -10,6 +10,9 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: ["joueurs", "mj"]
 usage_en_jeu: ["outil", "regles"]
+ancre_documentaire: "Prototype multijoueur local et code du serveur pilote, 31 octobre 2026"
+source_brute: "Développement original sur la branche codex/tables-multijoueur-pilote-01 ; aucun événement de campagne."
+derniere_revision_documentaire: "2026-10-31"
 tags: [jdr, tables, 5d6, prototype, multijoueur]
 ---
 
