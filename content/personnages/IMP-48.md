@@ -28,7 +28,8 @@ Phénix découvre le Palais, reçoit un espace en hauteur proche de l’observat
 
 - *Compendium des personnages et des relations (V03), état après CB42*, CB42 P05514–21050.
 
-## À compléter
+## Biographie vérifiée depuis la naissance — CB41 et CB42
 
-- Reprendre les éléments biographiques antérieurs dans le Compendium et relier les scènes où le personnage agit ou choisit.
-- Ne pas inférer une fonction, une appartenance, un pouvoir ou une relation qui n’est pas explicitement établie.
+**Phénix n'est ni un Rappelé, ni un objet animé, ni une copie de quelqu'un d'autre.** Il naît en **CB41** d'un œuf créé par l'**Autorité de Création** d'Orin pendant une suspension locale de magie. Une **conscience nouvelle** consent à habiter cette forme ; elle est distincte et libre, sans avoir été arrachée à un être existant. L'oiseau reçoit son nom à sa demande, s'essaie au vol et découvre les habitants de la Maison. **La renaissance dans ses flammes est décrite dans sa nature mais n'a pas été observée comme cycle mort/retour.**
+
+En **CB42**, il découvre les jardins, les jeux et l'astronomie. Sa place près de l'observatoire n'en fait **ni un gardien désigné, ni un employé permanent**. Les échanges ou voyages avec Harald Forgecœur ne sont pas des contrats imposés. La liberté de Phénix comprend le droit de partir, d'apprendre et d'aimer d'autres choses que son créateur. Sources : *Bible V01 v1.6*, B41-03 et B41-04 ; *Codex V04 v1.6*, MAG-098 ; *Continuité V06 v1.6*, C41-03 et C42-03.
