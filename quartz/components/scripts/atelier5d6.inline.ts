@@ -1107,6 +1107,91 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
+    if(button.hasAttribute("data-origin-clear")){
+      q<HTMLInputElement>("[data-origin-name]").value=""
+      for(const step of ORIGIN_STEPS)q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value=""
+      renderOriginPreview();message("Parcours de vie vidé, sans changement de fiche.");return
+    }
+    if(button.hasAttribute("data-origin-build")){
+      if(state.sheets.length>=60){message("Répertoire plein (60 personnages maximum).");return}
+      const name=clean(q<HTMLInputElement>("[data-origin-name]").value.trim(),90)
+      if(!name){message("Donner d'abord un nom au personnage.");return}
+      let origin
+      try{origin=buildOrigin(ORIGIN_STEPS.map(step=>q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value))}
+      catch{message("Il faut répondre aux quatre questions du parcours de vie.");return}
+      const sheet=fresh("pj")
+      sheet.name=name;sheet.level=sheet.highestLevel=origin.level
+      sheet.stats=origin.stats
+      sheet.masteries=origin.masteries
+      sheet.lifeSteps=origin.lifeSteps;sheet.lifeSummary=origin.summary
+      sheet.profession=origin.profession;sheet.vocation=origin.profession
+      sheet.pv=sheet.pvMax=origin.pvMax
+      sheet.mana=sheet.manaMax=origin.manaMax
+      sheet.skill=1
+      // XP de départ virtuels : les quatre périodes sont déjà vécues, sans mission inventée.
+      sheet.xp=xpRequired(5)
+      state.sheets.push(sheet);state.activeId=sheet.id
+      render();persist()
+      q<HTMLDetailsElement>('[data-hub="fiche"]').open=true
+      message("Aventurier niveau 5 créé sans remplacer les autres fiches. "+sheet.name+
+        " commence avec "+sheet.pvMax+" PV et "+sheet.xp+" XP de parcours initial.")
+      return
+    }
+    if(button.dataset.affinityRemove){
+      if(state.mode==="pj"){message("Modification des affinités réservée au MJ.");return}
+      const sheet=current(),id=button.dataset.affinityRemove
+      const item=sheet.affinities.find(x=>x.id===id)
+      if(!item||!window.confirm("Retirer l'affinité « "+affinityLabel(id)+" » de cette fiche ?"))return
+      sheet.affinities=sheet.affinities.filter(x=>x.id!==id)
+      renderAffinities();renderAI();persist();message("Affinité révoquée.");return
+    }
+    if(button.hasAttribute("data-affinity-grant")){
+      if(state.mode==="pj"){message("Les affinités doivent être validées par le MJ.");return}
+      const sheet=current(),id=q<HTMLSelectElement>("[data-affinity-domain]").value as AffinityId
+      if(!AFFINITY_DOMAINS.some(x=>x[0]===id)){message("Domaine invalide.");return}
+      const max=affinityRankLimit(sheet.level),rank=clamp(q<HTMLInputElement>("[data-affinity-rank]").value,1,5,1)
+      const witness=clean(q<HTMLInputElement>("[data-affinity-witness]").value.trim(),300)
+      if(rank>max){message("Au niveau "+sheet.level+", le rang conseillé maximal est "+max+". Ce plafond est appliqué dans le playtest.");return}
+      if(witness.length<12){message("Documenter au moins 12 caractères sur la source et les limites de cette affinité.");return}
+      if(rank===5&&sheet.kind==="pj"&&(!sheet.ascensionAuthorized||sheet.divineLimit<sheet.level)){
+        message("Affinité 5 pour un PJ : validation de l'ascension requise.");return
+      }
+      const existing=sheet.affinities.find(x=>x.id===id)
+      if(!existing&&sheet.affinities.length>=16){message("16 affinités maximum par fiche.");return}
+      if(existing){existing.rank=rank;existing.witness=witness}
+      else sheet.affinities.push({id,rank,witness})
+      renderAffinities();renderAI();persist()
+      message("Affinité "+affinityLabel(id)+" rang "+rank+" validée localement.");return
+    }
+    if(button.dataset.powerRemove){
+      if(state.mode==="pj"){message("Révocation réservée au MJ.");return}
+      const sheet=current(),existing=sheet.powers.find(x=>x.id===button.dataset.powerRemove)
+      if(!existing||!window.confirm("Révoquer la capacité « "+existing.name+" » ?"))return
+      sheet.powers=sheet.powers.filter(x=>x.id!==existing.id)
+      renderAffinities();renderAI();persist();message("Capacité retirée.");return
+    }
+    if(button.hasAttribute("data-power-grant")){
+      if(state.mode==="pj"){message("Validation des capacités réservée au MJ.");return}
+      const sheet=current(),name=clean(q<HTMLInputElement>("[data-power-name]").value.trim(),90)
+      const domain=q<HTMLSelectElement>("[data-power-domain]").value as AffinityId
+      const grade=q<HTMLSelectElement>("[data-power-grade]").value as PowerGrade
+      const effect=clean(q<HTMLTextAreaElement>("[data-power-effect]").value.trim(),600)
+      const condition=clean(q<HTMLTextAreaElement>("[data-power-condition]").value.trim(),600)
+      const manaCost=clamp(q<HTMLInputElement>("[data-power-cost]").value,0,999,0)
+      if(!name||effect.length<12||condition.length<12){message("Nom, effet et limites détaillées obligatoires (12 caractères minimum pour chacun des textes).");return}
+      if(!AFFINITY_DOMAINS.some(x=>x[0]===domain)||!["heroique","transcendant","divin"].includes(grade)){
+        message("Grade ou domaine invalide.");return
+      }
+      const needed=divinePowerMinimumLevel(grade)
+      if(sheet.level<needed){message("Ce grade de capacité demande le niveau "+needed+" minimum.");return}
+      if(grade==="divin"&&sheet.kind==="pj"&&(!sheet.ascensionAuthorized||sheet.divineLimit<sheet.level)){
+        message("Pouvoir divin refusé : l'épreuve d'ascension du PJ doit être reconnue avant attribution.");return
+      }
+      if(sheet.powers.length>=40){message("40 capacités maximum par fiche.");return}
+      if(!window.confirm("Approuver « "+name+" » pour "+sheet.name+" ? Cette validation MJ locale n'attribue aucune Autorité canonique."))return
+      sheet.powers.push({id:uniqueId(),name,domain,grade,effect,condition,manaCost,approvedByGM:true})
+      renderAffinities();renderAI();persist();message("Capacité enregistrée avec conditions et coût.");return
+    }
     if(button.dataset.mode){
       state.mode=button.dataset.mode as Mode
       q<HTMLButtonElement>("[data-opposition-apply]").hidden=!pendingImpact || state.mode==="pj"
