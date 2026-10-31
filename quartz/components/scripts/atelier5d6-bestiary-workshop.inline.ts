@@ -1,5 +1,5 @@
 import { ARCHETYPES, BESTIARY_STORAGE,
-  createBestiaryCard, validateBestiaryCard, evaluateMatchup, describeFormula, toDefense } from "./atelier5d6-bestiary-workshop"
+  createBestiaryCard, validateBestiaryCard, exportBestiaryForAtelier, evaluateMatchup, describeFormula, toDefense } from "./atelier5d6-bestiary-workshop"
 import type { BestiaryCard, BestiaryKind, BestiaryRole, BestiaryStatus } from "./atelier5d6-bestiary-workshop"
 import { effectiveStat, effectiveMastery } from "./atelier5d6-progression"
 import { resistanceScoreM03, effectiveProtectionM03 } from "./atelier5d6-combat-m03"
@@ -271,15 +271,8 @@ function startBestiary(){
     }else if(action==="export-atelier"){
       const c=current()
       // L'import est volontaire : aucun stockage PJ, campagne ou legacy n'est écrasé.
-      download("alrick-creature-pour-atelier.json",{schema:"alrick.sheets.v3",sheets:[{
-        schema:"alrick.sheet.v3",ruleset:"m02",name:c.name,kind:c.kind,
-        profession:c.profession||c.archetype,level:c.level,stats:c.stats,
-        masteries:c.masteries,pv:c.pvMax,pvMax:c.pvMax,mana:c.manaMax,manaMax:c.manaMax,
-        resistanceBonus:c.resistanceBonus,protection:c.protection,equipmentGrades:c.equipmentGrades,
-        notes:"Adaptation de jeu M03 (non canonique) : "+c.description+"\n"+c.notes,
-        rulesetSource:"alrick.bestiary.v1",bestiarySourceId:c.id
-      }]})
-      msg("Export compatible avec l'import JSON de l'Atelier 5d6 créé : choisissez ensuite « Importer JSON » dans l'Atelier.")
+      download("alrick-creature-pour-atelier.json",exportBestiaryForAtelier(c))
+      msg("Export M03 de jeu créé : import volontaire dans l'Atelier principal, sans budget de PJ ni changement du bestiaire canonique.")
     }else if(action==="add-ability"){
       const name=one<HTMLInputElement>("[data-ability-name]").value.trim()
       if(!name||current().abilities.length>=25){msg("Nom requis, maximum 25 capacités.");return}
