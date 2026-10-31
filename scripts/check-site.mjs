@@ -99,7 +99,7 @@ for(const token of ['data-export-campaign','data-import-campaign','data-group-cr
   'data-group-select','data-group-members','data-certification','data-mission-select',
   'data-mission-record','data-mission-log','data-item-category','data-item-make-template',
   'data-template-grant','data-inventory-list','data-inventory-transfer','data-convert-credits',
-  'data-talent-points','data-ascension']){
+  'data-talent-points','data-ascension','data-divine-limit','data-field="xp"','data-xp-info']){
   assert(atelierHtml.includes(token), `Atelier compagnies/inventaire : élément absent : ${token}`)
 }
 const publicMissions=JSON.parse(await readFile(path.join(root,'static','atelier5d6-missions.json'),'utf8'))
