@@ -1,4 +1,4 @@
-import { ARCHETYPES, BESTIARY_SCHEMA, BESTIARY_STORAGE,
+import { ARCHETYPES, BESTIARY_STORAGE,
   createBestiaryCard, validateBestiaryCard, evaluateMatchup, describeFormula, toDefense } from "./atelier5d6-bestiary-workshop"
 import type { BestiaryCard, BestiaryKind, BestiaryRole, BestiaryStatus } from "./atelier5d6-bestiary-workshop"
 import { effectiveStat, effectiveMastery } from "./atelier5d6-progression"
@@ -6,8 +6,9 @@ import { resistanceScoreM03, effectiveProtectionM03 } from "./atelier5d6-combat-
 import type { CreatureArchetype } from "./atelier5d6-bestiary"
 
 function startBestiary(){
-  const host=document.querySelector<HTMLElement>("#bestiary-workshop")
-  if(!host)return
+  const foundHost=document.querySelector<HTMLElement>("#bestiary-workshop")
+  if(!foundHost)return
+  const host:HTMLElement=foundHost
   const controller=new AbortController(), opts={signal:controller.signal}
   const one=<T extends HTMLElement>(selector:string):T=>{
     const el=host.querySelector<T>(selector)
