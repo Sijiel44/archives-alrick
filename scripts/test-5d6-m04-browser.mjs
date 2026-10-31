@@ -86,7 +86,7 @@ async function downloaded(prefix){
     }
     await sleep(100)
   }
-  throw Error("Aucun Blob d'export créé : "+prefix)
+  throw Error("Aucun Blob d'export créé : "+prefix+" ; statut : "+await runJS("document.querySelector('[data-status]')?.textContent")+" ; erreurs JS : "+runtimeErrors.slice(-3).join(" | "))
 }
 async function navigate(url){
   await cdp("Page.navigate",{url})
@@ -201,6 +201,7 @@ try{
   let exportedAtelier
   await test("Export M03 vers Atelier principal",async()=>{
     await click("[data-action=export-atelier]")
+    console.log("Export Atelier - statut:",await runJS("document.querySelector('[data-status]')?.textContent"),"blobs:",await runJS("window.__alrickExports?.length"),"exceptions:",runtimeErrors.slice(-3))
     exportedAtelier=await downloaded("alrick-creature-pour-atelier")
     const data=JSON.parse(await readFile(exportedAtelier,"utf8"))
     assert.equal(data.schema,"alrick.sheets.v3")
