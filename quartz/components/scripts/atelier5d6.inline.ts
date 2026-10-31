@@ -1,3 +1,5 @@
+import {resistanceScore,resolveOpposition,attackMastery} from "./atelier5d6-opposition"
+import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
 type Mastery = "lames" | "haches" | "arcs" | "runes" | "soins" | "negociation" | "survie" | "artisanat" | "magie"
@@ -58,9 +60,13 @@ function validatedEntry(raw:unknown):MissionEntry|null{
     reward:clean(o.reward,280),date:clean(o.date,30)}
 }
 
+type Defenses = Record<ResistanceKind,number>
+const freshDefenses=():Defenses=>({physique:0,magie:0,mental:0})
+const DEFENSE_KINDS:ResistanceKind[]=["physique","magie","mental"]
 type Sheet = {
   id: string; name: string; kind: Role; profession: string; skill: number
   stats: Record<Stat, number>; pv: number; pvMax: number
+  resistanceBonus:Defenses; protection:Defenses
   mana: number; manaMax: number; emprise: number
   level: number; highestLevel: number; masteries: Record<Mastery,number>
   ascensionAuthorized:boolean; divineLimit:number; ascensionWitness:string; divineMilestones:string[]; inventory:GameItem[]
@@ -145,6 +151,7 @@ function fresh(kind: Role = "pj"): Sheet {
   return { id: uniqueId(), name: kind === "pj" ? "Mon personnage" : "Nouveau profil",
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
+    resistanceBonus:freshDefenses(),protection:freshDefenses(),
     pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, divineLimit:20, ascensionWitness:"", divineMilestones:[], inventory:[],
     convertedCredits:0,talentPointsSpent:0,xp:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
@@ -161,6 +168,13 @@ function validateSheet(raw: unknown): Sheet | null {
   const priorStreaks = obj.streaks && typeof obj.streaks==="object" ? obj.streaks as Record<string,unknown> : {}
   const streaks = makeStreaks()
   for(const d of DOMAINS)streaks[d]=clamp(priorStreaks[d],0,2,0)
+  const resistanceBonus=freshDefenses(),protection=freshDefenses()
+  const previousResistance=obj.resistanceBonus&&typeof obj.resistanceBonus==="object"?obj.resistanceBonus as Record<string,unknown>:{}
+  const previousProtection=obj.protection&&typeof obj.protection==="object"?obj.protection as Record<string,unknown>:{}
+  for(const key of DEFENSE_KINDS){
+    resistanceBonus[key]=clamp(previousResistance[key],0,8,0)
+    protection[key]=clamp(previousProtection[key],0,60,0)
+  }
   const level=clamp(obj.level,1,24,1)
   const masteries=blankMasteries()
   const storedMasteries=obj.masteries && typeof obj.masteries==="object" ? obj.masteries as Record<string,unknown> : {}
@@ -171,7 +185,7 @@ function validateSheet(raw: unknown): Sheet | null {
     stats:{physique:clamp(values.physique,1,12,3),agilite:clamp(values.agilite,1,12,3),
       esprit:clamp(values.esprit,1,12,3),presence:clamp(values.presence,1,12,3)},
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
-    mana:clamp(obj.mana,0,manaMax,0),manaMax,
+    mana:clamp(obj.mana,0,manaMax,0),manaMax,resistanceBonus,protection,
     emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,24,level),
     masteries,convertedCredits:clamp(obj.convertedCredits,0,6*(level-1),0),
     talentPointsSpent:clamp(obj.talentPointsSpent,0,23,0),
@@ -314,6 +328,12 @@ function setupAtelier5d6() {
     })
     for(const k of STATS) q<HTMLInputElement>(`[data-stat="${k}"]`).value=String(s.stats[k])
     for(const k of MASTERIES) q<HTMLInputElement>(`[data-mastery="${k}"]`).value=String(s.masteries[k])
+    for(const k of DEFENSE_KINDS){
+      q<HTMLInputElement>(`[data-defense-resistance="${k}"]`).value=String(s.resistanceBonus[k])
+      q<HTMLInputElement>(`[data-defense-protection="${k}"]`).value=String(s.protection[k])
+    }
+    q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(k=>
+      k+" : seuil "+resistanceScore(s,k)+" · protection "+s.protection[k]).join(" | ")
     const portrait=q<HTMLImageElement>("[data-portrait-preview]")
     portrait.hidden=!s.portrait
     if(s.portrait)portrait.src=s.portrait
@@ -334,6 +354,7 @@ function setupAtelier5d6() {
       : "Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions."
     refreshStreaks()
     renderInventory()
+    renderOpposition()
   }
   function refreshStreaks(){
     const s=current()
@@ -361,6 +382,7 @@ function setupAtelier5d6() {
   }
 
   let pendingTransfer=""
+  let pendingImpact:{targetId:string;damage:number;attackerName:string}|null=null
   let missions:Mission[]=[]
   async function loadMissions(signal:AbortSignal){
     try{
@@ -560,6 +582,18 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         s.stats[stat]=before;el.value=String(before)
         message("Points de caractéristique insuffisants ou limite de création dépassée.")
       }
+    } else if(el.dataset.defenseResistance && DEFENSE_KINDS.includes(el.dataset.defenseResistance as ResistanceKind)){
+      const k=el.dataset.defenseResistance as ResistanceKind
+      s.resistanceBonus[k]=clamp(el.value,0,8,s.resistanceBonus[k])
+      el.value=String(s.resistanceBonus[k])
+      q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(t=>
+        t+" : seuil "+resistanceScore(s,t)+" · protection "+s.protection[t]).join(" | ")
+    } else if(el.dataset.defenseProtection && DEFENSE_KINDS.includes(el.dataset.defenseProtection as ResistanceKind)){
+      const k=el.dataset.defenseProtection as ResistanceKind
+      s.protection[k]=clamp(el.value,0,60,s.protection[k])
+      el.value=String(s.protection[k])
+      q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(t=>
+        t+" : seuil "+resistanceScore(s,t)+" · protection "+s.protection[t]).join(" | ")
     } else if(el.dataset.mastery && MASTERIES.includes(el.dataset.mastery as Mastery)){
       const k=el.dataset.mastery as Mastery,before=s.masteries[k]
       s.masteries[k]=clamp(el.value,0,12,before)
@@ -618,7 +652,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "items":s.items=clean(el.value,1400);break
       }
     }
-    refreshRoster();refreshPoints();refreshStreaks();renderAI();persist()
+    refreshRoster();refreshPoints();refreshStreaks();renderOpposition();renderAI();persist()
   }
   function trackFailure(sheet:Sheet,domain:Domain,failed:boolean):string {
     if(domain==="autre")return ""
@@ -721,12 +755,14 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   const controller=new AbortController(), opts={signal:controller.signal}
   host.addEventListener("input",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery)changeField(el)
+    if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
+      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery)changeField(el)
+    if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
+      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
     if(el instanceof HTMLInputElement && el.hasAttribute("data-talent-spent")){
