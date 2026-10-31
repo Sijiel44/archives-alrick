@@ -489,6 +489,8 @@ function setupAtelier5d6() {
   function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup()}
   function renderAI(){
     const s=current(), include=q<HTMLInputElement>("[data-ai-roster]").checked
+    const group=state.groups.find(g=>g.members.includes(s.id))
+    const inventory=s.inventory.slice(0,60).map(x=>x.name+" ×"+x.quantity).join(", ")
     const roster = include ? state.sheets.filter(x=>x.id!==s.id).map(x=>
       `- ${x.name} (${x.kind}, ${x.profession}) : Phys ${x.stats.physique}, Agi ${x.stats.agilite}, Esp ${x.stats.esprit}, Prés ${x.stats.presence}, PV ${x.pv}/${x.pvMax}, mana ${x.mana}/${x.manaMax}, Emprise ${x.emprise}.`).join("\n") : "(non transmis)"
     const text = `MJ IA — Nouvelle aventure indépendante dans le monde d'Alrick
@@ -510,6 +512,10 @@ Talents : ${s.talents || "aucun"}.
 Bénédictions / avantages conditionnels : ${s.boons || "aucun"}.
 Malédictions / limites : ${s.curses || "aucune"}.
 Objets à effet narratif : ${s.items || "aucun"}.
+Inventaire (noms et quantités) : ${inventory || "aucun"}.
+Compagnie : ${group ? group.name+" (rang "+group.rank+"/12)" : "aucune"}.
+Certifications reconnues par la table : ${group?.certifications.join(", ") || "aucune"}.
+Niveaux 21–24 : ascension exceptionnelle approuvée par le MJ, sans capacités divines automatiques.
 Référence de la fiche : ${s.sourceRef || "adaptation sans source"} — ${s.sourceTitle || ""} (scores 5d6 non canoniques).
 Notes du personnage : ${s.notes || "aucune"}.
 
