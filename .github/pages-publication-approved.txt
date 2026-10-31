@@ -289,3 +289,20 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # AUCUN Cercle, Autorité fondamentale ou nouvelle manifestation canonique attribués automatiquement.
 # Aucun spoiler ni fiche MJ brute publiés ; le guide de jeu est canon_statut=proposition_non_jouee.
 # Les permissions « MJ » sont uniquement des contrôles locaux d'interface, pas une authentification serveur.
+
+
+# Lot 21 — Origines étendues, éducation, images externes, capacités et plan multijoueur (31 octobre 2026)
+# PR #53 fusionnée après réussite de la CI, commit 0de7f7531ebc88c43374af7da2ab91e2c5d1b8ed.
+# Questionnaire 5d6 : familles d'agriculteurs, marins, artistes, guérisseurs, érudits, religieux, mineurs,
+# pisteurs, ouvriers, diplomates et autres milieux, plus choix de formation / défis / vocations.
+# Scolarité 8 voies et littératie 4 degrés INDÉPENDANTS ; illettrisme sans pénalité à l'intelligence.
+# Éducation réoriente un point de maîtrise ; 36 crédits de caractéristiques et 8 maîtrises inchangés.
+# Nouvelles maîtrises : Navigation, Agriculture, Arts ; narration personnelle, liens et objectifs sauvegardés.
+# Hub navigation rapide : création, personnage+dès, capacités, inventaire, galerie, missions et plan de tables.
+# Capacité : confirmation de dépense du mana et journal local, sans réussite ni dégâts automatiques.
+# Galerie LOCALE d'images externes via HTTPS : format carré/portrait/paysage/bannière, agrandissement,
+# auteur, page source, licence/droits déclarés ; pas de publication automatique ni de copie des images.
+# Le catalogue des illustrations publiques a été créé VIDE (aucune licence présumée).
+# Nouveau guide de licences/citations, plan du bestiaire vivant et architecture du multijoueur par pseudonyme.
+# AUCUN compte, serveur temps réel, synchronisation, rôle MJ sécurisé ou séance de groupe n'est annoncé livré.
+# AUCUN canon modifié, aucun spoiler introduit ; anciennes fiches et sauvegardes locales maintenues.
