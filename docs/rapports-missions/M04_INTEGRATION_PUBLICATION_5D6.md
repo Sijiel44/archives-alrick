@@ -1,194 +1,141 @@
-# M04 — Rapport d'intégration, Atelier du Bestiaire et contrôle de publication
+# M04.1 — Rapport final : intégration, recette Chrome et publication du système 5d6
 
 **Dépôt :** Sijiel44/archives-alrick  
-**Branche M04 :** rules/m04-integration-bestiary-5d6-20261031  
-**PR :** #61, brouillon, basée sur #60  
-**Date de l'audit :** 31 octobre 2026  
-**Statut :** M04.1 EN COURS — NON PUBLIÉ. Le rapport final reste conditionnel au contrôle navigateur intégral et au déploiement confirmé.
+**Date de clôture :** 31 octobre 2026  
+**Statut :** **TERMINÉE — FUSIONNÉE — PUBLIÉE — RECETTE PUBLIQUE RÉUSSIE**  
+**Adresse publique :** https://sijiel44.github.io/archives-alrick/  
+**Atelier du Bestiaire :** https://sijiel44.github.io/archives-alrick/jouer/atelier-bestiary-5d6  
+**Commit déployé :** c85c5a81a59f41c63effbc15ea98aa14fc445ad7  
+**CI / publication finale :** https://github.com/Sijiel44/archives-alrick/actions/runs/41253591405
 
-## 1. Résumé exécutif
+> Ce document remplace l'état provisoire M04. Il consigne les résultats effectivement exécutés et les limites connues, sans confondre CI, fusion, déploiement et test du site public.
 
-La branche M04 a été créée depuis la tête vérifiée de M03, commit 9e8fab0c6d96eda30e4b26a25db0a7f4d1f878ad. Un Atelier du Bestiaire 5d6 a été ajouté sous une page Quartz distincte, sans remplacer l'Atelier historique ni le générateur de créatures M03. Il permet la création de créatures et de PNJ simplifiés, la personnalisation des statistiques, une sauvegarde locale séparée et un calcul de confrontations exact reposant sur le moteur M03.
+## 1. Synthèse et chronologie des vérifications
 
-La CI est **réussie** sur le commit M04 a0edbab656efcbd8f381a606b2370f3bc061b0a8 (run GitHub Actions #41243238992). L'Atelier reste **en cours de recette réelle**. Ne pas fusionner vers main ni publier tant que les vérifications de navigation, de sauvegardes et de compatibilité ne sont pas réalisées et concluantes.
+M04 a livré l'Atelier du Bestiaire, mais la recette complète et le contrat de transfert M03/M02 restaient à valider. M04.1 a audité les cinq PR #57 à #61, corrigé les défauts, éprouvé le comportement du navigateur réel et publié les pages approuvées après validation.
 
-## 2. Historique M01 à M04
+La tête initiale de M04 était **56318bc3d9e38974355b7e6d004b8583122925f2**, CI **#41243403493** réussie. L'intégration s'est faite sans modifier les PR parallèles #54, #55 et #56. La référence de retour arrière de main avant M04.1 est **3443be26b15a90f078e7fdcb94ae5fbb5cfd9191**.
 
-- PR #57 : audit, distribution exacte 5d6 et détection des impasses de protection N25.
-- PR #58 / M01 : progression 1–25, budget partagé, XP, caractéristiques non plafonnées, bonus effectifs logarithmiques.
-- PR #59 / M02 : adaptation de l'Atelier, dépenses de progression et maîtrises, capacités, migrations conservatrices, nouvelles sauvegardes.
-- PR #60 / M03 : combat moderne, protection et dégâts, générateur d'archétypes sans plafond 12, effets mécaniques bornés.
-- PR #61 / M04 : Atelier du Bestiaire, calculateur de confrontation et interface explicative distincte, tests et raccordement de documentation.
+La dernière tête M04.1 testée avant fusion était **9f47f6a1935ed7f05a0ecb14d88ef27463c7f4c5**, CI **#41253301774** réussie (9/9). Les cinq fusions ont conduit à **7ec48f51c6591343921678595ebe1a38f49bbbf6**. Après ajout des vérifications du site public et des captures, la CI de main **#41253510945** a réussi, suivie de la CI main **#41253591519** sur le commit publié.
 
-## 3. État des PR
+La publication a été déclenchée par modification explicite de .github/pages-publication-approved.txt sur main ; elle ne résulte pas automatiquement des fusions.
 
-Les PR #57, #58, #59 et #60 étaient ouvertes et marquées « Draft » lors de l'audit du 31 octobre 2026. La PR #61 a été ouverte en brouillon contre la branche de #60, sans fusionner aucune PR dans main. Cet état doit être réactualisé avant toute opération finale.
+## 2. Filiation Git et préservation des travaux parallèles
 
-## 4. Références de commits
+| PR | Objet | Base finale | État |
+| --- | --- | --- | --- |
+| #57 | Probabilités exactes 5d6 | main | Fusionnée |
+| #58 | Progression M01, niveaux 1–25 | main après #57 | Fusionnée |
+| #59 | Atelier et capacités M02 | main après #58 | Fusionnée |
+| #60 | Combat et bestiaire mathématique M03 | main après #59 | Fusionnée |
+| #61 | Atelier du Bestiaire, intégration M04.1 | main après #60 | Fusionnée |
+| #54 | Multijoueur | main (branche propre) | Ouverte, non fusionnée |
+| #55 | Grimoire | main (branche propre) | Ouverte, non fusionnée |
+| #56 | Bestiaire documentaire | main (branche propre) | Ouverte, non fusionnée |
 
-- Base M03 : 9e8fab0c6d96eda30e4b26a25db0a7f4d1f878ad.
-- Premier moteur pur du bestiaire M04 : 0f47fac9ff8e45a0e68e317ed603b98646ee75a2.
-- Interface Quartz M04 : 5f0a0e6fd3fbfed0b9bd9f5b977c6154a9023213.
-- Interactions et sauvegardes : 785d4bbcc9653b59fd71c8b2c667f7467e6fd1cf.
-- Tests M04 : 8c2041d810a97c48ccd85ae9147e66e78d8ceb7d.
-- Première correction de typage après CI : a0edbab656efcbd8f381a606b2370f3bc061b0a8.
-- Vérifier le dernier SHA de la branche avant clôture.
+Les cinq PR liées ont été retargetées vers main dans leur ordre de dépendance, puis fusionnées avec l'historique Git préservé et des identifiants de tête attendus. Aucun force-push ni duplication volontaire de commits de M01–M04. Les branches #54–#56 seront à réconcilier séparément avec la nouvelle version de main.
 
-## 5. Architecture du moteur 5d6
+## 3. Audit des contrats de données et correctifs appliqués
 
-La nouvelle couche pure est quartz/components/scripts/atelier5d6-bestiary-workshop.ts. Elle importe generateCreatureProfileM03 (sans modification de l'ancien generateCreatureProfile), effectiveStat et effectiveMastery M01, sumOccurrences M01 et les fonctions de résolution, résistance et protection M03. Le composant Quartz est BestiaryWorkshop.tsx, chargé par quartz.ts. Son comportement client est atelier5d6-bestiary-workshop.inline.ts.
+### 3.1 Faux contrat M02 à l'export
 
-Une page éditoriale distincte : content/jouer/atelier-bestiary-5d6.md. L'Atelier principal reste accessible et indépendant.
+**Défaut :** l'export du Bestiaire utilisait une enveloppe alrick.sheets.v3, ruleset:"m02", sans transporter toute la structure de développement M02. Une créature de niveau élevé pouvait être soumise artificiellement au budget d'un PJ et bloquée avant un jet.
 
-## 6. Atelier du Bestiaire
+**Correction :** l'enveloppe alrick.sheets.v3 est conservée pour l'import, mais le profil intégré annonce **ruleset:"m03-bestiary"**, avec **kind:"creature" ou "pnj"**. Il transporte niveau/highestLevel, quatre caractéristiques, maîtrises, PV, mana, protections, résistances, grades d'équipement, identité et notes. L'objet Bestiaire complet est conservé dans **bestiarySource**. L'Atelier principal affiche ce profil hors budget de développement PJ, tout en faisant intervenir les formules M03 pour les jets et l'opposition.
 
-Deux catégories : « créature » et « PNJ ». Cinq archétypes de départ : faune, prédateur, gardien, mystique et colosse. Rôles offensif, défensif, soutien. Le PNJ utilise une référence humanoïde simplifiée sans prétendre être un build PJ complet. Le MJ peut personnaliser identité, origine, profession, caractéristiques brutes, maîtrises, ressources, défense, protections, équipement, dégâts, pénétration, descriptions et capacités. Les capacités narratives n'activent aucun effet chiffré automatique.
+Un profil M03 est protégé contre les achats de caractéristiques/maîtrises M02 ; sa construction se fait dans l'Atelier du Bestiaire. La protection est distincte de la capacité du MJ à confirmer les dégâts appliqués pendant un combat.
 
-Les statuts locaux sont brouillon, jeu validé et documentaire approuvé déclaré ; aucune intégration automatique dans le registre canonique. L'approbation documentaire locale n'a pas valeur de publication éditoriale.
+### 3.2 Résistance M03 ≠ protection absorbante
 
-## 7. Formules réellement utilisées
+Les valeurs du générateur **resistancePhysical** et **resistanceMagic** sont des bonus de résistance/seuil défensif. La version initiale les inscrivait dans la protection, qui intervient dans l'absorption des dégâts. Le transfert corrigé renseigne **resistanceBonus** et laisse **protection** indépendante, conformément à la distinction entre pénétration et absorption dans M03. Le calcul de protection innée et de l'équipement conserve le moteur M03 existant.
 
-Distribution : 5 dés à 6 faces, 6^5 = 7 776 issues. Catégories naturelles M01, échec forcé pour 5–7 et aucune réussite cosmologique automatique sur 27–30.
+### 3.3 Sauvegardes, imports et champs inconnus
 
-Bonus de caractéristique E(c) = floor(3 × log2(1 + c/3)). Bonus de maîtrise M(m) = floor(log2(1 + m)). Le combat délègue intégralement à resolveCombatM03, qui combine le naturel, les bonus effectifs, les circonstances, les défenses calculées et les absorptions.
+Les extensions JSON inoffensives du Bestiaire et les métadonnées de capacités sont conservées sous limites de taille et validation ; aucune capacité narrative n'exécute de magie ni d'effet automatiquement. Les identifiants dupliqués d'une fiche importée sont renouvelés. Une sauvegarde locale illisible n'est pas écrasée sans confirmation de nouvelle création.
 
-Dégâts attendus = somme, pour chaque naturel n de 5 à 30, de P(n) × dégâts de resolveCombatM03(n). P(n) = sumOccurrences(n)/7776. Le détail sépare réussite, contact potentiel, blessure réelle, défense, absorption et dégâts. Aucun « pourcentage de réussite » n'est inventé.
+La sélection active du Bestiaire est mémorisée dans une clé locale séparée, sans casser le format de liste existant. Le navigateur rouvre la même fiche après rechargement, y compris après import. Pour les anciennes fiches **legacy**, l'Atelier protège la lecture seule et le champ legacyOriginal conserve les informations inconnues de l'original. Les confrontations mélangeant ancien moteur et M03 sont refusées sans adaptation volontaire.
 
-## 8. Trois modes
+### 3.4 Export JSON et contrôle MJ des impacts
 
-- Rapide : catégorie, niveau, archétype, rôle, nom, résultats mathématiques et opposition.
-- Guidé : reprend les éléments rapides et expose les descriptions, ressources et protections (l'ergonomie doit être vérifiée en navigateur).
-- Expert : toutes les caractéristiques, maîtrises, défenses et capacités narratives.
+La recette Chrome a découvert un véritable **ReferenceError** sur l'export inter-Ateliers. Le chemin de transfert a été corrigé dans le script Quartz effectivement compilé. Un problème d'interaction intermittent du bouton d'export Bestiaire a ensuite été isolé par une recette réelle et traité par un gestionnaire d'export dédié en capture, indépendant des commandes destructives.
 
-Le même contrat de sauvegarde et les mêmes calculs sont utilisés dans les trois cas.
+L'Atelier principal calcule l'impact potentiel avec resolveCombatM03 ; **les PV d'une autre fiche ne sont retirés qu'après confirmation explicite du MJ**. Cette confirmation est vérifiée dans le navigateur, puis les PV sont de nouveau contrôlés après rechargement. Il ne s'agit pas d'une authentification MJ sécurisée côté serveur.
 
-## 9. Exemples de profils à vérifier
+## 4. Contrôles mathématiques
 
-Exemple créature : prédateur N5, 6 dégâts de base, maîtrise et protection issus de generateCreatureProfileM03, comparer au groupe de quatre personnages polyvalents N5, grade 0. Modifier manuellement sa protection physique et observer la diminution des dégâts attendus des opposants.
+- **5d6 :** distribution exacte des **7 776** issues élémentaires, tests de probabilités et d'extrêmes.
+- **Caractéristiques :** pas de plafond définitif à 12 dans M01/M02. La progression 1–25 conserve des profils différenciés et un budget partagé pour les PJ.
+- **Colosse niveau 15 :** Physique **15**, Agilité **7**, Esprit **8**, Présence **8**, **194 PV**.
+- **Bonus effectifs :** **+7, +5, +5, +5**, issus de la transformation logarithmique de M01.
+- **Combat M03 :** distinctions entre réussir/toucher/effleurer/blesser, seuil de pénétration, protection absorbante, dégâts bruts, dégâts potentiels et application après décision MJ.
+- **Simulations de groupe :** résultats interprétés comme des **projections mathématiques expérimentales**, dépendantes des hypothèses de composition, d'actions et de cadence ; aucun résultat n'est présenté comme une partie effectivement jouée.
 
-Exemple PNJ : mystique N12, rôle soutien, profession archiviste, réserve de mana générée, maîtrise magie ou runes paramétrable. Aucun Cercle ni autorité n'est créé ; les pouvoirs décrits restent déclaratifs.
+Les tests de M04 sur les fonctions pures sont exécutés dans npm test ; le navigateur contrôle la cohérence entre chiffres calculés et valeurs réellement affichées. Les protections, maîtrises et situations modifiées modifient effectivement les prévisions de performance.
 
-Ces exemples sont des cas fonctionnels documentés, non une attestation de parcours manuel exécuté.
+## 5. Recette réelle Chrome, Quartz et mobile
 
-## 10. Résultats des tests du générateur
+**Environnement :** Chrome/Chromium headless réel sur runner GitHub Actions, piloté via CDP. La suite charge le HTML construit par Quartz sur serveur local, puis une seconde fois le **site GitHub Pages public**, avec profil de navigateur isolé et stockage local réel.
 
-Nouvelle suite : scripts/test-5d6-m04.mjs. Elle teste la création de 25 niveaux × 5 archétypes × 2 catégories, les statistiques supérieures à 12, la validation des imports et leurs limites, un cycle JSON complet et les capacités narratives inertes. **Résultat constaté :** 8 familles de vérifications M04 réussies dans la CI #41243238992. Compilation TypeScript, build Quartz, contrôles de contenu/site, M01, M02, M03 et M04 verts. Cela ne prouve pas les parcours manuels.
+| Parcours exécuté | Résultat |
+| --- | --- |
+| Rapide, guidé, expert ; Colosse N15 et valeurs exactes | **Réussi** |
+| Modification d'une maîtrise et de la protection avec recalcul | **Réussi** |
+| Export JSON du Bestiaire et réimport de la fiche | **Réussi** |
+| Sauvegarde, rechargement, duplication et suppression avec confirmation | **Réussi** |
+| Export volontaire du Bestiaire vers l'Atelier principal en règles M03 | **Réussi** |
+| Navigation Quartz et affichage mobile 390 px, sans débordement | **Réussi** |
+| Import M03, niveau/PV/statistiques/défenses/source et budget non PJ | **Réussi** |
+| Import M02, conservation de legacyOriginal et données historiques | **Réussi** |
+| Attaque M02 contre M03, confirmation MJ, persistance des dégâts | **Réussi** |
 
-## 11. Résultats des tests de combat
+**CI M04.1 de branche :** #41253301774, 9/9 scénarios Chrome, quatre confirmations de dialogue, réussite complète.  
+**CI main :** #41253510945, npm ci, npm test, TypeScript, build Quartz, contrôles de site et 9/9 Chrome, réussite complète.  
+**CI main du commit publié :** #41253591519, réussite complète.  
+**Preuves d'interface :** artefact GitHub Actions « recette-m041-ci » ; captures bureau, mobile et Atelier principal. Les images ont été ouvertes et examinées : rendu lisible, absence de débordement horizontal constaté sur le viewport mobile testé. Il ne s'agit pas d'une revue esthétique exhaustive.
 
-La suite M04 compare les résultats agrégés à un décompte direct via resolveCombatM03 sur les 26 naturels, pondérés par 7 776 issues. Elle vérifie aussi l'impact de la protection, les hypothèses et la reproductibilité des scénarios. La suite M03 existante demeure dans npm test. Les plages de rounds et l'équilibrage tactique restent **expérimentaux**, à confronter à des playtests humains.
+## 6. Publication effective et contrôle de l'URL
 
-## 12. Sauvegardes et import/export
+**Workflow :** [GitHub Pages #41253591405](https://github.com/Sijiel44/archives-alrick/actions/runs/41253591405) — commit déployé **c85c5a81a59f41c63effbc15ea98aa14fc445ad7**.
 
-Nouvelle clé isolée : archives-alrick-bestiary-v1 ; schéma JSON alrick.bestiary.v1 et ruleset m03. Validation stricte des scores, puissances et protections, nombre de fiches limité, suppression confirmée, duplication, export et réimport. Les anciennes clés alrick.sheets.v1/v2/v3, alrick.campaign.v1/v2 et archives-alrick-atelier-5d6-v1/v2 ne sont pas modifiées par ce composant.
+Résultats distincts observés dans GitHub Actions :
 
-Un export de compatibilité alrick.sheets.v3 est disponible pour importer volontairement la créature dans l'Atelier 5d6. Vérifier en navigateur la totalité de l'aller-retour avant de déclarer la compatibilité achevée. Les champs inconnus du schéma de bestiaire ne sont pas garantis à l'import ; aucun schéma PJ n'est remplacé.
+1. **build : success** — npm ci / npm test, configure-pages, création de l'artefact Pages.
+2. **deploy : success** — actions/deploy-pages a effectivement déployé.
+3. **smoke public : success** — le navigateur Chrome a parcouru **https://sijiel44.github.io/archives-alrick/** et la page d'Atelier du Bestiaire ; **9/9 scénarios complets réussis**, export/import et combat compris.
 
-## 13. Vérifications navigateur et mobile
+Le test du site public n'est pas déduit de la seule réussite de CI : il est exécuté après le job deploy en utilisant l'origine HTTPS de GitHub Pages via l'option PUBLIC_BASE du script de recette. Les captures du site public sont stockées dans l'artefact **recette-m041-pages** du workflow #41253591405.
 
-Non effectuées à la rédaction de ce rapport : création complète en navigateur réel, retour SPA, rechargement, suppression après confirmation, import/export complet vers Atelier, accessibilité, vue mobile et essais d'interface sur les appareils. Les tests automatiques, même verts, ne se substituent pas à cette recette.
+**URL directe :** https://sijiel44.github.io/archives-alrick/jouer/atelier-bestiary-5d6
 
-## 14. Travaux parallèles
+Les créations restent dans le stockage local du navigateur. Les protections éditoriales des fiches de campagne déjà présentes dans Quartz (publish:false, spoilers:true, unlisted:true) ne sont pas levées par cette mission. Le système est un prototype expérimental de jeu, pas une canonisation rétroactive du récit.
 
-- #54 : projet distinct de tables multijoueurs ; modifications de package.json et Atelier5d6.tsx. Risque de conflits futurs de fichiers, pas d'intégration automatique.
-- #55 : grimoire M5d6 ; modifie package.json, Atelier5d6.tsx et atelier5d6.inline.ts ; risques d'intégration explicites à résoudre après M04.
-- #56 : fondations documentaires du bestiaire ; registre et modèles séparés, sans fusion ni ajout canonique automatique. Prévoir un mapping versionné entre registre documentaire et fiches de jeu.
+## 7. Retour arrière, limites et travaux ultérieurs
 
-La branche M04 ne prétend pas avoir fusionné ni résolu intégralement ces chantiers.
+**Référence avant mission :** main 3443be26b15a90f078e7fdcb94ae5fbb5cfd9191.  
+**Référence après fusion M04 :** 7ec48f51c6591343921678595ebe1a38f49bbbf6.  
+**Commit du déploiement :** c85c5a81a59f41c63effbc15ea98aa14fc445ad7.
 
-## 15. Documentation modifiée
+En cas de défaut critique, établir un revert Git explicite des changements concernés, contrôler à nouveau npm ci / npm test / navigateur, puis émettre un **nouveau signal de publication approuvée** ; ne pas forcer ou réécrire l'historique partagé.
 
-La page de création du bestiaire explique l'utilisation, les hypothèses mathématiques, les sauvegardes et les limitations. Des renvois et avertissements distinguent désormais plus clairement les fiches historiques et modernes dans jouer/index.md, jouer/atelier-5d6.md et jouer/systeme-5d6-base12.md. Un audit éditorial complet des anciennes valeurs reste recommandé avant publication.
+Limites persistantes : stockage par navigateur sans synchronisation multijoueur, contrôle MJ d'interface et non rôle sécurisé, projections de groupe non validées par des parties humaines, tests mobiles sur un viewport représentatif seulement. Les PR #54–#56 restent des travaux séparés, à revoir par conflit de données et d'ergonomie avant fusion.
 
-## 16. GitHub Pages et URL publique
+**M05 :** préserver la séparation du chantier. Les fiches mathématiques visuelles, la refonte esthétique et l'enrichissement graphique des combats seront planifiés après M04.1, sans les mélanger rétroactivement au code publié.
 
-Site configuré dans le dépôt pour https://sijiel44.github.io/archives-alrick/. Le workflow .github/workflows/pages.yml fonctionne sur main avec un garde-fou de publication dédié ; la CI .github/workflows/ci.yml est distincte, exécutée sur les PR et ne publie pas. AUCUN déploiement M04 n'est déclaré ni attesté.
+## 8. Verdict de clôture
 
-## 17. Problèmes résiduels / critères bloquants
+**M04.1 terminée et publiée.** Le contrat M03 du Bestiaire est cohérent avec l'Atelier principal, le calcul et la persistance réels fonctionnent, l'intégration Git est achevée, les tests de navigateur (local et public) sont verts et le workflow Pages a réellement déployé.
 
-1. Confirmer la CI après toutes les retouches documentaires finales ; première CI complète déjà verte sur a0edbab656efcbd8f381a606b2370f3bc061b0a8.
-2. Tester les parcours réels, y compris responsive/mobile et navigation SPA.
-3. Tester import/export du Bestiaire et l'import volontaire dans l'Atelier principal, notamment pour les fiches modernes.
-4. Vérifier la non-régression des anciennes sauvegardes.
-5. Revoir accessibilité, qualité du formulaire et indicateurs de difficulté.
-6. Harmoniser les passages documentaires anciens sans effacer l'historique.
-7. Réconcilier les conflits potentiels avec #54, #55 et l'architecture documentaire #56.
-8. Réaliser des playtests humains pour valider la durée et l'équilibrage des rencontres.
+Le rapport Word complet associé est **M04_Rapport_Final_5D6.docx**.
 
-## 18. Retour arrière
+## 9. Sources et références techniques
 
-Aucune publication M04 n'ayant été réalisée à ce stade, le retour arrière consiste à laisser #61 non fusionnée et à conserver la branche. Pour un futur déploiement : relever avant merge le SHA de main, conserver une sauvegarde de main et du workflow, vérifier le déploiement, puis, en cas de régression, créer un revert explicite et contrôlé des commits de M04 avec nouvelle CI et contrôle de GitHub Pages. Ne jamais effacer une sauvegarde locale de navigateur pour « corriger » un problème.
-
-## 19. Améliorations recommandées
-
-- Tests E2E sur navigateur (création, édition, localStorage, import/export, navigation SPA, mobile).
-- Modèle de rencontres avec initiative, ressources et actions d'équipe.
-- Comparateur de profils sauvegardés, stratégies et scénarios reproduisibles.
-- Impression de fiches pour le MJ.
-- Liaison contrôlée avec les entrées documentaires de #56 (pas de canon automatique).
-- Validation éditoriale des catégories de difficulté après essais de table.
-
-## 20. Bilan de clôture
-
-**Implémenté sur branche M04 :** composant et page du Bestiaire, moteur et import/export JSON, profils de référence, calculateur exact, suites de tests M04 et liens de navigation.
-
-**Testé avant M04 :** les moteurs M01/M02/M03 ont des CI documentées ; la tête M03 9e8fab0 a sa CI verte (run 41241290667).
-
-**Testé M04 :** TypeScript, contenu, build Quartz, suite npm test, tests M04 (8 familles) sur le run #41243238992 réussi.
-
-**En vérification M04 :** navigation réelle, sauvegardes en navigateur, import dans l'Atelier principal et comportement mobile.
-
-**Expérimental :** création simplifiée de PNJ, métriques de dangerosité et rounds théoriques.
-
-**Non publié et non résolu :** recette navigateur/mobile, fiabilité des sauvegardes réelles, intégration des travaux #54–#56 et confirmation Pages.
-
-**Conclusion : M04 n'est pas clôturée.** Le créateur a autorisé une publication seulement après validation complète. Aucune fusion vers main ni déclaration de publication ne doit avoir lieu tant que les blocages ci-dessus ne sont pas levés.
-
----
-
-Documentation autonome pour reprise de M04 dans une nouvelle conversation : consulter la PR #61 et la tête de branche au moment de la reprise, relancer npm ci / npm test, puis effectuer la recette navigateur et statuer sur chaque critère avant intégration finale.
-
-
----
-
-# M04.1 — Reprise technique et recette réelle (31 octobre 2026)
-
-## Point de contrôle du dépôt
-
-La tête initiale M04.1 était le commit `56318bc3d9e38974355b7e6d004b8583122925f2`, CI #41243403493 réussie. Les branches PR #57 (audit), #58 (M01), #59 (M02), #60 (M03) et #61 (M04) sont reliées par la filiation voulue, avec #61 en brouillon contre #60. Aucune n'a été fusionnée dans `main` durant ce travail. Référence `main` inspectée : `3443be26b15a90f078e7fdcb94ae5fbb5cfd9191`. Cette base est le point de retour arrière à revérifier avant tout futur merge. Les PR #54 (multijoueur), #55 (grimoire) et #56 (bestiaire documentaire) restent ouvertes et séparées ; aucune intégration implicite.
-
-## Contrat de données : anomalies et corrections effectivement codées
-
-**Anomalie 1 — usurpation d'un PJ M02.** L'export « vers l'Atelier » créait `alrick.sheets.v3` en déclarant une fiche `ruleset:"m02"` alors qu'une créature n'a ni budget ni historique de progression d'un PJ. Correction : définition d'une sous-catégorie déclarée `ruleset:"m03-bestiary"`, conservant la source complète dans `bestiarySource`, et gestion explicite de cette catégorie dans le validateur de l'Atelier principal. Les caractéristiques, maîtrises, niveaux, PV, mana, résistances, protections, grades et descriptions proviennent du modèle de créature. Aucun budget de PJ ne doit lui être imputé. L'édition du profil est orientée vers l'Atelier du Bestiaire, non vers l'achat de maîtrises M02.
-
-**Anomalie 2 — résistance confondue avec absorption.** Les champs `resistancePhysical` / `resistanceMagic` de `generateCreatureProfileM03` sont des bonus de défense. Ils étaient initialement rangés dans `protection`. La correction les range dans `resistanceBonus` (borné à 8) et distingue clairement les points de protection (innée/équipement/contextuelle), qui amortissent les dégâts, de la résistance qui modifie le seuil à franchir.
-
-**Anomalie 3 — export inter-Ateliers interrompu en navigateur.** Un test Chrome a révélé `ReferenceError: exportBestiaryForAtelier is not defined` dans le script Quartz compilé ; le transfert a été défini directement dans le script client tout en conservant le test du contrat pur. **Une régression d'interface persiste dans les derniers essais Chrome :** après certains parcours, le clic « Exporter JSON » est reçu par le formulaire mais aucun Blob n'est créé ; aucun message d'erreur JavaScript n'est émis. Les causes et le parcours exact restent à corriger. Les diagnostics sur DOM, événements, navigation et étapes de téléchargement sont dans `scripts/test-5d6-m04-browser.mjs`. Une seule réussite passée ne suffira pas ; il faut une CI complète verte sur la dernière tête.
-
-**Autres protections.** Les capacités restent narratives et non exécutées. Des métadonnées d'extension sont conservées dans le schéma Bestiaire sous réserve de limites de taille et de validation ; les capacités conservent leurs métadonnées. Une sauvegarde locale Bestiaire illisible n'est plus écrasée automatiquement. La compatibilité `m02` ↔ `m03-bestiary` passe par le moteur `resolveCombatM03`, tandis qu'une confrontation avec `legacy` sans conversion est refusée. Une confirmation explicite du MJ reste nécessaire pour soustraire les PV.
-
-## Vérification mathématique
-
-Les tests unitaires effectuent le calcul exact sur les **7 776 issues** de 5d6 et comparent directement les valeurs pondérées à `resolveCombatM03`. Le Colosse niveau 15 donne **Physique 15, Agilité 7, Esprit 8, Présence 8, 194 PV**, bonus effectifs **+7, +5, +5, +5**. Les caractéristiques supérieures à 12 restent légales et les naturels 5–7 restent des échecs forcés. Les tests couvrent les distinctions entre toucher, contact, blessure, absorption, pénétration et dégâts attendus. L'estimation des rounds d'un groupe est une projection déterministe d'un scénario simplifié et **non** une durée réelle de partie. Les cas impossibles narrativement ne sont pas rendus possibles par un naturel 27–30.
-
-## Recette Chrome réelle — résultats observés, sans extrapolation
-
-Une CI a lancé Chromium/Chrome sur la **sortie HTML construite par Quartz**, via le protocole CDP sur un serveur local du runner GitHub Actions. Les scénarios validés par les logs comprennent : trois modes de création, création Colosse N15 avec caractéristiques/PV/bonus attendus, modification d'une maîtrise et d'une protection avec recalcul des performances, sauvegarde/rechargement local, duplication, suppression et acceptation de la confirmation. L'export puis le réimport JSON propre au Bestiaire a aussi **réussi dans des exécutions intermédiaires** (par exemple run #41247094130), mais n'est pas reproductiblement vert sur les dernières têtes.
-
-**Dernière CI analysée :** [GitHub Actions #41248423788](https://github.com/Sijiel44/archives-alrick/actions/runs/41248423788), tête `2eeb70dd89f136f5b9908a85082dbd94322b678f` : `npm ci` et `npm test` **réussis**, `npm run test:m04:browser` **en échec** au scénario d'export JSON du Bestiaire après les trois premiers groupes. Aucun test postérieur de ce run ne peut être déclaré passé.
-
-**Toujours non validés de bout en bout sur la dernière tête :** import volontaire dans l'Atelier principal et contrôle de tous les champs, combat M02 contre créature M03, application des dégâts confirmée MJ puis persistance, contrôle de non-régression `legacy`, navigation Quartz aller-retour et test mobile à 390 px. Le test navigateur contient ces scénarios mais s'arrête avant de les atteindre ; présence d'un test ≠ réussite. Les inspections graphiques visuelles approfondies et les playtests humains ne sont pas réalisés.
-
-## CI, publication et retour arrière
-
-La CI initiale M04 #41243403493 était réussie ; les commits M04.1 ont reproduit des `npm test` réussis, sans satisfaire toute la nouvelle recette Chrome. AUCUN merge vers `main` n'a été effectué, et GitHub Pages **n'a pas été déployé pour M04.1**. L'URL publique prévue reste https://sijiel44.github.io/archives-alrick/ mais ne doit pas être présentée comme hébergeant déjà cette version.
-
-La publication GitHub Pages est séparée de la CI et ne doit être déclenchée qu'après une recette navigateur complète, une protection attestée des sauvegardes et une revue de la configuration Pages. Préserver la filiation des PR et faire une seule intégration finale contrôlée ; aucun force-push ni duplication de commits. En cas de rollback après une future publication, relever le SHA exact de `main` avant intégration, créer un revert explicite et revalider le déploiement.
-
-## Chantiers futurs et verdict
-
-M04.1 : résoudre le scénario d'export non déterministe, rejouer l'intégralité des parcours, comparer les objets JSON après import, vérifier l'affichage mobile et les données historiques, obtenir `npm ci`, `npm test`, la recette Chrome verte, le build Quartz puis le déploiement Pages et un test interactif sur l'URL publique. Ne qualifier le rapport de final **qu'après** ces contrôles.
-
-M05 : report explicite des fiches mathématiques visuelles, de la refonte esthétique et des modèles de confrontation plus riches. Les PR #54–#56 sont à réconcilier sur leurs propres branches, sans canoniser automatiquement les propositions.
-
-**VERDICT M04.1 au présent point de contrôle : corrections de contrats implémentées et plusieurs parcours réels attestés ; CI navigateur finale échouée ; PR #61 toujours brouillon ; publication non autorisée par les critères de mission.**
+- PR #57 à #61 et #54 à #56 : https://github.com/Sijiel44/archives-alrick/pulls
+- CI M04.1 avant fusion : https://github.com/Sijiel44/archives-alrick/actions/runs/41253301774
+- CI main : https://github.com/Sijiel44/archives-alrick/actions/runs/41253510945
+- CI main du commit publié : https://github.com/Sijiel44/archives-alrick/actions/runs/41253591519
+- Publication et smoke Chrome public : https://github.com/Sijiel44/archives-alrick/actions/runs/41253591405
+- Code des essais Chrome : scripts/test-5d6-m04-browser.mjs
+- Export/transfert : quartz/components/scripts/atelier5d6-bestiary-workshop.inline.ts et atelier5d6-bestiary-workshop.ts
+- Atelier principal : quartz/components/scripts/atelier5d6.inline.ts
+- Enveloppe visuelle : quartz/components/BestiaryWorkshop.tsx
+- Site public : https://sijiel44.github.io/archives-alrick/
