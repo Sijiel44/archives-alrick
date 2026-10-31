@@ -145,13 +145,13 @@ Voir \`docs/bestiaire/B001_EVOLUTIONS.md\`. Les transitions sont **des relations
 | Cohérence JSON du registre | réussi | \`JSON.parse\` exécuté à la création |
 | Examen du code 5d6 et des trois scripts de tests | réussi | sources lues directement, pas d'exécution |
 | \`npm test\` intégral | non exécuté | environnement local sans clone ni dépendances du dépôt ; ne pas prétendre à une réussite CI |
-| Liens Quartz et ancien catalogue après build | non exécuté | pas de build local |
+| Liens Quartz et ancien catalogue après build | réussi en CI pour le commit `fdb058dc` | `npm test` comprend check:content, check:types, build, check:site et tests 5d6 ; vérification navigateur manuelle non exécutée |
 | Scannage exhaustif des fichiers du dépôt / tous les codes | non exécuté | listing récursif non accessible par le connecteur utilisé |
 | Aucun spoiler ajouté au site | réussi sur cette PR | fichiers hors \`content/\`, aucune fiche narrative révélatrice nouvelle |
 | Images / droits / galerie | non applicable | aucune nouvelle image |
 | Protection des secrets MJ hors dépôt | réussi sur cette PR | sources privées non copiées |
 | Compatibilité réelle d'un import générateur → fiche | non exécuté | adaptateur non développé |
-| Aucune régression de publication | non démontrée | vérifier par CI et aperçu PR |
+| Aucune régression de publication | contrôle CI réussi ; revue visuelle non exécutée | pages historiques non modifiées ; vérifier la publication réelle après fusion séparément |
 
 ## B001-I — Décisions et missions suivantes
 
@@ -163,4 +163,4 @@ Voir \`docs/bestiaire/B001_EVOLUTIONS.md\`. Les transitions sont **des relations
 6. **Mission B-003 proposée :** premier biome **à choisir parmi les habitats déjà attestés de l'Atlas**, sans placer arbitrairement faune ou monstres.
 7. **Mission B-004 proposée :** étudier une famille d'évolution seulement après identification d'une transformation réellement documentée ; à ce stade, pas de « lignée modèle » canonisée.
 
-**Condition de sortie :** cette PR est une fondation technique **à relire**, pas une validation de nouveaux faits du monde. La complétude de l'inventaire, la CI et les arbitrages restent ouverts.
+**Condition de sortie :** cette PR est une fondation technique **à relire**, pas une validation de nouveaux faits du monde. La complétude de l'inventaire et les arbitrages restent ouverts ; la CI du premier commit de PR a réussi et devra confirmer toute révision ultérieure.
