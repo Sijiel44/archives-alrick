@@ -17,6 +17,10 @@ Cet outil est une **version pilote évolutive**, inspirée du [[jouer/systeme-5d
 
 ## Trois modes, un même jeu
 
+**Extension pilote :** le personnage possède maintenant un champ de description et un portrait facultatif importé depuis l'appareil (image réduite et enregistrée localement dans la fiche et son export JSON). La progression individuelle va de **1 à 24**, avec **+1 point de caractéristique** et **+2 points de maîtrise** par niveau nouvellement atteint, chaque maîtrise étant plafonnée à 12. Les points peuvent rester en réserve. **PV maximum +2** par nouveau niveau ; **mana maximum +2** seulement si une réserve magique existe déjà. Ces propositions de progression sont expérimentales et ne doivent pas être attribuées rétroactivement aux personnages canoniques.
+
+Les anciennes fiches et leur emplacement de sauvegarde sont conservés. **Les maîtrises additionnelles sont suivies sans bonus de jet automatique** : la résolution 5d6 existante et les spécialités +0/+1/+2 restent inchangées en attendant le playtest. Pour les 12 indices de groupe et les missions, ouvrir le [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier]].
+
 **Joueur :** remplir sa fiche, consulter sa réserve de PV et de mana, lancer ses dés et enregistrer ses actions.
 
 **Maître du jeu :** choisir une fiche de PNJ ou créature dans la liste locale, utiliser un profil d'essai ou importer un fichier JSON, puis appliquer les mêmes règles de résolution.
