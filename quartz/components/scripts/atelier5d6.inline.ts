@@ -835,6 +835,12 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       el?.dataset?.defenseResistance || el?.dataset?.defenseProtection)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
+    if(el?.hasAttribute("data-opposition-enabled")||el?.hasAttribute("data-opposition-target")||
+       el?.hasAttribute("data-opposition-kind")||el?.hasAttribute("data-opposition-mode")||
+       el?.hasAttribute("data-opposition-min")||el?.hasAttribute("data-opposition-base")||
+       el?.hasAttribute("data-roll-target")){
+      clearPendingImpact();renderOpposition()
+    }
     if(el instanceof HTMLInputElement && el.hasAttribute("data-talent-spent")){
       const sheet=current()
       sheet.talentPointsSpent=clamp(el.value,0,Math.floor(sheet.convertedCredits/6),sheet.talentPointsSpent)
@@ -911,7 +917,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       void file.text().then(raw=>{importCampaign(JSON.parse(raw))})
         .catch(()=>message("Restauration refusée : vérifier le schéma alrick.campaign.v1 et les identifiants."))
     }
-    if(el?.hasAttribute("data-active")){state.activeId=el.value;render();persist()}
+    if(el?.hasAttribute("data-active")){
+      clearPendingImpact();state.activeId=el.value;render();persist()
+    }
     if(el?.hasAttribute("data-import") && el instanceof HTMLInputElement) {
       const file=el.files?.[0];el.value=""
       if(!file)return
@@ -937,7 +945,25 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
-    if(button.dataset.mode){state.mode=button.dataset.mode as Mode;refreshMode();persist();return}
+    if(button.dataset.mode){
+      state.mode=button.dataset.mode as Mode
+      q<HTMLButtonElement>("[data-opposition-apply]").hidden=!pendingImpact || state.mode==="pj"
+      refreshMode();persist();return
+    }
+    if(button.hasAttribute("data-opposition-apply")){
+      if(state.mode==="pj"){message("L'application des dégâts sur une autre fiche est réservée au MJ.");return}
+      const pending=pendingImpact
+      if(!pending){message("Aucun impact en attente. Effectuer d'abord un jet opposé réussi.");return}
+      const victim=state.sheets.find(x=>x.id===pending.targetId)
+      if(!victim){clearPendingImpact();message("La cible n'existe plus.");return}
+      if(!window.confirm("Appliquer "+pending.damage+" PV de dégâts à « "+victim.name+" » ? (0 PV = hors de combat, pas une mort automatique)"))return
+      const actual=Math.min(victim.pv,pending.damage)
+      victim.pv=Math.max(0,victim.pv-pending.damage)
+      if(state.log[0])state.log[0].text=clean(state.log[0].text+" · "+actual+" PV retirés à "+victim.name,180)
+      clearPendingImpact();refreshLog();renderOpposition();renderAI();persist()
+      message(actual+" PV effectivement retirés à "+victim.name+" ; reste "+victim.pv+"/"+victim.pvMax+" PV.")
+      return
+    }
     if(button.hasAttribute("data-clear-portrait")){
       current().portrait="";setForm();persist();message("Portrait retiré de cette fiche.");return
     }
