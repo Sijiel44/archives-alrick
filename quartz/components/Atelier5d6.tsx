@@ -1,7 +1,7 @@
 import type { QuartzComponent } from "./types"
 // @ts-ignore Quartz compile les ressources .inline.ts pour la navigation SPA
 import script from "./scripts/atelier5d6.inline"
-import {ORIGIN_STEPS,AFFINITY_DOMAINS} from "./scripts/atelier5d6-origins"
+import {ORIGIN_STEPS,AFFINITY_DOMAINS,EDUCATION_PATHS,LITERACY_LEVELS} from "./scripts/atelier5d6-origins"
 
 const masteries = [
   ["lames","Lames et dagues"],["haches","Haches et masses"],["arcs","Arcs et tirs"],
@@ -60,6 +60,15 @@ export const Atelier5d6: QuartzComponent = (props) => {
         <input type="file" accept=".json,application/json" data-import aria-label="Importer un fichier de personnages JSON"/>
       </label>
     </div>
+    <nav class="atelier-quicknav" aria-label="Espace de jeu">
+      <button type="button" data-hub-nav="origines">🧭 Création</button>
+      <button type="button" data-hub-nav="fiche">📜 Personnage et dés</button>
+      <button type="button" data-hub-nav="affinites">✨ Capacités</button>
+      <button type="button" data-hub-nav="inventaire">🎒 Inventaire</button>
+      <button type="button" data-hub-nav="galerie">🖼️ Images</button>
+      <button type="button" data-hub-nav="compagnies">⚔️ Missions</button>
+      <button type="button" data-hub-nav="tables">👥 Tables en ligne</button>
+    </nav>
     <p class="atelier-hub-status" data-hub-status>Personnage actif · niveau · ressources · affinités</p>
     <details class="atelier-hub-section" data-hub="origines">
       <summary>🧭 Créer un aventurier — les quatre premières périodes de vie</summary>
@@ -73,6 +82,32 @@ export const Atelier5d6: QuartzComponent = (props) => {
             {step.options.map(opt=><option value={opt.id} key={opt.id}>{opt.label} — {opt.description}</option>)}
           </select></label>
         </fieldset>)}
+        <fieldset class="atelier-stats">
+          <legend>Et l'école, dans tout ça ?</legend>
+          <div class="atelier-fields">
+            <label>Quelle éducation as-tu reçue ?
+              <select data-origin-education><option value="">Choisir une forme d'apprentissage</option>
+                {EDUCATION_PATHS.map(x=><option key={x.id} value={x.id}>{x.label} — {x.description}</option>)}
+              </select>
+            </label>
+            <label>Sais-tu lire et écrire ?
+              <select data-origin-literacy><option value="">Choisir librement</option>
+                {LITERACY_LEVELS.map(x=><option key={x.id} value={x.id}>{x.label}</option>)}
+              </select>
+            </label>
+          </div>
+          <p class="atelier-hint">Éducation et lecture sont indépendantes : l'absence d'école n'impose pas l'illettrisme, et une enfance noble n'oblige pas à être lettré. Il est possible d'apprendre plus tard.</p>
+        </fieldset>
+        <fieldset class="atelier-stats">
+          <legend>Raconte ton personnage</legend>
+          <label class="atelier-wide">Son histoire personnelle
+            <textarea data-origin-story rows={4} maxLength={4000} placeholder="Un souvenir, un village, une promesse, une erreur, un rêve... Le récit des réponses est enregistré séparément."/>
+          </label>
+          <div class="atelier-fields">
+            <label>Ses liens et attaches<input data-origin-connections type="text" maxLength={600} placeholder="Famille, mentor, communauté, amis..."/></label>
+            <label>Son objectif personnel<input data-origin-goal type="text" maxLength={600} placeholder="Pourquoi commencer l'aventure ?"/></label>
+          </div>
+        </fieldset>
         <p data-origin-preview class="atelier-hint" role="status">Choisis les quatre périodes de vie pour préparer ta fiche de niveau 5.</p>
         <div class="atelier-toolbar">
           <button type="button" data-origin-build>Créer cet aventurier niveau 5</button>
@@ -117,8 +152,21 @@ export const Atelier5d6: QuartzComponent = (props) => {
           </label>
           <p data-xp-info class="atelier-hint">Expérience : 0 XP · niveau suivant : 5 XP.</p>
         </div>
-        <details class="atelier-stats"><summary>Histoire du personnage et parcours avant l'aventure</summary>
-          <p data-life-history class="atelier-hint">Création libre : aucune histoire de jeunesse enregistrée.</p>
+        <details class="atelier-stats">
+          <summary>Histoire du personnage, éducation et objectifs</summary>
+          <p data-life-history class="atelier-hint">Création libre : aucun parcours de jeunesse enregistré.</p>
+          <div class="atelier-fields">
+            <label>Scolarité / apprentissage<select data-field="education"><option value="">Non renseigné</option>
+              {EDUCATION_PATHS.map(x=><option key={x.id} value={x.id}>{x.label}</option>)}
+            </select></label>
+            <label>Lecture et écriture<select data-field="literacy"><option value="">Non renseigné</option>
+              {LITERACY_LEVELS.map(x=><option key={x.id} value={x.id}>{x.label}</option>)}
+            </select></label>
+          </div>
+          <label class="atelier-wide">Récit personnel<textarea data-field="backstory" rows={4} maxLength={4000} placeholder="Son propre récit, modifiable en cours de campagne"/></label>
+          <label class="atelier-wide">Liens importants<textarea data-field="connections" rows={2} maxLength={600} placeholder="Personnes et communautés importantes"/></label>
+          <label class="atelier-wide">Motivation et objectif<textarea data-field="goal" rows={2} maxLength={600} placeholder="Ce qui fait avancer le personnage"/></label>
+          <p class="atelier-hint">L'illettrisme ne pénalise pas Esprit. Il peut nécessiter une aide pour lire un contrat ou rédiger une lettre. Le personnage peut apprendre au fil de la campagne.</p>
         </details>
         <label class="atelier-wide">Talents acquis (capacités, conditions et limites)
           <textarea data-field="talents" rows={2} maxLength={1600} placeholder="Ex. : Pisteur — repérer une ancienne piste même sous la pluie"></textarea>
