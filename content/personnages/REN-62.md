@@ -6,10 +6,10 @@ categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P09531–10240"
-derniere_revision_documentaire: "2026-10-29"
+derniere_revision_documentaire: "2026-10-30"
 visibilite: "publique_avec_avertissement"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
+description: "Hadran, divinité guerrière accueillie en CB42, est un hôte autonome, sans adhésion ni fonction militaire imposées."
 tags: [ren_62, cb42, personnage]
 etat_editorial: valide
 unlisted: true
