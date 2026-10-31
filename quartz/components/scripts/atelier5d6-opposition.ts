@@ -74,7 +74,7 @@ export function attackMastery(masteries:Record<string,number>,mode:ImpactMode):n
 }
 export function resolveOpposition(args:{
   natural:number;total:number;difficulty:number;resistance:number
-  damageBase:number;mastery:number;level:number;protection:number;mode:ImpactMode
+  damageBase:number;mastery:number;level:number;protection:number;mode:ImpactMode;affinityBonus?:number
 }):OppositionResult{
   const normalDifficulty=bounded(args.difficulty,15,30)
   const threshold=Math.max(normalDifficulty,bounded(args.resistance,0,50))
@@ -85,7 +85,8 @@ export function resolveOpposition(args:{
   const glancing=!criticalFailure&&!success&&args.mode!=="mental"&&
     args.natural>=27&&args.natural<=30&&args.total>=normalDifficulty
   const contact=success||glancing
-  const potential=bounded(args.damageBase,1,12)+bounded(args.mastery,0,12)+impactBonus(args.level)
+  const potential=bounded(args.damageBase,1,12)+bounded(args.mastery,0,12)+impactBonus(args.level)+
+    (args.mode==="magie"?bounded(args.affinityBonus??0,0,10):0)
   const grossDamage=contact&&args.mode!=="mental"?potential:0
   const protection=bounded(args.protection,0,999)
   // En cas de contact héroïque, 0 PV par défaut, 1 PV AU MAXIMUM sur 30 naturel

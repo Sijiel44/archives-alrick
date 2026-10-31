@@ -152,6 +152,10 @@ Chaque niveau **21, 22, 23, 24 et 25** demande **une validation distincte** pour
 - **Bestiaire :** ne pas créer une « race de niveau 25 » figée. Décrire chaque **espèce**, puis ses **stades**, son **expérience**, ses **affinités**, ses **capacités** et les variantes de niveau 1–25 lorsque la biologie et la narration le permettent.
 - **Hors catégorie :** les Fondements **Silence** et **Yggdrasil** restent en dehors des échelles. Les Archétypes draconiques peuvent être représentés par une **manifestation de niveau 25**, mais leur ontologie ne se convertit pas en fiche ordinaire.
 
+## VII. Première traduction jouable : le parcours d'aventurier niveau 5
+
+Le [[jouer/parcours-de-vie-affinites|questionnaire de jeunesse]] répartit maintenant les crédits des quatre premières périodes sur une nouvelle fiche niveau 5. Il reste **facultatif**, les anciennes fiches niveau 1 demeurent compatibles, et la création libre est conservée. Les **affinités proposées** peuvent être enregistrées par le MJ local avec une origine et des limites, sans devenir automatiquement des Autorités, des Cercles ou des pouvoirs canoniques. Le bonus expérimental de 2 dégâts par rang affecte seulement **l'impact d'une attaque magique réellement adaptée** ; il ne donne pas un +5 permanent aux cinq dés.
+
 ## VII. Points restant à arbitrer avant de modifier les règles numériques
 
 1. Le PJ débutant passe-t-il définitivement du **niveau 1** au **niveau 5**, avec les niveaux 1–4 réservés à la population ordinaire ?

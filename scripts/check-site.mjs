@@ -110,7 +110,7 @@ assert(publicMissions.missions.every(m=>m.statut==='proposition_non_jouee' && !(
 for(const token of ['data-opposition-enabled','data-opposition-target','data-opposition-kind',
   'data-opposition-mode','data-opposition-min','data-opposition-base','data-opposition-apply',
   'data-opposition-preview','data-opposition-result','data-opposition-counter','data-bestiary-create','data-bestiary-archetype','data-bestiary-level','data-defense-gear="physique"','data-defense-resistance="physique"',
-  'data-defense-protection="magie"','data-resistance-summary','max="25"']){
+  'data-defense-protection="magie"','data-resistance-summary','max="25"','data-origin-build','data-origin-choice="famille"','data-origin-choice="formation"','data-origin-choice="epreuve"','data-origin-choice="vocation"','data-hub-status','data-affinity-list','data-affinity-grant','data-power-list','data-power-grant','data-roll-affinity']){
   assert(atelierHtml.includes(token), `Module d'opposition 5d6 incomplet : ${token}`)
 }
 const rulesHtml = await readFile(path.join(root, 'jouer', 'systeme-5d6-base12.html'), 'utf8')

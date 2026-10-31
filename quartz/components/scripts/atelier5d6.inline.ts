@@ -2,11 +2,15 @@ import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,inna
 import {generateCreatureProfile} from "./atelier5d6-bestiary"
 import type {CreatureArchetype} from "./atelier5d6-bestiary"
 import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
+import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,buildOrigin,
+  affinityRankLimit,affinityImpactBonus,divinePowerMinimumLevel} from "./atelier5d6-origins"
+import type {Affinity,AffinityId,Power,PowerGrade,OriginMastery} from "./atelier5d6-origins"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
-type Mastery = "lames" | "haches" | "arcs" | "runes" | "soins" | "negociation" | "survie" | "artisanat" | "magie"
-const MASTERIES: Mastery[] = ["lames","haches","arcs","runes","soins","negociation","survie","artisanat","magie"]
-const blankMasteries = (): Record<Mastery,number> => ({lames:0,haches:0,arcs:0,runes:0,soins:0,negociation:0,survie:0,artisanat:0,magie:0})
+type Mastery = OriginMastery
+const MASTERIES: Mastery[] = [...ORIGIN_MASTERIES]
+const blankMasteries = (): Record<Mastery,number> =>
+  Object.fromEntries(MASTERIES.map(k=>[k,0])) as Record<Mastery,number>
 const totalMasteries = (m:Record<Mastery,number>) => MASTERIES.reduce((sum,k)=>sum+m[k],0)
 type Domain = "magie" | "melee" | "tir" | "nego" | "autre"
 const DOMAINS: Domain[] = ["magie", "melee", "tir", "nego", "autre"]
@@ -77,7 +81,8 @@ type Sheet = {
   vocation: string; talents: string; boons: string; curses: string; items: string
   sourceRef: string; sourceTitle: string
   streaks: Record<Domain,number>; lastIncident: string
-  notes: string; gmNotes: string
+  notes: string; gmNotes: string; lifeSteps:string[]; lifeSummary:string
+  affinities:Affinity[]; powers:Power[]
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
@@ -157,7 +162,8 @@ function fresh(kind: Role = "pj"): Sheet {
     pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, divineLimit:20, ascensionWitness:"", divineMilestones:[], inventory:[],
     convertedCredits:0,talentPointsSpent:0,xp:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
-    sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
+    sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"",
+    lifeSteps:[],lifeSummary:"",affinities:[],powers:[] }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -183,6 +189,30 @@ function validateSheet(raw: unknown): Sheet | null {
   const masteries=blankMasteries()
   const storedMasteries=obj.masteries && typeof obj.masteries==="object" ? obj.masteries as Record<string,unknown> : {}
   for(const k of MASTERIES) masteries[k]=clamp(storedMasteries[k],0,12,0)
+  const allowedDomains=new Set<string>(AFFINITY_DOMAINS.map(x=>x[0]))
+  const affinityRows=Array.isArray(obj.affinities)?obj.affinities.slice(0,16):[]
+  const affinities:Affinity[]=[]
+  for(const item of affinityRows){
+    if(!item||typeof item!=="object")continue
+    const a=item as Record<string,unknown>,id=typeof a.id==="string"?a.id:""
+    if(!allowedDomains.has(id)||affinities.some(x=>x.id===id))continue
+    const rank=clamp(a.rank,1,affinityRankLimit(level),1)
+    affinities.push({id:id as AffinityId,rank,witness:clean(a.witness,300)})
+  }
+  const powerRows=Array.isArray(obj.powers)?obj.powers.slice(0,40):[]
+  const powers:Power[]=[]
+  for(const item of powerRows){
+    if(!item||typeof item!=="object")continue
+    const p=item as Record<string,unknown>,name=clean(p.name,90).trim()
+    const grade:PowerGrade=p.grade==="divin"?"divin":p.grade==="transcendant"?"transcendant":"heroique"
+    if(!name||!allowedDomains.has(String(p.domain))||level<divinePowerMinimumLevel(grade))continue
+    if(grade==="divin"&&kind==="pj"&&!(obj.ascensionAuthorized===true&&clamp(obj.divineLimit,20,25,20)>=level))continue
+    const effect=clean(p.effect,600),condition=clean(p.condition,600)
+    if(!effect.trim()||!condition.trim()||p.approvedByGM!==true)continue
+    powers.push({id:uniqueId(),name,domain:p.domain as AffinityId,grade,
+      effect,condition,manaCost:clamp(p.manaCost,0,999,0),approvedByGM:true})
+  }
+  const lifeSteps=Array.isArray(obj.lifeSteps)?obj.lifeSteps.slice(0,4).map(x=>clean(x,50)):[]
   const portrait=typeof obj.portrait==="string" && /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(obj.portrait) && obj.portrait.length<180000 ? obj.portrait : ""
   return {id:uniqueId(),name:clean(obj.name,90),kind, profession:clean(obj.profession,90),
     skill:clamp(obj.skill,0,2,0),
@@ -204,7 +234,8 @@ function validateSheet(raw: unknown): Sheet | null {
     curses:clean(obj.curses,1400),items:clean(obj.items,1400),
     sourceRef:validSourceRef(obj.sourceRef),sourceTitle:clean(obj.sourceTitle,160),
     streaks,lastIncident:clean(obj.lastIncident,500),
-    notes:clean(obj.notes,2500),gmNotes:clean(obj.gmNotes,2500)}
+    notes:clean(obj.notes,2500),gmNotes:clean(obj.gmNotes,2500),
+    lifeSteps,lifeSummary:clean(obj.lifeSummary,1600),affinities,powers}
 }
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
@@ -361,8 +392,11 @@ function setupAtelier5d6() {
       ? `Source : ${s.sourceTitle || s.sourceRef} (${s.sourceRef}). Les statistiques 5d6 sont une adaptation libre non canonique.`
       : "Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions."
     refreshStreaks()
+    q<HTMLElement>("[data-life-history]").textContent=s.lifeSummary||
+      "Création libre ou ancienne fiche : aucune histoire de jeunesse saisie."
     renderInventory()
     renderOpposition()
+    renderAffinities()
   }
   function refreshStreaks(){
     const s=current()
@@ -537,11 +571,75 @@ function setupAtelier5d6() {
     q<HTMLInputElement>('[data-field="xp"]').value=String(current().xp)
     message("Mission consignée : récompense narrative et XP locaux attribués aux PJ membres.")
   }
-  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup()}
+  const affinityLabel=(id:string)=>AFFINITY_DOMAINS.find(x=>x[0]===id)?.[1]??id
+  function renderOriginPreview(){
+    const choices=ORIGIN_STEPS.map(step=>q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value)
+    const target=q<HTMLElement>("[data-origin-preview]")
+    if(choices.some(x=>!x)){target.textContent="Choisir les "+(4-choices.filter(Boolean).length)+" périodes de vie restantes.";return}
+    try{
+      const result=buildOrigin(choices)
+      target.textContent="Niveau 5 · 36 PV · "+(result.manaMax?"36 mana d'essai · ":"")+
+        "Phys "+result.stats.physique+" · Agi "+result.stats.agilite+
+        " · Esp "+result.stats.esprit+" · Prés "+result.stats.presence+
+        " · "+Object.entries(result.masteries).filter(([,v])=>v>0).map(([k,v])=>k+" "+v).join(", ")+
+        ". Parcours : "+result.summary.replaceAll("\n"," | ")
+    }catch{target.textContent="Parcours invalide : vérifier les quatre choix."}
+  }
+  function renderAffinities(){
+    const sheet=current(),list=q<HTMLUListElement>("[data-affinity-list]"),powers=q<HTMLUListElement>("[data-power-list]")
+    list.replaceChildren();powers.replaceChildren()
+    for(const item of sheet.affinities){
+      const li=document.createElement("li")
+      li.append(document.createTextNode(affinityLabel(item.id)+" — rang "+item.rank+"/5. "+item.witness+" "))
+      if(state.mode!=="pj"){
+        const b=document.createElement("button");b.type="button";b.dataset.affinityRemove=item.id
+        b.textContent="Révoquer";li.append(b)
+      }
+      list.append(li)
+    }
+    if(!sheet.affinities.length){const li=document.createElement("li");li.textContent="Aucune affinité validée.";list.append(li)}
+    for(const item of sheet.powers){
+      const li=document.createElement("li")
+      li.append(document.createTextNode(item.name+" — "+item.grade+" · "+affinityLabel(item.domain)+
+        " · coût "+item.manaCost+" mana. Effet : "+item.effect+
+        " · Conditions : "+item.condition+" "))
+      if(state.mode!=="pj"){
+        const b=document.createElement("button");b.type="button";b.dataset.powerRemove=item.id
+        b.textContent="Révoquer";li.append(b)
+      }
+      powers.append(li)
+    }
+    if(!sheet.powers.length){const li=document.createElement("li");li.textContent="Aucune capacité spéciale enregistrée.";powers.append(li)}
+    const selector=q<HTMLSelectElement>("[data-roll-affinity]"),chosen=selector.value
+    selector.replaceChildren(new Option("Sans affinité",""))
+    for(const a of sheet.affinities)selector.add(new Option(affinityLabel(a.id)+" · rang "+a.rank,a.id))
+    if(sheet.affinities.some(x=>x.id===chosen))selector.value=chosen
+    else q<HTMLInputElement>("[data-roll-affinity-enabled]").checked=false
+    refreshAffinityPreview()
+    q<HTMLElement>("[data-hub-status]").textContent=sheet.name+
+      " · niveau "+sheet.level+"/25 · "+sheet.pv+"/"+sheet.pvMax+" PV · "+
+      sheet.mana+"/"+sheet.manaMax+" mana · "+sheet.affinities.length+" affinité(s) · "+
+      sheet.inventory.length+" objet(s)."
+  }
+  function refreshAffinityPreview(){
+    const sheet=current()
+    const id=q<HTMLSelectElement>("[data-roll-affinity]").value
+    const affinity=sheet.affinities.find(x=>x.id===id)
+    q<HTMLElement>("[data-roll-affinity-preview]").textContent=affinity?
+      "Rang "+affinity.rank+" en "+affinityLabel(affinity.id)+
+      " : +"+affinityImpactBonus(affinity.rank)+
+      " dégâts potentiels pour un effet MAGIQUE dans ce domaine et approuvé par le MJ. "+
+      "Aucun bonus à la précision, aucun mana ou effet cosmique automatique.":
+      "Sélectionner une affinité validée sur cette fiche. Sans sélection, aucun bonus d'impact."
+  }
+  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities()}
   function renderAI(){
     const s=current(), include=q<HTMLInputElement>("[data-ai-roster]").checked
     const group=state.groups.find(g=>g.members.includes(s.id))
     const inventory=s.inventory.slice(0,60).map(x=>x.name+" ×"+x.quantity).join(", ")
+    const affinities=s.affinities.map(x=>affinityLabel(x.id)+" "+x.rank+"/5 ("+x.witness+")").join(", ")
+    const powers=s.powers.map(x=>x.name+" ["+x.grade+"/"+affinityLabel(x.domain)+
+      "] : "+x.effect+" ; conditions "+x.condition+" ; coût mana "+x.manaCost).join(" | ")
     const roster = include ? state.sheets.filter(x=>x.id!==s.id).map(x=>
       `- ${x.name} (${x.kind}, ${x.profession}) : Phys ${x.stats.physique}, Agi ${x.stats.agilite}, Esp ${x.stats.esprit}, Prés ${x.stats.presence}, PV ${x.pv}/${x.pvMax}, mana ${x.mana}/${x.manaMax}, Emprise ${x.emprise}.`).join("\n") : "(non transmis)"
     const text = `MJ IA — Nouvelle aventure indépendante dans le monde d'Alrick
@@ -558,6 +656,9 @@ Spécialité +${s.skill}, PV ${s.pv}/${s.pvMax}, mana ${s.mana}/${s.manaMax}, Em
 Niveau ${s.level}/25 ; voies : ${s.vocation || "aucune"}.
 Crédits convertis : ${s.convertedCredits}; points de talents attribués ${s.talentPointsSpent}/${Math.floor(s.convertedCredits/6)}. Pouvoirs à valider par le MJ.
 Description : ${s.description || "non renseignée"}.
+Parcours des quatre premières périodes : ${s.lifeSummary || "création libre, non précisé"}. 
+Affinités conditionnelles approuvées : ${affinities || "aucune"}.
+Pouvoirs et limitations approuvés localement : ${powers || "aucun"}. Aucune Autorité divine supplémentaire par défaut.
 Maîtrises de progression (sans bonus de jet automatique) : ${MASTERIES.map(k=>k+" "+s.masteries[k]+"/12").join(", ")}.
 Talents : ${s.talents || "aucun"}.
 Bénédictions / avantages conditionnels : ${s.boons || "aucun"}.
@@ -671,7 +772,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "items":s.items=clean(el.value,1400);break
       }
     }
-    refreshRoster();refreshPoints();refreshStreaks();refreshDefenseSummary();renderOpposition();renderAI();persist()
+    refreshRoster();refreshPoints();refreshStreaks();refreshDefenseSummary();renderOpposition();renderAffinities();renderAI();persist()
   }
   function trackFailure(sheet:Sheet,domain:Domain,failed:boolean):string {
     if(domain==="autre")return ""
@@ -748,11 +849,14 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const mode=q<HTMLSelectElement>("[data-opposition-mode]").value as ImpactMode
     const custom=clamp(q<HTMLInputElement>("[data-opposition-min]").value,0,45,0)
     const resistance=defender?resistanceScore(defender,kind):0
+    const selectedAffinity=s.affinities.find(x=>x.id===q<HTMLSelectElement>("[data-roll-affinity]").value)
+    const useAffinity=enabled&&mode==="magie"&&q<HTMLInputElement>("[data-roll-affinity-enabled]").checked&&!!selectedAffinity
+    const affinityBonus=useAffinity?affinityImpactBonus(selectedAffinity.rank):0
     const opposition:OppositionResult|null=enabled?resolveOpposition({
       natural,total,difficulty,resistance:Math.max(custom,resistance),
       damageBase:clamp(q<HTMLSelectElement>("[data-opposition-base]").value,1,12,3),
       mastery:attackMastery(s.masteries,mode),level:s.level,
-      protection:defender?effectiveProtection(defender,kind):0,mode
+      protection:defender?effectiveProtection(defender,kind):0,mode,affinityBonus
     }):null
     const target=opposition?.threshold??difficulty
     let outcome="",detail="",favorable=false
@@ -778,6 +882,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(opposition.success){
         if(mode==="mental")detail+="\nRésistance mentale franchie : le MJ décrit l'effet, sans dégâts PV automatiques."
         else {
+          if(affinityBonus)detail+="\nAffinité appliquée dans le domaine "+affinityLabel(selectedAffinity!.id)+
+            " : +"+affinityBonus+" dégâts conditionnels (accord MJ requis)."
           detail+="\nImpact : "+opposition.grossDamage+" dégâts bruts − "+opposition.absorbed+
             " de protection = "+opposition.damage+" PV potentiels."
           if(defender&&opposition.damage>0){
@@ -881,6 +987,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
       el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
+    if(el?.hasAttribute("data-origin-choice"))renderOriginPreview()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -888,6 +995,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
+    if(el?.hasAttribute("data-origin-choice"))renderOriginPreview()
+    if(el?.hasAttribute("data-roll-affinity")||el?.hasAttribute("data-roll-affinity-enabled"))refreshAffinityPreview()
     if(el?.hasAttribute("data-opposition-enabled")||el?.hasAttribute("data-opposition-target")||
        el?.hasAttribute("data-opposition-kind")||el?.hasAttribute("data-opposition-mode")||
        el?.hasAttribute("data-opposition-min")||el?.hasAttribute("data-opposition-base")||
@@ -998,11 +1107,100 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
+    if(button.hasAttribute("data-origin-clear")){
+      q<HTMLInputElement>("[data-origin-name]").value=""
+      for(const step of ORIGIN_STEPS)q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value=""
+      renderOriginPreview();message("Parcours de vie vidé, sans changement de fiche.");return
+    }
+    if(button.hasAttribute("data-origin-build")){
+      if(state.sheets.length>=60){message("Répertoire plein (60 personnages maximum).");return}
+      const name=clean(q<HTMLInputElement>("[data-origin-name]").value.trim(),90)
+      if(!name){message("Donner d'abord un nom au personnage.");return}
+      let origin
+      try{origin=buildOrigin(ORIGIN_STEPS.map(step=>q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value))}
+      catch{message("Il faut répondre aux quatre questions du parcours de vie.");return}
+      const sheet=fresh("pj")
+      sheet.name=name;sheet.level=sheet.highestLevel=origin.level
+      sheet.stats=origin.stats
+      sheet.masteries=origin.masteries
+      sheet.lifeSteps=origin.lifeSteps;sheet.lifeSummary=origin.summary
+      sheet.profession=origin.profession;sheet.vocation=origin.profession
+      sheet.pv=sheet.pvMax=origin.pvMax
+      sheet.mana=sheet.manaMax=origin.manaMax
+      sheet.skill=1
+      // XP de départ virtuels : les quatre périodes sont déjà vécues, sans mission inventée.
+      sheet.xp=xpRequired(5)
+      state.sheets.push(sheet);state.activeId=sheet.id
+      render();persist()
+      q<HTMLDetailsElement>('[data-hub="fiche"]').open=true
+      q<HTMLDetailsElement>('[data-hub="origines"]').open=false
+      q<HTMLInputElement>("[data-origin-name]").value=""
+      for(const step of ORIGIN_STEPS)q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value=""
+      renderOriginPreview()
+      message("Aventurier niveau 5 créé sans remplacer les autres fiches. "+sheet.name+
+        " commence avec "+sheet.pvMax+" PV et "+sheet.xp+" XP de parcours initial.")
+      return
+    }
+    if(button.dataset.affinityRemove){
+      if(state.mode==="pj"){message("Modification des affinités réservée au MJ.");return}
+      const sheet=current(),id=button.dataset.affinityRemove
+      const item=sheet.affinities.find(x=>x.id===id)
+      if(!item||!window.confirm("Retirer l'affinité « "+affinityLabel(id)+" » de cette fiche ?"))return
+      sheet.affinities=sheet.affinities.filter(x=>x.id!==id)
+      renderAffinities();renderAI();persist();message("Affinité révoquée.");return
+    }
+    if(button.hasAttribute("data-affinity-grant")){
+      if(state.mode==="pj"){message("Les affinités doivent être validées par le MJ.");return}
+      const sheet=current(),id=q<HTMLSelectElement>("[data-affinity-domain]").value as AffinityId
+      if(!AFFINITY_DOMAINS.some(x=>x[0]===id)){message("Domaine invalide.");return}
+      const max=affinityRankLimit(sheet.level),rank=clamp(q<HTMLInputElement>("[data-affinity-rank]").value,1,5,1)
+      const witness=clean(q<HTMLInputElement>("[data-affinity-witness]").value.trim(),300)
+      if(rank>max){message("Au niveau "+sheet.level+", le rang conseillé maximal est "+max+". Ce plafond est appliqué dans le playtest.");return}
+      if(witness.length<12){message("Documenter au moins 12 caractères sur la source et les limites de cette affinité.");return}
+      if(rank===5&&sheet.kind==="pj"&&(!sheet.ascensionAuthorized||sheet.divineLimit<sheet.level)){
+        message("Affinité 5 pour un PJ : validation de l'ascension requise.");return
+      }
+      const existing=sheet.affinities.find(x=>x.id===id)
+      if(!existing&&sheet.affinities.length>=16){message("16 affinités maximum par fiche.");return}
+      if(existing){existing.rank=rank;existing.witness=witness}
+      else sheet.affinities.push({id,rank,witness})
+      renderAffinities();renderAI();persist()
+      message("Affinité "+affinityLabel(id)+" rang "+rank+" validée localement.");return
+    }
+    if(button.dataset.powerRemove){
+      if(state.mode==="pj"){message("Révocation réservée au MJ.");return}
+      const sheet=current(),existing=sheet.powers.find(x=>x.id===button.dataset.powerRemove)
+      if(!existing||!window.confirm("Révoquer la capacité « "+existing.name+" » ?"))return
+      sheet.powers=sheet.powers.filter(x=>x.id!==existing.id)
+      renderAffinities();renderAI();persist();message("Capacité retirée.");return
+    }
+    if(button.hasAttribute("data-power-grant")){
+      if(state.mode==="pj"){message("Validation des capacités réservée au MJ.");return}
+      const sheet=current(),name=clean(q<HTMLInputElement>("[data-power-name]").value.trim(),90)
+      const domain=q<HTMLSelectElement>("[data-power-domain]").value as AffinityId
+      const grade=q<HTMLSelectElement>("[data-power-grade]").value as PowerGrade
+      const effect=clean(q<HTMLTextAreaElement>("[data-power-effect]").value.trim(),600)
+      const condition=clean(q<HTMLTextAreaElement>("[data-power-condition]").value.trim(),600)
+      const manaCost=clamp(q<HTMLInputElement>("[data-power-cost]").value,0,999,0)
+      if(!name||effect.length<12||condition.length<12){message("Nom, effet et limites détaillées obligatoires (12 caractères minimum pour chacun des textes).");return}
+      if(!AFFINITY_DOMAINS.some(x=>x[0]===domain)||!["heroique","transcendant","divin"].includes(grade)){
+        message("Grade ou domaine invalide.");return
+      }
+      const needed=divinePowerMinimumLevel(grade)
+      if(sheet.level<needed){message("Ce grade de capacité demande le niveau "+needed+" minimum.");return}
+      if(grade==="divin"&&sheet.kind==="pj"&&(!sheet.ascensionAuthorized||sheet.divineLimit<sheet.level)){
+        message("Pouvoir divin refusé : l'épreuve d'ascension du PJ doit être reconnue avant attribution.");return
+      }
+      if(sheet.powers.length>=40){message("40 capacités maximum par fiche.");return}
+      if(!window.confirm("Approuver « "+name+" » pour "+sheet.name+" ? Cette validation MJ locale n'attribue aucune Autorité canonique."))return
+      sheet.powers.push({id:uniqueId(),name,domain,grade,effect,condition,manaCost,approvedByGM:true})
+      renderAffinities();renderAI();persist();message("Capacité enregistrée avec conditions et coût.");return
+    }
     if(button.dataset.mode){
       state.mode=button.dataset.mode as Mode
       q<HTMLButtonElement>("[data-opposition-apply]").hidden=!pendingImpact || state.mode==="pj"
       q<HTMLButtonElement>("[data-opposition-counter]").hidden=!pendingCounter || state.mode==="pj"
-      refreshMode();persist();return
+      refreshMode();renderAffinities();persist();return
     }
     if(button.hasAttribute("data-opposition-counter")){
       if(state.mode==="pj"){message("Le MJ doit valider les ripostes des autres fiches.");return}
@@ -1195,7 +1393,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(!navigator.clipboard){area.focus();area.select();message("Copie automatique indisponible : sélectionne puis copie le texte.")}
     }
   },opts)
-  render();persist();void loadMissions(controller.signal)
+  render();renderOriginPreview();persist();void loadMissions(controller.signal)
   window.addCleanup(()=>controller.abort())
 }
 document.addEventListener("nav",setupAtelier5d6)
