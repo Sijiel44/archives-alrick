@@ -306,3 +306,10 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Nouveau guide de licences/citations, plan du bestiaire vivant et architecture du multijoueur par pseudonyme.
 # AUCUN compte, serveur temps réel, synchronisation, rôle MJ sécurisé ou séance de groupe n'est annoncé livré.
 # AUCUN canon modifié, aucun spoiler introduit ; anciennes fiches et sauvegardes locales maintenues.
+
+# M04.1 — publication du système 5d6 et de l'Atelier du Bestiaire autorisée par le créateur, 31 octobre 2026.
+# PR #57, #58, #59, #60, #61 fusionnées dans main sans intégrer les chantiers parallèles #54–#56.
+# Recette M04.1 sur navigateur réel : 9/9 scénarios réussis, GitHub Actions #41253301774 ; CI main #41253510945 réussie.
+# Les créatures M03 restent hors budget PJ M02, protection distincte de résistance ; fiches legacy préservées.
+# Publier uniquement les pages Jouer déjà approuvées, les propositions non jouées et le moteur client ; aucun nouveau canon ni secret MJ rendu public.
+# Après le déploiement, le workflow Pages exécute une recette Chrome SUR LE SITE PUBLIC ; ne conclure qu'après cette vérification.
