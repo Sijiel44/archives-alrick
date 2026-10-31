@@ -97,3 +97,8 @@ Le registre V02 disposait de codes sans dossier web propre : [[lieux/GEO-025|**L
 
 - [[GEO-013|Dornaël]] : [[lieux/dornael-eaux-et-ouvrages|eau]], [[lieux/dornael-metiers-et-runes|runes et métiers]], [[lieux/dornael-institutions-et-vie-civique|institutions]], [[lieux/dornael-personnages-et-missions|missions et PNJ]], [[lieux/dornael-lanternes-orin|dévotion envisagée à Orin]] (**dossier à spoilers, non encore joué**).
 - [[GEO-011|Aldhammar]], [[GEO-007|Skalor]], [[GEO-010|Nacrecombe]], [[GEO-009|Forgeciel]], [[GEO-012|Keldrun]] et [[GEO-008|Torngard]] : désormais six secteurs de ville proposés, une image principale et trois vignettes sur chaque fiche.
+
+
+## Plans, bâtiments et habitants : nouveaux carnets des Sept Cités
+
+[[lieux/sept-cites-carnets-de-terrain|Les sept plans schématiques et carnets de terrain]] présentent **42 auberges, écoles, guildes, ateliers et lieux de rencontre proposés**, **36 profils de personnages préparatoires** et **21 petites quêtes**. Les villes existantes conservent leur histoire : **les nouvelles adresses ne sont ni des constructions canoniquement achevées ni des rencontres déjà vécues par Orin**. Voir également [[jouer/quetes-sept-cites|le catalogue des missions locales]].

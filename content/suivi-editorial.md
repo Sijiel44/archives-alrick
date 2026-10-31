@@ -711,3 +711,10 @@ La notice `docs/REGISTRE_SIX_VOLUMES_HISTORIQUES_CB42_2026-10-30.md` donne les e
 - Le format de galerie pourra être utilisé dans les portraits et les dossiers de personnage **après vérification des apparences et de la confidentialité**. Voir `docs/CHARTE_ILLUSTRATIONS_GALERIES_ALRICK.md`.
 
 **Statut :** les changements de géographie validés sont du lore d'univers ; les noms de quartiers ajoutés, fonctions nouvelles, six profils par ville et secte des Lanternes d'Orin sont clairement des **propositions non jouées**. La scène d'Elyan (CB44 CCCLXXIII) et le voyage d'Orinor à venir restent inchangés.
+
+
+## Sept Cités — plans conceptuels, lieux et quêtes (sans nouveau code)
+
+**Périmètre :** prolongement de l'Atlas après la PR42, **263 codes approuvés inchangés**. Sept plans **SVG relationnels** (sans nord, échelle ni localisation des points), sept carnets de terrain non codés, **42 établissements proposés**, **36 profils de PNJ préparatoires** (dont les six déjà décrits à Dornaël), **21 quêtes locales indépendantes** et un index de missions pour les autres MJ. Les sept villes codées GEO-007 à GEO-013 conservent leurs faits historiques ; les carnets sont explicitement du **matériel de scénario non joué**.
+
+Les écoles et guildes mentionnées dans ce lot ne sont **pas des institutions officiellement fondées ni des propriétés transférées**. Le possible culte des Lanternes d'Orin à Dornaël conserve son dossier optionnel à spoilers. La prochaine tournée d'Orin est toujours à venir **après Orinor** et la scène CB44 CCCLXXIII reste ouverte auprès d'Elyan.

@@ -228,3 +228,8 @@ Les **six Word reçus, après CB42**, sont répertoriés avec SHA-256 dans `docs
 ## Atlas visuel des Sept Cités — Dornaël et quartiers
 
 Le [[lieux/sept-grandes-cites-illustrees|portail de découverte des Sept Cités]] permet désormais de naviguer entre **28 illustrations originales auto-hébergées** (7 grandes vues et 21 vignettes), avec galeries carrées cliquables directement dans les fiches. Dornaël (GEO-013) devient un dossier de ville détaillé et reçoit **cinq sous-fiches** sur eau, métiers et runes, institutions, dévotion optionnelle et missions. Les six autres cités existantes conservent leur canon, enrichi par quartiers, activités et personnages **proposés, non joués**. Compteur prévu après validation : **263 fiches codées**. Les images sont des **études d'ambiance**, non un relevé des rues ou des constructions historiques. Voir `docs/CHARTE_ILLUSTRATIONS_GALERIES_ALRICK.md`.
+
+
+## Quartiers jouables et 21 quêtes des Sept Cités
+
+Les [[lieux/sept-cites-carnets-de-terrain|carnets de terrain et sept plans]] complètent les panoramas des Sept Cités avec **42 adresses fictives de jeu**, **36 profils préparatoires** et **21 petites quêtes sans issue imposée**. L'[[jouer/quetes-sept-cites|index des quêtes]] facilite l'usage PJ/MJ. Les sept nouveaux SVG décrivent des **liens symboliques entre secteurs**, sans carte à l'échelle. Tous les nouveaux bâtiments, écoles, guildes et PNJ sont **des propositions non jouées**, non une extension rétroactive des scènes de la campagne fondatrice. Total : **263 fiches codées, inchangé**.
