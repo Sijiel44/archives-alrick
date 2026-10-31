@@ -61,7 +61,7 @@ type Sheet = {
   stats: Record<Stat, number>; pv: number; pvMax: number
   mana: number; manaMax: number; emprise: number
   level: number; highestLevel: number; masteries: Record<Mastery,number>
-  ascensionAuthorized:boolean; ascensionWitness:string; inventory:GameItem[]
+  ascensionAuthorized:boolean; divineLimit:number; ascensionWitness:string; inventory:GameItem[]
   convertedCredits:number; talentPointsSpent:number
   description: string; portrait: string
   vocation: string; talents: string; boons: string; curses: string; items: string
@@ -143,7 +143,7 @@ function fresh(kind: Role = "pj"): Sheet {
   return { id: uniqueId(), name: kind === "pj" ? "Mon personnage" : "Nouveau profil",
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
-    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, ascensionWitness:"", inventory:[],
+    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, divineLimit:20, ascensionWitness:"", inventory:[],
     convertedCredits:0,talentPointsSpent:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
@@ -174,6 +174,7 @@ function validateSheet(raw: unknown): Sheet | null {
     masteries,convertedCredits:clamp(obj.convertedCredits,0,6*(level-1),0),
     talentPointsSpent:clamp(obj.talentPointsSpent,0,23,0),
     ascensionAuthorized:obj.ascensionAuthorized===true||level>20,
+    divineLimit:clamp(obj.divineLimit,20,24,level>20?level:20),
     ascensionWitness:clean(obj.ascensionWitness,300),
     inventory:Array.isArray(obj.inventory)?obj.inventory.slice(0,150).map(validatedItem).filter((x):x is GameItem=>x!==null):[],
     description:clean(obj.description,1200),portrait,
@@ -312,8 +313,10 @@ function setupAtelier5d6() {
     else portrait.removeAttribute("src")
     q<HTMLSelectElement>("[data-roll-skill]").value=String(s.skill)
     q<HTMLInputElement>("[data-ascension]").checked=s.ascensionAuthorized
+    q<HTMLSelectElement>("[data-divine-limit]").value=String(s.divineLimit)
     q<HTMLElement>("[data-ascension-status]").textContent=s.level>=21
-      ?"Ascension exceptionnelle : niveau "+s.level+"/24 — autorisation MJ.":"Niveaux 21–24 : ascension divine à confirmer par le MJ."
+      ?"Ascension exceptionnelle : niveau "+s.level+"/24 — autorisation MJ jusqu'à "+s.divineLimit+"."
+      :"Niveaux 21–24 : quatre épreuves divines indépendantes, validées par le MJ."
     refreshPoints()
     const source=q<HTMLElement>("[data-source-meta]")
     source.textContent=s.sourceRef
@@ -553,9 +556,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "gmNotes":s.gmNotes=clean(el.value,2500);break
         case "level":{
           const next=clamp(el.value,1,24,s.level)
-          if(next>20&&!s.ascensionAuthorized){
+          if(next>20&&(!s.ascensionAuthorized||next>s.divineLimit||s.ascensionWitness.trim().length<15)){
             el.value=String(s.level)
-            message("Niveaux 21–24 : ascension divine exceptionnelle, validation MJ requise.")
+            message("Ascension divine refusée : chaque palier exige une autorisation du MJ et un témoignage de l'épreuve (15 caractères minimum).")
             return
           }
           if(next>s.highestLevel){
@@ -571,6 +574,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
           break
         }
         case "description":s.description=clean(el.value,1200);break
+        case "ascensionWitness":s.ascensionWitness=clean(el.value,300);break
         case "vocation":s.vocation=clean(el.value,160);break
         case "talents":s.talents=clean(el.value,1600);break
         case "boons":s.boons=clean(el.value,1400);break
@@ -696,8 +700,16 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     }
     if(el instanceof HTMLInputElement && el.hasAttribute("data-ascension")){
       if(state.mode==="pj"){el.checked=current().ascensionAuthorized;message("Réglage réservé au mode MJ.");return}
-      current().ascensionAuthorized=el.checked;persist();setForm()
+      current().ascensionAuthorized=el.checked
+      current().divineLimit=el.checked?Math.max(21,current().divineLimit):20
+      persist();setForm()
       message(el.checked?"Ascension exceptionnelle autorisée dans cette campagne locale.":"Autorisation retirée ; niveaux déjà acquis conservés.")
+    }
+    if(el?.hasAttribute("data-divine-limit")){
+      if(state.mode==="pj"){setForm();message("Validation des paliers divins réservée au MJ.");return}
+      current().divineLimit=clamp(el.value,20,24,20)
+      current().ascensionAuthorized=current().divineLimit>20
+      setForm();persist();message("Épreuve divine validée jusqu'au palier "+current().divineLimit+".")
     }
     if(el?.hasAttribute("data-group-select")){
       state.activeGroupId=el.value;renderGroup();persist()
