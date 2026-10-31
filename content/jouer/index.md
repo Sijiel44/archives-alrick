@@ -10,6 +10,9 @@ usage_en_jeu: ["demarrage", "aventures"]
 
 # Jouer dans le monde d'Alrick
 
+> **Nouvel outil expérimental :** [[jouer/atelier-bestiary-5d6|Atelier du Bestiaire 5d6]] — création et comparaison de créatures/PNJ avec calculs exacts, sauvegarde JSON locale et export volontaire vers l'Atelier de jeu. Aucun contenu canonique ajouté.
+
+
 Vous n'avez pas besoin d'incarner **Orin** ou de connaître toute son histoire. Votre personnage peut grandir, travailler, voyager, enquêter, se tromper et faire des rencontres dans un monde qui continue de vivre sans lui.
 
 ## Trois échelles d'aventure
