@@ -1,5 +1,6 @@
 import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,innateProtection,equipmentProtection} from "./atelier5d6-opposition"
 import {generateCreatureProfileM03} from "./atelier5d6-bestiary"
+import {validateBestiaryCard} from "./atelier5d6-bestiary-workshop"
 import {resistanceScoreM03,effectiveProtectionM03,innateProtectionM03,equipmentProtectionM03,resolveCombatM03} from "./atelier5d6-combat-m03"
 import type {CombatM03Result} from "./atelier5d6-combat-m03"
 import type {CreatureArchetype} from "./atelier5d6-bestiary"
@@ -115,12 +116,13 @@ type Sheet = {
   education:EducationId|""; literacy:LiteracyLevel|""; backstory:string;connections:string;goal:string
   affinities:Affinity[]; powers:Power[]
   externalMedia:SheetArtwork[];powerHistory:PowerUse[]
-  ruleset:"legacy"|"m02";development:Development;legacyOriginal:Record<string,unknown>|null
+  ruleset:"legacy"|"m02"|"m03-bestiary";development:Development;legacyOriginal:Record<string,unknown>|null
+  bestiarySource:Record<string,unknown>|null
 }
-const defenseScore=(s:Sheet,k:ResistanceKind)=>s.ruleset==="m02"?resistanceScoreM03(s,k):resistanceScore(s,k)
-const totalProtection=(s:Sheet,k:ResistanceKind)=>s.ruleset==="m02"?effectiveProtectionM03(s,k):effectiveProtection(s,k)
-const innateGuard=(s:Sheet,k:ResistanceKind)=>s.ruleset==="m02"?innateProtectionM03(s.level,k):innateProtection(s.level,k)
-const equipmentGuard=(s:Sheet,k:ResistanceKind)=>s.ruleset==="m02"?equipmentProtectionM03(s.equipmentGrades[k],k):equipmentProtection(s.equipmentGrades[k],k)
+const defenseScore=(s:Sheet,k:ResistanceKind)=>s.ruleset!=="legacy"?resistanceScoreM03(s,k):resistanceScore(s,k)
+const totalProtection=(s:Sheet,k:ResistanceKind)=>s.ruleset!=="legacy"?effectiveProtectionM03(s,k):effectiveProtection(s,k)
+const innateGuard=(s:Sheet,k:ResistanceKind)=>s.ruleset!=="legacy"?innateProtectionM03(s.level,k):innateProtection(s.level,k)
+const equipmentGuard=(s:Sheet,k:ResistanceKind)=>s.ruleset!=="legacy"?equipmentProtectionM03(s.equipmentGrades[k],k):equipmentProtection(s.equipmentGrades[k],k)
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
   groups:Group[]; activeGroupId:string; templates:GameItem[]; missionLog:MissionEntry[] }
@@ -208,11 +210,24 @@ function fresh(kind: Role = "pj"): Sheet {
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"",
     lifeSteps:[],lifeSummary:"",education:"",literacy:"",backstory:"",connections:"",goal:"",
-    affinities:[],powers:[],externalMedia:[],powerHistory:[],ruleset:"m02",development:newDevelopment(),legacyOriginal:null }
+    affinities:[],powers:[],externalMedia:[],powerHistory:[],ruleset:"m02",development:newDevelopment(),legacyOriginal:null,bestiarySource:null }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
-  const obj = raw as Record<string, unknown>
+  const incoming = raw as Record<string, unknown>
+  let obj = incoming
+  if(incoming.ruleset==="m03-bestiary"){
+    // La source complète du Bestiaire fait autorité. Ne jamais convertir en PJ M02.
+    try{
+      const c=validateBestiaryCard(incoming.bestiarySource)
+      if(incoming.kind!==c.kind)return null
+      obj={...incoming,name:c.name,kind:c.kind,level:c.level,highestLevel:c.level,
+        profession:c.profession||c.archetype,description:c.description,stats:c.stats,
+        masteries:c.masteries,pvMax:c.pvMax,manaMax:c.manaMax,
+        resistanceBonus:c.resistanceBonus,protection:c.protection,
+        equipmentGrades:c.equipmentGrades}
+    }catch{return null}
+  }
   if (typeof obj.name !== "string" || !obj.name.trim()) return null
   const values = (obj.stats ?? obj.attributes) as Record<string,unknown> | undefined
   if (!values || typeof values !== "object" || !STATS.every(key => Number.isFinite(Number(values[key])))) return null
@@ -231,7 +246,7 @@ function validateSheet(raw: unknown): Sheet | null {
     equipmentGrades[key]=clamp(oldEquipment[key],0,5,0)
   }
   const level=clamp(obj.level,1,25,1)
-  const modern=obj.ruleset==="m02"
+  const modern=obj.ruleset==="m02"||obj.ruleset==="m03-bestiary"
   const masteries=blankMasteries()
   const storedMasteries=obj.masteries && typeof obj.masteries==="object" ? obj.masteries as Record<string,unknown> : {}
   for(const k of MASTERIES)masteries[k]=clamp(storedMasteries[k],0,modern?Number.MAX_SAFE_INTEGER:12,0)
@@ -299,12 +314,13 @@ function validateSheet(raw: unknown): Sheet | null {
       .map(p=>({id:uniqueId(),name:clean(p.name,90),domain:AFFINITY_DOMAINS.some(x=>x[0]===p.domain)?p.domain as AffinityId:"magie",
         manaCost:clamp(p.manaCost,0,999,0),target:clean(p.target,150),at:clean(p.at,40)}))
       .filter(v=>v.name.length>0):[],
-    ruleset:modern?"m02":"legacy",
+    ruleset:obj.ruleset==="m03-bestiary"?"m03-bestiary":modern?"m02":"legacy",
     // Pour les fiches héritées, conserver les champs bruts même inconnus : conversion réversible.
     legacyOriginal:obj.legacyOriginal&&typeof obj.legacyOriginal==="object"
       ?obj.legacyOriginal as Record<string,unknown>:modern?null:JSON.parse(JSON.stringify(obj)) as Record<string,unknown>,
-    development:modern&&obj.development&&typeof obj.development==="object"
-      ?(JSON.parse(JSON.stringify(obj.development)) as Development):newDevelopment()}
+    development:obj.ruleset==="m02"&&obj.development&&typeof obj.development==="object"
+      ?(JSON.parse(JSON.stringify(obj.development)) as Development):newDevelopment(),
+    bestiarySource:obj.ruleset==="m03-bestiary" ? obj.bestiarySource as Record<string,unknown> : null}
 }
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
@@ -399,6 +415,22 @@ function setupAtelier5d6() {
   function refreshPoints() {
     const s=current()
     const note=q<HTMLElement>("[data-ruleset-notice]")
+    if(s.ruleset==="m03-bestiary"){
+      note.textContent="M03 — créature/PNJ du Bestiaire (hors budget PJ). Source locale non canonique ; fiche protégée. Édition dans l'Atelier du Bestiaire.";
+      q<HTMLButtonElement>("[data-migrate-legacy]").hidden=true
+      q<HTMLElement>("[data-m02-controls]").hidden=true
+      q<HTMLElement>("[data-points]").textContent="Profil tactique M03 · niveau "+s.level+" · sans budget de création PJ"
+      q<HTMLElement>("[data-mastery-points]").textContent="Maîtrises M03 conservées depuis le Bestiaire"
+      q<HTMLElement>("[data-talent-points]").textContent="Capacités narratives sans bonus automatique"
+      q<HTMLInputElement>("[data-talent-spent]").disabled=true
+      q<HTMLButtonElement>("[data-convert-credits]").disabled=true
+      for(const k of STATS)q<HTMLElement>(`[data-stat-bonus="${k}"]`).textContent=
+        "Brut "+s.stats[k]+" → bonus +"+effectiveStat(s.stats[k])
+      for(const k of MASTERIES)q<HTMLElement>(`[data-mastery-bonus="${k}"]`).textContent=
+        "Rang "+s.masteries[k]+" → bonus +"+effectiveMastery(s.masteries[k])
+      q<HTMLElement>("[data-xp-info]").textContent="Adversaire M03 — pas de progression ni de budget PJ automatique."
+      return
+    }
     if(s.ruleset==="m02"){
       const result=evaluateSheet(asM02(s))
       note.textContent="M02 — budget partagé de M01. "+(result.valid?"Répartition valide.":result.issues.join(" ; "))
@@ -515,7 +547,7 @@ function setupAtelier5d6() {
     refreshPoints()
     host.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
       "[data-field],[data-stat],[data-mastery],[data-defence],[data-defense-gear],[data-defense-protection],[data-defense-resistance]"
-    ).forEach(el=>{el.disabled=s.ruleset==="legacy"})
+    ).forEach(el=>{el.disabled=s.ruleset!=="m02"})
     const source=q<HTMLElement>("[data-source-meta]")
     source.textContent=s.sourceRef
       ? `Source : ${s.sourceTitle || s.sourceRef} (${s.sourceRef}). Les statistiques 5d6 sont une adaptation libre non canonique.`
@@ -876,7 +908,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   }
   function changeField(el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
     const s=current(), field=el.dataset.field as keyof Sheet | undefined
-    if(s.ruleset==="legacy"){setForm();message("Fiche héritée en lecture seule. Une adaptation M02 exige votre confirmation.");return}
+    if(s.ruleset!=="m02"){setForm();message(s.ruleset==="legacy"?"Fiche historique protégée : adaptation volontaire requise.":"Profil M03 protégé : modifier les statistiques dans l’Atelier du Bestiaire.");return}
     const stat=el.dataset.stat as Stat | undefined
     if(stat && STATS.includes(stat)){
       const before=s.stats[stat],next=clamp(el.value,1,Number.MAX_SAFE_INTEGER,before)
@@ -1002,7 +1034,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const threshold=Math.max(difficulty,resistance,custom)
     const selectedMastery=q<HTMLSelectElement>("[data-roll-mastery]").value
     const selectedRank=selectedMastery?(current().masteries as Record<string,number>)[selectedMastery]??0:0
-    const mastery=current().ruleset==="m02"?effectiveMastery(selectedRank):attackMastery(current().masteries,mode)
+    const mastery=current().ruleset!=="legacy"?effectiveMastery(selectedRank):attackMastery(current().masteries,mode)
     q<HTMLElement>("[data-opposition-preview]").textContent=
       "Seuil de pénétration : "+threshold+
       " (difficulté "+difficulty+(defender?", défense "+resistance:"")+(custom?", seuil MJ "+custom:"")+"). "+
@@ -1040,14 +1072,14 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const dice=Array.from({length:5},()=>1+Math.floor(Math.random()*6))
     const masteryDomain=q<HTMLSelectElement>("[data-roll-mastery]").value
     const mastered=masteryDomain?(s.masteries as Record<string,number>)[masteryDomain]??0:0
-    const statBonus=s.ruleset==="m02"?effectiveStat(s.stats[stat]):s.stats[stat]
-    const masteryBonus=s.ruleset==="m02"?effectiveMastery(mastered):skill
+    const statBonus=s.ruleset!=="legacy"?effectiveStat(s.stats[stat]):s.stats[stat]
+    const masteryBonus=s.ruleset!=="legacy"?effectiveMastery(mastered):skill
     const natural=dice.reduce((a,b)=>a+b,0), total=natural+statBonus+masteryBonus+situation
     clearPendingImpact()
     clearPendingCounter()
     const enabled=q<HTMLInputElement>("[data-opposition-enabled]").checked
     const defender=state.sheets.find(x=>x.id===q<HTMLSelectElement>("[data-opposition-target]").value && x.id!==s.id)
-    if(enabled&&defender&&defender.ruleset!==s.ruleset){
+    if(enabled&&defender&&(defender.ruleset==="legacy")!==(s.ruleset==="legacy")){
       message("Règles historiques et M03 incompatibles : adapter explicitement la fiche legacy avant cette confrontation.")
       return
     }
@@ -1068,9 +1100,10 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       return
     }
     const opposition:OppositionResult|CombatM03Result|null=enabled?
-      (s.ruleset==="m02"?resolveCombatM03({
+      (s.ruleset!=="legacy"?resolveCombatM03({
         natural,rawStat:s.stats[stat],masteryRank:mastered,situation,level:s.level,
-        difficulty,kind,mode,defender,feasible,baseDamage,mjMinimum:custom,affinityBonus
+        difficulty,kind,mode,defender,feasible,baseDamage:s.ruleset==="m03-bestiary"?Number(s.bestiarySource?.baseDamage??6):baseDamage,
+        penetration:s.ruleset==="m03-bestiary"?Number(s.bestiarySource?.penetration??0):0,mjMinimum:custom,affinityBonus
       }):resolveOpposition({
         natural,total,difficulty,resistance:Math.max(custom,resistance),
         damageBase:baseDamage,mastery:attackMastery(s.masteries,mode),level:s.level,
@@ -1334,9 +1367,11 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
-    const legacy=current().ruleset==="legacy"
-    if(legacy&&!button.matches("[data-hub-nav],[data-mode],[data-origin-build],[data-origin-clear],[data-export],[data-export-campaign],[data-new],[data-ai-copy],[data-ai-refresh],[data-roll],[data-migrate-legacy]")){
-      message("Fiche historique protégée en lecture seule. Utilisez la conversion volontaire pour développer une copie M02.")
+    const protectedSheet=current().ruleset!=="m02"
+    const allowedProtected="[data-hub-nav],[data-mode],[data-origin-build],[data-origin-clear],[data-export],[data-export-campaign],[data-new],[data-ai-copy],[data-ai-refresh],[data-roll],[data-migrate-legacy]"
+    const allowedM03=allowedProtected+",[data-opposition-apply],[data-opposition-counter]"
+    if(protectedSheet&&!button.matches(current().ruleset==="m03-bestiary"?allowedM03:allowedProtected)){
+      message(current().ruleset==="legacy"?"Fiche historique protégée : adaptation M02 volontaire requise.":"Profil M03 protégé : utiliser l’Atelier du Bestiaire pour modifier les paramètres.")
       return
     }
     if(button.hasAttribute("data-migrate-legacy")){

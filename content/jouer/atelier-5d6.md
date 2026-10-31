@@ -13,6 +13,9 @@ tags: [5d6, des, personnage, mj, pnj, creatures, atelier]
 
 # Atelier de jeu 5d6
 
+> **M04 — pour créer et équilibrer des adversaires :** ouvrir l'[[jouer/atelier-bestiary-5d6|Atelier du Bestiaire 5d6]]. Il utilise les formules M01–M03, cinq archétypes modernes et des sauvegardes isolées. **Attention aux extraits historiques de cette page** : les anciennes mentions de plafond 12, XP cubique et « maîtrise sans bonus au jet » restent pertinentes pour la lecture des fiches *legacy*, et **ne décrivent pas les fiches modernes M02**. Les modernisations doivent être volontaires ; aucune conversion automatique.
+
+
 > **Nouvelle ergonomie :** des boutons de navigation permettent de passer directement à la création, à la fiche et aux dés, aux capacités, à l'inventaire, à la galerie et aux missions. Le questionnaire propose des familles d'agriculteurs, de marins, d'artistes et d'autres milieux, puis la scolarité, le niveau de lecture et une histoire personnelle. Les **liens d'images externes HTTPS** peuvent être présentés en vignette, portrait, paysage ou bannière avec auteur, source et droits ; la galerie est **locale** et non automatiquement publiée. Les pouvoirs permettent désormais de **confirmer une dépense de mana et enregistrer un usage**, sans décider automatiquement de sa réussite.
 
 > **Tables partagées en direct :** voir l'[[jouer/architecture-tables-multijoueur|architecture envisagée]]. Le site actuel n'a **pas encore de comptes, de salles synchronisées ni de sécurité serveur des rôles**.

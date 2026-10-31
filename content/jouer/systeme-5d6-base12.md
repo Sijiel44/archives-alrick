@@ -13,6 +13,9 @@ tags: [jdr, 5d6, regles, base12, prototype]
 
 # Système d'Alrick — 5d6 / Base 12 (version d'essai)
 
+> **M01–M04 / règle expérimentale moderne :** caractéristiques sans plafond 12 ; bonus effectif E(c) = floor(3 × log2(1 + c/3)), maîtrise M(m) = floor(log2(1 + m)), progression à budget partagé et XP M01. Les seuils d'opposition, protections et dégâts doivent être lus selon le moteur M03. **Les anciennes tables et limites évoquées plus bas représentent le modèle historique, non les nouvelles fiches M02.** Le [[jouer/atelier-bestiary-5d6|nouvel Atelier du Bestiaire]] montre les calculs exacts et des confrontations de référence.
+
+
 > [!info] **Version d'essai — pas encore le système universel officiel**
 > Le créateur a retenu une direction de travail fondée sur **cinq dés à six faces**, **quatre caractéristiques** et des **ressources en base douze**. Les chiffres ci-dessous constituent une **proposition de règles à tester**, pas une description rétroactive des jets de la campagne d'Orin. Le [[jouer/decheance-systeme|module Déchéance 2d6]] reste disponible et distinct jusqu'à validation de sa conversion.
 
