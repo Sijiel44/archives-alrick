@@ -178,3 +178,15 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Vérifier l'absence de faux détails de population, lieux, frontières, runes et culte déclaré factuel.
 # Aucun événement ajouté après CB44 CCCLXXIII ; la tournée après Orinor demeure FUTURE.
 # Contrôler CI, le compteur 263, le build, les URL des SVG et Pages après fusion.
+
+# Lot 12 — Sept Cités : plans, adresses, missions et personnages, 30 octobre 2026
+# 7 plans de quartiers SVG originaux, SCHÉMAS NON GÉOGRAPHIQUES, pas cartes canoniques ni itinéraires validés.
+# 7 carnets de terrain supplémentaires SANS CODE (six adresses par ville) et index de terrain.
+# 42 bâtiments/lieux proposés : auberges, écoles, guildes, ateliers, salles civiques et rencontres.
+# 36 PNJ proposés (six de Dornaël déjà esquissés en PR42, réutilisés sans doublon ; six autres villes x cinq).
+# 21 quêtes locales NON JOUÉES ; aucune conclusion ni rencontre n'est imposée au personnage Orin.
+# 7 fiches de ville existantes GEO-007–GEO-013 complétées de liens et cartes sans effacer les sources.
+# Le compteur des FICHES CODÉES approuvées demeure exactement 263, aucune nouvelle fiche codée.
+# Le courant des Lanternes d'Orin reste un PROJET, sans culte officiellement fondé.
+# Le voyage d'Orinor et la tournée des villes n'ont pas commencé à la fin de CB44.
+# Vérifier CI, absence de liens cassés, visas MJ, validité des SVG et publication Pages.

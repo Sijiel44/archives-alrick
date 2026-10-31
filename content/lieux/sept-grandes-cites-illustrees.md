@@ -52,3 +52,8 @@ Le développement de [[GEO-013|Dornaël]] sert de modèle : [[lieux/dornael-eaux
 - *Atlas des territoires et des institutions*, V02 v1.7, III et XXI.1–2, et v1.8.
 - [[GEO-001|Royaume des Montagnes de l'Aube]], [[lieux/atlas-circulations-echanges|circulations et échanges]].
 - Développement créatif validable demandé par le créateur le 30 octobre 2026. Les noms nouveaux de quartiers et des PNJ restent **propositions non jouées**.
+
+
+## Les Sept Cités à hauteur de rue
+
+Les [[lieux/sept-cites-carnets-de-terrain|sept carnets de terrain et leurs plans relationnels]] complètent les vues d'artistes : **six adresses, cinq ou six personnages préparatoires et trois quêtes par ville**, sans imposer de combats. Auberges, écoles, guildes et lieux de rencontre sont des **propositions éditoriales non jouées**. [[jouer/quetes-sept-cites|Accéder directement au catalogue des 21 quêtes]].

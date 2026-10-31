@@ -57,3 +57,10 @@ Les personnages majeurs pourront recevoir :
 6. La page passe le build, ses liens internes sont valides, et la publication Pages est volontaire.
 
 **Limite du lot actuel :** les 28 images SVG sont des **études d'ambiance stylisées** auto-hébergées, et non des peintures fantasy photoréalistes ; la grande maquette picturale de Dornaël produite dans la conversation sert d'orientation artistique et ne se substitue pas à des fichiers transférés sur GitHub.
+
+
+## Plans de quartiers schématiques — lot Sept Cités
+
+Les **sept fichiers SVG originaux** `quartz/static/images/atlas/plans/{ville}-quartiers-schematiques.svg` représentent l'**organisation relative proposée** des quartiers. **Les traits ne sont pas des routes validées, les points ne sont pas à l'échelle, et aucun nord ou kilométrage n'est fourni**. Cette distinction doit figurer dans les légendes et descriptions alternatives des images. Les plans servent de support de scène, non de cartes définitives.
+
+Chaque fiche urbaine doit relier [[lieux/sept-cites-carnets-de-terrain|le carnet de terrain]] pour accéder aux six adresses de jeu, aux PNJ précréés et aux quêtes. Quand de véritables cartes géographiques seront validées à partir des sources, conserver ces SVG dans l'historique comme **anciens schémas conceptuels**, plutôt que les faire passer pour les nouvelles cartes de référence.

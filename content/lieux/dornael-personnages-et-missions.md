@@ -56,3 +56,7 @@ Porte-parole de fait d'un quartier de travail, ni héros ni opposant systématiq
 Orin envisage une **tournée des Sept Cités après Orinor**, mais elle **n'est pas jouée à la fin de CB44**. Un futur MJ pourra choisir de rencontrer un ou plusieurs PNJ ci-dessus **après validation de leur existence** dans la continuité principale. Un personnage précréé ne doit pas arriver en prétendant avoir partagé un ancien repas ou un serment avec Orin.
 
 Retour à [[GEO-013|Dornaël]]. Sources de cadre : *Atlas V02 v1.7*, XXI.2 ; personnages, missions et noms propres : **créations proposées**, non historiques.
+
+## Jouer les personnages dans les quartiers
+
+Le [[lieux/dornael-carnet-de-terrain|carnet de terrain de Dornaël]] précise des **adresses de jeu proposées** pour les six PNJ ci-dessus, sans présenter un lieu de travail nouveau comme déjà officiel. Son [[lieux/sept-cites-carnets-de-terrain|plan de quartiers relationnel]] est **sans échelle**, et ses trois quêtes supplémentaires restent des aventures facultatives.

@@ -256,3 +256,9 @@ article .atlas-image-gallery a:hover img { transform: scale(1.035); }
 article .atlas-image-gallery .atlas-gallery-caption { display: block; padding: .45rem .6rem; text-align: center; font-size: .73rem; font-weight: 500; line-height: 1.35; }
 article .atlas-visual-note { display: block; font-size: .79rem; color: #a8bfce; margin: -.65rem 0 1.3rem; }
 @media (max-width: 600px) { article .atlas-image-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; } article .atlas-city-hero img { max-height: 275px; } }
+
+
+/* Sept Cités — les cartes de quartier sont des schémas, non des plans géographiques. */
+article a.atlas-map-preview { display:block; width:100%; max-width:660px; margin: .9rem auto 1.2rem; border:1px solid #405a68; border-radius: 12px; overflow: hidden; background:#112536; }
+article a.atlas-map-preview img { display:block; width:100%; aspect-ratio: 960 / 760; object-fit:contain; border:0; border-radius:0; margin:0; }
+article a.atlas-map-preview:hover, article a.atlas-map-preview:focus-visible { outline:2px solid #e0bb7f; outline-offset:2px; }

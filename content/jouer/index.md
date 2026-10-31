@@ -84,3 +84,8 @@ L'[[lieux/cb44-iles-et-quatre-saisons|Île des Divertissements]] et sa [[lieux/p
 - [[jouer/playtest-5d6-probabilites|Playtest mathématique du 5d6]] — seuils, critiques et protocole PJ/MJ/MJ-IA, **sans prétendre à un test humain**.
 
 Le [[jouer/decheance-systeme|mini-système de Déchéance 2d6]] demeure un module **validé et distinct** : les difficultés 2d6 ne doivent pas être directement reprises pour 5d6.
+
+
+## 21 courtes missions dans les Sept Grandes Cités
+
+[[jouer/quetes-sept-cites|Catalogue des 21 petites quêtes]] : eau et tourisme à Dornaël, mémoire à Aldhammar, apprentis bâtisseurs à Skalor, cohabitation à Nacrecombe, dangers des forges à Forgeciel, cols à Keldrun et délibérations à Torngard. Les [[lieux/sept-cites-carnets-de-terrain|carnets des sept villes]] fournissent 42 adresses et 36 PNJ facultatifs. **Tous ces épisodes sont non joués et ne changent pas la continuité d'Orin.**
