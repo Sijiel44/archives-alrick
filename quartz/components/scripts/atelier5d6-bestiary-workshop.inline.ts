@@ -42,8 +42,11 @@ function startBestiary(){
     catch{msg("Stockage saturé ou indisponible. Exportez vos créations pour les conserver.")}
   }
   function download(filename:string,value:unknown){
+    host.dataset.downloadStage="begin"
     const data=new Blob([JSON.stringify(value,null,2)],{type:"application/json"})
+    host.dataset.downloadStage="blob"
     const url=URL.createObjectURL(data),a=document.createElement("a")
+    host.dataset.downloadStage="url"
     a.href=url;a.download=filename;document.body.append(a);a.click();a.remove()
     setTimeout(()=>URL.revokeObjectURL(url),1500)
   }
@@ -277,7 +280,9 @@ function startBestiary(){
       if(!window.confirm("Rétablir les valeurs M03 et perdre les modifications numériques ?"))return
       regenerate(action==="reset")
     }else if(action==="export"){
+      host.dataset.exportStage="before"
       download("alrick-bestiary-"+current().id+".json",current())
+      host.dataset.exportStage="after"
       msg("Export JSON versionné créé.")
     }else if(action==="export-atelier"){
       const c=current()
