@@ -109,7 +109,7 @@ assert(publicMissions.missions.every(m=>m.statut==='proposition_non_jouee' && !(
   'Risque de divulgation MJ dans les contrats publics')
 for(const token of ['data-opposition-enabled','data-opposition-target','data-opposition-kind',
   'data-opposition-mode','data-opposition-min','data-opposition-base','data-opposition-apply',
-  'data-opposition-preview','data-opposition-result','data-defense-resistance="physique"',
+  'data-opposition-preview','data-opposition-result','data-opposition-counter','data-defense-resistance="physique"',
   'data-defense-protection="magie"','data-resistance-summary']){
   assert(atelierHtml.includes(token), `Module d'opposition 5d6 incomplet : ${token}`)
 }
