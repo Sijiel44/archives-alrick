@@ -1,4 +1,6 @@
 import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,innateProtection,equipmentProtection} from "./atelier5d6-opposition"
+import {createGrimoirePanel,newGrimoire,normalizeGrimoire} from "./atelier5d6-grimoire"
+import type {Grimoire} from "./atelier5d6-grimoire"
 import {generateCreatureProfile} from "./atelier5d6-bestiary"
 import type {CreatureArchetype} from "./atelier5d6-bestiary"
 import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
@@ -108,7 +110,7 @@ type Sheet = {
   notes: string; gmNotes: string; lifeSteps:string[]; lifeSummary:string
   education:EducationId|""; literacy:LiteracyLevel|""; backstory:string;connections:string;goal:string
   affinities:Affinity[]; powers:Power[]
-  externalMedia:SheetArtwork[];powerHistory:PowerUse[]
+  externalMedia:SheetArtwork[];powerHistory:PowerUse[];grimoire:Grimoire
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
@@ -190,7 +192,7 @@ function fresh(kind: Role = "pj"): Sheet {
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"",
     lifeSteps:[],lifeSummary:"",education:"",literacy:"",backstory:"",connections:"",goal:"",
-    affinities:[],powers:[],externalMedia:[],powerHistory:[] }
+    affinities:[],powers:[],externalMedia:[],powerHistory:[],grimoire:newGrimoire() }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -266,7 +268,7 @@ function validateSheet(raw: unknown): Sheet | null {
     education:EDUCATION_PATHS.some(x=>x.id===obj.education)?obj.education as EducationId:"",
     literacy:LITERACY_LEVELS.some(x=>x.id===obj.literacy)?obj.literacy as LiteracyLevel:"",
     backstory:clean(obj.backstory,4000),connections:clean(obj.connections,600),
-    goal:clean(obj.goal,600),affinities,powers,
+    goal:clean(obj.goal,600),affinities,powers,grimoire:normalizeGrimoire(obj.grimoire),
     externalMedia:Array.isArray(obj.externalMedia)?obj.externalMedia.slice(0,30)
       .map(validatedArtwork).filter((v):v is SheetArtwork=>v!==null):[],
     powerHistory:Array.isArray(obj.powerHistory)?obj.powerHistory.slice(-80)
@@ -365,6 +367,8 @@ function setupAtelier5d6() {
     try { localStorage.setItem(STORAGE,JSON.stringify(state)) }
     catch { message("Stockage indisponible ou saturé. Exportez votre fiche en JSON pour la conserver.") }
   }
+  const grimoirePanel=createGrimoirePanel({root:host,getSheet:current,getSheets:()=>state.sheets,
+    isMJ:()=>state.mode!=="pj",persist,message})
   function refreshPoints() {
     const s=current()
     const used=STATS.reduce((acc,k)=>acc+s.stats[k],0)
@@ -725,7 +729,7 @@ function setupAtelier5d6() {
       "Aucun bonus à la précision, aucun mana ou effet cosmique automatique.":
       "Sélectionner une affinité validée sur cette fiche. Sans sélection, aucun bonus d'impact."
   }
-  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities();renderMedia()}
+  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities();renderMedia();grimoirePanel.render()}
   function renderAI(){
     const s=current(), include=q<HTMLInputElement>("[data-ai-roster]").checked
     const group=state.groups.find(g=>g.members.includes(s.id))
