@@ -13,6 +13,8 @@ tags: [5d6, des, personnage, mj, pnj, creatures, atelier]
 
 # Atelier de jeu 5d6
 
+> La [[jouer/echelle-existences-niveaux-affinites|nouvelle échelle des existences 1–25 et des affinités]] est une **proposition de conception** : elle place les habitants ordinaires plutôt aux niveaux 1–4 et les premiers aventuriers autour du niveau 5, mais **ne modifie pas encore le moteur, les sauvegardes ni le barème de progression actif**. Il faut tester et valider la migration avant d'appliquer cette nouvelle lecture.
+
 > **Évolution de résistance (niveau 25).** Dans l'Atelier, la robustesse **naturelle** et les **PV** augmentent avec le niveau, même sans équipement. Les protections portées peuvent évoluer par **grades 0 à 5**, distinctement des défenses innées et des protections supplémentaires du MJ. Un **27–30 naturel** peut exceptionnellement produire un **contact héroïque** sur un être de niveau très supérieur, sans pénétrer son endurance : normalement **0 PV**, éventuellement **1 PV** sur 30 naturel lorsque l'attaque dépasse toutes les absorptions. Une action mentale ou un pouvoir interdit n'est jamais accordé par ce seul contact. Le [[jouer/bestiaire-evolutif-25|bestiaire évolutif 1–25]] permet au MJ de créer des fiches de créatures génériques sans les transformer en canon.
 
 > **Extension de jeu en préparation : compagnies, missions, inventaires et progression divine.** La nouvelle version de l'Atelier propose l'édition d'objets, leur attribution et transfert entre fiches locales, 12 rangs de groupe, 24 missions publiques, un journal de récompenses, ainsi que l'export et l'import de la campagne complète. Ces outils ne synchronisent pas les joueurs entre appareils. Les missions et les valeurs chiffrées restent des propositions non jouées.
