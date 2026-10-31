@@ -256,6 +256,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <p data-opposition-preview class="atelier-hint">Le MJ fixe les conditions avant le jet. La résistance ne peut pas être ignorée par une réussite critique.</p>
           <p data-opposition-result class="atelier-hint" role="status">Mode opposition désactivé : jet classique inchangé.</p>
           <button type="button" data-opposition-apply hidden>MJ : confirmer l'application des dégâts à la cible</button>
+          <button type="button" data-opposition-counter hidden>MJ : préparer une riposte avec un nouveau jet</button>
           <small class="atelier-hint">Sans dégâts automatiques sur échec. Une riposte demande une action, des moyens et un jet distincts. Une cible à 0 PV est hors de combat, pas automatiquement morte.</small>
         </fieldset>
         <div class="atelier-dice-row" aria-label="Cinq dés à six faces">
