@@ -340,10 +340,50 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
       const known=g.known.find(x=>x.id===spell.id);if(!known)return
       known.prepared=!known.prepared;update();notify("Préparation mise à jour.");return
     }
+
+    if(b.hasAttribute("data-grimoire-ninth-approve")&&mj){
+      if(g.divineNinthApproved){
+        if(!window.confirm("Révoquer la validation divine du Neuvième Cercle ?"))return
+        g.divineNinthApproved=false;g.divineNinthWitness=""
+        g.circlesAttested=g.circlesAttested.filter(x=>x!==9)
+        update();notify("Accès au IX révoqué.");return
+      }
+      const proof=query<HTMLInputElement>("[data-grimoire-ninth-witness]").value.trim()
+      if(proof.length<15){notify("Documenter le statut divin et sa source (15 caractères minimum).");return}
+      if(!window.confirm("Valider la nature divine pour le IX ? Le niveau et les sorts restent inchangés."))return
+      g.divineNinthApproved=true;g.divineNinthWitness=proof.slice(0,300)
+      recordSpellEvent(g,{type:"apprentissage",spellId:"cercle-9",target:"",manaDelta:0,dice:[],total:0,threshold:0,result:"Nature divine reconnue : "+proof.slice(0,120)})
+      update();notify("Statut divin reconnu pour le IX, sans attribuer automatiquement le Cercle.");return
+    }
+    if(b.hasAttribute("data-grimoire-matrix-create")&&mj){
+      const itemId=query<HTMLSelectElement>("[data-grimoire-matrix-item]").value
+      const item=s.inventory?.find(x=>x.id===itemId)
+      const architecture=matrixSpell(query<HTMLSelectElement>("[data-grimoire-matrix-spell]").value)
+      const trigger=bounded(query<HTMLSelectElement>("[data-grimoire-matrix-trigger]").value,1,9,1)
+      const energySource=query<HTMLSelectElement>("[data-grimoire-matrix-energy]").value==="matrix"?"matrix" as const:"caster" as const
+      const charges=bounded(query<HTMLInputElement>("[data-grimoire-matrix-charges]").value,1,99,3)
+      const proof=query<HTMLInputElement>("[data-grimoire-matrix-source]").value.trim().slice(0,300)
+      if(!item||!architecture||architecture.circle===null){notify("Objet et effet référencé requis.");return}
+      if(trigger>architecture.circle){notify("Cercle d'activation supérieur à celui de l'architecture : configuration refusée.");return}
+      if(proof.length<8){notify("Documenter le concepteur et la provenance de la matrice.");return}
+      if(g.matrices.length>=50){notify("Limite de 50 matrices atteinte.");return}
+      if(!window.confirm("Installer sur « "+item.name+" » une architecture C"+architecture.circle+
+        " déclenchable en C"+trigger+" ? Le porteur n'apprendra pas le sort."))return
+      g.matrices.push({id:makeId(),itemId,spellId:architecture.id,architectureCircle:architecture.circle,
+        activationCircle:trigger,energySource,charges,approvedBy:"MJ local",source:proof})
+      update();notify("Architecture préparée liée à cet objet, sans attribuer le sort.");return
+    }
+    if(b.dataset.grimoireMatrixRevoke&&mj){
+      const m=g.matrices.find(x=>x.id===b.dataset.grimoireMatrixRevoke)
+      if(!m||!window.confirm("Retirer cette matrice sans supprimer l'objet ?"))return
+      g.matrices=g.matrices.filter(x=>x.id!==m.id)
+      update();notify("Matrice retirée, inventaire conservé.");return
+    }
     if(b.hasAttribute("data-grimoire-attest")&&mj){
       const circle=Number(query<HTMLSelectElement>("[data-grimoire-circle]").value)
       const witness=query<HTMLInputElement>("[data-grimoire-witness]").value.trim()
       if(!witness){notify("Indiquer une preuve d'apprentissage ou une validation MJ.");return}
+      if(circle===9&&!g.divineNinthApproved){notify("Le IX exige une reconnaissance divine préalable par le MJ.");return}
       if(!g.circlesAttested.includes(circle))g.circlesAttested.push(circle)
       recordSpellEvent(g,{type:"apprentissage",spellId:"cercle-"+circle,target:"",manaDelta:0,dice:[],total:0,threshold:0,result:"Cercle attesté : "+witness.slice(0,120)})
       update();notify("Cercle "+circle+" attesté, sans octroi automatique de sorts.");return
