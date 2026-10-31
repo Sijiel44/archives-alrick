@@ -128,7 +128,19 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <label class="atelier-wide">Notes réservées au MJ (sur cet appareil uniquement)
             <textarea data-field="gmNotes" rows={2} maxLength={2500} placeholder="Motivations, secrets, rencontres possibles..."></textarea>
           </label>
-          <label class="atelier-check"><input data-ascension type="checkbox"/> MJ : autoriser une ascension divine au-delà du niveau 20</label>
+          <label class="atelier-check"><input data-ascension type="checkbox"/> MJ : activer les épreuves d'ascension divine</label>
+          <label>Dernier niveau divin individuellement approuvé
+            <select data-divine-limit>
+              <option value="20">Aucun niveau divin</option>
+              <option value="21">21 — Première épreuve</option>
+              <option value="22">22 — Deuxième épreuve</option>
+              <option value="23">23 — Troisième épreuve</option>
+              <option value="24">24 — Quatrième épreuve</option>
+            </select>
+          </label>
+          <label class="atelier-wide">Témoignage MJ de l'épreuve exceptionnelle (obligatoire)
+            <textarea data-field="ascensionWitness" rows={2} maxLength={300} placeholder="Mentor, rituel, pacte, coût réel et conséquence du monde..."></textarea>
+          </label>
           <div class="atelier-toolbar">
             <label>Profil de démonstration
               <select data-template>
