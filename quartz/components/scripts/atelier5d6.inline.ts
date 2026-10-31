@@ -499,7 +499,7 @@ function setupAtelier5d6() {
     q<HTMLTextAreaElement>("[data-mission-summary]").value=""
     q<HTMLInputElement>("[data-mission-award]").value=""
     renderGroup();refreshPoints();persist();renderAI()
-    q<HTMLInputElement>("[data-field= xp]")?.setAttribute("value",String(current().xp))
+    q<HTMLInputElement>('[data-field="xp"]').value=String(current().xp)
     message("Mission consignée : récompense narrative et XP locaux attribués aux PJ membres.")
   }
   function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup()}
