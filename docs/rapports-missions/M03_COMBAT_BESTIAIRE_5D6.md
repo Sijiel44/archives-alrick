@@ -83,6 +83,23 @@ Hypothèses de banc d'essai : un **attaquant offensif** contre un **défenseur s
 
 `scripts/test-5d6-m03.mjs` réalise, en plus de l'énumération exacte, **360 séries à graine fixe par confrontation** sur une cible passive, au plus 300 rounds, avec médiane, quantiles 10 %/90 % et fréquence d'expiration. Un test de groupe **2v2** (deux N10 contre deux N10, ciblage concentré) et un test de **surnombre 3v1** (trois N10 contre un N15) exécutent chacun 240 simulations à graine fixe. Il s'agit d'une simplification : pas de mouvement tactique, de changement de couverture, de moral, de représailles automatiques, de manœuvres de repli ni de consommation de capacités. Les distributions imprimées par le test sont vérifiables dans le journal CI.
 
+**Dispersion déterministe réellement observée, graine 20261031, 360 essais par scénario, cible passive :**
+
+| Attaquant | Défenseur | Médiane rounds | P10 | P90 | Séries bloquées / 360 |
+|---:|---:|---:|---:|---:|---:|
+| N5 | N5 | 5 | 4 | 8 | 0 |
+| N10 | N10 | 9 | 7 | 11 | 0 |
+| N15 | N15 | 12 | 10 | 16 | 0 |
+| N20 | N20 | 15 | 13 | 18 | 0 |
+| N25 | N25 | 27 | 23 | 30 | 0 |
+| N5 | N10 | 19 | 15 | 26 | 0 |
+| N10 | N15 | 20 | 16 | 25 | 0 |
+| N15 | N20 | 26 | 22 | 30 | 0 |
+| N20 | N25 | 37 | 32 | 42 | 0 |
+| N5 | N25 | — | — | — | 360 |
+
+Le blocage N5→N25 signifie **aucun dommage possible dans la configuration offensive testée**, et non un duel complet 1 contre 1 dans lequel le N25 répliquerait. Les durées ne comprennent ni riposte ni consommation de ressources.
+
 **Cibles expérimentales** : N5 comparables 4–10 rounds, N10 5–12, N15 8–20, N20 10–25, N25 15–45 selon armure, préparation et objectifs. Ce sont des repères de discussion, non des durées imposées. Combat arrêté par reddition, fuite, prise d'objet ou objectif scénaristique reste possible sur décision du MJ.
 
 ## 9. Protections, PV et ressources
@@ -117,7 +134,7 @@ Il n'y a pas eu d'essai humain certifié de l'interface sur navigateur ou mobile
 
 - `scripts/test-5d6-m03.mjs` : énumération complète des 7 776 quintuplets, dix comparaisons exactes, configurations niveaux 1–25, normes E et M, naturels critiques et échecs, action impossible, protections/armures, différence brut/effectif, mental sans PV, effets structurés approuvés/refusés, entrées invalides, bestiaire et simulation de groupe.
 - Suite héritée : `scripts/test-5d6-opposition.mjs`, `test-5d6-balance.mjs`, `test-5d6-probabilities.mjs`, `test-5d6-progression.mjs`, `test-5d6-m02.mjs`.
-- `npm test` lance explicitement contenu, `tsc --noEmit`, build Quartz, vérification site, toutes les anciennes suites et M03. **Premier passage sur PR #60 : CI verte** [run #41240990878](https://github.com/Sijiel44/archives-alrick/actions/runs/41240990878), incluant `npm ci` et `npm test`, avant l'extension des distributions. Les commits ultérieurs doivent être validés par leur propre CI avant fusion.
+- `npm test` lance explicitement contenu, `tsc --noEmit`, build Quartz, vérification site, toutes les anciennes suites et M03. **Premier passage sur PR #60 : CI verte** [run #41240990878](https://github.com/Sijiel44/archives-alrick/actions/runs/41240990878), incluant `npm ci` et `npm test`, avant l'extension des distributions. **Deuxième passage après l'ajout des distributions : CI verte** [run #41241097654](https://github.com/Sijiel44/archives-alrick/actions/runs/41241097654), avec médianes, quantiles et 480 essais de groupe. Toute modification documentaire ultérieure doit conserver une CI verte sur son commit de tête.
 - Tests d'interface **manuels non réalisés** : aucun succès de navigateur/mobile ne doit être revendiqué.
 
 ## 15. Inventaire des fichiers modifiés ou créés
