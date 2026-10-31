@@ -392,8 +392,11 @@ function setupAtelier5d6() {
       ? `Source : ${s.sourceTitle || s.sourceRef} (${s.sourceRef}). Les statistiques 5d6 sont une adaptation libre non canonique.`
       : "Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions."
     refreshStreaks()
+    q<HTMLElement>("[data-life-history]").textContent=s.lifeSummary||
+      "Création libre ou ancienne fiche : aucune histoire de jeunesse saisie."
     renderInventory()
     renderOpposition()
+    renderAffinities()
   }
   function refreshStreaks(){
     const s=current()
@@ -568,11 +571,75 @@ function setupAtelier5d6() {
     q<HTMLInputElement>('[data-field="xp"]').value=String(current().xp)
     message("Mission consignée : récompense narrative et XP locaux attribués aux PJ membres.")
   }
-  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup()}
+  const affinityLabel=(id:string)=>AFFINITY_DOMAINS.find(x=>x[0]===id)?.[1]??id
+  function renderOriginPreview(){
+    const choices=ORIGIN_STEPS.map(step=>q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value)
+    const target=q<HTMLElement>("[data-origin-preview]")
+    if(choices.some(x=>!x)){target.textContent="Choisir les "+(4-choices.filter(Boolean).length)+" périodes de vie restantes.";return}
+    try{
+      const result=buildOrigin(choices)
+      target.textContent="Niveau 5 · 36 PV · "+(result.manaMax?"36 mana d'essai · ":"")+
+        "Phys "+result.stats.physique+" · Agi "+result.stats.agilite+
+        " · Esp "+result.stats.esprit+" · Prés "+result.stats.presence+
+        " · "+Object.entries(result.masteries).filter(([,v])=>v>0).map(([k,v])=>k+" "+v).join(", ")+
+        ". Parcours : "+result.summary.replaceAll("\n"," | ")
+    }catch{target.textContent="Parcours invalide : vérifier les quatre choix."}
+  }
+  function renderAffinities(){
+    const sheet=current(),list=q<HTMLUListElement>("[data-affinity-list]"),powers=q<HTMLUListElement>("[data-power-list]")
+    list.replaceChildren();powers.replaceChildren()
+    for(const item of sheet.affinities){
+      const li=document.createElement("li")
+      li.append(document.createTextNode(affinityLabel(item.id)+" — rang "+item.rank+"/5. "+item.witness+" "))
+      if(state.mode!=="pj"){
+        const b=document.createElement("button");b.type="button";b.dataset.affinityRemove=item.id
+        b.textContent="Révoquer";li.append(b)
+      }
+      list.append(li)
+    }
+    if(!sheet.affinities.length){const li=document.createElement("li");li.textContent="Aucune affinité validée.";list.append(li)}
+    for(const item of sheet.powers){
+      const li=document.createElement("li")
+      li.append(document.createTextNode(item.name+" — "+item.grade+" · "+affinityLabel(item.domain)+
+        " · coût "+item.manaCost+" mana. Effet : "+item.effect+
+        " · Conditions : "+item.condition+" "))
+      if(state.mode!=="pj"){
+        const b=document.createElement("button");b.type="button";b.dataset.powerRemove=item.id
+        b.textContent="Révoquer";li.append(b)
+      }
+      powers.append(li)
+    }
+    if(!sheet.powers.length){const li=document.createElement("li");li.textContent="Aucune capacité spéciale enregistrée.";powers.append(li)}
+    const selector=q<HTMLSelectElement>("[data-roll-affinity]"),chosen=selector.value
+    selector.replaceChildren(new Option("Sans affinité",""))
+    for(const a of sheet.affinities)selector.add(new Option(affinityLabel(a.id)+" · rang "+a.rank,a.id))
+    if(sheet.affinities.some(x=>x.id===chosen))selector.value=chosen
+    else q<HTMLInputElement>("[data-roll-affinity-enabled]").checked=false
+    refreshAffinityPreview()
+    q<HTMLElement>("[data-hub-status]").textContent=sheet.name+
+      " · niveau "+sheet.level+"/25 · "+sheet.pv+"/"+sheet.pvMax+" PV · "+
+      sheet.mana+"/"+sheet.manaMax+" mana · "+sheet.affinities.length+" affinité(s) · "+
+      sheet.inventory.length+" objet(s)."
+  }
+  function refreshAffinityPreview(){
+    const sheet=current()
+    const id=q<HTMLSelectElement>("[data-roll-affinity]").value
+    const affinity=sheet.affinities.find(x=>x.id===id)
+    q<HTMLElement>("[data-roll-affinity-preview]").textContent=affinity?
+      "Rang "+affinity.rank+" en "+affinityLabel(affinity.id)+
+      " : +"+affinityImpactBonus(affinity.rank)+
+      " dégâts potentiels pour un effet MAGIQUE dans ce domaine et approuvé par le MJ. "+
+      "Aucun bonus à la précision, aucun mana ou effet cosmique automatique.":
+      "Sélectionner une affinité validée sur cette fiche. Sans sélection, aucun bonus d'impact."
+  }
+  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities()}
   function renderAI(){
     const s=current(), include=q<HTMLInputElement>("[data-ai-roster]").checked
     const group=state.groups.find(g=>g.members.includes(s.id))
     const inventory=s.inventory.slice(0,60).map(x=>x.name+" ×"+x.quantity).join(", ")
+    const affinities=s.affinities.map(x=>affinityLabel(x.id)+" "+x.rank+"/5 ("+x.witness+")").join(", ")
+    const powers=s.powers.map(x=>x.name+" ["+x.grade+"/"+affinityLabel(x.domain)+
+      "] : "+x.effect+" ; conditions "+x.condition+" ; coût mana "+x.manaCost).join(" | ")
     const roster = include ? state.sheets.filter(x=>x.id!==s.id).map(x=>
       `- ${x.name} (${x.kind}, ${x.profession}) : Phys ${x.stats.physique}, Agi ${x.stats.agilite}, Esp ${x.stats.esprit}, Prés ${x.stats.presence}, PV ${x.pv}/${x.pvMax}, mana ${x.mana}/${x.manaMax}, Emprise ${x.emprise}.`).join("\n") : "(non transmis)"
     const text = `MJ IA — Nouvelle aventure indépendante dans le monde d'Alrick
@@ -589,6 +656,9 @@ Spécialité +${s.skill}, PV ${s.pv}/${s.pvMax}, mana ${s.mana}/${s.manaMax}, Em
 Niveau ${s.level}/25 ; voies : ${s.vocation || "aucune"}.
 Crédits convertis : ${s.convertedCredits}; points de talents attribués ${s.talentPointsSpent}/${Math.floor(s.convertedCredits/6)}. Pouvoirs à valider par le MJ.
 Description : ${s.description || "non renseignée"}.
+Parcours des quatre premières périodes : ${s.lifeSummary || "création libre, non précisé"}. 
+Affinités conditionnelles approuvées : ${affinities || "aucune"}.
+Pouvoirs et limitations approuvés localement : ${powers || "aucun"}. Aucune Autorité divine supplémentaire par défaut.
 Maîtrises de progression (sans bonus de jet automatique) : ${MASTERIES.map(k=>k+" "+s.masteries[k]+"/12").join(", ")}.
 Talents : ${s.talents || "aucun"}.
 Bénédictions / avantages conditionnels : ${s.boons || "aucun"}.
