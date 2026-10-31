@@ -90,7 +90,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
             <span><strong>{label}</strong><small>{help}</small></span>
             <input type="number" data-stat={key} value={3} min={1} max={12} step={1} aria-label={label}/>
           </label>)}
-          <small class="atelier-hint">Au niveau 1 : 12 points répartis (1 à 5 par caractéristique). Chaque nouveau niveau accorde 1 point supplémentaire, jusqu'au plafond de 12 par caractéristique. Les points non dépensés restent disponibles. Le MJ peut adapter les adversaires.</small>
+          <small class="atelier-hint">Au niveau 1 : 12 points (1 à 5 par caractéristique). Puis +6 points par niveau, chaque caractéristique étant plafonnée à 12. Les crédits excédentaires restent en réserve, sans bonus de jet automatique. Les niveaux 21–24 exigent une validation divine exceptionnelle.</small>
         </fieldset>
         <fieldset class="atelier-stats">
           <legend>Maîtrises spécialisées — <span data-mastery-points>0 / 0 points</span></legend>
