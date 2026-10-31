@@ -17,6 +17,12 @@ tags: [5d6, des, personnage, mj, pnj, creatures, atelier]
 
 Cet outil est une **version pilote évolutive**, inspirée du [[jouer/systeme-5d6-base12|système 5d6 / Base 12]]. Il est conçu pour les campagnes **indépendantes**, qu'elles soient menées par un MJ humain ou assistées par IA.
 
+## Module facultatif : défense, dégâts, ripostes
+
+L'Atelier propose maintenant **un mode opposition** indépendant des jets classiques : choisir une cible locale, une résistance physique/magique/mentale, et éventuellement un seuil minimal fixé par le MJ. La cible doit être franchie avant que des dégâts soient possibles. La maîtrise et le niveau augmentent **la force de l'impact**, et non le score de précision. Le MJ définit sur les fiches une résistance supplémentaire (0–8) et une protection qui absorbe les dégâts (0–60).
+
+Une résistance réussie annule l'effet ; une riposte éventuelle du défenseur demande un **jet et une action distincts**. Les dégâts ne sont appliqués aux PV du PNJ/PJ qu'après confirmation expresse du MJ. Une action mentale ne retire pas de PV automatiquement et 0 PV ne signifie pas automatiquement la mort. Voir les [[jouer/systeme-5d6-base12|règles de résistance et d'impact]].
+
 ## Trois modes, un même jeu
 
 **Expérience progressive (prototype) :** les fiches conservent un compteur d'XP cumulés. Les seuils sont `5 × (niveau − 1)³` (5 XP au niveau 2, 320 au niveau 5, 60 835 au niveau 24). Une mission de rang `r` accomplie ou terminée par un repli responsable attribue `10 × r` XP aux PJ membres de la compagnie au moment du débriefing. Le MJ peut ajuster ce montant ; l'accès aux niveaux 21–24 demande aussi une épreuve narrative approuvée individuellement. Les membres absents doivent être retirés de la liste de participants de la compagnie avant d'enregistrer la mission.
