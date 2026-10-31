@@ -32,17 +32,19 @@ export function evaluateSheet(sheet:M02Sheet){
   const abilities=sheet.development.abilities
   const build:Build={level:sheet.level,startingStats:sheet.development.startingStats,
     stats:sheet.stats,masteries:sheet.masteries,
-    aptitudes:abilities.filter(x=>x.kind==="aptitude").length,
-    techniques:abilities.filter(x=>x.kind==="technique").length,
-    signatures:abilities.filter(x=>x.kind==="signature").length,
-    approvedSignatures:abilities.filter(x=>x.kind==="signature"&&x.approvedByGM).length}
+    aptitudes:abilities.filter(x=>x.kind==="aptitude").reduce((n,a)=>n+a.rank,0),
+    techniques:abilities.filter(x=>x.kind==="technique").reduce((n,a)=>n+a.rank,0),
+    signatures:abilities.filter(x=>x.kind==="signature").reduce((n,a)=>n+a.rank,0),
+    approvedSignatures:abilities.filter(x=>x.kind==="signature"&&x.approvedByGM).reduce((n,a)=>n+a.rank,0)}
   const result=evaluateBuild(build),issues=[...result.issues]
   const ids=new Set<string>()
   for(const a of abilities){
     if(!a.id.trim()||ids.has(a.id))issues.push("Identifiant de capacité manquant ou dupliqué.")
     ids.add(a.id)
     if(!a.name.trim()||!a.domain.trim()||!a.provenance.trim())issues.push("Capacité sans nom, domaine ou justification.")
+    if(!Object.hasOwn(ABILITY_COSTS,a.kind))issues.push("Catégorie de capacité inconnue.")
     if(!Number.isSafeInteger(a.rank)||a.rank<1)issues.push("Rang de capacité invalide.")
+    if(a.kind==="signature"&&!a.approvedByGM)issues.push("Signature non approuvée par le MJ.")
     if(a.status==="defined"&&(!a.effect?.trim()||!a.description.trim()||!a.limitations?.trim()))
       issues.push("Capacité définie sans effet, description ou limites : "+a.name)
     if(a.status!=="defined"&&a.status!=="slot")issues.push("Statut de capacité inconnu.")
