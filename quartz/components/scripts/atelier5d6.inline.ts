@@ -1,5 +1,7 @@
 import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,innateProtection,equipmentProtection} from "./atelier5d6-opposition"
-import {generateCreatureProfile} from "./atelier5d6-bestiary"
+import {generateCreatureProfileM03} from "./atelier5d6-bestiary"
+import {resistanceScoreM03,effectiveProtectionM03,innateProtectionM03,equipmentProtectionM03,resolveCombatM03} from "./atelier5d6-combat-m03"
+import type {CombatM03Result} from "./atelier5d6-combat-m03"
 import type {CreatureArchetype} from "./atelier5d6-bestiary"
 import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
 import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,
@@ -115,6 +117,10 @@ type Sheet = {
   externalMedia:SheetArtwork[];powerHistory:PowerUse[]
   ruleset:"legacy"|"m02";development:Development;legacyOriginal:Record<string,unknown>|null
 }
+const defenseScore=(s:Sheet,k:ResistanceKind)=>s.ruleset==="m02"?resistanceScoreM03(s,k):resistanceScore(s,k)
+const totalProtection=(s:Sheet,k:ResistanceKind)=>s.ruleset==="m02"?effectiveProtectionM03(s,k):effectiveProtection(s,k)
+const innateGuard=(s:Sheet,k:ResistanceKind)=>s.ruleset==="m02"?innateProtectionM03(s.level,k):innateProtection(s.level,k)
+const equipmentGuard=(s:Sheet,k:ResistanceKind)=>s.ruleset==="m02"?equipmentProtectionM03(s.equipmentGrades[k],k):equipmentProtection(s.equipmentGrades[k],k)
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
   groups:Group[]; activeGroupId:string; templates:GameItem[]; missionLog:MissionEntry[] }
@@ -490,8 +496,8 @@ function setupAtelier5d6() {
       q<HTMLInputElement>(`[data-defense-protection="${k}"]`).value=String(s.protection[k])
     }
     q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(k=>
-      k+" : seuil "+resistanceScore(s,k)+" · protection totale "+effectiveProtection(s,k)+
-      " (innée "+innateProtection(s.level,k)+", équipement "+equipmentProtection(s.equipmentGrades[k],k)+
+      k+" : seuil "+defenseScore(s,k)+" · protection totale "+totalProtection(s,k)+
+      " (innée "+innateGuard(s,k)+", équipement "+equipmentGuard(s,k)+
       ", bonus MJ "+s.protection[k]+")").join(" | ")
     const portrait=q<HTMLImageElement>("[data-portrait-preview]")
     portrait.hidden=!s.portrait
@@ -854,7 +860,7 @@ Objets à effet narratif : ${s.items || "aucun"}.
 Inventaire (noms et quantités) : ${inventory || "aucun"}.
 Compagnie : ${group ? group.name+" (rang "+group.rank+"/12)" : "aucune"}.
 Certifications reconnues par la table : ${group?.certifications.join(", ") || "aucune"}.
-Niveaux 21–25 : cinq épreuves d'ascension à valider par le MJ, sans capacités divines automatiques. Résistances : physique ${resistanceScore(s,"physique")} / magie ${resistanceScore(s,"magie")} / mental ${resistanceScore(s,"mental")} ; absorptions : ${effectiveProtection(s,"physique")} / ${effectiveProtection(s,"magie")} / ${effectiveProtection(s,"mental")}.
+Niveaux 21–25 : cinq épreuves d'ascension à valider par le MJ, sans capacités divines automatiques. Résistances : physique ${defenseScore(s,"physique")} / magie ${defenseScore(s,"magie")} / mental ${defenseScore(s,"mental")} ; absorptions : ${totalProtection(s,"physique")} / ${totalProtection(s,"magie")} / ${totalProtection(s,"mental")}.
 Référence de la fiche : ${s.sourceRef || "adaptation sans source"} — ${s.sourceTitle || ""} (scores 5d6 non canoniques).
 Notes du personnage : ${s.notes || "aucune"}.
 
@@ -884,16 +890,16 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       s.resistanceBonus[k]=clamp(el.value,0,8,s.resistanceBonus[k])
       el.value=String(s.resistanceBonus[k])
       q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(t=>
-        t+" : seuil "+resistanceScore(s,t)+" · protection totale "+effectiveProtection(s,t)+
-        " (innée "+innateProtection(s.level,t)+", équipement "+equipmentProtection(s.equipmentGrades[t],t)+
+        t+" : seuil "+defenseScore(s,t)+" · protection totale "+totalProtection(s,t)+
+        " (innée "+innateGuard(s,t)+", équipement "+equipmentGuard(s,t)+
         ", bonus MJ "+s.protection[t]+")").join(" | ")
     } else if(el.dataset.defenseProtection && DEFENSE_KINDS.includes(el.dataset.defenseProtection as ResistanceKind)){
       const k=el.dataset.defenseProtection as ResistanceKind
       s.protection[k]=clamp(el.value,0,60,s.protection[k])
       el.value=String(s.protection[k])
       q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(t=>
-        t+" : seuil "+resistanceScore(s,t)+" · protection totale "+effectiveProtection(s,t)+
-        " (innée "+innateProtection(s.level,t)+", équipement "+equipmentProtection(s.equipmentGrades[t],t)+
+        t+" : seuil "+defenseScore(s,t)+" · protection totale "+totalProtection(s,t)+
+        " (innée "+innateGuard(s,t)+", équipement "+equipmentGuard(s,t)+
         ", bonus MJ "+s.protection[t]+")").join(" | ")
     } else if(el.dataset.defenseGear && DEFENSE_KINDS.includes(el.dataset.defenseGear as ResistanceKind)){
       if(state.mode==="pj"){el.value=String(s.equipmentGrades[el.dataset.defenseGear as ResistanceKind]);message("Le grade d'équipement est validé en mode MJ.");return}
@@ -976,8 +982,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   function refreshDefenseSummary(){
     const sheet=current()
     q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(k=>
-      k+" : seuil "+resistanceScore(sheet,k)+" · absorption "+effectiveProtection(sheet,k)+
-      " (innée "+innateProtection(sheet.level,k)+", équipement "+equipmentProtection(sheet.equipmentGrades[k],k)+
+      k+" : seuil "+defenseScore(sheet,k)+" · absorption "+totalProtection(sheet,k)+
+      " (innée "+innateGuard(sheet,k)+", équipement "+equipmentGuard(sheet,k)+
       ", MJ "+sheet.protection[k]+")").join(" | ")
   }
   function renderOpposition(){
@@ -990,11 +996,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const defender=state.sheets.find(x=>x.id===opponent.value)
     const kind=q<HTMLSelectElement>("[data-opposition-kind]").value as ResistanceKind
     const mode=q<HTMLSelectElement>("[data-opposition-mode]").value as ImpactMode
-    const resistance=defender?resistanceScore(defender,kind):0
+    const resistance=defender?defenseScore(defender,kind):0
     const custom=clamp(q<HTMLInputElement>("[data-opposition-min]").value,0,45,0)
     const difficulty=clamp(q<HTMLSelectElement>("[data-roll-target]").value,15,30,21)
     const threshold=Math.max(difficulty,resistance,custom)
-    const mastery=attackMastery(current().masteries,mode)
+    const selectedMastery=q<HTMLSelectElement>("[data-roll-mastery]").value
+    const selectedRank=selectedMastery?(current().masteries as Record<string,number>)[selectedMastery]??0:0
+    const mastery=current().ruleset==="m02"?effectiveMastery(selectedRank):attackMastery(current().masteries,mode)
     q<HTMLElement>("[data-opposition-preview]").textContent=
       "Seuil de pénétration : "+threshold+
       " (difficulté "+difficulty+(defender?", défense "+resistance:"")+(custom?", seuil MJ "+custom:"")+"). "+
@@ -1002,9 +1010,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         "Sur pénétration : base + maîtrise "+mastery+
         " + palier de puissance, moins l'absorption. Un contact héroïque peut effleurer la cible sans la blesser.")+
       (defender?" "+defender.name+" possède "+defender.pv+"/"+defender.pvMax+
-        " PV ; absorption "+effectiveProtection(defender,kind)+
-        " (innée "+innateProtection(defender.level,kind)+", équipement "+
-        equipmentProtection(defender.equipmentGrades[kind],kind)+").":"")
+        " PV ; absorption "+totalProtection(defender,kind)+
+        " (innée "+innateGuard(defender,kind)+", équipement "+
+        equipmentGuard(defender,kind)+").":"")
     if(!q<HTMLInputElement>("[data-opposition-enabled]").checked){
       q<HTMLElement>("[data-opposition-result]").textContent="Mode opposition désactivé : jets ordinaires inchangés."
     }
@@ -1019,7 +1027,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   }
   function roll(){
     const s=current()
-    if(s.ruleset==="m02"&&!evaluateSheet(asM02(s)).valid){
+    if(s.ruleset==="m02"&&s.kind!=="creature"&&!evaluateSheet(asM02(s)).valid){
       message("Répartition M02 invalide : corrigez la fiche avant de lancer un jet.")
       return
     }
@@ -1038,27 +1046,42 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     clearPendingImpact()
     clearPendingCounter()
     const enabled=q<HTMLInputElement>("[data-opposition-enabled]").checked
-    if(s.ruleset==="m02"&&enabled){
-      message("Opposition M02 non activée avant M03 : le combat hérité reste réservé aux anciennes fiches.")
+    const defender=state.sheets.find(x=>x.id===q<HTMLSelectElement>("[data-opposition-target]").value && x.id!==s.id)
+    if(enabled&&defender&&defender.ruleset!==s.ruleset){
+      message("Règles historiques et M03 incompatibles : adapter explicitement la fiche legacy avant cette confrontation.")
       return
     }
-    const defender=state.sheets.find(x=>x.id===q<HTMLSelectElement>("[data-opposition-target]").value && x.id!==s.id)
     const kind=q<HTMLSelectElement>("[data-opposition-kind]").value as ResistanceKind
     const mode=q<HTMLSelectElement>("[data-opposition-mode]").value as ImpactMode
     const custom=clamp(q<HTMLInputElement>("[data-opposition-min]").value,0,45,0)
-    const resistance=defender?resistanceScore(defender,kind):0
+    const resistance=defender?defenseScore(defender,kind):0
     const selectedAffinity=s.affinities.find(x=>x.id===q<HTMLSelectElement>("[data-roll-affinity]").value)
     const useAffinity=enabled&&mode==="magie"&&q<HTMLInputElement>("[data-roll-affinity-enabled]").checked&&!!selectedAffinity
     const affinityBonus=useAffinity?affinityImpactBonus(selectedAffinity.rank):0
-    const opposition:OppositionResult|null=enabled?resolveOpposition({
-      natural,total,difficulty,resistance:Math.max(custom,resistance),
-      damageBase:clamp(q<HTMLSelectElement>("[data-opposition-base]").value,1,12,3),
-      mastery:attackMastery(s.masteries,mode),level:s.level,
-      protection:defender?effectiveProtection(defender,kind):0,mode,affinityBonus
-    }):null
+    const baseDamage=clamp(q<HTMLSelectElement>("[data-opposition-base]").value,1,12,3)
+    const feasible=q<HTMLInputElement>("[data-opposition-feasible]").checked
+    const activePower=s.powers.find(p=>p.id===q<HTMLSelectElement>("[data-power-cast]").value)
+    const magicDefined=mode!=="magie"||!!(activePower?.approvedByGM&&activePower.effect?.trim()&&
+      activePower.condition?.trim()&&s.mana>=activePower.manaCost)
+    if(enabled&&s.ruleset==="m02"&&mode==="magie"&&!magicDefined){
+      message("Magie M03 : choisir une capacité définie, approuvée MJ et dotée du mana nécessaire.")
+      return
+    }
+    const opposition:OppositionResult|CombatM03Result|null=enabled?
+      (s.ruleset==="m02"?resolveCombatM03({
+        natural,rawStat:s.stats[stat],masteryRank:mastered,situation,level:s.level,
+        difficulty,kind,mode,defender,feasible,baseDamage,mjMinimum:custom,affinityBonus
+      }):resolveOpposition({
+        natural,total,difficulty,resistance:Math.max(custom,resistance),
+        damageBase:baseDamage,mastery:attackMastery(s.masteries,mode),level:s.level,
+        protection:defender?totalProtection(defender,kind):0,mode,affinityBonus
+      })):null
     const target=opposition?.threshold??difficulty
     let outcome="",detail="",favorable=false
-    if(natural===5){outcome="Échec critique exceptionnel";detail="Choisir −2 aux trois prochains jets du groupe OU +2 aux actions ennemies pendant trois tours."}
+    if(opposition&&"feasible" in opposition&&!opposition.feasible){
+      outcome="Action infaisable";detail="Le résultat naturel ne franchit pas l'interdit de faisabilité : MJ requis."
+    }
+    else if(natural===5){outcome="Échec critique exceptionnel";detail="Choisir −2 aux trois prochains jets du groupe OU +2 aux actions ennemies pendant trois tours."}
     else if(natural<=7){outcome="Échec critique mineur";detail="L'action échoue et provoque une complication ciblée."}
     else if(natural===30 && total>=target){outcome="Succès exceptionnel";detail="Choisir +2 aux jets de l'équipe pendant trois tours OU une récompense narrative durable validée par le MJ.";favorable=true}
     else if(natural>=27 && total>=target){outcome="Réussite critique";detail="Action renforcée, sans avantage collectif automatique.";favorable=true}
@@ -1728,7 +1751,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(state.sheets.length>=60){message("Répertoire de fiches plein (60 maximum).");return}
       const lvl=clamp(q<HTMLInputElement>("[data-bestiary-level]").value,1,25,1)
       const type=q<HTMLSelectElement>("[data-bestiary-archetype]").value as CreatureArchetype
-      const result=generateCreatureProfile(lvl,type)
+      const result=generateCreatureProfileM03(lvl,type)
       const sheet=fresh("creature")
       const names:Record<CreatureArchetype,string>={faune:"Faune",predateur:"Prédateur",gardien:"Gardien",mystique:"Mystique",colosse:"Colosse"}
       sheet.name="Prototype "+(names[type]??"Créature")+" · niveau "+lvl
