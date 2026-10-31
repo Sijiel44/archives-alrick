@@ -701,29 +701,69 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     }
     const stat=q<HTMLSelectElement>("[data-roll-stat]").value as Stat
     const skill=clamp(q<HTMLSelectElement>("[data-roll-skill]").value,0,2,0)
-    const target=clamp(q<HTMLSelectElement>("[data-roll-target]").value,15,30,21)
+    const difficulty=clamp(q<HTMLSelectElement>("[data-roll-target]").value,15,30,21)
     const situation=clamp(q<HTMLSelectElement>("[data-roll-situation]").value,-2,2,0)
     const chosenDomain=q<HTMLSelectElement>("[data-roll-domain]").value
     const domain:Domain=DOMAINS.includes(chosenDomain as Domain)?chosenDomain as Domain:"autre"
     const dice=Array.from({length:5},()=>1+Math.floor(Math.random()*6))
     const natural=dice.reduce((a,b)=>a+b,0), total=natural+s.stats[stat]+skill+situation
+    clearPendingImpact()
+    const enabled=q<HTMLInputElement>("[data-opposition-enabled]").checked
+    const defender=state.sheets.find(x=>x.id===q<HTMLSelectElement>("[data-opposition-target]").value && x.id!==s.id)
+    const kind=q<HTMLSelectElement>("[data-opposition-kind]").value as ResistanceKind
+    const mode=q<HTMLSelectElement>("[data-opposition-mode]").value as ImpactMode
+    const custom=clamp(q<HTMLInputElement>("[data-opposition-min]").value,0,45,0)
+    const resistance=defender?resistanceScore(defender,kind):0
+    const opposition:OppositionResult|null=enabled?resolveOpposition({
+      natural,total,difficulty,resistance:Math.max(custom,resistance),
+      damageBase:clamp(q<HTMLSelectElement>("[data-opposition-base]").value,1,12,3),
+      mastery:attackMastery(s.masteries,mode),level:s.level,
+      protection:defender?.protection[kind]??0,mode
+    }):null
+    const target=opposition?.threshold??difficulty
     let outcome="",detail="",favorable=false
     if(natural===5){outcome="Échec critique exceptionnel";detail="Choisir −2 aux trois prochains jets du groupe OU +2 aux actions ennemies pendant trois tours."}
     else if(natural<=7){outcome="Échec critique mineur";detail="L'action échoue et provoque une complication ciblée."}
     else if(natural===30 && total>=target){outcome="Succès exceptionnel";detail="Choisir +2 aux jets de l'équipe pendant trois tours OU une récompense narrative durable validée par le MJ.";favorable=true}
     else if(natural>=27 && total>=target){outcome="Réussite critique";detail="Action renforcée, sans avantage collectif automatique.";favorable=true}
     else if(total>=target){outcome="Réussite";detail="L'action réussit dans les limites des moyens disponibles.";favorable=true}
-    else if(target-total<=2){outcome="Échec de justesse";detail="Le MJ peut proposer une réussite avec contrepartie."}
+    else if(target-total<=2){outcome=opposition?"Résistance de justesse":"Échec de justesse"
+      detail=opposition?"Le seuil de résistance n'est pas atteint : aucun effet sur la cible.":"Le MJ peut proposer une réussite avec contrepartie."}
     else {outcome="Échec";detail="L'action échoue, avec conséquences adaptées à la situation."}
     host.querySelectorAll<HTMLElement>("[data-die]").forEach((e,i)=>{e.textContent=String(dice[i])})
     const result=q<HTMLElement>("[data-result]")
     result.dataset.outcome=favorable?"success":"failure"
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
     const incident = natural===5 ? "" : trackFailure(s,domain,!favorable)
+    if(opposition){
+      if(opposition.success){
+        if(mode==="mental")detail+="\nRésistance mentale franchie : le MJ décrit l'effet, sans dégâts PV automatiques."
+        else {
+          detail+="\nImpact : "+opposition.grossDamage+" dégâts bruts − "+opposition.absorbed+
+            " de protection = "+opposition.damage+" PV potentiels."
+          if(defender&&opposition.damage>0){
+            pendingImpact={targetId:defender.id,damage:opposition.damage,attackerName:s.name}
+            q<HTMLButtonElement>("[data-opposition-apply]").hidden=state.mode==="pj"
+          }
+        }
+      }else if(!opposition.criticalFailure){
+        detail+="\nLa cible résiste (écart "+opposition.gap+"). "+
+          (opposition.reaction==="riposte_possible"
+            ?"Le défenseur peut envisager une riposte seulement s'il dispose d'une réaction et d'une position favorable ; faire un jet distinct."
+            :"Parade, esquive ou résistance : aucune riposte gratuite.")
+      }else detail+="\nÉchec critique : aucune contre-attaque supplémentaire automatique."
+      q<HTMLElement>("[data-opposition-result]").textContent=
+        opposition.success?(mode==="mental"?"Effet mental à arbitrer par le MJ.":"Impact calculé : "+opposition.damage+" PV. "+
+        (defender?"En mode MJ, confirmer l'application des dégâts.":"Pas de fiche cible : aucun PV modifié.")):
+        "Seuil "+target+" non franchi. "+
+        (opposition.reaction==="riposte_possible"?"Fenêtre de riposte narrative possible, sur action distincte.":"Aucun dégât.")
+    }
     if(incident)detail += "\n"+incident
     s.lastIncident=incident
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
-    state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:incident ? `${outcome} · ${incident}` : outcome})
+    state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:
+      (incident ? `${outcome} · ${incident}` : outcome)+
+      (opposition?" · "+(opposition.success?(mode==="mental"?"effet mental":"dégâts potentiels "+opposition.damage):"résistance"):"")})
     state.log=state.log.slice(0,20)
     refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
