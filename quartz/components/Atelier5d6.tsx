@@ -193,6 +193,66 @@ export const Atelier5d6: QuartzComponent = (props) => {
         <button type="button" data-clear-log>Effacer le journal</button>
       </div>
     </div>
+    <section class="atelier-panel" aria-label="Inventaire du personnage">
+      <h3>Inventaire de la fiche active</h3>
+      <p class="atelier-hint">Les objets sont individuels. Un modèle MJ peut être attribué à plusieurs personnages sans partager leurs exemplaires.</p>
+      <div class="atelier-fields">
+        <label>Nom de l'objet<input data-item-name type="text" maxLength={90} placeholder="Bourse de pièces"/></label>
+        <label>Catégorie<select data-item-category>{itemCategories.map(([id,label])=><option value={id} key={id}>{label}</option>)}</select></label>
+        <label>Quantité<input data-item-quantity type="number" min={1} max={999} step={1} value={1}/></label>
+        <label>Valeur / unité libre<input data-item-value type="text" maxLength={100} placeholder="Ex. : 4 couronnes (proposition)"/></label>
+      </div>
+      <label class="atelier-wide">Description / propriétés / limites<textarea data-item-description rows={2} maxLength={600} placeholder="Origine, effet narratif, restrictions..."></textarea></label>
+      <div class="atelier-toolbar">
+        <button type="button" data-item-create>Ajouter à la fiche</button>
+        <button type="button" data-item-make-template>MJ : enregistrer un modèle</button>
+      </div>
+      <ul data-inventory-list class="atelier-inventory-list"><li>Aucun objet enregistré.</li></ul>
+      <div class="atelier-fields">
+        <label>Catalogue de modèles MJ<select data-template-select><option value="">Aucun modèle</option></select></label>
+        <label>Personnage destinataire<select data-item-recipient><option value="">Personnage actif</option></select></label>
+      </div>
+      <div class="atelier-toolbar">
+        <button type="button" data-template-grant>MJ : attribuer une copie</button>
+        <button type="button" data-inventory-transfer>Transférer le premier objet sélectionné</button>
+      </div>
+      <p class="atelier-hint">Pour un transfert, sélectionner « Transférer » dans la liste d'inventaire puis le personnage destinataire. Pas de synchronisation entre joueurs distants.</p>
+    </section>
+    <section class="atelier-panel" aria-label="Compagnies d'aventuriers et contrats">
+      <h3>Compagnies — missions, qualifications et récompenses</h3>
+      <p class="atelier-hint">Les niveaux de groupe (1–12) ne sont pas des grades officiels et ne remplacent aucune certification ni autorisation des autorités locales.</p>
+      <div class="atelier-fields">
+        <label>Nouvelle compagnie<input data-group-name type="text" maxLength={90} placeholder="Les arpenteurs de l'Aube"/></label>
+        <label>Compagnie active<select data-group-select><option value="">Aucune compagnie</option></select></label>
+      </div>
+      <div class="atelier-toolbar">
+        <button type="button" data-group-create>Créer une compagnie</button>
+        <button type="button" data-group-promote>MJ : valider la progression collective</button>
+      </div>
+      <p data-group-status class="atelier-hint">Aucune compagnie créée.</p>
+      <h4>Membres de la compagnie</h4>
+      <div data-group-members class="atelier-check-grid">Sélectionner une compagnie.</div>
+      <h4>Certifications reconnues par la table</h4>
+      <div class="atelier-check-grid">
+        {certifications.map(([id,label])=><label class="atelier-check" key={id}><input type="checkbox" data-certification={id}/>{label}</label>)}
+      </div>
+      <h4>Tableau des contrats</h4>
+      <div class="atelier-fields">
+        <label>Mission<select data-mission-select><option value="">Chargement des missions...</option></select></label>
+        <label>Résultat<select data-mission-result>
+          <option value="terminee">Objectif accompli</option>
+          <option value="repli">Repli / sauvetage responsable</option>
+          <option value="echouee">Échec ou mission interrompue</option>
+        </select></label>
+      </div>
+      <p data-mission-preview class="atelier-hint">Choisir une mission.</p>
+      <label class="atelier-wide">Bilan / faits / conséquences<textarea data-mission-summary rows={2} maxLength={1200}/></label>
+      <label class="atelier-wide">Récompense réellement remise<input data-mission-award type="text" maxLength={280} placeholder="À confirmer par le MJ"/></label>
+      <div class="atelier-toolbar"><button type="button" data-mission-record>MJ : consigner la mission</button></div>
+      <h4>Journal des missions et récompenses</h4>
+      <ol data-mission-log class="atelier-log"><li>Aucune mission enregistrée.</li></ol>
+      <p class="atelier-hint">Pour progresser, deux missions réussies d'au moins le rang actuel, de deux domaines différents, avec débriefing. Le MJ conserve la décision finale.</p>
+    </section>
     <section class="atelier-panel" data-ai-only hidden>
       <h3>Contexte pour MJ assisté par IA</h3>
       <p>Génère un texte contenant les règles de base et la fiche active. Le bouton <strong>Copier</strong> transmet uniquement à ton presse-papiers ; rien n'est envoyé automatiquement à une IA.</p>
@@ -235,6 +295,12 @@ Atelier5d6.css = `
 .atelier-portrait img{width:104px;max-height:104px;object-fit:contain;border:1px solid #9f8460;border-radius:8px}
 .atelier-portrait label{flex:1 1 180px}
 .atelier-portrait button{align-self:center}
+.atelier-check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.4rem}
+.atelier-inventory-list{padding-left:1.3rem}
+.atelier-inventory-list li{padding:.35rem 0;border-bottom:1px solid rgba(187,213,225,.13)}
+.atelier-inventory-list button{margin-left:.45rem;font-size:.8rem}
+.atelier .atelier-check input[type=checkbox]{width:auto}
+
 .atelier-wide{display:flex;flex-direction:column;margin:.55rem 0}
 .atelier textarea{resize:vertical}
 .atelier-dice-row{display:flex;gap:.5rem;justify-content:center;margin:1rem 0;flex-wrap:wrap}
