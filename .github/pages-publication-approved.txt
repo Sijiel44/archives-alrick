@@ -215,3 +215,18 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # FICHES CODEES APPROUVÉES : 263 INCHANGÉ, confirmées par tests avant fusion.
 # Dernier point de reprise CB44 CCCLXXIII auprès d'Elyan préservé ; tournée et Orinor toujours à venir.
 # Contrôler CI, liens, métadonnées, galerie si ajoutée, publication Pages et sauvegarde.
+
+
+# Lot 16 — Atelier 5d6, 12 rangs de guilde et inventaires (30 octobre 2026)
+# Demande explicite du créateur : publier les fonctionnalités et propositions de jeu qui peuvent être publiques.
+# PR #47 déjà fusionnée ; PR #48 fusionnée après CI réussie, commit c5f5b12798e503ce03e8106007526af3a31378d5.
+# Nouveau guide non codé, catalogue PUBLIC structuré de 24 missions : proposition_non_jouee, jamais aventures accomplies par Orin.
+# Compagnies de 1 à 12, certifications séparées des grades, journal et récompenses, aucune autorité privée nouvelle.
+# Atelier : fiches niveau 1–24 (+6 crédits de caractéristiques/niveau, seuil XP croissant), maîtrises NON ajoutées automatiquement aux jets.
+# Niveaux 21–24 : quatre validations d'ascension divines distinctes, sans don cosmique automatique.
+# Inventaire : 14 catégories, modèles MJ, attribution/transfert de copies entre fiches locales, sauvegarde complète JSON.
+# Références : recherche uniquement dans l'index public Quartz (y compris dragons en sous-dossiers), aucun dossier MJ caché.
+# Circuit de revue documentaire ajouté, AUCUNE entrée nouvelle importée automatiquement depuis un Word privé.
+# COMPTE DE FICHES CODEES : 263 INCHANGÉ, aucun nouveau fait de campagne déclaré.
+# Cette approbation ne s'étend à aucun secret MJ non revu, ni à une nouvelle publication de sources brutes privées.
+# Tests GitHub CI réussis sur tête PR #48, après contrôle du contenu, TypeScript, build, liens et playtest exhaustif.
