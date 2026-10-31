@@ -55,3 +55,8 @@ Une créature **asservie de force** peut être dangereuse tout en demeurant une 
 - Ne pas inventer de statistiques, de hiérarchie de puissance ou de pouvoirs universels avant la formalisation des règles de jeu.
 
 Pour les compagnons familiers de la campagne, consulter [[personnages/index|les personnages et relations]], puis [[groupes/index|les groupes]]. Les futures espèces communes pourront recevoir des fiches d'univers distinctes.
+
+
+## Sociétés draconiques : au-delà du bestiaire de combat
+
+[[creatures/dragons-et-souverainetes|Dragons, lignées et souverainetés]] confronte les communautés de [[lieux/GEO-027|Vael-Sur]], les Hautes-Ailes indépendantes et les dangers de l'[[lieux/GEO-028|Empire de la Chaîne écarlate]], sans transformer tous les dragons en créatures hostiles. Cette page distingue dragons vivants, dragons artificiels, décors animés et illusions. Les ennemis nouveaux restent des **options de MJ**, pas des individus insérés rétroactivement dans l'Odyssée.
