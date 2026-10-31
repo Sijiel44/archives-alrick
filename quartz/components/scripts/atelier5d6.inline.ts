@@ -67,6 +67,29 @@ function validatedEntry(raw:unknown):MissionEntry|null{
     reward:clean(o.reward,280),date:clean(o.date,30)}
 }
 
+type MediaRights="own"|"open"|"public"|"permission"
+type MediaFormat="square"|"portrait"|"landscape"|"banner"
+type SheetArtwork={id:string;url:string;source:string;title:string;author:string;
+  rights:MediaRights;license:string;format:MediaFormat}
+type PowerUse={id:string;name:string;domain:AffinityId;manaCost:number;target:string;at:string}
+function externalHttps(value:unknown):string{
+  if(typeof value!=="string"||value.length>1600)return ""
+  try{
+    const u=new URL(value)
+    if(u.protocol!=="https:"||!u.hostname||u.username||u.password||
+      /^(localhost|127\.|10\.|192\.168\.|169\.254\.|172\.(?:1[6-9]|2\d|3[01])\.|\[?::1\]?)/i.test(u.hostname))return ""
+    return u.href
+  }catch{return ""}
+}
+function validatedArtwork(raw:unknown):SheetArtwork|null{
+  if(!raw||typeof raw!=="object")return null
+  const p=raw as Record<string,unknown>,url=externalHttps(p.url),source=externalHttps(p.source)
+  const rights=["own","open","public","permission"].includes(String(p.rights))?p.rights as MediaRights:null
+  const format=["square","portrait","landscape","banner"].includes(String(p.format))?p.format as MediaFormat:"square"
+  const title=clean(p.title,160).trim(),license=clean(p.license,240).trim(),author=clean(p.author,140).trim()
+  if(!url||!source||!rights||!title||!license||!author)return null
+  return {id:uniqueId(),url,source,title,author,rights,license,format}
+}
 type Defenses = Record<ResistanceKind,number>
 const freshDefenses=():Defenses=>({physique:0,magie:0,mental:0})
 const DEFENSE_KINDS:ResistanceKind[]=["physique","magie","mental"]
@@ -85,6 +108,7 @@ type Sheet = {
   notes: string; gmNotes: string; lifeSteps:string[]; lifeSummary:string
   education:EducationId|""; literacy:LiteracyLevel|""; backstory:string;connections:string;goal:string
   affinities:Affinity[]; powers:Power[]
+  externalMedia:SheetArtwork[];powerHistory:PowerUse[]
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
@@ -166,7 +190,7 @@ function fresh(kind: Role = "pj"): Sheet {
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"",
     lifeSteps:[],lifeSummary:"",education:"",literacy:"",backstory:"",connections:"",goal:"",
-    affinities:[],powers:[] }
+    affinities:[],powers:[],externalMedia:[],powerHistory:[] }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -242,7 +266,14 @@ function validateSheet(raw: unknown): Sheet | null {
     education:EDUCATION_PATHS.some(x=>x.id===obj.education)?obj.education as EducationId:"",
     literacy:LITERACY_LEVELS.some(x=>x.id===obj.literacy)?obj.literacy as LiteracyLevel:"",
     backstory:clean(obj.backstory,4000),connections:clean(obj.connections,600),
-    goal:clean(obj.goal,600),affinities,powers}
+    goal:clean(obj.goal,600),affinities,powers,
+    externalMedia:Array.isArray(obj.externalMedia)?obj.externalMedia.slice(0,30)
+      .map(validatedArtwork).filter((v):v is SheetArtwork=>v!==null):[],
+    powerHistory:Array.isArray(obj.powerHistory)?obj.powerHistory.slice(-80)
+      .filter((v:unknown):v is Record<string,unknown>=>!!v&&typeof v==="object")
+      .map(p=>({id:uniqueId(),name:clean(p.name,90),domain:AFFINITY_DOMAINS.some(x=>x[0]===p.domain)?p.domain as AffinityId:"magie",
+        manaCost:clamp(p.manaCost,0,999,0),target:clean(p.target,150),at:clean(p.at,40)}))
+      .filter(v=>v.name.length>0):[]}
 }
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
