@@ -48,3 +48,12 @@ Ces contrats sont **propositions non jouées**. Leurs issues et les décisions d
 ## Sources et méthode de cartographie
 
 *Atlas V02 v1.8* : III (villes), A38-04 à A38-08 (rail et métiers), A39-02 à A39-08 (coopérations et passage oriental), RMA-023 et RMA-028 à RMA-031 (Valbrume, Skeldvik), A43-05 et A43-06 (Orinor et bilan continental). Voir [[atlas-schema-regional|le schéma régional et ses limites]].
+
+
+## Trois nouvelles destinations documentées
+
+- [[lieux/GEO-025|Ligue des Trois-Fleuves]] — commerce des céréales, chevaux, vin, tissus et papier contre métallurgie, outils et artisans des Montagnes ; institutions influencées par plusieurs familles marchandes, sans être une seule personne morale.
+- [[lieux/GEO-027|Vael-Sur]] — domaines draconiques hétérogènes au nord-est, gouvernance variable entre conseils mortels et protecteurs dragons.
+- [[lieux/GEO-028|Empire de la Chaîne écarlate]] — puissance orientale expansionniste et conflit autour de la liberté draconique ; implication dans la Guerre des Crocs affamés **non prouvée**, seulement soupçonnée dans la source.
+
+Ces nouvelles fiches ne fournissent **aucun kilométrage, itinéraire continu ou traité bilatéral signé supplémentaire**. Pour un usage de table voir [[jouer/aventure-pilote-les-registres-du-col|l'aventure du col]] (non jouée).

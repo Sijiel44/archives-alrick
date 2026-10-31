@@ -84,3 +84,8 @@ Les constructions jouées dans CB44 sont maintenant présentées comme **lieux d
 ### L'exploitation du parc des quatre saisons
 
 La [[lieux/parc-des-quatre-saisons-services|fiche transversale d'accueil et de fonctionnement]] rassemble transports, logements, restaurants, métiers, maintenance et exigences de sécurité. Elle est pensée pour les **autres MJ**, pas comme une continuation automatique de l'histoire d'Orin. Les informations personnelles de sa campagne sont réservées à [[jdr-alrick/verrous-de-reprise-apres-cb44|sa continuité]].
+
+
+### Trois ensembles géographiques documentés depuis le V02 historique
+
+Le registre V02 disposait de codes sans dossier web propre : [[lieux/GEO-025|**Ligue des Trois-Fleuves**]] (fleuves, commerce, institutions), [[lieux/GEO-027|**Vael-Sur**]] (souverainetés draconiques et conseils mixtes) et [[lieux/GEO-028|**Empire de la Chaîne écarlate**]] (captivité et exploitation draconique, accusations historiques à vérifier). Les trois fiches conservent leurs limites de carte et des amorces **explicitement non jouées**.

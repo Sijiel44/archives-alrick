@@ -214,3 +214,12 @@ Les quatre dossiers **GEO-CB44-HIVER, GEO-CB44-PRINTEMPS, GEO-CB44-ETE, GEO-CB44
 Les quinze Word de campagne distincts ont été reçus, leurs empreintes SHA-256 vérifiées et leurs transcriptions Markdown préparées dans un **paquet de transfert** (3 027 fichiers, disponible dans la conversation). Le [registre d'archivage](sources/campagnes/README.md) documente ce qui **n'a pas encore été téléversé** sur GitHub : les documents Word binaires et la transcription complète. Il ne faut pas les supposer présents dans la recherche du dépôt avant import par GitHub Desktop.
 
 Pour rejouer l'**Odyssée d'Orin**, consulter [[jdr-alrick/verrous-de-reprise-apres-cb44|les verrous après CB44]] et [[mj/reprise-cb44|le prompt de reprise]], tous deux protégés contre les spoilers. La scène s'arrête **avant la réponse d'Orin à Elyan**. Les descriptions réutilisables de l'[[lieux/parc-des-quatre-saisons-services|Île des Divertissements]] sont indépendantes des intrigues fondatrices. Le compteur reste à **259 fiches codées approuvées**.
+
+
+## Nouvelles références Atlas et essais 5d6 — lot thématique
+
+L'Atlas comprend désormais la **Ligue des Trois-Fleuves**, **Vael-Sur** et **l'Empire de la Chaîne écarlate**, avec trois fiches de lieu codées, soit **262 fiches codées approuvées après ce lot**. La page publique sur les dragons clarifie leurs souverainetés et les limites des dragons artificiels. Une aventure locale indépendante à Keldrun et un dossier d'antagonistes non Déchus sont proposés **sans créer d'événements joués**.
+
+Le nouveau [[jouer/playtest-5d6-probabilites|rapport 5d6]] donne les probabilités exactes des 7 776 résultats et un protocole PJ/MJ/MJ-IA, sans proclamer l'équilibrage final. Le module Déchéance 2d6 garde son statut de mini-système approuvé séparé.
+
+Les **six Word reçus, après CB42**, sont répertoriés avec SHA-256 dans `docs/REGISTRE_SIX_VOLUMES_HISTORIQUES_CB42_2026-10-30.md` ; une sauvegarde ZIP des originaux existe dans la conversation, **pas encore en binaire dans ce dépôt**. Le lot ne remplace pas les volumes plus récents et ne change pas la reprise CB44 auprès d'Elyan.

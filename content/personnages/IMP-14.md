@@ -6,10 +6,10 @@ categorie: "personnage"
 canon_statut: "faits_joues"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P04098–15148"
-derniere_revision_documentaire: "2026-10-29"
+derniere_revision_documentaire: "2026-10-30"
 visibilite: "publique_avec_avertissement"
 spoilers: true
-description: "Repères de personnage et de continuité après CB42."
+description: "Brégan, Grande Puissance des bâtisseurs, a rejoint personnellement la Maison d'Orin en CB44 ; sa Maison d'origine demeure libre."
 tags: [imp_14, cb42, personnage]
 etat_editorial: valide
 unlisted: true
@@ -28,7 +28,8 @@ Brégan examine architecture, dispositifs et contraintes du Palais ; les projets
 
 - *Compendium des personnages et des relations (V03), état après CB42*, CB42 P04098–15148.
 
-## À compléter
+## Complément réconcilié — CB41 à CB44
 
-- Reprendre les éléments biographiques antérieurs dans le Compendium et relier les scènes où le personnage agit ou choisit.
-- Ne pas inférer une fonction, une appartenance, un pouvoir ou une relation qui n’est pas explicitement établie.
+**IMP-14 et [[personnages/PER-CB44-BREGAN-BATISSEURS|PER-CB44-BREGAN-BATISSEURS]] désignent la même Grande Puissance**, et non deux dieux. Brégan représente les bâtisseurs, la transmission des métiers, l'entretien des œuvres et l'autonomie des artisans. En CB41–CB42, il contribue à la recherche et à l'examen des constructions sans devenir automatiquement membre de la Maison.
+
+**En CB44**, Brégan **rejoint personnellement la Maison divine d'Orin**. Une île distincte avec première demeure et raccord ferroviaire interne est ensuite réellement créée pour lui. **La fusion des communautés et institutions de sa Maison d'origine reste en discussion** et nécessite leur consentement : ne pas inscrire tous ses fidèles comme membres par défaut. Les projets d'école, d'université et de grands ateliers restent à réaliser ou négocier. Sources : *Compendium V03 v1.6*, IMP-14 ; *Maison V05 v1.7*, O42 ; *Campagne brute 4.4*, CCCLXIV–CCCLXVII.
