@@ -60,3 +60,8 @@ Retour à [[GEO-013|Dornaël]]. Sources de cadre : *Atlas V02 v1.7*, XXI.2 ; per
 ## Jouer les personnages dans les quartiers
 
 Le [[lieux/dornael-carnet-de-terrain|carnet de terrain de Dornaël]] précise des **adresses de jeu proposées** pour les six PNJ ci-dessus, sans présenter un lieu de travail nouveau comme déjà officiel. Son [[lieux/sept-cites-carnets-de-terrain|plan de quartiers relationnel]] est **sans échelle**, et ses trois quêtes supplémentaires restent des aventures facultatives.
+
+
+## Deux autres personnes proposées à Dornaël
+
+Le [[lieux/dornael-rencontres-et-quetes-2|deuxième carnet de Dornaël]] présente **Irméa Bleu-Bassin**, arpenteuse des conduites, et **Véla Feu-Serein**, artisane des lanternes. Elles sont deux **personnes nouvelles proposées, non encore rencontrées par Orin**. Leurs deux affaires locales ne supposent ni prière divine accomplie, ni installation de culte ratifiée.

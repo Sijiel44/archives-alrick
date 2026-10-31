@@ -57,3 +57,8 @@ Le développement de [[GEO-013|Dornaël]] sert de modèle : [[lieux/dornael-eaux
 ## Les Sept Cités à hauteur de rue
 
 Les [[lieux/sept-cites-carnets-de-terrain|sept carnets de terrain et leurs plans relationnels]] complètent les vues d'artistes : **six adresses, cinq ou six personnages préparatoires et trois quêtes par ville**, sans imposer de combats. Auberges, écoles, guildes et lieux de rencontre sont des **propositions éditoriales non jouées**. [[jouer/quetes-sept-cites|Accéder directement au catalogue des 21 quêtes]].
+
+
+## Voyages au long cours sans imposer l'histoire d'Orin
+
+Une [[jouer/les-registres-des-sept-cites|enquête itinérante]] ou une [[jouer/la-veille-des-sept-cites|campagne de Faille et de secours]] offre des liens entre les villes. [[jouer/quetes-sept-cites|35 intrigues locales]] et **50 profils préparatoires** (dont 14 nouveaux) peuvent enrichir ces parcours. Les idées de [[lieux/villages-sept-cites-cahier-creation|villages voisins]] restent en attente de position et d'adoption ; aucun chemin interurbain complet n'est déclaré construit.

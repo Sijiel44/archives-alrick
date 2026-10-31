@@ -1,7 +1,7 @@
 ---
 publish: true
-title: "21 petites quêtes pour les Sept Grandes Cités"
-description: "Catalogue de missions courtes dans les Sept Cités, sans obligation de combat ni continuation de l'histoire personnelle d'Orin."
+title: "35 petites quêtes pour les Sept Grandes Cités"
+description: "35 quêtes locales, et deux campagnes itinérantes de 7 villes, sans imposer une aventure passée à Orin."
 visibilite: "publique"
 canon_statut: "proposition_non_jouee"
 etat_editorial: "valide"
@@ -13,7 +13,7 @@ derniere_revision_documentaire: "2026-10-30"
 tags: [aventures, quetes, sept-cites, mj, scenarios]
 ---
 
-# 21 petites quêtes à jouer dans les Sept Grandes Cités
+# 35 petites quêtes à jouer dans les Sept Grandes Cités
 
 Ces quêtes sont volontairement **locales, courtes, ouvertes et non jouées**. Chaque carnet détaille une accroche, les preuves disponibles, les acteurs et des issues sans imposer de résolution aux joueurs. Elles n'ajoutent aucune bataille ni rencontre fictive au passé d'Orin.
 
@@ -39,3 +39,20 @@ Ces quêtes sont volontairement **locales, courtes, ouvertes et non jouées**. C
 Le [[jouer/playtest-5d6-probabilites|5d6/Base12]] peut servir de mécanique d'essai ; il n'est pas un système définitif. La Déchéance 2d6 reste un module séparé : aucune Faille ni pacte ne doit être inséré automatiquement.
 
 Revenir aux [[lieux/sept-cites-carnets-de-terrain|plans et lieux de rencontre]] et à l'[[lieux/sept-grandes-cites-illustrees|Atlas illustré]].
+
+
+## Quatorze nouvelles quêtes — deux par ville
+
+| Cité | Nouvelles quêtes | Personnages et déroulés |
+|---|---|---|
+| Dornaël | Le relevé des deux hivers ; La lumière que personne n'a bénie | [[lieux/dornael-rencontres-et-quetes-2|Dornaël II]] |
+| Aldhammar | Le sceau qui revient ; Le couloir sans air | [[lieux/aldhammar-rencontres-et-quetes-2|Aldhammar II]] |
+| Skalor | La planche impossible ; Le prix de l'erreur | [[lieux/skalor-rencontres-et-quetes-2|Skalor II]] |
+| Nacrecombe | La caisse qui respire ; Le rivage aux échos perdus | [[lieux/nacrecombe-rencontres-et-quetes-2|Nacrecombe II]] |
+| Forgeciel | Les lingots sans origine ; La chaleur à la mauvaise porte | [[lieux/forgeciel-rencontres-et-quetes-2|Forgeciel II]] |
+| Keldrun | Le tarif qui survit ; La balise de trop | [[lieux/keldrun-rencontres-et-quetes-2|Keldrun II]] |
+| Torngard | La pétition d'hier ; Le contrat sans destinataire | [[lieux/torngard-rencontres-et-quetes-2|Torngard II]] |
+
+## Deux campagnes itinérantes alternatives
+
+**[[jouer/les-registres-des-sept-cites|Les Registres des Sept Cités]]** organise une enquête de six à neuf séances. **[[jouer/la-veille-des-sept-cites|La Veille des Sept Cités]]** organise une mission de secours autour d'une Faille locale et imprévisible. Ces deux cadres sont indépendants, sans résultats déjà joués ni passage obligé par la Déchéance.

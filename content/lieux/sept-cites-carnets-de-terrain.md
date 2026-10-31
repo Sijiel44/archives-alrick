@@ -1,7 +1,7 @@
 ---
 publish: true
 title: "Sept Cités — Plans de quartiers et carnets de terrain"
-description: "Sept plans relationnels non géographiques, quarante-deux adresses fictives, trente-six PNJ précréés et vingt-et-une quêtes non jouées."
+description: "Sept plans relationnels non géographiques, quarante-deux adresses fictives, cinquante PNJ précréés et trente-cinq quêtes non jouées."
 visibilite: "publique"
 canon_statut: "proposition_non_jouee"
 etat_editorial: "valide"
@@ -67,3 +67,10 @@ Choisissez une ville, un quartier et un lieu de réunion, puis sélectionnez une
 Les points, les traits et la disposition sur ces sept plans sont un **outil de navigation narrative**, non une preuve géographique. Les véritables cartes devront être élaborées à partir des vallées, bassins versants, cols, quartiers effectivement validés, distances et projets de routes reconnus. Les auberges et écoles proposées ne sont pas déjà construites ou financées dans le royaume.
 
 **La tournée d'Orin reste future :** dans CB44, le voyage vers Orinor et les Sept Cités n'ont pas été joués. Les PNJ sont disponibles pour d'autres MJ et, éventuellement, pour cette tournée si leur existence est adoptée.
+
+
+## Deux nouvelles quêtes et deux personnages par cité
+
+Les [[jouer/quetes-sept-cites|35 quêtes courtes]] se répartissent entre les 21 premières affaires et 14 nouvelles missions. Pour rencontrer les **14 nouveaux PNJ** et retrouver leurs intrigues, consulter les dossiers complémentaires : [[lieux/dornael-rencontres-et-quetes-2|Dornaël]], [[lieux/aldhammar-rencontres-et-quetes-2|Aldhammar]], [[lieux/skalor-rencontres-et-quetes-2|Skalor]], [[lieux/nacrecombe-rencontres-et-quetes-2|Nacrecombe]], [[lieux/forgeciel-rencontres-et-quetes-2|Forgeciel]], [[lieux/keldrun-rencontres-et-quetes-2|Keldrun]], [[lieux/torngard-rencontres-et-quetes-2|Torngard]].
+
+Les deux arcs itinérants — [[jouer/les-registres-des-sept-cites|enquête]] ou [[jouer/la-veille-des-sept-cites|Faille]] — sont séparés. Les [[lieux/villages-sept-cites-cahier-creation|14 villages proposés]] ne sont ni cartographiés ni déjà habités dans le canon.
