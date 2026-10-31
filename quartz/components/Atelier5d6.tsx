@@ -8,6 +8,18 @@ const masteries = [
   ["survie","Survie et pistage"],["artisanat","Artisanat"],["magie","Magies connues"],
 ] as const
 
+const itemCategories = [
+  ["monnaie","🪙 Monnaie"],["arme","⚔️ Armes"],["armure","🛡️ Armures"],
+  ["artefact","✨ Artefacts"],["consommable","🧪 Consommables"],["ingredient","🌿 Ingrédients"],
+  ["outil","🔧 Outils"],["munition","🏹 Munitions"],["livre","📜 Livres et cartes"],
+  ["bijou","💍 Bijoux"],["provision","🥖 Provisions"],["materiau","🪵 Matériaux"],
+  ["quete","🗝️ Objets de mission"],["autre","🎒 Autres"]
+] as const
+const certifications = [
+ ["premiers-secours","Premiers secours et extraction"],["orientation","Orientation / rapports"],
+ ["protection-civile","Sécurité civile"],["reconnaissance-avancee","Reconnaissance avancée"],
+ ["risques-magiques","Risques magiques"],["intervention-specialisee","Intervention spécialisée"]
+] as const
 const attributes = [
   ["physique", "Physique", "Force, endurance, mêlée"],
   ["agilite", "Agilité", "Précision, esquive, discrétion"],
@@ -33,7 +45,11 @@ export const Atelier5d6: QuartzComponent = (props) => {
       </label>
       <button type="button" data-new>Nouvelle fiche</button>
       <button type="button" data-reset>Réinitialiser cette fiche…</button>
-      <button type="button" data-export>Exporter JSON</button>
+      <button type="button" data-export>Exporter les fiches JSON</button>
+      <button type="button" data-export-campaign>Exporter toute la campagne</button>
+      <label>Importer sauvegarde complète
+        <input type="file" accept=".json,application/json" data-import-campaign aria-label="Restaurer une campagne 5d6 depuis un JSON"/>
+      </label>
       <label>Importer JSON
         <input type="file" accept=".json,application/json" data-import aria-label="Importer un fichier de personnages JSON"/>
       </label>
@@ -102,10 +118,12 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <textarea data-field="items" rows={2} maxLength={1400} placeholder="Ex. : une lampe qui révèle la dernière trace d'une Faille"></textarea>
         </label>
         <p class="atelier-hint" data-source-meta>Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions.</p>
+        <p data-ascension-status class="atelier-hint">Niveaux 21–24 : validation exceptionnelle requise.</p>
         <div data-mj-tools hidden>
           <label class="atelier-wide">Notes réservées au MJ (sur cet appareil uniquement)
             <textarea data-field="gmNotes" rows={2} maxLength={2500} placeholder="Motivations, secrets, rencontres possibles..."></textarea>
           </label>
+          <label class="atelier-check"><input data-ascension type="checkbox"/> MJ : autoriser une ascension divine au-delà du niveau 20</label>
           <div class="atelier-toolbar">
             <label>Profil de démonstration
               <select data-template>
