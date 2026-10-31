@@ -67,7 +67,7 @@ assert.equal(criticalFail.success,false)
 assert.equal(criticalFail.contact,false)
 assert.equal(criticalFail.reaction,'aucune')
 
-const elite=profile({level:25,stats:{physique:12,agilite:12,esprit:12,presence:12}})
+const elite=profile({level:25,stats:{physique:12,agilite:12,esprit:12,presence:12},masteries:{lames:12}})
 const resElite=resistanceScore(elite,'physique')
 const absorptionElite=effectiveProtection(elite,'physique')
 const lvl1Perfect=resolveOpposition({natural:30,total:33,difficulty:21,resistance:resElite,
