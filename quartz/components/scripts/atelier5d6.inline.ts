@@ -2,10 +2,15 @@ import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,inna
 import {generateCreatureProfile} from "./atelier5d6-bestiary"
 import type {CreatureArchetype} from "./atelier5d6-bestiary"
 import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
-import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,buildOrigin,
+import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,
   affinityRankLimit,affinityImpactBonus,divinePowerMinimumLevel,
-  buildEducationProfile,EDUCATION_PATHS,LITERACY_LEVELS} from "./atelier5d6-origins"
+  EDUCATION_PATHS,LITERACY_LEVELS} from "./atelier5d6-origins"
 import type {Affinity,AffinityId,Power,PowerGrade,OriginMastery,EducationId,LiteracyLevel} from "./atelier5d6-origins"
+import {newDevelopment,evaluateSheet,transact,grantAward,approveMilestone,eligibleLevel,draftFromLifePath,
+  migrateLegacy,nextStatPrice,nextMasteryPrice} from "./atelier5d6-m02"
+import type {Development,AbilityDefinition,M02Sheet} from "./atelier5d6-m02"
+import {effectiveStat,effectiveMastery,experienceRequired} from "./atelier5d6-progression"
+import type {ExperienceEvent,ExperienceDomain} from "./atelier5d6-progression"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
 type Mastery = OriginMastery
@@ -31,7 +36,6 @@ const CERTIFICATIONS = [
 ] as const
 const maxStatCredits = (level:number) => 12+6*(level-1)
 const xpRequired = (level:number) => level<=1?0:5*(level-1)**3
-const missionXpReward = (rank:number) => 10*rank
 const levelResourceGain = (level:number) => level>=25?36:level>=21?24:level>=13?12:6
 const gainBetween = (first:number,last:number) => {
   let gain=0
@@ -109,6 +113,7 @@ type Sheet = {
   education:EducationId|""; literacy:LiteracyLevel|""; backstory:string;connections:string;goal:string
   affinities:Affinity[]; powers:Power[]
   externalMedia:SheetArtwork[];powerHistory:PowerUse[]
+  ruleset:"legacy"|"m02";development:Development;legacyOriginal:Record<string,unknown>|null
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
@@ -172,7 +177,14 @@ const INCIDENTS: Record<Exclude<Domain,"autre">,string[]> = {
     "La négociation échoue, mais une nouvelle alliance se dessine pour plus tard."
   ]
 }
-const STORAGE = "archives-alrick-atelier-5d6-v1"
+const STORAGE = "archives-alrick-atelier-5d6-v2"
+const LEGACY_STORAGE = "archives-alrick-atelier-5d6-v1"
+const asM02=(s:Sheet):M02Sheet=>({level:s.highestLevel,stats:s.stats,
+  masteries:s.masteries as Record<string,number>,xp:s.xp,development:s.development})
+const applyM02=(s:Sheet,result:M02Sheet):void=>{
+  s.stats=result.stats;s.masteries=result.masteries as Record<Mastery,number>
+  s.xp=result.xp;s.development=result.development
+}
 const STATS: Stat[] = ["physique", "agilite", "esprit", "presence"]
 const clamp = (n: unknown, min: number, max: number, def: number) => {
   const value = typeof n === "number" || typeof n === "string" ? Number(n) : NaN
@@ -190,7 +202,7 @@ function fresh(kind: Role = "pj"): Sheet {
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"",
     lifeSteps:[],lifeSummary:"",education:"",literacy:"",backstory:"",connections:"",goal:"",
-    affinities:[],powers:[],externalMedia:[],powerHistory:[] }
+    affinities:[],powers:[],externalMedia:[],powerHistory:[],ruleset:"m02",development:newDevelopment(),legacyOriginal:null }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -213,9 +225,14 @@ function validateSheet(raw: unknown): Sheet | null {
     equipmentGrades[key]=clamp(oldEquipment[key],0,5,0)
   }
   const level=clamp(obj.level,1,25,1)
+  const modern=obj.ruleset==="m02"
   const masteries=blankMasteries()
   const storedMasteries=obj.masteries && typeof obj.masteries==="object" ? obj.masteries as Record<string,unknown> : {}
-  for(const k of MASTERIES) masteries[k]=clamp(storedMasteries[k],0,12,0)
+  for(const k of MASTERIES)masteries[k]=clamp(storedMasteries[k],0,modern?Number.MAX_SAFE_INTEGER:12,0)
+  if(modern)for(const [key,value] of Object.entries(storedMasteries)){
+    if(key.trim()&&!MASTERIES.includes(key as Mastery)&&(masteries as Record<string,number>)[key]===undefined)
+      (masteries as Record<string,number>)[key]=clamp(value,0,Number.MAX_SAFE_INTEGER,0)
+  }
   const allowedDomains=new Set<string>(AFFINITY_DOMAINS.map(x=>x[0]))
   const affinityRows=Array.isArray(obj.affinities)?obj.affinities.slice(0,16):[]
   const affinities:Affinity[]=[]
@@ -243,8 +260,10 @@ function validateSheet(raw: unknown): Sheet | null {
   const portrait=typeof obj.portrait==="string" && /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(obj.portrait) && obj.portrait.length<180000 ? obj.portrait : ""
   return {id:uniqueId(),name:clean(obj.name,90),kind, profession:clean(obj.profession,90),
     skill:clamp(obj.skill,0,2,0),
-    stats:{physique:clamp(values.physique,1,12,3),agilite:clamp(values.agilite,1,12,3),
-      esprit:clamp(values.esprit,1,12,3),presence:clamp(values.presence,1,12,3)},
+    stats:{physique:clamp(values.physique,1,modern?Number.MAX_SAFE_INTEGER:12,3),
+      agilite:clamp(values.agilite,1,modern?Number.MAX_SAFE_INTEGER:12,3),
+      esprit:clamp(values.esprit,1,modern?Number.MAX_SAFE_INTEGER:12,3),
+      presence:clamp(values.presence,1,modern?Number.MAX_SAFE_INTEGER:12,3)},
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
     mana:clamp(obj.mana,0,manaMax,0),manaMax,resistanceBonus,protection,equipmentGrades,
     emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,25,level),
@@ -273,7 +292,13 @@ function validateSheet(raw: unknown): Sheet | null {
       .filter((v:unknown):v is Record<string,unknown>=>!!v&&typeof v==="object")
       .map(p=>({id:uniqueId(),name:clean(p.name,90),domain:AFFINITY_DOMAINS.some(x=>x[0]===p.domain)?p.domain as AffinityId:"magie",
         manaCost:clamp(p.manaCost,0,999,0),target:clean(p.target,150),at:clean(p.at,40)}))
-      .filter(v=>v.name.length>0):[]}
+      .filter(v=>v.name.length>0):[],
+    ruleset:modern?"m02":"legacy",
+    // Pour les fiches héritées, conserver les champs bruts même inconnus : conversion réversible.
+    legacyOriginal:obj.legacyOriginal&&typeof obj.legacyOriginal==="object"
+      ?obj.legacyOriginal as Record<string,unknown>:modern?null:JSON.parse(JSON.stringify(obj)) as Record<string,unknown>,
+    development:modern&&obj.development&&typeof obj.development==="object"
+      ?(JSON.parse(JSON.stringify(obj.development)) as Development):newDevelopment()}
 }
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
@@ -332,7 +357,7 @@ function setupAtelier5d6() {
   let state: State = {sheets:[fresh()],activeId:"",mode:"pj",log:[],
     groups:[],activeGroupId:"",templates:[],missionLog:[]}
   try {
-    const data = localStorage.getItem(STORAGE)
+    const data = localStorage.getItem(STORAGE) ?? localStorage.getItem(LEGACY_STORAGE)
     if (data) {
       const parsed = JSON.parse(data) as Partial<State>
       if (Array.isArray(parsed.sheets)) {
@@ -367,6 +392,38 @@ function setupAtelier5d6() {
   }
   function refreshPoints() {
     const s=current()
+    const note=q<HTMLElement>("[data-ruleset-notice]")
+    if(s.ruleset==="m02"){
+      const result=evaluateSheet(asM02(s))
+      note.textContent="M02 — budget partagé de M01. "+(result.valid?"Répartition valide.":result.issues.join(" ; "))
+      q<HTMLButtonElement>("[data-migrate-legacy]").hidden=true
+      q<HTMLElement>("[data-m02-controls]").hidden=false
+      q<HTMLElement>("[data-points]").textContent="Coût "+result.spent+" / "+result.budget+
+        " · "+result.remaining+" points restants · caractéristiques sans plafond"
+      q<HTMLElement>("[data-mastery-points]").textContent="Maîtrises sur le même budget de "+result.budget+
+        " · bonus logarithmique"
+      q<HTMLElement>("[data-talent-points]").textContent="Aptitudes 3 · Techniques 6 · Signatures 9 (MJ)."
+      q<HTMLInputElement>("[data-talent-spent]").disabled=true
+      q<HTMLButtonElement>("[data-convert-credits]").disabled=true
+      for(const k of STATS)q<HTMLElement>(`[data-stat-bonus="${k}"]`).textContent=
+        "Brut "+s.stats[k]+" → bonus +"+effectiveStat(s.stats[k])+" · prochain +"+nextStatPrice(asM02(s),k)+" pt"
+      for(const k of MASTERIES)q<HTMLElement>(`[data-mastery-bonus="${k}"]`).textContent=
+        "Rang "+s.masteries[k]+" → bonus +"+effectiveMastery(s.masteries[k])+
+        " · prochain +"+nextMasteryPrice(asM02(s),k)+" pt"
+      q<HTMLElement>("[data-xp-info]").textContent="XP "+s.xp+
+        " · palier suivant "+Math.min(25,s.level+1)+" : "+experienceRequired(Math.min(25,s.level+1))+
+        " · niveaux 21–25 : validation MJ distincte"
+      refreshM02()
+      return
+    }
+    note.textContent="Fiche héritée : lecture seule, ancien système 12/36+8. Exportez puis choisissez volontairement de créer une adaptation M02."
+    q<HTMLButtonElement>("[data-migrate-legacy]").hidden=false
+    q<HTMLElement>("[data-m02-controls]").hidden=true
+    q<HTMLInputElement>("[data-talent-spent]").disabled=true
+    q<HTMLButtonElement>("[data-convert-credits]").disabled=true
+    for(const k of STATS)q<HTMLElement>(`[data-stat-bonus="${k}"]`).textContent="Ancienne valeur "+s.stats[k]
+    for(const k of MASTERIES)q<HTMLElement>(`[data-mastery-bonus="${k}"]`).textContent=
+      "Ancien rang "+s.masteries[k]
     const used=STATS.reduce((acc,k)=>acc+s.stats[k],0)
     const el=q<HTMLElement>("[data-points]")
     const limit=maxStatCredits(s.highestLevel)-s.convertedCredits
@@ -386,6 +443,31 @@ function setupAtelier5d6() {
       " XP cumulés. Les niveaux élevés exigent des épreuves spécifiques."
 
     q<HTMLSelectElement>("[data-active]").selectedOptions[0]?.setAttribute("data-active-points",String(used))
+  }
+  function refreshM02(){
+    const s=current()
+    if(s.ruleset!=="m02")return
+    const area=q<HTMLElement>("[data-m02-ability-list]")
+    area.replaceChildren()
+    for(const a of s.development.abilities){
+      const line=document.createElement("p"),del=document.createElement("button")
+      line.textContent=a.kind+" · "+a.name+" · "+a.domain+" · "+(a.status==="slot"?"emplacement narratif sans effet":"effet : "+a.effect)+
+        (a.approvedByGM?" · approuvé MJ":"")
+      const improve=document.createElement("button");improve.type="button";improve.dataset.m02Improve=a.id
+      improve.textContent="Améliorer (rang "+(a.rank+1)+")"
+      del.textContent="Rembourser";del.type="button";del.dataset.m02Remove=a.id
+      line.append(" ",improve," ",del);area.append(line)
+    }
+    if(!s.development.abilities.length)area.textContent="Aucune capacité achetée. Un emplacement narratif n'accorde aucun effet."
+    q<HTMLElement>("[data-m02-xp-history]").textContent=s.development.awards.map(x=>
+      x.event.id+" : +"+x.xp+" XP ("+x.event.domain+")").join(" · ")||"Aucun événement enregistré."
+    q<HTMLElement>("[data-m02-milestones]").textContent="Jalons validés : "+
+      (s.development.approvedMilestones.join(", ")||"aucun")
+    const select=q<HTMLSelectElement>("[data-roll-mastery]")
+    const previous=select.value;select.replaceChildren(new Option("Sans maîtrise",""))
+    for(const [key,value] of Object.entries(s.masteries))select.add(new Option(key+" "+value+
+      " → +"+effectiveMastery(value),key))
+    select.value=previous
   }
   function refreshRoster() {
     const sel=q<HTMLSelectElement>("[data-active]")
@@ -425,6 +507,9 @@ function setupAtelier5d6() {
       ?"Ascension exceptionnelle : niveau "+s.level+"/25 — autorisation MJ jusqu'à "+s.divineLimit+"."
        :"Niveaux 21–25 : cinq épreuves divines indépendantes, validées par le MJ."
     refreshPoints()
+    host.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+      "[data-field],[data-stat],[data-mastery],[data-defence],[data-defense-gear],[data-defense-protection],[data-defense-resistance]"
+    ).forEach(el=>{el.disabled=s.ruleset==="legacy"})
     const source=q<HTMLElement>("[data-source-meta]")
     source.textContent=s.sourceRef
       ? `Source : ${s.sourceTitle || s.sourceRef} (${s.sourceRef}). Les statistiques 5d6 sont une adaptation libre non canonique.`
@@ -592,12 +677,18 @@ function setupAtelier5d6() {
       reward:clean(q<HTMLInputElement>("[data-mission-award]").value,280),
       date:new Date().toISOString().slice(0,10)}
     if(entry.status!=="echouee"){
-      const reward=missionXpReward(mission.level)
+      let totalGranted=0
       for(const id of group.members){
         const participant=state.sheets.find(x=>x.id===id)
-        if(participant?.kind==="pj")participant.xp=clamp(participant.xp+reward,0,999999,participant.xp)
+        if(participant?.kind!=="pj"||participant.ruleset!=="m02")continue
+        const event:ExperienceEvent={id:entry.id+"-"+id,pattern:"mission-"+mission.id,
+          domain:"exploration",difficulty:Math.max(1,Math.min(12,mission.level)),
+          scope:"ordinaire",approved:true}
+        try{applyM02(participant,grantAward(asM02(participant),event));totalGranted++}
+        catch{/* Répétition protégée par le registre d'accomplissements M01. */}
       }
-      entry.reward=clean((entry.reward?entry.reward+" · ":"")+"+"+reward+" XP par PJ membre",280)
+      entry.reward=clean((entry.reward?entry.reward+" · ":"")+
+        "XP M01 vérifiés pour "+totalGranted+" PJ (anciens profils inchangés)",280)
     }
     state.missionLog.push(entry)
     state.missionLog=state.missionLog.slice(-400)
@@ -617,13 +708,13 @@ function setupAtelier5d6() {
     try{
       const education=q<HTMLSelectElement>("[data-origin-education]").value as EducationId
       const literacy=q<HTMLSelectElement>("[data-origin-literacy]").value as LiteracyLevel
-      const raw=buildOrigin(choices)
-      if(!education||!literacy){target.textContent="Les quatre périodes sont prêtes. Choisir encore une éducation et un rapport à l'écrit.";return}
-      const result=buildEducationProfile(raw,education,literacy)
-      target.textContent="Niveau 5 · 36 PV · "+(result.manaMax?"36 mana d'essai · ":"")+
-        "Phys "+result.stats.physique+" · Agi "+result.stats.agilite+
-        " · Esp "+result.stats.esprit+" · Prés "+result.stats.presence+
-        " · "+Object.entries(result.masteries).filter(([,v])=>v>0).map(([k,v])=>k+" "+v).join(", ")+
+      const result=draftFromLifePath(choices)
+      if(!education||!literacy){target.textContent="Choisissez aussi l'éducation et l'apprentissage de la lecture.";return}
+      const sheet=result.sheet,budget=evaluateSheet(sheet)
+      target.textContent="Niveau 5 · M01 "+budget.spent+"/"+budget.budget+" points dépensés · "+
+        "Phys "+sheet.stats.physique+" · Agi "+sheet.stats.agilite+
+        " · Esp "+sheet.stats.esprit+" · Prés "+sheet.stats.presence+
+        " · "+Object.entries(sheet.masteries).filter(([,v])=>v>0).map(([k,v])=>k+" "+v).join(", ")+
         ". Parcours : "+result.summary.replaceAll("\n"," | ")
     }catch{target.textContent="Parcours invalide : vérifier les quatre choix."}
   }
@@ -779,14 +870,14 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   }
   function changeField(el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
     const s=current(), field=el.dataset.field as keyof Sheet | undefined
+    if(s.ruleset==="legacy"){setForm();message("Fiche héritée en lecture seule. Une adaptation M02 exige votre confirmation.");return}
     const stat=el.dataset.stat as Stat | undefined
     if(stat && STATS.includes(stat)){
-      const before=s.stats[stat],next=clamp(el.value,1,12,before)
-      s.stats[stat]=next
-      const used=STATS.reduce((sum,k)=>sum+s.stats[k],0)
-      if(s.kind==="pj" && (used+s.convertedCredits>maxStatCredits(s.highestLevel) || (s.highestLevel===1 && next>5))){
-        s.stats[stat]=before;el.value=String(before)
-        message("Points de caractéristique insuffisants ou limite de création dépassée.")
+      const before=s.stats[stat],next=clamp(el.value,1,Number.MAX_SAFE_INTEGER,before)
+      try{applyM02(s,transact(asM02(s),{type:"stat",key:stat,to:next}))}
+      catch(error){
+        el.value=String(before)
+        message("Investissement refusé : "+(error instanceof Error?error.message:"Budget invalide"))
       }
     } else if(el.dataset.defenseResistance && DEFENSE_KINDS.includes(el.dataset.defenseResistance as ResistanceKind)){
       const k=el.dataset.defenseResistance as ResistanceKind
@@ -812,10 +903,10 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       refreshDefenseSummary()
     } else if(el.dataset.mastery && MASTERIES.includes(el.dataset.mastery as Mastery)){
       const k=el.dataset.mastery as Mastery,before=s.masteries[k]
-      s.masteries[k]=clamp(el.value,0,12,before)
-      if(s.kind==="pj" && totalMasteries(s.masteries)>2*(s.highestLevel-1)){
-        s.masteries[k]=before;el.value=String(before)
-        message("Pas assez de points de maîtrise disponibles à ce niveau.")
+      try{applyM02(s,transact(asM02(s),{type:"mastery",key:k,to:clamp(el.value,0,Number.MAX_SAFE_INTEGER,before)}))}
+      catch(error){
+        el.value=String(before)
+        message("Maîtrise refusée : "+(error instanceof Error?error.message:"Budget invalide"))
       }
     } else if(field){
       switch(field){
@@ -845,13 +936,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "gmNotes":s.gmNotes=clean(el.value,2500);break
         case "level":{
           const next=clamp(el.value,1,25,s.level)
-          if(next>s.level&&s.kind==="pj"&&state.mode==="pj"&&s.xp<xpRequired(next)){
+          if(next>s.level&&s.kind==="pj"&&!eligibleLevel(asM02(s),next)){
             el.value=String(s.level)
-            message("XP insuffisants pour atteindre ce niveau. Le MJ peut valider une exception narrative.");return
-          }
-          if(next>20&&s.kind==="pj"&&(!s.ascensionAuthorized||next>s.divineLimit||s.ascensionWitness.trim().length<15)){
-            el.value=String(s.level)
-            message("Ascension divine refusée : chaque palier exige une autorisation du MJ et un témoignage de l'épreuve (15 caractères minimum).")
+            message("Palier refusé : XP M01 ou jalon exceptionnel MJ manquant. Aucun statut divin automatique.")
             return
           }
           if(next>s.highestLevel){
@@ -931,9 +1018,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     q<HTMLButtonElement>("[data-opposition-counter]").hidden=true
   }
   function roll(){
-    const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
-    if(s.kind==="pj"&&(used<12||used+s.convertedCredits>maxStatCredits(s.highestLevel)||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
-      message("Répartition invalide : 12 points de base, puis +6 caractéristiques et +2 maîtrises par niveau ; chaque score reste limité à 12.")
+    const s=current()
+    if(s.ruleset==="m02"&&!evaluateSheet(asM02(s)).valid){
+      message("Répartition M02 invalide : corrigez la fiche avant de lancer un jet.")
       return
     }
     const stat=q<HTMLSelectElement>("[data-roll-stat]").value as Stat
@@ -943,10 +1030,18 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const chosenDomain=q<HTMLSelectElement>("[data-roll-domain]").value
     const domain:Domain=DOMAINS.includes(chosenDomain as Domain)?chosenDomain as Domain:"autre"
     const dice=Array.from({length:5},()=>1+Math.floor(Math.random()*6))
-    const natural=dice.reduce((a,b)=>a+b,0), total=natural+s.stats[stat]+skill+situation
+    const masteryDomain=q<HTMLSelectElement>("[data-roll-mastery]").value
+    const mastered=masteryDomain?(s.masteries as Record<string,number>)[masteryDomain]??0:0
+    const statBonus=s.ruleset==="m02"?effectiveStat(s.stats[stat]):s.stats[stat]
+    const masteryBonus=s.ruleset==="m02"?effectiveMastery(mastered):skill
+    const natural=dice.reduce((a,b)=>a+b,0), total=natural+statBonus+masteryBonus+situation
     clearPendingImpact()
     clearPendingCounter()
     const enabled=q<HTMLInputElement>("[data-opposition-enabled]").checked
+    if(s.ruleset==="m02"&&enabled){
+      message("Opposition M02 non activée avant M03 : le combat hérité reste réservé aux anciennes fiches.")
+      return
+    }
     const defender=state.sheets.find(x=>x.id===q<HTMLSelectElement>("[data-opposition-target]").value && x.id!==s.id)
     const kind=q<HTMLSelectElement>("[data-opposition-kind]").value as ResistanceKind
     const mode=q<HTMLSelectElement>("[data-opposition-mode]").value as ImpactMode
@@ -979,7 +1074,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     host.querySelectorAll<HTMLElement>("[data-die]").forEach((e,i)=>{e.textContent=String(dice[i])})
     const result=q<HTMLElement>("[data-result]")
     result.dataset.outcome=favorable||opposition?.glancing?"success":"failure"
-    result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
+    result.textContent=`${outcome} — Dés ${natural} + ${statBonus} + ${masteryBonus} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
     const incident = natural===5 ? "" : trackFailure(s,domain,!(favorable||!!opposition?.contact))
     if(opposition){
       if(opposition.success){
@@ -1021,7 +1116,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     }
     if(incident)detail += "\n"+incident
     s.lastIncident=incident
-    result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
+    result.textContent=`${outcome} — Dés ${natural} + ${statBonus} + ${masteryBonus} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
     state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:
       (incident ? `${outcome} · ${incident}` : outcome)+
       (opposition?" · "+(opposition.glancing?"contact héroïque "+opposition.damage+" PV potentiels":
@@ -1030,7 +1125,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
   function exportSheets(){
-    const blob=new Blob([JSON.stringify({schema:"alrick.sheets.v2",created:new Date().toISOString(),sheets:state.sheets},null,2)],{type:"application/json"})
+    const blob=new Blob([JSON.stringify({schema:"alrick.sheets.v3",created:new Date().toISOString(),sheets:state.sheets},null,2)],{type:"application/json"})
     const url=URL.createObjectURL(blob),a=document.createElement("a")
     a.href=url;a.download="archives-alrick-fiches-5d6.json";document.body.append(a);a.click();a.remove()
     setTimeout(()=>URL.revokeObjectURL(url),1500)
@@ -1038,7 +1133,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   }
 
   function exportCampaign(){
-    const content={schema:"alrick.campaign.v1",created:new Date().toISOString(),state}
+    const content={schema:"alrick.campaign.v2",created:new Date().toISOString(),state}
     const blob=new Blob([JSON.stringify(content,null,2)],{type:"application/json"})
     const url=URL.createObjectURL(blob),link=document.createElement("a")
     link.href=url;link.download="archives-alrick-campagne-5d6-complete.json";document.body.append(link);link.click();link.remove()
@@ -1048,7 +1143,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   function importCampaign(raw:unknown){
     if(!raw||typeof raw!=="object")throw Error("Format absent")
     const container=raw as Record<string,unknown>
-    if(container.schema!=="alrick.campaign.v1"||!container.state||typeof container.state!=="object")throw Error("Schéma de campagne inconnu")
+    if(!["alrick.campaign.v1","alrick.campaign.v2"].includes(String(container.schema))||!container.state||typeof container.state!=="object")throw Error("Schéma de campagne inconnu")
     const payload=container.state as Record<string,unknown>
     if(!Array.isArray(payload.sheets)||!payload.sheets.length||payload.sheets.length>60)throw Error("Fiches manquantes")
     const sheets=payload.sheets.map(validateSheet)
@@ -1110,8 +1205,10 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
        el?.hasAttribute("data-roll-target")){
       clearPendingImpact();clearPendingCounter();renderOpposition()
     }
+    if(current().ruleset==="legacy"&&el?.hasAttribute("data-ascension"))return
     if(el instanceof HTMLInputElement && el.hasAttribute("data-talent-spent")){
       const sheet=current()
+      if(sheet.ruleset==="m02")return
       sheet.talentPointsSpent=clamp(el.value,0,Math.floor(sheet.convertedCredits/6),sheet.talentPointsSpent)
       el.value=String(sheet.talentPointsSpent);refreshPoints();renderAI();persist()
     }
@@ -1214,6 +1311,84 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
+    const legacy=current().ruleset==="legacy"
+    if(legacy&&!button.matches("[data-hub-nav],[data-mode],[data-origin-build],[data-origin-clear],[data-export],[data-export-campaign],[data-new],[data-ai-copy],[data-ai-refresh],[data-roll],[data-migrate-legacy]")){
+      message("Fiche historique protégée en lecture seule. Utilisez la conversion volontaire pour développer une copie M02.")
+      return
+    }
+    if(button.hasAttribute("data-migrate-legacy")){
+      const source=current()
+      if(source.ruleset!=="legacy"||state.sheets.length>=60)return
+      if(!window.confirm("Créer une COPIE M02 avec les caractéristiques, maîtrises et XP remis à leur point de départ (niveau 1) ? L'original historique sera conservé intact dans le répertoire et dans la copie. Aucune conversion automatique."))return
+      const raw=migrateLegacy(source.legacyOriginal??source as unknown as Record<string,unknown>,true)
+      const converted=validateSheet({...raw,name:source.name+" — adaptation M02"})
+      if(!converted){message("Conversion refusée : ancienne fiche illisible.");return}
+      state.sheets.push(converted);state.activeId=converted.id
+      render();persist();message("Nouvelle copie M02 créée. Ancienne fiche conservée sans modification.")
+      return
+    }
+    if(button.hasAttribute("data-m02-buy")){
+      const sheet=current();if(sheet.ruleset!=="m02")return
+      const kind=q<HTMLSelectElement>("[data-m02-ability-kind]").value as AbilityDefinition["kind"]
+      const domain=clean(q<HTMLInputElement>("[data-m02-ability-domain]").value.trim(),80)
+      const name=clean(q<HTMLInputElement>("[data-m02-ability-name]").value.trim(),100)
+      const status=q<HTMLSelectElement>("[data-m02-ability-status]").value as AbilityDefinition["status"]
+      const approved=state.mode!=="pj"&&q<HTMLInputElement>("[data-m02-ability-approved]").checked
+      const prereq=q<HTMLSelectElement>("[data-m02-ability-prereq]").value
+      const candidate:AbilityDefinition={id:uniqueId(),name,domain,kind,
+        description:clean(q<HTMLTextAreaElement>("[data-m02-ability-description]").value,700),
+        status,levelRequired:kind==="signature"?17:kind==="technique"?5:3,
+        masteryDomain:prereq||undefined,
+        masteryRequired:prereq?clamp(q<HTMLInputElement>("[data-m02-ability-prereq-rank]").value,0,Number.MAX_SAFE_INTEGER,0):undefined,
+        effect:status==="defined"?clean(q<HTMLTextAreaElement>("[data-m02-ability-effect]").value,700):undefined,
+        limitations:status==="defined"?clean(q<HTMLTextAreaElement>("[data-m02-ability-limits]").value,700):undefined,
+        provenance:clean(q<HTMLTextAreaElement>("[data-m02-ability-provenance]").value,700),
+        approvedByGM:approved,rank:1}
+      try{applyM02(sheet,transact(asM02(sheet),{type:"ability-add",ability:candidate}))
+        refreshPoints();persist();message("Capacité enregistrée : "+name+". Aucun pouvoir non défini n'a été accordé.")
+      }catch(error){message("Achat refusé : "+(error instanceof Error?error.message:"Invalide"))}
+      return
+    }
+    if(button.dataset.m02Improve){
+      const sheet=current(),id=button.dataset.m02Improve
+      if(sheet.ruleset!=="m02")return
+      const ability=sheet.development.abilities.find(x=>x.id===id)
+      if(!ability)return
+      try{applyM02(sheet,transact(asM02(sheet),{type:"ability-update",ability:{...ability,rank:ability.rank+1}}))
+        refreshPoints();persist();message("Capacité améliorée, coût du rang supplémentaire prélevé.")
+      }catch(error){message("Amélioration refusée : "+(error instanceof Error?error.message:"Invalide"))}
+      return
+    }
+    if(button.dataset.m02Remove){
+      const sheet=current()
+      if(sheet.ruleset!=="m02")return
+      try{applyM02(sheet,transact(asM02(sheet),{type:"ability-remove",id:button.dataset.m02Remove}))
+        refreshPoints();persist();message("Capacité remboursée, budget recalculé.")
+      }catch(error){message("Remboursement refusé : "+(error instanceof Error?error.message:"Invalide"))}
+      return
+    }
+    if(button.hasAttribute("data-m02-award")){
+      const sheet=current();if(sheet.ruleset!=="m02")return
+      const event:ExperienceEvent={
+        id:clean(q<HTMLInputElement>("[data-m02-event-id]").value.trim(),80),
+        pattern:clean(q<HTMLInputElement>("[data-m02-event-pattern]").value.trim(),80),
+        domain:q<HTMLSelectElement>("[data-m02-event-domain]").value as ExperienceDomain,
+        difficulty:clamp(q<HTMLInputElement>("[data-m02-event-difficulty]").value,1,12,1),
+        scope:q<HTMLSelectElement>("[data-m02-event-scope]").value as ExperienceEvent["scope"],
+        approved:state.mode!=="pj"&&q<HTMLInputElement>("[data-m02-event-approved]").checked}
+      try{const next=grantAward(asM02(sheet),event),amount=next.xp-sheet.xp
+        applyM02(sheet,next);refreshPoints();persist();message("Accomplissement consigné : +"+amount+" XP.")
+      }catch(error){message("XP refusés : "+(error instanceof Error?error.message:"Invalide"))}
+      return
+    }
+    if(button.hasAttribute("data-m02-approve-milestone")){
+      const sheet=current();if(sheet.ruleset!=="m02")return
+      try{applyM02(sheet,approveMilestone(asM02(sheet),
+        clamp(q<HTMLInputElement>("[data-m02-milestone]").value,21,25,21),state.mode!=="pj"))
+        refreshPoints();persist();message("Palier M01 validé par le MJ, sans divinisation automatique.")
+      }catch(error){message("Palier refusé : "+(error instanceof Error?error.message:"Invalide"))}
+      return
+    }
     if(button.dataset.hubNav){
       const id=button.dataset.hubNav
       const selected=host.querySelector<HTMLDetailsElement>(`[data-hub="${id}"]`)
@@ -1303,28 +1478,29 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(!name){message("Donner d'abord un nom au personnage.");return}
       let origin
       try{
-        origin=buildEducationProfile(
-          buildOrigin(ORIGIN_STEPS.map(step=>q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value)),
-          q<HTMLSelectElement>("[data-origin-education]").value as EducationId,
-          q<HTMLSelectElement>("[data-origin-literacy]").value as LiteracyLevel
-        )
+        if(!q<HTMLSelectElement>("[data-origin-education]").value||
+          !q<HTMLSelectElement>("[data-origin-literacy]").value)throw Error("Éducation et lecture obligatoires")
+        origin=draftFromLifePath(ORIGIN_STEPS.map(step=>
+          q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value))
       }
       catch{message("Il faut répondre aux quatre questions du parcours de vie.");return}
       const sheet=fresh("pj")
-      sheet.name=name;sheet.level=sheet.highestLevel=origin.level
-      sheet.stats=origin.stats
-      sheet.masteries=origin.masteries
+      sheet.name=name;sheet.level=sheet.highestLevel=5
+      sheet.stats=origin.sheet.stats
+      sheet.masteries={...blankMasteries(),...origin.sheet.masteries}
+      sheet.development=origin.sheet.development
       sheet.lifeSteps=origin.lifeSteps;sheet.lifeSummary=origin.summary
-      sheet.education=origin.education;sheet.literacy=origin.literacy
+      sheet.education=q<HTMLSelectElement>("[data-origin-education]").value as EducationId
+      sheet.literacy=q<HTMLSelectElement>("[data-origin-literacy]").value as LiteracyLevel
       sheet.backstory=clean(q<HTMLTextAreaElement>("[data-origin-story]").value,4000)
       sheet.connections=clean(q<HTMLInputElement>("[data-origin-connections]").value,600)
       sheet.goal=clean(q<HTMLInputElement>("[data-origin-goal]").value,600)
       sheet.profession=origin.profession;sheet.vocation=origin.profession
-      sheet.pv=sheet.pvMax=origin.pvMax
-      sheet.mana=sheet.manaMax=origin.manaMax
+      sheet.pv=sheet.pvMax=36
+      sheet.mana=sheet.manaMax=(sheet.masteries.magie+sheet.masteries.runes>=2?36:0)
       sheet.skill=1
-      // XP de départ virtuels : les quatre périodes sont déjà vécues, sans mission inventée.
-      sheet.xp=xpRequired(5)
+      // Niveau 5 au seuil M01. Le parcours n'accorde aucun pouvoir canonique.
+      sheet.xp=experienceRequired(5)
       state.sheets.push(sheet);state.activeId=sheet.id
       render();persist()
       q<HTMLDetailsElement>('[data-hub="fiche"]').open=true
@@ -1453,6 +1629,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     }
     if(button.hasAttribute("data-convert-credits")){
       const sheet=current()
+      if(sheet.ruleset==="m02"){message("M02 : le budget est déjà partagé et ne se convertit pas.");return}
       const used=STATS.reduce((sum,k)=>sum+sheet.stats[k],0)
       const available=maxStatCredits(sheet.highestLevel)-used-sheet.convertedCredits
       if(available<6){message("Il faut au moins six crédits de caractéristiques en réserve.");return}
