@@ -162,3 +162,13 @@ export function affinityImpactBonus(rank:number):number{
 export function divinePowerMinimumLevel(grade:PowerGrade):number{
  return grade==="divin"?21:grade==="transcendant"?17:5
 }
+
+export function buildEducationProfile(origin:OriginBuild,education:EducationId,literacy:LiteracyLevel){
+ const school=EDUCATION_PATHS.find(x=>x.id===education)
+ const reading=LITERACY_LEVELS.find(x=>x.id===literacy)
+ if(!school||!reading)throw Error("Éducation et lecture obligatoires.")
+ const masteries=trainingAdjustedMasteries(origin.masteries,education)
+ const summary=origin.summary+"\nÉducation : "+school.label+". "+school.description+
+   "\nLecture et écriture : "+reading.label+". "+reading.help
+ return {...origin,masteries,summary,education,literacy}
+}
