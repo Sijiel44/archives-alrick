@@ -85,7 +85,7 @@ export async function createTableServer({
     const { room, user, member } = memberFor(ws, roomId, false)
     const isGm = member.approved && member.role === "mj"
     const members = Object.entries(room.members)
-      .filter(([, m]) => isGm || m.approved || m.id === user.id)
+      .filter(([, m]) => isGm || m.approved || m === member)
       .map(([id, m]) => ({
         ...userPublic(id), role: m.role, approved: m.approved,
         connected: active(roomId, id), characterId: m.characterId || null
@@ -335,6 +335,7 @@ export async function createTableServer({
     }
   })
   wss.on("connection", (ws) => {
+    let windowStart = Date.now(), windowCount = 0
     online.set(ws, { userId: null, roomId: null })
     safeSend(ws, { type: "hello", protocol: "alrick.tables.local.v1" })
     ws.on("close", () => {
@@ -343,6 +344,8 @@ export async function createTableServer({
       if (old?.roomId) notifyRoom(old.roomId)
     })
     ws.on("message", (raw) => {
+      if (Date.now() - windowStart > 10000) { windowStart = Date.now(); windowCount = 0 }
+      if (++windowCount > 60) { ws.close(1008, "Débit dépassé"); return }
       let msg
       try { msg = JSON.parse(raw.toString("utf8")) }
       catch { safeSend(ws, { type: "error", code: "FORMAT", message: "JSON invalide." }); return }
