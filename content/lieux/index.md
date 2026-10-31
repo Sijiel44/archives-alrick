@@ -107,3 +107,8 @@ Le registre V02 disposait de codes sans dossier web propre : [[lieux/GEO-025|**L
 ## Nouvelles aventures interurbaines et villages à venir
 
 [[jouer/les-registres-des-sept-cites|Une enquête de registres]] et [[jouer/la-veille-des-sept-cites|une mission face à une Faille imprévisible]] font voyager les PJ entre les compétences des Sept Cités, sans routes ni temps de trajet inventés. Les **14 nouveaux profils proposés** et **14 nouvelles quêtes** portent les carnets à **50 PNJ préparatoires et 35 quêtes**. Le [[lieux/villages-sept-cites-cahier-creation|cahier des 14 villages candidats]] prépare la prochaine étape sans déclarer de nouveaux bourgs canoniques.
+
+
+## Les villages voisins deviennent des décors jouables — sans nouvelle carte canonique
+
+[[lieux/villages-sept-cites-portail|Quatorze villages candidats détaillés]] : **28 personnages indépendants**, **28 petites quêtes** et **14 contrats de guilde** conçus pour relier les villages aux Sept Grandes Cités sans distances inventées. Les [[jouer/aventures-guilde-villages-sept-cites|trois aventures d'intervention]] mettent en scène de l'action et du secours ; le [[creatures/bestiaire-villages-sept-cites|bestiaire]] comporte sept créatures **facultatives et non canoniques**. Les candidats ne sont pas proclamés villages officiellement fondés.

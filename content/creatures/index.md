@@ -60,3 +60,10 @@ Pour les compagnons familiers de la campagne, consulter [[personnages/index|les 
 ## Sociétés draconiques : au-delà du bestiaire de combat
 
 [[creatures/dragons-et-souverainetes|Dragons, lignées et souverainetés]] confronte les communautés de [[lieux/GEO-027|Vael-Sur]], les Hautes-Ailes indépendantes et les dangers de l'[[lieux/GEO-028|Empire de la Chaîne écarlate]], sans transformer tous les dragons en créatures hostiles. Cette page distingue dragons vivants, dragons artificiels, décors animés et illusions. Les ennemis nouveaux restent des **options de MJ**, pas des individus insérés rétroactivement dans l'Odyssée.
+
+
+## Sept monstres et créatures pour les villages — propositions de MJ
+
+Le [[creatures/bestiaire-villages-sept-cites|Bestiaire des villages des Sept Cités]] détaille **sept êtres non canoniques**. Cinq viennent de la banque de prototypes encore non publiés (Mâche-Rune, Chasses-Faim, Harpiste creuse, Garde-Cendre, Ver des Frontières) ; deux sont de nouvelles créations (Lamproie de nacre, Cerf des Brumes froides). **Leur publication comme supports de rencontre ne les transforme pas en espèces déjà attestées dans une scène de l'Odyssée.**
+
+Chaque page présente traces, habitat envisageable, objectifs, tactiques, possibilité de fuite et effets sur les lieux. Voir les [[jouer/contrats-guilde-sept-cites-villages|14 contrats de guilde]] et [[jouer/aventures-guilde-villages-sept-cites|trois missions jouables]] ; aucune valeur de PV ou de dégâts officiels n'est attribuée au 5d6 en test.

@@ -74,3 +74,8 @@ Les points, les traits et la disposition sur ces sept plans sont un **outil de n
 Les [[jouer/quetes-sept-cites|35 quêtes courtes]] se répartissent entre les 21 premières affaires et 14 nouvelles missions. Pour rencontrer les **14 nouveaux PNJ** et retrouver leurs intrigues, consulter les dossiers complémentaires : [[lieux/dornael-rencontres-et-quetes-2|Dornaël]], [[lieux/aldhammar-rencontres-et-quetes-2|Aldhammar]], [[lieux/skalor-rencontres-et-quetes-2|Skalor]], [[lieux/nacrecombe-rencontres-et-quetes-2|Nacrecombe]], [[lieux/forgeciel-rencontres-et-quetes-2|Forgeciel]], [[lieux/keldrun-rencontres-et-quetes-2|Keldrun]], [[lieux/torngard-rencontres-et-quetes-2|Torngard]].
 
 Les deux arcs itinérants — [[jouer/les-registres-des-sept-cites|enquête]] ou [[jouer/la-veille-des-sept-cites|Faille]] — sont séparés. Les [[lieux/villages-sept-cites-cahier-creation|14 villages proposés]] ne sont ni cartographiés ni déjà habités dans le canon.
+
+
+## Des villes jusqu'aux villages : missions et vies quotidiennes
+
+Les [[lieux/villages-sept-cites-portail|14 villages candidats]] offrent des escales et un réseau de [[jouer/contrats-guilde-sept-cites-villages|14 contrats de guilde]] allant des cités vers les communautés rurales **sans routes géographiques validées**. Ils ajoutent **28 PNJ et 28 quêtes**, soit maintenant **78 profils préparatoires dans l'ensemble ville+village** et **63 quêtes locales** ; les contrats de guilde sont des interventions supplémentaires. Les sept créatures du [[creatures/bestiaire-villages-sept-cites|bestiaire]] restent facultatives et non canoniques.

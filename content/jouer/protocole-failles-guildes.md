@@ -86,3 +86,8 @@ La même institution peut offrir d'autres missions : escorte, exploration, enqu�
 - [[INST-CB32-SECOURS-AVENTURIERS|Secours mutuel et Guilde des Aventuriers]] : adoption, secours gradués, certifications selon le risque en déploiement, CB32 P08327–08719.
 - [[GRP-01|Revenants]] ; [[REV-01|Bram]] ; [[REV-03|Kelm]] ; [[REV-05|Torven]].
 - [[monde/failles-et-ruptures|Failles et ruptures imprévisibles]] (référence publique). Les scènes et étiquettes A/B/C proposées ici ne sont pas des faits joués.
+
+
+## Applications locales : villages candidats et secours interurbain
+
+Quatorze **avis de mission** sont prêts dans [[jouer/contrats-guilde-sept-cites-villages|le tableau des villages]], avec trois [[jouer/aventures-guilde-villages-sept-cites|interventions de guilde détaillées]]. Leur utilisation suppose un **contrat ponctuel et une autorité compétente**, pas un poste de guilde déjà installé partout. Les catégories A/B/C restent des conventions du MJ ; le secours, la sécurité du terrain, les moyens de repli et le bilan des blessés priment sur la prime à l'élimination d'un monstre. Tous les villages et créatures de ces dossiers sont proposés et non joués.
