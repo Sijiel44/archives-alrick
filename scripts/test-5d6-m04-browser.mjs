@@ -46,13 +46,44 @@ async function inputFile(selector,filename){
   await cdp("DOM.setFileInputFiles",{nodeId,files:[filename]})
   await browserFn(q=>document.querySelector(q).dispatchEvent(new Event("change",{bubbles:true})),selector)
 }
+/** Les clics CDP ne reçoivent pas toujours l'activation utilisateur nécessaire au
+ * téléchargement sur disque. Capturer le Blob réellement créé et passé à a.click(). */
+async function installDownloadRecorder(){
+  await browserFn(()=>{
+    if(window.__alrickRecorderInstalled)return
+    window.__alrickRecorderInstalled=true
+    window.__alrickExports=[]
+    const originalURL=URL.createObjectURL.bind(URL)
+    URL.createObjectURL=blob=>{
+      window.__alrickLastBlob=blob
+      return originalURL(blob)
+    }
+    const original=HTMLAnchorElement.prototype.click
+    HTMLAnchorElement.prototype.click=function(){
+      if(this.download&&window.__alrickLastBlob){
+        const item={name:this.download,promise:window.__alrickLastBlob.text()}
+        window.__alrickExports.push(item)
+      }
+      return original.call(this)
+    }
+  })
+}
 async function downloaded(prefix){
   for(let i=0;i<90;i++){
-    const item=(await readdir(downloads)).find(x=>x.startsWith(prefix)&&!x.endsWith(".crdownload"))
-    if(item)return path.join(downloads,item)
+    const present=await runJS("window.__alrickExports?.length||0")
+    if(present>0){
+      const exportData=await browserFn(async ()=>{
+        const record=window.__alrickExports.shift()
+        return {name:record.name,body:await record.promise}
+      })
+      assert.ok(exportData.name.startsWith(prefix),"Export inattendu "+exportData.name)
+      const dest=path.join(downloads,exportData.name)
+      await writeFile(dest,exportData.body)
+      return dest
+    }
     await sleep(100)
   }
-  throw Error("Export absent "+prefix)
+  throw Error("Aucun Blob d'export créé : "+prefix)
 }
 async function navigate(url){
   await cdp("Page.navigate",{url})
@@ -154,6 +185,7 @@ try{
   let exportedCard
   await test("Export/import JSON propre au Bestiaire",async()=>{
     const n=await runJS('document.querySelector("[data-active]").options.length')
+    await installDownloadRecorder()
     await click("[data-action=export]")
     exportedCard=await downloaded("alrick-bestiary-")
     assert.equal(JSON.parse(await readFile(exportedCard,"utf8")).pvMax,194)
