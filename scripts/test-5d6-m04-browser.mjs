@@ -189,6 +189,8 @@ try{
     assert.ok(dialogs>d)
     await sleep(400) // confirmation native fermée : navigateur pleinement disponible
   })
+  await navigate(base+"/jouer/atelier-bestiary-5d6")
+  await waitFor('document.querySelector("#bestiary-workshop [data-text=name]")?.value==="Colosse recette M04.1"',"retour à la fiche avant export")
   let exportedCard
   await test("Export/import JSON propre au Bestiaire",async()=>{
     const n=await runJS('document.querySelector("[data-active]").options.length')
