@@ -21,6 +21,8 @@ const CERTIFICATIONS = [
   ["risques-magiques","Risques magiques et runes"],["intervention-specialisee","Intervention spécialisée / crise majeure"]
 ] as const
 const maxStatCredits = (level:number) => 12+6*(level-1)
+const xpRequired = (level:number) => level<=1?0:5*(level-1)**3
+const missionXpReward = (rank:number) => 10*rank
 const levelResourceGain = (level:number) => level>=21?24:level>=13?12:6
 const gainBetween = (first:number,last:number) => {
   let gain=0
@@ -62,7 +64,7 @@ type Sheet = {
   mana: number; manaMax: number; emprise: number
   level: number; highestLevel: number; masteries: Record<Mastery,number>
   ascensionAuthorized:boolean; divineLimit:number; ascensionWitness:string; inventory:GameItem[]
-  convertedCredits:number; talentPointsSpent:number
+  convertedCredits:number; talentPointsSpent:number; xp:number
   description: string; portrait: string
   vocation: string; talents: string; boons: string; curses: string; items: string
   sourceRef: string; sourceTitle: string
@@ -144,7 +146,7 @@ function fresh(kind: Role = "pj"): Sheet {
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
     pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, divineLimit:20, ascensionWitness:"", inventory:[],
-    convertedCredits:0,talentPointsSpent:0,
+    convertedCredits:0,talentPointsSpent:0,xp:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
 }
@@ -173,6 +175,7 @@ function validateSheet(raw: unknown): Sheet | null {
     emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,24,level),
     masteries,convertedCredits:clamp(obj.convertedCredits,0,6*(level-1),0),
     talentPointsSpent:clamp(obj.talentPointsSpent,0,23,0),
+    xp:clamp(obj.xp,0,999999,0),
     ascensionAuthorized:obj.ascensionAuthorized===true||level>20,
     divineLimit:clamp(obj.divineLimit,20,24,level>20?level:20),
     ascensionWitness:clean(obj.ascensionWitness,300),
@@ -290,6 +293,9 @@ function setupAtelier5d6() {
     q<HTMLElement>("[data-talent-points]").textContent="Talents : "+s.talentPointsSpent+" / "+earnedTalents+
       " utilisés · "+(earnedTalents-s.talentPointsSpent)+" disponibles"
     q<HTMLInputElement>("[data-talent-spent]").value=String(s.talentPointsSpent)
+    q<HTMLElement>("[data-xp-info]").textContent="Expérience : "+s.xp+
+      " XP · seuil du niveau "+Math.min(24,s.level+1)+" : "+xpRequired(Math.min(24,s.level+1))+
+      " XP cumulés. Les niveaux élevés exigent des épreuves spécifiques."
 
     q<HTMLSelectElement>("[data-active]").selectedOptions[0]?.setAttribute("data-active-points",String(used))
   }
@@ -478,13 +484,23 @@ function setupAtelier5d6() {
       summary:clean(q<HTMLTextAreaElement>("[data-mission-summary]").value,1200),
       reward:clean(q<HTMLInputElement>("[data-mission-award]").value,280),
       date:new Date().toISOString().slice(0,10)}
+    if(entry.status!=="echouee"){
+      const reward=missionXpReward(mission.level)
+      for(const id of group.members){
+        const participant=state.sheets.find(x=>x.id===id)
+        if(participant?.kind==="pj")participant.xp=clamp(participant.xp+reward,0,999999,participant.xp)
+      }
+      entry.reward=clean((entry.reward?entry.reward+" · ":"")+"+"+reward+" XP par PJ membre",280)
+    }
     state.missionLog.push(entry)
     state.missionLog=state.missionLog.slice(-400)
     if(entry.reward&&entry.status!=="echouee")group.awards.push(entry.reward)
     group.awards=group.awards.slice(-30)
     q<HTMLTextAreaElement>("[data-mission-summary]").value=""
     q<HTMLInputElement>("[data-mission-award]").value=""
-    renderGroup();persist();renderAI();message("Compte rendu enregistré dans le journal local, avec récompense si attribuée.")
+    renderGroup();refreshPoints();persist();renderAI()
+    q<HTMLInputElement>("[data-field= xp]")?.setAttribute("value",String(current().xp))
+    message("Mission consignée : récompense narrative et XP locaux attribués aux PJ membres.")
   }
   function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup()}
   function renderAI(){
@@ -558,10 +574,20 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "manaMax":s.manaMax=clamp(el.value,0,999,0);s.mana=Math.min(s.mana,s.manaMax);break
         case "mana":s.mana=clamp(el.value,0,s.manaMax,s.mana);break
         case "emprise":s.emprise=clamp(el.value,0,12,0);break
+        case "xp":{
+          if(s.kind==="pj"&&state.mode==="pj"){
+            el.value=String(s.xp);message("Modification directe des XP réservée au MJ.");return
+          }
+          s.xp=clamp(el.value,0,999999,s.xp);break
+        }
         case "notes":s.notes=clean(el.value,2500);break
         case "gmNotes":s.gmNotes=clean(el.value,2500);break
         case "level":{
           const next=clamp(el.value,1,24,s.level)
+          if(next>s.level&&s.kind==="pj"&&state.mode==="pj"&&s.xp<xpRequired(next)){
+            el.value=String(s.level)
+            message("XP insuffisants pour atteindre ce niveau. Le MJ peut valider une exception narrative.");return
+          }
           if(next>20&&(!s.ascensionAuthorized||next>s.divineLimit||s.ascensionWitness.trim().length<15)){
             el.value=String(s.level)
             message("Ascension divine refusée : chaque palier exige une autorisation du MJ et un témoignage de l'épreuve (15 caractères minimum).")
