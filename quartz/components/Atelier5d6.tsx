@@ -7,6 +7,8 @@ const masteries = [
   ["lames","Lames et dagues"],["haches","Haches et masses"],["arcs","Arcs et tirs"],
   ["runes","Runes"],["soins","Soins"],["negociation","Négociation"],
   ["survie","Survie et pistage"],["artisanat","Artisanat"],["magie","Magies connues"],
+  ["commerce","Commerce et négoces"],["histoire","Histoire et érudition"],
+  ["commandement","Commandement"],["intendance","Intendance et logistique"],
 ] as const
 
 const itemCategories = [
@@ -115,6 +117,9 @@ export const Atelier5d6: QuartzComponent = (props) => {
           </label>
           <p data-xp-info class="atelier-hint">Expérience : 0 XP · niveau suivant : 5 XP.</p>
         </div>
+        <details class="atelier-stats"><summary>Histoire du personnage et parcours avant l'aventure</summary>
+          <p data-life-history class="atelier-hint">Création libre : aucune histoire de jeunesse enregistrée.</p>
+        </details>
         <label class="atelier-wide">Talents acquis (capacités, conditions et limites)
           <textarea data-field="talents" rows={2} maxLength={1600} placeholder="Ex. : Pisteur — repérer une ancienne piste même sous la pluie"></textarea>
         </label>
