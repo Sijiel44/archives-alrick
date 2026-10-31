@@ -244,3 +244,18 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Fiches locales anciennes et sauvegardes alrick.sheets.v2 / alrick.campaign.v1 conservées.
 # Tests exacts sur les fonctions TypeScript réelles et 7 776 issues 5d6 + vérification HTML et politique de publication.
 # Lot de prototype non canonique, pas d'attribution de nouvelle capacité divine ou de Cercle magique à Orin.
+
+
+# Lot 18 — Endurance innée, équipement gradé, niveau 25 et bestiaire évolutif (31 octobre 2026)
+# PR #50 fusionnée après CI GitHub réussie, commit ad850da9a1253378253973f1e98678ed2f258536.
+# Demande créateur : plus de résistance intrinsèque chez les hauts niveaux, équipement évolutif et PV croissants.
+# NIVEAU DE PERSONNAGE 1–25 : cinquième palier exceptionnel pour PJ, sans pouvoir divin automatiquement accordé.
+# PV de référence niveau 25 : 306 pour une fiche à 12 PV initiaux; données anciennes non recalculées rétroactivement.
+# Protection innée physique niveau 25 : 55 avant équipement; les types magique/mental ont leurs règles distinctes.
+# ÉQUIPEMENT : grades 0–5 validés par le MJ, défense et absorption indépendantes de la robustesse naturelle.
+# CONTACT HÉROÏQUE : naturels 27–30 peuvent toucher sans percer (aucun état ni PV par défaut);
+# 30 naturel peut causer au plus 1 PV si toute la protection est surmontée. Aucun franchissement de lois cosmiques.
+# Bestiaire 1–25 : cinq archétypes de combat, proposés et non canoniques, sans création d'espèces.
+# Sauvegardes historiques compatibles, moteur 5d6 classique non supprimé, aucun spoiler publié.
+# Guide public lié aux pages Jouer : bestiaire-evolutif-25.md.
+# Compteur des fiches de lore approuvées INCHANGÉ ; ne pas traiter ces modèles en faits joués.
