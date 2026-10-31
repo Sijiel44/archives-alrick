@@ -101,4 +101,51 @@ test("Matchups reproductibles, groupe, blocage, hypothèses explicites",()=>{
     }
   }
 })
+
+test("Colosse N15 : statistiques, PV et bonus exactement attendus",()=>{
+  const p=lab.createBestiaryCard(15,"colosse")
+  assert.deepEqual(p.stats,{physique:15,agilite:7,esprit:8,presence:8})
+  assert.equal(p.pvMax,194)
+  const stats=[p.stats.physique,p.stats.agilite,p.stats.esprit,p.stats.presence]
+  assert.deepEqual(stats.map(x=>Math.floor(3*Math.log2(1+x/3))),[7,5,5,5])
+  const d=lab.toDefense(p)
+  assert.equal(d.resistanceBonus.physique,3)
+  assert.equal(d.protection.physique,0)
+  assert.equal(d.resistanceBonus.magie,0)
+})
+test("Export Bestiaire vers Atelier : identité M03 et données sans budget PJ",()=>{
+  const c=lab.createBestiaryCard(15,"colosse")
+  c.name="Colosse de référence"
+  c.stats.physique=23
+  c.masteries.lames=14
+  c.protection.physique=16
+  c.abilities=[{name:"Charge",description:"Narratif",limitations:"Distance",approvedByGM:true}]
+  c.notes="Notes MJ confidentielles (stockage local uniquement)"
+  const exportPayload=lab.exportBestiaryForAtelier(c)
+  assert.equal(exportPayload.schema,"alrick.sheets.v3")
+  assert.equal(exportPayload.sheets.length,1)
+  const sheet=exportPayload.sheets[0]
+  assert.equal(sheet.ruleset,"m03-bestiary")
+  assert.equal(sheet.kind,"creature")
+  assert.equal(sheet.level,15)
+  assert.equal(sheet.pvMax,194)
+  assert.deepEqual(sheet.stats,c.stats)
+  assert.deepEqual(sheet.masteries,c.masteries)
+  assert.deepEqual(sheet.resistanceBonus,c.resistanceBonus)
+  assert.deepEqual(sheet.protection,c.protection)
+  assert.deepEqual(sheet.equipmentGrades,c.equipmentGrades)
+  assert.deepEqual(sheet.bestiarySource,c)
+  assert.notEqual(sheet.ruleset,"m02")
+})
+test("Import/export Bestiaire conserve capacités et extensions inoffensives",()=>{
+  const c=lab.createBestiaryCard(9,"mystique")
+  c.abilities=[{name:"Test",description:"Une phrase",limitations:"1 fois",approvedByGM:false,metadata:"document"}]
+  c.extraDocument="glossaire indépendant"
+  const parsed=lab.validateBestiaryCard(JSON.parse(JSON.stringify(c)))
+  assert.equal(parsed.extraDocument,c.extraDocument)
+  assert.deepEqual(parsed.abilities,c.abilities)
+  assert.deepEqual(lab.exportBestiaryForAtelier(parsed).sheets[0].bestiarySource,parsed)
+})
+
+
 console.log("M04 Atelier du Bestiaire : "+checks+" familles de vérifications réussies.")
