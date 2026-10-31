@@ -9,6 +9,7 @@ const masteries = [
   ["survie","Survie et pistage"],["artisanat","Artisanat"],["magie","Magies connues"],
   ["commerce","Commerce et négoces"],["histoire","Histoire et érudition"],
   ["commandement","Commandement"],["intendance","Intendance et logistique"],
+  ["agriculture","Agriculture et élevage"],["navigation","Navigation et cartographie"],["arts","Arts et interprétation"],
 ] as const
 
 const itemCategories = [
