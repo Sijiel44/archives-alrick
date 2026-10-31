@@ -341,7 +341,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
       </div>
       <div class="atelier-panel atelier-dice">
         <h3>Effectuer un jet</h3>
-        <p class="atelier-hint"><strong>M02 : 5d6 + E(caractéristique) + M(maîtrise) + situation</strong> (hors opposition M03, encore en règles héritées). Échec naturel 5–7 toujours forcé.</p>
+        <p class="atelier-hint"><strong>M03 : 5d6 + E(caractéristique) + M(maîtrise) + situation</strong> pour les jets ordinaires et opposés sur fiches M02. Mode legacy conservé. Naturels 5–7 : échecs forcés.</p>
         <div class="atelier-fields">
           <label>Caractéristique
             <select data-roll-stat>
@@ -386,6 +386,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
         <fieldset class="atelier-stats">
           <legend>Opposition et résistances (module facultatif)</legend>
           <label class="atelier-check"><input type="checkbox" data-opposition-enabled/> Activer une cible qui peut résister, esquiver ou parer</label>
+          <label class="atelier-check"><input type="checkbox" data-opposition-feasible checked/> Action réalisable dans le contexte (MJ : désactiver si impossible)</label>
           <div class="atelier-fields">
             <label>Adversaire / cible
               <select data-opposition-target><option value="">Cible libre — seuil fixé par le MJ</option></select>
