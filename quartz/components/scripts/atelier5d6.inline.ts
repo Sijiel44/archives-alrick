@@ -627,6 +627,56 @@ function setupAtelier5d6() {
         ". Parcours : "+result.summary.replaceAll("\n"," | ")
     }catch{target.textContent="Parcours invalide : vérifier les quatre choix."}
   }
+  function renderMedia(){
+    const sheet=current(),grid=q<HTMLElement>("[data-media-gallery]")
+    grid.replaceChildren()
+    if(!sheet.externalMedia.length){
+      const p=document.createElement("p");p.className="atelier-hint"
+      p.textContent="Aucune image liée. Ajouter un lien HTTPS de source vérifiée."
+      grid.append(p)
+    }
+    for(const artwork of sheet.externalMedia){
+      const figure=document.createElement("figure");figure.className="atelier-media-card"
+      figure.dataset.format=artwork.format;figure.setAttribute("role","listitem")
+      const button=document.createElement("button");button.type="button"
+      button.dataset.mediaView=artwork.id;button.title="Agrandir : "+artwork.title
+      const img=document.createElement("img");img.loading="lazy";img.decoding="async"
+      img.referrerPolicy="no-referrer";img.alt=artwork.title
+      img.src=artwork.url
+      img.onerror=()=>{button.disabled=true;button.textContent="Image externe indisponible — ouvrir la source"}
+      button.append(img);figure.append(button)
+      const caption=document.createElement("figcaption")
+      caption.textContent=artwork.title+" · "+artwork.author+" · "+artwork.license
+      figure.append(caption)
+      const link=document.createElement("a");link.href=artwork.source
+      link.rel="noopener noreferrer";link.referrerPolicy="no-referrer"
+      link.target="_blank";link.textContent="Voir la source et les conditions"
+      figure.append(link)
+      if(state.mode!=="pj"){
+        const remove=document.createElement("button");remove.type="button"
+        remove.dataset.mediaRemove=artwork.id;remove.textContent="Retirer le lien"
+        figure.append(remove)
+      }
+      grid.append(figure)
+    }
+  }
+  function renderPowerHistory(){
+    const sheet=current(),log=q<HTMLOListElement>("[data-power-history]"),
+      selector=q<HTMLSelectElement>("[data-power-cast]"),selected=selector.value
+    selector.replaceChildren(new Option("Choisir une capacité",""))
+    for(const power of sheet.powers){
+      if(power.approvedByGM)selector.add(new Option(power.name+" · "+power.manaCost+" mana",power.id))
+    }
+    if(sheet.powers.some(x=>x.id===selected))selector.value=selected
+    log.replaceChildren()
+    for(const event of sheet.powerHistory.slice(-12).reverse()){
+      const li=document.createElement("li")
+      li.textContent=event.at+" — "+event.name+" : "+event.target+
+        " · "+event.manaCost+" mana dépensé(s) (effet à résoudre avec le MJ)."
+      log.append(li)
+    }
+    if(!sheet.powerHistory.length){const li=document.createElement("li");li.textContent="Aucune capacité utilisée.";log.append(li)}
+  }
   function renderAffinities(){
     const sheet=current(),list=q<HTMLUListElement>("[data-affinity-list]"),powers=q<HTMLUListElement>("[data-power-list]")
     list.replaceChildren();powers.replaceChildren()
@@ -652,6 +702,7 @@ function setupAtelier5d6() {
       powers.append(li)
     }
     if(!sheet.powers.length){const li=document.createElement("li");li.textContent="Aucune capacité spéciale enregistrée.";powers.append(li)}
+    renderPowerHistory()
     const selector=q<HTMLSelectElement>("[data-roll-affinity]"),chosen=selector.value
     selector.replaceChildren(new Option("Sans affinité",""))
     for(const a of sheet.affinities)selector.add(new Option(affinityLabel(a.id)+" · rang "+a.rank,a.id))
@@ -674,7 +725,7 @@ function setupAtelier5d6() {
       "Aucun bonus à la précision, aucun mana ou effet cosmique automatique.":
       "Sélectionner une affinité validée sur cette fiche. Sans sélection, aucun bonus d'impact."
   }
-  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities()}
+  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities();renderMedia()}
   function renderAI(){
     const s=current(), include=q<HTMLInputElement>("[data-ai-roster]").checked
     const group=state.groups.find(g=>g.members.includes(s.id))
@@ -1163,6 +1214,79 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
+    if(button.dataset.hubNav){
+      const id=button.dataset.hubNav
+      const selected=host.querySelector<HTMLDetailsElement>(`[data-hub="${id}"]`)
+      if(!selected)return
+      host.querySelectorAll<HTMLDetailsElement>(".atelier-hub-section[data-hub]").forEach(el=>{
+        el.open=el===selected
+      })
+      host.querySelectorAll<HTMLButtonElement>("[data-hub-nav]").forEach(el=>
+        el.setAttribute("aria-current",String(el===button)))
+      selected.scrollIntoView({block:"start",behavior:"smooth"})
+      return
+    }
+    if(button.hasAttribute("data-media-close")){
+      q<HTMLDialogElement>("[data-media-lightbox]").close();return
+    }
+    if(button.dataset.mediaView){
+      const item=current().externalMedia.find(v=>v.id===button.dataset.mediaView)
+      if(!item)return
+      q<HTMLImageElement>("[data-media-large]").src=item.url
+      q<HTMLImageElement>("[data-media-large]").alt=item.title
+      q<HTMLElement>("[data-media-caption]").textContent=item.title+" · "+item.author+" · "+item.license
+      q<HTMLDialogElement>("[data-media-lightbox]").showModal()
+      return
+    }
+    if(button.dataset.mediaRemove){
+      const sheet=current(),item=sheet.externalMedia.find(v=>v.id===button.dataset.mediaRemove)
+      if(!item||!window.confirm("Retirer le lien de l'image « "+item.title+" » ?"))return
+      sheet.externalMedia=sheet.externalMedia.filter(v=>v.id!==item.id)
+      renderMedia();persist();message("Lien d'image retiré de la fiche.");return
+    }
+    if(button.hasAttribute("data-media-add")){
+      const sheet=current()
+      if(sheet.externalMedia.length>=30){message("La galerie contient déjà 30 illustrations.");return}
+      const row=validatedArtwork({
+        url:q<HTMLInputElement>("[data-media-url]").value,
+        source:q<HTMLInputElement>("[data-media-source]").value,
+        title:q<HTMLInputElement>("[data-media-title]").value,
+        author:q<HTMLInputElement>("[data-media-author]").value,
+        license:q<HTMLInputElement>("[data-media-license]").value,
+        rights:q<HTMLSelectElement>("[data-media-rights]").value,
+        format:q<HTMLSelectElement>("[data-media-format]").value
+      })
+      if(!row){message("Image refusée : vérifier les deux liens HTTPS, la description, l'auteur, la licence et le droit d'usage déclaré.");return}
+      sheet.externalMedia.push(row)
+      for(const key of ["url","source","title","author","license"])
+        q<HTMLInputElement>(`[data-media-${key}]`).value=""
+      q<HTMLSelectElement>("[data-media-rights]").value=""
+      renderMedia();persist()
+      message("Image distante liée localement à la fiche, sans copie sur GitHub.");return
+    }
+    if(button.hasAttribute("data-power-cast-action")){
+      const sheet=current(),power=sheet.powers.find(x=>x.id===q<HTMLSelectElement>("[data-power-cast]").value)
+      if(!power||!power.approvedByGM){message("Choisir une capacité enregistrée et validée.");return}
+      const target=clean(q<HTMLInputElement>("[data-power-target]").value.trim(),150)
+      if(target.length<3){message("Décrire la cible ou l'intention de cette capacité.");return}
+      if(sheet.level<divinePowerMinimumLevel(power.grade)){
+        message("Cette capacité exige un niveau plus élevé.");return
+      }
+      if(power.grade==="divin"&&sheet.kind==="pj"&&(!sheet.ascensionAuthorized||sheet.divineLimit<sheet.level)){
+        message("Épreuve divine du PJ non validée.");return
+      }
+      if(sheet.mana<power.manaCost){message("Mana insuffisant pour cette capacité : "+sheet.mana+"/"+power.manaCost+".");return}
+      if(!window.confirm("Préparer « "+power.name+" » ? "+
+        power.manaCost+" mana seront retirés et l'action consignée. La réussite reste à résoudre au dé / par le MJ."))return
+      sheet.mana-=power.manaCost
+      sheet.powerHistory.push({id:uniqueId(),name:power.name,domain:power.domain,
+        manaCost:power.manaCost,target,at:new Date().toLocaleString("fr-CA")})
+      sheet.powerHistory=sheet.powerHistory.slice(-80)
+      q<HTMLInputElement>('[data-field="mana"]').value=String(sheet.mana)
+      q<HTMLInputElement>("[data-power-target]").value=""
+      renderPowerHistory();renderAI();persist()
+      message("Action consignée : "+power.name+", "+power.manaCost+" mana. Résoudre séparément les effets et les résistances.");return
+    }
     if(button.hasAttribute("data-origin-clear")){
       q<HTMLInputElement>("[data-origin-name]").value=""
       for(const step of ORIGIN_STEPS)q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value=""
@@ -1276,7 +1400,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       state.mode=button.dataset.mode as Mode
       q<HTMLButtonElement>("[data-opposition-apply]").hidden=!pendingImpact || state.mode==="pj"
       q<HTMLButtonElement>("[data-opposition-counter]").hidden=!pendingCounter || state.mode==="pj"
-      refreshMode();renderAffinities();persist();return
+      refreshMode();renderAffinities();renderMedia();persist();return
     }
     if(button.hasAttribute("data-opposition-counter")){
       if(state.mode==="pj"){message("Le MJ doit valider les ripostes des autres fiches.");return}
