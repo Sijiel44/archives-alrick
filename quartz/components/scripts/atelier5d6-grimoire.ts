@@ -401,32 +401,42 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
       if(g.personalSpells.length>=80){notify("Limite de sorts locaux atteinte.");return}
       g.personalSpells.push(template);update();notify("Sort local créé. Il devra être appris séparément.");return
     }
+
     if(b.hasAttribute("data-grimoire-cast-button")){
-      const spell=find(query<HTMLSelectElement>("[data-grimoire-cast]").value)
+      const option=query<HTMLSelectElement>("[data-grimoire-cast]").value
+      const matrix=option.startsWith("matrix:")?g.matrices.find(x=>x.id===option.slice(7)):undefined
+      const spell=find(matrix?.spellId??option)
       const aim=query<HTMLInputElement>("[data-grimoire-target]").value.trim().slice(0,150)
-      if(!spell){notify("Choisir un sort connu.");return}
-      const errors=eligibility(s,spell)
+      if(!spell){notify("Choisir un sort connu ou une matrice réellement préparée.");return}
+      const errors=eligibility(s,spell,matrix)
       if(!aim)errors.push("Indiquer la cible ou l'intention")
       if(errors.length){notify(errors.join(" ; "));return}
       const targetId=query<HTMLSelectElement>("[data-grimoire-other-sheet]").value
       const target=args.getSheets().find(x=>x.id===targetId&&x.id!==s.id)||null
-      if(!window.confirm("Lancer « "+spell.name+" » vers « "+aim+" » ? Coût "+spell.manaCost+
-        " mana, même si le jet échoue. Aucun PV ou état d'une autre fiche ne sera modifié automatiquement."))return
+      const manaCost=matrix?.energySource==="matrix"?0:spell.manaCost
+      const source=matrix?"matrice C"+matrix.architectureCircle+" (activation C"+matrix.activationCircle+")":"pratique personnelle"
+      if(!window.confirm("Déclencher « "+spell.name+" » vers « "+aim+" » par "+source+
+        " ? Coût "+manaCost+" mana personnel"+(matrix?" et 1 charge de la matrice":"")+
+        ", même sur échec. Aucun PV ni statut d'une autre fiche ne sera modifié automatiquement."))return
       const dice=Array.from({length:5},()=>1+Math.floor(Math.random()*6))
-      const result=resolveSpellCast(s,spell,target,aim,dice)
+      const result=resolveSpellCast(s,spell,target,aim,dice,matrix)
       if(!result.ok){notify(result.errors.join(" ; "));return}
-      s.mana-=spell.manaCost
-      recordSpellEvent(g,{type:"lancer",spellId:spell.id,target:aim,manaDelta:-spell.manaCost,dice,
-        total:result.total!,threshold:result.threshold!,
-        result:result.result!+(result.damage?" · "+result.damage+" dégâts potentiels (application MJ distincte)":"")})
+      s.mana-=manaCost
+      if(matrix)matrix.charges--
+      recordSpellEvent(g,{type:"lancer",spellId:spell.id,target:aim,manaDelta:-manaCost,dice,
+        deviceId:matrix?.id,total:result.total!,threshold:result.threshold!,
+        result:result.result!+(matrix?" · activation par matrice":"")+
+          (result.damage?" · "+result.damage+" dégâts potentiels (application MJ distincte)":"")})
       if(result.success)activateSpell(g,spell,aim)
       query<HTMLElement>("[data-grimoire-result]").textContent=
         result.result+" — "+dice.join(", ")+" ; total "+result.total+"/"+result.threshold+
-        (result.glancing?" (la résistance reste intacte)":"")+(result.damage?" ; "+result.damage+" PV potentiels, non appliqués.":"")
+        (matrix?" · déclenché depuis une architecture préparée":"")+
+        (result.glancing?" (la résistance reste intacte)":"")+
+        (result.damage?" ; "+result.damage+" PV potentiels, non appliqués.":"")
       query<HTMLInputElement>("[data-grimoire-target]").value=""
       const manaInput=args.root.querySelector<HTMLInputElement>('[data-field="mana"]')
       if(manaInput)manaInput.value=String(s.mana)
-      update();notify("Lancer consigné et mana dépensé. Les conséquences sur autrui exigent l'accord du MJ.");return
+      update();notify("Activation consignée, ressources dépensées selon la source prévue. Les conséquences sur autrui exigent l'accord du MJ.");return
     }
     if(b.dataset.spellInterrupt){
       const effect=g.effects.find(x=>x.id===b.dataset.spellInterrupt)
