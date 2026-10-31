@@ -150,6 +150,7 @@ try{
   const base=await start()
   await navigate(base+"/jouer/atelier-bestiary-5d6")
   await waitFor('document.querySelector("#bestiary-workshop [data-active]")?.options.length>0',"Bestiaire initial")
+  await waitFor('document.querySelector("#bestiary-workshop")?.dataset.initialized==="true"',"contrôleurs du Bestiaire initialisés")
   await test("Trois modes, création Colosse N15",async()=>{
     for(const m of ["guide","expert","rapide","expert"]){
       await click("[data-mode="+m+"]")
@@ -179,6 +180,7 @@ try{
   await test("Sauvegarde, rechargement, duplication, suppression",async()=>{
     await set("[data-text=name]","Colosse recette M04.1")
     await cdp("Page.reload")
+    await waitFor('document.querySelector("#bestiary-workshop")?.dataset.initialized==="true"',"initialisation après rechargement")
     await waitFor('document.querySelector("#bestiary-workshop [data-text=name]")?.value==="Colosse recette M04.1"',"persistance")
     const n=await runJS('document.querySelector("[data-active]").options.length')
     await click("[data-action=duplicate]")
@@ -190,6 +192,7 @@ try{
     await sleep(400) // confirmation native fermée : navigateur pleinement disponible
   })
   await navigate(base+"/jouer/atelier-bestiary-5d6")
+  await waitFor('document.querySelector("#bestiary-workshop")?.dataset.initialized==="true"',"réouverture du Bestiaire avant export")
   await waitFor('document.querySelector("#bestiary-workshop [data-text=name]")?.value==="Colosse recette M04.1"',"retour à la fiche avant export")
   let exportedCard
   await test("Export/import JSON propre au Bestiaire",async()=>{
