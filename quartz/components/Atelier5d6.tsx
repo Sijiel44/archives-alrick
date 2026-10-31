@@ -488,7 +488,8 @@ export const Atelier5d6: QuartzComponent = (props) => {
       <div class="atelier-hub-inner">
         <p><strong>Cette version fonctionne localement uniquement.</strong> Elle ne crée pas de comptes ni de salons partagés. Pour les futures tables, nous prévoyons des pseudonymes, avatars facultatifs, invitations, rôles validés par serveur et dés synchronisés.</p>
         <p>Le MJ devra pouvoir consulter les fiches autorisées, les jets et le journal de séance. Un mode IA facultatif pourra recevoir un contexte explicitement sélectionné.</p>
-        <a href="./architecture-tables-multijoueur">Lire le plan du système de tables et de sessions</a>
+        <p><strong>Un pilote local existe désormais dans le dépôt :</strong> un serveur Node distinct et une interface de table testable dans trois navigateurs (un MJ et deux joueurs). Ce pilote n'est pas un salon disponible sur GitHub Pages, et il ne touche pas aux fiches enregistrées dans cet Atelier.</p>
+        <p><a href="./table-pilote-local">Découvrir le pilote de tables locales</a> · <a href="./architecture-tables-multijoueur">Lire le plan du système de tables et de sessions</a></p>
       </div>
     </details>
     <details class="atelier-hub-section" data-hub="compagnies">
