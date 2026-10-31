@@ -63,7 +63,7 @@ type Sheet = {
   stats: Record<Stat, number>; pv: number; pvMax: number
   mana: number; manaMax: number; emprise: number
   level: number; highestLevel: number; masteries: Record<Mastery,number>
-  ascensionAuthorized:boolean; divineLimit:number; ascensionWitness:string; inventory:GameItem[]
+  ascensionAuthorized:boolean; divineLimit:number; ascensionWitness:string; divineMilestones:string[]; inventory:GameItem[]
   convertedCredits:number; talentPointsSpent:number; xp:number
   description: string; portrait: string
   vocation: string; talents: string; boons: string; curses: string; items: string
@@ -145,7 +145,7 @@ function fresh(kind: Role = "pj"): Sheet {
   return { id: uniqueId(), name: kind === "pj" ? "Mon personnage" : "Nouveau profil",
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
-    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, divineLimit:20, ascensionWitness:"", inventory:[],
+    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, divineLimit:20, ascensionWitness:"", divineMilestones:[], inventory:[],
     convertedCredits:0,talentPointsSpent:0,xp:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
@@ -179,6 +179,7 @@ function validateSheet(raw: unknown): Sheet | null {
     ascensionAuthorized:obj.ascensionAuthorized===true||level>20,
     divineLimit:clamp(obj.divineLimit,20,24,level>20?level:20),
     ascensionWitness:clean(obj.ascensionWitness,300),
+    divineMilestones:Array.isArray(obj.divineMilestones)?obj.divineMilestones.slice(0,4).map(x=>clean(x,300)):[],
     inventory:Array.isArray(obj.inventory)?obj.inventory.slice(0,150).map(validatedItem).filter((x):x is GameItem=>x!==null):[],
     description:clean(obj.description,1200),portrait,
     vocation:clean(obj.vocation,160),talents:clean(obj.talents,1600),boons:clean(obj.boons,1400),
@@ -320,6 +321,9 @@ function setupAtelier5d6() {
     q<HTMLSelectElement>("[data-roll-skill]").value=String(s.skill)
     q<HTMLInputElement>("[data-ascension]").checked=s.ascensionAuthorized
     q<HTMLSelectElement>("[data-divine-limit]").value=String(s.divineLimit)
+    q<HTMLElement>("[data-divine-history]").textContent=s.divineMilestones.length
+      ?s.divineMilestones.map((x,i)=>"Niveau "+(i+21)+" : "+(x||"non documenté")).join(" · ")
+      :"Aucune épreuve divine consignée."
     q<HTMLElement>("[data-ascension-status]").textContent=s.level>=21
       ?"Ascension exceptionnelle : niveau "+s.level+"/24 — autorisation MJ jusqu'à "+s.divineLimit+"."
       :"Niveaux 21–24 : quatre épreuves divines indépendantes, validées par le MJ."
@@ -746,6 +750,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(approved>character.divineLimit&&character.ascensionWitness.trim().length<15){
         setForm();message("Décrire d'abord une épreuve divine d'au moins 15 caractères.");return
       }
+      if(approved>character.divineLimit)character.divineMilestones[approved-21]=character.ascensionWitness
       character.divineLimit=approved
       character.ascensionAuthorized=approved>20
       setForm();persist();message("Épreuve divine approuvée jusqu'au niveau "+approved+".")
