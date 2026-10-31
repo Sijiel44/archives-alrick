@@ -18,14 +18,15 @@
       "etat_editorial": "valide",
       "source": "Création validée 2026-10-30",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [
         "cotes_et_estuaires:preference"
       ],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-002",
@@ -38,14 +39,15 @@
       "etat_editorial": "valide",
       "source": "Création validée 2026-10-30",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [
         "montagnes_et_falaises:preference"
       ],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-003",
@@ -58,14 +60,15 @@
       "etat_editorial": "valide",
       "source": "Création validée 2026-10-30",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [
         "grottes_et_reseaux_souterrains:preference"
       ],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-004",
@@ -78,7 +81,7 @@
       "etat_editorial": "en_cours",
       "source": "Compendium V03 v1.7 IMP-13; Bible V01 B38-02; validation 2026-10-31",
       "parent_taxonomique": null,
-      "liens": true,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
@@ -86,7 +89,8 @@
         "niveau_25_potentiel_non_actuel"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": true
     },
     {
       "cle_registre": "b001-005",
@@ -101,7 +105,7 @@
       "etat_editorial": "en_cours",
       "source": "Compendium V03 REV-16; CB2",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [
         "merien:apparition"
       ],
@@ -110,7 +114,8 @@
         "homonyme_Aldren_Valbrume"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": null
+      "rencontre_jouee": null,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-006",
@@ -123,7 +128,7 @@
       "etat_editorial": "valide",
       "source": "Compendium V03 REV-13; CB42",
       "parent_taxonomique": null,
-      "liens": true,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
@@ -131,7 +136,8 @@
         "distinct_lions_invoques"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": null
+      "rencontre_jouee": null,
+      "spoilers": true
     },
     {
       "cle_registre": "b001-007",
@@ -144,14 +150,15 @@
       "etat_editorial": "valide",
       "source": "Compendium V03 IMP-48; CB41-CB43",
       "parent_taxonomique": null,
-      "liens": true,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "nom_ne_prouve_pas_reproduction_espece"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": null
+      "rencontre_jouee": null,
+      "spoilers": true
     },
     {
       "cle_registre": "b001-008",
@@ -164,14 +171,15 @@
       "etat_editorial": "valide",
       "source": "CB39 P01405–02586; validation 2026-10-29",
       "parent_taxonomique": null,
-      "liens": true,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "code_du_dossier_ne_identifie_pas_deux_especes"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": null
+      "rencontre_jouee": null,
+      "spoilers": true
     },
     {
       "cle_registre": "b001-009",
@@ -184,7 +192,7 @@
       "etat_editorial": "valide",
       "source": "CB39 P01405–02586",
       "parent_taxonomique": null,
-      "liens": true,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
@@ -192,7 +200,8 @@
         "invocation_singuliere"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": null
+      "rencontre_jouee": null,
+      "spoilers": true
     },
     {
       "cle_registre": "b001-010",
@@ -205,7 +214,7 @@
       "etat_editorial": "valide",
       "source": "CB39 P01405–02586",
       "parent_taxonomique": null,
-      "liens": true,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
@@ -213,7 +222,8 @@
         "invocation_singuliere"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": null
+      "rencontre_jouee": null,
+      "spoilers": true
     },
     {
       "cle_registre": "b001-011",
@@ -226,14 +236,15 @@
       "etat_editorial": "valide",
       "source": "Prototypes villages 2026-10-30",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "habitats_seulement_envisages"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-012",
@@ -246,14 +257,15 @@
       "etat_editorial": "valide",
       "source": "Prototypes villages 2026-10-30",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "habitats_seulement_envisages"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-013",
@@ -266,14 +278,15 @@
       "etat_editorial": "valide",
       "source": "Prototypes villages 2026-10-30",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "nature_ontologique_inconnue"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-014",
@@ -286,14 +299,15 @@
       "etat_editorial": "valide",
       "source": "Prototypes villages 2026-10-30",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "construction_supposee"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-015",
@@ -306,14 +320,15 @@
       "etat_editorial": "valide",
       "source": "Prototypes villages 2026-10-30",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "faille_non_automatique"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-016",
@@ -326,14 +341,15 @@
       "etat_editorial": "valide",
       "source": "Prototypes villages 2026-10-30",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "habitats_seulement_envisages"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-017",
@@ -346,14 +362,15 @@
       "etat_editorial": "valide",
       "source": "Prototypes villages 2026-10-30",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "habitats_seulement_envisages"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-018",
@@ -366,7 +383,7 @@
       "etat_editorial": "en_chantier",
       "source": "Atlas V02 v1.8, section 815 R; brut à recouper",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
@@ -374,7 +391,8 @@
         "classification_espece_non_demontree"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-019",
@@ -387,14 +405,15 @@
       "etat_editorial": "en_chantier",
       "source": "Codex V04 v1.7; CB43 P09124–09168",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "aucune_espece_creee"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": false
+      "rencontre_jouee": false,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-020",
@@ -407,14 +426,15 @@
       "etat_editorial": "en_cours",
       "source": "Registre recherche v2.4, MAG-088; Codex V04",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
         "non_dragon_reproducteur"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": null
+      "rencontre_jouee": null,
+      "spoilers": false
     },
     {
       "cle_registre": "b001-021",
@@ -427,7 +447,7 @@
       "etat_editorial": "en_cours",
       "source": "Registre recherche v2.4, MAG-098; CB41",
       "parent_taxonomique": null,
-      "liens": false,
+      "liens": [],
       "biomes_documentes": [],
       "etat_profil_5d6": "absent",
       "conflits_incertitudes": [
@@ -435,7 +455,8 @@
         "lien_IMP-48"
       ],
       "illustrations": "non_auditees",
-      "rencontre_jouee": null
+      "rencontre_jouee": null,
+      "spoilers": false
     }
   ]
 }
