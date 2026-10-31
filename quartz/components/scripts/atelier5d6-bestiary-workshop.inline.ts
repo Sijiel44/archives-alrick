@@ -1,5 +1,5 @@
 import { ARCHETYPES, BESTIARY_STORAGE,
-  createBestiaryCard, validateBestiaryCard, exportBestiaryForAtelier, evaluateMatchup, describeFormula, toDefense } from "./atelier5d6-bestiary-workshop"
+  createBestiaryCard, validateBestiaryCard, evaluateMatchup, describeFormula, toDefense } from "./atelier5d6-bestiary-workshop"
 import type { BestiaryCard, BestiaryKind, BestiaryRole, BestiaryStatus } from "./atelier5d6-bestiary-workshop"
 import { effectiveStat, effectiveMastery } from "./atelier5d6-progression"
 import { resistanceScoreM03, effectiveProtectionM03 } from "./atelier5d6-combat-m03"
@@ -281,7 +281,20 @@ function startBestiary(){
     }else if(action==="export-atelier"){
       const c=current()
       // L'import est volontaire : aucun stockage PJ, campagne ou legacy n'est écrasé.
-      download("alrick-creature-pour-atelier.json",exportBestiaryForAtelier(c))
+      // Adapter explicitement le contrat pour les fiches importables par l'Atelier.
+      // Quartz inline doit conserver le transfert dans cette ressource client.
+      const source=validateBestiaryCard(c)
+      const transfer={schema:"alrick.sheets.v3",sheets:[{
+        schema:"alrick.sheet.v3",ruleset:"m03-bestiary",kind:source.kind,
+        name:source.name,profession:source.profession||source.archetype,
+        description:source.description,level:source.level,highestLevel:source.level,
+        stats:source.stats,masteries:source.masteries,
+        pv:source.pvMax,pvMax:source.pvMax,mana:source.manaMax,manaMax:source.manaMax,
+        resistanceBonus:source.resistanceBonus,protection:source.protection,
+        equipmentGrades:source.equipmentGrades,notes:source.notes,
+        bestiarySource:source
+      }]}
+      download("alrick-creature-pour-atelier.json",transfer)
       msg("Export M03 de jeu créé : import volontaire dans l'Atelier principal, sans budget de PJ ni changement du bestiaire canonique.")
     }else if(action==="add-ability"){
       const name=one<HTMLInputElement>("[data-ability-name]").value.trim()
