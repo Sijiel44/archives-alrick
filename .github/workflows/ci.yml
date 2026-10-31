@@ -22,4 +22,5 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - run: npm run test:m04:browser
       # Aucun artefact Pages ni déploiement sur les branches et PR.
