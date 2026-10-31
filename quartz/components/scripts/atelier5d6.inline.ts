@@ -1115,7 +1115,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
   function exportSheets(){
-    const blob=new Blob([JSON.stringify({schema:"alrick.sheets.v2",created:new Date().toISOString(),sheets:state.sheets},null,2)],{type:"application/json"})
+    const blob=new Blob([JSON.stringify({schema:"alrick.sheets.v3",created:new Date().toISOString(),sheets:state.sheets},null,2)],{type:"application/json"})
     const url=URL.createObjectURL(blob),a=document.createElement("a")
     a.href=url;a.download="archives-alrick-fiches-5d6.json";document.body.append(a);a.click();a.remove()
     setTimeout(()=>URL.revokeObjectURL(url),1500)
@@ -1123,7 +1123,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   }
 
   function exportCampaign(){
-    const content={schema:"alrick.campaign.v1",created:new Date().toISOString(),state}
+    const content={schema:"alrick.campaign.v2",created:new Date().toISOString(),state}
     const blob=new Blob([JSON.stringify(content,null,2)],{type:"application/json"})
     const url=URL.createObjectURL(blob),link=document.createElement("a")
     link.href=url;link.download="archives-alrick-campagne-5d6-complete.json";document.body.append(link);link.click();link.remove()
@@ -1133,7 +1133,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   function importCampaign(raw:unknown){
     if(!raw||typeof raw!=="object")throw Error("Format absent")
     const container=raw as Record<string,unknown>
-    if(container.schema!=="alrick.campaign.v1"||!container.state||typeof container.state!=="object")throw Error("Schéma de campagne inconnu")
+    if(!["alrick.campaign.v1","alrick.campaign.v2"].includes(String(container.schema))||!container.state||typeof container.state!=="object")throw Error("Schéma de campagne inconnu")
     const payload=container.state as Record<string,unknown>
     if(!Array.isArray(payload.sheets)||!payload.sheets.length||payload.sheets.length>60)throw Error("Fiches manquantes")
     const sheets=payload.sheets.map(validateSheet)
@@ -1195,8 +1195,10 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
        el?.hasAttribute("data-roll-target")){
       clearPendingImpact();clearPendingCounter();renderOpposition()
     }
+    if(current().ruleset==="legacy"&&el?.hasAttribute("data-ascension"))return
     if(el instanceof HTMLInputElement && el.hasAttribute("data-talent-spent")){
       const sheet=current()
+      if(sheet.ruleset==="m02")return
       sheet.talentPointsSpent=clamp(el.value,0,Math.floor(sheet.convertedCredits/6),sheet.talentPointsSpent)
       el.value=String(sheet.talentPointsSpent);refreshPoints();renderAI();persist()
     }
@@ -1299,6 +1301,74 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
+    const legacy=current().ruleset==="legacy"
+    if(legacy&&!button.matches("[data-hub-nav],[data-mode],[data-origin-build],[data-origin-clear],[data-export],[data-export-campaign],[data-new],[data-ai-copy],[data-ai-refresh],[data-migrate-legacy]")){
+      message("Fiche historique protégée en lecture seule. Utilisez la conversion volontaire pour développer une copie M02.")
+      return
+    }
+    if(button.hasAttribute("data-migrate-legacy")){
+      const source=current()
+      if(source.ruleset!=="legacy"||state.sheets.length>=60)return
+      if(!window.confirm("Créer une COPIE M02 avec les caractéristiques, maîtrises et XP remis à leur point de départ (niveau 1) ? L'original historique sera conservé intact dans le répertoire et dans la copie. Aucune conversion automatique."))return
+      const raw=migrateLegacy(source.legacyOriginal??source as unknown as Record<string,unknown>,true)
+      const converted=validateSheet({...raw,name:source.name+" — adaptation M02"})
+      if(!converted){message("Conversion refusée : ancienne fiche illisible.");return}
+      state.sheets.push(converted);state.activeId=converted.id
+      render();persist();message("Nouvelle copie M02 créée. Ancienne fiche conservée sans modification.")
+      return
+    }
+    if(button.hasAttribute("data-m02-buy")){
+      const sheet=current();if(sheet.ruleset!=="m02")return
+      const kind=q<HTMLSelectElement>("[data-m02-ability-kind]").value as AbilityDefinition["kind"]
+      const domain=clean(q<HTMLInputElement>("[data-m02-ability-domain]").value.trim(),80)
+      const name=clean(q<HTMLInputElement>("[data-m02-ability-name]").value.trim(),100)
+      const status=q<HTMLSelectElement>("[data-m02-ability-status]").value as AbilityDefinition["status"]
+      const approved=state.mode!=="pj"&&q<HTMLInputElement>("[data-m02-ability-approved]").checked
+      const prereq=q<HTMLSelectElement>("[data-m02-ability-prereq]").value
+      const candidate:AbilityDefinition={id:uniqueId(),name,domain,kind,
+        description:clean(q<HTMLTextAreaElement>("[data-m02-ability-description]").value,700),
+        status,levelRequired:kind==="signature"?17:kind==="technique"?5:3,
+        masteryDomain:prereq||undefined,
+        masteryRequired:prereq?clamp(q<HTMLInputElement>("[data-m02-ability-prereq-rank]").value,0,Number.MAX_SAFE_INTEGER,0):undefined,
+        effect:status==="defined"?clean(q<HTMLTextAreaElement>("[data-m02-ability-effect]").value,700):undefined,
+        limitations:status==="defined"?clean(q<HTMLTextAreaElement>("[data-m02-ability-limits]").value,700):undefined,
+        provenance:clean(q<HTMLTextAreaElement>("[data-m02-ability-provenance]").value,700),
+        approvedByGM:approved,rank:1}
+      try{Object.assign(sheet,transact(asM02(sheet),{type:"ability-add",ability:candidate}))
+        refreshPoints();persist();message("Capacité enregistrée : "+name+". Aucun pouvoir non défini n'a été accordé.")
+      }catch(error){message("Achat refusé : "+(error instanceof Error?error.message:"Invalide"))}
+      return
+    }
+    if(button.dataset.m02Remove){
+      const sheet=current()
+      if(sheet.ruleset!=="m02")return
+      try{Object.assign(sheet,transact(asM02(sheet),{type:"ability-remove",id:button.dataset.m02Remove}))
+        refreshPoints();persist();message("Capacité remboursée, budget recalculé.")
+      }catch(error){message("Remboursement refusé : "+(error instanceof Error?error.message:"Invalide"))}
+      return
+    }
+    if(button.hasAttribute("data-m02-award")){
+      const sheet=current();if(sheet.ruleset!=="m02")return
+      const event:ExperienceEvent={
+        id:clean(q<HTMLInputElement>("[data-m02-event-id]").value.trim(),80),
+        pattern:clean(q<HTMLInputElement>("[data-m02-event-pattern]").value.trim(),80),
+        domain:q<HTMLSelectElement>("[data-m02-event-domain]").value as ExperienceDomain,
+        difficulty:clamp(q<HTMLInputElement>("[data-m02-event-difficulty]").value,1,12,1),
+        scope:q<HTMLSelectElement>("[data-m02-event-scope]").value as ExperienceEvent["scope"],
+        approved:state.mode!=="pj"&&q<HTMLInputElement>("[data-m02-event-approved]").checked}
+      try{const next=grantAward(asM02(sheet),event),amount=next.xp-sheet.xp
+        Object.assign(sheet,next);refreshPoints();persist();message("Accomplissement consigné : +"+amount+" XP.")
+      }catch(error){message("XP refusés : "+(error instanceof Error?error.message:"Invalide"))}
+      return
+    }
+    if(button.hasAttribute("data-m02-approve-milestone")){
+      const sheet=current();if(sheet.ruleset!=="m02")return
+      try{Object.assign(sheet,approveMilestone(asM02(sheet),
+        clamp(q<HTMLInputElement>("[data-m02-milestone]").value,21,25,21),state.mode!=="pj"))
+        refreshPoints();persist();message("Palier M01 validé par le MJ, sans divinisation automatique.")
+      }catch(error){message("Palier refusé : "+(error instanceof Error?error.message:"Invalide"))}
+      return
+    }
     if(button.dataset.hubNav){
       const id=button.dataset.hubNav
       const selected=host.querySelector<HTMLDetailsElement>(`[data-hub="${id}"]`)
@@ -1539,6 +1609,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     }
     if(button.hasAttribute("data-convert-credits")){
       const sheet=current()
+      if(sheet.ruleset==="m02"){message("M02 : le budget est déjà partagé et ne se convertit pas.");return}
       const used=STATS.reduce((sum,k)=>sum+sheet.stats[k],0)
       const available=maxStatCredits(sheet.highestLevel)-used-sheet.convertedCredits
       if(available<6){message("Il faut au moins six crédits de caractéristiques en réserve.");return}
