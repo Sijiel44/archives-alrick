@@ -21,7 +21,7 @@ export type CombatM03Input={
 }
 export type CombatM03Result={
   natural:number;statBonus:number;masteryBonus:number;total:number
-  threshold:number;defense:number;numericSuccess:boolean;feasible:boolean
+  threshold:number;defense:number;gap:number;numericSuccess:boolean;feasible:boolean
   success:boolean;criticalFailure:boolean;criticalPotential:boolean
   glancing:boolean;contact:boolean;grossDamage:number;protection:number
   penetrated:number;absorbed:number;damage:number;effectProposed:boolean
@@ -125,7 +125,7 @@ export function resolveCombatM03(a:CombatM03Input):CombatM03Result{
   const absorbed=Math.min(grossDamage,Math.max(0,protection-penetrated))
   const damage=success?grossDamage-absorbed:0
   const gap=threshold-total
-  return {natural,statBonus,masteryBonus,total,threshold,defense,
+  return {natural,statBonus,masteryBonus,total,threshold,defense,gap:Math.max(0,gap),
     numericSuccess,feasible,success,criticalFailure,criticalPotential,glancing,contact,
     grossDamage,protection,penetrated,absorbed,damage,effectProposed:success&&a.mode==="mental",
     reaction:contact||criticalFailure?"aucune":gap>=5?"riposte_possible":"defense"}
