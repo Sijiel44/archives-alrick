@@ -6,6 +6,11 @@ import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,buildOrigin,
   affinityRankLimit,affinityImpactBonus,divinePowerMinimumLevel,
   buildEducationProfile,EDUCATION_PATHS,LITERACY_LEVELS} from "./atelier5d6-origins"
 import type {Affinity,AffinityId,Power,PowerGrade,OriginMastery,EducationId,LiteracyLevel} from "./atelier5d6-origins"
+import {newDevelopment,evaluateSheet,transact,grantAward,approveMilestone,eligibleLevel,draftFromLifePath,
+  migrateLegacy,nextStatPrice,nextMasteryPrice,effectiveBonus} from "./atelier5d6-m02"
+import type {Development,AbilityDefinition,M02Sheet} from "./atelier5d6-m02"
+import {effectiveStat,effectiveMastery,experienceRequired} from "./atelier5d6-progression"
+import type {ExperienceEvent,ExperienceDomain,StatName} from "./atelier5d6-progression"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
 type Mastery = OriginMastery
@@ -109,6 +114,7 @@ type Sheet = {
   education:EducationId|""; literacy:LiteracyLevel|""; backstory:string;connections:string;goal:string
   affinities:Affinity[]; powers:Power[]
   externalMedia:SheetArtwork[];powerHistory:PowerUse[]
+  ruleset:"legacy"|"m02";development:Development;legacyOriginal:Record<string,unknown>|null
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
@@ -172,7 +178,10 @@ const INCIDENTS: Record<Exclude<Domain,"autre">,string[]> = {
     "La négociation échoue, mais une nouvelle alliance se dessine pour plus tard."
   ]
 }
-const STORAGE = "archives-alrick-atelier-5d6-v1"
+const STORAGE = "archives-alrick-atelier-5d6-v2"
+const LEGACY_STORAGE = "archives-alrick-atelier-5d6-v1"
+const asM02=(s:Sheet):M02Sheet=>({level:s.highestLevel,stats:s.stats,masteries:s.masteries,
+  xp:s.xp,development:s.development})
 const STATS: Stat[] = ["physique", "agilite", "esprit", "presence"]
 const clamp = (n: unknown, min: number, max: number, def: number) => {
   const value = typeof n === "number" || typeof n === "string" ? Number(n) : NaN
@@ -190,7 +199,7 @@ function fresh(kind: Role = "pj"): Sheet {
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"",
     lifeSteps:[],lifeSummary:"",education:"",literacy:"",backstory:"",connections:"",goal:"",
-    affinities:[],powers:[],externalMedia:[],powerHistory:[] }
+    affinities:[],powers:[],externalMedia:[],powerHistory:[],ruleset:"m02",development:newDevelopment(),legacyOriginal:null }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -213,9 +222,14 @@ function validateSheet(raw: unknown): Sheet | null {
     equipmentGrades[key]=clamp(oldEquipment[key],0,5,0)
   }
   const level=clamp(obj.level,1,25,1)
+  const modern=obj.ruleset==="m02"
   const masteries=blankMasteries()
   const storedMasteries=obj.masteries && typeof obj.masteries==="object" ? obj.masteries as Record<string,unknown> : {}
-  for(const k of MASTERIES) masteries[k]=clamp(storedMasteries[k],0,12,0)
+  for(const k of MASTERIES)masteries[k]=clamp(storedMasteries[k],0,modern?Number.MAX_SAFE_INTEGER:12,0)
+  if(modern)for(const [key,value] of Object.entries(storedMasteries)){
+    if(key.trim()&&!MASTERIES.includes(key as Mastery)&&(masteries as Record<string,number>)[key]===undefined)
+      (masteries as Record<string,number>)[key]=clamp(value,0,Number.MAX_SAFE_INTEGER,0)
+  }
   const allowedDomains=new Set<string>(AFFINITY_DOMAINS.map(x=>x[0]))
   const affinityRows=Array.isArray(obj.affinities)?obj.affinities.slice(0,16):[]
   const affinities:Affinity[]=[]
@@ -243,8 +257,10 @@ function validateSheet(raw: unknown): Sheet | null {
   const portrait=typeof obj.portrait==="string" && /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(obj.portrait) && obj.portrait.length<180000 ? obj.portrait : ""
   return {id:uniqueId(),name:clean(obj.name,90),kind, profession:clean(obj.profession,90),
     skill:clamp(obj.skill,0,2,0),
-    stats:{physique:clamp(values.physique,1,12,3),agilite:clamp(values.agilite,1,12,3),
-      esprit:clamp(values.esprit,1,12,3),presence:clamp(values.presence,1,12,3)},
+    stats:{physique:clamp(values.physique,1,modern?Number.MAX_SAFE_INTEGER:12,3),
+      agilite:clamp(values.agilite,1,modern?Number.MAX_SAFE_INTEGER:12,3),
+      esprit:clamp(values.esprit,1,modern?Number.MAX_SAFE_INTEGER:12,3),
+      presence:clamp(values.presence,1,modern?Number.MAX_SAFE_INTEGER:12,3)},
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
     mana:clamp(obj.mana,0,manaMax,0),manaMax,resistanceBonus,protection,equipmentGrades,
     emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,25,level),
@@ -273,7 +289,13 @@ function validateSheet(raw: unknown): Sheet | null {
       .filter((v:unknown):v is Record<string,unknown>=>!!v&&typeof v==="object")
       .map(p=>({id:uniqueId(),name:clean(p.name,90),domain:AFFINITY_DOMAINS.some(x=>x[0]===p.domain)?p.domain as AffinityId:"magie",
         manaCost:clamp(p.manaCost,0,999,0),target:clean(p.target,150),at:clean(p.at,40)}))
-      .filter(v=>v.name.length>0):[]}
+      .filter(v=>v.name.length>0):[],
+    ruleset:modern?"m02":"legacy",
+    // Pour les fiches héritées, conserver les champs bruts même inconnus : conversion réversible.
+    legacyOriginal:obj.legacyOriginal&&typeof obj.legacyOriginal==="object"
+      ?obj.legacyOriginal as Record<string,unknown>:modern?null:JSON.parse(JSON.stringify(obj)) as Record<string,unknown>,
+    development:modern&&obj.development&&typeof obj.development==="object"
+      ?(JSON.parse(JSON.stringify(obj.development)) as Development):newDevelopment()}
 }
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
@@ -332,7 +354,7 @@ function setupAtelier5d6() {
   let state: State = {sheets:[fresh()],activeId:"",mode:"pj",log:[],
     groups:[],activeGroupId:"",templates:[],missionLog:[]}
   try {
-    const data = localStorage.getItem(STORAGE)
+    const data = localStorage.getItem(STORAGE) ?? localStorage.getItem(LEGACY_STORAGE)
     if (data) {
       const parsed = JSON.parse(data) as Partial<State>
       if (Array.isArray(parsed.sheets)) {
@@ -367,6 +389,33 @@ function setupAtelier5d6() {
   }
   function refreshPoints() {
     const s=current()
+    const note=q<HTMLElement>("[data-ruleset-notice]")
+    if(s.ruleset==="m02"){
+      const result=evaluateSheet(asM02(s))
+      note.textContent="M02 — budget partagé de M01. "+(result.valid?"Répartition valide.":result.issues.join(" ; "))
+      q<HTMLButtonElement>("[data-migrate-legacy]").hidden=true
+      q<HTMLElement>("[data-m02-controls]").hidden=false
+      q<HTMLElement>("[data-points]").textContent="Coût "+result.spent+" / "+result.budget+
+        " · "+result.remaining+" points restants · caractéristiques sans plafond"
+      q<HTMLElement>("[data-mastery-points]").textContent="Maîtrises sur le même budget de "+result.budget+
+        " · bonus logarithmique"
+      q<HTMLElement>("[data-talent-points]").textContent="Aptitudes 3 · Techniques 6 · Signatures 9 (MJ)."
+      q<HTMLInputElement>("[data-talent-spent]").disabled=true
+      q<HTMLButtonElement>("[data-convert-credits]").disabled=true
+      for(const k of STATS)q<HTMLElement>(`[data-stat-bonus="${k}"]`).textContent=
+        "Brut "+s.stats[k]+" → bonus +"+effectiveStat(s.stats[k])+" · prochain +"+nextStatPrice(asM02(s),k)+" pt"
+      q<HTMLElement>("[data-xp-info]").textContent="XP "+s.xp+
+        " · palier suivant "+Math.min(25,s.level+1)+" : "+experienceRequired(Math.min(25,s.level+1))+
+        " · niveaux 21–25 : validation MJ distincte"
+      refreshM02()
+      return
+    }
+    note.textContent="Fiche héritée : lecture seule, ancien système 12/36+8. Exportez puis choisissez volontairement de créer une adaptation M02."
+    q<HTMLButtonElement>("[data-migrate-legacy]").hidden=false
+    q<HTMLElement>("[data-m02-controls]").hidden=true
+    q<HTMLInputElement>("[data-talent-spent]").disabled=true
+    q<HTMLButtonElement>("[data-convert-credits]").disabled=true
+    for(const k of STATS)q<HTMLElement>(`[data-stat-bonus="${k}"]`).textContent="Ancienne valeur "+s.stats[k]
     const used=STATS.reduce((acc,k)=>acc+s.stats[k],0)
     const el=q<HTMLElement>("[data-points]")
     const limit=maxStatCredits(s.highestLevel)-s.convertedCredits
@@ -386,6 +435,29 @@ function setupAtelier5d6() {
       " XP cumulés. Les niveaux élevés exigent des épreuves spécifiques."
 
     q<HTMLSelectElement>("[data-active]").selectedOptions[0]?.setAttribute("data-active-points",String(used))
+  }
+  function refreshM02(){
+    const s=current()
+    if(s.ruleset!=="m02")return
+    const area=q<HTMLElement>("[data-m02-ability-list]")
+    area.replaceChildren()
+    for(const a of s.development.abilities){
+      const line=document.createElement("p"),del=document.createElement("button")
+      line.textContent=a.kind+" · "+a.name+" · "+a.domain+" · "+(a.status==="slot"?"emplacement narratif sans effet":"effet : "+a.effect)+
+        (a.approvedByGM?" · approuvé MJ":"")
+      del.textContent="Rembourser";del.type="button";del.dataset.m02Remove=a.id
+      line.append(" ",del);area.append(line)
+    }
+    if(!s.development.abilities.length)area.textContent="Aucune capacité achetée. Un emplacement narratif n'accorde aucun effet."
+    q<HTMLElement>("[data-m02-xp-history]").textContent=s.development.awards.map(x=>
+      x.event.id+" : +"+x.xp+" XP ("+x.event.domain+")").join(" · ")||"Aucun événement enregistré."
+    q<HTMLElement>("[data-m02-milestones]").textContent="Jalons validés : "+
+      (s.development.approvedMilestones.join(", ")||"aucun")
+    const select=q<HTMLSelectElement>("[data-roll-mastery]")
+    const previous=select.value;select.replaceChildren(new Option("Sans maîtrise",""))
+    for(const [key,value] of Object.entries(s.masteries))select.add(new Option(key+" "+value+
+      " → +"+effectiveMastery(value),key))
+    select.value=previous
   }
   function refreshRoster() {
     const sel=q<HTMLSelectElement>("[data-active]")
@@ -425,6 +497,9 @@ function setupAtelier5d6() {
       ?"Ascension exceptionnelle : niveau "+s.level+"/25 — autorisation MJ jusqu'à "+s.divineLimit+"."
        :"Niveaux 21–25 : cinq épreuves divines indépendantes, validées par le MJ."
     refreshPoints()
+    host.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+      "[data-field],[data-stat],[data-mastery],[data-defence],[data-defense-gear],[data-defense-protection],[data-defense-resistance]"
+    ).forEach(el=>{el.disabled=s.ruleset==="legacy"})
     const source=q<HTMLElement>("[data-source-meta]")
     source.textContent=s.sourceRef
       ? `Source : ${s.sourceTitle || s.sourceRef} (${s.sourceRef}). Les statistiques 5d6 sont une adaptation libre non canonique.`
