@@ -63,6 +63,8 @@ async function installDownloadRecorder(){
       if(this.download&&window.__alrickLastBlob){
         const item={name:this.download,promise:window.__alrickLastBlob.text()}
         window.__alrickExports.push(item)
+        // Empêche la navigation vers blob: lorsque CDP ne donne pas d'activation utilisateur.
+        return
       }
       return original.call(this)
     }
