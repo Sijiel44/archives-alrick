@@ -22,7 +22,7 @@ Le [[jouer/atelier-5d6|module interactif 5d6]] permet de **créer une compagnie 
 
 | Progression | Échelle | Utilité |
 |---|---|---|
-| **Personnage** | **1 à 24** | Faire progresser caractéristiques, maîtrises et ressources dans l'[[jouer/atelier-5d6|Atelier 5d6]] (prototype) |
+| **Personnage** | **1 à 25** | Faire progresser caractéristiques, maîtrises et ressources dans l'[[jouer/atelier-5d6|Atelier 5d6]] (prototype) |
 | **Groupe** | **1 à 12** | Choisir des missions adaptées à l'expérience de l'équipe |
 | **Certifications** | Socle + qualifications | Premiers secours, extraction, orientation, reconnaissance, repli ; spécialisations selon les risques |
 

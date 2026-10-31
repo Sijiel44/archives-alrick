@@ -86,6 +86,16 @@ Pour une attaque, une esquive, une négociation ou un secours : **même jet**, a
 - Les adversaires appliquent eux aussi des conséquences claires et peuvent fuir ou se rendre.
 - En cas de conflit avec des ressources déjà canoniques, les règles de la **Bible**, du **Codex V04** et des scènes jouées gardent priorité.
 
+## Évolution vers 25 niveaux : endurance innée et contact héroïque
+
+Les PV maximum continuent de progresser avec les niveaux : pour une base de **12 PV au niveau 1**, la référence de test est **36 PV au niveau 5**, **174 au niveau 20**, **270 au niveau 24**, puis **306 PV au niveau 25**. Les valeurs anciennes déjà personnalisées ne sont pas recalculées rétroactivement.
+
+Un être de haut niveau est **naturellement plus résistant**, même nu : sa résistance de pénétration et son absorption des dégâts augmentent avec son expérience. Les **grades d'équipement de 0 à 5** ajoutent des défenses propres aux protections physiques, magiques ou mentales. Une robe runique n'agit pas mécaniquement comme une armure de plates et aucune protection ne crée de Cercle magique.
+
+**Toucher n'est pas blesser.** Un personnage de niveau 1 peut théoriquement **effleurer une créature de niveau 25** sur un jet naturel héroïque (27–30), à condition que l'action soit physiquement et narrativement possible et que la difficulté de contact ordinaire soit atteinte. Si la résistance de pénétration n'est pas franchie, on obtient un **contact superficiel**, pas une réussite de l'attaque : **0 PV et aucun état par défaut**. Sur 30 naturel, lorsque la puissance brute dépasse toute l'absorption, le contact peut exceptionnellement infliger **1 PV maximum**. Un simple contact ne permet pas d'imposer un sort, de contourner l'immunité d'un dragon ou de vaincre une volonté divine. Sans contact, le défenseur peut éventuellement préparer une riposte sur **nouveau jet**.
+
+La première version du [[jouer/bestiaire-evolutif-25|Bestiaire évolutif 1–25]] est une bibliothèque de **profils MJ non canoniques** : faune, prédateur, gardien, mystique, colosse. Les espèces, pouvoirs, biotopes, personnalités et capacités cosmiques seront ensuite reliés aux Archives après revue éditoriale.
+
 ## Opposition, résistance et puissance des dégâts — module facultatif de playtest
 
 La défense d'un PNJ ou d'une créature ne doit pas être réduite à ses PV. Le joueur commence par vérifier **s'il peut affecter la cible**, puis la puissance de son effet.
@@ -120,7 +130,7 @@ Le module ne modifie pas les jets 5d6 classiques, ni leurs critiques naturels. I
 
 ## Progression, voies libres et événements aléatoires
 
-**Extension de playtest (24 niveaux) :** la répartition initiale des **12 points entre quatre caractéristiques ne change pas**. Dans l'Atelier, chaque nouveau niveau accorde provisoirement **6 points de caractéristiques** et **2 points de maîtrise spécialisée**, avec plafond individuel à 12. La montée de niveau augmente le maximum de PV de **6** (niveaux 2–12), **12** (13–20) puis **24** (21–24) ; le mana maximal suit uniquement si le personnage possède déjà une réserve magique. Chaque caractéristique reste plafonnée à 12, et **6 crédits excédentaires** peuvent être convertis en **1 point de talent à valider**. Les niveaux 21–24 sont soumis à une autorisation narrative exceptionnelle du MJ. Les maîtrises spécialisées sont enregistrées mais ne modifient pas encore automatiquement le bonus +0/+1/+2 des jets. Les fiches déjà sauvegardées restent lisibles. Le [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier]] distingue les **12 indices collectifs** de ces 24 niveaux individuels.
+**Extension de playtest (25 niveaux) :** la répartition initiale des **12 points entre quatre caractéristiques ne change pas**. Dans l'Atelier, chaque nouveau niveau accorde provisoirement **6 points de caractéristiques** et **2 points de maîtrise spécialisée**, avec plafond individuel à 12. La montée de niveau augmente le maximum de PV de **6** (niveaux 2–12), **12** (13–20) puis **24** (21–24) ; le mana maximal suit uniquement si le personnage possède déjà une réserve magique. Chaque caractéristique reste plafonnée à 12, et **6 crédits excédentaires** peuvent être convertis en **1 point de talent à valider**. Les niveaux 21–25 sont soumis à une autorisation narrative exceptionnelle du MJ. Les maîtrises spécialisées sont enregistrées mais ne modifient pas encore automatiquement le bonus +0/+1/+2 des jets. Les fiches déjà sauvegardées restent lisibles. Le [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier]] distingue les **12 indices collectifs** de ces 24 niveaux individuels.
 
 Le modèle narratif original de **12 niveaux** ci-dessous reste visible comme trace d'une phase précédente de conception ; il n'est pas une seconde limite technique de l'Atelier.
 

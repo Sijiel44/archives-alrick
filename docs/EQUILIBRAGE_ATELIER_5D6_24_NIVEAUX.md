@@ -1,4 +1,6 @@
-# Playtest : les 24 niveaux de l'Atelier 5d6
+# Playtest : les 25 niveaux de l'Atelier 5d6
+
+> **Note :** le nom du fichier conserve « 24 » pour préserver les liens existants ; le contenu décrit maintenant **25 niveaux**, cinq épreuves divines, des PV croissants et une protection naturelle distincte de l'équipement.
 
 **Statut : prototype non canonique, en révision.** Les chiffres ci-dessous décrivent la mécanique d'une campagne autonome. Ils ne rehaussent rétroactivement ni Orin ni aucun autre personnage de l'Odyssée.
 
@@ -13,7 +15,7 @@ Un **aventurier niveau 1** est déjà formé et nettement plus capable qu'un hab
 | 9–12 | Figure régionale exceptionnelle | Plusieurs missions complexes et nouveau mentorat |
 | 13–16 | Personnage de légende | Arcs durables, coût ou responsabilité réel |
 | 17–20 | Très rare, mythique | Épreuves majeures et reconnaissance dans le monde |
-| 21–24 | **Élite divine ou proche du divin** | **Validation MJ**, contexte cosmologique pertinent, épreuves uniques, pouvoirs explicitement approuvés |
+| 21–25 | **Élite divine ou proche du divin** | **Validation MJ**, contexte cosmologique pertinent, épreuves uniques, pouvoirs explicitement approuvés |
 
 Ces échelles ne sont **ni des grades de la guilde ni des statuts de divinité légaux ou canoniques**. En particulier, un chiffre de niveau ne confère aucun Cercle magique, aucune souveraineté, aucune autorité divine.
 
@@ -35,7 +37,7 @@ Création : **12 points** entre Physique, Agilité, Esprit et Présence (chaque 
 | 20 | 126 | 38 | 174 |
 | 24 | 150 | 46 | 270 |
 
-Les PV et le mana montent selon **+6 par niveau jusqu'au niveau 12**, **+12 des niveaux 13 à 20**, **+24 des niveaux 21 à 24**. Le maximum de mana n'augmente que pour une fiche dotée d'une réserve magique existante. Le MJ peut modifier les valeurs absolues selon les espèces, blessures ou dons, sans créer rétroactivement des capacités canoniques.
+Les PV et le mana montent selon **+6 par niveau jusqu'au niveau 12**, **+12 des niveaux 13 à 20**, **+24 des niveaux 21 à 24**, puis **+36 au niveau 25**. Le maximum de mana n'augmente que pour une fiche dotée d'une réserve magique existante. Le MJ peut modifier les valeurs absolues selon les espèces, blessures ou dons, sans créer rétroactivement des capacités canoniques.
 
 **Migration :** la sauvegarde conserve le `highestLevel`, les réserves de PV/mana, portraits, dons, notes et les champs historiques. Lors d'une mise à jour de l'outil, les anciens niveaux n'attribuent pas automatiquement un « rappel » de PV ou mana : seul un **nouveau niveau** applique la nouvelle progression.
 
@@ -73,11 +75,30 @@ Les 5 dés ont **7 776 combinaisons**. Le jet naturel 5 reste un échec exceptio
 
 ## Défense et dégâts : deuxième banc de test
 
-Le module `quartz/components/scripts/atelier5d6-opposition.ts` calcule des scores de résistance distincts : physique (meilleure des caractéristiques Physique et Agilité), magique (Esprit), mentale (meilleure d'Esprit et Présence), auxquels s'ajoutent entraînement défensif partiel, expérience et bonus MJ de 0–8. Les personnages des niveaux 21–24 obtiennent un supplément de défense de playtest ; la résistance finale est plafonnée à 45.
+Le module `quartz/components/scripts/atelier5d6-opposition.ts` calcule des scores de résistance distincts : physique (meilleure des caractéristiques Physique et Agilité), magique (Esprit), mentale (meilleure d'Esprit et Présence), auxquels s'ajoutent entraînement défensif partiel, expérience et bonus MJ de 0–8. Les personnages des niveaux 21–24 obtiennent un supplément de défense de playtest ; la résistance finale est plafonnée à 50.
 
 Le jet doit atteindre le **maximum** de la difficulté ordinaire, de la résistance de cible et du seuil MJ. Aucun critique ne traverse une défense non franchie. Sur réussite offensive : `base d'impact + maîtrise (0–12) + palier de dégâts − protection`. Sur négociation/mental : **aucun PV automatique**. À au moins cinq points sous le seuil, une riposte est **possible mais jamais gratuite**, et requiert une action et son propre jet. Les dégâts sont appliqués aux PV uniquement sur confirmation MJ.
 
 Le banc `scripts/test-5d6-opposition.mjs` utilise les fonctions TypeScript réellement exécutées par l'Atelier, via esbuild ; il couvre également les 7 776 combinaisons des dés. Les chiffres sont des prototypes et n'attribuent ni immunité, ni pouvoir divin, ni Cercle magique.
+
+## Robustesse innée, équipement et élites du bestiaire
+
+La robustesse d'un personnage **ne dépend pas du port d'une armure**. La fonction `innateProtection(niveau, type)` augmente l'absorption physique de **0** au niveau 1 à **14** au niveau 20, puis **20, 27, 35, 44 et 55** pour les niveaux 21–25. L'absorption magique innée vaut environ 70 % de cette valeur ; les résistances mentales augmentent par le score défensif mais **aucun PV mental n'est retiré automatiquement**.
+
+L'équipement ajoute son **grade de 0 à 5**, soit **0 / 2 / 5 / 10 / 18 / 30** points d'absorption physique (magie environ 70 %), et un bonus graduel au seuil de résistance. Les protections supplémentaires déjà définies par le MJ restent indépendantes et ne sont pas effacées. L'absorption finale est : **innée + équipement + ajustement MJ**.
+
+Un **contact héroïque (27–30 naturel)** peut effleurer une résistance supérieure, à condition d'atteindre la difficulté ordinaire du geste et que ce contact soit matériellement possible. Il n'inflige alors **aucun état ni effet automatique**, et **0 PV par défaut**. Sur **30 naturel seulement**, si l'impact brut aurait excédé la totalité des protections, le MJ peut faire appliquer **1 PV maximum**. Aucun résultat de dés ne transgresse une immunité explicite du canon.
+
+Les profils génériques `faune`, `prédateur`, `gardien`, `mystique`, `colosse` constituent le début d'un **bestiaire 1–25**. Le générateur n'invente ni nouvelle espèce, ni fait de campagne, ni grade divin canonique. Les anciennes fiches de PJ/PNJ restent importables avec leurs anciens PV et champs ; la progression n'accorde pas rétroactivement de ressources pour les niveaux déjà acquis.
+
+| Niveau | PV de référence | Absorption physique innée |
+|---:|---:|---:|
+| 1 | 12 | 0 |
+| 5 | 36 | 2 |
+| 12 | 78 | 5 |
+| 20 | 174 | 14 |
+| 24 | 270 | 44 |
+| **25** | **306** | **55** |
 
 ## Plan de tests de table avant équilibrage final
 
@@ -85,7 +106,7 @@ Le banc `scripts/test-5d6-opposition.mjs` utilise les fonctions TypeScript réel
 2. **Niveaux 5–8** : vérifier le rythme des caractéristiques plafonnées, la conversion en talents et la rapidité d'apprentissage.
 3. **Niveaux 9–12** : tester les spécialisations croisées, l'accès aux ressources et les choix hors combat.
 4. **Niveaux 13–20** : tester dépenses de mana, combats successifs, blessures, conflits non violents, disproportion des ressources et limites des talents.
-5. **Niveaux 21–24** : exiger une justification divine explicite, des conséquences du monde et la possibilité du refus MJ. Comparer uniquement à des adversaires ou missions de la même échelle.
+5. **Niveaux 21–25** : exiger une justification divine explicite, des conséquences du monde et la possibilité du refus MJ. Comparer uniquement à des adversaires ou missions de la même échelle.
 6. **Continuité** : charger les anciens exports `alrick.sheets.v1/v2`, utiliser export complet `alrick.campaign.v1`, vérifier création/attribution/transfert et sauvegarde locale, puis test navigateur et mobile.
 
 **Point ouvert :** le rendement des points de talents et des maîtrises doit être validé lors d'une vraie partie. L'énumération statistique ne prouve pas, à elle seule, qu'un système de jeu est amusant, juste ou équilibré.

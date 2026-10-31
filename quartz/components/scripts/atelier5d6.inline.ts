@@ -1,4 +1,6 @@
-import {resistanceScore,resolveOpposition,attackMastery} from "./atelier5d6-opposition"
+import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,innateProtection,equipmentProtection} from "./atelier5d6-opposition"
+import {generateCreatureProfile} from "./atelier5d6-bestiary"
+import type {CreatureArchetype} from "./atelier5d6-bestiary"
 import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
@@ -25,7 +27,7 @@ const CERTIFICATIONS = [
 const maxStatCredits = (level:number) => 12+6*(level-1)
 const xpRequired = (level:number) => level<=1?0:5*(level-1)**3
 const missionXpReward = (rank:number) => 10*rank
-const levelResourceGain = (level:number) => level>=21?24:level>=13?12:6
+const levelResourceGain = (level:number) => level>=25?36:level>=21?24:level>=13?12:6
 const gainBetween = (first:number,last:number) => {
   let gain=0
   for(let l=first+1;l<=last;l++)gain+=levelResourceGain(l)
@@ -66,7 +68,7 @@ const DEFENSE_KINDS:ResistanceKind[]=["physique","magie","mental"]
 type Sheet = {
   id: string; name: string; kind: Role; profession: string; skill: number
   stats: Record<Stat, number>; pv: number; pvMax: number
-  resistanceBonus:Defenses; protection:Defenses
+  resistanceBonus:Defenses; protection:Defenses; equipmentGrades:Defenses
   mana: number; manaMax: number; emprise: number
   level: number; highestLevel: number; masteries: Record<Mastery,number>
   ascensionAuthorized:boolean; divineLimit:number; ascensionWitness:string; divineMilestones:string[]; inventory:GameItem[]
@@ -151,7 +153,7 @@ function fresh(kind: Role = "pj"): Sheet {
   return { id: uniqueId(), name: kind === "pj" ? "Mon personnage" : "Nouveau profil",
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
-    resistanceBonus:freshDefenses(),protection:freshDefenses(),
+    resistanceBonus:freshDefenses(),protection:freshDefenses(),equipmentGrades:freshDefenses(),
     pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, divineLimit:20, ascensionWitness:"", divineMilestones:[], inventory:[],
     convertedCredits:0,talentPointsSpent:0,xp:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
@@ -168,14 +170,16 @@ function validateSheet(raw: unknown): Sheet | null {
   const priorStreaks = obj.streaks && typeof obj.streaks==="object" ? obj.streaks as Record<string,unknown> : {}
   const streaks = makeStreaks()
   for(const d of DOMAINS)streaks[d]=clamp(priorStreaks[d],0,2,0)
-  const resistanceBonus=freshDefenses(),protection=freshDefenses()
+  const resistanceBonus=freshDefenses(),protection=freshDefenses(),equipmentGrades=freshDefenses()
   const previousResistance=obj.resistanceBonus&&typeof obj.resistanceBonus==="object"?obj.resistanceBonus as Record<string,unknown>:{}
   const previousProtection=obj.protection&&typeof obj.protection==="object"?obj.protection as Record<string,unknown>:{}
+  const oldEquipment=obj.equipmentGrades&&typeof obj.equipmentGrades==="object"?obj.equipmentGrades as Record<string,unknown>:{}
   for(const key of DEFENSE_KINDS){
     resistanceBonus[key]=clamp(previousResistance[key],0,8,0)
     protection[key]=clamp(previousProtection[key],0,60,0)
+    equipmentGrades[key]=clamp(oldEquipment[key],0,5,0)
   }
-  const level=clamp(obj.level,1,24,1)
+  const level=clamp(obj.level,1,25,1)
   const masteries=blankMasteries()
   const storedMasteries=obj.masteries && typeof obj.masteries==="object" ? obj.masteries as Record<string,unknown> : {}
   for(const k of MASTERIES) masteries[k]=clamp(storedMasteries[k],0,12,0)
@@ -185,15 +189,15 @@ function validateSheet(raw: unknown): Sheet | null {
     stats:{physique:clamp(values.physique,1,12,3),agilite:clamp(values.agilite,1,12,3),
       esprit:clamp(values.esprit,1,12,3),presence:clamp(values.presence,1,12,3)},
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
-    mana:clamp(obj.mana,0,manaMax,0),manaMax,resistanceBonus,protection,
-    emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,24,level),
+    mana:clamp(obj.mana,0,manaMax,0),manaMax,resistanceBonus,protection,equipmentGrades,
+    emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,25,level),
     masteries,convertedCredits:clamp(obj.convertedCredits,0,6*(level-1),0),
-    talentPointsSpent:clamp(obj.talentPointsSpent,0,23,0),
+    talentPointsSpent:clamp(obj.talentPointsSpent,0,24,0),
     xp:clamp(obj.xp,0,999999,0),
     ascensionAuthorized:obj.ascensionAuthorized===true||level>20,
-    divineLimit:clamp(obj.divineLimit,20,24,level>20?level:20),
+    divineLimit:clamp(obj.divineLimit,20,25,level>20?level:20),
     ascensionWitness:clean(obj.ascensionWitness,300),
-    divineMilestones:Array.isArray(obj.divineMilestones)?obj.divineMilestones.slice(0,4).map(x=>clean(x,300)):[],
+    divineMilestones:Array.isArray(obj.divineMilestones)?obj.divineMilestones.slice(0,5).map(x=>clean(x,300)):[],
     inventory:Array.isArray(obj.inventory)?obj.inventory.slice(0,150).map(validatedItem).filter((x):x is GameItem=>x!==null):[],
     description:clean(obj.description,1200),portrait,
     vocation:clean(obj.vocation,160),talents:clean(obj.talents,1600),boons:clean(obj.boons,1400),
@@ -309,7 +313,7 @@ function setupAtelier5d6() {
       " utilisés · "+(earnedTalents-s.talentPointsSpent)+" disponibles"
     q<HTMLInputElement>("[data-talent-spent]").value=String(s.talentPointsSpent)
     q<HTMLElement>("[data-xp-info]").textContent="Expérience : "+s.xp+
-      " XP · seuil du niveau "+Math.min(24,s.level+1)+" : "+xpRequired(Math.min(24,s.level+1))+
+      " XP · seuil du niveau "+Math.min(25,s.level+1)+" : "+xpRequired(Math.min(25,s.level+1))+
       " XP cumulés. Les niveaux élevés exigent des épreuves spécifiques."
 
     q<HTMLSelectElement>("[data-active]").selectedOptions[0]?.setAttribute("data-active-points",String(used))
@@ -328,12 +332,16 @@ function setupAtelier5d6() {
     })
     for(const k of STATS) q<HTMLInputElement>(`[data-stat="${k}"]`).value=String(s.stats[k])
     for(const k of MASTERIES) q<HTMLInputElement>(`[data-mastery="${k}"]`).value=String(s.masteries[k])
+    for(const k of DEFENSE_KINDS)
+      q<HTMLInputElement>(`[data-defense-gear="${k}"]`).value=String(s.equipmentGrades[k])
     for(const k of DEFENSE_KINDS){
       q<HTMLInputElement>(`[data-defense-resistance="${k}"]`).value=String(s.resistanceBonus[k])
       q<HTMLInputElement>(`[data-defense-protection="${k}"]`).value=String(s.protection[k])
     }
     q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(k=>
-      k+" : seuil "+resistanceScore(s,k)+" · protection "+s.protection[k]).join(" | ")
+      k+" : seuil "+resistanceScore(s,k)+" · protection totale "+effectiveProtection(s,k)+
+      " (innée "+innateProtection(s.level,k)+", équipement "+equipmentProtection(s.equipmentGrades[k],k)+
+      ", bonus MJ "+s.protection[k]+")").join(" | ")
     const portrait=q<HTMLImageElement>("[data-portrait-preview]")
     portrait.hidden=!s.portrait
     if(s.portrait)portrait.src=s.portrait
@@ -345,8 +353,8 @@ function setupAtelier5d6() {
       ?s.divineMilestones.map((x,i)=>"Niveau "+(i+21)+" : "+(x||"non documenté")).join(" · ")
       :"Aucune épreuve divine consignée."
     q<HTMLElement>("[data-ascension-status]").textContent=s.level>=21
-      ?"Ascension exceptionnelle : niveau "+s.level+"/24 — autorisation MJ jusqu'à "+s.divineLimit+"."
-      :"Niveaux 21–24 : quatre épreuves divines indépendantes, validées par le MJ."
+      ?"Ascension exceptionnelle : niveau "+s.level+"/25 — autorisation MJ jusqu'à "+s.divineLimit+"."
+       :"Niveaux 21–25 : cinq épreuves divines indépendantes, validées par le MJ."
     refreshPoints()
     const source=q<HTMLElement>("[data-source-meta]")
     source.textContent=s.sourceRef
@@ -541,13 +549,13 @@ RÈGLES EN TEST : 5d6 + caractéristique + compétence (0,1,2) + situation (-2,0
 Difficultés 15,18,21,24,27,30 ; critiques sur les 5 dés naturels :
 5 = échec critique exceptionnel, 6-7 = échec critique mineur, 27-29 = critique favorable possible, 30 = succès exceptionnel si l'action est réalisable.
 Base 12 : PV et mana d'essai, sans modifier les lois du Codex.
-Progression pilote : niveaux 1–24 (+6 points de caractéristique cumulés et +2 maîtrises par niveau). Le maximum reste 12 par caractéristique; le surplus demeure non investi. Au-delà de 20, autorisation exceptionnelle du MJ. Ressources +6/+12/+24 selon le palier, sans effet rétroactif sur le canon. Les maîtrises sont suivies mais ne remplacent pas encore les compétences +0/+1/+2 des jets. Voies libres, talents narratifs et effets conditionnels.
+Progression pilote : niveaux 1–25 (+6 crédits de caractéristiques et +2 maîtrises par niveau). Maximum 12 par caractéristique; excédents en réserve. Niveaux 21–25 : cinq épreuves approuvées par le MJ pour les héros. PV par niveau +6/+12/+24 puis +36 au niveau 25. Hauts niveaux : résistance naturelle et absorption innée, équipement gradé 0–5. La maîtrise augmente les dégâts, pas automatiquement les chances de toucher. Contact exceptionnel naturel 27–30 possible sans franchir la résistance : généralement 0 PV, parfois 1 PV maximal sur 30 si toutes les protections sont surmontées. Aucun effet mental ou magique imposé par simple contact. Les maîtrises sont suivies mais ne remplacent pas encore les compétences +0/+1/+2 des jets. Voies libres, talents narratifs et effets conditionnels.
 Après 3 échecs de même catégorie (magie, mêlée, tir ou négociation), proposer un incident narratif d12 facultatif ; un 5 naturel ne se cumule pas à l'incident.
 
 PERSONNAGE ACTIF : ${s.name} (${s.kind}), ${s.profession}.
 Physique ${s.stats.physique}, Agilité ${s.stats.agilite}, Esprit ${s.stats.esprit}, Présence ${s.stats.presence}.
 Spécialité +${s.skill}, PV ${s.pv}/${s.pvMax}, mana ${s.mana}/${s.manaMax}, Emprise ${s.emprise}/12.
-Niveau ${s.level}/24 ; voies : ${s.vocation || "aucune"}.
+Niveau ${s.level}/25 ; voies : ${s.vocation || "aucune"}.
 Crédits convertis : ${s.convertedCredits}; points de talents attribués ${s.talentPointsSpent}/${Math.floor(s.convertedCredits/6)}. Pouvoirs à valider par le MJ.
 Description : ${s.description || "non renseignée"}.
 Maîtrises de progression (sans bonus de jet automatique) : ${MASTERIES.map(k=>k+" "+s.masteries[k]+"/12").join(", ")}.
@@ -558,7 +566,7 @@ Objets à effet narratif : ${s.items || "aucun"}.
 Inventaire (noms et quantités) : ${inventory || "aucun"}.
 Compagnie : ${group ? group.name+" (rang "+group.rank+"/12)" : "aucune"}.
 Certifications reconnues par la table : ${group?.certifications.join(", ") || "aucune"}.
-Niveaux 21–24 : ascension exceptionnelle approuvée par le MJ, sans capacités divines automatiques.
+Niveaux 21–25 : cinq épreuves d'ascension à valider par le MJ, sans capacités divines automatiques. Résistances : physique ${resistanceScore(s,"physique")} / magie ${resistanceScore(s,"magie")} / mental ${resistanceScore(s,"mental")} ; absorptions : ${effectiveProtection(s,"physique")} / ${effectiveProtection(s,"magie")} / ${effectiveProtection(s,"mental")}.
 Référence de la fiche : ${s.sourceRef || "adaptation sans source"} — ${s.sourceTitle || ""} (scores 5d6 non canoniques).
 Notes du personnage : ${s.notes || "aucune"}.
 
@@ -588,13 +596,23 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       s.resistanceBonus[k]=clamp(el.value,0,8,s.resistanceBonus[k])
       el.value=String(s.resistanceBonus[k])
       q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(t=>
-        t+" : seuil "+resistanceScore(s,t)+" · protection "+s.protection[t]).join(" | ")
+        t+" : seuil "+resistanceScore(s,t)+" · protection totale "+effectiveProtection(s,t)+
+        " (innée "+innateProtection(s.level,t)+", équipement "+equipmentProtection(s.equipmentGrades[t],t)+
+        ", bonus MJ "+s.protection[t]+")").join(" | ")
     } else if(el.dataset.defenseProtection && DEFENSE_KINDS.includes(el.dataset.defenseProtection as ResistanceKind)){
       const k=el.dataset.defenseProtection as ResistanceKind
       s.protection[k]=clamp(el.value,0,60,s.protection[k])
       el.value=String(s.protection[k])
       q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(t=>
-        t+" : seuil "+resistanceScore(s,t)+" · protection "+s.protection[t]).join(" | ")
+        t+" : seuil "+resistanceScore(s,t)+" · protection totale "+effectiveProtection(s,t)+
+        " (innée "+innateProtection(s.level,t)+", équipement "+equipmentProtection(s.equipmentGrades[t],t)+
+        ", bonus MJ "+s.protection[t]+")").join(" | ")
+    } else if(el.dataset.defenseGear && DEFENSE_KINDS.includes(el.dataset.defenseGear as ResistanceKind)){
+      if(state.mode==="pj"){el.value=String(s.equipmentGrades[el.dataset.defenseGear as ResistanceKind]);message("Le grade d'équipement est validé en mode MJ.");return}
+      const k=el.dataset.defenseGear as ResistanceKind
+      s.equipmentGrades[k]=clamp(el.value,0,5,s.equipmentGrades[k])
+      el.value=String(s.equipmentGrades[k])
+      refreshDefenseSummary()
     } else if(el.dataset.mastery && MASTERIES.includes(el.dataset.mastery as Mastery)){
       const k=el.dataset.mastery as Mastery,before=s.masteries[k]
       s.masteries[k]=clamp(el.value,0,12,before)
@@ -622,12 +640,12 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "notes":s.notes=clean(el.value,2500);break
         case "gmNotes":s.gmNotes=clean(el.value,2500);break
         case "level":{
-          const next=clamp(el.value,1,24,s.level)
+          const next=clamp(el.value,1,25,s.level)
           if(next>s.level&&s.kind==="pj"&&state.mode==="pj"&&s.xp<xpRequired(next)){
             el.value=String(s.level)
             message("XP insuffisants pour atteindre ce niveau. Le MJ peut valider une exception narrative.");return
           }
-          if(next>20&&(!s.ascensionAuthorized||next>s.divineLimit||s.ascensionWitness.trim().length<15)){
+          if(next>20&&s.kind==="pj"&&(!s.ascensionAuthorized||next>s.divineLimit||s.ascensionWitness.trim().length<15)){
             el.value=String(s.level)
             message("Ascension divine refusée : chaque palier exige une autorisation du MJ et un témoignage de l'épreuve (15 caractères minimum).")
             return
@@ -653,7 +671,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "items":s.items=clean(el.value,1400);break
       }
     }
-    refreshRoster();refreshPoints();refreshStreaks();renderOpposition();renderAI();persist()
+    refreshRoster();refreshPoints();refreshStreaks();refreshDefenseSummary();renderOpposition();renderAI();persist()
   }
   function trackFailure(sheet:Sheet,domain:Domain,failed:boolean):string {
     if(domain==="autre")return ""
@@ -663,6 +681,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     sheet.streaks[domain]=0
     const face=1+Math.floor(Math.random()*12)
     return `Incident ${domain} [1d12 = ${face}] : ${INCIDENTS[domain][face-1]} (suggestion optionnelle du MJ)`
+  }
+  function refreshDefenseSummary(){
+    const sheet=current()
+    q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(k=>
+      k+" : seuil "+resistanceScore(sheet,k)+" · absorption "+effectiveProtection(sheet,k)+
+      " (innée "+innateProtection(sheet.level,k)+", équipement "+equipmentProtection(sheet.equipmentGrades[k],k)+
+      ", MJ "+sheet.protection[k]+")").join(" | ")
   }
   function renderOpposition(){
     const opponent=q<HTMLSelectElement>("[data-opposition-target]")
@@ -680,12 +705,15 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const threshold=Math.max(difficulty,resistance,custom)
     const mastery=attackMastery(current().masteries,mode)
     q<HTMLElement>("[data-opposition-preview]").textContent=
-      "Seuil à atteindre : "+threshold+
+      "Seuil de pénétration : "+threshold+
       " (difficulté "+difficulty+(defender?", défense "+resistance:"")+(custom?", seuil MJ "+custom:"")+"). "+
       (mode==="mental"?"Effet social / mental : aucun PV retiré automatiquement.":
-        "Dégâts possibles sur réussite : base + maîtrise "+mastery+
-        " + palier de puissance, moins la protection de la cible.")+
-      (defender?" "+defender.name+" possède "+defender.pv+"/"+defender.pvMax+" PV.":"")
+        "Sur pénétration : base + maîtrise "+mastery+
+        " + palier de puissance, moins l'absorption. Un contact héroïque peut effleurer la cible sans la blesser.")+
+      (defender?" "+defender.name+" possède "+defender.pv+"/"+defender.pvMax+
+        " PV ; absorption "+effectiveProtection(defender,kind)+
+        " (innée "+innateProtection(defender.level,kind)+", équipement "+
+        equipmentProtection(defender.equipmentGrades[kind],kind)+").":"")
     if(!q<HTMLInputElement>("[data-opposition-enabled]").checked){
       q<HTMLElement>("[data-opposition-result]").textContent="Mode opposition désactivé : jets ordinaires inchangés."
     }
@@ -724,7 +752,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       natural,total,difficulty,resistance:Math.max(custom,resistance),
       damageBase:clamp(q<HTMLSelectElement>("[data-opposition-base]").value,1,12,3),
       mastery:attackMastery(s.masteries,mode),level:s.level,
-      protection:defender?.protection[kind]??0,mode
+      protection:defender?effectiveProtection(defender,kind):0,mode
     }):null
     const target=opposition?.threshold??difficulty
     let outcome="",detail="",favorable=false
@@ -736,11 +764,16 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     else if(target-total<=2){outcome=opposition?"Résistance de justesse":"Échec de justesse"
       detail=opposition?"Le seuil de résistance n'est pas atteint : aucun effet sur la cible.":"Le MJ peut proposer une réussite avec contrepartie."}
     else {outcome="Échec";detail="L'action échoue, avec conséquences adaptées à la situation."}
+    if(opposition?.glancing){
+      outcome="Contact héroïque (résistance intacte)"
+      detail="La cible est atteinte ou effleurée, mais sa résistance n'est pas percée. Aucun sort ou effet narratif ne s'applique automatiquement."
+      favorable=false
+    }
     host.querySelectorAll<HTMLElement>("[data-die]").forEach((e,i)=>{e.textContent=String(dice[i])})
     const result=q<HTMLElement>("[data-result]")
-    result.dataset.outcome=favorable?"success":"failure"
+    result.dataset.outcome=favorable||opposition?.glancing?"success":"failure"
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
-    const incident = natural===5 ? "" : trackFailure(s,domain,!favorable)
+    const incident = natural===5 ? "" : trackFailure(s,domain,!(favorable||!!opposition?.contact))
     if(opposition){
       if(opposition.success){
         if(mode==="mental")detail+="\nRésistance mentale franchie : le MJ décrit l'effet, sans dégâts PV automatiques."
@@ -751,6 +784,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
             pendingImpact={targetId:defender.id,damage:opposition.damage,attackerName:s.name}
             q<HTMLButtonElement>("[data-opposition-apply]").hidden=state.mode==="pj"
           }
+        }
+      }else if(opposition.glancing){
+        detail+="\nContact héroïque sur dés naturels ("+natural+"), sans franchir la résistance. "+opposition.damage+
+          " PV potentiels ; "+opposition.absorbed+" points sans pénétration. Aucun autre effet."
+        if(defender&&opposition.damage>0){
+          pendingImpact={targetId:defender.id,damage:opposition.damage,attackerName:s.name}
+          q<HTMLButtonElement>("[data-opposition-apply]").hidden=state.mode==="pj"
         }
       }else if(!opposition.criticalFailure){
         if(opposition.reaction==="riposte_possible"&&defender){
@@ -763,8 +803,10 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
             :"Parade, esquive ou résistance : aucune riposte gratuite.")
       }else detail+="\nÉchec critique : aucune contre-attaque supplémentaire automatique."
       q<HTMLElement>("[data-opposition-result]").textContent=
-        opposition.success?(mode==="mental"?"Effet mental à arbitrer par le MJ.":"Impact calculé : "+opposition.damage+" PV. "+
-        (defender?"En mode MJ, confirmer l'application des dégâts.":"Pas de fiche cible : aucun PV modifié.")):
+        opposition.contact?(opposition.glancing?"Contact héroïque sans pénétration : "+opposition.damage+
+          " PV potentiel(s) maximum, aucun autre effet.":
+          mode==="mental"?"Effet mental à arbitrer par le MJ.":"Impact calculé : "+opposition.damage+" PV. "+
+          (defender?"En mode MJ, confirmer l'application des dégâts.":"Pas de fiche cible : aucun PV modifié.")):
         "Seuil "+target+" non franchi. "+
         (opposition.reaction==="riposte_possible"?"Fenêtre de riposte narrative possible, sur action distincte.":"Aucun dégât.")
     }
@@ -773,7 +815,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
     state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:
       (incident ? `${outcome} · ${incident}` : outcome)+
-      (opposition?" · "+(opposition.success?(mode==="mental"?"effet mental":"dégâts potentiels "+opposition.damage):"résistance"):"")})
+      (opposition?" · "+(opposition.glancing?"contact héroïque "+opposition.damage+" PV potentiels":
+        opposition.success?(mode==="mental"?"effet mental":"dégâts potentiels "+opposition.damage):"résistance"):"")})
     state.log=state.log.slice(0,20)
     refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
@@ -836,13 +879,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   host.addEventListener("input",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
-      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection)changeField(el)
+      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
-      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection)changeField(el)
+      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
     if(el?.hasAttribute("data-opposition-enabled")||el?.hasAttribute("data-opposition-target")||
@@ -865,9 +908,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     }
     if(el?.hasAttribute("data-divine-limit")){
       if(state.mode==="pj"){setForm();message("Validation des paliers divins réservée au MJ.");return}
-      const character=current(), approved=clamp(el.value,20,24,20)
+      const character=current(), approved=clamp(el.value,20,25,20)
       if(approved>character.divineLimit+1){
-        setForm();message("Les quatre paliers divins doivent être approuvés l'un après l'autre.");return
+        setForm();message("Les cinq paliers divins doivent être approuvés l'un après l'autre.");return
       }
       if(approved>character.divineLimit&&character.ascensionWitness.trim().length<15){
         setForm();message("Décrire d'abord une épreuve divine d'au moins 15 caractères.");return
@@ -1104,6 +1147,30 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(!window.confirm("Supprimer cette fiche locale ? Exporte d'abord le JSON si nécessaire."))return
       state.sheets=state.sheets.filter(s=>s.id!==state.activeId);state.activeId=state.sheets[0].id
       render();persist();message("Fiche supprimée.");return
+    }
+    if(button.hasAttribute("data-bestiary-create")){
+      if(state.mode==="pj"){message("Génération de créatures réservée au MJ.");return}
+      if(state.sheets.length>=60){message("Répertoire de fiches plein (60 maximum).");return}
+      const lvl=clamp(q<HTMLInputElement>("[data-bestiary-level]").value,1,25,1)
+      const type=q<HTMLSelectElement>("[data-bestiary-archetype]").value as CreatureArchetype
+      const result=generateCreatureProfile(lvl,type)
+      const sheet=fresh("creature")
+      const names:Record<CreatureArchetype,string>={faune:"Faune",predateur:"Prédateur",gardien:"Gardien",mystique:"Mystique",colosse:"Colosse"}
+      sheet.name="Prototype "+(names[type]??"Créature")+" · niveau "+lvl
+      sheet.profession="Profil de bestiaire libre — non canonique"
+      sheet.level=sheet.highestLevel=lvl
+      sheet.stats=result.stats
+      sheet.pv=sheet.pvMax=result.pvMax
+      sheet.mana=sheet.manaMax=result.manaMax
+      sheet.masteries[type==="mystique"?"magie":type==="predateur"?"arcs":"lames"]=result.mastery
+      sheet.equipmentGrades.physique=result.equipmentPhysical
+      sheet.equipmentGrades.magie=result.equipmentMagic
+      sheet.resistanceBonus.physique=result.resistancePhysical
+      sheet.resistanceBonus.magie=result.resistanceMagic
+      sheet.notes="Génération de test à partir d'un archétype générique. Ni espèce ni personnalité canonique. Le MJ personnalise habitat, comportement, faiblesses et objectifs."
+      state.sheets.push(sheet);state.activeId=sheet.id
+      render();persist()
+      message("Créature niveau "+lvl+" créée et enregistrée localement. Ajuster le profil avant la partie.");return
     }
     if(button.hasAttribute("data-add-template")){
       if(state.sheets.length>=60){message("Limite de 60 fiches.");return}
