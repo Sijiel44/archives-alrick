@@ -11,7 +11,7 @@ const profile=(overrides={})=>({
   resistanceBonus:{physique:0,magie:0,mental:0},equipmentGrades:{physique:0,magie:0,mental:0},
   grimoire:m.newGrimoire(),...overrides
 })
-assert.equal(m.DEMO_SPELLS.length,5)
+assert.equal(m.DEMO_SPELLS.length,6)
 assert(m.DEMO_SPELLS.every(sp=>sp.status==="demo"&&sp.source.includes("NON CANONIQUE")))
 const old=m.normalizeGrimoire(undefined)
 assert.equal(old.schema,"alrick.grimoire.v1")
@@ -57,9 +57,51 @@ s.mana=0
 assert(m.eligibility(s,bolt).some(x=>x.includes("Mana")))
 s.mana=10
 m.recordSpellEvent(s.grimoire,{type:"lancer",spellId:bolt.id,target:"Cible",manaDelta:-4,dice:[1,1,1,1,1],total:11,threshold:21,result:"Échec"})
+
+const high=m.DEMO_SPELLS.find(sp=>sp.id==="demo-onde-murailles")
+assert(high&&high.circle===8)
+assert(!s.grimoire.known.some(x=>x.id===high.id),"Aucun apprentissage du Cercle VIII n'est accordé")
+assert(!s.grimoire.circlesAttested.includes(8),"Le Premier Cercle n'attribue pas le Huitième")
+s.inventory=[{id:"obj-test",name:"Sceptre d'essai préparé"}]
+const matrix={id:"matrice-test",itemId:"obj-test",spellId:high.id,architectureCircle:8,
+  activationCircle:1,energySource:"matrix",charges:2,approvedBy:"MJ local",
+  source:"Ingénieur fictif — prototype de test"}
+s.grimoire.matrices.push(matrix)
+s.mana=0
+assert.deepEqual(m.eligibility(s,high,matrix),[],
+  "Un Premier Cercle peut activer une matrice VIII chargée et approuvée")
+assert(m.eligibility(s,high).some(x=>x.includes("non appris")),
+  "Le même personnage ne peut pas lancer la conception autonome")
+const powerful=m.resolveSpellCast(s,high,null,"Le rempart d'essai",[6,6,6,6,6],matrix)
+assert.equal(powerful.success,true)
+assert(powerful.damage>10,"L'intensité préparée dépend de l'architecture et non du niveau du porteur")
+assert.equal(s.mana,0,"Une matrice chargée n'utilise pas le mana du porteur")
+matrix.charges=0
+assert(m.eligibility(s,high,matrix).some(x=>x.includes("épuisée")))
+matrix.charges=2
+const originalInventory=s.inventory
+s.inventory=[]
+assert(m.eligibility(s,high,matrix).some(x=>x.includes("absent")))
+s.inventory=originalInventory
+s.grimoire.circlesAttested=s.grimoire.circlesAttested.filter(x=>x!==1)
+assert(m.eligibility(s,high,matrix).some(x=>x.includes("activation")))
+s.grimoire.circlesAttested.push(1)
+const ix={...high,id:"local-essai-divin",circle:9,status:"campagne",effectLevel:25}
+s.grimoire.personalSpells.push(ix)
+const ixMatrix={...matrix,id:"matrice-ix",spellId:ix.id,architectureCircle:9,charges:1}
+s.grimoire.matrices.push(ixMatrix)
+assert(m.eligibility(s,ix,ixMatrix).some(x=>x.includes("divin")),
+  "Une matrice IX n'accorde pas la nature divine")
+s.grimoire.divineNinthApproved=true
+s.grimoire.divineNinthWitness="Validation explicite par MJ de démonstration"
+assert.deepEqual(m.eligibility(s,ix,ixMatrix),[],
+  "Le IX demande une validation divine spécifique, indépendante du niveau")
 const backup=m.normalizeGrimoire(JSON.parse(JSON.stringify(s.grimoire)))
 assert.equal(backup.known.length,3)
+assert.equal(backup.matrices.length,2)
+assert.equal(backup.divineNinthApproved,true)
+assert.equal(backup.divineNinthWitness,s.grimoire.divineNinthWitness)
 assert.equal(backup.history.length,2)
 assert(backup.history.some(e=>e.type==='lancer' && e.dice.length===5))
 assert.equal(backup.known.filter(k=>k.id===bolt.id).length,1)
-console.log("Grimoire v1 : accès, Cercles, préparation, mana, critiques, effets et migration JSON OK.")
+console.log("Grimoire v1 : capacités distinctes, activation C1→architecture C8, IX divin, énergie, oppositions et sauvegardes OK.")
