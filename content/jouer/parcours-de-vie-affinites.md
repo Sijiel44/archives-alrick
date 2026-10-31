@@ -40,6 +40,14 @@ La fiche créée reçoit **36 PV maximum** et **320 XP de départ virtuels**, qu
 
 En plus des compétences existantes de l'Atelier, quatre maîtrises sont désormais distinguées : **commerce**, **histoire**, **commandement** et **intendance**. Les choix de naissance ne ferment pas les possibilités futures : un enfant de marchand peut devenir protecteur ; un noble peut étudier les arcanes ; un descendant de guerriers peut rechercher une existence de soins ou d'art.
 
+## Origines étendues, scolarité et liberté du personnage
+
+Les milieux familiaux peuvent désormais être **agricoles, maritimes, artistiques, religieux, savants, ouvriers, miniers, guérisseurs, pisteurs, diplomates**, et comprendre une enfance sans foyer stable. L'origine d'un enfant n'impose pas son avenir.
+
+L'outil sépare aussi **le mode d'éducation** (école locale, académie, mentor, temple, tradition orale, atelier, absence d'école ou autodidaxie) de **l'aptitude à lire et écrire** (pas encore, quelques signes, lecture courante, érudition). **Ne pas savoir lire n'est pas un défaut d'Esprit** : ce choix peut influencer les scènes avec des livres, contrats et lettres, sans faire du personnage une personne inférieure. Un adulte peut apprendre au cours de la campagne.
+
+La formation choisie réoriente **un point de maîtrise parmi les huit déjà acquis**, sans augmenter le budget général. Les réponses rédigent une chronologie de jeunesse. Le joueur peut saisir son **récit personnel**, ses **attaches** et un **objectif** ; tous restent accessibles et modifiables dans sa fiche, et ils sont exportés en JSON.
+
 ## Le hub sur une seule page
 
 La [[jouer/atelier-5d6|même page de jeu]] contient maintenant des sections **repliables** :
