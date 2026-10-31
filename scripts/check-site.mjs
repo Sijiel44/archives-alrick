@@ -93,6 +93,13 @@ for (const token of ['id="atelier-5d6"', 'data-mode="pj"', 'data-mode="mj"', 'da
 for(const token of ['data-field="description"', 'data-portrait', 'data-portrait-preview', 'data-clear-portrait', 'data-mastery="lames"', 'data-mastery-points', 'max="24"']){
   assert(atelierHtml.includes(token), `Atelier progression/portrait : contrôle HTML absent : ${token}`)
 }
+for(const token of ['data-hub-nav="origines"','data-hub-nav="galerie"',
+  'data-origin-education','data-origin-literacy','data-origin-story',
+  'data-field="backstory"','data-field="literacy"','data-field="education"',
+  'data-media-gallery','data-media-lightbox','data-media-add',
+  'data-power-cast-action','data-power-history','data-hub="tables"']){
+  assert(atelierHtml.includes(token),`Hub 5d6 enrichi : contrôle HTML absent : ${token}`)
+}
 const guideHtml=await readFile(path.join(root,'jouer','guide-aventurier-12-rangs.html'),'utf8')
 assert(guideHtml.includes('Les balises éteintes') && guideHtml.includes('La marche des frontières'),'Banque de missions manquante')
 for(const token of ['data-export-campaign','data-import-campaign','data-group-create',
