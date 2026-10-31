@@ -94,6 +94,10 @@ Pour une attaque, une esquive, une négociation ou un secours : **même jet**, a
 
 ## Progression, voies libres et événements aléatoires
 
+**Extension de playtest (24 niveaux) :** la répartition initiale des **12 points entre quatre caractéristiques ne change pas**. Dans l'Atelier, chaque nouveau niveau accorde provisoirement **1 point de caractéristique** et **2 points de maîtrise spécialisée**, avec plafond individuel à 12. La montée de niveau augmente le maximum de PV de **2** et celui de mana de **2 uniquement si le personnage possède déjà une réserve magique**. Les maîtrises spécialisées sont enregistrées mais ne modifient pas encore automatiquement le bonus +0/+1/+2 des jets. Les fiches déjà sauvegardées restent lisibles. Le [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier]] distingue les **12 indices collectifs** de ces 24 niveaux individuels.
+
+Le modèle narratif original de **12 niveaux** ci-dessous reste visible comme trace d'une phase précédente de conception ; il n'est pas une seconde limite technique de l'Atelier.
+
 Le [[jouer/progression-voies-incidents|dossier de progression 5d6]] propose **12 niveaux** en quatre paliers, des voies combinables et des talents qui ouvrent des possibilités plutôt que des bonus chiffrés. Les quêtes peuvent accorder des bénédictions, des malédictions ou des objets à effets circonstanciels ; ce sont des propositions, **pas** des objets du canon déjà attribués aux héros.
 
 L'[[jouer/atelier-5d6|Atelier]] permet d'enregistrer ces éléments dans la fiche. Il propose aussi un incident **1d12** à la troisième tentative manquée d'une même famille (magie, mêlée, tir, négociation), selon le choix du MJ. Cette option ne remplace ni les conséquences déjà annoncées ni les limites du monde.
