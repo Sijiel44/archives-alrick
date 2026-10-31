@@ -62,6 +62,7 @@ type Sheet = {
   mana: number; manaMax: number; emprise: number
   level: number; highestLevel: number; masteries: Record<Mastery,number>
   ascensionAuthorized:boolean; ascensionWitness:string; inventory:GameItem[]
+  convertedCredits:number; talentPointsSpent:number
   description: string; portrait: string
   vocation: string; talents: string; boons: string; curses: string; items: string
   sourceRef: string; sourceTitle: string
@@ -143,6 +144,7 @@ function fresh(kind: Role = "pj"): Sheet {
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
     pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, ascensionWitness:"", inventory:[],
+    convertedCredits:0,talentPointsSpent:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
 }
@@ -169,7 +171,9 @@ function validateSheet(raw: unknown): Sheet | null {
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
     mana:clamp(obj.mana,0,manaMax,0),manaMax,
     emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,24,level),
-    masteries,ascensionAuthorized:obj.ascensionAuthorized===true||level>20,
+    masteries,convertedCredits:clamp(obj.convertedCredits,0,6*(level-1),0),
+    talentPointsSpent:clamp(obj.talentPointsSpent,0,23,0),
+    ascensionAuthorized:obj.ascensionAuthorized===true||level>20,
     ascensionWitness:clean(obj.ascensionWitness,300),
     inventory:Array.isArray(obj.inventory)?obj.inventory.slice(0,150).map(validatedItem).filter((x):x is GameItem=>x!==null):[],
     description:clean(obj.description,1200),portrait,
@@ -273,14 +277,18 @@ function setupAtelier5d6() {
     const s=current()
     const used=STATS.reduce((acc,k)=>acc+s.stats[k],0)
     const el=q<HTMLElement>("[data-points]")
-    const limit=maxStatCredits(s.highestLevel)
+    const limit=maxStatCredits(s.highestLevel)-s.convertedCredits
     const legal=s.kind!=="pj" || (used>=12 && used<=limit && (s.highestLevel!==1 || (used===12 && STATS.every(k=>s.stats[k]<=5))))
-    el.textContent=s.kind==="pj" ? `${used} / ${Math.min(48,limit)} caractéristiques · ${limit-used} points non investis (plafond 12)` : `${used} points (MJ)`
+    el.textContent=s.kind==="pj" ? String(used)+" points investis · "+String(Math.max(0,limit-used))+" crédits restants · plafond 12/score" : String(used)+" points (MJ)" : `${used} points (MJ)`
     el.style.color=!legal ? "#e7ac9c" : ""
     const masteryUsed=totalMasteries(s.masteries), masteryLimit=2*(s.highestLevel-1)
     const masteryEl=q<HTMLElement>("[data-mastery-points]")
     masteryEl.textContent=`${masteryUsed} / ${masteryLimit} points · ${Math.max(0,masteryLimit-masteryUsed)} en réserve`
     masteryEl.style.color=masteryUsed>masteryLimit?"#e7ac9c":""
+    const earnedTalents=Math.floor(s.convertedCredits/6)
+    q<HTMLElement>("[data-talent-points]").textContent="Talents : "+s.talentPointsSpent+" / "+earnedTalents+
+      " utilisés · "+(earnedTalents-s.talentPointsSpent)+" disponibles"
+    q<HTMLInputElement>("[data-talent-spent]").value=String(s.talentPointsSpent)
 
     q<HTMLSelectElement>("[data-active]").selectedOptions[0]?.setAttribute("data-active-points",String(used))
   }
@@ -492,6 +500,7 @@ PERSONNAGE ACTIF : ${s.name} (${s.kind}), ${s.profession}.
 Physique ${s.stats.physique}, Agilité ${s.stats.agilite}, Esprit ${s.stats.esprit}, Présence ${s.stats.presence}.
 Spécialité +${s.skill}, PV ${s.pv}/${s.pvMax}, mana ${s.mana}/${s.manaMax}, Emprise ${s.emprise}/12.
 Niveau ${s.level}/24 ; voies : ${s.vocation || "aucune"}.
+Crédits convertis : ${s.convertedCredits}; points de talents attribués ${s.talentPointsSpent}/${Math.floor(s.convertedCredits/6)}. Pouvoirs à valider par le MJ.
 Description : ${s.description || "non renseignée"}.
 Maîtrises de progression (sans bonus de jet automatique) : ${MASTERIES.map(k=>k+" "+s.masteries[k]+"/12").join(", ")}.
 Talents : ${s.talents || "aucun"}.
@@ -518,7 +527,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       const before=s.stats[stat],next=clamp(el.value,1,12,before)
       s.stats[stat]=next
       const used=STATS.reduce((sum,k)=>sum+s.stats[k],0)
-      if(s.kind==="pj" && (used>maxStatCredits(s.highestLevel) || (s.highestLevel===1 && next>5))){
+      if(s.kind==="pj" && (used+s.convertedCredits>maxStatCredits(s.highestLevel) || (s.highestLevel===1 && next>5))){
         s.stats[stat]=before;el.value=String(before)
         message("Points de caractéristique insuffisants ou limite de création dépassée.")
       }
@@ -582,7 +591,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   }
   function roll(){
     const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
-    if(s.kind==="pj"&&(used<12||used>maxStatCredits(s.highestLevel)||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
+    if(s.kind==="pj"&&(used<12||used+s.convertedCredits>maxStatCredits(s.highestLevel)||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
       message("Répartition invalide : 12 points de base, puis +6 caractéristiques et +2 maîtrises par niveau ; chaque score reste limité à 12.")
       return
     }
@@ -680,6 +689,11 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
+    if(el instanceof HTMLInputElement && el.hasAttribute("data-talent-spent")){
+      const sheet=current()
+      sheet.talentPointsSpent=clamp(el.value,0,Math.floor(sheet.convertedCredits/6),sheet.talentPointsSpent)
+      el.value=String(sheet.talentPointsSpent);refreshPoints();renderAI();persist()
+    }
     if(el instanceof HTMLInputElement && el.hasAttribute("data-ascension")){
       if(state.mode==="pj"){el.checked=current().ascensionAuthorized;message("Réglage réservé au mode MJ.");return}
       current().ascensionAuthorized=el.checked;persist();setForm()
@@ -776,6 +790,15 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       sheet.inventory=sheet.inventory.filter(x=>x.id!==item.id)
       if(pendingTransfer===item.id)pendingTransfer=""
       renderInventory();persist();message("Objet retiré du sac.");return
+    }
+    if(button.hasAttribute("data-convert-credits")){
+      const sheet=current()
+      const used=STATS.reduce((sum,k)=>sum+sheet.stats[k],0)
+      const available=maxStatCredits(sheet.highestLevel)-used-sheet.convertedCredits
+      if(available<6){message("Il faut au moins six crédits de caractéristiques en réserve.");return}
+      sheet.convertedCredits+=6
+      refreshPoints();persist();renderAI()
+      message("Six crédits convertis en un point de talent libre. Aucun pouvoir n'est accordé automatiquement.");return
     }
     if(button.hasAttribute("data-item-create")){
       const item=createItem();if(!item)return
