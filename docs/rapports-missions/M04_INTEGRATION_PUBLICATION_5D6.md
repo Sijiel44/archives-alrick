@@ -10,7 +10,7 @@
 
 La branche M04 a été créée depuis la tête vérifiée de M03, commit 9e8fab0c6d96eda30e4b26a25db0a7f4d1f878ad. Un Atelier du Bestiaire 5d6 a été ajouté sous une page Quartz distincte, sans remplacer l'Atelier historique ni le générateur de créatures M03. Il permet la création de créatures et de PNJ simplifiés, la personnalisation des statistiques, une sauvegarde locale séparée et un calcul de confrontations exact reposant sur le moteur M03.
 
-La fonctionnalité est **en cours de validation**. Ne pas fusionner vers main ni publier tant que les tests CI, les vérifications de navigation réelles et de compatibilité ne sont pas réalisés et concluants.
+La CI est **réussie** sur le commit M04 a0edbab656efcbd8f381a606b2370f3bc061b0a8 (run GitHub Actions #41243238992). L'Atelier reste **en cours de recette réelle**. Ne pas fusionner vers main ni publier tant que les vérifications de navigation, de sauvegardes et de compatibilité ne sont pas réalisées et concluantes.
 
 ## 2. Historique M01 à M04
 
@@ -72,7 +72,7 @@ Ces exemples sont des cas fonctionnels documentés, non une attestation de parco
 
 ## 10. Résultats des tests du générateur
 
-Nouvelle suite : scripts/test-5d6-m04.mjs. Elle teste la création de 25 niveaux × 5 archétypes × 2 catégories, les statistiques supérieures à 12, la validation des imports et leurs limites, un cycle JSON complet et les capacités narratives inertes. Statut d'exécution à lire dans la dernière CI réussie de #61 ; un simple ajout au script npm test ne prouve pas leur passage.
+Nouvelle suite : scripts/test-5d6-m04.mjs. Elle teste la création de 25 niveaux × 5 archétypes × 2 catégories, les statistiques supérieures à 12, la validation des imports et leurs limites, un cycle JSON complet et les capacités narratives inertes. **Résultat constaté :** 8 familles de vérifications M04 réussies dans la CI #41243238992. Compilation TypeScript, build Quartz, contrôles de contenu/site, M01, M02, M03 et M04 verts. Cela ne prouve pas les parcours manuels.
 
 ## 11. Résultats des tests de combat
 
@@ -106,7 +106,7 @@ Site configuré dans le dépôt pour https://sijiel44.github.io/archives-alrick/
 
 ## 17. Problèmes résiduels / critères bloquants
 
-1. Confirmer la CI sur le SHA final de M04, corriger chaque échec.
+1. Confirmer la CI après toutes les retouches documentaires finales ; première CI complète déjà verte sur a0edbab656efcbd8f381a606b2370f3bc061b0a8.
 2. Tester les parcours réels, y compris responsive/mobile et navigation SPA.
 3. Tester import/export du Bestiaire et l'import volontaire dans l'Atelier principal, notamment pour les fiches modernes.
 4. Vérifier la non-régression des anciennes sauvegardes.
@@ -134,7 +134,9 @@ Aucune publication M04 n'ayant été réalisée à ce stade, le retour arrière 
 
 **Testé avant M04 :** les moteurs M01/M02/M03 ont des CI documentées ; la tête M03 9e8fab0 a sa CI verte (run 41241290667).
 
-**En vérification M04 :** TypeScript, contenu, build Quartz, suite npm test et navigation des utilisateurs.
+**Testé M04 :** TypeScript, contenu, build Quartz, suite npm test, tests M04 (8 familles) sur le run #41243238992 réussi.
+
+**En vérification M04 :** navigation réelle, sauvegardes en navigateur, import dans l'Atelier principal et comportement mobile.
 
 **Expérimental :** création simplifiée de PNJ, métriques de dangerosité et rounds théoriques.
 
