@@ -10,6 +10,7 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: ["joueurs","mj"]
 usage_en_jeu: ["outil","regles","scenario"]
+ancre_documentaire: "SYS-ORIG-05 ; demande du créateur, 31 octobre 2026 ; règles SYS-NIV-25"
 source_brute: "Atelier 5d6, échelle des existences 1–25 ; proposition du créateur le 31 octobre 2026. Aucun événement de campagne fondateur ni lignage n'est inféré."
 derniere_revision_documentaire: "2026-10-31"
 tags: [5d6, creation, personnage, origines, affinites, mj, progression]
