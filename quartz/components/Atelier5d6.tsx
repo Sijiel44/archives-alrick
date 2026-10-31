@@ -100,6 +100,11 @@ export const Atelier5d6: QuartzComponent = (props) => {
           </label>)}
           <small class="atelier-hint">Deux points de maîtrise par niveau après le premier. Ils décrivent l'entraînement, sans bonus de jet automatique avant équilibrage. Les spécialités +0/+1/+2 actuelles restent jouables.</small>
         </fieldset>
+        <div class="atelier-toolbar">
+          <button type="button" data-convert-credits>Convertir 6 crédits excédentaires en 1 point de talent</button>
+          <label>Points de talent utilisés<input type="number" data-talent-spent min={0} max={23} step={1} value={0}/></label>
+        </div>
+        <p data-talent-points class="atelier-hint">Talents : 0 / 0 utilisés.</p>
         <div class="atelier-fields atelier-resources">
           <label>PV actuels<input type="number" data-field="pv" min={0} max={999} step={1} value={12}/></label>
           <label>PV maximum<input type="number" data-field="pvMax" min={1} max={999} step={1} value={12}/></label>
