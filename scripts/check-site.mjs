@@ -107,6 +107,12 @@ assert(publicMissions.publicOnly===true && publicMissions.schema==='alrick.missi
 assert(publicMissions.missions.length===24,'La banque ne contient pas 24 contrats publics')
 assert(publicMissions.missions.every(m=>m.statut==='proposition_non_jouee' && !('gmNotes' in m) && !('secrets' in m)),
   'Risque de divulgation MJ dans les contrats publics')
+for(const token of ['data-opposition-enabled','data-opposition-target','data-opposition-kind',
+  'data-opposition-mode','data-opposition-min','data-opposition-base','data-opposition-apply',
+  'data-opposition-preview','data-opposition-result','data-opposition-counter','data-defense-resistance="physique"',
+  'data-defense-protection="magie"','data-resistance-summary']){
+  assert(atelierHtml.includes(token), `Module d'opposition 5d6 incomplet : ${token}`)
+}
 const rulesHtml = await readFile(path.join(root, 'jouer', 'systeme-5d6-base12.html'), 'utf8')
 assert(rulesHtml.includes('5d6'), 'La page des règles 5d6 est absente du HTML final')
 

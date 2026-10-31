@@ -1,3 +1,5 @@
+import {resistanceScore,resolveOpposition,attackMastery} from "./atelier5d6-opposition"
+import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
 type Mastery = "lames" | "haches" | "arcs" | "runes" | "soins" | "negociation" | "survie" | "artisanat" | "magie"
@@ -58,9 +60,13 @@ function validatedEntry(raw:unknown):MissionEntry|null{
     reward:clean(o.reward,280),date:clean(o.date,30)}
 }
 
+type Defenses = Record<ResistanceKind,number>
+const freshDefenses=():Defenses=>({physique:0,magie:0,mental:0})
+const DEFENSE_KINDS:ResistanceKind[]=["physique","magie","mental"]
 type Sheet = {
   id: string; name: string; kind: Role; profession: string; skill: number
   stats: Record<Stat, number>; pv: number; pvMax: number
+  resistanceBonus:Defenses; protection:Defenses
   mana: number; manaMax: number; emprise: number
   level: number; highestLevel: number; masteries: Record<Mastery,number>
   ascensionAuthorized:boolean; divineLimit:number; ascensionWitness:string; divineMilestones:string[]; inventory:GameItem[]
@@ -145,6 +151,7 @@ function fresh(kind: Role = "pj"): Sheet {
   return { id: uniqueId(), name: kind === "pj" ? "Mon personnage" : "Nouveau profil",
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
+    resistanceBonus:freshDefenses(),protection:freshDefenses(),
     pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, divineLimit:20, ascensionWitness:"", divineMilestones:[], inventory:[],
     convertedCredits:0,talentPointsSpent:0,xp:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
@@ -161,6 +168,13 @@ function validateSheet(raw: unknown): Sheet | null {
   const priorStreaks = obj.streaks && typeof obj.streaks==="object" ? obj.streaks as Record<string,unknown> : {}
   const streaks = makeStreaks()
   for(const d of DOMAINS)streaks[d]=clamp(priorStreaks[d],0,2,0)
+  const resistanceBonus=freshDefenses(),protection=freshDefenses()
+  const previousResistance=obj.resistanceBonus&&typeof obj.resistanceBonus==="object"?obj.resistanceBonus as Record<string,unknown>:{}
+  const previousProtection=obj.protection&&typeof obj.protection==="object"?obj.protection as Record<string,unknown>:{}
+  for(const key of DEFENSE_KINDS){
+    resistanceBonus[key]=clamp(previousResistance[key],0,8,0)
+    protection[key]=clamp(previousProtection[key],0,60,0)
+  }
   const level=clamp(obj.level,1,24,1)
   const masteries=blankMasteries()
   const storedMasteries=obj.masteries && typeof obj.masteries==="object" ? obj.masteries as Record<string,unknown> : {}
@@ -171,7 +185,7 @@ function validateSheet(raw: unknown): Sheet | null {
     stats:{physique:clamp(values.physique,1,12,3),agilite:clamp(values.agilite,1,12,3),
       esprit:clamp(values.esprit,1,12,3),presence:clamp(values.presence,1,12,3)},
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
-    mana:clamp(obj.mana,0,manaMax,0),manaMax,
+    mana:clamp(obj.mana,0,manaMax,0),manaMax,resistanceBonus,protection,
     emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,24,level),
     masteries,convertedCredits:clamp(obj.convertedCredits,0,6*(level-1),0),
     talentPointsSpent:clamp(obj.talentPointsSpent,0,23,0),
@@ -314,6 +328,12 @@ function setupAtelier5d6() {
     })
     for(const k of STATS) q<HTMLInputElement>(`[data-stat="${k}"]`).value=String(s.stats[k])
     for(const k of MASTERIES) q<HTMLInputElement>(`[data-mastery="${k}"]`).value=String(s.masteries[k])
+    for(const k of DEFENSE_KINDS){
+      q<HTMLInputElement>(`[data-defense-resistance="${k}"]`).value=String(s.resistanceBonus[k])
+      q<HTMLInputElement>(`[data-defense-protection="${k}"]`).value=String(s.protection[k])
+    }
+    q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(k=>
+      k+" : seuil "+resistanceScore(s,k)+" · protection "+s.protection[k]).join(" | ")
     const portrait=q<HTMLImageElement>("[data-portrait-preview]")
     portrait.hidden=!s.portrait
     if(s.portrait)portrait.src=s.portrait
@@ -334,6 +354,7 @@ function setupAtelier5d6() {
       : "Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions."
     refreshStreaks()
     renderInventory()
+    renderOpposition()
   }
   function refreshStreaks(){
     const s=current()
@@ -361,6 +382,8 @@ function setupAtelier5d6() {
   }
 
   let pendingTransfer=""
+  let pendingImpact:{targetId:string;damage:number;attackerName:string}|null=null
+  let pendingCounter:{attackerId:string;defenderId:string}|null=null
   let missions:Mission[]=[]
   async function loadMissions(signal:AbortSignal){
     try{
@@ -560,6 +583,18 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         s.stats[stat]=before;el.value=String(before)
         message("Points de caractéristique insuffisants ou limite de création dépassée.")
       }
+    } else if(el.dataset.defenseResistance && DEFENSE_KINDS.includes(el.dataset.defenseResistance as ResistanceKind)){
+      const k=el.dataset.defenseResistance as ResistanceKind
+      s.resistanceBonus[k]=clamp(el.value,0,8,s.resistanceBonus[k])
+      el.value=String(s.resistanceBonus[k])
+      q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(t=>
+        t+" : seuil "+resistanceScore(s,t)+" · protection "+s.protection[t]).join(" | ")
+    } else if(el.dataset.defenseProtection && DEFENSE_KINDS.includes(el.dataset.defenseProtection as ResistanceKind)){
+      const k=el.dataset.defenseProtection as ResistanceKind
+      s.protection[k]=clamp(el.value,0,60,s.protection[k])
+      el.value=String(s.protection[k])
+      q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(t=>
+        t+" : seuil "+resistanceScore(s,t)+" · protection "+s.protection[t]).join(" | ")
     } else if(el.dataset.mastery && MASTERIES.includes(el.dataset.mastery as Mastery)){
       const k=el.dataset.mastery as Mastery,before=s.masteries[k]
       s.masteries[k]=clamp(el.value,0,12,before)
@@ -618,7 +653,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "items":s.items=clean(el.value,1400);break
       }
     }
-    refreshRoster();refreshPoints();refreshStreaks();renderAI();persist()
+    refreshRoster();refreshPoints();refreshStreaks();renderOpposition();renderAI();persist()
   }
   function trackFailure(sheet:Sheet,domain:Domain,failed:boolean):string {
     if(domain==="autre")return ""
@@ -629,6 +664,40 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const face=1+Math.floor(Math.random()*12)
     return `Incident ${domain} [1d12 = ${face}] : ${INCIDENTS[domain][face-1]} (suggestion optionnelle du MJ)`
   }
+  function renderOpposition(){
+    const opponent=q<HTMLSelectElement>("[data-opposition-target]")
+    const selected=opponent.value
+    opponent.replaceChildren(new Option("Cible libre (seuil saisi par MJ)",""))
+    for(const sheet of state.sheets.filter(x=>x.id!==current().id))
+      opponent.add(new Option(sheet.name+" · "+sheet.kind.toUpperCase()+" · niv. "+sheet.level,sheet.id))
+    if(selected&&state.sheets.some(x=>x.id===selected&&x.id!==current().id))opponent.value=selected
+    const defender=state.sheets.find(x=>x.id===opponent.value)
+    const kind=q<HTMLSelectElement>("[data-opposition-kind]").value as ResistanceKind
+    const mode=q<HTMLSelectElement>("[data-opposition-mode]").value as ImpactMode
+    const resistance=defender?resistanceScore(defender,kind):0
+    const custom=clamp(q<HTMLInputElement>("[data-opposition-min]").value,0,45,0)
+    const difficulty=clamp(q<HTMLSelectElement>("[data-roll-target]").value,15,30,21)
+    const threshold=Math.max(difficulty,resistance,custom)
+    const mastery=attackMastery(current().masteries,mode)
+    q<HTMLElement>("[data-opposition-preview]").textContent=
+      "Seuil à atteindre : "+threshold+
+      " (difficulté "+difficulty+(defender?", défense "+resistance:"")+(custom?", seuil MJ "+custom:"")+"). "+
+      (mode==="mental"?"Effet social / mental : aucun PV retiré automatiquement.":
+        "Dégâts possibles sur réussite : base + maîtrise "+mastery+
+        " + palier de puissance, moins la protection de la cible.")+
+      (defender?" "+defender.name+" possède "+defender.pv+"/"+defender.pvMax+" PV.":"")
+    if(!q<HTMLInputElement>("[data-opposition-enabled]").checked){
+      q<HTMLElement>("[data-opposition-result]").textContent="Mode opposition désactivé : jets ordinaires inchangés."
+    }
+  }
+  function clearPendingImpact(){
+    pendingImpact=null
+    q<HTMLButtonElement>("[data-opposition-apply]").hidden=true
+  }
+  function clearPendingCounter(){
+    pendingCounter=null
+    q<HTMLButtonElement>("[data-opposition-counter]").hidden=true
+  }
   function roll(){
     const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
     if(s.kind==="pj"&&(used<12||used+s.convertedCredits>maxStatCredits(s.highestLevel)||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
@@ -637,29 +706,74 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     }
     const stat=q<HTMLSelectElement>("[data-roll-stat]").value as Stat
     const skill=clamp(q<HTMLSelectElement>("[data-roll-skill]").value,0,2,0)
-    const target=clamp(q<HTMLSelectElement>("[data-roll-target]").value,15,30,21)
+    const difficulty=clamp(q<HTMLSelectElement>("[data-roll-target]").value,15,30,21)
     const situation=clamp(q<HTMLSelectElement>("[data-roll-situation]").value,-2,2,0)
     const chosenDomain=q<HTMLSelectElement>("[data-roll-domain]").value
     const domain:Domain=DOMAINS.includes(chosenDomain as Domain)?chosenDomain as Domain:"autre"
     const dice=Array.from({length:5},()=>1+Math.floor(Math.random()*6))
     const natural=dice.reduce((a,b)=>a+b,0), total=natural+s.stats[stat]+skill+situation
+    clearPendingImpact()
+    clearPendingCounter()
+    const enabled=q<HTMLInputElement>("[data-opposition-enabled]").checked
+    const defender=state.sheets.find(x=>x.id===q<HTMLSelectElement>("[data-opposition-target]").value && x.id!==s.id)
+    const kind=q<HTMLSelectElement>("[data-opposition-kind]").value as ResistanceKind
+    const mode=q<HTMLSelectElement>("[data-opposition-mode]").value as ImpactMode
+    const custom=clamp(q<HTMLInputElement>("[data-opposition-min]").value,0,45,0)
+    const resistance=defender?resistanceScore(defender,kind):0
+    const opposition:OppositionResult|null=enabled?resolveOpposition({
+      natural,total,difficulty,resistance:Math.max(custom,resistance),
+      damageBase:clamp(q<HTMLSelectElement>("[data-opposition-base]").value,1,12,3),
+      mastery:attackMastery(s.masteries,mode),level:s.level,
+      protection:defender?.protection[kind]??0,mode
+    }):null
+    const target=opposition?.threshold??difficulty
     let outcome="",detail="",favorable=false
     if(natural===5){outcome="Échec critique exceptionnel";detail="Choisir −2 aux trois prochains jets du groupe OU +2 aux actions ennemies pendant trois tours."}
     else if(natural<=7){outcome="Échec critique mineur";detail="L'action échoue et provoque une complication ciblée."}
     else if(natural===30 && total>=target){outcome="Succès exceptionnel";detail="Choisir +2 aux jets de l'équipe pendant trois tours OU une récompense narrative durable validée par le MJ.";favorable=true}
     else if(natural>=27 && total>=target){outcome="Réussite critique";detail="Action renforcée, sans avantage collectif automatique.";favorable=true}
     else if(total>=target){outcome="Réussite";detail="L'action réussit dans les limites des moyens disponibles.";favorable=true}
-    else if(target-total<=2){outcome="Échec de justesse";detail="Le MJ peut proposer une réussite avec contrepartie."}
+    else if(target-total<=2){outcome=opposition?"Résistance de justesse":"Échec de justesse"
+      detail=opposition?"Le seuil de résistance n'est pas atteint : aucun effet sur la cible.":"Le MJ peut proposer une réussite avec contrepartie."}
     else {outcome="Échec";detail="L'action échoue, avec conséquences adaptées à la situation."}
     host.querySelectorAll<HTMLElement>("[data-die]").forEach((e,i)=>{e.textContent=String(dice[i])})
     const result=q<HTMLElement>("[data-result]")
     result.dataset.outcome=favorable?"success":"failure"
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
     const incident = natural===5 ? "" : trackFailure(s,domain,!favorable)
+    if(opposition){
+      if(opposition.success){
+        if(mode==="mental")detail+="\nRésistance mentale franchie : le MJ décrit l'effet, sans dégâts PV automatiques."
+        else {
+          detail+="\nImpact : "+opposition.grossDamage+" dégâts bruts − "+opposition.absorbed+
+            " de protection = "+opposition.damage+" PV potentiels."
+          if(defender&&opposition.damage>0){
+            pendingImpact={targetId:defender.id,damage:opposition.damage,attackerName:s.name}
+            q<HTMLButtonElement>("[data-opposition-apply]").hidden=state.mode==="pj"
+          }
+        }
+      }else if(!opposition.criticalFailure){
+        if(opposition.reaction==="riposte_possible"&&defender){
+          pendingCounter={attackerId:s.id,defenderId:defender.id}
+          q<HTMLButtonElement>("[data-opposition-counter]").hidden=state.mode==="pj"
+        }
+        detail+="\nLa cible résiste (écart "+opposition.gap+"). "+
+          (opposition.reaction==="riposte_possible"
+            ?"Le défenseur peut envisager une riposte seulement s'il dispose d'une réaction et d'une position favorable ; faire un jet distinct."
+            :"Parade, esquive ou résistance : aucune riposte gratuite.")
+      }else detail+="\nÉchec critique : aucune contre-attaque supplémentaire automatique."
+      q<HTMLElement>("[data-opposition-result]").textContent=
+        opposition.success?(mode==="mental"?"Effet mental à arbitrer par le MJ.":"Impact calculé : "+opposition.damage+" PV. "+
+        (defender?"En mode MJ, confirmer l'application des dégâts.":"Pas de fiche cible : aucun PV modifié.")):
+        "Seuil "+target+" non franchi. "+
+        (opposition.reaction==="riposte_possible"?"Fenêtre de riposte narrative possible, sur action distincte.":"Aucun dégât.")
+    }
     if(incident)detail += "\n"+incident
     s.lastIncident=incident
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
-    state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:incident ? `${outcome} · ${incident}` : outcome})
+    state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:
+      (incident ? `${outcome} · ${incident}` : outcome)+
+      (opposition?" · "+(opposition.success?(mode==="mental"?"effet mental":"dégâts potentiels "+opposition.damage):"résistance"):"")})
     state.log=state.log.slice(0,20)
     refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
@@ -721,14 +835,22 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   const controller=new AbortController(), opts={signal:controller.signal}
   host.addEventListener("input",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery)changeField(el)
+    if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
+      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery)changeField(el)
+    if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
+      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
+    if(el?.hasAttribute("data-opposition-enabled")||el?.hasAttribute("data-opposition-target")||
+       el?.hasAttribute("data-opposition-kind")||el?.hasAttribute("data-opposition-mode")||
+       el?.hasAttribute("data-opposition-min")||el?.hasAttribute("data-opposition-base")||
+       el?.hasAttribute("data-roll-target")){
+      clearPendingImpact();clearPendingCounter();renderOpposition()
+    }
     if(el instanceof HTMLInputElement && el.hasAttribute("data-talent-spent")){
       const sheet=current()
       sheet.talentPointsSpent=clamp(el.value,0,Math.floor(sheet.convertedCredits/6),sheet.talentPointsSpent)
@@ -805,7 +927,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       void file.text().then(raw=>{importCampaign(JSON.parse(raw))})
         .catch(()=>message("Restauration refusée : vérifier le schéma alrick.campaign.v1 et les identifiants."))
     }
-    if(el?.hasAttribute("data-active")){state.activeId=el.value;render();persist()}
+    if(el?.hasAttribute("data-active")){
+      clearPendingImpact();clearPendingCounter();state.activeId=el.value;render();persist()
+    }
     if(el?.hasAttribute("data-import") && el instanceof HTMLInputElement) {
       const file=el.files?.[0];el.value=""
       if(!file)return
@@ -831,7 +955,46 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
-    if(button.dataset.mode){state.mode=button.dataset.mode as Mode;refreshMode();persist();return}
+    if(button.dataset.mode){
+      state.mode=button.dataset.mode as Mode
+      q<HTMLButtonElement>("[data-opposition-apply]").hidden=!pendingImpact || state.mode==="pj"
+      q<HTMLButtonElement>("[data-opposition-counter]").hidden=!pendingCounter || state.mode==="pj"
+      refreshMode();persist();return
+    }
+    if(button.hasAttribute("data-opposition-counter")){
+      if(state.mode==="pj"){message("Le MJ doit valider les ripostes des autres fiches.");return}
+      const attempt=pendingCounter
+      if(!attempt){message("Aucune fenêtre de riposte en attente.");return}
+      const defender=state.sheets.find(x=>x.id===attempt.defenderId)
+      const attacker=state.sheets.find(x=>x.id===attempt.attackerId)
+      clearPendingCounter();clearPendingImpact()
+      if(!defender||!attacker){message("Une fiche de la riposte a disparu.");return}
+      state.activeId=defender.id
+      render()
+      q<HTMLInputElement>("[data-opposition-enabled]").checked=true
+      q<HTMLSelectElement>("[data-opposition-target]").value=attacker.id
+      q<HTMLSelectElement>("[data-opposition-kind]").value="physique"
+      q<HTMLSelectElement>("[data-opposition-mode]").value="melee"
+      q<HTMLSelectElement>("[data-roll-stat]").value="physique"
+      q<HTMLSelectElement>("[data-roll-domain]").value="melee"
+      renderOpposition();persist()
+      message("Riposte préparée : "+defender.name+" agit. Vérifier qu'une réaction est disponible et lancer un NOUVEAU jet.")
+      return
+    }
+    if(button.hasAttribute("data-opposition-apply")){
+      if(state.mode==="pj"){message("L'application des dégâts sur une autre fiche est réservée au MJ.");return}
+      const pending=pendingImpact
+      if(!pending){message("Aucun impact en attente. Effectuer d'abord un jet opposé réussi.");return}
+      const victim=state.sheets.find(x=>x.id===pending.targetId)
+      if(!victim){clearPendingImpact();message("La cible n'existe plus.");return}
+      if(!window.confirm("Appliquer "+pending.damage+" PV de dégâts à « "+victim.name+" » ? (0 PV = hors de combat, pas une mort automatique)"))return
+      const actual=Math.min(victim.pv,pending.damage)
+      victim.pv=Math.max(0,victim.pv-pending.damage)
+      if(state.log[0])state.log[0].text=clean(state.log[0].text+" · "+actual+" PV retirés à "+victim.name,180)
+      clearPendingImpact();refreshLog();renderOpposition();renderAI();persist()
+      message(actual+" PV effectivement retirés à "+victim.name+" ; reste "+victim.pv+"/"+victim.pvMax+" PV.")
+      return
+    }
     if(button.hasAttribute("data-clear-portrait")){
       current().portrait="";setForm();persist();message("Portrait retiré de cette fiche.");return
     }

@@ -86,6 +86,32 @@ Pour une attaque, une esquive, une négociation ou un secours : **même jet**, a
 - Les adversaires appliquent eux aussi des conséquences claires et peuvent fuir ou se rendre.
 - En cas de conflit avec des ressources déjà canoniques, les règles de la **Bible**, du **Codex V04** et des scènes jouées gardent priorité.
 
+## Opposition, résistance et puissance des dégâts — module facultatif de playtest
+
+La défense d'un PNJ ou d'une créature ne doit pas être réduite à ses PV. Le joueur commence par vérifier **s'il peut affecter la cible**, puis la puissance de son effet.
+
+1. **Choisir la nature de l'opposition** : résistance **physique** (parade, esquive, endurance), **magique** (protection, maîtrise des runes) ou **mentale** (volonté, négociation). Le MJ peut imposer des préconditions narratives : avoir une arme adaptée, pouvoir atteindre la cible ou connaître un rite. Le meilleur jet du monde ne remplace pas ces préconditions.
+2. **Comparer le total à un seuil minimal** : `max(difficulté de l'action, résistance de la cible, seuil MJ additionnel)`. La résistance passive d'une fiche est calculée à partir d'une caractéristique défensive, d'une fraction de sa maîtrise protectrice, de son expérience et d'un bonus de résistance de 0 à 8 validé par le MJ. Le score final est plafonné à **45** pour ce prototype. Les seuils ordinaires 15 à 30 restent inchangés pour les jets sans opposition.
+3. **En cas de succès physique ou magique offensif**, calculer les dégâts : `base (1/3/6/12) + maîtrise offensive (0–12) + bonus de puissance du palier − protection de la cible (0–60)`. La protection peut absorber tous les dégâts, **même si la défense a été franchie**. Si l'action est de négociation ou d'influence mentale, les **PV ne changent jamais automatiquement** : le MJ décrit une conséquence plausible et consentie par la fiction.
+4. **En cas d'échec** : aucune altération de la cible, même à 1–2 points sous le seuil. Le défenseur peut parer, esquiver, se repositionner, refuser ou — en cas d'ouverture favorable — **envisager une riposte**. Une riposte exige sa propre action, ses moyens et un jet distinct ; **aucun dégât automatique** n'est infligé au PJ. Dans l'Atelier, le bouton MJ **« préparer une riposte »** inverse temporairement les rôles d'attaquant et de cible pour préparer un **nouveau jet 5d6** (sans le lancer à la place du défenseur).
+5. **Appliquer les PV seulement après confirmation MJ** : un jet réussi affiche un impact **potentiel**, mais ne modifie pas immédiatement la fiche cible. Le MJ peut ensuite confirmer l'application ; 0 PV signifie hors de combat, jamais une mort automatique.
+
+| Niveau offensif | Bonus de dégâts du palier |
+|---|---:|
+| 1–4 | +0 |
+| 5–8 | +3 |
+| 9–12 | +7 |
+| 13–16 | +13 |
+| 17–20 | +21 |
+| 21 | +29 |
+| 22 | +37 |
+| 23 | +46 |
+| 24 | +56 |
+
+**Exemple de jeu (non canonique).** Un aventurier de niveau 12, avec maîtrise des lames 8 et une arme de base 6, franchit une résistance physique de 24. Il peut causer **21 dégâts bruts**. Face à une protection de 5, l'impact est **16 PV**, après confirmation du MJ. En cas d'échec de cinq points, le défenseur peut avoir l'occasion de riposter, mais doit effectuer une action distincte. À niveau 24, avec maîtrise 12 et la même arme de base 6, l'impact brut atteindrait **74 dégâts** — à condition de pouvoir toucher et de franchir la défense. Les miracles, Cercles et lois cosmiques restent soumis au canon du Codex et ne sont pas déduits du niveau.
+
+Le module ne modifie pas les jets 5d6 classiques, ni leurs critiques naturels. Il ne transforme pas les points de maîtrise en bonus universels de précision ; ils influencent **l'impact des actions offensives**, pas systématiquement le résultat du jet. Une créature n'est pas systématiquement hostile et une victoire peut être obtenue par l'évacuation ou le dialogue.
+
 ## Un outil interactif pour essayer
 
 [[jouer/atelier-5d6|Ouvrir l'Atelier de jeu 5d6]] : saisir la fiche PJ, importer des PNJ ou créatures en **JSON**, lancer automatiquement les cinq dés et enregistrer le journal sur cet appareil. Trois interfaces partagent le même moteur : **Joueur**, **MJ** et **MJ assisté par IA**. Cette dernière prépare un texte à copier : **elle n'est pas une connexion automatique à ChatGPT**.
