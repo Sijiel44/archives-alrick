@@ -7,7 +7,7 @@ const totalMasteries = (m:Record<Mastery,number>) => MASTERIES.reduce((sum,k)=>s
 type Domain = "magie" | "melee" | "tir" | "nego" | "autre"
 const DOMAINS: Domain[] = ["magie", "melee", "tir", "nego", "autre"]
 const makeStreaks = (): Record<Domain,number> => ({magie:0,melee:0,tir:0,nego:0,autre:0})
-const validSourceRef = (v:unknown):string => typeof v==="string" && /^(personnages|creatures)\/[A-Za-z0-9-]{2,100}$/.test(v) ? v : ""
+const validSourceRef = (v:unknown):string => typeof v==="string" && /^(personnages|creatures)\/[A-Za-z0-9-]{2,100}(?:\/[A-Za-z0-9-]{2,100}){0,2}$/.test(v) ? v : ""
 type Mode = "pj" | "mj" | "ia"
 const ITEM_CATEGORIES = {monnaie:"🪙",arme:"⚔️",armure:"🛡️",artefact:"✨",consommable:"🧪",ingredient:"🌿",outil:"🔧",munition:"🏹",livre:"📜",bijou:"💍",provision:"🥖",materiau:"🪵",quete:"🗝️",autre:"🎒"} as const
 type ItemCategory = keyof typeof ITEM_CATEGORIES
