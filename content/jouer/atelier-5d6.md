@@ -54,7 +54,7 @@ Le mode MJ accepte un **profil** (objet JSON avec nom et quatre caractéristique
 }
 ```
 
-L'export de l'Atelier utilise `alrick.sheets.v1` (un conteneur avec plusieurs profils). Seuls les fichiers **JSON explicites** sont acceptés ; les documents Word, PDF ou fiches des Archives ne sont **pas encore importés automatiquement**. Une étape future pourrait proposer une conversion **après validation du canon et des caractéristiques**.
+L'export de l'Atelier utilise désormais `alrick.sheets.v2` (un conteneur avec plusieurs profils, leurs maîtrises et leurs portraits facultatifs) ; les anciennes fiches `v1` restent importables. L'import JSON accepte jusqu'à **5 Mio** pour tenir compte des portraits, mais la capacité de stockage local dépend du navigateur. Seuls les fichiers **JSON explicites** sont acceptés ; les documents Word, PDF ou fiches des Archives ne sont **pas encore importés automatiquement**. Une étape future pourrait proposer une conversion **après validation du canon et des caractéristiques**.
 
 ## Nouveautés de l'Atelier v1.1
 
