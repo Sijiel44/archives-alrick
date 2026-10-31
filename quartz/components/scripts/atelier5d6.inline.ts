@@ -279,7 +279,7 @@ function setupAtelier5d6() {
     const el=q<HTMLElement>("[data-points]")
     const limit=maxStatCredits(s.highestLevel)-s.convertedCredits
     const legal=s.kind!=="pj" || (used>=12 && used<=limit && (s.highestLevel!==1 || (used===12 && STATS.every(k=>s.stats[k]<=5))))
-    el.textContent=s.kind==="pj" ? String(used)+" points investis · "+String(Math.max(0,limit-used))+" crédits restants · plafond 12/score" : String(used)+" points (MJ)" : `${used} points (MJ)`
+    el.textContent=s.kind==="pj" ? String(used)+" points investis · "+String(Math.max(0,limit-used))+" crédits restants · plafond 12/score" : String(used)+" points (MJ)"
     el.style.color=!legal ? "#e7ac9c" : ""
     const masteryUsed=totalMasteries(s.masteries), masteryLimit=2*(s.highestLevel-1)
     const masteryEl=q<HTMLElement>("[data-mastery-points]")
