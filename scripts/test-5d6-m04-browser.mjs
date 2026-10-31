@@ -187,6 +187,7 @@ try{
     await click("[data-action=delete]")
     await waitFor("document.querySelector('[data-active]').options.length==="+n,"suppression")
     assert.ok(dialogs>d)
+    await sleep(400) // confirmation native fermée : navigateur pleinement disponible
   })
   let exportedCard
   await test("Export/import JSON propre au Bestiaire",async()=>{
