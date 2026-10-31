@@ -75,3 +75,12 @@ Les documents de campagne comportent déjà des usages de jets de dés, de magie
 ## Des lieux de loisir dans une campagne indépendante
 
 L'[[lieux/cb44-iles-et-quatre-saisons|Île des Divertissements]] et sa [[lieux/parc-des-quatre-saisons-services|vie quotidienne et technique]] permettent une aventure fondée sur les métiers, l'hospitalité, les voyages, le merveilleux ou l'entretien d'ouvrages. Les quatre régions sont décrites dans l'Atlas ; les événements personnels d'Orin restent séparés dans son propre dossier de continuité. L'usage du lieu n'oblige ni à incarner Orin, ni à suivre son calendrier de voyage.
+
+
+## Nouveaux outils de scénarios et de playtest
+
+- [[jouer/aventure-pilote-les-registres-du-col|Les Registres du Col]] — one-shot à Keldrun, enquêtes, caravane, aides et choix de terrain, **non joué** dans l'Odyssée.
+- [[jouer/antagonistes-sans-decheance|Antagonistes sans Déchéance]] — régimes, prédateurs, escrocs, accidents et adversaires indépendants.
+- [[jouer/playtest-5d6-probabilites|Playtest mathématique du 5d6]] — seuils, critiques et protocole PJ/MJ/MJ-IA, **sans prétendre à un test humain**.
+
+Le [[jouer/decheance-systeme|mini-système de Déchéance 2d6]] demeure un module **validé et distinct** : les difficultés 2d6 ne doivent pas être directement reprises pour 5d6.
