@@ -33,6 +33,12 @@ const expected=ORIGIN_STEPS.reduce((n,s)=>n*s.options.length,1)
 assert.equal(combinations,expected)
 assert(combinations>10000,"La nouvelle histoire doit proposer plus de 10 000 parcours")
 assert.equal(EDUCATION_PATHS.length,8)
+const sailor=buildOrigin(['marins','navigation','tempete','mer'])
+const artist=buildOrigin(['artistes','musique','representation','art'])
+const farmer=buildOrigin(['agriculteurs','elevage','famine','cultiver'])
+assert(sailor.masteries.navigation>=3,'Les marins doivent progresser en navigation')
+assert(artist.masteries.arts>=3,'Les artistes doivent progresser dans leur art')
+assert(farmer.masteries.agriculture>=3,'Les agriculteurs doivent progresser en agriculture')
 assert.equal(LITERACY_LEVELS.length,4)
 for(const education of EDUCATION_PATHS){
   for(const literacy of LITERACY_LEVELS){
