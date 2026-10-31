@@ -383,6 +383,7 @@ function setupAtelier5d6() {
 
   let pendingTransfer=""
   let pendingImpact:{targetId:string;damage:number;attackerName:string}|null=null
+  let pendingCounter:{attackerId:string;defenderId:string}|null=null
   let missions:Mission[]=[]
   async function loadMissions(signal:AbortSignal){
     try{
@@ -693,6 +694,10 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     pendingImpact=null
     q<HTMLButtonElement>("[data-opposition-apply]").hidden=true
   }
+  function clearPendingCounter(){
+    pendingCounter=null
+    q<HTMLButtonElement>("[data-opposition-counter]").hidden=true
+  }
   function roll(){
     const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
     if(s.kind==="pj"&&(used<12||used+s.convertedCredits>maxStatCredits(s.highestLevel)||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
@@ -708,6 +713,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const dice=Array.from({length:5},()=>1+Math.floor(Math.random()*6))
     const natural=dice.reduce((a,b)=>a+b,0), total=natural+s.stats[stat]+skill+situation
     clearPendingImpact()
+    clearPendingCounter()
     const enabled=q<HTMLInputElement>("[data-opposition-enabled]").checked
     const defender=state.sheets.find(x=>x.id===q<HTMLSelectElement>("[data-opposition-target]").value && x.id!==s.id)
     const kind=q<HTMLSelectElement>("[data-opposition-kind]").value as ResistanceKind
@@ -747,6 +753,10 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
           }
         }
       }else if(!opposition.criticalFailure){
+        if(opposition.reaction==="riposte_possible"&&defender){
+          pendingCounter={attackerId:s.id,defenderId:defender.id}
+          q<HTMLButtonElement>("[data-opposition-counter]").hidden=state.mode==="pj"
+        }
         detail+="\nLa cible résiste (écart "+opposition.gap+"). "+
           (opposition.reaction==="riposte_possible"
             ?"Le défenseur peut envisager une riposte seulement s'il dispose d'une réaction et d'une position favorable ; faire un jet distinct."
@@ -839,7 +849,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
        el?.hasAttribute("data-opposition-kind")||el?.hasAttribute("data-opposition-mode")||
        el?.hasAttribute("data-opposition-min")||el?.hasAttribute("data-opposition-base")||
        el?.hasAttribute("data-roll-target")){
-      clearPendingImpact();renderOpposition()
+      clearPendingImpact();clearPendingCounter();renderOpposition()
     }
     if(el instanceof HTMLInputElement && el.hasAttribute("data-talent-spent")){
       const sheet=current()
@@ -918,7 +928,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         .catch(()=>message("Restauration refusée : vérifier le schéma alrick.campaign.v1 et les identifiants."))
     }
     if(el?.hasAttribute("data-active")){
-      clearPendingImpact();state.activeId=el.value;render();persist()
+      clearPendingImpact();clearPendingCounter();state.activeId=el.value;render();persist()
     }
     if(el?.hasAttribute("data-import") && el instanceof HTMLInputElement) {
       const file=el.files?.[0];el.value=""
@@ -948,7 +958,28 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(button.dataset.mode){
       state.mode=button.dataset.mode as Mode
       q<HTMLButtonElement>("[data-opposition-apply]").hidden=!pendingImpact || state.mode==="pj"
+      q<HTMLButtonElement>("[data-opposition-counter]").hidden=!pendingCounter || state.mode==="pj"
       refreshMode();persist();return
+    }
+    if(button.hasAttribute("data-opposition-counter")){
+      if(state.mode==="pj"){message("Le MJ doit valider les ripostes des autres fiches.");return}
+      const attempt=pendingCounter
+      if(!attempt){message("Aucune fenêtre de riposte en attente.");return}
+      const defender=state.sheets.find(x=>x.id===attempt.defenderId)
+      const attacker=state.sheets.find(x=>x.id===attempt.attackerId)
+      clearPendingCounter();clearPendingImpact()
+      if(!defender||!attacker){message("Une fiche de la riposte a disparu.");return}
+      state.activeId=defender.id
+      render()
+      q<HTMLInputElement>("[data-opposition-enabled]").checked=true
+      q<HTMLSelectElement>("[data-opposition-target]").value=attacker.id
+      q<HTMLSelectElement>("[data-opposition-kind]").value="physique"
+      q<HTMLSelectElement>("[data-opposition-mode]").value="melee"
+      q<HTMLSelectElement>("[data-roll-stat]").value="physique"
+      q<HTMLSelectElement>("[data-roll-domain]").value="melee"
+      renderOpposition();persist()
+      message("Riposte préparée : "+defender.name+" agit. Vérifier qu'une réaction est disponible et lancer un NOUVEAU jet.")
+      return
     }
     if(button.hasAttribute("data-opposition-apply")){
       if(state.mode==="pj"){message("L'application des dégâts sur une autre fiche est réservée au MJ.");return}
