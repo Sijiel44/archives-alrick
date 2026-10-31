@@ -13,6 +13,8 @@ tags: [5d6, bestiaire, creatures, niveaux, mj, resistance, prototype]
 
 # Bestiaire évolutif — niveau 1 à 25
 
+> Pour différencier un nouveau-né, un habitant ordinaire, un héros et une manifestation divine, lire la [[jouer/echelle-existences-niveaux-affinites|nouvelle échelle des existences et des affinités]]. Cette reclassification proposée ne modifie pas encore le générateur 1–25 existant.
+
 > [!info] Fiches de jeu, pas encyclopédie
 > Les cinq archétypes ci-dessous servent à créer des adversaires, alliés ou animaux de **campagnes indépendantes**. Ils ne créent aucune nouvelle espèce, aucune biographie, aucun dragon primordial et aucun événement déjà joué. Une fiche issue des Archives doit rester distinguée de son **adaptation libre en statistiques 5d6**.
 
