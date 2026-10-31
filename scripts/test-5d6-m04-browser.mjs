@@ -6,10 +6,12 @@ import {readFile,writeFile,readdir,mkdir,mkdtemp,rm} from "node:fs/promises"
 import {tmpdir} from "node:os"
 import path from "node:path"
 import {WebSocket} from "ws"
+import {build} from "esbuild"
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms))
 const root=path.resolve("public"),tmp=await mkdtemp(path.join(tmpdir(),"m041-"))
 const downloads=path.join(tmp,"downloads");await mkdir(downloads)
 let server,chrome,ws,nextId=0,dialogs=0,checks=0
+const failures=[]
 const runtimeErrors=[]
 const pending=new Map()
 function cdp(method,params={}){
@@ -34,7 +36,18 @@ async function waitFor(expression,label){
   }
   throw Error("Délai navigateur dépassé : "+label)
 }
-async function test(name,fn){await fn();checks++;console.log("✓ Chrome : "+name)}
+async function test(name,fn){
+  try{await fn();checks++;console.log("✓ Chrome : "+name)}
+  catch(error){failures.push(name+": "+String(error));console.error("✗ Chrome : "+name+" — "+String(error))}
+}
+async function pureBestiaryFixture(){
+  const output=await build({entryPoints:["quartz/components/scripts/atelier5d6-bestiary-workshop.ts"],
+    bundle:true,platform:"node",format:"esm",target:"es2022",write:false,logLevel:"silent"})
+  const lab=await import("data:text/javascript;base64,"+Buffer.from(output.outputFiles[0].text).toString("base64"))
+  const card=lab.createBestiaryCard(15,"colosse")
+  card.name="Colosse recette M04.1"
+  return lab.exportBestiaryForAtelier(card)
+}
 const click=s=>browserFn(q=>{const e=document.querySelector(q);if(!e)throw Error(q);e.click()},s)
 const set=(s,v,event="input")=>browserFn((q,value,which)=>{
   const e=document.querySelector(q);if(!e)throw Error(q)
@@ -241,6 +254,12 @@ try{
     assert.equal(data.schema,"alrick.sheets.v3")
     assert.equal(data.sheets[0].ruleset,"m03-bestiary")
   })
+  if(!exportedAtelier){
+    const fallback=await pureBestiaryFixture()
+    exportedAtelier=path.join(tmp,"fixture-m03-bestiary.json")
+    await writeFile(exportedAtelier,JSON.stringify(fallback,null,2))
+    console.warn("ATTENTION : export UI non validé ; fixture du moteur PUR injectée pour tester les étapes suivantes.")
+  }
   await test("Interface mobile et navigation Quartz",async()=>{
     await cdp("Emulation.setDeviceMetricsOverride",{width:390,height:844,deviceScaleFactor:1,mobile:true})
     await sleep(350)
@@ -307,6 +326,7 @@ try{
     assert.equal(again.sheets.find(x=>x.name==="Témoin historique").legacyOriginal.uniqueHistorique,"à préserver")
   })
   console.log("M04.1 CHROME : "+checks+" scénarios complets, "+dialogs+" dialogues de confirmation.")
+  if(failures.length){console.error("M04.1 : "+failures.length+" scénario(s) non validés :",failures);throw Error("Recette M04.1 incomplète : "+failures.join("; "))}
 }finally{
   try{ws?.close()}catch{}
   try{chrome?.kill("SIGKILL")}catch{}
