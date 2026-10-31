@@ -1,0 +1,462 @@
+{
+  "schema": "alrick.bestiaire-b001.registre-travail.v1",
+  "version": "2026-10-31",
+  "branche_reference": "main",
+  "commit_initial": "3443be26b15a90f078e7fdcb94ae5fbb5cfd9191",
+  "portee": "releves_verifies_non_exhaustifs",
+  "publication": "registre_documentaire_non_canonisant",
+  "notice": "Codes historiques conservés. code:null = pas de code unique vérifié, sans permission de créer une fiche canonique. source précise à recontrôler avant migration.",
+  "entrees": [
+    {
+      "cle_registre": "b001-001",
+      "code": "DRG-01",
+      "nom": "Thessoryn",
+      "alias": [],
+      "nature_documentaire": "individu",
+      "fichier_principal": "content/creatures/dragons/thessoryn.md",
+      "canon_statut": "lore_valide",
+      "etat_editorial": "valide",
+      "source": "Création validée 2026-10-30",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [
+        "cotes_et_estuaires:preference"
+      ],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-002",
+      "code": "DRG-02",
+      "nom": "Velmora",
+      "alias": [],
+      "nature_documentaire": "individu",
+      "fichier_principal": "content/creatures/dragons/velmora.md",
+      "canon_statut": "lore_valide",
+      "etat_editorial": "valide",
+      "source": "Création validée 2026-10-30",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [
+        "montagnes_et_falaises:preference"
+      ],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-003",
+      "code": "DRG-03",
+      "nom": "Orzeyl",
+      "alias": [],
+      "nature_documentaire": "individu",
+      "fichier_principal": "content/creatures/dragons/orzeyl.md",
+      "canon_statut": "lore_valide",
+      "etat_editorial": "valide",
+      "source": "Création validée 2026-10-30",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [
+        "grottes_et_reseaux_souterrains:preference"
+      ],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-004",
+      "code": "IMP-13",
+      "nom": "Irindra",
+      "alias": [],
+      "nature_documentaire": "individu",
+      "fichier_principal": "content/creatures/dragons/irindra.md",
+      "canon_statut": "lore_valide",
+      "etat_editorial": "en_cours",
+      "source": "Compendium V03 v1.7 IMP-13; Bible V01 B38-02; validation 2026-10-31",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "spoilers",
+        "niveau_25_potentiel_non_actuel"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": true
+    },
+    {
+      "cle_registre": "b001-005",
+      "code": "REV-16",
+      "nom": "Aldren le loup",
+      "alias": [
+        "Aldren du Mérien"
+      ],
+      "nature_documentaire": "individu",
+      "fichier_principal": "content/personnages/REV-16.md",
+      "canon_statut": "faits_joues",
+      "etat_editorial": "en_cours",
+      "source": "Compendium V03 REV-16; CB2",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [
+        "merien:apparition"
+      ],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "homonyme_Aldren_Valbrume"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": null,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-006",
+      "code": "REV-13",
+      "nom": "Harald le lion",
+      "alias": [],
+      "nature_documentaire": "individu",
+      "fichier_principal": "content/personnages/REV-13.md",
+      "canon_statut": "faits_joues",
+      "etat_editorial": "valide",
+      "source": "Compendium V03 REV-13; CB42",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "homonyme_Harald_Forgecoeur",
+        "distinct_lions_invoques"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": null,
+      "spoilers": true
+    },
+    {
+      "cle_registre": "b001-007",
+      "code": "IMP-48",
+      "nom": "Phénix",
+      "alias": [],
+      "nature_documentaire": "individu",
+      "fichier_principal": "content/personnages/IMP-48.md",
+      "canon_statut": "faits_joues",
+      "etat_editorial": "valide",
+      "source": "Compendium V03 IMP-48; CB41-CB43",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "nom_ne_prouve_pas_reproduction_espece"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": null,
+      "spoilers": true
+    },
+    {
+      "cle_registre": "b001-008",
+      "code": "CRE-CB39-LIONS-EDRIC-MAELYA",
+      "nom": "Édril et Maërys — dossier partagé",
+      "alias": [],
+      "nature_documentaire": "dossier",
+      "fichier_principal": "content/creatures/CRE-CB39-LIONS-EDRIC-MAELYA.md",
+      "canon_statut": "faits_joues",
+      "etat_editorial": "valide",
+      "source": "CB39 P01405–02586; validation 2026-10-29",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "code_du_dossier_ne_identifie_pas_deux_especes"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": null,
+      "spoilers": true
+    },
+    {
+      "cle_registre": "b001-009",
+      "code": null,
+      "nom": "Édril",
+      "alias": [],
+      "nature_documentaire": "individu",
+      "fichier_principal": "content/creatures/CRE-CB39-LIONS-EDRIC-MAELYA.md",
+      "canon_statut": "faits_joues",
+      "etat_editorial": "valide",
+      "source": "CB39 P01405–02586",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "sans_code_individuel_stable",
+        "invocation_singuliere"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": null,
+      "spoilers": true
+    },
+    {
+      "cle_registre": "b001-010",
+      "code": null,
+      "nom": "Maërys",
+      "alias": [],
+      "nature_documentaire": "individu",
+      "fichier_principal": "content/creatures/CRE-CB39-LIONS-EDRIC-MAELYA.md",
+      "canon_statut": "faits_joues",
+      "etat_editorial": "valide",
+      "source": "CB39 P01405–02586",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "sans_code_individuel_stable",
+        "invocation_singuliere"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": null,
+      "spoilers": true
+    },
+    {
+      "cle_registre": "b001-011",
+      "code": null,
+      "nom": "Mâche-Rune",
+      "alias": [],
+      "nature_documentaire": "proposition_mj",
+      "fichier_principal": "content/creatures/bestiaire-mache-rune.md",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "valide",
+      "source": "Prototypes villages 2026-10-30",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "habitats_seulement_envisages"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-012",
+      "code": null,
+      "nom": "Chasses-Faim",
+      "alias": [],
+      "nature_documentaire": "proposition_mj",
+      "fichier_principal": "content/creatures/bestiaire-chasses-faim.md",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "valide",
+      "source": "Prototypes villages 2026-10-30",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "habitats_seulement_envisages"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-013",
+      "code": null,
+      "nom": "Harpiste creuse",
+      "alias": [],
+      "nature_documentaire": "proposition_mj",
+      "fichier_principal": "content/creatures/bestiaire-harpiste-creuse.md",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "valide",
+      "source": "Prototypes villages 2026-10-30",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "nature_ontologique_inconnue"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-014",
+      "code": null,
+      "nom": "Garde-Cendre",
+      "alias": [],
+      "nature_documentaire": "proposition_mj",
+      "fichier_principal": "content/creatures/bestiaire-garde-cendre.md",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "valide",
+      "source": "Prototypes villages 2026-10-30",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "construction_supposee"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-015",
+      "code": null,
+      "nom": "Ver des Frontières",
+      "alias": [],
+      "nature_documentaire": "proposition_mj",
+      "fichier_principal": "content/creatures/bestiaire-ver-des-frontieres.md",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "valide",
+      "source": "Prototypes villages 2026-10-30",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "faille_non_automatique"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-016",
+      "code": null,
+      "nom": "Lamproie de nacre",
+      "alias": [],
+      "nature_documentaire": "proposition_mj",
+      "fichier_principal": "content/creatures/bestiaire-lamproie-de-nacre.md",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "valide",
+      "source": "Prototypes villages 2026-10-30",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "habitats_seulement_envisages"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-017",
+      "code": null,
+      "nom": "Cerf des Brumes froides",
+      "alias": [],
+      "nature_documentaire": "proposition_mj",
+      "fichier_principal": "content/creatures/bestiaire-cerf-des-brumes-froides.md",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "valide",
+      "source": "Prototypes villages 2026-10-30",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "habitats_seulement_envisages"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-018",
+      "code": null,
+      "nom": "Dros",
+      "alias": [],
+      "nature_documentaire": "concept_a_reconcilier",
+      "fichier_principal": null,
+      "canon_statut": "a_verifier",
+      "etat_editorial": "en_chantier",
+      "source": "Atlas V02 v1.8, section 815 R; brut à recouper",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "individus_rencontres",
+        "classification_espece_non_demontree"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-019",
+      "code": null,
+      "nom": "Chèvre à courts bonds spatiaux",
+      "alias": [],
+      "nature_documentaire": "projet_non_realise",
+      "fichier_principal": null,
+      "canon_statut": "projet_en_cours",
+      "etat_editorial": "en_chantier",
+      "source": "Codex V04 v1.7; CB43 P09124–09168",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "aucune_espece_creee"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": false,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-020",
+      "code": "MAG-088",
+      "nom": "Dragon animé sur un toit",
+      "alias": [],
+      "nature_documentaire": "construction",
+      "fichier_principal": null,
+      "canon_statut": "faits_joues",
+      "etat_editorial": "en_cours",
+      "source": "Registre recherche v2.4, MAG-088; Codex V04",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "non_dragon_reproducteur"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": null,
+      "spoilers": false
+    },
+    {
+      "cle_registre": "b001-021",
+      "code": "MAG-098",
+      "nom": "Naissance de Phénix",
+      "alias": [],
+      "nature_documentaire": "evenement",
+      "fichier_principal": null,
+      "canon_statut": "faits_joues",
+      "etat_editorial": "en_cours",
+      "source": "Registre recherche v2.4, MAG-098; CB41",
+      "parent_taxonomique": null,
+      "liens": [],
+      "biomes_documentes": [],
+      "etat_profil_5d6": "absent",
+      "conflits_incertitudes": [
+        "evenement_non_individu",
+        "lien_IMP-48"
+      ],
+      "illustrations": "non_auditees",
+      "rencontre_jouee": null,
+      "spoilers": false
+    }
+  ]
+}
