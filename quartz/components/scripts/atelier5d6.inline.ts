@@ -772,7 +772,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "items":s.items=clean(el.value,1400);break
       }
     }
-    refreshRoster();refreshPoints();refreshStreaks();refreshDefenseSummary();renderOpposition();renderAI();persist()
+    refreshRoster();refreshPoints();refreshStreaks();refreshDefenseSummary();renderOpposition();renderAffinities();renderAI();persist()
   }
   function trackFailure(sheet:Sheet,domain:Domain,failed:boolean):string {
     if(domain==="autre")return ""
@@ -849,11 +849,14 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const mode=q<HTMLSelectElement>("[data-opposition-mode]").value as ImpactMode
     const custom=clamp(q<HTMLInputElement>("[data-opposition-min]").value,0,45,0)
     const resistance=defender?resistanceScore(defender,kind):0
+    const selectedAffinity=s.affinities.find(x=>x.id===q<HTMLSelectElement>("[data-roll-affinity]").value)
+    const useAffinity=enabled&&mode==="magie"&&q<HTMLInputElement>("[data-roll-affinity-enabled]").checked&&!!selectedAffinity
+    const affinityBonus=useAffinity?affinityImpactBonus(selectedAffinity.rank):0
     const opposition:OppositionResult|null=enabled?resolveOpposition({
       natural,total,difficulty,resistance:Math.max(custom,resistance),
       damageBase:clamp(q<HTMLSelectElement>("[data-opposition-base]").value,1,12,3),
       mastery:attackMastery(s.masteries,mode),level:s.level,
-      protection:defender?effectiveProtection(defender,kind):0,mode
+      protection:defender?effectiveProtection(defender,kind):0,mode,affinityBonus
     }):null
     const target=opposition?.threshold??difficulty
     let outcome="",detail="",favorable=false
@@ -879,6 +882,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(opposition.success){
         if(mode==="mental")detail+="\nRésistance mentale franchie : le MJ décrit l'effet, sans dégâts PV automatiques."
         else {
+          if(affinityBonus)detail+="\nAffinité appliquée dans le domaine "+affinityLabel(selectedAffinity!.id)+
+            " : +"+affinityBonus+" dégâts conditionnels (accord MJ requis)."
           detail+="\nImpact : "+opposition.grossDamage+" dégâts bruts − "+opposition.absorbed+
             " de protection = "+opposition.damage+" PV potentiels."
           if(defender&&opposition.damage>0){
@@ -982,6 +987,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
       el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
+    if(el?.hasAttribute("data-origin-choice"))renderOriginPreview()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -989,6 +995,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
+    if(el?.hasAttribute("data-origin-choice"))renderOriginPreview()
+    if(el?.hasAttribute("data-roll-affinity")||el?.hasAttribute("data-roll-affinity-enabled"))refreshAffinityPreview()
     if(el?.hasAttribute("data-opposition-enabled")||el?.hasAttribute("data-opposition-target")||
        el?.hasAttribute("data-opposition-kind")||el?.hasAttribute("data-opposition-mode")||
        el?.hasAttribute("data-opposition-min")||el?.hasAttribute("data-opposition-base")||
@@ -1103,7 +1111,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       state.mode=button.dataset.mode as Mode
       q<HTMLButtonElement>("[data-opposition-apply]").hidden=!pendingImpact || state.mode==="pj"
       q<HTMLButtonElement>("[data-opposition-counter]").hidden=!pendingCounter || state.mode==="pj"
-      refreshMode();persist();return
+      refreshMode();renderAffinities();persist();return
     }
     if(button.hasAttribute("data-opposition-counter")){
       if(state.mode==="pj"){message("Le MJ doit valider les ripostes des autres fiches.");return}
