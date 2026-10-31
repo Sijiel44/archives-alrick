@@ -122,8 +122,6 @@ export function resolveSpellCast(sheet:MagicSheet,spell:Spell,target:MagicSheet|
   const resistance=spell.resistance&&target?resistanceScore(target,spell.resistance):0
   const threshold=Math.max(spell.difficulty,resistance)
   const rank=sheet.affinities.find(a=>a.id===spell.domain)?.rank??0
-  const affinityBonus=spell.effect==="degats"&&spell.resistance?" "+ "" : ""
-  void affinityBonus
   const opposition=spell.resistance?resolveOpposition({natural,total,difficulty:spell.difficulty,resistance,
     damageBase:spell.baseImpact||1,mastery:attackMastery(sheet.masteries,"magie"),level:sheet.level,
     protection:target?effectiveProtection(target,spell.resistance):0,mode:spell.resistance==="mental"?"mental":"magie",
@@ -207,6 +205,13 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
     cast.replaceChildren(new Option("Choisir un sort appris…",""))
     for(const k of g.known){const sp=find(k.id);if(sp)cast.add(new Option(sp.name,k.id))}
     if(g.known.some(x=>x.id===previous))cast.value=previous
+    const targetSelect=query<HTMLSelectElement>("[data-grimoire-other-sheet]")
+    const previousTarget=targetSelect.value
+    targetSelect.replaceChildren(new Option("Sans fiche cible — difficulté du sort",""))
+    for(const other of args.getSheets().filter(x=>x.id!==sheet.id)){
+      targetSelect.add(new Option(other.name+" · niveau "+other.level,other.id))
+    }
+    if(args.getSheets().some(x=>x.id===previousTarget&&x.id!==sheet.id))targetSelect.value=previousTarget
     query<HTMLElement>("[data-grimoire-circle-summary]").textContent=g.circlesAttested.length?
       "Cercles attestés par le MJ : "+g.circlesAttested.slice().sort((a,b)=>a-b).join(", "):"Aucun Cercle attesté. Le niveau n'en attribue aucun."
     query<HTMLElement>("[data-grimoire-mj]").hidden=!mj
