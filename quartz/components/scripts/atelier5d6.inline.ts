@@ -350,7 +350,11 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
             if(s.manaMax>0)s.manaMax=clamp(s.manaMax+2*gained,0,999,s.manaMax)
             s.highestLevel=next
           }
-          s.level=next;break
+          s.level=next
+          q<HTMLInputElement>('[data-field="level"]').value=String(next)
+          q<HTMLInputElement>('[data-field="pvMax"]').value=String(s.pvMax)
+          q<HTMLInputElement>('[data-field="manaMax"]').value=String(s.manaMax)
+          break
         }
         case "description":s.description=clean(el.value,1200);break
         case "vocation":s.vocation=clean(el.value,160);break
@@ -433,6 +437,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       const url=URL.createObjectURL(file),img=new Image()
       img.onload=()=>{
         URL.revokeObjectURL(url)
+        if(Math.max(img.naturalWidth,img.naturalHeight)>8192){message("Portrait trop grand en dimensions.");return}
         const canvas=document.createElement("canvas")
         const scale=Math.min(1,320/Math.max(img.naturalWidth,img.naturalHeight))
         canvas.width=Math.max(1,Math.round(img.naturalWidth*scale))
@@ -452,7 +457,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(el?.hasAttribute("data-import") && el instanceof HTMLInputElement) {
       const file=el.files?.[0];el.value=""
       if(!file)return
-      if(file.size>256000){message("Fichier trop grand : maximum 250 Kio.");return}
+      if(file.size>5*1024*1024){message("Fichier trop grand : maximum 5 Mio (portraits compris).");return}
       void file.text().then(raw=>{
         const parsed=JSON.parse(raw) as unknown
         let list:unknown[]
