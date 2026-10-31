@@ -1367,8 +1367,10 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const target=e.target as HTMLElement
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
-    const legacy=current().ruleset!=="m02"
-    if(legacy&&!button.matches("[data-hub-nav],[data-mode],[data-origin-build],[data-origin-clear],[data-export],[data-export-campaign],[data-new],[data-ai-copy],[data-ai-refresh],[data-roll],[data-migrate-legacy]")){
+    const protectedSheet=current().ruleset!=="m02"
+    const allowedProtected="[data-hub-nav],[data-mode],[data-origin-build],[data-origin-clear],[data-export],[data-export-campaign],[data-new],[data-ai-copy],[data-ai-refresh],[data-roll],[data-migrate-legacy]"
+    const allowedM03=allowedProtected+",[data-opposition-apply],[data-opposition-counter]"
+    if(protectedSheet&&!button.matches(current().ruleset==="m03-bestiary"?allowedM03:allowedProtected)){
       message(current().ruleset==="legacy"?"Fiche historique protégée : adaptation M02 volontaire requise.":"Profil M03 protégé : utiliser l’Atelier du Bestiaire pour modifier les paramètres.")
       return
     }
