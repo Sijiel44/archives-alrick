@@ -109,8 +109,8 @@ assert(publicMissions.missions.every(m=>m.statut==='proposition_non_jouee' && !(
   'Risque de divulgation MJ dans les contrats publics')
 for(const token of ['data-opposition-enabled','data-opposition-target','data-opposition-kind',
   'data-opposition-mode','data-opposition-min','data-opposition-base','data-opposition-apply',
-  'data-opposition-preview','data-opposition-result','data-opposition-counter','data-defense-resistance="physique"',
-  'data-defense-protection="magie"','data-resistance-summary']){
+  'data-opposition-preview','data-opposition-result','data-opposition-counter','data-bestiary-create','data-bestiary-archetype','data-bestiary-level','data-defense-gear="physique"','data-defense-resistance="physique"',
+  'data-defense-protection="magie"','data-resistance-summary','max="25"']){
   assert(atelierHtml.includes(token), `Module d'opposition 5d6 incomplet : ${token}`)
 }
 const rulesHtml = await readFile(path.join(root, 'jouer', 'systeme-5d6-base12.html'), 'utf8')
