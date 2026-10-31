@@ -139,6 +139,51 @@ let teamDmg=0
 for(const attacker of group.teamA)for(const defender of group.teamB)
   teamDmg+=exact(attacker,defender).damage
 assert(teamDmg>0)
+// Séries multi-rounds à graine fixe : mesures statistiques, pas playtests humains.
+let seed=20261031
+const unit=()=>{seed=(1664525*seed+1013904223)>>>0;return seed/4294967296}
+const rollNatural=()=>Array.from({length:5},()=>1+Math.floor(unit()*6)).reduce((a,b)=>a+b,0)
+const duelRounds=(attacker,defender,maxRounds=300)=>{
+  let remaining=creatures.baseHealth(defender.level)
+  for(let round=1;round<=maxRounds;round++){
+    remaining-=attempt(rollNatural(),attacker,defender).damage
+    if(remaining<=0)return round
+  }
+  return null
+}
+const distribution=[]
+for(const [a,d] of comparisons){
+  const attacker=sheet(a,'offensif',Math.min(5,Math.floor(a/5)))
+  const defender=sheet(d,'defensif',Math.min(5,Math.floor(d/5)))
+  const values=Array.from({length:360},()=>duelRounds(attacker,defender))
+  const survived=values.filter(x=>x!==null).sort((x,y)=>x-y)
+  const stuck=values.length-survived.length
+  const median=survived.length?survived[Math.floor(survived.length/2)]:null
+  const p10=survived.length?survived[Math.floor(survived.length*.1)]:null
+  const p90=survived.length?survived[Math.floor(survived.length*.9)]:null
+  distribution.push({a,d,median,p10,p90,stuck,simulations:values.length})
+  if(a===d)assert.equal(stuck,0,'Profil de même niveau bloqué dans la simulation')
+}
+function groupRounds(allies,defenders,maxRounds=300){
+  const targets=defenders.map(s=>({sheet:s,hp:creatures.baseHealth(s.level)}))
+  for(let round=1;round<=maxRounds;round++){
+    for(const ally of allies){
+      const target=targets.find(t=>t.hp>0)
+      if(!target)break
+      target.hp-=attempt(rollNatural(),ally,target.sheet).damage
+    }
+    if(targets.every(t=>t.hp<=0))return round
+  }
+  return null
+}
+const group2v2=Array.from({length:240},()=>groupRounds(
+  [sheet(10,'offensif'),sheet(10,'mobile')],[sheet(10,'defensif',2),sheet(10,'polyvalent',2)]))
+const group3v1=Array.from({length:240},()=>groupRounds(
+  [sheet(10,'offensif'),sheet(10,'mobile'),sheet(10,'polyvalent')],[sheet(15,'defensif',3)]))
+assert(group2v2.every(Number.isSafeInteger),'Surnombre 2v2 : aucun blocage')
+assert(group3v1.every(Number.isSafeInteger),'Surnombre 3v1 : aucun blocage')
+console.table(distribution)
+console.log('Combat groupé : 240 simulations 2v2 et 240 simulations 3v1 à graine fixe.')
 console.table(results.map(r=>({...r,pTouch:(100*r.pTouch).toFixed(1)+'%',
   pWound:(100*r.pWound).toFixed(1)+'%',
   damage:r.damage.toFixed(2),rounds:Number.isFinite(r.rounds)?r.rounds.toFixed(1):'blocage'})))
