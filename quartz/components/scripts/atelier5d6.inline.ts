@@ -302,12 +302,16 @@ function setupAtelier5d6() {
     if(s.portrait)portrait.src=s.portrait
     else portrait.removeAttribute("src")
     q<HTMLSelectElement>("[data-roll-skill]").value=String(s.skill)
+    q<HTMLInputElement>("[data-ascension]").checked=s.ascensionAuthorized
+    q<HTMLElement>("[data-ascension-status]").textContent=s.level>=21
+      ?"Ascension exceptionnelle : niveau "+s.level+"/24 — autorisation MJ.":"Niveaux 21–24 : ascension divine à confirmer par le MJ."
     refreshPoints()
     const source=q<HTMLElement>("[data-source-meta]")
     source.textContent=s.sourceRef
       ? `Source : ${s.sourceTitle || s.sourceRef} (${s.sourceRef}). Les statistiques 5d6 sont une adaptation libre non canonique.`
       : "Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions."
     refreshStreaks()
+    renderInventory()
   }
   function refreshStreaks(){
     const s=current()
@@ -333,7 +337,144 @@ function setupAtelier5d6() {
       log.append(li)
     }
   }
-  function render(){refreshRoster();setForm();refreshMode();refreshLog()}
+
+  let pendingTransfer=""
+  let missions:Mission[]=[]
+  async function loadMissions(signal:AbortSignal){
+    try{
+      const response=await fetch(rootPath+"/static/atelier5d6-missions.json",{signal})
+      if(!response.ok)throw Error("catalogue inaccessible")
+      const parsed:unknown=await response.json()
+      if(!parsed||typeof parsed!=="object"||!("missions" in parsed)||!Array.isArray(parsed.missions))throw Error("format")
+      missions=parsed.missions.filter((x:unknown):x is Mission=>{
+        if(!x||typeof x!=="object")return false
+        const m=x as Record<string,unknown>
+        return typeof m.id==="string"&&/^AV-[0-9]{2}$/.test(m.id)
+          &&typeof m.title==="string"&&typeof m.category==="string"
+          &&typeof m.level==="number"&&m.level>=1&&m.level<=12
+          &&m.statut==="proposition_non_jouee"&&Array.isArray(m.certifications)
+      }).slice(0,60)
+      const menu=q<HTMLSelectElement>("[data-mission-select]")
+      menu.replaceChildren(new Option("Sélectionner une mission",""))
+      for(const m of missions)menu.add(new Option("G"+m.level+" · "+m.id+" · "+m.title,m.id))
+      renderMissionPreview()
+    }catch{
+      if(!signal.aborted)q<HTMLElement>("[data-mission-preview]").textContent="Catalogue public de missions indisponible. Réessayer au prochain chargement."
+    }
+  }
+  function activeGroup():Group|undefined{return state.groups.find(g=>g.id===state.activeGroupId)}
+  function renderMissionPreview(){
+    const id=q<HTMLSelectElement>("[data-mission-select]").value
+    const mission=missions.find(x=>x.id===id)
+    const group=activeGroup()
+    const missing=mission&&group?mission.certifications.filter(c=>!group.certifications.includes(c)):[]
+    q<HTMLElement>("[data-mission-preview]").textContent=mission
+      ?"Niveau "+mission.level+" · "+mission.category+". "+mission.brief+
+      " Récompense envisagée : "+mission.reward+(missing.length?" Qualifications manquantes : "+missing.join(", ")+".":"")
+      :"Choisir une mission du catalogue public pour voir son accroche sans spoilers."
+  }
+  function renderInventory(){
+    const list=q<HTMLUListElement>("[data-inventory-list]")
+    list.replaceChildren()
+    const sheet=current()
+    if(!sheet.inventory.length){const li=document.createElement("li");li.textContent="Sac vide.";list.append(li)}
+    for(const item of sheet.inventory){
+      const li=document.createElement("li")
+      li.append(document.createTextNode(ITEM_CATEGORIES[item.category]+" "+item.name+" ×"+item.quantity+
+        (item.value?" · "+item.value:"")+(item.description?" — "+item.description:"")))
+      const give=document.createElement("button");give.type="button"
+      give.dataset.itemSelect=item.id;give.textContent=pendingTransfer===item.id?"À transférer ✓":"Transférer"
+      const remove=document.createElement("button");remove.type="button"
+      remove.dataset.itemRemove=item.id;remove.textContent="Retirer"
+      li.append(give,remove);list.append(li)
+    }
+    const templates=q<HTMLSelectElement>("[data-template-select]")
+    const selected=templates.value
+    templates.replaceChildren(new Option("Choisir un modèle MJ",""))
+    for(const t of state.templates)templates.add(new Option(ITEM_CATEGORIES[t.category]+" "+t.name,t.id))
+    if(state.templates.some(t=>t.id===selected))templates.value=selected
+    const recipient=q<HTMLSelectElement>("[data-item-recipient]")
+    const prior=recipient.value
+    recipient.replaceChildren()
+    for(const sheet of state.sheets)recipient.add(new Option(sheet.name+" ("+sheet.kind+")",sheet.id))
+    recipient.value=state.sheets.some(x=>x.id===prior)?prior:current().id
+  }
+  function renderGroup(){
+    const sel=q<HTMLSelectElement>("[data-group-select]")
+    sel.replaceChildren(new Option("Aucune compagnie",""))
+    for(const g of state.groups)sel.add(new Option(g.name+" · rang "+g.rank,g.id))
+    sel.value=state.activeGroupId
+    const group=activeGroup()
+    const members=q<HTMLElement>("[data-group-members]")
+    members.replaceChildren()
+    if(!group){members.textContent="Créer ou sélectionner une compagnie."}
+    else{
+      for(const sheet of state.sheets){
+        const label=document.createElement("label");label.className="atelier-check"
+        const box=document.createElement("input");box.type="checkbox";box.dataset.groupMember=sheet.id
+        box.checked=group.members.includes(sheet.id)
+        label.append(box,document.createTextNode(sheet.name+" · niveau "+sheet.level))
+        members.append(label)
+      }
+    }
+    host.querySelectorAll<HTMLInputElement>("[data-certification]").forEach(el=>{
+      el.checked=!!group&&group.certifications.includes(el.dataset.certification||"")
+      el.disabled=!group
+    })
+    const entries=group?state.missionLog.filter(x=>x.groupId===group.id):[]
+    const used=group?.promotionEntries??[]
+    const candidates=group?entries.filter(x=>(x.status==="terminee"||x.status==="repli")&&x.rank>=group.rank&&!used.includes(x.id)):[]
+    const distinct=new Set(candidates.map(x=>x.category))
+    q<HTMLElement>("[data-group-status]").textContent=group
+      ? "Rang "+group.rank+"/12 · "+group.members.length+" membres · "+group.certifications.length+
+        " certifications · "+entries.length+" comptes rendus. "+
+        (distinct.size>=2?"Progression de groupe admissible (validation MJ).":"Deux réussites de domaines distincts sont requises pour le prochain rang.")
+      :"Aucune compagnie créée. Les missions ne peuvent pas être enregistrées sans compagnie."
+    const log=q<HTMLOListElement>("[data-mission-log]")
+    log.replaceChildren()
+    if(!entries.length){const li=document.createElement("li");li.textContent="Aucune mission consignée.";log.append(li)}
+    for(const entry of entries.slice(-30).reverse()){
+      const li=document.createElement("li")
+      const m=missions.find(x=>x.id===entry.missionId)
+      li.textContent=entry.date+" — "+(m?.title||entry.missionId)+" · "+entry.status+
+        (entry.reward?" · Récompense : "+entry.reward:"")+
+        (entry.summary?" · "+entry.summary:"")
+      log.append(li)
+    }
+    renderMissionPreview()
+  }
+  function createItem(){
+    const name=clean(q<HTMLInputElement>("[data-item-name]").value.trim(),90)
+    if(!name){message("Le nom de l'objet est obligatoire.");return null}
+    const category=q<HTMLSelectElement>("[data-item-category]").value
+    const item:GameItem={id:uniqueId(),templateId:"",name,category:category in ITEM_CATEGORIES?category as ItemCategory:"autre",
+      quantity:clamp(q<HTMLInputElement>("[data-item-quantity]").value,1,999,1),
+      description:clean(q<HTMLTextAreaElement>("[data-item-description]").value,600),
+      value:clean(q<HTMLInputElement>("[data-item-value]").value,100)}
+    return item
+  }
+  function recordMission(){
+    const group=activeGroup(),mission=missions.find(x=>x.id===q<HTMLSelectElement>("[data-mission-select]").value)
+    if(!group||!mission){message("Choisir une compagnie et un contrat valide.");return}
+    if(state.mode==="pj"){message("Passer en mode MJ pour valider les bilans des missions.");return}
+    const missing=mission.certifications.filter(x=>!group.certifications.includes(x))
+    if(missing.length){message("Qualifications à vérifier avant mission : "+missing.join(", ")+". Aucun bilan enregistré.");return}
+    const result=q<HTMLSelectElement>("[data-mission-result]").value
+    const entry:MissionEntry={id:uniqueId(),groupId:group.id,missionId:mission.id,
+      category:mission.category,rank:mission.level,
+      status:result==="repli"?"repli":result==="echouee"?"echouee":"terminee",
+      summary:clean(q<HTMLTextAreaElement>("[data-mission-summary]").value,1200),
+      reward:clean(q<HTMLInputElement>("[data-mission-award]").value,280),
+      date:new Date().toISOString().slice(0,10)}
+    state.missionLog.push(entry)
+    state.missionLog=state.missionLog.slice(-400)
+    if(entry.reward&&entry.status!=="echouee")group.awards.push(entry.reward)
+    group.awards=group.awards.slice(-30)
+    q<HTMLTextAreaElement>("[data-mission-summary]").value=""
+    q<HTMLInputElement>("[data-mission-award]").value=""
+    renderGroup();persist();renderAI();message("Compte rendu enregistré dans le journal local, avec récompense si attribuée.")
+  }
+  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup()}
   function renderAI(){
     const s=current(), include=q<HTMLInputElement>("[data-ai-roster]").checked
     const roster = include ? state.sheets.filter(x=>x.id!==s.id).map(x=>
@@ -598,7 +739,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(!navigator.clipboard){area.focus();area.select();message("Copie automatique indisponible : sélectionne puis copie le texte.")}
     }
   },opts)
-  render();persist()
+  render();persist();void loadMissions(controller.signal)
   window.addCleanup(()=>controller.abort())
 }
 document.addEventListener("nav",setupAtelier5d6)
