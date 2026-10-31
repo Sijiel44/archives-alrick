@@ -259,3 +259,17 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Sauvegardes historiques compatibles, moteur 5d6 classique non supprimé, aucun spoiler publié.
 # Guide public lié aux pages Jouer : bestiaire-evolutif-25.md.
 # Compteur des fiches de lore approuvées INCHANGÉ ; ne pas traiter ces modèles en faits joués.
+
+
+# Lot 19 — Échelle des existences 1–25, affinités et Irindra (31 octobre 2026)
+# PR #51 fusionnée après CI réussie, commit b629c1c523dcafeabdf621e3a9db803d42be7179.
+# Nouvel ouvrage PUBLIC de conception 5d6 : 25 niveaux, mortels ordinaires 1–4, aventuriers proposés à partir de 5.
+# Les classements divins institutionnels ★ à ★★★★ sont CONSERVÉS ; aucun rang ★★★★★ canonique n'a été créé.
+# Les Dix-Huit Grandes Puissances et les Archétypes draconiques demeurent hors de ce système de rangs institutionnels.
+# Le Silence et Yggdrasil sont FONDEMENTS hors niveau, non des boss 26+.
+# Cinq grades d'affinité PROPOSÉS 0–5, séparés des Autorités, de l'âge, de la nature ontologique et des compétences.
+# Irindra : IMP-13 ; filiation Drakon, affinité lumière et choix libres attestés ; potentiel futur niv.25 reconnu.
+# Irindra N'EST PAS déclarée niveau25 aujourd'hui ni quatrième Archétype ; page spoilers=true, unlisted=true.
+# AUCUNE reclassification automatique des sauvegardes ni modification du moteur des jets et de la progression active.
+# L'ancien bestiaire 1–25 reste un prototype de calcul ; espèces et durées de vie à confirmer au cas par cas.
+# Sources canoniques consultées : Bible V01 v1.7 Tome II et Tome III ; Compendium V03 v1.7 IMP-13/P37/P38.
