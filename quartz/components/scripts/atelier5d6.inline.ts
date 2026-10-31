@@ -368,7 +368,18 @@ function setupAtelier5d6() {
     catch { message("Stockage indisponible ou saturé. Exportez votre fiche en JSON pour la conserver.") }
   }
   const grimoirePanel=createGrimoirePanel({root:host,getSheet:current,getSheets:()=>state.sheets,
-    isMJ:()=>state.mode!=="pj",persist,message})
+    isMJ:()=>state.mode!=="pj",persist,message,
+    onChange:()=>{renderAffinities();refreshEffectsSummary()}})
+  function refreshEffectsSummary(){
+    const sheet=current(),count=sheet.grimoire.effects.length
+    q<HTMLElement>("[data-sheet-effects-summary]").textContent=count
+      ? "Sorts actifs : "+sheet.grimoire.effects.map(e=>{
+        const name=[...sheet.grimoire.personalSpells].find(x=>x.id===e.spellId)?.name
+        return (name||e.spellId.replace(/^demo-/,"").replace(/-/g," "))+
+          " ("+(e.duration==="permanent"?"permanent":e.remaining+" "+e.duration)+")"
+      }).join(" · ")
+      : "Aucun sort actif sur cette fiche."
+  }
   function refreshPoints() {
     const s=current()
     const used=STATS.reduce((acc,k)=>acc+s.stats[k],0)
@@ -439,6 +450,7 @@ function setupAtelier5d6() {
     renderInventory()
     renderOpposition()
     renderAffinities()
+    refreshEffectsSummary()
   }
   function refreshStreaks(){
     const s=current()
@@ -716,7 +728,7 @@ function setupAtelier5d6() {
     q<HTMLElement>("[data-hub-status]").textContent=sheet.name+
       " · niveau "+sheet.level+"/25 · "+sheet.pv+"/"+sheet.pvMax+" PV · "+
       sheet.mana+"/"+sheet.manaMax+" mana · "+sheet.affinities.length+" affinité(s) · "+
-      sheet.inventory.length+" objet(s)."
+      sheet.inventory.length+" objet(s) · "+sheet.grimoire.effects.length+" effet(s) actif(s)."
   }
   function refreshAffinityPreview(){
     const sheet=current()
@@ -879,7 +891,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "items":s.items=clean(el.value,1400);break
       }
     }
-    refreshRoster();refreshPoints();refreshStreaks();refreshDefenseSummary();renderOpposition();renderAffinities();renderAI();persist()
+    refreshRoster();refreshPoints();refreshStreaks();refreshDefenseSummary();renderOpposition();renderAffinities();renderAI();grimoirePanel.render();persist()
   }
   function trackFailure(sheet:Sheet,domain:Domain,failed:boolean):string {
     if(domain==="autre")return ""
