@@ -1133,6 +1133,10 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       state.sheets.push(sheet);state.activeId=sheet.id
       render();persist()
       q<HTMLDetailsElement>('[data-hub="fiche"]').open=true
+      q<HTMLDetailsElement>('[data-hub="origines"]').open=false
+      q<HTMLInputElement>("[data-origin-name]").value=""
+      for(const step of ORIGIN_STEPS)q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value=""
+      renderOriginPreview()
       message("Aventurier niveau 5 créé sans remplacer les autres fiches. "+sheet.name+
         " commence avec "+sheet.pvMax+" PV et "+sheet.xp+" XP de parcours initial.")
       return
