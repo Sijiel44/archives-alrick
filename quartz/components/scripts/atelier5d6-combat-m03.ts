@@ -13,7 +13,7 @@ export type M03Effect={
 }
 export type AuthorizedM03Effect=M03Effect & {approved:true}
 export type CombatM03Input={
-  natural:number;rawStat:number;masteryRank:number;situation:number
+  natural:number;rawStat:number;masteryRank:number;situation:number;level:number
   difficulty:number;kind:ResistanceKind;mode:ImpactMode
   defender?:DefenseProfile|null;feasible:boolean
   baseDamage:number;penetration?:number;mjMinimum?:number;affinityBonus?:number
@@ -118,7 +118,7 @@ export function resolveCombatM03(a:CombatM03Input):CombatM03Result{
   const pierce=effectSum(effects,"penetration","attaque")
   // Mental : réussite narrative exclusivement, aucun PV en l'absence de règle spécifique.
   const grossDamage=success&&a.mode!=="mental"?
-    baseDamage+impactBonusM03(a.defender?.level??1)+masteryBonus+impact+
+    baseDamage+impactBonusM03(a.level)+masteryBonus+impact+
     (a.mode==="magie"?extra:0):0
   const protection=a.defender?effectiveProtectionM03(a.defender,a.kind):0
   const penetrated=Math.min(protection,penetration+pierce)
