@@ -3,8 +3,9 @@ import {generateCreatureProfile} from "./atelier5d6-bestiary"
 import type {CreatureArchetype} from "./atelier5d6-bestiary"
 import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
 import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,buildOrigin,
-  affinityRankLimit,affinityImpactBonus,divinePowerMinimumLevel} from "./atelier5d6-origins"
-import type {Affinity,AffinityId,Power,PowerGrade,OriginMastery} from "./atelier5d6-origins"
+  affinityRankLimit,affinityImpactBonus,divinePowerMinimumLevel,
+  buildEducationProfile,EDUCATION_PATHS,LITERACY_LEVELS} from "./atelier5d6-origins"
+import type {Affinity,AffinityId,Power,PowerGrade,OriginMastery,EducationId,LiteracyLevel} from "./atelier5d6-origins"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
 type Mastery = OriginMastery
@@ -82,6 +83,7 @@ type Sheet = {
   sourceRef: string; sourceTitle: string
   streaks: Record<Domain,number>; lastIncident: string
   notes: string; gmNotes: string; lifeSteps:string[]; lifeSummary:string
+  education:EducationId|""; literacy:LiteracyLevel|""; backstory:string;connections:string;goal:string
   affinities:Affinity[]; powers:Power[]
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
@@ -163,7 +165,8 @@ function fresh(kind: Role = "pj"): Sheet {
     convertedCredits:0,talentPointsSpent:0,xp:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"",
-    lifeSteps:[],lifeSummary:"",affinities:[],powers:[] }
+    lifeSteps:[],lifeSummary:"",education:"",literacy:"",backstory:"",connections:"",goal:"",
+    affinities:[],powers:[] }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -235,7 +238,11 @@ function validateSheet(raw: unknown): Sheet | null {
     sourceRef:validSourceRef(obj.sourceRef),sourceTitle:clean(obj.sourceTitle,160),
     streaks,lastIncident:clean(obj.lastIncident,500),
     notes:clean(obj.notes,2500),gmNotes:clean(obj.gmNotes,2500),
-    lifeSteps,lifeSummary:clean(obj.lifeSummary,1600),affinities,powers}
+    lifeSteps,lifeSummary:clean(obj.lifeSummary,1600),
+    education:EDUCATION_PATHS.some(x=>x.id===obj.education)?obj.education as EducationId:"",
+    literacy:LITERACY_LEVELS.some(x=>x.id===obj.literacy)?obj.literacy as LiteracyLevel:"",
+    backstory:clean(obj.backstory,4000),connections:clean(obj.connections,600),
+    goal:clean(obj.goal,600),affinities,powers}
 }
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
@@ -577,7 +584,11 @@ function setupAtelier5d6() {
     const target=q<HTMLElement>("[data-origin-preview]")
     if(choices.some(x=>!x)){target.textContent="Choisir les "+(4-choices.filter(Boolean).length)+" périodes de vie restantes.";return}
     try{
-      const result=buildOrigin(choices)
+      const education=q<HTMLSelectElement>("[data-origin-education]").value as EducationId
+      const literacy=q<HTMLSelectElement>("[data-origin-literacy]").value as LiteracyLevel
+      const raw=buildOrigin(choices)
+      if(!education||!literacy){target.textContent="Les quatre périodes sont prêtes. Choisir encore une éducation et un rapport à l'écrit.";return}
+      const result=buildEducationProfile(raw,education,literacy)
       target.textContent="Niveau 5 · 36 PV · "+(result.manaMax?"36 mana d'essai · ":"")+
         "Phys "+result.stats.physique+" · Agi "+result.stats.agilite+
         " · Esp "+result.stats.esprit+" · Prés "+result.stats.presence+
@@ -656,6 +667,9 @@ Spécialité +${s.skill}, PV ${s.pv}/${s.pvMax}, mana ${s.mana}/${s.manaMax}, Em
 Niveau ${s.level}/25 ; voies : ${s.vocation || "aucune"}.
 Crédits convertis : ${s.convertedCredits}; points de talents attribués ${s.talentPointsSpent}/${Math.floor(s.convertedCredits/6)}. Pouvoirs à valider par le MJ.
 Description : ${s.description || "non renseignée"}.
+Éducation : ${s.education || "non renseignée"} ; lecture : ${s.literacy || "non renseignée"}.
+Biographie personnelle : ${s.backstory || "non renseignée"}.
+Attaches : ${s.connections || "non renseignées"} ; objectif : ${s.goal || "non renseigné"}.
 Parcours des quatre premières périodes : ${s.lifeSummary || "création libre, non précisé"}. 
 Affinités conditionnelles approuvées : ${affinities || "aucune"}.
 Pouvoirs et limitations approuvés localement : ${powers || "aucun"}. Aucune Autorité divine supplémentaire par défaut.
@@ -738,6 +752,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
           }
           s.xp=clamp(el.value,0,999999,s.xp);break
         }
+        case "education":
+          s.education=EDUCATION_PATHS.some(x=>x.id===el.value)?el.value as EducationId:"";break
+        case "literacy":
+          s.literacy=LITERACY_LEVELS.some(x=>x.id===el.value)?el.value as LiteracyLevel:"";break
+        case "backstory":s.backstory=clean(el.value,4000);break
+        case "connections":s.connections=clean(el.value,600);break
+        case "goal":s.goal=clean(el.value,600);break
         case "notes":s.notes=clean(el.value,2500);break
         case "gmNotes":s.gmNotes=clean(el.value,2500);break
         case "level":{
@@ -987,7 +1008,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
       el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
-    if(el?.hasAttribute("data-origin-choice"))renderOriginPreview()
+    if(el?.hasAttribute("data-origin-choice")||
+       el?.hasAttribute("data-origin-education")||
+       el?.hasAttribute("data-origin-literacy"))renderOriginPreview()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -995,7 +1018,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
-    if(el?.hasAttribute("data-origin-choice"))renderOriginPreview()
+    if(el?.hasAttribute("data-origin-choice")||
+       el?.hasAttribute("data-origin-education")||
+       el?.hasAttribute("data-origin-literacy"))renderOriginPreview()
     if(el?.hasAttribute("data-roll-affinity")||el?.hasAttribute("data-roll-affinity-enabled"))refreshAffinityPreview()
     if(el?.hasAttribute("data-opposition-enabled")||el?.hasAttribute("data-opposition-target")||
        el?.hasAttribute("data-opposition-kind")||el?.hasAttribute("data-opposition-mode")||
@@ -1110,6 +1135,11 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(button.hasAttribute("data-origin-clear")){
       q<HTMLInputElement>("[data-origin-name]").value=""
       for(const step of ORIGIN_STEPS)q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value=""
+      q<HTMLSelectElement>("[data-origin-education]").value=""
+      q<HTMLSelectElement>("[data-origin-literacy]").value=""
+      q<HTMLTextAreaElement>("[data-origin-story]").value=""
+      q<HTMLInputElement>("[data-origin-connections]").value=""
+      q<HTMLInputElement>("[data-origin-goal]").value=""
       renderOriginPreview();message("Parcours de vie vidé, sans changement de fiche.");return
     }
     if(button.hasAttribute("data-origin-build")){
@@ -1117,13 +1147,23 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       const name=clean(q<HTMLInputElement>("[data-origin-name]").value.trim(),90)
       if(!name){message("Donner d'abord un nom au personnage.");return}
       let origin
-      try{origin=buildOrigin(ORIGIN_STEPS.map(step=>q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value))}
+      try{
+        origin=buildEducationProfile(
+          buildOrigin(ORIGIN_STEPS.map(step=>q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value)),
+          q<HTMLSelectElement>("[data-origin-education]").value as EducationId,
+          q<HTMLSelectElement>("[data-origin-literacy]").value as LiteracyLevel
+        )
+      }
       catch{message("Il faut répondre aux quatre questions du parcours de vie.");return}
       const sheet=fresh("pj")
       sheet.name=name;sheet.level=sheet.highestLevel=origin.level
       sheet.stats=origin.stats
       sheet.masteries=origin.masteries
       sheet.lifeSteps=origin.lifeSteps;sheet.lifeSummary=origin.summary
+      sheet.education=origin.education;sheet.literacy=origin.literacy
+      sheet.backstory=clean(q<HTMLTextAreaElement>("[data-origin-story]").value,4000)
+      sheet.connections=clean(q<HTMLInputElement>("[data-origin-connections]").value,600)
+      sheet.goal=clean(q<HTMLInputElement>("[data-origin-goal]").value,600)
       sheet.profession=origin.profession;sheet.vocation=origin.profession
       sheet.pv=sheet.pvMax=origin.pvMax
       sheet.mana=sheet.manaMax=origin.manaMax
@@ -1136,6 +1176,11 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       q<HTMLDetailsElement>('[data-hub="origines"]').open=false
       q<HTMLInputElement>("[data-origin-name]").value=""
       for(const step of ORIGIN_STEPS)q<HTMLSelectElement>(`[data-origin-choice="${step.id}"]`).value=""
+      q<HTMLSelectElement>("[data-origin-education]").value=""
+      q<HTMLSelectElement>("[data-origin-literacy]").value=""
+      q<HTMLTextAreaElement>("[data-origin-story]").value=""
+      q<HTMLInputElement>("[data-origin-connections]").value=""
+      q<HTMLInputElement>("[data-origin-goal]").value=""
       renderOriginPreview()
       message("Aventurier niveau 5 créé sans remplacer les autres fiches. "+sheet.name+
         " commence avec "+sheet.pvMax+" PV et "+sheet.xp+" XP de parcours initial.")
