@@ -7,7 +7,7 @@ import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,
   EDUCATION_PATHS,LITERACY_LEVELS} from "./atelier5d6-origins"
 import type {Affinity,AffinityId,Power,PowerGrade,OriginMastery,EducationId,LiteracyLevel} from "./atelier5d6-origins"
 import {newDevelopment,evaluateSheet,transact,grantAward,approveMilestone,eligibleLevel,draftFromLifePath,
-  migrateLegacy,nextStatPrice} from "./atelier5d6-m02"
+  migrateLegacy,nextStatPrice,nextMasteryPrice} from "./atelier5d6-m02"
 import type {Development,AbilityDefinition,M02Sheet} from "./atelier5d6-m02"
 import {effectiveStat,effectiveMastery,experienceRequired} from "./atelier5d6-progression"
 import type {ExperienceEvent,ExperienceDomain} from "./atelier5d6-progression"
@@ -407,6 +407,9 @@ function setupAtelier5d6() {
       q<HTMLButtonElement>("[data-convert-credits]").disabled=true
       for(const k of STATS)q<HTMLElement>(`[data-stat-bonus="${k}"]`).textContent=
         "Brut "+s.stats[k]+" → bonus +"+effectiveStat(s.stats[k])+" · prochain +"+nextStatPrice(asM02(s),k)+" pt"
+      for(const k of MASTERIES)q<HTMLElement>(`[data-mastery-bonus="${k}"]`).textContent=
+        "Rang "+s.masteries[k]+" → bonus +"+effectiveMastery(s.masteries[k])+
+        " · prochain +"+nextMasteryPrice(asM02(s),k)+" pt"
       q<HTMLElement>("[data-xp-info]").textContent="XP "+s.xp+
         " · palier suivant "+Math.min(25,s.level+1)+" : "+experienceRequired(Math.min(25,s.level+1))+
         " · niveaux 21–25 : validation MJ distincte"
@@ -419,6 +422,8 @@ function setupAtelier5d6() {
     q<HTMLInputElement>("[data-talent-spent]").disabled=true
     q<HTMLButtonElement>("[data-convert-credits]").disabled=true
     for(const k of STATS)q<HTMLElement>(`[data-stat-bonus="${k}"]`).textContent="Ancienne valeur "+s.stats[k]
+    for(const k of MASTERIES)q<HTMLElement>(`[data-mastery-bonus="${k}"]`).textContent=
+      "Ancien rang "+s.masteries[k]
     const used=STATS.reduce((acc,k)=>acc+s.stats[k],0)
     const el=q<HTMLElement>("[data-points]")
     const limit=maxStatCredits(s.highestLevel)-s.convertedCredits
@@ -1307,7 +1312,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
     const legacy=current().ruleset==="legacy"
-    if(legacy&&!button.matches("[data-hub-nav],[data-mode],[data-origin-build],[data-origin-clear],[data-export],[data-export-campaign],[data-new],[data-ai-copy],[data-ai-refresh],[data-migrate-legacy]")){
+    if(legacy&&!button.matches("[data-hub-nav],[data-mode],[data-origin-build],[data-origin-clear],[data-export],[data-export-campaign],[data-new],[data-ai-copy],[data-ai-refresh],[data-roll],[data-migrate-legacy]")){
       message("Fiche historique protégée en lecture seule. Utilisez la conversion volontaire pour développer une copie M02.")
       return
     }
