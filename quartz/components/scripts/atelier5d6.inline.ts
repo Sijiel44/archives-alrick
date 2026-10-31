@@ -180,8 +180,12 @@ const INCIDENTS: Record<Exclude<Domain,"autre">,string[]> = {
 }
 const STORAGE = "archives-alrick-atelier-5d6-v2"
 const LEGACY_STORAGE = "archives-alrick-atelier-5d6-v1"
-const asM02=(s:Sheet):M02Sheet=>({level:s.highestLevel,stats:s.stats,masteries:s.masteries,
-  xp:s.xp,development:s.development})
+const asM02=(s:Sheet):M02Sheet=>({level:s.highestLevel,stats:s.stats,
+  masteries:s.masteries as Record<string,number>,xp:s.xp,development:s.development})
+const applyM02=(s:Sheet,result:M02Sheet):void=>{
+  s.stats=result.stats;s.masteries=result.masteries as Record<Mastery,number>
+  s.xp=result.xp;s.development=result.development
+}
 const STATS: Stat[] = ["physique", "agilite", "esprit", "presence"]
 const clamp = (n: unknown, min: number, max: number, def: number) => {
   const value = typeof n === "number" || typeof n === "string" ? Number(n) : NaN
@@ -445,8 +449,10 @@ function setupAtelier5d6() {
       const line=document.createElement("p"),del=document.createElement("button")
       line.textContent=a.kind+" · "+a.name+" · "+a.domain+" · "+(a.status==="slot"?"emplacement narratif sans effet":"effet : "+a.effect)+
         (a.approvedByGM?" · approuvé MJ":"")
+      const improve=document.createElement("button");improve.type="button";improve.dataset.m02Improve=a.id
+      improve.textContent="Améliorer (rang "+(a.rank+1)+")"
       del.textContent="Rembourser";del.type="button";del.dataset.m02Remove=a.id
-      line.append(" ",del);area.append(line)
+      line.append(" ",improve," ",del);area.append(line)
     }
     if(!s.development.abilities.length)area.textContent="Aucune capacité achetée. Un emplacement narratif n'accorde aucun effet."
     q<HTMLElement>("[data-m02-xp-history]").textContent=s.development.awards.map(x=>
@@ -674,7 +680,7 @@ function setupAtelier5d6() {
         const event:ExperienceEvent={id:entry.id+"-"+id,pattern:"mission-"+mission.id,
           domain:"exploration",difficulty:Math.max(1,Math.min(12,mission.level)),
           scope:"ordinaire",approved:state.mode!=="pj"}
-        try{Object.assign(participant,grantAward(asM02(participant),event));totalGranted++}
+        try{applyM02(participant,grantAward(asM02(participant),event));totalGranted++}
         catch{/* Répétition protégée par le registre d'accomplissements M01. */}
       }
       entry.reward=clean((entry.reward?entry.reward+" · ":"")+
@@ -864,7 +870,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const stat=el.dataset.stat as Stat | undefined
     if(stat && STATS.includes(stat)){
       const before=s.stats[stat],next=clamp(el.value,1,Number.MAX_SAFE_INTEGER,before)
-      try{Object.assign(s,transact(asM02(s),{type:"stat",key:stat,to:next}))}
+      try{applyM02(s,transact(asM02(s),{type:"stat",key:stat,to:next}))}
       catch(error){
         el.value=String(before)
         message("Investissement refusé : "+(error instanceof Error?error.message:"Budget invalide"))
@@ -893,7 +899,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       refreshDefenseSummary()
     } else if(el.dataset.mastery && MASTERIES.includes(el.dataset.mastery as Mastery)){
       const k=el.dataset.mastery as Mastery,before=s.masteries[k]
-      try{Object.assign(s,transact(asM02(s),{type:"mastery",key:k,to:clamp(el.value,0,Number.MAX_SAFE_INTEGER,before)}))}
+      try{applyM02(s,transact(asM02(s),{type:"mastery",key:k,to:clamp(el.value,0,Number.MAX_SAFE_INTEGER,before)}))}
       catch(error){
         el.value=String(before)
         message("Maîtrise refusée : "+(error instanceof Error?error.message:"Budget invalide"))
@@ -1334,15 +1340,25 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         limitations:status==="defined"?clean(q<HTMLTextAreaElement>("[data-m02-ability-limits]").value,700):undefined,
         provenance:clean(q<HTMLTextAreaElement>("[data-m02-ability-provenance]").value,700),
         approvedByGM:approved,rank:1}
-      try{Object.assign(sheet,transact(asM02(sheet),{type:"ability-add",ability:candidate}))
+      try{applyM02(sheet,transact(asM02(sheet),{type:"ability-add",ability:candidate}))
         refreshPoints();persist();message("Capacité enregistrée : "+name+". Aucun pouvoir non défini n'a été accordé.")
       }catch(error){message("Achat refusé : "+(error instanceof Error?error.message:"Invalide"))}
+      return
+    }
+    if(button.dataset.m02Improve){
+      const sheet=current(),id=button.dataset.m02Improve
+      if(sheet.ruleset!=="m02")return
+      const ability=sheet.development.abilities.find(x=>x.id===id)
+      if(!ability)return
+      try{applyM02(sheet,transact(asM02(sheet),{type:"ability-update",ability:{...ability,rank:ability.rank+1}}))
+        refreshPoints();persist();message("Capacité améliorée, coût du rang supplémentaire prélevé.")
+      }catch(error){message("Amélioration refusée : "+(error instanceof Error?error.message:"Invalide"))}
       return
     }
     if(button.dataset.m02Remove){
       const sheet=current()
       if(sheet.ruleset!=="m02")return
-      try{Object.assign(sheet,transact(asM02(sheet),{type:"ability-remove",id:button.dataset.m02Remove}))
+      try{applyM02(sheet,transact(asM02(sheet),{type:"ability-remove",id:button.dataset.m02Remove}))
         refreshPoints();persist();message("Capacité remboursée, budget recalculé.")
       }catch(error){message("Remboursement refusé : "+(error instanceof Error?error.message:"Invalide"))}
       return
@@ -1357,13 +1373,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         scope:q<HTMLSelectElement>("[data-m02-event-scope]").value as ExperienceEvent["scope"],
         approved:state.mode!=="pj"&&q<HTMLInputElement>("[data-m02-event-approved]").checked}
       try{const next=grantAward(asM02(sheet),event),amount=next.xp-sheet.xp
-        Object.assign(sheet,next);refreshPoints();persist();message("Accomplissement consigné : +"+amount+" XP.")
+        applyM02(sheet,next);refreshPoints();persist();message("Accomplissement consigné : +"+amount+" XP.")
       }catch(error){message("XP refusés : "+(error instanceof Error?error.message:"Invalide"))}
       return
     }
     if(button.hasAttribute("data-m02-approve-milestone")){
       const sheet=current();if(sheet.ruleset!=="m02")return
-      try{Object.assign(sheet,approveMilestone(asM02(sheet),
+      try{applyM02(sheet,approveMilestone(asM02(sheet),
         clamp(q<HTMLInputElement>("[data-m02-milestone]").value,21,25,21),state.mode!=="pj"))
         refreshPoints();persist();message("Palier M01 validé par le MJ, sans divinisation automatique.")
       }catch(error){message("Palier refusé : "+(error instanceof Error?error.message:"Invalide"))}
