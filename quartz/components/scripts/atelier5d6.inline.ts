@@ -663,6 +663,36 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const face=1+Math.floor(Math.random()*12)
     return `Incident ${domain} [1d12 = ${face}] : ${INCIDENTS[domain][face-1]} (suggestion optionnelle du MJ)`
   }
+  function renderOpposition(){
+    const opponent=q<HTMLSelectElement>("[data-opposition-target]")
+    const selected=opponent.value
+    opponent.replaceChildren(new Option("Cible libre (seuil saisi par MJ)",""))
+    for(const sheet of state.sheets.filter(x=>x.id!==current().id))
+      opponent.add(new Option(sheet.name+" · "+sheet.kind.toUpperCase()+" · niv. "+sheet.level,sheet.id))
+    if(selected&&state.sheets.some(x=>x.id===selected&&x.id!==current().id))opponent.value=selected
+    const defender=state.sheets.find(x=>x.id===opponent.value)
+    const kind=q<HTMLSelectElement>("[data-opposition-kind]").value as ResistanceKind
+    const mode=q<HTMLSelectElement>("[data-opposition-mode]").value as ImpactMode
+    const resistance=defender?resistanceScore(defender,kind):0
+    const custom=clamp(q<HTMLInputElement>("[data-opposition-min]").value,0,45,0)
+    const difficulty=clamp(q<HTMLSelectElement>("[data-roll-target]").value,15,30,21)
+    const threshold=Math.max(difficulty,resistance,custom)
+    const mastery=attackMastery(current().masteries,mode)
+    q<HTMLElement>("[data-opposition-preview]").textContent=
+      "Seuil à atteindre : "+threshold+
+      " (difficulté "+difficulty+(defender?", défense "+resistance:"")+(custom?", seuil MJ "+custom:"")+"). "+
+      (mode==="mental"?"Effet social / mental : aucun PV retiré automatiquement.":
+        "Dégâts possibles sur réussite : base + maîtrise "+mastery+
+        " + palier de puissance, moins la protection de la cible.")+
+      (defender?" "+defender.name+" possède "+defender.pv+"/"+defender.pvMax+" PV.":"")
+    if(!q<HTMLInputElement>("[data-opposition-enabled]").checked){
+      q<HTMLElement>("[data-opposition-result]").textContent="Mode opposition désactivé : jets ordinaires inchangés."
+    }
+  }
+  function clearPendingImpact(){
+    pendingImpact=null
+    q<HTMLButtonElement>("[data-opposition-apply]").hidden=true
+  }
   function roll(){
     const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
     if(s.kind==="pj"&&(used<12||used+s.convertedCredits>maxStatCredits(s.highestLevel)||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
