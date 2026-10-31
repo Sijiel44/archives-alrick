@@ -95,6 +95,18 @@ for(const token of ['data-field="description"', 'data-portrait', 'data-portrait-
 }
 const guideHtml=await readFile(path.join(root,'jouer','guide-aventurier-12-rangs.html'),'utf8')
 assert(guideHtml.includes('Les balises éteintes') && guideHtml.includes('La marche des frontières'),'Banque de missions manquante')
+for(const token of ['data-export-campaign','data-import-campaign','data-group-create',
+  'data-group-select','data-group-members','data-certification','data-mission-select',
+  'data-mission-record','data-mission-log','data-item-category','data-item-make-template',
+  'data-template-grant','data-inventory-list','data-inventory-transfer','data-convert-credits',
+  'data-talent-points','data-ascension','data-divine-limit','data-field="xp"','data-xp-info']){
+  assert(atelierHtml.includes(token), `Atelier compagnies/inventaire : élément absent : ${token}`)
+}
+const publicMissions=JSON.parse(await readFile(path.join(root,'static','atelier5d6-missions.json'),'utf8'))
+assert(publicMissions.publicOnly===true && publicMissions.schema==='alrick.missions.v1','Catalogue public de missions absent ou invalide')
+assert(publicMissions.missions.length===24,'La banque ne contient pas 24 contrats publics')
+assert(publicMissions.missions.every(m=>m.statut==='proposition_non_jouee' && !('gmNotes' in m) && !('secrets' in m)),
+  'Risque de divulgation MJ dans les contrats publics')
 const rulesHtml = await readFile(path.join(root, 'jouer', 'systeme-5d6-base12.html'), 'utf8')
 assert(rulesHtml.includes('5d6'), 'La page des règles 5d6 est absente du HTML final')
 

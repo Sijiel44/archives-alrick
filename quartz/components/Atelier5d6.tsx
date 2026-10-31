@@ -8,6 +8,18 @@ const masteries = [
   ["survie","Survie et pistage"],["artisanat","Artisanat"],["magie","Magies connues"],
 ] as const
 
+const itemCategories = [
+  ["monnaie","🪙 Monnaie"],["arme","⚔️ Armes"],["armure","🛡️ Armures"],
+  ["artefact","✨ Artefacts"],["consommable","🧪 Consommables"],["ingredient","🌿 Ingrédients"],
+  ["outil","🔧 Outils"],["munition","🏹 Munitions"],["livre","📜 Livres et cartes"],
+  ["bijou","💍 Bijoux"],["provision","🥖 Provisions"],["materiau","🪵 Matériaux"],
+  ["quete","🗝️ Objets de mission"],["autre","🎒 Autres"]
+] as const
+const certifications = [
+ ["premiers-secours","Premiers secours et extraction"],["orientation","Orientation / rapports"],
+ ["protection-civile","Sécurité civile"],["reconnaissance-avancee","Reconnaissance avancée"],
+ ["risques-magiques","Risques magiques"],["intervention-specialisee","Intervention spécialisée"]
+] as const
 const attributes = [
   ["physique", "Physique", "Force, endurance, mêlée"],
   ["agilite", "Agilité", "Précision, esquive, discrétion"],
@@ -33,7 +45,11 @@ export const Atelier5d6: QuartzComponent = (props) => {
       </label>
       <button type="button" data-new>Nouvelle fiche</button>
       <button type="button" data-reset>Réinitialiser cette fiche…</button>
-      <button type="button" data-export>Exporter JSON</button>
+      <button type="button" data-export>Exporter les fiches JSON</button>
+      <button type="button" data-export-campaign>Exporter toute la campagne</button>
+      <label>Importer sauvegarde complète
+        <input type="file" accept=".json,application/json" data-import-campaign aria-label="Restaurer une campagne 5d6 depuis un JSON"/>
+      </label>
       <label>Importer JSON
         <input type="file" accept=".json,application/json" data-import aria-label="Importer un fichier de personnages JSON"/>
       </label>
@@ -65,6 +81,12 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <label>Niveau (1 à 24)<input type="number" data-field="level" min={1} max={24} step={1} value={1}/></label>
           <label>Voie(s) / vocation libre<input data-field="vocation" type="text" maxLength={160} placeholder="Éclaireur et artisan, mage et diplomate…"/></label>
         </div>
+        <div class="atelier-fields">
+          <label>Expérience cumulative (XP, MJ)
+            <input type="number" data-field="xp" min={0} max={999999} step={1} value={0}/>
+          </label>
+          <p data-xp-info class="atelier-hint">Expérience : 0 XP · niveau suivant : 5 XP.</p>
+        </div>
         <label class="atelier-wide">Talents acquis (capacités, conditions et limites)
           <textarea data-field="talents" rows={2} maxLength={1600} placeholder="Ex. : Pisteur — repérer une ancienne piste même sous la pluie"></textarea>
         </label>
@@ -74,7 +96,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
             <span><strong>{label}</strong><small>{help}</small></span>
             <input type="number" data-stat={key} value={3} min={1} max={12} step={1} aria-label={label}/>
           </label>)}
-          <small class="atelier-hint">Au niveau 1 : 12 points répartis (1 à 5 par caractéristique). Chaque nouveau niveau accorde 1 point supplémentaire, jusqu'au plafond de 12 par caractéristique. Les points non dépensés restent disponibles. Le MJ peut adapter les adversaires.</small>
+          <small class="atelier-hint">Au niveau 1 : 12 points (1 à 5 par caractéristique). Puis +6 points par niveau, chaque caractéristique étant plafonnée à 12. Les crédits excédentaires restent en réserve, sans bonus de jet automatique. Les niveaux 21–24 exigent une validation divine exceptionnelle.</small>
         </fieldset>
         <fieldset class="atelier-stats">
           <legend>Maîtrises spécialisées — <span data-mastery-points>0 / 0 points</span></legend>
@@ -84,6 +106,11 @@ export const Atelier5d6: QuartzComponent = (props) => {
           </label>)}
           <small class="atelier-hint">Deux points de maîtrise par niveau après le premier. Ils décrivent l'entraînement, sans bonus de jet automatique avant équilibrage. Les spécialités +0/+1/+2 actuelles restent jouables.</small>
         </fieldset>
+        <div class="atelier-toolbar">
+          <button type="button" data-convert-credits>Convertir 6 crédits excédentaires en 1 point de talent</button>
+          <label>Points de talent utilisés<input type="number" data-talent-spent min={0} max={23} step={1} value={0}/></label>
+        </div>
+        <p data-talent-points class="atelier-hint">Talents : 0 / 0 utilisés.</p>
         <div class="atelier-fields atelier-resources">
           <label>PV actuels<input type="number" data-field="pv" min={0} max={999} step={1} value={12}/></label>
           <label>PV maximum<input type="number" data-field="pvMax" min={1} max={999} step={1} value={12}/></label>
@@ -102,9 +129,24 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <textarea data-field="items" rows={2} maxLength={1400} placeholder="Ex. : une lampe qui révèle la dernière trace d'une Faille"></textarea>
         </label>
         <p class="atelier-hint" data-source-meta>Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions.</p>
+        <p data-ascension-status class="atelier-hint">Niveaux 21–24 : validation exceptionnelle requise.</p>
         <div data-mj-tools hidden>
           <label class="atelier-wide">Notes réservées au MJ (sur cet appareil uniquement)
             <textarea data-field="gmNotes" rows={2} maxLength={2500} placeholder="Motivations, secrets, rencontres possibles..."></textarea>
+          </label>
+          <label class="atelier-check"><input data-ascension type="checkbox"/> MJ : activer les épreuves d'ascension divine</label>
+          <label>Dernier niveau divin individuellement approuvé
+            <select data-divine-limit>
+              <option value="20">Aucun niveau divin</option>
+              <option value="21">21 — Première épreuve</option>
+              <option value="22">22 — Deuxième épreuve</option>
+              <option value="23">23 — Troisième épreuve</option>
+              <option value="24">24 — Quatrième épreuve</option>
+            </select>
+          </label>
+          <p class="atelier-hint" data-divine-history>Aucune épreuve divine consignée.</p>
+          <label class="atelier-wide">Témoignage MJ de l'épreuve exceptionnelle (obligatoire)
+            <textarea data-field="ascensionWitness" rows={2} maxLength={300} placeholder="Mentor, rituel, pacte, coût réel et conséquence du monde..."></textarea>
           </label>
           <div class="atelier-toolbar">
             <label>Profil de démonstration
@@ -175,6 +217,66 @@ export const Atelier5d6: QuartzComponent = (props) => {
         <button type="button" data-clear-log>Effacer le journal</button>
       </div>
     </div>
+    <section class="atelier-panel" aria-label="Inventaire du personnage">
+      <h3>Inventaire de la fiche active</h3>
+      <p class="atelier-hint">Les objets sont individuels. Un modèle MJ peut être attribué à plusieurs personnages sans partager leurs exemplaires.</p>
+      <div class="atelier-fields">
+        <label>Nom de l'objet<input data-item-name type="text" maxLength={90} placeholder="Bourse de pièces"/></label>
+        <label>Catégorie<select data-item-category>{itemCategories.map(([id,label])=><option value={id} key={id}>{label}</option>)}</select></label>
+        <label>Quantité<input data-item-quantity type="number" min={1} max={999} step={1} value={1}/></label>
+        <label>Valeur / unité libre<input data-item-value type="text" maxLength={100} placeholder="Ex. : 4 couronnes (proposition)"/></label>
+      </div>
+      <label class="atelier-wide">Description / propriétés / limites<textarea data-item-description rows={2} maxLength={600} placeholder="Origine, effet narratif, restrictions..."></textarea></label>
+      <div class="atelier-toolbar">
+        <button type="button" data-item-create>Ajouter à la fiche</button>
+        <button type="button" data-item-make-template>MJ : enregistrer un modèle</button>
+      </div>
+      <ul data-inventory-list class="atelier-inventory-list"><li>Aucun objet enregistré.</li></ul>
+      <div class="atelier-fields">
+        <label>Catalogue de modèles MJ<select data-template-select><option value="">Aucun modèle</option></select></label>
+        <label>Personnage destinataire<select data-item-recipient><option value="">Personnage actif</option></select></label>
+      </div>
+      <div class="atelier-toolbar">
+        <button type="button" data-template-grant>MJ : attribuer une copie</button>
+        <button type="button" data-inventory-transfer>Transférer le premier objet sélectionné</button>
+      </div>
+      <p class="atelier-hint">Pour un transfert, sélectionner « Transférer » dans la liste d'inventaire puis le personnage destinataire. Pas de synchronisation entre joueurs distants.</p>
+    </section>
+    <section class="atelier-panel" aria-label="Compagnies d'aventuriers et contrats">
+      <h3>Compagnies — missions, qualifications et récompenses</h3>
+      <p class="atelier-hint">Les niveaux de groupe (1–12) ne sont pas des grades officiels et ne remplacent aucune certification ni autorisation des autorités locales.</p>
+      <div class="atelier-fields">
+        <label>Nouvelle compagnie<input data-group-name type="text" maxLength={90} placeholder="Les arpenteurs de l'Aube"/></label>
+        <label>Compagnie active<select data-group-select><option value="">Aucune compagnie</option></select></label>
+      </div>
+      <div class="atelier-toolbar">
+        <button type="button" data-group-create>Créer une compagnie</button>
+        <button type="button" data-group-promote>MJ : valider la progression collective</button>
+      </div>
+      <p data-group-status class="atelier-hint">Aucune compagnie créée.</p>
+      <h4>Membres de la compagnie</h4>
+      <div data-group-members class="atelier-check-grid">Sélectionner une compagnie.</div>
+      <h4>Certifications reconnues par la table</h4>
+      <div class="atelier-check-grid">
+        {certifications.map(([id,label])=><label class="atelier-check" key={id}><input type="checkbox" data-certification={id}/>{label}</label>)}
+      </div>
+      <h4>Tableau des contrats</h4>
+      <div class="atelier-fields">
+        <label>Mission<select data-mission-select><option value="">Chargement des missions...</option></select></label>
+        <label>Résultat<select data-mission-result>
+          <option value="terminee">Objectif accompli</option>
+          <option value="repli">Repli / sauvetage responsable</option>
+          <option value="echouee">Échec ou mission interrompue</option>
+        </select></label>
+      </div>
+      <p data-mission-preview class="atelier-hint">Choisir une mission.</p>
+      <label class="atelier-wide">Bilan / faits / conséquences<textarea data-mission-summary rows={2} maxLength={1200}/></label>
+      <label class="atelier-wide">Récompense réellement remise<input data-mission-award type="text" maxLength={280} placeholder="À confirmer par le MJ"/></label>
+      <div class="atelier-toolbar"><button type="button" data-mission-record>MJ : consigner la mission</button></div>
+      <h4>Journal des missions et récompenses</h4>
+      <ol data-mission-log class="atelier-log"><li>Aucune mission enregistrée.</li></ol>
+      <p class="atelier-hint">Pour progresser, deux missions réussies d'au moins le rang actuel, de deux domaines différents, avec débriefing. Le MJ conserve la décision finale.</p>
+    </section>
     <section class="atelier-panel" data-ai-only hidden>
       <h3>Contexte pour MJ assisté par IA</h3>
       <p>Génère un texte contenant les règles de base et la fiche active. Le bouton <strong>Copier</strong> transmet uniquement à ton presse-papiers ; rien n'est envoyé automatiquement à une IA.</p>
@@ -217,6 +319,12 @@ Atelier5d6.css = `
 .atelier-portrait img{width:104px;max-height:104px;object-fit:contain;border:1px solid #9f8460;border-radius:8px}
 .atelier-portrait label{flex:1 1 180px}
 .atelier-portrait button{align-self:center}
+.atelier-check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.4rem}
+.atelier-inventory-list{padding-left:1.3rem}
+.atelier-inventory-list li{padding:.35rem 0;border-bottom:1px solid rgba(187,213,225,.13)}
+.atelier-inventory-list button{margin-left:.45rem;font-size:.8rem}
+.atelier .atelier-check input[type=checkbox]{width:auto}
+
 .atelier-wide{display:flex;flex-direction:column;margin:.55rem 0}
 .atelier textarea{resize:vertical}
 .atelier-dice-row{display:flex;gap:.5rem;justify-content:center;margin:1rem 0;flex-wrap:wrap}

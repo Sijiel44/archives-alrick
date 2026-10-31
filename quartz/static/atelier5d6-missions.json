@@ -1,0 +1,287 @@
+{
+  "schema": "alrick.missions.v1",
+  "revision": "2026-10-30",
+  "publicOnly": true,
+  "missions": [
+    {
+      "id": "AV-01",
+      "level": 1,
+      "title": "Les balises éteintes",
+      "category": "Reconnaissance",
+      "brief": "Trois signaux de piste s'éteignent; des voyageurs ont-ils perdu leur route ?",
+      "reward": "Un passage sûr et une recommandation locale.",
+      "certifications": [],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-02",
+      "level": 1,
+      "title": "Les poules du concours",
+      "category": "Enquête",
+      "brief": "À la veille d'une fête, les volailles primées ont disparu; toutes les accusations se contredisent.",
+      "reward": "Repas de fête et petite prime.",
+      "certifications": [],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-03",
+      "level": 2,
+      "title": "Le courrier qui revient",
+      "category": "Enquête",
+      "brief": "Un courrier revient toujours sans être remis; retrouver le véritable destinataire.",
+      "reward": "Service de messagerie gratuit et contact.",
+      "certifications": [],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-04",
+      "level": 2,
+      "title": "La source amère",
+      "category": "Secours",
+      "brief": "L'eau d'un hameau devient impropre; protéger les habitants avant de chercher la cause.",
+      "reward": "Provisions, soins et reconnaissance.",
+      "certifications": [],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-05",
+      "level": 3,
+      "title": "La galerie des trois coups",
+      "category": "Secours souterrain",
+      "brief": "Trois coups résonnent derrière une galerie condamnée; chaque décision fait courir un risque.",
+      "reward": "Matériel de mine et gratification.",
+      "certifications": [
+        "premiers-secours"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-06",
+      "level": 3,
+      "title": "La barque des disparus",
+      "category": "Navigation",
+      "brief": "Une embarcation revient vide au crépuscule; enquêter auprès des pêcheurs sans provoquer de panique.",
+      "reward": "Passage fluvial et appui des bateliers.",
+      "certifications": [
+        "premiers-secours"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-07",
+      "level": 4,
+      "title": "Le convoi du sel gris",
+      "category": "Escorte",
+      "brief": "Une caravane demande une escorte dans un col où les accidents se multiplient.",
+      "reward": "Paiement et nouveaux contrats possibles.",
+      "certifications": [
+        "premiers-secours"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-08",
+      "level": 4,
+      "title": "Le pont des dettes",
+      "category": "Diplomatie",
+      "brief": "Deux communautés revendiquent un pont fragilisé; les convois n'attendront pas le jugement.",
+      "reward": "Accès commercial et médiation reconnue.",
+      "certifications": [
+        "premiers-secours"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-09",
+      "level": 5,
+      "title": "Les cierges sous la tour",
+      "category": "Magie",
+      "brief": "Des flammes continuent de brûler dans une tour désaffectée; vérifier avant d'éteindre.",
+      "reward": "Savoir technique et composants autorisés.",
+      "certifications": [
+        "premiers-secours"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-10",
+      "level": 5,
+      "title": "L'atelier silencieux",
+      "category": "Artisanat",
+      "brief": "Un artisan respecté cesse de répondre aux commandes; la guilde de métier demande une visite discrète.",
+      "reward": "Outil, apprentissage ou recommandation.",
+      "certifications": [
+        "premiers-secours"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-11",
+      "level": 6,
+      "title": "Les masques de la carrière",
+      "category": "Créatures et dialogue",
+      "brief": "Des silhouettes masquées perturbent une carrière; différencier menace et rumeur.",
+      "reward": "Équipement et soutien des ouvriers.",
+      "certifications": [
+        "premiers-secours"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-12",
+      "level": 6,
+      "title": "Le phare sans gardien",
+      "category": "Sauvetage",
+      "brief": "Le feu d'un phare s'allume seul et dirige des bateaux vers les brisants.",
+      "reward": "Appui portuaire et matériel de navigation.",
+      "certifications": [
+        "premiers-secours"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-13",
+      "level": 7,
+      "title": "Les douze sabots",
+      "category": "Survie",
+      "brief": "Une chevauchée nocturne accompagne les convois perdus pendant une tempête du Nord.",
+      "reward": "Relais plus sûr et prime de reconnaissance.",
+      "certifications": [
+        "reconnaissance-avancee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-14",
+      "level": 7,
+      "title": "Le traité des marais",
+      "category": "Négociation",
+      "brief": "Deux communautés se disputent des canaux nécessaires aux récoltes.",
+      "reward": "Guides, cartes et relations durables.",
+      "certifications": [
+        "reconnaissance-avancee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-15",
+      "level": 8,
+      "title": "Le navire aux voiles cousues",
+      "category": "Navigation",
+      "brief": "Un navire sans capitaine dérive à l'approche d'un port; les témoins donnent trois versions.",
+      "reward": "Récompense maritime et contacts.",
+      "certifications": [
+        "reconnaissance-avancee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-16",
+      "level": 8,
+      "title": "Les loups du col creux",
+      "category": "Protection",
+      "brief": "Des troupeaux sont attaqués; les pistes révèlent plusieurs dangers possibles.",
+      "reward": "Matériel de piste et faveur des bergers.",
+      "certifications": [
+        "reconnaissance-avancee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-17",
+      "level": 9,
+      "title": "Les dormeurs de la citadelle",
+      "category": "Investigation magique",
+      "brief": "Une garnison ne répond plus et semble plongée dans un sommeil collectif.",
+      "reward": "Prime institutionnelle et accès contrôlé aux notes.",
+      "certifications": [
+        "reconnaissance-avancee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-18",
+      "level": 9,
+      "title": "Le jardin des aiguilles",
+      "category": "Exploration",
+      "brief": "Une ancienne voie se ferme sous une végétation étrange; ouvrir sans détruire.",
+      "reward": "Savoir botanique et appui de guides.",
+      "certifications": [
+        "reconnaissance-avancee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-19",
+      "level": 10,
+      "title": "La caravane derrière le mur",
+      "category": "Extraction",
+      "brief": "Des appels viennent d'un secteur coupé du monde par une tempête.",
+      "reward": "Prime publique et qualification d'extraction à demander.",
+      "certifications": [
+        "intervention-specialisee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-20",
+      "level": 10,
+      "title": "Le cercle des braises",
+      "category": "Incident magique",
+      "brief": "Un vieux dispositif se réactive au-dessous d'un quartier d'artisans.",
+      "reward": "Assistance de spécialistes et prime.",
+      "certifications": [
+        "intervention-specialisee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-21",
+      "level": 11,
+      "title": "Les sept postes muets",
+      "category": "Crise de frontière",
+      "brief": "Plusieurs relais cessent simultanément de communiquer; faut-il reconnaître ou évacuer ?",
+      "reward": "Soutien logistique et reconnaissance.",
+      "certifications": [
+        "intervention-specialisee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-22",
+      "level": 11,
+      "title": "Le jugement des profondeurs",
+      "category": "Diplomatie souterraine",
+      "brief": "Un passage commercial est fermé par une communauté souterraine inconnue.",
+      "reward": "Accord de passage et archives consenties.",
+      "certifications": [
+        "intervention-specialisee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-23",
+      "level": 12,
+      "title": "Les dernières lanternes",
+      "category": "Coordination de secours",
+      "brief": "Une rupture de réseau isole plusieurs villages et requiert des équipes spécialisées.",
+      "reward": "Honneurs civils et dotation aux sauveteurs.",
+      "certifications": [
+        "intervention-specialisee"
+      ],
+      "statut": "proposition_non_jouee"
+    },
+    {
+      "id": "AV-24",
+      "level": 12,
+      "title": "La marche des frontières",
+      "category": "Crise majeure",
+      "brief": "Des menaces convergent sur des chemins de repli du Nord; les civils doivent passer.",
+      "reward": "Récompense collective et pactes de solidarité.",
+      "certifications": [
+        "intervention-specialisee"
+      ],
+      "statut": "proposition_non_jouee"
+    }
+  ]
+}

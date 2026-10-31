@@ -7,13 +7,64 @@ const totalMasteries = (m:Record<Mastery,number>) => MASTERIES.reduce((sum,k)=>s
 type Domain = "magie" | "melee" | "tir" | "nego" | "autre"
 const DOMAINS: Domain[] = ["magie", "melee", "tir", "nego", "autre"]
 const makeStreaks = (): Record<Domain,number> => ({magie:0,melee:0,tir:0,nego:0,autre:0})
-const validSourceRef = (v:unknown):string => typeof v==="string" && /^(personnages|creatures)\/[A-Za-z0-9-]{2,100}$/.test(v) ? v : ""
+const validSourceRef = (v:unknown):string => typeof v==="string" && /^(personnages|creatures)\/[A-Za-z0-9-]{2,100}(?:\/[A-Za-z0-9-]{2,100}){0,2}$/.test(v) ? v : ""
 type Mode = "pj" | "mj" | "ia"
+const ITEM_CATEGORIES = {monnaie:"🪙",arme:"⚔️",armure:"🛡️",artefact:"✨",consommable:"🧪",ingredient:"🌿",outil:"🔧",munition:"🏹",livre:"📜",bijou:"💍",provision:"🥖",materiau:"🪵",quete:"🗝️",autre:"🎒"} as const
+type ItemCategory = keyof typeof ITEM_CATEGORIES
+type GameItem = {id:string;templateId:string;name:string;category:ItemCategory;quantity:number;description:string;value:string}
+type Group = {id:string;name:string;rank:number;members:string[];certifications:string[];awards:string[];promotionEntries:string[]}
+type Mission = {id:string;level:number;title:string;category:string;brief:string;reward:string;certifications:string[];statut:string}
+type MissionEntry = {id:string;groupId:string;missionId:string;category:string;rank:number;status:"terminee"|"repli"|"echouee";summary:string;reward:string;date:string}
+const CERTIFICATIONS = [
+  ["premiers-secours","Premiers secours et extraction"],["orientation","Orientation, navigation et rapports"],
+  ["protection-civile","Protection des civils et discipline"],["reconnaissance-avancee","Reconnaissance en terrain dangereux"],
+  ["risques-magiques","Risques magiques et runes"],["intervention-specialisee","Intervention spécialisée / crise majeure"]
+] as const
+const maxStatCredits = (level:number) => 12+6*(level-1)
+const xpRequired = (level:number) => level<=1?0:5*(level-1)**3
+const missionXpReward = (rank:number) => 10*rank
+const levelResourceGain = (level:number) => level>=21?24:level>=13?12:6
+const gainBetween = (first:number,last:number) => {
+  let gain=0
+  for(let l=first+1;l<=last;l++)gain+=levelResourceGain(l)
+  return gain
+}
+function validatedItem(raw:unknown):GameItem|null{
+  if(!raw||typeof raw!=="object")return null
+  const o=raw as Record<string,unknown>
+  if(typeof o.name!=="string"||!o.name.trim())return null
+  const cat=typeof o.category==="string"&&o.category in ITEM_CATEGORIES?o.category as ItemCategory:"autre"
+  return {id:typeof o.id==="string"?o.id.slice(0,80):uniqueId(),templateId:clean(o.templateId,80),
+    name:clean(o.name,90),category:cat,quantity:clamp(o.quantity,1,999,1),
+    description:clean(o.description,600),value:clean(o.value,100)}
+}
+function validatedGroup(raw:unknown):Group|null{
+  if(!raw||typeof raw!=="object")return null
+  const o=raw as Record<string,unknown>
+  if(typeof o.name!=="string"||!o.name.trim())return null
+  return {id:clean(o.id,80)||uniqueId(),name:clean(o.name,90),rank:clamp(o.rank,1,12,1),
+    members:Array.isArray(o.members)?o.members.filter((x:unknown):x is string=>typeof x==="string").slice(0,60).map(x=>x.slice(0,100)):[],
+    certifications:Array.isArray(o.certifications)?o.certifications.filter((x:unknown):x is string=>typeof x==="string"&&CERTIFICATIONS.some(c=>c[0]===x)).slice(0,6):[],
+    awards:Array.isArray(o.awards)?o.awards.filter((x:unknown):x is string=>typeof x==="string").slice(-30).map(x=>x.slice(0,280)):[],
+    promotionEntries:Array.isArray(o.promotionEntries)?o.promotionEntries.filter((x:unknown):x is string=>typeof x==="string").slice(0,200).map(x=>x.slice(0,80)):[]}
+}
+function validatedEntry(raw:unknown):MissionEntry|null{
+  if(!raw||typeof raw!=="object")return null
+  const o=raw as Record<string,unknown>
+  if(!["terminee","repli","echouee"].includes(String(o.status)))return null
+  return {id:clean(o.id,80)||uniqueId(),groupId:clean(o.groupId,80),missionId:clean(o.missionId,80),
+    category:clean(o.category,90),rank:clamp(o.rank,1,12,1),
+    status:o.status as MissionEntry["status"],summary:clean(o.summary,1200),
+    reward:clean(o.reward,280),date:clean(o.date,30)}
+}
+
 type Sheet = {
   id: string; name: string; kind: Role; profession: string; skill: number
   stats: Record<Stat, number>; pv: number; pvMax: number
   mana: number; manaMax: number; emprise: number
   level: number; highestLevel: number; masteries: Record<Mastery,number>
+  ascensionAuthorized:boolean; divineLimit:number; ascensionWitness:string; divineMilestones:string[]; inventory:GameItem[]
+  convertedCredits:number; talentPointsSpent:number; xp:number
   description: string; portrait: string
   vocation: string; talents: string; boons: string; curses: string; items: string
   sourceRef: string; sourceTitle: string
@@ -21,7 +72,8 @@ type Sheet = {
   notes: string; gmNotes: string
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
-type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[] }
+type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
+  groups:Group[]; activeGroupId:string; templates:GameItem[]; missionLog:MissionEntry[] }
 // Tables d'incidents de playtest : une suggestion à interpréter, jamais un malus automatique supplémentaire.
 const INCIDENTS: Record<Exclude<Domain,"autre">,string[]> = {
   magie: [
@@ -93,7 +145,9 @@ function fresh(kind: Role = "pj"): Sheet {
   return { id: uniqueId(), name: kind === "pj" ? "Mon personnage" : "Nouveau profil",
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
-    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
+    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, divineLimit:20, ascensionWitness:"", divineMilestones:[], inventory:[],
+    convertedCredits:0,talentPointsSpent:0,xp:0,
+    description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
 }
 function validateSheet(raw: unknown): Sheet | null {
@@ -119,7 +173,15 @@ function validateSheet(raw: unknown): Sheet | null {
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
     mana:clamp(obj.mana,0,manaMax,0),manaMax,
     emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,24,level),
-    masteries,description:clean(obj.description,1200),portrait,
+    masteries,convertedCredits:clamp(obj.convertedCredits,0,6*(level-1),0),
+    talentPointsSpent:clamp(obj.talentPointsSpent,0,23,0),
+    xp:clamp(obj.xp,0,999999,0),
+    ascensionAuthorized:obj.ascensionAuthorized===true||level>20,
+    divineLimit:clamp(obj.divineLimit,20,24,level>20?level:20),
+    ascensionWitness:clean(obj.ascensionWitness,300),
+    divineMilestones:Array.isArray(obj.divineMilestones)?obj.divineMilestones.slice(0,4).map(x=>clean(x,300)):[],
+    inventory:Array.isArray(obj.inventory)?obj.inventory.slice(0,150).map(validatedItem).filter((x):x is GameItem=>x!==null):[],
+    description:clean(obj.description,1200),portrait,
     vocation:clean(obj.vocation,160),talents:clean(obj.talents,1600),boons:clean(obj.boons,1400),
     curses:clean(obj.curses,1400),items:clean(obj.items,1400),
     sourceRef:validSourceRef(obj.sourceRef),sourceTitle:clean(obj.sourceTitle,160),
@@ -180,7 +242,8 @@ function setupAtelier5d6() {
       if(!signal.aborted)q<HTMLElement>("[data-reference-results]").textContent="Recherche indisponible. Les fiches peuvent être consultées depuis la Bibliothèque."
     }finally{refsLoading=false}
   }
-  let state: State = {sheets:[fresh()],activeId:"",mode:"pj",log:[]}
+  let state: State = {sheets:[fresh()],activeId:"",mode:"pj",log:[],
+    groups:[],activeGroupId:"",templates:[],missionLog:[]}
   try {
     const data = localStorage.getItem(STORAGE)
     if (data) {
@@ -198,6 +261,11 @@ function setupAtelier5d6() {
         }
       }
       state.mode = parsed.mode === "mj" || parsed.mode === "ia" ? parsed.mode : "pj"
+      if(Array.isArray(parsed.groups))state.groups=parsed.groups.slice(0,20).map(validatedGroup).filter((x):x is Group=>x!==null)
+      if(Array.isArray(parsed.templates))state.templates=parsed.templates.slice(0,150).map(validatedItem).filter((x):x is GameItem=>x!==null)
+      if(Array.isArray(parsed.missionLog))state.missionLog=parsed.missionLog.slice(-400).map(validatedEntry).filter((x):x is MissionEntry=>x!==null)
+      state.activeGroupId=typeof parsed.activeGroupId==="string" && state.groups.some(g=>g.id===parsed.activeGroupId)
+        ?parsed.activeGroupId:(state.groups[0]?.id??"")
       if (Array.isArray(parsed.log)) state.log = parsed.log.slice(0,20).filter((x):x is Roll =>
         !!x && typeof x === "object" && typeof x.text === "string" && typeof x.name === "string" &&
         Array.isArray(x.dice) && x.dice.length === 5 && x.dice.every((d:unknown)=>typeof d==="number" && d>=1 && d<=6)
@@ -214,14 +282,21 @@ function setupAtelier5d6() {
     const s=current()
     const used=STATS.reduce((acc,k)=>acc+s.stats[k],0)
     const el=q<HTMLElement>("[data-points]")
-    const limit=12+s.highestLevel-1
+    const limit=maxStatCredits(s.highestLevel)-s.convertedCredits
     const legal=s.kind!=="pj" || (used>=12 && used<=limit && (s.highestLevel!==1 || (used===12 && STATS.every(k=>s.stats[k]<=5))))
-    el.textContent=s.kind==="pj" ? `${used} / ${limit} points · ${limit-used} en réserve` : `${used} points (MJ)`
+    el.textContent=s.kind==="pj" ? String(used)+" points investis · "+String(Math.max(0,limit-used))+" crédits restants · plafond 12/score" : String(used)+" points (MJ)"
     el.style.color=!legal ? "#e7ac9c" : ""
     const masteryUsed=totalMasteries(s.masteries), masteryLimit=2*(s.highestLevel-1)
     const masteryEl=q<HTMLElement>("[data-mastery-points]")
     masteryEl.textContent=`${masteryUsed} / ${masteryLimit} points · ${Math.max(0,masteryLimit-masteryUsed)} en réserve`
     masteryEl.style.color=masteryUsed>masteryLimit?"#e7ac9c":""
+    const earnedTalents=Math.floor(s.convertedCredits/6)
+    q<HTMLElement>("[data-talent-points]").textContent="Talents : "+s.talentPointsSpent+" / "+earnedTalents+
+      " utilisés · "+(earnedTalents-s.talentPointsSpent)+" disponibles"
+    q<HTMLInputElement>("[data-talent-spent]").value=String(s.talentPointsSpent)
+    q<HTMLElement>("[data-xp-info]").textContent="Expérience : "+s.xp+
+      " XP · seuil du niveau "+Math.min(24,s.level+1)+" : "+xpRequired(Math.min(24,s.level+1))+
+      " XP cumulés. Les niveaux élevés exigent des épreuves spécifiques."
 
     q<HTMLSelectElement>("[data-active]").selectedOptions[0]?.setAttribute("data-active-points",String(used))
   }
@@ -244,12 +319,21 @@ function setupAtelier5d6() {
     if(s.portrait)portrait.src=s.portrait
     else portrait.removeAttribute("src")
     q<HTMLSelectElement>("[data-roll-skill]").value=String(s.skill)
+    q<HTMLInputElement>("[data-ascension]").checked=s.ascensionAuthorized
+    q<HTMLSelectElement>("[data-divine-limit]").value=String(s.divineLimit)
+    q<HTMLElement>("[data-divine-history]").textContent=s.divineMilestones.length
+      ?s.divineMilestones.map((x,i)=>"Niveau "+(i+21)+" : "+(x||"non documenté")).join(" · ")
+      :"Aucune épreuve divine consignée."
+    q<HTMLElement>("[data-ascension-status]").textContent=s.level>=21
+      ?"Ascension exceptionnelle : niveau "+s.level+"/24 — autorisation MJ jusqu'à "+s.divineLimit+"."
+      :"Niveaux 21–24 : quatre épreuves divines indépendantes, validées par le MJ."
     refreshPoints()
     const source=q<HTMLElement>("[data-source-meta]")
     source.textContent=s.sourceRef
       ? `Source : ${s.sourceTitle || s.sourceRef} (${s.sourceRef}). Les statistiques 5d6 sont une adaptation libre non canonique.`
       : "Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions."
     refreshStreaks()
+    renderInventory()
   }
   function refreshStreaks(){
     const s=current()
@@ -275,9 +359,158 @@ function setupAtelier5d6() {
       log.append(li)
     }
   }
-  function render(){refreshRoster();setForm();refreshMode();refreshLog()}
+
+  let pendingTransfer=""
+  let missions:Mission[]=[]
+  async function loadMissions(signal:AbortSignal){
+    try{
+      const response=await fetch(rootPath+"/static/atelier5d6-missions.json",{signal})
+      if(!response.ok)throw Error("catalogue inaccessible")
+      const parsed:unknown=await response.json()
+      if(!parsed||typeof parsed!=="object"||!("missions" in parsed)||!Array.isArray(parsed.missions))throw Error("format")
+      missions=parsed.missions.filter((x:unknown):x is Mission=>{
+        if(!x||typeof x!=="object")return false
+        const m=x as Record<string,unknown>
+        return typeof m.id==="string"&&/^AV-[0-9]{2}$/.test(m.id)
+          &&typeof m.title==="string"&&typeof m.category==="string"
+          &&typeof m.level==="number"&&m.level>=1&&m.level<=12
+          &&m.statut==="proposition_non_jouee"&&Array.isArray(m.certifications)
+      }).slice(0,60)
+      const menu=q<HTMLSelectElement>("[data-mission-select]")
+      menu.replaceChildren(new Option("Sélectionner une mission",""))
+      for(const m of missions)menu.add(new Option("G"+m.level+" · "+m.id+" · "+m.title,m.id))
+      renderMissionPreview()
+    }catch{
+      if(!signal.aborted)q<HTMLElement>("[data-mission-preview]").textContent="Catalogue public de missions indisponible. Réessayer au prochain chargement."
+    }
+  }
+  function activeGroup():Group|undefined{return state.groups.find(g=>g.id===state.activeGroupId)}
+  function renderMissionPreview(){
+    const id=q<HTMLSelectElement>("[data-mission-select]").value
+    const mission=missions.find(x=>x.id===id)
+    const group=activeGroup()
+    const missing=mission&&group?mission.certifications.filter(c=>!group.certifications.includes(c)):[]
+    q<HTMLElement>("[data-mission-preview]").textContent=mission
+      ?"Niveau "+mission.level+" · "+mission.category+". "+mission.brief+
+      " Récompense envisagée : "+mission.reward+(missing.length?" Qualifications manquantes : "+missing.join(", ")+".":"")
+      :"Choisir une mission du catalogue public pour voir son accroche sans spoilers."
+  }
+  function renderInventory(){
+    const list=q<HTMLUListElement>("[data-inventory-list]")
+    list.replaceChildren()
+    const sheet=current()
+    if(!sheet.inventory.length){const li=document.createElement("li");li.textContent="Sac vide.";list.append(li)}
+    for(const item of sheet.inventory){
+      const li=document.createElement("li")
+      li.append(document.createTextNode(ITEM_CATEGORIES[item.category]+" "+item.name+" ×"+item.quantity+
+        (item.value?" · "+item.value:"")+(item.description?" — "+item.description:"")))
+      const give=document.createElement("button");give.type="button"
+      give.dataset.itemSelect=item.id;give.textContent=pendingTransfer===item.id?"À transférer ✓":"Transférer"
+      const remove=document.createElement("button");remove.type="button"
+      remove.dataset.itemRemove=item.id;remove.textContent="Retirer"
+      li.append(give,remove);list.append(li)
+    }
+    const templates=q<HTMLSelectElement>("[data-template-select]")
+    const selected=templates.value
+    templates.replaceChildren(new Option("Choisir un modèle MJ",""))
+    for(const t of state.templates)templates.add(new Option(ITEM_CATEGORIES[t.category]+" "+t.name,t.id))
+    if(state.templates.some(t=>t.id===selected))templates.value=selected
+    const recipient=q<HTMLSelectElement>("[data-item-recipient]")
+    const prior=recipient.value
+    recipient.replaceChildren()
+    for(const sheet of state.sheets)recipient.add(new Option(sheet.name+" ("+sheet.kind+")",sheet.id))
+    recipient.value=state.sheets.some(x=>x.id===prior)?prior:current().id
+  }
+  function renderGroup(){
+    const sel=q<HTMLSelectElement>("[data-group-select]")
+    sel.replaceChildren(new Option("Aucune compagnie",""))
+    for(const g of state.groups)sel.add(new Option(g.name+" · rang "+g.rank,g.id))
+    sel.value=state.activeGroupId
+    const group=activeGroup()
+    const members=q<HTMLElement>("[data-group-members]")
+    members.replaceChildren()
+    if(!group){members.textContent="Créer ou sélectionner une compagnie."}
+    else{
+      for(const sheet of state.sheets){
+        const label=document.createElement("label");label.className="atelier-check"
+        const box=document.createElement("input");box.type="checkbox";box.dataset.groupMember=sheet.id
+        box.checked=group.members.includes(sheet.id)
+        label.append(box,document.createTextNode(sheet.name+" · niveau "+sheet.level))
+        members.append(label)
+      }
+    }
+    host.querySelectorAll<HTMLInputElement>("[data-certification]").forEach(el=>{
+      el.checked=!!group&&group.certifications.includes(el.dataset.certification||"")
+      el.disabled=!group
+    })
+    const entries=group?state.missionLog.filter(x=>x.groupId===group.id):[]
+    const used=group?.promotionEntries??[]
+    const candidates=group?entries.filter(x=>(x.status==="terminee"||x.status==="repli")&&x.rank>=group.rank&&!used.includes(x.id)):[]
+    const distinct=new Set(candidates.map(x=>x.category))
+    q<HTMLElement>("[data-group-status]").textContent=group
+      ? "Rang "+group.rank+"/12 · "+group.members.length+" membres · "+group.certifications.length+
+        " certifications · "+entries.length+" comptes rendus. "+
+        (distinct.size>=2?"Progression de groupe admissible (validation MJ).":"Deux réussites de domaines distincts sont requises pour le prochain rang.")
+      :"Aucune compagnie créée. Les missions ne peuvent pas être enregistrées sans compagnie."
+    const log=q<HTMLOListElement>("[data-mission-log]")
+    log.replaceChildren()
+    if(!entries.length){const li=document.createElement("li");li.textContent="Aucune mission consignée.";log.append(li)}
+    for(const entry of entries.slice(-30).reverse()){
+      const li=document.createElement("li")
+      const m=missions.find(x=>x.id===entry.missionId)
+      li.textContent=entry.date+" — "+(m?.title||entry.missionId)+" · "+entry.status+
+        (entry.reward?" · Récompense : "+entry.reward:"")+
+        (entry.summary?" · "+entry.summary:"")
+      log.append(li)
+    }
+    renderMissionPreview()
+  }
+  function createItem(){
+    const name=clean(q<HTMLInputElement>("[data-item-name]").value.trim(),90)
+    if(!name){message("Le nom de l'objet est obligatoire.");return null}
+    const category=q<HTMLSelectElement>("[data-item-category]").value
+    const item:GameItem={id:uniqueId(),templateId:"",name,category:category in ITEM_CATEGORIES?category as ItemCategory:"autre",
+      quantity:clamp(q<HTMLInputElement>("[data-item-quantity]").value,1,999,1),
+      description:clean(q<HTMLTextAreaElement>("[data-item-description]").value,600),
+      value:clean(q<HTMLInputElement>("[data-item-value]").value,100)}
+    return item
+  }
+  function recordMission(){
+    const group=activeGroup(),mission=missions.find(x=>x.id===q<HTMLSelectElement>("[data-mission-select]").value)
+    if(!group||!mission){message("Choisir une compagnie et un contrat valide.");return}
+    if(state.mode==="pj"){message("Passer en mode MJ pour valider les bilans des missions.");return}
+    const missing=mission.certifications.filter(x=>!group.certifications.includes(x))
+    if(missing.length){message("Qualifications à vérifier avant mission : "+missing.join(", ")+". Aucun bilan enregistré.");return}
+    const result=q<HTMLSelectElement>("[data-mission-result]").value
+    const entry:MissionEntry={id:uniqueId(),groupId:group.id,missionId:mission.id,
+      category:mission.category,rank:mission.level,
+      status:result==="repli"?"repli":result==="echouee"?"echouee":"terminee",
+      summary:clean(q<HTMLTextAreaElement>("[data-mission-summary]").value,1200),
+      reward:clean(q<HTMLInputElement>("[data-mission-award]").value,280),
+      date:new Date().toISOString().slice(0,10)}
+    if(entry.status!=="echouee"){
+      const reward=missionXpReward(mission.level)
+      for(const id of group.members){
+        const participant=state.sheets.find(x=>x.id===id)
+        if(participant?.kind==="pj")participant.xp=clamp(participant.xp+reward,0,999999,participant.xp)
+      }
+      entry.reward=clean((entry.reward?entry.reward+" · ":"")+"+"+reward+" XP par PJ membre",280)
+    }
+    state.missionLog.push(entry)
+    state.missionLog=state.missionLog.slice(-400)
+    if(entry.reward&&entry.status!=="echouee")group.awards.push(entry.reward)
+    group.awards=group.awards.slice(-30)
+    q<HTMLTextAreaElement>("[data-mission-summary]").value=""
+    q<HTMLInputElement>("[data-mission-award]").value=""
+    renderGroup();refreshPoints();persist();renderAI()
+    q<HTMLInputElement>('[data-field="xp"]').value=String(current().xp)
+    message("Mission consignée : récompense narrative et XP locaux attribués aux PJ membres.")
+  }
+  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup()}
   function renderAI(){
     const s=current(), include=q<HTMLInputElement>("[data-ai-roster]").checked
+    const group=state.groups.find(g=>g.members.includes(s.id))
+    const inventory=s.inventory.slice(0,60).map(x=>x.name+" ×"+x.quantity).join(", ")
     const roster = include ? state.sheets.filter(x=>x.id!==s.id).map(x=>
       `- ${x.name} (${x.kind}, ${x.profession}) : Phys ${x.stats.physique}, Agi ${x.stats.agilite}, Esp ${x.stats.esprit}, Prés ${x.stats.presence}, PV ${x.pv}/${x.pvMax}, mana ${x.mana}/${x.manaMax}, Emprise ${x.emprise}.`).join("\n") : "(non transmis)"
     const text = `MJ IA — Nouvelle aventure indépendante dans le monde d'Alrick
@@ -285,19 +518,24 @@ RÈGLES EN TEST : 5d6 + caractéristique + compétence (0,1,2) + situation (-2,0
 Difficultés 15,18,21,24,27,30 ; critiques sur les 5 dés naturels :
 5 = échec critique exceptionnel, 6-7 = échec critique mineur, 27-29 = critique favorable possible, 30 = succès exceptionnel si l'action est réalisable.
 Base 12 : PV et mana d'essai, sans modifier les lois du Codex.
-Progression pilote : niveaux 1–24 (+1 caractéristique et +2 maîtrises par niveau), sans effet rétroactif sur le canon. Les maîtrises sont suivies mais ne remplacent pas encore les compétences +0/+1/+2 des jets. Voies libres, talents narratifs et effets conditionnels.
+Progression pilote : niveaux 1–24 (+6 points de caractéristique cumulés et +2 maîtrises par niveau). Le maximum reste 12 par caractéristique; le surplus demeure non investi. Au-delà de 20, autorisation exceptionnelle du MJ. Ressources +6/+12/+24 selon le palier, sans effet rétroactif sur le canon. Les maîtrises sont suivies mais ne remplacent pas encore les compétences +0/+1/+2 des jets. Voies libres, talents narratifs et effets conditionnels.
 Après 3 échecs de même catégorie (magie, mêlée, tir ou négociation), proposer un incident narratif d12 facultatif ; un 5 naturel ne se cumule pas à l'incident.
 
 PERSONNAGE ACTIF : ${s.name} (${s.kind}), ${s.profession}.
 Physique ${s.stats.physique}, Agilité ${s.stats.agilite}, Esprit ${s.stats.esprit}, Présence ${s.stats.presence}.
 Spécialité +${s.skill}, PV ${s.pv}/${s.pvMax}, mana ${s.mana}/${s.manaMax}, Emprise ${s.emprise}/12.
 Niveau ${s.level}/24 ; voies : ${s.vocation || "aucune"}.
+Crédits convertis : ${s.convertedCredits}; points de talents attribués ${s.talentPointsSpent}/${Math.floor(s.convertedCredits/6)}. Pouvoirs à valider par le MJ.
 Description : ${s.description || "non renseignée"}.
 Maîtrises de progression (sans bonus de jet automatique) : ${MASTERIES.map(k=>k+" "+s.masteries[k]+"/12").join(", ")}.
 Talents : ${s.talents || "aucun"}.
 Bénédictions / avantages conditionnels : ${s.boons || "aucun"}.
 Malédictions / limites : ${s.curses || "aucune"}.
 Objets à effet narratif : ${s.items || "aucun"}.
+Inventaire (noms et quantités) : ${inventory || "aucun"}.
+Compagnie : ${group ? group.name+" (rang "+group.rank+"/12)" : "aucune"}.
+Certifications reconnues par la table : ${group?.certifications.join(", ") || "aucune"}.
+Niveaux 21–24 : ascension exceptionnelle approuvée par le MJ, sans capacités divines automatiques.
 Référence de la fiche : ${s.sourceRef || "adaptation sans source"} — ${s.sourceTitle || ""} (scores 5d6 non canoniques).
 Notes du personnage : ${s.notes || "aucune"}.
 
@@ -318,7 +556,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       const before=s.stats[stat],next=clamp(el.value,1,12,before)
       s.stats[stat]=next
       const used=STATS.reduce((sum,k)=>sum+s.stats[k],0)
-      if(s.kind==="pj" && (used>12+s.highestLevel-1 || (s.highestLevel===1 && next>5))){
+      if(s.kind==="pj" && (used+s.convertedCredits>maxStatCredits(s.highestLevel) || (s.highestLevel===1 && next>5))){
         s.stats[stat]=before;el.value=String(before)
         message("Points de caractéristique insuffisants ou limite de création dépassée.")
       }
@@ -340,14 +578,29 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "manaMax":s.manaMax=clamp(el.value,0,999,0);s.mana=Math.min(s.mana,s.manaMax);break
         case "mana":s.mana=clamp(el.value,0,s.manaMax,s.mana);break
         case "emprise":s.emprise=clamp(el.value,0,12,0);break
+        case "xp":{
+          if(s.kind==="pj"&&state.mode==="pj"){
+            el.value=String(s.xp);message("Modification directe des XP réservée au MJ.");return
+          }
+          s.xp=clamp(el.value,0,999999,s.xp);break
+        }
         case "notes":s.notes=clean(el.value,2500);break
         case "gmNotes":s.gmNotes=clean(el.value,2500);break
         case "level":{
           const next=clamp(el.value,1,24,s.level)
+          if(next>s.level&&s.kind==="pj"&&state.mode==="pj"&&s.xp<xpRequired(next)){
+            el.value=String(s.level)
+            message("XP insuffisants pour atteindre ce niveau. Le MJ peut valider une exception narrative.");return
+          }
+          if(next>20&&(!s.ascensionAuthorized||next>s.divineLimit||s.ascensionWitness.trim().length<15)){
+            el.value=String(s.level)
+            message("Ascension divine refusée : chaque palier exige une autorisation du MJ et un témoignage de l'épreuve (15 caractères minimum).")
+            return
+          }
           if(next>s.highestLevel){
-            const gained=next-s.highestLevel
-            s.pvMax=clamp(s.pvMax+2*gained,1,999,s.pvMax)
-            if(s.manaMax>0)s.manaMax=clamp(s.manaMax+2*gained,0,999,s.manaMax)
+            const gained=gainBetween(s.highestLevel,next)
+            s.pvMax=clamp(s.pvMax+gained,1,999,s.pvMax)
+            if(s.manaMax>0)s.manaMax=clamp(s.manaMax+gained,0,999,s.manaMax)
             s.highestLevel=next
           }
           s.level=next
@@ -357,6 +610,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
           break
         }
         case "description":s.description=clean(el.value,1200);break
+        case "ascensionWitness":s.ascensionWitness=clean(el.value,300);break
         case "vocation":s.vocation=clean(el.value,160);break
         case "talents":s.talents=clean(el.value,1600);break
         case "boons":s.boons=clean(el.value,1400);break
@@ -377,8 +631,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   }
   function roll(){
     const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
-    if(s.kind==="pj"&&(used<12||used>12+s.highestLevel-1||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
-      message("Répartition invalide : 12 points à la création, puis +1 caractéristique et +2 maîtrises par niveau, plafonds à 12.")
+    if(s.kind==="pj"&&(used<12||used+s.convertedCredits>maxStatCredits(s.highestLevel)||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
+      message("Répartition invalide : 12 points de base, puis +6 caractéristiques et +2 maîtrises par niveau ; chaque score reste limité à 12.")
       return
     }
     const stat=q<HTMLSelectElement>("[data-roll-stat]").value as Stat
@@ -416,6 +670,54 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     setTimeout(()=>URL.revokeObjectURL(url),1500)
     message("Fichier JSON exporté : conserve-le pour retrouver tes fiches sur un autre appareil.")
   }
+
+  function exportCampaign(){
+    const content={schema:"alrick.campaign.v1",created:new Date().toISOString(),state}
+    const blob=new Blob([JSON.stringify(content,null,2)],{type:"application/json"})
+    const url=URL.createObjectURL(blob),link=document.createElement("a")
+    link.href=url;link.download="archives-alrick-campagne-5d6-complete.json";document.body.append(link);link.click();link.remove()
+    setTimeout(()=>URL.revokeObjectURL(url),1500)
+    message("Sauvegarde complète exportée : fiches, inventaires, modèles MJ, compagnies et journal de missions.")
+  }
+  function importCampaign(raw:unknown){
+    if(!raw||typeof raw!=="object")throw Error("Format absent")
+    const container=raw as Record<string,unknown>
+    if(container.schema!=="alrick.campaign.v1"||!container.state||typeof container.state!=="object")throw Error("Schéma de campagne inconnu")
+    const payload=container.state as Record<string,unknown>
+    if(!Array.isArray(payload.sheets)||!payload.sheets.length||payload.sheets.length>60)throw Error("Fiches manquantes")
+    const sheets=payload.sheets.map(validateSheet)
+    if(sheets.some(x=>x===null))throw Error("Fiche corrompue")
+    const restored=sheets as Sheet[]
+    payload.sheets.forEach((item:unknown,i:number)=>{
+      if(item&&typeof item==="object"){
+        const id=(item as Record<string,unknown>).id
+        if(typeof id==="string"&&id.length>0&&id.length<=100)restored[i].id=id
+      }
+    })
+    if(new Set(restored.map(x=>x.id)).size!==restored.length)throw Error("Identifiants de fiches dupliqués")
+    const ids=new Set(restored.map(x=>x.id))
+    const groups=Array.isArray(payload.groups)?payload.groups.slice(0,20).map(validatedGroup).filter((x):x is Group=>x!==null):[]
+    for(const group of groups)group.members=group.members.filter(id=>ids.has(id))
+    const groupIds=new Set(groups.map(x=>x.id))
+    const templates=Array.isArray(payload.templates)?payload.templates.slice(0,150).map(validatedItem).filter((x):x is GameItem=>x!==null):[]
+    const missionLog=Array.isArray(payload.missionLog)?payload.missionLog.slice(-400).map(validatedEntry)
+      .filter((x):x is MissionEntry=>x!==null&&groupIds.has(x.groupId)):[]
+    const priorLog=Array.isArray(payload.log)?payload.log:[]
+    const log=priorLog.slice(0,20).filter((x:unknown):x is Roll=>{
+      if(!x||typeof x!=="object")return false
+      const r=x as Record<string,unknown>
+      return typeof r.name==="string"&&typeof r.text==="string"&&typeof r.total==="number"&&
+        typeof r.target==="number"&&Array.isArray(r.dice)&&r.dice.length===5&&
+        r.dice.every((d:unknown)=>typeof d==="number"&&d>=1&&d<=6)
+    }).map(x=>({...x,name:clean(x.name,90),text:clean(x.text,180)}))
+    if(!window.confirm("Restaurer cette sauvegarde complète ? La campagne locale actuellement ouverte sera remplacée. Exportez-la d'abord si nécessaire."))return
+    state={sheets:restored,activeId:typeof payload.activeId==="string"&&ids.has(payload.activeId)?payload.activeId:restored[0].id,
+      mode:payload.mode==="mj"||payload.mode==="ia"?payload.mode:"pj",
+      log,groups,activeGroupId:typeof payload.activeGroupId==="string"&&groupIds.has(payload.activeGroupId)
+        ?payload.activeGroupId:(groups[0]?.id??""),templates,missionLog}
+    pendingTransfer=""
+    render();persist();message("Campagne locale restaurée. Vérifier les portraits et récompenses après l'import.")
+  }
   const controller=new AbortController(), opts={signal:controller.signal}
   host.addEventListener("input",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -427,6 +729,49 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
+    if(el instanceof HTMLInputElement && el.hasAttribute("data-talent-spent")){
+      const sheet=current()
+      sheet.talentPointsSpent=clamp(el.value,0,Math.floor(sheet.convertedCredits/6),sheet.talentPointsSpent)
+      el.value=String(sheet.talentPointsSpent);refreshPoints();renderAI();persist()
+    }
+    if(el instanceof HTMLInputElement && el.hasAttribute("data-ascension")){
+      if(state.mode==="pj"){el.checked=current().ascensionAuthorized;message("Réglage réservé au mode MJ.");return}
+      current().ascensionAuthorized=el.checked
+      if(!el.checked)current().divineLimit=20
+      persist();setForm()
+      message(el.checked?"Ascension exceptionnelle autorisée dans cette campagne locale.":"Autorisation retirée ; niveaux déjà acquis conservés.")
+    }
+    if(el?.hasAttribute("data-divine-limit")){
+      if(state.mode==="pj"){setForm();message("Validation des paliers divins réservée au MJ.");return}
+      const character=current(), approved=clamp(el.value,20,24,20)
+      if(approved>character.divineLimit+1){
+        setForm();message("Les quatre paliers divins doivent être approuvés l'un après l'autre.");return
+      }
+      if(approved>character.divineLimit&&character.ascensionWitness.trim().length<15){
+        setForm();message("Décrire d'abord une épreuve divine d'au moins 15 caractères.");return
+      }
+      if(approved>character.divineLimit)character.divineMilestones[approved-21]=character.ascensionWitness
+      character.divineLimit=approved
+      character.ascensionAuthorized=approved>20
+      setForm();persist();message("Épreuve divine approuvée jusqu'au niveau "+approved+".")
+    }
+    if(el?.hasAttribute("data-group-select")){
+      state.activeGroupId=el.value;renderGroup();persist()
+    }
+    if(el?.hasAttribute("data-mission-select"))renderMissionPreview()
+    if(el instanceof HTMLInputElement && el.dataset.groupMember){
+      const group=activeGroup();if(!group)return
+      const id=el.dataset.groupMember
+      group.members=el.checked?[...new Set([...group.members,id])]:group.members.filter(x=>x!==id)
+      renderGroup();persist()
+    }
+    if(el instanceof HTMLInputElement && el.dataset.certification){
+      if(state.mode==="pj"){renderGroup();message("Les certifications sont validées en mode MJ.");return}
+      const group=activeGroup();if(!group)return
+      const id=el.dataset.certification
+      group.certifications=el.checked?[...new Set([...group.certifications,id])]:group.certifications.filter(x=>x!==id)
+      renderGroup();persist()
+    }
     if(el instanceof HTMLInputElement && el.hasAttribute("data-portrait")){
       const file=el.files?.[0];el.value=""
       if(!file)return
@@ -452,6 +797,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       }
       img.onerror=()=>{URL.revokeObjectURL(url);message("Image illisible.")}
       img.src=url
+    }
+    if(el instanceof HTMLInputElement&&el.hasAttribute("data-import-campaign")){
+      const file=el.files?.[0];el.value=""
+      if(!file)return
+      if(file.size>16*1024*1024){message("Fichier de campagne trop grand (16 Mio maximum).");return}
+      void file.text().then(raw=>{importCampaign(JSON.parse(raw))})
+        .catch(()=>message("Restauration refusée : vérifier le schéma alrick.campaign.v1 et les identifiants."))
     }
     if(el?.hasAttribute("data-active")){state.activeId=el.value;render();persist()}
     if(el?.hasAttribute("data-import") && el instanceof HTMLInputElement) {
@@ -483,6 +835,78 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(button.hasAttribute("data-clear-portrait")){
       current().portrait="";setForm();persist();message("Portrait retiré de cette fiche.");return
     }
+    if(button.dataset.itemSelect){
+      pendingTransfer=button.dataset.itemSelect;renderInventory()
+      message("Objet sélectionné pour transfert. Choisir un destinataire et valider.");return
+    }
+    if(button.dataset.itemRemove){
+      const sheet=current()
+      const item=sheet.inventory.find(x=>x.id===button.dataset.itemRemove)
+      if(!item||!window.confirm("Retirer « "+item.name+" » de cette fiche ?"))return
+      sheet.inventory=sheet.inventory.filter(x=>x.id!==item.id)
+      if(pendingTransfer===item.id)pendingTransfer=""
+      renderInventory();persist();message("Objet retiré du sac.");return
+    }
+    if(button.hasAttribute("data-convert-credits")){
+      const sheet=current()
+      const used=STATS.reduce((sum,k)=>sum+sheet.stats[k],0)
+      const available=maxStatCredits(sheet.highestLevel)-used-sheet.convertedCredits
+      if(available<6){message("Il faut au moins six crédits de caractéristiques en réserve.");return}
+      sheet.convertedCredits+=6
+      refreshPoints();persist();renderAI()
+      message("Six crédits convertis en un point de talent libre. Aucun pouvoir n'est accordé automatiquement.");return
+    }
+    if(button.hasAttribute("data-item-create")){
+      const item=createItem();if(!item)return
+      if(current().inventory.length>=150){message("Limite de 150 objets par fiche.");return}
+      current().inventory.push(item);renderInventory();persist();renderAI()
+      message("Objet ajouté au personnage actif.");return
+    }
+    if(button.hasAttribute("data-item-make-template")){
+      if(state.mode==="pj"){message("Créer un modèle en mode MJ.");return}
+      const item=createItem();if(!item)return
+      if(state.templates.length>=150){message("Catalogue de modèles plein (150).");return}
+      state.templates.push(item);renderInventory();persist();message("Modèle MJ ajouté au catalogue local.");return
+    }
+    if(button.hasAttribute("data-template-grant")){
+      if(state.mode==="pj"){message("Attribution de modèle réservée au mode MJ.");return}
+      const template=state.templates.find(x=>x.id===q<HTMLSelectElement>("[data-template-select]").value)
+      const target=state.sheets.find(x=>x.id===q<HTMLSelectElement>("[data-item-recipient]").value)
+      if(!template||!target){message("Choisir un modèle et un destinataire.");return}
+      if(target.inventory.length>=150){message("Sac de destination plein.");return}
+      target.inventory.push({...template,id:uniqueId(),templateId:template.id})
+      renderInventory();persist();renderAI();message("Copie indépendante attribuée à "+target.name+".");return
+    }
+    if(button.hasAttribute("data-inventory-transfer")){
+      const from=current(),to=state.sheets.find(x=>x.id===q<HTMLSelectElement>("[data-item-recipient]").value)
+      const item=from.inventory.find(x=>x.id===pendingTransfer)
+      if(!to||!item||from.id===to.id){message("Sélectionner un objet et un autre personnage destinataire.");return}
+      if(to.inventory.length>=150){message("Sac de destination plein.");return}
+      from.inventory=from.inventory.filter(x=>x.id!==pendingTransfer)
+      to.inventory.push({...item,id:uniqueId()})
+      pendingTransfer="";renderInventory();persist();renderAI();message("Objet transféré à "+to.name+".");return
+    }
+    if(button.hasAttribute("data-group-create")){
+      const name=clean(q<HTMLInputElement>("[data-group-name]").value.trim(),90)
+      if(!name){message("Entrer le nom de la compagnie.");return}
+      if(state.groups.length>=20){message("Limite de 20 compagnies.");return}
+      const g:Group={id:uniqueId(),name,rank:1,members:[current().id],certifications:[],awards:[],promotionEntries:[]}
+      state.groups.push(g);state.activeGroupId=g.id;q<HTMLInputElement>("[data-group-name]").value=""
+      renderGroup();persist();renderAI();message("Compagnie créée au rang 1.");return
+    }
+    if(button.hasAttribute("data-group-promote")){
+      if(state.mode==="pj"){message("Progression collective à valider en mode MJ.");return}
+      const group=activeGroup()
+      if(!group||group.rank>=12){message("Aucune progression possible.");return}
+      const available=state.missionLog.filter(x=>x.groupId===group.id&&x.rank>=group.rank
+        &&(x.status==="terminee"||x.status==="repli")&&!group.promotionEntries.includes(x.id))
+      const first=available.find(x=>available.some(y=>y.category!==x.category))
+      const second=first&&available.find(x=>x.category!==first.category)
+      if(!first||!second){message("Deux missions réussies de domaines différents et du rang actuel minimum sont nécessaires.");return}
+      group.rank++;group.promotionEntries.push(first.id,second.id)
+      renderGroup();persist();renderAI();message("Compagnie promue au rang "+group.rank+" (expérimental, sans nouveaux droits légaux).");return
+    }
+    if(button.hasAttribute("data-mission-record")){recordMission();return}
     if(button.hasAttribute("data-reset")){
       const before=current(), label=before.name||"Sans nom"
       if(!window.confirm(`Réinitialiser entièrement « ${label} » ? Toutes ses statistiques, ses effets, ses notes et ses incidents locaux seront remplacés par les valeurs de départ. Cette action n'est pas annulable sans sauvegarde JSON.`))return
@@ -531,6 +955,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     }
     if(button.hasAttribute("data-roll")){roll();return}
     if(button.hasAttribute("data-export")){exportSheets();return}
+    if(button.hasAttribute("data-export-campaign")){exportCampaign();return}
     if(button.hasAttribute("data-clear-log")){state.log=[];refreshLog();persist();message("Journal local effacé.");return}
     if(button.hasAttribute("data-ai-refresh")){renderAI();message("Contexte actualisé à partir des fiches locales.");return}
     if(button.hasAttribute("data-ai-copy")){
@@ -540,7 +965,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(!navigator.clipboard){area.focus();area.select();message("Copie automatique indisponible : sélectionne puis copie le texte.")}
     }
   },opts)
-  render();persist()
+  render();persist();void loadMissions(controller.signal)
   window.addCleanup(()=>controller.abort())
 }
 document.addEventListener("nav",setupAtelier5d6)
