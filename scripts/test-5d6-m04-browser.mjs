@@ -211,6 +211,7 @@ try{
     await set("[data-text=name]","Colosse recette M04.1")
     await awaitPageLoad(()=>cdp("Page.reload"),"rechargement de la page")
     await waitFor('document.querySelector("#bestiary-workshop")?.dataset.initialized==="true"',"initialisation après rechargement")
+    await installDownloadRecorder() // Installer bien AVANT les clics suivants, pas juste avant exporter.
     await waitFor('document.querySelector("#bestiary-workshop [data-text=name]")?.value==="Colosse recette M04.1"',"persistance")
     const n=await runJS('document.querySelector("[data-active]").options.length')
     await click("[data-action=duplicate]")
@@ -221,9 +222,6 @@ try{
     assert.ok(dialogs>d)
     await sleep(400) // confirmation native fermée : navigateur pleinement disponible
   })
-  await navigate(base+"/jouer/atelier-bestiary-5d6")
-  await waitFor('document.querySelector("#bestiary-workshop")?.dataset.initialized==="true"',"réouverture du Bestiaire avant export")
-  await waitFor('document.querySelector("#bestiary-workshop [data-text=name]")?.value==="Colosse recette M04.1"',"retour à la fiche avant export")
   let exportedCard
   await test("Export/import JSON propre au Bestiaire",async()=>{
     const n=await runJS('document.querySelector("[data-active]").options.length')
