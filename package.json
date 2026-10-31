@@ -19,7 +19,9 @@
     "check:types": "tsc --noEmit",
     "check:content": "node scripts/check-content.mjs",
     "check:site": "node scripts/check-site.mjs",
-    "test": "npm run check:content && npm run check:types && npm run build && npm run check:site && node scripts/test-5d6-balance.mjs && node scripts/test-5d6-opposition.mjs && node scripts/test-5d6-origins.mjs"
+    "test": "npm run check:content && npm run check:types && npm run build && npm run check:site && node scripts/test-5d6-balance.mjs && node scripts/test-5d6-opposition.mjs && node scripts/test-5d6-origins.mjs && npm run tables:test",
+    "tables:dev": "node tables-pilot/server.mjs",
+    "tables:test": "node scripts/test-tables-pilot.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",
