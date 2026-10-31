@@ -221,12 +221,12 @@ try{
       console.log("Écouteurs sur la racine Bestiaire",events.listeners?.map(e=>({type:e.type,scriptId:e.scriptId,useCapture:e.useCapture})))
     }catch(error){console.log("Inspection DOMDebugger indisponible",String(error))}
     console.log("Avant export Bestiaire",await browserFn(()=>({ready:document.readyState,
-      recorder:window.__alrickRecorderInstalled,initialized:document.querySelector('#bestiary-workshop')?.dataset.initialized,button:document.querySelector("[data-action=export]")?.outerHTML,
+      recorder:window.__alrickRecorderInstalled,initialized:document.querySelector('#bestiary-workshop')?.dataset.initialized,lastAction:document.querySelector('#bestiary-workshop')?.dataset.lastAction,button:document.querySelector("[data-action=export]")?.outerHTML,
       statuses:document.querySelectorAll("#bestiary-workshop").length,
       active:document.querySelector("[data-active]")?.value})))
     await click("[data-action=export]")
     console.log("Après export Bestiaire",await browserFn(()=>({count:window.__alrickExports?.length,
-      blob:!!window.__alrickLastBlob,initialized:document.querySelector('#bestiary-workshop')?.dataset.initialized,status:document.querySelector("[data-status]")?.textContent})),runtimeErrors.slice(-3))
+      blob:!!window.__alrickLastBlob,initialized:document.querySelector('#bestiary-workshop')?.dataset.initialized,lastAction:document.querySelector('#bestiary-workshop')?.dataset.lastAction,status:document.querySelector("[data-status]")?.textContent})),runtimeErrors.slice(-3))
     exportedCard=await downloaded("alrick-bestiary-")
     assert.equal(JSON.parse(await readFile(exportedCard,"utf8")).pvMax,194)
     await inputFile("#bestiary-workshop [data-import]",exportedCard)
