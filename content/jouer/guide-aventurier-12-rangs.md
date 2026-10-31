@@ -18,6 +18,8 @@ tags: [guilde, aventuriers, missions, progression, 5d6, groupes]
 
 ## Deux progressions différentes
 
+Le [[jouer/atelier-5d6|module interactif 5d6]] permet de **créer une compagnie locale**, choisir ses membres et certifications, sélectionner un de ces 24 contrats publics, saisir un bilan de mission et les récompenses réellement accordées. Le système suggère la promotion collective après deux comptes rendus réussis de domaines différents, puis demande une **validation MJ**. Le même écran possède l'**inventaire** : catégories illustrées, modèles créés par le MJ et copies attribuables aux fiches individuelles, sans partager ou publier les données privées. La progression individuelle des héros reste une échelle différente, allant jusqu'à 24.
+
 | Progression | Échelle | Utilité |
 |---|---|---|
 | **Personnage** | **1 à 24** | Faire progresser caractéristiques, maîtrises et ressources dans l'[[jouer/atelier-5d6|Atelier 5d6]] (prototype) |
