@@ -1,6 +1,7 @@
 import type { QuartzComponent } from "./types"
 // @ts-ignore Quartz compile les ressources .inline.ts pour la navigation SPA
 import script from "./scripts/atelier5d6.inline"
+import {ORIGIN_STEPS,AFFINITY_DOMAINS} from "./scripts/atelier5d6-origins"
 
 const masteries = [
   ["lames","Lames et dagues"],["haches","Haches et masses"],["arcs","Arcs et tirs"],
@@ -57,6 +58,30 @@ export const Atelier5d6: QuartzComponent = (props) => {
         <input type="file" accept=".json,application/json" data-import aria-label="Importer un fichier de personnages JSON"/>
       </label>
     </div>
+    <p class="atelier-hub-status" data-hub-status>Personnage actif · niveau · ressources · affinités</p>
+    <details class="atelier-hub-section">
+      <summary>🧭 Créer un aventurier — les quatre premières périodes de vie</summary>
+      <div class="atelier-hub-inner">
+        <p>Réponds aux quatre questions : <strong>24 points de caractéristiques</strong> et <strong>8 points de maîtrise</strong> sont répartis automatiquement. L'aventure commence au <strong>niveau 5</strong>, avec 36 PV de référence. Aucune fiche existante n'est remplacée.</p>
+        <label>Nom du nouvel aventurier<input data-origin-name type="text" maxLength={90} placeholder="Nom du personnage"/></label>
+        {ORIGIN_STEPS.map(step=><fieldset class="atelier-stats" key={step.id}>
+          <legend>{step.title}</legend>
+          <label>{step.question}<select data-origin-choice={step.id}>
+            <option value="">Choisir un parcours</option>
+            {step.options.map(opt=><option value={opt.id} key={opt.id}>{opt.label} — {opt.description}</option>)}
+          </select></label>
+        </fieldset>)}
+        <p data-origin-preview class="atelier-hint" role="status">Choisis les quatre périodes de vie pour préparer ta fiche de niveau 5.</p>
+        <div class="atelier-toolbar">
+          <button type="button" data-origin-build>Créer cet aventurier niveau 5</button>
+          <button type="button" data-origin-clear>Effacer les réponses</button>
+        </div>
+        <p class="atelier-hint">Alternative : « Nouvelle fiche » conserve la création libre. Aucune Autorité, Cercle ou capacité divine ne vient automatiquement du parcours.</p>
+      </div>
+    </details>
+    <details class="atelier-hub-section" data-hub="fiche" open>
+      <summary>📜 Fiche et jets 5d6 — personnage actif</summary>
+      <div class="atelier-hub-inner">
     <div class="atelier-grid">
       <div class="atelier-panel">
         <h3>Fiche de personnage</h3>
@@ -243,6 +268,12 @@ export const Atelier5d6: QuartzComponent = (props) => {
           </label>
         </div>
         <fieldset class="atelier-stats">
+          <legend>Affinité activée pour une action magique</legend>
+          <label class="atelier-check"><input data-roll-affinity-enabled type="checkbox"/> L'action exploite cette affinité reconnue (accord MJ nécessaire)</label>
+          <label>Domaine<select data-roll-affinity><option value="">Sans affinité</option></select></label>
+          <p data-roll-affinity-preview class="atelier-hint">Effet conditionnel : +2 dégâts par rang validé pour un effet magique compatible ; jamais un bonus universel pour toucher. Aucun mana retiré automatiquement.</p>
+        </fieldset>
+        <fieldset class="atelier-stats">
           <legend>Opposition et résistances (module facultatif)</legend>
           <label class="atelier-check"><input type="checkbox" data-opposition-enabled/> Activer une cible qui peut résister, esquiver ou parer</label>
           <div class="atelier-fields">
@@ -294,6 +325,41 @@ export const Atelier5d6: QuartzComponent = (props) => {
         <button type="button" data-clear-log>Effacer le journal</button>
       </div>
     </div>
+      </div>
+    </details>
+    <details class="atelier-hub-section" data-hub="affinites">
+      <summary>✨ Affinités et pouvoirs — même fiche</summary>
+      <section class="atelier-panel">
+        <p class="atelier-hint">Les affinités ont des effets conditionnels et ne remplacent pas les Autorités du canon. Un rang n'accorde aucun pouvoir fondamental ni succès automatique.</p>
+        <h3>Affinités reconnues</h3>
+        <ul data-affinity-list class="atelier-inventory-list"><li>Aucune affinité validée.</li></ul>
+        <div class="atelier-fields">
+          <label>Domaine<select data-affinity-domain>{AFFINITY_DOMAINS.map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></label>
+          <label>Intensité (1–5)<input data-affinity-rank type="number" min={1} max={5} step={1} value={1}/></label>
+        </div>
+        <label>Origine et limites de l'affinité<input data-affinity-witness type="text" maxLength={300} placeholder="Formation, nature, bénédiction, limites…"/></label>
+        <button type="button" data-affinity-grant>MJ : attribuer ou modifier cette affinité</button>
+        <p class="atelier-hint">Repères : affinité 1 aux niveaux 1–8, 2 aux niveaux 9–12, 3 aux niveaux 13–16, 4 aux niveaux 17–20 et 5 aux niveaux 21–25.</p>
+        <h3>Capacités individuelles approuvées</h3>
+        <ul data-power-list class="atelier-inventory-list"><li>Aucune capacité spéciale enregistrée.</li></ul>
+        <div class="atelier-fields">
+          <label>Nom<input data-power-name type="text" maxLength={90} placeholder="Nom du prodige"/></label>
+          <label>Grade<select data-power-grade>
+            <option value="heroique">Héroïque (niveau 5+)</option>
+            <option value="transcendant">Transcendant (niveau 17+)</option>
+            <option value="divin">Divin (niveau 21+ et épreuve MJ)</option>
+          </select></label>
+          <label>Domaine<select data-power-domain>{AFFINITY_DOMAINS.map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></label>
+          <label>Coût de mana<input data-power-cost type="number" min={0} max={999} step={1} value={0}/></label>
+        </div>
+        <label class="atelier-wide">Effet autorisé<textarea data-power-effect rows={2} maxLength={600} placeholder="Portée, forme, puissance, limites du phénomène…"/></label>
+        <label class="atelier-wide">Conditions et limitations obligatoires<textarea data-power-condition rows={2} maxLength={600} placeholder="Consentement, durée, contrepartie, validations…"/></label>
+        <button type="button" data-power-grant>MJ : approuver une capacité</button>
+        <p class="atelier-hint">La validation décrit un usage de jeu autorisé par le MJ local, pas un fait rétroactif de la campagne d'Orin. Les Cercles et Autorités requièrent leurs sources.</p>
+      </section>
+    </details>
+    <details class="atelier-hub-section" data-hub="inventaire">
+      <summary>🎒 Inventaire, objets et échanges</summary>
     <section class="atelier-panel" aria-label="Inventaire du personnage">
       <h3>Inventaire de la fiche active</h3>
       <p class="atelier-hint">Les objets sont individuels. Un modèle MJ peut être attribué à plusieurs personnages sans partager leurs exemplaires.</p>
@@ -319,6 +385,9 @@ export const Atelier5d6: QuartzComponent = (props) => {
       </div>
       <p class="atelier-hint">Pour un transfert, sélectionner « Transférer » dans la liste d'inventaire puis le personnage destinataire. Pas de synchronisation entre joueurs distants.</p>
     </section>
+    </details>
+    <details class="atelier-hub-section" data-hub="compagnies">
+      <summary>🧭 Compagnies, missions et récompenses</summary>
     <section class="atelier-panel" aria-label="Compagnies d'aventuriers et contrats">
       <h3>Compagnies — missions, qualifications et récompenses</h3>
       <p class="atelier-hint">Les niveaux de groupe (1–12) ne sont pas des grades officiels et ne remplacent aucune certification ni autorisation des autorités locales.</p>
@@ -354,6 +423,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
       <ol data-mission-log class="atelier-log"><li>Aucune mission enregistrée.</li></ol>
       <p class="atelier-hint">Pour progresser, deux missions réussies d'au moins le rang actuel, de deux domaines différents, avec débriefing. Le MJ conserve la décision finale.</p>
     </section>
+    </details>
     <section class="atelier-panel" data-ai-only hidden>
       <h3>Contexte pour MJ assisté par IA</h3>
       <p>Génère un texte contenant les règles de base et la fiche active. Le bouton <strong>Copier</strong> transmet uniquement à ton presse-papiers ; rien n'est envoyé automatiquement à une IA.</p>
@@ -420,6 +490,12 @@ Atelier5d6.css = `
 .atelier-ref-results a{font-size:.85rem}
 .atelier-ref-results button{font-size:.8rem}
 .atelier-incident{background:#282c3f;border:1px solid #dcb877;padding:.7rem;margin:.6rem 0;border-radius:8px}
+.atelier-hub-status{font-size:.87rem;padding:.65rem .75rem;border-left:3px solid #d4b378;background:rgba(220,184,119,.07);border-radius:5px}
+.atelier-hub-section{border:1px solid rgba(187,213,225,.3);border-radius:11px;margin:.8rem 0;background:rgba(255,255,255,.025);overflow:hidden}
+.atelier-hub-section>summary{font-size:1.03rem;font-weight:700;cursor:pointer;padding:1rem;color:#e7d9ba;list-style-position:inside}
+.atelier-hub-section[open]>summary{border-bottom:1px solid rgba(187,213,225,.18);background:rgba(220,184,119,.05)}
+.atelier-hub-inner{padding:.7rem}
+.atelier-hub-section>.atelier-panel{margin:.7rem}
 .atelier [hidden]{display:none!important}
 @media(max-width:850px){.atelier-grid{grid-template-columns:1fr}}
 @media(max-width:480px){.atelier-fields{grid-template-columns:1fr}.atelier{padding:.7rem}.atelier-die{width:42px;height:42px}}
