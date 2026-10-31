@@ -154,3 +154,14 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # CLAUSE IMPORTANTE : Aucun des 15 Word originaux ni la transcription Markdown complète n'a été téléversé au GitHub via la présente PR.
 # Scene de reprise : CB44 CCCLXXIII, Elyan demande « Comment vas-tu, mon garçon ? » ; Orin n'a pas encore répondu.
 # Après la fusion, vérifier npm test, 259 codes et absence de publicité accidentelle du dossier MJ.
+
+# Lot 10 — Six volumes historiques CB42, Atlas et playtest 5d6 du 30 octobre 2026
+# Trois nouvelles fiches GEO-025, GEO-027, GEO-028 ; 262 codes approuvés = 259 précédents + 3.
+# Trois biographies existantes IMP-14, IMP-48, REN-62 enrichies ; aucun personnage nouveau par doublon.
+# Hadran hôte, Phénix autonome et non rappelé, Brégan membre personnel en CB44 ; les propositions restent non jouées.
+# Dragons et souverainetés, scénario indépendant à Keldrun, antagonistes hors Déchéance, probabilités 5d6 testées.
+# Jeu 5d6 non canonisé ; mini-système Déchéance 2d6 maintenu, aucune conversion officieuse.
+# Six DOCX originaux historiquement après CB42 CONSIGNÉS dans docs/, ZIP utilisateur prêt, mais pas transférés comme binaires dans GitHub.
+# Relecture jaunes/rouges ciblée documentée : ne pas prétendre à une réconciliation exhaustive des 645 sujets.
+# Dernière scène CB44 avec Elyan conservée ; pas de nouveau contenu joué inventé.
+# Vérifier tests, métadonnées, 262 codes, pages publiques et absence de divulgation de spoilers avant publication.
