@@ -90,6 +90,11 @@ const atelierHtml = await readFile(atelierFile, 'utf8')
 for (const token of ['id="atelier-5d6"', 'data-mode="pj"', 'data-mode="mj"', 'data-mode="ia"', 'data-import', 'data-ai-prompt', 'data-roll']) {
   assert(atelierHtml.includes(token), `Outil Atelier 5d6 incomplet dans le build : ${token}`)
 }
+for(const token of ['data-field="description"', 'data-portrait', 'data-portrait-preview', 'data-clear-portrait', 'data-mastery="lames"', 'data-mastery-points', 'max="24"']){
+  assert(atelierHtml.includes(token), `Atelier progression/portrait : contrôle HTML absent : ${token}`)
+}
+const guideHtml=await readFile(path.join(root,'jouer','guide-aventurier-12-rangs.html'),'utf8')
+assert(guideHtml.includes('Les balises éteintes') && guideHtml.includes('La marche des frontières'),'Banque de missions manquante')
 const rulesHtml = await readFile(path.join(root, 'jouer', 'systeme-5d6-base12.html'), 'utf8')
 assert(rulesHtml.includes('5d6'), 'La page des règles 5d6 est absente du HTML final')
 
