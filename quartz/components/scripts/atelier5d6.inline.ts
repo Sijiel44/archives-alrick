@@ -762,11 +762,16 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     else if(target-total<=2){outcome=opposition?"Résistance de justesse":"Échec de justesse"
       detail=opposition?"Le seuil de résistance n'est pas atteint : aucun effet sur la cible.":"Le MJ peut proposer une réussite avec contrepartie."}
     else {outcome="Échec";detail="L'action échoue, avec conséquences adaptées à la situation."}
+    if(opposition?.glancing){
+      outcome="Contact héroïque (résistance intacte)"
+      detail="La cible est atteinte ou effleurée, mais sa résistance n'est pas percée. Aucun sort ou effet narratif ne s'applique automatiquement."
+      favorable=false
+    }
     host.querySelectorAll<HTMLElement>("[data-die]").forEach((e,i)=>{e.textContent=String(dice[i])})
     const result=q<HTMLElement>("[data-result]")
-    result.dataset.outcome=favorable?"success":"failure"
+    result.dataset.outcome=favorable||opposition?.glancing?"success":"failure"
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
-    const incident = natural===5 ? "" : trackFailure(s,domain,!favorable)
+    const incident = natural===5 ? "" : trackFailure(s,domain,!(favorable||!!opposition?.contact))
     if(opposition){
       if(opposition.success){
         if(mode==="mental")detail+="\nRésistance mentale franchie : le MJ décrit l'effet, sans dégâts PV automatiques."
@@ -777,6 +782,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
             pendingImpact={targetId:defender.id,damage:opposition.damage,attackerName:s.name}
             q<HTMLButtonElement>("[data-opposition-apply]").hidden=state.mode==="pj"
           }
+        }
+      }else if(opposition.glancing){
+        detail+="\nContact héroïque sur dés naturels ("+natural+"), sans franchir la résistance. "+opposition.damage+
+          " PV potentiels ; "+opposition.absorbed+" points sans pénétration. Aucun autre effet."
+        if(defender&&opposition.damage>0){
+          pendingImpact={targetId:defender.id,damage:opposition.damage,attackerName:s.name}
+          q<HTMLButtonElement>("[data-opposition-apply]").hidden=state.mode==="pj"
         }
       }else if(!opposition.criticalFailure){
         if(opposition.reaction==="riposte_possible"&&defender){
@@ -789,8 +801,10 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
             :"Parade, esquive ou résistance : aucune riposte gratuite.")
       }else detail+="\nÉchec critique : aucune contre-attaque supplémentaire automatique."
       q<HTMLElement>("[data-opposition-result]").textContent=
-        opposition.success?(mode==="mental"?"Effet mental à arbitrer par le MJ.":"Impact calculé : "+opposition.damage+" PV. "+
-        (defender?"En mode MJ, confirmer l'application des dégâts.":"Pas de fiche cible : aucun PV modifié.")):
+        opposition.contact?(opposition.glancing?"Contact héroïque sans pénétration : "+opposition.damage+
+          " PV potentiel(s) maximum, aucun autre effet.":
+          mode==="mental"?"Effet mental à arbitrer par le MJ.":"Impact calculé : "+opposition.damage+" PV. "+
+          (defender?"En mode MJ, confirmer l'application des dégâts.":"Pas de fiche cible : aucun PV modifié.")):
         "Seuil "+target+" non franchi. "+
         (opposition.reaction==="riposte_possible"?"Fenêtre de riposte narrative possible, sur action distincte.":"Aucun dégât.")
     }
@@ -799,7 +813,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     result.textContent=`${outcome} — Dés ${natural} + ${s.stats[stat]} + ${skill} ${situation>=0?"+":""}${situation} = ${total} / ${target}.\n${detail}`
     state.log.unshift({name:s.name || "Sans nom",dice,total,target,text:
       (incident ? `${outcome} · ${incident}` : outcome)+
-      (opposition?" · "+(opposition.success?(mode==="mental"?"effet mental":"dégâts potentiels "+opposition.damage):"résistance"):"")})
+      (opposition?" · "+(opposition.glancing?"contact héroïque "+opposition.damage+" PV potentiels":
+        opposition.success?(mode==="mental"?"effet mental":"dégâts potentiels "+opposition.damage):"résistance"):"")})
     state.log=state.log.slice(0,20)
     refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
