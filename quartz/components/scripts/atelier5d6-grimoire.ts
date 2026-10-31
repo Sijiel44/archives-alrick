@@ -211,6 +211,7 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
   if(!root)return {render:()=>{}}
   const query=<T extends HTMLElement>(s:string)=>root.querySelector<T>(s)!
   const selected=()=>libraryFor(args.getSheet().grimoire)
+  const matrixSpell=(id:string)=>selected().find(x=>x.id===id)
   const find=(id:string)=>selected().find(x=>x.id===id)
   const notify=(s:string)=>{args.message(s);query<HTMLElement>("[data-grimoire-status]").textContent=s}
   let lastSheetId=""
@@ -233,7 +234,7 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
       const known=g.known.find(x=>x.id===sp.id),request=g.requests.includes(sp.id),block=eligibility(sheet,sp)
       return `<article class="grimoire-card" data-spell-card="${esc(sp.id)}">
         <div class="grimoire-card-head"><span class="grimoire-glyph" aria-hidden="true">${glyph[sp.category]}</span>
-        <div><strong>${esc(sp.name)}</strong><small>${esc(sp.category)} · ${esc(sp.domain)} · Cercle ${sp.circle??"non assigné"}</small></div>
+        <div><strong>${esc(sp.name)}</strong><small>${esc(sp.category)} · ${esc(sp.domain)} · Cercle ${sp.circle??"non assigné"} · ${esc(sp.practice==="activation"||sp.circle===1?"activation préparée":"pratique avancée")}</small></div>
         <span class="grimoire-stamp">${sp.status==="demo"?"DÉMO NON CANON":esc(sp.status)}</span></div>
         <p>${esc(sp.description)}</p><p class="atelier-hint">${sp.manaCost} mana · DD ${sp.difficulty} · ${esc(sp.range)} · ${esc(sp.duration)}${sp.concentration?" · concentration":""}</p>
         <p class="atelier-hint">${known?(known.prepared?"Appris · préparé":"Appris"):(request?"Apprentissage demandé":"Inconnu")}${block.length?" · Indisponible : "+esc(block.join("; ")):" · Utilisable"}</p>
@@ -252,7 +253,11 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
     const previous=cast.value
     cast.replaceChildren(new Option("Choisir un sort appris…",""))
     for(const k of g.known){const sp=find(k.id);if(sp)cast.add(new Option(sp.name,k.id))}
-    if(g.known.some(x=>x.id===previous))cast.value=previous
+    for(const matrix of g.matrices){
+      const spell=matrixSpell(matrix.spellId),item=sheet.inventory?.find(x=>x.id===matrix.itemId)
+      if(spell&&item)cast.add(new Option("Artefact : "+item.name+" → "+spell.name+" (C"+matrix.activationCircle+" active C"+matrix.architectureCircle+")","matrix:"+matrix.id))
+    }
+    if([...g.known.map(x=>x.id),...g.matrices.map(x=>"matrix:"+x.id)].includes(previous))cast.value=previous
     const targetSelect=query<HTMLSelectElement>("[data-grimoire-other-sheet]")
     const previousTarget=targetSelect.value
     targetSelect.replaceChildren(new Option("Sans fiche cible — difficulté du sort",""))
@@ -263,6 +268,26 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
     query<HTMLElement>("[data-grimoire-circle-summary]").textContent=g.circlesAttested.length?
       "Cercles attestés par le MJ : "+g.circlesAttested.slice().sort((a,b)=>a-b).join(", "):"Aucun Cercle attesté. Le niveau n'en attribue aucun."
     query<HTMLElement>("[data-grimoire-mj]").hidden=!mj
+    query<HTMLElement>("[data-grimoire-matrix-mj]").hidden=!mj
+    query<HTMLElement>("[data-grimoire-ninth-status]").textContent=g.divineNinthApproved
+      ? "IX : nature divine explicitement reconnue par le MJ ("+g.divineNinthWitness+")."
+      : "IX : pratique réservée aux divins, validation séparée du niveau."
+    const mi=query<HTMLSelectElement>("[data-grimoire-matrix-item]"),prevItem=mi.value
+    mi.replaceChildren(new Option("Choisir un objet existant…",""))
+    for(const item of sheet.inventory??[])mi.add(new Option(item.name,item.id))
+    if((sheet.inventory??[]).some(x=>x.id===prevItem))mi.value=prevItem
+    const ms=query<HTMLSelectElement>("[data-grimoire-matrix-spell]"),prevSpell=ms.value
+    ms.replaceChildren(new Option("Choisir une architecture référencée…",""))
+    for(const spell of selected().filter(x=>x.circle!==null))
+      ms.add(new Option(spell.name+" · construction C"+spell.circle,spell.id))
+    if(selected().some(x=>x.id===prevSpell))ms.value=prevSpell
+    const matrixList=query<HTMLElement>("[data-grimoire-matrices]")
+    matrixList.innerHTML=g.matrices.length?g.matrices.map(x=>{
+      const item=sheet.inventory?.find(i=>i.id===x.itemId),spell=matrixSpell(x.spellId)
+      return `<li>${esc(item?.name||"Objet absent")} — ${esc(spell?.name||x.spellId)} · architecture C${x.architectureCircle} / activation C${x.activationCircle} · ${x.charges} charge(s) · énergie ${x.energySource==="matrix"?"stockée":"mana du porteur"}
+      ${item?"":" · objet requis"} · ${esc(x.source)}
+      ${mj?`<button type="button" data-grimoire-matrix-revoke="${esc(x.id)}">MJ : retirer la matrice</button>`:""}</li>`
+    }).join(""):"<li>Aucune matrice enregistrée.</li>"
     const eff=query<HTMLElement>("[data-grimoire-effects]")
     eff.innerHTML=g.effects.length?g.effects.map(e=>{
       const s=find(e.spellId)
