@@ -226,7 +226,7 @@ try{
       active:document.querySelector("[data-active]")?.value})))
     await click("[data-action=export]")
     console.log("Après export Bestiaire",await browserFn(()=>({count:window.__alrickExports?.length,
-      blob:!!window.__alrickLastBlob,initialized:document.querySelector('#bestiary-workshop')?.dataset.initialized,lastAction:document.querySelector('#bestiary-workshop')?.dataset.lastAction,status:document.querySelector("[data-status]")?.textContent})),runtimeErrors.slice(-3))
+      blob:!!window.__alrickLastBlob,initialized:document.querySelector('#bestiary-workshop')?.dataset.initialized,lastAction:document.querySelector('#bestiary-workshop')?.dataset.lastAction,exportStage:document.querySelector('#bestiary-workshop')?.dataset.exportStage,downloadStage:document.querySelector('#bestiary-workshop')?.dataset.downloadStage,status:document.querySelector("[data-status]")?.textContent})),runtimeErrors.slice(-3))
     exportedCard=await downloaded("alrick-bestiary-")
     assert.equal(JSON.parse(await readFile(exportedCard,"utf8")).pvMax,194)
     await inputFile("#bestiary-workshop [data-import]",exportedCard)
