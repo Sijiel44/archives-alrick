@@ -41,6 +41,9 @@ Les descriptions des **rubriques** sont des guides de lecture, pas des règles n
 
 - [[jouer/systeme-5d6-base12|Lire les règles 5d6 / Base 12]] — quatre caractéristiques, douze points de création, six difficultés, critiques et réserves en multiples de trois.
 - [[jouer/progression-voies-incidents|Progression libre, bénédictions, objets et incidents d12]] — **en expérimentation**, sans classes fermées ni équipements +1.
+- [[jouer/architecture-tables-multijoueur|Tables multijoueurs : plan de réalisation]] — pseudonymes, sessions, invitations, autorisations MJ et événements en direct, **non encore déployés**.
+- [[jouer/illustrations-externes|Illustrations externes et crédits]] — images HTTPS, droits, quatre formats visuels, galerie locale et revue éditoriale.
+- [[jouer/bestiaire-plan-25|Structure du futur bestiaire vivant]] — espèces et individus, habitats, affinités et profils de niveau 1–25.
 - [[jouer/parcours-de-vie-affinites|Parcours de vie et création niveau 5]] — quatre questions d'origine, caractéristiques et maîtrises automatiques, hub repliable, premières affinités et capacités validées.
 - [[jouer/echelle-existences-niveaux-affinites|Échelle des existences 1–25 et affinités]] — progression, puissance divine et limites du classement ; module en conception.
 - [[jouer/bestiaire-evolutif-25|Bestiaire évolutif 1–25]] — cinq familles de profils de créatures adaptables, résistances innées et grades d'équipement, sans espèces canoniques nouvelles.
