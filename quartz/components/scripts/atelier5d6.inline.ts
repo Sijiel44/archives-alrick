@@ -311,7 +311,7 @@ function setupAtelier5d6() {
       " utilisés · "+(earnedTalents-s.talentPointsSpent)+" disponibles"
     q<HTMLInputElement>("[data-talent-spent]").value=String(s.talentPointsSpent)
     q<HTMLElement>("[data-xp-info]").textContent="Expérience : "+s.xp+
-      " XP · seuil du niveau "+Math.min(24,s.level+1)+" : "+xpRequired(Math.min(24,s.level+1))+
+      " XP · seuil du niveau "+Math.min(25,s.level+1)+" : "+xpRequired(Math.min(25,s.level+1))+
       " XP cumulés. Les niveaux élevés exigent des épreuves spécifiques."
 
     q<HTMLSelectElement>("[data-active]").selectedOptions[0]?.setAttribute("data-active-points",String(used))
@@ -605,6 +605,12 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         t+" : seuil "+resistanceScore(s,t)+" · protection totale "+effectiveProtection(s,t)+
         " (innée "+innateProtection(s.level,t)+", équipement "+equipmentProtection(s.equipmentGrades[t],t)+
         ", bonus MJ "+s.protection[t]+")").join(" | ")
+    } else if(el.dataset.defenseGear && DEFENSE_KINDS.includes(el.dataset.defenseGear as ResistanceKind)){
+      if(state.mode==="pj"){el.value=String(s.equipmentGrades[el.dataset.defenseGear as ResistanceKind]);message("Le grade d'équipement est validé en mode MJ.");return}
+      const k=el.dataset.defenseGear as ResistanceKind
+      s.equipmentGrades[k]=clamp(el.value,0,5,s.equipmentGrades[k])
+      el.value=String(s.equipmentGrades[k])
+      refreshDefenseSummary()
     } else if(el.dataset.mastery && MASTERIES.includes(el.dataset.mastery as Mastery)){
       const k=el.dataset.mastery as Mastery,before=s.masteries[k]
       s.masteries[k]=clamp(el.value,0,12,before)
@@ -663,7 +669,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "items":s.items=clean(el.value,1400);break
       }
     }
-    refreshRoster();refreshPoints();refreshStreaks();renderOpposition();renderAI();persist()
+    refreshRoster();refreshPoints();refreshStreaks();refreshDefenseSummary();renderOpposition();renderAI();persist()
   }
   function trackFailure(sheet:Sheet,domain:Domain,failed:boolean):string {
     if(domain==="autre")return ""
@@ -673,6 +679,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     sheet.streaks[domain]=0
     const face=1+Math.floor(Math.random()*12)
     return `Incident ${domain} [1d12 = ${face}] : ${INCIDENTS[domain][face-1]} (suggestion optionnelle du MJ)`
+  }
+  function refreshDefenseSummary(){
+    const sheet=current()
+    q<HTMLElement>("[data-resistance-summary]").textContent=DEFENSE_KINDS.map(k=>
+      k+" : seuil "+resistanceScore(sheet,k)+" · absorption "+effectiveProtection(sheet,k)+
+      " (innée "+innateProtection(sheet.level,k)+", équipement "+equipmentProtection(sheet.equipmentGrades[k],k)+
+      ", MJ "+sheet.protection[k]+")").join(" | ")
   }
   function renderOpposition(){
     const opponent=q<HTMLSelectElement>("[data-opposition-target]")
@@ -690,12 +703,15 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const threshold=Math.max(difficulty,resistance,custom)
     const mastery=attackMastery(current().masteries,mode)
     q<HTMLElement>("[data-opposition-preview]").textContent=
-      "Seuil à atteindre : "+threshold+
+      "Seuil de pénétration : "+threshold+
       " (difficulté "+difficulty+(defender?", défense "+resistance:"")+(custom?", seuil MJ "+custom:"")+"). "+
       (mode==="mental"?"Effet social / mental : aucun PV retiré automatiquement.":
-        "Dégâts possibles sur réussite : base + maîtrise "+mastery+
-        " + palier de puissance, moins la protection de la cible.")+
-      (defender?" "+defender.name+" possède "+defender.pv+"/"+defender.pvMax+" PV.":"")
+        "Sur pénétration : base + maîtrise "+mastery+
+        " + palier de puissance, moins l'absorption. Un contact héroïque peut effleurer la cible sans la blesser.")+
+      (defender?" "+defender.name+" possède "+defender.pv+"/"+defender.pvMax+
+        " PV ; absorption "+effectiveProtection(defender,kind)+
+        " (innée "+innateProtection(defender.level,kind)+", équipement "+
+        equipmentProtection(defender.equipmentGrades[kind],kind)+").":"")
     if(!q<HTMLInputElement>("[data-opposition-enabled]").checked){
       q<HTMLElement>("[data-opposition-result]").textContent="Mode opposition désactivé : jets ordinaires inchangés."
     }
@@ -734,7 +750,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       natural,total,difficulty,resistance:Math.max(custom,resistance),
       damageBase:clamp(q<HTMLSelectElement>("[data-opposition-base]").value,1,12,3),
       mastery:attackMastery(s.masteries,mode),level:s.level,
-      protection:defender?.protection[kind]??0,mode
+      protection:defender?effectiveProtection(defender,kind):0,mode
     }):null
     const target=opposition?.threshold??difficulty
     let outcome="",detail="",favorable=false
