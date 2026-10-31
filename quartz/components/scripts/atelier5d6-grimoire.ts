@@ -162,7 +162,7 @@ export function progressEffects(sheet:MagicSheet,unit:"round"|"scene"){
 const esc=(s:unknown)=>String(s??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]||ch))
 const glyph:Record<SpellCategory,string>={utilitaire:"✦",protection:"◇",soin:"✚",perception:"◉",artisanat:"⚒",attaque:"ϟ",deplacement:"➶"}
 export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicSheet;getSheets:()=>MagicSheet[];isMJ:()=>boolean;
-  persist:()=>void;message:(s:string)=>void}){
+  persist:()=>void;message:(s:string)=>void;onChange?:()=>void}){
   const root=args.root.querySelector<HTMLElement>("[data-grimoire-root]")
   if(!root)return {render:()=>{}}
   const query=<T extends HTMLElement>(s:string)=>root.querySelector<T>(s)!
@@ -232,7 +232,7 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
       ${e.dice.length?" ["+e.dice.join(", ")+"] "+e.total+"/"+e.threshold:""} · ${e.manaDelta} mana · ${esc(e.target)}</li>`).join(""):"<li>Aucun usage enregistré.</li>"
     query<HTMLElement>("[data-grimoire-mana]").textContent="Réserve actuelle : "+sheet.mana+"/"+sheet.manaMax+" mana"
   }
-  function update(){args.persist();render()}
+  function update(){args.onChange?.();args.persist();render()}
   root.addEventListener("input",e=>{if((e.target as HTMLElement).hasAttribute("data-grimoire-search"))render()})
   root.addEventListener("change",e=>{const el=e.target as HTMLElement;if(el.hasAttribute("data-grimoire-category")||el.hasAttribute("data-grimoire-scope"))render()})
   root.addEventListener("click",e=>{
