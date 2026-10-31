@@ -88,9 +88,26 @@ async function downloaded(prefix){
   }
   throw Error("Aucun Blob d'export créé : "+prefix+" ; statut : "+await runJS("document.querySelector('[data-status]')?.textContent")+" ; erreurs JS : "+runtimeErrors.slice(-3).join(" | "))
 }
+// Page.navigate/ Page.reload retournent avant le chargement réel. Une lecture immédiate
+// de readyState peut observer l'ANCIEN document ; attendre Page.loadEventFired.
+async function awaitPageLoad(trigger,label){
+  let cleanup=()=>{}
+  const load=new Promise((resolve,reject)=>{
+    let timer
+    const listener=raw=>{
+      const event=JSON.parse(raw.toString())
+      if(event.method!=="Page.loadEventFired")return
+      cleanup();resolve()
+    }
+    cleanup=()=>{clearTimeout(timer);ws.off("message",listener)}
+    ws.on("message",listener)
+    timer=setTimeout(()=>{cleanup();reject(Error("Chargement Chrome non terminé : "+label))},30000)
+  })
+  try{await trigger();await load}catch(error){cleanup();throw error}
+}
 async function navigate(url){
-  await cdp("Page.navigate",{url})
-  await waitFor('document.readyState==="complete"',"navigation "+url)
+  await awaitPageLoad(()=>cdp("Page.navigate",{url}),"navigation "+url)
+  await waitFor('document.readyState==="complete"',"document "+url)
 }
 async function start(){
   server=createServer(async(req,res)=>{
@@ -179,7 +196,7 @@ try{
   })
   await test("Sauvegarde, rechargement, duplication, suppression",async()=>{
     await set("[data-text=name]","Colosse recette M04.1")
-    await cdp("Page.reload")
+    await awaitPageLoad(()=>cdp("Page.reload"),"rechargement de la page")
     await waitFor('document.querySelector("#bestiary-workshop")?.dataset.initialized==="true"',"initialisation après rechargement")
     await waitFor('document.querySelector("#bestiary-workshop [data-text=name]")?.value==="Colosse recette M04.1"',"persistance")
     const n=await runJS('document.querySelector("[data-active]").options.length')
@@ -278,7 +295,7 @@ try{
     await click("#atelier-5d6 [data-opposition-apply]")
     await waitFor("JSON.parse(localStorage.getItem('archives-alrick-atelier-5d6-v2')).sheets.some(x=>x.ruleset==='m03-bestiary'&&x.pv<x.pvMax)","PV confirmés")
     assert.ok(dialogs>old)
-    await cdp("Page.reload")
+    await awaitPageLoad(()=>cdp("Page.reload"),"rechargement de la page")
     await waitFor('document.querySelector("#atelier-5d6 [data-active]")?.options.length>3',"rechargement après attaque")
     const again=await browserFn(()=>JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2")))
     assert.ok(again.sheets.find(x=>x.ruleset==="m03-bestiary").pv<194)
