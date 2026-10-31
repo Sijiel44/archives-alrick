@@ -257,6 +257,15 @@ function startBestiary(){
     }
     const action=button.dataset.action
     host.dataset.lastAction=action??"" // diagnostic des contrôles de l'Atelier
+    if(action==="export"){
+      // Contrat explicite, traitement indépendant des opérations de mutation.
+      // Un export ne doit ni régénérer la fiche ni dépendre d'une confirmation MJ.
+      host.dataset.exportStage="before"
+      download("alrick-bestiary-"+current().id+".json",current())
+      host.dataset.exportStage="after"
+      msg("Export JSON versionné créé.")
+      return
+    }
     if(action==="new"){
       if(storageDamaged){
         if(!window.confirm("La sauvegarde locale existante est illisible. La remplacer par une nouvelle partie ? Exportez d’abord les données si vous souhaitez essayer de les récupérer."))return
@@ -279,11 +288,6 @@ function startBestiary(){
     }else if(action==="reset"||action==="regenerate"){
       if(!window.confirm("Rétablir les valeurs M03 et perdre les modifications numériques ?"))return
       regenerate(action==="reset")
-    }else if(action==="export"){
-      host.dataset.exportStage="before"
-      download("alrick-bestiary-"+current().id+".json",current())
-      host.dataset.exportStage="after"
-      msg("Export JSON versionné créé.")
     }else if(action==="export-atelier"){
       const c=current()
       // L'import est volontaire : aucun stockage PJ, campagne ou legacy n'est écrasé.
