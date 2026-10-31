@@ -877,13 +877,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   host.addEventListener("input",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
-      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection)changeField(el)
+      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery ||
-      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection)changeField(el)
+      el?.dataset?.defenseResistance || el?.dataset?.defenseProtection || el?.dataset?.defenseGear)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
     if(el?.hasAttribute("data-opposition-enabled")||el?.hasAttribute("data-opposition-target")||
