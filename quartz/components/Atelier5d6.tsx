@@ -201,6 +201,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <label>Mana maximum<input type="number" data-field="manaMax" min={0} max={999} step={1} value={0}/></label>
           <label>Emprise (0–12)<input type="number" data-field="emprise" min={0} max={12} step={1} value={0}/></label>
         </div>
+        <p class="atelier-hint" data-sheet-effects-summary>Aucun sort actif sur cette fiche.</p>
         <label class="atelier-wide">Attaches, équipement ou traits
           <textarea data-field="notes" rows={3} maxLength={2500} placeholder="Un souvenir, une compétence, un objet..."></textarea>
         </label>
