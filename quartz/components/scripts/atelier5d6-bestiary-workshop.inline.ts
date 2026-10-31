@@ -33,12 +33,22 @@ function startBestiary(){
     }
   }catch{storageDamaged=true;msg("Sauvegarde locale illisible : données conservées sans écrasement. Utilisez « Nouvelle fiche » pour repartir après confirmation.")}
   if(!cards.length)cards=[createBestiaryCard(5,"predateur")]
+  // L'Atelier conserve le choix de la fiche active après actualisation Quartz,
+  // sans changer le schéma existant (tableau alrick.bestiary.v1).
+  const ACTIVE_STORAGE=BESTIARY_STORAGE+".active"
   let active=cards[0].id
+  try{
+    const selected=localStorage.getItem(ACTIVE_STORAGE)
+    if(selected&&cards.some(c=>c.id===selected))active=selected
+  }catch{/* Stockage indisponible : repli sur la première fiche. */}
   let mode:"rapide"|"guide"|"expert"="rapide"
   const current=()=>cards.find(x=>x.id===active)??cards[0]
   function persist(){
     if(storageDamaged)return // Évite de détruire silencieusement un stockage corrompu.
-    try{localStorage.setItem(BESTIARY_STORAGE,JSON.stringify(cards))}
+    try{
+      localStorage.setItem(BESTIARY_STORAGE,JSON.stringify(cards))
+      localStorage.setItem(ACTIVE_STORAGE,active)
+    }
     catch{msg("Stockage saturé ou indisponible. Exportez vos créations pour les conserver.")}
   }
   function download(filename:string,value:unknown){
@@ -197,7 +207,7 @@ function startBestiary(){
   host.addEventListener("change",event=>{
     const t=event.target
     if(!(t instanceof HTMLSelectElement||t instanceof HTMLInputElement))return
-    if(t.dataset.active!==undefined){active=t.value;render();return}
+    if(t.dataset.active!==undefined){active=t.value;persist();render();return}
     if(t.dataset.import!==undefined){
       const file=(t as HTMLInputElement).files?.[0];t.value=""
       if(!file)return
