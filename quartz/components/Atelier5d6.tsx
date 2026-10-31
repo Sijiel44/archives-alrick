@@ -188,6 +188,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
           {masteries.map(([key,label])=><label class="atelier-stat" key={key}>
             <span><strong>{label}</strong><small>Coût progressif, bonus logarithmique</small></span>
             <input type="number" min={0} step={1} value={0} data-mastery={key} aria-label={label}/>
+            <small data-mastery-bonus={key}>Rang et prochain coût en cours de chargement</small>
           </label>)}
           <small class="atelier-hint">Les maîtrises puisent dans le même budget M01. Chaque rang acheté coûte de plus en plus cher. Les techniques non martiales disposent de la même économie.</small>
         </fieldset>
