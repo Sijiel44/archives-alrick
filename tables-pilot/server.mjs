@@ -173,6 +173,7 @@ export async function createTableServer({
       addEvent(db.rooms[id], user.id, "table", "Table créée.")
       await save()
       safeSend(ws, { type: "room_created", roomId: id, invite })
+      safeSend(ws, { type: "rooms", rooms: myRooms(ws) })
       notifyRoom(id)
       return
     }
@@ -187,6 +188,7 @@ export async function createTableServer({
       }
       session.roomId = room.id
       safeSend(ws, { type: "joined", roomId: room.id })
+      safeSend(ws, { type: "rooms", rooms: myRooms(ws) })
       notifyRoom(room.id)
       return
     }
