@@ -32,7 +32,8 @@ Hadran est réellement rencontré après les audiences de Sévrane et Vardhena. 
 
 - *Compendium des personnages et des relations (V03), état après CB42*, CB42 P09531–10240.
 
-## À compléter
+## Vie ordinaire et autonomie : consolidation des scènes CB42
 
-- Reprendre les éléments biographiques antérieurs dans le Compendium et relier les scènes où le personnage agit ou choisit.
-- Ne pas inférer une fonction, une appartenance, un pouvoir ou une relation qui n’est pas explicitement établie.
+Hadran est une divinité de tradition guerrière **réellement rencontrée** en CB42, après les audiences de Sévrane et Vardhena. Il partage repas, bière, fromages et promenades dans l'Espace sur demande ; son intérêt pour des jours ordinaires est établi par les dialogues. Il est **hôte**, non général, chef de garde ou membre admis de la Maison. Les futurs exercices et voyages sont des **possibilités**, pas des événements joués.
+
+L'absence de mandat ne le prive pas de son expérience : dans une autre campagne, un MJ peut le consulter sur le retrait, le repos des combattants et les risques d'une victoire sans protection des civils, sans lui inventer une position officielle. Sources : *Compendium V03 v1.6*, REN-62 ; *Maison V05 v1.7*, O42-09 ; *Bible V01 v1.6*, B42-03 ; *CB42*, P09531–10240.
