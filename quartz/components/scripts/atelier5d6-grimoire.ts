@@ -13,20 +13,23 @@ export type SpellCategory="utilitaire"|"protection"|"soin"|"perception"|"artisan
 export type SpellDuration="instant"|"round"|"scene"|"permanent"
 export type Spell={
   id:string;version:number;name:string;description:string;tradition:string;category:SpellCategory;
-  domain:string;circle:number|null;status:SpellStatus;source:string;
+  domain:string;circle:number|null;status:SpellStatus;source:string;practice?:"activation"|"composition";
   manaCost:number;minimumMastery:number;requiredAffinityRank:number;requiresPreparation:boolean;
   difficulty:number;range:string;target:string;duration:SpellDuration;durationValue:number;
   concentration:boolean;upkeepMana:number;effect:"narratif"|"degats"|"soins";baseImpact:number;
   resistance:ResistanceKind|null;limits:string
 }
 export type KnownSpell={id:string;approvedBy:string;learnedAt:string;prepared:boolean}
+export type PreparedMatrix={id:string;itemId:string;spellId:string;architectureCircle:number;
+  activationCircle:number;energySource:"matrix"|"caster";charges:number;approvedBy:string;source:string}
 export type SpellEvent={id:string;at:string;type:"apprentissage"|"lancer"|"interruption"|"entretien"|"expiration"|"refus";
-  spellId:string;target:string;manaDelta:number;dice:number[];total:number;threshold:number;result:string}
+  spellId:string;target:string;manaDelta:number;dice:number[];total:number;threshold:number;result:string;deviceId?:string}
 export type ActiveSpell={id:string;spellId:string;target:string;duration:SpellDuration;remaining:number;concentration:boolean;upkeepMana:number;startedAt:string}
 export type Grimoire={schema:"alrick.grimoire.v1";circlesAttested:number[];known:KnownSpell[];
-  requests:string[];personalSpells:Spell[];effects:ActiveSpell[];history:SpellEvent[]}
+  requests:string[];personalSpells:Spell[];effects:ActiveSpell[];history:SpellEvent[];
+  matrices:PreparedMatrix[];divineNinthApproved:boolean;divineNinthWitness:string}
 export type MagicSheet=DefenseProfile&{id:string;name:string;mana:number;manaMax:number;level:number;
-  stats:DefenseProfile["stats"];masteries:Record<string,number>;affinities:Affinity[];grimoire:Grimoire}
+  stats:DefenseProfile["stats"];masteries:Record<string,number>;affinities:Affinity[];grimoire:Grimoire;inventory?:{id:string;name:string}[]}
 export const DEMO_SPELLS:readonly Spell[]=[
   {id:"demo-lueur-guide",version:1,name:"Lueur de veille",description:"Une petite lumière stable accompagne le voyageur et éclaire un objet ou une alcôve.",tradition:"Démonstration — magie organisée",category:"utilitaire",domain:"lumiere",circle:1,status:"demo",source:"Prototype 5d6 — NON CANONIQUE",manaCost:2,minimumMastery:0,requiredAffinityRank:0,requiresPreparation:false,difficulty:15,range:"Proche",target:"Objet ou espace",duration:"scene",durationValue:1,concentration:false,upkeepMana:0,effect:"narratif",baseImpact:0,resistance:null,limits:"Ne révèle pas un secret, ne traverse pas un sceau et n'aveugle pas automatiquement."},
   {id:"demo-brise-outils",version:1,name:"Souffle d'atelier",description:"Une brise légère emporte poussières et copeaux sans remplacer la main de l'artisan.",tradition:"Démonstration — manipulation de l'air",category:"artisanat",domain:"vent",circle:1,status:"demo",source:"Prototype 5d6 — NON CANONIQUE",manaCost:2,minimumMastery:0,requiredAffinityRank:0,requiresPreparation:false,difficulty:18,range:"Proche",target:"Plan de travail",duration:"round",durationValue:3,concentration:true,upkeepMana:1,effect:"narratif",baseImpact:0,resistance:null,limits:"Ne soulève ni une créature ni une charge lourde ; aucune précision artisanale automatique."},
@@ -43,7 +46,7 @@ const str=(v:unknown,max=300):string=>typeof v==="string"?v.slice(0,max):""
 const idOk=(v:unknown):v is string=>typeof v==="string"&&/^[a-z0-9][a-z0-9_-]{2,95}$/i.test(v)
 const now=()=>new Date().toISOString()
 const makeId=()=>("g-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,11))
-export const newGrimoire=():Grimoire=>({schema:"alrick.grimoire.v1",circlesAttested:[],known:[],requests:[],personalSpells:[],effects:[],history:[]})
+export const newGrimoire=():Grimoire=>({schema:"alrick.grimoire.v1",circlesAttested:[],known:[],requests:[],personalSpells:[],effects:[],history:[],matrices:[],divineNinthApproved:false,divineNinthWitness:""})
 function normalizeSpell(value:unknown):Spell|null{
   if(!value||typeof value!=="object")return null
   const p=value as Record<string,unknown>,id=p.id
@@ -52,6 +55,7 @@ function normalizeSpell(value:unknown):Spell|null{
   return {id,version:1,name:str(p.name,90),description:str(p.description,800),tradition:str(p.tradition,120),
     category:p.category as SpellCategory,domain:String(p.domain),circle:p.circle===null?null:bounded(p.circle,1,9,1),
     status:"campagne",source:str(p.source,180)||"Création locale non canonique",
+    practice:p.practice==="activation"?"activation":p.practice==="composition"?"composition":(bounded(p.circle,1,9,1)===1?"activation":"composition"),
     manaCost:bounded(p.manaCost,0,999,0),minimumMastery:bounded(p.minimumMastery,0,12,0),
     requiredAffinityRank:bounded(p.requiredAffinityRank,0,5,0),requiresPreparation:p.requiresPreparation===true,
     difficulty:bounded(p.difficulty,15,30,21),range:str(p.range,90),target:str(p.target,100),
@@ -69,6 +73,8 @@ export function normalizeGrimoire(raw:unknown):Grimoire{
   }
   const catalog=new Set([...DEMO_SPELLS,...g.personalSpells].map(x=>x.id))
   if(Array.isArray(o.circlesAttested))g.circlesAttested=[...new Set(o.circlesAttested.map(x=>bounded(x,0,9,0)).filter(x=>x>=1))].slice(0,9)
+  g.divineNinthApproved=o.divineNinthApproved===true&&str(o.divineNinthWitness,300).trim().length>=15
+  g.divineNinthWitness=g.divineNinthApproved?str(o.divineNinthWitness,300):""
   if(Array.isArray(o.known)){
     for(const row of o.known.slice(0,100)){
       if(!row||typeof row!=="object")continue
@@ -93,7 +99,7 @@ export function normalizeGrimoire(raw:unknown):Grimoire{
     const dice=Array.isArray(p.dice)&&p.dice.length===5&&p.dice.every(d=>Number.isInteger(d)&&d>=1&&d<=6)?p.dice as number[]:[]
     g.history.push({id:p.id,at:str(p.at,40),type:p.type as SpellEvent["type"],spellId:str(p.spellId,100),
       target:str(p.target,150),manaDelta:bounded(p.manaDelta,-999,0,0),dice,total:bounded(p.total,0,100,0),
-      threshold:bounded(p.threshold,0,50,0),result:str(p.result,300)})
+      threshold:bounded(p.threshold,0,50,0),result:str(p.result,300),deviceId:idOk(p.deviceId)?p.deviceId:undefined})
   }
   return g
 }
