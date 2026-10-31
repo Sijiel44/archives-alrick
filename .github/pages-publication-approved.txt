@@ -273,3 +273,19 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # AUCUNE reclassification automatique des sauvegardes ni modification du moteur des jets et de la progression active.
 # L'ancien bestiaire 1–25 reste un prototype de calcul ; espèces et durées de vie à confirmer au cas par cas.
 # Sources canoniques consultées : Bible V01 v1.7 Tome II et Tome III ; Compendium V03 v1.7 IMP-13/P37/P38.
+
+
+# Lot 20 — Hub 5d6, origines niveau 5 et affinités conditionnelles (31 octobre 2026)
+# PR #52 fusionnée après CI réussie : 113940c71a6e3435f1a61007fcc0b5a13ab69207
+# Parcours de jeunesse : quatre réponses sur milieu familial, éducation, épreuve, vocation -> nouvelle fiche PJ niv.5.
+# Crédits du parcours : 12 initiaux +24 distribués, plafonds 12 par attribut, 8 points de maîtrise, 36 PV de référence.
+# 320 XP virtuels de départ, sans inventer de mission jouée ni de rencontre historique.
+# Nouvelles maîtrises mécaniques : commerce, histoire, commandement, intendance ; 750 combinaisons testées.
+# AUCUNE conversion forcée des anciennes fiches et création libre conservée ; clés de stockage et exports inchangés.
+# Hub à sections repliables sur une page : fiches et dés 5d6, origine, affinités/capacités, inventaire, groupes.
+# Affinités 0–5 : attribution MJ avec histoire et limites, seule une action magique pertinente bénéficie d'un bonus d'impact.
+# +2 dégâts par rang d'affinité reconnu, sans bonus de précision ni coût mana prélevé automatiquement.
+# Capacités héroïques/transcendantes/divines : registre local MJ, niveaux requis, conditions, effets et coût.
+# AUCUN Cercle, Autorité fondamentale ou nouvelle manifestation canonique attribués automatiquement.
+# Aucun spoiler ni fiche MJ brute publiés ; le guide de jeu est canon_statut=proposition_non_jouee.
+# Les permissions « MJ » sont uniquement des contrôles locaux d'interface, pas une authentification serveur.
