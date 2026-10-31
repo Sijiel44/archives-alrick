@@ -434,6 +434,10 @@ export const Atelier5d6: QuartzComponent = (props) => {
             <label>Preuve ou limite attestée<input data-grimoire-witness maxLength={120} placeholder="Mentor, épreuve, étude, démonstration…"/></label>
           </div>
           <button type="button" data-grimoire-attest>MJ : attester ce Cercle</button>
+          <p class="atelier-hint">Le IX ne peut être attesté sans reconnaissance de la nature divine indépendante du niveau du personnage.</p>
+          <label>Attestation de nature divine pour le IX<input data-grimoire-ninth-witness maxLength={300} placeholder="Validation MJ, source documentaire ou événement reconnu…"/></label>
+          <button type="button" data-grimoire-ninth-approve>MJ : reconnaître l'accès divin au IX</button>
+          <p class="atelier-hint" data-grimoire-ninth-status>Neuvième Cercle non autorisé.</p>
           <h4>Créer un sort propre à cette campagne</h4>
           <div class="atelier-fields">
             <label>Nom<input data-grimoire-new-name maxLength={90}/></label>
@@ -448,6 +452,22 @@ export const Atelier5d6: QuartzComponent = (props) => {
           </div>
           <button type="button" data-grimoire-create>MJ : créer la proposition locale</button>
           <p class="atelier-hint">La proposition reste locale à cette fiche, séparée de la bibliothèque canonique, et n'est pas distribuée automatiquement aux autres personnages.</p>
+        </div>
+        <h3>🔮 Activation de matrices préparées</h3>
+        <p class="atelier-hint">Un objet préparé par un autre mage peut héberger une architecture plus avancée que son porteur. Le Cercle d'activation doit être attesté, mais cela ne confère ni le sort ni la capacité de reconstruire l'objet. Les charges représentent une énergie préalablement stockée ; le mana du porteur n'est dépensé que si cette source a été choisie.</p>
+        <ul class="atelier-inventory-list" data-grimoire-matrices><li>Aucune matrice enregistrée.</li></ul>
+        <div data-grimoire-matrix-mj hidden>
+          <h4>MJ : inscrire une architecture déjà préparée sur un objet de l'inventaire</h4>
+          <div class="atelier-fields">
+            <label>Objet existant<select data-grimoire-matrix-item><option value="">Sélectionner un objet…</option></select></label>
+            <label>Effet déjà construit<select data-grimoire-matrix-spell><option value="">Sélectionner un effet…</option></select></label>
+            <label>Cercle suffisant pour déclencher<select data-grimoire-matrix-trigger>{[1,2,3,4,5,6,7,8,9].map(n=><option key={n} value={n}>Cercle {n}</option>)}</select></label>
+            <label>Source d'énergie<select data-grimoire-matrix-energy><option value="matrix">Charge stockée dans la matrice</option><option value="caster">Mana du porteur</option></select></label>
+            <label>Nombre d'activations restantes<input data-grimoire-matrix-charges type="number" min={1} max={99} step={1} value={3}/></label>
+            <label>Concepteur, provenance et limites<input data-grimoire-matrix-source maxLength={300} placeholder="Ingénieur, lieu de fabrication, attestation…"/></label>
+          </div>
+          <button type="button" data-grimoire-matrix-create>MJ : installer la matrice sur cet objet</button>
+          <p class="atelier-hint">Le Neuvième Cercle reste verrouillé tant qu'une validation divine explicite n'a pas été enregistrée sur la fiche. Un artefact n'accorde pas ce statut à son porteur.</p>
         </div>
         <h3>📜 Journal des incantations</h3>
         <ol class="atelier-log" data-grimoire-history><li>Aucune utilisation enregistrée.</li></ol>
