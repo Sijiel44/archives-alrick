@@ -2,11 +2,15 @@ import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,inna
 import {generateCreatureProfile} from "./atelier5d6-bestiary"
 import type {CreatureArchetype} from "./atelier5d6-bestiary"
 import type {ResistanceKind,ImpactMode,OppositionResult} from "./atelier5d6-opposition"
+import {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,buildOrigin,
+  affinityRankLimit,affinityImpactBonus,divinePowerMinimumLevel} from "./atelier5d6-origins"
+import type {Affinity,AffinityId,Power,PowerGrade,OriginMastery} from "./atelier5d6-origins"
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
-type Mastery = "lames" | "haches" | "arcs" | "runes" | "soins" | "negociation" | "survie" | "artisanat" | "magie"
-const MASTERIES: Mastery[] = ["lames","haches","arcs","runes","soins","negociation","survie","artisanat","magie"]
-const blankMasteries = (): Record<Mastery,number> => ({lames:0,haches:0,arcs:0,runes:0,soins:0,negociation:0,survie:0,artisanat:0,magie:0})
+type Mastery = OriginMastery
+const MASTERIES: Mastery[] = [...ORIGIN_MASTERIES]
+const blankMasteries = (): Record<Mastery,number> =>
+  Object.fromEntries(MASTERIES.map(k=>[k,0])) as Record<Mastery,number>
 const totalMasteries = (m:Record<Mastery,number>) => MASTERIES.reduce((sum,k)=>sum+m[k],0)
 type Domain = "magie" | "melee" | "tir" | "nego" | "autre"
 const DOMAINS: Domain[] = ["magie", "melee", "tir", "nego", "autre"]
@@ -77,7 +81,8 @@ type Sheet = {
   vocation: string; talents: string; boons: string; curses: string; items: string
   sourceRef: string; sourceTitle: string
   streaks: Record<Domain,number>; lastIncident: string
-  notes: string; gmNotes: string
+  notes: string; gmNotes: string; lifeSteps:string[]; lifeSummary:string
+  affinities:Affinity[]; powers:Power[]
 }
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
@@ -157,7 +162,8 @@ function fresh(kind: Role = "pj"): Sheet {
     pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), ascensionAuthorized:false, divineLimit:20, ascensionWitness:"", divineMilestones:[], inventory:[],
     convertedCredits:0,talentPointsSpent:0,xp:0,
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
-    sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
+    sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"",
+    lifeSteps:[],lifeSummary:"",affinities:[],powers:[] }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -183,6 +189,30 @@ function validateSheet(raw: unknown): Sheet | null {
   const masteries=blankMasteries()
   const storedMasteries=obj.masteries && typeof obj.masteries==="object" ? obj.masteries as Record<string,unknown> : {}
   for(const k of MASTERIES) masteries[k]=clamp(storedMasteries[k],0,12,0)
+  const allowedDomains=new Set<string>(AFFINITY_DOMAINS.map(x=>x[0]))
+  const affinityRows=Array.isArray(obj.affinities)?obj.affinities.slice(0,16):[]
+  const affinities:Affinity[]=[]
+  for(const item of affinityRows){
+    if(!item||typeof item!=="object")continue
+    const a=item as Record<string,unknown>,id=typeof a.id==="string"?a.id:""
+    if(!allowedDomains.has(id)||affinities.some(x=>x.id===id))continue
+    const rank=clamp(a.rank,1,affinityRankLimit(level),1)
+    affinities.push({id:id as AffinityId,rank,witness:clean(a.witness,300)})
+  }
+  const powerRows=Array.isArray(obj.powers)?obj.powers.slice(0,40):[]
+  const powers:Power[]=[]
+  for(const item of powerRows){
+    if(!item||typeof item!=="object")continue
+    const p=item as Record<string,unknown>,name=clean(p.name,90).trim()
+    const grade:PowerGrade=p.grade==="divin"?"divin":p.grade==="transcendant"?"transcendant":"heroique"
+    if(!name||!allowedDomains.has(String(p.domain))||level<divinePowerMinimumLevel(grade))continue
+    if(grade==="divin"&&kind==="pj"&&!(obj.ascensionAuthorized===true&&clamp(obj.divineLimit,20,25,20)>=level))continue
+    const effect=clean(p.effect,600),condition=clean(p.condition,600)
+    if(!effect.trim()||!condition.trim()||p.approvedByGM!==true)continue
+    powers.push({id:uniqueId(),name,domain:p.domain as AffinityId,grade,
+      effect,condition,manaCost:clamp(p.manaCost,0,999,0),approvedByGM:true})
+  }
+  const lifeSteps=Array.isArray(obj.lifeSteps)?obj.lifeSteps.slice(0,4).map(x=>clean(x,50)):[]
   const portrait=typeof obj.portrait==="string" && /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(obj.portrait) && obj.portrait.length<180000 ? obj.portrait : ""
   return {id:uniqueId(),name:clean(obj.name,90),kind, profession:clean(obj.profession,90),
     skill:clamp(obj.skill,0,2,0),
@@ -204,7 +234,8 @@ function validateSheet(raw: unknown): Sheet | null {
     curses:clean(obj.curses,1400),items:clean(obj.items,1400),
     sourceRef:validSourceRef(obj.sourceRef),sourceTitle:clean(obj.sourceTitle,160),
     streaks,lastIncident:clean(obj.lastIncident,500),
-    notes:clean(obj.notes,2500),gmNotes:clean(obj.gmNotes,2500)}
+    notes:clean(obj.notes,2500),gmNotes:clean(obj.gmNotes,2500),
+    lifeSteps,lifeSummary:clean(obj.lifeSummary,1600),affinities,powers}
 }
 function setupAtelier5d6() {
   const root = document.querySelector<HTMLElement>("#atelier-5d6")
