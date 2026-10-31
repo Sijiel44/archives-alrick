@@ -701,15 +701,22 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     if(el instanceof HTMLInputElement && el.hasAttribute("data-ascension")){
       if(state.mode==="pj"){el.checked=current().ascensionAuthorized;message("Réglage réservé au mode MJ.");return}
       current().ascensionAuthorized=el.checked
-      current().divineLimit=el.checked?Math.max(21,current().divineLimit):20
+      if(!el.checked)current().divineLimit=20
       persist();setForm()
       message(el.checked?"Ascension exceptionnelle autorisée dans cette campagne locale.":"Autorisation retirée ; niveaux déjà acquis conservés.")
     }
     if(el?.hasAttribute("data-divine-limit")){
       if(state.mode==="pj"){setForm();message("Validation des paliers divins réservée au MJ.");return}
-      current().divineLimit=clamp(el.value,20,24,20)
-      current().ascensionAuthorized=current().divineLimit>20
-      setForm();persist();message("Épreuve divine validée jusqu'au palier "+current().divineLimit+".")
+      const character=current(), approved=clamp(el.value,20,24,20)
+      if(approved>character.divineLimit+1){
+        setForm();message("Les quatre paliers divins doivent être approuvés l'un après l'autre.");return
+      }
+      if(approved>character.divineLimit&&character.ascensionWitness.trim().length<15){
+        setForm();message("Décrire d'abord une épreuve divine d'au moins 15 caractères.");return
+      }
+      character.divineLimit=approved
+      character.ascensionAuthorized=approved>20
+      setForm();persist();message("Épreuve divine approuvée jusqu'au niveau "+approved+".")
     }
     if(el?.hasAttribute("data-group-select")){
       state.activeGroupId=el.value;renderGroup();persist()
