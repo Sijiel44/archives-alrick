@@ -234,17 +234,19 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
     const list=query<HTMLElement>("[data-grimoire-cards]")
     const cards=selected().filter(sp=>{
       const known=g.known.some(x=>x.id===sp.id)
+      const deviceAvailable=g.matrices.some(m=>m.spellId===sp.id&&eligibility(sheet,sp,m).length===0)
       return (!category||sp.category===category)&&(!filter||[sp.name,sp.description,sp.domain].join(" ").toLocaleLowerCase("fr").includes(filter))&&
-        (scope!=="known"||known)&&(scope!=="available"||eligibility(sheet,sp).length===0)
+        (scope!=="known"||known)&&(scope!=="available"||eligibility(sheet,sp).length===0||deviceAvailable)
     })
     list.innerHTML=cards.map(sp=>{
       const known=g.known.find(x=>x.id===sp.id),request=g.requests.includes(sp.id),block=eligibility(sheet,sp)
+      const deviceAvailable=g.matrices.some(m=>m.spellId===sp.id&&eligibility(sheet,sp,m).length===0)
       return `<article class="grimoire-card" data-spell-card="${esc(sp.id)}">
         <div class="grimoire-card-head"><span class="grimoire-glyph" aria-hidden="true">${glyph[sp.category]}</span>
         <div><strong>${esc(sp.name)}</strong><small>${esc(sp.category)} · ${esc(sp.domain)} · Cercle ${sp.circle??"non assigné"} · ${esc(sp.practice==="activation"||sp.circle===1?"activation préparée":"pratique avancée")}</small></div>
         <span class="grimoire-stamp">${sp.status==="demo"?"DÉMO NON CANON":esc(sp.status)}</span></div>
         <p>${esc(sp.description)}</p><p class="atelier-hint">${sp.manaCost} mana · DD ${sp.difficulty} · ${esc(sp.range)} · ${esc(sp.duration)}${sp.concentration?" · concentration":""}</p>
-        <p class="atelier-hint">${known?(known.prepared?"Appris · préparé":"Appris"):(request?"Apprentissage demandé":"Inconnu")}${block.length?" · Indisponible : "+esc(block.join("; ")):" · Utilisable"}</p>
+        <p class="atelier-hint">${known?(known.prepared?"Appris · préparé":"Appris"):(request?"Apprentissage demandé":"Inconnu")}${deviceAvailable?" · Activation par objet préparé disponible":block.length?" · Pratique personnelle indisponible : "+esc(block.join("; ")):" · Pratique personnelle utilisable"}</p>
         <details><summary>Conditions, limites et source</summary>
         <p>Tradition : ${esc(sp.tradition)}. Maîtrise magie : ${sp.minimumMastery}. Affinité ${esc(sp.domain)} : ${sp.requiredAffinityRank}. Préparation : ${sp.requiresPreparation?"obligatoire":"libre"}.</p>
         <p>Cible : ${esc(sp.target)} · Durée : ${sp.durationValue} ${esc(sp.duration)} · Entretien : ${sp.upkeepMana} mana · Effet : ${esc(sp.effect)}</p>
