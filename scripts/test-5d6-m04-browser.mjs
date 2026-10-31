@@ -207,21 +207,6 @@ try{
     assert.notEqual(again,await runJS('document.querySelector("[data-math]").textContent'))
     await set("[data-def=protection][data-kind=physique]",0)
   })
-  await test("Sauvegarde, rechargement, duplication, suppression",async()=>{
-    await set("[data-text=name]","Colosse recette M04.1")
-    await awaitPageLoad(()=>cdp("Page.reload"),"rechargement de la page")
-    await waitFor('document.querySelector("#bestiary-workshop")?.dataset.initialized==="true"',"initialisation après rechargement")
-    await installDownloadRecorder() // Installer bien AVANT les clics suivants, pas juste avant exporter.
-    await waitFor('document.querySelector("#bestiary-workshop [data-text=name]")?.value==="Colosse recette M04.1"',"persistance")
-    const n=await runJS('document.querySelector("[data-active]").options.length')
-    await click("[data-action=duplicate]")
-    assert.equal(await runJS('document.querySelector("[data-active]").options.length'),n+1)
-    const d=dialogs
-    await click("[data-action=delete]")
-    await waitFor("document.querySelector('[data-active]').options.length==="+n,"suppression")
-    assert.ok(dialogs>d)
-    await sleep(400) // confirmation native fermée : navigateur pleinement disponible
-  })
   let exportedCard
   await test("Export/import JSON propre au Bestiaire",async()=>{
     const n=await runJS('document.querySelector("[data-active]").options.length')
@@ -242,6 +227,21 @@ try{
     assert.equal(JSON.parse(await readFile(exportedCard,"utf8")).pvMax,194)
     await inputFile("#bestiary-workshop [data-import]",exportedCard)
     await waitFor("document.querySelector('[data-active]').options.length==="+(n+1),"réimportation")
+  })
+  await test("Sauvegarde, rechargement, duplication, suppression",async()=>{
+    await set("[data-text=name]","Colosse recette M04.1")
+    await awaitPageLoad(()=>cdp("Page.reload"),"rechargement de la page")
+    await waitFor('document.querySelector("#bestiary-workshop")?.dataset.initialized==="true"',"initialisation après rechargement")
+    await installDownloadRecorder() // Installer bien AVANT les clics suivants, pas juste avant exporter.
+    await waitFor('document.querySelector("#bestiary-workshop [data-text=name]")?.value==="Colosse recette M04.1"',"persistance")
+    const n=await runJS('document.querySelector("[data-active]").options.length')
+    await click("[data-action=duplicate]")
+    assert.equal(await runJS('document.querySelector("[data-active]").options.length'),n+1)
+    const d=dialogs
+    await click("[data-action=delete]")
+    await waitFor("document.querySelector('[data-active]').options.length==="+n,"suppression")
+    assert.ok(dialogs>d)
+    await sleep(400) // confirmation native fermée : navigateur pleinement disponible
   })
   let exportedAtelier
   await test("Export M03 vers Atelier principal",async()=>{
