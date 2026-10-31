@@ -1,5 +1,9 @@
 type Stat = "physique" | "agilite" | "esprit" | "presence"
 type Role = "pj" | "pnj" | "creature"
+type Mastery = "lames" | "haches" | "arcs" | "runes" | "soins" | "negociation" | "survie" | "artisanat" | "magie"
+const MASTERIES: Mastery[] = ["lames","haches","arcs","runes","soins","negociation","survie","artisanat","magie"]
+const blankMasteries = (): Record<Mastery,number> => ({lames:0,haches:0,arcs:0,runes:0,soins:0,negociation:0,survie:0,artisanat:0,magie:0})
+const totalMasteries = (m:Record<Mastery,number>) => MASTERIES.reduce((sum,k)=>sum+m[k],0)
 type Domain = "magie" | "melee" | "tir" | "nego" | "autre"
 const DOMAINS: Domain[] = ["magie", "melee", "tir", "nego", "autre"]
 const makeStreaks = (): Record<Domain,number> => ({magie:0,melee:0,tir:0,nego:0,autre:0})
@@ -9,7 +13,9 @@ type Sheet = {
   id: string; name: string; kind: Role; profession: string; skill: number
   stats: Record<Stat, number>; pv: number; pvMax: number
   mana: number; manaMax: number; emprise: number
-  level: number; vocation: string; talents: string; boons: string; curses: string; items: string
+  level: number; highestLevel: number; masteries: Record<Mastery,number>
+  description: string; portrait: string
+  vocation: string; talents: string; boons: string; curses: string; items: string
   sourceRef: string; sourceTitle: string
   streaks: Record<Domain,number>; lastIncident: string
   notes: string; gmNotes: string
@@ -87,7 +93,7 @@ function fresh(kind: Role = "pj"): Sheet {
   return { id: uniqueId(), name: kind === "pj" ? "Mon personnage" : "Nouveau profil",
     kind, profession: "Voyageur", skill: 0,
     stats: {physique:3, agilite:3, esprit:3, presence:3},
-    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, vocation:"", talents:"", boons:"", curses:"", items:"",
+    pv:12, pvMax:12, mana:0, manaMax:0, emprise:0, level:1, highestLevel:1, masteries:blankMasteries(), description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"" }
 }
 function validateSheet(raw: unknown): Sheet | null {
@@ -101,13 +107,19 @@ function validateSheet(raw: unknown): Sheet | null {
   const priorStreaks = obj.streaks && typeof obj.streaks==="object" ? obj.streaks as Record<string,unknown> : {}
   const streaks = makeStreaks()
   for(const d of DOMAINS)streaks[d]=clamp(priorStreaks[d],0,2,0)
+  const level=clamp(obj.level,1,24,1)
+  const masteries=blankMasteries()
+  const storedMasteries=obj.masteries && typeof obj.masteries==="object" ? obj.masteries as Record<string,unknown> : {}
+  for(const k of MASTERIES) masteries[k]=clamp(storedMasteries[k],0,12,0)
+  const portrait=typeof obj.portrait==="string" && /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(obj.portrait) && obj.portrait.length<180000 ? obj.portrait : ""
   return {id:uniqueId(),name:clean(obj.name,90),kind, profession:clean(obj.profession,90),
     skill:clamp(obj.skill,0,2,0),
     stats:{physique:clamp(values.physique,1,12,3),agilite:clamp(values.agilite,1,12,3),
       esprit:clamp(values.esprit,1,12,3),presence:clamp(values.presence,1,12,3)},
     pv:clamp(obj.pv,0,pvMax,pvMax),pvMax,
     mana:clamp(obj.mana,0,manaMax,0),manaMax,
-    emprise:clamp(obj.emprise,0,12,0),level:clamp(obj.level,1,12,1),
+    emprise:clamp(obj.emprise,0,12,0),level,highestLevel:clamp(obj.highestLevel,level,24,level),
+    masteries,description:clean(obj.description,1200),portrait,
     vocation:clean(obj.vocation,160),talents:clean(obj.talents,1600),boons:clean(obj.boons,1400),
     curses:clean(obj.curses,1400),items:clean(obj.items,1400),
     sourceRef:validSourceRef(obj.sourceRef),sourceTitle:clean(obj.sourceTitle,160),
@@ -202,8 +214,15 @@ function setupAtelier5d6() {
     const s=current()
     const used=STATS.reduce((acc,k)=>acc+s.stats[k],0)
     const el=q<HTMLElement>("[data-points]")
-    el.textContent=s.kind==="pj" ? `${used} / 12 points` : `${used} points (MJ)`
-    el.style.color=s.kind==="pj" && (used!==12 || STATS.some(k=>s.stats[k]>5)) ? "#e7ac9c" : ""
+    const limit=12+s.highestLevel-1
+    const legal=s.kind!=="pj" || (used>=12 && used<=limit && (s.highestLevel!==1 || (used===12 && STATS.every(k=>s.stats[k]<=5))))
+    el.textContent=s.kind==="pj" ? `${used} / ${limit} points · ${limit-used} en réserve` : `${used} points (MJ)`
+    el.style.color=!legal ? "#e7ac9c" : ""
+    const masteryUsed=totalMasteries(s.masteries), masteryLimit=2*(s.highestLevel-1)
+    const masteryEl=q<HTMLElement>("[data-mastery-points]")
+    masteryEl.textContent=`${masteryUsed} / ${masteryLimit} points · ${Math.max(0,masteryLimit-masteryUsed)} en réserve`
+    masteryEl.style.color=masteryUsed>masteryLimit?"#e7ac9c":""
+
     q<HTMLSelectElement>("[data-active]").selectedOptions[0]?.setAttribute("data-active-points",String(used))
   }
   function refreshRoster() {
@@ -219,6 +238,11 @@ function setupAtelier5d6() {
       el.value=String(s[key] ?? "")
     })
     for(const k of STATS) q<HTMLInputElement>(`[data-stat="${k}"]`).value=String(s.stats[k])
+    for(const k of MASTERIES) q<HTMLInputElement>(`[data-mastery="${k}"]`).value=String(s.masteries[k])
+    const portrait=q<HTMLImageElement>("[data-portrait-preview]")
+    portrait.hidden=!s.portrait
+    if(s.portrait)portrait.src=s.portrait
+    else portrait.removeAttribute("src")
     q<HTMLSelectElement>("[data-roll-skill]").value=String(s.skill)
     refreshPoints()
     const source=q<HTMLElement>("[data-source-meta]")
@@ -261,13 +285,15 @@ RÈGLES EN TEST : 5d6 + caractéristique + compétence (0,1,2) + situation (-2,0
 Difficultés 15,18,21,24,27,30 ; critiques sur les 5 dés naturels :
 5 = échec critique exceptionnel, 6-7 = échec critique mineur, 27-29 = critique favorable possible, 30 = succès exceptionnel si l'action est réalisable.
 Base 12 : PV et mana d'essai, sans modifier les lois du Codex.
-Progression pilote : niveaux 1–12, voies librement combinables, talents narratifs, bénédictions, malédictions et objets à effets non plats.
+Progression pilote : niveaux 1–24 (+1 caractéristique et +2 maîtrises par niveau), sans effet rétroactif sur le canon. Les maîtrises sont suivies mais ne remplacent pas encore les compétences +0/+1/+2 des jets. Voies libres, talents narratifs et effets conditionnels.
 Après 3 échecs de même catégorie (magie, mêlée, tir ou négociation), proposer un incident narratif d12 facultatif ; un 5 naturel ne se cumule pas à l'incident.
 
 PERSONNAGE ACTIF : ${s.name} (${s.kind}), ${s.profession}.
 Physique ${s.stats.physique}, Agilité ${s.stats.agilite}, Esprit ${s.stats.esprit}, Présence ${s.stats.presence}.
 Spécialité +${s.skill}, PV ${s.pv}/${s.pvMax}, mana ${s.mana}/${s.manaMax}, Emprise ${s.emprise}/12.
-Niveau ${s.level}/12 ; voies : ${s.vocation || "aucune"}.
+Niveau ${s.level}/24 ; voies : ${s.vocation || "aucune"}.
+Description : ${s.description || "non renseignée"}.
+Maîtrises de progression (sans bonus de jet automatique) : ${MASTERIES.map(k=>k+" "+s.masteries[k]+"/12").join(", ")}.
 Talents : ${s.talents || "aucun"}.
 Bénédictions / avantages conditionnels : ${s.boons || "aucun"}.
 Malédictions / limites : ${s.curses || "aucune"}.
@@ -288,8 +314,22 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   function changeField(el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
     const s=current(), field=el.dataset.field as keyof Sheet | undefined
     const stat=el.dataset.stat as Stat | undefined
-    if (stat && STATS.includes(stat)) s.stats[stat]=clamp(el.value,1,12,3)
-    else if(field){
+    if(stat && STATS.includes(stat)){
+      const before=s.stats[stat],next=clamp(el.value,1,12,before)
+      s.stats[stat]=next
+      const used=STATS.reduce((sum,k)=>sum+s.stats[k],0)
+      if(s.kind==="pj" && (used>12+s.highestLevel-1 || (s.highestLevel===1 && next>5))){
+        s.stats[stat]=before;el.value=String(before)
+        message("Points de caractéristique insuffisants ou limite de création dépassée.")
+      }
+    } else if(el.dataset.mastery && MASTERIES.includes(el.dataset.mastery as Mastery)){
+      const k=el.dataset.mastery as Mastery,before=s.masteries[k]
+      s.masteries[k]=clamp(el.value,0,12,before)
+      if(s.kind==="pj" && totalMasteries(s.masteries)>2*(s.highestLevel-1)){
+        s.masteries[k]=before;el.value=String(before)
+        message("Pas assez de points de maîtrise disponibles à ce niveau.")
+      }
+    } else if(field){
       switch(field){
         case "name":s.name=clean(el.value,90);break
         case "kind":s.kind=el.value==="pnj"||el.value==="creature"?el.value:"pj";break
@@ -302,7 +342,21 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "emprise":s.emprise=clamp(el.value,0,12,0);break
         case "notes":s.notes=clean(el.value,2500);break
         case "gmNotes":s.gmNotes=clean(el.value,2500);break
-        case "level":s.level=clamp(el.value,1,12,1);break
+        case "level":{
+          const next=clamp(el.value,1,24,s.level)
+          if(next>s.highestLevel){
+            const gained=next-s.highestLevel
+            s.pvMax=clamp(s.pvMax+2*gained,1,999,s.pvMax)
+            if(s.manaMax>0)s.manaMax=clamp(s.manaMax+2*gained,0,999,s.manaMax)
+            s.highestLevel=next
+          }
+          s.level=next
+          q<HTMLInputElement>('[data-field="level"]').value=String(next)
+          q<HTMLInputElement>('[data-field="pvMax"]').value=String(s.pvMax)
+          q<HTMLInputElement>('[data-field="manaMax"]').value=String(s.manaMax)
+          break
+        }
+        case "description":s.description=clean(el.value,1200);break
         case "vocation":s.vocation=clean(el.value,160);break
         case "talents":s.talents=clean(el.value,1600);break
         case "boons":s.boons=clean(el.value,1400);break
@@ -323,8 +377,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   }
   function roll(){
     const s=current(), used=STATS.reduce((a,k)=>a+s.stats[k],0)
-    if(s.kind==="pj"&&(used!==12||STATS.some(k=>s.stats[k]>5))){
-      message("Un PJ débutant doit répartir exactement 12 points, de 1 à 5 par caractéristique.")
+    if(s.kind==="pj"&&(used<12||used>12+s.highestLevel-1||(s.highestLevel===1&&STATS.some(k=>s.stats[k]>5))||totalMasteries(s.masteries)>2*(s.highestLevel-1))){
+      message("Répartition invalide : 12 points à la création, puis +1 caractéristique et +2 maîtrises par niveau, plafonds à 12.")
       return
     }
     const stat=q<HTMLSelectElement>("[data-roll-stat]").value as Stat
@@ -365,19 +419,45 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
   const controller=new AbortController(), opts={signal:controller.signal}
   host.addEventListener("input",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    if(el?.dataset?.field || el?.dataset?.stat)changeField(el)
+    if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
   },opts)
   host.addEventListener("change",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    if(el?.dataset?.field || el?.dataset?.stat)changeField(el)
+    if(el?.dataset?.field || el?.dataset?.stat || el?.dataset?.mastery)changeField(el)
     if(el?.hasAttribute("data-reference-query"))renderRefs()
     if(el?.hasAttribute("data-ai-roster"))renderAI()
+    if(el instanceof HTMLInputElement && el.hasAttribute("data-portrait")){
+      const file=el.files?.[0];el.value=""
+      if(!file)return
+      if(!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size>3*1024*1024){
+        message("Portrait refusé : utiliser un JPG, PNG ou WebP de 3 Mio maximum.");return
+      }
+      const sheetId=current().id
+      const url=URL.createObjectURL(file),img=new Image()
+      img.onload=()=>{
+        URL.revokeObjectURL(url)
+        if(Math.max(img.naturalWidth,img.naturalHeight)>8192){message("Portrait trop grand en dimensions.");return}
+        const canvas=document.createElement("canvas")
+        const scale=Math.min(1,320/Math.max(img.naturalWidth,img.naturalHeight))
+        canvas.width=Math.max(1,Math.round(img.naturalWidth*scale))
+        canvas.height=Math.max(1,Math.round(img.naturalHeight*scale))
+        const context=canvas.getContext("2d")
+        if(!context){message("Conversion du portrait indisponible.");return}
+        context.drawImage(img,0,0,canvas.width,canvas.height)
+        const portrait=canvas.toDataURL("image/jpeg",0.68)
+        if(portrait.length>=180000){message("Portrait trop volumineux après réduction.");return}
+        const sheet=state.sheets.find(x=>x.id===sheetId)
+        if(sheet){sheet.portrait=portrait;persist();if(current().id===sheetId)setForm();message("Portrait réduit et enregistré localement avec la fiche.")}
+      }
+      img.onerror=()=>{URL.revokeObjectURL(url);message("Image illisible.")}
+      img.src=url
+    }
     if(el?.hasAttribute("data-active")){state.activeId=el.value;render();persist()}
     if(el?.hasAttribute("data-import") && el instanceof HTMLInputElement) {
       const file=el.files?.[0];el.value=""
       if(!file)return
-      if(file.size>256000){message("Fichier trop grand : maximum 250 Kio.");return}
+      if(file.size>5*1024*1024){message("Fichier trop grand : maximum 5 Mio (portraits compris).");return}
       void file.text().then(raw=>{
         const parsed=JSON.parse(raw) as unknown
         let list:unknown[]
@@ -400,6 +480,9 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     const button=target.closest<HTMLButtonElement>("button")
     if(!button)return
     if(button.dataset.mode){state.mode=button.dataset.mode as Mode;refreshMode();persist();return}
+    if(button.hasAttribute("data-clear-portrait")){
+      current().portrait="";setForm();persist();message("Portrait retiré de cette fiche.");return
+    }
     if(button.hasAttribute("data-reset")){
       const before=current(), label=before.name||"Sans nom"
       if(!window.confirm(`Réinitialiser entièrement « ${label} » ? Toutes ses statistiques, ses effets, ses notes et ses incidents locaux seront remplacés par les valeurs de départ. Cette action n'est pas annulable sans sauvegarde JSON.`))return

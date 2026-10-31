@@ -2,6 +2,12 @@ import type { QuartzComponent } from "./types"
 // @ts-ignore Quartz compile les ressources .inline.ts pour la navigation SPA
 import script from "./scripts/atelier5d6.inline"
 
+const masteries = [
+  ["lames","Lames et dagues"],["haches","Haches et masses"],["arcs","Arcs et tirs"],
+  ["runes","Runes"],["soins","Soins"],["negociation","Négociation"],
+  ["survie","Survie et pistage"],["artisanat","Artisanat"],["magie","Magies connues"],
+] as const
+
 const attributes = [
   ["physique", "Physique", "Force, endurance, mêlée"],
   ["agilite", "Agilité", "Précision, esquive, discrétion"],
@@ -45,8 +51,18 @@ export const Atelier5d6: QuartzComponent = (props) => {
             <select data-field="skill"><option value="0">Non formé (+0)</option><option value="1">Formé (+1)</option><option value="2">Expert (+2)</option></select>
           </label>
         </div>
+        <label class="atelier-wide">Description physique ou présentation du personnage
+          <textarea data-field="description" rows={2} maxLength={1200} placeholder="Apparence, vêtements, particularités, origine..."></textarea>
+        </label>
+        <div class="atelier-portrait">
+          <img data-portrait-preview alt="Portrait associé au personnage actif" hidden />
+          <label>Portrait (image JPG, PNG ou WebP)
+            <input type="file" accept="image/jpeg,image/png,image/webp" data-portrait aria-label="Importer un portrait pour cette fiche"/>
+          </label>
+          <button type="button" data-clear-portrait>Retirer le portrait</button>
+        </div>
         <div class="atelier-fields">
-          <label>Niveau (1 à 12)<input type="number" data-field="level" min={1} max={12} step={1} value={1}/></label>
+          <label>Niveau (1 à 24)<input type="number" data-field="level" min={1} max={24} step={1} value={1}/></label>
           <label>Voie(s) / vocation libre<input data-field="vocation" type="text" maxLength={160} placeholder="Éclaireur et artisan, mage et diplomate…"/></label>
         </div>
         <label class="atelier-wide">Talents acquis (capacités, conditions et limites)
@@ -58,7 +74,15 @@ export const Atelier5d6: QuartzComponent = (props) => {
             <span><strong>{label}</strong><small>{help}</small></span>
             <input type="number" data-stat={key} value={3} min={1} max={12} step={1} aria-label={label}/>
           </label>)}
-          <small class="atelier-hint">Un PJ débutant répartit exactement 12 points, avec 1 à 5 par caractéristique. Le MJ peut définir un adversaire plus puissant.</small>
+          <small class="atelier-hint">Au niveau 1 : 12 points répartis (1 à 5 par caractéristique). Chaque nouveau niveau accorde 1 point supplémentaire, jusqu'au plafond de 12 par caractéristique. Les points non dépensés restent disponibles. Le MJ peut adapter les adversaires.</small>
+        </fieldset>
+        <fieldset class="atelier-stats">
+          <legend>Maîtrises spécialisées — <span data-mastery-points>0 / 0 points</span></legend>
+          {masteries.map(([key,label])=><label class="atelier-stat" key={key}>
+            <span><strong>{label}</strong><small>Maîtrise de 0 à 12</small></span>
+            <input type="number" min={0} max={12} step={1} value={0} data-mastery={key} aria-label={label}/>
+          </label>)}
+          <small class="atelier-hint">Deux points de maîtrise par niveau après le premier. Ils décrivent l'entraînement, sans bonus de jet automatique avant équilibrage. Les spécialités +0/+1/+2 actuelles restent jouables.</small>
         </fieldset>
         <div class="atelier-fields atelier-resources">
           <label>PV actuels<input type="number" data-field="pv" min={0} max={999} step={1} value={12}/></label>
@@ -159,7 +183,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
       <div class="atelier-toolbar"><button type="button" data-ai-refresh>Actualiser</button><button type="button" data-ai-copy>Copier le contexte</button></div>
       <p class="atelier-hint">Le MJ IA doit encore lire les références appropriées, respecter les limites de connaissance des PNJ et ne jamais décider à la place du joueur.</p>
     </section>
-    <p class="atelier-privacy">⚿ <strong>Confidentialité :</strong> les données restent dans le stockage de ce navigateur, accessible aux personnes qui l'utilisent. Aucune sauvegarde dans le dépôt ni synchronisation. Exporte ton JSON avant d'effacer ton navigateur. Import limité à des fichiers JSON de 250 Kio au maximum.</p>
+    <p class="atelier-privacy">⚿ <strong>Confidentialité :</strong> les données restent dans le stockage de ce navigateur, accessible aux personnes qui l'utilisent. Aucune sauvegarde dans le dépôt ni synchronisation. Exporte ton JSON avant d'effacer ton navigateur. Import JSON jusqu'à 5 Mio, portraits inclus ; le stockage local du navigateur peut être plus limité.</p>
   </section>
 }
 Atelier5d6.afterDOMLoaded = script
@@ -189,6 +213,10 @@ Atelier5d6.css = `
 .atelier-stat span{display:flex;flex-direction:column;min-width:0}
 .atelier-stat small,.atelier-hint{font-size:.78rem;color:#b3c0c8}
 .atelier-stat input{width:65px;flex-shrink:0;text-align:center}
+.atelier-portrait{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin:.7rem 0}
+.atelier-portrait img{width:104px;max-height:104px;object-fit:contain;border:1px solid #9f8460;border-radius:8px}
+.atelier-portrait label{flex:1 1 180px}
+.atelier-portrait button{align-self:center}
 .atelier-wide{display:flex;flex-direction:column;margin:.55rem 0}
 .atelier textarea{resize:vertical}
 .atelier-dice-row{display:flex;gap:.5rem;justify-content:center;margin:1rem 0;flex-wrap:wrap}

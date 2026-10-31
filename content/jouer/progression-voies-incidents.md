@@ -18,6 +18,8 @@ tags: [5d6, progression, niveaux, voies, incidents, aleatoire, objets, prototype
 
 ## I. Pourquoi douze niveaux ?
 
+> **Évolution du prototype (octobre 2026).** Les 12 niveaux décrits dans cette section représentent **l'ancien palier expérimental**, conservé pour référence. L'[[jouer/atelier-5d6|Atelier]] accepte désormais **24 niveaux individuels** : +1 point de caractéristique et +2 points de maîtrise à chaque niveau gagné, sans bonus automatique de maîtrise aux jets tant que l'équilibrage n'est pas validé. Les **12 indices collectifs** appartiennent au [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier]], et ne sont pas des grades officiels.
+
 La base **12** sert déjà aux ressources de l'[[jouer/systeme-5d6-base12|Atelier 5d6]]. Nous pouvons organiser la progression en **quatre paliers de trois niveaux** :
 
 | Niveaux | Échelle | Ce que le personnage peut gagner |
