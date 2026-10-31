@@ -58,7 +58,7 @@ Un village dont le pont s'ouvre sur une autre Couronne ne souffre pas nécessair
 - **Le Tribut des Chants** : à Vael-Sur, un conseil civil et un protecteur draconique contestent l'interprétation d'un accord ancien.
 - **La Première Nuit du Pont** : près d'un col des Montagnes, une Faille coupe une route ; sauver les civils compte davantage que comprendre entièrement la cosmologie.
 
-Ces intrigues sont des **idées d'aventure** à personnaliser, pas des événements de la campagne d'Orin. Pour un one-shot prêt à animer, utiliser [[jouer/aventure-pilote-les-registres-du-col|Les Registres du Col]]. Pour les grandes créatures, voir [[creatures/bestiaire-menaces-propositions|le bestiaire de travail non canonique]].
+Ces intrigues sont des **idées d'aventure** à personnaliser, pas des événements de la campagne d'Orin. Pour un one-shot prêt à animer, utiliser [[jouer/aventure-pilote-les-registres-du-col|Les Registres du Col]]. Pour les grandes créatures, voir le **bestiaire de travail non publié** (répertoire interne de propositions, non accessible depuis le site public).
 
 ## Sources et statut
 
