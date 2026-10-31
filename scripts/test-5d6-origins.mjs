@@ -5,6 +5,7 @@ const original=await readFile('quartz/components/scripts/atelier5d6-origins.ts',
 const output=await transform(original,{loader:'ts',format:'esm',target:'es2022'})
 const mod=await import('data:text/javascript;base64,'+Buffer.from(output.code).toString('base64'))
 const {ORIGIN_STEPS,ORIGIN_MASTERIES,AFFINITY_DOMAINS,buildOrigin,
+  EDUCATION_PATHS,LITERACY_LEVELS,trainingAdjustedMasteries,buildEducationProfile,
   affinityRankLimit,affinityImpactBonus,divinePowerMinimumLevel}=mod
 assert.equal(ORIGIN_STEPS.length,4)
 assert.equal(new Set(AFFINITY_DOMAINS.map(a=>a[0])).size,AFFINITY_DOMAINS.length)
@@ -28,7 +29,34 @@ for(const vocation of ORIGIN_STEPS[3].options){
  assert(Object.values(origin.stats).every(x=>x>=1&&x<=12))
  assert([0,36].includes(origin.manaMax))
 }
-assert.equal(combinations,750)
+const expected=ORIGIN_STEPS.reduce((n,s)=>n*s.options.length,1)
+assert.equal(combinations,expected)
+assert(combinations>10000,"La nouvelle histoire doit proposer plus de 10 000 parcours")
+assert.equal(EDUCATION_PATHS.length,8)
+assert.equal(LITERACY_LEVELS.length,4)
+for(const education of EDUCATION_PATHS){
+  for(const literacy of LITERACY_LEVELS){
+    const a=buildEducationProfile(
+      buildOrigin(['marchands','ateliers','voyage','commerce']),education.id,literacy.id)
+    assert.equal(a.literacy,literacy.id)
+    assert.equal(a.education,education.id)
+    assert.equal(Object.values(a.masteries).reduce((x,y)=>x+y,0),8,
+      "L'éducation réoriente les maîtrises, sans crédits gratuits")
+    assert.equal(Object.values(a.stats).reduce((x,y)=>x+y,0),36,
+      "La lecture n'affecte pas l'intelligence")
+  }
+}
+const selfTaught=buildEducationProfile(buildOrigin(['marins','navigation','tempete','mer']),
+  'aucune','non_lecteur')
+const scholarly=buildEducationProfile(buildOrigin(['marins','navigation','tempete','mer']),
+  'academie','erudit')
+assert.deepEqual(selfTaught.stats,scholarly.stats,
+  "Un marin sans école n'est pas intellectuellement inférieur")
+assert.match(selfTaught.summary,/Ne lit pas encore/)
+assert.match(scholarly.summary,/Lecture érudite/)
+assert.throws(()=>buildEducationProfile(buildOrigin(['artistes','musique','representation','art']),
+  'nulle','lecture'),/Éducation/)
+
 const merchant=buildOrigin(['marchands','ateliers','responsabilite','commerce'])
 const warrior=buildOrigin(['guerriers','armes','conflit','protection'])
 const noble=buildOrigin(['nobles','lettres','responsabilite','responsable'])
@@ -49,4 +77,4 @@ assert.equal(affinityImpactBonus(5),10)
 assert.equal(divinePowerMinimumLevel('heroique'),5)
 assert.equal(divinePowerMinimumLevel('transcendant'),17)
 assert.equal(divinePowerMinimumLevel('divin'),21)
-console.log('Parcours de vie : '+combinations+' origines niveau 5 vérifiées, profils marchands/guerriers/nobles et limites des affinités.')
+console.log('Parcours de vie : '+combinations+' origines niveau 5, 8 éducations et 4 littératies vérifiées ; aucune pénalité automatique pour l’illettrisme.')
