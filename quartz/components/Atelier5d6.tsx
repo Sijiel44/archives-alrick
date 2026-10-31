@@ -81,6 +81,12 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <label>Niveau (1 à 24)<input type="number" data-field="level" min={1} max={24} step={1} value={1}/></label>
           <label>Voie(s) / vocation libre<input data-field="vocation" type="text" maxLength={160} placeholder="Éclaireur et artisan, mage et diplomate…"/></label>
         </div>
+        <div class="atelier-fields">
+          <label>Expérience cumulative (XP, MJ)
+            <input type="number" data-field="xp" min={0} max={999999} step={1} value={0}/>
+          </label>
+          <p data-xp-info class="atelier-hint">Expérience : 0 XP · niveau suivant : 5 XP.</p>
+        </div>
         <label class="atelier-wide">Talents acquis (capacités, conditions et limites)
           <textarea data-field="talents" rows={2} maxLength={1600} placeholder="Ex. : Pisteur — repérer une ancienne piste même sous la pluie"></textarea>
         </label>
