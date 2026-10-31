@@ -20,6 +20,9 @@ const certifications = [
  ["protection-civile","Sécurité civile"],["reconnaissance-avancee","Reconnaissance avancée"],
  ["risques-magiques","Risques magiques"],["intervention-specialisee","Intervention spécialisée"]
 ] as const
+const resistanceKinds = [
+  ["physique","Physique / esquive"],["magie","Magie / runes"],["mental","Mental / volonté"]
+] as const
 const attributes = [
   ["physique", "Physique", "Force, endurance, mêlée"],
   ["agilite", "Agilité", "Précision, esquive, discrétion"],
@@ -130,7 +133,18 @@ export const Atelier5d6: QuartzComponent = (props) => {
         </label>
         <p class="atelier-hint" data-source-meta>Fiche libre sans référence encyclopédique. Les valeurs de jeu restent des propositions.</p>
         <p data-ascension-status class="atelier-hint">Niveaux 21–24 : validation exceptionnelle requise.</p>
+        <p class="atelier-hint">Défenses du personnage : <span data-resistance-summary>Calcul des résistances physiques, magiques et mentales…</span></p>
         <div data-mj-tools hidden>
+          <fieldset class="atelier-stats">
+            <legend>MJ : résistances et protections de cette fiche</legend>
+            <p class="atelier-hint">La résistance fixe le score minimal à atteindre. La protection absorbe des dégâts après un coup réussi. Réglages non canoniques, plafonnés pour le playtest.</p>
+            <div class="atelier-fields">
+              {resistanceKinds.map(([key,label])=><div key={key}>
+                <label>Bonus de résistance — {label}<input data-defense-resistance={key} type="number" min={0} max={8} step={1} value={0}/></label>
+                <label>Protection — {label}<input data-defense-protection={key} type="number" min={0} max={60} step={1} value={0}/></label>
+              </div>)}
+            </div>
+          </fieldset>
           <label class="atelier-wide">Notes réservées au MJ (sur cet appareil uniquement)
             <textarea data-field="gmNotes" rows={2} maxLength={2500} placeholder="Motivations, secrets, rencontres possibles..."></textarea>
           </label>
@@ -205,6 +219,45 @@ export const Atelier5d6: QuartzComponent = (props) => {
             <select data-roll-situation><option value="0">0 — Neutre</option><option value="2">+2 — Avantage</option><option value="-2">−2 — Désavantage</option></select>
           </label>
         </div>
+        <fieldset class="atelier-stats">
+          <legend>Opposition et résistances (module facultatif)</legend>
+          <label class="atelier-check"><input type="checkbox" data-opposition-enabled/> Activer une cible qui peut résister, esquiver ou parer</label>
+          <div class="atelier-fields">
+            <label>Adversaire / cible
+              <select data-opposition-target><option value="">Cible libre — seuil fixé par le MJ</option></select>
+            </label>
+            <label>Résistance mise à l'épreuve
+              <select data-opposition-kind>
+                <option value="physique">Physique / esquive</option>
+                <option value="magie">Magie / runes</option>
+                <option value="mental">Mental / volonté</option>
+              </select>
+            </label>
+            <label>Action tentée
+              <select data-opposition-mode>
+                <option value="melee">Mêlée — dégâts physiques</option>
+                <option value="tir">Tir — dégâts physiques</option>
+                <option value="magie">Magie — dégâts si le sort le permet</option>
+                <option value="mental">Influence mentale / négociation — sans dégâts PV</option>
+              </select>
+            </label>
+            <label>Seuil minimal supplémentaire du MJ (0 = aucun)
+              <input data-opposition-min type="number" min={0} max={45} step={1} value={0}/>
+            </label>
+            <label>Base des dégâts en cas de réussite
+              <select data-opposition-base>
+                <option value="1">1 — très faible</option>
+                <option value="3" selected>3 — arme légère / petit effet</option>
+                <option value="6">6 — arme ou sort puissant</option>
+                <option value="12">12 — attaque majeure sous conditions</option>
+              </select>
+            </label>
+          </div>
+          <p data-opposition-preview class="atelier-hint">Le MJ fixe les conditions avant le jet. La résistance ne peut pas être ignorée par une réussite critique.</p>
+          <p data-opposition-result class="atelier-hint" role="status">Mode opposition désactivé : jet classique inchangé.</p>
+          <button type="button" data-opposition-apply hidden>MJ : confirmer l'application des dégâts à la cible</button>
+          <small class="atelier-hint">Sans dégâts automatiques sur échec. Une riposte demande une action, des moyens et un jet distincts. Une cible à 0 PV est hors de combat, pas automatiquement morte.</small>
+        </fieldset>
         <div class="atelier-dice-row" aria-label="Cinq dés à six faces">
           {[1,2,3,4,5].map((n)=><span class="atelier-die" data-die={n} key={n} aria-label={`Dé ${n}`}>–</span>)}
         </div>
