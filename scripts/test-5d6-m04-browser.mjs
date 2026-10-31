@@ -36,6 +36,12 @@ async function waitFor(expression,label){
   }
   throw Error("Délai navigateur dépassé : "+label)
 }
+const screenshots=path.resolve("artifacts","m041")
+async function screenshot(name){
+  await mkdir(screenshots,{recursive:true})
+  const result=await cdp("Page.captureScreenshot",{format:"png",captureBeyondViewport:false})
+  await writeFile(path.join(screenshots,name),Buffer.from(result.data,"base64"))
+}
 async function test(name,fn){
   try{await fn();checks++;console.log("✓ Chrome : "+name)}
   catch(error){failures.push(name+": "+String(error));console.error("✗ Chrome : "+name+" — "+String(error))}
@@ -174,7 +180,7 @@ async function start(){
   })
   await cdp("Page.enable");await cdp("Runtime.enable");await cdp("DOM.enable")
   await cdp("Browser.setDownloadBehavior",{behavior:"allow",downloadPath:downloads,eventsEnabled:true})
-  return "http://127.0.0.1:"+server.address().port+"/archives-alrick"
+  return process.env.PUBLIC_BASE?.replace(/\/$/,"") || "http://127.0.0.1:"+server.address().port+"/archives-alrick"
 }
 try{
   const base=await start()
@@ -196,6 +202,7 @@ try{
     })
     assert.deepEqual(a.stats,[15,7,8,8]);assert.equal(a.pv,194)
     assert.deepEqual(a.bonuses,["Bonus effectif +7","Bonus effectif +5","Bonus effectif +5","Bonus effectif +5"])
+    await screenshot("bestiary-desktop.png")
   })
   await test("Maîtrise et protection recalculées",async()=>{
     const before=await runJS('document.querySelector("[data-math]").textContent')
@@ -265,6 +272,7 @@ try{
       width:a.getBoundingClientRect().width,viewport:innerWidth,overflow:a.scrollWidth-a.clientWidth}})
     assert.ok(m.width<=m.viewport+3,"débordement de page mobile")
     assert.ok(m.overflow<=5,"débordement horizontal des contrôles")
+    await screenshot("bestiary-mobile.png")
     await cdp("Emulation.clearDeviceMetricsOverride")
     await navigate(base+"/jouer/atelier-5d6")
     await waitFor('document.querySelector("#atelier-5d6 [data-active]")?.options.length>0',"Atelier M02")
@@ -322,6 +330,7 @@ try{
     const again=await browserFn(()=>JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2")))
     assert.ok(again.sheets.find(x=>x.ruleset==="m03-bestiary").pv<194)
     assert.equal(again.sheets.find(x=>x.name==="Témoin historique").legacyOriginal.uniqueHistorique,"à préserver")
+    await screenshot("atelier-combat-m03.png")
   })
   console.log("M04.1 CHROME : "+checks+" scénarios complets, "+dialogs+" dialogues de confirmation.")
   if(failures.length){console.error("M04.1 : "+failures.length+" scénario(s) non validés :",failures);throw Error("Recette M04.1 incomplète : "+failures.join("; "))}
