@@ -106,7 +106,7 @@ async function start(){
     }
   })
   await cdp("Page.enable");await cdp("Runtime.enable");await cdp("DOM.enable")
-  await cdp("Page.setDownloadBehavior",{behavior:"allow",downloadPath:downloads})
+  await cdp("Browser.setDownloadBehavior",{behavior:"allow",downloadPath:downloads,eventsEnabled:true})
   return "http://127.0.0.1:"+server.address().port+"/archives-alrick"
 }
 try{
@@ -238,5 +238,6 @@ try{
   try{ws?.close()}catch{}
   try{chrome?.kill("SIGKILL")}catch{}
   if(server)await new Promise(resolve=>server.close(resolve))
-  await rm(tmp,{recursive:true,force:true})
+  await sleep(450)
+  try{await rm(tmp,{recursive:true,force:true,maxRetries:5,retryDelay:400})}catch(e){console.warn("Nettoyage du profil Chrome incomplet :",String(e))}
 }
