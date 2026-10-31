@@ -48,7 +48,7 @@ Les 21 catégories de biomes sont un vocabulaire **proposé**, non une géograph
 
 **Non exécutés :** \`npm test\` intégral, \`npm run check:content\`, \`check:types\`, \`build\`, \`check:site\`, et tests navigateur : le dépôt complet et ses dépendances ne sont pas disponibles localement dans l'environnement utilisé. Les suites de tests **ont été lues mais pas lancées**. Le résultat de GitHub CI doit être examiné sur la PR. Exhaustivité de l'arbre et test de migration JSON restent ouverts.
 
-**Aucune régression identifiée par modification des pages existantes ; absence de régression technique non démontrée sans build et CI.**
+**Aucune régression détectée par la CI du commit testé ; les anciens fichiers restent inchangés.** Le contrôle visuel du site et la publication après fusion restent distincts du succès des tests.
 
 ## 7. Décisions requises du créateur
 
