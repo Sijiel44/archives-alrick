@@ -621,6 +621,54 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     setTimeout(()=>URL.revokeObjectURL(url),1500)
     message("Fichier JSON exporté : conserve-le pour retrouver tes fiches sur un autre appareil.")
   }
+
+  function exportCampaign(){
+    const content={schema:"alrick.campaign.v1",created:new Date().toISOString(),state}
+    const blob=new Blob([JSON.stringify(content,null,2)],{type:"application/json"})
+    const url=URL.createObjectURL(blob),link=document.createElement("a")
+    link.href=url;link.download="archives-alrick-campagne-5d6-complete.json";document.body.append(link);link.click();link.remove()
+    setTimeout(()=>URL.revokeObjectURL(url),1500)
+    message("Sauvegarde complète exportée : fiches, inventaires, modèles MJ, compagnies et journal de missions.")
+  }
+  function importCampaign(raw:unknown){
+    if(!raw||typeof raw!=="object")throw Error("Format absent")
+    const container=raw as Record<string,unknown>
+    if(container.schema!=="alrick.campaign.v1"||!container.state||typeof container.state!=="object")throw Error("Schéma de campagne inconnu")
+    const payload=container.state as Record<string,unknown>
+    if(!Array.isArray(payload.sheets)||!payload.sheets.length||payload.sheets.length>60)throw Error("Fiches manquantes")
+    const sheets=payload.sheets.map(validateSheet)
+    if(sheets.some(x=>x===null))throw Error("Fiche corrompue")
+    const restored=sheets as Sheet[]
+    payload.sheets.forEach((item:unknown,i:number)=>{
+      if(item&&typeof item==="object"){
+        const id=(item as Record<string,unknown>).id
+        if(typeof id==="string"&&id.length>0&&id.length<=100)restored[i].id=id
+      }
+    })
+    if(new Set(restored.map(x=>x.id)).size!==restored.length)throw Error("Identifiants de fiches dupliqués")
+    const ids=new Set(restored.map(x=>x.id))
+    const groups=Array.isArray(payload.groups)?payload.groups.slice(0,20).map(validatedGroup).filter((x):x is Group=>x!==null):[]
+    for(const group of groups)group.members=group.members.filter(id=>ids.has(id))
+    const groupIds=new Set(groups.map(x=>x.id))
+    const templates=Array.isArray(payload.templates)?payload.templates.slice(0,150).map(validatedItem).filter((x):x is GameItem=>x!==null):[]
+    const missionLog=Array.isArray(payload.missionLog)?payload.missionLog.slice(-400).map(validatedEntry)
+      .filter((x):x is MissionEntry=>x!==null&&groupIds.has(x.groupId)):[]
+    const priorLog=Array.isArray(payload.log)?payload.log:[]
+    const log=priorLog.slice(0,20).filter((x:unknown):x is Roll=>{
+      if(!x||typeof x!=="object")return false
+      const r=x as Record<string,unknown>
+      return typeof r.name==="string"&&typeof r.text==="string"&&typeof r.total==="number"&&
+        typeof r.target==="number"&&Array.isArray(r.dice)&&r.dice.length===5&&
+        r.dice.every((d:unknown)=>typeof d==="number"&&d>=1&&d<=6)
+    }).map(x=>({...x,name:clean(x.name,90),text:clean(x.text,180)}))
+    if(!window.confirm("Restaurer cette sauvegarde complète ? La campagne locale actuellement ouverte sera remplacée. Exportez-la d'abord si nécessaire."))return
+    state={sheets:restored,activeId:typeof payload.activeId==="string"&&ids.has(payload.activeId)?payload.activeId:restored[0].id,
+      mode:payload.mode==="mj"||payload.mode==="ia"?payload.mode:"pj",
+      log,groups,activeGroupId:typeof payload.activeGroupId==="string"&&groupIds.has(payload.activeGroupId)
+        ?payload.activeGroupId:(groups[0]?.id??""),templates,missionLog}
+    pendingTransfer=""
+    render();persist();message("Campagne locale restaurée. Vérifier les portraits et récompenses après l'import.")
+  }
   const controller=new AbortController(), opts={signal:controller.signal}
   host.addEventListener("input",e=>{
     const el=e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -679,6 +727,13 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       }
       img.onerror=()=>{URL.revokeObjectURL(url);message("Image illisible.")}
       img.src=url
+    }
+    if(el instanceof HTMLInputElement&&el.hasAttribute("data-import-campaign")){
+      const file=el.files?.[0];el.value=""
+      if(!file)return
+      if(file.size>16*1024*1024){message("Fichier de campagne trop grand (16 Mio maximum).");return}
+      void file.text().then(raw=>{importCampaign(JSON.parse(raw))})
+        .catch(()=>message("Restauration refusée : vérifier le schéma alrick.campaign.v1 et les identifiants."))
     }
     if(el?.hasAttribute("data-active")){state.activeId=el.value;render();persist()}
     if(el?.hasAttribute("data-import") && el instanceof HTMLInputElement) {
@@ -821,6 +876,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     }
     if(button.hasAttribute("data-roll")){roll();return}
     if(button.hasAttribute("data-export")){exportSheets();return}
+    if(button.hasAttribute("data-export-campaign")){exportCampaign();return}
     if(button.hasAttribute("data-clear-log")){state.log=[];refreshLog();persist();message("Journal local effacé.");return}
     if(button.hasAttribute("data-ai-refresh")){renderAI();message("Contexte actualisé à partir des fiches locales.");return}
     if(button.hasAttribute("data-ai-copy")){
