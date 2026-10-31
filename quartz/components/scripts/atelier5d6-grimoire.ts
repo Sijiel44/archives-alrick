@@ -15,7 +15,7 @@ export type Spell={
   id:string;version:number;name:string;description:string;tradition:string;category:SpellCategory;
   domain:string;circle:number|null;status:SpellStatus;source:string;practice?:"activation"|"composition";
   manaCost:number;minimumMastery:number;requiredAffinityRank:number;requiresPreparation:boolean;
-  difficulty:number;range:string;target:string;duration:SpellDuration;durationValue:number;
+  difficulty:number;range:string;target:string;duration:SpellDuration;durationValue:number;effectLevel?:number;
   concentration:boolean;upkeepMana:number;effect:"narratif"|"degats"|"soins";baseImpact:number;
   resistance:ResistanceKind|null;limits:string
 }
@@ -36,6 +36,13 @@ export const DEMO_SPELLS:readonly Spell[]=[
   {id:"demo-lecture-eau",version:1,practice:"activation",name:"Lecture des remous",description:"Rend un courant local plus lisible, sans prédire tous les dangers du fleuve.",tradition:"Démonstration — observation des eaux",category:"perception",domain:"eau",circle:1,status:"demo",source:"Prototype 5d6 — NON CANONIQUE",manaCost:3,minimumMastery:1,requiredAffinityRank:0,requiresPreparation:false,difficulty:18,range:"Quelques pas",target:"Eau visible",duration:"instant",durationValue:0,concentration:false,upkeepMana:0,effect:"narratif",baseImpact:0,resistance:null,limits:"Exige une eau observable ; ne sonde pas les pensées ni les profondeurs fermées."},
   {id:"demo-voile-protecteur",version:1,name:"Voile de fortune",description:"Une protection fragile se déploie contre une gêne momentanée ; ses effets sont arbitrés par le MJ.",tradition:"Démonstration — protection",category:"protection",domain:"magie",circle:2,status:"demo",source:"Prototype 5d6 — NON CANONIQUE",manaCost:4,minimumMastery:2,requiredAffinityRank:0,requiresPreparation:true,difficulty:21,range:"Contact",target:"Soi-même ou allié",duration:"round",durationValue:2,concentration:true,upkeepMana:1,effect:"narratif",baseImpact:0,resistance:null,limits:"N'accorde ni immunité ni absorption chiffrée sans règle spécifique du MJ."},
   {id:"demo-etincelle",version:1,practice:"activation",name:"Étincelle contrôlée",description:"Une décharge brève peut provoquer un impact magique sur une cible ordinaire.",tradition:"Démonstration — foudre",category:"attaque",domain:"foudre",circle:1,status:"demo",source:"Prototype 5d6 — NON CANONIQUE",manaCost:4,minimumMastery:1,requiredAffinityRank:0,requiresPreparation:false,difficulty:21,range:"Courte",target:"Cible visible",duration:"instant",durationValue:0,concentration:false,upkeepMana:0,effect:"degats",baseImpact:3,resistance:"magie",limits:"Aucun effet sur une immunité à la foudre reconnue ; pas de pénétration ontologique."}
+  ,{id:"demo-onde-murailles",version:1,practice:"composition",name:"Onde des murailles (essai)",
+  description:"Une onde de force préparée dans une matrice de démonstration ; puissance déterminée par le concepteur, et non le Cercle du porteur.",
+  tradition:"Démonstration — ingénierie et architecture avancées",category:"attaque",domain:"terre",circle:8,
+  status:"demo",source:"Prototype 5d6 — NON CANONIQUE",manaCost:16,minimumMastery:8,requiredAffinityRank:0,
+  requiresPreparation:true,difficulty:27,range:"Moyenne",target:"Structure ou cible",
+  duration:"instant",durationValue:0,effectLevel:20,concentration:false,upkeepMana:0,effect:"degats",baseImpact:6,
+  resistance:"physique",limits:"Aucune destruction automatique. La protection, le terrain, la stabilité et les immunités continuent de s'appliquer."}
 ]
 const categories:SpellCategory[]=["utilitaire","protection","soin","perception","artisanat","attaque","deplacement"]
 const domains=new Set<string>(AFFINITY_DOMAINS.map(x=>x[0]))
@@ -59,7 +66,7 @@ function normalizeSpell(value:unknown):Spell|null{
     manaCost:bounded(p.manaCost,0,999,0),minimumMastery:bounded(p.minimumMastery,0,12,0),
     requiredAffinityRank:bounded(p.requiredAffinityRank,0,5,0),requiresPreparation:p.requiresPreparation===true,
     difficulty:bounded(p.difficulty,15,30,21),range:str(p.range,90),target:str(p.target,100),
-    duration,durationValue:bounded(p.durationValue,0,99,0),concentration:p.concentration===true,
+    duration,durationValue:bounded(p.durationValue,0,99,0),effectLevel:bounded(p.effectLevel,1,25,1),concentration:p.concentration===true,
     upkeepMana:bounded(p.upkeepMana,0,99,0),effect:["degats","soins"].includes(String(p.effect))?p.effect as "degats"|"soins":"narratif",
     baseImpact:bounded(p.baseImpact,0,12,0),resistance:["physique","magie","mental"].includes(String(p.resistance))?p.resistance as ResistanceKind:null,
     limits:str(p.limits,600)}
@@ -166,7 +173,7 @@ export function resolveSpellCast(sheet:MagicSheet,spell:Spell,target:MagicSheet|
   const threshold=Math.max(spell.difficulty,resistance)
   const rank=matrix?0:(sheet.affinities.find(a=>a.id===spell.domain)?.rank??0)
   const opposition=spell.resistance?resolveOpposition({natural,total,difficulty:spell.difficulty,resistance,
-    damageBase:spell.baseImpact||1,mastery:matrix?0:attackMastery(sheet.masteries,"magie"),level:matrix?1:sheet.level,
+    damageBase:spell.baseImpact||1,mastery:matrix?0:attackMastery(sheet.masteries,"magie"),level:matrix?(spell.effectLevel??1):sheet.level,
     protection:target?effectiveProtection(target,spell.resistance):0,mode:spell.resistance==="mental"?"mental":"magie",
     affinityBonus:spell.effect==="degats"?affinityImpactBonus(rank):0}):null
   const success=opposition?opposition.success:natural>7&&total>=threshold
