@@ -64,6 +64,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
     <nav class="atelier-quicknav" aria-label="Espace de jeu">
       <button type="button" data-hub-nav="origines">🧭 Création</button>
       <button type="button" data-hub-nav="fiche">📜 Personnage et dés</button>
+      <button type="button" data-hub-nav="grimoire">📖 Grimoire</button>
       <button type="button" data-hub-nav="affinites">✨ Capacités</button>
       <button type="button" data-hub-nav="inventaire">🎒 Inventaire</button>
       <button type="button" data-hub-nav="galerie">🖼️ Images</button>
@@ -381,6 +382,77 @@ export const Atelier5d6: QuartzComponent = (props) => {
     </div>
       </div>
     </details>
+
+    <details class="atelier-hub-section" data-hub="grimoire">
+      <summary>📖 Grimoire personnel — sorts, apprentissage et effets</summary>
+      <section class="atelier-panel grimoire" data-grimoire-root aria-label="Grimoire du personnage actif">
+        <p class="atelier-hint"><strong>Prototype de règles, non canonique.</strong> Tous les sorts de démonstration sont fictifs. Les Cercles demandent une attestation distincte du MJ ; le niveau ne les accorde pas. L'accord MJ local n'est pas une authentification réseau.</p>
+        <p class="grimoire-resources" data-grimoire-mana>Réserve de mana</p>
+        <p class="atelier-hint" data-grimoire-circle-summary>Aucun Cercle attesté.</p>
+        <div class="atelier-fields">
+          <label>Rechercher un sort<input type="search" data-grimoire-search placeholder="Nom, domaine, effet…" maxLength={100}/></label>
+          <label>Domaine d'usage
+            <select data-grimoire-category>
+              <option value="">Toutes les catégories</option>
+              <option value="utilitaire">✦ Utilitaire</option><option value="protection">◇ Protection</option>
+              <option value="soin">✚ Soin</option><option value="perception">◉ Perception</option>
+              <option value="artisanat">⚒ Artisanat</option><option value="attaque">ϟ Attaque</option>
+              <option value="deplacement">➶ Déplacement</option>
+            </select>
+          </label>
+          <label>Afficher<select data-grimoire-scope>
+            <option value="all">Bibliothèque de démonstration et créations de campagne</option>
+            <option value="known">Appris seulement</option>
+            <option value="available">Utilisables maintenant</option>
+          </select></label>
+        </div>
+        <div class="grimoire-cards" data-grimoire-cards><p>Chargement du grimoire…</p></div>
+        <fieldset class="atelier-stats grimoire-caster">
+          <legend>✧ Lancer un sort connu</legend>
+          <div class="atelier-fields">
+            <label>Sort<select data-grimoire-cast><option value="">Choisir un sort appris…</option></select></label>
+            <label>Cible ou intention<input data-grimoire-target maxlength={150} placeholder="Personne, lieu ou objet…"/></label>
+            <label>Fiche cible pour opposition (facultatif)<select data-grimoire-other-sheet><option value="">Sans fiche cible — difficulté du sort</option></select></label>
+          </div>
+          <button type="button" class="atelier-roll" data-grimoire-cast-button>Lancer 5d6, confirmer la dépense et consigner</button>
+          <div class="atelier-result" data-grimoire-result role="status">Aucune incantation.</div>
+          <p class="atelier-hint">5d6 + Esprit + compétence expérimentale (maximum +2 selon la maîtrise Magie). Les affinités n'ajoutent pas de bonus universel au jet. Aucun dommage sur autrui n'est appliqué sans arbitrage MJ.</p>
+        </fieldset>
+        <h3>⏳ Effets actifs</h3>
+        <ul class="atelier-inventory-list" data-grimoire-effects><li>Aucun effet actif.</li></ul>
+        <div class="grimoire-card-actions">
+          <button type="button" data-grimoire-advance="round">Tour suivant</button>
+          <button type="button" data-grimoire-advance="scene">Segment narratif suivant</button>
+        </div>
+        <p class="atelier-hint">Les tours et scènes sont avancés manuellement. Aucune conversion automatique en temps réel ; les permanences éventuelles requièrent validation spécifique.</p>
+        <div data-grimoire-mj hidden>
+          <h3>Validation et création — MJ local</h3>
+          <p class="atelier-hint">Une attestation doit se fonder sur une pratique démontrée, une formation ou un événement reconnu. Elle ne donne pas les sorts du Cercle.</p>
+          <div class="atelier-fields">
+            <label>Cercle attesté<select data-grimoire-circle>{[1,2,3,4,5,6,7,8,9].map(n=><option value={n} key={n}>Cercle {n}</option>)}</select></label>
+            <label>Preuve ou limite attestée<input data-grimoire-witness maxLength={120} placeholder="Mentor, épreuve, étude, démonstration…"/></label>
+          </div>
+          <button type="button" data-grimoire-attest>MJ : attester ce Cercle</button>
+          <h4>Créer un sort propre à cette campagne</h4>
+          <div class="atelier-fields">
+            <label>Nom<input data-grimoire-new-name maxLength={90}/></label>
+            <label>Domaine<select data-grimoire-new-domain>{AFFINITY_DOMAINS.map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></label>
+            <label>Catégorie<select data-grimoire-new-category>
+              <option value="utilitaire">Utilitaire</option><option value="protection">Protection</option><option value="soin">Soin</option>
+              <option value="perception">Perception</option><option value="artisanat">Artisanat</option><option value="attaque">Attaque</option><option value="deplacement">Déplacement</option>
+            </select></label>
+            <label>Cercle requis<select data-grimoire-new-circle>{[1,2,3,4,5,6,7,8,9].map(n=><option key={n} value={n}>{n}</option>)}</select></label>
+            <label>Coût en mana<input type="number" min={0} max={999} value={2} data-grimoire-new-cost/></label>
+            <label>Description et limites<input data-grimoire-new-desc maxLength={800} placeholder="Effet limité, explicite, documentable…"/></label>
+          </div>
+          <button type="button" data-grimoire-create>MJ : créer la proposition locale</button>
+          <p class="atelier-hint">La proposition reste locale à cette fiche, séparée de la bibliothèque canonique, et n'est pas distribuée automatiquement aux autres personnages.</p>
+        </div>
+        <h3>📜 Journal des incantations</h3>
+        <ol class="atelier-log" data-grimoire-history><li>Aucune utilisation enregistrée.</li></ol>
+        <p data-grimoire-status role="status" aria-live="polite" class="atelier-notice"></p>
+      </section>
+    </details>
     <details class="atelier-hub-section" data-hub="affinites">
       <summary>✨ Affinités et pouvoirs — même fiche</summary>
       <section class="atelier-panel">
@@ -617,6 +689,21 @@ Atelier5d6.css = `
 .atelier .atelier-media-lightbox{width:min(95vw,900px);max-height:95vh;padding:1rem;border:1px solid #ccab73;border-radius:12px;background:#10242d;color:#f2ece2}
 .atelier-media-lightbox::backdrop{background:rgba(0,0,0,.84)}
 .atelier-media-lightbox img{max-width:100%;max-height:72vh;object-fit:contain;display:block;margin:1rem auto}
+.grimoire .grimoire-resources{font-weight:700;color:#e6c891;border-left:3px solid #cfae74;padding:.35rem .65rem}
+.grimoire-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:.75rem;margin:1rem 0}
+.grimoire-card{padding:.85rem;border:1px solid rgba(210,178,121,.45);border-radius:12px;background:linear-gradient(145deg,rgba(37,58,65,.95),rgba(15,33,45,.95));min-width:0}
+.grimoire-card-head{display:flex;gap:.55rem;align-items:center;flex-wrap:wrap}
+.grimoire-card-head div{flex:1;min-width:130px}
+.grimoire-card-head strong,.grimoire-card-head small{display:block}
+.grimoire-card-head small,.grimoire-stamp{font-size:.72rem;color:#d7bf99}
+.grimoire-glyph{width:36px;height:36px;border:1px solid #a48f68;border-radius:50%;display:grid;place-items:center;color:#e1c68f;font-size:1.25rem}
+.grimoire-stamp{font-weight:700;letter-spacing:.02em;max-width:115px;overflow-wrap:anywhere}
+.grimoire-card p{font-size:.83rem}
+.grimoire-card details{font-size:.8rem;margin:.55rem 0}
+.grimoire-card summary{cursor:pointer;color:#ead4a8}
+.grimoire-card-actions{display:flex;flex-wrap:wrap;gap:.35rem;margin:.5rem 0}
+.grimoire .grimoire-card-actions button{font-size:.78rem;padding:.42rem .55rem}
+.grimoire-caster{border-color:#ab8b52}
 .atelier [hidden]{display:none!important}
 @media(max-width:850px){.atelier-grid{grid-template-columns:1fr}}
 @media(max-width:480px){.atelier-fields{grid-template-columns:1fr}.atelier{padding:.7rem}.atelier-die{width:42px;height:42px}}
