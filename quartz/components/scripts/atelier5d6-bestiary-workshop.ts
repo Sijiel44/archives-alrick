@@ -22,6 +22,7 @@ export type BestiaryCard = {
   protection:{physique:number;magie:number;mental:number}
   equipmentGrades:{physique:number;magie:number;mental:number}
   baseDamage:number;penetration:number;abilities:{name:string;description:string;limitations:string;approvedByGM:boolean}[]
+  [extension:string]:unknown // Champs supplémentaires JSON conservés, non exécutables.
 }
 export type MathSide = {hits:number;contacts:number;expectedDamage:number;woundChance:number;defense:number;protection:number}
 export type Matchup = {creature:MathSide;opponent:MathSide;opponentCount:number;roundsEstimate:number|null;stalemate:boolean;level:number;profile:string;assumptions:string}
@@ -43,8 +44,10 @@ export function createBestiaryCard(level:number,archetype:CreatureArchetype,kind
     stats,masteries:{lames:p.mastery,esquive:p.mastery,magie:p.mastery,runes:p.mastery,
       survie:p.mastery,volonte:p.mastery,negociation:p.mastery},
     pvMax:p.pvMax,manaMax:p.manaMax,
-    resistanceBonus:{physique:0,magie:0,mental:0},
-    protection:{physique:p.resistancePhysical,magie:p.resistanceMagic,mental:0},
+    // Les résistances du générateur M03 sont des bonus de DÉFENSE (+0..8),
+    // pas de protection/absorption (rendement logarithmique) : ne pas confondre.
+    resistanceBonus:{physique:p.resistancePhysical,magie:p.resistanceMagic,mental:0},
+    protection:{physique:0,magie:0,mental:0},
     equipmentGrades:{physique:p.equipmentPhysical,magie:p.equipmentMagic,mental:0},
     baseDamage:6,penetration:0,abilities:[]}
 }
@@ -96,10 +99,34 @@ export function validateBestiaryCard(raw:unknown):BestiaryCard{
   out.abilities=x.abilities.map((v:unknown)=>{
     const a=v as Record<string,unknown>
     if(!a||typeof a!=="object"||typeof a.name!=="string")throw Error("Capacité invalide")
-    return {name:string(a.name,100),description:string(a.description,1000),
+    const result={...a,name:string(a.name,100),description:string(a.description,1000),
       limitations:string(a.limitations,500),approvedByGM:a.approvedByGM===true}
+    return result
   })
+  // Préserver les clés propres additionnelles lors d'un aller-retour, sans les interpréter.
+  // Interdire les noms spéciaux afin de préserver la sûreté des prototypes JS.
+  const known=new Set(Object.keys(out))
+  for(const [key,value] of Object.entries(x)){
+    if(known.has(key)||["__proto__","prototype","constructor"].includes(key))continue
+    const encoded=JSON.stringify(value)
+    if(encoded&&encoded.length<=20000)Object.defineProperty(out,key,
+      {value:JSON.parse(encoded) as unknown,enumerable:true,writable:true,configurable:true})
+  }
   return out
+}
+/** Contrat distinct M03 : une créature n'est pas soumise au budget d'un PJ M02. */
+export function exportBestiaryForAtelier(card:BestiaryCard){
+  const c=validateBestiaryCard(card)
+  return {schema:"alrick.sheets.v3",sheets:[{
+    schema:"alrick.sheet.v3",ruleset:"m03-bestiary",kind:c.kind,
+    name:c.name,profession:c.profession||c.archetype,description:c.description,
+    level:c.level,highestLevel:c.level,stats:copy(c.stats),
+    masteries:copy(c.masteries),pv:c.pvMax,pvMax:c.pvMax,
+    mana:c.manaMax,manaMax:c.manaMax,
+    resistanceBonus:copy(c.resistanceBonus),protection:copy(c.protection),
+    equipmentGrades:copy(c.equipmentGrades),notes:c.notes,
+    bestiarySource:copy(c)
+  }]}
 }
 export function toDefense(card:BestiaryCard):DefenseProfile{
   return {level:card.level,stats:card.stats,masteries:card.masteries,
