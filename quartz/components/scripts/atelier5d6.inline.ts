@@ -1389,7 +1389,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(!navigator.clipboard){area.focus();area.select();message("Copie automatique indisponible : sélectionne puis copie le texte.")}
     }
   },opts)
-  render();persist();void loadMissions(controller.signal)
+  render();renderOriginPreview();persist();void loadMissions(controller.signal)
   window.addCleanup(()=>controller.abort())
 }
 document.addEventListener("nav",setupAtelier5d6)
