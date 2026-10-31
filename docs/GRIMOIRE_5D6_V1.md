@@ -18,7 +18,7 @@ Le hub contient un nouvel onglet **Grimoire**. Le système conserve `archives-al
 - Attestation des Cercles I–IX par le MJ sur preuve de pratique, pas selon le niveau et sans ajouter de sorts automatiquement.
 - Lancer : sélectionner, identifier la cible/l'intention, vérifier le mana, le Cercle, les maîtrises, la préparation et la concentration, **confirmer la dépense**, lancer 5d6 et enregistrer le résultat. Une tentative incantatoire validée consomme le mana même si le jet échoue (proposition mécanique révisable).
 - Opposition : réutilise `resolveOpposition`, `resistanceScore`, `effectiveProtection` et `affinityImpactBonus`. Affinité : **seulement les dégâts magiques réellement correspondants**, jamais un bonus universel de touche. Un contact héroïque naturel n'impose pas un état ni une pénétration. Les protections demeurent applicables.
-- Effets actifs : instantané, tours, segments narratifs et permanence conditionnelle ; concentration unique dans ce prototype ; entretien demandé avant d'avancer une unité, interruption manuelle et journal. Aucune conversion arbitraire en secondes réelles.
+- Effets actifs : instantané, tours, segments narratifs et permanence conditionnelle ; concentration unique dans ce prototype ; entretien demandé avant d'avancer une unité, interruption manuelle et journal. Aucune conversion arbitraire en secondes réelles. Un résumé des effets actifs apparaît également dans la fiche de personnage et dans la barre de statut du hub.
 - Sécurité : **aucun PV ni statut d'une autre fiche ne se modifie automatiquement** par un sort ; les dégâts affichés sont seulement potentiels. Les contrôles « MJ local » ne constituent **pas** des permissions serveur.
 
 ### Exemples démonstratifs
