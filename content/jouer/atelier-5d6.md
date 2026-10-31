@@ -13,11 +13,15 @@ tags: [5d6, des, personnage, mj, pnj, creatures, atelier]
 
 # Atelier de jeu 5d6
 
+> **Extension de jeu en préparation : compagnies, missions, inventaires et progression divine.** La nouvelle version de l'Atelier propose l'édition d'objets, leur attribution et transfert entre fiches locales, 12 rangs de groupe, 24 missions publiques, un journal de récompenses, ainsi que l'export et l'import de la campagne complète. Ces outils ne synchronisent pas les joueurs entre appareils. Les missions et les valeurs chiffrées restent des propositions non jouées.
+
 Cet outil est une **version pilote évolutive**, inspirée du [[jouer/systeme-5d6-base12|système 5d6 / Base 12]]. Il est conçu pour les campagnes **indépendantes**, qu'elles soient menées par un MJ humain ou assistées par IA.
 
 ## Trois modes, un même jeu
 
-**Extension pilote :** le personnage possède maintenant un champ de description et un portrait facultatif importé depuis l'appareil (image réduite et enregistrée localement dans la fiche et son export JSON). La progression individuelle va de **1 à 24**, avec **+1 point de caractéristique** et **+2 points de maîtrise** par niveau nouvellement atteint, chaque maîtrise étant plafonnée à 12. Les points peuvent rester en réserve. **PV maximum +2** par nouveau niveau ; **mana maximum +2** seulement si une réserve magique existe déjà. Ces propositions de progression sont expérimentales et ne doivent pas être attribuées rétroactivement aux personnages canoniques.
+**Sauvegarde complète :** utiliser « Exporter toute la campagne » pour conserver ensemble personnages, inventaires, modèles d'objets, compagnies, certifications et missions. « Importer sauvegarde complète » remplace la campagne locale **après confirmation** ; exporter d'abord l'état actuel. L'ancien export des fiches `alrick.sheets.v2` reste disponible pour importer des personnages individuellement. Les données restent dans le navigateur.
+
+**Extension pilote :** le personnage possède maintenant un champ de description et un portrait facultatif importé depuis l'appareil (image réduite et enregistrée localement dans la fiche et son export JSON). La progression individuelle va de **1 à 24**, avec **+6 points de caractéristiques** et **+2 points de maîtrise** par niveau nouvellement atteint, chaque maîtrise étant plafonnée à 12. Les points peuvent rester en réserve. **PV maximum : +6** par nouveau niveau de 2 à 12, **+12** de 13 à 20, puis **+24** de 21 à 24 ; même progression de mana maximum **uniquement si une réserve magique existe déjà**. Une caractéristique reste plafonnée à **12**. Six crédits non investis peuvent être convertis volontairement en un point de talent à valider par le MJ. Les niveaux 21 à 24 exigent une **autorisation MJ** d'ascension exceptionnelle. Ces propositions de progression sont expérimentales et ne doivent pas être attribuées rétroactivement aux personnages canoniques.
 
 Les anciennes fiches et leur emplacement de sauvegarde sont conservés. **Les maîtrises additionnelles sont suivies sans bonus de jet automatique** : la résolution 5d6 existante et les spécialités +0/+1/+2 restent inchangées en attendant le playtest. Pour les 12 indices de groupe et les missions, ouvrir le [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier]].
 
