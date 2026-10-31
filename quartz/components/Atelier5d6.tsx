@@ -49,7 +49,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <option value="">Personnage de départ</option>
         </select>
       </label>
-      <button type="button" data-new>Nouvelle fiche</button>
+      <button type="button" data-new>Nouvelle fiche libre</button>
       <button type="button" data-reset>Réinitialiser cette fiche…</button>
       <button type="button" data-export>Exporter les fiches JSON</button>
       <button type="button" data-export-campaign>Exporter toute la campagne</button>
@@ -61,7 +61,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
       </label>
     </div>
     <p class="atelier-hub-status" data-hub-status>Personnage actif · niveau · ressources · affinités</p>
-    <details class="atelier-hub-section">
+    <details class="atelier-hub-section" data-hub="origines">
       <summary>🧭 Créer un aventurier — les quatre premières périodes de vie</summary>
       <div class="atelier-hub-inner">
         <p>Réponds aux quatre questions : <strong>24 points de caractéristiques</strong> et <strong>8 points de maîtrise</strong> sont répartis automatiquement. L'aventure commence au <strong>niveau 5</strong>, avec 36 PV de référence. Aucune fiche existante n'est remplacée.</p>
