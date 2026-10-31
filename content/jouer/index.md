@@ -41,7 +41,7 @@ Les descriptions des **rubriques** sont des guides de lecture, pas des règles n
 
 - [[jouer/systeme-5d6-base12|Lire les règles 5d6 / Base 12]] — quatre caractéristiques, douze points de création, six difficultés, critiques et réserves en multiples de trois.
 - [[jouer/progression-voies-incidents|Progression libre, bénédictions, objets et incidents d12]] — **en expérimentation**, sans classes fermées ni équipements +1.
-- [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier : 12 indices de groupe et 24 nouvelles amorces]] — missions et récompenses proposées, sans spoilers.
+- [[jouer/guide-aventurier-12-rangs|Guide de l'aventurier : 12 indices de groupe et 24 nouvelles amorces]] — compagnies, certifications, journal de missions et récompenses dans l'Atelier ; prototypes sans spoilers.
 - [[jouer/atelier-5d6|Ouvrir l’Atelier interactif]] — fiches PJ, profils PNJ/créatures importables pour le MJ et export de contexte pour un MJ assisté par IA. **En test, sauvegarde locale, sans serveur.**
 
 Ce système est **expérimental** et ne remplace pas rétroactivement les jets de la campagne d’Orin. La Déchéance garde pour l’instant son mini-système 2d6 autonome.
