@@ -95,6 +95,7 @@ for(const token of ['data-field="description"', 'data-portrait', 'data-portrait-
 }
 for(const token of ['data-hub-nav="origines"','data-hub-nav="galerie"',
   'data-origin-education','data-origin-literacy','data-origin-story',
+  'data-mastery="agriculture"','data-mastery="navigation"','data-mastery="arts"',
   'data-field="backstory"','data-field="literacy"','data-field="education"',
   'data-media-gallery','data-media-lightbox','data-media-add',
   'data-power-cast-action','data-power-history','data-hub="tables"']){
