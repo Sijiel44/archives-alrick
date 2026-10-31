@@ -187,6 +187,7 @@ function connect() {
           "Demande transmise : le MJ doit vous accepter." : "Table créée. Partagez le code d'invitation.")
         return
       case "selected": return
+      case "rooms": rooms = m.rooms || []; refreshLobby(); return
       case "snapshot": onSnapshot(m); return
       case "error":
         feedback(m.code + " : " + m.message)
