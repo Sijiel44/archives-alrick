@@ -144,6 +144,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
               <option value="24">24 — Quatrième épreuve</option>
             </select>
           </label>
+          <p class="atelier-hint" data-divine-history>Aucune épreuve divine consignée.</p>
           <label class="atelier-wide">Témoignage MJ de l'épreuve exceptionnelle (obligatoire)
             <textarea data-field="ascensionWitness" rows={2} maxLength={300} placeholder="Mentor, rituel, pacte, coût réel et conséquence du monde..."></textarea>
           </label>
