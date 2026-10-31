@@ -183,7 +183,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
       <div class="atelier-toolbar"><button type="button" data-ai-refresh>Actualiser</button><button type="button" data-ai-copy>Copier le contexte</button></div>
       <p class="atelier-hint">Le MJ IA doit encore lire les références appropriées, respecter les limites de connaissance des PNJ et ne jamais décider à la place du joueur.</p>
     </section>
-    <p class="atelier-privacy">⚿ <strong>Confidentialité :</strong> les données restent dans le stockage de ce navigateur, accessible aux personnes qui l'utilisent. Aucune sauvegarde dans le dépôt ni synchronisation. Exporte ton JSON avant d'effacer ton navigateur. Import limité à des fichiers JSON de 250 Kio au maximum.</p>
+    <p class="atelier-privacy">⚿ <strong>Confidentialité :</strong> les données restent dans le stockage de ce navigateur, accessible aux personnes qui l'utilisent. Aucune sauvegarde dans le dépôt ni synchronisation. Exporte ton JSON avant d'effacer ton navigateur. Import JSON jusqu'à 5 Mio, portraits inclus ; le stockage local du navigateur peut être plus limité.</p>
   </section>
 }
 Atelier5d6.afterDOMLoaded = script
