@@ -26,6 +26,13 @@ almost(chance(30,24),7775/7776)
 assert(chance(27,6)<chance(27,12))
 assert(chance(36,12)<.1)
 assert(chance(42,14)<.01)
+const experienceRequired=level=>level<=1?0:5*(level-1)**3
+assert.equal(experienceRequired(2),5)
+assert.equal(experienceRequired(3),40)
+assert.equal(experienceRequired(5),320)
+assert.equal(experienceRequired(20),34295)
+assert.equal(experienceRequired(24),60835)
+assert(experienceRequired(24)-experienceRequired(23)>experienceRequired(5)-experienceRequired(4))
 const statCredits=level=>12+6*(level-1)
 const resourceGain=level=>level>=21?24:level>=13?12:6
 const maxResource=level=>12+Array.from({length:level-1},(_,i)=>resourceGain(i+2)).reduce((a,b)=>a+b,0)
