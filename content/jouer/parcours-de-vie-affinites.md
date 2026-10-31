@@ -38,7 +38,7 @@ La fiche créée reçoit **36 PV maximum** et **320 XP de départ virtuels**, qu
 
 ### Les nouveaux savoir-faire de la fiche
 
-En plus des compétences existantes de l'Atelier, quatre maîtrises sont désormais distinguées : **commerce**, **histoire**, **commandement** et **intendance**. Les choix de naissance ne ferment pas les possibilités futures : un enfant de marchand peut devenir protecteur ; un noble peut étudier les arcanes ; un descendant de guerriers peut rechercher une existence de soins ou d'art.
+En plus des compétences existantes de l'Atelier, sept maîtrises sont désormais distinguées : **commerce**, **histoire**, **commandement**, **intendance**, **navigation**, **agriculture** et **arts**. Les choix de naissance ne ferment pas les possibilités futures : un enfant de marchand peut devenir protecteur ; un noble peut étudier les arcanes ; un descendant de guerriers peut rechercher une existence de soins ou d'art.
 
 ## Origines étendues, scolarité et liberté du personnage
 
