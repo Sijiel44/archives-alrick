@@ -129,7 +129,7 @@ export function resolveSpellCast(sheet:MagicSheet,spell:Spell,target:MagicSheet|
   const success=opposition?opposition.success:natural>7&&total>=threshold
   const glancing=!!opposition?.glancing
   const result=natural<=7?"Échec critique":success?"Réussite":glancing?"Contact sans pénétration":"Échec"
-  return {ok:true,errors:[],natural,total,threshold,success,glancing,result,damage:opposition?.damage??0,
+  return {ok:true,errors:[],natural,total,threshold,success,glancing,result,damage:spell.effect==="degats"?(opposition?.damage??0):0,
     absorbed:opposition?.absorbed??0,critical:natural>=27,affinityRank:rank}
 }
 export function recordSpellEvent(g:Grimoire,event:Omit<SpellEvent,"id"|"at">){
@@ -169,8 +169,13 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
   const selected=()=>libraryFor(args.getSheet().grimoire)
   const find=(id:string)=>selected().find(x=>x.id===id)
   const notify=(s:string)=>{args.message(s);query<HTMLElement>("[data-grimoire-status]").textContent=s}
+  let lastSheetId=""
   function render(){
     const sheet=args.getSheet(),g=sheet.grimoire,mj=args.isMJ()
+    if(lastSheetId!==sheet.id){
+      lastSheetId=sheet.id
+      query<HTMLElement>("[data-grimoire-result]").textContent="Aucune incantation pour cette fiche dans cette session."
+    }
     const filter=query<HTMLInputElement>("[data-grimoire-search]").value.toLocaleLowerCase("fr")
     const category=query<HTMLSelectElement>("[data-grimoire-category]").value
     const scope=query<HTMLSelectElement>("[data-grimoire-scope]").value
