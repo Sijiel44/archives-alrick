@@ -230,3 +230,17 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # COMPTE DE FICHES CODEES : 263 INCHANGÉ, aucun nouveau fait de campagne déclaré.
 # Cette approbation ne s'étend à aucun secret MJ non revu, ni à une nouvelle publication de sources brutes privées.
 # Tests GitHub CI réussis sur tête PR #48, après contrôle du contenu, TypeScript, build, liens et playtest exhaustif.
+
+
+# Lot 17 — Résistances, dégâts et ripostes du moteur 5d6 (31 octobre 2026)
+# Demande créateur : associer progression et maîtrises aux dégâts ; imposer un seuil de résistance pour affecter une cible.
+# PR #49 fusionnée avec CI verte ; aucune nouvelle fiche canonique, aucun spoiler, aucune aventure jouée créée.
+# Module facultatif : défense physique, magique, mentale ; seuil = max(difficulté, résistance, seuil MJ explicite).
+# Protections séparées de l'esquive : après un coup réussi, absorbent des points de dégâts, sans bonus de précision permanent.
+# Les maîtrises de 0–12 et le niveau modifient l'impact ; le calcul standard des dés reste inchangé.
+# Le défenseur peut résister, esquiver, parer ou envisager une riposte. Une riposte est un NOUVEAU jet, jamais une attaque gratuite.
+# Seul le MJ peut confirmer la soustraction effective des PV d'une autre fiche.
+# Jeu social/mental : aucun PV automatique ; 0 PV = hors combat, pas mort automatique.
+# Fiches locales anciennes et sauvegardes alrick.sheets.v2 / alrick.campaign.v1 conservées.
+# Tests exacts sur les fonctions TypeScript réelles et 7 776 issues 5d6 + vérification HTML et politique de publication.
+# Lot de prototype non canonique, pas d'attribution de nouvelle capacité divine ou de Cercle magique à Orin.
