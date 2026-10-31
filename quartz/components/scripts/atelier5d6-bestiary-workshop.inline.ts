@@ -241,6 +241,19 @@ function startBestiary(){
     else return
     persist();renderMath()
   },opts)
+  // Export sans mutation : gestion en capture pour ne pas dépendre des éventuels
+  // re-rendus/handlers de la fiche, ni des confirmations des opérations destructives.
+  host.addEventListener("click",event=>{
+    const target=event.target
+    if(!(target instanceof HTMLElement))return
+    const button=target.closest<HTMLButtonElement>('button[data-action="export"]')
+    if(!button||!host.contains(button))return
+    event.stopImmediatePropagation()
+    host.dataset.exportStage="captured"
+    download("alrick-bestiary-"+current().id+".json",current())
+    host.dataset.exportStage="complete"
+    msg("Export JSON versionné créé.")
+  },{capture:true,signal:controller.signal})
   host.addEventListener("click",event=>{
     const target=event.target
     if(!(target instanceof HTMLElement))return
