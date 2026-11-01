@@ -59,7 +59,7 @@ async function browser(name,base) {
   client.do=async(fn,...args)=>client.js("("+fn.toString()+")("+args.map(v=>JSON.stringify(v)).join(",")+")")
   client.until=async(predicate,label)=>{
     for(let i=0;i<180;i++){
-      if(await client.do(predicate))return
+      try { if(await client.do(predicate))return } catch { /* contexte en cours de navigation */ }
       await sleep(100)
     }
     throw Error(name+" : attente "+label+" ; "+client.errors.join(" | "))
