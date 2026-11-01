@@ -12,11 +12,11 @@
 
 Moteur TypeScript `alrick.ritual.v1` : rites individuels et collectifs, sept rôles, modèle typé des effets et contributions, six états et transitions auditables. Réemploi des calculs M01/M03, probabilité exacte 5d6 ; rites maîtrisés sans jet. Le soutien approuvé est plafonné à +1 contextuel, les non-mages contribuent utilement et les Cercles ne sont pas débloqués par le nombre.
 
-Prévisualisation énergétique fondée sur les états MAG-003.A et leurs identifiants ; **aucun débit réel ni faux commit multijoueur**. Effets narratifs ou +1 validé, proposés mais jamais appliqués automatiquement. Quatorze scénarios automatisés documentés et branchés à `npm test`. Rapports permanents créés et pilotage mis à jour.
+Prévisualisation énergétique fondée sur les états MAG-003.A et leurs identifiants ; **aucun débit réel ni faux commit multijoueur**. Effets narratifs ou +1 validé, proposés mais jamais appliqués automatiquement, avec contrôle de durée et de contexte. Quatorze scénarios automatisés documentés et branchés à `npm test`. Rapports permanents créés et pilotage mis à jour.
 
 ## Vérification et réserves
 
-**Résultat confirmé :** [CI #41322728636](https://github.com/Sijiel44/archives-alrick/actions/runs/41322728636), succès sur le code `075dea2` : 41 assertions MAG-003.B / 14 scénarios, 181 assertions MAG-003.A, contrôle TypeScript, build, M01–M05 et 15 scénarios navigateur. Le test ne remplace ni la recette humaine ni l'essai réseau. Les conversions Grimoire / objets / Tables sont hors périmètre.
+**Résultat confirmé :** [CI #41323080067](https://github.com/Sijiel44/archives-alrick/actions/runs/41323080067), succès sur le code `424b902` : 44 assertions MAG-003.B / 14 scénarios, 181 assertions MAG-003.A, contrôle TypeScript, build, M01–M05 et 15 scénarios navigateur. Le test ne remplace ni la recette humaine ni l'essai réseau. Les conversions Grimoire / objets / Tables sont hors périmètre.
 
 **Dépendance non satisfaite au démarrage :** MAG-003.A PR #69 n'est pas encore officiellement approuvée par la Direction. MAG-003.B se base donc sur sa branche, en PR séparée et non canonique.
 
