@@ -5,7 +5,7 @@
 **Date :** 1er novembre 2026  
 **Dépôt :** `Sijiel44/archives-alrick`  
 **Branche :** `magie/mag003b-rites-collectifs`  
-**PR :** en cours de création (brouillon, empilée sur MAG-003.A #69)  
+**PR :** [#70 — Brouillon](https://github.com/Sijiel44/archives-alrick/pull/70), base MAG-003.A #69  
 **Statut :** développement expérimental ; validation DG en attente.
 
 ## Livrables
@@ -16,7 +16,7 @@ Prévisualisation énergétique fondée sur les états MAG-003.A et leurs identi
 
 ## Vérification et réserves
 
-**Résultat des tests :** à confirmer dans les Checks de la PR et compléter ci-dessous. Le test ne remplace ni la recette humaine ni l'essai réseau. Les conversions Grimoire / objets / Tables sont hors périmètre.
+**Résultat confirmé :** [CI #41322728636](https://github.com/Sijiel44/archives-alrick/actions/runs/41322728636), succès sur le code `075dea2` : 41 assertions MAG-003.B / 14 scénarios, 181 assertions MAG-003.A, contrôle TypeScript, build, M01–M05 et 15 scénarios navigateur. Le test ne remplace ni la recette humaine ni l'essai réseau. Les conversions Grimoire / objets / Tables sont hors périmètre.
 
 **Dépendance non satisfaite au démarrage :** MAG-003.A PR #69 n'est pas encore officiellement approuvée par la Direction. MAG-003.B se base donc sur sa branche, en PR séparée et non canonique.
 
