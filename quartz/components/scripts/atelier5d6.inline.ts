@@ -1835,7 +1835,16 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       message("Profil d'essai ajouté. Les valeurs et l'existence de la créature ne sont pas canoniques.");return
     }
     if(button.hasAttribute("data-roll")){roll();return}
-    if(button.hasAttribute("data-export")){exportSheets();return}
+    if(button.hasAttribute("data-export")){
+      // Chemin de téléchargement dans le handler : robuste lors de la navigation Quartz SPA.
+      const payload={schema:"alrick.sheets.v3",created:new Date().toISOString(),sheets:state.sheets}
+      const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"})
+      const url=URL.createObjectURL(blob),link=document.createElement("a")
+      link.href=url;link.download="archives-alrick-fiches-5d6.json";document.body.append(link);link.click();link.remove()
+      setTimeout(()=>URL.revokeObjectURL(url),1500)
+      message("Fichier JSON exporté : conserve-le pour retrouver tes fiches sur un autre appareil.")
+      return
+    }
     if(button.hasAttribute("data-export-campaign")){exportCampaign();return}
     if(button.hasAttribute("data-clear-log")){state.log=[];refreshLog();persist();message("Journal local effacé.");return}
     if(button.hasAttribute("data-ai-refresh")){renderAI();message("Contexte actualisé à partir des fiches locales.");return}
