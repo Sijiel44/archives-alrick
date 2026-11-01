@@ -3,7 +3,7 @@
  * Démonstration non canonique ; aucune autorité réseau, aucun miracle ou débit collectif.
  * Les champs historiques Grimoire/matrices/charges ne sont jamais interprétés ni modifiés ici.
  */
-import {MANA_SCHEMA,createManaState,applyManaOperation,importManaState,dailyCeiling,MANA_POLICIES} from "./atelier5d6-mana-recovery"
+import {createManaState,applyManaOperation,importManaState,dailyCeiling,MANA_POLICIES} from "./atelier5d6-mana-recovery"
 import type {ManaState,RestKind,ManaOperation} from "./atelier5d6-mana-recovery"
 import {RITUAL_SCHEMA,createRitualInstance,transitionRitual,importRitual,applicationPlan} from "./atelier5d6-rituals-mag003b"
 import type {RitualDefinition,RitualInstance,RitualParticipant,RitualRole,RitualContribution} from "./atelier5d6-rituals-mag003b"
