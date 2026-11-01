@@ -1,6 +1,6 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Au **31 octobre 2026**, `npm run check:content` vérifie **369 pages publiées et 269 codes uniques publiés**. Ce total compte les fiches codées publiées, pas les pages non codées, brouillons, propositions non publiées ou les **645 sujets** du registre directeur v2.4. Ces populations ne sont pas directement soustractibles. Les lots antérieurs plus bas dans ce fichier sont des instantanés historiques.
+Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Au **31 octobre 2026**, `npm run check:content` vérifie **369 pages sélectionnées pour génération et 269 codes uniques publiés**. Ce total compte les fiches codées publiées, pas les pages non codées, brouillons, propositions non publiées ou les **645 sujets** du registre directeur v2.4. Ces populations ne sont pas directement soustractibles. Les lots antérieurs plus bas dans ce fichier sont des instantanés historiques.
 
 **Publication active :** le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. Une PR seule ne publie rien.
 
@@ -243,4 +243,3 @@ Les [[jouer/quetes-sept-cites|35 quêtes locales]] et **50 profils de PNJ prépa
 ## Les villages vivent — Atlas rural et contrats de guilde
 
 Le [[lieux/villages-sept-cites-portail|portail de 14 villages candidats]] présente deux localités **proposées** autour de chacune des Sept Grandes Cités : **28 nouveaux PNJ**, **28 quêtes de village** et [[jouer/contrats-guilde-sept-cites-villages|14 contrats d'aventuriers]]. Trois [[jouer/aventures-guilde-villages-sept-cites|aventures de guilde]] développent l'escorte, le sauvetage aquatique et la crise industrielle. Le [[creatures/bestiaire-villages-sept-cites|bestiaire de sept monstres et animaux]] est expérimental et n'officialise aucune espèce. L'Atlas conserve **263 fiches codées**, sans nouvelles localités cartographiées ni événements inventés dans la campagne d'Orin.
-
