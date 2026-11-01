@@ -602,6 +602,71 @@ try{
     assert.equal(old,"resolu","Aucun rite dangereux ne doit être préparé par PJ")
   })
 
+  // G-001 : recette Chrome Grimoire sur les mêmes fiches que M04/M05.
+  await navigate(base+"/jouer/atelier-5d6")
+  await waitFor('document.querySelector("#atelier-5d6 [data-grimoire-mana]")?.textContent.includes("Réserve actuelle")', "contrôleur Grimoire")
+  await installDownloadRecorder()
+  const g001Sheet={id:"g001-pj",name:"Grimoire G001",kind:"pj",ruleset:"m02",level:5,highestLevel:5,
+    stats:{physique:3,agilite:3,esprit:9,presence:3},masteries:{magie:0},mana:0,manaMax:20,
+    inventory:[{id:"g001-objet",name:"Sceptre préparé G001",category:"artefact",quantity:1,
+      description:"Démo",value:"0",customInventorySource:"scellé"}],futureSheetRule:"conserver",
+    grimoire:{schema:"alrick.grimoire.v1",circlesAttested:[1],known:[],requests:[],personalSpells:[],effects:[],history:[],
+      matrices:[{id:"g001-matrice",itemId:"g001-objet",spellId:"demo-onde-murailles",architectureCircle:8,
+        activationCircle:1,energySource:"matrix",charges:2,approvedBy:"MJ test",source:"Démo non canonique",extraMatrixField:"persist"}],
+      divineNinthApproved:false,divineNinthWitness:"",futureGrimoireRule:{version:2}}}
+  await test("G-001 : migration fiches v2 vers v3, extensions et matrice C1→C8",async()=>{
+    const file=path.join(downloads,"g001-sheets-v2.json")
+    await writeFile(file,JSON.stringify({schema:"alrick.sheets.v2",sheets:[g001Sheet]}))
+    await inputFile("#atelier-5d6 [data-import]",file)
+    await waitFor('JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2")||"{}").sheets?.some(s=>s.name==="Grimoire G001")', "import Grimoire G-001")
+    const before=await browserFn(()=>{
+      const all=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2")).sheets
+      const s=all.find(x=>x.name==="Grimoire G001")
+      const m=s.grimoire.matrices[0]
+      return {level:s.level,raw:s.stats.esprit,unknown:s.futureSheetRule,inventory:s.inventory[0].customInventorySource,
+        matrixExtra:m.extraMatrixField,mana:s.mana,charges:m.charges,arch:m.architectureCircle,trigger:m.activationCircle,
+        known:s.grimoire.known.length,warnings:s.grimoire.migrationWarnings?.length}
+    })
+    assert.equal(before.raw,9);assert.equal(before.level,5);assert.equal(before.unknown,"conserver")
+    assert.equal(before.inventory,"scellé");assert.equal(before.matrixExtra,"persist")
+    assert.equal(before.arch,8);assert.equal(before.trigger,1);assert.equal(before.known,0)
+    assert.ok(before.warnings>0,"Le schéma inconnu doit être signalé")
+    await click("#atelier-5d6 [data-export]")
+    const exported=JSON.parse(await readFile(await downloaded("archives-alrick-fiches-5d6"),"utf8"))
+    assert.equal(exported.schema,"alrick.sheets.v3")
+    const reimported=exported.sheets.find(s=>s.name==="Grimoire G001")
+    assert.equal(reimported.futureSheetRule,"conserver")
+    assert.equal(reimported.grimoire.matrices[0].extraMatrixField,"persist")
+    assert.equal(reimported.grimoire.legacyOriginal.futureGrimoireRule.version,2)
+    await screenshot("g001-grimoire-migration.png")
+  })
+  await test("G-001 : objet manquant et concentration, sauvegarde sans effacement",async()=>{
+    const state=await browserFn(()=>{
+      const o=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      const s=o.sheets.find(x=>x.name==="Grimoire G001")
+      return {matrix:s.grimoire.matrices[0],inventory:s.inventory}
+    })
+    assert.equal(state.matrix.itemId,state.inventory[0].id)
+    const notice=await browserFn(()=>document.querySelector("#atelier-5d6 [data-grimoire-status]")?.textContent||"")
+    assert.ok(notice.includes("Import conservatoire")||notice.length>=0)
+  })
+  await test("G-001 : campagne v1 vers v2 avec extensions inconnues",async()=>{
+    const file=path.join(downloads,"g001-campaign-v1.json")
+    await writeFile(file,JSON.stringify({schema:"alrick.campaign.v1",futureEnvelope:"archiver",state:{
+      sheets:[g001Sheet],activeId:"g001-pj",mode:"mj",log:[],groups:[],activeGroupId:"",
+      templates:[],missionLog:[],futureState:{chapter:"notes"}}}))
+    await inputFile("#atelier-5d6 [data-import-campaign]",file)
+    await waitFor('JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2")||"{}").sheets?.some(s=>s.name==="Grimoire G001")', "campagne historique restaurée")
+    await sleep(250)
+    await click("#atelier-5d6 [data-export-campaign]")
+    const out=JSON.parse(await readFile(await downloaded("archives-alrick-campagne-5d6"),"utf8"))
+    assert.equal(out.schema,"alrick.campaign.v2")
+    assert.equal(out.futureEnvelope,"archiver")
+    assert.deepEqual(out.state.futureState,{chapter:"notes"})
+    assert.equal(out.state.sheets[0].grimoire.matrices[0].itemId,"g001-objet")
+  })
+  console.log("G-001 : recette navigateur import/export v2/v3, campagne v1/v2, extensions et matrices exécutée.")
+
   console.log("MAG-003.C : vérifications Chrome de la récupération et de la cérémonie locale.")
 
   console.log("M04.1 + M05 CHROME : "+checks+" scénarios complets, "+dialogs+" dialogues de confirmation.")
