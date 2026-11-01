@@ -36,7 +36,7 @@ export function readDocumentaryLink(card:BestiaryCard):M05DocumentaryLink|null {
     unlisted:typeof r.unlisted==="boolean"?r.unlisted:null,
     publicPath:typeof r.publicPath==="string"?str(r.publicPath,250):null}
 }
-export function canOfferDocumentaryLink(d:M05DocumentaryLink|null):boolean {
+export function canOfferDocumentaryLink(_d:M05DocumentaryLink|null):boolean {
   // Une approbation locale n'est JAMAIS une preuve de publication. Aucun raccourci URL
   // n'est fourni avant un registre B-001 résolu et validé par le chantier documentaire.
   return false
