@@ -1,16 +1,16 @@
 # DG-001 — Rapport de consolidation et de gouvernance
 
-**État :** corrections documentaires ciblées testées sur `codex/dg-001-consolidation-20261031`; PR [#63](https://github.com/Sijiel44/archives-alrick/pull/63) ouverte en brouillon; CI de la révision corrigée réussie; aucune fusion ni publication demandée ou effectuée.  
-**Base examinée :** `main`, commit `6fe3c79cfdd36e69a6eaa356abc498d29b81f580` (31 octobre 2026, heure locale du projet).  
-**Responsable de cette consolidation :** Direction du projet / référent de coordination DG.  
+**État :** corrections documentaires ciblées testées sur `codex/dg-001-consolidation-20261031`; PR [#63](https://github.com/Sijiel44/archives-alrick/pull/63) ouverte en brouillon; CI de la révision corrigée réussie; aucune fusion ni publication demandée ou effectuée.
+**Base examinée :** `main`, commit `6fe3c79cfdd36e69a6eaa356abc498d29b81f580` (31 octobre 2026, heure locale du projet).
+**Responsable de cette consolidation :** Direction du projet / référent de coordination DG.
 **Décisions réservées au créateur :** validation canonique, autorisation du lot de publication, arbitrages créatifs, approbation visuelle et fusion.
 
 ## Résumé vérifiable
 
-- `npm run check:content` a été exécuté sur le clone de `main` : **369 pages publiées et 269 codes uniques**. Les 645 sujets du registre sont une autre population. Ne pas calculer un nombre de fiches manquantes par soustraction.
+- `npm run check:content` a été exécuté sur le clone de `main` : **369 pages sélectionnées pour génération et 269 codes uniques**. Les 645 sujets du registre sont une autre population. Ne pas calculer un nombre de fiches manquantes par soustraction.
 - `main` contient les rapports et contrats M01–M05. Les PR #57–#62 sont fusionnées; M05 indique que sa CI et le déploiement Pages ont réussi. Les PR #35, #54, #55 et #56 demeurent ouvertes en brouillon au contrôle GitHub du 31 octobre / 1er novembre UTC.
 - Les quinze DOCX et leurs transcriptions CB01–CB04-04 ne sont pas dans `sources/campagnes/` : seul `sources/campagnes/README.md` y est présent. Le paquet local auquel renvoient les issues n'est pas joint à cette intervention. Aucun SHA de ces originaux, aucune recherche plein texte et aucun contrôle de droits sur les fichiers n'ont donc été exécutés.
-- La phrase décrite comme corrompue dans l'ancien audit n'a pas été retrouvée dans `content/jouer/index.md` de `main`; aucune correction textuelle conjecturale n'a été appliquée. Le plan contenait en revanche des mentions actives du niveau 1–12 alors que les pages de l'atelier et les rapports M01–M05 décrivent désormais 1–25.
+- Correction DG-001.1 : le passage corrompu de `content/jouer/index.md` a été retrouvé et reformulé ; il conserve le caractère expérimental du 5d6 et la non-rétroactivité. Le plan contenait en revanche des mentions actives du niveau 1–12 alors que les pages de l'atelier et les rapports M01–M05 décrivent désormais 1–25.
 - Aucun code du moteur 5d6 n'a été modifié. Le rapport M05 donne des preuves automatisées d'intégration; ses limites indiquent encore l'absence de playtest humain général, de vérification physique multi-appareil et de certains contrôles lecteurs d'écran.
 
 ## Registre d'actions
@@ -23,7 +23,7 @@
 | Le plan référençait encore des niveaux 1–12. | Guides et modules donnent des contrats incompatibles. | Décrire 1–25 comme plage expérimentale actuelle et non comme canon des personnages historiques. | 5d6 / P0 | Playtest humain et validation des règles restent à faire. |
 | Documents de registre et issue #39 décrivent un paquet CB01–CB04-04 absent de l'arbre Git. | Une page de registre pourrait être prise à tort pour la preuve d'import. | Clarifier le circuit de transfert, manifeste SHA-256, recherche, doublons, secrets, droits et restauration; ne pas importer à l'aveugle. | Sources / P0 | Les fichiers eux-mêmes sont requis pour vérifier puis importer. |
 | #35 vise encore un pipeline privé qui refuse l'ajout au dépôt public. | L'outil contredit l'orientation d'archivage public autorisée. | Recommander une adaptation contrôlée de #35 tout en séparant `sources/` de Quartz et en gardant l'import sans auto-validation canonique. | Sources / P0 | Confirmer les exceptions réelles de droits/sensibilité au cas par cas. |
-| Index `content/jouer/index.md`: accusation de phrase corrompue non reproduite; plan obsolète vérifié. | Correction fausse ou règle expérimentale promue par erreur. | Ne rien inventer sur la phrase; corriger la plage 1–12 démontrée dans README/plan. | Éditorial / P0 | Aucun pour la correction documentaire; les règles demeurent expérimentales. |
+| Index `content/jouer/index.md` : passage Markdown corrompu confirmé ; plan obsolète vérifié. | Correction fausse ou règle expérimentale promue par erreur. | Reformuler le passage corrompu sans règle nouvelle ; corriger la plage 1–12 démontrée dans README/plan. | Éditorial / P0 | Aucun pour la correction documentaire; les règles demeurent expérimentales. |
 
 ## Architecture documentaire retenue
 
@@ -82,7 +82,7 @@ Les prompts autonomes complets sont dans [DG-001 — Missions spécialisées](DG
 ## Tests et limites de cette PR
 
 - Installations locales réalisées avec `npm ci` (Node/npm locaux; 4 vulnérabilités npm annoncées à l'installation : 2 modérées, 2 élevées; aucune correction de dépendances tentée).
-- `npm run check:content` : réussi, 369 pages publiées et 269 codes uniques.
+- `npm run check:content` : réussi, 369 pages sélectionnées pour génération et 269 codes uniques.
 - `npm test` sur cette branche : réussi; inclut `check:content`, TypeScript, build Quartz, `check:site`, tests de probabilité/équilibre, suites de progression/M02/M03/M04/M05. Le build a vérifié 873 pages HTML et 64 196 liens/ressources; tests M05 : 1 390 assertions pures. La suite complète ne lance pas la recette navigateur Chrome séparée `npm run test:m04:browser`.
 - PR #54 : `npm run tables:test` réussi dans son worktree; PR #55 : `node scripts/test-5d6-grimoire.mjs` réussi dans son worktree; PR #56 : `npm test` réussi dans son worktree (868 pages HTML, 62 910 liens/ressources). Ces résultats correspondent aux heads de branche observés le 31 octobre/1er novembre UTC et peuvent changer si les branches bougent.
 - CI distante de PR #63 sur le commit corrigé `4fcb98793a69dbf9693ba76fa0f9d892727ab3d3` : run [#41262370750](https://github.com/Sijiel44/archives-alrick/actions/runs/41262370750) réussi, y compris `npm test` et `npm run test:m04:browser`. Deux premières exécutions avaient échoué parce qu'un transfert du long suivi éditorial avait été tronqué; le journal l'a identifié, le fichier complet a été retransféré, puis la CI complète est passée.
@@ -95,3 +95,7 @@ Les prompts autonomes complets sont dans [DG-001 — Missions spécialisées](DG
 - `README.md`, `PLAN_DEVELOPPEMENT_UNIVERS.md`, `content/suivi-editorial.md` — compteur daté et statut historique des anciens comptes; progression expérimentale 1–25.
 - `docs/SOURCES_CAMPAGNES_PUBLIQUES.md` — procédure d'import public, d'intégrité, de recherche et de restauration.
 - Ce rapport et le recueil des prompts autonomes.
+
+## Complément DG-001.1
+
+Base de reprise : PR #63, commit `a4b7f8cc7f9e6bf00182f3e025e287028977c42a`, CI [#41262473174](https://github.com/Sijiel44/archives-alrick/actions/runs/41262473174) réussie, incluant `npm test` et la recette Chrome. Les preuves de la nouvelle révision figurent dans les vérifications de la PR. Le compteur de 369 désigne les pages sélectionnées pour génération par `check:content`, pas une mesure de déploiement effectif.
