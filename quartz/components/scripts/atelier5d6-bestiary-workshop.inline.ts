@@ -4,6 +4,7 @@ import type { BestiaryCard, BestiaryKind, BestiaryRole, BestiaryStatus } from ".
 import { effectiveStat, effectiveMastery } from "./atelier5d6-progression"
 import { resistanceScoreM03, effectiveProtectionM03 } from "./atelier5d6-combat-m03"
 import type { CreatureArchetype } from "./atelier5d6-bestiary"
+import {renderM05Sheet} from "./atelier5d6-m05-sheet-dom"
 
 function startBestiary(){
   const foundHost=document.querySelector<HTMLElement>("#bestiary-workshop")
@@ -115,6 +116,7 @@ function startBestiary(){
     else classification="extrême"
     one<HTMLElement>("[data-danger]").textContent="Évaluation exploratoire : "+classification+
       " ; "+turns+" pour "+v.opponentCount+" personnages. Critères provisoires : faible si ≤2 rounds et pression inférieure, modérée si ≤5 rounds et pression ≤1,5×, élevée si ≤10 rounds et pression ≤3×, extrême autrement. Non calibrée par playtest."
+    renderM05Sheet(host,c,v)
   }
   function render(){
     const c=current()
@@ -123,6 +125,11 @@ function startBestiary(){
       const opt=document.createElement("option");opt.value=s.id;opt.textContent=s.name+" · N"+s.level;return opt
     }))
     selector.value=c.id
+    const doc=(c.documentaryLink && typeof c.documentaryLink==="object" && !Array.isArray(c.documentaryLink))
+      ?c.documentaryLink as Record<string,unknown>:{}
+    inputValue('[data-m05-link="id"]',typeof doc.id==="string"?doc.id:"")
+    inputValue('[data-m05-link="type"]',doc.type==="espece"||doc.type==="autre"?doc.type:"individu")
+    inputValue('[data-m05-link="source"]',typeof doc.source==="string"?doc.source:"")
     for(const key of ["name","description","origin","profession","notes"] as const)
       inputValue("[data-text="+key+"]",c[key])
     for(const key of ["kind","role","status"] as const)
@@ -157,7 +164,7 @@ function startBestiary(){
   function regenerate(resetNumeric=false){
     const c=current()
     const p=createBestiaryCard(c.level,c.archetype,c.kind,c.role)
-    const replacement={...p,id:c.id,name:c.name,description:c.description,profession:c.profession,
+    const replacement={...c,...p,id:c.id,name:c.name,description:c.description,profession:c.profession,
       origin:c.origin,notes:c.notes,status:c.status,abilities:c.abilities}
     if(resetNumeric===false)replacement.name=c.name
     cards=cards.map(x=>x.id===c.id?replacement:x)
@@ -195,7 +202,7 @@ function startBestiary(){
     }else return
     persist()
     if(t.dataset.text==="name")one<HTMLSelectElement>("[data-active]").selectedOptions[0].textContent=c.name+" · N"+c.level
-    if(t.dataset.stat||t.dataset.mastery||t.dataset.def||t.dataset.number||t.dataset.opponentLevel||t.dataset.opponentCount||t.dataset.situation)
+    if(t.dataset.text||t.dataset.stat||t.dataset.mastery||t.dataset.def||t.dataset.number||t.dataset.opponentLevel||t.dataset.opponentCount||t.dataset.situation)
       renderMath()
     if(t.dataset.stat||t.dataset.mastery) {
       const rank=t.dataset.stat?c.stats[t.dataset.stat as "physique"]:c.masteries[t.dataset.mastery!]
@@ -228,6 +235,24 @@ function startBestiary(){
       return
     }
     const c=current()
+    if(t.dataset.m05Format!==undefined){renderMath();return}
+    if(t.dataset.m05Link!==undefined){
+      const field=t.dataset.m05Link
+      const previous=(c.documentaryLink&&typeof c.documentaryLink==="object"&&!Array.isArray(c.documentaryLink))
+        ?c.documentaryLink as Record<string,unknown>:{}
+      const next={...previous}
+      if(field==="id"){
+        if(t.value&& !/^[A-Za-z0-9-]{2,90}$/.test(t.value)){msg("Code documentaire : 2 à 90 caractères alphanumériques ou tirets.");render();return}
+        next.id=t.value
+      }else if(field==="type"){
+        next.type=["espece","individu","autre"].includes(t.value)?t.value:"autre"
+      }else if(field==="source")next.source=t.value.slice(0,220)
+      else return
+      // Aucune métadonnée publish/canon n'est déduite du choix local.
+      c.documentaryLink=next
+      persist();renderMath()
+      return
+    }
     if(t.dataset.choice==="status"){
       if(t.value==="documentaire_approuve"&&!window.confirm("Confirmation MJ : cette mention locale n'intègre PAS automatiquement l'entrée au bestiaire canonique. Continuer ?")){
         render();return
@@ -289,6 +314,15 @@ function startBestiary(){
       msg("Export JSON versionné créé.")
       return
     }
+    if(action==="print-m05"){window.print();return}
+    if(action==="example-m05"){
+      if(cards.length>=60){msg("Limite de 60 fiches atteinte.");return}
+      const sample=createBestiaryCard(15,"colosse")
+      sample.name="Colosse — référence mécanique N15"
+      cards.push(sample);active=sample.id;persist();render()
+      msg("Profil d'essai Colosse N15 créé sans espèce ni canon documentaire.")
+      return
+    }
     if(action==="new"){
       if(storageDamaged){
         if(!window.confirm("La sauvegarde locale existante est illisible. La remplacer par une nouvelle partie ? Exportez d’abord les données si vous souhaitez essayer de les récupérer."))return
@@ -342,6 +376,16 @@ function startBestiary(){
       persist();render()
       msg("Capacité narrative enregistrée sans effet mécanique automatique.")
     }
+  },opts)
+  let printState:Array<{el:HTMLDetailsElement;open:boolean}>=[]
+  window.addEventListener("beforeprint",()=>{
+    printState=Array.from(host.querySelectorAll<HTMLDetailsElement>("[data-m05-content] details"))
+      .map(el=>({el,open:el.open}))
+    for(const x of printState)x.el.open=true
+  },opts)
+  window.addEventListener("afterprint",()=>{
+    for(const x of printState)x.el.open=x.open
+    printState=[]
   },opts)
   render()
   host.dataset.initialized="true" // signal de recette : données ET événements interactifs prêts.
