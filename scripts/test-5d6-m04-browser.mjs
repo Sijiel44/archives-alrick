@@ -254,6 +254,16 @@ try{
   })
   await test("M05 : impression réelle Chrome et formats",async()=>{
     await set("[data-m05-format]","combat","change")
+    await cdp("Emulation.setEmulatedMedia",{media:"print"})
+    const printRules=await browserFn(()=>({
+      sidebar:getComputedStyle(document.querySelector(".left.sidebar")).display,
+      intro:getComputedStyle(document.querySelector(".archive-intro")).display,
+      title:getComputedStyle(document.querySelector(".m05-identity h3")).color
+    }))
+    assert.equal(printRules.sidebar,"none","navigation latérale encore imprimée")
+    assert.equal(printRules.intro,"none","titre du site encore imprimé")
+    assert.equal(printRules.title,"rgb(17, 17, 17)","contraste de la fiche insuffisant sur fond blanc")
+    await cdp("Emulation.setEmulatedMedia",{media:"screen"})
     const result=await cdp("Page.printToPDF",{printBackground:true,preferCSSPageSize:true})
     const pdf=Buffer.from(result.data,"base64")
     assert.ok(pdf.length>5000,"PDF imprimé anormalement vide")
