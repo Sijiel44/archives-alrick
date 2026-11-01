@@ -1,6 +1,8 @@
 import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,innateProtection,equipmentProtection} from "./atelier5d6-opposition"
 import {createGrimoirePanel,newGrimoire,normalizeGrimoire} from "./atelier5d6-grimoire"
 import type {Grimoire} from "./atelier5d6-grimoire"
+import {createRitesPanel} from "./atelier5d6-rites-mag003c"
+import type {RiteWorkspace} from "./atelier5d6-rites-mag003c"
 import {generateCreatureProfileM03} from "./atelier5d6-bestiary"
 import {validateBestiaryCard} from "./atelier5d6-bestiary-workshop"
 import {resistanceScoreM03,effectiveProtectionM03,innateProtectionM03,equipmentProtectionM03,resolveCombatM03} from "./atelier5d6-combat-m03"
@@ -117,7 +119,7 @@ type Sheet = {
   notes: string; gmNotes: string; lifeSteps:string[]; lifeSummary:string
   education:EducationId|""; literacy:LiteracyLevel|""; backstory:string;connections:string;goal:string
   affinities:Affinity[]; powers:Power[]
-  externalMedia:SheetArtwork[];powerHistory:PowerUse[];grimoire:Grimoire
+  externalMedia:SheetArtwork[];powerHistory:PowerUse[];grimoire:Grimoire;ritualWorkshop?:RiteWorkspace
   ruleset:"legacy"|"m02"|"m03-bestiary";development:Development;legacyOriginal:Record<string,unknown>|null
   bestiarySource:Record<string,unknown>|null
 }
@@ -416,9 +418,13 @@ function setupAtelier5d6() {
     try { localStorage.setItem(STORAGE,JSON.stringify(state)) }
     catch { message("Stockage indisponible ou saturé. Exportez votre fiche en JSON pour la conserver.") }
   }
+  const ritesPanel=createRitesPanel({root:host,getSheet:current,getSheets:()=>state.sheets,
+    isMJ:()=>state.mode!=="pj",persist,message,onChange:()=>{setForm();refreshPoints()}})
   const grimoirePanel=createGrimoirePanel({root:host,getSheet:current,getSheets:()=>state.sheets,
     isMJ:()=>state.mode!=="pj",persist,message,
-    onChange:()=>{renderAffinities();refreshEffectsSummary()}})
+    onManaChanged:(sheet,before,after,reason)=>{const tracked=ritesPanel.onManaChanged(sheet,before,after,reason)
+      if(!tracked&&sheet.ritualWorkshop?.recovery)message("Registre MAG-003.C divergent : récupération bloquée, vérifier le mana.")},
+    onChange:()=>{renderAffinities();refreshEffectsSummary();ritesPanel.render()}})
   function refreshEffectsSummary(){
     const sheet=current()
     q<HTMLElement>("[data-sheet-effects-summary]").textContent=sheet.grimoire.effects.length
@@ -872,7 +878,7 @@ function setupAtelier5d6() {
       "Aucun bonus à la précision, aucun mana ou effet cosmique automatique.":
       "Sélectionner une affinité validée sur cette fiche. Sans sélection, aucun bonus d'impact."
   }
-  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities();renderMedia();grimoirePanel.render()}
+  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities();renderMedia();grimoirePanel.render();ritesPanel.render()}
   function renderAI(){
     const s=current(), include=q<HTMLInputElement>("[data-ai-roster]").checked
     const group=state.groups.find(g=>g.members.includes(s.id))
