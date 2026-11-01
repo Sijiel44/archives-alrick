@@ -1,8 +1,8 @@
 # MAG-003 — Pilotage de Direction générale
 
 **Point de contrôle : 1er novembre 2026**  
-**Dernier jalon examiné : MAG-003.C — intégration expérimentale ; revue DG du 1er novembre 2026.**  
-**État consolidé de Direction : A validée techniquement ; B acceptée comme prototype à consolider ; C terminée avec réserves. PR #69, #70 et #71 ouvertes en brouillon ; aucune fusion, publication ou canonisation.**  
+**Dernier jalon examiné : MAG-003.D — consolidation technique ; revue DG du 1er novembre 2026.**  
+**État consolidé de Direction : A validée techniquement ; B prototype accepté avec consolidation ; C terminée avec réserves ; D validée techniquement avec réserves. PR #69 à #72 ouvertes en brouillon ; aucune fusion, publication ou canonisation.**  
 **Autorité :** Direction générale et créateur des Archives d'Alrick ; aucune validation canonique anticipée.
 
 ## Chaîne GitHub et périmètre
@@ -154,3 +154,31 @@ MAG-003.C assure **une compatibilité préparatoire avec les Tables T-001 #66**,
 **Réserves toujours explicites :** A/B/C non fusionnées, ambiguïté G-001 `charges`, pas de modèle de foi officiel, pas d'autorité serveur rituelle, tests humains multi-appareils et migration historique exhaustive non réalisés. Ces absences ne sont pas des succès implicites.
 
 **Verrou Direction :** aucune fusion `main` ; aucun déploiement Pages ; aucune modification cosmologique/canonique ; aucune transaction collective avant contrôle des permissions, des révisions et de l'atomicité serveur.
+
+
+---
+
+## Décision de Direction générale — clôture technique MAG-003.D (1er novembre 2026)
+
+**Vérification directe GitHub :** [PR #72](https://github.com/Sijiel44/archives-alrick/pull/72) ouverte en **DRAFT**, head de code et documentation `b5ba4f304983f1ecf098c0b62bce97a662cfab50`, base `magie/mag003c-integration-rites`, lui-même dépendant de B #70 et A #69. [CI finale #41326933850](https://github.com/Sijiel44/archives-alrick/actions/runs/41326933850) : **completed / success**, SHA conforme. Les rapports décrivent 181 assertions A, 44 B, 44 C, 46 D et 19 scénarios Chrome automatisés ; **aucun playtest humain sur PC ou téléphone physique attesté**.
+
+### Décisions de clôture
+
+- **MAG-003.D : VALIDÉE TECHNIQUEMENT AVEC RÉSERVES.** Le correctif soutien qualifié, le plafond contextuel +1, les rites ordinaires autonomes PJ et les protections d'idempotence constituent une base expérimentale recevable.
+- **Publication et fusion : NON AUTORISÉES.** Les PR #69 à #72 restent en brouillon, sans canonisation ni activation d'opérations collectives autoritaires.
+- **Soutien contextuel :** identité, rôle, maîtrise déclarée et droit de Cercle sont vérifiés ; **réserve résiduelle** : la compétence présente doit encore être reliée à une liste ou règle explicite de compétences **pertinentes pour la contribution exacte**. Aucun avantage fondé sur « première maîtrise disponible » ne doit être accepté comme mécaniquement autoritaire.
+- **Repos :** D refuse la réutilisation d'un même identifiant pour un type de repos différent ; **réserve résiduelle** : même identifiant et même type mais conditions/prérequis/demande modifiés doivent être comparés à une **empreinte complète et canonique** de l'opération avant toute utilisation comme journal autoritaire.
+- **Grimoire G-001 #55 : BLOCAGE RÉEL.** [PR #55](https://github.com/Sijiel44/archives-alrick/pull/55) toujours ouverte en brouillon et déclarée non fusionnable au contrôle ; [CI indépendante #41267847377](https://github.com/Sijiel44/archives-alrick/actions/runs/41267847377) terminée en **échec** sur `76cabcd7423e83264099063c6e1ac76d80677027`. Les CI vertes D sont propres à son arbre et ne prouvent pas la fusion conjointe G-001 + A–D vers `main`.
+- **Tables T-001 #66 :** compatibilité préparatoire et audit, pas de synchronisation rituelle ni de transactions serveur multi-participants.
+
+### Ordre des prochains travaux : recette et réconciliation finale MAG-003.E
+
+1. Faire un diagnostic reproductible de la CI et de la fusion de G-001 #55 ; corriger dans une branche de réconciliation adaptée, sans écraser une branche propriétaire ni intégrer de règles d'énergie non arbitrées.
+2. Ajouter un lien **contribution → compétence admissible** contrôlé à la définition du rite, et une vérification refusant les compétences non pertinentes, sans modifier le plafond +1.
+3. Définir une empreinte de requête de repos qui inclut paramètres et conditions réellement déterminants ; vérifier rejouabilité identique et refus d'un identifiant réutilisé avec contenu divergent.
+4. Tester les sauvegardes historiques et migrations sur copies, y compris G-001, MAG-003.A–D et import/export des fiches.
+5. Organiser des parcours **humains** PJ/MJ sur ordinateurs et téléphones physiques ou déclarer ceux-ci non accomplis et bloquants selon la politique de publication.
+6. Préparer sur une **branche/PR d'intégration distincte** un arbre commun G-001 + MAG-003.A→D, avec revues de conflits, CI complète sur la tête réellement destinée à `main` et sans fusion automatique.
+7. Conserver hors périmètre de cette consolidation les contrats créatifs non validés : énergie stockée vs usages d'objet ; foi, prières et intervention divine. Les traiter dans des dossiers d'arbitrage séparés.
+
+**Porte de sortie :** la validité expérimentale de D n'autorise ni fusion, ni publication, ni économie de foi, ni opération serveur. Toute décision ultérieure requiert les preuves techniques du nouvel arbre et une autorisation explicite du créateur et de la Direction.
