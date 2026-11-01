@@ -40,7 +40,7 @@ for (const relation of register.relations_documentaires) {
  check(knownFiles.has(relation.cible), 'Cible de relation documentaire introuvable')
  check(relation.publication_autorisee === false, 'Publication implicite interdite')
 }
-const verifiedCodes = new Map(), duplicateCodes = [],invalidCanon = [],invalidEditorial = [],unsafeSpoilers = [],missingExplicitTargets = []
+const verifiedCodes = new Map(), duplicateCodes = [],invalidCanon = [],invalidEditorial = [],unsafeSpoilers = [],missingExplicitTargets = [],enriched = []
 let examined = 0, filesWithCode = 0, published = 0, spoiling = 0, wikilinks = 0
 for (const item of inventory.entrees) {
  check(!path.isAbsolute(item.chemin) && !item.chemin.split('/').includes('..'), 'Chemin non sûr')
@@ -52,6 +52,8 @@ for (const item of inventory.entrees) {
  const matched = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)
  check(matched !== null, 'Frontmatter manquant: '+item.chemin)
  const meta = YAML.parse(matched[1])
+ const safeLinks = meta.spoilers === true ? [] : [...source.matchAll(/\[\[([^\]]+)\]\]/g)].map(m => m[1].split('|')[0].split('#')[0].trim()).filter(t => /^(creatures|personnages|groupes|lieux|monde)\//.test(t)).map(t => 'content/'+t+(t.endsWith('.md')?'':'.md'))
+ enriched.push({chemin:item.chemin,code:meta.code ?? null,nom:meta.title ?? null,categorie:meta.categorie ?? null,canon_statut:meta.canon_statut ?? null,etat_editorial:meta.etat_editorial ?? null,publish:meta.publish ?? null,spoilers:meta.spoilers === true,unlisted:meta.unlisted ?? null,liens_editoriaux: [...new Set(safeLinks)].map(t => ({cible:t,existe:knownFiles.has(t),nature:'renvoi_editorial_non_taxonomique'})),preuve:'frontmatter_et_texte_lus_par_CI'})
  if (meta.publish === true) published++
  if (meta.spoilers === true) spoiling++
  if (meta.canon_statut && !allowedCanon.has(meta.canon_statut)) invalidCanon.push(item.chemin)
@@ -111,5 +113,6 @@ const audit = {
 }
 await mkdir('artifacts/b002',{recursive:true})
 await writeFile('artifacts/b002/integrite.json',JSON.stringify(audit,null,2)+'\n')
+await writeFile('artifacts/b002/inventaire-enrichi.json',JSON.stringify({schema:'alrick.b002.inventaire-enrichi.v1',source_commit:inventory.source_commit,perimetre:scoped,entrees:enriched},null,2)+'\n')
 console.log('B-002 intégrité:',JSON.stringify(audit))
 if (missingExplicitTargets.length) console.log('B-002: chemins wiki explicites à revoir (compte uniquement):',missingExplicitTargets.length)
