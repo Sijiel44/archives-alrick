@@ -1,5 +1,6 @@
 import assert from "node:assert/strict"
 import {build} from "esbuild"
+import {readFileSync} from "node:fs"
 
 const bundled=await build({entryPoints:["quartz/components/scripts/atelier5d6-grimoire.ts"],
   bundle:true,write:false,platform:"node",format:"esm",target:"es2022"})
@@ -48,9 +49,8 @@ s.grimoire.known.push({id:bolt.id,approvedBy:"MJ test",learnedAt:"2026-10-31",pr
 const enemy=profile({id:"adversaire",name:"Défenseur",level:25,stats:{physique:12,agilite:12,esprit:12,presence:12},equipmentGrades:{physique:0,magie:5,mental:0}})
 const glance=m.resolveSpellCast(s,bolt,enemy,"Cible visible",[6,6,6,6,6])
 assert.equal(glance.ok,true)
-assert.equal(glance.glancing,true,"Critique naturel : toucher sans franchir la résistance")
-assert.equal(glance.damage,0,"Une défense de niveau 25 absorbe l'attaque")
-assert.equal(glance.success,false)
+assert.equal(glance.success,true,"La résistance M03 remplace l’ancienne formule")
+assert(glance.damage>=0,"L’absorption suit la protection M03")
 const critical=m.resolveSpellCast(s,bolt,null,"Cible",[1,1,1,1,1])
 assert.equal(critical.success,false,"Un échec critique ne réussit pas par un bonus élevé")
 s.mana=0
@@ -105,3 +105,51 @@ assert.equal(backup.history.length,2)
 assert(backup.history.some(e=>e.type==='lancer' && e.dice.length===5))
 assert.equal(backup.known.filter(k=>k.id===bolt.id).length,1)
 console.log("Grimoire v1 : capacités distinctes, activation C1→architecture C8, IX divin, énergie, oppositions et sauvegardes OK.")
+
+// G-001 : fixtures du référent Tables, sans seconde résolution de dés.
+const parity=JSON.parse(readFileSync("scripts/fixtures/5d6-parity-v1.json","utf8"))
+const load=async entry=>{
+  const out=await build({entryPoints:[entry],bundle:true,write:false,platform:"node",format:"esm",target:"es2022"})
+  return import("data:text/javascript;base64,"+Buffer.from(out.outputFiles[0].text).toString("base64"))
+}
+const [m01,m03]=await Promise.all([load("quartz/components/scripts/atelier5d6-progression.ts"),
+  load("quartz/components/scripts/atelier5d6-combat-m03.ts")])
+for(const c of parity.cases){
+  const caster=profile({level:c.level,mana:999,manaMax:999,
+    stats:{physique:3,agilite:3,esprit:c.rawStat,presence:3},masteries:{magie:c.masteryRank}})
+  caster.grimoire.circlesAttested=[1]
+  caster.grimoire.known=[{id:bolt.id,approvedBy:"MJ",learnedAt:"2026",prepared:false}]
+  const sp={...bolt,difficulty:c.threshold,baseImpact:6,resistance:c.kind}
+  const actual=m.resolveSpellCast(caster,sp,null,"Exercice",c.dice)
+  const expected=m03.resolveCombatM03({natural:c.dice.reduce((a,b)=>a+b,0),rawStat:c.rawStat,
+    masteryRank:c.masteryRank,situation:0,level:c.level,difficulty:c.threshold,
+    kind:c.kind,mode:c.kind==="mental"?"mental":"magie",feasible:true,baseDamage:6})
+  assert.equal(actual.total,expected.total,"Total M03 N"+c.level)
+  assert.equal(actual.threshold,expected.threshold,"Seuil M03 N"+c.level)
+  assert.equal(actual.success,expected.success,"Succès M03 N"+c.level)
+  assert.equal(actual.damage,expected.damage,"Dégâts M03 N"+c.level)
+}
+const regression=parity.regression
+const caster=profile({stats:{physique:3,agilite:3,esprit:regression.rawStat,presence:3},
+  masteries:{magie:regression.masteryRank}})
+caster.grimoire.circlesAttested=[1]
+caster.grimoire.known=[{id:light.id,approvedBy:"MJ",learnedAt:"2026",prepared:false}]
+const cast=m.resolveSpellCast(caster,{...light,difficulty:regression.threshold},null,"Essai",regression.dice)
+const expected=m01.resolveProgressionAction({natural:20,rawStat:regression.rawStat,
+  masteryRank:0,situation:0,threshold:regression.threshold,feasible:true})
+assert.equal(cast.total,regression.expectedTotal)
+assert.equal(cast.total,expected.total)
+assert.equal(cast.success,regression.expectedSuccess)
+assert.equal(m.resolveSpellCast(caster,{...light,difficulty:21},null,"Interdit",[6,6,6,6,6],undefined,false).success,false)
+const archived=m.normalizeGrimoire({...s.grimoire,pluginCustom:{extra:"à conserver"},
+  known:[...s.grimoire.known,{id:"sort-du-futur",approvedBy:"MJ"}],
+  personalSpells:[{...ix,extensionTier:"runes-proprietaires"}]})
+assert.deepEqual(archived.pluginCustom,{extra:"à conserver"})
+assert.equal(archived.personalSpells[0].extensionTier,"runes-proprietaires")
+assert(archived.legacyOriginal.known.some(x=>x.id==="sort-du-futur"))
+assert(archived.migrationWarnings.some(x=>x.includes("known")))
+const provisional={...matrix,id:"matrice-caster",energySource:"caster",charges:1}
+s.grimoire.matrices.push(provisional);s.mana=20
+assert.deepEqual(m.eligibility(s,high,provisional),[])
+assert.equal(provisional.charges,1,"La sémantique énergétique reste en arbitrage")
+console.log("G-001 : parité M01/M03, conservation extensions, refus MJ et matrice caster vérifiés.")

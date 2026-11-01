@@ -13,8 +13,8 @@ assert.equal(counts.get(30),1)
 const chance=(target,bonus)=>{
   let successes=0
   for(const [natural,count] of counts){
-    // Le cinq naturel demeure un échec exceptionnel, quels que soient les bonus.
-    if(natural!==5 && natural+bonus>=target)successes+=count
+    // Les naturels 5–7 échouent obligatoirement, même avec de gros bonus.
+    if(natural>7 && natural+bonus>=target)successes+=count
   }
   return successes/7776
 }
@@ -22,7 +22,7 @@ const almost=(value,expected)=>assert(Math.abs(value-expected)<0.0001,`Chance at
 almost(chance(21,3),.5)
 almost(chance(21,1),.30516975308641975)
 almost(chance(30,12),.5)
-almost(chance(30,24),7775/7776)
+almost(chance(30,24),7755/7776)
 assert(chance(27,6)<chance(27,12))
 assert(chance(36,12)<.1)
 assert(chance(42,14)<.01)
@@ -60,7 +60,7 @@ for(const item of missions.missions){
   assert(Array.isArray(item.certifications) && item.certifications.every(x=>typeof x==='string'))
 }
 const script=await readFile('quartz/components/scripts/atelier5d6.inline.ts','utf8')
-assert(script.includes('const STORAGE = "archives-alrick-atelier-5d6-v1"'),'Clé de sauvegarde historique modifiée')
+assert(script.includes('const LEGACY_STORAGE = "archives-alrick-atelier-5d6-v1"') && script.includes('const STORAGE = "archives-alrick-atelier-5d6-v2"') && script.includes('localStorage.getItem(LEGACY_STORAGE)'),'Lecture rétrocompatible des sauvegardes historiques absente')
 assert(script.includes('const maxStatCredits = (level:number) => 12+6*(level-1)'),'Règle des six crédits absente')
 assert(script.includes('alrick.campaign.v1'),'Sauvegarde de campagne absente')
 assert(!script.includes('const total=natural+s.stats[stat]+skill+situation+'),'Ne pas introduire de bonus numérique additionnel non équilibré')

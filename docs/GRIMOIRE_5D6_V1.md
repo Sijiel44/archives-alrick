@@ -32,7 +32,7 @@ Le champ expérimental `effectLevel` (1–25) décrit **l'intensité chiffrée c
 
 ### Ce qui existe dans la version initiale
 
-Le hub contient un nouvel onglet **Grimoire**. Le système conserve `archives-alrick-atelier-5d6-v1` et les imports/exports actuels `alrick.sheets.v2` et `alrick.campaign.v1`. La fiche enrichie conserve désormais un bloc **optionnel** `grimoire` qui est régénéré à vide lors de l'import d'une vieille sauvegarde.
+Le hub contient un nouvel onglet **Grimoire**. Le système conserve `archives-alrick-atelier-5d6-v1` et les imports/exports actuels `alrick.sheets.v3` et `alrick.campaign.v2`. La fiche enrichie conserve désormais un bloc **optionnel** `grimoire` qui est régénéré à vide lors de l'import d'une vieille sauvegarde.
 
 - Catalogue : six sorts de démonstration **non canoniques**, classés par usage, et créations locales du MJ attachées à la fiche. Pas de promotion automatique vers le référentiel officiel.
 - Apprentissage : demande locale PJ, approbation/retrait en mode MJ ; préparation si requise par un sort ; vérification systématique de la connaissance et du Cercle attesté.
@@ -96,3 +96,11 @@ Aucune connexion réseau fictive. Le moteur et les événements peuvent être d�
 ## Ce qui reste hors v1
 
 Le grimoire n'a pas encore de véritable catalogue **canon validé** ; la traduction de sorts tirés des volumes demande une revue avec références exactes. Une création de campagne et ses matrices préparées sont attachées à une fiche et ne peut pas encore être synchronisée entre plusieurs personnes. Les ressources autres que le mana, la sélection d'options avancées, les interruptions externes/contre-sorts, les soins et altérations appliqués à une **autre** fiche, les effets permanents soumis à une vraie autorisation, les animations et les tests utilisateurs mobiles sont à développer après validation de cette tranche.
+
+## G-001 — Réconciliation M01–M05 (31 octobre 2026)
+
+- Le Grimoire est ajouté à l’Atelier courant sans effacer les interfaces M02, combat M03, Bestiaire M04/M05. Les sauvegardes publiques restent `alrick.sheets.v3` et `alrick.campaign.v2`; les versions plus anciennes sont acceptées.
+- Les résolutions s’appuient sur `resolveProgressionAction` et `resolveCombatM03`. Les caractéristiques brutes restent distinctes des bonus effectifs, ainsi que niveau, Cercle, maîtrise, affinité et intensité de matrice.
+- Les extensions inconnues des fiches, objets, sorts, matrices, effets et historiques sont conservées. Les entrées de Grimoire rejetées par la validation restent archivées sous `legacyOriginal` avec avertissements `migrationWarnings`.
+- Arbitrage énergétique OUVERT : une matrice `energySource=caster` consomme encore une charge et le mana du porteur (comportement historique provisoire), sans canonisation. Voir rapport G-001.
+- Les six sorts de démonstration sont expérimentaux et non canoniques. Les essais manuels sur profils réels restent nécessaires.

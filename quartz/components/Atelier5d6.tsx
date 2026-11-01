@@ -44,6 +44,8 @@ export const Atelier5d6: QuartzComponent = (props) => {
       <button type="button" data-mode="ia" role="tab" aria-selected="false">MJ assisté par IA</button>
     </div>
     <p class="atelier-notice" data-status role="status" aria-live="polite">Les changements sont enregistrés dans ce navigateur.</p>
+    <p class="atelier-hint" data-ruleset-notice>Détection de la version des règles…</p>
+    <button type="button" data-migrate-legacy hidden>Créer une adaptation M02 (ancienne fiche conservée)</button>
     <div class="atelier-toolbar">
       <label>Personnage actif
         <select data-active aria-label="Sélectionner un personnage">
@@ -177,23 +179,74 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <legend>Caractéristiques <span data-points>12 / 12 points</span></legend>
           {attributes.map(([key, label, help]) => <label class="atelier-stat" key={key}>
             <span><strong>{label}</strong><small>{help}</small></span>
-            <input type="number" data-stat={key} value={3} min={1} max={12} step={1} aria-label={label}/>
+            <input type="number" data-stat={key} value={3} min={1} step={1} aria-label={label}/>
+            <small data-stat-bonus={key}>Bonus en cours de chargement</small>
           </label>)}
-          <small class="atelier-hint">Au niveau 1 : 12 points (1 à 5 par caractéristique). Puis +6 points par niveau, chaque caractéristique étant plafonnée à 12. Les crédits excédentaires restent en réserve, sans bonus de jet automatique. Les niveaux 21–25 exigent cinq validations divines exceptionnelles.</small>
+          <small class="atelier-hint">M02 : 12 points de départ (1 à 5), puis un budget commun B(n)=6(n−1) pour caractéristiques, maîtrises et capacités. Score brut sans plafond, bonus logarithmique. Les niveaux 21–25 nécessitent des jalons MJ, jamais une divinisation automatique.</small>
         </fieldset>
         <fieldset class="atelier-stats">
           <legend>Maîtrises spécialisées — <span data-mastery-points>0 / 0 points</span></legend>
           {masteries.map(([key,label])=><label class="atelier-stat" key={key}>
-            <span><strong>{label}</strong><small>Maîtrise de 0 à 12</small></span>
-            <input type="number" min={0} max={12} step={1} value={0} data-mastery={key} aria-label={label}/>
+            <span><strong>{label}</strong><small>Coût progressif, bonus logarithmique</small></span>
+            <input type="number" min={0} step={1} value={0} data-mastery={key} aria-label={label}/>
+            <small data-mastery-bonus={key}>Rang et prochain coût en cours de chargement</small>
           </label>)}
-          <small class="atelier-hint">Deux points de maîtrise par niveau après le premier. Ils décrivent l'entraînement, sans bonus de jet automatique avant équilibrage. Les spécialités +0/+1/+2 actuelles restent jouables.</small>
+          <small class="atelier-hint">Les maîtrises puisent dans le même budget M01. Chaque rang acheté coûte de plus en plus cher. Les techniques non martiales disposent de la même économie.</small>
         </fieldset>
         <div class="atelier-toolbar">
           <button type="button" data-convert-credits>Convertir 6 crédits excédentaires en 1 point de talent</button>
           <label>Points de talent utilisés<input type="number" data-talent-spent min={0} max={24} step={1} value={0}/></label>
         </div>
         <p data-talent-points class="atelier-hint">Talents : 0 / 0 utilisés.</p>
+        <section data-m02-controls class="atelier-stats">
+          <h3>Développement M02 — aptitudes, techniques et signatures</h3>
+          <p class="atelier-hint">Un emplacement narratif acheté ne confère aucun pouvoir. Une capacité définie nécessite un effet, des limites et, si applicable, l'approbation du MJ.</p>
+          <div class="atelier-fields">
+            <label>Catégorie<select data-m02-ability-kind>
+              <option value="aptitude">Aptitude — 3 points, niveau 3</option>
+              <option value="technique">Technique — 6 points, niveau 5</option>
+              <option value="signature">Signature — 9 points, niveau 17, MJ</option>
+            </select></label>
+            <label>Domaine<input data-m02-ability-domain type="text" maxLength={80} placeholder="artisanat, soins, combat, arts…"/></label>
+            <label>Nom<input data-m02-ability-name type="text" maxLength={100} placeholder="Nom de l'acquisition"/></label>
+            <label>État<select data-m02-ability-status>
+              <option value="slot">Emplacement narratif (sans effet)</option>
+              <option value="defined">Capacité mécanique définie</option>
+            </select></label>
+            <label>Maîtrise prérequise<select data-m02-ability-prereq>
+              <option value="">Aucune</option>
+              {masteries.map(([key,label])=><option key={key} value={key}>{label}</option>)}
+            </select></label>
+            <label>Rang de maîtrise minimum<input data-m02-ability-prereq-rank type="number" min={0} value={0}/></label>
+          </div>
+          <label>Description<textarea data-m02-ability-description rows={2} maxLength={700}/></label>
+          <label>Effet exact<textarea data-m02-ability-effect rows={2} maxLength={700}/></label>
+          <label>Limites et ressources<textarea data-m02-ability-limits rows={2} maxLength={700}/></label>
+          <label>Origine narrative<textarea data-m02-ability-provenance rows={2} maxLength={700}/></label>
+          <label class="atelier-check"><input data-m02-ability-approved type="checkbox"/> Approbation par le MJ (mode MJ ou IA)</label>
+          <button type="button" data-m02-buy>Acheter cette capacité</button>
+          <div data-m02-ability-list class="atelier-hint">Aucune capacité.</div>
+          <h3>Historique des événements d'expérience</h3>
+          <div class="atelier-fields">
+            <label>Identifiant événement<input data-m02-event-id type="text" maxLength={80} placeholder="ex. mission-23"/></label>
+            <label>Motif / pattern<input data-m02-event-pattern type="text" maxLength={80} placeholder="ex. mission-escorte"/></label>
+            <label>Domaine<select data-m02-event-domain>
+              {["combat","artisanat","savoir","diplomatie","exploration","magie","secours","transmission"].map(x=><option value={x} key={x}>{x}</option>)}
+            </select></label>
+            <label>Difficulté (1–12)<input data-m02-event-difficulty type="number" min={1} max={12} value={1}/></label>
+            <label>Importance<select data-m02-event-scope>
+              <option value="ordinaire">Ordinaire</option><option value="majeur">Majeure — accord MJ</option><option value="legendaire">Légendaire — accord MJ</option>
+            </select></label>
+          </div>
+          <label class="atelier-check"><input data-m02-event-approved type="checkbox"/> Événement approuvé par le MJ</label>
+          <button type="button" data-m02-award>Consigner et attribuer les XP</button>
+          <p data-m02-xp-history class="atelier-hint">Aucun événement enregistré.</p>
+          <div class="atelier-toolbar">
+            <label>Valider le palier exceptionnel MJ <input data-m02-milestone type="number" min={21} max={25} value={21}/></label>
+            <button type="button" data-m02-approve-milestone>Valider le palier</button>
+          </div>
+          <p data-m02-milestones class="atelier-hint">Jalons validés : aucun.</p>
+        </section>
         <div class="atelier-fields atelier-resources">
           <label>PV actuels<input type="number" data-field="pv" min={0} max={999} step={1} value={12}/></label>
           <label>PV maximum<input type="number" data-field="pvMax" min={1} max={999} step={1} value={12}/></label>
@@ -290,14 +343,17 @@ export const Atelier5d6: QuartzComponent = (props) => {
       </div>
       <div class="atelier-panel atelier-dice">
         <h3>Effectuer un jet</h3>
-        <p class="atelier-hint"><strong>5d6 + caractéristique + compétence + situation</strong>. Les critiques se lisent sur les cinq dés naturels.</p>
+        <p class="atelier-hint"><strong>M03 : 5d6 + E(caractéristique) + M(maîtrise) + situation</strong> pour les jets ordinaires et opposés sur fiches M02. Mode legacy conservé. Naturels 5–7 : échecs forcés.</p>
         <div class="atelier-fields">
           <label>Caractéristique
             <select data-roll-stat>
               {attributes.map(([key,label])=><option value={key} key={key}>{label}</option>)}
             </select>
           </label>
-          <label>Compétence pour ce jet
+          <label>Maîtrise pour un jet M02
+            <select data-roll-mastery><option value="">Sans maîtrise</option></select>
+          </label>
+          <label>Compétence héritée (anciens jets uniquement)
             <select data-roll-skill><option value="0">+0 — Non formé</option><option value="1">+1 — Formé</option><option value="2">+2 — Expert</option></select>
           </label>
           <label>Difficulté
@@ -332,6 +388,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
         <fieldset class="atelier-stats">
           <legend>Opposition et résistances (module facultatif)</legend>
           <label class="atelier-check"><input type="checkbox" data-opposition-enabled/> Activer une cible qui peut résister, esquiver ou parer</label>
+          <label class="atelier-check"><input type="checkbox" data-opposition-feasible checked/> Action réalisable dans le contexte (MJ : désactiver si impossible)</label>
           <div class="atelier-fields">
             <label>Adversaire / cible
               <select data-opposition-target><option value="">Cible libre — seuil fixé par le MJ</option></select>
@@ -383,7 +440,6 @@ export const Atelier5d6: QuartzComponent = (props) => {
     </div>
       </div>
     </details>
-
     <details class="atelier-hub-section" data-hub="grimoire">
       <summary>📖 Grimoire personnel — sorts, apprentissage et effets</summary>
       <section class="atelier-panel grimoire" data-grimoire-root aria-label="Grimoire du personnage actif">
@@ -417,7 +473,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
           </div>
           <button type="button" class="atelier-roll" data-grimoire-cast-button>Lancer 5d6, confirmer la dépense et consigner</button>
           <div class="atelier-result" data-grimoire-result role="status">Aucune incantation.</div>
-          <p class="atelier-hint">5d6 + Esprit + compétence expérimentale (maximum +2 selon la maîtrise Magie). Les affinités n'ajoutent pas de bonus universel au jet. Aucun dommage sur autrui n'est appliqué sans arbitrage MJ.</p>
+          <p class="atelier-hint">5d6 + bonus effectif d’Esprit + bonus effectif de maîtrise Magie selon M01/M03. Les affinités n'ajoutent pas de bonus universel au jet. Aucun dommage sur autrui n'est appliqué sans arbitrage MJ.</p>
         </fieldset>
         <h3>⏳ Effets actifs</h3>
         <ul class="atelier-inventory-list" data-grimoire-effects><li>Aucun effet actif.</li></ul>
@@ -454,7 +510,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <p class="atelier-hint">La proposition reste locale à cette fiche, séparée de la bibliothèque canonique, et n'est pas distribuée automatiquement aux autres personnages.</p>
         </div>
         <h3>🔮 Activation de matrices préparées</h3>
-        <p class="atelier-hint">Un objet préparé par un autre mage peut héberger une architecture plus avancée que son porteur. Le Cercle d'activation doit être attesté, mais cela ne confère ni le sort ni la capacité de reconstruire l'objet. Les charges représentent une énergie préalablement stockée ; le mana du porteur n'est dépensé que si cette source a été choisie.</p>
+        <p class="atelier-hint">Un objet préparé par un autre mage peut héberger une architecture plus avancée que son porteur. Le Cercle d'activation doit être attesté, mais cela ne confère ni le sort ni la capacité de reconstruire l'objet. La signification des charges reste à arbitrer : le prototype consomme provisoirement une charge même quand le mana du porteur fournit l'énergie.</p>
         <ul class="atelier-inventory-list" data-grimoire-matrices><li>Aucune matrice enregistrée.</li></ul>
         <div data-grimoire-matrix-mj hidden>
           <h4>MJ : inscrire une architecture déjà préparée sur un objet de l'inventaire</h4>
@@ -463,7 +519,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
             <label>Effet déjà construit<select data-grimoire-matrix-spell><option value="">Sélectionner un effet…</option></select></label>
             <label>Cercle suffisant pour déclencher<select data-grimoire-matrix-trigger>{[1,2,3,4,5,6,7,8,9].map(n=><option key={n} value={n}>Cercle {n}</option>)}</select></label>
             <label>Source d'énergie<select data-grimoire-matrix-energy><option value="matrix">Charge stockée dans la matrice</option><option value="caster">Mana du porteur</option></select></label>
-            <label>Nombre d'activations restantes<input data-grimoire-matrix-charges type="number" min={1} max={99} step={1} value={3}/></label>
+            <label>Charges disponibles (règle à confirmer)<input data-grimoire-matrix-charges type="number" min={1} max={99} step={1} value={3}/></label>
             <label>Concepteur, provenance et limites<input data-grimoire-matrix-source maxLength={300} placeholder="Ingénieur, lieu de fabrication, attestation…"/></label>
           </div>
           <button type="button" data-grimoire-matrix-create>MJ : installer la matrice sur cet objet</button>
@@ -710,21 +766,6 @@ Atelier5d6.css = `
 .atelier .atelier-media-lightbox{width:min(95vw,900px);max-height:95vh;padding:1rem;border:1px solid #ccab73;border-radius:12px;background:#10242d;color:#f2ece2}
 .atelier-media-lightbox::backdrop{background:rgba(0,0,0,.84)}
 .atelier-media-lightbox img{max-width:100%;max-height:72vh;object-fit:contain;display:block;margin:1rem auto}
-.grimoire .grimoire-resources{font-weight:700;color:#e6c891;border-left:3px solid #cfae74;padding:.35rem .65rem}
-.grimoire-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:.75rem;margin:1rem 0}
-.grimoire-card{padding:.85rem;border:1px solid rgba(210,178,121,.45);border-radius:12px;background:linear-gradient(145deg,rgba(37,58,65,.95),rgba(15,33,45,.95));min-width:0}
-.grimoire-card-head{display:flex;gap:.55rem;align-items:center;flex-wrap:wrap}
-.grimoire-card-head div{flex:1;min-width:130px}
-.grimoire-card-head strong,.grimoire-card-head small{display:block}
-.grimoire-card-head small,.grimoire-stamp{font-size:.72rem;color:#d7bf99}
-.grimoire-glyph{width:36px;height:36px;border:1px solid #a48f68;border-radius:50%;display:grid;place-items:center;color:#e1c68f;font-size:1.25rem}
-.grimoire-stamp{font-weight:700;letter-spacing:.02em;max-width:115px;overflow-wrap:anywhere}
-.grimoire-card p{font-size:.83rem}
-.grimoire-card details{font-size:.8rem;margin:.55rem 0}
-.grimoire-card summary{cursor:pointer;color:#ead4a8}
-.grimoire-card-actions{display:flex;flex-wrap:wrap;gap:.35rem;margin:.5rem 0}
-.grimoire .grimoire-card-actions button{font-size:.78rem;padding:.42rem .55rem}
-.grimoire-caster{border-color:#ab8b52}
 .atelier [hidden]{display:none!important}
 @media(max-width:850px){.atelier-grid{grid-template-columns:1fr}}
 @media(max-width:480px){.atelier-fields{grid-template-columns:1fr}.atelier{padding:.7rem}.atelier-die{width:42px;height:42px}}

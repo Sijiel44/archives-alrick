@@ -64,12 +64,14 @@ Les 5 dés ont **7 776 combinaisons**. Le jet naturel 5 reste un échec exceptio
 
 | Difficulté | Bonus +1 (habitant peu formé) | Bonus +3 (aventurier novice) | Bonus +12 (spécialiste) | Bonus +24 (hypothèse non activée) |
 |---:|---:|---:|---:|---:|
-| 21 | 30,52 % | 50,00 % | 99,28 % | 99,99 % |
-| 24 | 9,80 % | 22,15 % | 94,12 % | 99,99 % |
-| 27 | 1,62 % | 5,88 % | 77,85 % | 99,99 % |
-| 30 | 0,08 % | 0,72 % | 50,00 % | 99,99 % |
+| 21 | 30,52 % | 50,00 % | 99,28 % | 99,73 % |
+| 24 | 9,80 % | 22,15 % | 94,12 % | 99,73 % |
+| 27 | 1,62 % | 5,88 % | 77,85 % | 99,73 % |
+| 30 | 0,08 % | 0,72 % | 50,00 % | 99,73 % |
 | 36 (seuil exploratoire non activé) | 0 % | 0 % | 5,88 % | 94,12 % |
 | 42 (seuil exploratoire non activé) | 0 % | 0 % | 0,01 % | 50,00 % |
+
+**Correction du 31 octobre 2026 :** la probabilité plafonne à **7 755/7 776 = 99,73 %**, et non 99,99 %, car les naturels 5, 6 et 7 échouent obligatoirement, quels que soient les bonus. Le bonus +24 est une hypothèse analytique, pas un bonus de jet accessible dans l'Atelier. Le calcul et ses tests sont isolés dans `atelier5d6-probabilities.ts`.
 
 **Conclusion :** additionner systématiquement les maîtrises jusqu'à +12 ferait disparaître toute incertitude à difficulté 21–30 pour de nombreux héros. **Ne pas activer cette règle** sans revoir la granularité, les résistances adverses, les coûts des pouvoirs, la progression des créatures et les seuils des affrontements de très haut niveau. Une prouesse inconcevable reste inconcevable sans capacités ni conditions compatibles avec le lore.
 

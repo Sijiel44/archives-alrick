@@ -19,7 +19,14 @@
     "check:types": "tsc --noEmit",
     "check:content": "node scripts/check-content.mjs",
     "check:site": "node scripts/check-site.mjs",
-    "test": "npm run check:content && npm run check:types && npm run build && npm run check:site && node scripts/test-5d6-balance.mjs && node scripts/test-5d6-opposition.mjs && node scripts/test-5d6-origins.mjs && node scripts/test-5d6-grimoire.mjs"
+    "test": "npm run check:content && npm run check:types && npm run build && npm run check:site && node scripts/test-5d6-balance.mjs && node scripts/test-5d6-probabilities.mjs && node scripts/test-5d6-opposition.mjs && node scripts/test-5d6-origins.mjs && npm run test:progression && npm run test:m02 && npm run test:m03 && npm run test:m04 && npm run test:m05",
+    "test:progression": "node scripts/test-5d6-progression.mjs",
+    "test:m02": "node scripts/test-5d6-m02.mjs",
+    "test:m03": "node scripts/test-5d6-m03.mjs",
+    "test:m04": "node scripts/test-5d6-m04.mjs",
+    "test:m05": "node scripts/test-5d6-m05.mjs && node scripts/test-5d6-grimoire.mjs",
+    "test:m04:browser": "node scripts/test-5d6-m04-browser.mjs",
+    "test:grimoire": "node scripts/test-5d6-grimoire.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",

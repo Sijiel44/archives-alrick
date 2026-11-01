@@ -3,6 +3,7 @@ import { Search } from "@quartz-community/search"
 import { Brand, Navigation, Topbar, PageIntro, Library, Colophon } from "./quartz/components/Alrick"
 import { AlrickFrame } from "./quartz/components/frames/AlrickFrame"
 import { Atelier5d6 } from "./quartz/components/Atelier5d6"
+import { BestiaryWorkshop } from "./quartz/components/BestiaryWorkshop"
 import { frameRegistry } from "./quartz/components/frames/registry"
 import { PageTypeDispatcher } from "./quartz/plugins/pageTypes/dispatcher"
 
@@ -11,9 +12,9 @@ frameRegistry.register("alrick", AlrickFrame, "alrick")
 export default config
 const shared = { frame: "alrick", left: [Brand, Search(), Navigation], header: [Topbar], footer: [Colophon] }
 export const layout = await loadQuartzLayout({
-  defaults: { ...shared, beforeBody: [PageIntro, Library, Atelier5d6] },
+  defaults: { ...shared, beforeBody: [PageIntro, Library, Atelier5d6, BestiaryWorkshop] },
   byPageType: {
-    content: { ...shared, beforeBody: [PageIntro, Library, Atelier5d6] },
+    content: { ...shared, beforeBody: [PageIntro, Library, Atelier5d6, BestiaryWorkshop] },
     folder: { ...shared, beforeBody: [PageIntro] },
     tag: { ...shared, beforeBody: [PageIntro] },
     "404": { ...shared, left: [Brand, Navigation], beforeBody: [] },
