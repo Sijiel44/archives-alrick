@@ -104,3 +104,16 @@ M05 conserve **documentaryLink principal déclaratif** dans l'extension de alric
 **Décisions requises du créateur et de la Direction** : (1) approuver ou rejeter les préfixes et la responsabilité du registre ; (2) arbitrer l'exposition des propositions MJ et spoilers ; (3) confirmer la méthodologie d'identification des espèces/individus/biomes ; (4) autoriser séparément toute future connexion publique, si souhaitée ; (5) fournir/vérifier les CB35–CB39 ; (6) valider la clôture B-002 avant B-003.
 
 **Statut : TERMINÉE AVEC RÉSERVES — tests B-002, M01–M05 et recette Chrome confirmés verts sur le commit ee70103 ; validation éditoriale toujours requise.** La base technique existe et reste soumise à validation. **Aucune fusion automatique ; aucune mission B-003 lancée.**
+
+
+## 9. Addendum de validation éditoriale du créateur — B-002.1 (31 octobre 2026)
+
+**Décision expresse :** le créateur autorise l'intégration de la PR #67 et adopte pour les **nouvelles fiches** les préfixes `ESP-`, `FAMT-`, `INDC-`, `BIO-`, `P5C-`, `VARC-`. Les codes historiques restent inchangés. Cette décision n'autorise pas à attribuer automatiquement les onze codes absents de B-001 ni à transformer une proposition en canon.
+
+**Mise en œuvre :** `CONTRAT_EDITORIAL.md` fixe la décision et le contrôle fiche par fiche ; `docs/bestiaire/B002_CODES_VALIDES.json` contient les six préfixes approuvés et la table d'attributions individuelles, initialement vide ; `B002_REGISTRE_RELATIONS.json` enregistre le statut adopté ; `B002_SPEC_INTEROPERABILITE.md` précise la différence entre adoption des préfixes et validation de chaque code ; les quatre modèles spécialisés renvoient au registre. Le test `test:b002` parcourt aussi les fiches réelles sous `content/` : toute nouvelle fiche utilisant ces préfixes doit avoir un code unique, un chemin identique au registre, sa source, les statuts conformes et une preuve de validation explicite du créateur. Ce contrôle de conformité ne remplace pas le jugement éditorial humain.
+
+**Correction de métadonnée :** l'index CB42 non publié, auparavant `canon_statut: brouillons`, passe à `a_verifier` ; son contenu narratif, son code historique et `publish:false` ne changent pas. Cette opération retire l'exception héritée sans canoniser une fiche.
+
+**Points délibérément laissés ouverts :** les sept prototypes MJ restent `proposition_non_jouee` sans modification automatique de publication ; les onze entrées sans code restent sans attribution ; l'accès aux sources primaires CB35–CB39, les liens n:n, les pouvoirs de créature, les tests de sauvegardes historiques, les playtests et les liens publics M05 restent à valider séparément. **Aucune fiche nouvelle codée, aucune règle M03 modifiée, aucune publication Pages déclenchée.**
+
+**Validation technique :** reprendre les workflows GitHub Actions sur le dernier commit de la PR, puis consigner leur résultat avant fusion. L'autorisation du créateur porte sur ces changements documentaires et le mécanisme de validation ; tout changement ultérieur doit être recontrôlé.
