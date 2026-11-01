@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: integrite-b002
-          path: artifacts/b002/integrite.json
+          path: artifacts/b002/
           if-no-files-found: ignore
       - run: npm run test:m04:browser
       - name: Conserver les captures de recette M04.1
