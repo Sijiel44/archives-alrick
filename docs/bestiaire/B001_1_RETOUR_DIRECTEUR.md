@@ -1,6 +1,6 @@
 # B-001.1 — Compte rendu au Directeur du Bestiaire
 
-**Mission :** synchroniser la PR #56 avec le moteur 5d6 réellement implémenté dans la branche `main` après les PR #57–#62. **Base vérifiée avant reconciliation :** `6fe3c79cfdd36e69a6eaa356abc498d29b81f580` ; branche B-001 initiale `7b4886b7296d5ff424e287abb38de4cd2063ebcb`. **État de livraison :** mise à jour documentaire et tests proposés sur la PR #56 ; **aucune fusion ni publication automatique**.
+**Mission :** synchroniser la PR #56 avec le moteur 5d6 réellement implémenté dans la branche `main` après les PR #57–#62. **Base vérifiée avant reconciliation :** `6fe3c79cfdd36e69a6eaa356abc498d29b81f580` ; branche B-001 initiale `7b4886b7296d5ff424e287abb38de4cd2063ebcb`. **État de livraison B-001.2 :** CI B-001.1 sur `e19649e` vérifiée et réussie (workflow #41263562458) ; nouveau commit de clôture à revalider en CI ; **aucune fusion ni publication automatique**.
 
 ## 1. Livrables et modifications prévues sur la PR #56
 
@@ -28,7 +28,7 @@
 
 ## 3. Contrôles exécutables et limitations
 
-La suite de tests B-001.1 couvre cinq niveaux représentatifs, cinq archétypes, groupes, transfert natif, extensions et protections. Elle utilise les modules M01/M03/M04/M05 existants et vérifie l'absence d'effet automatique du texte narratif. Le statut de CI **doit être relevé après le commit**, et non supposé vert dans ce rapport. Les tests M03/M04/M05 existants, y compris le navigateur publié par M04.1 et 15 scénarios M05, sont attestés dans leurs rapports respectifs ; ils **ne sont pas** des tests humains de la nouvelle branche documentaire.
+La suite de tests B-001.1 couvre cinq niveaux représentatifs, cinq archétypes, groupes, transfert natif, extensions et protections. Elle utilise les modules M01/M03/M04/M05 existants et vérifie l'absence d'effet automatique du texte narratif. Le statut de CI **a été relevé pour le commit B-001.1 `e19649e`** : [workflow #41263562458](https://github.com/Sijiel44/archives-alrick/actions/runs/41263562458) `completed/success` ; `npm test`, TypeScript, Quartz, contenu, liens et Chrome réussis. La nouvelle tête B-001.2 nécessite un contrôle distinct. Les tests M03/M04/M05 existants, y compris le navigateur publié par M04.1 et 15 scénarios M05, sont attestés dans leurs rapports respectifs ; ils **ne sont pas** des tests humains de la nouvelle branche documentaire.
 
 **Non réalisé dans cette mission :** playtest humain de négociation, équilibrage de campagne, authentification de MJ, migration exhaustive des anciennes sauvegardes, navigation encyclopédique publique validée, statut de publication d'une espèce, nouvelles créatures ou biomes.
 
@@ -39,8 +39,17 @@ La suite de tests B-001.1 couvre cinq niveaux représentatifs, cinq archétypes,
 3. Décider les seuils de danger collectif à partir de véritables parties ; ne pas le déduire du niveau de profil.
 4. Valider les alternatives non violentes comme choix narratifs, non comme pouvoirs gratuits du moteur.
 5. Faire une revue des sauvegardes personnelles et des publications à spoilers avant toute fusion.
-6. Examiner le statut CI et demander la revue de la PR #56 après synchronisation.
+6. Vérifier la CI du nouveau commit B-001.2 puis demander revue de la PR #56 avant toute fusion.
 
 ## 5. Décision de fin
 
 **Recommandation :** conserver la PR #56 en brouillon et non fusionnée, réconciliée avec `main`, jusqu'à validation éditoriale, compatibilité enregistrée et contrôles CI. Les travaux B-002/D-004 peuvent utiliser les conventions proposées sans les présenter comme du canon.
+
+
+## Mise à jour de clôture B-001.2 — preuves et limites
+
+La PR #56 est toujours **ouverte, en brouillon, non fusionnée**, réconciliée avec `main` après #57–#62 ; à `e19649e` : **13 commits d'avance / 0 de retard**, `mergeable:true`, sans valoir autorisation de fusion. Le workflow [#41263562458](https://github.com/Sijiel44/archives-alrick/actions/runs/41263562458) sur ce SHA a exécuté `npm ci`, `npm test` (dont 1 318 assertions B-001.1, 1 390 M05), TypeScript, build Quartz, contrôle de site (1 111 HTML/64 434 liens) et Chrome (15 scénarios/7 confirmations), tous **réussis**. [Artefact captures #13066760528](https://github.com/Sijiel44/archives-alrick/actions/runs/41263562458/artifacts/13066760528).
+
+Contrôle du registre : 21 entrées, 10 codes historiques non nuls tous distincts, 11 `null` sans attribution ; `npm test` compte 269 codes **publiés** uniques. L'audit des créatures initial couvre 15 fichiers, contre 17 Markdown dans l'arbre Git courant : revue des deux supplémentaires et contrôle transversal des brouillons encore nécessaires. Le test n'utilise plus `DRG-01` comme identifiant fictif ; `TEST-B0012-NONCOMBAT-01` est **réservé aux tests**, non documentaire.
+
+**Réserves et décision :** conserver les préfixes proposés non approuvés ; faire arbitrer par le créateur les sept prototypes de village déjà publiés comme propositions, la forme du registre n:n et les profils, la sécurité des spoilers/portraits, l'équilibrage et les alternatives pacifiques ; tester des sauvegardes réelles et une séance humaine. Nouvelle CI B-001.2 à vérifier. Voir `docs/rapports-missions/B001_2_CLOTURE_BESTIAIRE.md` et `FICHE_DIRECTION_B001_2.md`. **Aucune fusion, publication ni lancement de B-002.**

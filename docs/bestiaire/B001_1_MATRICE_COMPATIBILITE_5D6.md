@@ -1,6 +1,6 @@
 # B-001.1 — Matrice de compatibilité documentaire × moteur 5d6 M03 / M04.1 / M05
 
-**État :** compatibilité vérifiée sur les contrats du code actuel ; revue CI de la branche à compléter. **Référence main examinée :** `6fe3c79cfdd36e69a6eaa356abc498d29b81f580` (après fusion des PR #57–#62). **Portée :** documents, gabarits et tests seulement ; aucune formule, fiche de personnage ou espèce modifiée.
+**État B-001.2 :** contrats relus et CI B-001.1 du commit `e19649e` **réussie** (workflow #41263562458) ; la CI du nouveau commit de clôture B-001.2 doit encore être relevée séparément. **Référence main examinée :** `6fe3c79cfdd36e69a6eaa356abc498d29b81f580` (après fusion des PR #57–#62). **Portée :** documents, gabarits et tests seulement ; aucune formule, fiche de personnage ou espèce modifiée.
 
 ## Réconciliation des sources obligatoires
 
@@ -26,7 +26,7 @@ Sources de précision : `docs/rapports-missions/M04_INTEGRATION_PUBLICATION_5D6.
 | Relations n:n | `documentaryLink` M05 lit un seul objet ; pas de registre inverse automatique | **Spécifié, non implémenté** | Protocole documentaire ci-dessous ; aucune mutation M05 |
 | Générateur M03 | `generateCreatureProfileM03` / `createBestiaryCard` | **Corrigé** | Générateur historique conservé mais impropre à la fiche M03 |
 | Probabilités | `sumOccurrences`, `TOTAL_OUTCOMES` et `resolveCombatM03` | **Compatible** | Fonctions réutilisées dans les tests ; zéro formule divergente |
-| Niveau 5–25 | Niveaux 1–25 autorisés | **Couvert en tests automatisés proposés** | N5/10/15/20/25 × 5 archétypes ; revue CI à compléter |
+| Niveau 5–25 | Niveaux 1–25 autorisés | **Couvert par tests automatisés B-001.1 exécutés en CI** | N5/10/15/20/25 × 5 archétypes ; CI #41263562458 : 1 318 assertions B-001.1 |
 | Résistance | `resistanceBonus` → seuil de résistance | **Corrigé / testé** | `resistanceScoreM03` ; ne pas l'ajouter à l'absorption |
 | Protection | `protection` → absorption amortie | **Corrigé / testé** | `effectiveProtectionM03`; `equipmentGrades` séparés |
 | Sauvegarde native | `schema:alrick.bestiary.v1`, `ruleset:m03` | **Corrigé / testé** | `validateBestiaryCard`, `BESTIARY_STORAGE` |
@@ -61,7 +61,7 @@ La suite `scripts/test-b0011-compat.mjs` exerce N5/10/15/20/25, cinq archétypes
 
 ## Blocages et validation avant fusion
 
-1. CI réelle de la PR #56 après réconciliation : `npm ci`, `npm test`, TypeScript, build, liens et tests B-001.1 ; relever le workflow exact.
+1. **CI de réconciliation déjà passée** sur `e19649e` : workflow #41263562458. **À refaire sur le commit B-001.2**, qui corrige l'identifiant fictif du test et ajoute le contrôle d'unicité du registre ; ne pas assimiler l'ancien vert à la nouvelle tête de branche.
 2. Revue du niveau de danger collectif et des attentes de rounds N5/N10/N15/N20/N25 par le MJ.
 3. Spécification et validation des identifiants de profils de jeu et du registre n:n (B-002), sans collision avec les codes historiques.
 4. Décision éditoriale sur les propositions non jouées déjà publiées, et sur la politique des secrets/portraits.
@@ -69,3 +69,15 @@ La suite `scripts/test-b0011-compat.mjs` exerce N5/10/15/20/25, cinq archétypes
 6. Revue humaine des scénarios non violents, de l'accessibilité et des adaptations de rencontre.
 
 **Décision technique :** B-001.1 ne modifie pas les algorithmes M01/M03, l'Atelier, les personnages ni leurs capacités. Le test B-001.1 n'est qu'un consommateur des fonctions publiques existantes.
+
+
+## Addendum B-001.2 — preuves contrôlées le 31 octobre 2026
+
+- [Workflow Actions #41263562458](https://github.com/Sijiel44/archives-alrick/actions/runs/41263562458) : événement `pull_request`, branche `bestiaire/b001-fondations`, commit exact `e19649e097843ae80571c36c297e5de74e5a4dee`, statut `completed/success`, tentative 1. [Job #124721559198](https://github.com/Sijiel44/archives-alrick/actions/runs/41263562458/job/124721559198) : `npm ci`, `npm test` et `npm run test:m04:browser` réussis.
+- Sorties de `npm test` : `check:content` **369 pages choisies / 269 codes uniques publiés** ; TypeScript `tsc --noEmit` sans erreur ; build Quartz réussi ; `check:site` **1 111 pages HTML et 64 434 liens/ressources internes** ; **1 390 assertions M05** et **1 318 assertions B-001.1**.
+- Recette Chrome : **15 scénarios complets, 7 dialogues de confirmation** ; preuve conservée dans l'[artefact `recette-m041-ci` #13066760528](https://github.com/Sijiel44/archives-alrick/actions/runs/41263562458/artifacts/13066760528). Il s'agit de tests automatisés, pas de séances de jeu humaines.
+- Contrôle direct du JSON `B001_REGISTRE_INITIAL.json` : **21 entrées**, **21 clés `cle_registre` distinctes**, **10 codes non nuls distincts**, **11 codes `null`**. Les préfixes `ESP-`, `FAMT-`, `INDC-`, `BIO-`, `P5C-` et `VARC-` restent **proposés et non approuvés**.
+- Arbre Git de `content/creatures/` à la tête B-001.1 : **17 fichiers Markdown**, contre **15 fichiers étudiés** dans l'audit initial ; ces deux unités supplémentaires ne sont pas validées par contagion. Le contrôle du script `check-content` garantit l'unicité des **codes publiés**, pas celle de toutes les sources privées ou non publiées.
+- La suite B-001.2 remplace le code documentaire canonique `DRG-01` employé comme référence fictive de PNJ non combattant par `TEST-B0012-NONCOMBAT-01`, identifiant réservé exclusivement au test ; elle ajoute trois assertions de contrôle du registre. La nouvelle CI post-commit est à relever avant décision finale.
+
+**Arbitrages préservés :** registre inverse n:n / règle d'attribution des ID de profil, politique de publication des sept prototypes MJ, cas à spoilers et droits visuels, niveau de danger collectif et résolutions pacifiques, migration de sauvegardes réelles. Aucun de ces sujets n'est validé par le vert CI.

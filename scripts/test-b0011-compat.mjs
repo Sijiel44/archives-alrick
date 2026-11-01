@@ -1,4 +1,5 @@
 import assert from "node:assert/strict"
+import {readFile} from "node:fs/promises"
 import {build} from "esbuild"
 
 // B-001.1 : vérifier les contrats existants ; aucune formule de jeu dupliquée.
@@ -20,6 +21,13 @@ const groups=[1,2,4]
 let checks=0
 const ok=(value,message)=>{assert.ok(value,message);checks++}
 const eq=(a,b,message)=>{assert.deepEqual(a,b,message);checks++}
+// B-001.2 : chaque code historique connu reste unique, sans attribuer les préfixes proposés.
+const registry=JSON.parse(await readFile("docs/bestiaire/B001_REGISTRE_INITIAL.json","utf8"))
+const registryKeys=registry.entrees.map(entry=>entry.cle_registre)
+const knownCodes=registry.entrees.map(entry=>entry.code).filter(Boolean)
+eq(new Set(registryKeys).size,registryKeys.length,"clés d'audit uniques")
+eq(new Set(knownCodes).size,knownCodes.length,"codes documentaires renseignés uniques")
+ok(!knownCodes.some(code=>code.startsWith("TEST-B0012-")),"identifiant réservé absent du registre")
 const card=workshop.createBestiaryCard(15,"colosse")
 eq(card.schema,"alrick.bestiary.v1","schéma Bestiaire natif")
 eq(card.ruleset,"m03","règles Bestiaire")
@@ -59,7 +67,7 @@ a.protection.physique=12
 eq(m03.resistanceScoreM03(workshop.toDefense(a),"physique"),defenseAfter,"protection ne change pas le seuil")
 ok(m03.effectiveProtectionM03(workshop.toDefense(a),"physique")>protectionBefore,"protection change l'absorption")
 const d=workshop.createBestiaryCard(5,"faune","pnj","soutien")
-d.documentaryLink={id:"DRG-01",type:"individu",source:"Référence de test",sourceVersion:"v0",
+d.documentaryLink={id:"TEST-B0012-NONCOMBAT-01",type:"individu",source:"Référence de test",sourceVersion:"v0",
   canonStatut:null,etatEditorial:null,visibilite:null,publish:null,spoilers:null,unlisted:null,publicPath:null}
 d.nonCombatApproaches=["eviter","secourir","discuter"]
 const reference=workshop.referenceOpponent(5,"polyvalent",0)
@@ -69,10 +77,10 @@ d.abilities=[{name:"Souhait de paix",description:"Narration seulement",limitatio
 eq(workshop.attackMath(d,reference),mathBefore,"option pacifique et capacité narrative ne changent pas le combat")
 const validated=workshop.validateBestiaryCard(JSON.parse(JSON.stringify(d)))
 eq(validated.nonCombatApproaches,d.nonCombatApproaches,"extensions narratives conservées")
-eq(m05.readDocumentaryLink(validated).id,"DRG-01","lien documentaire déclaratif")
+eq(m05.readDocumentaryLink(validated).id,"TEST-B0012-NONCOMBAT-01","lien documentaire déclaratif")
 eq(m05.canOfferDocumentaryLink(m05.readDocumentaryLink(validated)),false,"pas de lien public automatique")
 const transfer=workshop.exportBestiaryForAtelier(validated)
-eq(transfer.sheets[0].bestiarySource.documentaryLink.id,"DRG-01","lien conservé dans bestiarySource")
+eq(transfer.sheets[0].bestiarySource.documentaryLink.id,"TEST-B0012-NONCOMBAT-01","lien conservé dans bestiarySource")
 eq(transfer.sheets[0].resistanceBonus,validated.resistanceBonus,"seuil exporté sans conversion")
 eq(transfer.sheets[0].protection,validated.protection,"absorption exportée séparément")
 assert.throws(()=>workshop.validateBestiaryCard({...validated,schema:"alrick.sheet.v2"}))
