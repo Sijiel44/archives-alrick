@@ -1,0 +1,34 @@
+{
+  "schema": "alrick.bestiaire.codes-valides.v1",
+  "date_decision": "2026-10-31",
+  "statut_nomenclature": "approuvee_par_createur",
+  "autorite": "Validation explicite de chaque fiche par le createur, consignée et contrôlée en CI",
+  "prefixes": [
+    {
+      "prefixe": "ESP-",
+      "nature": "espece"
+    },
+    {
+      "prefixe": "FAMT-",
+      "nature": "famille_taxonomique"
+    },
+    {
+      "prefixe": "INDC-",
+      "nature": "individu_creature"
+    },
+    {
+      "prefixe": "BIO-",
+      "nature": "biome"
+    },
+    {
+      "prefixe": "P5C-",
+      "nature": "profil_5d6_partage"
+    },
+    {
+      "prefixe": "VARC-",
+      "nature": "variante_creature"
+    }
+  ],
+  "attributions": [],
+  "note": "Les préfixes sont approuvés, mais aucune attribution nouvelle n'est autorisée automatiquement. Toute attribution exige un fichier, un code unique, une source, une preuve de validation du créateur et un statut documentaire indépendant. Les codes historiques et les 11 valeurs nulles restent inchangés. Les IDs de sauvegardes M03/M05 ne sont pas des codes documentaires."
+}

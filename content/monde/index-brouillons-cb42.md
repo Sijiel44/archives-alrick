@@ -3,7 +3,7 @@ publish: false
 title: "Fondements et continuité — index CB42"
 code: "INDEX-MONDE-CB42"
 categorie: "index"
-canon_statut: "brouillons"
+canon_statut: "a_verifier"
 ancre_documentaire: "CB42"
 source_brute: "Index directeur et registre v2.3; V01/V05"
 derniere_revision_documentaire: "2026-10-29"
