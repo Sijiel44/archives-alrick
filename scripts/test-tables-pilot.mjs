@@ -200,6 +200,7 @@ try {
   await error(p1.peer,"combat_roll",{roomId,defenderId:c2.id,stat:"physique",
     kind:"physique",mode:"melee",difficulty:21,situation:0,baseDamage:6,
     penetration:1,visibility:"mj"},"FORBIDDEN")
+  assert.equal((await p1.peer.wait(m=>m.type==="action_ack" && m.actionId==="combat-test-parity-01")).replay,false)
   const battleReplay={roomId,defenderId:c2.id,stat:"physique",kind:"physique",
     mode:"melee",difficulty:21,situation:0,baseDamage:6,penetration:1,
     actionId:"combat-test-parity-01"}
