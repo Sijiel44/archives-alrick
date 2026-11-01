@@ -68,12 +68,21 @@
             <div class="dice-row" id="dice-row" aria-label="Cinq dés"> <span>·</span><span>·</span><span>·</span><span>·</span><span>·</span></div>
             <form id="roll-form">
               <label>Caractéristique <select id="roll-stat"><option value="physique">Physique</option><option value="agilite">Agilité</option><option value="esprit">Esprit</option><option value="presence">Présence</option></select></label>
+              <label>Maîtrise <select id="roll-mastery"><option value="">Sans maîtrise (ou legacy)</option></select></label>
               <label>Difficulté <select id="roll-target"><option value="15">15 · Très facile</option><option value="18">18 · Facile</option><option value="21" selected>21 · Normale</option><option value="24">24 · Difficile</option><option value="27">27 · Héroïque</option><option value="30">30 · Exceptionnelle</option></select></label>
               <label>Situation <select id="roll-situation"><option value="0">0 · Neutre</option><option value="2">+2 · Avantage</option><option value="-2">−2 · Désavantage</option></select></label>
               <label class="check"><input type="checkbox" id="secret-roll"> Jet secret (MJ seulement)</label>
               <button class="roll-button">Lancer les cinq dés</button>
             </form>
-            <p id="last-roll" class="small">Les résultats officiels sont générés par le serveur local.</p>
+            <p id="last-roll" class="small">Les résultats officiels sont générés par le serveur local M01.</p>
+            <form id="combat-form">
+              <h4>Confrontation M03 (journal, sans retrait automatique des PV)</h4>
+              <label>Défenseur <select id="combat-defender"><option value="">Sans défenseur</option></select></label>
+              <label>Mode <select id="combat-mode"><option value="melee">Mêlée physique</option><option value="tir">Tir physique</option><option value="magie">Magie</option><option value="mental">Mental</option></select></label>
+              <label>Puissance de base (1–12) <input id="combat-base" type="number" min="1" max="12" value="4"></label>
+              <label>Pénétration (0–8) <input id="combat-penetration" type="number" min="0" max="8" value="0"></label>
+              <button>Lancer une opposition M03</button>
+            </form>
           </section>
           <section class="panel" id="gm-panel" hidden>
             <h3>Écran du maître de jeu</h3>
