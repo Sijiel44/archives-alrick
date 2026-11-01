@@ -20,7 +20,8 @@ const def=(changes={})=>({
   schema:b.RITUAL_SCHEMA,id:"test-support-d",version:"1.0.0",
   title:"Rituel de laboratoire D",practice:"tradition",traditionLabel:"Atelier",
   resolution:"m01",difficulty:21,leadRole:"officiant",feasible:true,
-  requiresSafePlace:true,requiredRoles:["officiant"],components:{},effects:[],...changes
+  requiresSafePlace:true,requiredRoles:["officiant"],components:{},effects:[],
+  supportRules:{support:[{role:"artisan",skills:["artisanat"]},{role:"assistant",skills:["arts","artisanat"]},{role:"runiste",skills:["runes"]}]},...changes
 })
 const support=(personId="a",extra={})=>({
   id:"help",participantId:personId,kind:"support",detail:"Aide contextualisée",
