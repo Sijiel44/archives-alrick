@@ -107,6 +107,7 @@ export const DEMO_RITES:readonly RitualDefinition[]=[
     practice:"tradition",traditionLabel:"Transmission d'atelier",resolution:"automatique",leadRole:"officiant",
     feasible:true,requiresSafePlace:true,requiredRoles:["officiant","artisan"],components:{},effects:[]},
   {schema:RITUAL_SCHEMA,id:"demo-ceremonie",version:"1.0.0",title:"Cérémonie de coopération (démo)",
+    supportRules:{support:[{role:"gardien",skills:["magie","vigilance"]}]},
     practice:"preparation_rituel",resolution:"m01",difficulty:21,leadRole:"officiant",
     feasible:true,requiresSafePlace:true,requiredRoles:["officiant","gardien"],components:{},effects:[]}
 ] as const
@@ -121,12 +122,18 @@ export function startCeremony(def:RitualDefinition,id:string,participants:Ritual
   const instance=createRitualInstance(def,id,participants)
   // La case cochée ne confère aucun bonus : qualification obtenue de la fiche,
   // identité différente de l'officiant et preuve de maîtrise explicite.
-  const helper=assist?participants.slice(1).find(p=>
-    p.id!==participants[0].id&&p.role!==def.leadRole&&p.skills.length>0):undefined
-  if(assist&&!helper)throw new Error("Aucun assistant qualifié par sa fiche pour ce soutien.")
+  // L'aide numérique est liée au rôle et aux compétences du rite, jamais à la
+  // première maîtrise présente dans une fiche importée.
+  const eligible=assist?participants.slice(1).flatMap(p=>
+    (def.supportRules?.support??[]).filter(rule=>p.id!==participants[0].id&&
+      p.role!==def.leadRole&&rule.role===p.role&&
+      (rule.knowledge??[]).every(k=>p.knowledge?.includes(k))).flatMap(rule=>
+        rule.skills.filter(skill=>p.skills.includes(skill)).map(skill=>({participant:p,skill})))):[]
+  const helper=eligible[0]
+  if(assist&&!helper)throw new Error("Aucun assistant ayant une compétence pertinente attestée pour ce soutien.")
   const contributions:RitualContribution[]=helper
-    ?[{id:id+":support",participantId:helper.id,kind:"support",detail:"Aide contextuelle (laboratoire)",
-      approved:true,supportRole:helper.role,supportSkillId:helper.skills[0]}]:[]
+    ?[{id:id+":support",participantId:helper.participant.id,kind:"support",detail:"Aide contextuelle (laboratoire)",
+      approved:true,supportRole:helper.participant.role,supportSkillId:helper.skill}]:[]
   return transitionRitual(instance,{id:id+":prepare",type:"preparer",tick:1,safePlace,contributions})
 }
 /** Seul un rite connu, entièrement ordinaire et identique au catalogue de démo
