@@ -20,6 +20,7 @@ const def=(overrides={})=>({
   schema:m.RITUAL_SCHEMA,id:"rite-test",version:"1.0.0",title:"Rite de test",
   practice:"meditation",resolution:"automatique",leadRole:"officiant",
   feasible:true,requiresSafePlace:true,requiredRoles:["officiant"],components:{},effects:[],
+  supportRules:{support:[{role:"assistant",skills:["arts","artisanat"]}]},
   ...overrides
 })
 const contribution=(id,participantId,kind,more={})=>({
