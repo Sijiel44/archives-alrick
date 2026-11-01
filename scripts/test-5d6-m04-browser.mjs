@@ -226,9 +226,20 @@ try{
       const details=document.querySelector('[data-m05-panel="math"]')
       details.querySelector("summary").focus()
     })
-    await cdp("Input.dispatchKeyEvent",{type:"keyDown",key:"Enter",code:"Enter",windowsVirtualKeyCode:13})
-    await cdp("Input.dispatchKeyEvent",{type:"keyUp",key:"Enter",code:"Enter",windowsVirtualKeyCode:13})
-    await waitFor("document.querySelector('[data-m05-panel=math]')?.open===true","panneau M05 au clavier")
+    const active=await runJS("document.activeElement?.tagName")
+    assert.equal(active,"SUMMARY","le panneau n'a pas reçu le focus clavier")
+    await cdp("Input.dispatchKeyEvent",{type:"rawKeyDown",key:"Enter",code:"Enter",windowsVirtualKeyCode:13,nativeVirtualKeyCode:13})
+    await cdp("Input.dispatchKeyEvent",{type:"keyUp",key:"Enter",code:"Enter",windowsVirtualKeyCode:13,nativeVirtualKeyCode:13})
+    let opened=await runJS("document.querySelector('[data-m05-panel=math]')?.open===true")
+    if(!opened){
+      // Chromium headless peut ignorer Enter sans événement 'char'. Essayer Espace,
+      // qui active nativement un summary au relâchement de la touche.
+      await cdp("Input.dispatchKeyEvent",{type:"rawKeyDown",key:" ",code:"Space",windowsVirtualKeyCode:32,nativeVirtualKeyCode:32})
+      await cdp("Input.dispatchKeyEvent",{type:"char",key:" ",code:"Space",text:" ",unmodifiedText:" "})
+      await cdp("Input.dispatchKeyEvent",{type:"keyUp",key:" ",code:"Space",windowsVirtualKeyCode:32,nativeVirtualKeyCode:32})
+      opened=await runJS("document.querySelector('[data-m05-panel=math]')?.open===true")
+    }
+    assert.equal(opened,true,"aucune activation clavier native du panneau M05")
     const content=await runJS("document.querySelector('[data-m05-panel=math]')?.textContent")
     assert.ok(content.includes("7 776"))
     assert.ok(content.includes("194"))
