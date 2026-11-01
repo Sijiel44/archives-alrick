@@ -51,7 +51,7 @@ P21, P22, P23, P24, P28, P30, P34, P35, P36 : examen individuel dans `B003_1_REC
 
 La synthèse `B003_1_ECOSYSTEME_CONSOLIDE.md` rapproche H1–H9, ressources et réseaux alimentaires et conserve les arêtes trophiques au statut d'hypothèses. Les habitats ne sont pas des `BIO-` ; cartographie fine non attestée.
 
-`B003_1_ILLUSTRATIONS.md` inventorie P37–P41. **0/5 fichiers JPEG réellement présents** dans la branche. Source, droits, doublons visuels, conformité des pixels et intégration Word/ZIP annoncée dans la PR antérieure **non vérifiables depuis le présent dépôt**. Ne jamais déclarer une illustration intégrée à GitHub tant que les octets n'y sont pas.
+`B003_1_ILLUSTRATIONS.md` inventorie P37–P41. **0/5 fichiers JPEG réellement présents** dans la branche. Le Word historique **B003_LOT_IV_BESTIAIRE_ILLUSTRE.docx** a finalement été retrouvé dans la Bibliothèque de l'utilisateur ; **5/5 JPEG extraits**, tailles 1055 × 1491, cinq SHA-256 distincts et correspondance visuelle générale vérifiée (voir B003_1_ILLUSTRATIONS.md). **0/5 dans la PR publique** : l'auteur, la licence et l'autorisation de dépôt public sont toujours à établir. Ne jamais déclarer une illustration intégrée à GitHub tant que les octets n'y sont pas.
 
 ## 7. Livrables et contrôles
 
@@ -63,7 +63,7 @@ La synthèse `B003_1_ECOSYSTEME_CONSOLIDE.md` rapproche H1–H9, ressources et r
 
 1. **Synchronisation Git** : branche retardée de 91 commits sur `main` au premier constat ; résolution d'une éventuelle divergence nécessaire avant fusion. Ne pas masquer le problème par un faux merge.
 2. **Autorité éditoriale** : 0 décision individuelle ou collective reçue ; 41 décisions en attente ; quatre approfondissements et un rapprochement prioritaire.
-3. **Illustrations** : récupérer les cinq octets et licences, puis soumettre la concordance visuelle et la publication séparément.
+3. **Illustrations** : les cinq octets ont été récupérés depuis le Word antérieur (hors GitHub) ; confirmer leur provenance juridique et l'autorisation de diffusion publique avant tout dépôt, puis soumettre le statut graphique et la publication séparément.
 4. **Écologie** : vérifier les habitats H6/H8 et les corridors avant assignation `BIO-`.
 5. **Mécanique 5d6** : aucun profil de combat chiffré ni évolution automatique ; tester uniquement si une future décision définit les individus et les niveaux pertinents.
 6. **Sources primaires** : croiser les volumes complets et les campagnes brutes accessibles avant d'attribuer un caractère « attesté » ; l'absence de scène jouée n'est **pas** un blocage canonique.
