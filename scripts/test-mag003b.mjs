@@ -99,15 +99,15 @@ const scenarios=[]
 // 7. Dix assistants : un soutien +1 non cumulatif, plafonné dans situation M01
 {
   let s=create(def({id:"ten",resolution:"m01",difficulty:21}),[
-    person("lead"),...Array.from({length:10},(_,i)=>person("a"+i,"assistant",{mage:false}))
+    person("lead"),...Array.from({length:10},(_,i)=>person("a"+i,"assistant",{mage:false,skills:["arts"]}))
   ])
-  const help=Array.from({length:10},(_,i)=>contribution("help"+i,"a"+i,"support"))
+  const help=Array.from({length:10},(_,i)=>contribution("help"+i,"a"+i,"support",{supportRole:"assistant",supportSkillId:"arts"}))
   s=resolve(chain(s,help),{natural:17,baseSituation:1})
   eq(s.result.supportUsed,1,"Dix aides plafonnées à +1")
   eq(s.result.effectiveSituation,2,"Situation M01 maximum +2")
   const t=resolve(chain(create(def({id:"ten-cap",resolution:"m01",difficulty:21}),[
-    person("lead"),person("helper","assistant")
-  ]),[contribution("h","helper","support")]),{natural:17,baseSituation:2})
+    person("lead"),person("helper","assistant",{skills:["artisanat"]})
+  ]),[contribution("h","helper","support",{supportRole:"assistant",supportSkillId:"artisanat"})]),{natural:17,baseSituation:2})
   eq(t.result.supportUsed,0,"Ne franchit pas +2")
   scenarios.push("S07 dix assistants")
 }
