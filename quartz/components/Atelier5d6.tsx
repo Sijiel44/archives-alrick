@@ -545,7 +545,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
       <div class="atelier-hub-inner">
         <p><strong>Cette version fonctionne localement uniquement.</strong> Elle ne crée pas de comptes ni de salons partagés. Pour les futures tables, nous prévoyons des pseudonymes, avatars facultatifs, invitations, rôles validés par serveur et dés synchronisés.</p>
         <p>Le MJ devra pouvoir consulter les fiches autorisées, les jets et le journal de séance. Un mode IA facultatif pourra recevoir un contexte explicitement sélectionné.</p>
-        <a href="./architecture-tables-multijoueur">Lire le plan du système de tables et de sessions</a>
+        <p><a href="./table-pilote-local">Pilote des Tables multijoueurs (application locale séparée)</a> · <a href="./architecture-tables-multijoueur">Lire le plan du système de tables et de sessions</a></p>
       </div>
     </details>
     <details class="atelier-hub-section" data-hub="compagnies">
