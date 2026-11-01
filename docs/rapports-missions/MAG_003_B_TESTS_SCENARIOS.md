@@ -11,7 +11,7 @@
 | Code | Scénario | Contrôle déterminant |
 | --- | --- | --- |
 | S01 | Rite personnel simple | pratique acquise sans jet ; aucun mana accordé |
-| S02 | Méditation approfondie | clarté narrative, durée déclarée, pas de bonus automatique |
+| S02 | Méditation approfondie | clarté narrative, durée déclarée, contrôle effectif de l'expiration et du contexte, pas de bonus automatique |
 | S03 | Rite incertain | M01, probabilité exacte, jet indispensable |
 | S04 | Rite interrompu | état terminal, reprise bloquée, répétition d'événement idempotente |
 | S05 | Cérémonie à trois | rôles officiant, chantre et gardien |
@@ -27,7 +27,7 @@
 
 ## Résultats et preuves
 
-**GitHub Actions [#41322728636](https://github.com/Sijiel44/archives-alrick/actions/runs/41322728636) : SUCCÈS.** Le journal exécute `npm ci`, `npm test`, les contrôles TypeScript et build, les tests de régression M01–M05, MAG-003.A (**181 assertions**) et **MAG-003.B (41 assertions, 14 scénarios)** ; la recette navigateur existante M04.1/M05 valide **15 scénarios**. La preuve concerne le commit `075dea296e5c993408528296df7899ca87438952` et précède la seule mise à jour documentaire du bilan. Les tests automatisés ne sont pas une recette multijoueur réelle, une session de jeu humaine ni une preuve d'absence de concurrence.
+**GitHub Actions [#41323080067](https://github.com/Sijiel44/archives-alrick/actions/runs/41323080067) : SUCCÈS.** Le journal exécute `npm ci`, `npm test`, les contrôles TypeScript et build, les tests de régression M01–M05, MAG-003.A (**181 assertions**) et **MAG-003.B (44 assertions, 14 scénarios)** ; la recette navigateur existante M04.1/M05 valide **15 scénarios**. La preuve concerne le commit `424b9022e55f09cf4ec931681e2413ff836814dd` et précède la seule mise à jour documentaire du bilan. Les tests automatisés ne sont pas une recette multijoueur réelle, une session de jeu humaine ni une preuve d'absence de concurrence.
 
 ## Compléments recommandés avant approbation
 
