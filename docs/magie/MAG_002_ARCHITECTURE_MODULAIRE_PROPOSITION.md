@@ -88,3 +88,16 @@ La résolution manuelle reste disponible pour les interventions divines, la cré
 ## F. Livrables futurs CONDITIONNELS
 
 Après phase C : spécification de `alrick.magic.v2`, prototypes, import/export tolérant, tests sur N1/5/10/15/20/25, matrices C1→C8, IX, usages combinés, consommation d'énergie et d'activations distinctes, interruptions, contrôles MJ et M03. **Ne pas modifier G-001/PR #55 sans coordination explicite.**
+
+
+## Addendum de conception — ledger de récupération (Phase C, 1er novembre 2026)
+
+Le créateur privilégie coûts **C** et récupération journalière par repos sûr, prière et repos prolongé (détails dans `MAG_002_DECISIONS_A_SOUMETTRE.md`). Pour éviter qu'un joueur puisse enchaîner des pauses artificielles, envisager un `RecoveryLedger` par personnage, journée de campagne et réserve, **non validé comme format définitif** :
+
+- `dayKey` / `restPeriodId` : journées et périodes de repos effectivement achevées, définies par le moteur de campagne et le MJ, jamais par l'horloge du navigateur.
+- `shortRestsCompleted` (maximum de test : 2), `manaRecoveredToday` et `dailyRecoveryCeilingRate` pour que les avantages 20 / 40 / 50 / 60 / 100 % soient des **plafonds alternatifs**, non des bonus additifs.
+- `restType`, `safeLocation`, `focusedPractice`, `exceptionalLocationApproval`, `interrupted` et `gmDecision` : propriétés de l'événement attesté, pas des capacités auto-déclarées client faisant autorité.
+- Une récupération ne crédite que `max(0, min(floor(rate * manaMax) - manaRecoveredToday, manaMax - manaCurrent))` pour les plafonds à taux fixe d'une même journée. Chaque gain validé incrémente `manaRecoveredToday` sans permettre d'en reconstituer le crédit après une dépense ultérieure.
+- Aucun repos personnel ne recharge automatiquement `ItemInstance.energyStored` ni ne restaure `usesRemaining`. Les sources et transferts doivent être arbitrés à part.
+
+La pratique spirituelle n'est ni une garantie d'intervention divine, ni un accès au Cercle IX. L'équivalence éventuelle prière/rite/méditation pour traditions non religieuses fait partie de l'arbitrage restant. Prévoir des tests de récupération partielle, reprise après interruption, sauvegarde/import, changement de jour en jeu, déconnexion et bilan mage/hybride.
