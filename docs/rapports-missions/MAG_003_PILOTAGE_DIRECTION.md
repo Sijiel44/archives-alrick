@@ -245,6 +245,9 @@ Le créateur a explicitement autorisé l'intégration, la publication et une can
 - CI complète [#41339974382](https://github.com/Sijiel44/archives-alrick/actions/runs/41339974382) réussie sur le head documentaire `5fbd98390f592ee099a6c64f01fc6becddfc73fb` avant fusion, incluant `npm test` et `npm run test:m04:browser`.
 - PR #69 est fusionnée. Les PR #55, #70, #71, #72 et #74 sont fermées comme remplacées par l'arbre #75 ; leurs branches propriétaires n'ont pas été supprimées ni déplacées. Le code du Grimoire G-001, du correctif d'export et des missions A–D est présent dans l'arbre fusionné.
 - La branche de développement du Bestiaire `bestiaire/b003-montagnes-aube` demeure séparée ; elle partageait la même base `main` avant l'intégration et ne touchait aucun des fichiers modifiés par MAG-003.E.
-- La publication Pages est autorisée par le créateur. Le workflow de publication est manuel et doit être déclenché avec `contenu_revu=true` ; inscrire ici son numéro et le résultat final après exécution.
+- GitHub Pages a été publié par le workflow manuel #39, déclenché avec `contenu_revu=true` après confirmation du créateur : [Actions #41340381372 — succès](https://github.com/Sijiel44/archives-alrick/actions/runs/41340381372). Build, `npm test`, déploiement et smoke test sur l'URL publique ont tous réussi. La recette Chrome publique a passé **22 scénarios et 10 dialogues de confirmation**. [Site publié](https://sijiel44.github.io/archives-alrick/).
+- Le guide publié est accessible sous [Comprendre la magie — premiers repères](https://sijiel44.github.io/archives-alrick/univers/magie-pour-jouer) ; ses clarifications approuvées sur les Cercles I et IX sont visibles. Aucun autre paramètre du prototype n'est promu au canon.
+- `npm ci` a signalé quatre avis de vulnérabilité de dépendances (2 modérés, 2 élevés ; dont `sharp` et `source-map-js`). Aucun correctif de dépendances n'a été inclus dans ce lot ; ces avis restent à traiter séparément.
+
 
 

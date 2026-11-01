@@ -42,6 +42,9 @@ Seules les clarifications documentées du créateur sur les Cercles I–IX sont 
 
 La recette automatisée du commit `f99a2db438d65c8d3a7a66c6bec94efa8ee16dba` a réussi : `npm ci`, `npm test` et 22 scénarios Chrome (10 confirmations). Les essais sur téléphone physique et sur sauvegardes privées réelles restent à faire. La fusion et le résultat du déploiement Pages seront consignés dans le pilotage central après contrôle du nouveau SHA et de la CI documentaire.
 
-**Intégration réalisée :** PR #75 fusionnée dans `main` au commit [`0c8a83d700b6816b38f5d607a898f6eebe3239eb`](https://github.com/Sijiel44/archives-alrick/commit/0c8a83d700b6816b38f5d607a898f6eebe3239eb). La CI complète #41339974382 a réussi sur le head documentaire avant fusion. #69 est fusionnée ; #55, #70–#72 et #74 sont fermées comme remplacées, branches conservées. La publication Pages est autorisée et son résultat sera ajouté au pilotage central après exécution.
+**Intégration réalisée :** PR #75 fusionnée dans `main` au commit [`0c8a83d700b6816b38f5d607a898f6eebe3239eb`](https://github.com/Sijiel44/archives-alrick/commit/0c8a83d700b6816b38f5d607a898f6eebe3239eb). La CI complète #41339974382 a réussi sur le head documentaire avant fusion. #69 est fusionnée ; #55, #70–#72 et #74 sont fermées comme remplacées, branches conservées. Le résultat Pages est indiqué ci-dessous et dans le pilotage central.
+
+**Publication réalisée :** GitHub Pages workflow #39 / [run #41340381372 — succès](https://github.com/Sijiel44/archives-alrick/actions/runs/41340381372). Build et tests réussis ; smoke test Chrome sur le site public : 22 scénarios, 10 confirmations. [Voir le site](https://sijiel44.github.io/archives-alrick/). Les quatre avis de vulnérabilité signalés par `npm ci` (2 modérés, 2 élevés) sont conservés comme point de suivi distinct.
+
 
 
