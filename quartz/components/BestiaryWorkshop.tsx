@@ -197,4 +197,49 @@ BestiaryWorkshop.css=String.raw`
   .bestiary-lab [data-m05-format="pedagogique"] .m05-panel:not([data-m05-panel="math"]):not([data-m05-panel="stats"]):not([data-m05-panel="defenses"]){display:none!important}
 }
 
+
+/* Impression M05 : fiche seule, sans navigation du site ni texte pastel sur fond blanc. */
+@media print {
+  body:has(#bestiary-workshop) .left.sidebar,
+  body:has(#bestiary-workshop) .right.sidebar,
+  body:has(#bestiary-workshop) .archive-topbar,
+  body:has(#bestiary-workshop) .archive-intro,
+  body:has(#bestiary-workshop) .archive-footer,
+  body:has(#bestiary-workshop) .skip-link,
+  body:has(#bestiary-workshop) .center > article,
+  body:has(#bestiary-workshop) .center > hr,
+  body:has(#bestiary-workshop) .center > .page-footer {
+    display:none!important;
+  }
+  body:has(#bestiary-workshop),
+  body:has(#bestiary-workshop) #quartz-body,
+  body:has(#bestiary-workshop) .center,
+  body:has(#bestiary-workshop) .page-header,
+  body:has(#bestiary-workshop) .popover-hint {
+    display:block!important;
+    background:#fff!important;
+    color:#111!important;
+    margin:0!important;
+    padding:0!important;
+    width:100%!important;
+    max-width:none!important;
+    min-height:0!important;
+    box-shadow:none!important;
+  }
+  body:has(#bestiary-workshop) .bestiary-lab .m05-view,
+  body:has(#bestiary-workshop) .bestiary-lab .m05-view * {
+    color:#111!important;
+    text-shadow:none!important;
+  }
+  body:has(#bestiary-workshop) .bestiary-lab .m05-portrait {
+    background:white!important;
+    border-color:#888!important;
+  }
+  body:has(#bestiary-workshop) .bestiary-lab .m05-panel {
+    break-inside:auto!important;
+  }
+  body:has(#bestiary-workshop) .bestiary-lab .m05-line {
+    break-inside:avoid-page;
+  }
+}
 `
