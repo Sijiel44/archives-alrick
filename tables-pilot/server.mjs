@@ -481,8 +481,39 @@ export async function createTableServer({
       try { msg = JSON.parse(raw.toString("utf8")) }
       catch { safeSend(ws, { type: "error", code: "FORMAT", message: "JSON invalide." }); return }
       // Toutes les écritures passent dans une file globale, même entre connexions.
-      tasks = tasks.then(() => handle(ws, msg)).catch(e => {
-        safeSend(ws, { type: "error", code: e.code ?? "ERROR", message: e.message ?? "Erreur serveur." })
+      tasks = tasks.then(async () => {
+        // Reçus persistants : une réponse perdue ne doit pas provoquer de double mutation.
+        // Les anciens clients sans actionId restent possibles mais sans garantie de déduplication.
+        if (!MUTATIONS.has(msg?.type) || msg.actionId === undefined) return handle(ws, msg)
+        if (typeof msg.actionId !== "string" || !/^[a-zA-Z0-9_-]{8,100}$/.test(msg.actionId))
+          fail("FORMAT", "Identifiant d'action invalide.")
+        const actor = userFor(ws)
+        const key = actor.id + ":" + msg.actionId
+        const { actionId, ...payload } = msg
+        const digest = tokenHash(JSON.stringify(payload))
+        const previous = db.operations[key]
+        if (previous) {
+          if (previous.digest !== digest) fail("IDEMPOTENCY", "Clé utilisée pour une autre action.")
+          if (previous.roomId) {
+            memberFor(ws, previous.roomId, false)
+            online.get(ws).roomId = previous.roomId
+            notifyRoom(previous.roomId)
+          }
+          safeSend(ws, { type: "action_ack", actionId, replay: true, roomId: previous.roomId ?? null })
+          safeSend(ws, { type: "rooms", rooms: myRooms(ws) })
+          return
+        }
+        db.operations[key] = { digest, type: msg.type, roomId: msg.roomId ?? null, at: now() }
+        try {
+          await handle(ws, msg)
+          db.operations[key].roomId = online.get(ws)?.roomId ?? msg.roomId ?? null
+          // Persistance du reçu AVANT accusé de réception.
+          await save()
+          safeSend(ws, { type: "action_ack", actionId, replay: false, roomId: db.operations[key].roomId })
+        } catch (e) { delete db.operations[key]; throw e }
+      }).catch(e => {
+        safeSend(ws, { type: "error", actionId: msg?.actionId,
+          code: e.code ?? "ERROR", message: e.message ?? "Erreur serveur." })
       })
     })
   })
