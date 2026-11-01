@@ -1843,7 +1843,18 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       message("Fichier JSON exporté : conserve-le pour retrouver tes fiches sur un autre appareil.")
       return
     }
-    if(button.hasAttribute("data-export-campaign")){exportCampaign();return}
+    if(button.hasAttribute("data-export-campaign")){
+      // MAG-003.E : export dans le gestionnaire du bouton, sans portée externe.
+      const envelope={...(state as State & {__campaignEnvelopeExtras?:Record<string,unknown>}).__campaignEnvelopeExtras,
+        schema:"alrick.campaign.v2",created:new Date().toISOString(),state}
+      const blob=new Blob([JSON.stringify(envelope,null,2)],{type:"application/json"})
+      const url=URL.createObjectURL(blob),link=document.createElement("a")
+      link.href=url;link.download="archives-alrick-campagne-5d6-complete.json"
+      document.body.append(link);link.click();link.remove()
+      setTimeout(()=>URL.revokeObjectURL(url),1500)
+      message("Sauvegarde complète exportée : fiches, inventaires, modèles MJ, compagnies et journal de missions.")
+      return
+    }
     if(button.hasAttribute("data-clear-log")){state.log=[];refreshLog();persist();message("Journal local effacé.");return}
     if(button.hasAttribute("data-ai-refresh")){renderAI();message("Contexte actualisé à partir des fiches locales.");return}
     if(button.hasAttribute("data-ai-copy")){
