@@ -1,8 +1,8 @@
 # MAG-003 — Pilotage de Direction générale
 
 **Point de contrôle : 1er novembre 2026**  
-**Mission en cours : MAG-003.A — Moteur de récupération et simulateur d'expédition**  
-**Statut réel : MAG-003.A TERMINÉE TECHNIQUEMENT (code, tests, rapports) ; PR DRAFT #69 ; NON FUSIONNÉE ; NON PUBLIÉE ; REVUE DG À VENIR.**  
+**Dernier jalon examiné : MAG-003.C — intégration expérimentale ; revue DG du 1er novembre 2026.**  
+**État consolidé de Direction : A validée techniquement ; B acceptée comme prototype à consolider ; C terminée avec réserves. PR #69, #70 et #71 ouvertes en brouillon ; aucune fusion, publication ou canonisation.**  
 **Autorité :** Direction générale et créateur des Archives d'Alrick ; aucune validation canonique anticipée.
 
 ## Chaîne GitHub et périmètre
@@ -88,3 +88,48 @@ Les critères techniques (moteur, scénarios, tests, rapports) sont remplis sur 
 
 
 **Addendum de contrôle CI (code MAG-003.C, 1er novembre 2026).** [Run #41324736498 — SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41324736498) sur `90282ea8` : `npm ci`, `npm test` incluant 44 assertions C, 181 A, 44 B et G-001 ; `npm run test:m04:browser` : 17 scénarios Chrome réussis, notamment récupération réelle, anti-double clic, stockage rechargé, mobile émulé et cérémonie sans débit. **Ce contrôle précède les commits de rapports ; consulter la dernière CI de #71 pour le head final.**
+
+
+---
+
+## Décision de Direction générale — revue MAG-003.C du 1er novembre 2026
+
+**Portée de cette section :** décision de pilotage relative à la recette automatisée et aux rapports existants ; elle n'approuve aucune fusion, publication, règle canonique ou dépense collective réelle.
+
+### Contrôles GitHub et verdict
+
+- [PR #69 — MAG-003.A](https://github.com/Sijiel44/archives-alrick/pull/69) : **validation technique maintenue**, sous réserve des contrôles d'autorité et de l'intégration finale. Head relevé avant cette note : `20c6651452122b2d60ca175fe49bbb27a6274d41` ; PR brouillon vers `main`.
+- [PR #70 — MAG-003.B](https://github.com/Sijiel44/archives-alrick/pull/70) : **prototype accepté, consolidation nécessaire** ; soutien et qualification des contributeurs à fiabiliser. Head : `7e5cb4ce728390b8e0999106482e8581c4a935da` ; base = branche A.
+- [PR #71 — MAG-003.C](https://github.com/Sijiel44/archives-alrick/pull/71) : **terminée avec réserves, recevable à la validation expérimentale**, sans autorisation de fusion. Code contrôlé : `dce1fb61c5891af1b39e48d17a2a13e71397e5b1`, base = branche B. [Actions #41325092101](https://github.com/Sijiel44/archives-alrick/actions/runs/41325092101) : `completed / success` sur ce SHA. Selon les rapports de recette : 181 assertions A, 44 B, 44 C et 17 scénarios Chrome automatisés. **Aucun playtest humain ni test sur téléphone physique attesté.**
+
+### Réserves de consolidation avant fusion
+
+1. **Droits et soutien MAG-003.B :** une assistance peut être approuvée localement sans qualification suffisamment vérifiée du participant. Exiger une validation explicite des compétences, de la propriété/identité de la contribution, du prérequis, de la pertinence et de l'unicité ; conserver **+1 maximum** de soutien contextuel dans les limites M01/M03 et refuser les contributions invalides. Le contrôle local n'est pas une authentification réseau.
+2. **Chronologie et autorité :** le joueur saisit une journée de campagne et l'Atelier expose un mode MJ local. Un tel mode ne vaut pas autorité multijoueur ; conserver l'idempotence et le refus conservateur, préparer les contrats `expectedRevision`, actionId, permissions PJ/MJ, reçus durables et transactions atomiques **sans débiter collectivement** tant que le serveur n'est pas intégré et audité.
+3. **Rites ordinaires PJ :** prévoir un parcours autonome **sans jet ni validation MJ superflue** pour une pratique connue, réalisable et non exceptionnelle. Les rites incertains, exceptionnels ou modifiant autrui restent soumis aux conditions/validations adaptées. Maintenir la séparation entre récupération, rite et intervention divine.
+4. **Réconciliation Git :** C contient des sources issues de G-001 #55 alors que #55, #69, #70 et #71 ne sont pas toutes dans `main`. Contrôler les diffs croisés, migrations, imports/export et garde-fous sur l'arbre réel visé avant toute fusion, puis relancer la CI complète à chaque étape.
+
+### Arbitrages retenus pour le prototype, non canoniques
+
+| Sujet | Directive |
+| --- | --- |
+| Récupération | Référence centrale MAG-003.A ; variantes prudente et ample préservées pour essais |
+| Prière et méditation | Équivalence d'accès à la récupération ordinaire ; récupération exceptionnelle conditionnelle et justifiée |
+| Foi | Aucun barème, gain ni conversion automatique foi ↔ mana avant contrat cosmologique approuvé |
+| Objets G-001 | Énergie stockée et nombre d'utilisations distincts conceptuellement ; pas de migration automatique des anciennes `charges` |
+| Coopération | Soutien plafonné à +1, uniquement après contribution qualifiée et vérifiée |
+| Multijoueur | Aucune dépense de mana collective sans transaction serveur atomique, autorisée et traçable |
+
+### Précision sur les Tables
+
+MAG-003.C assure **une compatibilité préparatoire avec les Tables T-001 #66**, et **non une intégration serveur des rites**. Le serveur T-001 n'est pas relié à MAG-003.C : pas de synchronisation des rituels, pas de débits collectifs autoritaires et pas de permissions réseau pour les cérémonies. Toute formulation « intégration des Tables » dans une fiche doit être lue selon cette limitation.
+
+### Ordre de travail autorisé
+
+1. Consolider la qualification des soutiens, prérequis et contrats énergétiques de B.
+2. Simplifier le parcours des rites personnels ordinaires dans C, sans élargissement des permissions réseau.
+3. Organiser des essais humains sur ordinateur et téléphone, avec des sauvegardes réelles de test et des scénarios de régression.
+4. Étudier le contrat interopérable Grimoire–Tables–Rites, puis préparer une PR distincte de réconciliation/transactions si un serveur autoritaire est réellement disponible.
+5. Réconcilier les branches dans l'ordre des dépendances, contrôler les changements croisés G-001 et relancer toutes les validations sur l'arbre destiné à `main` ; **fusion seulement après décision explicite**.
+
+**Verrou DG : toutes les PR restent DRAFT, sans fusion, Pages, activation multijoueur ni canonisation.**
