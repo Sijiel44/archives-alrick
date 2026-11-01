@@ -478,6 +478,72 @@ try{
     // licence de l'illustration ni l'existence matérielle du fichier image.
     await screenshot("m05-metadata-portrait-source.png")
   })
+  await test("MAG-003.C : interface de récupération intégrée, double clic et historique",async()=>{
+    await navigate(base+"/jouer/atelier-5d6")
+    await waitFor('document.querySelector("#atelier-5d6 [data-hub=rites]")!==null',"Panneau des rites")
+    const id=await browserFn(()=>{
+      const raw=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return raw.sheets.find(s=>s.name==="PJ recette")?.id
+    })
+    assert.ok(id,"PJ moderne absent")
+    await set("#atelier-5d6 [data-active]",id,"change")
+    await click('#atelier-5d6 [data-mode="mj"]')
+    await set('#atelier-5d6 [data-field="manaMax"]',35,"change")
+    await set('#atelier-5d6 [data-field="mana"]',10,"change")
+    await click('[data-hub-nav="rites"]')
+    await set('[data-rites-day]',"J-C3")
+    await set('[data-rites-rest-id]',"camp-C3")
+    await browserFn(()=>{
+      document.querySelector('[data-rites-safe]').checked=true
+      document.querySelector('[data-rites-complete]').checked=true
+    })
+    await click('[data-rites-action="preview"]')
+    const message=await runJS("document.querySelector('[data-rites-preview]')?.textContent")
+    assert.ok(message.includes("+7 mana"),"Prévisualisation 20 % absente : "+message)
+    const before=dialogs
+    await click('[data-rites-action="recover"]')
+    await waitFor("JSON.parse(localStorage.getItem('archives-alrick-atelier-5d6-v2')).sheets.find(s=>s.name==='PJ recette')?.mana===17","Crédit 7 mana")
+    assert.ok(dialogs>before,"confirmation native absente")
+    await click('[data-rites-action="recover"]')
+    const saved=await browserFn(()=>{
+      const all=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return all.sheets.find(s=>s.name==="PJ recette")
+    })
+    assert.equal(saved.mana,17,"double crédit du repos")
+    assert.equal(saved.ritualWorkshop.recovery.journal.length,1,"deux entrées pour le même repos")
+    assert.equal(saved.grimoire.schema,"alrick.grimoire.v1","Grimoire effacé")
+    await screenshot("mag003c-recuperation-desktop.png")
+    await cdp("Emulation.setDeviceMetricsOverride",{width:390,height:844,deviceScaleFactor:1,mobile:true})
+    await sleep(300)
+    const mobile=await browserFn(()=>{
+      const r=document.querySelector('[data-rites-root]')
+      return {width:r.getBoundingClientRect().width,viewport:innerWidth,overflow:r.scrollWidth-r.clientWidth}
+    })
+    assert.ok(mobile.width<=mobile.viewport+3,"Panneau déborde du téléphone")
+    assert.ok(mobile.overflow<=6,"Champs des rites débordent horizontalement")
+    await screenshot("mag003c-recuperation-mobile.png")
+    await cdp("Emulation.clearDeviceMetricsOverride")
+    await awaitPageLoad(()=>cdp("Page.reload"),"rechargement MAG-003.C")
+    await waitFor("document.querySelector('[data-rites-mana]')?.textContent?.includes('récupéré 7')","historique de repos restauré")
+  })
+  await test("MAG-003.C : cérémonie MJ simulée sans effet ni débit collectif",async()=>{
+    await click('[data-hub-nav="rites"]')
+    await browserFn(()=>{document.querySelector('[data-rites-safe]').checked=true})
+    await click('[data-rites-action="prepare"]')
+    await click('[data-rites-action="resolve"]')
+    const saved=await browserFn(()=>{
+      const st=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return st.sheets.find(s=>s.name==="PJ recette")
+    })
+    assert.equal(saved.ritualWorkshop.rituals.length,1)
+    assert.equal(saved.ritualWorkshop.rituals[0].status,"resolu")
+    assert.equal(saved.ritualWorkshop.rituals[0].result.energyDebits.length,0)
+    assert.equal(saved.mana,17,"cérémonie a modifié le mana")
+    assert.ok(document, "test navigateur réel")
+    await screenshot("mag003c-ceremonie-locale.png")
+  })
+  console.log("MAG-003.C : vérifications Chrome de la récupération et de la cérémonie locale.")
+
   console.log("M04.1 + M05 CHROME : "+checks+" scénarios complets, "+dialogs+" dialogues de confirmation.")
   if(failures.length){console.error("M04.1 : "+failures.length+" scénario(s) non validés :",failures);throw Error("Recette M04.1 incomplète : "+failures.join("; "))}
 }finally{
