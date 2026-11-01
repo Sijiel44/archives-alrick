@@ -392,6 +392,80 @@ try{
     assert.equal(again.sheets.find(x=>x.name==="Témoin historique").legacyOriginal.uniqueHistorique,"à préserver")
     await screenshot("atelier-combat-m03.png")
   })
+  await test("M05 : prédateur N5 et statistiques réellement calculées",async()=>{
+    await navigate(base+"/jouer/atelier-bestiary-5d6")
+    await waitFor('document.querySelector("#bestiary-workshop")?.dataset.initialized==="true"',"retour bestiaire M05")
+    await click('[data-action="new"]')
+    await set("[data-archetype]","predateur","change")
+    const sample=await browserFn(()=>{
+      const host=document.querySelector("#bestiary-workshop")
+      return {level:Number(host.querySelector("[data-level]").value),
+        archetype:host.querySelector("[data-archetype]").value,
+        stats:[...host.querySelectorAll(".m05-stat-raw")].map(e=>Number(e.textContent)),
+        hp:Number(host.querySelector("[data-number=pvMax]").value)}
+    })
+    assert.equal(sample.level,5)
+    assert.equal(sample.archetype,"predateur")
+    assert.deepEqual(sample.stats,[6,8,3,4])
+    assert.equal(sample.hp,32)
+    await screenshot("m05-predateur-n5.png")
+  })
+  await test("M05 : PNJ de soutien non combattant, identite et sauvegarde",async()=>{
+    await set('[data-choice="kind"]',"pnj","change")
+    await set('[data-choice="role"]',"soutien","change")
+    await set('[data-text="name"]',"Bibliothécaire de test","input")
+    await set('[data-text="profession"]',"Scribe","input")
+    const view=await browserFn(()=>{
+      const host=document.querySelector("#bestiary-workshop")
+      const saved=JSON.parse(localStorage.getItem("archives-alrick-bestiary-v1"))
+      const id=host.querySelector("[data-active]").value
+      return {title:host.querySelector(".m05-identity h3")?.textContent,
+        type:host.querySelector(".m05-eyebrow")?.textContent,
+        role:host.querySelector(".m05-quick")?.textContent,
+        saved:saved.find(x=>x.id===id)}
+    })
+    assert.equal(view.title,"Bibliothécaire de test")
+    assert.ok(view.type.includes("Personnage non joueur"))
+    assert.ok(view.role.includes("soutien"))
+    assert.equal(view.saved.kind,"pnj")
+    assert.equal(view.saved.role,"soutien")
+    assert.equal(view.saved.profession,"Scribe")
+    await screenshot("m05-pnj-soutien.png")
+  })
+  await test("M05 : image locale autorisée, notes MJ cachées et source non canonique",async()=>{
+    const before=await browserFn(()=>{
+      const host=document.querySelector("#bestiary-workshop")
+      const id=host.querySelector("[data-active]").value
+      const cards=JSON.parse(localStorage.getItem("archives-alrick-bestiary-v1"))
+      const c=cards.find(x=>x.id===id)
+      c.artwork={status:"publication_approuvee",rights:"permission",
+        url:"/archives-alrick/static/m05-portrait-autorise.png",
+        alt:"Portrait fictif d'essai",author:"Auteur fictif de test"}
+      c.documentaryLink={id:"DRG-01",type:"individu",
+        source:"Code non vérifié en B-001",publish:false,spoilers:true,unlisted:true}
+      c.notes="SECRET-MJ-M05-NE-PAS-IMPRIMER"
+      localStorage.setItem("archives-alrick-bestiary-v1",JSON.stringify(cards))
+      return c.id
+    })
+    await awaitPageLoad(()=>cdp("Page.reload"),"rechargement de la fiche M05 enrichie")
+    await waitFor('document.querySelector("#bestiary-workshop")?.dataset.initialized==="true"',"M05 chargé après relecture")
+    const state=await browserFn(()=>{
+      const host=document.querySelector("#bestiary-workshop")
+      return {current:host.querySelector("[data-active]").value,
+        portrait:host.querySelector(".m05-portrait img")?.getAttribute("alt"),
+        doc:host.querySelector('[data-m05-panel="sources"]')?.textContent,
+        safe:!host.querySelector("[data-m05-content]").textContent.includes("SECRET-MJ-M05-NE-PAS-IMPRIMER"),
+        links:host.querySelectorAll("[data-m05-content] a").length}
+    })
+    assert.equal(state.current,before)
+    assert.equal(state.portrait,"Portrait fictif d'essai")
+    assert.ok(state.doc.includes("DRG-01"))
+    assert.equal(state.safe,true)
+    assert.equal(state.links,0)
+    // Test de l'affichage conditionnel sur déclaration JSON ; ne prouve PAS la
+    // licence de l'illustration ni l'existence matérielle du fichier image.
+    await screenshot("m05-metadata-portrait-source.png")
+  })
   console.log("M04.1 + M05 CHROME : "+checks+" scénarios complets, "+dialogs+" dialogues de confirmation.")
   if(failures.length){console.error("M04.1 : "+failures.length+" scénario(s) non validés :",failures);throw Error("Recette M04.1 incomplète : "+failures.join("; "))}
 }finally{
