@@ -44,7 +44,8 @@
 
 ```text
 Herbes, graines, bourgeons → campagnol / marmotte / lagopède / lièvre
-Fleurs et nectar → bourdon → chauve-souris (insectes accessibles seulement)
+Fleurs et nectar → bourdon → oiseaux insectivores / araignées
+Insectes nocturnes → chauve-souris des galeries
 Campagnol / lièvre juvénile / insectes / baies → renard des cols
 Graines / insectes / cadavres → corneille des charrois
 Insectes des suintements → salamandre des pierres tièdes
