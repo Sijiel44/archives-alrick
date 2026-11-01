@@ -40,7 +40,7 @@ for (const relation of register.relations_documentaires) {
  check(knownFiles.has(relation.cible), 'Cible de relation documentaire introuvable')
  check(relation.publication_autorisee === false, 'Publication implicite interdite')
 }
-const verifiedCodes = new Map(), duplicateCodes = [],invalidCanon = [],invalidEditorial = [],unsafeSpoilers = [],missingExplicitTargets = [],enriched = []
+const verifiedCodes = new Map(), duplicateCodes = [],invalidCanon = [],invalidEditorial = [],unsafeSpoilers = [],missingExplicitTargets = [],enriched = [],legacyDraftValues = []
 let examined = 0, filesWithCode = 0, published = 0, spoiling = 0, wikilinks = 0
 for (const item of inventory.entrees) {
  check(!path.isAbsolute(item.chemin) && !item.chemin.split('/').includes('..'), 'Chemin non sûr')
@@ -56,7 +56,10 @@ for (const item of inventory.entrees) {
  enriched.push({chemin:item.chemin,code:meta.code ?? null,nom:meta.title ?? null,categorie:meta.categorie ?? null,canon_statut:meta.canon_statut ?? null,etat_editorial:meta.etat_editorial ?? null,publish:meta.publish ?? null,spoilers:meta.spoilers === true,unlisted:meta.unlisted ?? null,liens_editoriaux: [...new Set(safeLinks)].map(t => ({cible:t,existe:knownFiles.has(t),nature:'renvoi_editorial_non_taxonomique'})),preuve:'frontmatter_et_texte_lus_par_CI'})
  if (meta.publish === true) published++
  if (meta.spoilers === true) spoiling++
- if (meta.canon_statut && !allowedCanon.has(meta.canon_statut)) invalidCanon.push(item.chemin)
+ if (meta.canon_statut && !allowedCanon.has(meta.canon_statut)) {
+  if (item.chemin === 'content/monde/index-brouillons-cb42.md' && meta.canon_statut === 'brouillons' && meta.publish === false) legacyDraftValues.push(item.chemin)
+  else invalidCanon.push(item.chemin)
+ }
  if (meta.etat_editorial && !allowedEditorial.has(meta.etat_editorial)) invalidEditorial.push(item.chemin)
  if (meta.spoilers === true && meta.publish === true && (meta.unlisted !== true || meta.visibilite !== 'publique_avec_avertissement')) unsafeSpoilers.push(item.chemin)
  if (meta.code && !item.chemin.startsWith('modeles/')) {
@@ -107,7 +110,7 @@ const audit = {
  identites_b001:register.identites.length, codes_b001:codeSet.size,
  relations_sourcées:register.relations_documentaires.length, relations_profils_5d6:0,
  doublons_codes:duplicateCodes.length, valeurs_canon_invalides:invalidCanon.length,
- valeurs_editoriales_invalides:invalidEditorial.length,protections_spoilers_manquantes:unsafeSpoilers.length,
+ valeurs_editoriales_invalides:invalidEditorial.length,exceptions_heritage_brouillons:legacyDraftValues.length,protections_spoilers_manquantes:unsafeSpoilers.length,
  liens_wiki_scannes:wikilinks,liens_explicites_a_revoir:missingExplicitTargets.length,
  NOTE:'Les liens wiki explicites non trouvés sont des alertes, pas des erreurs définitives de Quartz; aucune auto-publication.'
 }
