@@ -4,7 +4,8 @@
  * Les Cercles sont attestés par le MJ, jamais calculés depuis le niveau.
  */
 import {AFFINITY_DOMAINS,affinityImpactBonus} from "./atelier5d6-origins"
-import {attackMastery,effectiveProtection,resistanceScore,resolveOpposition} from "./atelier5d6-opposition"
+import {resolveProgressionAction} from "./atelier5d6-progression"
+import {resolveCombatM03} from "./atelier5d6-combat-m03"
 import type {ResistanceKind,DefenseProfile} from "./atelier5d6-opposition"
 import type {Affinity} from "./atelier5d6-origins"
 
@@ -27,7 +28,8 @@ export type SpellEvent={id:string;at:string;type:"apprentissage"|"lancer"|"inter
 export type ActiveSpell={id:string;spellId:string;target:string;duration:SpellDuration;remaining:number;concentration:boolean;upkeepMana:number;startedAt:string}
 export type Grimoire={schema:"alrick.grimoire.v1";circlesAttested:number[];known:KnownSpell[];
   requests:string[];personalSpells:Spell[];effects:ActiveSpell[];history:SpellEvent[];
-  matrices:PreparedMatrix[];divineNinthApproved:boolean;divineNinthWitness:string}
+  matrices:PreparedMatrix[];divineNinthApproved:boolean;divineNinthWitness:string;
+  legacyOriginal?:Record<string,unknown>;migrationWarnings?:string[]}
 export type MagicSheet=DefenseProfile&{id:string;name:string;mana:number;manaMax:number;level:number;
   stats:DefenseProfile["stats"];masteries:Record<string,number>;affinities:Affinity[];grimoire:Grimoire;inventory?:{id:string;name:string}[]}
 export const DEMO_SPELLS:readonly Spell[]=[
@@ -59,7 +61,7 @@ function normalizeSpell(value:unknown):Spell|null{
   const p=value as Record<string,unknown>,id=p.id
   if(!idOk(id)||!str(p.name,90).trim()||!domains.has(String(p.domain))||!categories.includes(p.category as SpellCategory))return null
   const duration=(["instant","round","scene","permanent"].includes(String(p.duration))?p.duration:"instant") as SpellDuration
-  return {id,version:1,name:str(p.name,90),description:str(p.description,800),tradition:str(p.tradition,120),
+  return {...p,id,version:1,name:str(p.name,90),description:str(p.description,800),tradition:str(p.tradition,120),
     category:p.category as SpellCategory,domain:String(p.domain),circle:p.circle===null?null:bounded(p.circle,1,9,1),
     status:"campagne",source:str(p.source,180)||"Création locale non canonique",
     practice:p.practice==="activation"?"activation":p.practice==="composition"?"composition":(bounded(p.circle,1,9,1)===1?"activation":"composition"),
@@ -87,7 +89,7 @@ export function normalizeGrimoire(raw:unknown):Grimoire{
       if(!row||typeof row!=="object")continue
       const p=row as Record<string,unknown>
       if(!idOk(p.id)||!catalog.has(p.id)||g.known.some(x=>x.id===p.id))continue
-      g.known.push({id:p.id,approvedBy:str(p.approvedBy,90),learnedAt:str(p.learnedAt,40),prepared:p.prepared===true})
+      g.known.push({...p,id:p.id,approvedBy:str(p.approvedBy,90),learnedAt:str(p.learnedAt,40),prepared:p.prepared===true})
     }
   }
   if(Array.isArray(o.requests))g.requests=[...new Set(o.requests.filter((x:unknown)=>idOk(x)&&catalog.has(x) && !g.known.some(k=>k.id===x)))].slice(0,100) as string[]
@@ -101,7 +103,7 @@ export function normalizeGrimoire(raw:unknown):Grimoire{
       g.matrices.some(x=>x.id===p.id))continue
     const spell=[...DEMO_SPELLS,...g.personalSpells].find(x=>x.id===p.spellId)
     if(!spell||spell.circle!==architectureCircle)continue
-    g.matrices.push({id:p.id,itemId:p.itemId,spellId:String(p.spellId),architectureCircle,activationCircle,
+    g.matrices.push({...p,id:p.id,itemId:p.itemId,spellId:String(p.spellId),architectureCircle,activationCircle,
       energySource:p.energySource==="matrix"?"matrix":"caster",charges:bounded(p.charges,0,99,0),
       approvedBy:str(p.approvedBy,90),source:str(p.source,300)})
   }
@@ -109,7 +111,7 @@ export function normalizeGrimoire(raw:unknown):Grimoire{
     if(!row||typeof row!=="object")continue
     const p=row as Record<string,unknown>
     if(!idOk(p.id)||!catalog.has(String(p.spellId))||!["round","scene","permanent"].includes(String(p.duration)))continue
-    g.effects.push({id:p.id,spellId:String(p.spellId),target:str(p.target,150),
+    g.effects.push({...p,id:p.id,spellId:String(p.spellId),target:str(p.target,150),
       duration:p.duration as SpellDuration,remaining:bounded(p.remaining,0,999,0),
       concentration:p.concentration===true,upkeepMana:bounded(p.upkeepMana,0,99,0),startedAt:str(p.startedAt,40)})
   }
@@ -118,9 +120,27 @@ export function normalizeGrimoire(raw:unknown):Grimoire{
     const p=row as Record<string,unknown>
     if(!idOk(p.id)||!["apprentissage","lancer","interruption","entretien","expiration","refus"].includes(String(p.type)))continue
     const dice=Array.isArray(p.dice)&&p.dice.length===5&&p.dice.every(d=>Number.isInteger(d)&&d>=1&&d<=6)?p.dice as number[]:[]
-    g.history.push({id:p.id,at:str(p.at,40),type:p.type as SpellEvent["type"],spellId:str(p.spellId,100),
+    g.history.push({...p,id:p.id,at:str(p.at,40),type:p.type as SpellEvent["type"],spellId:str(p.spellId,100),
       target:str(p.target,150),manaDelta:bounded(p.manaDelta,-999,0,0),dice,total:bounded(p.total,0,100,0),
       threshold:bounded(p.threshold,0,50,0),result:str(p.result,300),deviceId:idOk(p.deviceId)?p.deviceId:undefined})
+  }
+  // Versions futures et extensions inconnues ne sont jamais supprimées silencieusement.
+  const extensions=Object.fromEntries(Object.entries(o).filter(([key])=>!(key in g)&&
+    !["legacyOriginal","migrationWarnings"].includes(key)))
+  Object.assign(g,extensions)
+  const warnings:string[]=[]
+  for(const key of ["personalSpells","known","requests","matrices","effects","history"] as const){
+    const rows=Array.isArray(o[key])?o[key] as unknown[]:[]
+    if(rows.length>g[key].length)warnings.push(key+": "+(rows.length-g[key].length)+" entrée(s) non interprétée(s), archivées")
+  }
+  if(warnings.length||Object.keys(extensions).length||o.schema!=="alrick.grimoire.v1"){
+    g.legacyOriginal=o.legacyOriginal&&typeof o.legacyOriginal==="object"
+      ?o.legacyOriginal as Record<string,unknown>:JSON.parse(JSON.stringify(o)) as Record<string,unknown>
+    g.migrationWarnings=warnings.length?warnings:["Extensions ou version source archivées"]
+  }else if(o.legacyOriginal&&typeof o.legacyOriginal==="object"){
+    g.legacyOriginal=o.legacyOriginal as Record<string,unknown>
+    g.migrationWarnings=Array.isArray(o.migrationWarnings)
+      ?(o.migrationWarnings.filter(x=>typeof x==="string").slice(0,12) as string[]):[]
   }
   return g
 }
@@ -132,6 +152,7 @@ export function eligibility(sheet:MagicSheet,spell:Spell,matrix?:PreparedMatrix)
   if(spell.circle===9&&!sheet.grimoire.divineNinthApproved)
     errors.push("Neuvième Cercle : pratique réservée aux divins, autorisation MJ requise")
   if(matrix){
+    if(!sheet.grimoire.matrices.some(x=>x.id===matrix.id&&x.itemId===matrix.itemId))errors.push("Matrice non enregistrée sur la fiche")
     if(matrix.spellId!==spell.id||matrix.architectureCircle!==spell.circle)
       errors.push("Architecture de matrice incompatible")
     if(!sheet.inventory?.some(x=>x.id===matrix.itemId))
@@ -160,28 +181,34 @@ export function eligibility(sheet:MagicSheet,spell:Spell,matrix?:PreparedMatrix)
     errors.push("Une concentration est déjà active")
   return errors
 }
-export function resolveSpellCast(sheet:MagicSheet,spell:Spell,target:MagicSheet|null,aim:string,dice:number[],matrix?:PreparedMatrix){
+/** M01/M03 font autorité. feasible=false permet le refus narratif du MJ. */
+export function resolveSpellCast(sheet:MagicSheet,spell:Spell,target:MagicSheet|null,aim:string,
+  dice:number[],matrix?:PreparedMatrix,feasible=true){
   const errors=eligibility(sheet,spell,matrix)
   if(!aim.trim())errors.push("Cible ou intention manquante")
   if(dice.length!==5||dice.some(n=>!Number.isInteger(n)||n<1||n>6))errors.push("Jet 5d6 invalide")
   if(errors.length)return {ok:false,errors}
   const natural=dice.reduce((a,b)=>a+b,0)
-  // Une matrice fonctionne grâce à sa conception ; la maîtrise du porteur ne s'y substitue pas.
-  const skill=matrix?0:Math.min(2,Math.floor((sheet.masteries.magie??0)/6))
-  const total=natural+sheet.stats.esprit+skill
-  const resistance=spell.resistance&&target?resistanceScore(target,spell.resistance):0
-  const threshold=Math.max(spell.difficulty,resistance)
+  const rawStat=sheet.stats.esprit,masteryRank=matrix?0:(sheet.masteries.magie??0)
   const rank=matrix?0:(sheet.affinities.find(a=>a.id===spell.domain)?.rank??0)
-  const opposition=spell.resistance?resolveOpposition({natural,total,difficulty:spell.difficulty,resistance,
-    damageBase:spell.baseImpact||1,mastery:matrix?0:attackMastery(sheet.masteries,"magie"),level:matrix?(spell.effectLevel??1):sheet.level,
-    protection:target?effectiveProtection(target,spell.resistance):0,mode:spell.resistance==="mental"?"mental":"magie",
-    affinityBonus:spell.effect==="degats"?affinityImpactBonus(rank):0}):null
-  const success=opposition?opposition.success:natural>7&&total>=threshold
-  const glancing=!!opposition?.glancing
-  const result=natural<=7?"Échec critique":success?"Réussite":glancing?"Contact sans pénétration":"Échec"
+  const combat=spell.resistance?resolveCombatM03({
+    natural,rawStat,masteryRank,situation:0,level:matrix?(spell.effectLevel??1):sheet.level,
+    difficulty:spell.difficulty,kind:spell.resistance,
+    mode:spell.resistance==="mental"?"mental":"magie",defender:target,feasible,
+    baseDamage:Math.max(1,spell.baseImpact),affinityBonus:spell.effect==="degats"?affinityImpactBonus(rank):0
+  }):null
+  const action=combat?null:resolveProgressionAction({
+    natural,rawStat,masteryRank,situation:0,threshold:spell.difficulty,feasible
+  })
+  const total=combat?combat.total:action!.total
+  const threshold=combat?combat.threshold:spell.difficulty
+  const success=combat?combat.success:action!.success
+  const glancing=combat?.glancing??false
+  const result=!feasible?"Action impossible selon le MJ":natural<=7?"Échec critique":
+    success?"Réussite":glancing?"Contact sans pénétration":"Échec"
   return {ok:true,errors:[],natural,total,threshold,success,glancing,result,
-    damage:spell.effect==="degats"?(opposition?.damage??0):0,
-    absorbed:opposition?.absorbed??0,critical:natural>=27,affinityRank:rank}
+    damage:spell.effect==="degats"?(combat?.damage??0):0,
+    absorbed:combat?.absorbed??0,critical:natural>=27,affinityRank:rank}
 }
 export function recordSpellEvent(g:Grimoire,event:Omit<SpellEvent,"id"|"at">){
   g.history.push({...event,id:makeId(),at:now()})
