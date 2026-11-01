@@ -50,7 +50,12 @@ export function previewRecovery(sheet:RiteSheet,req:RecoveryRequest){
   const s=w.recovery??createManaState(sheet.id,req.dayKey,sheet.manaMax,sheet.mana,MANA_POLICIES.reference)
   if(s.mana!==sheet.mana||s.manaMax!==sheet.manaMax)
     throw new Error("Désaccord avec le Grimoire/fiche : aucune récupération possible avant réconciliation explicite.")
-  const result=applyManaOperation(s,newOp(s,req))
+  const op=newOp(s,req)
+  const historical=s.journal.find(e=>e.id===op.id)
+  // Un ancien identifiant ne peut être recyclé avec une autre pratique.
+  if(historical&&(historical.type!=="recover"||historical.kind!==req.kind))
+    throw new Error("Collision d'identifiant de repos : historique incompatible.")
+  const result=applyManaOperation(s,op)
   return {before:s,result,remaining:Math.max(0,dailyCeiling(result.state)-result.state.recoveredToday)}
 }
 export function commitRecovery(sheet:RiteSheet,req:RecoveryRequest){
@@ -107,18 +112,42 @@ export const DEMO_RITES:readonly RitualDefinition[]=[
 ] as const
 export function buildParticipant(sheet:RiteSheet,role:RitualRole):RitualParticipant{
   // Des attestations de Cercle ne permettent PAS de concevoir, comprendre ou assister implicitement.
+  const skills=Object.entries(sheet.masteries).filter(([id,rank])=>
+    !!id&&Number.isSafeInteger(rank)&&rank>0).map(([id])=>id)
   return {id:sheet.id,role,rawStat:sheet.stats.esprit,masteryRank:sheet.masteries.magie??0,
-    mage:(sheet.masteries.magie??0)>0,skills:[],circleRights:{}}
+    mage:(sheet.masteries.magie??0)>0,skills,circleRights:{}}
 }
 export function startCeremony(def:RitualDefinition,id:string,participants:RitualParticipant[],safePlace:boolean,assist:boolean){
   const instance=createRitualInstance(def,id,participants)
-  const contributions:RitualContribution[]=assist&&participants.length>1
-    ?[{id:id+":support",participantId:participants[1].id,kind:"support",detail:"Aide contextuelle (laboratoire)",
-      approved:true}]:[]
+  // La case cochée ne confère aucun bonus : qualification obtenue de la fiche,
+  // identité différente de l'officiant et preuve de maîtrise explicite.
+  const helper=assist?participants.slice(1).find(p=>
+    p.id!==participants[0].id&&p.role!==def.leadRole&&p.skills.length>0):undefined
+  if(assist&&!helper)throw new Error("Aucun assistant qualifié par sa fiche pour ce soutien.")
+  const contributions:RitualContribution[]=helper
+    ?[{id:id+":support",participantId:helper.id,kind:"support",detail:"Aide contextuelle (laboratoire)",
+      approved:true,supportRole:helper.role,supportSkillId:helper.skills[0]}]:[]
   return transitionRitual(instance,{id:id+":prepare",type:"preparer",tick:1,safePlace,contributions})
 }
-export function resolveCeremony(source:RitualInstance,natural:number,isMJ:boolean){
-  if(!isMJ)throw new Error("Résolution collective : validation MJ locale obligatoire.")
+/** Seul un rite connu, entièrement ordinaire et identique au catalogue de démo
+ * peut être terminé par le PJ dans SA fiche, sans jet ni approbation MJ.
+ */
+export function canPerformOrdinaryRite(source:RitualInstance,actor:RiteSheet):boolean{
+  const d=source.definition
+  const known=readWorkspace(actor).knownRites
+  const canonical=DEMO_RITES.find(x=>x.id===d.id&&x.version===d.version)
+  return source.status==="prepare"&&!!canonical&&known.includes(d.id)&&
+    JSON.stringify(d)===JSON.stringify(canonical)&&
+    d.resolution==="automatique"&&d.feasible&&d.requiresSafePlace&&
+    d.practice!=="preparation_rituel"&&!d.circle&&!d.energy&&d.effects.length===0&&
+    Object.keys(d.components).length===0&&d.requiredRoles.length===1&&
+    d.requiredRoles[0]==="officiant"&&d.leadRole==="officiant"&&
+    source.participants.length===1&&source.participants[0].id===actor.id&&
+    source.participants[0].role==="officiant"&&source.contributions.length===0
+}
+export function resolveCeremony(source:RitualInstance,natural:number,isMJ:boolean,actor?:RiteSheet){
+  if(!isMJ&&(!actor||!canPerformOrdinaryRite(source,actor)))
+    throw new Error("Rite non ordinaire, inconnu ou affectant d'autres personnages : validation MJ locale obligatoire.")
   const engaged=source.status==="prepare"
     ?transitionRitual(source,{id:source.id+":engage",type:"engager",tick:source.tick+1}):source
   const solved=transitionRitual(engaged,{id:source.id+":resolve",type:"resoudre",
@@ -160,7 +189,7 @@ export function createRitesPanel(args:{root:HTMLElement;getSheet:()=>RiteSheet;g
    '<hr><h4>Mes rites connus / Mes pratiques</h4><p data-rites-known></p>'+
    '<label>Rite de démonstration<select data-rites-definition>'+DEMO_RITES.map(x=>'<option value="'+x.id+'">'+esc(x.title)+'</option>').join("")+'</select></label> '+
    '<button type="button" data-rites-action="learn">MJ local : enregistrer un rite connu</button>'+
-   '<h4>Préparer une cérémonie</h4><p>Officiant : fiche active. Ajouter d’autres fiches comme participants. Compétences et rôles sont vérifiés par MAG-003.B ; aide plafonnée à +1.</p>'+
+   '<h4>Préparer une cérémonie</h4><p>Officiant : fiche active. Ajouter d’autres fiches comme participants. Soutien +1 uniquement sur compétence et rôle attestés dans la fiche du participant ; pas de synchronisation réseau.</p>'+
    '<div class="atelier-fields"><label>Participant<select data-rites-participant></select></label>'+
    '<label>Rôle<select data-rites-role><option value="gardien">Gardien</option><option value="artisan">Artisan</option><option value="chantre">Chantre</option><option value="assistant">Assistant</option><option value="runiste">Runiste</option><option value="canaliseur">Canaliseur</option></select></label></div>'+
    '<button type="button" data-rites-action="add-person">Ajouter au groupe</button> '+
@@ -234,7 +263,12 @@ export function createRitesPanel(args:{root:HTMLElement;getSheet:()=>RiteSheet;g
         (args.getSheets().find(s=>s.id===x.sheetId)?.name||x.sheetId)+" ("+x.role+")").join(" · ")||
         "Participants : officiant seul."
       q<HTMLButtonElement>('[data-rites-action="learn"]').disabled=!args.isMJ()
-      q<HTMLButtonElement>('[data-rites-action="resolve"]').disabled=!args.isMJ()
+      const last=w.rituals[w.rituals.length-1]
+      const personal=!!last&&canPerformOrdinaryRite(last,s)
+      const resolve=q<HTMLButtonElement>('[data-rites-action="resolve"]')
+      resolve.disabled=!args.isMJ()&&!personal
+      resolve.textContent=personal&&!args.isMJ()?
+        "Accomplir mon rite ordinaire connu":"MJ local : simuler la résolution"
     }catch(e){q<HTMLElement>("[data-rites-mana]").textContent=String(e);status("Extension de rites en lecture bloquée : "+String(e))}
   }
   section.addEventListener("click",e=>{
@@ -277,6 +311,10 @@ export function createRitesPanel(args:{root:HTMLElement;getSheet:()=>RiteSheet;g
         const w=readWorkspace(s),id=q<HTMLSelectElement>("[data-rites-definition]").value
         const def=DEMO_RITES.find(x=>x.id===id)
         if(!def)throw new Error("Rite inconnu.")
+        if(!args.isMJ()&&(!w.knownRites.includes(def.id)||def.resolution!=="automatique"||
+          def.requiredRoles.length!==1||def.requiredRoles[0]!=="officiant"||
+          draft.length!==0||def.energy||def.circle||def.effects.length>0))
+          throw new Error("Préparation PJ réservée à un rite ordinaire connu et personnel.")
         const participants=[buildParticipant(s,"officiant"),...draft.map(x=>{
           const member=args.getSheets().find(z=>z.id===x.sheetId)
           if(!member)throw new Error("Participant absent du répertoire.")
@@ -290,10 +328,12 @@ export function createRitesPanel(args:{root:HTMLElement;getSheet:()=>RiteSheet;g
         const w=readWorkspace(s),latest=w.rituals[w.rituals.length-1]
         if(!latest)throw new Error("Préparer d'abord un rite.")
         const natural=Number(q<HTMLInputElement>("[data-rites-natural]").value)
-        const result=resolveCeremony(latest,natural,args.isMJ())
+        const personal=!args.isMJ()&&canPerformOrdinaryRite(latest,s)
+        const result=resolveCeremony(latest,natural,args.isMJ(),s)
         w.rituals[w.rituals.length-1]=result.instance;s.ritualWorkshop=w;args.persist()
-        status("Résultat simulé "+(result.instance.result?.success?"réussi":"échoué")+
-          ", P="+Math.round((result.instance.result?.probability??0)*100)+" %. "+result.plan.warning)
+        status((personal?"Pratique personnelle connue accomplie, sans jet. ":"Résultat simulé ")+
+          (result.instance.result?.success?"Réussite. ":"Échec. ")+
+          "P="+Math.round((result.instance.result?.probability??0)*100)+" %. "+result.plan.warning)
       }else if(action==="interrupt"){
         const w=readWorkspace(s),latest=w.rituals[w.rituals.length-1]
         if(!latest||!["prepare","engage"].includes(latest.status))throw new Error("Aucun rite interruptible.")
