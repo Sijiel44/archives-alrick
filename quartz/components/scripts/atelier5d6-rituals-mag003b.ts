@@ -102,17 +102,20 @@ export function validateRitualDefinition(d:RitualDefinition):void{
   }
   if(!Array.isArray(d.effects))throw new Error("Effets invalides.")
   const effectIds=new Set<string>()
+  let numericalCount=0
   for(const e of d.effects){
     requireId(e.id,"Effet");requireId(e.narrative,"Narration");requireId(e.context,"Contexte")
     if(effectIds.has(e.id))throw new Error("Effet dupliqué.")
     effectIds.add(e.id)
     if(!kinds.includes(e.kind))throw new Error("Famille d'effet inconnue.")
     integer(e.durationTicks,"Durée",1,3)
+    if(e.numerical)numericalCount++
     if(e.numerical&&
       (e.numerical.approvedByGM!==true||e.numerical.magnitude!==1||
       !["m01-situation","m03-situation"].includes(e.numerical.kind)))
       throw new Error("Bonus narratif, non validé ou supérieur à +1 refusé.")
   }
+  if(numericalCount>1)throw new Error("Non-cumul : un seul effet numérique par rite.")
 }
 export function createRitualInstance(d:RitualDefinition,id:string,participants:RitualParticipant[]):RitualInstance{
   validateRitualDefinition(d);requireId(id,"Instance")
@@ -221,6 +224,7 @@ function previewEnergy(s:RitualInstance,states:Record<string,ManaState>|undefine
 export function previewRitual(s:RitualInstance,action:Extract<RitualAction,{type:"resoudre"}>):RitualResult{
   validateRitualInstance(s)
   if(s.status!=="engage")throw new Error("Résolution réservée à un rite engagé.")
+  integer(action.tick,"Horodatage",s.tick)
   const lead=s.participants.find(p=>p.role===s.definition.leadRole)!
   const support=s.contributions.some(c=>c.kind==="support"&&c.approved)
     ?1:0 // dix assistants ne donnent jamais dix bonus
