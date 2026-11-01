@@ -19,7 +19,7 @@
     "check:types": "tsc --noEmit",
     "check:content": "node scripts/check-content.mjs",
     "check:site": "node scripts/check-site.mjs",
-    "test": "npm run check:content && npm run check:types && npm run build && npm run check:site && node scripts/test-5d6-balance.mjs && node scripts/test-5d6-probabilities.mjs && node scripts/test-5d6-opposition.mjs && node scripts/test-5d6-origins.mjs && npm run test:progression && npm run test:m02 && npm run test:m03 && npm run test:m04 && npm run test:m05 && npm run test:b0011 && npm run test:b002",
+    "test": "npm run check:content && npm run check:types && npm run build && npm run check:site && node scripts/test-5d6-balance.mjs && node scripts/test-5d6-probabilities.mjs && node scripts/test-5d6-opposition.mjs && node scripts/test-5d6-origins.mjs && npm run test:progression && npm run test:m02 && npm run test:m03 && npm run test:m04 && npm run test:m05 && npm run test:b0011 && npm run test:b002 && npm run test:b0031",
     "test:progression": "node scripts/test-5d6-progression.mjs",
     "test:m02": "node scripts/test-5d6-m02.mjs",
     "test:m03": "node scripts/test-5d6-m03.mjs",
@@ -27,7 +27,8 @@
     "test:m05": "node scripts/test-5d6-m05.mjs",
     "test:b0011": "node scripts/test-b0011-compat.mjs",
     "test:m04:browser": "node scripts/test-5d6-m04-browser.mjs",
-    "test:b002": "node scripts/test-b002-registre.mjs"
+    "test:b002": "node scripts/test-b002-registre.mjs",
+    "test:b0031": "node scripts/test-b0031-catalogue.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",
