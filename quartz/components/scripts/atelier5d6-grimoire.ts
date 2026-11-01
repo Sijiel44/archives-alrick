@@ -240,7 +240,8 @@ export function progressEffects(sheet:MagicSheet,unit:"round"|"scene"){
 const esc=(s:unknown)=>String(s??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]||ch))
 const glyph:Record<SpellCategory,string>={utilitaire:"✦",protection:"◇",soin:"✚",perception:"◉",artisanat:"⚒",attaque:"ϟ",deplacement:"➶"}
 export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicSheet;getSheets:()=>MagicSheet[];isMJ:()=>boolean;
-  persist:()=>void;message:(s:string)=>void;onChange?:()=>void}){
+  persist:()=>void;message:(s:string)=>void;onChange?:()=>void;
+  onManaChanged?:(sheet:MagicSheet,before:number,after:number,reason:string)=>void}){
   const root=args.root.querySelector<HTMLElement>("[data-grimoire-root]")
   if(!root)return {render:()=>{}}
   const query=<T extends HTMLElement>(s:string)=>root.querySelector<T>(s)!
@@ -452,7 +453,9 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
       const dice=Array.from({length:5},()=>1+Math.floor(Math.random()*6))
       const result=resolveSpellCast(s,spell,target,aim,dice,matrix)
       if(!result.ok){notify(result.errors.join(" ; "));return}
+      const beforeMana=s.mana
       s.mana-=manaCost
+      args.onManaChanged?.(s,beforeMana,s.mana,"sort:"+spell.id)
       if(matrix)matrix.charges--
       recordSpellEvent(g,{type:"lancer",spellId:spell.id,target:aim,manaDelta:-manaCost,dice,
         deviceId:matrix?.id,total:result.total!,threshold:result.threshold!,
@@ -482,7 +485,9 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
       const expense=g.effects.filter(x=>x.duration===unit).reduce((n,x)=>n+x.upkeepMana,0)
       if(!window.confirm("Avancer d'un "+(unit==="round"?"tour":"segment narratif")+
         " ? Entretien demandé : jusqu'à "+expense+" mana (les effets impossibles cesseront)."))return
+      const beforeMana=s.mana
       const spent=progressEffects(s,unit)
+      args.onManaChanged?.(s,beforeMana,s.mana,"entretien:"+unit)
       const manaInput=args.root.querySelector<HTMLInputElement>('[data-field="mana"]')
       if(manaInput)manaInput.value=String(s.mana)
       update();notify("Durées avancées ; "+spent+" mana d'entretien consommé(s).");return
