@@ -117,3 +117,22 @@ npm run test:m04:browser
 ```
 
 La **recette technique automatisée est réussie** ; M05 demeure une **PR en brouillon non fusionnée**, car la revue humaine et l'autorisation éditoriale/artistique exigées par le mandat restent ouvertes. Aucun déploiement de M05 sur `main` ou GitHub Pages n'a été effectué.
+
+---
+
+## Addendum de clôture — Fusion et publication M05
+
+**Date :** 31 octobre 2026 (heure du Québec) — **statut final : FUSIONNÉ ET PUBLIÉ**.
+
+- Accord explicite du créateur reçu pour fusionner et publier la PR [#62](https://github.com/Sijiel44/archives-alrick/pull/62) sans nouvelle mission.
+- Revue réelle des captures et du PDF de la CI : un défaut d'impression a été identifié et corrigé (texte pastel illisible sur fond blanc et chrome du site imprimé). Le test de recette Chrome valide désormais le média `print`, les contrôles masqués et la lisibilité. Le PDF corrigé est ramené à trois pages pour le profil de référence Colosse N15.
+- **Dernière CI de branche verte :** [#41258054565](https://github.com/Sijiel44/archives-alrick/actions/runs/41258054565), commit `dfb0920c346cd514ca0e86f33381a5758f79d14c`.
+- **Fusion de la PR #62 :** commit `d40fa7bd586bce60d9c9f97f15b6e74a3459ef73`.
+- **CI main verte :** [#41258208966](https://github.com/Sijiel44/archives-alrick/actions/runs/41258208966).
+- **Signal de publication approuvé :** commit `e5eefe2c04836f085029a89d7d88b91236e1178e`.
+- **GitHub Pages :** [workflow #41258279326](https://github.com/Sijiel44/archives-alrick/actions/runs/41258279326), build **success**, deploy **success**, smoke Chrome **success** à la seconde tentative. La première tentative de smoke échouait au lancement de Chromium sur le runner (`Impossible d'obtenir le port de Chromium`), avant tout test de page. Nouvelle exécution du job réussie sans changement de code.
+- **Page publique :** https://sijiel44.github.io/archives-alrick/jouer/atelier-bestiary-5d6
+
+**Limites maintenues :** aucun nouveau canon, aucune fusion de B-001 #56, aucun nouveau portrait publié ni droits d'images présumés ; liaison documentaire non navigable jusqu'à validation. Vérification lecteurs d'écran et appareils physiques, droits des portraits futurs et playtests humains restent sous l'autorité des chantiers spécialisés. Les contrôles de statut MJ sont locaux, non une authentification serveur.
+
+Les mentions « non fusionné / non publié » des sections ci-dessus décrivent **l'état initial de la branche** et sont supplantées par cet addendum. La version M05 déployée correspond au signal `e5eefe2`; cet ajout documentaire postérieur n'altère pas le site compilé.
