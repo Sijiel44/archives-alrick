@@ -49,3 +49,15 @@
 
 **Pas de fusion automatique. Pas de publication sur Pages. Pas de modification canonique.**  
 Les critères techniques (moteur, scénarios, tests, rapports) sont remplis sur le code contrôlé, sous réserve du contrôle de CI du commit documentaire final. La **validation éditoriale, la fusion et la publication** restent des décisions distinctes et non acquises. Le prototype peut être inspecté sans engager les autres branches.
+
+
+## MAG-003.B — Rites et cérémonies, chantier distinct (1er novembre 2026)
+
+**Branche :** `magie/mag003b-rites-collectifs` construite depuis la PR #69 MAG-003.A ; **PR en brouillon séparée**, base MAG-003.A. MAG-003.A demeure techniquement terminée mais sa validation par la Direction n'est pas acquise. Le lancement du prototype B n'autorise ni fusion de A, ni publication, ni canonisation.
+
+- **Moteur proposé :** `atelier5d6-rituals-mag003b.ts`, schéma `alrick.ritual.v1`, journal, états, transitions et prévisualisations. Rites personnels ordinaires sans jet, rites incertains M01/M03 à probabilité exacte, rôles collectifs et assistance non magique.
+- **Verrous :** +1 de soutien maximum, échecs naturels et faisabilité M01/M03, Cercle IX interdit, connaissances distinctes selon opération, matrices autorisées seulement, effets numériques explicitement approuvés.
+- **Mana collectif :** plans de dépenses individuellement attribués en lecture seule sur MAG-003.A, **aucun débit réel ni autorité serveur** ; aucune promesse d'atomicité multijoueur.
+- **Tests :** `scripts/test-mag003b.mjs` raccordé à `npm test` : 14 scénarios automatisés ; résultat et CI à vérifier sur la PR B.
+- **Rapports :** [Technique B](./MAG_003_B_RITES_COOPERATION.md) · [Scénarios B](./MAG_003_B_TESTS_SCENARIOS.md) · [Fiche Direction B](./FICHE_DIRECTION_MAG_003_B.md).
+- **Décisions DG ouvertes :** validation de MAG-003.A avant intégration, politique de récupération et d'énergie, plafond de soutien, temps et expiration, droits MAG-050, serveur autoritaire, recette de jeu. Aucune modification des PR G-001 ou T-001.
