@@ -61,3 +61,27 @@ Les critères techniques (moteur, scénarios, tests, rapports) sont remplis sur 
 - **Tests :** `scripts/test-mag003b.mjs` raccordé à `npm test` : 14 scénarios automatisés ; [CI #41323080067](https://github.com/Sijiel44/archives-alrick/actions/runs/41323080067) **réussie** sur le code `424b902` : 44 assertions MAG-003.B / 14 scénarios, 181 assertions MAG-003.A, TypeScript, build et 15 scénarios Chrome hérités. Aucun playtest humain.
 - **Rapports :** [Technique B](./MAG_003_B_RITES_COOPERATION.md) · [Scénarios B](./MAG_003_B_TESTS_SCENARIOS.md) · [Fiche Direction B](./FICHE_DIRECTION_MAG_003_B.md).
 - **Décisions DG ouvertes :** validation de MAG-003.A avant intégration, politique de récupération et d'énergie, plafond de soutien, temps et expiration, droits MAG-050, serveur autoritaire, recette de jeu. Aucune modification des PR G-001 ou T-001.
+
+---
+
+## MAG-003.C — Intégration des interfaces de jeu (1er novembre 2026)
+
+**Branche :** `magie/mag003c-integration-rites` · **[PR #71 — DRAFT](https://github.com/Sijiel44/archives-alrick/pull/71)** vers `magie/mag003b-rites-collectifs` (#70). Le travail est empilé sur B (#70), dépendant de A (#69), sans fusionner ni publier. **A/B demeurent soumis à revue DG ; aucune approbation n'est présumée.**
+
+| Intégration | Livraison effective | Restrictions |
+| --- | --- | --- |
+| Grimoire #55 | Sources G-001 préservées dans C, mêmes sorts, Cercles, prérequis, matrices | Charges historiques et énergie `caster` non arbitrées, aucune promotion canonique |
+| Mana MAG-003.A | Panneau de repos, budget, prévisualisation, crédit local confirmé, idempotence, historique | Attestation du MJ local non sécurisée ; discordances bloquées |
+| Rites MAG-003.B | Catalogue démo, participants, rôles, sûreté, M01, probabilité, résolution MJ locale | Aucun effet ni débit de réserve collective, aucun commit multijoueurs |
+| Tables T-001 #66 | Contrat d'export/import partiel audité, identifiants et limites documentés | Pas de commande rituelle transactionnelle ; **aucune synchronisation annoncée** |
+| Foi, prières, traditions | Méditation, artisanat et prière sans miracle, recherches et variantes proposées | Pas de barème de foi ni d'Autorité, bénédiction ou Cercle automatique |
+| Objets | Dossiers de matrice, stabilisation, consécration, fabrication, entretien et recherche | Objets existants seulement ; aucune recharge, aucun artefact créé |
+| Persistance | Extension optionnelle `alrick.mag003c.local.v1` sur les fiches sauvegardées | Identité des registres validée, migration inter-ID non automatique |
+
+**Tests** : `npm test` inclut G-001, MAG-003.A/B et MAG-003.C ; Chrome M04.1 étendu à la récupération et aux cérémonies, avec capture mobile émulée. [CI source contrôlée #41324634457 — SUCCESS](https://github.com/Sijiel44/archives-alrick/actions/runs/41324634457) sur un commit **précédant** l'extension Chrome MAG-003.C et cette documentation. Consulter obligatoirement [la dernière CI de #71](https://github.com/Sijiel44/archives-alrick/pull/71/checks) avant jugement ; une CI non terminée ne vaut pas succès.
+
+**Rapports** : [MAG_003_C_INTEGRATION_JEU.md](./MAG_003_C_INTEGRATION_JEU.md) · [MAG_003_C_RECETTE.md](./MAG_003_C_RECETTE.md) · [FICHE_DIRECTION_MAG_003_C.md](./FICHE_DIRECTION_MAG_003_C.md).
+
+**Arbitrages DG** : approbation des phases A/B ; grille et conditions de repos ; rôles et soutien collectif ; économie charges/énergie des matrices ; contrats de foi et d'intervention divine ; protocole serveur transactionnel avec autorisation, idempotence, `expectedRevision`, reçus et sauvegardes ; recette humaine sur plusieurs appareils et migrations historiques. **Décision de publication distincte.**
+
+**Verrou permanent : NE PAS fusionner `main`, NE PAS déployer Pages, NE PAS modifier le canon.**
