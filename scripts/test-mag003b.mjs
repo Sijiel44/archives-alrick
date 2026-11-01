@@ -48,6 +48,9 @@ const scenarios=[]
   const s=resolve(chain(create(def({id:"deep",effects:[effect]}))))
   eq(s.result.effectsProposed[0].expiresAtTick,5,"Expiration déclarative")
   eq(s.result.effectsProposed[0].numerical,undefined,"Pas de bonus implicite")
+  eq(m.eligibleRitualEffects(s,4,"hors combat").length,1,"Effet éligible dans sa durée")
+  eq(m.eligibleRitualEffects(s,5,"hors combat").length,0,"Effet expiré")
+  eq(m.eligibleRitualEffects(s,4,"combat").length,0,"Contexte non valide")
   eq(m.applicationPlan(s).applied,false,"Plan non appliqué")
   scenarios.push("S02 méditation approfondie")
 }
