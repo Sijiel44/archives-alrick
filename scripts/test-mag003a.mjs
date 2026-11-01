@@ -32,8 +32,11 @@ const scenario=(level,reserve)=>{
   ok(s.mana>=0&&s.mana<=reserve,"Bornage de la réserve")
   const copies=m.importManaState(m.exportManaState(s))
   eq(JSON.stringify(copies),JSON.stringify(s),"Sauvegarde et reprise identiques")
-  const again=m.applyManaOperation(s,op(s,"c","spend",{cost:0,purpose:"collision"}))
-  ok(again.duplicate,"Transaction déjà reçue")
+  assert.throws(()=>m.applyManaOperation(s,op(s,"c","spend",{cost:0,purpose:"collision"})),
+    /Collision d'identifiant/,"Ancien ID avec une autre opération explicitement refusé")
+  assertions++
+  const again=rest(s,"c","longOrdinary")
+  ok(again.duplicate,"Transaction identique déjà reçue")
   eq(again.state.journal.length,s.journal.length,"Journal non doublé")
 }
 for(const [level,reserve] of [[1,0],[5,36],[10,66],[15,114],[20,174],[25,306]])
