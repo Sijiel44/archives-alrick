@@ -198,7 +198,7 @@ function previewEnergy(s:RitualInstance,states:Record<string,ManaState>|undefine
   if(!wanted.length)return []
   if(!states)throw new Error("États mana requis pour prévisualiser l'énergie.")
   const total=new Map<string,number>()
-  const debits:RitualResult["energyDebits"]= []
+  const debits:Array<RitualResult["energyDebits"][number]>= []
   for(const c of wanted){
     const id=c.manaCharacterId!
     const state=states[id]
