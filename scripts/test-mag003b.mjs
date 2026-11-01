@@ -172,7 +172,7 @@ const scenarios=[]
 // 13. Test chemin M03 : résolution par l'autorité existante, probabilité exacte
 {
   let s=chain(create(def({id:"m03",resolution:"m03",difficulty:18})))
-  s=resolve(s,{natural:20,combat:{level:5,kind:"mentale",mode:"mental",
+  s=resolve(s,{natural:20,combat:{level:5,kind:"mental",mode:"mental",
     feasible:true,baseDamage:1,difficulty:18}})
   eq(s.result.damageProposed,0,"M03 mental sans dégâts")
   yes(s.result.probability>=0&&s.result.probability<=1,"Probabilité M03 bornée")
