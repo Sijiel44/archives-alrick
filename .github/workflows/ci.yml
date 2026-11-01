@@ -23,6 +23,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run test:m04:browser
+      - run: npm run tables:browser
       - name: Conserver les captures de recette M04.1
         if: always()
         uses: actions/upload-artifact@v4
