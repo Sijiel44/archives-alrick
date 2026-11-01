@@ -127,7 +127,8 @@ const innateGuard=(s:Sheet,k:ResistanceKind)=>s.ruleset!=="legacy"?innateProtect
 const equipmentGuard=(s:Sheet,k:ResistanceKind)=>s.ruleset!=="legacy"?equipmentProtectionM03(s.equipmentGrades[k],k):equipmentProtection(s.equipmentGrades[k],k)
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
-  groups:Group[]; activeGroupId:string; templates:GameItem[]; missionLog:MissionEntry[] }
+  groups:Group[]; activeGroupId:string; templates:GameItem[]; missionLog:MissionEntry[];
+  __campaignEnvelopeExtras?:Record<string,unknown> }
 // Tables d'incidents de playtest : une suggestion à interpréter, jamais un malus automatique supplémentaire.
 const INCIDENTS: Record<Exclude<Domain,"autre">,string[]> = {
   magie: [
