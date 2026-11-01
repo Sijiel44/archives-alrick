@@ -302,20 +302,36 @@ export async function createTableServer({
       const name = clean(source?.name ?? msg.name, 90)
       if (name.length < 2) fail("FORMAT", "Nom du personnage requis.")
       const stats = source?.stats
-      if (source && (!stats || !STATS.every(k => integer(stats[k], 1, 12))))
-        fail("FORMAT", "Caractéristiques de la fiche importée invalides.")
-      const id = uid()
+      if (source && (!stats || !STATS.every(k => Number.isSafeInteger(stats[k]) && stats[k] >= 1)))
+        fail("FORMAT", "Caractéristiques brutes invalides (M01 : aucun plafond de 12).")
+      const level = source ? source.level : 5
+      if (!integer(level, 1, 25)) fail("FORMAT", "Niveau invalide.")
       const pvMax = source ? source.pvMax : 36, manaMax = source ? source.manaMax : 0
-      if (!integer(pvMax, 1, 999) || !integer(manaMax, 0, 999))
+      if (!integer(pvMax, 1, 99999) || !integer(manaMax, 0, 99999))
         fail("FORMAT", "PV ou mana invalides.")
+      if (source && (!integer(source.pv, 0, pvMax) || !integer(source.mana, 0, manaMax)))
+        fail("FORMAT", "Ressources courantes invalides.")
+      const masteries = importMasteries(source?.masteries)
+      const skill = source?.skill == null ? 0 : source.skill
+      if (!integer(skill, 0, 2)) fail("FORMAT", "Compétence legacy hors limites.")
+      const id = uid()
+      const sourceSchema = source ? clean(msg.sourceSchema, 90) || "alrick.sheet.inconnu" : null
+      const modern = sourceSchema === "alrick.sheets.v3" && source?.ruleset !== "legacy"
       room.characters[id] = {
-        id, ownerId: user.id, name,
-        level: source && integer(source.level, 1, 25) ? source.level : 5,
+        id, campaignInstanceId: uid(), ownerId: user.id, name,
+        characterSchema: TABLES_CHARACTER_SCHEMA,
+        rulesVersion: modern || !source ? TABLES_ENGINE_VERSION : "import-a-revalider",
+        level,
         stats: source ? Object.fromEntries(STATS.map(k => [k, stats[k]])) :
           { physique: 9, agilite: 9, esprit: 9, presence: 9 },
-        skill: source && integer(source.skill, 0, 2) ? source.skill : 0,
-        pvMax, pv: source && integer(source.pv, 0, pvMax) ? source.pv : pvMax,
-        manaMax, mana: source && integer(source.mana, 0, manaMax) ? source.mana : manaMax,
+        masteries, skill,
+        resistanceBonus: importDefenses(source?.resistanceBonus, 8),
+        protection: importDefenses(source?.protection, 60),
+        equipmentGrades: importDefenses(source?.equipmentGrades, 5),
+        pvMax, pv: source ? source.pv : pvMax,
+        manaMax, mana: source ? source.mana : manaMax,
+        origin: source ? { schema: sourceSchema, sourceId: clean(source?.id, 120),
+          importedAt: now(), transfer: "partiel" } : { schema: "pilot-demo", transfer: "partiel" },
         revision: 0, approved: !source, source: source ? "import_5d6_non_valide" : "exemple_pilote_non_canonique"
       }
       member.characterId = id
@@ -329,7 +345,9 @@ export async function createTableServer({
       const c = room.characters[msg.characterId]
       if (!c) fail("NOT_FOUND", "Fiche inexistante.")
       c.approved = true
-      addEvent(room, user.id, "fiche", "Fiche de " + c.name + " validée.")
+      c.rulesVersion = TABLES_ENGINE_VERSION
+      c.characterSchema = TABLES_CHARACTER_SCHEMA
+      addEvent(room, user.id, "fiche", "Fiche de " + c.name + " validée pour " + TABLES_ENGINE_VERSION + ".")
       await save(); notifyRoom(room.id)
       return
     }
@@ -344,10 +362,16 @@ export async function createTableServer({
       const character = room.characters[member.characterId]
       if (character && !character.approved) fail("FORBIDDEN", "Fiche en attente de validation.")
       if (!character && member.role !== "mj") fail("NO_CHARACTER", "Créez d'abord votre personnage.")
-      const stat = character ? character.stats[statName] : 3
-      const skill = character ? character.skill : 0
+      if (character && character.rulesVersion !== TABLES_ENGINE_VERSION)
+        fail("VERSION", "Fiche non validée pour le moteur M01/M03.")
+      const rawStat = character ? character.stats[statName] : 3
+      const masteryName = clean(msg.mastery, 80)
+      if (masteryName && (!character || !Object.hasOwn(character.masteries ?? {}, masteryName)))
+        fail("FORMAT", "Maîtrise inconnue de la fiche.")
+      const masteryRank = masteryName ? character.masteries[masteryName] : (character?.skill ?? 0)
       const dice = Array.from({ length: 5 }, () => randomInt(1, 7))
-      const roll = resolve5d6(dice, stat, skill, msg.situation, msg.target)
+      const roll = resolve5d6(dice, rawStat, masteryRank, msg.situation, msg.target, msg.feasible !== false)
+      roll.masteryName = masteryName || null
       addEvent(room, user.id, "jet", { ...roll, characterName: character?.name ?? "MJ" },
         msg.visibility === "mj" ? "mj" : "public")
       await save(); notifyRoom(room.id)
@@ -361,13 +385,50 @@ export async function createTableServer({
       await save(); notifyRoom(room.id)
       return
     }
+    if (msg.type === "combat_roll") {
+      const { room, member } = memberFor(ws, msg.roomId)
+      const attacker = room.characters[member.characterId]
+      if (!attacker || !attacker.approved || attacker.rulesVersion !== TABLES_ENGINE_VERSION)
+        fail("FORBIDDEN", "Attaquant sans fiche M01/M03 validée.")
+      if (msg.visibility === "mj" && member.role !== "mj")
+        fail("FORBIDDEN", "Combat secret réservé au MJ.")
+      const defender = msg.defenderId ? room.characters[msg.defenderId] : null
+      if (msg.defenderId && (!defender || !defender.approved || defender.rulesVersion !== TABLES_ENGINE_VERSION))
+        fail("FORMAT", "Défenseur inexistant ou non validé M03.")
+      if (!STATS.includes(msg.stat) || !["physique","magie","mental"].includes(msg.kind) ||
+          !["melee","tir","magie","mental"].includes(msg.mode) ||
+          !TARGETS.includes(msg.difficulty) || !integer(msg.situation, -2, 2) ||
+          !integer(msg.baseDamage, 1, 12) || !integer(msg.penetration ?? 0, 0, 8))
+        fail("FORMAT", "Paramètres de combat M03 invalides.")
+      if (msg.mjMinimum !== undefined && (member.role !== "mj" || !integer(msg.mjMinimum, 0, 45)))
+        fail("FORBIDDEN", "Seuil MJ réservé au MJ.")
+      const masteryName = clean(msg.mastery, 80)
+      if (masteryName && !Object.hasOwn(attacker.masteries, masteryName))
+        fail("FORMAT", "Maîtrise de combat absente.")
+      const masteryRank = masteryName ? attacker.masteries[masteryName] : attacker.skill
+      const dice = Array.from({ length: 5 }, () => randomInt(1, 7))
+      const natural = dice.reduce((a,b)=>a+b,0)
+      const result = resolveCombatM03({
+        natural, rawStat: attacker.stats[msg.stat], masteryRank, situation: msg.situation,
+        level: attacker.level, difficulty: msg.difficulty, kind: msg.kind, mode: msg.mode,
+        defender: defender ? combatProfile(defender) : null, feasible: msg.feasible !== false,
+        baseDamage: msg.baseDamage, penetration: msg.penetration ?? 0,
+        mjMinimum: member.role === "mj" ? (msg.mjMinimum ?? 0) : 0, effects: []
+      })
+      addEvent(room, user.id, "combat", { ...result, dice, attackerId: attacker.id,
+        attackerName: attacker.name, defenderId: defender?.id ?? null,
+        defenderName: defender?.name ?? null, masteryName, rulesVersion: TABLES_ENGINE_VERSION,
+        resourcesApplied: false }, msg.visibility === "mj" ? "mj" : "public")
+      await save(); notifyRoom(room.id)
+      return
+    }
     if (msg.type === "adjust_resource") {
       const { room } = gmFor(ws, msg.roomId)
       const c = room.characters[msg.characterId]
       if (!c) fail("NOT_FOUND", "Fiche inexistante.")
       if (!integer(msg.expectedRevision, 0, 10000000) || msg.expectedRevision !== c.revision)
         fail("CONFLICT", "Fiche modifiée entre-temps : actualisez puis réessayez.")
-      if (!integer(msg.pvDelta, -999, 999) || !integer(msg.manaDelta, -999, 999))
+      if (!integer(msg.pvDelta, -99999, 99999) || !integer(msg.manaDelta, -99999, 99999))
         fail("FORMAT", "Variation de ressources invalide.")
       const pv = c.pv + msg.pvDelta, mana = c.mana + msg.manaDelta
       if (!integer(pv, 0, c.pvMax) || !integer(mana, 0, c.manaMax))
