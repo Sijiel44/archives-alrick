@@ -541,6 +541,67 @@ try{
     assert.equal(saved.mana,17,"cérémonie a modifié le mana")
     await screenshot("mag003c-ceremonie-locale.png")
   })
+  await test("MAG-003.D : PJ réalise un rite personnel connu sans jet ni MJ",async()=>{
+    await navigate(base+"/jouer/atelier-5d6")
+    await waitFor('document.querySelector("#atelier-5d6 [data-hub=rites]")!==null',"Panneau des rites D")
+    const id=await browserFn(()=>{
+      const state=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return state.sheets.find(s=>s.name==="PJ recette")?.id
+    })
+    assert.ok(id)
+    await set("#atelier-5d6 [data-active]",id,"change")
+    await click('#atelier-5d6 [data-mode="mj"]')
+    await set('[data-rites-definition]',"demo-recueillement","change")
+    await click('[data-rites-action="learn"]')
+    await click('#atelier-5d6 [data-mode="pj"]')
+    await browserFn(()=>{
+      document.querySelector('[data-rites-safe]').checked=true
+      document.querySelector('[data-rites-natural]').value="0"
+    })
+    await click('[data-rites-action="prepare"]')
+    const act=await browserFn(()=>{
+      const b=document.querySelector('[data-rites-action="resolve"]')
+      return {disabled:b.disabled,label:b.textContent}
+    })
+    assert.equal(act.disabled,false,"PJ connu bloqué")
+    assert.ok(act.label.includes("mon rite ordinaire"),act.label)
+    const before=dialogs
+    await click('[data-rites-action="resolve"]')
+    const saved=await browserFn(()=>{
+      const data=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return data.sheets.find(s=>s.name==="PJ recette")
+    })
+    const last=saved.ritualWorkshop.rituals.at(-1)
+    assert.equal(last.definition.id,"demo-recueillement")
+    assert.equal(last.status,"resolu")
+    assert.equal(last.result.automatic,true,"Le rite ordinaire ne lance pas 5d6")
+    assert.equal(last.result.energyDebits.length,0,"Aucune dépense collective")
+    assert.equal(dialogs,before,"Une approbation MJ locale superflue a été demandée")
+    const mana=saved.mana
+    await cdp("Page.reload")
+    await waitFor("document.querySelector('[data-rites-mana]')!==null","Historique de rite PJ restauré")
+    const reloaded=await browserFn(()=>{
+      const data=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return data.sheets.find(s=>s.name==="PJ recette")
+    })
+    assert.equal(reloaded.mana,mana,"Rechargement a changé le mana")
+    assert.equal(reloaded.ritualWorkshop.rituals.at(-1).status,"resolu")
+    await screenshot("mag003d-rite-pj-ordinaire.png")
+  })
+  await test("MAG-003.D : PJ ne lance pas une cérémonie incertaine",async()=>{
+    await click('[data-hub-nav="rites"]')
+    await browserFn(()=>{document.querySelector('[data-rites-safe]').checked=true})
+    await set('[data-rites-definition]',"demo-ceremonie","change")
+    await click('[data-rites-action="prepare"]')
+    const result=await runJS("document.querySelector('[data-rites-status]')?.textContent")
+    assert.ok(result.includes("réservée")||result.includes("ordinaire"),"Refus attendu : "+result)
+    const old=await browserFn(()=>{
+      const st=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return st.sheets.find(s=>s.name==="PJ recette").ritualWorkshop.rituals.at(-1).status
+    })
+    assert.equal(old,"resolu","Aucun rite dangereux ne doit être préparé par PJ")
+  })
+
   console.log("MAG-003.C : vérifications Chrome de la récupération et de la cérémonie locale.")
 
   console.log("M04.1 + M05 CHROME : "+checks+" scénarios complets, "+dialogs+" dialogues de confirmation.")
