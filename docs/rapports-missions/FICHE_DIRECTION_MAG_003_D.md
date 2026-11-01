@@ -5,7 +5,7 @@
 **Date :** 1er novembre 2026  
 **Dépôt :** `Sijiel44/archives-alrick`  
 **Branche :** `magie/mag003d-consolidation` · **PR :** [#72 — DRAFT](https://github.com/Sijiel44/archives-alrick/pull/72) (base #71)  
-**Statut :** **TERMINÉE AVEC RÉSERVES** — corrective et techniquement testée ; revue DG nécessaire, non fusionnable en l'état.
+**Statut :** **VALIDÉE TECHNIQUEMENT AVEC RÉSERVES** — décision de Direction générale du 1er novembre 2026 ; intégration, fusion et publication non autorisées.
 
 ## Réalisations
 
@@ -16,8 +16,8 @@
 
 ## Vérification automatisée
 
-**[CI #41326549809 — SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41326549809)** sur `670471c3` : `npm ci`, `npm test` (TypeScript, build, contenu, M01–M05, G-001, MAG-003.A/B/C/D) et Chrome.  
-**Régressions :** MAG-003.A **181**, B **44**, C **44**, D **46 assertions**. **19 scénarios Chrome réussis**, dont deux nouveaux D (rite connu PJ, refus cérémonie incertaine). La CI du dernier commit documentaire reste à vérifier.
+**[CI finale #41326933850 — SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41326933850)** sur `b5ba4f304983f1ecf098c0b62bce97a662cfab50` : `npm ci`, `npm test` (TypeScript, build, contenu, M01–M05, G-001, MAG-003.A/B/C/D) et Chrome.  
+**Régressions :** MAG-003.A **181**, B **44**, C **44**, D **46 assertions**. **19 scénarios Chrome réussis**, dont deux nouveaux D (rite connu PJ, refus cérémonie incertaine). Cette CI couvre le head de livraison initial (code et documentation). Une modification documentaire de Direction postérieure nécessite sa propre vérification de CI.
 
 **Essais humains ordinateur/téléphone physique : NON RÉALISÉS.** Chrome mobile émulé et tests automatisés ne sont pas des playtests humains.
 
