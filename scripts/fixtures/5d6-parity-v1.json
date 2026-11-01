@@ -1,0 +1,147 @@
+{
+  "schema": "alrick.5d6.parity-fixtures.v1",
+  "rulesVersion": "m01-m03-2026-10-31",
+  "purpose": "Fixtures neutres partagées avec le référent Grimoire #55. M01/M03 seules sources des attentes.",
+  "cases": [
+    {
+      "level": 5,
+      "rawStat": 13,
+      "masteryRank": 1,
+      "dice": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "threshold": 27,
+      "kind": "physique",
+      "mode": "melee"
+    },
+    {
+      "level": 10,
+      "rawStat": 16,
+      "masteryRank": 4,
+      "dice": [
+        5,
+        5,
+        4,
+        4,
+        4
+      ],
+      "threshold": 27,
+      "kind": "physique",
+      "mode": "tir"
+    },
+    {
+      "level": 15,
+      "rawStat": 21,
+      "masteryRank": 8,
+      "dice": [
+        5,
+        5,
+        5,
+        4,
+        4
+      ],
+      "threshold": 30,
+      "kind": "magie",
+      "mode": "magie"
+    },
+    {
+      "level": 20,
+      "rawStat": 27,
+      "masteryRank": 13,
+      "dice": [
+        6,
+        5,
+        5,
+        5,
+        4
+      ],
+      "threshold": 30,
+      "kind": "mental",
+      "mode": "mental"
+    },
+    {
+      "level": 25,
+      "rawStat": 39,
+      "masteryRank": 18,
+      "dice": [
+        6,
+        6,
+        5,
+        5,
+        5
+      ],
+      "threshold": 30,
+      "kind": "physique",
+      "mode": "melee"
+    }
+  ],
+  "regression": {
+    "rawStat": 9,
+    "masteryRank": 0,
+    "dice": [
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "threshold": 27,
+    "expectedEffectiveStat": 6,
+    "expectedTotal": 26,
+    "expectedSuccess": false
+  },
+  "naturalFailures": [
+    [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      2,
+      2,
+      1,
+      1,
+      1
+    ]
+  ],
+  "m03": {
+    "situation": 0,
+    "baseDamage": 6,
+    "penetration": 1,
+    "feasible": true,
+    "defender": {
+      "level": 15,
+      "stats": {
+        "physique": 15,
+        "agilite": 7,
+        "esprit": 8,
+        "presence": 8
+      },
+      "masteries": {
+        "esquive": 3,
+        "volonte": 2
+      },
+      "resistanceBonus": {
+        "physique": 2,
+        "magie": 0,
+        "mental": 0
+      },
+      "protection": {
+        "physique": 6,
+        "magie": 2,
+        "mental": 0
+      },
+      "equipmentGrades": {
+        "physique": 2,
+        "magie": 1,
+        "mental": 0
+      }
+    }
+  }
+}
