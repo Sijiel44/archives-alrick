@@ -1,4 +1,6 @@
 import {resistanceScore,resolveOpposition,attackMastery,effectiveProtection,innateProtection,equipmentProtection} from "./atelier5d6-opposition"
+import {createGrimoirePanel,newGrimoire,normalizeGrimoire} from "./atelier5d6-grimoire"
+import type {Grimoire} from "./atelier5d6-grimoire"
 import {generateCreatureProfileM03} from "./atelier5d6-bestiary"
 import {validateBestiaryCard} from "./atelier5d6-bestiary-workshop"
 import {resistanceScoreM03,effectiveProtectionM03,innateProtectionM03,equipmentProtectionM03,resolveCombatM03} from "./atelier5d6-combat-m03"
@@ -50,7 +52,7 @@ function validatedItem(raw:unknown):GameItem|null{
   const o=raw as Record<string,unknown>
   if(typeof o.name!=="string"||!o.name.trim())return null
   const cat=typeof o.category==="string"&&o.category in ITEM_CATEGORIES?o.category as ItemCategory:"autre"
-  return {id:typeof o.id==="string"?o.id.slice(0,80):uniqueId(),templateId:clean(o.templateId,80),
+  return {...o,id:typeof o.id==="string"?o.id.slice(0,80):uniqueId(),templateId:clean(o.templateId,80),
     name:clean(o.name,90),category:cat,quantity:clamp(o.quantity,1,999,1),
     description:clean(o.description,600),value:clean(o.value,100)}
 }
@@ -115,7 +117,7 @@ type Sheet = {
   notes: string; gmNotes: string; lifeSteps:string[]; lifeSummary:string
   education:EducationId|""; literacy:LiteracyLevel|""; backstory:string;connections:string;goal:string
   affinities:Affinity[]; powers:Power[]
-  externalMedia:SheetArtwork[];powerHistory:PowerUse[]
+  externalMedia:SheetArtwork[];powerHistory:PowerUse[];grimoire:Grimoire
   ruleset:"legacy"|"m02"|"m03-bestiary";development:Development;legacyOriginal:Record<string,unknown>|null
   bestiarySource:Record<string,unknown>|null
 }
@@ -125,7 +127,8 @@ const innateGuard=(s:Sheet,k:ResistanceKind)=>s.ruleset!=="legacy"?innateProtect
 const equipmentGuard=(s:Sheet,k:ResistanceKind)=>s.ruleset!=="legacy"?equipmentProtectionM03(s.equipmentGrades[k],k):equipmentProtection(s.equipmentGrades[k],k)
 type Roll = { name: string; dice: number[]; total: number; target: number; text: string }
 type State = { sheets: Sheet[]; activeId: string; mode: Mode; log: Roll[]
-  groups:Group[]; activeGroupId:string; templates:GameItem[]; missionLog:MissionEntry[] }
+  groups:Group[]; activeGroupId:string; templates:GameItem[]; missionLog:MissionEntry[];
+  __campaignEnvelopeExtras?:Record<string,unknown> }
 // Tables d'incidents de playtest : une suggestion à interpréter, jamais un malus automatique supplémentaire.
 const INCIDENTS: Record<Exclude<Domain,"autre">,string[]> = {
   magie: [
@@ -210,7 +213,7 @@ function fresh(kind: Role = "pj"): Sheet {
     description:"", portrait:"", vocation:"", talents:"", boons:"", curses:"", items:"",
     sourceRef:"", sourceTitle:"", streaks:makeStreaks(), lastIncident:"", notes:"", gmNotes:"",
     lifeSteps:[],lifeSummary:"",education:"",literacy:"",backstory:"",connections:"",goal:"",
-    affinities:[],powers:[],externalMedia:[],powerHistory:[],ruleset:"m02",development:newDevelopment(),legacyOriginal:null,bestiarySource:null }
+    affinities:[],powers:[],externalMedia:[],powerHistory:[],grimoire:newGrimoire(),ruleset:"m02",development:newDevelopment(),legacyOriginal:null,bestiarySource:null }
 }
 function validateSheet(raw: unknown): Sheet | null {
   if (!raw || typeof raw !== "object") return null
@@ -279,7 +282,7 @@ function validateSheet(raw: unknown): Sheet | null {
   }
   const lifeSteps=Array.isArray(obj.lifeSteps)?obj.lifeSteps.slice(0,4).map(x=>clean(x,50)):[]
   const portrait=typeof obj.portrait==="string" && /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(obj.portrait) && obj.portrait.length<180000 ? obj.portrait : ""
-  return {id:uniqueId(),name:clean(obj.name,90),kind, profession:clean(obj.profession,90),
+  return {...obj,id:uniqueId(),name:clean(obj.name,90),kind, profession:clean(obj.profession,90),
     skill:clamp(obj.skill,0,2,0),
     stats:{physique:clamp(values.physique,1,modern?Number.MAX_SAFE_INTEGER:12,3),
       agilite:clamp(values.agilite,1,modern?Number.MAX_SAFE_INTEGER:12,3),
@@ -306,7 +309,7 @@ function validateSheet(raw: unknown): Sheet | null {
     education:EDUCATION_PATHS.some(x=>x.id===obj.education)?obj.education as EducationId:"",
     literacy:LITERACY_LEVELS.some(x=>x.id===obj.literacy)?obj.literacy as LiteracyLevel:"",
     backstory:clean(obj.backstory,4000),connections:clean(obj.connections,600),
-    goal:clean(obj.goal,600),affinities,powers,
+    goal:clean(obj.goal,600),affinities,powers,grimoire:normalizeGrimoire(obj.grimoire),
     externalMedia:Array.isArray(obj.externalMedia)?obj.externalMedia.slice(0,30)
       .map(validatedArtwork).filter((v):v is SheetArtwork=>v!==null):[],
     powerHistory:Array.isArray(obj.powerHistory)?obj.powerHistory.slice(-80)
@@ -382,6 +385,7 @@ function setupAtelier5d6() {
     const data = localStorage.getItem(STORAGE) ?? localStorage.getItem(LEGACY_STORAGE)
     if (data) {
       const parsed = JSON.parse(data) as Partial<State>
+      Object.assign(state,Object.fromEntries(Object.entries(parsed).filter(([key])=>!(key in state))))
       if (Array.isArray(parsed.sheets)) {
         const loaded = parsed.sheets.slice(0,60).map(validateSheet).filter((s):s is Sheet => s !== null)
         if (loaded.length) {
@@ -411,6 +415,19 @@ function setupAtelier5d6() {
   function persist() {
     try { localStorage.setItem(STORAGE,JSON.stringify(state)) }
     catch { message("Stockage indisponible ou saturé. Exportez votre fiche en JSON pour la conserver.") }
+  }
+  const grimoirePanel=createGrimoirePanel({root:host,getSheet:current,getSheets:()=>state.sheets,
+    isMJ:()=>state.mode!=="pj",persist,message,
+    onChange:()=>{renderAffinities();refreshEffectsSummary()}})
+  function refreshEffectsSummary(){
+    const sheet=current()
+    q<HTMLElement>("[data-sheet-effects-summary]").textContent=sheet.grimoire.effects.length
+      ? "Sorts actifs : "+sheet.grimoire.effects.map(e=>{
+          const found=sheet.grimoire.personalSpells.find(x=>x.id===e.spellId)
+          return (found?.name||e.spellId.replace(/^demo-/,"").replace(/-/g," "))+
+            " ("+(e.duration==="permanent"?"permanent":e.remaining+" "+e.duration)+")"
+        }).join(" · ")
+      : "Aucun sort actif sur cette fiche."
   }
   function refreshPoints() {
     const s=current()
@@ -558,6 +575,7 @@ function setupAtelier5d6() {
     renderInventory()
     renderOpposition()
     renderAffinities()
+    refreshEffectsSummary()
   }
   function refreshStreaks(){
     const s=current()
@@ -841,7 +859,7 @@ function setupAtelier5d6() {
     q<HTMLElement>("[data-hub-status]").textContent=sheet.name+
       " · niveau "+sheet.level+"/25 · "+sheet.pv+"/"+sheet.pvMax+" PV · "+
       sheet.mana+"/"+sheet.manaMax+" mana · "+sheet.affinities.length+" affinité(s) · "+
-      sheet.inventory.length+" objet(s)."
+      sheet.inventory.length+" objet(s) · "+sheet.grimoire.effects.length+" effet(s) actif(s)."
   }
   function refreshAffinityPreview(){
     const sheet=current()
@@ -854,7 +872,7 @@ function setupAtelier5d6() {
       "Aucun bonus à la précision, aucun mana ou effet cosmique automatique.":
       "Sélectionner une affinité validée sur cette fiche. Sans sélection, aucun bonus d'impact."
   }
-  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities();renderMedia()}
+  function render(){refreshRoster();setForm();refreshMode();refreshLog();renderInventory();renderGroup();renderAffinities();renderMedia();grimoirePanel.render()}
   function renderAI(){
     const s=current(), include=q<HTMLInputElement>("[data-ai-roster]").checked
     const group=state.groups.find(g=>g.members.includes(s.id))
@@ -1000,7 +1018,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         case "items":s.items=clean(el.value,1400);break
       }
     }
-    refreshRoster();refreshPoints();refreshStreaks();refreshDefenseSummary();renderOpposition();renderAffinities();renderAI();persist()
+    refreshRoster();refreshPoints();refreshStreaks();refreshDefenseSummary();renderOpposition();renderAffinities();renderAI();grimoirePanel.render();persist()
   }
   function trackFailure(sheet:Sheet,domain:Domain,failed:boolean):string {
     if(domain==="autre")return ""
@@ -1180,16 +1198,8 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     state.log=state.log.slice(0,20)
     refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
-  function exportSheets(){
-    const blob=new Blob([JSON.stringify({schema:"alrick.sheets.v3",created:new Date().toISOString(),sheets:state.sheets},null,2)],{type:"application/json"})
-    const url=URL.createObjectURL(blob),a=document.createElement("a")
-    a.href=url;a.download="archives-alrick-fiches-5d6.json";document.body.append(a);a.click();a.remove()
-    setTimeout(()=>URL.revokeObjectURL(url),1500)
-    message("Fichier JSON exporté : conserve-le pour retrouver tes fiches sur un autre appareil.")
-  }
-
   function exportCampaign(){
-    const content={schema:"alrick.campaign.v2",created:new Date().toISOString(),state}
+    const content={...(state as State & {__campaignEnvelopeExtras?:Record<string,unknown>}).__campaignEnvelopeExtras,schema:"alrick.campaign.v2",created:new Date().toISOString(),state}
     const blob=new Blob([JSON.stringify(content,null,2)],{type:"application/json"})
     const url=URL.createObjectURL(blob),link=document.createElement("a")
     link.href=url;link.download="archives-alrick-campagne-5d6-complete.json";document.body.append(link);link.click();link.remove()
@@ -1228,7 +1238,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
         r.dice.every((d:unknown)=>typeof d==="number"&&d>=1&&d<=6)
     }).map(x=>({...x,name:clean(x.name,90),text:clean(x.text,180)}))
     if(!window.confirm("Restaurer cette sauvegarde complète ? La campagne locale actuellement ouverte sera remplacée. Exportez-la d'abord si nécessaire."))return
-    state={sheets:restored,activeId:typeof payload.activeId==="string"&&ids.has(payload.activeId)?payload.activeId:restored[0].id,
+    state={...payload,__campaignEnvelopeExtras:Object.fromEntries(Object.entries(container).filter(([key])=>!["schema","created","state"].includes(key))),sheets:restored,activeId:typeof payload.activeId==="string"&&ids.has(payload.activeId)?payload.activeId:restored[0].id,
       mode:payload.mode==="mj"||payload.mode==="ia"?payload.mode:"pj",
       log,groups,activeGroupId:typeof payload.activeGroupId==="string"&&groupIds.has(payload.activeGroupId)
         ?payload.activeGroupId:(groups[0]?.id??""),templates,missionLog}
@@ -1337,7 +1347,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       if(!file)return
       if(file.size>16*1024*1024){message("Fichier de campagne trop grand (16 Mio maximum).");return}
       void file.text().then(raw=>{importCampaign(JSON.parse(raw))})
-        .catch(()=>message("Restauration refusée : vérifier le schéma alrick.campaign.v1 et les identifiants."))
+        .catch(()=>message("Restauration refusée : vérifier le schéma alrick.campaign.v1/v2 et les identifiants."))
     }
     if(el?.hasAttribute("data-active")){
       clearPendingImpact();clearPendingCounter();state.activeId=el.value;render();persist()
@@ -1634,7 +1644,7 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       state.mode=button.dataset.mode as Mode
       q<HTMLButtonElement>("[data-opposition-apply]").hidden=!pendingImpact || state.mode==="pj"
       q<HTMLButtonElement>("[data-opposition-counter]").hidden=!pendingCounter || state.mode==="pj"
-      refreshMode();renderAffinities();renderMedia();persist();return
+      refreshMode();renderAffinities();renderMedia();grimoirePanel.render();persist();return
     }
     if(button.hasAttribute("data-opposition-counter")){
       if(state.mode==="pj"){message("Le MJ doit valider les ripostes des autres fiches.");return}
@@ -1817,7 +1827,16 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
       message("Profil d'essai ajouté. Les valeurs et l'existence de la créature ne sont pas canoniques.");return
     }
     if(button.hasAttribute("data-roll")){roll();return}
-    if(button.hasAttribute("data-export")){exportSheets();return}
+    if(button.hasAttribute("data-export")){
+      // Chemin de téléchargement dans le handler : robuste lors de la navigation Quartz SPA.
+      const payload={schema:"alrick.sheets.v3",created:new Date().toISOString(),sheets:state.sheets}
+      const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"})
+      const url=URL.createObjectURL(blob),link=document.createElement("a")
+      link.href=url;link.download="archives-alrick-fiches-5d6.json";document.body.append(link);link.click();link.remove()
+      setTimeout(()=>URL.revokeObjectURL(url),1500)
+      message("Fichier JSON exporté : conserve-le pour retrouver tes fiches sur un autre appareil.")
+      return
+    }
     if(button.hasAttribute("data-export-campaign")){exportCampaign();return}
     if(button.hasAttribute("data-clear-log")){state.log=[];refreshLog();persist();message("Journal local effacé.");return}
     if(button.hasAttribute("data-ai-refresh")){renderAI();message("Contexte actualisé à partir des fiches locales.");return}

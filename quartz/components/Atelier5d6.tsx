@@ -66,6 +66,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
     <nav class="atelier-quicknav" aria-label="Espace de jeu">
       <button type="button" data-hub-nav="origines">🧭 Création</button>
       <button type="button" data-hub-nav="fiche">📜 Personnage et dés</button>
+      <button type="button" data-hub-nav="grimoire">📖 Grimoire</button>
       <button type="button" data-hub-nav="affinites">✨ Capacités</button>
       <button type="button" data-hub-nav="inventaire">🎒 Inventaire</button>
       <button type="button" data-hub-nav="galerie">🖼️ Images</button>
@@ -253,6 +254,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <label>Mana maximum<input type="number" data-field="manaMax" min={0} max={999} step={1} value={0}/></label>
           <label>Emprise (0–12)<input type="number" data-field="emprise" min={0} max={12} step={1} value={0}/></label>
         </div>
+        <p class="atelier-hint" data-sheet-effects-summary>Aucun sort actif sur cette fiche.</p>
         <label class="atelier-wide">Attaches, équipement ou traits
           <textarea data-field="notes" rows={3} maxLength={2500} placeholder="Un souvenir, une compétence, un objet..."></textarea>
         </label>
@@ -437,6 +439,96 @@ export const Atelier5d6: QuartzComponent = (props) => {
       </div>
     </div>
       </div>
+    </details>
+    <details class="atelier-hub-section" data-hub="grimoire">
+      <summary>📖 Grimoire personnel — sorts, apprentissage et effets</summary>
+      <section class="atelier-panel grimoire" data-grimoire-root aria-label="Grimoire du personnage actif">
+        <p class="atelier-hint"><strong>Prototype de règles, non canonique.</strong> Tous les sorts de démonstration sont fictifs. Les Cercles demandent une attestation distincte du MJ ; le niveau ne les accorde pas. L'accord MJ local n'est pas une authentification réseau.</p>
+        <p class="grimoire-resources" data-grimoire-mana>Réserve de mana</p>
+        <p class="atelier-hint" data-grimoire-circle-summary>Aucun Cercle attesté.</p>
+        <div class="atelier-fields">
+          <label>Rechercher un sort<input type="search" data-grimoire-search placeholder="Nom, domaine, effet…" maxLength={100}/></label>
+          <label>Domaine d'usage
+            <select data-grimoire-category>
+              <option value="">Toutes les catégories</option>
+              <option value="utilitaire">✦ Utilitaire</option><option value="protection">◇ Protection</option>
+              <option value="soin">✚ Soin</option><option value="perception">◉ Perception</option>
+              <option value="artisanat">⚒ Artisanat</option><option value="attaque">ϟ Attaque</option>
+              <option value="deplacement">➶ Déplacement</option>
+            </select>
+          </label>
+          <label>Afficher<select data-grimoire-scope>
+            <option value="all">Bibliothèque de démonstration et créations de campagne</option>
+            <option value="known">Appris seulement</option>
+            <option value="available">Utilisables maintenant</option>
+          </select></label>
+        </div>
+        <div class="grimoire-cards" data-grimoire-cards><p>Chargement du grimoire…</p></div>
+        <fieldset class="atelier-stats grimoire-caster">
+          <legend>✧ Lancer un sort connu</legend>
+          <div class="atelier-fields">
+            <label>Sort<select data-grimoire-cast><option value="">Choisir un sort appris…</option></select></label>
+            <label>Cible ou intention<input data-grimoire-target maxlength={150} placeholder="Personne, lieu ou objet…"/></label>
+            <label>Fiche cible pour opposition (facultatif)<select data-grimoire-other-sheet><option value="">Sans fiche cible — difficulté du sort</option></select></label>
+          </div>
+          <button type="button" class="atelier-roll" data-grimoire-cast-button>Lancer 5d6, confirmer la dépense et consigner</button>
+          <div class="atelier-result" data-grimoire-result role="status">Aucune incantation.</div>
+          <p class="atelier-hint">5d6 + bonus effectif d’Esprit + bonus effectif de maîtrise Magie selon M01/M03. Les affinités n'ajoutent pas de bonus universel au jet. Aucun dommage sur autrui n'est appliqué sans arbitrage MJ.</p>
+        </fieldset>
+        <h3>⏳ Effets actifs</h3>
+        <ul class="atelier-inventory-list" data-grimoire-effects><li>Aucun effet actif.</li></ul>
+        <div class="grimoire-card-actions">
+          <button type="button" data-grimoire-advance="round">Tour suivant</button>
+          <button type="button" data-grimoire-advance="scene">Segment narratif suivant</button>
+        </div>
+        <p class="atelier-hint">Les tours et scènes sont avancés manuellement. Aucune conversion automatique en temps réel ; les permanences éventuelles requièrent validation spécifique.</p>
+        <div data-grimoire-mj hidden>
+          <h3>Validation et création — MJ local</h3>
+          <p class="atelier-hint">Une attestation doit se fonder sur une pratique démontrée, une formation ou un événement reconnu. Elle ne donne pas les sorts du Cercle.</p>
+          <div class="atelier-fields">
+            <label>Cercle attesté<select data-grimoire-circle>{[1,2,3,4,5,6,7,8,9].map(n=><option value={n} key={n}>Cercle {n}</option>)}</select></label>
+            <label>Preuve ou limite attestée<input data-grimoire-witness maxLength={120} placeholder="Mentor, épreuve, étude, démonstration…"/></label>
+          </div>
+          <button type="button" data-grimoire-attest>MJ : attester ce Cercle</button>
+          <p class="atelier-hint">Le IX ne peut être attesté sans reconnaissance de la nature divine indépendante du niveau du personnage.</p>
+          <label>Attestation de nature divine pour le IX<input data-grimoire-ninth-witness maxLength={300} placeholder="Validation MJ, source documentaire ou événement reconnu…"/></label>
+          <button type="button" data-grimoire-ninth-approve>MJ : reconnaître l'accès divin au IX</button>
+          <p class="atelier-hint" data-grimoire-ninth-status>Neuvième Cercle non autorisé.</p>
+          <h4>Créer un sort propre à cette campagne</h4>
+          <div class="atelier-fields">
+            <label>Nom<input data-grimoire-new-name maxLength={90}/></label>
+            <label>Domaine<select data-grimoire-new-domain>{AFFINITY_DOMAINS.map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></label>
+            <label>Catégorie<select data-grimoire-new-category>
+              <option value="utilitaire">Utilitaire</option><option value="protection">Protection</option><option value="soin">Soin</option>
+              <option value="perception">Perception</option><option value="artisanat">Artisanat</option><option value="attaque">Attaque</option><option value="deplacement">Déplacement</option>
+            </select></label>
+            <label>Cercle requis<select data-grimoire-new-circle>{[1,2,3,4,5,6,7,8,9].map(n=><option key={n} value={n}>{n}</option>)}</select></label>
+            <label>Coût en mana<input type="number" min={0} max={999} value={2} data-grimoire-new-cost/></label>
+            <label>Description et limites<input data-grimoire-new-desc maxLength={800} placeholder="Effet limité, explicite, documentable…"/></label>
+          </div>
+          <button type="button" data-grimoire-create>MJ : créer la proposition locale</button>
+          <p class="atelier-hint">La proposition reste locale à cette fiche, séparée de la bibliothèque canonique, et n'est pas distribuée automatiquement aux autres personnages.</p>
+        </div>
+        <h3>🔮 Activation de matrices préparées</h3>
+        <p class="atelier-hint">Un objet préparé par un autre mage peut héberger une architecture plus avancée que son porteur. Le Cercle d'activation doit être attesté, mais cela ne confère ni le sort ni la capacité de reconstruire l'objet. La signification des charges reste à arbitrer : le prototype consomme provisoirement une charge même quand le mana du porteur fournit l'énergie.</p>
+        <ul class="atelier-inventory-list" data-grimoire-matrices><li>Aucune matrice enregistrée.</li></ul>
+        <div data-grimoire-matrix-mj hidden>
+          <h4>MJ : inscrire une architecture déjà préparée sur un objet de l'inventaire</h4>
+          <div class="atelier-fields">
+            <label>Objet existant<select data-grimoire-matrix-item><option value="">Sélectionner un objet…</option></select></label>
+            <label>Effet déjà construit<select data-grimoire-matrix-spell><option value="">Sélectionner un effet…</option></select></label>
+            <label>Cercle suffisant pour déclencher<select data-grimoire-matrix-trigger>{[1,2,3,4,5,6,7,8,9].map(n=><option key={n} value={n}>Cercle {n}</option>)}</select></label>
+            <label>Source d'énergie<select data-grimoire-matrix-energy><option value="matrix">Charge stockée dans la matrice</option><option value="caster">Mana du porteur</option></select></label>
+            <label>Charges disponibles (règle à confirmer)<input data-grimoire-matrix-charges type="number" min={1} max={99} step={1} value={3}/></label>
+            <label>Concepteur, provenance et limites<input data-grimoire-matrix-source maxLength={300} placeholder="Ingénieur, lieu de fabrication, attestation…"/></label>
+          </div>
+          <button type="button" data-grimoire-matrix-create>MJ : installer la matrice sur cet objet</button>
+          <p class="atelier-hint">Le Neuvième Cercle reste verrouillé tant qu'une validation divine explicite n'a pas été enregistrée sur la fiche. Un artefact n'accorde pas ce statut à son porteur.</p>
+        </div>
+        <h3>📜 Journal des incantations</h3>
+        <ol class="atelier-log" data-grimoire-history><li>Aucune utilisation enregistrée.</li></ol>
+        <p data-grimoire-status role="status" aria-live="polite" class="atelier-notice"></p>
+      </section>
     </details>
     <details class="atelier-hub-section" data-hub="affinites">
       <summary>✨ Affinités et pouvoirs — même fiche</summary>
