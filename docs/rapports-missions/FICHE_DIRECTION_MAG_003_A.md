@@ -6,7 +6,7 @@
 **Dépôt :** Sijiel44/archives-alrick  
 **Branche :** magie/mag003a-recuperation-mana  
 **PR :** [#69 — Brouillon](https://github.com/Sijiel44/archives-alrick/pull/69)  
-**Statut :** Prototype implémenté ; vérifications CI et revue de la Direction générale à considérer avant clôture. **Aucune fusion ni publication.**
+**Statut :** TERMINÉE TECHNIQUEMENT (sur code 9522eb2), en attente de revue de la Direction générale avant toute fusion/publication. **Aucune fusion ni publication.**
 
 ## Livré
 
@@ -32,3 +32,5 @@ Confirmer la grille de récupération (référence, prudente ou ample), le mode 
 **Liens :** [Rapport mathématique](./MAG_003_A_MOTEUR_MATHEMATIQUE.md) · [Simulations](./MAG_003_A_SIMULATIONS.md) · [Pilotage](./MAG_003_PILOTAGE_DIRECTION.md).
 
 **Décision requise :** revue technique et éditoriale, puis seulement éventuelle autorisation de fusion et de publication par la Direction. **Ne pas fusionner maintenant.**
+
+**Preuve technique :** [CI #41318867816](https://github.com/Sijiel44/archives-alrick/actions/runs/41318867816) réussie : npm test, TypeScript, build, M01–M05, 181 assertions MAG-003.A et recette navigateur M04.1. Aucun playtest humain revendiqué. Après cette mise à jour documentaire, vérifier la CI du dernier head avant validation finale.

@@ -51,3 +51,7 @@ Le simulateur consomme les fonctions de **M01** pour les actions ordinaires et d
 Tests codés : niveaux 1, 5, 10, 15, 20, 25 (réserves automatiques 0/36/66/114/174/306) ; impairs, repos cumulés, dépenses, changement de journée, hausse/baisse maximum, interruptions, doublons, restauration JSON, mana nul et presque plein, anti-boucles, modèles de coûts, M01/M03 et deux stratégies d'arrondi. Vérification demandée : npm test incluant types, build, contrôles de contenu et régressions M01–M05. Les preuves réelles doivent être relevées dans la [CI de la PR #69](https://github.com/Sijiel44/archives-alrick/pull/69/checks) et sont distinctes d'une exécution humaine.
 
 Arbitrages ouverts : durée et conditions d'un lieu sûr, vrai repos interrompu, rythme de campagne, grilles et choix d'arrondi, effet de l'intensité sur le sort, autorité serveur, recharge d'objets, séparation énergie/usages des matrices G-001 et recette humaine. **Aucune fusion, publication ou revendication de playtest humain.**
+
+## 7. Résultat CI vérifié (mise à jour)
+
+[Workflow GitHub #41318867816](https://github.com/Sijiel44/archives-alrick/actions/runs/41318867816) : **SUCCÈS** sur le code 9522eb2. npm test comprend la vérification TypeScript, le build et les régressions M01–M05 ; **181 assertions MAG-003.A réussies** ; recette navigateur M04.1 réussie. Aucun playtest humain exécuté. Les commits documentaires ultérieurs sont revérifiés sur la PR avant clôture.

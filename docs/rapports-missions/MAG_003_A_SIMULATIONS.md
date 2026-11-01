@@ -41,7 +41,7 @@ Chiffres ci-dessus = plafonds individuels arrondis vers le bas, avant fractions 
 | 174 | 21 | 44 | 5 | 9 |
 | 306 | 37 | 77 | 5 | 9 |
 
-Geste mineur : 2 partout. Comparateur fixe historique : 2/4/16, uniquement comme témoin. **Sécurité importante :** le simulateur refuse un usage de l'intensité réduite en M03 combat sans correspondance entre l'intensité payée et un niveau d'effet inférieur explicite. Par exemple le porteur N25 utilisant une intensité 36 peut simuler un impact basé sur le niveau d'effet 5 ; il ne peut pas payer 9 mana puis obtenir automatiquement l'impact d'une manifestation N25. Les sorts utilitaires ne déduisent aucun bonus d'effet du mana payé.
+Geste mineur : 2 partout. Modèle fixe témoin A (non canonique) : 2/4/16, uniquement comme témoin. **Sécurité importante :** le simulateur refuse un usage de l'intensité réduite en M03 combat sans correspondance entre l'intensité payée et un niveau d'effet inférieur explicite. Par exemple le porteur N25 utilisant une intensité 36 peut simuler un impact basé sur le niveau d'effet 5 ; il ne peut pas payer 9 mana puis obtenir automatiquement l'impact d'une manifestation N25. Les sorts utilitaires ne déduisent aucun bonus d'effet du mana payé.
 
 ## Comparaison des politiques
 
@@ -60,3 +60,7 @@ Trois grilles de laboratoire sont comparées sur les **mêmes suites de pratique
 Matrice automatisée : N1/N5/N10/N15/N20/N25 ; deux courts ; dépense après repos ; long après court ; changement de jour ; maximum variable ; doublon ; repos interrompu ; absence de mana ; mana presque plein ; export/import ; récupération infinie ; coûts fixes et proportionnels ; M01 et M03 ; reproductibilité de graine. Aucun test de joueurs humains, ni intégration des objets/Grimoire ni contrôle multijoueur revendiqués.
 
 **Preuve CI :** consulter [les checks de la PR #69](https://github.com/Sijiel44/archives-alrick/pull/69/checks) et la page de pilotage MAG_003_PILOTAGE_DIRECTION.md pour le dernier état. Les chiffres sont des calculs/simulations automatisées, jamais des observations de terrain.
+
+## Résultat CI vérifié
+
+La [CI GitHub #41318867816](https://github.com/Sijiel44/archives-alrick/actions/runs/41318867816) est **verte** sur le code 9522eb2 : 181 assertions MAG-003.A, types, build, M01–M05 et recette navigateur automatisée M04.1. Ces essais ne constituent pas un playtest humain.

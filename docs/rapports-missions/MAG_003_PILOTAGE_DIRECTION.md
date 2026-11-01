@@ -2,7 +2,7 @@
 
 **Point de contrôle : 1er novembre 2026**  
 **Mission en cours : MAG-003.A — Moteur de récupération et simulateur d'expédition**  
-**Statut réel : PROTOTYPE EXPÉRIMENTAL SUR PR DRAFT #69 ; NON FUSIONNÉ ; NON PUBLIÉ.**  
+**Statut réel : MAG-003.A TERMINÉE TECHNIQUEMENT (code, tests, rapports) ; PR DRAFT #69 ; NON FUSIONNÉE ; NON PUBLIÉE ; REVUE DG À VENIR.**  
 **Autorité :** Direction générale et créateur des Archives d'Alrick ; aucune validation canonique anticipée.
 
 ## Chaîne GitHub et périmètre
@@ -11,7 +11,7 @@
 - **Base initiale main :** 6967679b1dee5f6b9762bd6cc4378827d0ec975e.
 - **Branche :** magie/mag003a-recuperation-mana.
 - **PR :** [#69 — MAG-003.A](https://github.com/Sijiel44/archives-alrick/pull/69), brouillon vers main.
-- **Premiers commits repères :** 63f325d (moteur), 121a494 (simulateur), a136e42 (arrondis), 294fdb9 (tests), 71ef68b (intégration npm test), 80cc40c (correction du scénario), db1eeae (intensité M03), 2f33f41 (tests de l'intensité). Les rapports se trouvent dans les commits suivants de cette même branche ; la tête effective est à vérifier sur la PR, sans supposer ces identifiants définitifs.
+- **Premiers commits repères :** 63f325d (moteur), 121a494 (simulateur), a136e42 (arrondis), 294fdb9 (tests), 71ef68b (intégration npm test), 80cc40c (correction du scénario), db1eeae (intensité M03), 2f33f41 (tests de l'intensité), 6f879c0 (arithmétique BigInt), 9522eb2 (report fractionnaire exact). Les rapports se trouvent dans les commits suivants de cette même branche ; la tête effective est à vérifier sur la PR, sans supposer ces identifiants définitifs.
 - **Branches dépendantes à préserver :** [#55 G-001](https://github.com/Sijiel44/archives-alrick/pull/55), [#66 T-001](https://github.com/Sijiel44/archives-alrick/pull/66), [#68 MAG-002](https://github.com/Sijiel44/archives-alrick/pull/68), toutes constatées ouvertes en brouillon au démarrage ; aucun commit MAG-003.A n'y a été poussé.
 
 ## Développement et livrables
@@ -32,7 +32,7 @@
 
 **Premier run examiné :** [GitHub Actions #41318331534](https://github.com/Sijiel44/archives-alrick/actions/runs/41318331534) sur 71ef68b. Tests TypeScript, build, contenu, site et M01–M05 exécutés jusqu'au test MAG-003.A ; **échec réel** du scénario comparatif des politiques, dont les étapes ne discriminaient pas la grille (plafond long identique). Code/test corrigés après ce run, ne pas présenter celui-ci comme vert.
 
-**Dernière CI de la branche :** consulter [PR #69 / Checks](https://github.com/Sijiel44/archives-alrick/pull/69/checks). Toute preuve de succès doit viser le **dernier head**. Tant que les derniers résultats ne sont pas effectivement vérifiés, le statut est **CI à confirmer**. Aucun test sur de vrais joueurs n'a été exécuté.
+**CI validée sur le code (commit 9522eb2aa12727a3e9299efe8d999d5f9dbc7572) :** [GitHub Actions #41318867816](https://github.com/Sijiel44/archives-alrick/actions/runs/41318867816), **SUCCÈS**. Commandes réellement réalisées par Actions : npm ci, npm test (TypeScript, build, liens, M01–M05 et MAG-003.A), puis npm run test:m04:browser. Sortie MAG-003.A : **181 assertions réussies**. Ce commit documentaire actualise le bilan après cette preuve ; [vérifier aussi sa CI](https://github.com/Sijiel44/archives-alrick/pull/69/checks). Aucun playtest humain n'a été exécuté.
 
 ## Décisions ouvertes et dépendances
 
@@ -48,4 +48,4 @@
 ## Porte de validation
 
 **Pas de fusion automatique. Pas de publication sur Pages. Pas de modification canonique.**  
-La mission A n'est techniquement clôturable qu'après vérification réussie du head de PR, revue technique des sorties, rapports présents et approbation explicite de la Direction générale. Le prototype peut être inspecté sans engager les autres branches.
+Les critères techniques (moteur, scénarios, tests, rapports) sont remplis sur le code contrôlé, sous réserve du contrôle de CI du commit documentaire final. La **validation éditoriale, la fusion et la publication** restent des décisions distinctes et non acquises. Le prototype peut être inspecté sans engager les autres branches.
