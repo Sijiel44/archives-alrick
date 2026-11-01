@@ -423,7 +423,7 @@ function setupAtelier5d6() {
   const grimoirePanel=createGrimoirePanel({root:host,getSheet:current,getSheets:()=>state.sheets,
     isMJ:()=>state.mode!=="pj",persist,message,
     onManaChanged:(sheet,before,after,reason)=>{const tracked=ritesPanel.onManaChanged(sheet,before,after,reason)
-      if(!tracked&&sheet.ritualWorkshop?.recovery)message("Registre MAG-003.C divergent : récupération bloquée, vérifier le mana.")},
+      if(!tracked&&current().ritualWorkshop?.recovery)message("Registre MAG-003.C divergent : récupération bloquée, vérifier le mana.")},
     onChange:()=>{renderAffinities();refreshEffectsSummary();ritesPanel.render()}})
   function refreshEffectsSummary(){
     const sheet=current()
