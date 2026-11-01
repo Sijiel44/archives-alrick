@@ -3,8 +3,8 @@
 ## MAG-002 — Étude du Grimoire, de l’économie du mana et des objets magiques
 
 **Date :** 31 octobre 2026 · **Référent :** Grimoire et systèmes magiques  
-**Dépôt :** \`Sijiel44/archives-alrick\`  
-**Branche documentaire :** \`conception/mag-002-mana-sorts-objets\`  
+**Dépôt :** `Sijiel44/archives-alrick`  
+**Branche documentaire :** `conception/mag-002-mana-sorts-objets`  
 **Coordination :** G-001/PR #55, T-001/PR #66, M01–M05  
 **STATUT : PHASES A/B DOCUMENTÉES — VALIDATION DU CRÉATEUR ATTENDUE ; AUCUN DÉVELOPPEMENT MAJEUR.**
 
@@ -27,7 +27,7 @@ Sous C : **N5** = 2/5/9 mana ; **N25** = 2/37/77 mana. Le coût d’un geste uti
 ### Architecture proposée
 
 Une même **définition d’effet** versionnée peut alimenter sort personnel, rituel, rune et matrice d’objet. Quatre interfaces futures : **Mes sorts**, **Laboratoire magique**, **Atelier d’enchantement**, **Codex et recherches**.  
-**Fabrication :** support d’inventaire réel, matrices, prérequis, source d’énergie, entretien, provenance, sécurité et essais. **Séparer l’énergie stockée et les nombres d’utilisations** ; ne pas réinterpréter \`charges\` de G-001 sans arbitrage.  
+**Fabrication :** support d’inventaire réel, matrices, prérequis, source d’énergie, entretien, provenance, sécurité et essais. **Séparer l’énergie stockée et les nombres d’utilisations** ; ne pas réinterpréter `charges` de G-001 sans arbitrage.  
 **Démonstrations conceptuelles :** 12 sorts, 3 objets, variante inventée par un joueur et outil de mairie conçu par un artisan, tous **non canoniques**.
 
 ### Preuves et réserves
@@ -44,4 +44,4 @@ Calculs déterministes issus du code existant et probabilités par énumération
 
 **VERDICT :** étude de conception recevable pour une revue créative ; **Phase C nécessaire avant Phase D**. Pas de fusion ni publication automatique, pas de migration destructive ni remplacement de G-001.
 
-**Rapports :** \`MAG_002_PHASE_A_B_AUDIT_CONCEPTION.md\`, \`MAG_002_DECISIONS_A_SOUMETTRE.md\`, \`docs/magie/MAG_002_ARCHITECTURE_MODULAIRE_PROPOSITION.md\`.
+**Rapports :** `MAG_002_PHASE_A_B_AUDIT_CONCEPTION.md`, `MAG_002_DECISIONS_A_SOUMETTRE.md`, `docs/magie/MAG_002_ARCHITECTURE_MODULAIRE_PROPOSITION.md`.
