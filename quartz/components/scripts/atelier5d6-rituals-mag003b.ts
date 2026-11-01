@@ -39,6 +39,8 @@ export type RitualContribution={
   kind:"support"|"component"|"securite"|"duree"|"structure"|"anti_interruption"|"connaissance"|"energie"
   detail:string;approved:boolean
   componentId?:string;quantity?:number;energyAmount?:number;manaCharacterId?:string
+  /** Preuves explicites pour le soutien chiffré : un rôle et une compétence réels du participant. */
+  supportRole?:RitualRole;supportSkillId?:string
 }
 export type RitualEvent={
   id:string;fingerprint:string;from:RitualStatus;to:RitualStatus;tick:number
@@ -144,6 +146,36 @@ export function validateRitualInstance(s:RitualInstance):void{
   if(!Array.isArray(s.events)||!Array.isArray(s.journal)||!Array.isArray(s.participants)||
     !Array.isArray(s.contributions)||new Set(s.events.map(e=>e.id)).size!==s.events.length)
     throw new Error("Historique incohérent.")
+  if(new Set(s.participants.map(p=>p.id)).size!==s.participants.length)
+    throw new Error("Participants dupliqués dans une sauvegarde de rite.")
+  for(const p of s.participants){
+    requireId(p.id,"Participant");validRole(p.role)
+    integer(p.rawStat,"Caractéristique",1);integer(p.masteryRank,"Maîtrise")
+    if(typeof p.mage!=="boolean"||!Array.isArray(p.skills)||!p.circleRights)
+      throw new Error("Profil de participant incomplet.")
+  }
+}
+/**
+ * Qualification stricte : une case « approuvé » ou le nombre de participants
+ * ne prouvent jamais à eux seuls une maîtrise, un rôle ou un droit de Cercle.
+ * Les anciennes contributions dépourvues de ces preuves sont conservées dans
+ * l'historique, mais ne peuvent pas procurer de nouveau bonus.
+ */
+export function supportQualification(s:RitualInstance,c:RitualContribution):string|null{
+  if(c.kind!=="support"&&c.kind!=="duree")return "Nature de soutien non numérique."
+  if(c.approved!==true)return "Contribution non approuvée."
+  const participant=s.participants.find(p=>p.id===c.participantId)
+  if(!participant)return "Participant de soutien absent."
+  const lead=s.participants.find(p=>p.role===s.definition.leadRole)
+  if(!lead||participant.id===lead.id)return "L'officiant principal ne se soutient pas lui-même."
+  if(!c.supportRole||participant.role!==c.supportRole||participant.role===s.definition.leadRole)
+    return "Rôle de soutien non vérifié."
+  if(typeof c.supportSkillId!=="string"||!c.supportSkillId.trim()||
+    !participant.skills.includes(c.supportSkillId))
+    return "Compétence déclarée non attestée chez le participant."
+  if(s.definition.circle&&!participant.circleRights.assister?.includes(s.definition.circle.number))
+    return "Droit d'assistance au Cercle non attesté."
+  return null
 }
 function inspectRequirements(s:RitualInstance,contributions:RitualContribution[],safePlace:boolean):string[]{
   const issues:string[]=[]
@@ -155,6 +187,10 @@ function inspectRequirements(s:RitualInstance,contributions:RitualContribution[]
     if(!s.participants.some(p=>p.id===c.participantId))throw new Error("Contribution sans propriétaire.")
     if(!["support","component","securite","duree","structure","anti_interruption","connaissance","energie"].includes(c.kind))
       throw new Error("Type de contribution inconnu.")
+    if(c.kind==="support"||c.kind==="duree"){
+      const reason=supportQualification(s,c)
+      if(reason)issues.push("Soutien non qualifié : "+reason)
+    }
     if(c.kind==="component"){requireId(c.componentId??"","Composant fourni");integer(c.quantity??NaN,"Quantité",1)}
     if(c.kind==="energie"){
       if(!s.definition.energy)issues.push("Énergie collective sans règle explicite.")
@@ -226,8 +262,8 @@ export function previewRitual(s:RitualInstance,action:Extract<RitualAction,{type
   if(s.status!=="engage")throw new Error("Résolution réservée à un rite engagé.")
   integer(action.tick,"Horodatage",s.tick)
   const lead=s.participants.find(p=>p.role===s.definition.leadRole)!
-  const support=s.contributions.some(c=>c.kind==="support"&&c.approved)
-    ?1:0 // dix assistants ne donnent jamais dix bonus
+  const support=s.contributions.some(c=>c.kind==="support"&&supportQualification(s,c)===null)
+    ?1:0 // contrôle répété après import : compétence/rôle/identité/droit explicites
   const base=action.baseSituation??0
   integer(base,"Situation",-2,2)
   const situation=Math.min(2,base+support)
@@ -261,7 +297,7 @@ export function previewRitual(s:RitualInstance,action:Extract<RitualAction,{type
   const effectsProposed=success?s.definition.effects.map(e=>({...clone(e),expiresAtTick:action.tick+e.durationTicks})):[]
   return {success,automatic,natural:action.natural,probability,total,
     effectiveSituation:situation,supportUsed:used,
-    durationSaved:s.contributions.some(c=>c.kind==="duree"&&c.approved)?1:0,
+    durationSaved:s.contributions.some(c=>c.kind==="duree"&&supportQualification(s,c)===null)?1:0,
     requirements:[],effectsProposed,energyDebits,
     application:energyDebits.length?"requires-authoritative-server":"manual-confirmation",
     damageProposed}
@@ -271,14 +307,14 @@ const transitions:Record<RitualAction["type"],RitualStatus[]>={
   interrompre:["prepare","engage"],annuler:["brouillon","prepare"]}
 export function transitionRitual(source:RitualInstance,action:RitualAction):RitualInstance{
   validateRitualInstance(source);requireId(action.id,"Événement")
-  integer(action.tick,"Horodatage",source.tick)
-  // La collision d'ID est rejetée, pas traitée comme un deuxième événement.
+  // Un reçu identique est idempotent, même après une progression de tick.
   const fingerprint=JSON.stringify(action)
   const previous=source.events.find(e=>e.id===action.id)
   if(previous){
     if(previous.fingerprint!==fingerprint)throw new Error("Collision d'identifiant d'événement.")
     return clone(source)
   }
+  integer(action.tick,"Horodatage",source.tick)
   if(!transitions[action.type].includes(source.status))
     throw new Error("Transition interdite : "+source.status+" → "+action.type)
   const next=clone(source),old=source.status
