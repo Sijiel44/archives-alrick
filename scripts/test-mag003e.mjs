@@ -82,7 +82,7 @@ delete legacy.journal[0].fingerprint
 const importLegacy=a.importManaState(JSON.stringify(legacy))
 eq(importLegacy.journal[0].gain,7,"Opération historique non détruite")
 rejects(()=>a.applyManaOperation(importLegacy,req),"sans empreinte")
-const other={...copied,characterId:"autre"}
+const other=a.createManaState("autre","J100",35,10)
 rejects(()=>a.applyManaOperation(other,req),"personnage incompatible")
 eq(a.manaOperationFingerprint(once.state,req),a.manaOperationFingerprint(once.state,{
   ...req,rest:{completed:true,restId:"matin",exceptionalApproved:false,safe:true,focused:false}
