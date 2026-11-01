@@ -99,3 +99,5 @@ Les prompts autonomes complets sont dans [DG-001 — Missions spécialisées](DG
 ## Complément DG-001.1
 
 Base de reprise : PR #63, commit `a4b7f8cc7f9e6bf00182f3e025e287028977c42a`, CI [#41262473174](https://github.com/Sijiel44/archives-alrick/actions/runs/41262473174) réussie, incluant `npm test` et la recette Chrome. Les preuves de la nouvelle révision figurent dans les vérifications de la PR. Le compteur de 369 désigne les pages sélectionnées pour génération par `check:content`, pas une mesure de déploiement effectif.
+
+La révision DG-001.1 `70c8738cbc339182669b289079503b2bf2163707` a passé la CI [#41263085282](https://github.com/Sijiel44/archives-alrick/actions/runs/41263085282), y compris `npm test` et la recette Chrome. La mise à jour documentaire qui enregistre cette preuve est vérifiable dans l'historique de la PR.
