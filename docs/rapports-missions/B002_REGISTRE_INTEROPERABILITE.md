@@ -117,3 +117,12 @@ M05 conserve **documentaryLink principal déclaratif** dans l'extension de alric
 **Points délibérément laissés ouverts :** les sept prototypes MJ restent `proposition_non_jouee` sans modification automatique de publication ; les onze entrées sans code restent sans attribution ; l'accès aux sources primaires CB35–CB39, les liens n:n, les pouvoirs de créature, les tests de sauvegardes historiques, les playtests et les liens publics M05 restent à valider séparément. **Aucune fiche nouvelle codée, aucune règle M03 modifiée, aucune publication Pages déclenchée.**
 
 **Validation technique :** reprendre les workflows GitHub Actions sur le dernier commit de la PR, puis consigner leur résultat avant fusion. L'autorisation du créateur porte sur ces changements documentaires et le mécanisme de validation ; tout changement ultérieur doit être recontrôlé.
+
+
+### Preuve de recette après adoption éditoriale — commit `0ad2e0d`
+
+[GitHub Actions #41269203598](https://github.com/Sijiel44/archives-alrick/actions/runs/41269203598) : **completed / success** sur `0ad2e0d1aea7f87ac8ad01d279368a0b6dfaee24`. `npm ci`, `npm test`, TypeScript, Quartz, contrôle de liens et `npm run test:m04:browser` réussis.
+
+**Résultats de la CI :** **1 998 assertions B-002**, **1 321 assertions B-001.1/B-001.2**, **1 390 M05**, **277 fiches de périmètre**, **195 codes uniques**, **0 doublon**, **0 protection spoiler manquante**, **0 statut canonique invalide**, **0 exception `brouillons`**, **6 préfixes approuvés**, **0 attribution individuelle nouvelle**, **1 089 renvois wiki**, **0 cible explicite manquante**, **15 scénarios Chrome et 7 dialogues** réussis. Les résultats sont automatisés : aucun playtest humain revendiqué.
+
+**Décision :** les six préfixes sont approuvés et la fusion de B-002 est autorisée par le créateur ; le registre n:n et les liens publics restent désactivés jusqu'à décision spécifique. Les codes attribués à chaque nouvelle fiche devront être validés avec source et preuve avant fusion. La CI de la tête documentaire finale et celle de `main` après fusion seront à distinguer.
