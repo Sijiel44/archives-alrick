@@ -60,10 +60,10 @@ export function createManaState(characterId:string,dayKey:string,manaMax:number,
 /** Le maximum est figé au commencement de la journée : jamais de crédit rétroactif. */
 export function dailyCeiling(s:ManaState,rate=s.dayRate):number {
   integer(rate,"Taux");if(rate>RATE_SCALE)throw new RangeError("Taux invalide.")
-  const units=s.dayBaseMax*rate
-  const fraction=units%RATE_SCALE
-  if(s.policy.rounding==="exactCarry")return Math.floor((units+s.carryUnits)/RATE_SCALE)
-  return Math.floor(units/RATE_SCALE)+
+  const units=BigInt(s.dayBaseMax)*BigInt(rate),scale=BigInt(RATE_SCALE)
+  const fraction=Number(units%scale)
+  if(s.policy.rounding==="exactCarry")return Number((units+BigInt(s.carryUnits))/scale)
+  return Number(units/scale)+
     (s.dayIndex%2===1?Math.floor((s.cycleUnits+fraction)/RATE_SCALE):0)
 }
 export function recoveryAvailable(s:ManaState):number{
@@ -125,9 +125,9 @@ export function applyManaOperation(source:ManaState,operation:ManaOperation):Man
     if(operation.nextDay===s.dayKey)reject("Même journée.")
     else {
       // Seules les fractions d'un plafond réellement consommé sont reportées.
-      const basis=s.dayBaseMax*s.dayRate
-      const fraction=(s.recoveredToday>=dailyCeiling(s)&&s.dayRate>0)?basis%RATE_SCALE:0
-      if(s.policy.rounding==="exactCarry")s.carryUnits=fraction?((basis+s.carryUnits)%RATE_SCALE):0
+      const basis=BigInt(s.dayBaseMax)*BigInt(s.dayRate),scale=BigInt(RATE_SCALE)
+      const fraction=(s.recoveredToday>=dailyCeiling(s)&&s.dayRate>0)?Number(basis%scale):0
+      if(s.policy.rounding==="exactCarry")s.carryUnits=fraction?Number((basis+BigInt(s.carryUnits))%scale):0
       else s.cycleUnits=s.dayIndex%2===0?fraction:0
       s.dayIndex++;s.dayKey=operation.nextDay;s.dayBaseMax=s.manaMax
       s.dayRate=0;s.recoveredToday=0;s.shortCount=0;s.restIds=[]
@@ -174,6 +174,7 @@ export function magicCost(tier:CostTier,manaMax:number,model:"C"|"intensity"|"fi
     if(intensityBasis>manaMax)throw new Error("Intensité supérieure à la réserve.")
     basis=intensityBasis
   }
-  return tier==="minor"?2:tier==="significant"?Math.max(4,Math.ceil(basis*0.12)):
-    Math.max(8,Math.ceil(basis*0.25))
+  const ceilPercent=(rate:number)=>Number((BigInt(basis)*BigInt(rate)+99n)/100n)
+  return tier==="minor"?2:tier==="significant"?Math.max(4,ceilPercent(12)):
+    Math.max(8,ceilPercent(25))
 }
