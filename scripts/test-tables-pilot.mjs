@@ -278,6 +278,16 @@ try {
   // Rejeu enregistré avant la restauration, sans double écriture.
   // Une connexion de joueur ne peut évidemment pas réémettre une action MJ.
   assert.equal((await returning.wait(m=>m.type==="error"&&m.code==="FORBIDDEN")).code,"FORBIDDEN")
+  const gmRestored=await connect(server)
+  gmRestored.send("auth",{token:mj.token})
+  await gmRestored.wait(m=>m.type==="authenticated")
+  gmRestored.send("select_room",{roomId})
+  await snap(gmRestored,m=>m.room.id===roomId)
+  gmRestored.send("adjust_resource",resourceAction)
+  assert.equal((await gmRestored.wait(m=>m.type==="action_ack"&&m.actionId===resourceAction.actionId)).replay,true)
+  const afterRestore=await snap(gmRestored,m=>m.characters.some(c=>c.id===c1.id&&c.revision===3))
+  assert.equal(afterRestore.characters.find(c=>c.id===c1.id).pv,31)
+  assert(afterRestore.events.every(e=>e.visibility==="public"||e.visibility==="mj"))
   assert(resume.events.some(e => e.kind === "jet" && e.by === p1.id))
   assert(resume.events.every(e => e.visibility === "public"))
   assert.equal(resume.gmNote, undefined)
