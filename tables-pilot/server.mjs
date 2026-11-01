@@ -55,6 +55,12 @@ export function resolve5d6(dice, rawStat, masteryRank, situation, target, feasib
     rulesVersion: TABLES_ENGINE_VERSION, outcome }
 }
 
+/** Adaptateur réseau M03 : aucune formule de combat supplémentaire. */
+export function resolveTableCombat(dice, input) {
+  if (!Array.isArray(dice) || dice.length !== 5 || !dice.every(d => integer(d, 1, 6)))
+    fail("DICE", "Cinq dés entre 1 et 6 sont requis.")
+  return resolveCombatM03({ ...input, natural: dice.reduce((sum, d) => sum + d, 0) })
+}
 function migrateDb(raw) {
   if (!raw || !raw.users || !raw.rooms || !["alrick.tables.local.v1","alrick.tables.local.v2"].includes(raw.schema))
     throw new Error("Schéma de tables inconnu : conserver le fichier et restaurer une sauvegarde valide.")
@@ -407,9 +413,8 @@ export async function createTableServer({
         fail("FORMAT", "Maîtrise de combat absente.")
       const masteryRank = masteryName ? attacker.masteries[masteryName] : attacker.skill
       const dice = Array.from({ length: 5 }, () => randomInt(1, 7))
-      const natural = dice.reduce((a,b)=>a+b,0)
-      const result = resolveCombatM03({
-        natural, rawStat: attacker.stats[msg.stat], masteryRank, situation: msg.situation,
+      const result = resolveTableCombat(dice, {
+        rawStat: attacker.stats[msg.stat], masteryRank, situation: msg.situation,
         level: attacker.level, difficulty: msg.difficulty, kind: msg.kind, mode: msg.mode,
         defender: defender ? combatProfile(defender) : null, feasible: msg.feasible !== false,
         baseDamage: msg.baseDamage, penetration: msg.penetration ?? 0,
