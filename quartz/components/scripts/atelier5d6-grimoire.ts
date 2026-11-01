@@ -251,6 +251,8 @@ export function createGrimoirePanel(args:{root:HTMLElement;getSheet:()=>MagicShe
   let lastSheetId=""
   function render(){
     const sheet=args.getSheet(),g=sheet.grimoire,mj=args.isMJ()
+    if(g.migrationWarnings?.length)query<HTMLElement>("[data-grimoire-status]").textContent=
+      "Import conservatoire : "+g.migrationWarnings.slice(0,4).join(" ; ")+". Données originales archivées, contrôle MJ recommandé."
     if(lastSheetId!==sheet.id){
       lastSheetId=sheet.id
       query<HTMLElement>("[data-grimoire-result]").textContent="Aucune incantation pour cette fiche dans cette session."
