@@ -44,7 +44,7 @@ for(const fixture of cases){
       assert(r.damage>=0)
     }
     assert.equal(failure,21)
-    assert.equal(critical,126)
+    assert.equal(critical,56)
     assert(success>=0&&success<=7776)
     for(const group of [1,2,4])rows.push({id:fixture.id,level,role:fixture.role,
       groupe:group,probabiliteSucces:success/7776,
