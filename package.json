@@ -19,7 +19,7 @@
     "check:types": "tsc --noEmit",
     "check:content": "node scripts/check-content.mjs",
     "check:site": "node scripts/check-site.mjs",
-    "test": "npm run check:content && npm run check:types && npm run build && npm run check:site && node scripts/test-5d6-balance.mjs && node scripts/test-5d6-probabilities.mjs && node scripts/test-5d6-opposition.mjs && node scripts/test-5d6-origins.mjs && npm run test:progression && npm run test:m02 && npm run test:m03 && npm run test:m04 && npm run test:m05 && npm run test:b0011 && npm run test:b002 && npm run test:mag003a && npm run test:mag003b && npm run test:grimoire && npm run test:mag003c && npm run test:mag003d && npm run test:mag003e",
+    "test": "npm run check:content && npm run check:types && npm run build && npm run check:site && node scripts/test-5d6-balance.mjs && node scripts/test-5d6-probabilities.mjs && node scripts/test-5d6-opposition.mjs && node scripts/test-5d6-origins.mjs && npm run test:progression && npm run test:m02 && npm run test:m03 && npm run test:m04 && npm run test:m05 && npm run test:b0011 && npm run test:b002 && npm run test:mag003a && npm run test:mag003b && npm run test:grimoire && npm run test:mag003c && npm run test:mag003d && npm run test:mag003e && npm run test:b0031 && npm run test:b0031:m03",
     "test:progression": "node scripts/test-5d6-progression.mjs",
     "test:m02": "node scripts/test-5d6-m02.mjs",
     "test:m03": "node scripts/test-5d6-m03.mjs",
@@ -33,7 +33,9 @@
     "test:grimoire": "node scripts/test-5d6-grimoire.mjs",
     "test:mag003c": "node scripts/test-mag003c.mjs",
     "test:mag003d": "node scripts/test-mag003d.mjs",
-    "test:mag003e": "node scripts/test-mag003e.mjs"
+    "test:mag003e": "node scripts/test-mag003e.mjs",
+    "test:b0031": "node scripts/test-b0031-catalogue.mjs",
+    "test:b0031:m03": "node scripts/test-b0031-m03.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",
