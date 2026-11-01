@@ -5,7 +5,7 @@
 **Date :** 1er novembre 2026  
 **Branche :** `bestiaire/b003-montagnes-aube` — **PR :** [#73](https://github.com/Sijiel44/archives-alrick/pull/73), brouillon, non fusionnée  
 **Commit final et nouvelle CI :** à renseigner après les dernières écritures et le contrôle GitHub  
-**Statut provisoire :** terminée avec réserves techniques et arbitrages éditoriaux en attente
+**Statut :** partiellement réalisée — revue technique et arbitrages éditoriaux en attente
 
 ## Chiffres clés
 
@@ -18,7 +18,7 @@
 | Codes permanents attribués et validés B-002 | **0** |
 | Trajectoires évolutives réconciliées, non canonisées | **9** |
 | Variantes `VARC-` formellement approuvées | **0** |
-| Illustrations listées / binaires retrouvés dans la PR | **5 / 0** |
+| Illustrations listées / binaires retrouvés dans la PR | **5 récupérées localement / 0 dans la PR** |
 | Fiches publiées à l'issue de B-003.1 | **0** |
 
 ## Réalisations et preuves
@@ -29,7 +29,7 @@ Règle d'autonomie du monde ajoutée au contrat éditorial : canoniser une espè
 
 - Décider de l'existence/du statut de chacune des 41 propositions (éventuellement par lot explicitement défini) ; confirmer la portée de chaque accord, sans aucun événement joué inventé.
 - Arbitrer **P12 ↔ P38** (poissons de Nacrecombe), les niches de lac H6 et les microrefuges H8 de Forgeciel ; ne pas coder les habitats H1–H9 comme `BIO-` sans décision.
-- Récupérer les cinq images P37–P41, vérifier la provenance et les droits, puis l'identité graphique réelle ; **0/5 dans GitHub à ce stade**.
+- Les cinq images P37–P41 ont été **récupérées dans un Word historique** et rapprochées des fiches ; vérifier encore auteur, licence et droit de diffusion publique avant intégration : **0/5 dans GitHub à ce stade**.
 - La branche a été trouvée **91 commits derrière `main`** au début de la mission : réconciliation et nouvelle CI nécessaires avant fusion.
 
 ## Décision recommandée
