@@ -187,3 +187,31 @@ MAG-003.C assure **une compatibilité préparatoire avec les Tables T-001 #66**,
 ### Diagnostic ciblé de la CI G-001 #55 (journaux consultés)
 
 **Diagnostic précis du défaut G-001 #55 (CI #41267847377)** : échec de l'étape `npm run test:m04:browser` ; scénario **« G-001 : campagne v1 vers v2 avec extensions inconnues »**. Après import, l'export de campagne attendu ne crée aucun Blob et le navigateur signale **`ReferenceError: exportCampaign is not defined`** dans un gestionnaire d'événement. Les autres scénarios Chrome précédemment exécutés dans cette CI incluent des exports Bestiaire/Atelier et la migration des fiches v2→v3. **MAG-003.E doit identifier et corriger la référence manquante ou la portée de cette fonction, vérifier la migration et l'export réels, puis rerun la CI de l'arbre G-001 corrigé avant réconciliation.** [Preuve : workflow #41267847377](https://github.com/Sijiel44/archives-alrick/actions/runs/41267847377). Ne pas masquer le test ou réduire ses assertions pour faire passer la CI.
+
+
+---
+
+## Décision de contrôle — MAG-003.E : recette et réconciliation expérimentales (1er novembre 2026)
+
+**Référent :** intégration Git, sauvegardes et recette 5d6. **Branche indépendante :** `magie/mag003e-recette-reconciliation`. **PR :** [#75 (DRAFT)](https://github.com/Sijiel44/archives-alrick/pull/75), base `main`. Toutes les PR #55, #69–#72, #66 demeurent sous leur autorité et ne sont ni modifiées ni fusionnées par E.
+
+### Constat technique et preuves
+
+- Blocage G-001 #55 reproduit via [Actions #41267847377](https://github.com/Sijiel44/archives-alrick/actions/runs/41267847377) : `ReferenceError: exportCampaign is not defined` lors de l'export de campagne v1→v2. Correction autonome en [PR #74 (DRAFT)](https://github.com/Sijiel44/archives-alrick/pull/74) ; [CI #41336804861 — succès](https://github.com/Sijiel44/archives-alrick/actions/runs/41336804861) sur `8c4cc52661d6ea71055ada73499b101e8c682382`. Aucun test d'export supprimé et aucun écrasement de #55.
+- MAG-E : pertinence de la maîtrise conditionnée au contrat de contribution `supportRules` (rôle, compétence, connaissance, droits de Cercle), au lieu de « première maîtrise disponible ». Assistance non chiffrée et non-mages possibles. Bonus +1 maximum et M01/M03 inchangés.
+- Repos : empreinte canonique versionnée des opérations ; ID identique/paramètres identiques = idempotence ; paramètres ou validation divergents = collision refusée sans second crédit. Les anciennes opérations restent exportables sans altération ; ID legacy sans preuve non rejouable automatiquement.
+- `main` et G-001 étaient divergents, mais MAG-003.A→D constitue une chaîne empilée issue de `main`. L'arbre E reprend le code G-001 porté par C/D, les hooks de suivi du mana et les quatre archives documentaires G-001. Les scénarios navigateur d'export/import G-001 ont été réintroduits **avec** ceux de C/D dans l'arbre E.
+- **Preuve intermédiaire** : [Actions #41337453962 — succès](https://github.com/Sijiel44/archives-alrick/actions/runs/41337453962) sur `6a530a395acedb4c5ac800a93b2a78e7b688f6e7`, incluant `npm ci`, `npm test`, TypeScript, Quartz, contenu et liens, suites A (187), B (44), C (44), D (46), E (23), 19 scénarios Chrome. **Cette CI précède la réintroduction des trois scénarios G-001 et la clôture documentaire : elle ne prouve pas le HEAD final.** Seule une CI complète nouvelle sur le SHA exact de #75 fera autorité.
+
+### Livrables
+
+- [Recette et réconciliation E](./MAG_003_E_RECETTE_RECONCILIATION.md).
+- [Audit de sauvegardes E](./MAG_003_E_AUDIT_SAUVEGARDES.md).
+- [Plan d'intégration E](./MAG_003_E_PLAN_INTEGRATION.md).
+- [Fiche Direction E](./FICHE_DIRECTION_MAG_003_E.md).
+
+### Verdict et limites de l'autorité
+
+**Statut : techniquement vérifiable, terminée avec réserves ; réception finale conditionnée à la CI du dernier head et à la revue DG.** Les essais humains sur PC et téléphone physique et l'audit de copies autorisées d'archives personnelles demeurent **ouverts**. Le mode MJ est local, aucune dépense rituelle collective autoritaire ni gestion transactionnelle réseau n'existent. L'ambiguïté `energySource=caster`/charges, les notions de source, stockage, usages, activation et entretien ainsi que les domaines foi/mana/intervention divine restent **soumis au créateur** et hors du canon automatique.
+
+**Verrou absolu : aucune fusion dans main, aucune publication GitHub Pages, aucune canonisation, aucune transaction serveur collective ; autorité DG + créateur requise après nouvelle revue du SHA exact.**
