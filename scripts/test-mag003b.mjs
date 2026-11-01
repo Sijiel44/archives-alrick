@@ -167,6 +167,12 @@ const scenarios=[]
   throws(()=>create(def({id:"too-big",effects:[{id:"i",kind:"clarte",narrative:"concentré",
     durationTicks:1,context:"atelier",numerical:{kind:"m03-situation",magnitude:2,approvedByGM:true}}]})),
   "supérieur")
+  throws(()=>create(def({id:"stack",effects:[
+    {id:"n1",kind:"clarte",narrative:"clarté",durationTicks:1,context:"jet",
+      numerical:{kind:"m01-situation",magnitude:1,approvedByGM:true}},
+    {id:"n2",kind:"concentration",narrative:"concentration",durationTicks:1,context:"jet",
+      numerical:{kind:"m01-situation",magnitude:1,approvedByGM:true}}
+  ]})),"Non-cumul")
   scenarios.push("S12 effets et validation")
 }
 // 13. Test chemin M03 : résolution par l'autorité existante, probabilité exacte
