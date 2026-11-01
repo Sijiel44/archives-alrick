@@ -1,6 +1,6 @@
 # DG-001 — Rapport de consolidation et de gouvernance
 
-**État :** corrections documentaires ciblées testées sur `codex/dg-001-consolidation-20261031`; PR à ouvrir; aucune fusion ni publication demandée ou effectuée.  
+**État :** corrections documentaires ciblées testées sur `codex/dg-001-consolidation-20261031`; PR [#63](https://github.com/Sijiel44/archives-alrick/pull/63) ouverte en brouillon; CI de la révision corrigée réussie; aucune fusion ni publication demandée ou effectuée.  
 **Base examinée :** `main`, commit `6fe3c79cfdd36e69a6eaa356abc498d29b81f580` (31 octobre 2026, heure locale du projet).  
 **Responsable de cette consolidation :** Direction du projet / référent de coordination DG.  
 **Décisions réservées au créateur :** validation canonique, autorisation du lot de publication, arbitrages créatifs, approbation visuelle et fusion.
@@ -85,7 +85,8 @@ Les prompts autonomes complets sont dans [DG-001 — Missions spécialisées](DG
 - `npm run check:content` : réussi, 369 pages publiées et 269 codes uniques.
 - `npm test` sur cette branche : réussi; inclut `check:content`, TypeScript, build Quartz, `check:site`, tests de probabilité/équilibre, suites de progression/M02/M03/M04/M05. Le build a vérifié 873 pages HTML et 64 196 liens/ressources; tests M05 : 1 390 assertions pures. La suite complète ne lance pas la recette navigateur Chrome séparée `npm run test:m04:browser`.
 - PR #54 : `npm run tables:test` réussi dans son worktree; PR #55 : `node scripts/test-5d6-grimoire.mjs` réussi dans son worktree; PR #56 : `npm test` réussi dans son worktree (868 pages HTML, 62 910 liens/ressources). Ces résultats correspondent aux heads de branche observés le 31 octobre/1er novembre UTC et peuvent changer si les branches bougent.
-- `git diff --check` : réussi. Contrôle de navigateur dédié non exécuté car aucune interface n'a été modifiée; aucun playtest humain n'a été effectué.
+- CI distante de PR #63 sur le commit corrigé `4fcb98793a69dbf9693ba76fa0f9d892727ab3d3` : run [#41262370750](https://github.com/Sijiel44/archives-alrick/actions/runs/41262370750) réussi, y compris `npm test` et `npm run test:m04:browser`. Deux premières exécutions avaient échoué parce qu'un transfert du long suivi éditorial avait été tronqué; le journal l'a identifié, le fichier complet a été retransféré, puis la CI complète est passée.
+- `git diff --check` : réussi. La recette Chrome automatisée a passé dans la CI; aucun playtest humain ni essai sur appareil physique n'a été effectué.
 - Aucune modification moteur, aucun ajout de contenu de campagne brut, aucun changement de canon, aucun marqueur Pages touché, aucune fusion/déploiement.
 
 ## Fichiers modifiés par cette mission
@@ -94,4 +95,3 @@ Les prompts autonomes complets sont dans [DG-001 — Missions spécialisées](DG
 - `README.md`, `PLAN_DEVELOPPEMENT_UNIVERS.md`, `content/suivi-editorial.md` — compteur daté et statut historique des anciens comptes; progression expérimentale 1–25.
 - `docs/SOURCES_CAMPAGNES_PUBLIQUES.md` — procédure d'import public, d'intégrité, de recherche et de restauration.
 - Ce rapport et le recueil des prompts autonomes.
-
