@@ -26,13 +26,15 @@ export type RitualDefinition={
   traditionLabel?:string;resolution:RitualResolutionMode;leadRole:RitualRole
   difficulty?:number;feasible:boolean;requiresSafePlace:boolean
   requiredRoles:RitualRole[];components:Record<string,number>
+  /** Rôles, compétences et connaissances requis selon la nature de l'aide. */
+  supportRules?:Partial<Record<"support"|"duree",Array<{role:RitualRole;skills:string[];knowledge?:string[]}>>>
   circle?:{number:number;action:RitualCircleAction;existingMatrixId?:string;authorizedMatrix:boolean}
   energy?:{policyId:string;maxPerParticipant:number;maxTotal:number}
   effects:RitualEffect[]
 }
 export type RitualParticipant={
   id:string;role:RitualRole;rawStat:number;masteryRank:number;mage:boolean
-  skills:string[];circleRights:Partial<Record<RitualCircleAction,number[]>>
+  skills:string[];knowledge?:string[];circleRights:Partial<Record<RitualCircleAction,number[]>>
 }
 export type RitualContribution={
   id:string;participantId:string
@@ -86,6 +88,23 @@ export function validateRitualDefinition(d:RitualDefinition):void{
   validRole(d.leadRole)
   if(typeof d.feasible!=="boolean"||typeof d.requiresSafePlace!=="boolean")throw new Error("Faisabilité/sûreté manquante.")
   if(d.resolution!=="automatique")integer(d.difficulty??NaN,"Difficulté",0,45)
+  if(d.supportRules!==undefined){
+    if(!d.supportRules||typeof d.supportRules!=="object"||Array.isArray(d.supportRules)||
+       Object.keys(d.supportRules).some(k=>k!=="support"&&k!=="duree"))
+      throw new Error("Contrat de soutien invalide.")
+    for(const rules of Object.values(d.supportRules)){
+      if(!Array.isArray(rules))throw new Error("Règles de soutien invalides.")
+      for(const rule of rules){
+        validRole(rule.role)
+        if(!Array.isArray(rule.skills)||!rule.skills.length||
+           rule.skills.some(x=>typeof x!=="string"||!x.trim()))
+          throw new Error("Compétences admissibles absentes.")
+        if(rule.knowledge!==undefined&&(!Array.isArray(rule.knowledge)||
+           rule.knowledge.some(x=>typeof x!=="string"||!x.trim())))
+          throw new Error("Prérequis de connaissance invalide.")
+      }
+    }
+  }
   if(!Array.isArray(d.requiredRoles))throw new Error("Rôles requis invalides.")
   d.requiredRoles.forEach(validRole)
   if(!d.components||Array.isArray(d.components)||typeof d.components!=="object")throw new Error("Composants invalides.")
@@ -173,6 +192,12 @@ export function supportQualification(s:RitualInstance,c:RitualContribution):stri
   if(typeof c.supportSkillId!=="string"||!c.supportSkillId.trim()||
     !participant.skills.includes(c.supportSkillId))
     return "Compétence déclarée non attestée chez le participant."
+  const candidates=s.definition.supportRules?.[c.kind]
+  if(!candidates?.length)return "Contrat de compétences pertinentes absent pour cette contribution."
+  const matching=candidates.filter(r=>r.role===participant.role&&r.skills.includes(c.supportSkillId!))
+  if(!matching.length)return "Compétence hors sujet ou non admissible pour cette contribution."
+  if(!matching.some(r=>(r.knowledge??[]).every(id=>participant.knowledge?.includes(id))))
+    return "Prérequis de connaissance non attesté."
   if(s.definition.circle&&!participant.circleRights.assister?.includes(s.definition.circle.number))
     return "Droit d'assistance au Cercle non attesté."
   return null
