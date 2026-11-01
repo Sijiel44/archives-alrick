@@ -9,11 +9,17 @@ import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 import { createHash, randomBytes, randomInt, randomUUID } from "node:crypto"
 import { WebSocketServer, WebSocket } from "ws"
+import { resolveProgressionAction, effectiveStat, effectiveMastery } from "../quartz/components/scripts/atelier5d6-progression.ts"
+import { resolveCombatM03 } from "../quartz/components/scripts/atelier5d6-combat-m03.ts"
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const STATS = ["physique", "agilite", "esprit", "presence"]
 const TARGETS = [15, 18, 21, 24, 27, 30]
 const STATUSES = ["preparation", "en_cours", "en_pause", "terminee"]
+export const TABLES_ENGINE_VERSION = "m01-m03-2026-10-31"
+export const TABLES_CHARACTER_SCHEMA = "alrick.tables.character.v2"
+const MUTATIONS = new Set(["create_room","join_room","approve_member","set_status","gm_note",
+  "create_character","approve_character","roll","combat_roll","message","adjust_resource"])
 const clean = (s, max) => typeof s === "string" ? s.trim().slice(0, max) : ""
 const tokenHash = (token) => createHash("sha256").update(token).digest("hex")
 const fail = (code, message) => { const e = new Error(message); e.code = code; throw e }
@@ -21,23 +27,84 @@ const integer = (n, a, b) => Number.isInteger(n) && n >= a && n <= b
 const uid = () => randomUUID()
 const now = () => new Date().toISOString()
 const safeSend = (ws, data) => { if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(data)) }
-const emptyDatabase = () => ({ schema: "alrick.tables.local.v1", users: {}, rooms: {} })
+const emptyDatabase = () => ({ schema: "alrick.tables.local.v2", rulesVersion: TABLES_ENGINE_VERSION,
+  users: {}, rooms: {}, operations: {} })
 
-export function resolve5d6(dice, stat, skill, situation, target) {
+/** M01 fait foi. Les caractéristiques et maîtrises reçues restent brutes. */
+export function resolve5d6(dice, rawStat, masteryRank, situation, target, feasible = true) {
   if (!Array.isArray(dice) || dice.length !== 5 || !dice.every(d => integer(d, 1, 6)))
     fail("DICE", "Cinq dés entre 1 et 6 sont requis.")
-  if (![stat, skill, situation, target].every(Number.isInteger) || !integer(stat, 1, 12) ||
-      !integer(skill, 0, 2) || ![-2, 0, 2].includes(situation) || !TARGETS.includes(target))
-    fail("RULES", "Paramètres de jet invalides.")
+  if (!Number.isSafeInteger(rawStat) || rawStat < 1 || !Number.isSafeInteger(masteryRank) ||
+      masteryRank < 0 || !integer(situation, -2, 2) || !TARGETS.includes(target) ||
+      typeof feasible !== "boolean") fail("RULES", "Paramètres de jet M01 invalides.")
   const natural = dice.reduce((sum, d) => sum + d, 0)
-  const total = natural + stat + skill + situation
+  const result = resolveProgressionAction({ natural, rawStat, masteryRank, situation,
+    threshold: target, feasible })
   const outcome = natural === 5 ? "Échec critique exceptionnel" :
     natural <= 7 ? "Échec critique mineur" :
-    natural === 30 && total >= target ? "Succès exceptionnel" :
-    natural >= 27 && total >= target ? "Réussite critique" :
-    total >= target ? "Réussite" :
-    target - total <= 2 ? "Échec de justesse" : "Échec"
-  return { dice, natural, stat, skill, situation, total, target, outcome }
+    result.success && natural === 30 ? "Succès exceptionnel" :
+    result.criticalApplied ? "Réussite critique" :
+    result.success ? "Réussite" :
+    !feasible ? "Action impossible" :
+    target - result.total <= 2 ? "Échec de justesse" : "Échec"
+  return { dice: [...dice], natural, rawStat, masteryRank, stat: effectiveStat(rawStat),
+    skill: effectiveMastery(masteryRank), situation, bonus: result.bonus,
+    total: result.total, target, feasible, naturalFailure: result.naturalFailure,
+    numericSuccess: result.numericSuccess, success: result.success,
+    criticalPotential: result.criticalPotential, criticalApplied: result.criticalApplied,
+    rulesVersion: TABLES_ENGINE_VERSION, outcome }
+}
+
+function migrateDb(raw) {
+  if (!raw || !raw.users || !raw.rooms || !["alrick.tables.local.v1","alrick.tables.local.v2"].includes(raw.schema))
+    throw new Error("Schéma de tables inconnu : conserver le fichier et restaurer une sauvegarde valide.")
+  if (raw.schema === "alrick.tables.local.v1") {
+    raw.schema = "alrick.tables.local.v2"
+    raw.migratedFrom = "alrick.tables.local.v1"
+    for (const room of Object.values(raw.rooms)) for (const character of Object.values(room.characters ?? {})) {
+      character.characterSchema = "alrick.tables.character.v1"
+      character.rulesVersion = "legacy-tables-v1"
+      character.masteries ??= {}
+      character.resistanceBonus ??= { physique: 0, magie: 0, mental: 0 }
+      character.protection ??= { physique: 0, magie: 0, mental: 0 }
+      character.equipmentGrades ??= { physique: 0, magie: 0, mental: 0 }
+      character.preMigrationApproved = character.approved === true
+      character.approved = false
+      character.campaignInstanceId ??= character.id
+    }
+  }
+  raw.rulesVersion = TABLES_ENGINE_VERSION
+  raw.operations ??= {}
+  return raw
+}
+function importMasteries(input) {
+  if (input == null) return {}
+  if (typeof input !== "object" || Array.isArray(input) || Object.keys(input).length > 80)
+    fail("FORMAT", "Registre de maîtrises invalide.")
+  const value = Object.create(null)
+  for (const [key, rank] of Object.entries(input)) {
+    if (!key.trim() || key.length > 80 || !Number.isSafeInteger(rank) || rank < 0)
+      fail("FORMAT", "Rang de maîtrise invalide.")
+    value[key] = rank
+  }
+  return value
+}
+function importDefenses(input, maximum) {
+  if (input != null && (typeof input !== "object" || Array.isArray(input)))
+    fail("FORMAT", "Modificateurs de défense invalides.")
+  const value = {}
+  for (const kind of ["physique","magie","mental"]) {
+    const n = input?.[kind] ?? 0
+    if (!integer(n, 0, maximum)) fail("FORMAT", "Modificateur de défense hors limites.")
+    value[kind] = n
+  }
+  return value
+}
+function combatProfile(c) {
+  return { level: c.level, stats: c.stats, masteries: c.masteries ?? {},
+    resistanceBonus: c.resistanceBonus ?? importDefenses(null, 8),
+    protection: c.protection ?? importDefenses(null, 60),
+    equipmentGrades: c.equipmentGrades ?? importDefenses(null, 5) }
 }
 
 export async function createTableServer({
@@ -47,7 +114,7 @@ export async function createTableServer({
   let db
   try {
     db = JSON.parse(await readFile(dataPath, "utf8"))
-    if (db.schema !== "alrick.tables.local.v1" || !db.users || !db.rooms) throw new Error("Schéma incompatible")
+    db = migrateDb(db)
   } catch (err) {
     if (err.code !== "ENOENT") throw err
     db = emptyDatabase()
@@ -91,13 +158,14 @@ export async function createTableServer({
         connected: active(roomId, id), characterId: m.characterId || null
       }))
     if (!member.approved) {
-      return { type: "snapshot", room: { id: room.id, name: room.name, status: room.status },
+      return { type: "snapshot", rulesVersion: TABLES_ENGINE_VERSION, room: { id: room.id, name: room.name, status: room.status },
         myself: { ...userPublic(user.id), role: member.role, approved: false },
         members: members.filter(m => m.id === user.id), characters: [], events: [] }
     }
     const events = room.events.filter(e => e.visibility === "public" || isGm).slice(-120)
     return {
-      type: "snapshot",
+      type: "snapshot", rulesVersion: TABLES_ENGINE_VERSION,
+      characterSchema: TABLES_CHARACTER_SCHEMA,
       room: { id: room.id, name: room.name, description: room.description,
         campaign: room.campaign, maxPlayers: room.maxPlayers, status: room.status,
         invite: isGm ? room.invite : undefined },
@@ -339,7 +407,7 @@ export async function createTableServer({
   wss.on("connection", (ws) => {
     let windowStart = Date.now(), windowCount = 0
     online.set(ws, { userId: null, roomId: null })
-    safeSend(ws, { type: "hello", protocol: "alrick.tables.local.v1" })
+    safeSend(ws, { type: "hello", protocol: "alrick.tables.local.v2", rulesVersion: TABLES_ENGINE_VERSION })
     ws.on("close", () => {
       const old = online.get(ws)
       online.delete(ws)
