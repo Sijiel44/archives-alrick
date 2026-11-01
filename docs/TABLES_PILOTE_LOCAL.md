@@ -1,5 +1,5 @@
-# Tables multijoueurs — pilote réseau local 0.1
-**31 octobre 2026 — branche `codex/tables-multijoueur-pilote-01`**
+# Tables multijoueurs — pilote réseau local T-001 (0.2)
+**31 octobre 2026 — PR complémentaire #66 (basée sur main M01–M05), coordonnée avec #54 et Grimoire #55.**
 
 ## Démarrage sans service extérieur
 Conditions : Node.js 22 ou plus récent, npm 10+, dépendances installées (`npm ci`).
@@ -33,11 +33,11 @@ Ce pilote est une **application Node + WebSocket autonome dans le même dépôt*
 - Identité : UUID serveur + clé aléatoire 256 bits ; seule l'empreinte SHA-256 de la clé est persistée côté serveur. Le pseudo n'est pas un identifiant d'authentification.
 - Salon : identifiant UUID, code d'invitation 12 caractères aléatoires, rôle MJ fixé à la création. Les candidatures entrent en attente ; le serveur vérifie le plafond de 2–5 joueurs approuvés.
 - Permissions : rôles et adhésions lus depuis la base du serveur à chaque commande, jamais depuis un rôle envoyé par le navigateur. Le MJ peut approuver membres et fiches, modifier ressources, notes privées, statut et lancer secrètement. Le joueur approuvé peut créer sa fiche, envoyer messages et lancer les dés ; il n'a ni droit d'écriture MJ, ni accès aux notes MJ.
-- Dés : `crypto.randomInt(1,7)` pour chacun des cinq dés ; les valeurs envoyées par le client sont ignorées. Résolution conforme au 5d6 de base : dés naturels + caractéristique + compétence 0/1/2 + situation -2/0/+2 ; critiques contrôlées sur les dés naturels.
+- Dés : `crypto.randomInt(1,7)` pour chacun des cinq dés ; les valeurs envoyées par le client sont ignorées. Résolution M01 **par les fonctions communes** : dés naturels + bonus effectif de caractéristique brute + bonus effectif de maîtrise brute + situation ; échecs naturels 5–7 forcés. Combat via M03, sans retrait automatique de PV.
 - Événements : séquence croissante, horodatage serveur, historique persistant (1000 événements max par table dans cette version), diffusion d'instantanés filtrés selon le rôle ; les jets secrets ne sortent pas de l'instantané MJ.
 - Ressources : file d'écriture globale et contrôle `expectedRevision`. Une modification obsolète reçoit `CONFLICT`, l'opération doit être recommencée avec la dernière version.
-- Données de fiche : exemples pilotes non canoniques ; les imports 5d6 transmettent **uniquement** nom, niveau, quatre caractéristiques, compétence, PV et mana. Notes, portrait, inventaire, historique et capacités restent dans l'Atelier local.
-- Résilience : sauvegarde JSON atomique sur disque (fichier temporaire puis renommage), rechargement au redémarrage, présence active calculée par connexion WebSocket.
+- Données de fiche : exemples pilotes non canoniques ; les imports 5d6 transmettent nom, niveau, caractéristiques **brutes sans plafond à 12**, maîtrises et modificateurs défensifs bruts, compétence legacy, PV et mana. L'import reste **PARTIEL** : notes, portrait, inventaire, historique, capacités et secrets restent dans l'Atelier local. Voir [contrat T-001](TABLES_IMPORT_VERSION_T001.md).
+- Résilience : sauvegarde JSON atomique sur disque (fichier temporaire puis renommage), rechargement au redémarrage, présence active calculée par connexion WebSocket. Les actions avec `actionId` ont un reçu dédupliqué durable ; le client reprend ses commandes non acquittées à la reconnexion, sans persister les notes MJ.
 - Limites : limitation 60 messages/10 secondes par connexion, 64 Kio maximum par message ; diffusion de l'historique bornée.
 
 **Attention** : l'HTTP/WebSocket clair et le stockage des clés en `localStorage` sont des compromis de prototype **uniquement pour boucle locale**. Par défaut, le serveur écoute sur `127.0.0.1`. **Ne pas le publier sur Internet, ne pas ouvrir le port sur son routeur et ne pas passer `TABLES_HOST=0.0.0.0` sans étude TLS, CSRF/Origin, confidentialité, quotas, sauvegardes et audit.** La clé d'export est un secret qui donne accès au compte.
@@ -90,9 +90,12 @@ Pour une campagne longue : option de rattachement volontaire à une identité v�
 
 ## Échéancier proposé
 **P0 (cette branche)** : prototype local MJ+2 joueurs, messages, présence, dés autoritaires, stockage, droits, fiches réduites, tests.
-**P1** : extraire un moteur 5d6 partagé vérifié ; adapter l'import complet, révision/inventaire et états ; ajout d'un protocole d'idempotence et d'export de table.
+**P1 (partiellement couvert T-001)** : math M01/M03 réutilisée, import versionné mais explicitement partiel, reçus d'idempotence durables. **À faire** : import/export complet des campagnes, inventaire transactionnel, sécurité Internet et recette de trois vrais navigateurs.
 **P2 (après autorisation explicite)** : service distant de test + base relationnelle, authentification et RLS, tests avec navigateurs réels sur réseaux distincts, RGPD/confidentialité et coûts.
 **P3** : 3–5 joueurs, PNJ/rencontres/permissions fines, journal complet, outils de MJ, contrôle mobile.
 **P4** : IA facultative avec consentement et clé côté serveur exclusivement.
 
 Aucune dépense ni configuration SaaS n'est nécessaire pour P0. Cette branche ne modifie pas les archives fondatrices, l'Atelier 5d6 local ni les règles de publication Pages.
+
+
+> **Mise à jour T-001 :** stockage `alrick.tables.local.v2`, fiche `alrick.tables.character.v2`, moteur `m01-m03-2026-10-31`. Le calcul d'origine 0.1 (caractéristique brute + skill) ne doit plus être utilisé. La régression **brut 9 → bonus +6**, les profils N5/10/15/20/25 et l'opposition M03 sont contrôlés par les fixtures. Documentation détaillée et exclusions : [TABLES_IMPORT_VERSION_T001.md](TABLES_IMPORT_VERSION_T001.md).
