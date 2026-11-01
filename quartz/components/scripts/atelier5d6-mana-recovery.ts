@@ -60,7 +60,7 @@ export function createManaState(characterId:string,dayKey:string,manaMax:number,
 /** Le maximum est figé au commencement de la journée : jamais de crédit rétroactif. */
 export function dailyCeiling(s:ManaState,rate=s.dayRate):number {
   integer(rate,"Taux");if(rate>RATE_SCALE)throw new RangeError("Taux invalide.")
-  const units=Math.min(s.dayBaseMax,s.manaMax)*rate
+  const units=s.dayBaseMax*rate
   const fraction=units%RATE_SCALE
   if(s.policy.rounding==="exactCarry")return Math.floor((units+s.carryUnits)/RATE_SCALE)
   return Math.floor(units/RATE_SCALE)+
@@ -124,9 +124,9 @@ export function applyManaOperation(source:ManaState,operation:ManaOperation):Man
     if(operation.nextDay===s.dayKey)reject("Même journée.")
     else {
       // Seules les fractions d'un plafond réellement consommé sont reportées.
-      const basis=Math.min(s.dayBaseMax,s.manaMax)*s.dayRate
+      const basis=s.dayBaseMax*s.dayRate
       const fraction=(s.recoveredToday>=dailyCeiling(s)&&s.dayRate>0)?basis%RATE_SCALE:0
-      if(s.policy.rounding==="exactCarry")s.carryUnits=fraction
+      if(s.policy.rounding==="exactCarry")s.carryUnits=fraction?((basis+s.carryUnits)%RATE_SCALE):0
       else s.cycleUnits=s.dayIndex%2===0?fraction:0
       s.dayIndex++;s.dayKey=operation.nextDay;s.dayBaseMax=s.manaMax
       s.dayRate=0;s.recoveredToday=0;s.shortCount=0;s.restIds=[]
