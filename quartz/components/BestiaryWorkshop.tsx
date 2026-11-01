@@ -26,7 +26,7 @@ export const BestiaryWorkshop:QuartzComponent=(props)=>{
         <p>Une espèce décrit un peuple vivant, un individu une existence unique, un profil 5d6 une adaptation de jeu. Aucun profil ne devient canonique sans validation éditoriale.</p>
         <p>Choisissez le niveau (1 à 25) et l'archétype, puis personnalisez les caractéristiques et maîtrises. Les bonus croissent moins vite que les scores bruts. La défense fixe le seuil à atteindre ; la protection réduit ensuite les dégâts.</p>
         <p>La difficulté d'une rencontre dépend aussi du nombre d'adversaires, du terrain, des objectifs et des capacités : les probabilités sont des projections, non un playtest. Exportez le JSON avant de changer de navigateur.</p>
-        <p><a href="../guide-fiches-vivantes-5d6">Lire le guide 5d6 complet</a></p>
+        <p><a href="./guide-fiches-vivantes-5d6">Lire le guide 5d6 complet</a></p>
       </details>
     </section>
     <div class="bestiary-tools">
