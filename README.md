@@ -1,12 +1,12 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **259 fiches codées approuvées**, dont quatre nouveaux dossiers Atlas détaillant l'Hiver, le Printemps, l'Été et l'Automne de l'Île des Divertissements. L’ancien décompte des fiches jaunes/rouges sur 285 entrées est un état historique, pas la classification actuelle des 645 sujets. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
+Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Au **31 octobre 2026**, `npm run check:content` vérifie **369 pages publiées et 269 codes uniques publiés**. Ce total compte les fiches codées publiées, pas les pages non codées, brouillons, propositions non publiées ou les **645 sujets** du registre directeur v2.4. Ces populations ne sont pas directement soustractibles. Les lots antérieurs plus bas dans ce fichier sont des instantanés historiques.
 
 **Publication active :** le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. Une PR seule ne publie rien.
 
 ## Continuité et sauvegardes
 
-Le guide [Continuité, sauvegardes et reprise](docs/CONTINUITE_SAUVEGARDES.md) décrit les branches de checkpoint, l'archive Git automatique hebdomadaire dans Actions et le script de sauvegarde locale pour Windows (`scripts/Sauvegarde-Alrick.ps1`). **Les sources Word/Excel privées et les exports ChatGPT doivent rester hors de ce dépôt public**. Les artefacts GitHub expirent après 30 jours : conserver une copie indépendante.
+Le guide [Continuité, sauvegardes et reprise](docs/CONTINUITE_SAUVEGARDES.md) décrit les branches de checkpoint, l'archive Git automatique hebdomadaire dans Actions et le script de sauvegarde locale pour Windows (`scripts/Sauvegarde-Alrick.ps1`). Les sources brutes de campagne peuvent être archivées dans `sources/` après contrôle des droits, données personnelles et secrets réellement réservés au MJ ; elles ne sont pas intégrées au site Quartz. Les exports personnels et secrets non autorisés restent hors du dépôt public. Les artefacts GitHub expirent après 30 jours : conserver une copie indépendante.
 
 ## Démarrer sur Windows
 
@@ -52,7 +52,7 @@ L’avertissement MJ est présent même sur une URL directe et fonctionne sans J
 ## Publier après validation
 
 1. Relire les fiches modifiées, les guides publics et les pages à spoilers; vérifier les tests et approuver/fusionner seulement le lot concerné.
-2. Dans **Settings → Pages**, vérifier que **GitHub Actions** est la source. **Le dépôt est actuellement public** : ne jamais y placer les documents bruts privés, secrets du MJ, sauvegardes personnelles ou contenus non approuvés. Les avertissements de spoilers n'assurent aucune confidentialité.
+2. Dans **Settings → Pages**, vérifier que **GitHub Actions** est la source. **Le dépôt est actuellement public** : les sources brutes n'y entrent qu'après vérification des droits, données personnelles et secrets ; les avertissements de spoilers n'assurent aucune confidentialité. Le dépôt public et le site Quartz sont deux canaux distincts.
 3. Si disponible, protéger l’environnement **`github-pages`** par une validation humaine et limiter les déploiements à `main`.
 4. Vérifier la stratégie de déploiement des workflows avant fusion : un lot explicitement approuvé peut utiliser le marqueur `.github/pages-publication-approved.txt`; un déploiement manuel reste possible si le workflow le permet. Ne pas modifier le marqueur sans décision sur les fiches nouvellement approuvées.
 5. Le workflow reconstruit, vérifie, puis déploie à **https://sijiel44.github.io/archives-alrick/**. Cette adresse est une destination prévue, pas une preuve de publication actuelle.
@@ -94,7 +94,7 @@ Les sept nouvelles fiches `REV-01`, `REV-02`, `REV-03`, `REV-04`, `REV-05`, `REV
 - `content/jouer/index.md` — démarrage de nouveaux héros et aides de table.
 - `content/mj-ia/index.md` — méthode et prompt de MJ assisté par IA.
 
-Les pages existantes ne sont **pas dupliquées**. Les métadonnées `portee`, `public_cible`, `usage_en_jeu` et `periode` sont conseillées pour les prochaines révisions ; elles ne modifient pas le niveau de preuve ni la visibilité. Voir `CONTRAT_EDITORIAL.md`.
+Les pages existantes ne sont **pas dupliquées**. Les métadonnées `portee`, `campagne_id`, `public_cible`, `usage_en_jeu` et `periode` sont conseillées pour les prochaines révisions ; elles ne modifient pas le niveau de preuve ni la visibilité. Voir `CONTRAT_EDITORIAL.md`.
 
 
 ## Rubriques d'univers consolidées — 29 octobre 2026
@@ -146,7 +146,7 @@ Implémentation : `quartz/components/Atelier5d6.tsx` + `quartz/components/script
 
 Le prototype 5d6 ajoute :
 - une **réinitialisation confirmée de la fiche active**, préservant les autres fiches et le journal ;
-- des champs **niveau 1–12, voies libres, talents, bénédictions, malédictions et objets narratifs** ;
+- des champs de progression **1–25**, voies libres, talents, bénédictions, malédictions et objets narratifs ; cette plage décrit l'atelier expérimental actuel, sans canoniser rétroactivement les niveaux des personnages de campagne ;
 - un suivi de **trois échecs** dans une même catégorie (magie, mêlée, tir, négociation), déclenchant un événement fictionnel optionnel **1d12**, parfois favorable ;
 - une **recherche directe dans `static/contentIndex.json`**, filtrée aux fiches publiques Personnages / Créatures. Le bouton d'adaptation enregistre la **source** tout en précisant que les statistiques sont fictives ;
 - trois **profils JSON d'essai** `quartz/static/atelier5d6-profils-demo.json` dont un est référencé à une fiche publique et **n'en prétend pas reproduire les valeurs canoniques** ;
@@ -243,3 +243,4 @@ Les [[jouer/quetes-sept-cites|35 quêtes locales]] et **50 profils de PNJ prépa
 ## Les villages vivent — Atlas rural et contrats de guilde
 
 Le [[lieux/villages-sept-cites-portail|portail de 14 villages candidats]] présente deux localités **proposées** autour de chacune des Sept Grandes Cités : **28 nouveaux PNJ**, **28 quêtes de village** et [[jouer/contrats-guilde-sept-cites-villages|14 contrats d'aventuriers]]. Trois [[jouer/aventures-guilde-villages-sept-cites|aventures de guilde]] développent l'escorte, le sauvetage aquatique et la crise industrielle. Le [[creatures/bestiaire-villages-sept-cites|bestiaire de sept monstres et animaux]] est expérimental et n'officialise aucune espèce. L'Atlas conserve **263 fiches codées**, sans nouvelles localités cartographiées ni événements inventés dans la campagne d'Orin.
+
