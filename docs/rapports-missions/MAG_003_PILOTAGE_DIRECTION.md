@@ -239,3 +239,12 @@ Le créateur a explicitement autorisé l'intégration, la publication et une can
 - `npm run test:m04:browser` a réussi avec Chrome installé : 22 scénarios, 10 dialogues de confirmation, incluant les migrations et exports Grimoire/G-001. Aucun test sur téléphone physique ni sur sauvegardes privées réelles n'est revendiqué.
 - Après publication, noter le commit de fusion et le résultat effectif du workflow GitHub Pages dans ce rapport. Toute réserve d'essai physique reste explicitement ouverte.
 
+### Résultat de l'intégration
+
+- [PR #75](https://github.com/Sijiel44/archives-alrick/pull/75) fusionnée le 1er novembre 2026 ; commit de fusion sur `main` : [`0c8a83d700b6816b38f5d607a898f6eebe3239eb`](https://github.com/Sijiel44/archives-alrick/commit/0c8a83d700b6816b38f5d607a898f6eebe3239eb).
+- CI complète [#41339974382](https://github.com/Sijiel44/archives-alrick/actions/runs/41339974382) réussie sur le head documentaire `5fbd98390f592ee099a6c64f01fc6becddfc73fb` avant fusion, incluant `npm test` et `npm run test:m04:browser`.
+- PR #69 est fusionnée. Les PR #55, #70, #71, #72 et #74 sont fermées comme remplacées par l'arbre #75 ; leurs branches propriétaires n'ont pas été supprimées ni déplacées. Le code du Grimoire G-001, du correctif d'export et des missions A–D est présent dans l'arbre fusionné.
+- La branche de développement du Bestiaire `bestiaire/b003-montagnes-aube` demeure séparée ; elle partageait la même base `main` avant l'intégration et ne touchait aucun des fichiers modifiés par MAG-003.E.
+- La publication Pages est autorisée par le créateur. Le workflow de publication est manuel et doit être déclenché avec `contenu_revu=true` ; inscrire ici son numéro et le résultat final après exécution.
+
+
