@@ -126,8 +126,9 @@ export function applyManaOperation(source:ManaState,operation:ManaOperation):Man
     else {
       // Seules les fractions d'un plafond réellement consommé sont reportées.
       const basis=BigInt(s.dayBaseMax)*BigInt(s.dayRate),scale=BigInt(RATE_SCALE)
-      const fraction=(s.recoveredToday>=dailyCeiling(s)&&s.dayRate>0)?Number(basis%scale):0
-      if(s.policy.rounding==="exactCarry")s.carryUnits=fraction?Number((basis+BigInt(s.carryUnits))%scale):0
+      const fullyUsed=s.recoveredToday>=dailyCeiling(s)&&s.dayRate>0
+      const fraction=fullyUsed?Number(basis%scale):0
+      if(s.policy.rounding==="exactCarry")s.carryUnits=fullyUsed?Number((basis+BigInt(s.carryUnits))%scale):0
       else s.cycleUnits=s.dayIndex%2===0?fraction:0
       s.dayIndex++;s.dayKey=operation.nextDay;s.dayBaseMax=s.manaMax
       s.dayRate=0;s.recoveredToday=0;s.shortCount=0;s.restIds=[]
