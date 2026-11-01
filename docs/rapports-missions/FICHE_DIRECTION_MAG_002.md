@@ -6,7 +6,7 @@
 **Dépôt :** `Sijiel44/archives-alrick`  
 **Branche documentaire :** `conception/mag-002-mana-sorts-objets`  
 **Coordination :** G-001/PR #55, T-001/PR #66, M01–M05  
-**STATUT : PHASES A/B DOCUMENTÉES — VALIDATION DU CRÉATEUR ATTENDUE ; AUCUN DÉVELOPPEMENT MAJEUR.**
+**STATUT : PHASES A/B DOCUMENTÉES ; PREMIÈRE ORIENTATION PHASE C RECUEILLIE LE 1er NOVEMBRE 2026 ; ARBITRAGES COMPLÉMENTAIRES REQUIS ; AUCUN DÉVELOPPEMENT MAJEUR.**
 
 ### Analyse de l’existant
 
@@ -22,7 +22,7 @@
 | B — proportionnel | 5 % de la réserve | 12 % | 25 % |
 | C — **hybride à tester** | **2 fixes** | max(4 ; 12 % de la réserve) si impact évolutif | max(8 ; 25 % de la réserve) |
 
-Sous C : **N5** = 2/5/9 mana ; **N25** = 2/37/77 mana. Le coût d’un geste utilitaire stable ne doit pas augmenter mécaniquement avec le niveau. À tester avec **R2 : récupération 20 % une fois par expédition**, suivie d’un repos long sûr — hypothèse, pas règle.
+Sous C : **N5** = 2/5/9 mana ; **N25** = 2/37/77 mana. Le coût d’un geste utilitaire stable ne doit pas augmenter mécaniquement avec le niveau. Le créateur **préfère C**. Son nouveau cadre de récupération privilégie **20 % par repos court sûr (deux par jour envisagés), 50 % par journée de repos prolongé, et jusqu’à 100 % en un jour grâce à une prière** ; en repos court sûr, prière/rite pourrait aller de **20 à 60 %**. R2 demeure une ancienne hypothèse comparative, non l'option prioritaire. **Proposition de sécurité à valider : plafonds journaliers non cumulables** (40 % pour deux repos courts ordinaires ; 50 % pour long ordinaire ; 60 % pour rituel court exceptionnel ; 100 % pour long avec prière).
 
 ### Architecture proposée
 
@@ -37,7 +37,7 @@ Calculs déterministes issus du code existant et probabilités par énumération
 ### Arbitrages attendus
 
 1. Courbe de réserve et différence mage spécialisé/hybride/non-mage.
-2. Modèle de coût et récupération des réserves, usages gratuits limités.
+2. **C privilégié** et rythme des repos/prière exprimé ; fixer les modalités, plafonds journaliers, interrupteurs, traditions et usages gratuits limités.
 3. Charges, mana du porteur, entretien et interruptions des matrices.
 4. Fabrication d’objets, Cercles, recherches collectives, validation MJ.
 5. Autorisation d’un **prototype de laboratoire**, distinct de l’implémentation canonique.
