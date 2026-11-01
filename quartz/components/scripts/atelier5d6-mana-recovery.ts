@@ -28,6 +28,8 @@ export type ManaEvent={
   id:string;characterId:string;dayKey:string;type:ManaOperation["type"];kind:string
   before:number;after:number;gain:number;spent:number;budgetBefore:number;budgetAfter:number
   policyId:string;policyVersion:string;validation:Validation;accepted:boolean;reason:string
+  /** Optionnel pour les opérations historiques, conservées sans rejeu implicite. */
+  fingerprint?:string
 }
 export type ManaState={
   schema:typeof MANA_SCHEMA;characterId:string;dayKey:string;dayIndex:number
@@ -70,12 +72,36 @@ export function recoveryAvailable(s:ManaState):number{
   return Math.max(0,Math.min(s.manaMax-s.mana,dailyCeiling(s)-s.recoveredToday))
 }
 export type ManaResult={state:ManaState;entry:ManaEvent;duplicate:boolean}
+/** Empreinte déterministe versionnée, indépendante de l'horloge du navigateur. */
+export function manaOperationFingerprint(source:ManaState,operation:ManaOperation):string{
+  const canonical=(value:unknown):unknown=>{
+    if(Array.isArray(value))return value.map(canonical)
+    if(value&&typeof value==="object")
+      return Object.fromEntries(Object.entries(value).filter(([,v])=>v!==undefined)
+        .sort(([a],[b])=>a<b?-1:a>b?1:0).map(([k,v])=>[k,canonical(v)]))
+    return value
+  }
+  const normalized=operation.type==="recover"?{
+    ...operation,rest:{restId:operation.rest?.restId,safe:operation.rest?.safe===true,
+      completed:operation.rest?.completed===true,focused:operation.rest?.focused===true,
+      exceptionalApproved:operation.rest?.exceptionalApproved===true,
+      interrupted:operation.rest?.interrupted===true}
+  }:operation
+  return JSON.stringify(canonical({fingerprintSchema:"alrick.mana.operation-fingerprint.v1",
+    policy:source.policy,operation:normalized}))
+}
 export function applyManaOperation(source:ManaState,operation:ManaOperation):ManaResult{
   validateManaState(source)
   positive(operation.id,"Transaction")
   if(operation.characterId!==source.characterId)throw new Error("Identifiant de personnage incompatible.")
+  const fingerprint=manaOperationFingerprint(source,operation)
   const old=source.journal.find(e=>e.id===operation.id)
-  if(old)return {state:clone(source),entry:clone(old),duplicate:true}
+  if(old){
+    // Une opération historique sans empreinte ne peut être reconnue comme identique.
+    if(!old.fingerprint)throw new Error("Identifiant historique sans empreinte : réconciliation explicite requise.")
+    if(old.fingerprint!==fingerprint)throw new Error("Collision d'identifiant : paramètres de la demande différents.")
+    return {state:clone(source),entry:clone(old),duplicate:true}
+  }
   if(operation.dayKey!==source.dayKey)throw new Error("Journée incorrecte : transition explicite requise.")
   const s=clone(source),before=s.mana,budgetBefore=s.recoveredToday
   let accepted=true,reason="ok",gain=0,spent=0,kind=""
@@ -136,7 +162,7 @@ export function applyManaOperation(source:ManaState,operation:ManaOperation):Man
   }
   const entry:ManaEvent={id:operation.id,characterId:source.characterId,dayKey:source.dayKey,
     type:operation.type,kind,before,after:s.mana,gain,spent,budgetBefore,budgetAfter:s.recoveredToday,
-    policyId:s.policy.id,policyVersion:s.policy.version,validation:clone(v),accepted,reason}
+    policyId:s.policy.id,policyVersion:s.policy.version,validation:clone(v),accepted,reason,fingerprint}
   s.journal.push(entry)
   validateManaState(s)
   return {state:s,entry,duplicate:false}
@@ -155,7 +181,8 @@ export function validateManaState(raw:ManaState):void{
     raw.restIds.some(id=>typeof id!=="string"||!id.trim()))throw new Error("Repos incohérents.")
   if(!Array.isArray(raw.journal)||new Set(raw.journal.map(e=>e.id)).size!==raw.journal.length||
     raw.journal.some(e=>!e.id||e.characterId!==raw.characterId||!Number.isSafeInteger(e.after)||
-      e.after<0||e.gain<0||e.spent<0||!e.policyVersion||!e.validation?.origin))
+      e.after<0||e.gain<0||e.spent<0||!e.policyVersion||!e.validation?.origin||
+      (e.fingerprint!==undefined&&(typeof e.fingerprint!=="string"||!e.fingerprint.trim()))))
     throw new Error("Journal transactionnel invalide.")
 }
 export function exportManaState(s:ManaState):string{validateManaState(s);return JSON.stringify(s)}
