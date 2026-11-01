@@ -7,7 +7,7 @@
 **PR propriétaire :** [#54](https://github.com/Sijiel44/archives-alrick/pull/54) — `codex/tables-multijoueur-pilote-01` (conservée en brouillon)  
 **Complément :** [#66](https://github.com/Sijiel44/archives-alrick/pull/66) — `fix/t-001-tables-parite-m01-m03-20261031`, base `main`  
 **Audit de départ :** [DG-04, PR #65](https://github.com/Sijiel44/archives-alrick/pull/65) ; cohérence Grimoire [#55](https://github.com/Sijiel44/archives-alrick/pull/55).  
-**Statut :** **partiellement réalisée, validation CI et recette indépendante à finaliser.** Ne pas fusionner ni déployer.
+**Statut :** **terminée avec réserves : CI et recette Chrome automatisée vertes ; recette humaine, sauvegardes personnelles et revue de sécurité non effectuées.** Ne pas fusionner ni déployer.
 
 ## 1. Constats vérifiés avant modification
 
@@ -42,9 +42,13 @@ Création d'une branche complémentaire **sur `main`** ; reprise des fichiers pi
 | --- | --- |
 | Ancienne CI #54 | [Run 41206146216](https://github.com/Sijiel44/archives-alrick/actions/runs/41206146216) : suite historique passée **sur ancien moteur** uniquement. |
 | Première CI T-001 #66 | [Run 41265387635](https://github.com/Sijiel44/archives-alrick/actions/runs/41265387635) : échec à la ligne 207 du test de rejeu, qui confondait le premier ACK et l'ACK de répétition. Le test a été corrigé dans le commit `9eaa26a`. |
-| CI actualisée | **En vérification** à la rédaction ; une nouvelle preuve CI doit précéder toute conclusion positive sur les suites. |
+| CI #66 au commit `572b6fc` | [Run 41265911468](https://github.com/Sijiel44/archives-alrick/actions/runs/41265911468) : `npm ci`, `npm test` (incluant `npm run tables:test`), `npm run test:m04:browser` et **`npm run tables:browser` réussis**. |
 | `npm run tables:test`, `npm test`, `npm run test:m04:browser` exécutés localement | **Non exécutés localement** : clone Git inaccessible par résolution DNS. Vérification uniquement via GitHub Actions après réussite. |
-| 3 navigateurs physiques MJ + J1 + J2, sauvegardes historiques personnelles, vrai LAN, coupure disque | **Non exécutés** ; protocole détaillé dans le guide et le contrat. |
+| 3 profils Chrome headless indépendants MJ + J1 + J2 | **Exécutés dans la CI** (`scripts/test-tables-browser.mjs`) : création identité, invitations, approbations, jet partagé, note secrète MJ, reconnexion. |
+| Trois navigateurs physiques pilotés humainement, sauvegardes historiques personnelles, vrai LAN, coupure disque | **Non exécutés** ; recette terrain distincte des trois profils Chromium automatisés. |
+
+### Recette navigateur réelle automatisée — périmètre attesté
+`scripts/test-tables-browser.mjs` démarre un serveur Tables en boucle locale et trois profils Chrome indépendants, réalise des inscriptions, invitations, approbations, jets partagés, vérifie l'absence de la note MJ dans les profils joueurs et la reconnexion d'un joueur. Cette preuve est distincte des scénarios `test:m04:browser` centrés sur l'Atelier. Elle **n'est pas une session humaine sur trois appareils**.
 
 ## 5. Réserves et risques résiduels
 
@@ -57,7 +61,7 @@ Création d'une branche complémentaire **sur `main`** ; reprise des fichiers pi
 
 ## 6. Verdict de mission et état de la PR #54
 
-**#54 demeure ouverte, ancienne et non prête pour revue de fusion en l'état.** La PR **#66** est le complément technique proposé, **en brouillon et non fusionné**. Elle ne pourra être considérée prête à revue de fusion qu'après CI verte sur sa tête actuelle, examen de code et de sécurité, test utilisateur MJ+2 sur trois navigateurs, validation des imports/exports personnels et validation du créateur. Une CI positive seule autorise une **revue technique**, pas la fusion.
+**#54 demeure ouverte, ancienne et non prête pour revue de fusion en l'état.** La PR **#66** est le complément technique proposé, **en brouillon et non fusionné**. La CI et les tests Chrome automatisés sont désormais verts : **#66 est apte à une revue de code et de sécurité**, mais **pas à une fusion** avant recette humaine MJ + 2 joueurs, import/export de sauvegardes réelles, revue de sécurité et validation explicite du créateur. La CI positive ne vaut pas autorisation de fusion.
 
 **Restrictions respectées :** pas de déploiement Internet, de modification canonique, de fusion automatique ou de nouvelle formule mathématique.
 
