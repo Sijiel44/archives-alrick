@@ -53,6 +53,6 @@ Le modèle `RitualDefinition.energy` exige une **politique énergétique nommée
 - **À évaluer :** comportement de la coopération +1 dans les situations réelles ; les 10 assistants n'augmentent pas la puissance d'un Cercle.
 - **Hors périmètre :** économie de foi, Grimoire, Tables, rétroactivité sur la campagne, UI publique, débits réels, simulation de réseau.
 
-Le script `scripts/test-mag003b.mjs` est raccordé à `npm test`. **Les résultats CI sont à enregistrer après vérification**, distincts des playtests humains. Voir `MAG_003_B_TESTS_SCENARIOS.md`.
+Le script `scripts/test-mag003b.mjs` est raccordé à `npm test`. **Preuve GitHub Actions :** [workflow #41322728636](https://github.com/Sijiel44/archives-alrick/actions/runs/41322728636), réussite complète sur le code du commit `075dea296e5c993408528296df7899ca87438952` : npm ci, npm test (TypeScript, build, M01–M05, MAG-003.A), **41 assertions MAG-003.B sur 14 scénarios**, ainsi que **15 scénarios Chrome M04.1/M05**. Aucun playtest humain ni test serveur. Voir `MAG_003_B_TESTS_SCENARIOS.md`.
 
 **Décision soumise à la Direction :** valider/rejeter le modèle de rite et la règle de soutien ; confirmer les limites sur les Cercles et l'autorité ; ne pas fusionner ni publier sans examen.
