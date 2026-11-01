@@ -45,3 +45,8 @@
 **Corrections :** contrat éditorial, registre relationnel, spécification et quatre modèles mis à jour ; test automatisé des nouveaux identifiants ; statut non conforme de l'index CB42 non publié normalisé à `a_verifier`, sans canonisation. Les sept prototypes MJ restent explicitement non joués ; ni liens publics M05 ni nouvelle espèce canonique.
 
 **Décision de Direction :** fusion de la PR #67 autorisée par le créateur **sous réserve d'une CI verte sur son dernier commit**, sans déclenchement manuel de publication GitHub Pages. Les décisions de lore, les profils n:n, les attributions individuelles futures et les playtests humains restent des chantiers distincts.
+
+
+### Recette de décision éditoriale — preuve finale du code
+
+[CI #41269203598](https://github.com/Sijiel44/archives-alrick/actions/runs/41269203598) **réussie** sur `0ad2e0d` : **1 998 assertions B-002, 1 321 B-001, 1 390 M05, 15/15 scénarios Chrome, 7 confirmations**, six préfixes adoptés, zéro code nouveau attribué automatiquement, zéro doublon, zéro exception de statut et zéro spoiler non protégé dans le périmètre. Fusion #67 **autorisée par le créateur**, après confirmation CI sur la tête définitive ; aucune publication Pages.
