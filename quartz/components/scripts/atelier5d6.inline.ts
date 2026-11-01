@@ -1204,14 +1204,6 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     state.log=state.log.slice(0,20)
     refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
-  function exportCampaign(){
-    const content={...(state as State & {__campaignEnvelopeExtras?:Record<string,unknown>}).__campaignEnvelopeExtras,schema:"alrick.campaign.v2",created:new Date().toISOString(),state}
-    const blob=new Blob([JSON.stringify(content,null,2)],{type:"application/json"})
-    const url=URL.createObjectURL(blob),link=document.createElement("a")
-    link.href=url;link.download="archives-alrick-campagne-5d6-complete.json";document.body.append(link);link.click();link.remove()
-    setTimeout(()=>URL.revokeObjectURL(url),1500)
-    message("Sauvegarde complète exportée : fiches, inventaires, modèles MJ, compagnies et journal de missions.")
-  }
   function importCampaign(raw:unknown){
     if(!raw||typeof raw!=="object")throw Error("Format absent")
     const container=raw as Record<string,unknown>
