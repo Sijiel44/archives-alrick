@@ -19,7 +19,7 @@ Le **Cercle I** correspond notamment à la capacité d'**activer une structure p
 | Concevoir une nouvelle architecture | Recherche, compréhension, stabilité et validation MJ ; création autonome avancée encore hors v1 | Immunités ou Autorités fondamentales |
 | Pratiquer le IX | Reconnaissance divine explicite par le MJ, indépendante du niveau | Divinité, ascension ou titre accordé par le simple Cercle |
 
-**Modèle de matrice v1 :** `id, itemId, spellId, architectureCircle, activationCircle, energySource, charges, approvedBy, source`. La matrice est liée à un objet déjà enregistré. Elle peut consommer une charge préstockée plutôt que le mana du porteur ; le déclenchement reste soumis à un jet si l'issue est incertaine. Les effets et immunités restent soumis aux règles 5d6 et au MJ.
+**Modèle de matrice v1 :** `id, itemId, spellId, architectureCircle, activationCircle, energySource, charges, approvedBy, source`. La matrice est liée à un objet déjà enregistré. Dans ce prototype, `energySource=matrix` n'utilise pas le mana personnel et débite une charge ; `energySource=caster` débite le mana personnel **et** une charge. Ce second comportement est **provisoire, en attente d'arbitrage**, et ne doit pas être interprété comme une règle canonique. Le déclenchement reste soumis à un jet si l'issue est incertaine. Les effets et immunités restent soumis aux règles 5d6 et au MJ.
 
 Le champ expérimental `effectLevel` (1–25) décrit **l'intensité chiffrée conçue dans l'effet**, indépendamment du niveau du porteur. Ce n'est ni une formule déduite du numéro du Cercle, ni une condition d'ascension ; le MJ peut concevoir des effets majeurs de Cercle VIII tout en conservant des sorts utilitaires du même Cercle. L'entretien d'un effet continu reste provisoirement payé par le porteur dans le prototype, même si l'activation initiale vient d'une matrice.
 
@@ -76,7 +76,7 @@ Ces valeurs sont fictives et servent exclusivement à tester le flux. **Aucune t
 
 Un sort possède un identifiant et une version, les métadonnées d'origine/statut/source, une catégorie et un domaine, son Cercle (si pertinent), le coût, l'exigence de maîtrise/affinité/préparation, le jet, la résistance, la portée, la cible, la durée, l'entretien et les limites. Les `KnownSpell`, `ActiveSpell` et `SpellEvent` ont chacun des identifiants distincts.
 
-`normalizeGrimoire` est une migration défensive : les données manquantes deviennent un grimoire vide ; seules les entrées valides sont conservées, avec limites de taille. Un sort personnalisé importé reste une **création de campagne**, jamais `canon_confirme`. Les statistiques, les affinités, l'inventaire et l'historique 5d6 existants sont préservés.
+`normalizeGrimoire` est une migration défensive : les données manquantes deviennent un grimoire vide ; les éléments interprétables sont normalisés avec limites de taille ; les extensions sont conservées et les entrées non interprétables sont archivées dans `legacyOriginal`, avec des avertissements `migrationWarnings` exposés dans le Grimoire. Un sort personnalisé importé reste une **création de campagne**, jamais `canon_confirme`. Les statistiques, les affinités, l'inventaire et l'historique 5d6 existants sont préservés.
 
 ## Test et validation
 
