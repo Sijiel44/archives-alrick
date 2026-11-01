@@ -33,7 +33,7 @@ Sur écran, les panneaux restent accessibles dans les quatre variantes. Les mode
 
 ## 3. Mobile, clavier, technologie d'assistance
 
-Grille responsive à une colonne sous 670px ; portraits réduits et toujours facultatifs. Les panneaux natifs `details/summary` permettent interaction clavier, écran tactile et lecture structurée ; états `:focus-visible` visibles. Statuts et en-têtes sont du vrai texte ; aucun chiffre n'est porté seulement par une couleur. `aria-label` nomme la fiche, les formats et l'Atelier. Valider les contrastes en audit DA complet, lecteurs d'écran NVDA/VoiceOver, zoom 200/400 %, orientation et impression paginée dans le navigateur (non exécutés dans cette session).
+Grille responsive à une colonne sous 670px ; portraits réduits et toujours facultatifs. Les panneaux natifs `details/summary` permettent interaction clavier, écran tactile et lecture structurée ; états `:focus-visible` visibles. Statuts et en-têtes sont du vrai texte ; aucun chiffre n'est porté seulement par une couleur. `aria-label` nomme la fiche, les formats et l'Atelier. La CI [#41256890579](https://github.com/Sijiel44/archives-alrick/actions/runs/41256890579) a validé Chrome desktop, l'activation clavier des détails, le viewport mobile **émulé**, les captures et la génération d'un PDF navigateur. Il reste à valider les contrastes en audit DA complet, les lecteurs d'écran NVDA/VoiceOver, le zoom 200/400 %, l'orientation, les appareils physiques et la **revue visuelle humaine** de l'impression paginée.
 
 ## 4. Images et provenance
 
