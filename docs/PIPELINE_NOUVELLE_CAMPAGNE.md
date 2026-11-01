@@ -1,3 +1,5 @@
+> **Actualisation DG-01 :** les bruts autorisés peuvent être archivés dans `sources/campagnes/` du dépôt public après examen des droits, données personnelles et secrets MJ. Le reste de ce document décrit le circuit privé historique ; ses interdictions générales de dépôt public ne sont plus la politique actuelle. Quartz ne génère pas `sources/`. Conserver les sauvegardes locales indépendantes.
+
 # Pipeline des nouvelles campagnes d'Alrick (CB44+)
 
 **Statut : proposition technique.** Aucun brut de campagne n'est ajouté au dépôt public par cette procédure.
