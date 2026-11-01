@@ -1,6 +1,6 @@
 # Sources de campagne publiques — mode volontaire
 
-**Décision du créateur, 30 octobre 2026 :** les campagnes brutes d'Alrick peuvent être rendues publiques sur GitHub. Cela lève la préférence de confidentialité **pour les bruts qu'il décide lui-même de déposer**. Il faut néanmoins conserver les originaux, les versions et la distinction entre une proposition et un événement joué.
+**Décision du créateur, 30 octobre 2026 :** les campagnes brutes d'Alrick peuvent être rendues publiques sur GitHub. Elles ne sont pas confidentielles par défaut et l'archivage public est souhaité. Avant chaque import, contrôler les droits de diffusion, données personnelles et éléments explicitement réservés aux MJ ; ces contrôles portent sur les passages concernés et ne justifient pas une interdiction générale des bruts. Conserver les originaux, les versions et la distinction entre une proposition et un événement joué.
 
 ## Ce qui sera public
 
@@ -22,12 +22,12 @@ Pour les bruts plus anciens : `sources/campagnes/CB01/`, `CB02/`, etc. en repren
 
 ## Windows / GitHub Desktop
 
-1. Sur l'ordinateur, ouvrir le dossier local du dépôt `archives-alrick` (déjà cloné dans GitHub Desktop).
-2. Extraire le pack de CB44. Copier `original`, `messages`, `transcription_integrale_CB44.md`, `index_chapitres.md`, `index_messages.md` et `manifest.json` **dans `sources/campagnes/CB44/`**.
-3. Vérifier que le nom, le contenu et la taille des documents sont corrects. Le DOCX est inférieur aux limitations usuelles de GitHub pour un objet Git, mais tout fichier binaire devient un élément de l'historique public.
-4. Dans GitHub Desktop, vérifier les fichiers modifiés, créer un commit sur une **branche dédiée aux sources**, publier la branche puis ouvrir une PR.
-5. Contrôler une dernière fois que l'original ne contient rien que le créateur ne souhaite pas exposer. Une suppression ultérieure d'un fichier public **ne garantit pas** sa disparition des historiques Git ou des copies chez des tiers.
-6. Fusionner seulement après validation. **Ne pas** déclencher automatiquement Pages pour l'ajout de sources : la diffusion du site reste contrôlée et les pages « Bilan » et « Chronique » font l'objet d'une PR éditoriale distincte.
+1. Inventorier les fichiers reçus sans modifier les originaux : nom, format, taille, date/version disponible et identifiant CB attesté.
+2. Préserver chaque original dans `sources/campagnes/<CB>/original/` et conserver la transcription UTF-8, les index Markdown/CSV et les fragments de chapitres ou messages lorsqu'ils existent réellement.
+3. Vérifier les manifestes par recalcul SHA-256, compter les originaux et transcriptions attendus, rechercher les doublons exacts (empreinte) et les doublons probables (comparaison de texte). Ne pas inférer une correspondance CB à partir d'un titre seul.
+4. Contrôler la taille Git, les droits, données personnelles et secrets explicitement MJ. Écrire la provenance et les limites de segmentation dans le manifeste ; les zéros d'un extracteur ne prouvent pas l'absence de chapitres ou de scènes.
+5. Créer une branche d'import dédiée et une PR qui indique les totaux, empreintes et résultats de recherche vérifiés. Une PR de sources n'autorise pas une publication Quartz.
+6. Après revue et fusion autorisée, vérifier le contenu distant, rechercher par code, chapitre et terme, et tester la restauration depuis un clone indépendant. Toute suppression ultérieure doit tenir compte de l'historique public.
 
 ## Trois types de documents, trois fonctions
 
@@ -45,10 +45,11 @@ L'objectif est de faire du **Registre**, de la **Bible**, de l'**Atlas**, du **C
 
 ## Évolution de l'outil d'importation
 
-La [PR #35](https://github.com/Sijiel44/archives-alrick/pull/35), encore en brouillon, introduit un extracteur conçu initialement pour des dossiers privés. **Ce comportement doit être adapté pour un import public explicitement autorisé avant fusion de #35** ; l'outil de base ne publie pas de lui-même. La présente politique documente le nouveau choix du créateur et les contraintes du dépôt.
+La [PR #35](https://github.com/Sijiel44/archives-alrick/pull/35) est un outil d'import hors réseau et d'indexation. Sa politique initiale de refus des sources/sorties dans le dépôt public doit être revue pour respecter l'autorisation d'archivage public ; préserver les contrôles contre les secrets réels et la publication Quartz. Vérifier les statuts réels de la PR avant d'agir. L'outil ne doit pas décider du canon ni publier de lui-même.
 
 ## État de CB44
 
 Le Word a été lu et les **fiches CB44** ont fait l'objet d'une PR éditoriale distincte. Le lot source intégral reste à déposer. La publication du résumé ne prouve pas la mise en ligne des 135 messages.
 
 **Sauvegarde :** garder en plus une copie indépendante de GitHub sur disque externe ou stockage chiffré ; le backup automatique GitHub du dépôt public est temporaire et sur la même plateforme.
+
