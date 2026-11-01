@@ -5,6 +5,16 @@ const STORAGE_KEY = "alrick.tables.pilot.token.v1"
 const ROOM_KEY = "alrick.tables.pilot.room.v1"
 let socket, token = localStorage.getItem(STORAGE_KEY), user = null
 let roomId = null, rooms = [], state = null
+const REPLAY_TYPES = new Set(["create_room","join_room","approve_member","set_status",
+  "create_character","approve_character","roll","combat_roll","message","adjust_resource"])
+const PENDING_KEY = "alrick.tables.pending.v2"
+let pending = {}
+try { pending = JSON.parse(sessionStorage.getItem(PENDING_KEY) || "{}") } catch { pending = {} }
+function persistPending() { sessionStorage.setItem(PENDING_KEY, JSON.stringify(pending)) }
+function replayPending() {
+  if (!socket || socket.readyState !== WebSocket.OPEN) return
+  for (const action of Object.values(pending)) socket.send(JSON.stringify(action))
+}
 
 function feedback(text) { $("feedback").textContent = text }
 function send(type, body = {}) {
@@ -12,7 +22,13 @@ function send(type, body = {}) {
     feedback("Connexion perdue : actualisez la page pour reprendre.")
     return
   }
-  socket.send(JSON.stringify({ type, ...body }))
+  const action = { type, ...body }
+  if (REPLAY_TYPES.has(type)) {
+    action.actionId = crypto.randomUUID()
+    pending[action.actionId] = action
+    persistPending()
+  } else if (["gm_note"].includes(type)) action.actionId = crypto.randomUUID()
+  socket.send(JSON.stringify(action))
 }
 function el(tag, text, className) {
   const e = document.createElement(tag)
@@ -65,6 +81,19 @@ function onSnapshot(s) {
   renderRoster(s, gm)
   renderCharacters(s, gm)
   renderEvents(s)
+  const self = s.characters.find(c => c.ownerId === s.myself.id)
+  const masterySelect = $("roll-mastery")
+  const chosen = masterySelect.value
+  masterySelect.replaceChildren(new Option("Sans maîtrise (ou legacy)", ""))
+  for (const [name, rank] of Object.entries(self?.masteries ?? {}))
+    masterySelect.add(new Option(name + " (rang " + rank + ")", name))
+  if ([...masterySelect.options].some(o => o.value === chosen)) masterySelect.value = chosen
+  const defenderSelect = $("combat-defender")
+  const previous = defenderSelect.value
+  defenderSelect.replaceChildren(new Option("Sans défenseur", ""))
+  for (const c of s.characters.filter(c => c.approved))
+    defenderSelect.add(new Option(c.name, c.id))
+  if ([...defenderSelect.options].some(o => o.value === previous)) defenderSelect.value = previous
   if (gm) {
     $("room-invite").textContent = s.room.invite || "—"
     $("status-select").value = s.room.status
@@ -138,8 +167,18 @@ function renderEvents(s) {
       const r = event.detail
       row.append(el("strong", r.characterName + " : " + r.outcome))
       row.append(el("div", "  [" + r.dice.join(" · ") + "] = " + r.natural +
-        " + " + r.stat + " + " + r.skill + " " + (r.situation < 0 ? "−" + Math.abs(r.situation) : "+" + r.situation) +
-        " = " + r.total + " / " + r.target))
+        " + " + r.stat + " (brut " + r.rawStat + ") + " + r.skill +
+        " (maîtrise brute " + r.masteryRank + ") " +
+        (r.situation < 0 ? "−" + Math.abs(r.situation) : "+" + r.situation) +
+        " = " + r.total + " / " + r.target + " · " + r.rulesVersion))
+    } else if (event.kind === "combat") {
+      const r = event.detail
+      row.append(el("strong", r.attackerName + " contre " + (r.defenderName || "la difficulté") +
+        " : " + (r.success ? "touche" : r.contact ? "contact sans blessure" : "échec")))
+      row.append(el("div", "5d6 " + r.dice.join(" · ") + " / " + r.natural +
+        " · total " + r.total + " / " + r.threshold + " · défense " + r.defense +
+        " · protection " + r.protection + " · absorbé " + r.absorbed +
+        " · dégâts proposés " + r.damage + " (PV inchangés)"))
     } else row.append(el("div", String(event.detail)))
     log.append(row)
   }
@@ -164,7 +203,8 @@ function connect() {
   socket.addEventListener("close", () => {
     $("signal").classList.remove("online")
     $("connection").textContent = "Hors ligne"
-    feedback("Serveur local déconnecté. Rechargez la page une fois relancé.")
+    feedback("Serveur local déconnecté. Reconnexion locale automatique ; actions en attente conservées.")
+    setTimeout(connect, 1500)
   })
   socket.addEventListener("message", (e) => {
     let m
@@ -179,6 +219,7 @@ function connect() {
         rooms = m.rooms || []; setAuth(m.user)
         const saved = localStorage.getItem(ROOM_KEY)
         if (rooms.some(r => r.id === saved)) selectRoom(saved)
+        replayPending()
         return
       }
       case "room_created":
@@ -187,9 +228,19 @@ function connect() {
           "Demande transmise : le MJ doit vous accepter." : "Table créée. Partagez le code d'invitation.")
         return
       case "selected": return
+      case "action_ack":
+        if (m.actionId && pending[m.actionId]) {
+          delete pending[m.actionId]
+          persistPending()
+        }
+        return
       case "rooms": rooms = m.rooms || []; refreshLobby(); return
       case "snapshot": onSnapshot(m); return
       case "error":
+        if (m.actionId && pending[m.actionId]) {
+          delete pending[m.actionId]
+          persistPending()
+        }
         feedback(m.code + " : " + m.message)
         if (m.code === "AUTH" && !user) {
           token = null; localStorage.removeItem(STORAGE_KEY)
@@ -226,15 +277,18 @@ $("import-sheet").addEventListener("change", async e => {
   if (f.size > 5 * 1024 * 1024) { feedback("Fichier trop volumineux (5 Mio max)."); return }
   try {
     const json = JSON.parse(await f.text())
-    const sheet = json?.sheets?.[0] ?? json?.sheet ?? json
+    const sheet = json?.sheets?.[0] ?? json?.state?.sheets?.[0] ?? json?.sheet ?? json
     if (!sheet || typeof sheet !== "object" || typeof sheet.name !== "string" || !sheet.stats)
       throw new Error("Fiche 5d6 invalide.")
-    // Liste blanche : aucune note MJ, image, inventaire ou secret n'est envoyé au pilote.
-    send("create_character", { roomId, sheet: {
-      name: sheet.name, level: sheet.level, stats: sheet.stats, skill: sheet.skill,
+    // Import délibérément PARTIEL : aucun inventaire, secret, capacité ou note MJ.
+    send("create_character", { roomId, sourceSchema: json.schema || "alrick.sheet.inconnu", sheet: {
+      id: sheet.id, name: sheet.name, ruleset: sheet.ruleset, level: sheet.level,
+      stats: sheet.stats, skill: sheet.skill, masteries: sheet.masteries,
+      resistanceBonus: sheet.resistanceBonus, protection: sheet.protection,
+      equipmentGrades: sheet.equipmentGrades,
       pv: sheet.pv, pvMax: sheet.pvMax, mana: sheet.mana, manaMax: sheet.manaMax
     } })
-    feedback("Import demandé : seule la fiche réduite est transmise au serveur local, puis soumise au MJ.")
+    feedback("Import partiel en attente MJ : bruts et maîtrises transférés ; inventaire, capacités et historique NON synchronisés.")
   } catch (err) { feedback("Import refusé : " + err.message) }
 })
 $("message-form").addEventListener("submit", e => {
@@ -245,8 +299,18 @@ $("roll-form").addEventListener("submit", e => {
   e.preventDefault()
   send("roll", { roomId, stat: $("roll-stat").value,
     target: Number($("roll-target").value),
-    situation: Number($("roll-situation").value),
+    situation: Number($("roll-situation").value), mastery: $("roll-mastery").value,
     visibility: $("secret-roll").checked ? "mj" : "public" })
+})
+$("combat-form").addEventListener("submit", e => {
+  e.preventDefault()
+  const mode = $("combat-mode").value
+  send("combat_roll", { roomId, stat: $("roll-stat").value, mastery: $("roll-mastery").value,
+    difficulty: Number($("roll-target").value), situation: Number($("roll-situation").value),
+    visibility: $("secret-roll").checked ? "mj" : "public",
+    kind: mode === "magie" ? "magie" : mode === "mental" ? "mental" : "physique",
+    mode, defenderId: $("combat-defender").value || null,
+    baseDamage: Number($("combat-base").value), penetration: Number($("combat-penetration").value) })
 })
 $("status-select").addEventListener("change", () =>
   send("set_status", { roomId, status: $("status-select").value }))
