@@ -43,7 +43,7 @@
 - Logs : **369 pages choisies explicitement, 269 codes publiés uniques** ; build réussi ; **1 111 pages HTML / 64 434 liens et ressources internes** validés ; **1 390 assertions M05** et **1 318 assertions B-001.1** réussies.
 - `npm run test:m04:browser` : **15 scénarios Chrome complets et 7 dialogues de confirmation** (dont prédateur N5, PNJ soutien, impression, clavier et protections MJ). [Artefact capturé `recette-m041-ci` #13066760528](https://github.com/Sijiel44/archives-alrick/actions/runs/41263562458/artifacts/13066760528), taille 1 671 342 octets, présent.
 
-**Précision indispensable :** ces résultats concernent `e19649e`, **avant la correction B-001.2**. Le dépôt n'est pas clonable dans l'environnement local de cette mission (DNS GitHub indisponible), donc **aucun `npm ci` / `npm test` / Chrome local nouveau n'est revendiqué**. Le script modifié devra être exécuté par la CI de la nouvelle tête de PR ; un résultat historique ne remplace pas cette validation.
+**Précision indispensable :** ces résultats concernent `e19649e`, **avant la correction B-001.2**. Le dépôt n'est pas clonable dans l'environnement local de cette mission (DNS GitHub indisponible), donc **aucun `npm ci` / `npm test` / Chrome local nouveau n'est revendiqué**. Le script modifié a été exécuté avec succès par la CI du commit B-001.2 `b868499` ; se reporter au contrôle post-correction ci-dessous. Le succès historique reste distingué.
 
 ## 6. Registre, unicité, audit de contenu
 
@@ -62,10 +62,15 @@
 
 **D — Gameplay (responsable 5d6 + MJ).** Évaluer le danger collectif, N5–N25, groupes, nombre de rounds, combat contre non-combattants, fuite/négociation/secours via playtests humains ; conserver les limites de `evaluateMatchup` ; valider échantillon réel de sauvegardes anciennes et import/export.
 
-**E — Qualité technique.** Confirmer sur la **nouvelle tête** CI/TypeScript/Quartz/Chrome et recontrôler `main` si la base évolue. Aucun test UI manuel réel, essai de table humain ou migration exhaustive de données personnelles n'est attesté.
+**E — Qualité technique.** La CI/TypeScript/Quartz/Chrome a été confirmée sur la tête de code B-001.2 `b868499` ; recontrôler si la base `main` évolue et sur tout futur commit modifiant l'exécutable. Aucun test UI manuel réel, essai de table humain ou migration exhaustive de données personnelles n'est attesté.
 
 ## 8. Verdict et consignes de clôture
 
-**VERDICT : TERMINÉE AVEC RÉSERVES — PR #56 prête pour une décision de validation du créateur, non autorisée à être fusionnée maintenant.** Après CI verte du nouveau commit, revue documentaire, arbitrages listés et autorisation explicite du créateur, une fusion pourra être décidée ; `mergeable:true` est insuffisant. **Ni fusion, ni mise en ligne automatique, ni B-002.**
+**VERDICT : TERMINÉE AVEC RÉSERVES — PR #56 prête pour une décision de validation du créateur, non autorisée à être fusionnée maintenant.** La CI du commit B-001.2 est verte ; après revue documentaire, arbitrages listés et autorisation explicite du créateur, une fusion pourra être décidée ; `mergeable:true` est insuffisant. **Ni fusion, ni mise en ligne automatique, ni B-002.**
 
 **Fichiers livrés B-001.2 :** `scripts/test-b0011-compat.mjs`, `docs/bestiaire/B001_1_MATRICE_COMPATIBILITE_5D6.md`, `docs/bestiaire/B001_1_RETOUR_DIRECTEUR.md`, `docs/rapports-missions/B001_2_CLOTURE_BESTIAIRE.md`, `docs/rapports-missions/FICHE_DIRECTION_B001_2.md`.
+
+
+### CI post-correction B-001.2 — contrôle final du code
+
+Le [workflow **#41266259571**](https://github.com/Sijiel44/archives-alrick/actions/runs/41266259571), déclenché par la PR #56 sur le commit **`b868499b5fad2dacc5127b797604873ce5a878ab`**, est **`completed/success`**. Le [job #124729578279](https://github.com/Sijiel44/archives-alrick/actions/runs/41266259571/job/124729578279) a réussi `npm ci`, `npm test` (contrôle contenu, `tsc --noEmit`, build Quartz, site et toutes les suites 5d6) et `npm run test:m04:browser`. Les journaux attestent **1 321 assertions B-001.1/B-001.2**, soit trois contrôles de registre en plus, **1 390 assertions M05**, **369 pages choisies / 269 codes publiés uniques**, **1 111 pages HTML / 64 434 liens et ressources**, **15 scénarios Chrome / 7 confirmations**. [Artefact Chrome #13067286489](https://github.com/Sijiel44/archives-alrick/actions/runs/41266259571/artifacts/13067286489) conservé. La présente actualisation finale des rapports ne change **aucun code exécutable** ; vérifier le statut de CI de la tête courante avant fusion.
