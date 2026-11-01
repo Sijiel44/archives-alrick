@@ -27,7 +27,7 @@
 
 ## Résultats et preuves
 
-**À remplir sur l'exécution du commit de la PR.** Aucun nombre d'assertions ni succès de CI n'est présumé avant lecture des journaux. Les tests automatisés ne sont pas une recette multijoueur réelle, une session de jeu humaine ni une preuve d'absence de concurrence.
+**GitHub Actions [#41322728636](https://github.com/Sijiel44/archives-alrick/actions/runs/41322728636) : SUCCÈS.** Le journal exécute `npm ci`, `npm test`, les contrôles TypeScript et build, les tests de régression M01–M05, MAG-003.A (**181 assertions**) et **MAG-003.B (41 assertions, 14 scénarios)** ; la recette navigateur existante M04.1/M05 valide **15 scénarios**. La preuve concerne le commit `075dea296e5c993408528296df7899ca87438952` et précède la seule mise à jour documentaire du bilan. Les tests automatisés ne sont pas une recette multijoueur réelle, une session de jeu humaine ni une preuve d'absence de concurrence.
 
 ## Compléments recommandés avant approbation
 
