@@ -1,6 +1,6 @@
 # B-003 — Lot III : faune des milieux vivants et évolutions conditionnelles
 
-**Rapport d'étude NON PUBLIÉ — 1er novembre 2026**. Complément P25–P36 au même chantier B-003, branche `bestiaire/b003-montagnes-aube`, PR #73. **12 créations nouvelles non canoniques ; total 36 propositions P01–P36**, avec **3 prototypes historiques réutilisés sans les dupliquer**, 9 classes de milieux H1–H9, **8 espèces ayant des formes de progression conditionnelle** en comptant P21–P24 et les quatre nouvelles P28, P30, P34, P35, P36 ? **Attention : le présent lot comporte 5 nouvelles fiches avec formes conditionnelles**, soit **9 espèces** sur trois lots ; ce nombre est défini par le tableau exhaustif ci-dessous. Aucun nouveau code ESP/VARC/BIO/P5C ni niveau canonique.
+**Rapport d'étude NON PUBLIÉ — 1er novembre 2026**. Complément P25–P36 au même chantier B-003, branche `bestiaire/b003-montagnes-aube`, PR #73. **12 créations nouvelles non canoniques ; total 36 propositions P01–P36**, avec **3 prototypes historiques réutilisés sans les dupliquer**, 9 classes de milieux H1–H9 et **9 espèces ayant des formes de progression conditionnelles** : quatre dans le lot II et cinq nouvelles dans le lot III. Ce total est détaillé ci-dessous. Aucun nouveau code ESP/VARC/BIO/P5C ni niveau canonique.
 
 ## A. Méthode et état des sources
 
