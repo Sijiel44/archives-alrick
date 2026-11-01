@@ -34,3 +34,6 @@ La progression 5d6 **n'est ni l'âge ni une transformation biologique automatiqu
 **Examiner individuellement les 24 propositions**, confirmer/refuser les 4 lignées évolutives et leurs conditions, vérifier les données des sources primaires et les niches, puis autoriser seulement au cas par cas l'attribution de codes `ESP-` ou `VARC-`. La création de profils 5d6 chiffrés et la publication requièrent une décision distincte.
 
 **Recommandation :** conserver [la PR #73](https://github.com/Sijiel44/archives-alrick/pull/73) en brouillon ; **ne pas fusionner, ne pas publier, ne pas lancer B-004 sans retour explicite de la Direction.**
+
+
+**Vérification du lot II :** [CI GitHub Actions #41331462555 réussie](https://github.com/Sijiel44/archives-alrick/actions/runs/41331462555) sur le commit `dabd4db4bca7118da4118c2491183629edf4551e` ; contrôle direct **12/12 fiches** avec sections et statuts, **29 nouveaux fichiers sous `docs/`**, aucun sous `content/`. Le commit des rapports de clôture est postérieur et sera vérifié séparément. Ces preuves techniques ne valident pas le contenu canonique.

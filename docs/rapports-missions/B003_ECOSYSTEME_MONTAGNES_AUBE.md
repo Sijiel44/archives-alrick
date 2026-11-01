@@ -124,3 +124,11 @@ La Direction de conception a demandé **douze nouvelles fiches**, selon les mêm
 **Contrôles écologiques :** pas de chèvre nouvelle (B-001 conserve une « chèvre projetée » sans code, à distinguer), pas de prédateur dominant supplémentaire ; variété trophique (fruits/graines, insectes, décomposition, herbivorie, petits prédateurs), réseau aliment → consommateur sans co-présence présumée. Le lac Nacrecombe, les eaux de Dornaël, les cols Keldrun et le plateau Forgeciel sont attestés en tant que lieux ; la faune détaillée, les moraines, les végétations de scories et leurs répartition demeurent **proposées**. Les trois prototypes antérieurs Cerf/Chasses-Faim/Lamproie ne sont pas reproduits.
 
 **Contrôles techniques et réserves :** 12 nouveaux dossiers `docs/`, absence de modification de `content/` ou de `B002_CODES_VALIDES.json`, absence de changement au moteur 5d6 et de profils/imports automatiques. Les tests CI doivent être examinés sur la nouvelle tête de PR ; une CI verte ne constitue pas une validation de l'écologie ni des bruts originaux. Les sources V01–V06 et les campagnes brutes originales restent à relire avant toute canonisation. **PR #73 maintenue en brouillon ; ne pas fusionner, publier ou lancer B-004 sans retour de Direction.**
+
+
+### Contrôle technique vérifié après ajout du lot II
+
+- **Commit contrôlé :** [`dabd4db4bca7118da4118c2491183629edf4551e`](https://github.com/Sijiel44/archives-alrick/commit/dabd4db4bca7118da4118c2491183629edf4551e).
+- **CI GitHub Actions :** [#41331462555, SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41331462555), job « Contenu, TypeScript, build et liens » terminé avec succès.
+- **Audit complémentaire par lecture GitHub :** 12/12 nouvelles fiches contiennent les 9 sections attendues, `proposition_non_jouee`, `publish: false`, et ne revendiquent aucun code ESP ; les 4 formes conditionnelles concernent P21–P24 uniquement ; 24 fiches P01–P24 au total ; 29 ajouts nouveaux dans la PR #73, tous sous `docs/` (les fichiers préexistants restent inchangés hors rapports et deux index de synthèse).
+- **Limite des preuves :** la CI ne vaut ni validation des originaux ni playtest humain et ne canonise rien. L'ajout du présent paragraphe modifie seulement les rapports ; vérifier également le check du commit de clôture avant toute revue de fusion.
