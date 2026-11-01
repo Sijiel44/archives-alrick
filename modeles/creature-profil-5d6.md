@@ -96,3 +96,14 @@ tags: [bestiaire, modele, 5d6, m03, playtest]
 | [à renseigner] | [SHA ou CB exact] | [automatisé / table] | [contrat existant] | [à vérifier] |
 
 **Références de base :** PR #57 à #62 ; `docs/rapports-missions/M03_COMBAT_BESTIAIRE_5D6.md`, `M04_INTEGRATION_PUBLICATION_5D6.md`, `M05_CONTRAT_BESTIAIRE_DOCUMENTAIRE.md`, `M05_CONTRAT_MOTEUR_5D6.md` et `CONTRAT_EDITORIAL.md`. Ce gabarit reste hors `content/`, avec `publish: false`.
+
+
+## Validation individuelle du code B-002 (obligatoire avant fusion de la fiche)
+
+- **Préfixe approuvé** : `P5C-` pour la nature documentaire `profil_5d6_partage`. Pour une identité déjà dotée d'un code historique (`DRG`, `REV`, `IMP`, `CRE`…), conserver ce code sans le remplacer.
+- **Code proposé** : [uniquement si l'entité est réellement définie et justifiée ; ne jamais reprendre un code déjà attribué].
+- **Fichier de référence** : [chemin réel dans `content/` ; identique au registre].
+- **Source exacte** : [document, version et passage, ou décision explicite de création].
+- **Preuve de validation du créateur** : [référence traçable de l'approbation individuelle].
+- **Statuts** : `canon_statut` et `etat_editorial` indépendants ; un code unique n'attribue ni canon, ni `publish:true`.
+- **Inscription de contrôle** : renseigner l'entrée correspondante dans `docs/bestiaire/B002_CODES_VALIDES.json` et faire réussir `npm run test:b002`. Le contrôle recherche directement la fiche dans `content/` ; aucun identifiant attribué seulement par son préfixe n'est autorisé.
