@@ -1198,14 +1198,6 @@ Maintiens un journal distinct de cette partie et propose des conséquences plaus
     state.log=state.log.slice(0,20)
     refreshLog();refreshStreaks();persist();message(incident ? "Incident d12 déclenché et ajouté au journal local." : "Jet ajouté au journal local.")
   }
-  function exportSheets(){
-    const blob=new Blob([JSON.stringify({schema:"alrick.sheets.v3",created:new Date().toISOString(),sheets:state.sheets},null,2)],{type:"application/json"})
-    const url=URL.createObjectURL(blob),a=document.createElement("a")
-    a.href=url;a.download="archives-alrick-fiches-5d6.json";document.body.append(a);a.click();a.remove()
-    setTimeout(()=>URL.revokeObjectURL(url),1500)
-    message("Fichier JSON exporté : conserve-le pour retrouver tes fiches sur un autre appareil.")
-  }
-
   function exportCampaign(){
     const content={...(state as State & {__campaignEnvelopeExtras?:Record<string,unknown>}).__campaignEnvelopeExtras,schema:"alrick.campaign.v2",created:new Date().toISOString(),state}
     const blob=new Blob([JSON.stringify(content,null,2)],{type:"application/json"})
