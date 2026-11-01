@@ -36,3 +36,12 @@
 **Recommandation :** conserver la PR #67 en brouillon jusqu'à relecture de l'inventaire enrichi et décision explicite du créateur. **Ne pas fusionner automatiquement ; ne pas lancer B-003 sans validation de la Direction.**
 
 **Rapport permanent :** docs/rapports-missions/B002_REGISTRE_INTEROPERABILITE.md.
+
+
+## ADDENDUM DIRECTION — Adoption des codes et autorisation de fusion
+
+**Décision du créateur (31 octobre 2026) :** nomenclature `ESP-/FAMT-/INDC-/BIO-/P5C-/VARC-` adoptée pour les prochaines fiches, **sans attribution automatique**. Chaque nouveau code doit figurer dans `B002_CODES_VALIDES.json` avec sa fiche, sa source, son statut et sa preuve individuelle de validation, puis passer le contrôle CI. Les codes existants et les 11 entrées `null` restent inchangés.
+
+**Corrections :** contrat éditorial, registre relationnel, spécification et quatre modèles mis à jour ; test automatisé des nouveaux identifiants ; statut non conforme de l'index CB42 non publié normalisé à `a_verifier`, sans canonisation. Les sept prototypes MJ restent explicitement non joués ; ni liens publics M05 ni nouvelle espèce canonique.
+
+**Décision de Direction :** fusion de la PR #67 autorisée par le créateur **sous réserve d'une CI verte sur son dernier commit**, sans déclenchement manuel de publication GitHub Pages. Les décisions de lore, les profils n:n, les attributions individuelles futures et les playtests humains restent des chantiers distincts.
