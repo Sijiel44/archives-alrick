@@ -23,11 +23,18 @@ Le nombre de Cercles **ne mesure pas à lui seul** la réserve de mana, l'intell
 
 ## Les Cercles et leur statut
 
-Le Codex décrit une échelle structurée **I à VIII** (MAG-CER-01, état établi). Elle concerne des exigences croissantes de **compartimentation**, de coordination et de maintien simultané, pas simplement une multiplication d'effets plus spectaculaires.
+Le Codex décrit une échelle structurée **I à VIII** (MAG-CER-01, état établi). Elle concerne des exigences croissantes de **compartimentation**, de coordination et de maintien simultané, pas simplement une multiplication d'effets plus spectaculaires. Les Cercles sont des prérequis de compréhension et de pratique, pas des niveaux de personnage ; ils ne déterminent pas à eux seuls la puissance d'un effet.
 
 Le **neuvième Cercle** (MAG-CER-IX) est décrit comme un niveau réel mais encore entouré de mystères : il ne doit pas être réduit à un raccourci automatique vers une transformation divine. L'observation et les interprétations des hauts Cercles ne sont pas toutes universalisées.
 
 **Règle de lecture :** avoir entrevu un Cercle, y accéder, le stabiliser et l'utiliser correctement en situation sont des états différents.
+
+### Précisions confirmées par le créateur
+
+- Le **Cercle I** peut permettre d'activer une structure magique déjà préparée par une personne plus avancée, si l'activation et l'énergie disponible le permettent. Cette activation ne transmet ni la connaissance du sort, ni le Cercle de conception, ni la capacité de reconstruire l'architecture. *MAG-050, « L'activation accessible », Codex v1.7, CB37, échanges 82–89, paragraphes 06702–07442.*
+- La **pratique du Cercle IX** est réservée aux êtres divins ; elle ne découle pas automatiquement d'un niveau de personnage, y compris 21–25. La stabilisation observée chez Orin et Freya ne leur attribue pas automatiquement la divinité ni un siège au Grand Conseil ; les scènes antérieures sont conservées. *Précision du créateur, 31 octobre 2026 ; Codex v1.7, MAG-CER-IX.*
+
+Ces précisions ne fixent pas les charges, les coûts, les sources d'énergie ou l'entretien des matrices, et ne rendent aucun sort de démonstration canonique.
 
 ## Les traditions ne sont pas uniformes
 
@@ -54,3 +61,4 @@ Un artisan qui connaît quelques fonctions utiles peut être précieux ; il n'a 
 - Aucun **dé**, **seuil**, **bonus**, **coût numérique de mana**, barème de dégâts ou mécanisme de progression officiel n'est fixé par ce guide.
 
 [[magie/index|Revenir au Codex]] · [[jouer/index|Créer une aventure]] · [[mj-ia/index|Consignes pour un MJ IA]]
+

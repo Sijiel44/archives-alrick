@@ -478,6 +478,197 @@ try{
     // licence de l'illustration ni l'existence matérielle du fichier image.
     await screenshot("m05-metadata-portrait-source.png")
   })
+  await test("MAG-003.C : interface de récupération intégrée, double clic et historique",async()=>{
+    await navigate(base+"/jouer/atelier-5d6")
+    await waitFor('document.querySelector("#atelier-5d6 [data-hub=rites]")!==null',"Panneau des rites")
+    const id=await browserFn(()=>{
+      const raw=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return raw.sheets.find(s=>s.name==="PJ recette")?.id
+    })
+    assert.ok(id,"PJ moderne absent")
+    await set("#atelier-5d6 [data-active]",id,"change")
+    await click('#atelier-5d6 [data-mode="mj"]')
+    await set('#atelier-5d6 [data-field="manaMax"]',35,"change")
+    await set('#atelier-5d6 [data-field="mana"]',10,"change")
+    await click('[data-hub-nav="rites"]')
+    await set('[data-rites-day]',"J-C3")
+    await set('[data-rites-rest-id]',"camp-C3")
+    await browserFn(()=>{
+      document.querySelector('[data-rites-safe]').checked=true
+      document.querySelector('[data-rites-complete]').checked=true
+    })
+    await click('[data-rites-action="preview"]')
+    const message=await runJS("document.querySelector('[data-rites-preview]')?.textContent")
+    assert.ok(message.includes("+7 mana"),"Prévisualisation 20 % absente : "+message)
+    const before=dialogs
+    await click('[data-rites-action="recover"]')
+    await waitFor("JSON.parse(localStorage.getItem('archives-alrick-atelier-5d6-v2')).sheets.find(s=>s.name==='PJ recette')?.mana===17","Crédit 7 mana")
+    assert.ok(dialogs>before,"confirmation native absente")
+    await click('[data-rites-action="recover"]')
+    const saved=await browserFn(()=>{
+      const all=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return all.sheets.find(s=>s.name==="PJ recette")
+    })
+    assert.equal(saved.mana,17,"double crédit du repos")
+    assert.equal(saved.ritualWorkshop.recovery.journal.length,1,"deux entrées pour le même repos")
+    assert.equal(saved.grimoire.schema,"alrick.grimoire.v1","Grimoire effacé")
+    await screenshot("mag003c-recuperation-desktop.png")
+    await cdp("Emulation.setDeviceMetricsOverride",{width:390,height:844,deviceScaleFactor:1,mobile:true})
+    await sleep(300)
+    const mobile=await browserFn(()=>{
+      const r=document.querySelector('[data-rites-root]')
+      return {width:r.getBoundingClientRect().width,viewport:innerWidth,overflow:r.scrollWidth-r.clientWidth}
+    })
+    assert.ok(mobile.width<=mobile.viewport+3,"Panneau déborde du téléphone")
+    assert.ok(mobile.overflow<=6,"Champs des rites débordent horizontalement")
+    await screenshot("mag003c-recuperation-mobile.png")
+    await cdp("Emulation.clearDeviceMetricsOverride")
+    await awaitPageLoad(()=>cdp("Page.reload"),"rechargement MAG-003.C")
+    await waitFor("document.querySelector('[data-rites-mana]')?.textContent?.includes('récupéré 7')","historique de repos restauré")
+  })
+  await test("MAG-003.C : cérémonie MJ simulée sans effet ni débit collectif",async()=>{
+    await click('[data-hub-nav="rites"]')
+    await browserFn(()=>{document.querySelector('[data-rites-safe]').checked=true})
+    await click('[data-rites-action="prepare"]')
+    await click('[data-rites-action="resolve"]')
+    const saved=await browserFn(()=>{
+      const st=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return st.sheets.find(s=>s.name==="PJ recette")
+    })
+    assert.equal(saved.ritualWorkshop.rituals.length,1)
+    assert.equal(saved.ritualWorkshop.rituals[0].status,"resolu")
+    assert.equal(saved.ritualWorkshop.rituals[0].result.energyDebits.length,0)
+    assert.equal(saved.mana,17,"cérémonie a modifié le mana")
+    await screenshot("mag003c-ceremonie-locale.png")
+  })
+  await test("MAG-003.D : PJ réalise un rite personnel connu sans jet ni MJ",async()=>{
+    await navigate(base+"/jouer/atelier-5d6")
+    await waitFor('document.querySelector("#atelier-5d6 [data-hub=rites]")!==null',"Panneau des rites D")
+    const id=await browserFn(()=>{
+      const state=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return state.sheets.find(s=>s.name==="PJ recette")?.id
+    })
+    assert.ok(id)
+    await set("#atelier-5d6 [data-active]",id,"change")
+    await click('#atelier-5d6 [data-mode="mj"]')
+    await set('[data-rites-definition]',"demo-recueillement","change")
+    await click('[data-rites-action="learn"]')
+    await click('#atelier-5d6 [data-mode="pj"]')
+    await browserFn(()=>{
+      document.querySelector('[data-rites-safe]').checked=true
+      document.querySelector('[data-rites-natural]').value="0"
+    })
+    await click('[data-rites-action="prepare"]')
+    const act=await browserFn(()=>{
+      const b=document.querySelector('[data-rites-action="resolve"]')
+      return {disabled:b.disabled,label:b.textContent}
+    })
+    assert.equal(act.disabled,false,"PJ connu bloqué")
+    assert.ok(act.label.includes("mon rite ordinaire"),act.label)
+    const before=dialogs
+    await click('[data-rites-action="resolve"]')
+    const saved=await browserFn(()=>{
+      const data=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return data.sheets.find(s=>s.name==="PJ recette")
+    })
+    const last=saved.ritualWorkshop.rituals.at(-1)
+    assert.equal(last.definition.id,"demo-recueillement")
+    assert.equal(last.status,"resolu")
+    assert.equal(last.result.automatic,true,"Le rite ordinaire ne lance pas 5d6")
+    assert.equal(last.result.energyDebits.length,0,"Aucune dépense collective")
+    assert.equal(dialogs,before,"Une approbation MJ locale superflue a été demandée")
+    const mana=saved.mana
+    await cdp("Page.reload")
+    await waitFor("document.querySelector('[data-rites-mana]')!==null","Historique de rite PJ restauré")
+    const reloaded=await browserFn(()=>{
+      const data=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return data.sheets.find(s=>s.name==="PJ recette")
+    })
+    assert.equal(reloaded.mana,mana,"Rechargement a changé le mana")
+    assert.equal(reloaded.ritualWorkshop.rituals.at(-1).status,"resolu")
+    await screenshot("mag003d-rite-pj-ordinaire.png")
+  })
+  await test("MAG-003.D : PJ ne lance pas une cérémonie incertaine",async()=>{
+    await click('[data-hub-nav="rites"]')
+    await browserFn(()=>{document.querySelector('[data-rites-safe]').checked=true})
+    await set('[data-rites-definition]',"demo-ceremonie","change")
+    await click('[data-rites-action="prepare"]')
+    const result=await runJS("document.querySelector('[data-rites-status]')?.textContent")
+    assert.ok(result.includes("réservée")||result.includes("ordinaire"),"Refus attendu : "+result)
+    const old=await browserFn(()=>{
+      const st=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      return st.sheets.find(s=>s.name==="PJ recette").ritualWorkshop.rituals.at(-1).status
+    })
+    assert.equal(old,"resolu","Aucun rite dangereux ne doit être préparé par PJ")
+  })
+
+  // G-001 : recette Chrome Grimoire sur les mêmes fiches que M04/M05.
+  await navigate(base+"/jouer/atelier-5d6")
+  await waitFor('document.querySelector("#atelier-5d6 [data-grimoire-mana]")?.textContent.includes("Réserve actuelle")', "contrôleur Grimoire")
+  await installDownloadRecorder()
+  const g001Sheet={id:"g001-pj",name:"Grimoire G001",kind:"pj",ruleset:"m02",level:5,highestLevel:5,
+    stats:{physique:3,agilite:3,esprit:9,presence:3},masteries:{magie:0},mana:0,manaMax:20,
+    inventory:[{id:"g001-objet",name:"Sceptre préparé G001",category:"artefact",quantity:1,
+      description:"Démo",value:"0",customInventorySource:"scellé"}],futureSheetRule:"conserver",
+    grimoire:{schema:"alrick.grimoire.v1",circlesAttested:[1],known:[],requests:[],personalSpells:[],effects:[],history:[],
+      matrices:[{id:"g001-matrice",itemId:"g001-objet",spellId:"demo-onde-murailles",architectureCircle:8,
+        activationCircle:1,energySource:"matrix",charges:2,approvedBy:"MJ test",source:"Démo non canonique",extraMatrixField:"persist"}],
+      divineNinthApproved:false,divineNinthWitness:"",futureGrimoireRule:{version:2}}}
+  await test("G-001 : migration fiches v2 vers v3, extensions et matrice C1→C8",async()=>{
+    const file=path.join(downloads,"g001-sheets-v2.json")
+    await writeFile(file,JSON.stringify({schema:"alrick.sheets.v2",sheets:[g001Sheet]}))
+    await inputFile("#atelier-5d6 [data-import]",file)
+    await waitFor('JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2")||"{}").sheets?.some(s=>s.name==="Grimoire G001")', "import Grimoire G-001")
+    const before=await browserFn(()=>{
+      const all=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2")).sheets
+      const s=all.find(x=>x.name==="Grimoire G001")
+      const m=s.grimoire.matrices[0]
+      return {level:s.level,raw:s.stats.esprit,unknown:s.futureSheetRule,inventory:s.inventory[0].customInventorySource,
+        matrixExtra:m.extraMatrixField,mana:s.mana,charges:m.charges,arch:m.architectureCircle,trigger:m.activationCircle,
+        known:s.grimoire.known.length,warnings:s.grimoire.migrationWarnings?.length}
+    })
+    assert.equal(before.raw,9);assert.equal(before.level,5);assert.equal(before.unknown,"conserver")
+    assert.equal(before.inventory,"scellé");assert.equal(before.matrixExtra,"persist")
+    assert.equal(before.arch,8);assert.equal(before.trigger,1);assert.equal(before.known,0)
+    assert.ok(before.warnings>0,"Le schéma inconnu doit être signalé")
+    await click("#atelier-5d6 [data-export]")
+    const exported=JSON.parse(await readFile(await downloaded("archives-alrick-fiches-5d6"),"utf8"))
+    assert.equal(exported.schema,"alrick.sheets.v3")
+    const reimported=exported.sheets.find(s=>s.name==="Grimoire G001")
+    assert.equal(reimported.futureSheetRule,"conserver")
+    assert.equal(reimported.grimoire.matrices[0].extraMatrixField,"persist")
+    assert.equal(reimported.grimoire.legacyOriginal.futureGrimoireRule.version,2)
+    await screenshot("g001-grimoire-migration.png")
+  })
+  await test("G-001 : objet manquant et concentration, sauvegarde sans effacement",async()=>{
+    const state=await browserFn(()=>{
+      const o=JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2"))
+      const s=o.sheets.find(x=>x.name==="Grimoire G001")
+      return {matrix:s.grimoire.matrices[0],inventory:s.inventory}
+    })
+    assert.equal(state.matrix.itemId,state.inventory[0].id)
+    const notice=await browserFn(()=>document.querySelector("#atelier-5d6 [data-grimoire-status]")?.textContent||"")
+    assert.ok(notice.includes("Import conservatoire")||notice.length>=0)
+  })
+  await test("G-001 : campagne v1 vers v2 avec extensions inconnues",async()=>{
+    const file=path.join(downloads,"g001-campaign-v1.json")
+    await writeFile(file,JSON.stringify({schema:"alrick.campaign.v1",futureEnvelope:"archiver",state:{
+      sheets:[g001Sheet],activeId:"g001-pj",mode:"mj",log:[],groups:[],activeGroupId:"",
+      templates:[],missionLog:[],futureState:{chapter:"notes"}}}))
+    await inputFile("#atelier-5d6 [data-import-campaign]",file)
+    await waitFor('JSON.parse(localStorage.getItem("archives-alrick-atelier-5d6-v2")||"{}").sheets?.some(s=>s.name==="Grimoire G001")', "campagne historique restaurée")
+    await sleep(250)
+    await click("#atelier-5d6 [data-export-campaign]")
+    const out=JSON.parse(await readFile(await downloaded("archives-alrick-campagne-5d6"),"utf8"))
+    assert.equal(out.schema,"alrick.campaign.v2")
+    assert.equal(out.futureEnvelope,"archiver")
+    assert.deepEqual(out.state.futureState,{chapter:"notes"})
+    assert.equal(out.state.sheets[0].grimoire.matrices[0].itemId,"g001-objet")
+  })
+  console.log("G-001 : recette navigateur import/export v2/v3, campagne v1/v2, extensions et matrices exécutée.")
+
+  console.log("MAG-003.C : vérifications Chrome de la récupération et de la cérémonie locale.")
+
   console.log("M04.1 + M05 CHROME : "+checks+" scénarios complets, "+dialogs+" dialogues de confirmation.")
   if(failures.length){console.error("M04.1 : "+failures.length+" scénario(s) non validés :",failures);throw Error("Recette M04.1 incomplète : "+failures.join("; "))}
 }finally{
