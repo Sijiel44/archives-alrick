@@ -1,3 +1,5 @@
+> **Mise à jour de compatibilité :** consulter `docs/bestiaire/B001_1_RETOUR_DIRECTEUR.md` et `B001_1_MATRICE_COMPATIBILITE_5D6.md`. Les références 5d6 historiques du présent rapport sont antérieures aux PR #57–#62 et remplacées par le contrat M03/M04.1/M05. La PR #56 n'est pas fusionnée.
+
 # RETOUR MISSION B-001 — FONDATION DU BESTIAIRE
 
 ## 1. État d'exécution

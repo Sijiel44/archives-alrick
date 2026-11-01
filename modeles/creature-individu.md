@@ -44,7 +44,7 @@ tags: [bestiaire, modele]
 - **Évolutions observées** : [forme initiale, forme attestée, déclencheur si connu].
 - **Comportement et besoins propres** : [ne pas inférer en espèce].
 - **Vulnérabilités / contraintes** : [inconnu si absent des textes].
-- **Profil 5d6** : [adaptation non canonique, pas de niveau attribué automatiquement].
+- **Profils 5d6 (0..n)** : [liens de registre documentaire vers profils M03, IDs locaux, niveau et danger de rencontre distincts ; adaptation non canonique]. Un profil peut lier plusieurs dossiers documentaires sans attribuer ses valeurs à l'espèce.
 
 ## Sources, accès et visuels
 | Affirmation | Preuve | Source précise | Confidentialité |

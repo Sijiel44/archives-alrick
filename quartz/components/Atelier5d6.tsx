@@ -44,6 +44,8 @@ export const Atelier5d6: QuartzComponent = (props) => {
       <button type="button" data-mode="ia" role="tab" aria-selected="false">MJ assisté par IA</button>
     </div>
     <p class="atelier-notice" data-status role="status" aria-live="polite">Les changements sont enregistrés dans ce navigateur.</p>
+    <p class="atelier-hint" data-ruleset-notice>Détection de la version des règles…</p>
+    <button type="button" data-migrate-legacy hidden>Créer une adaptation M02 (ancienne fiche conservée)</button>
     <div class="atelier-toolbar">
       <label>Personnage actif
         <select data-active aria-label="Sélectionner un personnage">
@@ -176,23 +178,74 @@ export const Atelier5d6: QuartzComponent = (props) => {
           <legend>Caractéristiques <span data-points>12 / 12 points</span></legend>
           {attributes.map(([key, label, help]) => <label class="atelier-stat" key={key}>
             <span><strong>{label}</strong><small>{help}</small></span>
-            <input type="number" data-stat={key} value={3} min={1} max={12} step={1} aria-label={label}/>
+            <input type="number" data-stat={key} value={3} min={1} step={1} aria-label={label}/>
+            <small data-stat-bonus={key}>Bonus en cours de chargement</small>
           </label>)}
-          <small class="atelier-hint">Au niveau 1 : 12 points (1 à 5 par caractéristique). Puis +6 points par niveau, chaque caractéristique étant plafonnée à 12. Les crédits excédentaires restent en réserve, sans bonus de jet automatique. Les niveaux 21–25 exigent cinq validations divines exceptionnelles.</small>
+          <small class="atelier-hint">M02 : 12 points de départ (1 à 5), puis un budget commun B(n)=6(n−1) pour caractéristiques, maîtrises et capacités. Score brut sans plafond, bonus logarithmique. Les niveaux 21–25 nécessitent des jalons MJ, jamais une divinisation automatique.</small>
         </fieldset>
         <fieldset class="atelier-stats">
           <legend>Maîtrises spécialisées — <span data-mastery-points>0 / 0 points</span></legend>
           {masteries.map(([key,label])=><label class="atelier-stat" key={key}>
-            <span><strong>{label}</strong><small>Maîtrise de 0 à 12</small></span>
-            <input type="number" min={0} max={12} step={1} value={0} data-mastery={key} aria-label={label}/>
+            <span><strong>{label}</strong><small>Coût progressif, bonus logarithmique</small></span>
+            <input type="number" min={0} step={1} value={0} data-mastery={key} aria-label={label}/>
+            <small data-mastery-bonus={key}>Rang et prochain coût en cours de chargement</small>
           </label>)}
-          <small class="atelier-hint">Deux points de maîtrise par niveau après le premier. Ils décrivent l'entraînement, sans bonus de jet automatique avant équilibrage. Les spécialités +0/+1/+2 actuelles restent jouables.</small>
+          <small class="atelier-hint">Les maîtrises puisent dans le même budget M01. Chaque rang acheté coûte de plus en plus cher. Les techniques non martiales disposent de la même économie.</small>
         </fieldset>
         <div class="atelier-toolbar">
           <button type="button" data-convert-credits>Convertir 6 crédits excédentaires en 1 point de talent</button>
           <label>Points de talent utilisés<input type="number" data-talent-spent min={0} max={24} step={1} value={0}/></label>
         </div>
         <p data-talent-points class="atelier-hint">Talents : 0 / 0 utilisés.</p>
+        <section data-m02-controls class="atelier-stats">
+          <h3>Développement M02 — aptitudes, techniques et signatures</h3>
+          <p class="atelier-hint">Un emplacement narratif acheté ne confère aucun pouvoir. Une capacité définie nécessite un effet, des limites et, si applicable, l'approbation du MJ.</p>
+          <div class="atelier-fields">
+            <label>Catégorie<select data-m02-ability-kind>
+              <option value="aptitude">Aptitude — 3 points, niveau 3</option>
+              <option value="technique">Technique — 6 points, niveau 5</option>
+              <option value="signature">Signature — 9 points, niveau 17, MJ</option>
+            </select></label>
+            <label>Domaine<input data-m02-ability-domain type="text" maxLength={80} placeholder="artisanat, soins, combat, arts…"/></label>
+            <label>Nom<input data-m02-ability-name type="text" maxLength={100} placeholder="Nom de l'acquisition"/></label>
+            <label>État<select data-m02-ability-status>
+              <option value="slot">Emplacement narratif (sans effet)</option>
+              <option value="defined">Capacité mécanique définie</option>
+            </select></label>
+            <label>Maîtrise prérequise<select data-m02-ability-prereq>
+              <option value="">Aucune</option>
+              {masteries.map(([key,label])=><option key={key} value={key}>{label}</option>)}
+            </select></label>
+            <label>Rang de maîtrise minimum<input data-m02-ability-prereq-rank type="number" min={0} value={0}/></label>
+          </div>
+          <label>Description<textarea data-m02-ability-description rows={2} maxLength={700}/></label>
+          <label>Effet exact<textarea data-m02-ability-effect rows={2} maxLength={700}/></label>
+          <label>Limites et ressources<textarea data-m02-ability-limits rows={2} maxLength={700}/></label>
+          <label>Origine narrative<textarea data-m02-ability-provenance rows={2} maxLength={700}/></label>
+          <label class="atelier-check"><input data-m02-ability-approved type="checkbox"/> Approbation par le MJ (mode MJ ou IA)</label>
+          <button type="button" data-m02-buy>Acheter cette capacité</button>
+          <div data-m02-ability-list class="atelier-hint">Aucune capacité.</div>
+          <h3>Historique des événements d'expérience</h3>
+          <div class="atelier-fields">
+            <label>Identifiant événement<input data-m02-event-id type="text" maxLength={80} placeholder="ex. mission-23"/></label>
+            <label>Motif / pattern<input data-m02-event-pattern type="text" maxLength={80} placeholder="ex. mission-escorte"/></label>
+            <label>Domaine<select data-m02-event-domain>
+              {["combat","artisanat","savoir","diplomatie","exploration","magie","secours","transmission"].map(x=><option value={x} key={x}>{x}</option>)}
+            </select></label>
+            <label>Difficulté (1–12)<input data-m02-event-difficulty type="number" min={1} max={12} value={1}/></label>
+            <label>Importance<select data-m02-event-scope>
+              <option value="ordinaire">Ordinaire</option><option value="majeur">Majeure — accord MJ</option><option value="legendaire">Légendaire — accord MJ</option>
+            </select></label>
+          </div>
+          <label class="atelier-check"><input data-m02-event-approved type="checkbox"/> Événement approuvé par le MJ</label>
+          <button type="button" data-m02-award>Consigner et attribuer les XP</button>
+          <p data-m02-xp-history class="atelier-hint">Aucun événement enregistré.</p>
+          <div class="atelier-toolbar">
+            <label>Valider le palier exceptionnel MJ <input data-m02-milestone type="number" min={21} max={25} value={21}/></label>
+            <button type="button" data-m02-approve-milestone>Valider le palier</button>
+          </div>
+          <p data-m02-milestones class="atelier-hint">Jalons validés : aucun.</p>
+        </section>
         <div class="atelier-fields atelier-resources">
           <label>PV actuels<input type="number" data-field="pv" min={0} max={999} step={1} value={12}/></label>
           <label>PV maximum<input type="number" data-field="pvMax" min={1} max={999} step={1} value={12}/></label>
@@ -288,14 +341,17 @@ export const Atelier5d6: QuartzComponent = (props) => {
       </div>
       <div class="atelier-panel atelier-dice">
         <h3>Effectuer un jet</h3>
-        <p class="atelier-hint"><strong>5d6 + caractéristique + compétence + situation</strong>. Les critiques se lisent sur les cinq dés naturels.</p>
+        <p class="atelier-hint"><strong>M03 : 5d6 + E(caractéristique) + M(maîtrise) + situation</strong> pour les jets ordinaires et opposés sur fiches M02. Mode legacy conservé. Naturels 5–7 : échecs forcés.</p>
         <div class="atelier-fields">
           <label>Caractéristique
             <select data-roll-stat>
               {attributes.map(([key,label])=><option value={key} key={key}>{label}</option>)}
             </select>
           </label>
-          <label>Compétence pour ce jet
+          <label>Maîtrise pour un jet M02
+            <select data-roll-mastery><option value="">Sans maîtrise</option></select>
+          </label>
+          <label>Compétence héritée (anciens jets uniquement)
             <select data-roll-skill><option value="0">+0 — Non formé</option><option value="1">+1 — Formé</option><option value="2">+2 — Expert</option></select>
           </label>
           <label>Difficulté
@@ -330,6 +386,7 @@ export const Atelier5d6: QuartzComponent = (props) => {
         <fieldset class="atelier-stats">
           <legend>Opposition et résistances (module facultatif)</legend>
           <label class="atelier-check"><input type="checkbox" data-opposition-enabled/> Activer une cible qui peut résister, esquiver ou parer</label>
+          <label class="atelier-check"><input type="checkbox" data-opposition-feasible checked/> Action réalisable dans le contexte (MJ : désactiver si impossible)</label>
           <div class="atelier-fields">
             <label>Adversaire / cible
               <select data-opposition-target><option value="">Cible libre — seuil fixé par le MJ</option></select>

@@ -1,6 +1,6 @@
 # B-001 — Fondation documentaire et technique du Bestiaire
 
-**État :** audit partiel vérifié, architecture et modèles proposés pour revue. **Date :** 31 octobre 2026. **Base :** `main` à `3443be26b15a90f078e7fdcb94ae5fbb5cfd9191`. **Portée :** uniquement des outils de méthode ; **aucune création d'espèce, de biotope local ou de statistiques canoniques**.
+**État :** audit initial conservé, synchronisation moteur B-001.1 documentée dans `docs/bestiaire/B001_1_MATRICE_COMPATIBILITE_5D6.md` ; architecture et modèles proposés pour revue. **Date :** 31 octobre 2026. **Base :** `main` à `3443be26b15a90f078e7fdcb94ae5fbb5cfd9191`. **Portée :** uniquement des outils de méthode ; **aucune création d'espèce, de biotope local ou de statistiques canoniques**.
 
 **Références publiques :** `CONTRAT_EDITORIAL.md`, `PLAN_DEVELOPPEMENT_UNIVERS.md`, `content/creatures/index.md`, `content/jouer/{systeme-5d6-base12,atelier-5d6,bestiaire-evolutif-25,bestiaire-plan-25,echelle-existences-niveaux-affinites}.md`, `content/monde/{passages-entre-couronnes,decheance-canon}.md`, `content/lieux/atlas-schema-regional.md`, `docs/{EQUILIBRAGE_ATELIER_5D6_24_NIVEAUX,PIPELINE_MISE_A_JOUR_ARCHIVES_5D6,CHARTE_ILLUSTRATIONS_GALERIES_ALRICK}.md`, `package.json`, sources TypeScript et tests 5d6. Consultation privée séparée : Bible V01 v1.7, Atlas V02 v1.8, Compendium V03 v1.7, Codex V04 v1.7, Maison V05 v1.8, Continuité V06 v1.7, index/registre v2.4, CB1–CB34 regroupés, CB41–CB43 et bilan CB43. **Aucun contenu de ces documents privés n'est répliqué dans ce dépôt.** Le volume regroupé CB35–CB39 n'était pas fourni sous forme de document séparé dans le lot local ; ses références indirectes ne remplacent pas la relecture du brut original.
 
@@ -99,26 +99,26 @@ Le fichier lisible par script `docs/bestiaire/B001_REGISTRE_INITIAL.json` contie
 
 **Convention proposée à faire approuver, jamais appliquée automatiquement :** préfixes réservés `ESP-` (espèce), `FAMT-` (famille taxonomique, distinct de `FAM-` déjà familial), `INDC-` (individu sans code historique), `BIO-` (biome), `P5C-` (profil de jeu), `VARC-` (variante / stade). Suffixe séquentiel sur largeur fixe et attribution atomique via registre. **Ne pas renommer les `IMP`, `DRG` ou `REV` existants.** Une variante renvoie à son parent, sans statut d'espèce indépendante, sauf justification biologique explicite et approbation.
 
-## B001-E — Matrice de compatibilité 5d6
+## B001-E — Matrice de compatibilité 5d6 — mise à jour B-001.1
 
-| Aspect | Moteur réel (source de code) | Écart / décision |
+> [!important] Moteur actuel sur main, après les PR #57 à #62
+> L'ancienne matrice B-001 documentait le moteur historique et les schémas `alrick.sheet.v2` ; **elle est remplacée** par cette lecture M03/M04.1/M05 et le dossier `docs/bestiaire/B001_1_MATRICE_COMPATIBILITE_5D6.md`. Aucun changement mathématique n'est demandé.
+
+| Contrat | État réel sur `main` | Règle pour le Bestiaire documentaire |
 | --- | --- | --- |
-| Archétypes | `faune,predateur,gardien,mystique,colosse` dans `atelier5d6-bestiary.ts` | réutiliser tels quels ; aucun sixième archétype |
-| Générateur | `generateCreatureProfile(level, archetype)` niveau borné 1–25 | ne renvoie pas un objet encyclopédique ni une identité d'espèce |
-| Résultat du générateur | `level, stats{physique,agilite,esprit,presence},pvMax,manaMax,mastery,equipmentPhysical,equipmentMagic,resistancePhysical,resistanceMagic` | niveaux de menace, compétences fines, mobilité, attaque conditionnelle, provenance, évolution **absents** |
-| Défenses | `atelier5d6-opposition.ts` distingue résistances physique/magique/mentale, protection innée, équipement et bonus MJ | archétype et description biologique ne valent pas résistance officielle |
-| Précision / impact | 5d6 ; maîtrise de l'attaque, niveau et affinité magique conditionnelle affectent les impacts selon règles actuelles | aucun bonus de précision par maîtrise ou affinité inventé |
-| Niveaux narratifs | `echelle-existences...` : habitants ordinaires 1–4, premiers aventuriers vers 5 | `docs/EQUILIBRAGE_...24...` conserve la lecture ancienne « niveau 1 aventurier » ; **migration à décider** |
-| Progression | PV/base, protection, points de maîtrise et XP existants ; niveau 25 traité | aucune métamorphose déclenchée par le niveau seul |
-| Risque collectif | générateur fondé sur une fiche individuelle | nombre d'ennemis, terrain, objectifs, fatigue, secours et fuite restent à modéliser hors niveau individuel |
-| Import/export | `alrick.sheet.v2` (exemple profil unitaire), `alrick.sheets.v2` (lots), `alrick.campaign.v1` (campagne complète) | **ne pas importer directement le `CreatureProfile` interne** : convertisseur explicite et tests futurs nécessaires |
-| Propriété `kind` | `pj`, `pnj`, `creature` selon `atelier5d6.inline.ts` | pas de clé automatique pour espèce/famille/biome |
-| Affinités | structures d'affinités dans `atelier5d6-origins.ts` | rang propre à chaque individu ; ne pas le déduire de l'espèce |
-| Évolutions | absentes du générateur actuel | schéma documentaire séparé, sans changement de code |
+| 5d6 exacts | `atelier5d6-probabilities.ts`, 7 776 issues | Réutiliser `sumOccurrences`, `TOTAL_OUTCOMES`, pas une nouvelle distribution |
+| Caractéristiques / maîtrises | `atelier5d6-progression.ts` M01 | `effectiveStat`, `effectiveMastery` ; attribut brut non plafonné à 12 |
+| Génération actuelle | `generateCreatureProfileM03`, `createBestiaryCard`, N1–25 | Ne pas réutiliser `generateCreatureProfile` historique pour produire un profil M03 |
+| 5 archétypes | `faune`, `predateur`, `gardien`, `mystique`, `colosse` | Types tactiques, jamais espèces |
+| Fiche native | `alrick.bestiary.v1`, `ruleset:"m03"` | Export/sauvegarde validés par `validateBestiaryCard` |
+| Transfert vers Atelier | `alrick.sheets.v3`, feuille `alrick.sheet.v3`, `ruleset:"m03-bestiary"` | Utiliser `exportBestiaryForAtelier`, avec `bestiarySource` |
+| Résistance / protection | `resistanceBonus` (seuil) ≠ `protection` (absorption) | Interdire toute copie entre ces champs ; grades d'équipement séparés |
+| Fiche documentaire | `documentaryLink` optionnel, `canOfferDocumentaryLink=false` | Lien déclaratif unique en M05 ; relations n:n dans le registre documentaire futur |
+| Validation | `BestiaryCard.status` local ≠ `canon_statut`/publication | `documentaire_approuve` local n'autorise ni canon ni publication |
+| Mécaniques | `resolveCombatM03`, `evaluateMatchup`, `deriveM05Sheet` | Calcul moteur seulement ; scénarios de groupe = hypothèses simplifiées |
+| Anciennes sauvegardes | v1/v2 et `legacyOriginal` préservés | Pas de migration rétroactive ni combat mixte forcé |
 
-**Contrat d'interface futur, distinct de l'import existant** : utiliser une structure de revue avec `fiche_ref`, `type_cible`, `moteur_version`, `archetype`, `niveau_individuel`, `menace_collective`, `valeurs_generees`, `valeurs_mj`, `preuves`, `validation_mj`. **Ne pas présenter ces clés comme supportées par l'import actuel.** Pour adapter en `alrick.sheet.v2`, vérifier `name`, `kind`, `profession`, `skill`, `stats`, `pv/pvMax`, `mana/manaMax`, `emprise`, `notes` puis tester l'import réel. Aucun niveau ni score n'a été attribué aux personnages de l'Odyssée.
-
-**Points de déséquilibre** : progression d'absorption très élevée aux niveaux 21–25, différentiel entre attaque individuelle et protection, affinités conditionnelles, cumul éventuel de maîtrises, attrition de groupes, opposition sociale non létale, adversaires multiples, sortie de combat. Vérifier à la table ; ne pas corriger la formule sans chantier de règles distinct.
+Les tests nouveaux `scripts/test-b0011-compat.mjs` visent N5/10/15/20/25, cinq archétypes, adversaires et groupes, `documentaryLink`, `resistanceBonus`/`protection`, transfert JSON et scénarios non combattants **sans simuler une négociation**. La validation CI de la branche est à relever séparément.
 
 ## B001-F — Évolutions
 

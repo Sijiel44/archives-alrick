@@ -50,7 +50,7 @@ tags: [bestiaire, modele]
 ## En jeu — couche distincte
 - **Approches non violentes** : [observation, évitement, négociation, secours, cohabitation].
 - **Scènes MJ proposées** : [étiqueter explicitement « non jouées »].
-- **Profil 5d6** : [lien, version de moteur et validation ; aucun score implicite].
+- **Profils 5d6 (0..n)** : [liens documentaires et IDs locaux, version M03, validation mécanique, source de chaque correspondance]. Plusieurs profils peuvent servir à une même espèce ; aucune valeur n'est automatiquement canonique. Voir `B001_1_MATRICE_COMPATIBILITE_5D6.md`.
 
 ## Traçabilité et illustration
 | Affirmation | État de preuve | Source (CB/section/version) | Limite / accès |
