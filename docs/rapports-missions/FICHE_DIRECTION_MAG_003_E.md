@@ -33,3 +33,12 @@ La [CI #41337453962 — succès](https://github.com/Sijiel44/archives-alrick/act
 **Demande à la Direction générale :** vérifier le dernier SHA/Actions de #75, réaliser ultérieurement les recettes physiques et arbitrer les questions ouvertes avant toute décision de fusion progressive. La clôture technique ne donne jamais autorisation de publication.
 
 **Rapports :** [Recette et réconciliation](./MAG_003_E_RECETTE_RECONCILIATION.md) · [Audit sauvegardes](./MAG_003_E_AUDIT_SAUVEGARDES.md) · [Plan d'intégration](./MAG_003_E_PLAN_INTEGRATION.md) · [Pilotage](./MAG_003_PILOTAGE_DIRECTION.md).
+
+## Décision du créateur — 1er novembre 2026
+
+Intégration, publication et canonisation limitée explicitement autorisées. Le périmètre d'intégration est la branche #75, qui regroupe G-001 #55, le correctif #74 et MAG-003.A–D (#69–#72). Les branches propriétaires sont conservées et ne sont pas fusionnées séparément.
+
+Seules les clarifications documentées du créateur sur les Cercles I–IX sont ajoutées au guide public. Les sorts de démonstration, taux et arrondis configurables, charges et énergie des matrices restent expérimentaux ou provisoires. Foi, mana et intervention divine restent distincts ; aucune transaction collective multijoueur n'est activée.
+
+La recette automatisée du commit `f99a2db438d65c8d3a7a66c6bec94efa8ee16dba` a réussi : `npm ci`, `npm test` et 22 scénarios Chrome (10 confirmations). Les essais sur téléphone physique et sur sauvegardes privées réelles restent à faire. La fusion et le résultat du déploiement Pages seront consignés dans le pilotage central après contrôle du nouveau SHA et de la CI documentaire.
+

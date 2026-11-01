@@ -215,3 +215,27 @@ MAG-003.C assure **une compatibilité préparatoire avec les Tables T-001 #66**,
 **Statut : techniquement vérifiable, terminée avec réserves ; réception finale conditionnée à la CI du dernier head et à la revue DG.** Les essais humains sur PC et téléphone physique et l'audit de copies autorisées d'archives personnelles demeurent **ouverts**. Le mode MJ est local, aucune dépense rituelle collective autoritaire ni gestion transactionnelle réseau n'existent. L'ambiguïté `energySource=caster`/charges, les notions de source, stockage, usages, activation et entretien ainsi que les domaines foi/mana/intervention divine restent **soumis au créateur** et hors du canon automatique.
 
 **Verrou absolu : aucune fusion dans main, aucune publication GitHub Pages, aucune canonisation, aucune transaction serveur collective ; autorité DG + créateur requise après nouvelle revue du SHA exact.**
+
+
+## Décision du créateur — intégration contrôlée et publication (1er novembre 2026)
+
+Le créateur a explicitement autorisé l'intégration, la publication et une canonisation limitée aux règles déjà approuvées et définies. Cette décision remplace les verrous antérieurs de non-fusion et de non-publication pour le périmètre ci-dessous uniquement.
+
+### Périmètre intégré
+
+- L'arbre de [MAG-003.E #75](https://github.com/Sijiel44/archives-alrick/pull/75) intègre G-001 [#55](https://github.com/Sijiel44/archives-alrick/pull/55), son correctif d'export [#74](https://github.com/Sijiel44/archives-alrick/pull/74) et MAG-003.A–D [#69](https://github.com/Sijiel44/archives-alrick/pull/69), [#70](https://github.com/Sijiel44/archives-alrick/pull/70), [#71](https://github.com/Sijiel44/archives-alrick/pull/71) et [#72](https://github.com/Sijiel44/archives-alrick/pull/72). Les PR propriétaires ne sont pas fusionnées séparément ; leurs branches et leur historique sont conservés.
+- La tête de `main` contrôlée avant intégration était `6967679b1dee5f6b9762bd6cc4378827d0ec975e` (Bestiaire B-002). La branche #75 part de cette tête. La branche B-003 `bestiaire/b003-montagnes-aube` part du même commit et ne partage aucun fichier modifié avec #75 ; elle reste indépendante.
+- Arbre testé avant ce relevé : `f99a2db438d65c8d3a7a66c6bec94efa8ee16dba`. La [CI finale #41337690428](https://github.com/Sijiel44/archives-alrick/actions/runs/41337690428) a réussi sur ce SHA. Une validation CI sur le commit documentaire qui enregistre la présente décision reste requise avant fusion.
+
+### Canonisation et limites
+
+- Seules les clarifications du créateur sur les Cercles I–IX sont ajoutées au guide public : Cercles comme prérequis de compréhension/pratique et non niveaux de personnage ; activation au Cercle I d'une structure déjà préparée sans acquisition de la connaissance ou de l'architecture ; pratique du IX réservée aux êtres divins, sans automatisme de niveau 21–25, et sans réinterprétation rétroactive des scènes d'Orin et Freya.
+- Les démonstrations de sorts restent non canoniques. Les taux, arrondis et autres paramètres de récupération demeurent configurables et expérimentaux. Les charges des matrices, l'énergie `caster`, coûts et entretien restent provisoires. La foi, le mana et l'intervention divine restent distincts, sans règles d'échange ou d'effet implicites. Les transactions collectives multijoueurs ne sont pas activées ; aucun pouvoir d'autorité serveur n'est ajouté.
+- La refonte structurelle générale du jeu et le multijoueur restent hors périmètre afin de ne pas gêner le développement en cours du Bestiaire.
+
+### Recette et publication
+
+- Sur l'arbre #75, `npm ci` puis `npm test` ont réussi localement, incluant TypeScript, build Quartz, contenu/liens, suites M01–M05, Grimoire, sauvegardes et MAG-003.A–E.
+- `npm run test:m04:browser` a réussi avec Chrome installé : 22 scénarios, 10 dialogues de confirmation, incluant les migrations et exports Grimoire/G-001. Aucun test sur téléphone physique ni sur sauvegardes privées réelles n'est revendiqué.
+- Après publication, noter le commit de fusion et le résultat effectif du workflow GitHub Pages dans ce rapport. Toute réserve d'essai physique reste explicitement ouverte.
+
