@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Table pilote · Archives d’Alrick</title>
+  <link rel="stylesheet" href="/table.css">
+  <script type="module" src="/table.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div><span class="eyebrow">LES ARCHIVES D’ALRICK · PILOTE LOCAL</span>
+      <h1>La Table des Voyageurs</h1><p>5d6 · un maître du jeu · deux à cinq aventuriers</p></div>
+    <div class="status"><span id="signal" class="signal"></span><span id="connection">Connexion au serveur…</span></div>
+  </header>
+  <div class="warning" role="note">Expérimentation réseau local. Le serveur sécurise les rôles et les jets dans ce pilote, mais n'est pas prêt pour Internet. Aucun lien vers le canon officiel, aucune publication de données privées.</div>
+  <main>
+    <section id="landing" class="landing">
+      <article class="panel" id="identity-panel">
+        <h2>Votre identité de joueur</h2>
+        <p>Un pseudonyme suffit. Votre identité repose sur une clé privée, pas sur votre nom.</p>
+        <form id="register-form"><label>Pseudonyme <input id="pseudo" maxlength="32" minlength="2" required placeholder="Votre nom d'aventurier"></label>
+          <button>Créer mon identité locale</button></form>
+        <p id="identity" class="identity"></p>
+        <div class="actions"><button id="download-key" disabled>Exporter ma clé de récupération</button>
+          <label class="file-label">Restaurer une clé <input type="file" id="restore-key" accept=".json,application/json"></label>
+          <button id="forget-key" disabled>Déconnecter ce navigateur</button></div>
+        <p class="small">Conservez la clé dans un endroit sûr. Toute personne qui l'obtient peut accéder à votre compte. Elle n'est jamais placée dans le lien d'invitation.</p>
+      </article>
+      <article class="panel" id="lobby-panel" hidden>
+        <h2>Créer ou rejoindre une table</h2>
+        <form id="create-form">
+          <label>Nom de la table <input id="room-name" maxlength="80" minlength="3" required placeholder="Les Veilleurs du Col"></label>
+          <label>Campagne / univers <input id="campaign" maxlength="80" placeholder="Aventure indépendante"></label>
+          <label>Description <input id="description" maxlength="300" placeholder="Une expédition dans les Montagnes de l’Aube"></label>
+          <label>Joueurs (hors MJ) <select id="max-players"><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+          <button>Créer comme MJ</button>
+        </form>
+        <form id="join-form" class="join"><label>Code d'invitation <input id="invite-code" maxlength="30" required placeholder="Code transmis par le MJ"></label><button>Demander à rejoindre</button></form>
+        <h3>Mes tables</h3><div id="room-list" class="room-list">Aucune table pour ce compte.</div>
+      </article>
+    </section>
+    <section id="session" hidden>
+      <div class="session-head">
+        <div><span class="eyebrow" id="role-heading">TABLE</span><h2 id="table-name">La table</h2><p id="table-desc"></p></div>
+        <div class="session-actions"><span id="table-state"></span><button id="back-lobby">Mes tables</button></div>
+      </div>
+      <div id="pending" class="pending" hidden>Votre candidature attend la validation du MJ. Le contenu de la partie est inaccessible jusque-là.</div>
+      <div class="session-grid" id="session-grid">
+        <aside class="panel sidebar">
+          <h3>Autour de la table</h3><div id="roster"></div>
+          <h3>Personnage</h3><div id="character"></div>
+          <form id="character-form"><label>Nom <input id="character-name" maxlength="90" required placeholder="Nom du héros"></label><button>Créer une fiche de niveau 5</button></form>
+          <label class="file-label" id="import-label">Importer une fiche de l'Atelier 5d6 <input type="file" id="import-sheet" accept=".json,application/json"></label>
+          <p class="small">Les fiches importées attendent l'approbation du MJ. Une seule fiche par participant dans ce pilote.</p>
+        </aside>
+        <section class="panel chronicle">
+          <div class="panel-heading"><h3>Chronique de séance</h3><span>Événements persistants</span></div>
+          <ol id="event-log" class="events" aria-live="polite"></ol>
+          <form id="message-form" class="message-form"><label class="sr-only" for="message">Narration ou message</label>
+            <input id="message" maxlength="500" placeholder="Décrivez une action, parlez à la table…" required>
+            <button>Envoyer</button></form>
+        </section>
+        <aside class="right-col">
+          <section class="panel dice">
+            <h3>Le destin — 5d6</h3>
+            <div class="dice-row" id="dice-row" aria-label="Cinq dés"> <span>·</span><span>·</span><span>·</span><span>·</span><span>·</span></div>
+            <form id="roll-form">
+              <label>Caractéristique <select id="roll-stat"><option value="physique">Physique</option><option value="agilite">Agilité</option><option value="esprit">Esprit</option><option value="presence">Présence</option></select></label>
+              <label>Difficulté <select id="roll-target"><option value="15">15 · Très facile</option><option value="18">18 · Facile</option><option value="21" selected>21 · Normale</option><option value="24">24 · Difficile</option><option value="27">27 · Héroïque</option><option value="30">30 · Exceptionnelle</option></select></label>
+              <label>Situation <select id="roll-situation"><option value="0">0 · Neutre</option><option value="2">+2 · Avantage</option><option value="-2">−2 · Désavantage</option></select></label>
+              <label class="check"><input type="checkbox" id="secret-roll"> Jet secret (MJ seulement)</label>
+              <button class="roll-button">Lancer les cinq dés</button>
+            </form>
+            <p id="last-roll" class="small">Les résultats officiels sont générés par le serveur local.</p>
+          </section>
+          <section class="panel" id="gm-panel" hidden>
+            <h3>Écran du maître de jeu</h3>
+            <label>Code d'invitation <output id="room-invite"></output></label>
+            <button id="copy-invite">Copier le code</button>
+            <label>Statut <select id="status-select"><option value="preparation">Préparation</option><option value="en_cours">En cours</option><option value="en_pause">En pause</option><option value="terminee">Terminée</option></select></label>
+            <h4>Fiches et ressources</h4><div id="gm-chars"></div>
+            <label>Notes secrètes du MJ <textarea id="gm-note" rows="4" maxlength="2000" placeholder="Ce texte ne doit jamais être envoyé aux joueurs."></textarea></label>
+            <button id="save-note">Enregistrer mes notes privées</button>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer><span id="feedback" role="status" aria-live="polite">Initialisation…</span> · <a href="https://sijiel44.github.io/archives-alrick/jouer/atelier-5d6.html">Atelier 5d6 local</a></footer>
+</body>
+</html>
