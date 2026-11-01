@@ -40,7 +40,7 @@ La comparaison suppose combat de mêlée physique, une attaque par acteur par ro
 
 ## 5. Test et non-régression
 
-`scripts/test-5d6-m05.mjs` est ajouté à `npm test` via `npm run test:m05`. Il inspecte 5 archétypes × 25 niveaux, bonus, protections, seuils, PV, immutabilité, Colosse N15, import, erreurs documentaires, autorisation de portrait, distribution exacte et bundle DOM. **La présence de cette suite ne prouve pas son exécution dans cette mission.** L'exécution `npm test`, compilation `npm run check:types`, recette Chrome, mobile et impression doivent être consignées dans le rapport après leur réalisation effective.
+`scripts/test-5d6-m05.mjs` est ajouté à `npm test` via `npm run test:m05`. Il inspecte 5 archétypes × 25 niveaux, bonus, protections, seuils, PV, immutabilité, Colosse N15, import, erreurs documentaires, autorisation de portrait, distribution exacte et bundle DOM. **Exécution vérifiée :** [CI #41256890579](https://github.com/Sijiel44/archives-alrick/actions/runs/41256890579) sur le commit `6cfbaacac796aa49004665c1f3f111bb174b2388` : `npm test` **réussi** (compilation et build inclus), **1 390 assertions M05 réussies**. Recette Chrome : **15 scénarios M04.1+M05 réussis**, dont Colosse, prédateur, PNJ, clavier, impression PDF, sauvegardes, import/export, mobile émulé et combat MJ. Les tests n'équivalent pas à un playtest humain.
 
 ## 6. Tableau de transmission
 
