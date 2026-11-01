@@ -2,7 +2,7 @@
 
 **Actualisation du 30 octobre 2026 — dossiers du Compendium : 245 fiches codées approuvées (216 avant le lot de 40).** Vingt-huit pages vérifiées peuvent être consultées avec avertissement ; douze portraits ou candidatures restent non publiés. Voir [l'audit de la relecture](docs/AUDIT_COMPENDIUM_40_PERSONNAGES_2026-10-30.md). Les chiffres des lots précédents sont conservés comme historique, pas comme compteurs actuels.
 
-**Compteur reproductible vérifié le 31 octobre 2026 :** `npm run check:content` trouve 369 pages publiées et 269 codes uniques portés par ces pages. Ce compteur de fiches codées publiées est distinct des 645 sujets du registre directeur, des pages de navigation, des brouillons et des sources historiques non migrées.
+**Compteur reproductible vérifié le 31 octobre 2026 :** `npm run check:content` trouve 369 pages sélectionnées pour génération et 269 codes uniques portés par ces pages. Ce compteur de fiches codées publiées est distinct des 645 sujets du registre directeur, des pages de navigation, des brouillons et des sources historiques non migrées.
 
 
 Les paragraphes historiques du plan conservent les états successifs (177, 180, 198, 216 et 245) à leur date ; ils ne remplacent pas le compteur reproductible ci-dessus. Voir [le diagnostic des 645 sujets et la méthode d'Atlas](docs/RECONCILIATION_645_ET_ATLAS_2026-10-30.md). Restent à réconcilier notamment les alias des fiches de personnages et les cartes géographiques exactes.
@@ -121,4 +121,3 @@ Les hypothèses reliant l'ancienne tragédie familiale d'Orin à une Faille maje
 ## Corrections du créateur sur les 40 dossiers
 
 Existence du groupe de huit profils de CB42 **canonique, sans rencontre ni emploi** ; Margha Trois-Mers **cuisinière de bord identifiée et engagée** ; quatre fonctions des gardiens d'Entre-Rives **validées** (Maelin Maintenir, Rudek Séparer, Sela Témoigner, Eren Transmettre). Ne créer ni nouveau rituel du pont, ni second cuisinier déjà recruté, ni rappel pour les deux profils décédés. Les huit biographies restent hors publication et la nouvelle page Margha protégée par spoilers porte le compte à **245**.
-
