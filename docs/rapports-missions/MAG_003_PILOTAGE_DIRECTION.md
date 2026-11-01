@@ -133,3 +133,24 @@ MAG-003.C assure **une compatibilité préparatoire avec les Tables T-001 #66**,
 5. Réconcilier les branches dans l'ordre des dépendances, contrôler les changements croisés G-001 et relancer toutes les validations sur l'arbre destiné à `main` ; **fusion seulement après décision explicite**.
 
 **Verrou DG : toutes les PR restent DRAFT, sans fusion, Pages, activation multijoueur ni canonisation.**
+
+---
+
+## MAG-003.D — Consolidation et porte d'intégration (1er novembre 2026)
+
+**Branche :** `magie/mag003d-consolidation` · [PR #72, DRAFT](https://github.com/Sijiel44/archives-alrick/pull/72) → PR #71 (C) → PR #70 (B) → PR #69 (A). **Aucune fusion** ni publication. A/B/C ne sont pas considérées approuvées par le simple lancement de D.
+
+| Réserve constatée dans C | Action réalisée dans D | Condition de sortie |
+| --- | --- | --- |
+| Soutien numérique non qualifié | `supportQualification` vérifie personne distincte, rôle, compétence, contribution, droit de Cercle ; +1 maximal | Revue du contrat de compétences et test humain de groupe |
+| Rite personnel bloqué pour PJ | Rite du catalogue **connu, simple et automatique**, un PJ, sans autre effet ni jet, accessible en local | Revue MJ des critères de sûreté ; aucune permission réseau |
+| Double crédit, chronologie et historique | Refus de clé de repos recyclée pour un autre type ; idempotence étendue au rejeu tardif ; ledger A intact | Contrôle de vraies sauvegardes et réconciliation explicite des écarts |
+| Cohérence G-001/Tables | Diff #55↔D et contrat T-001 #66, aucune mutation de charges ou transaction collective | Arbitrages énergie/usages, serveur rituels atomique et permissions PJ/MJ |
+
+**Preuve CI sur le code :** [Actions #41326549809 — SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41326549809) à `670471c3` : `npm ci`, `npm test`, MAG-003.A **181**, B **44**, C **44**, D **46** assertions ; **19 scénarios Chrome** réussis (dont deux D). Vérifier aussi la **CI du head documentaire final** de #72 avant acceptation.
+
+**Rapports obligatoires** : [Consolidation](./MAG_003_D_CONSOLIDATION.md), [Réconciliation](./MAG_003_D_RECONCILIATION.md), [Fiche Direction D](./FICHE_DIRECTION_MAG_003_D.md).
+
+**Réserves toujours explicites :** A/B/C non fusionnées, ambiguïté G-001 `charges`, pas de modèle de foi officiel, pas d'autorité serveur rituelle, tests humains multi-appareils et migration historique exhaustive non réalisés. Ces absences ne sont pas des succès implicites.
+
+**Verrou Direction :** aucune fusion `main` ; aucun déploiement Pages ; aucune modification cosmologique/canonique ; aucune transaction collective avant contrôle des permissions, des révisions et de l'atomicité serveur.
