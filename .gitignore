@@ -20,3 +20,6 @@ playwright-report/
 # Exception explicite : bruts Word de campagne que le créateur choisit de publier dans GitHub.
 # Les autres Word/XLSX/ZIP du projet restent ignorés par défaut.
 !sources/campagnes/**/original/*.docx
+
+# Données locales et clés des Tables : jamais commiter.
+.tables-local/
