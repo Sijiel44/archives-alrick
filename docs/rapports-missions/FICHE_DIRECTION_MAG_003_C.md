@@ -1,6 +1,6 @@
 # ARCHIVES D'ALRICK — RAPPORT DE MISSION
 
-**Mission :** MAG-003.C — Intégration Grimoire, Tables, objets et spiritualité  
+**Mission :** MAG-003.C — Intégration locale Grimoire, repos, rites et compatibilité préparatoire avec les Tables  
 **Référent :** Intégration des interfaces de magie et rites · **Date :** 1er novembre 2026  
 **Dépôt :** `Sijiel44/archives-alrick`  
 **Branche :** `magie/mag003c-integration-rites`  
@@ -15,8 +15,8 @@ Les anciens `charges` de matrices et les Cercles ne sont pas requalifiés ; aucu
 
 ## Résultat de vérification
 
-- [CI #41324736498 — SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41324736498) : `npm ci`, `npm test` (181 assertions A, 44 B, **44 C**, tests G-001), **17 scénarios Chrome réussis**, dont deux parcours MAG-003.C (récupération/anti-double clic/mobile et cérémonie simulée). Preuve sur le code `90282ea8`, avant actualisation documentaire.
-- La dernière CI de la PR après ajout des scénarios de récupération/mobile/cérémonie doit être consultée sur [la page Checks](https://github.com/Sijiel44/archives-alrick/pull/71/checks). Ne pas extrapoler le résultat d'un commit antérieur.
+- [CI #41325092101 — SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41325092101) : exécution complète réussie sur `dce1fb61c5891af1b39e48d17a2a13e71397e5b1`, après intégration de la recette et des rapports. Les suites rapportées comprennent **181 assertions A, 44 B, 44 C et 17 scénarios Chrome automatisés**.
+- Toute modification documentaire ou logicielle ultérieure nécessite de vérifier la CI correspondante avant une affirmation de validation du nouveau head.
 - **Tests automatisés ≠ essais humains.** Aucune vraie partie multijoueurs ni recette sur téléphone physique.
 
 ## Réserves bloquantes
@@ -25,12 +25,19 @@ Les Tables #66 possèdent un serveur local et des conventions d'idempotence, mai
 
 Aucune création de points de foi, intervention divine, bénédiction, Autorité ou Cercle à la suite d'une prière. Aucune modification du canon.
 
-## Décision attendue
+## Décision de Direction générale du 1er novembre 2026
 
-1. **Revoir #69 et #70**, encore en brouillon et sans validation de Direction confirmée au lancement de C.
-2. **Examiner #71**, résultats du dernier head, démonstrations Chrome et protections des sauvegardes.
-3. Trancher les règles de récupération, le contrat énergie/usages et la faisabilité d'un serveur rituel transactionnel.
-4. Organiser les recettes humaines MJ/PJ et une revue de sécurité avant toute proposition de fusion.
+- **MAG-003.A #69 :** validation technique maintenue.
+- **MAG-003.B #70 :** prototype accepté, consolidation des soutiens, compétences et prérequis exigée avant utilisation effective des bonus.
+- **MAG-003.C #71 :** terminée avec réserves ; validation expérimentale recevable, **aucune fusion autorisée**.
+- **Parcours PJ :** autoriser une pratique ordinaire connue et maîtrisée sans jet ni confirmation MJ inutile ; rites exceptionnels ou incertains demeurent contrôlés.
+- **Récupération :** grille centrale comme référence expérimentale, variantes prudente et ample conservées ; prière et méditation d'accès équivalent pour l'ordinaire, exceptionnels conditionnels.
+- **Foi/objets :** aucun gain ni conversion de foi automatique ; énergie stockée et nombre d'utilisations séparés, sans migration automatique des `charges`.
+- **Coopération :** soutien **+1 maximum** après qualification vérifiée ; aucun débit collectif sans serveur transactionnel.
+- **Interopérabilité :** seulement **compatibilité préparatoire avec les Tables** ; le serveur T-001 n'est pas connecté aux cérémonies MAG-003.C.
+- **Avant fusion :** revue des sources G-001 reprises dans C, réconciliation de la pile A→B→C, tests CI sur l'arbre réellement ciblé, recette humaine PC/téléphone et sauvegardes historiques.
+
+La page [MAG_003_PILOTAGE_DIRECTION.md](./MAG_003_PILOTAGE_DIRECTION.md) présente le détail des réserves et de la suite à donner.
 
 **Interdiction maintenue : aucune fusion dans main ; aucune publication du site ; aucune canonisation.**
 
