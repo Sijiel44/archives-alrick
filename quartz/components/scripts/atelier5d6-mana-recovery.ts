@@ -20,7 +20,7 @@ export type Validation={approved:boolean;authority:"mj"|"simulation"|"system";or
 export type RestContext={restId:string;safe:boolean;completed:boolean;focused?:boolean;exceptionalApproved?:boolean;interrupted?:boolean}
 export type ManaOperation=
  |{id:string;type:"recover";characterId:string;dayKey:string;validation:Validation;kind:RestKind;rest:RestContext}
- |{id:string;type:"spend";characterId:string;dayKey:string;validation:Validation;cost:number;purpose:string}
+ |{id:string;type:"spend";characterId:string;dayKey:string;validation:Validation;cost:number;purpose:string;denialReason?:string}
  |{id:string;type:"interrupt";characterId:string;dayKey:string;validation:Validation;restId:string}
  |{id:string;type:"changeMax";characterId:string;dayKey:string;validation:Validation;manaMax:number}
  |{id:string;type:"nextDay";characterId:string;dayKey:string;validation:Validation;nextDay:string}
@@ -86,7 +86,8 @@ export function applyManaOperation(source:ManaState,operation:ManaOperation):Man
   if(!v.approved)reject("Validation absente.")
   if(accepted&&operation.type==="spend"){
     integer(operation.cost,"Coût");positive(operation.purpose,"Motif");kind=operation.purpose
-    if(operation.cost>s.mana)reject("Mana insuffisant.")
+    if(operation.denialReason)reject(operation.denialReason)
+    else if(operation.cost>s.mana)reject("Mana insuffisant.")
     else{s.mana-=operation.cost;spent=operation.cost}
   } else if(accepted&&operation.type==="recover"){
     const rest=operation.rest
