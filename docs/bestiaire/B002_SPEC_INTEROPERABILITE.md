@@ -1,6 +1,6 @@
-# B-002 — Spécification proposée : interopérabilité documentaire ↔ 5d6
+# B-002 — Registre approuvé des identifiants et interopérabilité documentaire ↔ 5d6
 
-**État : spécification révisable ; NON ADOPTÉE et NON BRANCHÉE sur M05.** Date : 31 octobre 2026. Branche : bestiaire/b002-registre-interop ; PR #67 (brouillon). Autorités : CONTRAT_EDITORIAL.md, B-001/B-001.1/B-001.2, M03–M05.
+**État : nomenclature des six préfixes APPROUVÉE par le créateur le 31 octobre 2026 ; associations n:n et accès public NON ADOPTÉS et NON BRANCHÉS sur M05.** Date : 31 octobre 2026. Branche : bestiaire/b002-registre-interop ; PR #67 (brouillon). Autorités : CONTRAT_EDITORIAL.md, B-001/B-001.1/B-001.2, M03–M05.
 
 ## A. Identités et responsabilités
 
@@ -10,7 +10,7 @@
 - **Association** : unité relationnelle séparée ; ne porte ni pouvoirs d'espèce, ni chiffres canoniques. Une espèce documentaire peut pointer vers plusieurs prototypes mécaniques ; un profil mécanique peut pointer vers plusieurs sources avec leurs rôles différents. Aucun de ces liens n'est actuellement déclaré comme établi.
 - **M05** : documentaryLink reste le lien principal, unique et **déclaratif** dans une carte locale. Le registre relationnel n:n est extérieur au format M05 ; ne pas le substituer, ne pas modifier readDocumentaryLink ni canOfferDocumentaryLink (false).
 
-## B. Convention d'identifiants future — proposition sans autorisation
+## B. Convention d'identifiants future — préfixes approuvés, codes individuels à valider
 
 | Préfixe candidat | Nature projetée | Réserve |
 | --- | --- | --- |
@@ -21,7 +21,7 @@
 | P5C- | modèle de profil 5d6 partagé | À ne pas attribuer aux IDs de sauvegarde |
 | VARC- | variante documentée | Ne signifie pas automatiquement nouvelle espèce |
 
-Format envisagé : préfixe + suffixe stable unique réservé après validation explicite du créateur, contrôlé par registre central, avec alias d'affichage séparés. **Aucun de ces préfixes n'est adopté et aucun nouveau code n'a été émis dans B-002.**
+Format envisagé : préfixe + suffixe stable unique réservé après validation explicite du créateur, contrôlé par registre central, avec alias d'affichage séparés. **Ces six préfixes sont adoptés pour les fiches futures, mais aucun code individuel nouveau n'est attribué par B-002.** Chaque nouveau code exige une fiche cible, une source précise, une décision éditoriale explicite du créateur, une inscription dans `docs/bestiaire/B002_CODES_VALIDES.json` et des contrôles automatiques de non-collision. Une approbation de code ne transforme pas `proposition_non_jouee` en `lore_valide`, et n'autorise aucune publication. Les 11 codes `null` du registre initial demeurent inchangés.
 
 ## C. Contrat relationnel proposé (exemple non canonique)
 
@@ -72,4 +72,13 @@ Ne jamais traiter « lien non répertorié » comme « lien privé ». Pas de li
 
 Conserver les URL, fiches DRG, REV, IMP, CRE et les index existants. Proposer ultérieurement, après revue : un index central de consultation, des filtres séparés par type et par statut, un parcours espèces/individus, un index des biomes et un onglet de profils 5d6 explicitement étiquetés « adaptation ». Un panneau « source et preuve » précédera tout renvoi au jeu ; les pages à spoilers restent écartées des listes générales. Aucune migration ou publication de pages par B-002.
 
-**Décisions bloquantes :** nomenclature, résolution des homonymes, statuts des sept prototypes MJ publiés, accès au brut CB35–CB39, politique des identités mécaniques partagées et habilitation de publication. Ne pas lancer B-003 sans validation de la Direction.
+**Décisions encore ouvertes :** attribution individuelle des nouveaux codes, résolution des homonymes, statuts des sept prototypes MJ publiés, accès au brut CB35–CB39, politique des identités mécaniques partagées et habilitation de publication. Ne pas lancer B-003 sans validation de la Direction.
+
+
+## G. Décision du créateur et procédure de validation par fiche (31 octobre 2026)
+
+- **Autorisation de principe :** les préfixes `ESP-`, `FAMT-`, `INDC-`, `BIO-`, `P5C-`, `VARC-` sont désormais approuvés ; les codes historiques `DRG-`, `REV-`, `IMP-`, `CRE-`, `MAG-` et autres demeurent intouchables.
+- **Validation concrète :** avant fusion d'une nouvelle fiche codée, inscrire dans `B002_CODES_VALIDES.json` un enregistrement avec `code`, `fichier`, `nature`, `source_documentaire`, `preuve_validation_createur`, `canon_statut` et `etat_editorial`. Le contrôle CI exige une correspondance exacte entre cet enregistrement et son frontmatter, ainsi qu'une absence de collision. L'attribution n'est **pas** une canonisation ni une publication.
+- **Fiches non encore justifiées :** laisser les codes à `null` dans le registre de travail et documenter les arbitrages ; ne pas inventer une identité pour satisfaire un test.
+- **Relations n:n et accès public :** restent des propositions et sont toujours désactivés ; une approbation séparée reste nécessaire.
+- **Prototypes MJ :** préserver leur `canon_statut: proposition_non_jouee` et ne pas modifier leur publication existante sans décision spécifique.
