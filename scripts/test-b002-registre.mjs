@@ -146,7 +146,7 @@ async function allMarkdown(dir) {
 const matchedCodes=new Set(),seenNewCodes=new Set()
 for (const file of await allMarkdown('content')) {
  const source=await readFile(file,'utf8')
- const front=source.match(/^---\\r?\\n([\\s\\S]*?)\\r?\\n---/)
+ const front=source.match(/^---\r?\n([\s\S]*?)\r?\n---/)
  if(!front) continue
  const meta=YAML.parse(front[1])
  if (typeof meta?.code!=='string') continue
