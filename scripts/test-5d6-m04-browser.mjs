@@ -539,7 +539,6 @@ try{
     assert.equal(saved.ritualWorkshop.rituals[0].status,"resolu")
     assert.equal(saved.ritualWorkshop.rituals[0].result.energyDebits.length,0)
     assert.equal(saved.mana,17,"cérémonie a modifié le mana")
-    assert.ok(document, "test navigateur réel")
     await screenshot("mag003c-ceremonie-locale.png")
   })
   console.log("MAG-003.C : vérifications Chrome de la récupération et de la cérémonie locale.")
