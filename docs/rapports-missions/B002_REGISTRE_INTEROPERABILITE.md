@@ -35,7 +35,9 @@ Règles suivies : CONTRAT_EDITORIAL.md (sources CB précises, fiches à code sta
 | Références B-001 avec fichier déclaré cassé | **0** | Sur les 17 références renseignées seulement |
 | Entrées sans chemin principal | **4** | b001-018 à 021 : contrôle externe requis |
 | Relations n:n 5d6 validées | **0** | Aucune sauvegarde ou instance documentaire représentative attestée |
-| Doublons des 10 codes B-001 | **0** | Ne préjuge pas des collisions hors B-001 |
+| Doublons des 10 codes B-001 | **0** | Contrôle élargi : 195 codes de fiches distincts, zéro doublon |
+| Frontmatters cibles lus par CI | **277** | 228 avec publish:true, 120 avec spoilers:true |
+| Contrôle B-002 / liens explicites | **1 984 assertions, 0 doublon** | 1 089 liens wiki parcourus ; 0 cible explicite absente |
 
 **Livrable de snapshot :** docs/bestiaire/B002_INVENTAIRE.json. Chaque blob porte son chemin, SHA Git, taille, périmètre ; les entrées reliées à B-001 conservent nom/code/statuts du relevé historique et leur provenance. Les autres champs sont explicitement marqués « arbre et nom de fichier uniquement » ; **code_candidat_nom_fichier n'est pas un code vérifié**.
 
@@ -91,7 +93,7 @@ M05 conserve **documentaryLink principal déclaratif** dans l'extension de alric
 
 **Première CI de diagnostic :** [Actions #41268115266](https://github.com/Sijiel44/archives-alrick/actions/runs/41268115266) — échec ciblé du nouveau test en raison de C10 ; npm ci, check:content (369 pages / 269 codes publiés uniques), TypeScript, build, check:site (1 111 pages / 64 434 liens), suites M01–M05 (dont 1 390 assertions M05) et B-001.1 (1 321) avaient réussi. Le navigateur est sauté sur ce run en échec. Le test a été affiné pour signaler C10 comme exception ancienne non publiée **sans l'effacer**.
 
-**CI finale du dernier commit B-002 :** à relever et à documenter séparément avant de déclarer la mission définitivement testée. L'exécution précédente ne vaut pas preuve pour les commits nouveaux. La CI produit artifacts/b002/integrite.json et inventaire-enrichi.json si le nouveau test atteint son terme ; aucune exécution locale n'est revendiquée.
+**CI complète confirmée VERTE :** [workflow #41268362926](https://github.com/Sijiel44/archives-alrick/actions/runs/41268362926), commit **ee701034480c73c4f5d8ea3fe6354ef82ef3933f** : npm ci, npm test avec **1 984 assertions B-002**, **277 frontmatters**, **195 codes différents**, **0 code dupliqué**, **0 statut invalide non excepté**, **1 exception de brouillon historique contrôlée**, **0 protection spoiler manquante**, **1 089 liens wiki parcourus** dont **0 lien explicite absent** ; TypeScript/Quartz/site/M01–M05/B-001.1 réussis. npm run test:m04:browser a réussi **15 scénarios Chrome / 7 dialogues**. Artefacts : intégrité B-002 **#13068610066** et captures Chrome **#13068308205**. Les changements de rapport postérieurs au SHA de ce workflow ne modifient pas le code ni les tests ; vérifier la CI de tête avant fusion.
 
 ## 8. Livrables, limites et décisions de Direction
 
@@ -101,4 +103,4 @@ M05 conserve **documentaryLink principal déclaratif** dans l'extension de alric
 
 **Décisions requises du créateur et de la Direction** : (1) approuver ou rejeter les préfixes et la responsabilité du registre ; (2) arbitrer l'exposition des propositions MJ et spoilers ; (3) confirmer la méthodologie d'identification des espèces/individus/biomes ; (4) autoriser séparément toute future connexion publique, si souhaitée ; (5) fournir/vérifier les CB35–CB39 ; (6) valider la clôture B-002 avant B-003.
 
-**Statut provisoire : terminée avec réserves sous condition de CI finale verte.** La base technique existe et reste soumise à validation. **Aucune fusion automatique ; aucune mission B-003 lancée.**
+**Statut : TERMINÉE AVEC RÉSERVES — tests B-002, M01–M05 et recette Chrome confirmés verts sur le commit ee70103 ; validation éditoriale toujours requise.** La base technique existe et reste soumise à validation. **Aucune fusion automatique ; aucune mission B-003 lancée.**
