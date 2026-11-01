@@ -10,7 +10,7 @@ export type SimProfile={characterId:string;dayKey:string;level:number;rawStat:nu
 export type ActionChoice={id:string;tier:CostTier;model:"C"|"intensity"|"fixed";intensityBasis?:number}
 export type SimCast={
   id:string;type:"cast";characterId:string;dayKey:string;validation:Validation
-  action:ActionChoice;check?:{type:"m01";threshold:number;feasible:boolean;situation:number}
+  action:ActionChoice;effectLevel?:number;check?:{type:"m01";threshold:number;feasible:boolean;situation:number}
    |{type:"m03";combat:Omit<CombatM03Input,"natural"|"rawStat"|"masteryRank"|"level">}
 }
 export type ExpeditionStep=ManaOperation|SimCast
@@ -50,8 +50,14 @@ export function simulateExpedition(input:ExpeditionInput):ExpeditionOutput{
     let cost=0
     if(step.type==="cast"){
       cost=magicCost(step.action.tier,state.manaMax,step.action.model,step.action.intensityBasis)
+      const combatIntensity=step.action.model==="intensity"&&step.check?.type==="m03"
+      const effectLevelValid=Number.isInteger(step.effectLevel)&&
+        (step.effectLevel??0)>=5&&(step.effectLevel??0)<=p.level&&
+        step.action.intensityBasis===manaForMagicLevel(step.effectLevel??0)
+      const denialReason=combatIntensity&&!effectLevelValid?
+        "Intensité M03 non attestée : niveau d'effet et réserve de référence requis.":undefined
       operation={id:step.id,type:"spend",characterId:step.characterId,dayKey:step.dayKey,
-        validation:step.validation,cost,purpose:"sort:"+step.action.id}
+        validation:step.validation,cost,purpose:"sort:"+step.action.id,denialReason}
     }else operation=step
     const result=applyManaOperation(state,operation)
     const was=state.mana
@@ -78,7 +84,7 @@ export function simulateExpedition(input:ExpeditionInput):ExpeditionOutput{
         row.success=resultM01.success
       }else{
         const resultM03=resolveCombatM03({...step.check.combat,natural:row.natural,
-          rawStat:p.rawStat,masteryRank:p.masteryRank,level:p.level})
+          rawStat:p.rawStat,masteryRank:p.masteryRank,level:step.action.model==="intensity"?step.effectLevel:p.level})
         row.success=resultM03.success
         row.damageProposed=resultM03.damage // NE PAS appliquer de PV automatiquement.
       }
