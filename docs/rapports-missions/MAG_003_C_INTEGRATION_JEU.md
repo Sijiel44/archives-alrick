@@ -71,3 +71,7 @@ Voir [MAG_003_C_RECETTE.md](./MAG_003_C_RECETTE.md) pour le bilan à la tête de
 **Décisions requises DG :** adopter/rejeter le barème MAG-003.A (y compris variantes et arrondis) ; sécurité/durée des repos ; validation MAG-003.B du soutien ; contrats d'énergie/usages des matrices ; statut et conditions des pratiques exceptionnelles ; éventuel modèle de foi ; périmètre de migration des anciennes fiches ; protocoles serveur des cérémonies et jalons de déploiement.
 
 **Conclusion :** intégration locale de démonstration ; **pas de fusion main, pas de Pages, pas de canonisation**.
+
+## 7. Bilan automatisé contrôlé après l'ajout de la recette Chrome C
+
+La CI [#41324736498 — SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41324736498) sur le code `90282ea8e074730db0014be7e7598ccf4b226b73` a exécuté `npm ci`, `npm test` et `npm run test:m04:browser`, avec **44 assertions MAG-003.C**, 181 MAG-003.A, 44 MAG-003.B et **17 scénarios Chrome réussis**, dont les deux nouveaux parcours MAG-003.C (récupération confirmée, double clic, persistance, mobile émulé, cérémonie locale sans débit). Il s'agit d'un test automatisé sur Chrome, pas d'une recette humaine. La CI du commit documentaire ultérieur doit être vérifiée séparément.

@@ -85,3 +85,6 @@ Les critères techniques (moteur, scénarios, tests, rapports) sont remplis sur 
 **Arbitrages DG** : approbation des phases A/B ; grille et conditions de repos ; rôles et soutien collectif ; économie charges/énergie des matrices ; contrats de foi et d'intervention divine ; protocole serveur transactionnel avec autorisation, idempotence, `expectedRevision`, reçus et sauvegardes ; recette humaine sur plusieurs appareils et migrations historiques. **Décision de publication distincte.**
 
 **Verrou permanent : NE PAS fusionner `main`, NE PAS déployer Pages, NE PAS modifier le canon.**
+
+
+**Addendum de contrôle CI (code MAG-003.C, 1er novembre 2026).** [Run #41324736498 — SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41324736498) sur `90282ea8` : `npm ci`, `npm test` incluant 44 assertions C, 181 A, 44 B et G-001 ; `npm run test:m04:browser` : 17 scénarios Chrome réussis, notamment récupération réelle, anti-double clic, stockage rechargé, mobile émulé et cérémonie sans débit. **Ce contrôle précède les commits de rapports ; consulter la dernière CI de #71 pour le head final.**

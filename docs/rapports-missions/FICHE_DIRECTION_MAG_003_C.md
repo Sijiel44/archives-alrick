@@ -15,7 +15,7 @@ Les anciens `charges` de matrices et les Cercles ne sont pas requalifiés ; aucu
 
 ## Résultat de vérification
 
-- [CI #41324634457 — SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41324634457) : `npm ci`, `npm test` incluant MAG-003.A/B, Grimoire et MAG-003.C, ainsi que Chrome M04.1/M05 **avant** la nouvelle extension Chrome dédiée MAG-003.C.
+- [CI #41324736498 — SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41324736498) : `npm ci`, `npm test` (181 assertions A, 44 B, **44 C**, tests G-001), **17 scénarios Chrome réussis**, dont deux parcours MAG-003.C (récupération/anti-double clic/mobile et cérémonie simulée). Preuve sur le code `90282ea8`, avant actualisation documentaire.
 - La dernière CI de la PR après ajout des scénarios de récupération/mobile/cérémonie doit être consultée sur [la page Checks](https://github.com/Sijiel44/archives-alrick/pull/71/checks). Ne pas extrapoler le résultat d'un commit antérieur.
 - **Tests automatisés ≠ essais humains.** Aucune vraie partie multijoueurs ni recette sur téléphone physique.
 
