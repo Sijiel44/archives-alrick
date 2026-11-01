@@ -204,6 +204,55 @@ try{
     assert.deepEqual(a.bonuses,["Bonus effectif +7","Bonus effectif +5","Bonus effectif +5","Bonus effectif +5"])
     await screenshot("bestiary-desktop.png")
   })
+  await test("M05 : fiche essentielle Colosse N15 et absence de portrait",async()=>{
+    const data=await browserFn(()=>{
+      const r=document.querySelector("[data-m05-content]")
+      return {title:r.querySelector("h3")?.textContent,
+        raws:[...r.querySelectorAll(".m05-stat-raw")].map(e=>Number(e.textContent)),
+        bonuses:[...r.querySelectorAll(".m05-stat-bonus")].map(e=>e.textContent),
+        hp:r.querySelector(".m05-quick")?.textContent,
+        portrait:!!r.querySelector(".m05-portrait img"),
+        sections:r.querySelectorAll("details[data-m05-panel]").length}
+    })
+    assert.deepEqual(data.raws,[15,7,8,8])
+    assert.deepEqual(data.bonuses,["Bonus +7","Bonus +5","Bonus +5","Bonus +5"])
+    assert.ok(data.hp.includes("194"))
+    assert.equal(data.portrait,false)
+    assert.ok(data.sections>=7)
+    await screenshot("m05-colosse-essential.png")
+  })
+  await test("M05 : inspecteur, détails, clavier et statut documentaire",async()=>{
+    await browserFn(()=>{
+      const details=document.querySelector('[data-m05-panel="math"]')
+      details.querySelector("summary").focus()
+    })
+    await cdp("Input.dispatchKeyEvent",{type:"keyDown",key:"Enter",code:"Enter",windowsVirtualKeyCode:13})
+    await cdp("Input.dispatchKeyEvent",{type:"keyUp",key:"Enter",code:"Enter",windowsVirtualKeyCode:13})
+    await waitFor("document.querySelector('[data-m05-panel=math]')?.open===true","panneau M05 au clavier")
+    const content=await runJS("document.querySelector('[data-m05-panel=math]')?.textContent")
+    assert.ok(content.includes("7 776"))
+    assert.ok(content.includes("194"))
+    await click("[data-mode=expert]")
+    await set('[data-m05-link="id"]',"DRG-01","change")
+    await set('[data-m05-link="source"]',"Audit B-001 — non vérifié","change")
+    await click('[data-m05-panel="sources"] summary')
+    const d=await runJS("document.querySelector('[data-m05-panel=sources]')?.textContent")
+    assert.ok(d.includes("DRG-01"))
+    assert.ok(d.includes("non vérifié"))
+    assert.equal(await runJS("document.querySelector('[data-m05-content] a')===null"),true)
+  })
+  await test("M05 : impression réelle Chrome et formats",async()=>{
+    await set("[data-m05-format]","combat","change")
+    const result=await cdp("Page.printToPDF",{printBackground:true,preferCSSPageSize:true})
+    const pdf=Buffer.from(result.data,"base64")
+    assert.ok(pdf.length>5000,"PDF imprimé anormalement vide")
+    await mkdir(screenshots,{recursive:true})
+    await writeFile(path.join(screenshots,"m05-combat-print.pdf"),pdf)
+    await set("[data-m05-format]","pedagogique","change")
+    const pedagogic=await cdp("Page.printToPDF",{printBackground:true,preferCSSPageSize:true})
+    assert.ok(Buffer.from(pedagogic.data,"base64").length>5000)
+    await set("[data-m05-format]","essentielle","change")
+  })
   await test("Maîtrise et protection recalculées",async()=>{
     const before=await runJS('document.querySelector("[data-math]").textContent')
     await set("[data-mastery=lames]",21)
@@ -332,7 +381,7 @@ try{
     assert.equal(again.sheets.find(x=>x.name==="Témoin historique").legacyOriginal.uniqueHistorique,"à préserver")
     await screenshot("atelier-combat-m03.png")
   })
-  console.log("M04.1 CHROME : "+checks+" scénarios complets, "+dialogs+" dialogues de confirmation.")
+  console.log("M04.1 + M05 CHROME : "+checks+" scénarios complets, "+dialogs+" dialogues de confirmation.")
   if(failures.length){console.error("M04.1 : "+failures.length+" scénario(s) non validés :",failures);throw Error("Recette M04.1 incomplète : "+failures.join("; "))}
 }finally{
   try{ws?.close()}catch{}
