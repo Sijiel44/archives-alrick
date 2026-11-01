@@ -313,3 +313,14 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Les créatures M03 restent hors budget PJ M02, protection distincte de résistance ; fiches legacy préservées.
 # Publier uniquement les pages Jouer déjà approuvées, les propositions non jouées et le moteur client ; aucun nouveau canon ni secret MJ rendu public.
 # Après le déploiement, le workflow Pages exécute une recette Chrome SUR LE SITE PUBLIC ; ne conclure qu'après cette vérification.
+
+
+# M05 — Publication des fiches vivantes 5d6 autorisée le 31 octobre 2026
+# Accord explicite du créateur dans le chat : fusion et mise en ligne immédiate de M05, sans nouveau prompt.
+# PR #62 fusionnée dans main : d40fa7bd586bce60d9c9f97f15b6e74a3459ef73. CI main #41258208966 réussie.
+# Portée : fiches vivantes créatures/PNJ, inspecteur mathématique, guide, impression, contrats de transmission.
+# La sortie PDF a été revue et corrigée ; textes à contraste élevé et navigation masquée.
+# Aucune nouvelle espèce, aucun lore canonisé, aucune nouvelle image externe ni portrait sans droits vérifiés.
+# La PR documentaire #56 B-001 demeure distincte, ses liens publics non activés ; pas de données MJ privées publiées.
+# Limites connues : audit lecteurs d'écran/appareils physiques et droits des portraits futurs à compléter.
+# Exiger pour ce lot npm test, Chrome, déploiement Pages et smoke sur l'URL publique après deploy.
