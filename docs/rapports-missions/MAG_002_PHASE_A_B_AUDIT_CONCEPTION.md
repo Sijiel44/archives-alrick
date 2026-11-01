@@ -200,3 +200,14 @@ Une **définition d'effet** est partagée et versionnée, puis référencée san
 - [Origines](https://github.com/Sijiel44/archives-alrick/blob/main/quartz/components/scripts/atelier5d6-origins.ts) ; [Grimoire sur #55](https://github.com/Sijiel44/archives-alrick/blob/feat/grimoire-5d6-v1/quartz/components/scripts/atelier5d6-grimoire.ts).
 - [Guide de magie](https://github.com/Sijiel44/archives-alrick/blob/main/content/univers/magie-pour-jouer.md) ; [système 5d6 historique](https://github.com/Sijiel44/archives-alrick/blob/main/content/jouer/systeme-5d6-base12.md).
 - [Contrat éditorial](https://github.com/Sijiel44/archives-alrick/blob/main/CONTRAT_EDITORIAL.md) ; [fixtures Tables #66](https://github.com/Sijiel44/archives-alrick/pull/66).
+
+
+## Addendum — 1er novembre 2026 : orientation du créateur en Phase C
+
+**État : choix de direction recueilli ; formulation technique à confirmer et à tester.** Ce passage n'efface pas la comparaison historique R0/R1/R2 ci-dessus. Le créateur préfère le **coût hybride C**, les **repos courts sûrs à +20 % de la réserve (jusqu'à deux par jour)**, le **repos prolongé à +50 % par journée** et la **possibilité d'une recharge totale avec repos prolongé et prière**. Sur repos court sûr, une prière pourrait permettre **20–60 %**, selon des modalités encore à calibrer.
+
+**Proposition anti-abus pour le laboratoire :** plafonds *journaliers non cumulables* (20 % un court ; 40 % deux courts ou court avec prière structurée ; jusqu'à 60 % court en lieu favorable exceptionnel ; 50 % journée prolongée ; 100 % journée prolongée avec prière). Le jour peut comporter plusieurs phases, mais seul le plafond journalier le plus élevé s'applique au total de mana regagné. La prière court/long n'est pas un multiplicateur additionnel, les repos inachevés ne rapportent rien, et le stock ne dépasse jamais le maximum. Arrondi de simulation : partie entière inférieure de `taux × manaMax` ; convention à confirmer.
+
+**Simulation depuis 0 mana :** N5/R36 → repos court 7, deux courts 14, long sans prière 18, court rituel exceptionnel 21, long avec prière 36. N25/R306 → 61, 122, 153, 183, 306. Un personnage à 0 mana qui ne fait que des journées de repos prolongé sans prière remonte en **deux jours** (50 % + 50 %). Un seul cycle prolongé avec prière peut lui rendre 100 %. La définition de « journée », du lieu sûr, de la pratique permise pour toutes les traditions, des interruptions et des consommables doit encore être validée.
+
+Référence détaillée : `docs/rapports-missions/MAG_002_DECISIONS_A_SOUMETTRE.md` (C-01). Cette orientation **ne valide ni un changement de code, ni une règle canonique, ni une modification de G-001**.
