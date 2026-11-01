@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extraire en LOCAL et EN PRIVÉ les chapitres d'un DOCX de campagne d'Alrick.
+"""Extraire localement les chapitres d'un DOCX de campagne d'Alrick.
 
 Aucun réseau, publication, changement de canon ni commit GitHub.
 Bibliothèque standard Python 3.12+ uniquement.
@@ -58,12 +58,16 @@ def lire_docx(source):
 
 def preparer(source, session, sortie, depot_public):
     source, sortie, depot_public = source.resolve(), sortie.resolve(), depot_public.resolve()
-    if not re.fullmatch(r"CB\d{1,4}", session):
+    if not re.fullmatch(r"CB\d{1,4}(?:-\d{2})?", session):
         raise ValueError("Session attendue : CB44, CB45, etc.")
     if not source.is_file():
         raise FileNotFoundError(source)
-    if source.is_relative_to(depot_public) or sortie.is_relative_to(depot_public):
-        raise ValueError("Refus : la source et la sortie doivent rester HORS du dépôt public.")
+    autorise = depot_public / "sources" / "campagnes"
+    for chemin in (source, sortie):
+        if chemin.is_relative_to(depot_public) and not chemin.is_relative_to(autorise):
+            raise ValueError("Dans le dépôt, seules les sources/campagnes sont autorisées.")
+    if source == sortie or source.is_relative_to(sortie):
+        raise ValueError("La sortie ne doit pas contenir la source.")
     if sortie.exists() and any(sortie.iterdir()):
         raise FileExistsError("Dossier de sortie non vide : " + str(sortie))
     lignes = list(lire_docx(source))
@@ -99,13 +103,13 @@ def preparer(source, session, sortie, depot_public):
     sortie.mkdir(parents=True)
     (sortie / "chapitres").mkdir()
     with (sortie / "transcription_integrale.md").open("w", encoding="utf-8") as out:
-        out.write(f"# Transcription PRIVÉE {session}\n\nSource : {source.name}; SHA256 : {sha}\n\n")
+        out.write(f"# Transcription {session}\n\nSource : {source.name}; SHA256 : {sha}\n\n")
         for ligne in lignes:
             out.write(f"<!-- paragraphe {ligne['paragraphe']} -->\n{ligne['texte']}\n\n")
     for c in chapitres:
         with (sortie / c["fichier"]).open("w", encoding="utf-8") as out:
             out.write(f"# Chapitre {c['numero']} — {c['titre']}\n\n")
-            out.write(f"> Source privée : {session}, paragraphes {c['debut']}–{c['fin']}.\n")
+            out.write(f"> Source : {session}, paragraphes {c['debut']}–{c['fin']}.\n")
             out.write("> Transcription : ne constitue pas à elle seule le canon joué.\n\n")
             for ligne in c["_lignes"]:
                 out.write(f"<!-- paragraphe {ligne['paragraphe']} -->\n{ligne['texte']}\n\n")
@@ -147,13 +151,13 @@ def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("docx", type=Path)
     cli.add_argument("--session", required=True, help="Exemple : CB44")
-    cli.add_argument("--sortie", type=Path, required=True, help="Dossier PRIVÉ et vide hors du dépôt")
+    cli.add_argument("--sortie", type=Path, required=True, help="Dossier vide hors dépôt ou sous sources/campagnes")
     a = cli.parse_args()
     try:
         result = preparer(a.docx, a.session.upper(), a.sortie, Path(__file__).resolve().parent.parent)
     except (OSError, ValueError, ET.ParseError, zipfile.BadZipFile) as exc:
         cli.exit(2, "Erreur : " + str(exc) + "\n")
-    print(f"Import PRIVÉ {result['session']}: {result['chapitres_detectes']} chapitres, {result['tours_detectes']} tours.")
+    print(f"Import local {result['session']}: {result['chapitres_detectes']} chapitres, {result['tours_detectes']} tours.")
     print("Aucun changement GitHub, aucun fait canonique créé.")
 
 
