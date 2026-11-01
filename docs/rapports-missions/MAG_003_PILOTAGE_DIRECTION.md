@@ -182,3 +182,8 @@ MAG-003.C assure **une compatibilité préparatoire avec les Tables T-001 #66**,
 7. Conserver hors périmètre de cette consolidation les contrats créatifs non validés : énergie stockée vs usages d'objet ; foi, prières et intervention divine. Les traiter dans des dossiers d'arbitrage séparés.
 
 **Porte de sortie :** la validité expérimentale de D n'autorise ni fusion, ni publication, ni économie de foi, ni opération serveur. Toute décision ultérieure requiert les preuves techniques du nouvel arbre et une autorisation explicite du créateur et de la Direction.
+
+
+### Diagnostic ciblé de la CI G-001 #55 (journaux consultés)
+
+**Diagnostic précis du défaut G-001 #55 (CI #41267847377)** : échec de l'étape `npm run test:m04:browser` ; scénario **« G-001 : campagne v1 vers v2 avec extensions inconnues »**. Après import, l'export de campagne attendu ne crée aucun Blob et le navigateur signale **`ReferenceError: exportCampaign is not defined`** dans un gestionnaire d'événement. Les autres scénarios Chrome précédemment exécutés dans cette CI incluent des exports Bestiaire/Atelier et la migration des fiches v2→v3. **MAG-003.E doit identifier et corriger la référence manquante ou la portée de cette fonction, vérifier la migration et l'export réels, puis rerun la CI de l'arbre G-001 corrigé avant réconciliation.** [Preuve : workflow #41267847377](https://github.com/Sijiel44/archives-alrick/actions/runs/41267847377). Ne pas masquer le test ou réduire ses assertions pour faire passer la CI.
