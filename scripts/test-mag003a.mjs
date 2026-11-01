@@ -165,5 +165,19 @@ ok(compared[0].restored!==compared[1].restored,"Politiques réellement différen
 assert.throws(()=>m.importManaState('{"schema":"alrick.mana.recovery.v1"}'),"Import incomplet rejeté")
 assert.throws(()=>m.magicCost("major",36,"intensity",37),"Intensité excessive rejetée")
 assert.throws(()=>m.createManaState("a","J1",35,36),"Mana initial invalide")
+const intensityCombat={...expedition,steps:[{
+  id:"safe-intensity",type:"cast",characterId:profile.characterId,dayKey:"J1",validation:approve(),
+  action:{id:"major-controle",tier:"major",model:"intensity",intensityBasis:36},
+  effectLevel:5,check:{type:"m03",combat:{
+    situation:0,difficulty:21,kind:"magie",mode:"magie",baseDamage:3,feasible:true}}
+}]}
+const approvedIntensity=sim.simulateExpedition(intensityCombat)
+eq(approvedIntensity.rows[0].accepted,true,"Intensité réduite autorisée avec niveau d'effet cohérent")
+eq(approvedIntensity.rows[0].manaAfter,81,"Majeur utilitaire/intensité 36 : coût 9")
+const refusedIntensity=sim.simulateExpedition({...intensityCombat,steps:[
+  {...intensityCombat.steps[0],id:"unsafe-intensity",effectLevel:25}]})
+eq(refusedIntensity.rows[0].accepted,false,"Niveau d'effet plus haut que l'intensité payé refusé")
+eq(refusedIntensity.rows[0].manaAfter,90,"Aucun mana dépensé lors de fraude d'intensité")
+
 console.table(compared)
 console.log("MAG-003.A OK — "+assertions+" assertions contrôlées ; niveaux N1/N5/N10/N15/N20/N25, registres, coûts, sauvegardes, interruptions, M01 et M03.")
