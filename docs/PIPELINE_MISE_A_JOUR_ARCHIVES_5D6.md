@@ -1,10 +1,10 @@
 # Actualiser les Archives et le bestiaire de l'Atelier 5d6
 
-**But :** intégrer périodiquement les nouvelles versions de la Bible, de l'Atlas, du Compendium, du Codex, de la Maison et de la Continuité, tout en protégeant les secrets du MJ et l'Odyssée d'Orin. Le dépôt GitHub étant **public**, aucune archive privée, conversation complète, document Word/Excel ou note confidentielle ne doit y entrer.
+**But :** intégrer périodiquement les nouvelles versions de la Bible, de l'Atlas, du Compendium, du Codex, de la Maison et de la Continuité, tout en protégeant les secrets du MJ et l'Odyssée d'Orin. Le dépôt GitHub est **public** : les bruts de campagne peuvent être archivés sous `sources/campagnes/` après contrôle des droits, données personnelles et vrais secrets MJ. Les éléments réellement confidentiels restent hors du dépôt; les copies locales sont conservées. `sources/` ne fait pas partie de la publication Quartz.
 
 ## Circuit avec validation humaine (et non publication automatique)
 
-1. **Établir la source de vérité** hors dépôt public : derniers bruts CB, six volumes consolidés, index directeur, registre de recherche, codes stables et corrections explicites. Vérifier les versions et l'instant réellement joué, sans inférer des faits à partir d'une synthèse.
+1. **Établir les sources de référence**, localement ou dans `sources/` après contrôle de diffusion : derniers bruts CB, six volumes consolidés, index directeur, registre de recherche, codes stables et corrections explicites. Vérifier les versions et l'instant réellement joué, sans inférer des faits à partir d'une synthèse.
 2. **Comparer une nouvelle édition** aux fiches déjà indexées et publiées. Documenter chaque changement avec un code stable, une référence de section CB et sa nature : ajout, correction, complément, hypothèse ou projet.
 3. **Produire un manifeste privé de revue** contenant les propositions de fiches et leur visibilité. Ne pas ajouter ce manifeste à GitHub. L'exemple de schéma ci-dessous ne contient aucune information secrète.
 4. **Contrôler les candidats :** exécuter localement `node scripts/prepare-archives-review.mjs <chemin-prive/manifest.json>`. L'outil n'écrit aucun fichier public, ne publie rien et n'affiche jamais les titres ou notes des entrées bloquées. Une étiquette « candidat » **n'est pas une validation éditoriale**.
@@ -49,7 +49,8 @@ L'entrée d'exemple reste bloquée (`approvedPublic: false`). La création d'une
 | Proposition de jeu (quête, inventaire, fiche 5d6) | Espace Jouer, étiqueté « proposition non jouée » |
 | Hypothèse / interprétation incertaine | Page explicitement hypothétique, si divulgable |
 | Révélation volontairement consultable | Page `spoilers: true` et `unlisted: true` avec avertissement |
-| Vrai secret MJ ou source brute | **Hors GitHub public**, pas d'URL ni d'index |
+| Source brute autorisée | `sources/campagnes/` dans le dépôt public, hors génération Quartz ; conserver une copie locale indépendante |
+| Vrai secret MJ ou contenu non diffusable | Hors GitHub public, pas d'URL ni d'index |
 | Profil statistique inspiré d'une biographie | Adaptation de jeu fictive, jamais une statistique canonique par déduction |
 
 ## Contrôles d'acceptation de mise à jour

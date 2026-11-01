@@ -75,7 +75,7 @@ Un mini-système optionnel déjà disponible permet de jouer des Déchus ou leur
 
 ## Règles et calculs
 
-Les documents de campagne comportent déjà des usages de jets de dés, de magie, de mana et de Cercles. ****Le 5d6 / Base 12 est en test ; aucun système universel n’est encore officialisé ni appliqué rétroactivement.**n n'est pas encore formalisé ici.** Il sera extrait et validé séparément, plutôt que fabriqué comme s'il était déjà canonique.
+Les documents de campagne comportent déjà des usages de jets de dés, de magie, de mana et de Cercles. **Le 5d6 / Base 12 est expérimental** ; il ne s'applique pas rétroactivement aux séances jouées et ne constitue pas encore un système universel officialisé.
 
 ## Poursuivre
 

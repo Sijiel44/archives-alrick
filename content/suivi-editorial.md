@@ -10,7 +10,7 @@ etat_editorial: en_cours
 
 ## État actuel — Extension lore du 30 octobre 2026
 
-**259 fiches codées approuvées après les quatre grandes fiches de saison CB44 (255 auparavant).** Le répertoire publié reste distinct des outils de scénario facultatifs. Sept pages de sensibilité divine utilisent des emblèmes **créés pour les Archives**, non issus d'une tradition canonique universelle. Les six Grandes Puissances disposent de portraits de travail ; leurs rites et aventures proposés ne sont pas des scènes jouées. Trois dragons individuels ont été créés et leurs noms vérifiés **sans collision dans la recherche du dépôt**.
+**État reproductible vérifié le 31 octobre 2026 : 269 codes uniques dans les pages publiées**, calculés par `npm run check:content` (369 pages sélectionnées pour génération au total). Les anciens compteurs ci-dessous décrivent des lots successifs ; le registre directeur de 645 sujets, les pages codées publiées et les sources historiques sont des populations différentes et ne se soustraient pas mécaniquement. Le répertoire publié reste distinct des outils de scénario facultatifs.
 
 La fiche technique MAG-106 subsiste comme **repère interne**, mais l'intitulé public devient **« Une blessure disparue, un souvenir effacé »**. L'épisode est aussi documenté dans les fiches d'**Elyra, Orin et leurs Autorités**, conservées avec les protections nécessaires.
 

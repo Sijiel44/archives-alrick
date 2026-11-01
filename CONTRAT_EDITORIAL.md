@@ -9,7 +9,7 @@
 5. Une nouvelle fiche doit posséder un **code stable et unique**, un titre humain, une catégorie, un état documentaire, et ses sources. Le dossier où elle se trouve n'est pas une preuve de son statut canonique.
 6. L'IA prépare des **propositions de modifications** ; la validation éditoriale précède la publication.
 7. Le code `CB42` indique une session source ; ne pas le confondre avec une date du calendrier fictif. Les dates de fichiers ne datent pas les événements du monde.
-8. Les fiches destinées surtout au MJ peuvent être accessibles aux joueurs sur choix. Toute page avec `spoilers: true` — y compris hors de `content/mj/` — affiche d’abord un avertissement replié derrière une action explicite. Toute fiche à spoilers publiée porte aussi `unlisted: true` : elle reste accessible par son URL et ses liens éditoriaux, mais ne paraît pas dans la recherche, le sitemap ou la bibliothèque générale. Les pages de `content/mj/` restent également non répertoriées et averties. Les notes personnelles, le brut et l’inventaire de travail restent hors site et hors dépôt. Cette politique remplace celle du kit initial, conformément au projet de partage de l’univers.
+8. Les fiches destinées surtout au MJ peuvent être accessibles aux joueurs sur choix. Toute page avec `spoilers: true` — y compris hors de `content/mj/` — affiche d’abord un avertissement replié derrière une action explicite. Toute fiche à spoilers publiée porte aussi `unlisted: true` : elle reste accessible par son URL et ses liens éditoriaux, mais ne paraît pas dans la recherche, le sitemap ou la bibliothèque générale. Les pages de `content/mj/` restent également non répertoriées et averties. Les sources brutes peuvent être archivées dans GitHub après contrôle des droits, données personnelles et secrets réellement réservés au MJ ; leur présence dans `sources/` ne les publie pas sur Quartz. Les sources non autorisées ou les secrets réels restent hors du dépôt public.
 
 ## Module de Déchéance — validation de création (29 octobre 2026)
 
@@ -28,7 +28,7 @@ Pour les pages MJ `ANT-DECH-01` et `Q-DECH-01`, appliquer `spoilers: true`, `unl
 - `declaration` — affirmation d'un personnage, pas garantie que le monde l'ait démontrée ;
 - `projet_en_cours` — accord et intention, sans réalisation finale ;
 - `hypothese` — explication incertaine ou de recherche ;
-- `proposition_non_jouee` — pure suggestion éditoriale/MJ, à stocker plutôt hors `content` ;
+- `proposition_non_jouee` — création, scénario ou outil facultatif qui n'est pas un fait joué ; peut être publié dans `content/` si son statut est visible, sa diffusion approuvée et ses spoilers contrôlés ;
 - `historique` — ancienne formulation conservée pour traçabilité ;
 - `a_verifier` — insuffisamment recoupé pour devenir canon.
 
@@ -44,12 +44,21 @@ Les Archives proposent désormais quatre portes d'entrée, sans dupliquer le can
 
 Les nouvelles métadonnées sont **recommandées pour toute fiche créée ou révisée à partir de maintenant**. Elles ne sont pas exigées rétrospectivement sur toutes les fiches historiques :
 
-- `portee: "univers_partage"` ou `portee: "jdr_alrick"` : à quoi le texte appartient prioritairement ; `mixte` seulement si les parties sont clairement séparées ;
+- `portee: "univers_partage"`, `portee: "jdr_alrick"` ou `portee: "campagne_independante"` : à quoi le texte appartient prioritairement ; `mixte` seulement si les parties sont clairement séparées ;
+- `campagne_id` : identifiant stable, facultatif et propre à une campagne lorsque `portee` vaut `jdr_alrick`, `campagne_independante` ou `mixte`. Utiliser `odyssee_orin` pour la campagne fondatrice ; attribuer les autres identifiants au cas par cas. Ne pas ajouter ce champ aux fiches générales ni migrer les pages historiques en masse ;
 - `public_cible: ["lecteurs", "joueurs", "mj"]` : pour qui la fiche est utile, sans fournir d'autorisation d'accès ;
 - `usage_en_jeu: ["reference", "decouverte", "rencontre", "scenario", "chronique", "continuite", "prompt"]` : les usages proposés, indépendants de la vérité canonique ;
 - `periode` : préciser l'époque **uniquement lorsqu'elle est connue** ; ne pas déduire le calendrier fictif de la date des messages.
 
 Ces champs **ne remplacent jamais** `canon_statut`, `etat_editorial`, `source_brute`, `spoilers`, `unlisted` ou `publish`. Une page peut offrir des scénarios non joués tout en décrivant des faits canoniques, si chaque partie porte clairement son statut. Les pages généralistes peuvent pointer vers des événements de campagne avec avertissement ; elles ne doivent pas révéler implicitement les secrets dans leur titre ou leur résumé.
+
+### Les trois couches documentaires
+
+- **Univers partagé** (`portee: "univers_partage"`) : faits et lore réutilisables du monde. L'absence d'apparition en jeu n'empêche pas l'approbation canonique.
+- **Odyssée d'Orin** (`portee: "jdr_alrick"`, `campagne_id: "odyssee_orin"`) : séances, décisions et conséquences réellement jouées, plus les projets explicitement distingués. Une création nouvelle ne s'ajoute pas rétroactivement au journal.
+- **Campagnes indépendantes** (`portee: "campagne_independante"`, `campagne_id` propre) : continuité locale de chaque table. Un fait joué dans une campagne n'est pas automatiquement un fait du monde ni de l'Odyssée.
+
+Une fiche de l'univers peut être liée depuis plusieurs campagnes : ne pas la dupliquer pour chaque table. Séparer les décisions de canon, de publication et d'attestation d'un fait joué. Exemple : une cité approuvée peut être `lore_valide` sans avoir été visitée par Orin ; un scénario public et facultatif peut être `proposition_non_jouee` ; une découverte jouée dans une autre table reste liée à son `campagne_id`.
 
 ### Versions indépendantes de campagne
 
@@ -109,7 +118,7 @@ Chaque fiche à code stable porte `etat_editorial`, affiché en tête avec un po
 - `en_cours` — **jaune** : base fiable, mais mise en place, conséquences, calendrier ou détails restent en cours. Le texte doit distinguer clairement ce qui est acquis de ce qui reste à faire.
 - `en_chantier` — **rouge** : contradiction, identité, consentement, preuve ou décision de canon à reprendre. La fiche reste en brouillon et n'est pas publiée.
 
-`publish: true` autorise la mise en ligne d'une fiche verte ou jaune; le jaune doit conserver ses réserves visibles. Les propositions non jouées et les fiches rouges ne sont pas publiées. Les pages à spoilers affichent un avertissement fermé et restent non répertoriées. `visibilite` vaut `publique`, `publique_avec_avertissement`, `a_relire_avant_publication` ou `brouillon` selon l'accès choisi. Le tableau [Suivi éditorial](/suivi-editorial) fournit les liens, points à reprendre et références de source.
+`publish: true` autorise la mise en ligne d'une fiche verte ou jaune; le jaune doit conserver ses réserves visibles. Une `proposition_non_jouee` peut aussi être publiée comme scénario, aide ou outil facultatif si ce statut est explicite et la diffusion approuvée. Les fiches rouges (`en_chantier`) ne sont pas publiées. Ces décisions ne valident pas le lore et ne certifient aucun événement joué. Les pages à spoilers affichent un avertissement fermé et restent non répertoriées. `visibilite` vaut `publique`, `publique_avec_avertissement`, `a_relire_avant_publication` ou `brouillon` selon l'accès choisi. Le tableau [Suivi éditorial](/suivi-editorial) fournit les liens, points à reprendre et références de source.
 
 ## Boucle de suivi
 
@@ -167,4 +176,5 @@ Le créateur autorise la création de personnages, dragons, symboles graphiques 
 Les symboles SVG des courants sont **des repères visuels d'interface**, non des blasons cultuels universels. Les ambitions et votes des sept courants ne deviennent ni lois définitives ni personnages ennemis automatiques.
 
 **Outils proposés en ligne :** `jouer/evenements-aleatoires-failles.md` et `jouer/protocole-failles-guildes.md` (proposition_non_jouee / en_cours). Les Guildes, Heimdall, Níðor et les Grandes Puissances peuvent intervenir, sans réseau omniscient ni fermeture universelle. La Déchéance exige de véritables **Chutes liées** et pas la seule douleur des victimes. L'hypothèse d'une Faille dans le passé de deuil d'Orin n'est **pas canonisée comme événement joué**.
+
 
