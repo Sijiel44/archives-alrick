@@ -25,7 +25,7 @@ Corps trapu, toison gris-or et bandes sombres ; ailes translucides. Dimensions, 
 - **Pouvoir surnaturel attesté :** aucun ; **aucun pouvoir nouveau proposé**.
 
 ## 6. Réseau trophique
-Producteur végétal → pollinisateur → oiseau et chauve-souris (hypothèse). **Interactions proposées** pour cohérence écologique, et non observations établies dans l'Odyssée.
+Fleurs et nectar → bourdon → oiseaux insectivores / araignées (hypothèse). **Interactions proposées** pour cohérence écologique, et non observations établies dans l'Odyssée.
 
 ## 7. En jeu — scène non violente non jouée
 Un village cherche pourquoi les floraisons ne donnent plus de fruits ; enquête sur les coupes et les pratiques agricoles.
