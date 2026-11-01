@@ -1,29 +1,30 @@
-# ARCHIVES D'ALRICK — FICHE DE DIRECTION B-003 (LOTS I, II ET III)
+# ARCHIVES D'ALRICK — RAPPORT DE MISSION POUR LA DIRECTION
 
-**Mission :** B-003 — Faune et écosystèmes des Montagnes de l'Aube. **Référent :** Zoologie fantastique et écologie montagnarde. **Date :** 1er novembre 2026. **Dépôt :** `Sijiel44/archives-alrick`. **Branche :** `bestiaire/b003-montagnes-aube`. **PR :** [#73, brouillon](https://github.com/Sijiel44/archives-alrick/pull/73). **Statut : TERMINÉE AVEC RÉSERVES — attente de validation du créateur.**
+**Mission :** B-003 — Faune et écosystèmes des Montagnes de l'Aube. **Date :** 1er novembre 2026. **Référent :** écologie et bestiaire documentaire. **Dépôt :** `Sijiel44/archives-alrick`. **Branche :** `bestiaire/b003-montagnes-aube`. **PR :** [#73 (brouillon)](https://github.com/Sijiel44/archives-alrick/pull/73). **Statut : TERMINÉE AVEC RÉSERVES — POUR REVUE DU RESPONSABLE BESTIAIRE.**
 
-## Bilan cumulé de conception
+## Résultats et avancement cumulé
 
-| Indicateur | Bilan |
+| Domaine | Résultat |
 |---|---|
-| Nouvelles espèces proposées | **36** : 12 par lot P01–P12, P13–P24, P25–P36 |
-| Espèces régionales déjà canoniques confirmées par B-002 | **0 identifiée** dans l'audit ; 3 prototypes historiques **réutilisés sans duplication** |
-| Habitats et réseau écologique | **9** classes H1–H9 et **3 matrices 12 × 9**, réseaux aliment → consommateur, saisons et impacts agriculture, eau, routes, galeries, mines |
-| Formes évolutives | **9 espèces à formes conditionnelles** : 4 dans le lot II, 5 dans le lot III ; évolution = biologie/histoire + validation, jamais mutation automatique liée à l'XP |
-| 5d6 et publications | **31 archétypes possibles `faune`, 4 `predateur`, 1 microfaune sans profil de combat** ; **0 niveau canonique, 0 profil chiffré, 0 code ESP/BIO/VARC/P5C**, 0 publication |
-
-## Troisième lot — P25 à P36
-
-**Faune diversifiée :** cicadelle des herbes givrées, pic des écorces bleues, musaraigne des mousses froides, sanglier des vallons, couleuvre des rives, loutre des eaux vives, héron des bassins, tardigrade des lichens, fourmi des dalles tièdes, filtreuse de Nacrecombe, siffloroc des cimes, échopode des galeries.
-
-**Cinq évolutions conditionnelles :** Sanglier *Vieille-défense / Chef-de-vallon* ; Loutre *Passe-cascade / Maître des rives* ; Filtreuse *Veinée de Nacre / Ancienne-Valve* ; Siffloroc *Cornet des crêtes / Grand-Carillon* ; Échopode *Antennaire des seuils / Veilleur de pierre*. Repères proposés N10–14 et N15–19 ; aucun nouveau pouvoir ni bonus automatique. Les autres espèces restent majoritairement ordinaires ; le tardigrade est **hors combat M03**.
+| Catalogue | **41 nouvelles propositions non canoniques** sur quatre lots : P01–P12, P13–P24, P25–P36 et P37–P41 |
+| Dernier lot IV | **5 créatures rares** : Chamoine de Verrelune, Nacrevole des profondeurs, Tisse-Aurore des cols, Huppe des échos bleus, Garde-Braise des fumerolles froides |
+| Documentation | **9 habitats de travail H1–H9** ; quatre matrices trophiques/habitats (12×9, 12×9, 12×9, 5×9), limites écologiques et relations aux peuples |
+| Illustration | **5 planches associées**, livrées en fichier Word illustré + archive ZIP ; binaires **pas encore déposés sur GitHub**, aucun lien brisé créé |
+| Profils 5d6 | 36 pistes `faune`, 4 `predateur`, 1 microfaune hors combat ; **0 profil chiffré** et **0 nouvelle capacité implémentée** |
+| Niveaux et évolutions | **9** propositions antérieures avec des formes conditionnelles, **0 ajoutées au lot IV** ; aucun niveau d'espèce imposé |
+| Validation | **0 espèce canonisée**, **0 code ESP/BIO/VARC/P5C**, **0 publication** ; 3 prototypes déjà documentés non dupliqués |
 
 ## Vérifications et réserves
 
-**Contrôles prévus :** 12 fiches P25–P36 avec sections du gabarit, noms distincts des lots I–II et prototypes ; cohérence avec les Atlas dérivés GEO-001, GEO-009/010/012/013, registres B-001/B-002 et contrats 5d6 ; aucun fichier `content/` ni moteur M03 modifié. **CI de la tête à confirmer sur le dernier commit**. Les volumes originaux Bible/Atlas/Compendium/Codex et campagnes brutes ne sont pas relus intégralement ; aucun playtest humain ni profil numérique M03 ne valide les créatures.
+L'Atlas dérivé GEO-001, GEO-009, GEO-010, GEO-012 et GEO-013 étaye les **lieux**, mais pas l'existence des espèces inventées. Les registres B-001/B-002, gabarits et principes M03/M05 sont respectés. Les six volumes originaux et les bruts restent à relire entièrement pour une adoption officielle ; aucune rencontre n'a été jouée, aucun playtest humain ni profil de combat validé. Les images sont des références de direction artistique ; leur texte n'a pas valeur d'autorité canonique. La CI GitHub doit être vérifiée sur la nouvelle tête.
 
-**Décisions requises :** confirmer ou refuser individuellement les nouvelles créatures, habitats, co-présences et formes ; choisir des scénarios et niveaux de PJ pour d'éventuels profils 5d6 ; autoriser séparément code et publication après relecture des sources originales.
+## Questions à trancher avant B-004
 
-**Rapports permanents :** `docs/rapports-missions/B003_ECOSYSTEME_MONTAGNES_AUBE.md` et `FICHE_DIRECTION_B003.md`. Détails : `docs/bestiaire/B003_LOT_03_SYNTHESE_EVOLUTIONS.md`.
+1. **Conserver, corriger ou refuser chaque espèce P01–P41** ; vérifier doublons, biomes, alimentation, rareté et liens aux autres créatures.
+2. **Approuver les cinq illustrations P37–P41** et leur intégration binaire sur GitHub ; décider de leur statut graphique, droits et éventuelle publication.
+3. **Réconcilier avec les sources primaires** V01–V06 et les campagnes brutes ; attribuer les codes permanents **individuellement** avec preuve de validation.
+4. Fixer le périmètre, les prérequis, les tests et l'autorisation de la **future mission B-004**.
 
-**Sortie :** **PR #73 reste en brouillon. Ne pas fusionner, canoniser, publier ni lancer B-004 sans retour de Direction.**
+**Recommandation :** conserver [la PR #73](https://github.com/Sijiel44/archives-alrick/pull/73) en brouillon. **Ne pas fusionner, ne pas publier et ne pas commencer B-004 avant décision du responsable et de la Direction.**
+
+**Livrables :** `docs/bestiaire/B003_FICHES/P01_…P41_`, `docs/bestiaire/B003_LOT_04_FAUNE_EXCEPTIONNELLE.md`, `docs/rapports-missions/B003_ECOSYSTEME_MONTAGNES_AUBE.md`, `docs/rapports-missions/FICHE_DIRECTION_B003.md` ; dossier Word illustré et archive des visuels remis avec ce rapport.

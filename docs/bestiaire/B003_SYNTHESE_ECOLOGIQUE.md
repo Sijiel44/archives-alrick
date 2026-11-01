@@ -108,3 +108,8 @@ Le texte précédent décrit **le premier lot P01–P12**. Le second lot P13–P
 ## Addendum B-003 — Troisième lot P25–P36
 
 Cette synthèse décrit principalement le **lot I** ; le lot II figure dans `B003_LOT_02_SYNTHESE_EVOLUTIONS.md` et le **lot III** dans `B003_LOT_03_SYNTHESE_EVOLUTIONS.md`. **Total en cours : 36 propositions non jouées et non canoniques**, 3 prototypes déjà documentés réutilisés sans duplication, **9 habitats internes H1–H9**, trois matrices de 12 × 9, **9 espèces ayant des formes d'évolution conditionnelles**, aucune attribution `ESP-`, `VARC-`, `BIO-`, `P5C-` et aucun niveau canonique.
+
+
+## Addendum B-003 : lot IV des cinq espèces rares
+
+Les nouvelles fiches **P37–P41** et leur matrice **5×9** sont décrites dans `docs/bestiaire/B003_LOT_04_FAUNE_EXCEPTIONNELLE.md`. Le total de B-003 est désormais **41 propositions non canoniques** réparties en quatre lots ; aucune nouvelle espèce publiée. Ne pas confondre ce nouveau lot avec la proposition antérieure d'ajouter douze créatures ordinaires supplémentaires : les **cinq espèces exceptionnelles** constituent la livraison explicitement souhaitée en dernier lieu.

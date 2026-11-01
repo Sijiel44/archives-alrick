@@ -1,6 +1,6 @@
 # B-003 — Fiches de travail non publiées
 
-**État initial du lot I : 12 propositions ; état courant après lot III : 36 propositions P01–P36, aucune canonisée, aucun code ESP attribué.** Ce dossier est hors de `content/`, donc hors pages Quartz. Les identifiants `P01`–`P12` sont exclusivement des repères de mission.
+**État initial du lot I : 12 propositions ; état courant après lot IV : 41 propositions P01–P41, aucune canonisée, aucun code ESP attribué.** Ce dossier est hors de `content/`, donc hors pages Quartz. Les identifiants `P01`–`P12` sont exclusivement des repères de mission.
 
 | Repère | Proposition | Rôle |
 |---|---|---|
@@ -57,4 +57,16 @@ Voir [synthèse du lot II](../B003_LOT_02_SYNTHESE_EVOLUTIONS.md). Le total de l
 | P35 | Siffloroc des cimes | Cornet des crêtes → Grand-Carillon |
 | P36 | Échopode des galeries | Antennaire des seuils → Veilleur de pierre |
 
-**État courant :** 36 nouvelles propositions, **9 espèces avec formes individuelles conditionnelles** sur les trois lots, **0 canonisation, 0 code permanent**, **0 nouvelle règle M03**. Lire [la synthèse du lot III](../B003_LOT_03_SYNTHESE_EVOLUTIONS.md). Le texte des lots I et II ci-dessus est conservé comme historique de création, pas comme total actuel.
+**État historique du lot III :** 36 nouvelles propositions, **9 espèces avec formes individuelles conditionnelles** sur les trois lots, **0 canonisation, 0 code permanent**, **0 nouvelle règle M03**. Lire [la synthèse du lot III](../B003_LOT_03_SYNTHESE_EVOLUTIONS.md). Le texte des lots I et II ci-dessus est conservé comme historique de création, pas comme total actuel.
+
+## Lot IV — P37–P41, créatures rares et exceptionnelles
+
+| ID | Créature | Illustration associée (dossier illustré local) | État |
+|---|---|---|---|
+| P37 | Chamoine de Verrelune | `P37_chamoine_de_verrelune.jpg` | `proposition_non_jouee`, sans code `ESP-` |
+| P38 | Nacrevole des profondeurs | `P38_nacrevole_des_profondeurs.jpg` | `proposition_non_jouee`, sans code `ESP-` |
+| P39 | Tisse-Aurore des cols | `P39_tisse_aurore_des_cols.jpg` | `proposition_non_jouee`, sans code `ESP-` |
+| P40 | Huppe des échos bleus | `P40_huppe_des_echos_bleus.jpg` | `proposition_non_jouee`, sans code `ESP-` |
+| P41 | Garde-Braise des fumerolles froides | `P41_garde_braise_des_fumerolles_froides.jpg` | `proposition_non_jouee`, sans code `ESP-` |
+
+**Total actuel : 41 espèces proposées, 0 adoptée.** Détails écologiques dans `docs/bestiaire/B003_LOT_04_FAUNE_EXCEPTIONNELLE.md`. Images embarquées dans le Word et ZIP remis avec le rapport ; **pas encore de binaires image sur la branche GitHub**, donc **pas de liens d'image Markdown cassés**. La PR demeure en brouillon.

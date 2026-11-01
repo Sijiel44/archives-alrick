@@ -157,3 +157,20 @@ La Direction de conception a demandé **douze nouvelles fiches**, selon les mêm
 **Justification des cinq formes conditionnelles nouvelles :** P28 Sanglier (*Vieille-défense / Chef-de-vallon*) ; P30 Loutre (*Passe-cascade / Maître des rives*) ; P34 Filtreuse (*Veinée de Nacre / Ancienne-Valve*) ; P35 Siffloroc (*Cornet des crêtes / Grand-Carillon*) ; P36 Échopode (*Antennaire des seuils / Veilleur de pierre*). Certains noms désignent davantage une spécialisation acquise qu'une modification anatomique. Ils ne sont **ni des lignées validées, ni des codes VARC, ni des compétences mécaniques**. Le tardigrade microscopique P32 n'est pas adapté au profil de combat M03.
 
 **Arbitrages :** valider l'existence et la localisation des espèces une par une, relire les sources brutes avant une décision de canon, trancher les formes narratives, définir un scénario d'essai pour profils M03, attribuer les codes seulement après consentement du créateur. CI et SHA du nouveau lot à ajouter après contrôle. **PR #73 demeure en brouillon, sans fusion/publication ; B-004 non engagé.**
+
+
+## 10. Lot IV — cinq créatures exceptionnelles illustrées (P37–P41)
+
+**Date :** 1er novembre 2026. **Commande :** cinq espèces plus fantastiques dans leur apparence, exceptionnellement observées mais pas nécessairement dangereuses, sans développement mécanique centré sur la montée en niveau, suivant **le protocole naturaliste B-003 d'origine**. Ce lot remplace l'idée d'un quatrième paquet de douze animaux ordinaires ; les P37–P41 ne sont pas des variantes supplémentaires des P25–P36.
+
+**Nouvelles fiches :** Chamoine de Verrelune (P37, corniches), Nacrevole des profondeurs (P38, lac de Nacrecombe), Tisse-Aurore des cols (P39, hautes prairies), Huppe des échos bleus (P40, ravins des eaux glaciaires), Garde-Braise des fumerolles froides (P41, roches refroidies de Forgeciel). Les neuf rubriques de chaque fiche couvrent identité, morphologie, habitat/ressources, régime, comportement/reproduction/saisons, capacités/limites et cohabitation, réseau trophique, scène JDR pacifique, preuves/sources, statut et illustration.
+
+**Sources revérifiées :** `GEO-001/009/010/012/013` (socles de géographie seulement), modèle `creature-espece.md`, conventions et liste d'attributions B-002, catalogues P01–P36, systèmes M03 et M05. Les originaux privés V01–V06 et les bruts restent à relire avant tout code permanent.
+
+**Écologie/réserve :** pas de magie automatique, pas de dragon, pas de prophétie réellement fiable, pas de tolérance à la lave ; les cinq animaux ont besoins alimentaires, vulnérabilités et reproduction. Leur rareté repose sur fenêtre de temps/habitat/comportement, pas sur le chiffre du niveau 5d6. Pas d'identification de population jouée.
+
+**Illustrations :** cinq planches graphiques fournies par le créateur et associées à P37–P41. Un doublon identique de P41 a été supprimé. Les fichiers sont **embarqués dans les fiches Word et livrés avec les Markdown dans une archive ZIP**. L'API GitHub de cette exécution n'a pas permis d'envoyer les fichiers binaires locaux ; **aucun fichier image n'est ajouté ni faussement déclaré publié dans la PR**. Le document GitHub mentionne leurs noms attendus et les conditions de dépôt.
+
+**Bilan cumulatif :** **41 propositions** (12 + 12 + 12 + 5) ; **9 habitats H1–H9** ; **4 matrices** (12×9 trois fois et 5×9 une fois) ; **9 espèces des lots II/III avec pistes d'évolution facultatives**, **0 supplémentaire dans le lot IV** ; **36 archétypes indicatifs `faune`, 4 `predateur`, 1 microfaune sans profil M03** ; **0 profil chiffré**, **0 ESP/BIO/VARC/P5C attribué**, **0 publication**. Trois prototypes historiques maintenus hors décompte.
+
+**Décision pour B-004 :** demander au responsable du Bestiaire une revue des 41 créations et cinq illustrations, valider les sources primaires et les habitats, les codes individuels, l'hébergement des images, la publication et le périmètre de B-004. **Cette livraison ne déclenche pas B-004.** CI du nouveau commit à vérifier.
