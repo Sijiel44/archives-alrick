@@ -49,4 +49,6 @@ Les changements postérieurs à la sauvegarde sont évidemment annulés. Un JSON
 
 `npm run tables:test` : cinq niveaux 5, 10, 15, 20 et 25, rangs/caractéristiques >12, régression +6, effets des naturels, parité M01/M03, session MJ+2 WebSocket, permissions interdites, jet secret, déduplication/rejeu, conflit de révision, reconnexion et restauration. `npm test` inclut cette suite ; `npm run test:m04:browser` vérifie le navigateur **de l'Atelier M04**, pas la table sur trois navigateurs.
 
-**Non couverts** : trois vrais navigateurs en parallèle (manuel), fichiers d'utilisateurs historiques, import complet, service Internet, sauvegarde fsync et audit sécurité de production. Pilote strictement sur `127.0.0.1` HTTP/WS clair, sans déploiement, canon ni fusion automatique.
+**Recette Chrome automatisée réalisée :** `npm run tables:browser` lance trois profils Chromium distincts (MJ + 2 joueurs) sur un véritable serveur local, teste inscriptions, approbations, jet partagé, confidentialité de la note MJ et reconnexion. CI [#41265911468](https://github.com/Sijiel44/archives-alrick/actions/runs/41265911468) verte avec `npm test`, `npm run test:m04:browser` et `npm run tables:browser`.
+
+**Non couverts** : recette humaine sur trois appareils, fichiers d'utilisateurs historiques, import complet, service Internet, durabilité `fsync` et audit de sécurité de production. Pilote strictement sur `127.0.0.1` HTTP/WS clair, sans déploiement, canon ni fusion automatique.
