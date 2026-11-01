@@ -14,7 +14,7 @@ L'importeur de #35 accepte les dossiers autorisés sous `sources/campagnes/`, le
 
 ## Vérifications
 
-Cinq tests Python synthétiques réussis : extraction, SHA-256, chemins, chapitres et recherche UTF-8. `npm test` et `git diff --check` réussis sur la base historique de #35. CI initiale réussie : https://github.com/Sijiel44/archives-alrick/actions/runs/41264298565. Le test de recherche a ensuite été ajouté à la CI ; consulter les contrôles de la dernière révision de #64.
+Cinq tests Python synthétiques réussis : extraction, SHA-256, chemins, chapitres et recherche UTF-8. `npm test` et `git diff --check` réussis sur la base historique de #35. CI initiale réussie : https://github.com/Sijiel44/archives-alrick/actions/runs/41264298565. Le test de recherche a ensuite été intégré à la CI via `test_*campagne.py`. La [nouvelle CI #41264847644](https://github.com/Sijiel44/archives-alrick/actions/runs/41264847644) est **réussie** : ses logs attestent cinq tests Python, dont `test_reference_code_chapitre_utf8`, et `npm test` réussi. Cette CI ne vérifie pas l'import des quinze fichiers réels.
 
 ## Réserves
 
