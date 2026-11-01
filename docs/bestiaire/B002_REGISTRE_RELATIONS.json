@@ -3,8 +3,8 @@
   "version": "2026-10-31",
   "source_commit": "4ce058b6b18d553de36dbea356e968757efad71c",
   "autorite": "CONTRAT_EDITORIAL.md",
-  "adoption_nomenclature": "non_approuvee",
-  "note": "Codes historiques inchanges; cles b001-... sont des cles techniques de registre, non des codes canoniques. Aucune relation espece-individu nouvelle n'est validee automatiquement.",
+  "adoption_nomenclature": "approuvee_par_createur_2026_10_31",
+  "note": "Codes historiques inchanges; cles b001-... sont des cles techniques de registre, non des codes canoniques. Aucune relation espece-individu nouvelle n'est validee automatiquement. Les six nouveaux préfixes sont adoptés pour les futures fiches, mais chaque attribution reste soumise à validation explicite fiche par fiche ; aucune des onze valeurs nulles n'est comblée automatiquement.",
   "identites": [
     {
       "cle_registre": "b001-001",
@@ -510,5 +510,6 @@
       "b001-020",
       "b001-021"
     ]
-  }
+  },
+  "registre_attribution_codes": "docs/bestiaire/B002_CODES_VALIDES.json"
 }
