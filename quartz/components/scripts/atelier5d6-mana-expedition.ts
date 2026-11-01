@@ -84,7 +84,7 @@ export function simulateExpedition(input:ExpeditionInput):ExpeditionOutput{
         row.success=resultM01.success
       }else{
         const resultM03=resolveCombatM03({...step.check.combat,natural:row.natural,
-          rawStat:p.rawStat,masteryRank:p.masteryRank,level:step.action.model==="intensity"?step.effectLevel:p.level})
+          rawStat:p.rawStat,masteryRank:p.masteryRank,level:step.action.model==="intensity"?(step.effectLevel??p.level):p.level})
         row.success=resultM03.success
         row.damageProposed=resultM03.damage // NE PAS appliquer de PV automatiquement.
       }
