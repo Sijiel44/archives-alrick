@@ -45,12 +45,23 @@ class ImportPriveTest(unittest.TestCase):
             self.assertTrue((sortie / "index_chapitres.csv").exists())
             self.assertIn("Une action libre", (sortie / "transcription_integrale.md").read_text())
 
+    def test_depot_sources_autorise_et_sha(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            source = root / "CB03-01.docx"
+            docx_test(source)
+            sortie = root / "depot" / "sources" / "campagnes" / "CB03-01"
+            data = imp.preparer(source, "CB03-01", sortie, root / "depot")
+            self.assertEqual(data["sha256_original"], hashlib.sha256(source.read_bytes()).hexdigest())
+            self.assertTrue((sortie / "transcription_integrale.md").exists())
+
     def test_sortie_dans_depot_public_refusee(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             source = root / "CB44.docx"
             docx_test(source)
-            with self.assertRaisesRegex(ValueError, "HORS du dépôt public"):
+            with self.assertRaisesRegex(ValueError, "sources/campagnes"):
                 imp.preparer(source, "CB44", SCRIPT.parent.parent / "test-sortie", SCRIPT.parent.parent)
 
     def test_source_dans_depot_public_refusee(self):
@@ -58,7 +69,7 @@ class ImportPriveTest(unittest.TestCase):
             root = Path(folder)
             source = root / "CB44.docx"
             docx_test(source)
-            with self.assertRaisesRegex(ValueError, "HORS du dépôt public"):
+            with self.assertRaisesRegex(ValueError, "sources/campagnes"):
                 imp.preparer(source, "CB44", root / "index", root)
 
 
