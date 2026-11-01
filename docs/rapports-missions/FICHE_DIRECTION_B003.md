@@ -21,7 +21,7 @@
 
 Les sources présentes dans Git ont été confrontées : GEO-001, GEO-009/010/012/013, Atlas dérivé, B-001/B-002, gabarits, contrat éditorial, bestiaire existant, échelle 1–25 et contrats M03–M05. La géographie établie a été séparée des extrapolations : **ne pas attribuer à la montagne les bovins du Relais des Hautes-Pâtures, dont la région n'est pas fixée** ; ne pas transformer dragons et compagnons particuliers en espèces sauvages. Les nouveaux documents sont dans `docs/bestiaire/B003_FICHES/` et `docs/bestiaire/B003_SYNTHESE_ECOLOGIQUE.md`, hors publication Quartz ; aucun `content/`, M03, M05, registre ou image modifié.
 
-**Réserves :** les volumes originaux Bible/Atlas/Compendium/Codex et les bruts ne sont pas intégralement disponibles dans l'arbre Git ; leurs passages doivent être relus avant adoption. Aucun test de combat 5d6 numérique ni playtest humain n'a été exécuté, faute de rencontre/niveau définis. La CI de la tête PR doit être vérifiée indépendamment ; ne pas annoncer de réussite non contrôlée.
+**Réserves :** les volumes originaux Bible/Atlas/Compendium/Codex et les bruts ne sont pas intégralement disponibles dans l'arbre Git ; leurs passages doivent être relus avant adoption. Aucun test de combat 5d6 numérique ni playtest humain n'a été exécuté, faute de rencontre/niveau définis. **CI confirmée VERTE** : [Actions #41328571151](https://github.com/Sijiel44/archives-alrick/actions/runs/41328571151) sur le commit [ff14df60](https://github.com/Sijiel44/archives-alrick/commit/ff14df60eec319b3d79cc281fd53762d52820315), job contenu/TypeScript/build/liens. Les contrôles automatiques ne constituent ni playtest ni approbation zoologique. Les rapports mis à jour ensuite ont leur propre commit, à contrôler distinctement.
 
 ## Arbitrages requis
 

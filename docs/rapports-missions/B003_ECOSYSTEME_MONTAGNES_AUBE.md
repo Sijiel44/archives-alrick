@@ -7,7 +7,7 @@
 **Branche :** `bestiaire/b003-montagnes-aube`  
 **PR :** [#73, brouillon](https://github.com/Sijiel44/archives-alrick/pull/73) — **non fusionnée**, aucune canonisation, aucune publication  
 **Premier commit documentaire :** [`5ea2dbf9291ca477c77fa920cce37ab429a0857e`](https://github.com/Sijiel44/archives-alrick/commit/5ea2dbf9291ca477c77fa920cce37ab429a0857e). La tête finale de PR après ajout des rapports est à relever dans GitHub.  
-**Statut :** **TERMINÉE AVEC RÉSERVES — PROPOSITIONS SOUMISES À LA DIRECTION** ; étude documentaire seulement, aucune validation biologique/éditoriale ou playtest humain.
+**Statut :** **TERMINÉE AVEC RÉSERVES — PROPOSITIONS SOUMISES À LA DIRECTION** ; CI GitHub verte sur le commit ff14df60, étude documentaire seulement, aucune validation biologique/éditoriale ni playtest humain.
 
 ## 1. Dépendance, méthode et gouvernance
 
@@ -92,3 +92,9 @@ Les 12 fiches distinctes documentent identité et classification, morphologie, h
 5. Fixer les besoins réels de profils 5d6 (niveau, rencontre, objectif, équipe et terrain) avant de calculer quoi que ce soit. Décider des droits et illustrations éventuelles.
 
 **Décision attendue :** examen éditorial de la PR #73, maintien en brouillon, **pas de fusion/publication/canonisation automatique**. **B-004 ne démarre pas avant un retour explicite de la Direction.**
+
+## 7. Preuve CI de la version des fiches et rapports
+
+**Workflow GitHub Actions [#41328571151](https://github.com/Sijiel44/archives-alrick/actions/runs/41328571151) : SUCCÈS sur le commit [`ff14df60eec319b3d79cc281fd53762d52820315`](https://github.com/Sijiel44/archives-alrick/commit/ff14df60eec319b3d79cc281fd53762d52820315)**, job « Contenu, TypeScript, build et liens ». La PR #73 contient **16 nouveaux fichiers** sous `docs/` et aucun changement sous `content/` ; vérification GitHub des chemins et du diff sur cette version. Le workflow précédent #41328373760 a également réussi sur le premier lot `5ea2dbf` ; une exécution intermédiaire a été annulée suite aux mises à jour successives.
+
+**Portée de cette preuve :** la réussite atteste les contrôles automatisés configurés dans le dépôt, pas un playtest humain ni la validité zoologique, la conformité aux originaux privés ou l'acceptation canonique. Le présent addendum ne modifie que des rapports ; son propre commit sera distinct de `ff14df60` et la CI de sa tête devra être vérifiée séparément si exigée avant revue/fusion. Aucune fusion n'est demandée.
