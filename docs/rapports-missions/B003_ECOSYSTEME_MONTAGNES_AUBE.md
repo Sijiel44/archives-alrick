@@ -132,3 +132,28 @@ La Direction de conception a demandé **douze nouvelles fiches**, selon les mêm
 - **CI GitHub Actions :** [#41331462555, SUCCÈS](https://github.com/Sijiel44/archives-alrick/actions/runs/41331462555), job « Contenu, TypeScript, build et liens » terminé avec succès.
 - **Audit complémentaire par lecture GitHub :** 12/12 nouvelles fiches contiennent les 9 sections attendues, `proposition_non_jouee`, `publish: false`, et ne revendiquent aucun code ESP ; les 4 formes conditionnelles concernent P21–P24 uniquement ; 24 fiches P01–P24 au total ; 29 ajouts nouveaux dans la PR #73, tous sous `docs/` (les fichiers préexistants restent inchangés hors rapports et deux index de synthèse).
 - **Limite des preuves :** la CI ne vaut ni validation des originaux ni playtest humain et ne canonise rien. L'ajout du présent paragraphe modifie seulement les rapports ; vérifier également le check du commit de clôture avant toute revue de fusion.
+
+## 9. B-003 — Troisième lot P25–P36 : extension documentaire sans canonisation
+
+**Date :** 1er novembre 2026, Québec. **Demande :** douze espèces supplémentaires selon le même modèle, sans lancer B-004. **Sources contrôlées :** catalogue P01–P24 et prototypes, registre B-002, `CONTRAT_EDITORIAL.md`, modèle `creature-espece.md`, Atlas dérivé GEO-001/009/010/012/013, échelle 1–25. Aucune relecture intégrale des originaux privés ni des bruts revendiquée.
+
+### Livraisons
+- **12 fiches nouvelles P25–P36** sous `docs/bestiaire/B003_FICHES/`, avec identité, morphologie, habitat, alimentation, reproduction, comportement, adaptations, limitations, liens trophiques, impact sur peuples, scène non violente, sources/invention, statut et évolution 5d6 éventuelle.
+- `docs/bestiaire/B003_LOT_03_SYNTHESE_EVOLUTIONS.md` : **matrice 12 × 9**, chaîne alimentaire, saisons, effets locaux, conditions d'évolution et arbitrages.
+- Index de fiches, synthèse B-003, rapport de mission et fiche Direction mis à jour, sans effacer les versions de lots I–II.
+
+### Bilan cumulé après le lot III
+
+| Contrôle | Résultat / preuve | Limite |
+|---|---|---|
+| Propositions nouvelles | **36 (P01–P36)** ; 12 nouvelles du lot III | **0** nouvelle espèce confirmée en campagne |
+| Références anciennes préservées | 3 prototypes réutilisés : Cerf des Brumes froides, Chasses-Faim, Lamproie de nacre | Aucune implantation locale approuvée |
+| Habitats de travail | **9** classes H1–H9, **3 matrices 12 × 9** | Pas de BIO canonique, pas de carte d'habitat exacte |
+| Formes individuelles conditionnelles | **9 espèces au total : 4 du lot II + 5 du lot III** | Niveaux N10–14 et N15–19 = repères facultatifs, aucune mutation automatique |
+| Archétypes indicatifs cumulés | **31 `faune`, 4 `predateur`, 1 microfaune sans profil de combat** | Aucun profil 5d6 généré, aucun niveau canonique |
+| Espèces dominantes ou magiques inventées | Aucune ; herbacés, insectivores, détritivores, herbivores, prédateurs intermédiaires | Pas de magie, pas d'immunité au feu, pas de Déchéance attribuée |
+| Code permanent, publication, images | **0** `ESP/BIO/VARC/P5C` attribué, 0 nouvelle page `content/`, 0 nouvelle image | B-002 garde l'autorité documentaire |
+
+**Justification des cinq formes conditionnelles nouvelles :** P28 Sanglier (*Vieille-défense / Chef-de-vallon*) ; P30 Loutre (*Passe-cascade / Maître des rives*) ; P34 Filtreuse (*Veinée de Nacre / Ancienne-Valve*) ; P35 Siffloroc (*Cornet des crêtes / Grand-Carillon*) ; P36 Échopode (*Antennaire des seuils / Veilleur de pierre*). Certains noms désignent davantage une spécialisation acquise qu'une modification anatomique. Ils ne sont **ni des lignées validées, ni des codes VARC, ni des compétences mécaniques**. Le tardigrade microscopique P32 n'est pas adapté au profil de combat M03.
+
+**Arbitrages :** valider l'existence et la localisation des espèces une par une, relire les sources brutes avant une décision de canon, trancher les formes narratives, définir un scénario d'essai pour profils M03, attribuer les codes seulement après consentement du créateur. CI et SHA du nouveau lot à ajouter après contrôle. **PR #73 demeure en brouillon, sans fusion/publication ; B-004 non engagé.**

@@ -1,6 +1,6 @@
 # B-003 — Fiches de travail non publiées
 
-**12 nouvelles propositions, aucune canonisée, aucun code ESP attribué.** Ce dossier est hors de `content/`, donc hors pages Quartz. Les identifiants `P01`–`P12` sont exclusivement des repères de mission.
+**État initial du lot I : 12 propositions ; état courant après lot III : 36 propositions P01–P36, aucune canonisée, aucun code ESP attribué.** Ce dossier est hors de `content/`, donc hors pages Quartz. Les identifiants `P01`–`P12` sont exclusivement des repères de mission.
 
 | Repère | Proposition | Rôle |
 |---|---|---|
@@ -39,3 +39,22 @@ Consulter `docs/bestiaire/B003_SYNTHESE_ECOLOGIQUE.md` avant tout usage. Si le c
 | P24 | Rochebrouteur des scories | Oui, à arbitrer |
 
 Voir [synthèse du lot II](../B003_LOT_02_SYNTHESE_EVOLUTIONS.md). Le total de la mission passe à **24 nouvelles propositions**, aucune ne pouvant être canonisée automatiquement.
+
+## Lot III (P25–P36, douze propositions supplémentaires)
+
+| Repère | Espèce | Forme conditionnelle de progression |
+| --- | --- | --- |
+| P25 | Cicadelle des herbes givrées | Aucune |
+| P26 | Pic des écorces bleues | Aucune |
+| P27 | Musaraigne des mousses froides | Aucune |
+| P28 | Sanglier des vallons d'Aube | Vieille-défense → Chef-de-vallon |
+| P29 | Couleuvre des rives de pierre | Aucune |
+| P30 | Loutre des eaux vives | Passe-cascade → Maître des rives |
+| P31 | Héron des bassins froids | Aucune |
+| P32 | Tardigrade des lichens d'altitude | Aucune |
+| P33 | Fourmi des dalles tièdes | Aucune |
+| P34 | Filtreuse du lac de Nacrecombe | Veinée de Nacre → Ancienne-Valve |
+| P35 | Siffloroc des cimes | Cornet des crêtes → Grand-Carillon |
+| P36 | Échopode des galeries | Antennaire des seuils → Veilleur de pierre |
+
+**État courant :** 36 nouvelles propositions, **9 espèces avec formes individuelles conditionnelles** sur les trois lots, **0 canonisation, 0 code permanent**, **0 nouvelle règle M03**. Lire [la synthèse du lot III](../B003_LOT_03_SYNTHESE_EVOLUTIONS.md). Le texte des lots I et II ci-dessus est conservé comme historique de création, pas comme total actuel.

@@ -1,39 +1,29 @@
-# ARCHIVES D'ALRICK — RAPPORT DE MISSION
+# ARCHIVES D'ALRICK — FICHE DE DIRECTION B-003 (LOTS I, II ET III)
 
-**Identification :** B-003 — Faune et écosystèmes des Montagnes de l'Aube, **lots I et II**. **Référent :** Zoologie fantastique et écologie montagnarde. **Date :** 1er novembre 2026 (Québec). **Dépôt :** `Sijiel44/archives-alrick`. **Branche :** `bestiaire/b003-montagnes-aube`. **PR :** [#73, brouillon](https://github.com/Sijiel44/archives-alrick/pull/73). **Commit d'extension Lot II :** [`3ec6e0e`](https://github.com/Sijiel44/archives-alrick/commit/3ec6e0e04b9bb568986c456cd66a508b1885626c). Commit final du rapport et CI sur la tête à contrôler séparément.
+**Mission :** B-003 — Faune et écosystèmes des Montagnes de l'Aube. **Référent :** Zoologie fantastique et écologie montagnarde. **Date :** 1er novembre 2026. **Dépôt :** `Sijiel44/archives-alrick`. **Branche :** `bestiaire/b003-montagnes-aube`. **PR :** [#73, brouillon](https://github.com/Sijiel44/archives-alrick/pull/73). **Statut : TERMINÉE AVEC RÉSERVES — attente de validation du créateur.**
 
-**Statut : TERMINÉE AVEC RÉSERVES — lots documentaires soumis à la Direction.** Le socle B-002 est fusionné. Aucun nouveau code, niveau, pouvoir ni espèce de l'Odyssée n'a été adopté ; **aucune publication ou fusion de B-003**.
+## Bilan cumulé de conception
 
-## Indicateurs mis à jour
-
-| Indicateur | Résultat |
+| Indicateur | Bilan |
 |---|---|
-| Espèces régionales nouvellement confirmées | **0** (aucune population propre aux montagnes prouvée par le registre B-002) |
-| Créatures de propositions préexistantes réutilisées | **3**, sans duplication ni attribution de canon : Cerf des Brumes froides, Chasses-Faim, Lamproie de nacre |
-| Propositions originales | **24** : P01–P12 (lot I) et P13–P24 (lot II), toutes `proposition_non_jouee` |
-| Habitats modélisés | **9** milieux H1–H9, sans géolocalisation précise ni code `BIO-` |
-| Réseau trophique et matrices | 2 matrices **12 × 9**, liens trophiques inter-lots et impacts humains étudiés |
-| Branches évolutives nouvelles | **4 espèces** à formes conditionnelles, 8 autres sans transformation par niveau |
-| 5d6 M03 | **21** archétypes indicatifs `faune`, **3** `predateur` ; **0 profil chiffré** ou niveau canonique ; moteur inchangé |
-| Codes, publication, images | **0** code ESP/BIO/VARC/P5C, **0** publication et **0** image approuvée |
+| Nouvelles espèces proposées | **36** : 12 par lot P01–P12, P13–P24, P25–P36 |
+| Espèces régionales déjà canoniques confirmées par B-002 | **0 identifiée** dans l'audit ; 3 prototypes historiques **réutilisés sans duplication** |
+| Habitats et réseau écologique | **9** classes H1–H9 et **3 matrices 12 × 9**, réseaux aliment → consommateur, saisons et impacts agriculture, eau, routes, galeries, mines |
+| Formes évolutives | **9 espèces à formes conditionnelles** : 4 dans le lot II, 5 dans le lot III ; évolution = biologie/histoire + validation, jamais mutation automatique liée à l'XP |
+| 5d6 et publications | **31 archétypes possibles `faune`, 4 `predateur`, 1 microfaune sans profil de combat** ; **0 niveau canonique, 0 profil chiffré, 0 code ESP/BIO/VARC/P5C**, 0 publication |
 
-## Évolution : principes et exemples
+## Troisième lot — P25 à P36
 
-La progression 5d6 **n'est ni l'âge ni une transformation biologique automatique**. Des repères narratifs N10–14 et N15–19 peuvent décrire, **pour un individu exceptionnel et sous conditions du milieu**, l'Ardoiselle « Porte-ardoise / Vieille-strate », l'Araignée « Voileuse / Fileuse des brumes », le Luciolume « Lanternière / Couronne pâle » et le Rochebrouteur « Dos-de-cendre / Dos-de-scorie ». Aucun nom de forme n'est un taxon, aucun bonus M03 n'est débloqué. Les huit autres espèces progressent par apprentissage ou cycles biologiques indépendants de l'XP.
+**Faune diversifiée :** cicadelle des herbes givrées, pic des écorces bleues, musaraigne des mousses froides, sanglier des vallons, couleuvre des rives, loutre des eaux vives, héron des bassins, tardigrade des lichens, fourmi des dalles tièdes, filtreuse de Nacrecombe, siffloroc des cimes, échopode des galeries.
 
-## Livrables, contrôles et réserves
+**Cinq évolutions conditionnelles :** Sanglier *Vieille-défense / Chef-de-vallon* ; Loutre *Passe-cascade / Maître des rives* ; Filtreuse *Veinée de Nacre / Ancienne-Valve* ; Siffloroc *Cornet des crêtes / Grand-Carillon* ; Échopode *Antennaire des seuils / Veilleur de pierre*. Repères proposés N10–14 et N15–19 ; aucun nouveau pouvoir ni bonus automatique. Les autres espèces restent majoritairement ordinaires ; le tardigrade est **hors combat M03**.
 
-**Dossier :** `docs/bestiaire/B003_FICHES/` (**24 fiches**), `B003_SYNTHESE_ECOLOGIQUE.md` (lot I), `B003_LOT_02_SYNTHESE_EVOLUTIONS.md` (lot II), rapport complet `docs/rapports-missions/B003_ECOSYSTEME_MONTAGNES_AUBE.md` et cette fiche. Leurs identifiants P01–P24 sont **locaux**. Le second lot reste dans `docs/`, sans fichier sous `content/`, sans alteration du registre B-002, des modèles ni du moteur M03.
+## Vérifications et réserves
 
-**Vérifications :** comparaison des 24 noms avec les prototypes et individus historiques ; 9 classes de milieu ; relations alimentaires conditionnelles ; limites explicites des formes ; aucune résistance magique inventée, même pour les créatures du plateau volcanique. **La CI de la nouvelle tête doit être vérifiée** ; succès antérieur des 12 premières fiches : [Actions #41328714534](https://github.com/Sijiel44/archives-alrick/actions/runs/41328714534), sur `ff9d16dd` uniquement.
+**Contrôles prévus :** 12 fiches P25–P36 avec sections du gabarit, noms distincts des lots I–II et prototypes ; cohérence avec les Atlas dérivés GEO-001, GEO-009/010/012/013, registres B-001/B-002 et contrats 5d6 ; aucun fichier `content/` ni moteur M03 modifié. **CI de la tête à confirmer sur le dernier commit**. Les volumes originaux Bible/Atlas/Compendium/Codex et campagnes brutes ne sont pas relus intégralement ; aucun playtest humain ni profil numérique M03 ne valide les créatures.
 
-**Réserves :** Atlas, Bible, Compendium, Codex et bruts privés originaux non relus intégralement ; faune et microhabitats supplémentaires non observés en campagne. Aucun profil M03 numérique ni playtest humain : nécessitent un niveau, objectif de rencontre, PJ et terrain concrets.
+**Décisions requises :** confirmer ou refuser individuellement les nouvelles créatures, habitats, co-présences et formes ; choisir des scénarios et niveaux de PJ pour d'éventuels profils 5d6 ; autoriser séparément code et publication après relecture des sources originales.
 
-## Décisions de Direction
+**Rapports permanents :** `docs/rapports-missions/B003_ECOSYSTEME_MONTAGNES_AUBE.md` et `FICHE_DIRECTION_B003.md`. Détails : `docs/bestiaire/B003_LOT_03_SYNTHESE_EVOLUTIONS.md`.
 
-**Examiner individuellement les 24 propositions**, confirmer/refuser les 4 lignées évolutives et leurs conditions, vérifier les données des sources primaires et les niches, puis autoriser seulement au cas par cas l'attribution de codes `ESP-` ou `VARC-`. La création de profils 5d6 chiffrés et la publication requièrent une décision distincte.
-
-**Recommandation :** conserver [la PR #73](https://github.com/Sijiel44/archives-alrick/pull/73) en brouillon ; **ne pas fusionner, ne pas publier, ne pas lancer B-004 sans retour explicite de la Direction.**
-
-
-**Vérification du lot II :** [CI GitHub Actions #41331462555 réussie](https://github.com/Sijiel44/archives-alrick/actions/runs/41331462555) sur le commit `dabd4db4bca7118da4118c2491183629edf4551e` ; contrôle direct **12/12 fiches** avec sections et statuts, **29 nouveaux fichiers sous `docs/`**, aucun sous `content/`. Le commit des rapports de clôture est postérieur et sera vérifié séparément. Ces preuves techniques ne valident pas le contenu canonique.
+**Sortie :** **PR #73 reste en brouillon. Ne pas fusionner, canoniser, publier ni lancer B-004 sans retour de Direction.**

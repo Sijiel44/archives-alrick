@@ -103,3 +103,8 @@ Les catégories H1–H9 ne sont **pas des codes BIO**. Aucun biotope précis n'e
 ## Addendum B-003, lot II — 12 propositions supplémentaires
 
 Le texte précédent décrit **le premier lot P01–P12**. Le second lot P13–P24 porte le total à **24** propositions. Il introduit quatre espèces à **formes évolutives conditionnelles** et huit espèces sans métamorphose de niveau. Voir `docs/bestiaire/B003_LOT_02_SYNTHESE_EVOLUTIONS.md` pour la matrice 12 × 9 du second lot, son réseau trophique et la séparation niveaux / âge / statut éditorial. Aucun code attribué, aucune espèce présente canonisée, aucun profil M03 chiffré.
+
+
+## Addendum B-003 — Troisième lot P25–P36
+
+Cette synthèse décrit principalement le **lot I** ; le lot II figure dans `B003_LOT_02_SYNTHESE_EVOLUTIONS.md` et le **lot III** dans `B003_LOT_03_SYNTHESE_EVOLUTIONS.md`. **Total en cours : 36 propositions non jouées et non canoniques**, 3 prototypes déjà documentés réutilisés sans duplication, **9 habitats internes H1–H9**, trois matrices de 12 × 9, **9 espèces ayant des formes d'évolution conditionnelles**, aucune attribution `ESP-`, `VARC-`, `BIO-`, `P5C-` et aucun niveau canonique.
