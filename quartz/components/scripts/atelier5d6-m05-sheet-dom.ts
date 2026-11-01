@@ -141,8 +141,6 @@ export function renderM05Sheet(host:HTMLElement,card:BestiaryCard,matchup?:Match
     " · "+v.artwork.status)
   const explanation=section(profiles,"math","Inspecteur mathématique — calculs détaillés",opened)
   paragraph(explanation,"La valeur de base de la génération dépend du niveau : 3 + partie entière de (niveau − 1) × 0,55. Les écarts d'archétype sont fournis par M03.")
-  const base=v.initialProfile.stats.esprit - (v.archetype==="mystique"?4:
-    v.archetype==="colosse"?-2:v.archetype==="predateur"?-2:0)
   // Le détail de génération officiel est le profil initial retourné par M03 ;
   // la formule ci-dessus est pédagogique et non un calcul substitutif.
   line(explanation,"Profil initial M03",v.stats.map(s=>s.title+" "+s.initial).join(" / "))
