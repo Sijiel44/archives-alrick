@@ -2,8 +2,10 @@
 
 **Actualisation du 30 octobre 2026 — dossiers du Compendium : 245 fiches codées approuvées (216 avant le lot de 40).** Vingt-huit pages vérifiées peuvent être consultées avec avertissement ; douze portraits ou candidatures restent non publiés. Voir [l'audit de la relecture](docs/AUDIT_COMPENDIUM_40_PERSONNAGES_2026-10-30.md). Les chiffres des lots précédents sont conservés comme historique, pas comme compteurs actuels.
 
+**Compteur reproductible vérifié le 31 octobre 2026 :** `npm run check:content` trouve 369 pages publiées et 269 codes uniques portés par ces pages. Ce compteur de fiches codées publiées est distinct des 645 sujets du registre directeur, des pages de navigation, des brouillons et des sources historiques non migrées.
 
-**État opérationnel après le lot Atlas et biographies du 30 octobre 2026 : 216 fiches codées approuvées.** Ne pas utiliser les anciennes étapes de ce plan (177, 180, 198) comme compteur actuel ; elles décrivent leurs lots respectifs. Voir [le diagnostic des 645 sujets et la méthode d'Atlas](docs/RECONCILIATION_645_ET_ATLAS_2026-10-30.md). Restent à réconcilier notamment Dornaël, les villes et partenaires non encore détaillés, les alias des fiches de personnages et les cartes géographiques exactes.
+
+Les paragraphes historiques du plan conservent les états successifs (177, 180, 198, 216 et 245) à leur date ; ils ne remplacent pas le compteur reproductible ci-dessus. Voir [le diagnostic des 645 sujets et la méthode d'Atlas](docs/RECONCILIATION_645_ET_ATLAS_2026-10-30.md). Restent à réconcilier notamment les alias des fiches de personnages et les cartes géographiques exactes.
 
 
 **Audit éditorial : 29 octobre 2026, après PR #22 et publication du lot Bible MON-005 / MON-PASS-01.**
@@ -89,7 +91,7 @@ Ce document est un **plan de travail**, pas un récit de la campagne d'Orin, pas
 
 1. **P0 — Vérifier les quatre entrées et le catalogue en navigateur réel**, surtout sur mobile, après chaque déploiement. Les tests actuels vérifient la génération, les liens, le contenu public et les protections spoilers, pas tous les clics ni la performance perçue.
 2. **P1 — Relire les brouillons prioritaires** : MAG-106, les sept courants, Failles et dossiers de lieux CB1–43 ; sélectionner les éléments véritablement approuvables sans attribuer des faits non joués à la campagne.
-3. **P1 — Généraliser les modèles de fiches PJ/PNJ/créatures** autour des niveaux 1–12 et des voies libres **uniquement comme paramètres optionnels**, avec source et version. Les fichiers JSON d'essai n'ont aucune autorité canonique.
+3. **P1 — Généraliser les modèles de fiches PJ/PNJ/créatures** autour de la progression expérimentale 1–25 et des voies libres **uniquement comme paramètres optionnels**, avec source et version. Les fichiers JSON d'essai n'ont aucune autorité canonique.
 4. **P2 — Tester les combats, la magie et les incidents de 3 échecs**, puis décider d'un système général unique ou de modules distincts ; harmoniser la Déchéance 2d6 seulement après arbitrage.
 5. **P2 — Audit ergonomique et d'accessibilité** : taille de typographie, longueur de navigation, formulation des filtres, clavier, repli mobile, profils et recherche. Ajouter un test automatique de l'accueil et de la bibliothèque séparée.
 
@@ -119,3 +121,4 @@ Les hypothèses reliant l'ancienne tragédie familiale d'Orin à une Faille maje
 ## Corrections du créateur sur les 40 dossiers
 
 Existence du groupe de huit profils de CB42 **canonique, sans rencontre ni emploi** ; Margha Trois-Mers **cuisinière de bord identifiée et engagée** ; quatre fonctions des gardiens d'Entre-Rives **validées** (Maelin Maintenir, Rudek Séparer, Sela Témoigner, Eren Transmettre). Ne créer ni nouveau rituel du pont, ni second cuisinier déjà recruté, ni rappel pour les deux profils décédés. Les huit biographies restent hors publication et la nouvelle page Margha protégée par spoilers porte le compte à **245**.
+
