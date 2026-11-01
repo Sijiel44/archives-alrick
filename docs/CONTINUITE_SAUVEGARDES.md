@@ -4,12 +4,12 @@
 
 ## Source de vérité et confidentialité
 
-1. **Bruts de campagne et documents privés** : sources primaires, conservées **hors de ce dépôt public**. Ils alimentent les six volumes consolidés.
+1. **Bruts de campagne et documents privés** : sources primaires pouvant être conservées dans `sources/campagnes/` après vérification des droits, des données personnelles et des vrais secrets MJ. Elles alimentent les six volumes consolidés; conserver aussi les copies locales indépendantes.
 2. **Index et six volumes** : état éditorial, avec codes et références pour retrouver les sources. Une correction explicite et une scène jouée priment sur un ancien résumé.
 3. **Contenus Markdown du site** : présentation publiable, avec états `faits_joues`, `lore_valide`, `projet_en_cours`, `hypothese`, `proposition_non_jouee`, `a_verifier`, etc.
 4. **Décisions et parties futures** : enregistrer une nouvelle décision dans le journal de reprise privé, puis dans une PR sourcée si elle concerne le site. Ne jamais insérer automatiquement les nouvelles scènes d'une autre table dans l'Odyssée d'Orin.
 
-Les fichiers Word, XLSX, exports ChatGPT, biographies personnelles non publiées et vrais secrets MJ ne doivent **jamais** être ajoutés à `content/`, ni même dans un autre dossier de ce dépôt. Une page `publish: false` reste présente dans Git ; un avertissement spoilers ne chiffre rien.
+Les sources brutes dont la diffusion est autorisée peuvent être archivées dans `sources/`, hors de `content/` et de la génération Quartz. Vérifier au cas par cas droits, données personnelles et secrets MJ avant import public. Les données qui doivent rester confidentielles restent hors du dépôt public. Une page `publish: false` reste présente dans Git ; un avertissement spoilers ne chiffre rien.
 
 ## Sauvegarde automatique du code sur GitHub
 
