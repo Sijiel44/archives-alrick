@@ -98,3 +98,29 @@ Les 12 fiches distinctes documentent identité et classification, morphologie, h
 **Workflow GitHub Actions [#41328571151](https://github.com/Sijiel44/archives-alrick/actions/runs/41328571151) : SUCCÈS sur le commit [`ff14df60eec319b3d79cc281fd53762d52820315`](https://github.com/Sijiel44/archives-alrick/commit/ff14df60eec319b3d79cc281fd53762d52820315)**, job « Contenu, TypeScript, build et liens ». La PR #73 contient **16 nouveaux fichiers** sous `docs/` et aucun changement sous `content/` ; vérification GitHub des chemins et du diff sur cette version. Le workflow précédent #41328373760 a également réussi sur le premier lot `5ea2dbf` ; une exécution intermédiaire a été annulée suite aux mises à jour successives.
 
 **Portée de cette preuve :** la réussite atteste les contrôles automatisés configurés dans le dépôt, pas un playtest humain ni la validité zoologique, la conformité aux originaux privés ou l'acceptation canonique. Le présent addendum ne modifie que des rapports ; son propre commit sera distinct de `ff14df60` et la CI de sa tête devra être vérifiée séparément si exigée avant revue/fusion. Aucune fusion n'est demandée.
+
+## 8. Extension demandée — B-003 Lot II (P13–P24, 1er novembre 2026)
+
+La Direction de conception a demandé **douze nouvelles fiches**, selon les mêmes rubriques que P01–P12, et la possibilité pour certains individus de connaître des **formes évolutives** en fonction de leur progression narrative au sein du système 5d6. Ce lot **complète B-003** ; il ne lance pas B-004 et ne préjuge pas de l'approbation éditoriale du premier lot.
+
+**Livrables additionnels :**
+- `docs/bestiaire/B003_FICHES/P13_*.md` à `P24_*.md` : **12 espèces proposées**, chacune avec classification, morphologie, habitat, ressources, régime, comportement, reproduction et saisons, capacités/limites, rapports aux peuples, réseau trophique, sources/invention, scène JDR non violente, statut, archétype M03, section **« progression et évolutions éventuelles »** ;
+- `docs/bestiaire/B003_LOT_02_SYNTHESE_EVOLUTIONS.md` : **matrice 12 × 9**, réseau alimentaire, intégration des anciens P01–P12, protocole d'évolution, conflits et arbitrages ;
+- `docs/bestiaire/B003_FICHES/README.md` et `docs/bestiaire/B003_SYNTHESE_ECOLOGIQUE.md` : renvois entre lots, sans suppression de l'historique ni réécriture rétroactive.
+
+**Total courant : 24 nouvelles propositions non canoniques** (P01–P24), **3 prototypes anciens réutilisés sans duplication**, **9 classes d'habitats**, **aucune espèce régionale nouvellement attestée par les sources**, **0 ESP/BIO/VARC/P5C attribué**. Archétypes indicatifs cumulés : **21 `faune`, 3 `predateur`**. **0 profil M03 chiffré**, **0 nouveau pouvoir**.
+
+### Quatre espèces à formes conditionnelles
+
+| Espèce | N10–14 : forme possible | N15–19 : forme possible | Conditions et limites |
+|---|---|---|---|
+| P21 Ardoiselle des moraines | Porte-ardoise | Vieille-strate | Temps, ressources minérales, apprentissage ; plaques **sans bonus de protection automatique** |
+| P22 Araignée tisse-gouttes | Voileuse | Fileuse des brumes | Nourriture, microclimat humide, expérience de tissage ; pas d'invisibilité ni entrave magique |
+| P23 Luciolume de Nacrecombe | Lanternière | Couronne pâle | Nutrition et croissance, bioluminescence **naturelle**, aucune compétence magique ou lumière de salle |
+| P24 Rochebrouteur des scories | Dos-de-cendre | Dos-de-scorie | Surfaces volcaniques **refroidies** et végétalisées, usure/croissance ; **aucune résistance au feu** |
+
+**Mise au point de règles :** les niveaux 1–25 décrivent l'accomplissement individuel, pas l'âge, la transformation ou la puissance cosmique. Les intervalles servent uniquement de **propositions de mise en scène** ; ils n'activent aucun mécanisme de métamorphose dans M03/M04.1/M05 et ne fixent aucune espèce entière au niveau 15, 20 ou 25. Une *forme* ne devient pas une nouvelle espèce ; les éventuels codes `VARC-` restent soumis à validation individuelle B-002. Pour les 8 autres, la prise d'expérience, les mues ou la maturité ne créent pas d'évolution de niveau automatique.
+
+**Contrôles écologiques :** pas de chèvre nouvelle (B-001 conserve une « chèvre projetée » sans code, à distinguer), pas de prédateur dominant supplémentaire ; variété trophique (fruits/graines, insectes, décomposition, herbivorie, petits prédateurs), réseau aliment → consommateur sans co-présence présumée. Le lac Nacrecombe, les eaux de Dornaël, les cols Keldrun et le plateau Forgeciel sont attestés en tant que lieux ; la faune détaillée, les moraines, les végétations de scories et leurs répartition demeurent **proposées**. Les trois prototypes antérieurs Cerf/Chasses-Faim/Lamproie ne sont pas reproduits.
+
+**Contrôles techniques et réserves :** 12 nouveaux dossiers `docs/`, absence de modification de `content/` ou de `B002_CODES_VALIDES.json`, absence de changement au moteur 5d6 et de profils/imports automatiques. Les tests CI doivent être examinés sur la nouvelle tête de PR ; une CI verte ne constitue pas une validation de l'écologie ni des bruts originaux. Les sources V01–V06 et les campagnes brutes originales restent à relire avant toute canonisation. **PR #73 maintenue en brouillon ; ne pas fusionner, publier ou lancer B-004 sans retour de Direction.**
