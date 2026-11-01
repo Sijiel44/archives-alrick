@@ -20,3 +20,22 @@
 **Éléments réutilisés sans duplication :** trois prototypes existants Cerf des Brumes froides, Chasses-Faim, Lamproie de nacre (tous `proposition_non_jouee`) ; individus DRG-02 Velmora, REV-16 Aldren le loup, autres dragons/compagnons conservés sans les transformer en espèces ou populations localisées.
 
 Consulter `docs/bestiaire/B003_SYNTHESE_ECOLOGIQUE.md` avant tout usage. Si le créateur adopte une fiche, l'attribution individuelle de code et sa publication sont deux décisions distinctes.
+
+## Lot II (P13–P24, douze nouvelles propositions)
+
+| Repère | Proposition | Évolution conditionnelle ? |
+|---|---|---|
+| P13 | Grive des haies froides | Non — apprentissage ou croissance biologique |
+| P14 | Escargot des roches suintantes | Non — apprentissage ou croissance biologique |
+| P15 | Phrygane des torrents clairs | Non — apprentissage ou croissance biologique |
+| P16 | Crapaud des résurgences | Non — apprentissage ou croissance biologique |
+| P17 | Sauterelle des pâtures ventées | Non — apprentissage ou croissance biologique |
+| P18 | Hirondelle des arches | Non — apprentissage ou croissance biologique |
+| P19 | Fouine des relais | Non — apprentissage ou croissance biologique |
+| P20 | Faucon des pierriers | Non — apprentissage ou croissance biologique |
+| P21 | Ardoiselle des moraines | Oui, à arbitrer |
+| P22 | Araignée tisse-gouttes | Oui, à arbitrer |
+| P23 | Luciolume de Nacrecombe | Oui, à arbitrer |
+| P24 | Rochebrouteur des scories | Oui, à arbitrer |
+
+Voir [synthèse du lot II](../B003_LOT_02_SYNTHESE_EVOLUTIONS.md). Le total de la mission passe à **24 nouvelles propositions**, aucune ne pouvant être canonisée automatiquement.

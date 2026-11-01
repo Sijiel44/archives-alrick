@@ -98,3 +98,8 @@ Les catégories H1–H9 ne sont **pas des codes BIO**. Aucun biotope précis n'e
 5. Aucun portrait, aucune illustration ni travail sur B-004. Aucun fichier sous `content/` modifié et aucune action de publication.
 
 **Sources manquantes :** volumes privés originaux V01 Bible, V02 Atlas, V03 Compendium, V04 Codex, campagnes brutes et discussions de validation intégrales ; les fiches de dépôt citent ces documents mais ne les remplacent pas. Les résultats demeurent un **audit secondaire avec propositions explicites** et non une prétendue relecture exhaustive de ces originaux.
+
+
+## Addendum B-003, lot II — 12 propositions supplémentaires
+
+Le texte précédent décrit **le premier lot P01–P12**. Le second lot P13–P24 porte le total à **24** propositions. Il introduit quatre espèces à **formes évolutives conditionnelles** et huit espèces sans métamorphose de niveau. Voir `docs/bestiaire/B003_LOT_02_SYNTHESE_EVOLUTIONS.md` pour la matrice 12 × 9 du second lot, son réseau trophique et la séparation niveaux / âge / statut éditorial. Aucun code attribué, aucune espèce présente canonisée, aucun profil M03 chiffré.
