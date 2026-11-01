@@ -168,3 +168,12 @@ Les symboles SVG des courants sont **des repères visuels d'interface**, non des
 
 **Outils proposés en ligne :** `jouer/evenements-aleatoires-failles.md` et `jouer/protocole-failles-guildes.md` (proposition_non_jouee / en_cours). Les Guildes, Heimdall, Níðor et les Grandes Puissances peuvent intervenir, sans réseau omniscient ni fermeture universelle. La Déchéance exige de véritables **Chutes liées** et pas la seule douleur des victimes. L'hypothèse d'une Faille dans le passé de deuil d'Orin n'est **pas canonisée comme événement joué**.
 
+## Bestiaire — nomenclature et validation des nouveaux identifiants (décision du créateur, 31 octobre 2026)
+
+**Préfixes approuvés pour les nouvelles fiches :** `ESP-` (espèce), `FAMT-` (famille taxonomique), `INDC-` (individu de créature), `BIO-` (biome), `P5C-` (modèle de profil 5d6 partagé), `VARC-` (variante documentée). Ce sont des catégories documentaires, jamais des preuves de canon, de filiation, de transformation ou de publication. Le préfixe `FAMT-` ne remplace pas `FAM-` (familles de personnages). Les IDs des sauvegardes `BestiaryCard` ne deviennent pas des codes encyclopédiques.
+
+**Attribution et contrôle fiche par fiche :** l'approbation de ces préfixes n'autorise aucune émission automatique de codes. Chaque nouvelle fiche destinée à `content/` doit obtenir un code permanent unique, une source précise, des statuts `canon_statut` et `etat_editorial` indépendants, et une **preuve de décision explicite du créateur**. Enregistrer l'attribution avec le chemin réel et la preuve dans `docs/bestiaire/B002_CODES_VALIDES.json` ; le test B-002 vérifie le code dans la fiche, sa nature, son unicité et sa validation. Un code approuvé peut parfaitement désigner une **proposition non jouée** : il ne la transforme ni en `lore_valide` ni en `faits_joues`.
+
+**Continuité :** tous les codes anciens sont conservés. Les onze entrées `code: null` de B-001 ne sont pas remplies sans arbitrage individuel et source. Les homonymes restent des individus distincts, et les capacités d'un individu ne se transmettent pas automatiquement à l'espèce.
+
+**Confidentialité et liens :** le registre est documentaire ; `documentaryLink` reste déclaratif et les liens publics automatiques sont désactivés. Les sept prototypes MJ actuellement publiés restent explicitement `proposition_non_jouee` ; leur politique de publication ne change pas par cette décision. Les secrets et les sources brutes privés restent hors GitHub.
