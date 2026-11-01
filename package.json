@@ -27,7 +27,8 @@
     "test:m05": "node scripts/test-5d6-m05.mjs",
     "test:m04:browser": "node scripts/test-5d6-m04-browser.mjs",
     "tables:dev": "node --import tsx tables-pilot/server.mjs",
-    "tables:test": "node --import tsx scripts/test-tables-pilot.mjs"
+    "tables:test": "node --import tsx scripts/test-tables-pilot.mjs",
+    "tables:browser": "node --import tsx scripts/test-tables-browser.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",
