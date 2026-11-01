@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { readFile, access, mkdir, writeFile } from 'node:fs/promises'
+import { readFile, access, mkdir, writeFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
 import YAML from 'yaml'
 
@@ -7,6 +7,7 @@ const load = async file => JSON.parse(await readFile(file, 'utf8'))
 const inventory = await load('docs/bestiaire/B002_INVENTAIRE.json')
 const register = await load('docs/bestiaire/B002_REGISTRE_RELATIONS.json')
 const b001 = await load('docs/bestiaire/B001_REGISTRE_INITIAL.json')
+const codeApprovals = await load('docs/bestiaire/B002_CODES_VALIDES.json')
 const allowedCanon = new Set(['faits_joues','lore_valide','declaration','projet_en_cours','hypothese','proposition_non_jouee','historique','a_verifier'])
 const allowedEditorial = new Set(['valide','en_cours','en_chantier'])
 const scoped = ['content/creatures/','content/personnages/','content/groupes/','content/lieux/','content/monde/','modeles/']
@@ -16,6 +17,19 @@ let checks = 0
 function check(condition, message) { checks++; assert(condition, message) }
 check(inventory.schema === 'alrick.b002.inventaire.v1', 'Schéma inventaire non reconnu')
 check(register.schema === 'alrick.b002.relations.v1-proposition', 'Schéma registre non reconnu')
+
+const prefixesAttendus = new Map([['ESP-','espece'],['FAMT-','famille_taxonomique'],['INDC-','individu_creature'],['BIO-','biome'],['P5C-','profil_5d6_partage'],['VARC-','variante_creature']])
+check(codeApprovals.schema === 'alrick.bestiaire.codes-valides.v1', 'Schéma des identifiants approuvés invalide')
+check(codeApprovals.statut_nomenclature === 'approuvee_par_createur', 'La nomenclature n’est pas validée')
+check(register.adoption_nomenclature === 'approuvee_par_createur_2026_10_31', 'Décision de nomenclature absente du registre central')
+check(register.registre_attribution_codes === 'docs/bestiaire/B002_CODES_VALIDES.json', 'Référence du registre des codes absente')
+check(Array.isArray(codeApprovals.prefixes) && codeApprovals.prefixes.length === prefixesAttendus.size, 'Six préfixes attendus')
+for (const p of codeApprovals.prefixes) {
+ check(prefixesAttendus.get(p.prefixe) === p.nature, 'Préfixe/nature inconnus : '+p.prefixe)
+}
+check(new Set(codeApprovals.prefixes.map(p=>p.prefixe)).size === prefixesAttendus.size, 'Préfixe dupliqué')
+check(Array.isArray(codeApprovals.attributions), 'Table des validations individuelles absente')
+
 check(inventory.source_commit === register.source_commit, 'Référence de commit incohérente')
 check(inventory.entrees.length === inventory.stats.fichiers, 'Total inventaire incohérent')
 check(new Set(inventory.entrees.map(x => x.chemin)).size === inventory.entrees.length, 'Chemin dupliqué')
@@ -102,6 +116,53 @@ for (const specimen of [
 ]) {
  check(canOfferB002Link(specimen, {approved:true,accessProof:'declared'}) === false, 'Lien public activé sans décision éditoriale et contrôle réel')
 }
+
+// Décision éditoriale : chaque NOUVEL identifiant préfixé doit être validé pour SA fiche.
+// L'inventaire B-002 est un instantané : le contrôle ci-dessous parcourt aussi les futurs fichiers.
+const approvedCodes = new Map()
+for (const entry of codeApprovals.attributions) {
+ check(typeof entry.code === 'string' && !approvedCodes.has(entry.code), 'Attribution absente ou dupliquée')
+ approvedCodes.set(entry.code,entry)
+ const prefixe=[...prefixesAttendus.keys()].find(p=>entry.code.startsWith(p))
+ check(Boolean(prefixe) && /^[A-Z0-9]+(?:-[A-Z0-9]+)*$/.test(entry.code.slice(prefixe?.length ?? 0)), 'Code nouveau non conforme : '+entry.code)
+ check(prefixesAttendus.get(prefixe) === entry.nature, 'Nature erronée du code '+entry.code)
+ check(typeof entry.fichier === 'string' && entry.fichier.startsWith('content/') && entry.fichier.endsWith('.md'), 'Chemin de fiche invalide pour '+entry.code)
+ check(typeof entry.source_documentaire === 'string' && entry.source_documentaire.trim().length>0, 'Source de fiche requise : '+entry.code)
+ check(typeof entry.preuve_validation_createur === 'string' && entry.preuve_validation_createur.trim().length>0, 'Validation explicite du créateur requise : '+entry.code)
+ check(allowedCanon.has(entry.canon_statut) && allowedEditorial.has(entry.etat_editorial), 'États éditoriaux invalides : '+entry.code)
+ check(!codeSet.has(entry.code), 'Collision avec le registre historique : '+entry.code)
+ await access(entry.fichier)
+}
+async function allMarkdown(dir) {
+ const rows=await readdir(dir,{withFileTypes:true})
+ const found=[]
+ for(const r of rows) {
+  const p=path.posix.join(dir,r.name)
+  if(r.isDirectory()) found.push(...await allMarkdown(p))
+  else if(r.isFile() && p.endsWith('.md')) found.push(p)
+ }
+ return found
+}
+const matchedCodes=new Set(),seenNewCodes=new Set()
+for (const file of await allMarkdown('content')) {
+ const source=await readFile(file,'utf8')
+ const front=source.match(/^---\\r?\\n([\\s\\S]*?)\\r?\\n---/)
+ if(!front) continue
+ const meta=YAML.parse(front[1])
+ if (typeof meta?.code!=='string') continue
+ const pref=[...prefixesAttendus.keys()].find(p=>meta.code.startsWith(p))
+ if (!pref) continue // les codes historiques restent inchangés
+ check(!seenNewCodes.has(meta.code), 'Code futur dupliqué : '+meta.code)
+ seenNewCodes.add(meta.code)
+ const entry=approvedCodes.get(meta.code)
+ check(Boolean(entry), 'Nouvelle fiche sans validation individuelle : '+file+' ('+meta.code+')')
+ check(entry.fichier===file, 'Code approuvé pour une autre fiche : '+meta.code)
+ check(prefixesAttendus.get(pref)===entry.nature, 'Préfixe incompatible avec la fiche : '+file)
+ check(meta.canon_statut===entry.canon_statut && meta.etat_editorial===entry.etat_editorial, 'Statut source/registre incohérent : '+file)
+ matchedCodes.add(meta.code)
+}
+check(matchedCodes.size===approvedCodes.size, 'Attribution approuvée sans fiche vérifiée')
+
 const audit = {
  schema:'alrick.b002.integrite.v1',base_commit:inventory.source_commit,
  compteur_assertions:checks,arbre_git_reference:inventory.entrees.length,
@@ -111,6 +172,7 @@ const audit = {
  relations_sourcées:register.relations_documentaires.length, relations_profils_5d6:0,
  doublons_codes:duplicateCodes.length, valeurs_canon_invalides:invalidCanon.length,
  valeurs_editoriales_invalides:invalidEditorial.length,exceptions_heritage_brouillons:legacyDraftValues.length,protections_spoilers_manquantes:unsafeSpoilers.length,
+ prefixes_approuves:prefixesAttendus.size,attributions_individuelles_validees:matchedCodes.size,
  liens_wiki_scannes:wikilinks,liens_explicites_a_revoir:missingExplicitTargets.length,
  NOTE:'Les liens wiki explicites non trouvés sont des alertes, pas des erreurs définitives de Quartz; aucune auto-publication.'
 }
