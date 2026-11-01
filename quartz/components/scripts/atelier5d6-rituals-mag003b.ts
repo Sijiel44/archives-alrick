@@ -300,6 +300,17 @@ export function transitionRitual(source:RitualInstance,action:RitualAction):Ritu
     status:next.status})
   return next
 }
+/** Lecture seule : l'expiration et le contexte limitent l'éligibilité de l'effet.
+ * Une éligibilité n'est ni une activation ni un bonus porté sur une fiche.
+ */
+export function eligibleRitualEffects(s:RitualInstance,tick:number,context:string){
+  validateRitualInstance(s);integer(tick,"Horodatage")
+  requireId(context,"Contexte")
+  if(s.status!=="resolu"||!s.result)return [] as RitualResult["effectsProposed"][number][]
+  const resolvedTick=s.events.find(e=>e.action==="resoudre")?.tick??s.tick
+  return clone(s.result.effectsProposed.filter(e=>
+    e.context===context&&tick>=resolvedTick&&tick<e.expiresAtTick))
+}
 export function exportRitual(s:RitualInstance):string{validateRitualInstance(s);return JSON.stringify(s)}
 export function importRitual(json:string):RitualInstance{
   const s=JSON.parse(json) as RitualInstance;validateRitualInstance(s);return clone(s)
