@@ -34,3 +34,15 @@ Un lot de quinze documents Word a été reçu directement par le contrôleur. **
 Un contrôle **échantillonné** retrouve **1 318/1 350** ancres de douze mots dans les exports textuels préexistants. Les octets des autres exemplaires et le manifeste original avec empreintes officielles restent indisponibles pour vérification comparative ; **0/15 rapprochement au SHA256 officiel** et **0/15 lecture sémantique intégrale certifiée**. La traçabilité des scènes ciblées a été améliorée au moyen de paragraphes P directs du DOCX reçu, sans homologation globale des renvois des dossiers consolidés.
 
 **Statut et recommandation inchangés : LORE-01 NON VALIDABLE.** Aucun texte de campagne ni détail confidentiel n'a été ajouté à GitHub ; les hashes exacts et la matrice de provenance demeurent dans le dossier privé remis à la Direction. La PR reste en brouillon, sans fusion ni modification des fiches canoniques.
+
+## Complément DG-LORE — 1er novembre 2026
+
+**Décision de la Direction : poursuivre, sans clôture ni fusion.**
+
+- **Authentification :** les quinze DOCX reçus sont intègres et leurs SHA256 complets ont été calculés. La Direction a confirmé **15/15 correspondances de préfixes** avec le registre historique du 30 octobre. Cette attestation ne remplace pas notre comparaison indépendante des **64 caractères** avec `INVENTAIRE_GENERAL.csv` et les `manifest.json`, dont les fichiers binaires ne sont pas actuellement accessibles.
+- **Trente-deux ancres :** les 32 échecs initiaux résultaient d'en-têtes et pieds de page insérés lors de l'extraction ; après leur retrait par un script reproductible, **1 350/1 350** ancres de contrôle concordent. Ce contrôle échantillonné ne constitue pas une diff textuelle intégrale entre copies DOCX.
+- **Paragraphes :** 352 724 paragraphes directs non vides + 381 paragraphes dans les tableaux des CB4.1 à CB4.4 = **353 105** paragraphes textuels tous niveaux. La différence de compteurs est expliquée et ne prouve aucune altération.
+- **Relecture sémantique bornée :** CB3.3 **P00001–P00780**, soit **780/8 146** paragraphes directs (9,58 %) lus en continuité, avec distinction des scènes, paroles, hypothèses et consignes. **0/15** épisodes intégralement certifiés.
+- **Audit d'indexation :** **89/527** fichiers Markdown individuellement vérifiés pour leurs métadonnées dans six secteurs prioritaires ; **67 codes explicites distincts** dans ce seul périmètre. Unicité globale, correspondances des anciens `CBxx Pxxxxx` et compilation Quartz non certifiées.
+
+**Statut inchangé : LORE-01.B PARTIELLEMENT RÉALISÉE ; LORE-01 NON VALIDABLE.** Les annexes détaillées sont gardées hors du dépôt public, aucune fiche canonique n'est modifiée et la PR #77 n'est pas fusionnée.
