@@ -25,3 +25,12 @@
 **Recommandation : LORE-01 NON VALIDABLE À CE STADE.** Aucune conclusion nouvelle n'est officialisée, aucune fiche canonique n'a été modifiée, aucune publication de campagne n'est demandée. Le dossier interne de preuve, ses matrices et ses fichiers dérivés restent **hors du dépôt public**.
 
 **Sources de contrôle :** `CONTRAT_EDITORIAL.md` ; `sources/campagnes/README.md` ; documents existants dans `content/monde/` ; PR #77.
+
+
+## Addendum — réception directe des quinze DOCX (1er novembre 2026)
+
+Un lot de quinze documents Word a été reçu directement par le contrôleur. **15/15** ont été ouverts comme packages DOCX valides, vérifiés par contrôle ZIP, hachés au format **SHA256 sur les octets réels** et analysés sur l'intégralité de leur structure de paragraphes. Les **15 décomptes de paragraphes textuels** concordent avec `sources/campagnes/README.md` (y compris les paragraphes contenus dans les tableaux lorsqu'ils font partie du décompte). Les noms des fichiers reçus diffèrent dans **9 cas** des noms de référence du registre ; cela ne prouve aucune divergence du contenu.
+
+Un contrôle **échantillonné** retrouve **1 318/1 350** ancres de douze mots dans les exports textuels préexistants. Les octets des autres exemplaires et le manifeste original avec empreintes officielles restent indisponibles pour vérification comparative ; **0/15 rapprochement au SHA256 officiel** et **0/15 lecture sémantique intégrale certifiée**. La traçabilité des scènes ciblées a été améliorée au moyen de paragraphes P directs du DOCX reçu, sans homologation globale des renvois des dossiers consolidés.
+
+**Statut et recommandation inchangés : LORE-01 NON VALIDABLE.** Aucun texte de campagne ni détail confidentiel n'a été ajouté à GitHub ; les hashes exacts et la matrice de provenance demeurent dans le dossier privé remis à la Direction. La PR reste en brouillon, sans fusion ni modification des fiches canoniques.
