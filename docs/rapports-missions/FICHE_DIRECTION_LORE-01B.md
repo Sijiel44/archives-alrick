@@ -13,3 +13,8 @@
 **Suite requise :** vérifier les SHA256/manifestes du paquet de référence ; comparer les copies et leur texte intégral ; lire tous les échanges ; recaler les paragraphes ; vérifier tous les codes et liens ; obtenir un arbitrage de Direction sur la sécurité du transfert des sources.
 
 **Décision conseillée : C — LORE-01 NON VALIDABLE.** Aucun nouveau canon, aucune divulgation interne, aucune fusion. Les dossiers détaillés et la fiche Word confidentielle sont transmis exclusivement hors GitHub.
+
+
+## Actualisation après réception des fichiers
+
+**15/15 DOCX reçus et intègres ; 15/15 SHA256 binaires calculés ; 15/15 décomptes textuels conformes au registre.** Neuf variantes de noms de fichiers devront être rapprochées des originaux désignés. Accord échantillonné avec les anciennes extractions : **1 318/1 350** ancres. Les empreintes des manifestes historiques et la comparaison intégrale des copies manquent toujours. **0/15** relecture sémantique complète certifiée. **LORE-01 non validable ; aucune fusion.**
