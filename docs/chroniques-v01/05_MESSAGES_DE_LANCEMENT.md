@@ -58,4 +58,31 @@
 
 > Après validation DG seulement : auditer les branches et PR de la v0.1, préparer stratégie d'intégration et publication réversible. Le site existant sur main et GitHub Pages reste intact. Ne fusionner, publier, supprimer ni rebaser aucune branche sans mandat ; consigner SHA exact et CI après chaque changement autorisé.
 
-**Autres chats (AVENTURES, QUÊTES, PNJ, ANTAGONISTES, CHRONIQUES, COMMUNAUTÉ, REVUE)** : conserver/installer les prompts du kit IA déjà fourni ; lancer leurs missions éditoriales après cadrage des contrats INDEX, sauf demande créative indépendante du moteur.
+## 03 🔍 REVUE — Audit croisé
+
+> Prends REVUE-001 : établir une matrice des contrats partagés entre MATH, INDEX, STUDIO, BESTIAIRE, MAGIE et ATELIERS. Repérer contradictions, doublons de schémas et ruptures de compatibilité, sans prendre les décisions créatives du référent. Produire un audit indépendant quand les premiers dossiers de contrats seront disponibles, avec corrections proposées et preuves précises.
+
+## 31 📚 AVENTURES — Scénarios et campagnes
+
+> Prends AVENT-001 en phase préparatoire : définir le modèle d'une aventure réutilisable par tout MJ (accroche, scènes ouvertes, rencontres, profils, indices, conséquences, difficulté, conseils débutant et secrets). Prévoir son import futur dans le Studio sans supposer que STUDIO-001 est déjà fonctionnel. Préparer un court scénario pilote fictif, hors canon, pour la recette UX ; aucun lore imposé à partir de l'Odyssée d'Orin.
+
+## 32 🧭 QUÊTES — Missions modulaires
+
+> Prends QUETE-001 : concevoir un gabarit de mission courte et modulaire, réutilisable dans plusieurs lieux et à différents niveaux. Décrire objectifs, obstacles, choix, conséquences, PNJ, récompenses et variantes, mais ne pas inventer de barèmes numériques avant validation MATH. Livrer deux exemples conceptuels hors canon et un contrat de passation à AVENTURES/STUDIO.
+
+## 33 👤 PNJ — Personnages non-joueurs
+
+> Prends PNJ-001 : proposer une fiche PNJ indépendante d'Orin, avec identité, motivations, relations, comportements en scène, secrets MJ, statut documentaire et profil 5d6 optionnel. Prévoir qu'un même PNJ puisse disposer de plusieurs adaptations mécaniques sans dupliquer la fiche source. Fournir un exemple non canonique et un retour à INDEX/STUDIO.
+
+## 34 🦹 ANTAGONISTES — Factions, conflits, menaces
+
+> Prends ANT-001 : établir un cadre d'antagonisme générique : intérêts, ressources, stratégies, intensité, conséquences, possibilités de négociation ou de retraite, et rencontres variées. Concevoir une faction pilote hors canon, réutilisable dans une aventure indépendante. Les capacités chiffrées sont à valider par INDEX/MATH, et les secrets restent hors du site public non protégé.
+
+## 36 ✍️ CHRONIQUES — Récits
+
+> Prends CHRON-001 : proposer une séparation éditoriale entre récit publié, campagne brute, inspiration de lore, fait joué et ressource destinée aux MJ. L'Odyssée d'Orin demeure un laboratoire créatif et une œuvre potentielle, pas un préquel obligatoire. Proposer un circuit de publication et de validation des récits, sans réécrire l'histoire ni canoniser d'événement.
+
+## 40 💬 COMMUNAUTÉ — Discord et tables
+
+> Prends COMM-001 en étude : préparer la structure d'un Discord communautaire permettant de trouver des MJ, des joueurs et des tables à distance ou en présentiel ; définir modération, vie privée, accueil débutant, canaux pour retours de règles et contribution au lore. Ne pas créer de serveur, acheter d'abonnement ou prétendre que Discord synchronise les données de jeu sans mandat spécifique.
+
