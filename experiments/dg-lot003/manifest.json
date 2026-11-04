@@ -242,6 +242,62 @@
       "sourceBranch": "prototype/dg003-index-contract",
       "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
       "blobSha": "5b0a17e1d0c8049d406648621d4fefb1a78d97e9"
+    },
+    {
+      "path": "experiments/dg-lot003/src/player/index.mjs",
+      "role": "player",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "fed7091c044bac004521d9ff0ad0d632a37752ba"
+    },
+    {
+      "path": "experiments/dg-lot003/src/studio/CONTRACT.md",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "beec7a30be7e74cac1c29985c5864e477725c6bc"
+    },
+    {
+      "path": "experiments/dg-lot003/src/studio/index.mjs",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "9b47c4fd8ee31deff774e12dd7a1daadea2072c9"
+    },
+    {
+      "path": "experiments/dg-lot003/src/studio/projection.mjs",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "114d7e062ae1bb39fe4373fcb2a233a16e866878"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/STUDIO_003_FICHE_DIRECTION.md",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "54e00f5c6adecf7182c6b6d5dbbbd365cbd76c46"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/STUDIO_003_LOG_NODE.txt",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "591502e4ae218f28134b5e1ca79dc88b7e9af532"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/STUDIO_003_RAPPORT_TECHNIQUE.md",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "d697e7acac357e66fe5591bea8c59b823c7de2c2"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/browser-results.json",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "66a2d8587153c7c580bb0ebeedd0e6d2ad61d92d"
     }
   ],
   "storageProvenance": {
