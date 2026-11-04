@@ -287,4 +287,14 @@ try{
   player.close();mj.close();
  console.log('BROWSER_OK: two served HTTP origins, v2 raw import, BEST copy, scene, M03, creator save, ARCHIVES restore, player whitelist');
 } catch(error){console.error('BROWSER_FAIL:',error.stack??error.message);process.exitCode=1;}
-finally{browser?.kill();server?.kill();await rm(working,{recursive:true,force:true});}
+finally{
+ const terminate=async(child)=>{
+  if(!child||child.exitCode!==null||child.signalCode!==null)return;
+  const closed=new Promise(resolve=>child.once('close',resolve));
+  child.kill();
+  await Promise.race([closed,sleep(2500)]);
+ };
+ await terminate(browser);
+ await terminate(server);
+ await rm(working,{recursive:true,force:true,maxRetries:8,retryDelay:200});
+}
