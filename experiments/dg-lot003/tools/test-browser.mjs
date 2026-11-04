@@ -11,9 +11,33 @@ const MJ='http://127.0.0.1:4173',PLAYER='http://127.0.0.1:4174';
 const manifest=JSON.parse(await readFile(resolve(root,'manifest.json')));
 const required=['ports','rules','catalog','storage','studio','player','creators'];
 if(!required.every(role=>manifest.components.some(item=>item.role===role)))throw Error('E2E blocked: owner modules absent');
-const candidates=process.env.CHROMIUM_PATH?[process.env.CHROMIUM_PATH]:['chromium','chromium-browser','google-chrome','google-chrome-stable'];
-const binary=candidates.find(value=>spawnSync('which',[value],{stdio:'ignore'}).status===0);
-if(!binary){console.error('NON EXÉCUTÉ : Chromium absent (CHROMIUM_PATH).');process.exit(2);}
+// Use explicit CHROMIUM_PATH when set; otherwise prefer an already installed
+// official Chrome binary over Ubuntu's apt/Snap Chromium launcher.
+const candidates=process.env.CHROMIUM_PATH
+ ?[process.env.CHROMIUM_PATH]
+ :['google-chrome-stable','google-chrome','/opt/google/chrome/chrome',
+   '/usr/bin/google-chrome-stable','/usr/bin/google-chrome','chromium','chromium-browser'];
+const found=[];
+for(const candidate of candidates){
+ const resolved=spawnSync('which',[candidate],{encoding:'utf8',timeout:4000});
+ if(resolved.status!==0)continue;
+ const binary=(resolved.stdout??'').trim()||candidate;
+ const probe=spawnSync(binary,['--version'],{encoding:'utf8',timeout:8000,maxBuffer:65536});
+ found.push({binary,version:((probe.stdout??'')+' '+(probe.stderr??'')).trim().slice(0,300),
+  exitCode:probe.status,signal:probe.signal,spawnError:probe.error?.message??null});
+}
+if(!found.length){
+ console.error('NON EXÉCUTÉ : aucun binaire Chrome/Chromium local détecté (CHROMIUM_PATH).');
+ process.exit(2);
+}
+console.log('BROWSER_CANDIDATES',JSON.stringify(found));
+const chosen=found.find(candidate=>candidate.exitCode===0);
+if(!chosen){
+ console.error('BROWSER_SETUP_FAIL : aucune commande navigateur --version réussie.');
+ process.exit(2);
+}
+const binary=chosen.binary;
+console.log('BROWSER_SELECTED',JSON.stringify(chosen));
 const working=await mkdtemp(join(tmpdir(),'dg003-e2e-'));
 let server,browser;
 const fail=message=>{throw Error(message)};
@@ -66,10 +90,28 @@ try{
  if((await fetch(MJ+'/player.html')).status!==404)fail('MJ host exposes player HTML');
  browser=spawn(binary,['--headless=new','--no-first-run','--no-default-browser-check','--disable-gpu',
   '--remote-debugging-port=0','--user-data-dir='+join(working,'chrome'),MJ],{stdio:['ignore','pipe','pipe']});
- const portData=await until(async()=>{
-  const text=await readFile(join(working,'chrome','DevToolsActivePort'),'utf8');
-  return text.split('\n')[0];
- },{tries:120});
+ const cap=12000;
+ let stderr='',stdout='',exit=null,spawnError=null;
+ browser.stderr?.on('data',chunk=>{stderr=(stderr+String(chunk)).slice(-cap);});
+ browser.stdout?.on('data',chunk=>{stdout=(stdout+String(chunk)).slice(-cap);});
+ browser.on('error',error=>{spawnError=error.message;});
+ browser.on('exit',(code,signal)=>{exit={code,signal};});
+ let portData;
+ try{
+  portData=await until(async()=>{
+   if(spawnError)throw Error('BROWSER_SPAWN_ERROR: '+spawnError);
+   if(exit)throw Error('BROWSER_EXIT: '+JSON.stringify(exit));
+   const data=await readFile(join(working,'chrome','DevToolsActivePort'),'utf8');
+   const port=data.split('\\n')[0];
+   return /^\\d+$/.test(port)?port:null;
+  },{tries:120});
+ }catch(error){
+  console.error('BROWSER_START_DIAGNOSTIC',JSON.stringify({
+   binary,version:chosen.version,pid:browser.pid??null,exit,spawnError,
+   stderr,stdout
+  }));
+  throw error;
+ }
  const debuggerUrl='http://127.0.0.1:'+Number(portData);
  const mjTarget=await until(async()=>{
   const targets=await json(debuggerUrl+'/json');
