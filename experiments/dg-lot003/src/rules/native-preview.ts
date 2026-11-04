@@ -42,6 +42,10 @@ const allowedCombatKeys=["natural","rawStat","masteryRank","situation","level","
 const allowedEffectKeys=["source","ability","proposal"] as const
 const allowedProposalKeys=["abilityId","kind","magnitude","duration","trigger"] as const
 const allowedAbilitySourceKinds=["m02-ability"] as const
+const allowedCombatModes=["melee","tir","magie","mental"] as const
+const allowedResistanceKinds=["physique","magie","mental"] as const
+const validLevel=(value:unknown):value is number=>
+  typeof value==="number"&&Number.isSafeInteger(value)&&value>=1&&value<=25
 
 /**
  * Prévisualisation pour injection UI : aucune mutation, aucun débit, aucun état persistant.
@@ -67,6 +71,8 @@ export function previewNativeRules(request:unknown):RulesPreview {
       return rejected("INVALID_REQUEST","La prévisualisation M01 ne permet ni options cachées ni ressources.")
     if(!onlyKeys(request.action,["natural","rawStat","masteryRank","situation","threshold","feasible"]))
       return rejected("INVALID_REQUEST","Paramètres M01 non reconnus.")
+    if(typeof request.action.feasible!=="boolean")
+      return rejected("INVALID_FEASIBLE","Le champ feasible doit être booléen.")
     try {
       const result=resolveProgressionAction(request.action as Action)
       return {status:"ok",version:RULES_PREVIEW_VERSION,engine:"M01",actor:request.actor,
@@ -77,6 +83,20 @@ export function previewNativeRules(request:unknown):RulesPreview {
     return rejected("INVALID_REQUEST","Entrée M03 non structurée ou champs non autorisés.")
   if(!onlyKeys(request.combat,allowedCombatKeys))
     return rejected("INJECTED_NATIVE_EFFECT","Injection d'un effet ou d'une ressource native pré-autorisée interdite.")
+  // M03 utilise kind/mode dans des branches différentes : le type TS ne valide pas les JSON à l'exécution.
+  if(!allowedCombatModes.includes(request.combat.mode as typeof allowedCombatModes[number]))
+    return rejected("INVALID_COMBAT_MODE","Mode M03 inconnu (melee, tir, magie, mental).")
+  if(!allowedResistanceKinds.includes(request.combat.kind as typeof allowedResistanceKinds[number]))
+    return rejected("INVALID_RESISTANCE_KIND","Résistance M03 inconnue (physique, magie, mental).")
+  // Le moteur peut ne pas consulter level après un échec ou en mode mental : contrôler en amont.
+  if(!validLevel(request.combat.level))
+    return rejected("INVALID_LEVEL","Niveau M03 attendu : 1 à 25.")
+  if(typeof request.combat.feasible!=="boolean")
+    return rejected("INVALID_FEASIBLE","Le champ feasible doit être booléen.")
+  if(request.combat.defender!==null&&request.combat.defender!==undefined){
+    if(!isRecord(request.combat.defender)||!validLevel(request.combat.defender.level))
+      return rejected("INVALID_DEFENDER_LEVEL","Niveau du défenseur attendu : 1 à 25.")
+  }
   if(request.effects!==undefined&&!Array.isArray(request.effects))
     return rejected("INVALID_EFFECTS","Les effets doivent former un tableau.")
   const candidates=(request.effects??[]) as unknown[]
@@ -90,11 +110,29 @@ export function previewNativeRules(request:unknown):RulesPreview {
       return rejected("FORGED_APPROVAL","N'injectez ni 'approved:true' ni un effet M03 déjà autorisé.")
     if(candidate.proposal.kind==="absorption")
       return unavailable("ABSORPTION_UNHOMOLOGATED","La famille absorption est bloquée en attente de sémantique COMBAT/DG.")
-    if(!isRecord(candidate.ability))return rejected("NATIVE_APPROVAL_REQUIRED","Définition M02 exigée.")
-    // Validation native M03 : statut, accord MJ, ID, descriptions, limites, bornes et déclencheur.
-    const approved=validateM03AbilityEffect(candidate.ability as AbilityDefinition,candidate.proposal as M03Effect)
-    if(!approved)return rejected("NATIVE_APPROVAL_REQUIRED","validateM03AbilityEffect a refusé la capacité.")
-    authorized.push(approved)
+    // Ne jamais confier des champs JSON de type invalide au validateur TS natif :
+    // des lectures comme ability.effect?.trim() peuvent sinon lever une exception.
+    try {
+      if(!isRecord(candidate.ability)||
+        typeof candidate.ability.id!=="string"||typeof candidate.ability.status!=="string"||
+        typeof candidate.ability.approvedByGM!=="boolean"||
+        typeof candidate.ability.rank!=="number"||!Number.isSafeInteger(candidate.ability.rank)||
+        typeof candidate.ability.effect!=="string"||
+        typeof candidate.ability.limitations!=="string"||
+        typeof candidate.ability.description!=="string"||
+        typeof candidate.proposal.abilityId!=="string"||
+        typeof candidate.proposal.kind!=="string"||
+        typeof candidate.proposal.trigger!=="string"||
+        typeof candidate.proposal.magnitude!=="number"||
+        typeof candidate.proposal.duration!=="number")
+        return rejected("INVALID_ABILITY_SHAPE","Capacité M02 ou proposition M03 mal typée.")
+      // Seul M03 accorde l'approbation et applique les bornes magnitude 1–2, durée 1–3.
+      const approved=validateM03AbilityEffect(candidate.ability as AbilityDefinition,candidate.proposal as M03Effect)
+      if(!approved)return rejected("NATIVE_APPROVAL_REQUIRED","validateM03AbilityEffect a refusé la capacité.")
+      authorized.push(approved)
+    } catch {
+      return rejected("INVALID_ABILITY_SHAPE","Validation M03 impossible sur une capacité malformée.")
+    }
   }
   try {
     const result=resolveCombatM03({...request.combat as Omit<CombatM03Input,"effects">,effects:authorized})
