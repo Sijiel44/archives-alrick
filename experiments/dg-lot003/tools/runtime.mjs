@@ -13,6 +13,7 @@ export function createValidatedStorage(owner,area) {
  if(methods.some(k=>typeof owner[k]!=='function'))fail('Interface ARCHIVES incomplète');
  if(!area||typeof area.getItem!=='function'||typeof area.setItem!=='function')fail('Stockage privé navigateur indisponible');
  let queue=Promise.resolve();
+ let exactRestorePending=null;
  const encoder=new TextEncoder();
  const decoder=new TextDecoder();
  const enqueue=operation=>{
@@ -55,11 +56,18 @@ export function createValidatedStorage(owner,area) {
   const prior=current.extensions?.catalog??[],incoming=snapshot.extensions.catalog??[];
   const identities=new Set(incoming.map(x=>x.id+'@'+x.version));
   snapshot.extensions.catalog=[...incoming,...prior.filter(x=>!identities.has(x.id+'@'+x.version))];
+  const savedDrafts=current.extensions?.creatorDrafts??[];
+  const pendingDrafts=snapshot.extensions.creatorDrafts??[];
+  const draftIds=new Set(pendingDrafts.map(d=>d.catalogId+'@'+d.catalogVersion));
+  snapshot.extensions.creatorDrafts=[...pendingDrafts,...savedDrafts.filter(d=>!draftIds.has(d.catalogId+'@'+d.catalogVersion))];
   return snapshot;
  }
  function save(studio){return enqueue(async()=>{
   const current=await readStudio();
-  await persist(mergePersistentCatalog(studio,current));
+  const exact=exactRestorePending && exactRestorePending.id===studio.id;
+  const prepared=exact?copy(studio):mergePersistentCatalog(studio,current);
+  await persist(prepared);
+  if(exact)exactRestorePending=null;
  });}
  return {
   owner,readStudio,readArchive,save,
@@ -73,7 +81,9 @@ export function createValidatedStorage(owner,area) {
    if(!preview?.privatePending)fail('Restoration preview missing');
    const prior=previous?studioToArchive(previous,owner.createCampaign):null;
    const restored=await owner.commitRestore(preview.privatePending,{existingProject:prior,replace:prior!==null});
-   return archiveToStudio(restored);
+   const exact=archiveToStudio(restored);
+   exactRestorePending={id:exact.id};
+   return exact;
   },
   async exportPrivate(studio){
    await queue;
@@ -84,7 +94,7 @@ export function createValidatedStorage(owner,area) {
     fail('ARCHIVES private export invalid');
    return result.bytes;
   },
-  async appendCatalog(studio,entry,validateRegistry){
+  async appendCatalog(studio,entry,validateRegistry,originalRecord){
    return enqueue(async()=>{
     const current=await readStudio();
     const foundation=current?.id===studio.id?current:copy(studio);
@@ -94,6 +104,10 @@ export function createValidatedStorage(owner,area) {
     const valid=validateRegistry(next);
     if(valid?.ok!==true)fail('Catalogue : '+(valid?.errors??[]).join('; '));
     foundation.extensions.catalog=next;
+    if(!originalRecord||typeof originalRecord!=='object'||Array.isArray(originalRecord))fail('Original creator draft missing');
+    const drafts=foundation.extensions.creatorDrafts??[];
+    foundation.extensions.creatorDrafts=[...drafts,{catalogId:entry.id,catalogVersion:entry.version,
+      sourceSchema:originalRecord.schema,original:copy(originalRecord),visibility:'mj-private'}];
     await persist(foundation);
     return next;
    });
@@ -222,7 +236,7 @@ export function mountIntegratedMJ({owners,doc}){
    const campaign=studio.getCampaign();
    if(!campaign)fail('Créer une campagne avant une fiche descriptive');
    const entry=creatorToCatalog(record,owners.catalog,campaign.id);
-   const list=await store.appendCatalog(campaign,entry,owners.catalog.validateCatalogRegistry);
+   const list=await store.appendCatalog(campaign,entry,owners.catalog.validateCatalogRegistry,record);
    renderEntries(list);
    return {saved:true};
   }
