@@ -226,12 +226,21 @@ export function mountIntegratedMJ({owners,doc}){
    nativeValidated:true,
    async previewM03({commit}){
     if(commit!==false)fail('Mutation native interdite');
-    const result=await ports.rulesGateway.preview({operation:'m03-combat',ruleset:'m03',
-      input:{kind:'combat',actor:'pj',combat:{natural:24,rawStat:16,masteryRank:4,situation:0,level:10,
-       difficulty:21,kind:'physique',mode:'melee',feasible:true,baseDamage:6}}});
+    const nativeInput={kind:'combat',actor:'pj',combat:{natural:24,rawStat:16,masteryRank:4,situation:0,level:10,
+     difficulty:21,kind:'physique',mode:'melee',feasible:true,baseDamage:6}};
+    const result=await ports.rulesGateway.preview({operation:'m03-combat',ruleset:'m03',input:nativeInput});
     if(result.status!=='ready')fail(result.reason);
-    if(result.value.output.applied!==false)fail('Prévisualisation non pure');
-    return {label:'M03 natif sur profil fictif — aucun débit ni effet appliqué',native:result.value.output};
+    const output=result.value.output;
+    if(output.applied!==false || output.status!=='ok' || output.engine!=='M03')fail('Prévisualisation native non pure ou refusée');
+    const panel=doc.getElementById('native-preview-details');
+    const inputText=doc.getElementById('native-preview-input');
+    const resultText=doc.getElementById('native-preview-result');
+    if(!panel||!inputText||!resultText)fail('Panneau de prévisualisation MJ absent');
+    // Only the official native preview output is displayed; no recomputation.
+    inputText.textContent=JSON.stringify(nativeInput,null,2);
+    resultText.textContent=JSON.stringify(output,null,2);
+    panel.hidden=false;
+    return {label:'M03 natif fictif — détails visibles dans le panneau MJ, aucun débit',native:output};
    }
   }
  };
