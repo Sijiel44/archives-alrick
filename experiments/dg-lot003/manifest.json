@@ -82,7 +82,7 @@
       "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
     }
   ],
-  "notes": "Seven owner modules copied and wired. CREATORS updated to injectStyles:false release. Native ARCHIVES transfer tagged as transport, not authorship. Tests on final assembled HEAD still pending.",
+  "notes": "All source modules copied with per-file Git blob trace. Creator original record private snapshot, native validated ARCHIVES local envelope, strict CSP external CSS, no merge/publication. Final tests/QA not yet confirmed.",
   "sourceFiles": [
     {
       "path": "experiments/dg-lot003/src/ports/index.ts",
@@ -361,6 +361,46 @@
       "sourceBranch": "prototype/dg003-creators",
       "sourceCommit": "48e0a6fa3c7650af424db3565a0582850f213b93",
       "blobSha": "bd0c7888334b3d8b3fa54c5efdff18981dc27965"
+    },
+    {
+      "path": "experiments/dg-lot003/src/storage/storage.mjs",
+      "role": "storage",
+      "sourceBranch": "transfer/dg003-storage-source",
+      "sourceCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "originalAuthor": "ARCHIVES",
+      "originalSourceCommit": null,
+      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
+      "blobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837"
+    },
+    {
+      "path": "experiments/dg-lot003/src/storage/CONTRACT.md",
+      "role": "storage",
+      "sourceBranch": "transfer/dg003-storage-source",
+      "sourceCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "originalAuthor": "ARCHIVES",
+      "originalSourceCommit": null,
+      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
+      "blobSha": "7390b1872db0d2199404c394d1df8e21c8af2678"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/storage/storage.test.mjs",
+      "role": "storage",
+      "sourceBranch": "transfer/dg003-storage-source",
+      "sourceCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "originalAuthor": "ARCHIVES",
+      "originalSourceCommit": null,
+      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
+      "blobSha": "49ad117bef2dd34fc7f142d789c9561dd2a53527"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/storage/RESULTS.md",
+      "role": "storage",
+      "sourceBranch": "transfer/dg003-storage-source",
+      "sourceCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "originalAuthor": "ARCHIVES",
+      "originalSourceCommit": null,
+      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
+      "blobSha": "fe35aa91dc0eb7a5fc359a60d4fc579e77c8d346"
     }
   ],
   "storageProvenance": {
