@@ -1,0 +1,46 @@
+{
+  "schema": "alrick.sheets.v3",
+  "sheets": [
+    {
+      "id": "multi-a",
+      "schema": "alrick.sheet.v3",
+      "name": "Personnage fictif multi-a",
+      "stats": {
+        "physique": 14,
+        "esprit": 4
+      },
+      "inventory": [
+        {
+          "charges": 7,
+          "customCharges": "non convertible"
+        }
+      ],
+      "qaUnrecognized": {
+        "futureRule": "private",
+        "score": 14
+      }
+    },
+    {
+      "id": "multi-b",
+      "schema": "alrick.sheet.v2",
+      "name": "Personnage fictif multi-b",
+      "stats": {
+        "physique": 14,
+        "esprit": 4
+      },
+      "inventory": [
+        {
+          "charges": 7,
+          "customCharges": "non convertible"
+        }
+      ],
+      "qaUnrecognized": {
+        "futureRule": "private",
+        "score": 14
+      }
+    }
+  ],
+  "qaEnvelopeUnknown": {
+    "futureSchema": "extension"
+  }
+}
