@@ -43,26 +43,6 @@ jobs:
       - run: npm test
       - run: node experiments/dg-lot003/tools/build.mjs
       - run: node experiments/dg-lot003/tools/test-unit.mjs
-      - name: Locate and version installed official Chrome (avoid Ubuntu Snap launcher)
-        shell: bash
-        run: |
-          set -euo pipefail
-          browser=''
-          for candidate in google-chrome-stable google-chrome /opt/google/chrome/chrome /usr/bin/google-chrome-stable /usr/bin/google-chrome; do
-            if command -v "$candidate" >/dev/null 2>&1; then
-              browser="$(command -v "$candidate")"
-              break
-            fi
-          done
-          if [ -z "$browser" ]; then
-            echo 'NON EXÉCUTÉ : Chrome officiel absent du runner ; pas de lanceur Snap de secours.' >&2
-            exit 2
-          fi
-          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
-          echo "BROWSER_PATH=$browser"
-          "$browser" --version
-      - name: Product browser test (served HTTP origins)
-        run: node experiments/dg-lot003/tools/test-browser.mjs
       - name: QA independent contract and E2E test (QA branch only)
         if: ${{ env.IS_QA_PR == 'true' }}
         shell: bash
@@ -90,6 +70,26 @@ jobs:
       - name: QA independent suite status (integrated branch)
         if: ${{ env.IS_QA_PR != 'true' }}
         run: echo 'NON EXÉCUTÉ — QA indépendante absente de cette branche intégrée ; seule la future PR QA devra exécuter tests/e2e.'
+      - name: Locate and version installed official Chrome (avoid Ubuntu Snap launcher)
+        shell: bash
+        run: |
+          set -euo pipefail
+          browser=''
+          for candidate in google-chrome-stable google-chrome /opt/google/chrome/chrome /usr/bin/google-chrome-stable /usr/bin/google-chrome; do
+            if command -v "$candidate" >/dev/null 2>&1; then
+              browser="$(command -v "$candidate")"
+              break
+            fi
+          done
+          if [ -z "$browser" ]; then
+            echo 'NON EXÉCUTÉ : Chrome officiel absent du runner ; pas de lanceur Snap de secours.' >&2
+            exit 2
+          fi
+          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
+          echo "BROWSER_PATH=$browser"
+          "$browser" --version
+      - name: Product browser test (served HTTP origins)
+        run: node experiments/dg-lot003/tools/test-browser.mjs
       - name: Record tested source commit, also on failure
         if: always()
         shell: bash
