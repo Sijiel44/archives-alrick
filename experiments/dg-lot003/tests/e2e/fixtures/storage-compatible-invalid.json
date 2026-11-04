@@ -1,0 +1,24 @@
+{
+  "schema": "alrick.sheets.v4",
+  "sheets": [
+    {
+      "id": "invalid",
+      "schema": "alrick.sheet.v3",
+      "name": "Personnage fictif invalid",
+      "stats": {
+        "physique": 14,
+        "esprit": 4
+      },
+      "inventory": [
+        {
+          "charges": 7,
+          "customCharges": "non convertible"
+        }
+      ],
+      "qaUnrecognized": {
+        "futureRule": "private",
+        "score": 14
+      }
+    }
+  ]
+}

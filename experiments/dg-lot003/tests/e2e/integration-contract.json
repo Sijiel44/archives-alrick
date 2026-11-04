@@ -1,0 +1,72 @@
+{
+  "schema": "cer.dg003.qa.e2e-contract.v6",
+  "status": "QA harness contract — not a product acceptance result",
+  "inspectedSourceHead": "2ab809ef5351940e0fc272b859d10f21de894d00",
+  "sourceRepository": "Sijiel44/archives-alrick",
+  "sourceBranch": "prototype/dg003-integrated",
+  "sourceFiles": [
+    "experiments/dg-lot003/src/studio/index.mjs",
+    "experiments/dg-lot003/src/player/index.mjs",
+    "experiments/dg-lot003/src/creators/index.mjs",
+    "experiments/dg-lot003/tools/runtime.mjs",
+    "experiments/dg-lot003/tools/adapters.mjs",
+    "experiments/dg-lot003/index.html"
+  ],
+  "origins": {
+    "mj": "http://127.0.0.1:4173",
+    "player": "http://127.0.0.1:4174"
+  },
+  "selectors": {
+    "campaign": "input[aria-label=\"Nom de la campagne\"]",
+    "file": "input[aria-label=\"Fichier PJ v2/v3\"]",
+    "newScene": "input[aria-label=\"Titre de nouvelle scène\"]",
+    "description": "textarea[aria-label=\"Description destinée à être proposée au public\"]",
+    "notes": "textarea[aria-label=\"Notes privées MJ\"]",
+    "sceneTitle": "input[aria-label=\"Titre de la scène\"]",
+    "sceneDescription": "textarea[aria-label=\"Description publique de la scène\"]",
+    "sceneNotes": "textarea[aria-label=\"Notes MJ — privées\"]",
+    "creature": "input[aria-label=\"Code ou référence créature\"]",
+    "restore": "input[aria-label=\"Fichier de restauration confidentiel\"]"
+  },
+  "buttonLabels": {
+    "campaign": "Créer campagne",
+    "scene": "Créer scène",
+    "importPreview": "Prévisualiser PJ",
+    "importAccept": "Accepter copie PJ",
+    "openPlayer": "Ouvrir la fenêtre joueur",
+    "publishPlayer": "Publier uniquement la sélection",
+    "privateExport": "Exporter campagne CONFIDENTIELLE",
+    "publicExport": "Exporter projection publique",
+    "nativeM03": "Prévisualiser calcul M03 natif autorisé"
+  },
+  "nativePreview": {
+    "input": "#native-preview-input",
+    "wrapper": "#native-preview-result",
+    "resolverPath": "quartz/components/scripts/atelier5d6-combat-m03.ts",
+    "resolverExport": "resolveCombatM03",
+    "requestPath": "combat",
+    "responsePath": "result"
+  },
+  "multiSheetUI": "explicit-refusal-no-mutation",
+  "tests": {
+    "entry": "dg003-e2e.test.mjs",
+    "integrationHeadFrom": "DG003_INTEGRATION_HEAD",
+    "testedHeadFrom": "DG003_TESTED_HEAD",
+    "eventShaRecordedFrom": "GITHUB_SHA",
+    "runIdRecordedFrom": "GITHUB_RUN_ID",
+    "requireAncestor": true,
+    "requireExactCheckout": true,
+    "executeOn": "real-local-HTTP-pages"
+  },
+  "policy": {
+    "noMockHarness": true,
+    "noSyntheticHandshake": true,
+    "noProductionMutation": true,
+    "disabledFamilies": [
+      "absorption M03",
+      "numeric item",
+      "authorities 25+",
+      "mana/charge debit"
+    ]
+  }
+}

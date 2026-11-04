@@ -1,0 +1,27 @@
+{
+  "schema": "alrick.sheets.v2",
+  "sheets": [
+    {
+      "id": "v2-hero",
+      "schema": "alrick.sheet.v2",
+      "name": "Personnage fictif v2-hero",
+      "stats": {
+        "physique": 14,
+        "esprit": 4
+      },
+      "inventory": [
+        {
+          "charges": 7,
+          "customCharges": "non convertible"
+        }
+      ],
+      "qaUnrecognized": {
+        "futureRule": "private",
+        "score": 14
+      }
+    }
+  ],
+  "qaEnvelopeUnknown": {
+    "futureSchema": "extension"
+  }
+}
