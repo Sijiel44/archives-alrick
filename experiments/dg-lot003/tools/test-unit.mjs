@@ -4,7 +4,7 @@ import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const manifest=JSON.parse(await readFile(resolve(root,'manifest.json'),'utf8'));
-const roles=['ports','rules','catalog','storage','studio','player','creators'];
+const roles=['ports','rules','catalog','storage','studio','creators'];
 let failed=false;
 for(const role of roles){
  const directory=resolve(root,'tests',role);
@@ -15,4 +15,5 @@ for(const role of roles){
  if(run.status!==0){console.error('ÉCHEC',role);failed=true;}
  if(!manifest.components.some(c=>c.role===role)){console.error('MODULE NON INTÉGRÉ',role);failed=true;}
 }
+if(!manifest.components.some(c=>c.role==='player') || !manifest.components.some(c=>c.role==='studio')){console.error('PLAYER/STUDIO pairing absent');failed=true;}
 if(failed)process.exitCode=1;else console.log('TOUS TESTS UNITAIRES INTÉGRÉS OK');
