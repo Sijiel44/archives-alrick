@@ -9,6 +9,7 @@ import { mountCreators } from './src/creators/index.mjs'
 const controller = mountCreators(document.getElementById('creators'), {
   initialKind: 'capacity', // 'spell' | 'item'
   initialMode: 'guided',  // 'expert'
+  injectStyles: false, // CSS externe chargé par 05 ; par défaut true injecte un <style>
   onSave: async (descriptiveRecord) => {
     // Le Studio / STORAGE décide si et où enregistrer en LOCAL.
     // Ne retourner {saved:true} qu'après confirmation effective.
@@ -27,9 +28,15 @@ const controller = mountCreators(document.getElementById('creators'), {
 // controller.destroy()
 ```
 
+## CSP : feuille de style externe (05 INTÉGRATION)
+
+Par défaut, `injectStyles: true` maintient le comportement autonome historique : `mountCreators` ajoute son propre élément `<style>`. Pour une application avec CSP `style-src 'self'`, utiliser impérativement `injectStyles: false` : aucun élément `<style>` n'est créé ou ajouté au DOM. Le nettoyage `destroy()` fonctionne dans les deux modes.
+
+L'intégrateur récupère **à la construction** la constante exportée `CREATOR_STYLES` et l'écrit **à l'identique** dans sa feuille CSS externe servie sur la même origine, puis charge ce CSS avec un `<link rel="stylesheet" href="...">` autorisé par la CSP. Ne pas affecter dynamiquement une propriété `style`, ajouter de `<style>`, introduire `unsafe-inline` ou une dépendance. La logique des formulaires, l'API de sauvegarde et les calculs sont inchangés.
+
 ## Exports
 
-- `mountCreators(root, options)` : trois formulaires DOM (capacité, sort, objet), guides/experts, aperçu descriptif, validations, focus d’erreur, callback `onSave` injecté.
+- `mountCreators(root, options)` : trois formulaires DOM (capacité, sort, objet), guides/experts, aperçu descriptif, validations, focus d’erreur, callback `onSave` injecté. Option `injectStyles?: boolean` (défaut `true`, `false` pour CSP).
 - `validateCreatorDraft(input)` : validation stricte **pure**, `{valid, errors, record}`. Ne retourne un `record` normalisé que si valide.
 - `CREATOR_KINDS`, `CREATOR_SCHEMA`, `NUMERIC_UNAVAILABLE`, `CREATOR_STYLES`.
 
