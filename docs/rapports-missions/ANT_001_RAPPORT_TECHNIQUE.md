@@ -1,6 +1,6 @@
 # ANT-001 — Rapport technique de mission
 
-**Référent :** ANT — Antagonistes, conflits et menaces. **Date :** 2026-11-04. **Dépôt :** `Sijiel44/archives-alrick`. **Base contrôlée :** `main@88f774f3d0d6d520d8d11443b72202b9caf4f94b`. **Branche de mission :** `docs/ant-001-cadre-antagonismes` (créée depuis main, sans modification de main). **PR :** brouillon à référencer après création.
+**Référent :** ANT — Antagonistes, conflits et menaces. **Date :** 2026-11-04. **Dépôt :** `Sijiel44/archives-alrick`. **Base contrôlée :** `main@88f774f3d0d6d520d8d11443b72202b9caf4f94b`. **Branche de mission :** `docs/ant-001-cadre-antagonismes` (créée depuis main, sans modification de main). **PR :** [#83 — ANT-001 (DRAFT)](https://github.com/Sijiel44/archives-alrick/pull/83), sans fusion, CI du HEAD final à vérifier.
 
 ## Contrat et sources vérifiées
 
