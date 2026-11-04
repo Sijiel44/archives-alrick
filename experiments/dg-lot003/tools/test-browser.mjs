@@ -257,7 +257,12 @@ try{
  await mj.eval(click('Prévisualiser restauration'));
  await checkDOM(mj,hasText('Restauration proposée'));
  await mj.eval(click('Confirmer restauration'));
- await checkDOM(mj,hasText('Campagne restaurée depuis la prévisualisation.'));
+ try{await checkDOM(mj,hasText('Campagne restaurée depuis la prévisualisation.'));}
+ catch(error){
+  const status=await mj.eval('document.querySelector(\'main[aria-label="Cockpit du Maître de Jeu"] [role="status"]\')?.textContent');
+  const storageState=await mj.eval('({chars:localStorage.getItem("cer.dg003.private.campaign.v0")?.length??0,usage:JSON.stringify(localStorage).length})');
+  throw Error('NATIVE_6MIB_PERSISTENCE_FAIL: '+JSON.stringify({status,storageState})+' '+error.message);
+ }
  await mj.call('Page.enable');
  await mj.call('Page.reload',{ignoreCache:true});
  await checkDOM(mj,hasSelector('button'));
