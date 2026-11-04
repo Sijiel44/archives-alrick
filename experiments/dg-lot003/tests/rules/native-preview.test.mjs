@@ -140,3 +140,95 @@ test('5d6 officiels : 7 776 issues, aucun second générateur',()=>{
  assert.equal(Array.from({length:26},(_,i)=>direct.sumOccurrences(i+5)).reduce((x,y)=>x+y,0),7776);
  assert.equal([5,6,7].reduce((s,n)=>s+direct.sumOccurrences(n),0),21);
 });
+
+
+test('modes M03 inconnus refusés avant résolution, sans exception',()=>{
+ const combat={natural:18,rawStat:6,masteryRank:3,situation:0,level:5,
+   difficulty:21,kind:'physique',mode:'melee',feasible:true,baseDamage:6};
+ const baseline=bridge.previewNativeRules({kind:'combat',actor:'pj',combat});
+ assert.equal(baseline.status,'ok');assert.equal(baseline.result.damage,11);
+ for(const mode of ['inconnu',undefined,null,9]){
+   assert.doesNotThrow(()=>bridge.previewNativeRules({kind:'combat',actor:'pj',combat:{...combat,mode}}));
+   const p=bridge.previewNativeRules({kind:'combat',actor:'pj',combat:{...combat,mode}});
+   assert.equal(p.status,'rejected');assert.equal(p.code,'INVALID_COMBAT_MODE');
+ }
+});
+
+test('types de résistance inconnus refusés avant résolution, sans exception',()=>{
+ const combat={natural:18,rawStat:6,masteryRank:3,situation:0,level:5,
+   difficulty:21,kind:'physique',mode:'melee',feasible:true,baseDamage:6};
+ for(const kind of ['inconnu',undefined,null,8]){
+   assert.doesNotThrow(()=>bridge.previewNativeRules({kind:'combat',actor:'creature',combat:{...combat,kind}}));
+   const p=bridge.previewNativeRules({kind:'combat',actor:'creature',combat:{...combat,kind}});
+   assert.equal(p.status,'rejected');assert.equal(p.code,'INVALID_RESISTANCE_KIND');
+ }
+});
+
+test('toutes les enums natives M03 connues sont acceptées',()=>{
+ for(const mode of ['melee','tir','magie','mental']){
+   for(const kind of ['physique','magie','mental']){
+     const p=bridge.previewNativeRules({kind:'combat',actor:'pj',combat:{...sample(5),mode,kind}});
+     assert.equal(p.status,'ok',mode+' / '+kind);
+   }
+ }
+});
+
+test('niveau attaquant 1..25 validé avant échec naturel ou mode mental',()=>{
+ const combat=sample(5);
+ for(const level of [0,26,-1,1.5,null,undefined,'5']){
+   for(const mode of ['melee','mental']){
+     const p=bridge.previewNativeRules({kind:'combat',actor:'pj',combat:{...combat,natural:5,level,mode}});
+     assert.equal(p.status,'rejected');assert.equal(p.code,'INVALID_LEVEL');
+   }
+ }
+ assert.equal(bridge.previewNativeRules({kind:'combat',actor:'pj',combat:{...combat,natural:5,level:25,mode:'mental'}}).status,'ok');
+});
+
+test('niveau défenseur invalide refusé indépendamment de la résolution',()=>{
+ const combat=sample(5);
+ for(const level of [0,26,'5',null]){
+   const p=bridge.previewNativeRules({kind:'combat',actor:'pj',combat:{...combat,natural:5,mode:'mental',defender:{...combat.defender,level}}});
+   assert.equal(p.status,'rejected');assert.equal(p.code,'INVALID_DEFENDER_LEVEL');
+ }
+});
+
+test('feasible exige un booléen, pour M03 et M01',()=>{
+ const combat=sample(5), action={natural:18,rawStat:6,masteryRank:3,situation:0,threshold:21,feasible:true};
+ for(const feasible of [undefined,null,0,1,'true']){
+   const p=bridge.previewNativeRules({kind:'combat',actor:'pj',combat:{...combat,feasible}});
+   const q=bridge.previewNativeRules({kind:'progression',actor:'pj',action:{...action,feasible}});
+   assert.equal(p.status,'rejected');assert.equal(p.code,'INVALID_FEASIBLE');
+   assert.equal(q.status,'rejected');assert.equal(q.code,'INVALID_FEASIBLE');
+ }
+ assert.equal(bridge.previewNativeRules({kind:'combat',actor:'pj',combat:{...combat,feasible:false}}).status,'ok');
+ assert.equal(bridge.previewNativeRules({kind:'progression',actor:'pj',action:{...action,feasible:false}}).status,'ok');
+});
+
+test('ability malformed: effect numérique et autres champs mal typés refusés sans exception',()=>{
+ const original=allowed('a','impact',1,1,'attaque');
+ const badAbilities=[
+   {...original.ability,effect:7},
+   {...original.ability,limitations:7},
+   {...original.ability,description:7},
+   {...original.ability,id:7},
+   {...original.ability,status:7},
+   {...original.ability,approvedByGM:'true'},
+   {...original.ability,rank:'1'},
+ ];
+ for(const ability of badAbilities){
+   const req={kind:'combat',actor:'pj',combat:sample(5),effects:[{...original,ability}]};
+   assert.doesNotThrow(()=>bridge.previewNativeRules(req));
+   const p=bridge.previewNativeRules(req);
+   assert.equal(p.status,'rejected');assert.equal(p.code,'INVALID_ABILITY_SHAPE');
+ }
+});
+
+test("exception au contrôle d'une capacité est capturée et convertie en refus",()=>{
+ const original=allowed();
+ const ability={...original.ability};
+ Object.defineProperty(ability,'effect',{get(){throw new TypeError('getter synthétique');}});
+ const req={kind:'combat',actor:'pj',combat:sample(5),effects:[{...original,ability}]};
+ assert.doesNotThrow(()=>bridge.previewNativeRules(req));
+ const p=bridge.previewNativeRules(req);
+ assert.equal(p.status,'rejected');assert.equal(p.code,'INVALID_ABILITY_SHAPE');
+});
