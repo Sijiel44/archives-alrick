@@ -277,6 +277,9 @@ try{
   return files.length===1?join(downloadDir,files[0]):null;
  },{tries:120});
  const exportedBytes=new Uint8Array(await readFile(privateFile));
+ if(exportedBytes.length!==nativeBackup.bytes.length ||
+    Buffer.compare(Buffer.from(exportedBytes),Buffer.from(nativeBackup.bytes))!==0)
+  fail('NATIVE_6MIB_BYTE_DRIFT: reload/reexport changed original ARCHIVES export bytes');
  const preview=await archives.previewRestore(exportedBytes);
  const restored=await archives.commitRestore(preview);
  if(exportedBytes.length<=5*1024*1024||
@@ -285,7 +288,7 @@ try{
     restored[OVERLAY_KEY]?.fields?.revision!==7)
   fail('NATIVE_6MIB_ROUNDTRIP: missing unknown fields or lost native data');
  console.log('BROWSER_NATIVE_6MIB_OK',JSON.stringify({
-  importedBytes:nativeBackup.bytes.length,reexportedBytes:exportedBytes.length,
+  importedBytes:nativeBackup.bytes.length,reexportedBytes:exportedBytes.length,byteExact:true,
   unknownMarker:restored.privateNotes[0].unknown.marker,revision:restored[OVERLAY_KEY].fields.revision
  }));
 
