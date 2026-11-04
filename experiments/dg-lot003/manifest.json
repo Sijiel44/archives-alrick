@@ -2,6 +2,77 @@
   "schema": "cer.dg003.integration-manifest.v0",
   "base": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
   "document": "b5c59854b802dc25617d9bcd7c576495199a41dd",
-  "components": [],
-  "notes": "Aucun SHA propriétaire reçu. Une entrée exige role, entry, commit, blobSha, branch et paths ; elle ne devient approuvée qu'après vérification."
+  "components": [
+    {
+      "role": "ports",
+      "entry": "experiments/dg-lot003/src/ports/index.ts",
+      "branch": "prototype/dg003-ports-builder",
+      "commit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "07154546e2258c3795f2608bc2ef93e20d5beac2",
+      "paths": [
+        "experiments/dg-lot003/src/ports/index.ts",
+        "experiments/dg-lot003/src/ports/ports.ts",
+        "experiments/dg-lot003/src/ports/types.ts",
+        "experiments/dg-lot003/src/ports/README.md"
+      ],
+      "status": "source-copied-tests-externally-confirmed"
+    }
+  ],
+  "notes": "BUILDER source copied from exact SHA and blobs. Services only, no view mount. MATH rejected pending correction; STORAGE local archive pending GitHub commit; others not received.",
+  "sourceFiles": [
+    {
+      "path": "experiments/dg-lot003/src/ports/index.ts",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "07154546e2258c3795f2608bc2ef93e20d5beac2"
+    },
+    {
+      "path": "experiments/dg-lot003/src/ports/ports.ts",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "0de378573c480f2f5888f56bd0c8a595278e22cf"
+    },
+    {
+      "path": "experiments/dg-lot003/src/ports/types.ts",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "ffa14dcd4bca190424a05106d425eebef18af743"
+    },
+    {
+      "path": "experiments/dg-lot003/src/ports/README.md",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "52bf70cba4b4218f8c1889cbf1f45b82d1012fde"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/ports/ports.test.mjs",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "b381bf0b4b9db81cbca027ac97c8002af532877e"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/ports/FICHE_DIRECTION_L003_PORTS.md",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "ee23157014c16c571b22742e3dbb5bc309a2c9e6"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/ports/L003_PORTS_RAPPORT_TECHNIQUE.md",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "46694abdfdccdd4b224d3d25fd690652d7f9dfd6"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/ports/SHA256_LOCAL.txt",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "ef4238ae63906298f948aefb316448e8217bfb08"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/ports/TEST_RESULTS.tap",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "3cabd4c37b2f143965a85906ca068b3c972c569f"
+    }
+  ]
 }
