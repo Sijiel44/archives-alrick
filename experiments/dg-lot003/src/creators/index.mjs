@@ -57,7 +57,7 @@ export function validateCreatorDraft(input){
   return {valid:Object.keys(errors).length===0,errors,record:Object.keys(errors).length?null:record};
 }
 /**
- * mountCreators(root,{onSave,numericPreview,initialKind,initialMode})
+ * mountCreators(root,{onSave,numericPreview,initialKind,initialMode,injectStyles=true})
  * onSave(record): Promise<{saved:true}> - supplied local persistence; no automatic storage.
  * numericPreview.authorize(record): Promise<{status:'authorized',nativeReference:string}> - INDEX/native approval;
  * numericPreview.evaluate(record,authorization): Promise<{summary:string}> - MATH/native delegation.
@@ -71,8 +71,8 @@ export function mountCreators(root,options={}){
   if(!['guided','expert'].includes(initialMode))throw new RangeError('Mode initial invalide.');
   const doc=root.ownerDocument,id='cer-dg003-'+(++instance),forms=new Map(),tabs=new Map(),modes=new Map();
   let kind=initialKind,mode=initialMode,destroyed=false;
-  const style=node(doc,'style','',CREATOR_STYLES),shell=node(doc,'section','cer-creators');
-  style.setAttribute('data-cer-creators-style',id);
+  const style=options.injectStyles===false?null:node(doc,'style','',CREATOR_STYLES),shell=node(doc,'section','cer-creators');
+  style?.setAttribute('data-cer-creators-style',id);
   shell.setAttribute('aria-label','Créateurs descriptifs DG-LOT-003');
   shell.append(node(doc,'h2','','Ateliers de création — prototype local'),node(doc,'p','','Fiches fictives, descriptives et non canoniques. Aucun débit, calcul, lancement ou publication automatique.'));
   const nav=node(doc,'div','cer-row'),switcher=node(doc,'div','cer-row'),stage=node(doc,'div');
@@ -202,9 +202,10 @@ export function mountCreators(root,options={}){
     });
     preview(f);
   }
-  root.append(style,shell);setKind(initialKind);setMode(initialMode);
+  if(style)root.append(style);
+  root.append(shell);setKind(initialKind);setMode(initialMode);
   return {getDraft,setKind,setMode,destroy(){
     destroyed=true;for(const f of forms.values())f.request++;
-    shell.remove();style.remove();
+    shell.remove();style?.remove();
   }};
 }
