@@ -1,0 +1,7 @@
+{
+  "schema": "cer.dg003.integration-manifest.v0",
+  "base": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
+  "document": "b5c59854b802dc25617d9bcd7c576495199a41dd",
+  "components": [],
+  "notes": "Aucun SHA propriétaire reçu. Une entrée exige role, entry, commit, blobSha, branch et paths ; elle ne devient approuvée qu'après vérification."
+}
