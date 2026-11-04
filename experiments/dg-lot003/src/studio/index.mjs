@@ -1,7 +1,9 @@
 import {STUDIO_ORIGIN,PLAYER_ORIGIN,PLAYER_READY,PLAYER_SHOW,PLAYER_CLEAR,PROVISIONAL_CAMPAIGN_SCHEMA,
   checkedPlayerOrigins,makePlayerProjection,plainText} from './projection.mjs';
 
-const MAX_IMPORT_BYTES=5*1024*1024;
+// Independent limits: PJ sources stay at 5 MiB; private ARCHIVES backups may reach 16 MiB.
+const MAX_PJ_IMPORT_BYTES=5*1024*1024;
+const MAX_BACKUP_BYTES=16*1024*1024;
 const txt=(doc,tag,text='')=>{const n=doc.createElement(tag);n.textContent=text;return n;};
 const clone=(value)=>structuredClone(value);
 function makeId(view){
@@ -26,7 +28,14 @@ function isValidCampaign(x){
     Array.isArray(x.characters) && Array.isArray(x.creatures) && Array.isArray(x.scenes) &&
     Number.isSafeInteger(x.revision);
 }
-async function readFile(file){if(!file||file.size>MAX_IMPORT_BYTES)throw Error('Fichier absent ou trop volumineux (5 Mio)');return new Uint8Array(await file.arrayBuffer());}
+async function readFile(file,maxBytes=MAX_PJ_IMPORT_BYTES){
+  const label=maxBytes===MAX_BACKUP_BYTES?'16 Mio':'5 Mio';
+  if(!file||!Number.isSafeInteger(file.size)||file.size<0||file.size>maxBytes)
+    throw Error(`Fichier absent ou trop volumineux (${label})`);
+  const bytes=new Uint8Array(await file.arrayBuffer());
+  if(bytes.byteLength>maxBytes)throw Error(`Fichier trop volumineux (${label})`);
+  return bytes;
+}
 function getFile(doc,label){const wrap=txt(doc,'label',label+' ');const input=doc.createElement('input');input.type='file';input.accept='.json,application/json';input.setAttribute('aria-label',label);wrap.append(input);return {wrap,input};}
 function resolveOptionalService(options, name) {return options[name] && typeof options[name]==='object' ? options[name] : null;}
 
@@ -53,6 +62,7 @@ export function mountStudio(root,options={}){
   let playerWindow=null,channel='',playerReady=false;
   let selection={sceneId:'',shareTitle:false,shareDescription:false,actorIds:[]};
   let expert=false,disposed=false;
+  let pendingSave=Promise.resolve(); // Order rapid scene edits and selections before persistence.
   const onWindowMessage=(event)=>{
     if(disposed||!canProject||!playerWindow||event.source!==playerWindow||event.origin!==playerOrigin)return;
     const msg=event.data;
@@ -66,7 +76,10 @@ export function mountStudio(root,options={}){
   async function save(){
     if(!campaign)return;
     if(!storage || typeof storage.save!=='function'){status('Sauvegarde indisponible — adaptateur ARCHIVES non connecté.');return;}
-    try{await storage.save(clone(campaign));status('Modifications sauvegardées localement (adaptateur injecté).');}
+    const snapshot=clone(campaign);
+    const write=pendingSave.catch(()=>{}).then(()=>storage.save(snapshot));
+    pendingSave=write;
+    try{await write;status('Modifications sauvegardées localement (adaptateur injecté).');}
     catch{status('Échec de sauvegarde ; exporter en privé avant de quitter.');}
   }
   function requireCampaign(){if(!campaign)throw Error('Créer ou restaurer une campagne');return campaign;}
@@ -84,7 +97,7 @@ export function mountStudio(root,options={}){
   }
   async function previewCharacter(bytes,fileName='personnage.json'){
     requireCampaign();if(!characterImport||typeof characterImport.preview!=='function')throw Error('Adaptateur import PJ absent');
-    if(!(bytes instanceof Uint8Array)||bytes.byteLength>MAX_IMPORT_BYTES)throw Error('Import PJ hors limites');
+    if(!(bytes instanceof Uint8Array)||bytes.byteLength>MAX_PJ_IMPORT_BYTES)throw Error('Import PJ hors limites');
     const pending=await characterImport.preview({bytes,fileName});
     if(!safePayload(pending)||!safePayload(pending.display)||!['v2','v3'].includes(pending.schemaVersion))throw Error('Aperçu PJ invalide');
     importPreview=pending;render();return pending;
@@ -128,8 +141,13 @@ export function mountStudio(root,options={}){
     c.scenes.push(scene);c.activeSceneId=scene.id;touch();resetSelection();render();
     root.querySelector('textarea[aria-label="Notes MJ — privées"]')?.focus();void save();
   }
-  function setActiveScene(id){const c=requireCampaign();if(!c.scenes.some(s=>s.id===id))throw Error('Scène introuvable');
-    c.activeSceneId=id;resetSelection();render();}
+  async function setActiveScene(id){const c=requireCampaign();if(!c.scenes.some(s=>s.id===id))throw Error('Scène introuvable');
+    const changed=c.activeSceneId!==id;
+    c.activeSceneId=id;if(changed)touch();
+    // No automatic republication: clear previous consent and the player window first.
+    resetSelection();render();
+    if(changed)await save();
+  }
   function updateScene(data){const s=currentScene();if(!s)throw Error('Scène absente');
     s.title=plainText(data.title,160);s.publicDescription=plainText(data.publicDescription,2000);
     s.privateNotes=plainText(data.privateNotes,4000);
@@ -144,7 +162,7 @@ export function mountStudio(root,options={}){
   }
   async function previewRestoration(bytes){
     if(!storage||typeof storage.previewRestore!=='function')throw Error('Restauration ARCHIVES indisponible');
-    if(!(bytes instanceof Uint8Array)||bytes.byteLength>MAX_IMPORT_BYTES)throw Error('Restauration hors limites');
+    if(!(bytes instanceof Uint8Array)||bytes.byteLength>MAX_BACKUP_BYTES)throw Error('Restauration hors limites (16 Mio)');
     const pending=await storage.previewRestore({bytes});
     if(!safePayload(pending)||!safePayload(pending.display))throw Error('Prévisualisation de restauration invalide');
     restorePreview=pending;render();return pending;
@@ -271,7 +289,7 @@ export function mountStudio(root,options={}){
       const downloadPrivate=action(doc,'Exporter campagne CONFIDENTIELLE',onError(exportPrivate));
       downloadPrivate.disabled=!storage||typeof storage.exportPrivate!=='function';backups.append(downloadPrivate);
       const restoreInput=getFile(doc,'Fichier de restauration confidentiel');backups.append(restoreInput.wrap);
-      backups.append(action(doc,'Prévisualiser restauration',onError(async()=>{const bytes=await readFile(restoreInput.input.files?.[0]);await previewRestoration(bytes);})))
+      backups.append(action(doc,'Prévisualiser restauration',onError(async()=>{const bytes=await readFile(restoreInput.input.files?.[0],MAX_BACKUP_BYTES);await previewRestoration(bytes);})))
       if(restorePreview){backups.append(txt(doc,'p',`Restauration proposée : ${plainText(restorePreview.display.title,100)} (sans mutation)`));
         backups.append(action(doc,'Confirmer restauration',onError(acceptRestoration)));}
       main.append(backups);
