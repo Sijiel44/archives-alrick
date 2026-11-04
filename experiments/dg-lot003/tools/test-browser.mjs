@@ -144,6 +144,7 @@ try{
  await mj.eval(click('Mode expert'));
  await mj.eval(click('Prévisualiser calcul M03 natif autorisé'));
  await checkDOM(mj,'document.body.innerText.includes("Aperçu natif consulté")');
+ await checkDOM(mj, '(()=>{const panel=document.getElementById("native-preview-details");const input=document.getElementById("native-preview-input");const output=document.getElementById("native-preview-result");if(!panel||panel.hidden||!input||!output)return false;const i=JSON.parse(input.textContent),r=JSON.parse(output.textContent);return i.kind==="combat"&&i.actor==="pj"&&i.combat.natural===24&&r.status==="ok"&&r.engine==="M03"&&r.applied===false&&r.result!==undefined;})()');
  await mj.eval(click('Sort'));
  for(const [name,value] of [['name','Lueur fictive'],['provenance','campagne-fictive'],['version','1.0.0'],
   ['description','Une lumière purement narrative sans chiffre.'],['limitations','Aucune activation automatique']]){
