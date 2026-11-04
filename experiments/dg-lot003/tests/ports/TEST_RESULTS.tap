@@ -1,0 +1,150 @@
+TAP version 13
+# (node:597) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: L003-PORT-01: all five injectable factories exist
+ok 1 - L003-PORT-01: all five injectable factories exist
+  ---
+  duration_ms: 2.695734
+  type: 'test'
+  ...
+# Subtest: L003-PORT-02: absent delegates fail closed
+ok 2 - L003-PORT-02: absent delegates fail closed
+  ---
+  duration_ms: 0.465276
+  type: 'test'
+  ...
+# Subtest: L003-PORT-03: document reader remains source-read-only and validates identity
+ok 3 - L003-PORT-03: document reader remains source-read-only and validates identity
+  ---
+  duration_ms: 0.391176
+  type: 'test'
+  ...
+# Subtest: L003-PORT-04: document reader preserves copies and novel fields
+ok 4 - L003-PORT-04: document reader preserves copies and novel fields
+  ---
+  duration_ms: 0.164867
+  type: 'test'
+  ...
+# Subtest: L003-PORT-05: invalid document refs rejected
+ok 5 - L003-PORT-05: invalid document refs rejected
+  ---
+  duration_ms: 0.286639
+  type: 'test'
+  ...
+# Subtest: L003-PORT-06: catalog resolves exact scoped version and detaches
+ok 6 - L003-PORT-06: catalog resolves exact scoped version and detaches
+  ---
+  duration_ms: 0.162633
+  type: 'test'
+  ...
+# Subtest: L003-PORT-07: catalog rejects version drift and identity collisions
+ok 7 - L003-PORT-07: catalog rejects version drift and identity collisions
+  ---
+  duration_ms: 0.153871
+  type: 'test'
+  ...
+# Subtest: L003-PORT-08: unsupported rules never fall through to a new formula
+ok 8 - L003-PORT-08: unsupported rules never fall through to a new formula
+  ---
+  duration_ms: 0.131557
+  type: 'test'
+  ...
+# Subtest: L003-PORT-09: MATH/native preview is delegated and copies input/output
+ok 9 - L003-PORT-09: MATH/native preview is delegated and copies input/output
+  ---
+  duration_ms: 0.313559
+  type: 'test'
+  ...
+# Subtest: L003-PORT-10: no injected native engine means no preview success
+ok 10 - L003-PORT-10: no injected native engine means no preview success
+  ---
+  duration_ms: 0.392457
+  type: 'test'
+  ...
+# Subtest: L003-PORT-11: native failures remain failures
+ok 11 - L003-PORT-11: native failures remain failures
+  ---
+  duration_ms: 0.191487
+  type: 'test'
+  ...
+# Subtest: L003-PORT-12: character preview passes raw octets to ARCHIVES without mutating source bytes
+ok 12 - L003-PORT-12: character preview passes raw octets to ARCHIVES without mutating source bytes
+  ---
+  duration_ms: 0.850833
+  type: 'test'
+  ...
+# Subtest: L003-PORT-13: malformed ARCHIVES preview cannot be called successful
+ok 13 - L003-PORT-13: malformed ARCHIVES preview cannot be called successful
+  ---
+  duration_ms: 0.303194
+  type: 'test'
+  ...
+# Subtest: L003-PORT-14: zero-byte import is refused without invoking ARCHIVES
+ok 14 - L003-PORT-14: zero-byte import is refused without invoking ARCHIVES
+  ---
+  duration_ms: 0.16675
+  type: 'test'
+  ...
+# Subtest: L003-PORT-15: Bestiary resolves matching documentary/source/profile identities only
+ok 15 - L003-PORT-15: Bestiary resolves matching documentary/source/profile identities only
+  ---
+  duration_ms: 0.257065
+  type: 'test'
+  ...
+# Subtest: L003-PORT-16: Bestiary makes independent instance preserving raw 14 and extensions
+ok 16 - L003-PORT-16: Bestiary makes independent instance preserving raw 14 and extensions
+  ---
+  duration_ms: 0.159989
+  type: 'test'
+  ...
+# Subtest: L003-PORT-17: invalid instance never calls source loader
+ok 17 - L003-PORT-17: invalid instance never calls source loader
+  ---
+  duration_ms: 0.094001
+  type: 'test'
+  ...
+# Subtest: L003-PORT-18: optional document identity supports noncanonical fictitious creature
+ok 18 - L003-PORT-18: optional document identity supports noncanonical fictitious creature
+  ---
+  duration_ms: 0.124216
+  type: 'test'
+  ...
+# Subtest: L003-PORT-19: injected delegate exceptions are surfaced, not treated as valid results
+ok 19 - L003-PORT-19: injected delegate exceptions are surfaced, not treated as valid results
+  ---
+  duration_ms: 0.290195
+  type: 'test'
+  ...
+# Subtest: L003-PORT-20: no imports from other owners are required
+ok 20 - L003-PORT-20: no imports from other owners are required
+  ---
+  duration_ms: 8.406179
+  type: 'test'
+  ...
+# Subtest: L003-PORT-21: catalog is independent of JSON object key ordering
+ok 21 - L003-PORT-21: catalog is independent of JSON object key ordering
+  ---
+  duration_ms: 0.291937
+  type: 'test'
+  ...
+# Subtest: L003-PORT-22: multiple instances of same source have independent snapshots
+ok 22 - L003-PORT-22: multiple instances of same source have independent snapshots
+  ---
+  duration_ms: 0.257585
+  type: 'test'
+  ...
+# Subtest: L003-PORT-23: malformed delegate return is rejected rather than treated as success
+ok 23 - L003-PORT-23: malformed delegate return is rejected rather than treated as success
+  ---
+  duration_ms: 0.185097
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 147.76876
