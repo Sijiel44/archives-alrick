@@ -61,8 +61,8 @@
       "role": "creators",
       "entry": "experiments/dg-lot003/src/creators/index.mjs",
       "branch": "prototype/dg003-creators",
-      "commit": "3d041219dc2ade68329ff15fd4830367185df0fc",
-      "blobSha": "7415d753582c29e0a365bb782bd0e7798a5787eb",
+      "commit": "48e0a6fa3c7650af424db3565a0582850f213b93",
+      "blobSha": "b53f1868baa8a5eb5ed4415000247a128e668846",
       "paths": [
         "experiments/dg-lot003/src/creators/index.mjs"
       ]
@@ -82,7 +82,7 @@
       "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
     }
   ],
-  "notes": "All seven role modules copied, source blobs tracked; STUDIO and player from same owner branch. ARCHIVES original author's local ZIP, transported verbatim with transfer commit; not original code author commit. Live integration not qualified until QA.",
+  "notes": "Seven owner modules copied and wired. CREATORS updated to injectStyles:false release. Native ARCHIVES transfer tagged as transport, not authorship. Tests on final assembled HEAD still pending.",
   "sourceFiles": [
     {
       "path": "experiments/dg-lot003/src/ports/index.ts",
