@@ -16,9 +16,73 @@
         "experiments/dg-lot003/src/ports/README.md"
       ],
       "status": "source-copied-tests-externally-confirmed"
+    },
+    {
+      "role": "rules",
+      "entry": "experiments/dg-lot003/src/rules/native-preview.ts",
+      "branch": "prototype/dg003-rules-math",
+      "commit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "3e2a0260bd49e9447fae06ad4c14f76a5a9766c9",
+      "paths": [
+        "experiments/dg-lot003/src/rules/native-preview.ts"
+      ]
+    },
+    {
+      "role": "catalog",
+      "entry": "experiments/dg-lot003/src/catalog/index.mjs",
+      "branch": "prototype/dg003-index-contract",
+      "commit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "6c35e0da2c56a51dea9bce37b9cdc60cd2c75de5",
+      "paths": [
+        "experiments/dg-lot003/src/catalog/index.mjs"
+      ]
+    },
+    {
+      "role": "studio",
+      "entry": "experiments/dg-lot003/src/studio/index.mjs",
+      "branch": "prototype/dg003-studio",
+      "commit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "9b47c4fd8ee31deff774e12dd7a1daadea2072c9",
+      "paths": [
+        "experiments/dg-lot003/src/studio/index.mjs"
+      ]
+    },
+    {
+      "role": "player",
+      "entry": "experiments/dg-lot003/src/player/index.mjs",
+      "branch": "prototype/dg003-studio",
+      "commit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "fed7091c044bac004521d9ff0ad0d632a37752ba",
+      "paths": [
+        "experiments/dg-lot003/src/player/index.mjs"
+      ]
+    },
+    {
+      "role": "creators",
+      "entry": "experiments/dg-lot003/src/creators/index.mjs",
+      "branch": "prototype/dg003-creators",
+      "commit": "3d041219dc2ade68329ff15fd4830367185df0fc",
+      "blobSha": "7415d753582c29e0a365bb782bd0e7798a5787eb",
+      "paths": [
+        "experiments/dg-lot003/src/creators/index.mjs"
+      ]
+    },
+    {
+      "role": "storage",
+      "entry": "experiments/dg-lot003/src/storage/storage.mjs",
+      "branch": "transfer/dg003-storage-source",
+      "commit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "blobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837",
+      "paths": [
+        "experiments/dg-lot003/src/storage/storage.mjs"
+      ],
+      "author": "ARCHIVES",
+      "sourceKind": "verbatim-transfer-from-local-archive",
+      "originalSourceCommit": null,
+      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
     }
   ],
-  "notes": "BUILDER source copied from exact SHA and blobs. Services only, no view mount. MATH rejected pending correction; STORAGE local archive pending GitHub commit; others not received.",
+  "notes": "All seven role modules copied, source blobs tracked; STUDIO and player from same owner branch. ARCHIVES original author's local ZIP, transported verbatim with transfer commit; not original code author commit. Live integration not qualified until QA.",
   "sourceFiles": [
     {
       "path": "experiments/dg-lot003/src/ports/index.ts",
@@ -74,5 +138,31 @@
       "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
       "blobSha": "3cabd4c37b2f143965a85906ca068b3c972c569f"
     }
-  ]
+  ],
+  "storageProvenance": {
+    "originalAuthor": "ARCHIVES",
+    "originalSourceCommit": null,
+    "transportBranch": "transfer/dg003-storage-source",
+    "transportCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+    "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
+    "sha256Module": "11411d3489c2a1969d268889b513a60d9de13e82648d5e928da77408097a3733",
+    "files": [
+      {
+        "path": "experiments/dg-lot003/src/storage/storage.mjs",
+        "blobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837"
+      },
+      {
+        "path": "experiments/dg-lot003/src/storage/CONTRACT.md",
+        "blobSha": "7390b1872db0d2199404c394d1df8e21c8af2678"
+      },
+      {
+        "path": "experiments/dg-lot003/tests/storage/storage.test.mjs",
+        "blobSha": "49ad117bef2dd34fc7f142d789c9561dd2a53527"
+      },
+      {
+        "path": "experiments/dg-lot003/tests/storage/RESULTS.md",
+        "blobSha": "fe35aa91dc0eb7a5fc359a60d4fc579e77c8d346"
+      }
+    ]
+  }
 }
