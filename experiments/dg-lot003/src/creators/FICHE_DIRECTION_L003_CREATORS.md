@@ -20,6 +20,8 @@
 
 **Tests locaux du développement initial :** `node --test experiments/dg-lot003/tests/creators/*.test.mjs` : 10/10 réussis sur une version de travail locale distincte avant dépôt. **Ces résultats ne certifient pas le HEAD GitHub.** Le test propriétaire maintenant déposé utilise le vrai module GitHub, mais **n’a pas pu être exécuté sur ce HEAD** dans cette session : le clone est bloqué (DNS). Environnement disponible : Node v22.16.0, et non le Node 24.22.1 annoncé par la session centrale.
 
+**Exécution additionnelle sur le code réellement déposé :** les 10 tests du fichier GitHub ont été chargés avec le module GitHub exact dans un isolat JavaScript V8 : **10 réussis / 0 échec**. Blobs vérifiés : module `7415d753582c29e0a365bb782bd0e7798a5787eb`, tests `d1d8a741496cb1fe47111681376c6b51502171d3`. Cette exécution directe JS est une preuve sur les fichiers déposés, **mais ne constitue pas une exécution `node --test` du checkout**.
+
 **Recette navigateur :** tentative Chromium via Playwright vers `http://127.0.0.1:8765/local-preview.html` ; refus `net::ERR_BLOCKED_BY_ADMINISTRATOR`. **NON EXÉCUTÉE**, aucun contournement. `npm test` du dépôt et CI finale : **NON EXÉCUTÉS** ici.
 
 ## P0/P1, écarts et dépendances
