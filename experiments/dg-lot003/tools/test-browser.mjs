@@ -1,12 +1,14 @@
 /** Browser E2E on actual served origins, using existing ws and Chromium CDP (no mocks). */
 import {spawn,spawnSync} from 'node:child_process';
-import {mkdtemp,readFile,writeFile,rm} from 'node:fs/promises';
+import {mkdtemp,readFile,writeFile,rm,readdir,mkdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join,resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {Script} from 'node:vm';
 import WebSocket from 'ws';
+import * as archives from '../src/storage/storage.mjs';
+import {OVERLAY_KEY} from './adapters.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const MJ='http://127.0.0.1:4173',PLAYER='http://127.0.0.1:4174';
 const manifest=JSON.parse(await readFile(resolve(root,'manifest.json')));
@@ -239,7 +241,50 @@ try{
  if(/CANARY_PRIVATE|PRIVE_NI_JAMAIS_PLAYER|privateSnapshot|base64|sourceDigestSHA256/.test(playerText))
   fail('P0 PRIVATE DATA LEAK TO PLAYER');
  if(await player.eval('localStorage.length')!==0)fail('Player storage not empty');
- player.close();mj.close();
+ // Native ARCHIVES >5 MiB: real STUDIO file selection, validated restoration,
+ // browser persistence, reload, private export and verification of unknown fields.
+ const project=archives.createCampaign({id:'native-backup-6mib',name:'Archive 6 Mio intégrale'});
+ project.privateNotes=[{id:'bulk-note',opaque:'Z'.repeat(6*1024*1024),
+   unknown:{marker:'NATIVE_UNKNOWN_6MIB'}}];
+ project[OVERLAY_KEY]={schema:'cer.dg003.studio-overlay.v1',
+   fields:{title:'Archive 6 Mio intégrale',revision:7,activeSceneId:'',extensions:{}},characters:[]};
+ const nativeBackup=await archives.exportPrivate(project);
+ if(nativeBackup.bytes.length<=5*1024*1024||nativeBackup.bytes.length>16*1024*1024)
+  fail('Expected native backup between 5 and 16 MiB');
+ const largeFile=join(working,'native-6mib-backup.json');
+ await writeFile(largeFile,nativeBackup.bytes);
+ await upload(mj,'Fichier de restauration confidentiel',largeFile);
+ await mj.eval(click('Prévisualiser restauration'));
+ await checkDOM(mj,hasText('Restauration proposée'));
+ await mj.eval(click('Confirmer restauration'));
+ await checkDOM(mj,hasText('Campagne restaurée depuis la prévisualisation.'));
+ await mj.call('Page.enable');
+ await mj.call('Page.reload',{ignoreCache:true});
+ await checkDOM(mj,hasSelector('button'));
+ await mj.eval(click('Recharger campagne'));
+ await checkDOM(mj,hasText('Campagne active : Archive 6 Mio intégrale'));
+ const downloadDir=join(working,'exported-private');
+ await mkdir(downloadDir,{recursive:true});
+ await mj.call('Page.setDownloadBehavior',{behavior:'allow',downloadPath:downloadDir});
+ await mj.eval(click('Exporter campagne CONFIDENTIELLE'));
+ const privateFile=await until(async()=>{
+  const files=(await readdir(downloadDir)).filter(x=>x.endsWith('.json'));
+  return files.length===1?join(downloadDir,files[0]):null;
+ },{tries:120});
+ const exportedBytes=new Uint8Array(await readFile(privateFile));
+ const preview=await archives.previewRestore(exportedBytes);
+ const restored=await archives.commitRestore(preview);
+ if(exportedBytes.length<=5*1024*1024||
+    restored.privateNotes?.[0]?.unknown?.marker!=='NATIVE_UNKNOWN_6MIB'||
+    restored.privateNotes?.[0]?.opaque?.length!==6*1024*1024 ||
+    restored[OVERLAY_KEY]?.fields?.revision!==7)
+  fail('NATIVE_6MIB_ROUNDTRIP: missing unknown fields or lost native data');
+ console.log('BROWSER_NATIVE_6MIB_OK',JSON.stringify({
+  importedBytes:nativeBackup.bytes.length,reexportedBytes:exportedBytes.length,
+  unknownMarker:restored.privateNotes[0].unknown.marker,revision:restored[OVERLAY_KEY].fields.revision
+ }));
+
+  player.close();mj.close();
  console.log('BROWSER_OK: two served HTTP origins, v2 raw import, BEST copy, scene, M03, creator save, ARCHIVES restore, player whitelist');
 } catch(error){console.error('BROWSER_FAIL:',error.stack??error.message);process.exitCode=1;}
 finally{browser?.kill();server?.kill();await rm(working,{recursive:true,force:true});}
