@@ -1,29 +1,49 @@
-# L003-INTEGRATED — rapport technique intermédiaire 05 (2026-11-04)
+# L003-INTEGRATED — Rapport de livraison candidat QA (2026-11-04)
 
-**État :** prototype PARTIEL, NON QUALIFIÉ. **PR brouillon :** #85. **Base exacte :** `88f774f3d0d6d520d8d11443b72202b9caf4f94b`.
+**État : candidat d'assemblage complet du prototype, non qualifié tant que la recette finale n'est pas passée.**  
+**PR :** [#85 brouillon](https://github.com/Sijiel44/archives-alrick/pull/85).  
+**Base officielle :** `88f774f3d0d6d520d8d11443b72202b9caf4f94b`.  
+**Ordre DG :** `b5c59854b802dc25617d9bcd7c576495199a41dd`.
 
-## Copies et traçabilité réellement exécutées
-BUILDER : branche `prototype/dg003-ports-builder`, commit `5375014a30dc026a8cc58208cd0c9cabf02c86c2`. Neuf chemins source, tests et rapports copiés sur la branche intégrée via connecteur GitHub, sans merge. Le manifeste `manifest.json` enregistre les neuf noms et blobs SHA. Contrôle post-copie GitHub des SHA blobs `index.ts`, `ports.ts`, `types.ts`, `ports.test.mjs` : **identiques**.
+## Provenance et périmètre
+Sept modules (dont player/STUDIO comme un seul propriétaire) présents sur la branche d'intégration et épinglés dans `manifest.json` avec Git blobs :
+- BUILDER ports : `5375014a30dc026a8cc58208cd0c9cabf02c86c2`.
+- MATH corrigé : `ae11f209e43c2414b588692a7ad7a022c31656d5`.
+- INDEX : `ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161`.
+- STUDIO et player : `1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a`.
+- ATELIERS `injectStyles:false` : `48e0a6fa3c7650af424db3565a0582850f213b93`.
+- ARCHIVES auteur du ZIP SHA256 `167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f` ; transport attesté `transfer/dg003-storage-source` à `2459876b9f8bd0cf7f7a588e09b709bca3c221c3`; **commit source original ARCHIVES inconnu (null), pas attribué frauduleusement**. Module SHA256 `11411d3489c2a1969d268889b513a60d9de13e82648d5e928da77408097a3733`.
 
-BUILDER fournit `createPorts({documents,rules,catalog,characters,bestiary})` et les cinq façades typées. Résultats `{status:"ready",value}` ou `{status:"invalid"|"unavailable"|"blocked",reason}`. Les services n'ont pas d'export `mount`.
+Copies sous les sous-arbres exclusifs, aucun merge propriétaire ni écriture Quartz ou Pages. Quatre blobs critiques BUILDER, puis les sept blobs points d'entrée, ont été revérifiés sur GitHub et concordent avec le manifeste.
 
-## Wiring INTÉGRATION effectué
-`tools/compose.mjs` fait la séparation services/vues ; `tools/build.mjs` produit deux bundles distincts avec esbuild. Le bundle joueur ne référence aucun module privé MJ. `createPorts()` est créé sans délégataire factice et indique des indisponibilités réelles tant que MATH / ARCHIVES / INDEX ne sont pas qualifiés. Vues STUDIO / CREATORS / player attendues. `tools/test-unit.mjs` lance les *.test.mjs réellement présents par domaine et échoue pour domaine absent. Le build peut réussir en déclarant INCOMPLET.
+## Fonctionnalités câblées
+- Compose et runtime intégrateur, ports DI, `mountStudio` / `mountPlayer` / `mountCreators` réels, deux bundles distincts et deux origines HTTP 127.0.0.1:4173/4174.
+- ARCHIVES : prévisualisation v2/v3, rejet explicite multi-sheet, commit non destructif, octets/sheet bruts/SHA, sauvegarde privée, restauration pure et remplacement explicitement validé. `localStorage` MJ seulement, enveloppe privée non chiffrée de prototype : jamais employer avec des secrets réels.
+- BEST : génération de la créature fictive N5 par le code M04 officiel; identités source/profil/instance séparées, sans dépendre de PR #76.
+- INDEX + ATELIERS : trois fiches descriptives locales, provenance INDEX structurée, restrictions, exclusion des effets numériques, styles CSS externes (CSP restrictive). Brouillon original entier préservé dans `extensions.creatorDrafts[].original`, jamais projeté vers le joueur.
+- MATH : aperçu M03 délégué au vrai moteur corrigé, sans application. Absorption, Autorités 25+, débit mana/charge, objets numériques bloqués.
+- Projection joueur via whitelist STUDIO, origine distincte, bundle joueur sans imports privés MJ.
+- Cohérence catalogue : création et export immédiat lisent le stockage persistant même si l'état STUDIO est périmé ; restauration exacte depuis ancien export n'hérite jamais des entrées postérieures. La correction la plus récente laisse **absentes** les clés `catalog`/`creatorDrafts` absentes du backup.
 
-## Sources connues mais non intégrées
-- MATH `4a30d4b…` : contre-tests de la session orchestratrice montrent kinds invalides acceptés et exception sur `ability.effect:number` ; **NON QUALIFIÉ**, correction attendue. Aucune copie.
-- ARCHIVES : ZIP local SHA256 `167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f` ; `storage.mjs` SHA256 `11411d3489c2a1969d268889b513a60d9de13e82648d5e928da77408097a3733`, 16/16 tests Node24 **rapportés par la session orchestratrice**. Au moment de cette passe, source GitHub absente de la branche propriétaire ; pas de copie ni d'exécution locale.
-- Fixture BEST N5 fictive `fixture-source-001` / `fixture-profile-001` / `fixture-instance-001` : **validée par la session orchestratrice**, pas encore injectée à l'UI.
-- INDEX / STUDIO / ATELIERS : SHA et exports non reçus, pas de copie.
+## Tests et faits vérifiés
+- Session d'orchestration sur SHA `dea4961…` : `npm test` du dépôt rapporté PASS (uniquement cet ancien SHA).
+- Session d'orchestration sur SHA `e81cc0244c0e1fc47f8d74fe869eb7651f927dbb` : build 7 modules et 157/157 tests unitaires PASS (ancien SHA).
+- Session d'orchestration sur SHA `947bb445347a918e5a5aaecdbb8bfeb88a2f6ee7` : build 7 modules PASS ; test-unit 160/161, unique échec sur ajout des deux clés vides au backup. **Cette erreur est corrigée ultérieurement**, sans suppression d'assertion.
+- À la présente livraison, **tests Node/npm/Chromium sur le HEAD final : NON EXÉCUTÉS dans cette conversation**. CI du HEAD final et avis QA : pas de résultats reçus. Aucun succès inventé.
+- Tests disponibles : six groupes propriétaires réels (player vérifié sous STUDIO), `tools/adapters.test.mjs`, `tools/runtime.test.mjs` (inclut création/export immédiat/restauration ancienne et conservation originale), `tools/test-browser.mjs` avec Chrome CDP sur vraies pages servies. Aucune suite Python parallèle ni harness substitué aux modules réels.
 
-## Statut des tests
-- Session orchestratrice sur ancien HEAD `3952932e…` : `build.mjs BUILD_OK modules0 INCOMPLET`, `test-unit.mjs exit1`, sept domaines non livrés. Résultats externes, valables **uniquement pour cet ancien HEAD**.
-- Cette passe GitHub : copies et identité de blobs **vérifiées**.
-- Nouveau HEAD et scripts wiring : `npm ci`, `npm test`, esbuild, unitaires et navigateur **NON EXÉCUTÉS localement** (pas de clone complet et Node24 disponible dans ce conteneur). CI finale et avis QA : **en attente**.
-- Les résultats 23 tests BUILDER et 16 tests STORAGE sont fournis par la session orchestratrice, **non une recette locale de notre HEAD intégré**.
+## Commandes obligatoires au HEAD final
+```sh
+npm ci
+npm test
+node experiments/dg-lot003/tools/build.mjs
+node experiments/dg-lot003/tools/test-unit.mjs
+node experiments/dg-lot003/tools/test-browser.mjs
+```
+Le test navigateur démarre ses deux serveurs ; ne pas démarrer `serve.mjs` concurremment. Pour inspection manuelle, `node experiments/dg-lot003/tools/serve.mjs` séparément après build.
 
-## Blocages et transmission
-P1 : UI absente, liens natifs absents, recette navigateur finale absente. P0 potentiel : projection joueur avant homologation, maintenue inactive. Attendre les SHA/interfaces INDEX, MATH corrigé, ARCHIVES, STUDIO, ATELIERS ; vérifier chaque blob avant copie, assembler via DI sans calcul/transaction bis. Tester toutes commandes README puis QA sur HEAD final.
+## Risques et décisions
+P0 surveillés par QA : absence de fuite de canaris MJ dans DOM/postMessage/localStorage/export public ; rejet des données source invalides ; aucune application de règle non homologuée. P1 : comportement Chromium du parcours complet, claviers/focus, exactitude des restaurations et recettes sur le dernier commit. Ces points restent ouverts jusqu'au résultat QA.
 
-**À revoir par :** BUILDER, MATH, ARCHIVES, INDEX, STUDIO, ATELIERS, QA.
-**À valider par DG/créateur :** sortie finale du lot après preuves ; tout merge et publication restent interdits.
+**À revoir par :** QA, REVUE, BUILDER, MATH, INDEX, ARCHIVES, STUDIO, ATELIERS.  
+**À valider par DG/créateur :** clôture de qualification, éventuelle fusion ou publication (non autorisées à ce stade).
