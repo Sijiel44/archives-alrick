@@ -14,7 +14,7 @@ export function makeEntry({target,manifest,repository}){
   if(!absolute.startsWith(prefix)||!absolute.includes(sep+entry.role+sep))throw Error('Out-of-owner module');
   if(target==='player' ? entry.role==='player' : entry.role!=='player')selected.push({...entry,absolute});
  }
- const runtime=resolve(repository,'experiments/dg-lot003/tools/runtime.mjs');
+ const runtime=resolve(repository,target==='player'?'experiments/dg-lot003/tools/runtime-player.mjs':'experiments/dg-lot003/tools/runtime.mjs');
  const exported=target==='mj'?'mountIntegratedMJ':'mountIntegratedPlayer';
  const result=[`import {${exported}} from ${JSON.stringify(runtime)};`];
  selected.forEach((x,i)=>result.push(`import * as x${i} from ${JSON.stringify(x.absolute)};`));
