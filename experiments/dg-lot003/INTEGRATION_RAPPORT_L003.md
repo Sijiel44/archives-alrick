@@ -1,36 +1,29 @@
-# L003-INTEGRATED — rapport technique provisoire (05)
-Date : 2026-11-04. Statut : **prototype partiel — non qualifié**.
+# L003-INTEGRATED — rapport technique intermédiaire 05 (2026-11-04)
 
-## Traçabilité
-- Source DG : PR #84 ; documents lus au commit `b5c59854b802dc25617d9bcd7c576495199a41dd`.
-- Base code figée : `88f774f3d0d6d520d8d11443b72202b9caf4f94b`.
-- Branche unique écrivain : `prototype/dg003-integrated`; PR brouillon #85.
-- Aucune copie des six propriétaires : **aucun commit / blob / signature de leur part n'a été reçu dans cette session**.
-- Manifeste de provenance propriétaire actuellement vide ; ne jamais déclarer leurs fichiers intégrés.
+**État :** prototype PARTIEL, NON QUALIFIÉ. **PR brouillon :** #85. **Base exacte :** `88f774f3d0d6d520d8d11443b72202b9caf4f94b`.
 
-## Livré
-- Pages statiques MJ et joueur distinctes ; build esbuild à commandes fixées ; serveurs HTTP loopback 4173 / 4174 ; séparation des routes et CSP restrictive.
-- Manifeste descriptif, procédure de livraison contrôlée, scripts de tests Node et Chromium, workflow GitHub distinct des workflows Quartz/Pages.
-- Aucun backend, aucune transaction mana/charge, aucune formule M01–M05 recopiée, aucun accès au content/, aucune projection non approuvée.
+## Copies et traçabilité réellement exécutées
+BUILDER : branche `prototype/dg003-ports-builder`, commit `5375014a30dc026a8cc58208cd0c9cabf02c86c2`. Neuf chemins source, tests et rapports copiés sur la branche intégrée via connecteur GitHub, sans merge. Le manifeste `manifest.json` enregistre les neuf noms et blobs SHA. Contrôle post-copie GitHub des SHA blobs `index.ts`, `ports.ts`, `types.ts`, `ports.test.mjs` : **identiques**.
 
-## Exécution et preuves
-- GitHub : création de branche, neuf commits initiaux, PR #85 brouillon : **confirmés par le connecteur**.
-- Checkout clone : **ÉCHEC**, `Could not resolve host: github.com` dans le conteneur de cette conversation.
-- Node local : v22.16.0, **pas Node 24** ; dépendances dépôt non installées.
-- `npm ci`, `npm test`, build esbuild sur dépôt, `test-unit`, `test-browser` : **NON EXÉCUTÉS** dans cette session.
-- CI PR #85 : workflow créé, son issue/état d'exécution ne constitue pas un test réussi et doit être constaté par SHA final.
-- Chromium et recette sur pages réellement servies : **NON EXÉCUTÉS**.
-- Sortie L003-01 à L003-10 : **NON VALIDÉES**. Les scripts de tests échouent volontairement si les modules propriétaires ou scénarios QA manquent.
+BUILDER fournit `createPorts({documents,rules,catalog,characters,bestiary})` et les cinq façades typées. Résultats `{status:"ready",value}` ou `{status:"invalid"|"unavailable"|"blocked",reason}`. Les services n'ont pas d'export `mount`.
 
-## Opérations d'assemblage à venir
-1. Recevoir branche + commit et chemins autorisés, comparer SHA blob avec les sources de GitHub.
-2. Copier chaque blob dans son chemin exclusif depuis le dépôt source, sans merge, sans reformater ni réécrire.
-3. Enregistrer dans manifest les modules visuels disposant d'un export `mount`; ne pas monter automatiquement les ports/contrats comme écrans.
-4. Adapter exclusivement le câblage sous outils d'intégration quand les vraies signatures sont connues.
-5. Relancer les six commandes README, conserver sorties et CI du HEAD final ; QA sur ce HEAD et rapport séparé.
+## Wiring INTÉGRATION effectué
+`tools/compose.mjs` fait la séparation services/vues ; `tools/build.mjs` produit deux bundles distincts avec esbuild. Le bundle joueur ne référence aucun module privé MJ. `createPorts()` est créé sans délégataire factice et indique des indisponibilités réelles tant que MATH / ARCHIVES / INDEX ne sont pas qualifiés. Vues STUDIO / CREATORS / player attendues. `tools/test-unit.mjs` lance les *.test.mjs réellement présents par domaine et échoue pour domaine absent. Le build peut réussir en déclarant INCOMPLET.
 
-## Bloqueurs
-P1 : parcours vertical absent, suites propriétaires absentes, recette navigateur réelle non réalisée. Tout écart de sécurité joueur serait P0. Pas d'Alpha validée avant preuves.
+## Sources connues mais non intégrées
+- MATH `4a30d4b…` : contre-tests de la session orchestratrice montrent kinds invalides acceptés et exception sur `ability.effect:number` ; **NON QUALIFIÉ**, correction attendue. Aucune copie.
+- ARCHIVES : ZIP local SHA256 `167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f` ; `storage.mjs` SHA256 `11411d3489c2a1969d268889b513a60d9de13e82648d5e928da77408097a3733`, 16/16 tests Node24 **rapportés par la session orchestratrice**. Au moment de cette passe, source GitHub absente de la branche propriétaire ; pas de copie ni d'exécution locale.
+- Fixture BEST N5 fictive `fixture-source-001` / `fixture-profile-001` / `fixture-instance-001` : **validée par la session orchestratrice**, pas encore injectée à l'UI.
+- INDEX / STUDIO / ATELIERS : SHA et exports non reçus, pas de copie.
 
-À revoir par : BUILDER, MATH, INDEX, ARCHIVES, STUDIO, ATELIERS, QA et REVUE.
-À valider par DG/créateur : clôture après preuve sur HEAD, puis toute éventuelle fusion ou publication (non autorisées).
+## Statut des tests
+- Session orchestratrice sur ancien HEAD `3952932e…` : `build.mjs BUILD_OK modules0 INCOMPLET`, `test-unit.mjs exit1`, sept domaines non livrés. Résultats externes, valables **uniquement pour cet ancien HEAD**.
+- Cette passe GitHub : copies et identité de blobs **vérifiées**.
+- Nouveau HEAD et scripts wiring : `npm ci`, `npm test`, esbuild, unitaires et navigateur **NON EXÉCUTÉS localement** (pas de clone complet et Node24 disponible dans ce conteneur). CI finale et avis QA : **en attente**.
+- Les résultats 23 tests BUILDER et 16 tests STORAGE sont fournis par la session orchestratrice, **non une recette locale de notre HEAD intégré**.
+
+## Blocages et transmission
+P1 : UI absente, liens natifs absents, recette navigateur finale absente. P0 potentiel : projection joueur avant homologation, maintenue inactive. Attendre les SHA/interfaces INDEX, MATH corrigé, ARCHIVES, STUDIO, ATELIERS ; vérifier chaque blob avant copie, assembler via DI sans calcul/transaction bis. Tester toutes commandes README puis QA sur HEAD final.
+
+**À revoir par :** BUILDER, MATH, ARCHIVES, INDEX, STUDIO, ATELIERS, QA.
+**À valider par DG/créateur :** sortie finale du lot après preuves ; tout merge et publication restent interdits.
