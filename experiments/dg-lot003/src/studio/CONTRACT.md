@@ -5,6 +5,7 @@
 ## Entrées et exports
 
 - `src/studio/index.mjs` : `mountStudio(root, options)` sans effet à l'importation. Retourne `{getCampaign, getPublicProjection, createCampaign, previewCharacter, acceptCharacter, previewCreature, copyCreature, createScene, setActiveScene, updateScene, exportPrivate, previewRestoration, acceptRestoration, openPlayer, sendProjection, exportPublic, previewNative, selectPublic, render, dispose, canProject, isPlayerReady}`.
+- `setActiveScene(id) -> Promise<void>` : valide d’abord l’existence de la scène, enregistre immédiatement le choix local, incrémente `campaign.revision` si l’ID change, révoque la sélection publique et transmet uniquement `PLAYER_CLEAR` à la fenêtre autorisée. Attend ensuite `storage.save(clone(campaign))` sur un choix modifié, avec écritures locales ordonnées dans leur ordre de demande (une sélection rapide ne doit pas être écrasée par la sauvegarde précédente) ; **ne republie jamais** automatiquement. Si la sauvegarde échoue, le message d’erreur de `save()` est affiché mais l’API ne garantit pas une persistance réussie : l’intégrateur doit vérifier l’état de stockage.
 - `src/studio/projection.mjs` : `makePlayerProjection`, `validatePlayerDTO`, `checkedPlayerOrigins` et constantes de protocole. Construction par liste blanche dans un objet neuf et validation strictement symétrique côté joueur.
 - `src/player/index.mjs` : `mountPlayer(root,options)` sans effet à l'importation, retour `{dispose,getProjection,isAuthorized}`. Aucun stockage du côté joueur.
 - Imports ES `.mjs` natifs : intégrateur libre de regrouper avec son esbuild, sans réécrire le contrat ni ajouter de dépendance. Page HTML, serveur et build sont **propriété INTÉGRATION**, pas STUDIO.
@@ -27,6 +28,13 @@
 | `playerOrigin` / `studioOrigin` | uniquement `http://127.0.0.1:4174` et `http://127.0.0.1:4173` | Projection **désactivée** |
 | `playerPath` | par défaut `/player.html` ; URL finale forcée sur origine 4174 | Refus si hors origine |
 | `openWindow(url)` | injection optionnelle du geste ouvrant la fenêtre | `window.open` par clic utilisateur |
+
+## Limites d’import séparées — REVUE-L003-01
+
+- `previewCharacter(bytes, fileName)` et le sélecteur de fichier PJ : **5 Mio maximum inclus** (`5 * 1024 * 1024` octets). Aucun changement au contrat PJ.
+- `previewRestoration(bytes)` et le sélecteur « Fichier de restauration confidentiel » : **16 Mio maximum inclus** (`16 * 1024 * 1024` octets), conformément à `MAX_EXPORT_BYTES` d’ARCHIVES, `src/storage/storage.mjs` SHA source `f9d2f2194606b2d0ac3d2f3418ebcaedfc495837` au commit `2459876b9f8bd0cf7f7a588e09b709bca3c221c3`.
+- Vérification avant appel au port ARCHIVES : octets de l’API (`Uint8Array.byteLength`) **et**, pour un File venant de l’interface, `File.size` avant lecture et longueur effectivement lue après. La borne exacte est acceptée ; au-delà, erreur sans mutation de campagne.
+- Le Studio **ne vérifie pas lui-même** le contenu, les empreintes ni les collisions : ces contrôles restent exclusivement dans `storage.previewRestore/restore`. Une prévisualisation n’est jamais une acceptation, et le changement de schéma n’est pas adopté.
 
 `mountPlayer` accepte `window`, `studioOrigin`, `playerOrigin`. Son propre origin doit être 4174, son opener doit exister, et un canal aléatoire est lu dans l'URL. `message.source === window.opener` et `message.origin === 4173` sont exigés. Le Studio n'accepte READY que depuis `message.source === playerWindow`, `message.origin === 4174` et un canal concordant. Toutes les réponses publiques utilisent `postMessage(..., 'http://127.0.0.1:4174')`, jamais `'*'`.
 
