@@ -34,7 +34,7 @@ test('Creator persisted entry survives subsequent stale STUDIO scene save',async
  const entry=creatorToCatalog({kind:'item',schema:'cer.creator.dg003.descriptive.v0',name:'Anneau fictif',
   version:'1.0.0',description:'Une simple bague cérémonielle sans bonus.',
   limitations:'Aucun pouvoir mécanique'},index,initial.id);
- await service.appendCatalog(initial,entry,index.validateCatalogRegistry);
+ await service.appendCatalog(initial,entry,index.validateCatalogRegistry,{kind:'item',schema:'cer.creator.dg003.descriptive.v0',name:'Anneau fictif',version:'1.0.0',description:'Une simple bague cérémonielle sans bonus.',limitations:'Aucun pouvoir mécanique'});
  const saved=await service.load();
  assert.equal(saved.extensions.catalog.length,1);
  const stale=structuredClone(initial);stale.revision=1;
