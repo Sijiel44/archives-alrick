@@ -7,6 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {setTimeout as sleep} from 'node:timers/promises';
 import {Script} from 'node:vm';
 import WebSocket from 'ws';
+import {createHash} from 'node:crypto';
 import * as archives from '../src/storage/storage.mjs';
 import {OVERLAY_KEY} from './adapters.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
@@ -244,10 +245,14 @@ try{
  // Native ARCHIVES >5 MiB: real STUDIO file selection, validated restoration,
  // browser persistence, reload, private export and verification of unknown fields.
  const project=archives.createCampaign({id:'native-backup-6mib',name:'Archive 6 Mio intégrale'});
- project.privateNotes=[{id:'bulk-note',opaque:'Z'.repeat(6*1024*1024),
+ project.privateNotes=[{id:'bulk-note',opaque:'NATIVE_PRIVATE_NOTES',
    unknown:{marker:'NATIVE_UNKNOWN_6MIB'}}];
  project[OVERLAY_KEY]={schema:'cer.dg003.studio-overlay.v1',
    fields:{title:'Archive 6 Mio intégrale',revision:7,activeSceneId:'',extensions:{}},characters:[]};
+ // Actual QA L003-06 regression: place the 6MiB unknown field AFTER the overlay.
+ project.qaUnknownLargeExtension={marker:'synthetic',payload:'Q'.repeat(6*1024*1024)};
+ if(Object.keys(project).slice(-2).join(',')!==[OVERLAY_KEY,'qaUnknownLargeExtension'].join(','))
+  fail('Wrong native QA fixture order: unknown must follow Studio overlay');
  const nativeBackup=await archives.exportPrivate(project);
  if(nativeBackup.bytes.length<=5*1024*1024||nativeBackup.bytes.length>16*1024*1024)
   fail('Expected native backup between 5 and 16 MiB');
@@ -277,19 +282,35 @@ try{
   return files.length===1?join(downloadDir,files[0]):null;
  },{tries:120});
  const exportedBytes=new Uint8Array(await readFile(privateFile));
- if(exportedBytes.length!==nativeBackup.bytes.length ||
-    Buffer.compare(Buffer.from(exportedBytes),Buffer.from(nativeBackup.bytes))!==0)
-  fail('NATIVE_6MIB_BYTE_DRIFT: reload/reexport changed original ARCHIVES export bytes');
+ const inputBuffer=Buffer.from(nativeBackup.bytes),outputBuffer=Buffer.from(exportedBytes);
+ const compare=Buffer.compare(outputBuffer,inputBuffer);
+ if(compare!==0){
+  const len=Math.min(inputBuffer.length,outputBuffer.length);
+  let firstMismatch=-1;
+  for(let i=0;i<len;i++){if(inputBuffer[i]!==outputBuffer[i]){firstMismatch=i;break;}}
+  if(firstMismatch<0 && inputBuffer.length!==outputBuffer.length)firstMismatch=len;
+  fail('NATIVE_6MIB_BYTE_DRIFT: '+JSON.stringify({
+   inputBytes:inputBuffer.length,outputBytes:outputBuffer.length,firstMismatch,
+   actualAtMismatch:firstMismatch<outputBuffer.length?outputBuffer[firstMismatch]:null,
+   expectedAtMismatch:firstMismatch<inputBuffer.length?inputBuffer[firstMismatch]:null,
+   inputSHA256:createHash('sha256').update(inputBuffer).digest('hex'),
+   outputSHA256:createHash('sha256').update(outputBuffer).digest('hex')
+  }));
+ }
  const preview=await archives.previewRestore(exportedBytes);
  const restored=await archives.commitRestore(preview);
  if(exportedBytes.length<=5*1024*1024||
     restored.privateNotes?.[0]?.unknown?.marker!=='NATIVE_UNKNOWN_6MIB'||
-    restored.privateNotes?.[0]?.opaque?.length!==6*1024*1024 ||
+    restored.privateNotes?.[0]?.opaque!=='NATIVE_PRIVATE_NOTES' ||
+    restored.qaUnknownLargeExtension?.marker!=='synthetic' ||
+    restored.qaUnknownLargeExtension?.payload?.length!==6*1024*1024 ||
+    Object.keys(restored).slice(-2).join(',')!==[OVERLAY_KEY,'qaUnknownLargeExtension'].join(',') ||
     restored[OVERLAY_KEY]?.fields?.revision!==7)
   fail('NATIVE_6MIB_ROUNDTRIP: missing unknown fields or lost native data');
  console.log('BROWSER_NATIVE_6MIB_OK',JSON.stringify({
   importedBytes:nativeBackup.bytes.length,reexportedBytes:exportedBytes.length,byteExact:true,
-  unknownMarker:restored.privateNotes[0].unknown.marker,revision:restored[OVERLAY_KEY].fields.revision
+  unknownMarker:restored.privateNotes[0].unknown.marker,lateUnknownMarker:restored.qaUnknownLargeExtension.marker,
+  revision:restored[OVERLAY_KEY].fields.revision
  }));
 
   player.close();mj.close();
