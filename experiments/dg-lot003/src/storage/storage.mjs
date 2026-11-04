@@ -38,14 +38,7 @@ function bytesOf(input,max=MAX_SOURCE_BYTES){
 }
 function b64(bytes){let out='';for(let i=0;i<bytes.length;i+=8192)out+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(out)}
 function fromB64(value){
-  // Integration compatibility fix for ARCHIVES previews near 16 MiB:
-  // a regex with a repeated 4-character capture over >8M characters overflows
-  // V8's regexp stack. This linear scan keeps the same canonical Base64 contract.
-  if(typeof value!=='string'||value.length===0||value.length%4!==0)fail('BAD_BASE64','Base64 invalide')
-  const padding=value.endsWith('==')?2:value.endsWith('=')?1:0
-  const body=value.slice(0,value.length-padding)
-  if(body.length%4!==(padding===2?2:padding===1?3:0)||/[^A-Za-z0-9+/]/.test(body))
-    fail('BAD_BASE64','Base64 invalide')
+  if(typeof value!=='string'||value.length===0||value.length%4!==0||!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(value))fail('BAD_BASE64','Base64 invalide')
   let binary;try{binary=atob(value)}catch{fail('BAD_BASE64','Base64 invalide')}
   const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0))
   if(b64(bytes)!==value)fail('BAD_BASE64','Base64 non canonique')
