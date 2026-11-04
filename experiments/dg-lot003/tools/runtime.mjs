@@ -7,7 +7,7 @@ const STORAGE_KEY='cer.dg003.private.campaign.v0';
 const fail=reason=>{throw Error(reason);};
 const copy=x=>structuredClone(x);
 
-export function createValidatedStorage(owner,area) {
+export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
  if(!owner)return null;
  const methods=['createCampaign','previewImport','commitImport','exportPrivate','previewRestore','commitRestore','recoverOriginalBytes'];
  if(methods.some(k=>typeof owner[k]!=='function'))fail('Interface ARCHIVES incomplète');
@@ -17,6 +17,35 @@ export function createValidatedStorage(owner,area) {
  let exactRestorePending=null;
  const encoder=new TextEncoder();
  const decoder=new TextDecoder();
+ // Keep the original localStorage envelope readable. For large validated backups,
+ // put their raw bytes in IndexedDB and change only a small localStorage pointer
+ // after the IndexedDB transaction completes. Never delete the old payload first.
+ const DB_NAME='cer.dg003.private.indexeddb.v0',DB_STORE='archives';
+ const LARGE_THRESHOLD=4*1024*1024;
+ async function dbTransaction(mode,work){
+  if(!indexedDB)fail('IndexedDB indisponible : restauration volumineuse non persistée');
+  const db=await new Promise((resolve,reject)=>{
+   const req=indexedDB.open(DB_NAME,1);
+   req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains(DB_STORE))req.result.createObjectStore(DB_STORE);};
+   req.onsuccess=()=>resolve(req.result);
+   req.onerror=()=>reject(req.error??Error('IndexedDB open failed'));
+   req.onblocked=()=>reject(Error('IndexedDB blocked'));
+  });
+  try{return await new Promise((resolve,reject)=>{
+   const tx=db.transaction(DB_STORE,mode);
+   let output;
+   tx.oncomplete=()=>resolve(output);
+   tx.onabort=()=>reject(tx.error??Error('IndexedDB transaction aborted'));
+   tx.onerror=()=>reject(tx.error??Error('IndexedDB transaction failed'));
+   try{
+    const req=work(tx.objectStore(DB_STORE));
+    req.onsuccess=()=>{output=req.result;};
+    req.onerror=()=>reject(req.error??Error('IndexedDB request failed'));
+   }catch(error){try{tx.abort();}catch{}reject(error);}
+  });}finally{db.close();}
+ }
+ const idbRead=()=>dbTransaction('readonly',store=>store.get(STORAGE_KEY));
+ const idbWrite=record=>dbTransaction('readwrite',store=>store.put(record,STORAGE_KEY));
  const enqueue=operation=>{
   const pending=queue.then(operation);
   queue=pending.catch(()=>{});
@@ -27,9 +56,16 @@ export function createValidatedStorage(owner,area) {
   if(raw===null)return null;
   let envelope;
   try{envelope=JSON.parse(raw);}catch{fail('Local private envelope invalid');}
-  if(envelope?.kind!=='cer.dg003.local-validated-envelope.v0'||typeof envelope.raw!=='string'||
-   !/^[a-f0-9]{64}$/.test(envelope.sha256??''))fail('Local private envelope invalid');
-  const bytes=encoder.encode(envelope.raw);
+  let bytes;
+  if(envelope?.kind==='cer.dg003.local-validated-envelope.v0'&&typeof envelope.raw==='string'){
+   bytes=encoder.encode(envelope.raw);
+  }else if(envelope?.kind==='cer.dg003.indexeddb-pointer.v0'){
+   const saved=await idbRead();
+   if(saved?.kind!=='cer.dg003.indexeddb-bytes.v0'||saved.sha256!==envelope.sha256||
+      !(saved.bytes instanceof Uint8Array))fail('IndexedDB private backup invalid or unavailable');
+   bytes=saved.bytes;
+  }else fail('Local private envelope invalid');
+  if(!/^[a-f0-9]{64}$/.test(envelope.sha256??''))fail('Local private envelope invalid');
   const preview=await owner.previewRestore(bytes,{expectedSha256:envelope.sha256});
   return await owner.commitRestore(preview,{existingProject:null,replace:false});
  }
@@ -46,8 +82,18 @@ export function createValidatedStorage(owner,area) {
   const verified=await owner.commitRestore(preview,{existingProject:null,replace:false});
   if(JSON.stringify(verified)!==JSON.stringify(prepared))fail('ARCHIVES roundtrip mismatch');
   const previous=area.getItem(STORAGE_KEY);
-  try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.local-validated-envelope.v0',sha256:result.sha256,raw:decoder.decode(result.bytes)}));}
-  catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private storage write not atomic');throw error;}
+  if(result.bytes.byteLength>LARGE_THRESHOLD){
+   // A native IndexedDB commit must succeed before switching the pointer.
+   await idbWrite({kind:'cer.dg003.indexeddb-bytes.v0',sha256:result.sha256,bytes:result.bytes});
+   const check=await idbRead();
+   if(check?.sha256!==result.sha256||!(check.bytes instanceof Uint8Array)||
+      check.bytes.length!==result.bytes.length)fail('IndexedDB write verification failed');
+   try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.indexeddb-pointer.v0',sha256:result.sha256}));}
+   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private pointer write not atomic');throw error;}
+  }else{
+   try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.local-validated-envelope.v0',sha256:result.sha256,raw:decoder.decode(result.bytes)}));}
+   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private storage write not atomic');throw error;}
+  }
   for(const listener of subscribers){try{listener(copy(snapshot));}catch{ /* UI observer cannot roll back validated save */ }}
   return snapshot;
  }
@@ -172,7 +218,7 @@ export function mountIntegratedMJ({owners,doc}){
  for(const [role,method] of [['studio','mountStudio'],['creators','mountCreators'],['ports','createPorts'],
  ['rules','previewNativeRules'],['catalog','createDescriptiveCapability'],['storage','createCampaign']])
   if(typeof owners[role]?.[method]!=='function')fail(role+' non intégré : '+method);
- const store=createValidatedStorage(owners.storage,view.localStorage);
+ const store=createValidatedStorage(owners.storage,view.localStorage,{indexedDB:view.indexedDB});
  const rulesAdapter=async request=>{
   if(!['m03-combat','m01-progression'].includes(request.operation))
    return {status:'unavailable',reason:'Famille native non homologuée'};
