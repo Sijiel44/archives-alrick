@@ -75,3 +75,65 @@ test('16 project retains unknown private extensions and never creates player DTO
  const x={...p(),experimental:{unknown:{active:false}},privateNotes:['secret fictif']};const e=await exportPrivate(x);const restored=await commitRestore(await previewRestore(e.bytes))
  assert.deepEqual(restored.experimental,x.experimental);assert.equal('playerProjection' in restored,false)
 })
+
+test('17 restore real 6MiB private campaign after accepted preview (no call-stack overflow)',async()=>{
+ const campaign={...p(),extensions:{futurePadding:'x'.repeat(6*1024*1024)}}
+ const original=JSON.stringify(campaign)
+ const exp=await exportPrivate(campaign)
+ assert.ok(exp.bytes.length>6*1024*1024 && exp.bytes.length<16*1024*1024)
+ const preview=await previewRestore(exp.bytes,{expectedSha256:exp.sha256})
+ const restored=await commitRestore(preview)
+ assert.deepEqual(restored,campaign)
+ assert.equal(JSON.stringify(campaign),original)
+ const exportedAgain=await exportPrivate(restored)
+ assert.equal(exportedAgain.sha256,exp.sha256)
+ assert.deepEqual(exportedAgain.bytes,exp.bytes)
+})
+
+test('18 private export exact 16MiB envelope boundary accepted; one byte over refused',async()=>{
+ const prefix=bytes({kind:'cer.studio.dg003.private-export.v0',project:{...p(),extensions:{futurePadding:''}}}).byteLength
+ // String content consists solely of ASCII; JSON envelope must be EXACTLY the boundary.
+ const inside={...p(),extensions:{futurePadding:'x'.repeat(16*1024*1024-prefix)}}
+ const exp=await exportPrivate(inside)
+ assert.equal(exp.bytes.length,16*1024*1024)
+ const before=JSON.stringify(inside)
+ const pre=await previewRestore(exp.bytes,{expectedSha256:exp.sha256})
+ assert.deepEqual(await commitRestore(pre),inside)
+ assert.equal(JSON.stringify(inside),before)
+ await assert.rejects(exportPrivate({...p(),extensions:{futurePadding:'x'.repeat(16*1024*1024-prefix+1)}}),error('SIZE_LIMIT'))
+ await assert.rejects(previewRestore(new Uint8Array(16*1024*1024+1)),error('SIZE_LIMIT'))
+})
+
+test('19 base64 bad alphabet, padding and noncanonical trailing bits rejected; prior state intact',async()=>{
+ const old=p(),serialized=JSON.stringify(old)
+ const exp=await exportPrivate(old),pre=await previewRestore(exp.bytes)
+ for(const payload of ['YQ!=','Y=Q=','YQ=A','YQ===','YR==','YQ=\n','====','a'.repeat(4*Math.ceil((16*1024*1024)/3)+4)]){
+   await assert.rejects(commitRestore({...pre,base64:payload},{existingProject:old,replace:true}),error('BAD_BASE64'))
+   assert.equal(JSON.stringify(old),serialized)
+ }
+})
+
+test('20 mutated preview invalid hash and collision refuse without mutating existing project',async()=>{
+ const initial={...p(),extensions:{futurePadding:'x'.repeat(1024*1024)}}
+ const exp=await exportPrivate(initial),pre=await previewRestore(exp.bytes)
+ const old=JSON.stringify(initial)
+ await assert.rejects(commitRestore(pre,{existingProject:initial}),error('RESTORE_CONFLICT'))
+ const changed={...pre,sha256:'0'.repeat(64)}
+ await assert.rejects(commitRestore(changed,{existingProject:initial,replace:true}),error('HASH_MISMATCH'))
+ assert.equal(JSON.stringify(initial),old)
+})
+
+test('21 source bytes limit exactly 2MiB accepted, next byte refused, original preserved',async()=>{
+ const baseline=source('alrick.sheets.v3',[sheet('boundary')],{futurePadding:''})
+ const len=bytes(baseline).length
+ const doc=source('alrick.sheets.v3',[sheet('boundary')],{futurePadding:'x'.repeat(2*1024*1024-len)})
+ const raw=bytes(doc)
+ assert.equal(raw.length,2*1024*1024)
+ const x=p(),pre=await previewImport(raw,x),committed=await commitImport(x,pre)
+ assert.deepEqual(await recoverOriginalBytes(committed.characters[0]),raw)
+ assert.equal(committed.characters[0].sheet.stats.physique,14)
+ assert.equal(JSON.stringify(x),JSON.stringify(p()))
+ const oversized=bytes(source('alrick.sheets.v3',[sheet('boundary')],{futurePadding:'x'.repeat(2*1024*1024-len+1)}))
+ await assert.rejects(previewImport(oversized,x),error('SIZE_LIMIT'))
+ assert.equal(JSON.stringify(x),JSON.stringify(p()))
+})
