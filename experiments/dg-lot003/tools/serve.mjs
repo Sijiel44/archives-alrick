@@ -19,7 +19,7 @@ function serve(port,onlyPlayer){
      const file=resolve(dir,'.'+pathname);
      if(!file.startsWith(dir+sep)){res.writeHead(403);res.end();return;}
      const data=await readFile(file);
-     res.writeHead(200,{'content-type':types[extname(file)]??'application/octet-stream','cache-control':'no-store','x-content-type-options':'nosniff','content-security-policy':"default-src 'none'; script-src 'self'; style-src 'self' ${styleHash ? "'"+styleHash+"'" : ""}; connect-src 'none'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",'referrer-policy':'no-referrer'});
+     res.writeHead(200,{'content-type':types[extname(file)]??'application/octet-stream','cache-control':'no-store','x-content-type-options':'nosniff','content-security-policy':`default-src 'none'; script-src 'self'; style-src 'self' ${styleHash ? "'"+styleHash+"'" : ""}; connect-src 'none'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'`,'referrer-policy':'no-referrer'});
      res.end(data);
    }catch{res.writeHead(404);res.end('Not found');}
  });
