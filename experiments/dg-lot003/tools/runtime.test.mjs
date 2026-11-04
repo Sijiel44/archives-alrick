@@ -45,6 +45,7 @@ test('Creator persisted entry survives subsequent stale STUDIO scene save',async
  assert.equal(after.scenes.length,1);
  assert.equal(after.extensions.catalog.length,1);
  assert.equal(after.extensions.catalog[0].id,entry.id);
+ assert.equal(after.extensions.creatorDrafts.length,1);
 });
 test('Native STORAGE rejects data mutation before write and keeps old snapshot',async()=>{
  const area=rawStorage(),service=createStorage(archives,area),start=campaign();
@@ -54,4 +55,30 @@ test('Native STORAGE rejects data mutation before write and keeps old snapshot',
  corrupt.characters=[{id:'pj-corrupt',publicLabel:'bad',privateSnapshot:{sourceId:'test',source:{sha256:'bad'},sheet:{}}}];
  await assert.rejects(service.save(corrupt));
  assert.equal(area.getItem('cer.dg003.private.campaign.v0'),before);
+});
+
+test('Immediate export includes saved creator even with stale Studio state; old backup restore removes newer creator',async()=>{
+ const area=rawStorage(),service=createStorage(archives,area),initial=campaign();
+ await service.save(initial);
+ const oldBytes=await service.exportPrivate(initial);
+ const record={kind:'spell',schema:'cer.creator.dg003.descriptive.v0',name:'Lueur ancienne',
+  version:'1.0.0',description:'Une lueur narrative décrite sans bonus.',
+  limitations:'Interdite à toute activation',tradition:'École imaginaire',
+  manifestation:'Une lumière bleu pâle',provenance:'Carnet de table fictif'};
+ const entry=creatorToCatalog(record,index,initial.id);
+ await service.appendCatalog(initial,entry,index.validateCatalogRegistry,record);
+ const immediate=await service.exportPrivate(initial);
+ const now=await archives.commitRestore(await archives.previewRestore(immediate));
+ assert.equal(now.__cer_dg003_studio_projection_v0.fields.extensions.catalog.length,1);
+ assert.deepEqual(now.__cer_dg003_studio_projection_v0.fields.extensions.creatorDrafts[0].original,record);
+ const oldPreview=await service.previewRestore({bytes:oldBytes});
+ const previous=await service.load();
+ const restored=await service.restore(oldPreview,{previous});
+ await service.save(restored);
+ const after=await service.load();
+ assert.deepEqual(after.extensions.catalog??[],[]);
+ assert.deepEqual(after.extensions.creatorDrafts??[],[]);
+ const previousExport=await service.exportPrivate(after);
+ assert.deepEqual((await archives.commitRestore(await archives.previewRestore(previousExport)))
+   .__cer_dg003_studio_projection_v0.fields.extensions,initial.extensions);
 });
