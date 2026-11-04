@@ -48,17 +48,18 @@ export function createValidatedStorage(owner,area) {
   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private storage write not atomic');throw error;}
   return snapshot;
  }
+ function mergePersistentCatalog(studio,current){
+  const snapshot=copy(studio);
+  if(current?.id!==snapshot.id)return snapshot;
+  snapshot.extensions??={};
+  const prior=current.extensions?.catalog??[],incoming=snapshot.extensions.catalog??[];
+  const identities=new Set(incoming.map(x=>x.id+'@'+x.version));
+  snapshot.extensions.catalog=[...incoming,...prior.filter(x=>!identities.has(x.id+'@'+x.version))];
+  return snapshot;
+ }
  function save(studio){return enqueue(async()=>{
   const current=await readStudio();
-  const snapshot=copy(studio);
-  if(current?.id===snapshot.id){
-   snapshot.extensions??={};
-   const prior=current.extensions?.catalog??[];
-   const incoming=snapshot.extensions.catalog??[];
-   const ids=new Set(incoming.map(x=>x.id+'@'+x.version));
-   snapshot.extensions.catalog=[...incoming,...prior.filter(x=>!ids.has(x.id+'@'+x.version))];
-  }
-  await persist(snapshot);
+  await persist(mergePersistentCatalog(studio,current));
  });}
  return {
   owner,readStudio,readArchive,save,
@@ -75,7 +76,10 @@ export function createValidatedStorage(owner,area) {
    return archiveToStudio(restored);
   },
   async exportPrivate(studio){
-   const result=await owner.exportPrivate(studioToArchive(studio,owner.createCampaign));
+   await queue;
+   const current=await readStudio();
+   const coherent=mergePersistentCatalog(studio,current);
+   const result=await owner.exportPrivate(studioToArchive(coherent,owner.createCampaign));
    if(result?.confidential!==true||!(result.bytes instanceof Uint8Array)||!/^[a-f0-9]{64}$/.test(result.sha256))
     fail('ARCHIVES private export invalid');
    return result.bytes;
