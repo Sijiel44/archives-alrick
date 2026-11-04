@@ -78,18 +78,25 @@
       "role": "storage",
       "entry": "experiments/dg-lot003/src/storage/storage.mjs",
       "branch": "transfer/dg003-storage-source",
-      "commit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
-      "blobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837",
+      "commit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
+      "blobSha": "be6a881018ae1709ecef71c3c5a155acfb94a658",
       "paths": [
-        "experiments/dg-lot003/src/storage/storage.mjs"
+        "experiments/dg-lot003/src/storage/storage.mjs",
+        "experiments/dg-lot003/src/storage/CONTRACT.md",
+        "experiments/dg-lot003/tests/storage/storage.test.mjs",
+        "experiments/dg-lot003/tests/storage/RESULTS.md"
       ],
       "author": "ARCHIVES",
       "sourceKind": "verbatim-transfer-from-local-archive",
       "originalSourceCommit": null,
-      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
+      "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+      "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
+      "previousTransportCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "previousModuleBlobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837",
+      "status": "corrected-owner-files-copied-verbatim-awaiting-full-browser-ci"
     }
   ],
-  "notes": "All source modules copied with per-file Git blob trace. Creator original record private snapshot, native validated ARCHIVES local envelope, strict CSP external CSS, no merge/publication. Final tests/QA not yet confirmed. STUDIO review fix copied from 59bc167 (16MiB restore limit, persisted scene), native >5MiB browser persistence subject to independent real test.",
+  "notes": "All source modules copied with per-file Git blob trace. Creator original record private snapshot, native validated ARCHIVES local envelope, strict CSP external CSS, no merge/publication. Final tests/QA not yet confirmed. STUDIO review fix copied from 59bc167 (16MiB restore limit, persisted scene), native >5MiB browser persistence subject to independent real test. Official ARCHIVES Base64 repair owner source copied verbatim from transfer commit 278e621; 21/21 owner Node24 tests reported; integration CI/E2E pending.",
   "sourceFiles": [
     {
       "path": "experiments/dg-lot003/src/ports/index.ts",
@@ -373,41 +380,45 @@
       "path": "experiments/dg-lot003/src/storage/storage.mjs",
       "role": "storage",
       "sourceBranch": "transfer/dg003-storage-source",
-      "sourceCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "sourceCommit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
       "originalAuthor": "ARCHIVES",
       "originalSourceCommit": null,
-      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
-      "blobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837"
+      "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+      "blobSha": "be6a881018ae1709ecef71c3c5a155acfb94a658",
+      "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
     },
     {
       "path": "experiments/dg-lot003/src/storage/CONTRACT.md",
       "role": "storage",
       "sourceBranch": "transfer/dg003-storage-source",
-      "sourceCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "sourceCommit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
       "originalAuthor": "ARCHIVES",
       "originalSourceCommit": null,
-      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
-      "blobSha": "7390b1872db0d2199404c394d1df8e21c8af2678"
+      "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+      "blobSha": "7390b1872db0d2199404c394d1df8e21c8af2678",
+      "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
     },
     {
       "path": "experiments/dg-lot003/tests/storage/storage.test.mjs",
       "role": "storage",
       "sourceBranch": "transfer/dg003-storage-source",
-      "sourceCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "sourceCommit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
       "originalAuthor": "ARCHIVES",
       "originalSourceCommit": null,
-      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
-      "blobSha": "49ad117bef2dd34fc7f142d789c9561dd2a53527"
+      "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+      "blobSha": "112f2d306f0aea6f2a14e84cd238c1aa85531e2d",
+      "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
     },
     {
       "path": "experiments/dg-lot003/tests/storage/RESULTS.md",
       "role": "storage",
       "sourceBranch": "transfer/dg003-storage-source",
-      "sourceCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "sourceCommit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
       "originalAuthor": "ARCHIVES",
       "originalSourceCommit": null,
-      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
-      "blobSha": "fe35aa91dc0eb7a5fc359a60d4fc579e77c8d346"
+      "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+      "blobSha": "c888048dbe9a4054af230988c8214cfc1378b7a9",
+      "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
     },
     {
       "path": "experiments/dg-lot003/tests/studio/review-l003-regressions.test.mjs",
@@ -442,13 +453,13 @@
     "originalAuthor": "ARCHIVES",
     "originalSourceCommit": null,
     "transportBranch": "transfer/dg003-storage-source",
-    "transportCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
-    "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
-    "sha256Module": "11411d3489c2a1969d268889b513a60d9de13e82648d5e928da77408097a3733",
+    "transportCommit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
+    "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+    "sha256Module": "b7d37c4bf46122a86b2d7e2f476426e75b8390d420504ec8419feb6d42185a08",
     "files": [
       {
         "path": "experiments/dg-lot003/src/storage/storage.mjs",
-        "blobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837"
+        "blobSha": "be6a881018ae1709ecef71c3c5a155acfb94a658"
       },
       {
         "path": "experiments/dg-lot003/src/storage/CONTRACT.md",
@@ -456,12 +467,16 @@
       },
       {
         "path": "experiments/dg-lot003/tests/storage/storage.test.mjs",
-        "blobSha": "49ad117bef2dd34fc7f142d789c9561dd2a53527"
+        "blobSha": "112f2d306f0aea6f2a14e84cd238c1aa85531e2d"
       },
       {
         "path": "experiments/dg-lot003/tests/storage/RESULTS.md",
-        "blobSha": "fe35aa91dc0eb7a5fc359a60d4fc579e77c8d346"
+        "blobSha": "c888048dbe9a4054af230988c8214cfc1378b7a9"
       }
-    ]
+    ],
+    "previousTransportCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+    "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
+    "previousSha256Module": "11411d3489c2a1969d268889b513a60d9de13e82648d5e928da77408097a3733",
+    "transportAttribution": "Transport commit by coordination session; module fix authored by ARCHIVES; originalSourceCommit unknown"
   }
 }
