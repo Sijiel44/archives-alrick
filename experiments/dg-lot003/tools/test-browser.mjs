@@ -112,7 +112,9 @@ try{
  await checkDOM(mj,'document.querySelector("#catalog-saved")?.innerText.includes("Lueur fictive")');
  const saved=await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")');
  if(typeof saved!=='string'||!saved.includes('private-export'))fail('Private envelope not persisted by ARCHIVES');
- const backup=join(working,'CONFIDENTIEL_test.json');await writeFile(backup,saved);
+ const persisted=JSON.parse(saved);
+ if(persisted.kind!=='cer.dg003.local-validated-envelope.v0'||typeof persisted.raw!=='string')fail('Invalid private session envelope');
+ const backup=join(working,'CONFIDENTIEL_test.json');await writeFile(backup,persisted.raw);
  await upload(mj,'Fichier de restauration confidentiel',backup);
  await mj.eval(click('Prévisualiser restauration'));
  await checkDOM(mj,'document.body.innerText.includes("Restauration proposée")');
