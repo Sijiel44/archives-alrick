@@ -117,3 +117,31 @@ test('affichage sûr: jamais de balisage HTML utilisateur inséré',async()=>{
   assert.equal(root.findAll(n=>n.tagName==='IMG').length,0);
   assert.equal(api.getDraft().name,'<img src=x onerror=alert(1)>');
 });
+
+test('style par défaut et injectStyles:true conservent le comportement historique',()=>{
+  for(const options of [{},{injectStyles:true}]){
+    const {root,api}=setup(options);
+    const styles=root.findAll(n=>n.tagName==='STYLE');
+    assert.equal(styles.length,1);
+    assert.match(styles[0].textContent,/\.cer-creators/);
+    assert.equal(root.findAll(n=>n.tagName==='FORM').length,3);
+    api.destroy();
+    assert.equal(root.children.length,0);
+  }
+});
+test('injectStyles:false ne crée aucun style et destroy reste sûr',async()=>{
+  const saved=[];
+  const {root,api}=setup({injectStyles:false,onSave:async record=>{saved.push(record);return {saved:true};}});
+  assert.equal(root.findAll(n=>n.tagName==='STYLE').length,0);
+  assert.equal(root.children.length,1);
+  assert.equal(root.findAll(n=>n.tagName==='FORM').length,3);
+  await button(root,'Sort').emit('click');
+  await button(root,'Expert').emit('click');
+  const spell=form(root,'spell');fill(spell,'spell');
+  await spell.emit('submit');
+  assert.equal(saved.length,1);
+  assert.equal(saved[0].kind,'spell');
+  assert.equal(root.findAll(n=>n.tagName==='STYLE').length,0);
+  api.destroy();
+  assert.equal(root.children.length,0);
+});
