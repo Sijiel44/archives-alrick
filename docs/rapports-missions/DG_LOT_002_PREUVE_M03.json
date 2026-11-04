@@ -1,0 +1,82 @@
+{
+  "runtime": "Node v24.22.1",
+  "command": "node --experimental-loader ./scripts/dg-lot002-loader.mjs scripts/dg-lot002-reproduction.mjs",
+  "sourceHashes": [
+    {
+      "file": "atelier5d6-combat-m03.ts",
+      "git_blob": "09929f1b852a971d73d40474847bae036bf11ffb",
+      "sha256": "4f2f2d72230b988f6ac44b9a91f3082a7c4799d0a4d91dbc266a1f223ea54234"
+    },
+    {
+      "file": "atelier5d6-progression.ts",
+      "git_blob": "d2040829ea0da7c0f6eae08dc8c701226bfc53c5",
+      "sha256": "9303f48e4351fd17975de8d02b38c5c0c2403cbe228f291b669bdbd9455dafdb"
+    },
+    {
+      "file": "atelier5d6-probabilities.ts",
+      "git_blob": "bfee984fad47902623f7117e9f024a5b6e042d2d",
+      "sha256": "9dcd788f853b2479c8e46d72b8bf065c7e17c3d538b02a8364ecd3dbe15868c2"
+    }
+  ],
+  "result": {
+    "source_commit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
+    "validatedEffect": {
+      "abilityId": "synthetic-absorption",
+      "kind": "absorption",
+      "magnitude": 2,
+      "duration": 2,
+      "trigger": "defense",
+      "approved": true
+    },
+    "withoutEffect": {
+      "natural": 25,
+      "statBonus": 6,
+      "masteryBonus": 2,
+      "total": 33,
+      "threshold": 22,
+      "defense": 22,
+      "gap": 0,
+      "numericSuccess": true,
+      "feasible": true,
+      "success": true,
+      "criticalFailure": false,
+      "criticalPotential": false,
+      "glancing": false,
+      "contact": true,
+      "grossDamage": 15,
+      "protection": 3,
+      "penetrated": 0,
+      "absorbed": 3,
+      "damage": 12,
+      "effectProposed": false,
+      "reaction": "aucune"
+    },
+    "withEffect": {
+      "natural": 25,
+      "statBonus": 6,
+      "masteryBonus": 2,
+      "total": 33,
+      "threshold": 22,
+      "defense": 22,
+      "gap": 0,
+      "numericSuccess": true,
+      "feasible": true,
+      "success": true,
+      "criticalFailure": false,
+      "criticalPotential": false,
+      "glancing": false,
+      "contact": true,
+      "grossDamage": 15,
+      "protection": 3,
+      "penetrated": 0,
+      "absorbed": 3,
+      "damage": 12,
+      "effectProposed": false,
+      "reaction": "aucune"
+    },
+    "identicalResults": true,
+    "positiveControlImpactDelta": 2,
+    "scope": "Dynamic reproduction only; no production correction or approved semantic change"
+  },
+  "limits": "Sources récupérées par connecteur GitHub, 3/3 blobs vérifiés. Aucun checkout complet ni npm test ni CI locale. Chargeur de résolution uniquement ; fonctions TypeScript officielles non modifiées."
+}
