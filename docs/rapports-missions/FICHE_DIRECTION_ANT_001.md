@@ -1,6 +1,6 @@
 # FICHE DIRECTION — ANT-001
 
-**Référent :** ANT. **Date :** 4 novembre 2026. **Objet :** cadre générique d'antagonisme + faction pilote indépendante. **Base :** `main@88f774f3d0d6d520d8d11443b72202b9caf4f94b`. **Mission :** ORG-001 PR #78. **Branche :** `docs/ant-001-cadre-antagonismes`.
+**Référent :** ANT. **Date :** 4 novembre 2026. **Objet :** cadre générique d'antagonisme + faction pilote indépendante. **Base :** `main@88f774f3d0d6d520d8d11443b72202b9caf4f94b`. **Mission :** ORG-001 PR #78. **Branche :** `docs/ant-001-cadre-antagonismes`. **PR :** [#83 (DRAFT)](https://github.com/Sijiel44/archives-alrick/pull/83).
 
 **Verdict proposé (pas décision DG) :** **VALIDÉ AVEC RÉSERVES — étude documentaire et pilote hors canon uniquement**.
 
