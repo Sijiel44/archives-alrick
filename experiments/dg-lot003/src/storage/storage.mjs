@@ -38,12 +38,24 @@ function bytesOf(input,max=MAX_SOURCE_BYTES){
 }
 function b64(bytes){let out='';for(let i=0;i<bytes.length;i+=8192)out+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(out)}
 function fromB64(value){
-  if(typeof value!=='string'||value.length===0||value.length%4!==0||!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(value))fail('BAD_BASE64','Base64 invalide')
+  // Linear validation: repeated quantified regexp groups overflow on multi-MiB backups.
+  // Bound the encoded length before scanning/decoding to avoid allocation amplification.
+  if(typeof value!=='string'||value.length===0||value.length%4!==0||
+      value.length>4*Math.ceil(MAX_EXPORT_BYTES/3))fail('BAD_BASE64','Base64 invalide')
+  const n=value.length
+  const padding=value[n-1]==='='?(value[n-2]==='='?2:1):0
+  for(let i=0;i<n-padding;i++){
+    const c=value.charCodeAt(i)
+    if(!((c>=65&&c<=90)||(c>=97&&c<=122)||(c>=48&&c<=57)||c===43||c===47))
+      fail('BAD_BASE64','Base64 invalide')
+  }
+  for(let i=n-padding;i<n;i++)if(value.charCodeAt(i)!==61)fail('BAD_BASE64','Base64 invalide')
   let binary;try{binary=atob(value)}catch{fail('BAD_BASE64','Base64 invalide')}
   const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0))
   if(b64(bytes)!==value)fail('BAD_BASE64','Base64 non canonique')
   return bytes
 }
+
 async function sha256(b){
   if(!globalThis.crypto?.subtle)fail('NO_CRYPTO','WebCrypto SHA256 requis')
   const data=await globalThis.crypto.subtle.digest('SHA-256', b)
