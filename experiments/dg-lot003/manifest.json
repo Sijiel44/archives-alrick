@@ -79,14 +79,16 @@
       "entry": "experiments/dg-lot003/src/storage/storage.mjs",
       "branch": "transfer/dg003-storage-source",
       "commit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
-      "blobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837",
+      "blobSha": "4bdef4b9bc7df305c96105fee4ceccb007a9a84f",
       "paths": [
         "experiments/dg-lot003/src/storage/storage.mjs"
       ],
       "author": "ARCHIVES",
       "sourceKind": "verbatim-transfer-from-local-archive",
       "originalSourceCommit": null,
-      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
+      "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
+      "originalBlobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837",
+      "integrationPatch": "linear-canonical-base64-check-no-regexp-stack"
     }
   ],
   "notes": "All source modules copied with per-file Git blob trace. Creator original record private snapshot, native validated ARCHIVES local envelope, strict CSP external CSS, no merge/publication. Final tests/QA not yet confirmed. STUDIO review fix copied from 59bc167 (16MiB restore limit, persisted scene), native >5MiB browser persistence subject to independent real test.",
@@ -377,7 +379,9 @@
       "originalAuthor": "ARCHIVES",
       "originalSourceCommit": null,
       "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
-      "blobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837"
+      "blobSha": "4bdef4b9bc7df305c96105fee4ceccb007a9a84f",
+      "originalBlobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837",
+      "integrationPatch": "regex-stack-overflow-correction"
     },
     {
       "path": "experiments/dg-lot003/src/storage/CONTRACT.md",
@@ -448,7 +452,8 @@
     "files": [
       {
         "path": "experiments/dg-lot003/src/storage/storage.mjs",
-        "blobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837"
+        "blobSha": "4bdef4b9bc7df305c96105fee4ceccb007a9a84f",
+        "originalBlobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837"
       },
       {
         "path": "experiments/dg-lot003/src/storage/CONTRACT.md",
@@ -462,6 +467,12 @@
         "path": "experiments/dg-lot003/tests/storage/RESULTS.md",
         "blobSha": "fe35aa91dc0eb7a5fc359a60d4fc579e77c8d346"
       }
-    ]
+    ],
+    "integrationPatch": {
+      "reason": "BROWSER_NATIVE_6MIB RangeError on repeated-capture Base64 regex; linear scan equivalent; owner source retained in original blob",
+      "path": "experiments/dg-lot003/src/storage/storage.mjs",
+      "originalBlobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837",
+      "integrationBlobSha": "4bdef4b9bc7df305c96105fee4ceccb007a9a84f"
+    }
   }
 }
