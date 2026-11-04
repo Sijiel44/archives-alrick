@@ -298,6 +298,41 @@
       "sourceBranch": "prototype/dg003-studio",
       "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
       "blobSha": "66a2d8587153c7c580bb0ebeedd0e6d2ad61d92d"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/browser-runner.py",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "866e94b59ddf67209cf8b6f923593aa455b939d6"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/harness-player.html",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "9300587f0723dc189d1477c3989ede8c42251f64"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/harness-studio.html",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "b63e383d23d94ee067bdb38133e1e121fe89400c"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/harness-studio.mjs",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "069d49d88e2fcff49fd88c9efde58c5b04daf1b7"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/projection.test.mjs",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "69f9434af94f84b157422db3e1e646cd9942d04b"
     }
   ],
   "storageProvenance": {
