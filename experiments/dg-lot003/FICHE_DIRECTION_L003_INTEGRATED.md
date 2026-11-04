@@ -16,3 +16,7 @@ Le parcours câblé comprend campagne locale, aperçu/acceptation PJ v2-v3 et so
 
 **À revoir par :** QA et REVUE.  
 **À valider par DG/créateur :** clôture du lot, puis séparément toute fusion/publication.
+
+## Dernier raccordement CI et L003-08
+
+La prévisualisation M03 apparaît désormais dans un panneau MJ dédié, avec entrées fictives et résultat natif exact, en lecture seule. La recette Chromium vérifie son DOM ; elle doit encore être exécutée sur le candidat définitif. La CI distingue le SHA source du SHA QA et préserve une étape QA indépendante, exécutée uniquement dans la future PR QA avec contrat et script réels. L'ancien échec CI portait uniquement sur le démarrage navigateur, avant l'application ; diagnostic enrichi sans affaiblissement du sandbox. **Non homologué jusqu'aux résultats du nouveau HEAD et à l'avis QA.**
