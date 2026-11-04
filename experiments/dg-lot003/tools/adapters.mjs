@@ -33,7 +33,7 @@ export function studioToArchive(studio,createCampaign){
  archive[OVERLAY_KEY]={
   schema:'cer.dg003.studio-overlay.v1',
   fields:{title:studio.title,revision:studio.revision,activeSceneId:studio.activeSceneId,
-   extensions:clone(studio.extensions??{}),privateNotes:clone(studio.privateNotes??[])},
+   extensions:clone(studio.extensions??{})},
   characters:overlays
  };
  return archive;
