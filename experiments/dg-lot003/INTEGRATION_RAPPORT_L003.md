@@ -47,3 +47,10 @@ P0 surveillés par QA : absence de fuite de canaris MJ dans DOM/postMessage/loca
 
 **À revoir par :** QA, REVUE, BUILDER, MATH, INDEX, ARCHIVES, STUDIO, ATELIERS.  
 **À valider par DG/créateur :** clôture de qualification, éventuelle fusion ou publication (non autorisées à ce stade).
+
+## Addendum L003-08 et CI — candidat final pour QA
+
+- Panneau MJ de lecture seule `#native-preview-details` ajouté à `index.html` ; la réponse `result.value.output` du véritable moteur M03, les entrées fictives et `applied:false` sont affichées par `textContent`. Aucun calcul alternatif et rien dans le bundle joueur.
+- Recette `test-browser.mjs` : assertion explicite de ce panneau en DOM réel sur l'origine 4173. Détection navigateur avec priorité à Chrome officiel, `CHROMIUM_PATH` explicite, versions et diagnostic stderr/stdout bornés, code/signal du processus si `DevToolsActivePort` n'arrive pas. Aucune option `--no-sandbox`.
+- Workflow : checkout du SHA source de PR, jamais du merge virtuel ; journal `sourceIntegrationHead` / `testedHead`, exécution QA indépendante après build lorsque la PR QA fournit un `integration-contract.json` non placeholder et `dg003-e2e.test.mjs`. Le verdict QA est **NON EXÉCUTÉ sur la branche intégrée** ; aucun test navigateur produit final n'est revendiqué comme PASS.
+- **Preuves antérieures, pas preuve du HEAD final :** session orchestratrice build 7 modules / 161 sur 161 Node24 PASS sur `771c78d…`; CI run 41884724758 (job 126766002951) build/unitaires PASS et navigateur FAIL avant application, sur merge virtuel `8a536b998af84abb313d929d96cbb79183e7b652`. Cause du démarrage Chrome non établie avant la prochaine exécution.
