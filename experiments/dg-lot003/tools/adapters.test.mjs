@@ -64,3 +64,16 @@ test('Creator => INDEX provenance/restrictions and descriptive only',()=>{
  assert.throws(()=>creatorToCatalog({...record,version:'v1'},catalog,'campaign-001'),/semantic version/);
  assert.throws(()=>creatorToCatalog({...record,description:'Inflige +2 dégâts.'},catalog,'campaign-001'),/numeric/);
 });
+
+test('Large private notes retain byte-exact ARCHIVES export after reversible Studio projection, without duplicate overlay',async()=>{
+ const {entry}=await imported();
+ const initial=studioCampaign(entry);
+ initial.privateNotes=[{id:'private-large',opaque:'Z'.repeat(256*1024),future:{marker:'RAW_UNKNOWN_PRESERVED'}}];
+ const first=await storage.exportPrivate(studioToArchive(initial,storage.createCampaign));
+ const native=await storage.commitRestore(await storage.previewRestore(first.bytes));
+ assert.equal(Object.hasOwn(native[OVERLAY_KEY].fields,'privateNotes'),false,'private data must not be duplicated');
+ const round=archiveToStudio(native);
+ const second=await storage.exportPrivate(studioToArchive(round,storage.createCampaign));
+ assert.deepEqual(second.bytes,first.bytes,'no silent duplication, mutation, or byte drift');
+ assert.equal(round.privateNotes[0].future.marker,'RAW_UNKNOWN_PRESERVED');
+});
