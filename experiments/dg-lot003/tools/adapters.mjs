@@ -6,6 +6,30 @@ const omit=(obj,keys)=>Object.fromEntries(Object.entries(obj).filter(([key])=>!k
 const ARCHIVE_KEYS=['schema','id','name','characters','creatures','scenes','privateNotes',OVERLAY_KEY];
 const STUDIO_KEYS=['schema','id','title','revision','characters','creatures','scenes','activeSceneId','extensions','privateNotes'];
 const SOURCE_FIELDS=['sourceId','source','sheet'];
+// Preserve JSON property insertion order through the reversible adapter, not
+// through global canonicalization or an extra field persisted in the archive.
+// The Studio property activeSceneId is the position anchor for the native overlay.
+const ARCHIVE_TO_STUDIO_KEY={
+ schema:'schema',id:'id',name:'title',characters:'characters',
+ creatures:'creatures',scenes:'scenes',privateNotes:'privateNotes'
+};
+const STUDIO_TO_ARCHIVE_KEY={
+ schema:'schema',id:'id',title:'name',characters:'characters',
+ creatures:'creatures',scenes:'scenes',privateNotes:'privateNotes',
+ activeSceneId:OVERLAY_KEY
+};
+function orderArchiveLikeStudio(studio,archive){
+ const ordered={};
+ for(const key of Object.keys(studio)){
+  const mapped=STUDIO_TO_ARCHIVE_KEY[key];
+  if(mapped)ordered[mapped]=archive[mapped];
+  else if(!STUDIO_KEYS.includes(key) && key!==OVERLAY_KEY)ordered[key]=archive[key];
+ }
+ for(const key of Object.keys(archive)){
+  if(!Object.hasOwn(ordered,key))ordered[key]=archive[key];
+ }
+ return ordered;
+}
 export function studioToArchive(studio,createCampaign){
  if(!isRecord(studio)||!Array.isArray(studio.characters)||!Array.isArray(studio.creatures)||!Array.isArray(studio.scenes)||!Array.isArray(studio.privateNotes??[]))
   throw Error('Studio campaign invalid');
@@ -36,7 +60,9 @@ export function studioToArchive(studio,createCampaign){
    extensions:clone(studio.extensions??{})},
   characters:overlays
  };
- return archive;
+ // An archive can legally put unknown keys after the overlay. The Studio
+ // projection preserves that placement as object property insertion order.
+ return orderArchiveLikeStudio(studio,archive);
 }
 export function archiveToStudio(archive){
  if(!isRecord(archive)||!Array.isArray(archive.characters)||!Array.isArray(archive.scenes)||!Array.isArray(archive.creatures))throw Error('ARCHIVES campaign invalid');
@@ -54,12 +80,31 @@ export function archiveToStudio(archive){
     __archiveCharacter:clone(c)
   }};
  });
- const result={...omit(archive,ARCHIVE_KEYS),schema:'cer.studio.dg003.provisional.v0',
+ const values={schema:'cer.studio.dg003.provisional.v0',
   id:archive.id,title:overlay.fields.title??archive.name,revision:overlay.fields.revision,
   characters,creatures:clone(archive.creatures),scenes:clone(archive.scenes),
   activeSceneId:overlay.fields.activeSceneId??'',extensions:clone(overlay.fields.extensions??{}),
   privateNotes:clone(archive.privateNotes??overlay.fields.privateNotes??[])};
- if(!Number.isSafeInteger(result.revision))throw Error('Invalid studio revision');
+ if(!Number.isSafeInteger(values.revision))throw Error('Invalid studio revision');
+ const result={};
+ // Keep the relative position of all native fields, especially unknown fields
+ // before OR after the overlay. No hidden metadata or duplicate archive payload.
+ for(const key of Object.keys(archive)){
+  if(key===OVERLAY_KEY){
+   result.activeSceneId=values.activeSceneId;
+   result.revision=values.revision;
+   result.extensions=values.extensions;
+  }else if(Object.hasOwn(ARCHIVE_TO_STUDIO_KEY,key)){
+   const studioKey=ARCHIVE_TO_STUDIO_KEY[key];
+   result[studioKey]=values[studioKey];
+  }else{
+   if(STUDIO_KEYS.includes(key))throw Error('Archive property collides with Studio reserved field: '+key);
+   result[key]=clone(archive[key]);
+  }
+ }
+ for(const [key,value] of Object.entries(values)){
+  if(!Object.hasOwn(result,key))result[key]=value;
+ }
  return result;
 }
 export function creatorToCatalog(record,catalog,campaignId){
