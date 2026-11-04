@@ -41,11 +41,18 @@
       "role": "studio",
       "entry": "experiments/dg-lot003/src/studio/index.mjs",
       "branch": "prototype/dg003-studio",
-      "commit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
-      "blobSha": "9b47c4fd8ee31deff774e12dd7a1daadea2072c9",
+      "commit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "5ce963e6120404f7cadbf6512cb0639c2adc888f",
       "paths": [
-        "experiments/dg-lot003/src/studio/index.mjs"
-      ]
+        "experiments/dg-lot003/src/studio/index.mjs",
+        "experiments/dg-lot003/src/studio/CONTRACT.md",
+        "experiments/dg-lot003/tests/studio/browser-runner.py",
+        "experiments/dg-lot003/tests/studio/review-l003-regressions.test.mjs",
+        "experiments/dg-lot003/tests/studio/REVUE_L003_CORRECTIFS_RAPPORT.md",
+        "experiments/dg-lot003/tests/studio/REVUE_L003_TEST_NODE_TAP.txt",
+        "experiments/dg-lot003/tests/studio/REVUE_L003_TEST_BROWSER_LOG.txt"
+      ],
+      "status": "owner-review-fix-copied-verbatim"
     },
     {
       "role": "player",
@@ -82,7 +89,7 @@
       "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
     }
   ],
-  "notes": "All source modules copied with per-file Git blob trace. Creator original record private snapshot, native validated ARCHIVES local envelope, strict CSP external CSS, no merge/publication. Final tests/QA not yet confirmed.",
+  "notes": "All source modules copied with per-file Git blob trace. Creator original record private snapshot, native validated ARCHIVES local envelope, strict CSP external CSS, no merge/publication. Final tests/QA not yet confirmed. STUDIO review fix copied from 59bc167 (16MiB restore limit, persisted scene), native >5MiB browser persistence subject to independent real test.",
   "sourceFiles": [
     {
       "path": "experiments/dg-lot003/src/ports/index.ts",
@@ -254,15 +261,15 @@
       "path": "experiments/dg-lot003/src/studio/CONTRACT.md",
       "role": "studio",
       "sourceBranch": "prototype/dg003-studio",
-      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
-      "blobSha": "beec7a30be7e74cac1c29985c5864e477725c6bc"
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "ef9b3d26c6660f7ff10d22f6186abed1c00a20e4"
     },
     {
       "path": "experiments/dg-lot003/src/studio/index.mjs",
       "role": "studio",
       "sourceBranch": "prototype/dg003-studio",
-      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
-      "blobSha": "9b47c4fd8ee31deff774e12dd7a1daadea2072c9"
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "5ce963e6120404f7cadbf6512cb0639c2adc888f"
     },
     {
       "path": "experiments/dg-lot003/src/studio/projection.mjs",
@@ -303,8 +310,8 @@
       "path": "experiments/dg-lot003/tests/studio/browser-runner.py",
       "role": "studio",
       "sourceBranch": "prototype/dg003-studio",
-      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
-      "blobSha": "866e94b59ddf67209cf8b6f923593aa455b939d6"
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "926db2dfb14d7f5444c4af6b3e0ef833017d1e75"
     },
     {
       "path": "experiments/dg-lot003/tests/studio/harness-player.html",
@@ -401,6 +408,34 @@
       "originalSourceCommit": null,
       "archiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
       "blobSha": "fe35aa91dc0eb7a5fc359a60d4fc579e77c8d346"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/review-l003-regressions.test.mjs",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "eefb6b6c33dbb92c1c1e57f0b3096a6b9bf6cb56"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/REVUE_L003_CORRECTIFS_RAPPORT.md",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "04a7eecb5cb490a9c5a118cdedf96f3146e47cbc"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/REVUE_L003_TEST_NODE_TAP.txt",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "0fc602148f11d9256cbdf08fa16195ac564b0c1d"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/REVUE_L003_TEST_BROWSER_LOG.txt",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "7f2bdf0bece66a75877387e534d2956dc1d3edb2"
     }
   ],
   "storageProvenance": {
