@@ -15,11 +15,12 @@ export function makeEntry({target,manifest,repository}){
   if(target==='player' ? entry.role==='player' : entry.role!=='player')selected.push({...entry,absolute});
  }
  const runtime=resolve(repository,'experiments/dg-lot003/tools/runtime.mjs');
- const result=[`import {mountIntegratedMJ,mountIntegratedPlayer} from ${JSON.stringify(runtime)};`];
+ const exported=target==='mj'?'mountIntegratedMJ':'mountIntegratedPlayer';
+ const result=[`import {${exported}} from ${JSON.stringify(runtime)};`];
  selected.forEach((x,i)=>result.push(`import * as x${i} from ${JSON.stringify(x.absolute)};`));
  result.push('const owners=Object.create(null);');
  selected.forEach((x,i)=>result.push(`owners[${JSON.stringify(x.role)}]=x${i};`));
  result.push('const status=document.getElementById("status");');
- result.push(`try { if(${JSON.stringify(target)}==='mj')mountIntegratedMJ({owners,doc:document});else mountIntegratedPlayer({owners,doc:document}); status.textContent="Modules présents — recette QA nécessaire";} catch(error){status.textContent="Assemblage incomplet : "+error.message;console.error(error);}`);
+ result.push(`try { ${exported}({owners,doc:document}); status.textContent="Modules présents — recette QA nécessaire";} catch(error){status.textContent="Assemblage incomplet : "+error.message;console.error(error);}`);
  return result.join('\n');
 }
