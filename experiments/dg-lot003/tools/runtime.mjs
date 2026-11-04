@@ -13,6 +13,7 @@ export function createValidatedStorage(owner,area) {
  if(methods.some(k=>typeof owner[k]!=='function'))fail('Interface ARCHIVES incomplète');
  if(!area||typeof area.getItem!=='function'||typeof area.setItem!=='function')fail('Stockage privé navigateur indisponible');
  let queue=Promise.resolve();
+ const subscribers=new Set();
  let exactRestorePending=null;
  const encoder=new TextEncoder();
  const decoder=new TextDecoder();
@@ -47,6 +48,7 @@ export function createValidatedStorage(owner,area) {
   const previous=area.getItem(STORAGE_KEY);
   try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.local-validated-envelope.v0',sha256:result.sha256,raw:decoder.decode(result.bytes)}));}
   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private storage write not atomic');throw error;}
+  for(const listener of subscribers){try{listener(copy(snapshot));}catch{ /* UI observer cannot roll back validated save */ }}
   return snapshot;
  }
  function mergePersistentCatalog(studio,current){
@@ -71,6 +73,7 @@ export function createValidatedStorage(owner,area) {
  });}
  return {
   owner,readStudio,readArchive,save,
+  subscribe(listener){if(typeof listener!=='function')fail('Listener invalid');subscribers.add(listener);return ()=>subscribers.delete(listener);},
   async load(){return await readStudio();},
   async previewRestore({bytes}){
    const pending=await owner.previewRestore(bytes);
@@ -230,6 +233,7 @@ export function mountIntegratedMJ({owners,doc}){
    catalogRoot.append(p);
   }
  };
+ store.subscribe(state=>renderEntries(state.extensions?.catalog??[]));
  const creator=owners.creators.mountCreators(doc.getElementById('creators-root'),{
   injectStyles:false,
   onSave:async record=>{
