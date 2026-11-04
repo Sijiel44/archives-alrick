@@ -7,7 +7,7 @@ const STORAGE_KEY='cer.dg003.private.campaign.v0';
 const fail=reason=>{throw Error(reason);};
 const copy=x=>structuredClone(x);
 
-function makeStorage(owner,area) {
+export function createValidatedStorage(owner,area) {
  if(!owner)return null;
  const methods=['createCampaign','previewImport','commitImport','exportPrivate','previewRestore','commitRestore','recoverOriginalBytes'];
  if(methods.some(k=>typeof owner[k]!=='function'))fail('Interface ARCHIVES incomplète');
@@ -134,7 +134,7 @@ export function mountIntegratedMJ({owners,doc}){
  for(const [role,method] of [['studio','mountStudio'],['creators','mountCreators'],['ports','createPorts'],
  ['rules','previewNativeRules'],['catalog','createDescriptiveCapability'],['storage','createCampaign']])
   if(typeof owners[role]?.[method]!=='function')fail(role+' non intégré : '+method);
- const store=makeStorage(owners.storage,view.localStorage);
+ const store=createValidatedStorage(owners.storage,view.localStorage);
  const rulesAdapter=async request=>{
   if(!['m03-combat','m01-progression'].includes(request.operation))
    return {status:'unavailable',reason:'Famille native non homologuée'};
