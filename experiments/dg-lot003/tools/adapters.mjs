@@ -49,7 +49,8 @@ export function archiveToStudio(archive){
   return {id:c.id,publicLabel:info.publicLabel,sourceSchema:info.sourceSchema,
     privateSnapshot:{...clone(info.privateMetadata),sourceId:c.sourceId,source:clone(c.source),sheet:clone(c.sheet)}};
  });
- const result={schema:'cer.studio.dg003.provisional.v0',id:archive.id,
+ const extras=Object.fromEntries(Object.entries(archive).filter(([key])=>!['schema','id','name','characters','creatures','scenes','privateNotes',OVERLAY_KEY].includes(key)).map(([key,v])=>[key,clone(v)]));
+ const result={...extras,schema:'cer.studio.dg003.provisional.v0',id:archive.id,
  title:overlay.title??archive.name,revision:overlay.revision,
  characters,creatures:clone(archive.creatures??[]),scenes:clone(archive.scenes),
  activeSceneId:overlay.activeSceneId??'',extensions:clone(overlay.extensions??{})};
@@ -60,7 +61,12 @@ export function creatorToCatalog(record,catalog,campaignId){
  if(!isRecord(record)||!['capacity','spell','item'].includes(record.kind)||typeof campaignId!=='string'||!campaignId)throw Error('Creator draft invalid');
  const factory={capacity:catalog?.createDescriptiveCapability,spell:catalog?.createDescriptiveSpell,item:catalog?.createDescriptiveItem}[record.kind];
  if(typeof factory!=='function')throw Error('INDEX descriptive factory unavailable');
- const input={name:record.name,description:record.description,version:record.version.includes('.')?record.version:record.version+'.0.0',
+ if(!/^(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)$/.test(record.version)){
+   // Keep exact creator revision in provenance; catalogue semantics use its own provisional semver.
+ }
+ const narr=[record.name,record.description,record.limitations,record.trigger??'',record.manifestation??''].join(' ');
+ if(/(?:\\+\\s*\\d+|\\b(?:dégâts?|damage|bonus|mana|charge|pv|points? de vie)\\s*[:=+\\-]?\\s*\\d+)/i.test(narr))throw Error('Narration numérique mécanique refusée');
+ const input={name:record.name,description:record.description,version:/^(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)\\.(?:0|[1-9]\\d*)$/.test(record.version)?record.version:'0.1.0',
  provenance:{sourceSchema:record.schema,sourceId:campaignId+':'+record.kind+':'+record.name,originKind:'campaign',sourceVersion:record.version},
  restrictions:[record.limitations],effectText:record.description};
  const result=factory(input);
