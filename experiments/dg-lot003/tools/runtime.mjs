@@ -23,8 +23,12 @@ export function createValidatedStorage(owner,area) {
  async function readArchive(){
   const raw=area.getItem(STORAGE_KEY);
   if(raw===null)return null;
-  const bytes=encoder.encode(raw);
-  const preview=await owner.previewRestore(bytes);
+  let envelope;
+  try{envelope=JSON.parse(raw);}catch{fail('Local private envelope invalid');}
+  if(envelope?.kind!=='cer.dg003.local-validated-envelope.v0'||typeof envelope.raw!=='string'||
+   !/^[a-f0-9]{64}$/.test(envelope.sha256??''))fail('Local private envelope invalid');
+  const bytes=encoder.encode(envelope.raw);
+  const preview=await owner.previewRestore(bytes,{expectedSha256:envelope.sha256});
   return await owner.commitRestore(preview,{existingProject:null,replace:false});
  }
  async function readStudio(){
@@ -40,7 +44,7 @@ export function createValidatedStorage(owner,area) {
   const verified=await owner.commitRestore(preview,{existingProject:null,replace:false});
   if(JSON.stringify(verified)!==JSON.stringify(prepared))fail('ARCHIVES roundtrip mismatch');
   const previous=area.getItem(STORAGE_KEY);
-  try{area.setItem(STORAGE_KEY,decoder.decode(result.bytes));}
+  try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.local-validated-envelope.v0',sha256:result.sha256,raw:decoder.decode(result.bytes)}));}
   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private storage write not atomic');throw error;}
   return snapshot;
  }
