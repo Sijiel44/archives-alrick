@@ -11,18 +11,29 @@ permissions:
 jobs:
   prototype:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: npm
+      - name: Print exact tested HEAD and runtime
+        run: |
+          git rev-parse HEAD
+          node --version
+          npm --version
+          git status --short
       - run: npm ci
       - run: npm test
       - run: node experiments/dg-lot003/tools/build.mjs
       - run: node experiments/dg-lot003/tools/test-unit.mjs
-      - name: Install Chromium for real served-page browser test
+      - name: Install Chromium for served-page test
         run: |
           sudo apt-get update
           sudo apt-get install -y chromium-browser || sudo apt-get install -y chromium
-      - run: node experiments/dg-lot003/tools/test-browser.mjs
+      - name: Browser test on HTTP 127.0.0.1 origins
+        run: node experiments/dg-lot003/tools/test-browser.mjs
+      - name: Record tested commit at end
+        if: always()
+        run: git rev-parse HEAD
