@@ -13,7 +13,7 @@ Les résultats des référents sont attribués à leurs auteurs. Une lecture de 
 | MATH-001.R1 | Diagnostic M03 et méthode recevables ; rapport original lu | Banc MATH : M03 exact mais dépendances partielles ; recette UI et suite complète non exécutées par MATH |
 | COMBAT-001 | Analyse des options et contre-exemple de pénétration recevables | Absorption réactive après pénétration recommandée, encore candidate ; propriétaire, durée et coût/réaction ouverts |
 | INDEX-001.R1 | Reprise des fixtures, traçabilité et banc isolé | Schéma v0.2 trop permissif : bornes natives et coût « non applicable » ; parité mécanique, permissions et objet numérique non homologués |
-| ARCH-001.R1 | Méthode et 12 scénarios synthétiques rapportés ; rapport original lu | Aucun importateur TS exécuté ; restauration Git bundle sur dépôt synthétique, pas restauration Alrick |
+| ARCH-001.R1 | Méthode et 12 scénarios synthétiques rapportés ; rapport original lu | Aucun importateur TS exécuté par ARCHIVES ; CI existante apporte une couverture partielle distincte ; pas de restauration Alrick |
 | QA-001.R1/R2 | Plan de preuve et revue limitée du diagnostic ; 19 identifiants conservés comme 18 Alpha +1 publication | Pas de certification Alpha ; tests DOM/messages/stockage, appareils et partie réelle restent dus |
 | MAG | Cartographie statique, séparation plan/débit ; rapport original lu | Débit fiche avant callback ledger non bloquant, anti-rejeu global et durabilité non démontrés |
 | OBJETS | Analyse statique et contrat isolé recevables | 9 tests de modèle ne prouvent pas atomicité multi-fenêtre ; mana + charge pour caster est comportement observé, pas règle nouvellement adoptée |
@@ -56,7 +56,11 @@ Au commit de preuve `c4ad7b3802d6dd0c70cd128351d4571a350755e3`, run https://gith
 - `npm run test:m04:browser` : échec démarrage Chromium, « Impossible d'obtenir le port de Chromium », ligne160 du script ;
 - aucune capture M04 produite ; build et contrôles ultérieurs non exécutés dans ce run.
 
-La CI globale est en échec. Cette erreur d'amorçage ne prouve ni une régression mécanique ni la réussite de la recette. Ne pas réutiliser un succès historique comme preuve au SHA final. Le dernier SHA et son état CI sont à enregistrer dans la transmission finale.
+Ce premier run global est en échec. Cette erreur d'amorçage ne prouve pas une régression mécanique.
+
+Au commit documentaire suivant `e350fb430ce6fa56a9337cc9afa2c4b5d3e6132b`, run https://github.com/Sijiel44/archives-alrick/actions/runs/41773168794 : **succès global**, `npm ci`, `npm test` et `npm run test:m04:browser` réussis. Logs du job126387369400 lus : **22 scénarios Chrome, 10 dialogues**, notamment import/export Bestiaire, migration fiches v2/v3 et campagne v1/v2, extensions inconnues, récupération et cérémonie simulée. Artefact `recette-m041-ci`13296295278 produit (SHA2560207a0621d5a087c9cb6118beed9c6d51a5bd883b783fdc1390eaad566536e01).
+
+Cette couverture applicative existante est une preuve supplémentaire directement vérifiée via la CI, distincte des essais ARCHIVES. Elle n'homologue ni les douze nouveaux scénarios sur tous les importateurs, ni une restauration indépendante Alrick, ni le futur cockpit Studio. Le nouveau diagnostic M03 n'est pas raccordé à npm test ; sa preuve est l'exécution locale documentée. Les étapes affichées ne permettent pas de revendiquer un build séparé supplémentaire. Le dernier SHA documentaire et son propre état CI sont consignés dans la transmission finale, sans assimiler le succès d'un autre SHA au sien.
 
 ## Portes de sortie restantes
 
