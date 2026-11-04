@@ -333,6 +333,34 @@
       "sourceBranch": "prototype/dg003-studio",
       "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
       "blobSha": "69f9434af94f84b157422db3e1e646cd9942d04b"
+    },
+    {
+      "path": "experiments/dg-lot003/src/creators/FICHE_DIRECTION_L003_CREATORS.md",
+      "role": "creators",
+      "sourceBranch": "prototype/dg003-creators",
+      "sourceCommit": "3d041219dc2ade68329ff15fd4830367185df0fc",
+      "blobSha": "a08e57d84373f47538679158f57ff28f1b549dca"
+    },
+    {
+      "path": "experiments/dg-lot003/src/creators/README.md",
+      "role": "creators",
+      "sourceBranch": "prototype/dg003-creators",
+      "sourceCommit": "48e0a6fa3c7650af424db3565a0582850f213b93",
+      "blobSha": "0b1de9edb075d38ee51fd1bf706a7009a5fec454"
+    },
+    {
+      "path": "experiments/dg-lot003/src/creators/index.mjs",
+      "role": "creators",
+      "sourceBranch": "prototype/dg003-creators",
+      "sourceCommit": "48e0a6fa3c7650af424db3565a0582850f213b93",
+      "blobSha": "b53f1868baa8a5eb5ed4415000247a128e668846"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/creators/creators.test.mjs",
+      "role": "creators",
+      "sourceBranch": "prototype/dg003-creators",
+      "sourceCommit": "48e0a6fa3c7650af424db3565a0582850f213b93",
+      "blobSha": "bd0c7888334b3d8b3fa54c5efdff18981dc27965"
     }
   ],
   "storageProvenance": {
