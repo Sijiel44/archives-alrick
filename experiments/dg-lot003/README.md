@@ -56,3 +56,9 @@ Le navigateur produit est recherché parmi les installations **Chrome officiel**
 `tools/test-browser.mjs` lance Chromium et vérifie de vraies pages servies et leurs deux origines ; le test doit lui-même être contrôlé et exécuté dans l'environnement autorisé. **Aucune preuve navigateur finale ni avis QA indépendant n'est revendiqué ici.**
 
 La CI `.github/workflows/dg-lot003-integrated.yml` est indépendante et ne contient aucun déploiement Pages. La sortie doit être attestée sur **le HEAD final** de la PR. Si les tests ou la recette sont non exécutés/échouent, la livraison reste **prototype partiel — non qualifié**. Aucun merge/publication sans décision séparée DG/créateur.
+
+## L003-08 — aperçu natif visible côté MJ uniquement
+
+L'option Expert STUDIO appelle la fonction native `rules.previewM03({commit:false})` fournie par la composition. **Après le clic**, le panneau `#native-preview-details` de `index.html` affiche, exclusivement par `textContent` et en lecture seule, l'entrée fictive `{kind:'combat',actor:'pj',combat:{...}}` et l'objet **exact** `result.value.output` reçu du port MATH (statut `ok`, moteur `M03`, `applied:false`, résultat natif). Il n'existe ni nouvelle formule, ni application ni débit. Le panneau, son renderer et les services restent hors du bundle et de l'origine joueur. `tools/test-browser.mjs` vérifie la présence et le contenu natif de ce panneau sur une page HTTP servie ; ce test reste **NON EXÉCUTÉ sur le nouveau HEAD** tant que les logs ne sont pas reçus.
+
+Le workflow lance la porte d'entrée QA indépendante **après build / tests unitaires et avant la recherche Chrome produit**, afin qu'un échec du démarrage produit ne dissimule pas la recette QA. Sur la branche intégrée, elle indique `NON EXÉCUTÉ`. Sur une PR `test/dg003-qa`, elle exige contrat réel et script réel, puis vérifie leur exécution sur `testedHead` distinct de `sourceIntegrationHead`.
