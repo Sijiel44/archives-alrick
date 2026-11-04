@@ -137,6 +137,111 @@
       "sourceBranch": "prototype/dg003-ports-builder",
       "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
       "blobSha": "3cabd4c37b2f143965a85906ca068b3c972c569f"
+    },
+    {
+      "path": "experiments/dg-lot003/src/rules/README.md",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "087dcfe4f497b873568bc89c291b60c11cb894e8"
+    },
+    {
+      "path": "experiments/dg-lot003/src/rules/native-preview.ts",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "3e2a0260bd49e9447fae06ad4c14f76a5a9766c9"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/FICHE_DIRECTION_L003_RULES.md",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "0a00521f00c5e844afea8f3c11ffe16274f3817a"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/L003_RULES_R2_BOUNDARY_PROOF.md",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "41913d5007c30e0ada6d715b7c08f48c570a47b7"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/L003_RULES_RAPPORT_TECHNIQUE.md",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "1cfba2a2d0e2d318bea0a4d4b6be858ef931aece"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/L003_RULES_TEST_LOG.txt",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "7eccab8bd297683ff31847f486e62d477bcad65d"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/native-direct-entry.ts",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "f4a1c65a89d921e4afeb526640ed27af63222bab"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/native-preview.test.mjs",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "ae82dda3d6c34afe2c3c5f44c7d3464e0d5afa77"
+    },
+    {
+      "path": "experiments/dg-lot003/src/catalog/FICHE_DIRECTION_L003_CATALOG.md",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "fa30f3be0403dc0ddaa9979f87bd453272fa819a"
+    },
+    {
+      "path": "experiments/dg-lot003/src/catalog/README.md",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "c27564cb5c1428e45505c4331430424fb776fa88"
+    },
+    {
+      "path": "experiments/dg-lot003/src/catalog/index.mjs",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "6c35e0da2c56a51dea9bce37b9cdc60cd2c75de5"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/EXECUTION_L003_CATALOG.txt",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "5832c9346be9d25676119cfdc2cc239a024866f1"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/MANIFEST_L003_CATALOG.json",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "b26c4ef1fa3135568cb13f313d85e1cfafc5147a"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/catalog.test.mjs",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "39a0acacaae7be43872d0d430be48f9b52e6a7fb"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/fixtures-v02-original.json",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "5b0a17e1d0c8049d406648621d4fefb1a78d97e9"
     }
   ],
   "storageProvenance": {
