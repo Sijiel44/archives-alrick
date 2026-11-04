@@ -91,8 +91,12 @@ try{
  browser=spawn(binary,['--headless=new','--no-first-run','--no-default-browser-check','--disable-gpu',
   '--remote-debugging-port=0','--user-data-dir='+join(working,'chrome'),MJ],{stdio:['ignore','pipe','pipe']});
  const cap=12000;
- let stderr='',stdout='',exit=null,spawnError=null;
- browser.stderr?.on('data',chunk=>{stderr=(stderr+String(chunk)).slice(-cap);});
+ let stderr='',stdout='',exit=null,spawnError=null,childAnnouncement=null;
+ browser.stderr?.on('data',chunk=>{
+  stderr=(stderr+String(chunk)).slice(-cap);
+  // Keep this child's endpoint even if later D-Bus diagnostics roll the bounded log.
+  childAnnouncement ??= announcedEndpoint(stderr);
+ });
  browser.stdout?.on('data',chunk=>{stdout=(stdout+String(chunk)).slice(-cap);});
  browser.on('error',error=>{spawnError=error.message;});
  browser.on('exit',(code,signal)=>{exit={code,signal};});
@@ -116,7 +120,7 @@ try{
    if(exit)throw Error('BROWSER_EXIT: '+JSON.stringify(exit));
    // The logged DevTools listening line proves this child started even when
    // its launcher does not create the expected DevToolsActivePort file.
-   const announced=announcedEndpoint(stderr);
+   const announced=childAnnouncement??announcedEndpoint(stderr);
    if(announced)return announced;
    let data;
    try{data=await readFile(join(working,'chrome','DevToolsActivePort'),'utf8');}
