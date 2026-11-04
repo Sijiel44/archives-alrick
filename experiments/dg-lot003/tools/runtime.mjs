@@ -1,0 +1,318 @@
+/** DG-LOT-003 MJ composition — temporary, reversible, no simulated persistence or rules. */
+import {studioToArchive,archiveToStudio,creatorToCatalog} from './adapters.mjs';
+import {createBestiaryCard,validateBestiaryCard} from '../../../quartz/components/scripts/atelier5d6-bestiary-workshop.ts';
+
+const MJ='http://127.0.0.1:4173', PLAYER='http://127.0.0.1:4174';
+const STORAGE_KEY='cer.dg003.private.campaign.v0';
+const fail=reason=>{throw Error(reason);};
+const copy=x=>structuredClone(x);
+
+export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
+ if(!owner)return null;
+ const methods=['createCampaign','previewImport','commitImport','exportPrivate','previewRestore','commitRestore','recoverOriginalBytes'];
+ if(methods.some(k=>typeof owner[k]!=='function'))fail('Interface ARCHIVES incomplète');
+ if(!area||typeof area.getItem!=='function'||typeof area.setItem!=='function')fail('Stockage privé navigateur indisponible');
+ let queue=Promise.resolve();
+ const subscribers=new Set();
+ let exactRestorePending=null;
+ const encoder=new TextEncoder();
+ const decoder=new TextDecoder();
+ // Keep the original localStorage envelope readable. For large validated backups,
+ // put their raw bytes in IndexedDB and change only a small localStorage pointer
+ // after the IndexedDB transaction completes. Never delete the old payload first.
+ const DB_NAME='cer.dg003.private.indexeddb.v0',DB_STORE='archives';
+ const LARGE_THRESHOLD=4*1024*1024;
+ async function dbTransaction(mode,work){
+  if(!indexedDB)fail('IndexedDB indisponible : restauration volumineuse non persistée');
+  const db=await new Promise((resolve,reject)=>{
+   const req=indexedDB.open(DB_NAME,1);
+   req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains(DB_STORE))req.result.createObjectStore(DB_STORE);};
+   req.onsuccess=()=>resolve(req.result);
+   req.onerror=()=>reject(req.error??Error('IndexedDB open failed'));
+   req.onblocked=()=>reject(Error('IndexedDB blocked'));
+  });
+  try{return await new Promise((resolve,reject)=>{
+   const tx=db.transaction(DB_STORE,mode);
+   let output;
+   tx.oncomplete=()=>resolve(output);
+   tx.onabort=()=>reject(tx.error??Error('IndexedDB transaction aborted'));
+   tx.onerror=()=>reject(tx.error??Error('IndexedDB transaction failed'));
+   try{
+    const req=work(tx.objectStore(DB_STORE));
+    req.onsuccess=()=>{output=req.result;};
+    req.onerror=()=>reject(req.error??Error('IndexedDB request failed'));
+   }catch(error){try{tx.abort();}catch{}reject(error);}
+  });}finally{db.close();}
+ }
+ const idbRead=digest=>dbTransaction('readonly',store=>store.get(digest));
+ const idbWrite=record=>dbTransaction('readwrite',store=>store.put(record,record.sha256));
+ const enqueue=operation=>{
+  const pending=queue.then(operation);
+  queue=pending.catch(()=>{});
+  return pending;
+ };
+ async function readArchive(){
+  const raw=area.getItem(STORAGE_KEY);
+  if(raw===null)return null;
+  let envelope;
+  try{envelope=JSON.parse(raw);}catch{fail('Local private envelope invalid');}
+  let bytes;
+  if(envelope?.kind==='cer.dg003.local-validated-envelope.v0'&&typeof envelope.raw==='string'){
+   bytes=encoder.encode(envelope.raw);
+  }else if(envelope?.kind==='cer.dg003.indexeddb-pointer.v0'){
+   const saved=await idbRead(envelope.sha256);
+   if(saved?.kind!=='cer.dg003.indexeddb-bytes.v0'||saved.sha256!==envelope.sha256||
+      !(saved.bytes instanceof Uint8Array))fail('IndexedDB private backup invalid or unavailable');
+   bytes=saved.bytes;
+  }else fail('Local private envelope invalid');
+  if(!/^[a-f0-9]{64}$/.test(envelope.sha256??''))fail('Local private envelope invalid');
+  const preview=await owner.previewRestore(bytes,{expectedSha256:envelope.sha256});
+  return await owner.commitRestore(preview,{existingProject:null,replace:false});
+ }
+ async function readStudio(){
+  const archive=await readArchive();
+  return archive?archiveToStudio(archive):null;
+ }
+ async function persist(snapshot){
+  const prepared=studioToArchive(snapshot,owner.createCampaign);
+  const result=await owner.exportPrivate(prepared);
+  if(result?.confidential!==true||!(result.bytes instanceof Uint8Array)||!/^[a-f0-9]{64}$/.test(result.sha256))
+   fail('ARCHIVES private export invalid');
+  const preview=await owner.previewRestore(result.bytes,{expectedSha256:result.sha256});
+  const verified=await owner.commitRestore(preview,{existingProject:null,replace:false});
+  if(JSON.stringify(verified)!==JSON.stringify(prepared))fail('ARCHIVES roundtrip mismatch');
+  const previous=area.getItem(STORAGE_KEY);
+  if(result.bytes.byteLength>LARGE_THRESHOLD){
+   // A native IndexedDB commit must succeed before switching the pointer.
+   await idbWrite({kind:'cer.dg003.indexeddb-bytes.v0',sha256:result.sha256,bytes:result.bytes});
+   const check=await idbRead(result.sha256);
+   if(check?.sha256!==result.sha256||!(check.bytes instanceof Uint8Array)||
+      check.bytes.length!==result.bytes.length)fail('IndexedDB write verification failed');
+   try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.indexeddb-pointer.v0',sha256:result.sha256}));}
+   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private pointer write not atomic');throw error;}
+  }else{
+   try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.local-validated-envelope.v0',sha256:result.sha256,raw:decoder.decode(result.bytes)}));}
+   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private storage write not atomic');throw error;}
+  }
+  for(const listener of subscribers){try{listener(copy(snapshot));}catch{ /* UI observer cannot roll back validated save */ }}
+  return snapshot;
+ }
+ function mergePersistentCatalog(studio,current){
+  const snapshot=copy(studio);
+  if(current?.id!==snapshot.id)return snapshot;
+  // Preserve absent keys as absent. An old archive with extensions:{} must
+  // roundtrip byte-semantically as {} rather than acquiring empty collections.
+  const hadCatalog=Object.hasOwn(snapshot.extensions??{},'catalog') ||
+    Object.hasOwn(current.extensions??{},'catalog');
+  const hadDrafts=Object.hasOwn(snapshot.extensions??{},'creatorDrafts') ||
+    Object.hasOwn(current.extensions??{},'creatorDrafts');
+  if(!hadCatalog&&!hadDrafts)return snapshot;
+  snapshot.extensions??={};
+  if(hadCatalog){
+   const prior=current.extensions?.catalog??[],incoming=snapshot.extensions.catalog??[];
+   if(!Array.isArray(prior)||!Array.isArray(incoming))fail('Catalogue persistant invalide');
+   const identities=new Set(incoming.map(x=>x.id+'@'+x.version));
+   snapshot.extensions.catalog=[...incoming,...prior.filter(x=>!identities.has(x.id+'@'+x.version))];
+  }
+  if(hadDrafts){
+   const savedDrafts=current.extensions?.creatorDrafts??[];
+   const pendingDrafts=snapshot.extensions.creatorDrafts??[];
+   if(!Array.isArray(savedDrafts)||!Array.isArray(pendingDrafts))fail('Brouillons persistants invalides');
+   const draftIds=new Set(pendingDrafts.map(d=>d.catalogId+'@'+d.catalogVersion));
+   snapshot.extensions.creatorDrafts=[...pendingDrafts,...savedDrafts.filter(d=>!draftIds.has(d.catalogId+'@'+d.catalogVersion))];
+  }
+  return snapshot;
+ }
+ function save(studio){return enqueue(async()=>{
+  const current=await readStudio();
+  const exact=exactRestorePending && exactRestorePending.id===studio.id;
+  const prepared=exact?copy(studio):mergePersistentCatalog(studio,current);
+  await persist(prepared);
+  if(exact)exactRestorePending=null;
+ });}
+ return {
+  owner,readStudio,readArchive,save,
+  subscribe(listener){if(typeof listener!=='function')fail('Listener invalid');subscribers.add(listener);return ()=>subscribers.delete(listener);},
+  async load(){return await readStudio();},
+  async previewRestore({bytes}){
+   const pending=await owner.previewRestore(bytes);
+   if(pending?.kind!=='private-restore-preview')fail('ARCHIVES preview missing');
+   return {display:{title:'Campagne privée '+pending.projectId},privatePending:pending};
+  },
+  async restore(preview,{previous}){
+   if(!preview?.privatePending)fail('Restoration preview missing');
+   const prior=previous?studioToArchive(previous,owner.createCampaign):null;
+   const restored=await owner.commitRestore(preview.privatePending,{existingProject:prior,replace:prior!==null});
+   const exact=archiveToStudio(restored);
+   exactRestorePending={id:exact.id};
+   return exact;
+  },
+  async exportPrivate(studio){
+   await queue;
+   const current=await readStudio();
+   const coherent=mergePersistentCatalog(studio,current);
+   const result=await owner.exportPrivate(studioToArchive(coherent,owner.createCampaign));
+   if(result?.confidential!==true||!(result.bytes instanceof Uint8Array)||!/^[a-f0-9]{64}$/.test(result.sha256))
+    fail('ARCHIVES private export invalid');
+   return result.bytes;
+  },
+  async appendCatalog(studio,entry,validateRegistry,originalRecord){
+   return enqueue(async()=>{
+    const current=await readStudio();
+    const foundation=current?.id===studio.id?current:copy(studio);
+    foundation.extensions??={};
+    const previous=foundation.extensions.catalog??[];
+    const next=[...previous,copy(entry)];
+    const valid=validateRegistry(next);
+    if(valid?.ok!==true)fail('Catalogue : '+(valid?.errors??[]).join('; '));
+    foundation.extensions.catalog=next;
+    if(!originalRecord||typeof originalRecord!=='object'||Array.isArray(originalRecord))fail('Original creator draft missing');
+    const drafts=foundation.extensions.creatorDrafts??[];
+    foundation.extensions.creatorDrafts=[...drafts,{catalogId:entry.id,catalogVersion:entry.version,
+      sourceSchema:originalRecord.schema,original:copy(originalRecord),visibility:'mj-private'}];
+    await persist(foundation);
+    return next;
+   });
+  }
+ };
+}
+function fixtureProfile(){
+ const profile=createBestiaryCard(5,'faune','creature','soutien');
+ profile.id='fixture-profile-001';
+ profile.name='Créature témoin N5';
+ profile.abilities=[];
+ return validateBestiaryCard(profile);
+}
+function makeBestiaryAdapter(ports,view){
+ const ref={document:null,source:{kind:'source',id:'fixture-source-001',version:'fixture-1'},
+  profile:{kind:'profile',id:'fixture-profile-001',ruleset:'m03',schema:'alrick.bestiary.v1'}};
+ async function profileLoader(input){
+  if(input?.document!==null||input?.source?.id!==ref.source.id||
+     input?.source?.version!==ref.source.version||input?.profile?.id!==ref.profile.id||
+     input?.profile?.schema!==ref.profile.schema||input?.profile?.ruleset!==ref.profile.ruleset)
+    return {status:'unavailable',reason:'Seul le profil fictif source locale est disponible'};
+  return {status:'ready',value:{...copy(ref),snapshot:fixtureProfile()}};
+ }
+ return {ref,profileLoader,async resolve(code){
+   if(code!=='fixture-source-001')fail('Source fictive indisponible : saisir fixture-source-001');
+   const result=await ports.bestiaryAdapter.readProfile(ref);
+   if(result.status!=='ready')fail(result.reason);
+   return {documentId:'aucun-document-canonique',profileId:ref.profile.id,ruleset:ref.profile.ruleset,
+    sourceId:ref.source.id,name:result.value.snapshot.name,level:result.value.snapshot.level};
+ },async copy(source,existingIds,campaignId){
+   if(source.profileId!==ref.profile.id||source.sourceId!==ref.source.id)fail('Profil/source inadmissible');
+   const id=view.crypto?.randomUUID?.();
+   if(!id||existingIds.includes(id))fail('Identifiant créature sécurisé/collision');
+   const result=await ports.bestiaryAdapter.makeInstance(ref,{kind:'instance',id,campaignId});
+   if(result.status!=='ready')fail(result.reason);
+   const validated=validateBestiaryCard(copy(result.value.snapshot));
+   validated.id=id;
+   return {id,sourceId:ref.source.id,profileId:ref.profile.id,documentId:null,
+    ruleset:ref.profile.ruleset,profile:copy(ref.profile),source:copy(ref.source),
+    sheet:validateBestiaryCard(validated),instance:copy(result.value.instance)};
+ }};
+}
+export function mountIntegratedMJ({owners,doc}){
+ const view=doc.defaultView;
+ if(view.location.origin!==MJ)fail('Origine MJ non autorisée');
+ for(const [role,method] of [['studio','mountStudio'],['creators','mountCreators'],['ports','createPorts'],
+ ['rules','previewNativeRules'],['catalog','createDescriptiveCapability'],['storage','createCampaign']])
+  if(typeof owners[role]?.[method]!=='function')fail(role+' non intégré : '+method);
+ const store=createValidatedStorage(owners.storage,view.localStorage,{indexedDB:view.indexedDB});
+ const rulesAdapter=async request=>{
+  if(!['m03-combat','m01-progression'].includes(request.operation))
+   return {status:'unavailable',reason:'Famille native non homologuée'};
+  if(request.input?.kind!==(request.operation==='m03-combat'?'combat':'progression'))
+   return {status:'invalid',reason:'Famille native/port divergente'};
+  const result=owners.rules.previewNativeRules(request.input);
+  return result.status==='ok'
+   ?{status:'ready',value:{source:result.engine,output:result}}
+   :{status:result.status==='unavailable'?'unavailable':'blocked',reason:result.reason};
+ };
+ let bestiary;
+ const ports=owners.ports.createPorts({
+  rules:{previewNative:rulesAdapter},
+  catalog:{resolve:async()=>({status:'unavailable',reason:'Aucun registre mécanique publié pour cette fixture'})},
+  characters:{preview:async()=>({status:'unavailable',reason:'L import multi-fiche exige sélection explicite; utiliser le flux ARCHIVES Studio'})},
+  bestiary:{readProfile:async ref=>bestiary.profileLoader(ref)}
+ });
+ bestiary=makeBestiaryAdapter(ports,view);
+ const options={
+  window:view,studioOrigin:MJ,playerOrigin:PLAYER,storage:store,
+  characterImport:{
+   async preview({bytes}){
+    const campaign=studio?.getCampaign();
+    if(!campaign)fail('Créer campagne avant import');
+    const pending=await owners.storage.previewImport(bytes,studioToArchive(campaign,owners.storage.createCampaign),{instancePrefix:'pj'});
+    if(!Array.isArray(pending.entries)||pending.entries.length!==1)
+      fail('Import multi-fiches refusé : une sélection explicite est nécessaire (aucune mutation)');
+    const entry=pending.entries[0];
+    const schema=pending.source?.schema==='alrick.sheets.v2'?'v2':pending.source?.schema==='alrick.sheets.v3'?'v3':null;
+    if(!schema)fail('Schéma historique non reconnu');
+    return {schemaVersion:schema,display:{name:entry.name||entry.sourceId,level:'brut — non interprété'},
+      privatePending:pending};
+   },
+   async accept(preview,{existingIds}){
+    if(!preview?.privatePending)fail('Aperçu PJ absent');
+    const campaign=studio?.getCampaign();if(!campaign)fail('Campagne absente');
+    const before=studioToArchive(campaign,owners.storage.createCampaign);
+    const after=await owners.storage.commitImport(before,preview.privatePending);
+    const added=after.characters.filter(c=>!existingIds.includes(c.id));
+    if(added.length!==1)fail('Import attendu : une seule fiche');
+    return copy(added[0]);
+   }
+  },
+  catalog:{resolveCreature:code=>bestiary.resolve(code)},
+  bestiary:{copyCreature:(source,{existingIds})=>{
+   const campaign=studio?.getCampaign();
+   if(!campaign)fail('Campagne requise');
+   return bestiary.copy(source,existingIds,campaign.id);
+  }},
+  rules:{
+   nativeValidated:true,
+   async previewM03({commit}){
+    if(commit!==false)fail('Mutation native interdite');
+    const nativeInput={kind:'combat',actor:'pj',combat:{natural:24,rawStat:16,masteryRank:4,situation:0,level:10,
+     difficulty:21,kind:'physique',mode:'melee',feasible:true,baseDamage:6}};
+    const result=await ports.rulesGateway.preview({operation:'m03-combat',ruleset:'m03',input:nativeInput});
+    if(result.status!=='ready')fail(result.reason);
+    const output=result.value.output;
+    if(output.applied!==false || output.status!=='ok' || output.engine!=='M03')fail('Prévisualisation native non pure ou refusée');
+    const panel=doc.getElementById('native-preview-details');
+    const inputText=doc.getElementById('native-preview-input');
+    const resultText=doc.getElementById('native-preview-result');
+    if(!panel||!inputText||!resultText)fail('Panneau de prévisualisation MJ absent');
+    // Only the official native preview output is displayed; no recomputation.
+    inputText.textContent=JSON.stringify(nativeInput,null,2);
+    resultText.textContent=JSON.stringify(output,null,2);
+    panel.hidden=false;
+    return {label:'M03 natif fictif — détails visibles dans le panneau MJ, aucun débit',native:output};
+   }
+  }
+ };
+ let studio=owners.studio.mountStudio(doc.getElementById('studio-root'),options);
+ const catalogRoot=doc.getElementById('catalog-saved');
+ const renderEntries=(list)=>{
+  if(!catalogRoot)return;
+  catalogRoot.replaceChildren();
+  for(const item of list){
+   const p=doc.createElement('p');
+   p.textContent=item.name+' · '+item.entryType+' · '+item.version+' (descriptif, non exécutable)';
+   catalogRoot.append(p);
+  }
+ };
+ store.subscribe(state=>renderEntries(state.extensions?.catalog??[]));
+ const creator=owners.creators.mountCreators(doc.getElementById('creators-root'),{
+  injectStyles:false,
+  onSave:async record=>{
+   const campaign=studio.getCampaign();
+   if(!campaign)fail('Créer une campagne avant une fiche descriptive');
+   const entry=creatorToCatalog(record,owners.catalog,campaign.id);
+   const list=await store.appendCatalog(campaign,entry,owners.catalog.validateCatalogRegistry,record);
+   renderEntries(list);
+   return {saved:true};
+  }
+ });
+ void store.readStudio().then(saved=>renderEntries(saved?.extensions?.catalog??[])).catch(()=>renderEntries([]));
+ return {studio,creator,ports,store};
+}

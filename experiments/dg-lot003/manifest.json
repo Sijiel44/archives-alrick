@@ -1,0 +1,482 @@
+{
+  "schema": "cer.dg003.integration-manifest.v0",
+  "base": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
+  "document": "b5c59854b802dc25617d9bcd7c576495199a41dd",
+  "components": [
+    {
+      "role": "ports",
+      "entry": "experiments/dg-lot003/src/ports/index.ts",
+      "branch": "prototype/dg003-ports-builder",
+      "commit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "07154546e2258c3795f2608bc2ef93e20d5beac2",
+      "paths": [
+        "experiments/dg-lot003/src/ports/index.ts",
+        "experiments/dg-lot003/src/ports/ports.ts",
+        "experiments/dg-lot003/src/ports/types.ts",
+        "experiments/dg-lot003/src/ports/README.md"
+      ],
+      "status": "source-copied-tests-externally-confirmed"
+    },
+    {
+      "role": "rules",
+      "entry": "experiments/dg-lot003/src/rules/native-preview.ts",
+      "branch": "prototype/dg003-rules-math",
+      "commit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "3e2a0260bd49e9447fae06ad4c14f76a5a9766c9",
+      "paths": [
+        "experiments/dg-lot003/src/rules/native-preview.ts"
+      ]
+    },
+    {
+      "role": "catalog",
+      "entry": "experiments/dg-lot003/src/catalog/index.mjs",
+      "branch": "prototype/dg003-index-contract",
+      "commit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "6c35e0da2c56a51dea9bce37b9cdc60cd2c75de5",
+      "paths": [
+        "experiments/dg-lot003/src/catalog/index.mjs"
+      ]
+    },
+    {
+      "role": "studio",
+      "entry": "experiments/dg-lot003/src/studio/index.mjs",
+      "branch": "prototype/dg003-studio",
+      "commit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "5ce963e6120404f7cadbf6512cb0639c2adc888f",
+      "paths": [
+        "experiments/dg-lot003/src/studio/index.mjs",
+        "experiments/dg-lot003/src/studio/CONTRACT.md",
+        "experiments/dg-lot003/tests/studio/browser-runner.py",
+        "experiments/dg-lot003/tests/studio/review-l003-regressions.test.mjs",
+        "experiments/dg-lot003/tests/studio/REVUE_L003_CORRECTIFS_RAPPORT.md",
+        "experiments/dg-lot003/tests/studio/REVUE_L003_TEST_NODE_TAP.txt",
+        "experiments/dg-lot003/tests/studio/REVUE_L003_TEST_BROWSER_LOG.txt"
+      ],
+      "status": "owner-review-fix-copied-verbatim"
+    },
+    {
+      "role": "player",
+      "entry": "experiments/dg-lot003/src/player/index.mjs",
+      "branch": "prototype/dg003-studio",
+      "commit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "fed7091c044bac004521d9ff0ad0d632a37752ba",
+      "paths": [
+        "experiments/dg-lot003/src/player/index.mjs"
+      ]
+    },
+    {
+      "role": "creators",
+      "entry": "experiments/dg-lot003/src/creators/index.mjs",
+      "branch": "prototype/dg003-creators",
+      "commit": "48e0a6fa3c7650af424db3565a0582850f213b93",
+      "blobSha": "b53f1868baa8a5eb5ed4415000247a128e668846",
+      "paths": [
+        "experiments/dg-lot003/src/creators/index.mjs"
+      ]
+    },
+    {
+      "role": "storage",
+      "entry": "experiments/dg-lot003/src/storage/storage.mjs",
+      "branch": "transfer/dg003-storage-source",
+      "commit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
+      "blobSha": "be6a881018ae1709ecef71c3c5a155acfb94a658",
+      "paths": [
+        "experiments/dg-lot003/src/storage/storage.mjs",
+        "experiments/dg-lot003/src/storage/CONTRACT.md",
+        "experiments/dg-lot003/tests/storage/storage.test.mjs",
+        "experiments/dg-lot003/tests/storage/RESULTS.md"
+      ],
+      "author": "ARCHIVES",
+      "sourceKind": "verbatim-transfer-from-local-archive",
+      "originalSourceCommit": null,
+      "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+      "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
+      "previousTransportCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+      "previousModuleBlobSha": "f9d2f2194606b2d0ac3d2f3418ebcaedfc495837",
+      "status": "corrected-owner-files-copied-verbatim-awaiting-full-browser-ci"
+    }
+  ],
+  "notes": "All source modules copied with per-file Git blob trace. Creator original record private snapshot, native validated ARCHIVES local envelope, strict CSP external CSS, no merge/publication. Final tests/QA not yet confirmed. STUDIO review fix copied from 59bc167 (16MiB restore limit, persisted scene), native >5MiB browser persistence subject to independent real test. Official ARCHIVES Base64 repair owner source copied verbatim from transfer commit 278e621; 21/21 owner Node24 tests reported; integration CI/E2E pending.",
+  "sourceFiles": [
+    {
+      "path": "experiments/dg-lot003/src/ports/index.ts",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "07154546e2258c3795f2608bc2ef93e20d5beac2"
+    },
+    {
+      "path": "experiments/dg-lot003/src/ports/ports.ts",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "0de378573c480f2f5888f56bd0c8a595278e22cf"
+    },
+    {
+      "path": "experiments/dg-lot003/src/ports/types.ts",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "ffa14dcd4bca190424a05106d425eebef18af743"
+    },
+    {
+      "path": "experiments/dg-lot003/src/ports/README.md",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "52bf70cba4b4218f8c1889cbf1f45b82d1012fde"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/ports/ports.test.mjs",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "b381bf0b4b9db81cbca027ac97c8002af532877e"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/ports/FICHE_DIRECTION_L003_PORTS.md",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "ee23157014c16c571b22742e3dbb5bc309a2c9e6"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/ports/L003_PORTS_RAPPORT_TECHNIQUE.md",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "46694abdfdccdd4b224d3d25fd690652d7f9dfd6"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/ports/SHA256_LOCAL.txt",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "ef4238ae63906298f948aefb316448e8217bfb08"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/ports/TEST_RESULTS.tap",
+      "sourceBranch": "prototype/dg003-ports-builder",
+      "sourceCommit": "5375014a30dc026a8cc58208cd0c9cabf02c86c2",
+      "blobSha": "3cabd4c37b2f143965a85906ca068b3c972c569f"
+    },
+    {
+      "path": "experiments/dg-lot003/src/rules/README.md",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "087dcfe4f497b873568bc89c291b60c11cb894e8"
+    },
+    {
+      "path": "experiments/dg-lot003/src/rules/native-preview.ts",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "3e2a0260bd49e9447fae06ad4c14f76a5a9766c9"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/FICHE_DIRECTION_L003_RULES.md",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "0a00521f00c5e844afea8f3c11ffe16274f3817a"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/L003_RULES_R2_BOUNDARY_PROOF.md",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "41913d5007c30e0ada6d715b7c08f48c570a47b7"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/L003_RULES_RAPPORT_TECHNIQUE.md",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "1cfba2a2d0e2d318bea0a4d4b6be858ef931aece"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/L003_RULES_TEST_LOG.txt",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "7eccab8bd297683ff31847f486e62d477bcad65d"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/native-direct-entry.ts",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "f4a1c65a89d921e4afeb526640ed27af63222bab"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/rules/native-preview.test.mjs",
+      "role": "rules",
+      "sourceBranch": "prototype/dg003-rules-math",
+      "sourceCommit": "ae11f209e43c2414b588692a7ad7a022c31656d5",
+      "blobSha": "ae82dda3d6c34afe2c3c5f44c7d3464e0d5afa77"
+    },
+    {
+      "path": "experiments/dg-lot003/src/catalog/FICHE_DIRECTION_L003_CATALOG.md",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "fa30f3be0403dc0ddaa9979f87bd453272fa819a"
+    },
+    {
+      "path": "experiments/dg-lot003/src/catalog/README.md",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "c27564cb5c1428e45505c4331430424fb776fa88"
+    },
+    {
+      "path": "experiments/dg-lot003/src/catalog/index.mjs",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "6c35e0da2c56a51dea9bce37b9cdc60cd2c75de5"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/EXECUTION_L003_CATALOG.txt",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "5832c9346be9d25676119cfdc2cc239a024866f1"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/MANIFEST_L003_CATALOG.json",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "b26c4ef1fa3135568cb13f313d85e1cfafc5147a"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/catalog.test.mjs",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "39a0acacaae7be43872d0d430be48f9b52e6a7fb"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/fixtures-v02-original.json",
+      "role": "catalog",
+      "sourceBranch": "prototype/dg003-index-contract",
+      "sourceCommit": "ec5c8eccd8116209a88f32a9bc3d2cd1b2e44161",
+      "blobSha": "5b0a17e1d0c8049d406648621d4fefb1a78d97e9"
+    },
+    {
+      "path": "experiments/dg-lot003/src/player/index.mjs",
+      "role": "player",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "fed7091c044bac004521d9ff0ad0d632a37752ba"
+    },
+    {
+      "path": "experiments/dg-lot003/src/studio/CONTRACT.md",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "ef9b3d26c6660f7ff10d22f6186abed1c00a20e4"
+    },
+    {
+      "path": "experiments/dg-lot003/src/studio/index.mjs",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "5ce963e6120404f7cadbf6512cb0639c2adc888f"
+    },
+    {
+      "path": "experiments/dg-lot003/src/studio/projection.mjs",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "114d7e062ae1bb39fe4373fcb2a233a16e866878"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/STUDIO_003_FICHE_DIRECTION.md",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "54e00f5c6adecf7182c6b6d5dbbbd365cbd76c46"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/STUDIO_003_LOG_NODE.txt",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "591502e4ae218f28134b5e1ca79dc88b7e9af532"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/STUDIO_003_RAPPORT_TECHNIQUE.md",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "d697e7acac357e66fe5591bea8c59b823c7de2c2"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/browser-results.json",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "66a2d8587153c7c580bb0ebeedd0e6d2ad61d92d"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/browser-runner.py",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "926db2dfb14d7f5444c4af6b3e0ef833017d1e75"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/harness-player.html",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "9300587f0723dc189d1477c3989ede8c42251f64"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/harness-studio.html",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "b63e383d23d94ee067bdb38133e1e121fe89400c"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/harness-studio.mjs",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "069d49d88e2fcff49fd88c9efde58c5b04daf1b7"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/projection.test.mjs",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "1cdbb6640a3d9f0d4473d66e1ca3d030ceef3c4a",
+      "blobSha": "69f9434af94f84b157422db3e1e646cd9942d04b"
+    },
+    {
+      "path": "experiments/dg-lot003/src/creators/FICHE_DIRECTION_L003_CREATORS.md",
+      "role": "creators",
+      "sourceBranch": "prototype/dg003-creators",
+      "sourceCommit": "3d041219dc2ade68329ff15fd4830367185df0fc",
+      "blobSha": "a08e57d84373f47538679158f57ff28f1b549dca"
+    },
+    {
+      "path": "experiments/dg-lot003/src/creators/README.md",
+      "role": "creators",
+      "sourceBranch": "prototype/dg003-creators",
+      "sourceCommit": "48e0a6fa3c7650af424db3565a0582850f213b93",
+      "blobSha": "0b1de9edb075d38ee51fd1bf706a7009a5fec454"
+    },
+    {
+      "path": "experiments/dg-lot003/src/creators/index.mjs",
+      "role": "creators",
+      "sourceBranch": "prototype/dg003-creators",
+      "sourceCommit": "48e0a6fa3c7650af424db3565a0582850f213b93",
+      "blobSha": "b53f1868baa8a5eb5ed4415000247a128e668846"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/creators/creators.test.mjs",
+      "role": "creators",
+      "sourceBranch": "prototype/dg003-creators",
+      "sourceCommit": "48e0a6fa3c7650af424db3565a0582850f213b93",
+      "blobSha": "bd0c7888334b3d8b3fa54c5efdff18981dc27965"
+    },
+    {
+      "path": "experiments/dg-lot003/src/storage/storage.mjs",
+      "role": "storage",
+      "sourceBranch": "transfer/dg003-storage-source",
+      "sourceCommit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
+      "originalAuthor": "ARCHIVES",
+      "originalSourceCommit": null,
+      "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+      "blobSha": "be6a881018ae1709ecef71c3c5a155acfb94a658",
+      "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
+    },
+    {
+      "path": "experiments/dg-lot003/src/storage/CONTRACT.md",
+      "role": "storage",
+      "sourceBranch": "transfer/dg003-storage-source",
+      "sourceCommit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
+      "originalAuthor": "ARCHIVES",
+      "originalSourceCommit": null,
+      "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+      "blobSha": "7390b1872db0d2199404c394d1df8e21c8af2678",
+      "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/storage/storage.test.mjs",
+      "role": "storage",
+      "sourceBranch": "transfer/dg003-storage-source",
+      "sourceCommit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
+      "originalAuthor": "ARCHIVES",
+      "originalSourceCommit": null,
+      "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+      "blobSha": "112f2d306f0aea6f2a14e84cd238c1aa85531e2d",
+      "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/storage/RESULTS.md",
+      "role": "storage",
+      "sourceBranch": "transfer/dg003-storage-source",
+      "sourceCommit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
+      "originalAuthor": "ARCHIVES",
+      "originalSourceCommit": null,
+      "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+      "blobSha": "c888048dbe9a4054af230988c8214cfc1378b7a9",
+      "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/review-l003-regressions.test.mjs",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "eefb6b6c33dbb92c1c1e57f0b3096a6b9bf6cb56"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/REVUE_L003_CORRECTIFS_RAPPORT.md",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "04a7eecb5cb490a9c5a118cdedf96f3146e47cbc"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/REVUE_L003_TEST_NODE_TAP.txt",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "0fc602148f11d9256cbdf08fa16195ac564b0c1d"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/studio/REVUE_L003_TEST_BROWSER_LOG.txt",
+      "role": "studio",
+      "sourceBranch": "prototype/dg003-studio",
+      "sourceCommit": "59bc16761fb5af2035077eddeb3d7caf73dbdaf1",
+      "blobSha": "7f2bdf0bece66a75877387e534d2956dc1d3edb2"
+    }
+  ],
+  "storageProvenance": {
+    "originalAuthor": "ARCHIVES",
+    "originalSourceCommit": null,
+    "transportBranch": "transfer/dg003-storage-source",
+    "transportCommit": "278e6215fb20dbadd99dd07d8f41e63a60b79cdb",
+    "archiveSHA256": "f43b81f2ebed30527b60411c13e6e76eee49e28ef1a4cfd9d26b4c0189d79ad3",
+    "sha256Module": "b7d37c4bf46122a86b2d7e2f476426e75b8390d420504ec8419feb6d42185a08",
+    "files": [
+      {
+        "path": "experiments/dg-lot003/src/storage/storage.mjs",
+        "blobSha": "be6a881018ae1709ecef71c3c5a155acfb94a658"
+      },
+      {
+        "path": "experiments/dg-lot003/src/storage/CONTRACT.md",
+        "blobSha": "7390b1872db0d2199404c394d1df8e21c8af2678"
+      },
+      {
+        "path": "experiments/dg-lot003/tests/storage/storage.test.mjs",
+        "blobSha": "112f2d306f0aea6f2a14e84cd238c1aa85531e2d"
+      },
+      {
+        "path": "experiments/dg-lot003/tests/storage/RESULTS.md",
+        "blobSha": "c888048dbe9a4054af230988c8214cfc1378b7a9"
+      }
+    ],
+    "previousTransportCommit": "2459876b9f8bd0cf7f7a588e09b709bca3c221c3",
+    "previousArchiveSHA256": "167e556a62c9992b228fbe760bdafba368f0ceda312176f717e1801075a1d81f",
+    "previousSha256Module": "11411d3489c2a1969d268889b513a60d9de13e82648d5e928da77408097a3733",
+    "transportAttribution": "Transport commit by coordination session; module fix authored by ARCHIVES; originalSourceCommit unknown"
+  }
+}
