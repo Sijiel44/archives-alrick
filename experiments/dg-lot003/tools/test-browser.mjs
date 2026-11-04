@@ -5,6 +5,7 @@ import {tmpdir} from 'node:os';
 import {join,resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {setTimeout as sleep} from 'node:timers/promises';
+import {Script} from 'node:vm';
 import WebSocket from 'ws';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const MJ='http://127.0.0.1:4173',PLAYER='http://127.0.0.1:4174';
@@ -76,6 +77,35 @@ async function checkDOM(page,expression){return until(()=>page.eval(expression),
 const selector=(label)=>'input[aria-label='+JSON.stringify(label)+']';
 const fill=(css,value)=>`(()=>{const el=document.querySelector(${JSON.stringify(css)});if(!el)throw Error('Field not found');el.value=${JSON.stringify(value)};el.dispatchEvent(new Event('input',{bubbles:true}));return true})()`;
 const click=(text)=>`(()=>{const b=[...document.querySelectorAll('button')].find(x=>x.textContent.trim()===${JSON.stringify(text)});if(!b||b.disabled)throw Error('Action absent/disabled: '+${JSON.stringify(text)});b.click();return true})()`;
+
+// Every expression that crosses Runtime.evaluate is generated with JSON-quoted
+// selectors/text. Parse them with node:vm before the browser is launched.
+const hasSelector=css=>`!!document.querySelector(${JSON.stringify(css)})`;
+const hasText=value=>`document.body.innerText.includes(${JSON.stringify(value)})`;
+const hasTextPair=(a,b)=>`(${hasText(a)} && ${hasText(b)})`;
+const hasTextAndSelector=(value,css)=>`(${hasText(value)} && ${hasSelector(css)})`;
+const catalogHasText=value=>`document.querySelector(${JSON.stringify('#catalog-saved')})?.innerText.includes(${JSON.stringify(value)})`;
+const creatorSubmit=`document.querySelector(${JSON.stringify('form[data-creator-kind="spell"]')}).requestSubmit();true`;
+const shareTitle=`(()=>{const e=[...document.querySelectorAll(${JSON.stringify('label')})].find(e=>e.textContent.includes(${JSON.stringify('Partager le titre de la scène')}));if(!e)throw Error('Checkbox missing');e.querySelector('input').click();return true;})()`;
+const previewDetails=`(()=>{const panel=document.getElementById("native-preview-details");const input=document.getElementById("native-preview-input");const output=document.getElementById("native-preview-result");if(!panel||panel.hidden||!input||!output)return false;const i=JSON.parse(input.textContent),r=JSON.parse(output.textContent);return i.kind==="combat"&&i.actor==="pj"&&i.combat.natural===24&&r.status==="ok"&&r.engine==="M03"&&r.applied===false&&r.result!==undefined;})()`;
+const expressionSamples=[
+ hasSelector('input[aria-label="Nom de la campagne"]'),hasText('Campagne active : Campagne fictive E2E'),
+ hasText('À importer'),hasTextPair('PJ copiés :','PJ inventé'),hasText('Créature témoin N5'),
+ hasText('Copies : Créature témoin N5'),hasTextAndSelector('Scène témoin','textarea[aria-label="Notes MJ — privées"]'),
+ hasText('Aperçu natif consulté'),previewDetails,creatorSubmit,shareTitle,
+ hasText('Enregistré localement'),catalogHasText('Lueur fictive'),hasText('Restauration proposée'),
+ hasText('Campagne restaurée'),hasText('Fenêtre joueur connectée'),hasText('Scène témoin'),
+ fill('input[aria-label="Nom de la campagne"]','Campagne fictive E2E'),
+ fill('textarea[aria-label="Notes MJ — privées"]','CANARY_PRIVATE_SCENE_123'),
+ fill('form[data-creator-kind="spell"] [name="description"]','Une lumière fictive'),
+ click('Créer campagne'),click('Prévisualiser calcul M03 natif autorisé')
+];
+for(const [index,expression] of expressionSamples.entries()){
+ try{new Script(expression,{filename:'dg003-browser-expression-'+index+'.js'});}
+ catch(error){throw Error('BROWSER_EXPRESSION_SYNTAX '+index+': '+error.message);}
+}
+console.log('BROWSER_EXPRESSIONS_PARSE_OK',expressionSamples.length);
+
 async function upload(page,field,file){
  const doc=(await page.call('DOM.getDocument')).root.nodeId;
  const id=(await page.call('DOM.querySelector',{nodeId:doc,selector:'input[type="file"][aria-label='+JSON.stringify(field)+']'})).nodeId;
@@ -153,40 +183,40 @@ try{
  },{tries:80});
  const mj=await CDP.connect(mjTarget.webSocketDebuggerUrl);
  await mj.call('Runtime.enable');await mj.call('DOM.enable');
- await checkDOM(mj,'!!document.querySelector("input[aria-label=\"Nom de la campagne\"]")');
+ await checkDOM(mj,hasSelector('input[aria-label="Nom de la campagne"]'));
  await mj.eval(fill(selector('Nom de la campagne'),'Campagne fictive E2E'));
  await mj.eval(click('Créer campagne'));
- await checkDOM(mj,'document.body.innerText.includes("Campagne active : Campagne fictive E2E")');
+ await checkDOM(mj,hasText('Campagne active : Campagne fictive E2E'));
  const fixture=join(working,'pj-v2.json');
  await writeFile(fixture,'\uFEFF '+JSON.stringify({schema:'alrick.sheets.v2',unknownEnvelope:'CANARY_PRIVATE_009',
  sheets:[{id:'pj-001',name:'PJ inventé',stats:{physique:14},unknownField:'PRIVE_NI_JAMAIS_PLAYER'}]}));
  await upload(mj,'Fichier PJ v2/v3',fixture);
  await mj.eval(click('Prévisualiser PJ'));
- await checkDOM(mj,'document.body.innerText.includes("À importer")');
+ await checkDOM(mj,hasText('À importer'));
  await mj.eval(click('Accepter copie PJ'));
- await checkDOM(mj,'document.body.innerText.includes("PJ copiés :") && document.body.innerText.includes("PJ inventé")');
+ await checkDOM(mj,hasTextPair('PJ copiés :','PJ inventé'));
  await mj.eval(fill(selector('Code ou référence créature'),'fixture-source-001'));
  await mj.eval(click('Prévisualiser référence'));
- await checkDOM(mj,'document.body.innerText.includes("Créature témoin N5")');
+ await checkDOM(mj,hasText('Créature témoin N5'));
  await mj.eval(click('Créer copie d’instance'));
- await checkDOM(mj,'document.body.innerText.includes("Copies : Créature témoin N5")');
+ await checkDOM(mj,hasText('Copies : Créature témoin N5'));
  await mj.eval(fill(selector('Titre de nouvelle scène'),'Scène témoin'));
  await mj.eval(fill('textarea[aria-label="Description destinée à être proposée au public"]','Le pont est visible.'));
  await mj.eval(fill('textarea[aria-label="Notes privées MJ"]','CANARY_PRIVATE_SCENE_123'));
  await mj.eval(click('Créer scène'));
- await checkDOM(mj,'document.body.innerText.includes("Scène témoin") && !!document.querySelector("textarea[aria-label=\"Notes MJ — privées\"]")');
+ await checkDOM(mj,hasTextAndSelector('Scène témoin','textarea[aria-label="Notes MJ — privées"]'));
  await mj.eval(click('Mode expert'));
  await mj.eval(click('Prévisualiser calcul M03 natif autorisé'));
- await checkDOM(mj,'document.body.innerText.includes("Aperçu natif consulté")');
- await checkDOM(mj, '(()=>{const panel=document.getElementById("native-preview-details");const input=document.getElementById("native-preview-input");const output=document.getElementById("native-preview-result");if(!panel||panel.hidden||!input||!output)return false;const i=JSON.parse(input.textContent),r=JSON.parse(output.textContent);return i.kind==="combat"&&i.actor==="pj"&&i.combat.natural===24&&r.status==="ok"&&r.engine==="M03"&&r.applied===false&&r.result!==undefined;})()');
+ await checkDOM(mj,hasText('Aperçu natif consulté'));
+ await checkDOM(mj,previewDetails);
  await mj.eval(click('Sort'));
  for(const [name,value] of [['name','Lueur fictive'],['provenance','campagne-fictive'],['version','1.0.0'],
   ['description','Une lumière purement narrative sans chiffre.'],['limitations','Aucune activation automatique']]){
   await mj.eval(fill('form[data-creator-kind="spell"] [name="'+name+'"]',value));
  }
- await mj.eval(`document.querySelector('form[data-creator-kind="spell"]').requestSubmit();true`);
- await checkDOM(mj,'document.body.innerText.includes("Enregistré localement")');
- await checkDOM(mj,'document.querySelector("#catalog-saved")?.innerText.includes("Lueur fictive")');
+ await mj.eval(creatorSubmit);
+ await checkDOM(mj,hasText('Enregistré localement'));
+ await checkDOM(mj,catalogHasText('Lueur fictive'));
  const saved=await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")');
  if(typeof saved!=='string'||!saved.includes('private-export'))fail('Private envelope not persisted by ARCHIVES');
  const persisted=JSON.parse(saved);
@@ -194,17 +224,17 @@ try{
  const backup=join(working,'CONFIDENTIEL_test.json');await writeFile(backup,persisted.raw);
  await upload(mj,'Fichier de restauration confidentiel',backup);
  await mj.eval(click('Prévisualiser restauration'));
- await checkDOM(mj,'document.body.innerText.includes("Restauration proposée")');
+ await checkDOM(mj,hasText('Restauration proposée'));
  await mj.eval(click('Confirmer restauration'));
- await checkDOM(mj,'document.body.innerText.includes("Campagne restaurée")');
+ await checkDOM(mj,hasText('Campagne restaurée'));
  await mj.eval(click('Ouvrir la fenêtre joueur'));
  const playerTarget=await until(async()=>{const xs=await json(debuggerUrl+'/json');return xs.find(x=>x.type==='page'&&x.url.startsWith(PLAYER));},{tries:80});
  const player=await CDP.connect(playerTarget.webSocketDebuggerUrl);
  await player.call('Runtime.enable');
- await checkDOM(mj,'document.body.innerText.includes("Fenêtre joueur connectée")');
- await mj.eval(`(()=>{const e=[...document.querySelectorAll('label')].find(e=>e.textContent.includes('Partager le titre de la scène'));if(!e)throw Error('Checkbox missing');e.querySelector('input').click();return true;})()`);
+ await checkDOM(mj,hasText('Fenêtre joueur connectée'));
+ await mj.eval(shareTitle);
  await mj.eval(click('Publier uniquement la sélection'));
- await checkDOM(player,'document.body.innerText.includes("Scène témoin")');
+ await checkDOM(player,hasText('Scène témoin'));
  const playerText=await player.eval('document.documentElement.outerHTML+JSON.stringify(localStorage)');
  if(/CANARY_PRIVATE|PRIVE_NI_JAMAIS_PLAYER|privateSnapshot|base64|sourceDigestSHA256/.test(playerText))
   fail('P0 PRIVATE DATA LEAK TO PLAYER');
