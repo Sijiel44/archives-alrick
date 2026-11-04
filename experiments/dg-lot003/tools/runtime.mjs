@@ -44,8 +44,8 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
    }catch(error){try{tx.abort();}catch{}reject(error);}
   });}finally{db.close();}
  }
- const idbRead=()=>dbTransaction('readonly',store=>store.get(STORAGE_KEY));
- const idbWrite=record=>dbTransaction('readwrite',store=>store.put(record,STORAGE_KEY));
+ const idbRead=digest=>dbTransaction('readonly',store=>store.get(digest));
+ const idbWrite=record=>dbTransaction('readwrite',store=>store.put(record,record.sha256));
  const enqueue=operation=>{
   const pending=queue.then(operation);
   queue=pending.catch(()=>{});
@@ -60,7 +60,7 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
   if(envelope?.kind==='cer.dg003.local-validated-envelope.v0'&&typeof envelope.raw==='string'){
    bytes=encoder.encode(envelope.raw);
   }else if(envelope?.kind==='cer.dg003.indexeddb-pointer.v0'){
-   const saved=await idbRead();
+   const saved=await idbRead(envelope.sha256);
    if(saved?.kind!=='cer.dg003.indexeddb-bytes.v0'||saved.sha256!==envelope.sha256||
       !(saved.bytes instanceof Uint8Array))fail('IndexedDB private backup invalid or unavailable');
    bytes=saved.bytes;
@@ -85,7 +85,7 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
   if(result.bytes.byteLength>LARGE_THRESHOLD){
    // A native IndexedDB commit must succeed before switching the pointer.
    await idbWrite({kind:'cer.dg003.indexeddb-bytes.v0',sha256:result.sha256,bytes:result.bytes});
-   const check=await idbRead();
+   const check=await idbRead(result.sha256);
    if(check?.sha256!==result.sha256||!(check.bytes instanceof Uint8Array)||
       check.bytes.length!==result.bytes.length)fail('IndexedDB write verification failed');
    try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.indexeddb-pointer.v0',sha256:result.sha256}));}
