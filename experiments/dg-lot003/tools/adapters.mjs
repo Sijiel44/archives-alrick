@@ -21,7 +21,7 @@ const STUDIO_TO_ARCHIVE_KEY={
 function orderArchiveLikeStudio(studio,archive){
  const ordered={};
  for(const key of Object.keys(studio)){
-  const mapped=STUDIO_TO_ARCHIVE_KEY[key];
+  const mapped=Object.hasOwn(STUDIO_TO_ARCHIVE_KEY,key)?STUDIO_TO_ARCHIVE_KEY[key]:undefined;
   if(mapped)ordered[mapped]=archive[mapped];
   else if(!STUDIO_KEYS.includes(key) && key!==OVERLAY_KEY)ordered[key]=archive[key];
  }
