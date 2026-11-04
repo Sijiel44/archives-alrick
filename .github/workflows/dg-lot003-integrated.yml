@@ -1,0 +1,28 @@
+name: DG-LOT-003 integrated prototype (no Pages)
+on:
+  push:
+    branches: [prototype/dg003-integrated]
+  pull_request:
+    paths:
+      - 'experiments/dg-lot003/**'
+      - '.github/workflows/dg-lot003-integrated.yml'
+permissions:
+  contents: read
+jobs:
+  prototype:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: node experiments/dg-lot003/tools/build.mjs
+      - run: node experiments/dg-lot003/tools/test-unit.mjs
+      - name: Install Chromium for real served-page browser test
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser || sudo apt-get install -y chromium
+      - run: node experiments/dg-lot003/tools/test-browser.mjs
