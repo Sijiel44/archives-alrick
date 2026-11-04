@@ -37,6 +37,16 @@ Origines : MJ `http://127.0.0.1:4173/` et joueur `http://127.0.0.1:4174/`. Ne ja
 
 `manifest.json` contient les références par rôle et 45 chemins de provenance (Git blob, branche, commit source ou transport). BUILDER `5375014a…`, MATH corrigé `ae11f209…`, INDEX `ec5c8ecc…`, STUDIO `1cdbb664…`, ATELIERS corrigé `48e0a6fa…`, ARCHIVES transport `2459876b…`. Pour ARCHIVES, l'auteur reste ARCHIVES, le commit est **un transport depuis le ZIP original**, et `originalSourceCommit:null` ; la provenance ZIP SHA256 est conservée. Aucune PR propriétaire fusionnée.
 
+## SHA exact, navigateur CI et QA indépendante
+
+Le workflow `.github/workflows/dg-lot003-integrated.yml` utilise `pull_request.head.sha` sur PR et `github.sha` sur push, **jamais** le commit de merge virtuel des PR. Il vérifie `git rev-parse HEAD == testedHead` et journalise distinctement `sourceIntegrationHead` et `testedHead`. Lors d'une PR de la branche `test/dg003-qa` ciblant la branche intégrée, `sourceIntegrationHead` est le SHA de base intégré et `testedHead` le SHA du commit QA.
+
+Le navigateur produit est recherché parmi les installations **Chrome officiel** déjà présentes sur le runner, sans installation automatique de lanceur Ubuntu Snap. Un `CHROMIUM_PATH` explicite prime dans `tools/test-browser.mjs`. Le test journalise navigateur et version, puis code de sortie, signal et `stderr`/`stdout` bornés si l'attente de `DevToolsActivePort` échoue. Aucune option `--no-sandbox` n'est utilisée, aucune politique contournée. Absence de navigateur ou lancement en échec ne sont jamais qualifiés PASS.
+
+**Séparation des recettes :** la branche intégrée n'embarque pas `tests/e2e` de QA ; sa recette QA indépendante est donc toujours **NON EXÉCUTÉE**. Dans la PR indépendante QA `test/dg003-qa`, le workflow exige `tests/e2e/integration-contract.json` réel, non vide, sans placeholders, et `tests/e2e/dg003-e2e.test.mjs` ; il lance alors `node --test tests/e2e/dg003-e2e.test.mjs` sur le **HEAD QA** exact. Un de ces fichiers absent/placeholder produit un échec explicite **NON EXÉCUTÉ**, jamais un vert implicite. Le job produit n'est pas une validation QA.
+
+**Preuves antérieures :** run GitHub Actions `41884724758`, job `126766002951` sur merge virtuel `8a536b998af84abb313d929d96cbb79183e7b652` : `npm ci`, `npm test`, build et tests unitaires PASS ; navigateur FAIL avant chargement, faute de `DevToolsActivePort`. Cause exacte du lanceur inconnue dans ces anciens logs ; la présente correction ajoute son diagnostic, elle ne prouve pas une résolution avant exécution.
+
 ## Tests et qualification
 
 `tools/test-unit.mjs` exécute les six familles de tests propriétaires (les tests joueur appartiennent à STUDIO), puis `tools/adapters.test.mjs` et `tools/runtime.test.mjs`. Ces tests utilisent les **vrais** modules ARCHIVES et INDEX ; les tests runtime chargent `runtime.mjs` par esbuild. Toute erreur fait échouer le script.
