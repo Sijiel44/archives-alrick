@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {resolveCombatM03,validateM03AbilityEffect} from '../quartz/components/scripts/atelier5d6-combat-m03.ts';
+const ability={id:'synthetic-absorption',name:'Synthetic',description:'Synthetic test only',domain:'combat',kind:'technique',levelRequired:1,effect:'Synthetic defensive absorption',limitations:'Two turns',provenance:'DG-LOT-002 isolated reproduction',approvedByGM:true,status:'defined',rank:1};
+const defender={level:10,stats:{physique:8,agilite:8,esprit:8,presence:8},masteries:{esquive:3},protection:{physique:0},equipmentGrades:{physique:2}};
+const input={natural:25,rawStat:12,masteryRank:4,situation:0,level:10,difficulty:21,kind:'physique',mode:'melee',defender,feasible:true,baseDamage:6};
+const effect=validateM03AbilityEffect(ability,{abilityId:ability.id,kind:'absorption',magnitude:2,duration:2,trigger:'defense'});
+assert(effect,'Validator must recognize synthetic absorption effect');
+const before=resolveCombatM03(input),withEffect=resolveCombatM03({...input,effects:[effect]});
+assert.deepEqual(withEffect,before,'Current source ignores recognized absorption effect');
+const controlEffect=validateM03AbilityEffect(ability,{abilityId:ability.id,kind:'impact',magnitude:2,duration:2,trigger:'attaque'});
+const positiveControl=resolveCombatM03({...input,effects:[controlEffect]});
+assert.equal(positiveControl.grossDamage-before.grossDamage,2);
+console.log(JSON.stringify({source_commit:'88f774f3d0d6d520d8d11443b72202b9caf4f94b',validatedEffect:effect,withoutEffect:before,withEffect,identicalResults:true,positiveControlImpactDelta:2,scope:'Dynamic reproduction only; no production correction or approved semantic change'},null,2));
