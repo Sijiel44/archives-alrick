@@ -12,10 +12,40 @@ function makeStorage(owner,area) {
  const methods=['createCampaign','previewImport','commitImport','exportPrivate','previewRestore','commitRestore','recoverOriginalBytes'];
  if(methods.some(k=>typeof owner[k]!=='function'))fail('Interface ARCHIVES incomplète');
  if(!area||typeof area.getItem!=='function'||typeof area.setItem!=='function')fail('Stockage privé navigateur indisponible');
- function readArchive(){const data=area.getItem(STORAGE_KEY);return data?JSON.parse(data):null;}
- function readStudio(){const archive=readArchive();return archive?archiveToStudio(archive):null;}
- async function save(studio){
-  const current=readStudio();
+ let queue=Promise.resolve();
+ const encoder=new TextEncoder();
+ const decoder=new TextDecoder();
+ const enqueue=operation=>{
+  const pending=queue.then(operation);
+  queue=pending.catch(()=>{});
+  return pending;
+ };
+ async function readArchive(){
+  const raw=area.getItem(STORAGE_KEY);
+  if(raw===null)return null;
+  const bytes=encoder.encode(raw);
+  const preview=await owner.previewRestore(bytes);
+  return await owner.commitRestore(preview,{existingProject:null,replace:false});
+ }
+ async function readStudio(){
+  const archive=await readArchive();
+  return archive?archiveToStudio(archive):null;
+ }
+ async function persist(snapshot){
+  const prepared=studioToArchive(snapshot,owner.createCampaign);
+  const result=await owner.exportPrivate(prepared);
+  if(result?.confidential!==true||!(result.bytes instanceof Uint8Array)||!/^[a-f0-9]{64}$/.test(result.sha256))
+   fail('ARCHIVES private export invalid');
+  const preview=await owner.previewRestore(result.bytes,{expectedSha256:result.sha256});
+  const verified=await owner.commitRestore(preview,{existingProject:null,replace:false});
+  if(JSON.stringify(verified)!==JSON.stringify(prepared))fail('ARCHIVES roundtrip mismatch');
+  const previous=area.getItem(STORAGE_KEY);
+  try{area.setItem(STORAGE_KEY,decoder.decode(result.bytes));}
+  catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private storage write not atomic');throw error;}
+  return snapshot;
+ }
+ function save(studio){return enqueue(async()=>{
+  const current=await readStudio();
   const snapshot=copy(studio);
   if(current?.id===snapshot.id){
    snapshot.extensions??={};
@@ -24,42 +54,41 @@ function makeStorage(owner,area) {
    const ids=new Set(incoming.map(x=>x.id+'@'+x.version));
    snapshot.extensions.catalog=[...incoming,...prior.filter(x=>!ids.has(x.id+'@'+x.version))];
   }
-  // Atomic browser storage write: localStorage.setItem fails without overwriting old data.
-  const prepared=studioToArchive(snapshot,owner.createCampaign);
-  const original=area.getItem(STORAGE_KEY);
-  try{area.setItem(STORAGE_KEY,JSON.stringify(prepared));}
-  catch(err){if(area.getItem(STORAGE_KEY)!==original)fail('Écriture privée non atomique');throw err;}
- }
+  await persist(snapshot);
+ });}
  return {
   owner,readStudio,readArchive,save,
-  async load(){return readStudio();},
+  async load(){return await readStudio();},
   async previewRestore({bytes}){
    const pending=await owner.previewRestore(bytes);
-   if(pending?.kind!=='private-restore-preview')fail('Aperçu ARCHIVES invalide');
+   if(pending?.kind!=='private-restore-preview')fail('ARCHIVES preview missing');
    return {display:{title:'Campagne privée '+pending.projectId},privatePending:pending};
   },
   async restore(preview,{previous}){
-   if(!preview?.privatePending)fail('Prévisualisation manquante');
+   if(!preview?.privatePending)fail('Restoration preview missing');
    const prior=previous?studioToArchive(previous,owner.createCampaign):null;
    const restored=await owner.commitRestore(preview.privatePending,{existingProject:prior,replace:prior!==null});
    return archiveToStudio(restored);
   },
   async exportPrivate(studio){
    const result=await owner.exportPrivate(studioToArchive(studio,owner.createCampaign));
-   if(result?.confidential!==true||!(result.bytes instanceof Uint8Array)||!/^[a-f0-9]{64}$/.test(result.sha256))fail('Export privé non vérifié');
+   if(result?.confidential!==true||!(result.bytes instanceof Uint8Array)||!/^[a-f0-9]{64}$/.test(result.sha256))
+    fail('ARCHIVES private export invalid');
    return result.bytes;
   },
   async appendCatalog(studio,entry,validateRegistry){
-   const current=readStudio();
-   const foundation=current?.id===studio.id?current:copy(studio);
-   foundation.extensions??={};
-   const previous=foundation.extensions.catalog??[];
-   const next=[...previous,copy(entry)];
-   const valid=validateRegistry(next);
-   if(valid?.ok!==true)fail('Catalogue : '+(valid?.errors??[]).join('; '));
-   foundation.extensions.catalog=next;
-   await save(foundation);
-   return next;
+   return enqueue(async()=>{
+    const current=await readStudio();
+    const foundation=current?.id===studio.id?current:copy(studio);
+    foundation.extensions??={};
+    const previous=foundation.extensions.catalog??[];
+    const next=[...previous,copy(entry)];
+    const valid=validateRegistry(next);
+    if(valid?.ok!==true)fail('Catalogue : '+(valid?.errors??[]).join('; '));
+    foundation.extensions.catalog=next;
+    await persist(foundation);
+    return next;
+   });
   }
  };
 }
@@ -180,6 +209,7 @@ export function mountIntegratedMJ({owners,doc}){
   }
  };
  const creator=owners.creators.mountCreators(doc.getElementById('creators-root'),{
+  injectStyles:false,
   onSave:async record=>{
    const campaign=studio.getCampaign();
    if(!campaign)fail('Créer une campagne avant une fiche descriptive');
@@ -189,6 +219,6 @@ export function mountIntegratedMJ({owners,doc}){
    return {saved:true};
   }
  });
- renderEntries(store.readStudio()?.extensions?.catalog??[]);
+ void store.readStudio().then(saved=>renderEntries(saved?.extensions?.catalog??[])).catch(()=>renderEntries([]));
  return {studio,creator,ports,store};
 }
