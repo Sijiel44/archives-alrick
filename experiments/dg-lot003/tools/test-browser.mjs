@@ -96,14 +96,38 @@ try{
  browser.stdout?.on('data',chunk=>{stdout=(stdout+String(chunk)).slice(-cap);});
  browser.on('error',error=>{spawnError=error.message;});
  browser.on('exit',(code,signal)=>{exit={code,signal};});
- let portData;
+ // Bind ONLY to the DevTools endpoint announced by this spawned child, or its
+ // own user-data-dir DevToolsActivePort file; never scan arbitrary local sessions.
+ function announcedEndpoint(log) {
+  const match=log.match(/DevTools listening on (ws:\/\/127\.0\.0\.1:\d+\/devtools\/browser\/[A-Za-z0-9-]+)/);
+  if(!match)return null;
+  const url=new URL(match[1]);
+  const port=Number(url.port);
+  if(url.protocol!=='ws:'||url.hostname!=='127.0.0.1'||
+     !Number.isSafeInteger(port)||port<1||port>65535||
+     !/^\/devtools\/browser\/[A-Za-z0-9-]+$/.test(url.pathname))
+   throw Error('Invalid child DevTools address');
+  return {port,browserWs:url.href,discoveredBy:'child-stderr'};
+ }
+ let endpoint;
  try{
-  portData=await until(async()=>{
+  endpoint=await until(async()=>{
    if(spawnError)throw Error('BROWSER_SPAWN_ERROR: '+spawnError);
    if(exit)throw Error('BROWSER_EXIT: '+JSON.stringify(exit));
-   const data=await readFile(join(working,'chrome','DevToolsActivePort'),'utf8');
-   const port=data.split('\\n')[0];
-   return /^\\d+$/.test(port)?port:null;
+   // The logged DevTools listening line proves this child started even when
+   // its launcher does not create the expected DevToolsActivePort file.
+   const announced=announcedEndpoint(stderr);
+   if(announced)return announced;
+   let data;
+   try{data=await readFile(join(working,'chrome','DevToolsActivePort'),'utf8');}
+   catch(error){if(error.code==='ENOENT')return null;throw error;}
+   const [first,second]=data.split(/\r?\n/);
+   const port=Number(first);
+   if(!/^\d+$/.test(first)||!Number.isSafeInteger(port)||port<1||port>65535)return null;
+   // File belongs to the unique temporary user-data-dir supplied to this child.
+   const browserWs=second?.startsWith('/devtools/browser/')
+     ?'ws://127.0.0.1:'+port+second:null;
+   return {port,browserWs,discoveredBy:'child-profile-file'};
   },{tries:120});
  }catch(error){
   console.error('BROWSER_START_DIAGNOSTIC',JSON.stringify({
@@ -112,7 +136,13 @@ try{
   }));
   throw error;
  }
- const debuggerUrl='http://127.0.0.1:'+Number(portData);
+ const debuggerUrl='http://127.0.0.1:'+endpoint.port;
+ console.log('CHILD_DEVTOOLS_DISCOVERED',JSON.stringify(endpoint));
+ // Compare the advertised browser endpoint against Chrome's own /json/version
+ // response before using the page targets, preventing cross-session attachment.
+ const devtoolsVersion=await until(()=>json(debuggerUrl+'/json/version'));
+ if(endpoint.browserWs && devtoolsVersion.webSocketDebuggerUrl!==endpoint.browserWs)
+  throw Error('DevTools browser websocket differs from spawned-child announcement');
  const mjTarget=await until(async()=>{
   const targets=await json(debuggerUrl+'/json');
   return targets.find(x=>x.type==='page'&&x.url.startsWith(MJ));
