@@ -54,14 +54,27 @@ export function createValidatedStorage(owner,area) {
  function mergePersistentCatalog(studio,current){
   const snapshot=copy(studio);
   if(current?.id!==snapshot.id)return snapshot;
+  // Preserve absent keys as absent. An old archive with extensions:{} must
+  // roundtrip byte-semantically as {} rather than acquiring empty collections.
+  const hadCatalog=Object.hasOwn(snapshot.extensions??{},'catalog') ||
+    Object.hasOwn(current.extensions??{},'catalog');
+  const hadDrafts=Object.hasOwn(snapshot.extensions??{},'creatorDrafts') ||
+    Object.hasOwn(current.extensions??{},'creatorDrafts');
+  if(!hadCatalog&&!hadDrafts)return snapshot;
   snapshot.extensions??={};
-  const prior=current.extensions?.catalog??[],incoming=snapshot.extensions.catalog??[];
-  const identities=new Set(incoming.map(x=>x.id+'@'+x.version));
-  snapshot.extensions.catalog=[...incoming,...prior.filter(x=>!identities.has(x.id+'@'+x.version))];
-  const savedDrafts=current.extensions?.creatorDrafts??[];
-  const pendingDrafts=snapshot.extensions.creatorDrafts??[];
-  const draftIds=new Set(pendingDrafts.map(d=>d.catalogId+'@'+d.catalogVersion));
-  snapshot.extensions.creatorDrafts=[...pendingDrafts,...savedDrafts.filter(d=>!draftIds.has(d.catalogId+'@'+d.catalogVersion))];
+  if(hadCatalog){
+   const prior=current.extensions?.catalog??[],incoming=snapshot.extensions.catalog??[];
+   if(!Array.isArray(prior)||!Array.isArray(incoming))fail('Catalogue persistant invalide');
+   const identities=new Set(incoming.map(x=>x.id+'@'+x.version));
+   snapshot.extensions.catalog=[...incoming,...prior.filter(x=>!identities.has(x.id+'@'+x.version))];
+  }
+  if(hadDrafts){
+   const savedDrafts=current.extensions?.creatorDrafts??[];
+   const pendingDrafts=snapshot.extensions.creatorDrafts??[];
+   if(!Array.isArray(savedDrafts)||!Array.isArray(pendingDrafts))fail('Brouillons persistants invalides');
+   const draftIds=new Set(pendingDrafts.map(d=>d.catalogId+'@'+d.catalogVersion));
+   snapshot.extensions.creatorDrafts=[...pendingDrafts,...savedDrafts.filter(d=>!draftIds.has(d.catalogId+'@'+d.catalogVersion))];
+  }
   return snapshot;
  }
  function save(studio){return enqueue(async()=>{
