@@ -15,7 +15,7 @@ for(const role of roles){
  if(run.status!==0){console.error('ÉCHEC',role);failed=true;}
  if(!manifest.components.some(c=>c.role===role)){console.error('MODULE NON INTÉGRÉ',role);failed=true;}
 }
-const adapters=spawnSync(process.execPath,['--test',resolve(root,'tools/adapters.test.mjs')],{stdio:'inherit'});
+const adapters=spawnSync(process.execPath,['--test',resolve(root,'tools/adapters.test.mjs'),resolve(root,'tools/runtime.test.mjs')],{stdio:'inherit'});
 if(adapters.status!==0){console.error('ÉCHEC ADAPTERS / ARCHIVES / INDEX');failed=true;}
 if(!manifest.components.some(c=>c.role==='player') || !manifest.components.some(c=>c.role==='studio')){console.error('PLAYER/STUDIO pairing absent');failed=true;}
 if(failed)process.exitCode=1;else console.log('TOUS TESTS UNITAIRES INTÉGRÉS OK');
