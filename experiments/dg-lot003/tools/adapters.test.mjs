@@ -139,3 +139,23 @@ test('L003 QA: v2/v3 raw PJ and late unknown keep native SHA, catalog and legacy
   assert.deepEqual(await storage.recoverOriginalBytes(returned.characters[0]),raw);
  }
 });
+
+test('L003 QA: legitimate toString and hasOwnProperty unknown keys remain native JSON properties',async()=>{
+ const state={schema:'cer.studio.dg003.provisional.v0',id:'qa-native-own-keys',
+  title:'QA dictionnaire sans prototype',revision:3,characters:[],creatures:[],
+  scenes:[],privateNotes:[],activeSceneId:'',extensions:{}};
+ const archive=studioToArchive(state,storage.createCampaign);
+ archive.toString={marker:'legitimate unknown toString'};
+ archive.hasOwnProperty={marker:'legitimate unknown hasOwnProperty'};
+ const before=await storage.exportPrivate(archive);
+ const restored=archiveToStudio(await storage.commitRestore(await storage.previewRestore(before.bytes)));
+ const afterArchive=studioToArchive(structuredClone(restored),storage.createCampaign);
+ const after=await storage.exportPrivate(afterArchive);
+ const evidence=byteEqualityProof(before,after);
+ assert.equal(evidence.compare,0,JSON.stringify(evidence));
+ assert.equal(evidence.beforeSHA256,evidence.afterSHA256,JSON.stringify(evidence));
+ assert.deepEqual(afterArchive.toString,archive.toString);
+ assert.deepEqual(afterArchive.hasOwnProperty,archive.hasOwnProperty);
+ assert.equal(typeof afterArchive.toString,'object');
+ assert.equal(typeof afterArchive.hasOwnProperty,'object');
+});
