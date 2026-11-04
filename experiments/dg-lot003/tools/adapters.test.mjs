@@ -77,3 +77,65 @@ test('Large private notes retain byte-exact ARCHIVES export after reversible Stu
  assert.deepEqual(second.bytes,first.bytes,'no silent duplication, mutation, or byte drift');
  assert.equal(round.privateNotes[0].future.marker,'RAW_UNKNOWN_PRESERVED');
 });
+
+function byteEqualityProof(before,after){
+ const left=Buffer.from(before.bytes),right=Buffer.from(after.bytes);
+ let firstMismatch=-1;
+ const size=Math.min(left.length,right.length);
+ for(let i=0;i<size;i++){if(left[i]!==right[i]){firstMismatch=i;break;}}
+ if(firstMismatch<0 && left.length!==right.length)firstMismatch=size;
+ return {beforeBytes:left.length,afterBytes:right.length,
+  beforeSHA256:before.sha256,afterSHA256:after.sha256,firstMismatch,
+  compare:Buffer.compare(left,right)};
+}
+test('L003 QA: 6MiB native unknown AFTER overlay survives archiveToStudio/studioToArchive byte-for-byte',async()=>{
+ const initial={schema:'cer.studio.dg003.provisional.v0',id:'qa-native-after-overlay',
+  title:'QA exact archive',revision:7,characters:[],creatures:[],scenes:[],
+  privateNotes:[],activeSceneId:'',extensions:{}};
+ const archive=studioToArchive(initial,storage.createCampaign);
+ archive.qaUnknownLargeExtension={marker:'synthetic',payload:'Q'.repeat(6*1024*1024)};
+ assert.deepEqual(Object.keys(archive).slice(-2),[OVERLAY_KEY,'qaUnknownLargeExtension'],
+  'fixture must place unknown after the native Studio overlay');
+ const before=await storage.exportPrivate(archive);
+ const studio=archiveToStudio(archive);
+ const round=studioToArchive(structuredClone(studio),storage.createCampaign);
+ assert.deepEqual(Object.keys(round),Object.keys(archive),'native key order must be preserved');
+ const after=await storage.exportPrivate(round);
+ const evidence=byteEqualityProof(before,after);
+ assert.equal(evidence.compare,0,JSON.stringify(evidence));
+ assert.equal(evidence.beforeSHA256,evidence.afterSHA256,JSON.stringify(evidence));
+ assert.equal(round.qaUnknownLargeExtension.payload.length,6*1024*1024);
+ assert.equal(Object.hasOwn(round[OVERLAY_KEY].fields,'privateNotes'),false,'private notes not duplicated');
+});
+test('L003 QA: v2/v3 raw PJ and late unknown keep native SHA, catalog and legacy private fields',async()=>{
+ for(const v of ['v2','v3']){
+  const doc={schema:'alrick.sheets.'+v,unknownEnvelope:{marker:'legacy-'+v},
+   sheets:[{id:'pj-'+v,schema:'alrick.sheet.'+v,name:'PJ '+v,
+    stats:{physique:14},unknownSheet:{future:'intact-'+v}}]};
+  const raw=encoder.encode('\uFEFF '+JSON.stringify(doc)+' \n');
+  const campaign=storage.createCampaign({id:'legacy-'+v,name:'Legacy '+v});
+  const preview=await storage.previewImport(raw,campaign);
+  const committed=await storage.commitImport(campaign,preview);
+  const state={schema:'cer.studio.dg003.provisional.v0',id:campaign.id,
+   title:'Legacy '+v,revision:5,
+   characters:committed.characters.map(c=>({id:c.id,publicLabel:'PJ '+v,
+     privateSnapshot:{...structuredClone(c),futurePrivate:{marker:'keep-'+v}}})),
+   creatures:[],scenes:[],privateNotes:[{id:'note-'+v,text:'SECRET_LEGACY'}],
+   activeSceneId:'',extensions:{catalog:[{id:'legacy-catalog-'+v,version:'1.0.0',executable:false}],
+    futureCatalog:{marker:'retain-'+v}}};
+  const archive=studioToArchive(state,storage.createCampaign);
+  archive.qaUnknownLargeExtension={marker:'late-'+v,payload:'q'.repeat(1024)};
+  const before=await storage.exportPrivate(archive);
+  const verified=await storage.commitRestore(await storage.previewRestore(before.bytes));
+  const restoredStudio=archiveToStudio(verified);
+  const after=await storage.exportPrivate(studioToArchive(restoredStudio,storage.createCampaign));
+  const evidence=byteEqualityProof(before,after);
+  assert.equal(evidence.compare,0,JSON.stringify({version:v,...evidence}));
+  assert.equal(evidence.beforeSHA256,evidence.afterSHA256,JSON.stringify({version:v,...evidence}));
+  assert.deepEqual(restoredStudio.extensions,state.extensions);
+  assert.deepEqual(restoredStudio.privateNotes,state.privateNotes);
+  assert.equal(restoredStudio.characters[0].privateSnapshot.futurePrivate.marker,'keep-'+v);
+  const returned=await storage.commitRestore(await storage.previewRestore(after.bytes));
+  assert.deepEqual(await storage.recoverOriginalBytes(returned.characters[0]),raw);
+ }
+});
