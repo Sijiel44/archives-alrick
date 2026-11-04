@@ -131,6 +131,21 @@ def main():
             page.reload(wait_until='networkidle')
             page.get_by_role('button',name='Recharger campagne').click()
             verify('persistance après reload',page.evaluate('window.__studio.getCampaign().characters.length')==1)
+            # REVUE-L003-02: actual UI switch A/B -> A -> local save -> browser reload.
+            scene_a=page.evaluate('window.__studio.getCampaign().scenes[0].id')
+            page.get_by_label('Titre de nouvelle scène').fill('Scène B — régression')
+            page.get_by_role('button',name='Créer scène').click()
+            page.wait_for_function("window.__studio.getCampaign()?.scenes.length === 2")
+            before_switch=page.evaluate('window.__studio.getCampaign().revision')
+            page.get_by_label('Scène active').select_option(scene_a)
+            page.wait_for_function("JSON.parse(localStorage.getItem('cer.dg003.harness.campaign')).activeSceneId === window.__studio.getCampaign().scenes[0].id")
+            verify('REVUE-02 sélection A persistée',page.evaluate('window.__studio.getCampaign().activeSceneId')==scene_a and
+                   page.evaluate('window.__studio.getCampaign().revision')==before_switch+1)
+            verify('REVUE-02 sélection publique révoquée',page.evaluate('window.__studio.getPublicProjection().scene.title')=='')
+            page.reload(wait_until='networkidle')
+            page.get_by_role('button',name='Recharger campagne').click()
+            page.wait_for_function('window.__studio.getCampaign()?.scenes.length === 2')
+            verify('REVUE-02 A après rechargement navigateur',page.evaluate('window.__studio.getCampaign().activeSceneId')==scene_a)
             # Studio served from wrong origin is disabled.
             unauthorized=ctx.new_page()
             unauthorized.goto('http://127.0.0.1:4174/tests/studio/harness-studio.html',wait_until='networkidle')
