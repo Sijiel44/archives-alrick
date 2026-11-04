@@ -62,6 +62,18 @@ Au commit documentaire suivant `e350fb430ce6fa56a9337cc9afa2c4b5d3e6132b`, run h
 
 Cette couverture applicative existante est une preuve supplémentaire directement vérifiée via la CI, distincte des essais ARCHIVES. Elle n'homologue ni les douze nouveaux scénarios sur tous les importateurs, ni une restauration indépendante Alrick, ni le futur cockpit Studio. Le nouveau diagnostic M03 n'est pas raccordé à npm test ; sa preuve est l'exécution locale documentée. Les étapes affichées ne permettent pas de revendiquer un build séparé supplémentaire. Le dernier SHA documentaire et son propre état CI sont consignés dans la transmission finale, sans assimiler le succès d'un autre SHA au sien.
 
+## Complément de clôture — livrables finaux reçus
+
+Les rapports originaux INDEX, BUILDER et STUDIO ont maintenant été lus, au-delà des réponses intermédiaires.
+
+- **INDEX PR #81** : HEAD `db4238d271004516ea2edff210a0d6d05e733d84`, brouillon ouvert ; workflow41773261087 réussi. 89 correspondances structurelles et suites8/20/36 isolées. Deux tests PASS détectent des permissivités du schéma, ils n'homologuent pas les entrées invalides. `normalizeSpell` force version1/statut campagne : conserver la source brute avant toute normalisation et faire auditer la restitution.
+- **BUILDER PR #80** : HEAD `499b6ee8317ee9dcbf1409c985a2741fea4d0667`, brouillon ouvert ; workflow41773233297 réussi. Deux documents seulement, banc27/27 de contrat, pas de cockpit implémenté.
+- **STUDIO** : spécification et rapport originaux locaux reçus ; 28 tests Python et banc Chromium11 PASS/1 non exécuté sur `about:blank` avec contenu injecté, sans Quartz. Le contrôle non exécuté est celui de l'accès au stockage d'une origine réelle. Accepter les résultats dans ce banc, aucune certification de confidentialité applicative.
+- **Écart d'interface explicite** : BUILDER propose `entre-rives.studio.project.v0-proposal`, STUDIO `cer.studio.campaign.v0-proposition`. Ce sont des noms candidats distincts ; aucune compatibilité ni adoption implicite. Une enveloppe unique doit être définie par STUDIO/ARCHIVES/INDEX avant intégration.
+- **CI PR #79 documentaire** : au HEAD `2b32907ee9d4ad3e3872c89a30ac8dfaa2f709b4`, workflow41773448682 terminé en succès. Les ajouts de clôture ultérieurs exigent leur propre vérification et sont identifiés dans la transmission DG finale.
+
+Les suites existantes vérifiées en CI renforcent une couverture partielle des imports natifs. Elles ne transforment pas les essais isolés des référents en recettes applicatives de leurs contrats nouveaux. Les avis croisés MATH/ARCHIVES/QA sont centralisés dans DG ; leur réception est déclarée uniquement après lecture.
+
 ## Portes de sortie restantes
 
 | Porte | Propriétaires | Preuve attendue |
