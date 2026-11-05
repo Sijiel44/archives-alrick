@@ -6,6 +6,7 @@ import {join,resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {setTimeout as sleep} from 'node:timers/promises';
 import WebSocket from 'ws';
+import {probeLocalPreview} from '../builder/src/probe.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const MJ='http://127.0.0.1:4173',PLAYER='http://127.0.0.1:4174';
 const binary=process.env.CHROMIUM_PATH??'google-chrome-stable';
@@ -47,6 +48,9 @@ try{
  server=spawn(process.execPath,[resolve(root,'tools/serve.mjs')],{stdio:['ignore','pipe','pipe']});
  let serverLog='';server.stderr?.on('data',x=>serverLog=(serverLog+String(x)).slice(-6000));
  await until(async()=>{const a=await fetch(MJ,{signal:AbortSignal.timeout(1500)}),b=await fetch(PLAYER,{signal:AbortSignal.timeout(1500)});return a.status===200&&b.status===200;});
+ const builderProbe=await probeLocalPreview();
+ if(!builderProbe.ok||builderProbe.checks.length!==8)
+  fail('BUILDER_PROBE_FAIL '+JSON.stringify(builderProbe.checks));
  if((await fetch(PLAYER+'/assets/mj.js')).status!==404|| (await fetch(MJ+'/player.html')).status!==404)
   fail('ORIGIN_ISOLATION_FAIL');
  browser=spawn(binary,['--headless=new','--no-first-run','--no-default-browser-check','--disable-gpu',
@@ -69,6 +73,8 @@ try{
  const target=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(MJ)));
  const mj=await CDP.open(target.webSocketDebuggerUrl);await mj.call('Runtime.enable');
  await until(()=>mj.eval('!!document.querySelector("#dg004-demo-root button")'));
+ const nav=await mj.eval('(()=>{const root=document.querySelector("[data-l004-preview-navigation]");if(!root)return null;return {count:root.querySelectorAll("button[data-preview-step]").length,labels:[...root.querySelectorAll("button")].map(x=>x.textContent.trim())};})()');
+ if(nav?.count!==7)fail('BUILDER_NAV_NOT_MOUNTED '+JSON.stringify(nav));
  // Refuse an existing local private backup before any mock scenario is started.
  await mj.eval('localStorage.setItem("cer.dg003.private.campaign.v0","LEGACY_USER_BACKUP");localStorage.setItem("dg004-unrelated","keep")');
  await mj.eval(click('Démarrer la démonstration fictive'));
@@ -98,7 +104,7 @@ try{
   fail('DG004_ROLLBACK_CHANGED_OTHER_DATA '+JSON.stringify(after));
  player.close();mj.close();
  console.log('DG004_BROWSER_DEMO_OK',JSON.stringify({source:'local-only',originMJ:MJ,originPlayer:PLAYER,
-  optIn:true,seededPJ:1,seededCreature:1,seededScenes:1,playerCanaryAbsent:true,rollback:true,unrelatedKept:true}));
+  optIn:true,builderHttpChecks:builderProbe.checks.length,builderNavigationSteps:nav.count,seededPJ:1,seededCreature:1,seededScenes:1,playerCanaryAbsent:true,rollback:true,unrelatedKept:true}));
 }catch(error){console.error('DG004_BROWSER_FAIL',error.stack??error.message,JSON.stringify({stderr:stderr.slice(-1400),out:out.slice(-500)}));process.exitCode=1;}
 finally{
  const terminate=async(child)=>{if(!child||child.exitCode!==null||child.signalCode!==null)return;
