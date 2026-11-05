@@ -85,22 +85,26 @@
     },
     "p0b": {
       "issue": 93,
-      "status": "MATH 2 source/tests and INDEX 9 source/tests copied verbatim; native M01 and contracts under integrator CI; no transaction",
+      "status": "MATH 8 owner files, INDEX 9 owner files copied verbatim; integrated native M01 and read-only XP preview under CI",
       "math": {
         "branch": "prototype/dg004-xp-math",
-        "commit": "b2f6435be9e77a45aebb3f741a90cbf6bb1a1444",
-        "files": 2
+        "commit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
+        "files": 8
       },
       "index": {
         "branch": "prototype/dg004-index-xp-links",
         "commit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-        "files": 9,
-        "localTests": "64/64 owner ESM; native-m01 NOT EXECUTED by owner"
+        "files": 9
       }
     },
     "p0c": {
       "issue": 94,
-      "status": "ATELIERS owners pending; STUDIO scene bridge is PREVIEW ONLY, no real chain service connected"
+      "status": "ATELIERS 6 owner files copied verbatim; cycle+INDEX bridge mounted in separate fictitious MJ page; full browser gate pending",
+      "creators": {
+        "branch": "prototype/dg004-creators",
+        "commit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
+        "files": 6
+      }
     }
   },
   "deployment": {
@@ -218,22 +222,6 @@
       "sourceBranch": "prototype/dg004-preview-builder",
       "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
       "blobSha": "f6ec464a7f81207722dfa1cc0961014047f6a37e",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "math",
-      "path": "experiments/dg-lot004/math-xp/src/xp-decision.ts",
-      "sourceBranch": "prototype/dg004-xp-math",
-      "sourceCommit": "b2f6435be9e77a45aebb3f741a90cbf6bb1a1444",
-      "blobSha": "76daeb8ec21702e9ebcb27845ccd3d6b709ff574",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "math",
-      "path": "experiments/dg-lot004/math-xp/tests/xp-decision.test.mjs",
-      "sourceBranch": "prototype/dg004-xp-math",
-      "sourceCommit": "b2f6435be9e77a45aebb3f741a90cbf6bb1a1444",
-      "blobSha": "b54a79387cfd8055960b306db2daf298861d7b30",
       "transport": "verbatim-git-blob"
     },
     {
@@ -411,6 +399,118 @@
       "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
       "blobSha": "3475aa4e643d41ef03c35facdcc7d0e45e2ca146",
       "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "math",
+      "path": "experiments/dg-lot004/math-xp/README.md",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
+      "blobSha": "d5b0702564282b3233055de870bb61e87a10e330",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "math",
+      "path": "experiments/dg-lot004/math-xp/docs/FICHE_DIRECTION_L004_B.md",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
+      "blobSha": "4aba3393d511a527c7fdb999055175fa63a50078",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "math",
+      "path": "experiments/dg-lot004/math-xp/docs/L004_B_RAPPORT_TECHNIQUE.md",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
+      "blobSha": "f3b306c992368a4e8e5503514abf134f5ac2820b",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "math",
+      "path": "experiments/dg-lot004/math-xp/docs/MATRICE_DEPENDANCES_L004_B.md",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
+      "blobSha": "64fab890796874ff0ee8cd8542066d8ded7d03f2",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "math",
+      "path": "experiments/dg-lot004/math-xp/src/xp-decision.ts",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
+      "blobSha": "76daeb8ec21702e9ebcb27845ccd3d6b709ff574",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "math",
+      "path": "experiments/dg-lot004/math-xp/tests/L004_B_RUN_RESULT.json",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
+      "blobSha": "39cc59b1a2d42fcd6d21aa4c938f4ed351584841",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "math",
+      "path": "experiments/dg-lot004/math-xp/tests/L004_B_TEST_OUTPUT.tap",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
+      "blobSha": "8d1bc045ee9ac53f4083613fdec0771d82f8b7a3",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "math",
+      "path": "experiments/dg-lot004/math-xp/tests/xp-decision.test.mjs",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
+      "blobSha": "b54a79387cfd8055960b306db2daf298861d7b30",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "creators",
+      "path": "experiments/dg-lot004/src/creators/FICHE_DIRECTION_L004_C.md",
+      "sourceBranch": "prototype/dg004-creators",
+      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
+      "blobSha": "be358c93d9f7b1f70fb8b207e3296d2cbbcbd397",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "creators",
+      "path": "experiments/dg-lot004/src/creators/README.md",
+      "sourceBranch": "prototype/dg004-creators",
+      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
+      "blobSha": "db33ba9ae8cd59cb1ccc7f9b6e08c7d6aeebf3a5",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "creators",
+      "path": "experiments/dg-lot004/src/creators/cycle-state.mjs",
+      "sourceBranch": "prototype/dg004-creators",
+      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
+      "blobSha": "86675c04d0cb525f0144bf5da9be037ec5698d47",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "creators",
+      "path": "experiments/dg-lot004/src/creators/cycle-ui.mjs",
+      "sourceBranch": "prototype/dg004-creators",
+      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
+      "blobSha": "372d83c876990fca3cdf3204f209772d1f007b52",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "creators",
+      "path": "experiments/dg-lot004/tests/creators/cycle-state.test.mjs",
+      "sourceBranch": "prototype/dg004-creators",
+      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
+      "blobSha": "bc8d46d69eae2671b3fb2d32c80c541b2b2a8957",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "creators",
+      "path": "experiments/dg-lot004/tests/creators/cycle-ui.test.mjs",
+      "sourceBranch": "prototype/dg004-creators",
+      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
+      "blobSha": "121211ae242039bad1ddf778544fe1156ad81bdb",
+      "transport": "verbatim-git-blob"
     }
   ],
   "ownerTreeNotes": "Issue #92 initially reserved src/ports/** but BUILDER actual owner path is builder/**, no movement; issue #93 reserved src/rules/** but MATH uses math-xp/**, no movement; INDEX only src/catalog/CONTRACT.md; no owner file modified.",
@@ -421,6 +521,8 @@
     "playerOrigin": "http://127.0.0.1:4174",
     "privateStorage": "cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0",
     "sharedLegacyDemoEntry": "http://127.0.0.1:4173/",
-    "noPublicHosting": true
+    "noPublicHosting": true,
+    "ownerCreatorCycle": "http://127.0.0.1:4173/dg004-demo.html#dg004-cycle-root",
+    "xpPreview": "read-only MATH+INDEX/M01 parity; never apply"
   }
 }
