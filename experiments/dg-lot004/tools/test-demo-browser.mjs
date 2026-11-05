@@ -180,7 +180,9 @@ try{
  const cycleRaw=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
  if(!cycleRaw)fail('CYCLE_NOT_PERSISTED');
  const cycleState=JSON.parse(cycleRaw);
- if(cycleState.extensions?.indexL004?.snapshot?.schema===undefined && cycleState.extensions?.indexL004?.chain?.schema===undefined)
+ if(!cycleState.extensions?.indexL004?.chain?.schema||
+    !cycleState.extensions?.indexL004?.privateSnapshot?.schema||
+    cycleState.extensions.indexL004.chain.links?.map(x=>x.kind).join(',')!=='item,capability,creature,scene')
   fail('INDEX_CHAIN_NOT_PERSISTED');
  if(/"approved":true|"autoApply":true|"awardedXp":\d/.test(cycleRaw))
   fail('CYCLE_AUTO_AUTHORITY');
