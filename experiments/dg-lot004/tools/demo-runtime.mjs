@@ -134,7 +134,10 @@ export function mountIntegratedOwnerDemo({owners,doc}){
      sourceId:'event-demo-l004',sourceVersion:'1'},
     rationale:'Exploration fictive ; aucune récompense créditée'
    });
-   if(!suggestion.ok||native.status!=='suggested')fail('Contrat MATH/INDEX refusé');
+   if(!suggestion.ok||native.status!=='suggested')
+    fail('Contrat MATH/INDEX refusé : '+JSON.stringify({
+     index:suggestion.errors?.slice(0,4),mathStatus:native.status,
+     mathCode:native.code,mathReason:native.reason}).slice(0,800));
    const indexPreview=indexL004.previewXpSuggestion(suggestion.suggestion,{experienceAward,history:[]});
    if(!indexPreview.ok||indexPreview.candidateXp!==native.nativeSuggestedXp||
       indexPreview.awardCommitted!==false||indexPreview.levelValidated!==false)
