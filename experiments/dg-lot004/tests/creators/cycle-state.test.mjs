@@ -239,3 +239,80 @@ test('une fois copie STUDIO effectuée, aucune modification silencieuse des sour
  const before=m.getState();await assert.rejects(m.saveDraft('item',{name:'Nouvelle version'}),/ouvrir une nouvelle version/);
  assert.deepEqual(m.getState(),before);
 });
+
+test('Régression Chrome L004-C : objet, capacité, créature, copie STUDIO puis SAISIE et validation de scène',async()=>{
+ const {make,fixtures,calls,disk}=ports(),m=make();
+ // Ordre strict du script Chrome #95, sans créer de scène préventivement.
+ await m.saveDraft('item',fixtures.item);await m.validateMJ('item');
+ await m.saveDraft('capacity',fixtures.capacity);await m.validateMJ('capacity');
+ await m.saveDraft('creature',fixtures.creature);await m.validateMJ('creature');
+ await m.attachCreature();
+ const linked=m.getState();
+ assert.equal(linked.links.creatureInstanceId,'inst-fixture-1');
+ assert.deepEqual(linked.drafts.scene,{});
+ assert.equal(linked.entries.scene,null);
+ assert.equal(linked.links.sceneId,null);
+ // Avant le correctif, cette instruction était rejetée par creatureInstanceId.
+ await m.saveDraft('scene',fixtures.scene);
+ const afterDraft=m.getState();
+ assert.deepEqual(afterDraft.entries.item,linked.entries.item);
+ assert.deepEqual(afterDraft.entries.capacity,linked.entries.capacity);
+ assert.deepEqual(afterDraft.entries.creature,linked.entries.creature);
+ assert.deepEqual(afterDraft.drafts.item,linked.drafts.item);
+ assert.deepEqual(afterDraft.drafts.capacity,linked.drafts.capacity);
+ assert.deepEqual(afterDraft.drafts.creature,linked.drafts.creature);
+ assert.equal(afterDraft.links.itemCatalogId,linked.links.itemCatalogId);
+ assert.equal(afterDraft.links.capacityCatalogId,linked.links.capacityCatalogId);
+ assert.equal(afterDraft.links.creatureInstanceId,linked.links.creatureInstanceId);
+ assert.deepEqual(afterDraft.links.creatureSource,linked.links.creatureSource);
+ assert.deepEqual(afterDraft.drafts.scene,fixtures.scene);
+ await m.validateMJ('scene');
+ assert.equal(m.getState().entries.scene.status,'mj-validated');
+ const scene=await m.attachScene();
+ assert.equal(scene.sceneId,'scene-fictive-1');
+ assert.deepEqual(calls.studio.map(x=>x[0]),['previewCreature','copyCreature','createScene','updateScene']);
+ assert.equal(calls.studio[2][3],fixtures.scene.privateNotes);
+ assert.equal(m.getState().links.creatureInstanceId,'inst-fixture-1');
+ assert.equal(disk.get('active').links.sceneId,'scene-fictive-1');
+});
+test('Scène en aval modifiable jusqu’à sa liaison, sans invalider les fiches/copies STUDIO en amont',async()=>{
+ const {make,fixtures}=ports(),m=make();
+ await m.saveDraft('item',fixtures.item);await m.validateMJ('item');
+ await m.saveDraft('capacity',fixtures.capacity);await m.validateMJ('capacity');
+ await m.saveDraft('creature',fixtures.creature);await m.validateMJ('creature');
+ await m.attachCreature();
+ await m.saveDraft('scene',fixtures.scene);await m.validateMJ('scene');
+ const upstream=m.getState();
+ await m.saveDraft('scene',{description:'Une autre narration fictive et descriptive.',extraUnknown:{nativeVersion:7}});
+ const after=m.getState();
+ assert.equal(after.entries.scene,null,'seule la validation de scène doit être invalidée');
+ for(const kind of ['item','capacity','creature']){
+  assert.deepEqual(after.entries[kind],upstream.entries[kind],kind+' entrée liée préservée');
+  assert.deepEqual(after.drafts[kind],upstream.drafts[kind],kind+' source liée préservée');
+ }
+ assert.deepEqual(after.links,upstream.links,'identifiants STUDIO et INDEX inchangés');
+ assert.equal(after.drafts.scene.extraUnknown.nativeVersion,7,'extension conservée');
+ await m.validateMJ('scene');await m.attachScene();
+ assert.equal(m.getState().drafts.scene.extraUnknown.nativeVersion,7);
+});
+test('Immutabilité : aucune réécriture item/capacity/creature/spell après copie, ni scène après liaison',async()=>{
+ const {make,fixtures,calls,disk}=ports(),m=make();
+ await m.saveDraft('item',fixtures.item);await m.validateMJ('item');
+ await m.saveDraft('capacity',fixtures.capacity);await m.validateMJ('capacity');
+ await m.saveDraft('creature',fixtures.creature);await m.validateMJ('creature');
+ await m.attachCreature();
+ const afterCreature=m.getState(),savedBefore=calls.saves;
+ for(const kind of ['item','capacity','creature','spell']){
+  await assert.rejects(m.saveDraft(kind,{description:'Modification interdite de source liée.'}),/ouvrir une nouvelle version/);
+  assert.deepEqual(m.getState(),afterCreature,'state unchanged for '+kind);
+ }
+ assert.equal(calls.saves,savedBefore,'aucun écrit local sur refus amont');
+ await m.saveDraft('scene',fixtures.scene);await m.validateMJ('scene');await m.attachScene();
+ const linked=m.getState(),savesAfterScene=calls.saves,archive=structuredClone(disk.get('active'));
+ for(const kind of ['item','capacity','creature','scene','spell']){
+  await assert.rejects(m.saveDraft(kind,{description:'Réécriture refusée après liaison.'}),/ouvrir une nouvelle version/);
+  assert.deepEqual(m.getState(),linked,'state unchanged after scene link for '+kind);
+ }
+ assert.equal(calls.saves,savesAfterScene);
+ assert.deepEqual(disk.get('active'),archive);
+});
