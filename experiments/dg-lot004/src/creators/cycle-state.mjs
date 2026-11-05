@@ -90,7 +90,11 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   return commit(next=>{
    const merged={...next.drafts[kind],...update};
    if(JSON.stringify(merged)!==JSON.stringify(next.drafts[kind])){
-    if(next.links.creatureInstanceId||next.links.sceneId||next.extensions.indexL004)
+    // Une copie de créature fige les fiches en amont, pas le brouillon de scène
+    // qui n'a pas encore d'instance STUDIO. Une scène liée ou une chaîne INDEX
+    // fige ensuite tous les brouillons, sans réécrire les sources existantes.
+    if(next.links.sceneId||next.extensions.indexL004||
+       (next.links.creatureInstanceId&&kind!=='scene'))
       fail('Cycle lié à STUDIO/INDEX : ouvrir une nouvelle version avant modification');
     next.drafts[kind]=merged;
     const from=CYCLE_STEPS.indexOf(kind);
