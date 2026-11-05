@@ -137,9 +137,11 @@ try{
  await mj.eval(click('Prévisualiser XP fictifs (sans attribution)'));
  await until(async()=>{
   const value=await mj.eval('document.querySelector("#dg004-xp-preview [role=status]")?.textContent');
-  if(value?.includes('DG004_XP_UNAVAILABLE'))fail('MATH_INDEX_M01_XP_REJECTED: '+value);
-  return value?.includes('DG004_XP_PREVIEW_OK');
+  return value?.includes('DG004_XP_PREVIEW_OK')||value?.includes('DG004_XP_UNAVAILABLE');
  },100);
+ const xpStatus=await mj.eval('document.querySelector("#dg004-xp-preview [role=status]")?.textContent');
+ const xpBlocked=xpStatus?.includes('DG004_XP_UNAVAILABLE')?xpStatus:null;
+ if(xpBlocked)console.error('DG004_P0B_XP_BLOCKED',xpBlocked);
  if(await mj.eval('localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")')!==xpBefore)
   fail('XP_PREVIEW_CHANGED_CAMPAIGN');
  const getCycle=()=>mj.eval('(()=>{const e=document.querySelector("#dg004-cycle-root pre.cycle-preview");return e?JSON.parse(e.textContent):null;})()');
@@ -191,7 +193,7 @@ try{
  if(/"approved":true|"autoApply":true|"awardedXp":\d/.test(cycleRaw))
   fail('CYCLE_AUTO_AUTHORITY');
  console.log('DG004_CREATOR_CHAIN_BROWSER_OK',JSON.stringify({item:true,capacity:true,creatureInstance:!!cycleState.links.creatureInstanceId,
-  scene:!!cycleState.links.sceneId,indexPrivate:true,xpPreview:true,autoApply:false}));
+  scene:!!cycleState.links.sceneId,indexPrivate:true,xpPreview:!xpBlocked,autoApply:false}));
  const spaces=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")})');
  if(spaces.real!=='REAL_MJ_NOT_DEMO'||!spaces.demo)fail('OWNER_NAMESPACE_FAIL '+JSON.stringify(spaces));
  await mj.eval(click('Ouvrir la fenêtre joueur'));
@@ -244,6 +246,7 @@ try{
  console.log('DG004_STUDIO_OWNER_BROWSER_OK',JSON.stringify({ownerCommit:'18602be2d0b281478ebd9693b6ff0be63ef862ee',
   v3PJ:true,creature:true,scene:true,namespace:true,privateCanaryAbsent:true,
   foreignArchiveRejected:true,backupBytes:ownerBytes.length,roundtrip:true,rollback:true,oldMJIntact:true}));
+ if(xpBlocked)fail('DG004_P0B_XP_BLOCKING_OWNER_CONTRACT: '+xpBlocked);
  console.log('DG004_BROWSER_DEMO_OK',JSON.stringify({source:'local-only',originMJ:MJ,originPlayer:PLAYER,
   optIn:true,builderHttpChecks:builderProbe.checks.length,builderNavigationSteps:nav.count,seededPJ:1,seededCreature:1,seededScenes:1,playerCanaryAbsent:true,rollback:true,unrelatedKept:true}));
 }catch(error){console.error('DG004_BROWSER_FAIL',error.stack??error.message,JSON.stringify({stderr:stderr.slice(-1400),out:out.slice(-500)}));process.exitCode=1;}
