@@ -1,6 +1,11 @@
 /** DG004 integration-only adapter: owner's STUDIO demo on real L003 ARCHIVES/ports. */
 import {mountStudioDemo} from '../src/studio/demo.mjs';
 import {DEMO_MARKER} from '../src/studio/demo-storage.mjs';
+import {mountCreatorCycle} from '../src/creators/cycle-ui.mjs';
+import {createBrowserCyclePersistence} from '../src/creators/cycle-state.mjs';
+import * as indexL004 from '../src/catalog/index.mjs';
+import {createXpDecisionLedger,suggestXpFromM01} from '../math-xp/src/xp-decision.ts';
+import {experienceAward} from '../../../quartz/components/scripts/atelier5d6-progression.ts';
 import {createValidatedStorage} from '../../dg-lot003/tools/runtime.mjs';
 import {studioToArchive,creatorToCatalog} from '../../dg-lot003/tools/adapters.mjs';
 import {createBestiaryCard,validateBestiaryCard} from '../../../quartz/components/scripts/atelier5d6-bestiary-workshop.ts';
@@ -89,6 +94,55 @@ export function mountIntegratedOwnerDemo({owners,doc}){
   playerPath:'/player.html',
   injectCreatorStyles:false
  });
+ const cycleRoot=doc.getElementById('dg004-cycle-root');
+ if(!cycleRoot)fail('Zone ATELIERS privée DG004 absente');
+ const cycleKey='cer.dg004.creators.private.demo.v0';
+ const browserPersistence=createBrowserCyclePersistence({
+  storage:view.localStorage,key:cycleKey,origin:view.location.origin
+ });
+ const cycle=mountCreatorCycle(cycleRoot,{
+  mountCreators:owners.creators.mountCreators,
+  validateCreatorDraft:owners.creators.validateCreatorDraft,
+  catalogBridge:creatorToCatalog,catalog:owners.catalog,indexChain:indexL004,
+  studio:demo.studio,persistence:browserPersistence,
+  idFactory:()=>view.crypto.randomUUID(),
+  injectStyles:false
+ });
+ void cycle.ready;
+ const xpRoot=doc.getElementById('dg004-xp-preview');
+ if(!xpRoot)fail('Zone XP fictive lecture seule absente');
+ const xpHeading=doc.createElement('h2');xpHeading.textContent='XP M01 — suggestion fictive, aucun crédit';
+ const xpButton=doc.createElement('button');xpButton.type='button';xpButton.textContent='Prévisualiser XP fictifs (sans attribution)';
+ const xpStatus=doc.createElement('p');xpStatus.setAttribute('role','status');xpStatus.setAttribute('aria-live','polite');
+ xpStatus.textContent='Aucun calcul ni attribution sans action explicite.';
+ xpRoot.replaceChildren(xpHeading,xpButton,xpStatus);
+ xpButton.addEventListener('click',()=>{
+  try{
+   const campaign=demo.studio.getCampaign();
+   if(!campaign?.characters?.length)fail('Un PJ fictif doit être importé dans STUDIO');
+   const id=campaign.characters[0].id;
+   const ledger=createXpDecisionLedger({campaignId:campaign.id,characterId:id,initialLevel:5,
+    initialXp:0,sessionMode:'campagne',characterOrigin:'import',paceNote:'libre'});
+   const raw={id:'evt-demo-m01-l004',pattern:'exploration-fictive',
+    domain:'exploration',difficulty:3,scope:'ordinaire',approved:false};
+   const native=suggestXpFromM01(ledger,raw);
+   const suggestion=indexL004.createXpSuggestion({
+    namespace:'demo',version:'0.1.0',
+    target:{campaignId:campaign.id,characterInstanceId:id},
+    event:{id:raw.id,pattern:raw.pattern,domain:raw.domain,difficulty:raw.difficulty,scope:raw.scope},
+    context:{initialLevel:5},provenance:{originKind:'illustrative',sourceSchema:'cer.dg004.fake.xp',
+     sourceId:'event-demo-l004',sourceVersion:'1'},
+    rationale:'Exploration fictive ; aucune récompense créditée'
+   });
+   if(!suggestion.ok||native.status!=='suggested')fail('Contrat MATH/INDEX refusé');
+   const indexPreview=indexL004.previewXpSuggestion(suggestion.suggestion,{experienceAward,history:[]});
+   if(!indexPreview.ok||indexPreview.candidateXp!==native.nativeSuggestedXp||
+      indexPreview.awardCommitted!==false||indexPreview.levelValidated!==false)
+    fail('Parité MATH/INDEX/M01 non établie');
+   xpStatus.textContent='DG004_XP_PREVIEW_OK : '+native.nativeSuggestedXp+
+    ' XP suggérés par M01 uniquement ; non appliqués, aucun niveau modifié.';
+  }catch(error){xpStatus.textContent='DG004_XP_UNAVAILABLE : '+error.message;}
+ });
  const label=doc.getElementById('status');
  if(label)label.textContent='STUDIO DG004 propriétaire monté — fictif et local, sans partage automatique.';
  const exit=doc.getElementById('dg004-exit');
@@ -106,6 +160,8 @@ export function mountIntegratedOwnerDemo({owners,doc}){
    demo.dispose(); // Sends PLAYER_CLEAR when the validated player is connected.
    demo.area.removeItem('cer.dg003.private.campaign.v0');
    demo.area.removeItem('approved-backup-sha256');
+   view.localStorage.removeItem(cycleKey);
+   cycle.destroy();
    if(demo.area.getItem('cer.dg003.private.campaign.v0')!==null||
       view.localStorage.getItem('cer.dg003.private.campaign.v0')!==privateBefore)
     fail('Retour arrière non confirmé ou espace MJ altéré');
