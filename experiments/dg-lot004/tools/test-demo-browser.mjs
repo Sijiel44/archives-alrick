@@ -134,7 +134,7 @@ try{
  const spaces=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")})');
  if(spaces.real!=='REAL_MJ_NOT_DEMO'||!spaces.demo)fail('OWNER_NAMESPACE_FAIL '+JSON.stringify(spaces));
  await mj.eval(click('Ouvrir la fenêtre joueur'));
- const ownerPlayerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)&&x.id!==playerTarget.id),110);
+ const ownerPlayerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)&&x.url!==playerTarget.url),110);
  const ownerPlayer=await CDP.open(ownerPlayerTarget.webSocketDebuggerUrl);
  await ownerPlayer.call('Runtime.enable');
  await until(()=>mj.eval(textContains('Fenêtre joueur connectée')),110);
