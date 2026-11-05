@@ -1,0 +1,57 @@
+name: DG-LOT-004 BUILDER local preview (no Pages)
+on:
+  push:
+    branches: [prototype/dg004-preview-builder]
+  pull_request:
+    paths:
+      - 'experiments/dg-lot004/builder/**'
+      - '.github/workflows/dg-lot004-builder-preview.yml'
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout exact head SHA, never virtual PR merge
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Check source ancestry and report exact SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          head=$(git rev-parse HEAD)
+          expected='${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}'
+          test "$head" = "$expected"
+          git merge-base --is-ancestor 2ab809ef5351940e0fc272b859d10f21de894d00 "$head"
+          echo "L004_TESTED_HEAD=$head"
+          node --version
+      - run: npm ci
+      - run: npm test
+      - run: node --test experiments/dg-lot004/builder/tests/ports.test.mjs
+      - run: node experiments/dg-lot004/builder/src/launch-local.mjs --once
+      - name: Identify official Chrome (no Snap workaround)
+        shell: bash
+        run: |
+          set -euo pipefail
+          binary=''
+          for name in google-chrome-stable google-chrome /opt/google/chrome/chrome /usr/bin/google-chrome-stable /usr/bin/google-chrome; do
+            if command -v "$name" >/dev/null 2>&1; then binary=$(command -v "$name"); break; fi
+          done
+          if [ -z "$binary" ]; then echo 'NON EXÉCUTÉ Chrome officiel absent' >&2; exit 2; fi
+          "$binary" --version
+          echo "CHROMIUM_PATH=$binary" >> "$GITHUB_ENV"
+      - name: Browser smoke real HTTP — desktop/tablet/narrow
+        run: node experiments/dg-lot004/builder/src/browser-smoke.mjs
+      - name: Base product complete browser E2E
+        run: node experiments/dg-lot003/tools/test-browser.mjs
+      - name: Print HEAD even on failure
+        if: always()
+        run: git rev-parse HEAD
