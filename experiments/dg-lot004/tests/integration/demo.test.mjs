@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import {installDemo,createFakePJBytes,DEMO_MARKER_KEY,PRIVATE_STORAGE_KEY,
  DEMO_PRIVATE,DEMO_TITLE,DEMO_SCENE} from '../../tools/demo-controller.mjs';
 test('native fixture is v2 UTF-8 BOM and cannot be confused with a real person',()=>{
- const raw=new TextDecoder().decode(createFakePJBytes());
- assert.equal(raw.charCodeAt(0),0xfeff);
- const data=JSON.parse(raw.slice(1));
+ const bytes=createFakePJBytes();
+ assert.deepEqual([...bytes.slice(0,3)],[0xef,0xbb,0xbf],'raw v2 bytes preserve UTF-8 BOM');
+ const raw=new TextDecoder().decode(bytes); // TextDecoder strips the BOM by design.
+ const data=JSON.parse(raw.trim());
  assert.equal(data.schema,'alrick.sheets.v2');
  assert.equal(data.sheets[0].name,'Éclaireuse fictive DG004');
  assert.match(JSON.stringify(data),/SYNTHETIC_ONLY/);
