@@ -1,0 +1,58 @@
+name: DG-LOT-004 integrated local demo (no Pages)
+on:
+  push:
+    branches: [prototype/dg004-integrated]
+  pull_request:
+    paths:
+      - 'experiments/dg-lot004/**'
+      - '.github/workflows/dg-lot004-integrated.yml'
+permissions:
+  contents: read
+jobs:
+  l004:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      TESTED_HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Checkout exact source SHA
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Assert real HEAD
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "testedHead=$TESTED_HEAD"
+          echo "checkoutHead=$(git rev-parse HEAD)"
+          test "$(git rev-parse HEAD)" = "$TESTED_HEAD"
+      - run: npm ci
+      - run: npm test
+      - name: Build DG004 with pinned DG003 owner modules
+        run: node experiments/dg-lot004/tools/build.mjs
+      - name: Test DG004 integration-only demo contract
+        run: node --test experiments/dg-lot004/tests/integration/demo.test.mjs
+      - name: Identify official Chrome
+        shell: bash
+        run: |
+          set -euo pipefail
+          browser=''
+          for candidate in google-chrome-stable google-chrome /opt/google/chrome/chrome /usr/bin/google-chrome-stable; do
+            if command -v "$candidate" >/dev/null 2>&1; then browser="$(command -v "$candidate")"; break; fi
+          done
+          test -n "$browser" || { echo 'NON EXÉCUTÉ : Chrome officiel absent' >&2; exit 2; }
+          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
+          "$browser" --version
+      - name: Real Chrome loopback demonstration and rollback
+        run: node experiments/dg-lot004/tools/test-demo-browser.mjs
+      - name: Record source SHA on failure too
+        if: always()
+        run: |
+          echo "testedHead=$TESTED_HEAD"
+          echo "checkoutHead=$(git rev-parse HEAD)"
