@@ -1,0 +1,394 @@
+TAP version 13
+# Subtest: XP01 schema et création inerte
+ok 1 - XP01 schema et création inerte
+  ---
+  duration_ms: 2.458596
+  type: 'test'
+  ...
+# Subtest: XP02 identité stable et idempotence déterministe
+ok 2 - XP02 identité stable et idempotence déterministe
+  ---
+  duration_ms: 1.173354
+  type: 'test'
+  ...
+# Subtest: XP03 isolation des entrées originales
+ok 3 - XP03 isolation des entrées originales
+  ---
+  duration_ms: 0.545795
+  type: 'test'
+  ...
+# Subtest: XP04 niveau initial 1 accepté
+ok 4 - XP04 niveau initial 1 accepté
+  ---
+  duration_ms: 0.871457
+  type: 'test'
+  ...
+# Subtest: XP05 niveau initial 25 accepté
+ok 5 - XP05 niveau initial 25 accepté
+  ---
+  duration_ms: 0.214194
+  type: 'test'
+  ...
+# Subtest: XP06 niveau initial 0 refusé
+ok 6 - XP06 niveau initial 0 refusé
+  ---
+  duration_ms: 0.21828
+  type: 'test'
+  ...
+# Subtest: XP07 niveau initial 26 refusé
+ok 7 - XP07 niveau initial 26 refusé
+  ---
+  duration_ms: 0.332583
+  type: 'test'
+  ...
+# Subtest: XP08 difficulté 1 acceptée
+ok 8 - XP08 difficulté 1 acceptée
+  ---
+  duration_ms: 0.460556
+  type: 'test'
+  ...
+# Subtest: XP09 difficulté 12 acceptée
+ok 9 - XP09 difficulté 12 acceptée
+  ---
+  duration_ms: 0.358062
+  type: 'test'
+  ...
+# Subtest: XP10 difficulté 0 refusée
+ok 10 - XP10 difficulté 0 refusée
+  ---
+  duration_ms: 0.465834
+  type: 'test'
+  ...
+# Subtest: XP11 difficulté 13 refusée
+ok 11 - XP11 difficulté 13 refusée
+  ---
+  duration_ms: 0.279763
+  type: 'test'
+  ...
+# Subtest: XP12 domaine M01 inconnu refusé
+ok 12 - XP12 domaine M01 inconnu refusé
+  ---
+  duration_ms: 0.16572
+  type: 'test'
+  ...
+# Subtest: XP13 statut version et provenance invalides refusés
+ok 13 - XP13 statut version et provenance invalides refusés
+  ---
+  duration_ms: 1.06494
+  type: 'test'
+  ...
+# Subtest: XP14 approved:true injection refusée
+ok 14 - XP14 approved:true injection refusée
+  ---
+  duration_ms: 0.188485
+  type: 'test'
+  ...
+# Subtest: XP15 injection XP explicite refusée
+ok 15 - XP15 injection XP explicite refusée
+  ---
+  duration_ms: 0.308876
+  type: 'test'
+  ...
+# Subtest: XP16 attack payload et getter JS refusés
+ok 16 - XP16 attack payload et getter JS refusés
+  ---
+  duration_ms: 0.19876
+  type: 'test'
+  ...
+# Subtest: XP17 prototypes hostiles refusés
+ok 17 - XP17 prototypes hostiles refusés
+  ---
+  duration_ms: 0.154634
+  type: 'test'
+  ...
+# Subtest: XP18 no provider no invented XP
+ok 18 - XP18 no provider no invented XP
+  ---
+  duration_ms: 0.832668
+  type: 'test'
+  ...
+# Subtest: XP19 pas d’historique implicite
+ok 19 - XP19 pas d’historique implicite
+  ---
+  duration_ms: 0.230018
+  type: 'test'
+  ...
+# Subtest: XP20 prévisualisation pure avec port injecté (stub non attesté)
+ok 20 - XP20 prévisualisation pure avec port injecté (stub non attesté)
+  ---
+  duration_ms: 0.355718
+  type: 'test'
+  ...
+# Subtest: XP21 résultat de port invalide bloqué
+ok 21 - XP21 résultat de port invalide bloqué
+  ---
+  duration_ms: 0.29761
+  type: 'test'
+  ...
+# Subtest: XP22 majeur jamais approuvé par INDEX
+ok 22 - XP22 majeur jamais approuvé par INDEX
+  ---
+  duration_ms: 0.233834
+  type: 'test'
+  ...
+# Subtest: XP23 légendaire jamais approuvé par INDEX
+ok 23 - XP23 légendaire jamais approuvé par INDEX
+  ---
+  duration_ms: 0.241565
+  type: 'test'
+  ...
+# Subtest: XP24 correction avance version et audit, sans mutation
+ok 24 - XP24 correction avance version et audit, sans mutation
+  ---
+  duration_ms: 0.896264
+  type: 'test'
+  ...
+# Subtest: XP25 correction semver non croissant refusée
+ok 25 - XP25 correction semver non croissant refusée
+  ---
+  duration_ms: 1.10498
+  type: 'test'
+  ...
+# Subtest: XP26 changement événement lors correction refusé
+ok 26 - XP26 changement événement lors correction refusé
+  ---
+  duration_ms: 0.240894
+  type: 'test'
+  ...
+# Subtest: XP27 changement one-shot run lors correction refusé
+ok 27 - XP27 changement one-shot run lors correction refusé
+  ---
+  duration_ms: 0.212732
+  type: 'test'
+  ...
+# Subtest: XP28 correction de one-shot conserve run
+ok 28 - XP28 correction de one-shot conserve run
+  ---
+  duration_ms: 0.420375
+  type: 'test'
+  ...
+# Subtest: XP29 révision sans parent non valide
+ok 29 - XP29 révision sans parent non valide
+  ---
+  duration_ms: 0.180804
+  type: 'test'
+  ...
+# Subtest: XP30 registre collision id-version
+ok 30 - XP30 registre collision id-version
+  ---
+  duration_ms: 0.288126
+  type: 'test'
+  ...
+# Subtest: XP31 registre idempotence entre ID divers
+ok 31 - XP31 registre idempotence entre ID divers
+  ---
+  duration_ms: 0.282206
+  type: 'test'
+  ...
+# Subtest: XP32 registre correction orpheline
+ok 32 - XP32 registre correction orpheline
+  ---
+  duration_ms: 0.33746
+  type: 'test'
+  ...
+# Subtest: XP33 runs de one-shot distincts à identité distincte
+ok 33 - XP33 runs de one-shot distincts à identité distincte
+  ---
+  duration_ms: 0.492504
+  type: 'test'
+  ...
+# Subtest: XP34 retrait définitif
+ok 34 - XP34 retrait définitif
+  ---
+  duration_ms: 0.726569
+  type: 'test'
+  ...
+# Subtest: M01-PORT1 matrice indisponible sans MATH
+ok 35 - M01-PORT1 matrice indisponible sans MATH
+  ---
+  duration_ms: 0.133962
+  type: 'test'
+  ...
+# Subtest: M01-PORT2 niveau et résultat M01 restitués sans calcul ajouté (stub)
+ok 36 - M01-PORT2 niveau et résultat M01 restitués sans calcul ajouté (stub)
+  ---
+  duration_ms: 0.352914
+  type: 'test'
+  ...
+# Subtest: M01-PORT3 niveaux de la matrice imposés
+ok 37 - M01-PORT3 niveaux de la matrice imposés
+  ---
+  duration_ms: 0.097668
+  type: 'test'
+  ...
+# Subtest: M01-PORT4 délégataire incohérent refusé
+ok 38 - M01-PORT4 délégataire incohérent refusé
+  ---
+  duration_ms: 0.108103
+  type: 'test'
+  ...
+# Subtest: CHAIN01 création des 4 références et statuts
+ok 39 - CHAIN01 création des 4 références et statuts
+  ---
+  duration_ms: 2.437935
+  type: 'test'
+  ...
+# Subtest: CHAIN02 validation non mutante
+ok 40 - CHAIN02 validation non mutante
+  ---
+  duration_ms: 1.479867
+  type: 'test'
+  ...
+# Subtest: CHAIN03 relations seulement descriptives
+ok 41 - CHAIN03 relations seulement descriptives
+  ---
+  duration_ms: 0.756474
+  type: 'test'
+  ...
+# Subtest: CHAIN04 source et instance restent distincts
+ok 42 - CHAIN04 source et instance restent distincts
+  ---
+  duration_ms: 0.56255
+  type: 'test'
+  ...
+# Subtest: CHAIN05 collision de deux instances
+ok 43 - CHAIN05 collision de deux instances
+  ---
+  duration_ms: 1.312464
+  type: 'test'
+  ...
+# Subtest: CHAIN06 campagne inter-tenant refusée
+ok 44 - CHAIN06 campagne inter-tenant refusée
+  ---
+  duration_ms: 0.699647
+  type: 'test'
+  ...
+# Subtest: CHAIN07 capacité doit être une identité catalogue
+ok 45 - CHAIN07 capacité doit être une identité catalogue
+  ---
+  duration_ms: 0.695772
+  type: 'test'
+  ...
+# Subtest: CHAIN08 créature sans profil/ruleset refusée
+ok 46 - CHAIN08 créature sans profil/ruleset refusée
+  ---
+  duration_ms: 0.733568
+  type: 'test'
+  ...
+# Subtest: CHAIN09 magnitude et objets numériques refusés
+ok 47 - CHAIN09 magnitude et objets numériques refusés
+  ---
+  duration_ms: 1.270651
+  type: 'test'
+  ...
+# Subtest: CHAIN10 approved:true forgé refusé
+ok 48 - CHAIN10 approved:true forgé refusé
+  ---
+  duration_ms: 0.405022
+  type: 'test'
+  ...
+# Subtest: CHAIN11 origine native sans SHA Git refusée
+ok 49 - CHAIN11 origine native sans SHA Git refusée
+  ---
+  duration_ms: 0.482829
+  type: 'test'
+  ...
+# Subtest: CHAIN12 version invalide refusée
+ok 50 - CHAIN12 version invalide refusée
+  ---
+  duration_ms: 0.725627
+  type: 'test'
+  ...
+# Subtest: CHAIN13 les deux fiches L003 sont valides et descriptives
+ok 51 - CHAIN13 les deux fiches L003 sont valides et descriptives
+  ---
+  duration_ms: 0.396209
+  type: 'test'
+  ...
+# Subtest: CHAIN14 refus des entrées sort/attaque chiffrée
+ok 52 - CHAIN14 refus des entrées sort/attaque chiffrée
+  ---
+  duration_ms: 0.533827
+  type: 'test'
+  ...
+# Subtest: CHAIN15 snapshot privé roundtrip et inconnus intacts
+ok 53 - CHAIN15 snapshot privé roundtrip et inconnus intacts
+  ---
+  duration_ms: 1.510513
+  type: 'test'
+  ...
+# Subtest: CHAIN16 mutation de source après snapshot impossible
+ok 54 - CHAIN16 mutation de source après snapshot impossible
+  ---
+  duration_ms: 0.484512
+  type: 'test'
+  ...
+# Subtest: CHAIN17 export de preview MJ sans canaris privés
+ok 55 - CHAIN17 export de preview MJ sans canaris privés
+  ---
+  duration_ms: 0.929565
+  type: 'test'
+  ...
+# Subtest: CHAIN18 flûte narrative sans malus numérique automatique
+ok 56 - CHAIN18 flûte narrative sans malus numérique automatique
+  ---
+  duration_ms: 0.382158
+  type: 'test'
+  ...
+# Subtest: CHAIN19 bad snapshot public refusé
+ok 57 - CHAIN19 bad snapshot public refusé
+  ---
+  duration_ms: 0.566977
+  type: 'test'
+  ...
+# Subtest: CHAIN20 raw sources manquantes refusées
+ok 58 - CHAIN20 raw sources manquantes refusées
+  ---
+  duration_ms: 0.738366
+  type: 'test'
+  ...
+# Subtest: CHAIN21 prototype pollution refusée
+ok 59 - CHAIN21 prototype pollution refusée
+  ---
+  duration_ms: 0.512575
+  type: 'test'
+  ...
+# Subtest: CHAIN22 JSON accessors refusés
+ok 60 - CHAIN22 JSON accessors refusés
+  ---
+  duration_ms: 0.3041
+  type: 'test'
+  ...
+# Subtest: CHAIN23 source statut reste documentaire, ne devient pas approbation
+ok 61 - CHAIN23 source statut reste documentaire, ne devient pas approbation
+  ---
+  duration_ms: 0.411762
+  type: 'test'
+  ...
+# Subtest: CHAIN24 source inconnue conservée dans snapshot et jamais au preview
+ok 62 - CHAIN24 source inconnue conservée dans snapshot et jamais au preview
+  ---
+  duration_ms: 0.870866
+  type: 'test'
+  ...
+# Subtest: SOURCE-01 fixtures L003 originales intègres
+ok 63 - SOURCE-01 fixtures L003 originales intègres
+  ---
+  duration_ms: 1.063498
+  type: 'test'
+  ...
+# Subtest: SOURCE-02 module L003 réutilisé sans modification
+ok 64 - SOURCE-02 module L003 réutilisé sans modification
+  ---
+  duration_ms: 0.255817
+  type: 'test'
+  ...
+1..64
+# tests 64
+# suites 0
+# pass 64
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 137.843207
