@@ -40,3 +40,38 @@ La recette lance son **propre Chrome**, avec profil temporaire et sandbox inchan
 ## Propriété des fichiers et transmission
 
 Voir `manifest.json` pour les sous-arbres exclusifs, la référence QA, les blobs de base, les points d'attente et le statut. Les futurs modules propriétaires ne seront copiés qu'à partir de SHA de livraison contrôlés. L'intégrateur est responsable de `tools/**`, `tests/integration/**`, du manifeste, du guide et du workflow ; il n'édite pas `src/{ports,studio,rules,catalog,creators}/**` des autres rôles.
+
+
+## Actualisation du candidat composite L004 — 05/11/2026
+
+La page STUDIO propriétaire est distincte du premier pont L004-A : **http://127.0.0.1:4173/dg004-demo.html** (MJ uniquement). Elle monte `mountStudioDemo` depuis la livraison STUDIO **PR #98 @ `18602be2d0b281478ebd9693b6ff0be63ef862ee`**, avec les vrais services ARCHIVES et BUILDER injectés dans `tools/demo-runtime.mjs`. Les 13 fichiers propriétaires sous `src/studio/**` et `tests/studio/**` restent inchangés.
+
+Sur cette page :
+1. Créer une campagne fictive, prévisualiser puis accepter le PJ v3 et la créature, créer une scène. Ces gestes sont **explicites**. Le stockage ARCHIVES est placé sous la clé `cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0` ; aucune sauvegarde du Studio MJ historique n'est remplacée.
+2. Dans **ATELIERS**, compléter objet puis capacité descriptive, valider MJ sans calcul, prévisualiser et copier une créature fictive via STUDIO, créer une scène et enregistrer la chaîne INDEX en privé. Les modules ATELIERS proviennent des six fichiers propriétaires de `prototype/dg004-creators@469424d044c8f62871c4ed77f07a09814d7c72d6`. Le cycle conserve ses originaux et inconnus dans `cer.dg004.creators.private.demo.v0`, séparé du stockage de campagne.
+3. Le bouton « Prévisualiser XP fictifs (sans attribution) » délègue à MATH `math-xp/**@969ed8ffb11ea89dc17b59b56b494705a3f4da97`, INDEX `src/catalog/**@62ff4332b9e9ecb9a5437719eaefa61fad01d57d` et directement au moteur M01 natif ; les deux suggestions doivent être identiques ou le contrôle refuse. **Aucun XP crédité, aucun niveau modifié**, aucun bouton de récompense.
+4. Ouvrir volontairement la fenêtre joueur, sélectionner les champs et publier par l'action du Studio. Ne jamais divulguer d'archive, snapshot INDEX, brouillon ou note privée ; le client joueur sur 4174 ne charge jamais le bundle `demo.js`.
+5. Pour sortir, cliquer « Quitter et effacer la démonstration dédiée ». L'adaptateur confirme la marque fictive, envoie CLEAR via la destruction STUDIO, supprime **seulement** les deux clés namespacées de la démo et vérifie que la sauvegarde MJ historique n'a pas changé.
+
+`node experiments/dg-lot004/tools/build.mjs` génère trois bundles (`mj.js`, `player.js`, `demo.js`) et trois CSS externes, notamment `demo.css` et `cycle.css`. Le serveur n'écoute que 127.0.0.1 sur 4173 et 4174 ; `dg004-demo.html` et `demo.js` sont interdits sur l'origine joueur.
+
+### Gates sur le HEAD intégrateur exact (aucun PASS anticipé)
+
+```sh
+npm ci
+npm test
+node experiments/dg-lot004/tools/build.mjs
+node --test experiments/dg-lot004/tests/integration/demo.test.mjs
+node --test experiments/dg-lot004/builder/tests/ports.test.mjs
+node --test experiments/dg-lot004/math-xp/tests/xp-decision.test.mjs
+node --test experiments/dg-lot004/tests/catalog/catalog.test.mjs experiments/dg-lot004/tests/catalog/native-m01.test.mjs
+node --test experiments/dg-lot004/tests/studio/demo.test.mjs
+node --test experiments/dg-lot004/tests/creators/cycle-state.test.mjs experiments/dg-lot004/tests/creators/cycle-ui.test.mjs
+node experiments/dg-lot004/tools/test-demo-browser.mjs
+```
+
+Le test Chrome contient une recette réelle de la page STUDIO propriétaire (PJ v3, créature, scène, canaris, projection sur autre origine, archive native exportée/restaurée, retour arrière), une validation indépendante du couple MATH/INDEX en lecture seule et le parcours ATELIERS/INDEX à quatre maillons. Tout test non réellement exécuté ou en échec reste **bloquant**, jamais « skip » vert.
+
+La provenance Git blob, les chemins **réels** (BUILDER `builder/**`, MATH `math-xp/**`, INDEX `src/catalog/**`, STUDIO `src/studio/**`, ATELIERS `src/creators/**`) et les commits propriétaires sont dans `manifest.json`. Aucun fichier propriétaire n'est déplacé pour respecter un ancien ticket.
+
+Cette branche n'a **aucun droit de merge, de Pages, de publication du canon, d'hébergement Internet ni de stockage de données MJ réelles**. La recette du candidat final doit être soumise à QA/REVUE indépendantes sur son SHA exact.
