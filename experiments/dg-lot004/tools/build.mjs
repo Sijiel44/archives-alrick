@@ -40,7 +40,7 @@ demoImported.forEach((x,i)=>demoEntry.push('import * as d'+i+' from '+JSON.strin
 demoEntry.push('const owners=Object.create(null);');
 demoImported.forEach((x,i)=>demoEntry.push('owners['+JSON.stringify(x.role)+']=d'+i+';'));
 demoEntry.push('try{mountIntegratedOwnerDemo({owners,doc:document});}catch(error){const e=document.getElementById("status");if(e)e.textContent="DG004 : "+error.message;console.error(error);}');
-const sources={mj,player:makeEntry({target:'player',manifest:ownerManifest,repository:repo}),demo:demoEntry.join('\\n')};
+const sources={mj,player:makeEntry({target:'player',manifest:ownerManifest,repository:repo}),demo:demoEntry.join('\n')};
 for(const [target,source] of Object.entries(sources))
  await build({stdin:{contents:source,resolveDir:repo,sourcefile:'dg004-'+target+'.js',loader:'js'},
   bundle:true,format:'esm',platform:'browser',target:'es2022',
