@@ -42,6 +42,10 @@ jobs:
         run: node --test experiments/dg-lot004/builder/tests/ports.test.mjs
       - name: MATH owner XP decisions against M01 (real TS)
         run: node --test experiments/dg-lot004/math-xp/tests/xp-decision.test.mjs
+      - name: INDEX owner 64 ESM tests and unexecuted-native M01 controls
+        run: node --test experiments/dg-lot004/tests/catalog/catalog.test.mjs experiments/dg-lot004/tests/catalog/native-m01.test.mjs
+      - name: STUDIO owner isolated mode contract tests
+        run: node --test experiments/dg-lot004/tests/studio/demo.test.mjs
       - name: Identify official Chrome
         shell: bash
         run: |
