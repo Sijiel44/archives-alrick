@@ -28,7 +28,8 @@ let mj=makeEntry({target:'mj',manifest:ownerManifest,repository:repo});
 const mount='mountIntegratedMJ({owners,doc:document});';
 if(mj.split(mount).length!==2)throw Error('DG003 MJ composition does not have one mount call');
 const demoImport='import {installDemo} from '+JSON.stringify(resolve(project,'tools/demo-controller.mjs'))+';\n';
-mj=demoImport+mj.replace(mount,'const dg004Application=mountIntegratedMJ({owners,doc:document}); installDemo(dg004Application,document);');
+const builderImport='import {mountPreviewNavigation} from '+JSON.stringify(resolve(project,'builder/src/navigation.mjs'))+';\n';
+mj=demoImport+builderImport+mj.replace(mount,'const dg004Application=mountIntegratedMJ({owners,doc:document}); installDemo(dg004Application,document); mountPreviewNavigation(document.getElementById("dg004-demo-root"));');
 const sources={mj,player:makeEntry({target:'player',manifest:ownerManifest,repository:repo})};
 for(const [target,source] of Object.entries(sources))
  await build({stdin:{contents:source,resolveDir:repo,sourcefile:'dg004-'+target+'.js',loader:'js'},
