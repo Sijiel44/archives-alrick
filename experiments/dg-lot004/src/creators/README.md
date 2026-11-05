@@ -42,7 +42,7 @@ await component.ready;
 - `addOriginalSource(obj)`, `addOriginalSourceBytes(Uint8Array,metadata)` : originaux privés sans conversion de versions, SHA-256 natif pour octets et original en base64.
 - `load()`, `exportPrivate()` en `Uint8Array`, `previewRestore(bytes)` (non mutante), `acceptRestore(token)` (confirmation persistée), reprise après rechargement.
 
-Les brouillons sont conservés et les champs **facultatifs/inconnus** restent dans `drafts`, `extensions` et `sourceSnapshots` lors du JSON round-trip. Aucune conversion silencieuse des versions Grimoire numériques, rites textuelles, INDEX SemVer. Les objets sources passés par le consommateur ne sont jamais modifiés. Tout changement de brouillon avant copie invalide les validations en aval ; après liaison STUDIO, une nouvelle version/chaîne est nécessaire, sans réécriture destructive des copies existantes.
+Les brouillons sont conservés et les champs **facultatifs/inconnus** restent dans `drafts`, `extensions` et `sourceSnapshots` lors du JSON round-trip. Aucune conversion silencieuse des versions Grimoire numériques, rites textuelles, INDEX SemVer. Les objets sources passés par le consommateur ne sont jamais modifiés. Tout changement de brouillon avant copie invalide les validations en aval. **Après `attachCreature()` et avant `attachScene()`**, les brouillons objet, capacité, créature et sort sont figés, mais **le brouillon scène reste saisissable et corrigeable** : son éventuelle validation est invalidée puis doit être refaite. La copie de créature, ses sources, les IDs INDEX et les validations amont restent inchangés. Dès que `sceneId` existe (ou `extensions.indexL004`), tous les brouillons sont figés et une nouvelle version/chaîne est nécessaire, sans réécriture destructive des copies existantes.
 
 Le dépôt L004-C est privé par contrat applicatif, et `createBrowserCyclePersistence` refuse par défaut toute origine autre que `http://127.0.0.1:4173`. L'intégrateur peut remplacer `persistence` par le port ARCHIVES/IndexedDB de campagne sans changer la logique métier. Seule cette frontière est chargée d'assurer l'écriture atomique et la confidentialité d'accès. Les brouillons/exports contiennent des secrets MJ fictifs et **ne doivent jamais** être montés dans l'origine joueur `4174`.
 
@@ -59,6 +59,8 @@ Depuis la racine du clone complet :
 ```sh
 node --test experiments/dg-lot004/tests/creators/*.test.mjs
 ```
+
+La régression ciblée P0-C reproduit l'ordre Chrome de la PR #95 : **valider objet → capacité → créature → copier créature STUDIO → saisir/valider scène → lier scène**. Elle vérifie aussi le refus des modifications en amont après copie et le verrouillage total après liaison de scène. La prévisualisation et les secrets MJ restent privés ; aucune formule ou débit n'est activé.
 
 La suite exerce les modules `.mjs` **réels** sans formule Python de substitution : ordre guidé/expert, refus INDEX, copie STUDIO, sauvegarde/rechargement/round-trip, champs inconnus, versions, octets et SHA, contrôle d'origine, sécurité descriptive et simulation du contrat INDEX L004-C injecté. Le test indépendant des fonctions INDEX natives de #97, des sources M01 TypeScript et de Chromium sur la page intégrée **appartient à 05/QA** et n'est pas réputé exécuté par ATELIERS. Les tests DOM propriétaires utilisent un double DOM ; ils ne prouvent pas la recette browser réelle.
 
