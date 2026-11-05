@@ -46,6 +46,8 @@ jobs:
         run: node --test experiments/dg-lot004/tests/catalog/catalog.test.mjs experiments/dg-lot004/tests/catalog/native-m01.test.mjs
       - name: STUDIO owner isolated mode contract tests
         run: node --test experiments/dg-lot004/tests/studio/demo.test.mjs
+      - name: ATELIERS owner descriptive cycle state and DOM tests
+        run: node --test experiments/dg-lot004/tests/creators/cycle-state.test.mjs experiments/dg-lot004/tests/creators/cycle-ui.test.mjs
       - name: Identify official Chrome
         shell: bash
         run: |
