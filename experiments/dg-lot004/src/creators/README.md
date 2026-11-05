@@ -1,0 +1,69 @@
+# L004-C — Atelier des chaînes descriptives (21 ATELIERS)
+
+**Mandat:** DG-LOT-004, issue #94 ; **base figée** `PR85@2ab809ef5351940e0fc272b859d10f21de894d00`. Modules isolés sous `experiments/dg-lot004/src/creators/`; aucune modification L003 ni du site Quartz. Données fictives exclusivement. La PR #97 INDEX, SHA `62ff4332b9e9ecb9a5437719eaefa61fad01d57d`, fournit le contrat propriétaire à injecter par 05.
+
+## Point d'entrée / dépendances injectées
+
+```js
+import {mountCreatorCycle,CYCLE_STYLES} from './src/creators/cycle-ui.mjs';
+import {createBrowserCyclePersistence} from './src/creators/cycle-state.mjs';
+// Ces imports ci-dessous appartiennent à 05 lors de son assemblage, ils ne sont PAS
+// dupliqués par 21 et leur absence doit produire une indisponibilité explicite.
+import {mountCreators,validateCreatorDraft,CREATOR_STYLES} from '../dg-lot003/src/creators/index.mjs';
+import * as catalog from '../dg-lot003/src/catalog/index.mjs';
+import {creatorToCatalog} from '../dg-lot003/tools/adapters.mjs';
+import * as indexChain from './src/catalog/index.mjs'; // L004 INDEX #97
+const persistence=createBrowserCyclePersistence({
+  storage:window.localStorage, origin:window.location.origin,
+});
+const component=mountCreatorCycle(document.getElementById('creator-cycle'),{
+  mountCreators,validateCreatorDraft,catalogBridge:creatorToCatalog,catalog,
+  indexChain, studio:studioController, persistence,
+  idFactory:()=>crypto.randomUUID(),
+  onExport:async(bytes,name)=>saveConfidentialFile(bytes,name),
+});
+await component.ready;
+// component.cycle.getState() retourne une copie privée
+// component.destroy() retire les contrôles sans toucher au stockage
+```
+
+**STUDIO** est le contrôleur réel `mountStudio(...)` de DG003, avec `previewCreature`, `copyCreature`, `getCampaign`, `createScene` et `updateScene`, et une campagne possédant `id`. Les adaptateurs `STUDIO/INDEX` doivent déjà exister et fonctionner ; aucune instance fictive n'est simulée à l'intérieur du composant. Le bouton de copie appelle les méthodes STUDIO uniquement après validation MJ de la créature. Le bouton de scène appelle STUDIO uniquement après validation MJ de la scène et copie de la créature. Aucune sélection publique n'est modifiée, aucun `postMessage` ni lancer de sort/débit.
+
+**INDEX L004-C** est injecté via `indexChain` avec ses **vrais exports** `createDescriptiveChain`, `validateDescriptiveChain`, `createPrivateChainSnapshot`, `validatePrivateChainSnapshot` (PR #97). L'atelier construit exactement quatre liens ordonnés `item → capability → creature → scene` avec références de catalogue, provenance, versions, identités sources et instances indépendantes, et relation strictement descriptive. En cas d'absence ou de rejet du port, `bindIndexChain()` échoue **sans mutation de la sauvegarde**. Les copies réelles STUDIO sont exigées avant l'enregistrement de chaîne. Son snapshot `extensions.indexL004.privateSnapshot` est strictement MJ privé et n'est jamais un DTO joueur.
+
+## État et API
+
+`createCreatorCycle({persistence,creatorValidator,catalogBridge,catalog,studio,indexChain,idFactory})` retourne :
+
+- `getState`, `getDraft(kind)`, `saveDraft(kind,partialData)`, `setMode('guided'|'expert')`, `go(kind)` ; `kind` = item, capacity, creature, scene, spell (sort facultatif, expert).
+- `validateMJ(kind)` : validation descriptive et INDEX v0.2 pour objet/capacité/sort ; **pas d'approbation native d'effet**.
+- `attachCreature()`, `attachScene()` : gestes MJ explicites et séparés, avec détection des copies réellement créées ; aucune copie automatique lors de `validateMJ`.
+- `bindIndexChain()` : enveloppe de liaison INDEX #97 **après** les quatre validations et les deux copies STUDIO ; sortie `{chain,snapshot,executable:false}`.
+- `addOriginalSource(obj)`, `addOriginalSourceBytes(Uint8Array,metadata)` : originaux privés sans conversion de versions, SHA-256 natif pour octets et original en base64.
+- `load()`, `exportPrivate()` en `Uint8Array`, `previewRestore(bytes)` (non mutante), `acceptRestore(token)` (confirmation persistée), reprise après rechargement.
+
+Les brouillons sont conservés et les champs **facultatifs/inconnus** restent dans `drafts`, `extensions` et `sourceSnapshots` lors du JSON round-trip. Aucune conversion silencieuse des versions Grimoire numériques, rites textuelles, INDEX SemVer. Les objets sources passés par le consommateur ne sont jamais modifiés. Tout changement de brouillon avant copie invalide les validations en aval ; après liaison STUDIO, une nouvelle version/chaîne est nécessaire, sans réécriture destructive des copies existantes.
+
+Le dépôt L004-C est privé par contrat applicatif, et `createBrowserCyclePersistence` refuse par défaut toute origine autre que `http://127.0.0.1:4173`. L'intégrateur peut remplacer `persistence` par le port ARCHIVES/IndexedDB de campagne sans changer la logique métier. Seule cette frontière est chargée d'assurer l'écriture atomique et la confidentialité d'accès. Les brouillons/exports contiennent des secrets MJ fictifs et **ne doivent jamais** être montés dans l'origine joueur `4174`.
+
+## UX et sécurité
+
+`mountCreatorCycle(root,options)` réemploie `mountCreators` L003 avec `injectStyles:false` : **aucun `<style>` inline**. 05 copie `CYCLE_STYLES` et `CREATOR_STYLES` dans son fichier CSS externe sous CSP `style-src 'self'`, sans `unsafe-inline`. Navigation boutons DOM, champs étiquetés, messages `role=status` et focus-visible CSS ; mode guidé limite les étapes, expert autorise l'inspection et un sort narratif facultatif. Prévisualisation MJ seulement, sans iframe ni écran joueur.
+
+La flûte du LAB n'est qu'un exemple de questionnement : cible, audition, durée, interruption, prérequis. Aucun « −2 », bonus, coût, débit, effet numérique, XP attribuée ni `resolveSpellCast` autorisé. La zone XP est volontairement **indisponible** : même avec la factory suggestion INDEX #97, l'affichage et le choix MJ ne seront activés qu'après contrat MATH/INDEX + intégration vérifiée. Ne jamais afficher une récompense comme créditée sans confirmation native.
+
+## Tests
+
+Depuis la racine du clone complet :
+
+```sh
+node --test experiments/dg-lot004/tests/creators/*.test.mjs
+```
+
+La suite exerce les modules `.mjs` **réels** sans formule Python de substitution : ordre guidé/expert, refus INDEX, copie STUDIO, sauvegarde/rechargement/round-trip, champs inconnus, versions, octets et SHA, contrôle d'origine, sécurité descriptive et simulation du contrat INDEX L004-C injecté. Le test indépendant des fonctions INDEX natives de #97, des sources M01 TypeScript et de Chromium sur la page intégrée **appartient à 05/QA** et n'est pas réputé exécuté par ATELIERS. Les tests DOM propriétaires utilisent un double DOM ; ils ne prouvent pas la recette browser réelle.
+
+## Passation et arbitrages
+
+**À 05 INTÉGRATION / 20 STUDIO :** copier les quatre fichiers source+tests et ce README depuis le HEAD propriétaire, enregistrer blobs, câbler `indexChain` #97, le contrôleur STUDIO et un stockage local. Ajouter le CSS au build **sans injection inline**. Tester le parcours entier sur PR intégrée, notamment les instances de scène réelles et les refus de collision.
+
+**À INDEX #97 :** vérifier références source/instance et snapshot strictement privé. **À MATH / MAG / OBJETS / BESTIAIRE :** aucun calcul, malus, charge, mana ou capacité acquise ; vérifier l'absence de débit et ne pas activer XP sans délégation native. **À QA :** round-trip, champs inconnus, sauvegarde refusée, canari MJ, absence de DTO et de mutation ressources, clavier/lecteur écran. **À DG/créateur :** seule validation d'intégration/QA peut qualifier le lot ; aucun merge, Pages, canonisation ou publication.
