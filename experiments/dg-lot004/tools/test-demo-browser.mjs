@@ -131,7 +131,61 @@ try{
  await step('Prévisualiser créature fictive','Créature témoin N5');
  await step('Accepter copie créature','Copies : Créature témoin N5');
  await step('Créer scène et notes MJ fictives','La Lanterne des Deux Rives');
- const spaces=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")})');
+ // The dedicated owner page also mounts MATH/INDEX XP (read-only) and the
+ // real ATELIERS guided chain. Neither may credit XP or publish to the player.
+ const xpBefore=await mj.eval('localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")');
+ await mj.eval(click('Prévisualiser XP fictifs (sans attribution)'));
+ await until(()=>mj.eval('document.querySelector("#dg004-xp-preview [role=status]")?.textContent.includes("DG004_XP_PREVIEW_OK")'),100);
+ if(await mj.eval('localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")')!==xpBefore)
+  fail('XP_PREVIEW_CHANGED_CAMPAIGN');
+ const getCycle=()=>mj.eval('(()=>{const e=document.querySelector("#dg004-cycle-root pre.cycle-preview");return e?JSON.parse(e.textContent):null;})()');
+ await until(async()=>{const x=await getCycle();return x?.step==='item'&&x.status==='draft';},100);
+ function fillCycle(kind,fields){
+  const selector='#dg004-cycle-root form[data-creator-kind="'+kind+'"]';
+  const expression='(()=>{const root=document.querySelector('+JSON.stringify(selector)+');if(!root)throw Error("form missing");for(const [key,value] of Object.entries('+JSON.stringify(fields)+')){const el=root.querySelector("[name="+JSON.stringify(key)+"]");if(!el)throw Error("input missing "+key);el.value=value;el.dispatchEvent(new Event("input",{bubbles:true}));}return true;})()';
+  new Script(expression);return expression;
+ }
+ function fillCyclePanel(prefix,fields){
+  const expression='(()=>{const heading=[...document.querySelectorAll("#dg004-cycle-root h3")].find(e=>e.textContent.startsWith('+JSON.stringify(prefix)+'));const root=heading?.closest("section.cycle-panel");if(!root)throw Error("panel missing");for(const [key,value] of Object.entries('+JSON.stringify(fields)+')){const el=root.querySelector("[name="+JSON.stringify(key)+"]");if(!el)throw Error("input missing "+key);el.value=value;el.dispatchEvent(new Event("input",{bubbles:true}));}return true;})()';
+  new Script(expression);return expression;
+ }
+ const narrative={provenance:'Laboratoire fictif',version:'0.1.0',description:'Un effet entièrement narratif pour le jeu fictif.',limitations:'Aucun effet numérique ni dépense'};
+ async function validateCycle(stepName){
+  await mj.eval(click('Valider MJ — descriptif'));
+  await until(async()=>{const x=await getCycle();const status=await mj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
+   if(status?.includes('invalide')||status?.includes('refusé'))fail('CYCLE_'+stepName+'_'+status);
+   return x?.step===stepName&&x.status==='mj-validated';},110);
+ }
+ async function nextCycle(stepName){
+  await mj.eval(click('Étape suivante'));
+  await until(async()=>{const x=await getCycle();return x?.step===stepName;},110);
+ }
+ await mj.eval(fillCycle('item',{...narrative,name:'Lanterne de la rive'}));
+ await validateCycle('item');
+ await nextCycle('capacity');
+ await mj.eval(fillCycle('capacity',{...narrative,name:'Lueur de passage'}));
+ await validateCycle('capacity');
+ await nextCycle('creature');
+ await mj.eval(fillCyclePanel('Créature fictive',{...narrative,name:'Créature sentinelle',sourceReference:'fixture-source-001'}));
+ await validateCycle('creature');
+ await mj.eval(click('Copier la créature dans STUDIO (MJ)'));
+ await until(async()=>Boolean((await getCycle())?.linked?.creatureInstanceId),110);
+ await nextCycle('scene');
+ await mj.eval(fillCyclePanel('Scène locale',{...narrative,name:'Scène de passage',title:'Lueur sur Entre-Rives',publicDescription:'La lanterne guide les voyageurs fictifs.',privateNotes:'CANARY_PRIVATE_CYCLE_004'}));
+ await validateCycle('scene');
+ await mj.eval(click('Créer la scène dans STUDIO (MJ)'));
+ await until(async()=>Boolean((await getCycle())?.linked?.sceneId),110);
+ await mj.eval(click('Enregistrer chaîne descriptive INDEX — MJ privé'));
+ await until(()=>mj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("Chaîne INDEX enregistrée en privé")'),110);
+ const cycleRaw=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ if(!cycleRaw)fail('CYCLE_NOT_PERSISTED');
+ const cycleState=JSON.parse(cycleRaw);
+ if(cycleState.extensions?.indexL004?.snapshot?.schema===undefined && cycleState.extensions?.indexL004?.chain?.schema===undefined)
+  fail('INDEX_CHAIN_NOT_PERSISTED');
+ if(/"approved":true|"autoApply":true|"awardedXp":\d/.test(cycleRaw))
+  fail('CYCLE_AUTO_AUTHORITY');
+ console.log('DG004_CREATOR_CHAIN_BROWSER_OK',JSON.stringify({item:true,capacity:true,creatureInstance:!!cycleState.links.creatureInstanceId,
+  scene:!!cycleState.links.sceneId,indexPrivate:true,xpPreview:true,autoApply:false}));\n const spaces=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")})');
  if(spaces.real!=='REAL_MJ_NOT_DEMO'||!spaces.demo)fail('OWNER_NAMESPACE_FAIL '+JSON.stringify(spaces));
  await mj.eval(click('Ouvrir la fenêtre joueur'));
  const ownerPlayerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)&&x.url!==playerTarget.url),110);
