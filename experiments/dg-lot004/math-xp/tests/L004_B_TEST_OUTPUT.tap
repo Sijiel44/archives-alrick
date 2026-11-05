@@ -1,0 +1,203 @@
+TAP version 13
+# L004-B moteur officiel M01 chargé ; backend tsc ; aucun changement de barème
+# Subtest: parité native M01 XP/coûts N1
+ok 1 - parité native M01 XP/coûts N1
+  ---
+  duration_ms: 1.82646
+  type: 'test'
+  ...
+# Subtest: parité native M01 XP/coûts N5
+ok 2 - parité native M01 XP/coûts N5
+  ---
+  duration_ms: 0.13288
+  type: 'test'
+  ...
+# Subtest: parité native M01 XP/coûts N10
+ok 3 - parité native M01 XP/coûts N10
+  ---
+  duration_ms: 0.190197
+  type: 'test'
+  ...
+# Subtest: parité native M01 XP/coûts N15
+ok 4 - parité native M01 XP/coûts N15
+  ---
+  duration_ms: 0.171508
+  type: 'test'
+  ...
+# Subtest: parité native M01 XP/coûts N20
+ok 5 - parité native M01 XP/coûts N20
+  ---
+  duration_ms: 0.128203
+  type: 'test'
+  ...
+# Subtest: parité native M01 XP/coûts N25
+ok 6 - parité native M01 XP/coûts N25
+  ---
+  duration_ms: 0.112078
+  type: 'test'
+  ...
+# Subtest: coûts M01 au-delà de caractéristique 12, sans division, sans gain
+ok 7 - coûts M01 au-delà de caractéristique 12, sans division, sans gain
+  ---
+  duration_ms: 0.388045
+  type: 'test'
+  ...
+# Subtest: table exacte historique et moderne N1/5/10/15/20/25
+ok 8 - table exacte historique et moderne N1/5/10/15/20/25
+  ---
+  duration_ms: 0.145509
+  type: 'test'
+  ...
+# Subtest: niveau initial choisi et XP indépendants, prétiré one-shot sans bonus caché
+ok 9 - niveau initial choisi et XP indépendants, prétiré one-shot sans bonus caché
+  ---
+  duration_ms: 0.7369
+  type: 'test'
+  ...
+# Subtest: rythmes de campagne descriptifs : aucune multiplication XP
+ok 10 - rythmes de campagne descriptifs : aucune multiplication XP
+  ---
+  duration_ms: 0.572452
+  type: 'test'
+  ...
+# Subtest: suggestion M01 ordinaire/majeure/légendaire, aucune récompense écrite
+ok 11 - suggestion M01 ordinaire/majeure/légendaire, aucune récompense écrite
+  ---
+  duration_ms: 0.237998
+  type: 'test'
+  ...
+# Subtest: décision du MJ libre 42 vs recommandation native 120, sans mutation source
+ok 12 - décision du MJ libre 42 vs recommandation native 120, sans mutation source
+  ---
+  duration_ms: 1.356843
+  type: 'test'
+  ...
+# Subtest: décision zéro XP explicitement légale sans effacer le témoin
+ok 13 - décision zéro XP explicitement légale sans effacer le témoin
+  ---
+  duration_ms: 0.246921
+  type: 'test'
+  ...
+# Subtest: idempotence événement identique, révision inchangée, collision refusée
+ok 14 - idempotence événement identique, révision inchangée, collision refusée
+  ---
+  duration_ms: 0.26563
+  type: 'test'
+  ...
+# Subtest: identifiant source d événement unique même pour attribution zéro
+ok 15 - identifiant source d événement unique même pour attribution zéro
+  ---
+  duration_ms: 0.155304
+  type: 'test'
+  ...
+# Subtest: optimisme de révision et identifiants de décision obligatoires
+ok 16 - optimisme de révision et identifiants de décision obligatoires
+  ---
+  duration_ms: 0.204238
+  type: 'test'
+  ...
+# Subtest: correction négative auditée append-only, aucune substitution
+ok 17 - correction négative auditée append-only, aucune substitution
+  ---
+  duration_ms: 0.373573
+  type: 'test'
+  ...
+# Subtest: correction sans référence et correction à montant zéro rejetées
+ok 18 - correction sans référence et correction à montant zéro rejetées
+  ---
+  duration_ms: 0.17294
+  type: 'test'
+  ...
+# Subtest: répétition de motif suit expérienceAward M01 et décision MJ à chaque événement
+ok 19 - répétition de motif suit expérienceAward M01 et décision MJ à chaque événement
+  ---
+  duration_ms: 0.462757
+  type: 'test'
+  ...
+# Subtest: un événement attribué zéro ne sert pas de précédent de répétition M02
+ok 20 - un événement attribué zéro ne sert pas de précédent de répétition M02
+  ---
+  duration_ms: 0.721396
+  type: 'test'
+  ...
+# Subtest: erreurs événement, difficulté, scope et montant négatif refusés sans exception
+ok 21 - erreurs événement, difficulté, scope et montant négatif refusés sans exception
+  ---
+  duration_ms: 0.157467
+  type: 'test'
+  ...
+# Subtest: dépassement entier sûr refusé, jamais tronqué
+ok 22 - dépassement entier sûr refusé, jamais tronqué
+  ---
+  duration_ms: 0.174953
+  type: 'test'
+  ...
+# Subtest: progression N5 vers N6 exige XP seuil M01 + validation MJ distincte
+ok 23 - progression N5 vers N6 exige XP seuil M01 + validation MJ distincte
+  ---
+  duration_ms: 0.357338
+  type: 'test'
+  ...
+# Subtest: ni saut de niveau ni progression au-delà de 25
+ok 24 - ni saut de niveau ni progression au-delà de 25
+  ---
+  duration_ms: 0.114984
+  type: 'test'
+  ...
+# Subtest: M01 N21 exige paliers explicites malgré XP suffisants
+ok 25 - M01 N21 exige paliers explicites malgré XP suffisants
+  ---
+  duration_ms: 0.20531
+  type: 'test'
+  ...
+# Subtest: paliers 22–25 uniquement dans ordre et avec consentement MJ explicite
+ok 26 - paliers 22–25 uniquement dans ordre et avec consentement MJ explicite
+  ---
+  duration_ms: 0.239621
+  type: 'test'
+  ...
+# Subtest: paliers initiaux doivent être vérifiés et ordonnés
+ok 27 - paliers initiaux doivent être vérifiés et ordonnés
+  ---
+  duration_ms: 0.240002
+  type: 'test'
+  ...
+# Subtest: correction après promotion : signaler le réexamen, sans rétrogradation
+ok 28 - correction après promotion : signaler le réexamen, sans rétrogradation
+  ---
+  duration_ms: 0.271338
+  type: 'test'
+  ...
+# Subtest: import JSON synthétique préserve journal, idempotence, pas de stat modifiée
+ok 29 - import JSON synthétique préserve journal, idempotence, pas de stat modifiée
+  ---
+  duration_ms: 0.238569
+  type: 'test'
+  ...
+# Subtest: champs inconnus et bénéficiaire non validé : refus fermé
+ok 30 - champs inconnus et bénéficiaire non validé : refus fermé
+  ---
+  duration_ms: 0.314844
+  type: 'test'
+  ...
+# Subtest: snapshot de décision : mutation postérieure du formulaire sans effet sur journal
+ok 31 - snapshot de décision : mutation postérieure du formulaire sans effet sur journal
+  ---
+  duration_ms: 0.130957
+  type: 'test'
+  ...
+# Subtest: correction hors solde refusée et journal inchangé
+ok 32 - correction hors solde refusée et journal inchangé
+  ---
+  duration_ms: 0.111648
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1127.128127
