@@ -70,16 +70,22 @@
   "handoffs": {
     "p0a": {
       "issue": 92,
-      "status": "builder owner delivered 13 exact files; studio owner pending; integrator demo and nav under tools",
+      "status": "BUILDER 13 files and STUDIO 13 files copied verbatim; owner demo wired at /dg004-demo.html; CI browser under test",
       "builder": {
         "branch": "prototype/dg004-preview-builder",
         "commit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
         "files": 13
+      },
+      "studio": {
+        "branch": "prototype/dg004-studio",
+        "commit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+        "files": 13,
+        "localTests": "15/15 reported; browser NOT EXECUTED by owner"
       }
     },
     "p0b": {
       "issue": 93,
-      "status": "MATH 2-file exact owner delivery; INDEX only CONTRACT.md; executable INDEX not delivered",
+      "status": "MATH 2 source/tests and INDEX 9 source/tests copied verbatim; native M01 and contracts under integrator CI; no transaction",
       "math": {
         "branch": "prototype/dg004-xp-math",
         "commit": "b2f6435be9e77a45aebb3f741a90cbf6bb1a1444",
@@ -87,14 +93,14 @@
       },
       "index": {
         "branch": "prototype/dg004-index-xp-links",
-        "commit": "2ce7efd6e124597b11dc55edbc42a72ff92f3478",
-        "files": 1,
-        "status": "provisional contract only"
+        "commit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
+        "files": 9,
+        "localTests": "64/64 owner ESM; native-m01 NOT EXECUTED by owner"
       }
     },
     "p0c": {
       "issue": 94,
-      "status": "ATELIERS owner delivery pending"
+      "status": "ATELIERS owners pending; STUDIO scene bridge is PREVIEW ONLY, no real chain service connected"
     }
   },
   "deployment": {
@@ -231,13 +237,190 @@
       "transport": "verbatim-git-blob"
     },
     {
+      "role": "studio",
+      "path": "experiments/dg-lot004/src/studio/CONTRACT.md",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "24c65269af57aabaff0b2d2272755a6a05cd77f1",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/src/studio/demo-storage.mjs",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "57f38f946c9592e9bd75462ff7e4a91e25b0b756",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/src/studio/demo.css",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "8568184f8314aab170da176b78f53aed68aff352",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/src/studio/demo.mjs",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "6288cb394788e16b267f2540983eeeb57be22747",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/src/studio/scene-bridge.mjs",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "1e11d083a2f4625ae2dd5face4bbd01cc174fc5b",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/tests/studio/FICHE_DIRECTION_L004_STUDIO.md",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "a61b0697472fe4d3759abe2c5868b67b82803fd1",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/tests/studio/GUIDE_SCENARIO_L004.md",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "1bdc1dc5b339fbc27dcb87befda3cdbbf8d50245",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/tests/studio/L004_A_RAPPORT_TECHNIQUE.md",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "d509c00fea48a9497657ff1cde0a4aa77b16c356",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/tests/studio/L004_BROWSER_ATTEMPT.txt",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "4f739bc3ed310fb3a7cbe2390ce0cc3138cd0f0d",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/tests/studio/L004_NODE_TESTS.tap",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "ceebc606d263488d80cd57b0a61d6e6236170a49",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/tests/studio/L004_SYNTAX_LOG.txt",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "b0db20b165c2e7491a465f7c2c1696dd175b69dc",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/tests/studio/browser-scenario.py",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "5eef360e37c3577bf563abd05758965c7cc36cbc",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "studio",
+      "path": "experiments/dg-lot004/tests/studio/demo.test.mjs",
+      "sourceBranch": "prototype/dg004-studio",
+      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+      "blobSha": "ad78d0dbf133618cc5f5b7b645cd930e903bd9f0",
+      "transport": "verbatim-git-blob"
+    },
+    {
       "role": "index",
       "path": "experiments/dg-lot004/src/catalog/CONTRACT.md",
       "sourceBranch": "prototype/dg004-index-xp-links",
-      "sourceCommit": "2ce7efd6e124597b11dc55edbc42a72ff92f3478",
+      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
       "blobSha": "42ab07ba3eea9852f76a3684e83e8b5c9713b414",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "index",
+      "path": "experiments/dg-lot004/src/catalog/README.md",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
+      "blobSha": "8f20f53f8b5844ee1460653e99ef0417328268e2",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "index",
+      "path": "experiments/dg-lot004/src/catalog/index.mjs",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
+      "blobSha": "18cfa95cee60258322f0f0e32b8214ec95b509ac",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "index",
+      "path": "experiments/dg-lot004/tests/catalog/FICHE_DIRECTION_L004_INDEX.md",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
+      "blobSha": "26cdf543e5291de9d735e475bffbf95b1dbc5fd7",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "index",
+      "path": "experiments/dg-lot004/tests/catalog/MANIFEST_L004_INDEX.json",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
+      "blobSha": "1072dc60ef8da602ccf4e7c1ca025ddfafe2b2f3",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "index",
+      "path": "experiments/dg-lot004/tests/catalog/NATIVE_M01_STATUS.txt",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
+      "blobSha": "9303c0d285563bdd511217bfaa602692b86c3624",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "index",
+      "path": "experiments/dg-lot004/tests/catalog/TEST_RESULTS_NODE22.tap",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
+      "blobSha": "ed1b55699ed0f792b3f5357bad359b6338836996",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "index",
+      "path": "experiments/dg-lot004/tests/catalog/catalog.test.mjs",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
+      "blobSha": "33f58cb76486503b1d0fe48a63ccf855421e28dc",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "index",
+      "path": "experiments/dg-lot004/tests/catalog/native-m01.test.mjs",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
+      "blobSha": "3475aa4e643d41ef03c35facdcc7d0e45e2ca146",
       "transport": "verbatim-git-blob"
     }
   ],
-  "ownerTreeNotes": "Issue #92 initially reserved src/ports/** but BUILDER actual owner path is builder/**, no movement; issue #93 reserved src/rules/** but MATH uses math-xp/**, no movement; INDEX only src/catalog/CONTRACT.md; no owner file modified."
+  "ownerTreeNotes": "Issue #92 initially reserved src/ports/** but BUILDER actual owner path is builder/**, no movement; issue #93 reserved src/rules/** but MATH uses math-xp/**, no movement; INDEX only src/catalog/CONTRACT.md; no owner file modified.",
+  "runtime": {
+    "ownerDemoEntry": "http://127.0.0.1:4173/dg004-demo.html",
+    "ownerJs": "dist/assets/demo.js",
+    "ownerCss": "dist/assets/demo.css",
+    "playerOrigin": "http://127.0.0.1:4174",
+    "privateStorage": "cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0",
+    "sharedLegacyDemoEntry": "http://127.0.0.1:4173/",
+    "noPublicHosting": true
+  }
 }
