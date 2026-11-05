@@ -38,6 +38,10 @@ jobs:
         run: node experiments/dg-lot004/tools/build.mjs
       - name: Test DG004 integration-only demo contract
         run: node --test experiments/dg-lot004/tests/integration/demo.test.mjs
+      - name: BUILDER owner local preview contract (real source)
+        run: node --test experiments/dg-lot004/builder/tests/ports.test.mjs
+      - name: MATH owner XP decisions against M01 (real TS)
+        run: node --test experiments/dg-lot004/math-xp/tests/xp-decision.test.mjs
       - name: Identify official Chrome
         shell: bash
         run: |
