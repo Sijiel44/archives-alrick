@@ -1,0 +1,97 @@
+{
+  "schema": "cer.dg004.integration-manifest.v0",
+  "baseSha": "2ab809ef5351940e0fc272b859d10f21de894d00",
+  "referenceQA": "20679f7bf5c744f29dd041413cc63801ce5daea1",
+  "ownerSnapshot": [
+    {
+      "role": "ports",
+      "blobSha": "07154546e2258c3795f2608bc2ef93e20d5beac2",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "rules",
+      "blobSha": "3e2a0260bd49e9447fae06ad4c14f76a5a9766c9",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "catalog",
+      "blobSha": "6c35e0da2c56a51dea9bce37b9cdc60cd2c75de5",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "storage",
+      "blobSha": "be6a881018ae1709ecef71c3c5a155acfb94a658",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "studio",
+      "blobSha": "5ce963e6120404f7cadbf6512cb0639c2adc888f",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "player",
+      "blobSha": "fed7091c044bac004521d9ff0ad0d632a37752ba",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "creators",
+      "blobSha": "b53f1868baa8a5eb5ed4415000247a128e668846",
+      "source": "L003 preserved, no copy into owner subtree"
+    }
+  ],
+  "paths": {
+    "integrator": [
+      "experiments/dg-lot004/tools/**",
+      "experiments/dg-lot004/tests/integration/**",
+      "experiments/dg-lot004/manifest.json",
+      "experiments/dg-lot004/README.md",
+      ".github/workflows/dg-lot004-integrated.yml"
+    ],
+    "builder": [
+      "experiments/dg-lot004/src/ports/**",
+      "experiments/dg-lot004/tests/ports/**"
+    ],
+    "studio": [
+      "experiments/dg-lot004/src/studio/**",
+      "experiments/dg-lot004/tests/studio/**"
+    ],
+    "math": [
+      "experiments/dg-lot004/src/rules/**",
+      "experiments/dg-lot004/tests/rules/**"
+    ],
+    "index": [
+      "experiments/dg-lot004/src/catalog/**",
+      "experiments/dg-lot004/tests/catalog/**"
+    ],
+    "creators": [
+      "experiments/dg-lot004/src/creators/**",
+      "experiments/dg-lot004/tests/creators/**"
+    ]
+  },
+  "handoffs": {
+    "p0a": {
+      "issue": 92,
+      "status": "owner-delivery-pending; integration-only fallback P0-A active"
+    },
+    "p0b": {
+      "issue": 93,
+      "status": "owner-contracts-not-delivered"
+    },
+    "p0c": {
+      "issue": 94,
+      "status": "owner-UI-not-delivered"
+    }
+  },
+  "deployment": {
+    "internet": false,
+    "loopbackOrigins": [
+      "http://127.0.0.1:4173",
+      "http://127.0.0.1:4174"
+    ],
+    "publicPages": false
+  },
+  "mutableOwners": false,
+  "qa": {
+    "status": "not-executed-for-lot004"
+  }
+}
