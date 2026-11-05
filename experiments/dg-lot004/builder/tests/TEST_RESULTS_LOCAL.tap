@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: product SHA fixed and destinations separate loopback
+ok 1 - product SHA fixed and destinations separate loopback
+  ---
+  duration_ms: 1.01624
+  type: 'test'
+  ...
+# Subtest: known paths allowed, including actual player separate URL
+ok 2 - known paths allowed, including actual player separate URL
+  ---
+  duration_ms: 0.480003
+  type: 'test'
+  ...
+# Subtest: public host, alias, different port, file and credentials forbidden
+ok 3 - public host, alias, different port, file and credentials forbidden
+  ---
+  duration_ms: 0.330828
+  type: 'test'
+  ...
+# Subtest: cross origin source routes forbidden at policy layer
+ok 4 - cross origin source routes forbidden at policy layer
+  ---
+  duration_ms: 0.143366
+  type: 'test'
+  ...
+# Subtest: no mutable plan or expansion to arbitrary hosts
+ok 5 - no mutable plan or expansion to arbitrary hosts
+  ---
+  duration_ms: 0.29873
+  type: 'test'
+  ...
+# Subtest: navigation covers full seven step user journey
+ok 6 - navigation covers full seven step user journey
+  ---
+  duration_ms: 0.751862
+  type: 'test'
+  ...
+# Subtest: probe makes exactly 8 read-only HTTP checks, verifies defensive headers
+ok 7 - probe makes exactly 8 read-only HTTP checks, verifies defensive headers
+  ---
+  duration_ms: 0.829699
+  type: 'test'
+  ...
+# Subtest: probe fails closed on missing CSP or player asset leak
+ok 8 - probe fails closed on missing CSP or player asset leak
+  ---
+  duration_ms: 1.108419
+  type: 'test'
+  ...
+# Subtest: probe reports network failure rather than forging pass
+ok 9 - probe reports network failure rather than forging pass
+  ---
+  duration_ms: 0.500463
+  type: 'test'
+  ...
+# Subtest: navigation refuses player origin even when root has append
+ok 10 - navigation refuses player origin even when root has append
+  ---
+  duration_ms: 0.533754
+  type: 'test'
+  ...
+# Subtest: navigation requires DOM root
+ok 11 - navigation requires DOM root
+  ---
+  duration_ms: 0.200041
+  type: 'test'
+  ...
+# Subtest: navigation focuses existing field without changing it, and disposal removes guide
+ok 12 - navigation focuses existing field without changing it, and disposal removes guide
+  ---
+  duration_ms: 0.436757
+  type: 'test'
+  ...
+# Subtest: navigation missing stage refuses to invent campaign data
+ok 13 - navigation missing stage refuses to invent campaign data
+  ---
+  duration_ms: 0.240472
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 78.592289
