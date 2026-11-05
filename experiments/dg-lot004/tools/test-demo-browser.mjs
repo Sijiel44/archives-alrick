@@ -157,10 +157,16 @@ try{
  }
  const narrative={provenance:'Laboratoire fictif',version:'0.1.0',description:'Un effet entièrement narratif pour le jeu fictif.',limitations:'Aucun effet numérique ni dépense'};
  async function validateCycle(stepName){
+  const statusSelector='document.querySelector("#dg004-cycle-root .cycle-status")?.textContent';
+  const before=await mj.eval(statusSelector);
   await mj.eval(click('Valider MJ — descriptif'));
-  await until(async()=>{const x=await getCycle();const status=await mj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
-   if(status?.includes('invalide')||status?.includes('refusé'))fail('CYCLE_'+stepName+'_'+status);
-   return x?.step===stepName&&x.status==='mj-validated';},110);
+  const result=await until(async()=>{
+   const x=await getCycle(),status=await mj.eval(statusSelector);
+   if(x?.step===stepName&&x.status==='mj-validated')return {ok:true,status};
+   if(status&&status!==before)return {ok:false,status,preview:x};
+   return null;
+  },110);
+  if(!result.ok)fail('CYCLE_'+stepName+'_VALIDATION_REJECTED '+JSON.stringify(result).slice(0,1200));
  }
  async function nextCycle(stepName){
   await mj.eval(click('Étape suivante'));
