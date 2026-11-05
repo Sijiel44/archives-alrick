@@ -1,5 +1,6 @@
 /** DG004 integration-only adapter: owner's STUDIO demo on real L003 ARCHIVES/ports. */
 import {mountStudioDemo} from '../src/studio/demo.mjs';
+import {DEMO_MARKER} from '../src/studio/demo-storage.mjs';
 import {createValidatedStorage} from '../../dg-lot003/tools/runtime.mjs';
 import {studioToArchive,creatorToCatalog} from '../../dg-lot003/tools/adapters.mjs';
 import {createBestiaryCard,validateBestiaryCard} from '../../../quartz/components/scripts/atelier5d6-bestiary-workshop.ts';
@@ -90,5 +91,27 @@ export function mountIntegratedOwnerDemo({owners,doc}){
  });
  const label=doc.getElementById('status');
  if(label)label.textContent='STUDIO DG004 propriétaire monté — fictif et local, sans partage automatique.';
+ const exit=doc.getElementById('dg004-exit');
+ if(!exit)fail('Sortie contrôlée DG004 absente');
+ let closing=false;
+ exit.addEventListener('click',async()=>{
+  if(closing)return;closing=true;exit.disabled=true;
+  try{
+   // The stored project carries the owner's verified fictional tag. A non-demo
+   // archive is never deleted and the original MJ namespace is never written.
+   const stored=await demo.storage.load();
+   if(stored?.extensions?.__dg004_fictional_demo!==DEMO_MARKER)
+    fail('Refus de nettoyage : projet DEMO non attesté');
+   const privateBefore=view.localStorage.getItem('cer.dg003.private.campaign.v0');
+   demo.dispose(); // Sends PLAYER_CLEAR when the validated player is connected.
+   demo.area.removeItem('cer.dg003.private.campaign.v0');
+   demo.area.removeItem('approved-backup-sha256');
+   if(demo.area.getItem('cer.dg003.private.campaign.v0')!==null||
+      view.localStorage.getItem('cer.dg003.private.campaign.v0')!==privateBefore)
+    fail('Retour arrière non confirmé ou espace MJ altéré');
+   if(label)label.textContent='DG004_OWNER_CLEARED : données fictives effacées, campagne MJ historique intacte.';
+  }catch(error){if(label)label.textContent='DG004_OWNER_CLEAR_BLOCKED : '+error.message;}
+  finally{closing=false;exit.disabled=false;}
+ });
  return demo;
 }
