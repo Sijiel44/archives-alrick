@@ -1,0 +1,274 @@
+/** DG-LOT-004 L004-C — private, descriptive creator journey. No numeric rules. */
+export const CYCLE_SCHEMA='cer.creators.dg004.private.v0';
+export const CYCLE_STEPS=Object.freeze(['item','capacity','creature','scene']);
+export const OPTIONAL_STEPS=Object.freeze(['spell']);
+export const RULES_UNAVAILABLE='Indisponible — règle/validateur non homologué';
+export const MAX_CYCLE_BYTES=2*1024*1024;
+const encoder=new TextEncoder(),decoder=new TextDecoder('utf-8',{fatal:true});
+const isObject=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
+const bannedKeys=new Set(['__proto__','constructor','prototype']);
+const ids=/^[a-zA-Z0-9][a-zA-Z0-9_.:-]{0,127}$/;
+const forbiddenMechanical=new Set(['approved','autoApply','applied','damage','absorption','mana','manaCost','charges','chargeCost','numericEffect','authority25','effectMagnitude','cost','xpGrant','xpReward','xpSuggestion','resolveSpellCast']);
+function fail(message){throw new Error(message);}
+function inspectJSON(x,depth=0){
+ if(depth>28)fail('Objet JSON trop profond');
+ if(Array.isArray(x)){if(x.length>1000)fail('Liste trop longue');for(const y of x)inspectJSON(y,depth+1);return;}
+ if(isObject(x)){for(const [k,v] of Object.entries(x)){if(bannedKeys.has(k))fail('Clé de données dangereuse');inspectJSON(v,depth+1);}return;}
+ if(x!==null&&typeof x!=='string'&&typeof x!=='boolean'&&!(typeof x==='number'&&Number.isFinite(x)))fail('Type JSON non pris en charge');
+}
+export function cloneCycleJSON(value){inspectJSON(value);const serialized=JSON.stringify(value);if(encoder.encode(serialized).length>MAX_CYCLE_BYTES)fail('Données de création trop volumineuses');return JSON.parse(serialized);}
+const text=(s,max)=>typeof s==='string'&&s.trim().length>0&&s.length<=max;
+export function createCycle(id='fictive-cycle-1'){
+ if(!ids.test(id))fail('Identifiant de cycle invalide');
+ return {schema:CYCLE_SCHEMA,id,revision:0,step:'item',mode:'guided',status:'draft',
+  drafts:{item:{},capacity:{},spell:{},creature:{},scene:{}},
+  entries:{item:null,capacity:null,spell:null,creature:null,scene:null},
+  links:{itemCatalogId:null,capacityCatalogId:null,creatureInstanceId:null,sceneId:null},
+  sourceSnapshots:[],extensions:{}};
+}
+export function validateCycle(value){
+ const s=cloneCycleJSON(value);
+ if(!isObject(s)||s.schema!==CYCLE_SCHEMA||!ids.test(s.id)||!Number.isSafeInteger(s.revision)||s.revision<0||
+ ![...CYCLE_STEPS,...OPTIONAL_STEPS].includes(s.step)||!['guided','expert'].includes(s.mode)||
+ !['draft','mj-validated'].includes(s.status)||!isObject(s.drafts)||!isObject(s.entries)||!isObject(s.links)||
+ !Array.isArray(s.sourceSnapshots)||!isObject(s.extensions))fail('Sauvegarde L004 incompatible');
+ for(const k of [...CYCLE_STEPS,...OPTIONAL_STEPS]){
+  if(!isObject(s.drafts[k]))fail('Brouillon manquant : '+k);
+  if(s.entries[k]!==null&&!isObject(s.entries[k]))fail('Entrée invalide : '+k);
+ }
+ if(s.sourceSnapshots.length>100)fail('Trop de sources');
+ return s;
+}
+function validateNarrative(draft,kind){
+ if(!isObject(draft))fail('Fiche descriptive requise');
+ for(const key of Object.keys(draft))if(forbiddenMechanical.has(key))fail('Champ mécanique interdit : '+key);
+ for(const [key,max] of Object.entries({name:120,provenance:160,version:32,description:3000,limitations:1200}))
+  if(!text(draft[key],max))fail(`Champ ${key} obligatoire (texte descriptif)`);
+ if(!/^[a-zA-Z0-9][a-zA-Z0-9._-]{0,31}$/.test(draft.version))fail('Version invalide');
+ // A LAB example may prompt narrative questions, but must not encode an unapproved -2 or costs.
+ const prose=[draft.description,draft.limitations,draft.trigger,draft.manifestation,draft.publicDescription].filter(x=>typeof x==='string').join(' ');
+ if(/(?:^|[\s:(])[+\-\u2212]\s*\d+(?=\s|$|[^a-zA-Z\d])/u.test(prose)||/\b(?:malus|bonus|dégâts|damage|mana|charges?|xp)\s*[:=+\-\u2212]?\s*\d+/iu.test(prose))
+  fail('Effet numérique ou coût non homologué : description refusée');
+ if(kind==='creature'&&!text(draft.sourceReference,120))fail('Référence créature requise pour STUDIO');
+ if(kind==='creature'&&draft.capacityCatalogId!==undefined&&!text(draft.capacityCatalogId,180))fail('Référence de capacité invalide');
+ if(kind==='scene'&&!text(draft.title,160))fail('Titre de scène requis');
+ if(kind==='scene'&&typeof draft.privateNotes!=='string')fail('Notes privées attendues');
+ return true;
+}
+function makeSummary(state){return {cycleId:state.id,revision:state.revision,status:state.status,step:state.step,
+ saved:Object.entries(state.entries).filter(([,v])=>v!==null).map(([k])=>k),
+ sources:state.sourceSnapshots.length};}
+export function createBrowserCyclePersistence({storage,key='cer.dg004.creators.private',origin,allowedOrigin='http://127.0.0.1:4173'}={}){
+ if(!storage||typeof storage.getItem!=='function'||typeof storage.setItem!=='function')throw new TypeError('Stockage local requis');
+ // No player-origin secrets. Integrator may inject a stronger ARCHIVES/IndexedDB adapter instead.
+ if(origin!==allowedOrigin)throw Error('Stockage privé interdit hors origine MJ vérifiée');
+ if(!/^cer\.[a-z0-9._-]{1,120}$/.test(key))throw Error('Clé de stockage non permise');
+ return {async load(){const raw=storage.getItem(key);return raw===null?null:validateCycle(JSON.parse(raw));},
+ async save(state){const next=validateCycle(state);const raw=JSON.stringify(next);
+  if(encoder.encode(raw).length>MAX_CYCLE_BYTES)fail('Sauvegarde trop volumineuse');storage.setItem(key,raw);return {saved:true};}};
+}
+/** State machine. Only persisted snapshot becomes committed state; failed writes leave it unchanged. */
+export function createCreatorCycle({persistence,creatorValidator,catalogBridge,catalog,studio,indexChain,idFactory=()=>globalThis.crypto?.randomUUID?.()}={}){
+ if(!persistence||typeof persistence.save!=='function'||typeof persistence.load!=='function')throw new TypeError('Port de persistance load/save requis');
+ let state=createCycle(idFactory()),queue=Promise.resolve(),pendingRestore=null;
+ const copy=()=>cloneCycleJSON(state);
+ const steps=[...CYCLE_STEPS,...OPTIONAL_STEPS];
+ const checkKind=k=>{if(!steps.includes(k))fail('Étape inconnue');};
+ async function commit(mutator){
+  // Serialise the complete read-modify-write operation, not merely individual I/O calls.
+  const op=queue.catch(()=>{}).then(async()=>{
+   const next=copy();const output=await mutator(next);
+   next.revision+=1;validateCycle(next);
+   const receipt=await persistence.save(next);
+   if(receipt?.saved!==true)fail('Sauvegarde non confirmée');
+   state=next;return output;
+  });queue=op.catch(()=>{});return op;
+ }
+ function draft(kind){checkKind(kind);return cloneCycleJSON(state.drafts[kind]);}
+ async function saveDraft(kind,data){checkKind(kind);const update=cloneCycleJSON(data);
+  if(!isObject(update))fail('Brouillon attendu');
+  return commit(next=>{
+   const merged={...next.drafts[kind],...update};
+   if(JSON.stringify(merged)!==JSON.stringify(next.drafts[kind])){
+    if(next.links.creatureInstanceId||next.links.sceneId||next.extensions.indexL004)
+      fail('Cycle lié à STUDIO/INDEX : ouvrir une nouvelle version avant modification');
+    next.drafts[kind]=merged;
+    const from=CYCLE_STEPS.indexOf(kind);
+    for(const dependent of from<0?[kind]:CYCLE_STEPS.slice(from))next.entries[dependent]=null;
+    if(from<=0&&from!==-1)next.links.itemCatalogId=null;
+    if(from<=1&&from!==-1)next.links.capacityCatalogId=null;
+    if(from<=2&&from!==-1)delete next.links.creatureCapacityCatalogId;
+    next.status='draft';
+   }
+   return cloneCycleJSON(next.drafts[kind]);
+  });
+ }
+ async function setMode(mode){if(!['guided','expert'].includes(mode))fail('Mode invalide');return commit(next=>{next.mode=mode;});}
+ async function go(step){checkKind(step);
+  if(state.mode==='guided'&&step!=='item'&&step!=='spell'){
+   const index=CYCLE_STEPS.indexOf(step);
+   if(CYCLE_STEPS.slice(0,index).some(k=>state.entries[k]===null))fail('Valider les étapes précédentes avant de continuer');
+  }
+  return commit(next=>{next.step=step;});
+ }
+ async function validateMJ(kind){
+  checkKind(kind);if(!['item','capacity','spell','creature','scene'].includes(kind))fail('Étape invalide');
+  const record=draft(kind);validateNarrative(record,kind);
+  let catalogEntry=null;
+  if(['item','capacity','spell'].includes(kind)){
+   if(typeof creatorValidator!=='function'||typeof catalogBridge!=='function'||!catalog)fail('INDEX non connecté — validation MJ indisponible');
+   // Unknown private source data is NEVER passed to INDEX. L003 validator governs descriptive form.
+   const names={item:['name','provenance','version','description','limitations','category','appearance'],
+    capacity:['name','provenance','version','description','limitations','trigger','tags'],
+    spell:['name','provenance','version','description','limitations','tradition','manifestation']};
+   const clean={kind};for(const key of names[kind])if(Object.hasOwn(record,key))clean[key]=record[key];
+   const validated=creatorValidator(clean);
+   if(validated?.valid!==true||!validated.record)fail('Fiche invalide : '+JSON.stringify(validated?.errors??{}));
+   catalogEntry=catalogBridge(validated.record,catalog,state.id);
+   if(!isObject(catalogEntry)||typeof catalogEntry.id!=='string'||catalogEntry.executable!==undefined&&catalogEntry.executable!==false)
+     fail('INDEX a refusé une entrée descriptive inerte');
+   if(state.entries[kind]?.catalogId&&state.entries[kind].catalogId!==catalogEntry.id)
+     fail('Changement ID : conserver une version ou créer une nouvelle entrée');
+   if(['item','capacity'].includes(kind)&&['item','capacity'].some(k=>k!==kind&&state.entries[k]?.catalogId===catalogEntry.id))fail('Collision de catalogue');
+  }
+  if(kind==='creature'&&state.entries.capacity===null)fail('Capacité réutilisable non validée');
+  if(kind==='scene'&&state.entries.creature===null)fail('Créature non validée');
+  await commit(next=>{
+   next.entries[kind]={kind,displayName:record.name,version:record.version,provenance:record.provenance,
+    status:'mj-validated',catalogId:catalogEntry?.id??null,
+    descriptive:cloneCycleJSON(record),catalogEntry:catalogEntry?cloneCycleJSON(catalogEntry):null};
+   if(kind==='item')next.links.itemCatalogId=catalogEntry.id;
+   if(kind==='capacity')next.links.capacityCatalogId=catalogEntry.id;
+   if(kind==='creature')next.links.creatureCapacityCatalogId=next.links.capacityCatalogId; // only descriptive, not an acquired ability
+   next.status=CYCLE_STEPS.every(k=>next.entries[k])?'mj-validated':'draft';
+  });
+  return {kind,catalogEntry:catalogEntry?cloneCycleJSON(catalogEntry):null,executable:false};
+ }
+ async function attachCreature(){
+  if(!studio||typeof studio.previewCreature!=='function'||typeof studio.copyCreature!=='function'||typeof studio.getCampaign!=='function')fail('Port STUDIO créature absent');
+  if(!state.entries.creature||!state.entries.capacity)fail('Créature et capacité à valider');
+  if(state.links.creatureInstanceId)fail('Créature déjà liée — pas de copie automatique');
+  const ref=state.drafts.creature.sourceReference;
+  const before=studio.getCampaign()?.creatures??[];
+  if(!Array.isArray(before))fail('Campagne STUDIO invalide');
+  const previousIds=new Set(before.map(x=>x.id));
+  // External STUDIO side effect only after explicit MJ button. Never send a whole private cycle.
+  const preview=await studio.previewCreature(ref);
+  if(!preview||typeof preview.documentId!=='string'||typeof preview.profileId!=='string'||typeof preview.ruleset!=='string')fail('Aperçu BEST/STUDIO incomplet');
+  await studio.copyCreature();
+  const all=studio.getCampaign()?.creatures;
+  if(!Array.isArray(all)||!all.length||typeof all.at(-1)?.id!=='string')fail('Copie STUDIO non confirmée : réconciliation manuelle requise');
+  const instanceId=all.at(-1).id;
+  if(previousIds.has(instanceId)||all.length!==before.length+1)fail('Copie STUDIO non vérifiable : réconciliation manuelle requise');
+  await commit(next=>{next.links.creatureInstanceId=instanceId;next.links.creatureSource={documentId:preview.documentId,profileId:preview.profileId,ruleset:preview.ruleset};
+   next.links.creatureCapacityCatalogId=next.links.capacityCatalogId;});
+  return {instanceId,documentId:preview.documentId,profileId:preview.profileId,ruleset:preview.ruleset};
+ }
+ async function attachScene(){
+  if(!studio||typeof studio.createScene!=='function'||typeof studio.getCampaign!=='function')fail('Port STUDIO scène absent');
+  if(!state.entries.scene||!state.links.creatureInstanceId)fail('Valider la scène et copier la créature d’abord');
+  if(state.links.sceneId)fail('Scène déjà liée — pas de duplication automatique');
+  const d=state.drafts.scene;
+  await studio.createScene(d.title,d.publicDescription??'',d.privateNotes??'');
+  const current=studio.getCampaign();
+  const sceneId=current?.activeSceneId;
+  if(sceneId&&typeof studio.updateScene==='function'){
+   const s=current.scenes?.find(x=>x.id===sceneId);
+   if(s)await studio.updateScene({title:s.title,publicDescription:s.publicDescription??'',privateNotes:s.privateNotes??'',
+    participantIds:[...new Set([...(s.participantIds??[]),state.links.creatureInstanceId])]});
+  }
+  if(typeof sceneId!=='string'||!sceneId)fail('Création STUDIO non confirmée : réconciliation manuelle requise');
+  await commit(next=>{next.links.sceneId=sceneId;next.status='mj-validated';});
+  return {sceneId};
+ }
+ /** INDEX L004-C real contract, injected by 05. No catalog code is duplicated here. */
+ async function bindIndexChain(){
+  if(!indexChain||typeof indexChain.createDescriptiveChain!=='function'||
+      typeof indexChain.validateDescriptiveChain!=='function'||
+      typeof indexChain.createPrivateChainSnapshot!=='function'||
+      typeof indexChain.validatePrivateChainSnapshot!=='function')
+    fail('Contrat INDEX L004-C absent — chaîne descriptive indisponible');
+  if(!studio||typeof studio.getCampaign!=='function')fail('STUDIO requis pour une chaîne complète');
+  const campaign=studio.getCampaign(),s=copy();
+  if(!campaign||typeof campaign.id!=='string'||!ids.test(campaign.id))fail('Campagne STUDIO avec ID requise');
+  if(!CYCLE_STEPS.every(k=>s.entries[k]?.status==='mj-validated'))fail('Quatre validations descriptives MJ requises');
+  if(!s.links.creatureInstanceId||!s.links.sceneId||!s.links.creatureSource)fail('Copies réelles STUDIO créature/scène requises');
+  if(!campaign.creatures?.some(x=>x.id===s.links.creatureInstanceId)||
+      !campaign.scenes?.some(x=>x.id===s.links.sceneId))fail('Instances STUDIO manquantes : chaîne bloquée');
+  const origin=(sourceId,sourceVersion)=>({originKind:'campaign',sourceSchema:CYCLE_SCHEMA,sourceId,sourceVersion});
+  const catalogSource=kind=>{
+   const entry=s.entries[kind]?.catalogEntry;
+   if(!isObject(entry)||typeof entry.id!=='string'||typeof entry.schema!=='string'||
+      typeof entry.version!=='string'||!isObject(entry.provenance))fail('Référence INDEX descriptive incomplète : '+kind);
+   return {id:entry.id,version:entry.version,schema:entry.schema,
+    status:entry.definitionState??'experimental',provenance:cloneCycleJSON(entry.provenance)};
+  };
+  const itemSource=catalogSource('item'),capSource=catalogSource('capacity');
+  const creatureSource={id:s.links.creatureSource.documentId,version:s.entries.creature.version,
+   schema:'cer.creators.dg004.creature-source.v0',status:'draft',
+   provenance:origin(s.links.creatureSource.documentId,s.entries.creature.version),
+   documentCode:s.links.creatureSource.documentId,profileId:s.links.creatureSource.profileId,ruleset:s.links.creatureSource.ruleset};
+  const sceneDoc='scene-source-'+s.id;
+  const sceneSource={id:sceneDoc,version:s.entries.scene.version,
+   schema:'cer.creators.dg004.scene-source.v0',status:'draft',provenance:origin(sceneDoc,s.entries.scene.version)};
+  const chainInput={id:'chain:local:'+s.id.toLowerCase(),version:'0.1.0',campaignId:campaign.id,
+   provenance:origin(s.id,'0.1.0'),links:[
+    {kind:'item',source:itemSource,instance:{id:'item-'+s.id,campaignId:campaign.id},status:'proposed'},
+    {kind:'capability',source:capSource,status:'proposed'},
+    {kind:'creature',source:creatureSource,instance:{id:s.links.creatureInstanceId,campaignId:campaign.id},status:'proposed'},
+    {kind:'scene',source:sceneSource,instance:{id:s.links.sceneId,campaignId:campaign.id},status:'proposed'},
+   ]};
+  const result=indexChain.createDescriptiveChain(chainInput);
+  if(result?.ok!==true||result.executable!==false)fail('INDEX a refusé la chaîne : '+(result?.errors??[]).join('; '));
+  const validated=indexChain.validateDescriptiveChain(result.chain);
+  if(validated?.ok!==true||validated.executable!==false)fail('INDEX chaîne invalide');
+  // Source snapshots / drafts keep unknowns and different Grimoire/rite/INDEX versions untouched.
+  const originals=Object.fromEntries(CYCLE_STEPS.map(k=>[k,{
+   draft:cloneCycleJSON(s.drafts[k]),entry:cloneCycleJSON(s.entries[k]),rawSources:k==='item'?cloneCycleJSON(s.sourceSnapshots):[]}]));
+  const privateResult=indexChain.createPrivateChainSnapshot(validated.chain,originals);
+  if(privateResult?.ok!==true||privateResult.executable!==false||
+     indexChain.validatePrivateChainSnapshot(privateResult.snapshot)?.ok!==true)
+    fail('INDEX a refusé le snapshot confidentiel : '+(privateResult?.errors??[]).join('; '));
+  await commit(next=>{next.extensions.indexL004={chain:cloneCycleJSON(validated.chain),
+   privateSnapshot:cloneCycleJSON(privateResult.snapshot),visibility:'mj-private-only'};});
+  return {chain:cloneCycleJSON(validated.chain),snapshot:cloneCycleJSON(privateResult.snapshot),executable:false};
+ }
+ async function load(){await queue;const loaded=await persistence.load();if(loaded!==null)state=validateCycle(loaded);return copy();}
+ async function exportPrivate(){await queue;const s=copy(),out={kind:'cer.dg004.creators.confidential-export.v0',cycle:s};return encoder.encode(JSON.stringify(out));}
+ function previewRestore(input){
+  const bytes=input instanceof Uint8Array?new Uint8Array(input):null;
+  if(!bytes||!bytes.length||bytes.byteLength>MAX_CYCLE_BYTES)fail('Archive hors limites');
+  const obj=JSON.parse(decoder.decode(bytes));inspectJSON(obj);
+  if(!isObject(obj)||obj.kind!=='cer.dg004.creators.confidential-export.v0')fail('Archive privée inconnue');
+  const next=validateCycle(obj.cycle);
+  pendingRestore={state:next,token:idFactory()};
+  if(typeof pendingRestore.token!=='string'||!pendingRestore.token)fail('Jeton restauration indisponible');
+  return {token:pendingRestore.token,display:makeSummary(next),accepted:false};
+ }
+ async function acceptRestore(token){
+  if(!pendingRestore||token!==pendingRestore.token)fail('Restauration non prévisualisée');
+  const next=cloneCycleJSON(pendingRestore.state);
+  const op=queue.catch(()=>{}).then(async()=>{
+   const receipt=await persistence.save(next);
+   if(receipt?.saved!==true)fail('Restauration non enregistrée');
+   state=next;pendingRestore=null;return copy();
+  });queue=op.catch(()=>{});return op;
+ }
+ async function addOriginalSource(source){const snapshot=cloneCycleJSON(source);
+  return commit(next=>{next.sourceSnapshots.push(snapshot);});
+ }
+ /** Optional binary originals are held unmodified inside CONFIDENTIAL exports. No decoding, casting or version coercion. */
+ async function addOriginalSourceBytes(bytes,metadata={}){
+  if(!(bytes instanceof Uint8Array)||bytes.length===0||bytes.length>1024*1024)fail('Source brute hors limites (1 Mio)');
+  if(!globalThis.crypto?.subtle?.digest)fail('SHA-256 natif indisponible');
+  const snapshot=cloneCycleJSON(metadata),raw=new Uint8Array(bytes);
+  const hash=await globalThis.crypto.subtle.digest('SHA-256',raw);
+  const sha256=[...new Uint8Array(hash)].map(n=>n.toString(16).padStart(2,'0')).join('');
+  let rawBase64='';for(let i=0;i<raw.length;i+=8192)rawBase64+=String.fromCharCode(...raw.subarray(i,i+8192));
+  rawBase64=btoa(rawBase64);
+  return commit(next=>{next.sourceSnapshots.push({kind:'binary-original-private',rawBase64,sha256,byteLength:raw.length,metadata:snapshot});});
+ }
+
+ return {getState:copy,getDraft:draft,saveDraft,setMode,go,validateMJ,attachCreature,attachScene,
+  load,exportPrivate,previewRestore,acceptRestore,addOriginalSource,addOriginalSourceBytes,bindIndexChain};
+}
