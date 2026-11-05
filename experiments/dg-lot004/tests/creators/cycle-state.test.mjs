@@ -176,6 +176,7 @@ test('INDEX #97 — chaîne stricte injectée, quatre identités et snapshot pri
   },
   validateDescriptiveChain(chain){contractCalls.push(['validate']);return {ok:true,chain,executable:false}},
   createPrivateChainSnapshot(chain,rawSources){contractCalls.push(['private']);
+   assert.deepEqual(Object.keys(rawSources),['item','capability','creature','scene']);
    assert.equal(rawSources.scene.draft.privateNotes,'CANARI-PRIVE-NON-PARTAGE');
    assert.equal(rawSources.item.rawSources[0].grimoire.version,7);
    assert.equal(rawSources.item.rawSources[0].rites.version,'rite-text-v3');
