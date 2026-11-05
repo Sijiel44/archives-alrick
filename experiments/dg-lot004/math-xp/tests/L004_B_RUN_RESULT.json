@@ -1,0 +1,48 @@
+{
+  "schema": "cer.math.l004b.test-proof.v1",
+  "mandate": "DG-LOT-004/L004-B",
+  "source_pr": 85,
+  "source_base_commit": "2ab809ef5351940e0fc272b859d10f21de894d00",
+  "branch": "prototype/dg004-xp-math",
+  "environment": {
+    "node": "v22.16.0",
+    "typescript": "5.8.3",
+    "backend": "tsc fallback; esbuild unavailable in local container",
+    "checkout": "git clone blocked: DNS github.com"
+  },
+  "source_git_blobs": {
+    "quartz/components/scripts/atelier5d6-progression.ts": "d2040829ea0da7c0f6eae08dc8c701226bfc53c5",
+    "quartz/components/scripts/atelier5d6-probabilities.ts": "bfee984fad47902623f7117e9f024a5b6e042d2d",
+    "experiments/dg-lot004/math-xp/src/xp-decision.ts": "76daeb8ec21702e9ebcb27845ccd3d6b709ff574",
+    "experiments/dg-lot004/math-xp/tests/xp-decision.test.mjs": "b54a79387cfd8055960b306db2daf298861d7b30"
+  },
+  "commands": [
+    "git hash-object quartz/components/scripts/atelier5d6-progression.ts",
+    "git hash-object quartz/components/scripts/atelier5d6-probabilities.ts",
+    "tsc --target ES2022 --module commonjs --moduleResolution node --skipLibCheck --strict --noEmit experiments/dg-lot004/math-xp/src/xp-decision.ts",
+    "node --test experiments/dg-lot004/math-xp/tests/xp-decision.test.mjs"
+  ],
+  "results": {
+    "source_blobs_match": true,
+    "tsc_exit_code": 0,
+    "node_test_exit_code": 0,
+    "tests": 32,
+    "pass": 32,
+    "fail": 0,
+    "skip": 0,
+    "cancelled": 0,
+    "todo": 0
+  },
+  "original_local_tap_sha256": "4ffbcc76726da1692b1a1eefe4a53f6eafcf0767caeaef4b8b4513a73065a462",
+  "original_local_execution_log_sha256": "515ba7b26f3bf1b8d999bbaa344b3e1da6158aaa938d6a15979cd88a1f821dee",
+  "not_executed": [
+    "npm ci",
+    "npm test full repository",
+    "GitHub CI for this branch",
+    "browser/playwright",
+    "full clone esbuild",
+    "real historical saves",
+    "QA independent review"
+  ],
+  "note": "Results from isolated native TypeScript M01/probabilities, exact official Git blobs, not a Python model or a claimed full repository CI."
+}
