@@ -185,7 +185,8 @@ try{
  if(/"approved":true|"autoApply":true|"awardedXp":\d/.test(cycleRaw))
   fail('CYCLE_AUTO_AUTHORITY');
  console.log('DG004_CREATOR_CHAIN_BROWSER_OK',JSON.stringify({item:true,capacity:true,creatureInstance:!!cycleState.links.creatureInstanceId,
-  scene:!!cycleState.links.sceneId,indexPrivate:true,xpPreview:true,autoApply:false}));\n const spaces=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")})');
+  scene:!!cycleState.links.sceneId,indexPrivate:true,xpPreview:true,autoApply:false}));
+ const spaces=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")})');
  if(spaces.real!=='REAL_MJ_NOT_DEMO'||!spaces.demo)fail('OWNER_NAMESPACE_FAIL '+JSON.stringify(spaces));
  await mj.eval(click('Ouvrir la fenêtre joueur'));
  const ownerPlayerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)&&x.url!==playerTarget.url),110);
