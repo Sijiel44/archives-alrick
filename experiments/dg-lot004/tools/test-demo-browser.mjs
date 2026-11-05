@@ -1,6 +1,6 @@
 /** L004 genuine Chrome/HTTP demonstration walkthrough, isolated test profile, no mocks. */
 import {spawn,spawnSync} from 'node:child_process';
-import {mkdtemp,rm,readFile} from 'node:fs/promises';
+import {mkdtemp,rm,readFile,mkdir,readdir,writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join,resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -102,7 +102,84 @@ try{
  const after=await mj.eval('({privateEnvelope:localStorage.getItem("cer.dg003.private.campaign.v0"),marker:localStorage.getItem("cer.dg004.demo.marker.v0"),unrelated:localStorage.getItem("dg004-unrelated")})');
  if(after.privateEnvelope!==null||after.marker!==null||after.unrelated!=='keep')
   fail('DG004_ROLLBACK_CHANGED_OTHER_DATA '+JSON.stringify(after));
- player.close();mj.close();
+ player.close();
+ // Real STUDIO owner page, separate from L003 and the earlier integrator demo.
+ if((await fetch(MJ+'/dg004-demo.html')).status!==200||
+    (await fetch(PLAYER+'/dg004-demo.html')).status!==404||
+    (await fetch(PLAYER+'/assets/demo.js')).status!==404)fail('OWNER_ORIGIN_ROUTE_FAIL');
+ await mj.eval('localStorage.setItem("cer.dg003.private.campaign.v0","REAL_MJ_NOT_DEMO")');
+ await mj.call('Page.enable');
+ await mj.call('Page.navigate',{url:MJ+'/dg004-demo.html'});
+ await until(()=>mj.eval('!!document.querySelector("[data-l004-demo]")'),100);
+ const loaded=await mj.eval('document.querySelector("#status")?.textContent');
+ if(!loaded?.includes('propriétaire monté'))fail('OWNER_MOUNT_FAIL '+loaded);
+ const ownerStatus=()=>mj.eval('document.querySelector("[aria-label=\"Guide de démonstration\"] [role=\"status\"]")?.textContent');
+ async function step(label,expected){
+  await mj.eval(click(label));
+  await until(async()=>{
+   const status=await ownerStatus();
+   if(status?.includes('Action refusée'))fail('OWNER_STEP_REJECTED '+label+' '+status);
+   return mj.eval(textContains(expected));
+  },110);
+ }
+ await step('Créer campagne fictive','Campagne active : Campagne vitrine');
+ await step('Prévisualiser PJ fictif','À importer');
+ await step('Accepter copie PJ','PJ copiés :');
+ await step('Prévisualiser créature fictive','Créature témoin N5');
+ await step('Accepter copie créature','Copies : Créature témoin N5');
+ await step('Créer scène et notes MJ fictives','La Lanterne des Deux Rives');
+ const spaces=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")})');
+ if(spaces.real!=='REAL_MJ_NOT_DEMO'||!spaces.demo)fail('OWNER_NAMESPACE_FAIL '+JSON.stringify(spaces));
+ await mj.eval(click('Ouvrir la fenêtre joueur'));
+ const ownerPlayerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)&&x.id!==playerTarget.id),110);
+ const ownerPlayer=await CDP.open(ownerPlayerTarget.webSocketDebuggerUrl);
+ await ownerPlayer.call('Runtime.enable');
+ await until(()=>mj.eval(textContains('Fenêtre joueur connectée')),110);
+ await mj.eval(checkbox);
+ await mj.eval(click('Publier uniquement la sélection'));
+ await until(()=>ownerPlayer.eval(textContains('La Lanterne des Deux Rives')),110);
+ const published=await ownerPlayer.eval('document.documentElement.outerHTML+JSON.stringify(localStorage)');
+ if(/SENTINELLE_MJ_L004_FICTIVE|DG004_FAKE_PRIVATE|privateSnapshot|demo.only|fictional.session/.test(published)||
+    await ownerPlayer.eval('localStorage.length')!==0)fail('OWNER_PRIVATE_CANARY_LEAK');
+ // Verify the owner ARCHIVES allowlist refuses a foreign backup before native preview.
+ const foreign=join(tmp,'foreign.json');
+ await writeFile(foreign,JSON.stringify({schema:'foreign',unknown:'REAL_MJ'}));
+ await mj.call('DOM.enable');
+ async function uploadOwner(file){
+  const rootId=(await mj.call('DOM.getDocument')).root.nodeId;
+  const id=(await mj.call('DOM.querySelector',{nodeId:rootId,selector:'input[type="file"][aria-label="Fichier de restauration confidentiel"]'})).nodeId;
+  if(!id)fail('OWNER_FILE_INPUT_MISSING');
+  await mj.call('DOM.setFileInputFiles',{nodeId:id,files:[file]});
+ }
+ await uploadOwner(foreign);
+ await mj.eval(click('Prévisualiser restauration'));
+ await until(()=>mj.eval(textContains('Archive non reconnue comme export fictif')),100);
+ const downloadDir=join(tmp,'owner-export');
+ await mkdir(downloadDir,{recursive:true});
+ await mj.call('Page.setDownloadBehavior',{behavior:'allow',downloadPath:downloadDir});
+ await mj.eval(click('Exporter campagne CONFIDENTIELLE'));
+ const backup=await until(async()=>{
+  const files=(await readdir(downloadDir)).filter(x=>x.endsWith('.json'));
+  return files.length===1?join(downloadDir,files[0]):null;
+ },100);
+ const ownerBytes=new Uint8Array(await readFile(backup));
+ if(ownerBytes.length<512||ownerBytes.length>1024*1024)fail('OWNER_NATIVE_EXPORT_INVALID '+ownerBytes.length);
+ await uploadOwner(backup);
+ await mj.eval(click('Prévisualiser restauration'));
+ await until(()=>mj.eval(textContains('Restauration proposée')),110);
+ await mj.eval(click('Confirmer restauration'));
+ await until(()=>mj.eval(textContains('Campagne restaurée')),110);
+ if((await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")'))!=='REAL_MJ_NOT_DEMO')
+  fail('OWNER_RESTORE_OVERWROTE_REAL');
+ await mj.eval(click('Quitter et effacer la démonstration dédiée'));
+ await until(()=>mj.eval(textContains('DG004_OWNER_CLEARED')),110);
+ const final=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0"),allow:localStorage.getItem("cer.dg004.demo.only.v0.approved-backup-sha256")})');
+ if(final.real!=='REAL_MJ_NOT_DEMO'||final.demo!==null||final.allow!==null)
+  fail('OWNER_ROLLBACK_FAIL '+JSON.stringify(final));
+ ownerPlayer.close();mj.close();
+ console.log('DG004_STUDIO_OWNER_BROWSER_OK',JSON.stringify({ownerCommit:'18602be2d0b281478ebd9693b6ff0be63ef862ee',
+  v3PJ:true,creature:true,scene:true,namespace:true,privateCanaryAbsent:true,
+  foreignArchiveRejected:true,backupBytes:ownerBytes.length,roundtrip:true,rollback:true,oldMJIntact:true}));
  console.log('DG004_BROWSER_DEMO_OK',JSON.stringify({source:'local-only',originMJ:MJ,originPlayer:PLAYER,
   optIn:true,builderHttpChecks:builderProbe.checks.length,builderNavigationSteps:nav.count,seededPJ:1,seededCreature:1,seededScenes:1,playerCanaryAbsent:true,rollback:true,unrelatedKept:true}));
 }catch(error){console.error('DG004_BROWSER_FAIL',error.stack??error.message,JSON.stringify({stderr:stderr.slice(-1400),out:out.slice(-500)}));process.exitCode=1;}
