@@ -135,7 +135,11 @@ try{
  // real ATELIERS guided chain. Neither may credit XP or publish to the player.
  const xpBefore=await mj.eval('localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")');
  await mj.eval(click('Prévisualiser XP fictifs (sans attribution)'));
- await until(()=>mj.eval('document.querySelector("#dg004-xp-preview [role=status]")?.textContent.includes("DG004_XP_PREVIEW_OK")'),100);
+ await until(async()=>{
+  const value=await mj.eval('document.querySelector("#dg004-xp-preview [role=status]")?.textContent');
+  if(value?.includes('DG004_XP_UNAVAILABLE'))fail('MATH_INDEX_M01_XP_REJECTED: '+value);
+  return value?.includes('DG004_XP_PREVIEW_OK');
+ },100);
  if(await mj.eval('localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")')!==xpBefore)
   fail('XP_PREVIEW_CHANGED_CAMPAIGN');
  const getCycle=()=>mj.eval('(()=>{const e=document.querySelector("#dg004-cycle-root pre.cycle-preview");return e?JSON.parse(e.textContent):null;})()');
