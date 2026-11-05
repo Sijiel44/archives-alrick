@@ -1,0 +1,6 @@
+1248ecfa1b2606726729cbe392162e03939488691c8d71e4827c8461e51e3665  experiments/dg-lot004/builder/src/browser-smoke.mjs
+424be531b3f1ba8f54c45bf181d40071ad36ab1fbd812534604540182db44ff4  experiments/dg-lot004/builder/src/contract.mjs
+ee9522edef4d49eec3c898720320aa24a730e959a486061d13a8f8e3108db4ac  experiments/dg-lot004/builder/src/launch-local.mjs
+6bc3eece0df9c15700340d164119c5a05b92e5d11f2a5a5b8d7a139f58381379  experiments/dg-lot004/builder/src/navigation.mjs
+f105156a076ee243cf2cc879a76d0b1f0bcd64ff3856597c13a7ea359cb295af  experiments/dg-lot004/builder/src/probe.mjs
+924490f5be2d10e662a51a110a9a11ecacfc09cbf68b21c1d05089cee4b9cb52  experiments/dg-lot004/builder/tests/ports.test.mjs
