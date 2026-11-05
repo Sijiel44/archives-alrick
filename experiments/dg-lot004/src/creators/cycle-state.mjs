@@ -223,7 +223,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   const validated=indexChain.validateDescriptiveChain(result.chain);
   if(validated?.ok!==true||validated.executable!==false)fail('INDEX chaîne invalide');
   // Source snapshots / drafts keep unknowns and different Grimoire/rite/INDEX versions untouched.
-  const originals=Object.fromEntries(CYCLE_STEPS.map(k=>[k,{
+  const originals=Object.fromEntries(CYCLE_STEPS.map(k=>[k==='capacity'?'capability':k,{
    draft:cloneCycleJSON(s.drafts[k]),entry:cloneCycleJSON(s.entries[k]),rawSources:k==='item'?cloneCycleJSON(s.sourceSnapshots):[]}]));
   const privateResult=indexChain.createPrivateChainSnapshot(validated.chain,originals);
   if(privateResult?.ok!==true||privateResult.executable!==false||
