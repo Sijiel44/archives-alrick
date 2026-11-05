@@ -1,0 +1,694 @@
+TAP version 13
+# Subtest: R2 01 repro Chrome \#95 : pj:l004-hero-fiction est accepté, exact, sans alias
+ok 1 - R2 01 repro Chrome \#95 : pj:l004-hero-fiction est accepté, exact, sans alias
+  ---
+  duration_ms: 8.321749
+  type: 'test'
+  ...
+# Subtest: R2 02 régression MATH \#99: deux-points natifs et run préservés
+ok 2 - R2 02 régression MATH \#99: deux-points natifs et run préservés
+  ---
+  duration_ms: 1.134167
+  type: 'test'
+  ...
+# Subtest: R2 03 aucune alias colon ↔ tiret
+ok 3 - R2 03 aucune alias colon ↔ tiret
+  ---
+  duration_ms: 2.964054
+  type: 'test'
+  ...
+# Subtest: R2 04 aucune normalisation de casse de l’instance
+ok 4 - R2 04 aucune normalisation de casse de l’instance
+  ---
+  duration_ms: 0.964628
+  type: 'test'
+  ...
+# Subtest: R2 05 ID typed incomplet refusé structuré
+ok 5 - R2 05 ID typed incomplet refusé structuré
+  ---
+  duration_ms: 1.309452
+  type: 'test'
+  ...
+# Subtest: R2 06 longueur maximale MATH ID 40 acceptée
+ok 6 - R2 06 longueur maximale MATH ID 40 acceptée
+  ---
+  duration_ms: 0.249551
+  type: 'test'
+  ...
+# Subtest: R2 07 longueur 41 refusée avec path stable
+ok 7 - R2 07 longueur 41 refusée avec path stable
+  ---
+  duration_ms: 0.684674
+  type: 'test'
+  ...
+# Subtest: R2 08 entrées longues acceptées avec empreinte entière, jamais tronquées
+ok 8 - R2 08 entrées longues acceptées avec empreinte entière, jamais tronquées
+  ---
+  duration_ms: 0.872441
+  type: 'test'
+  ...
+# Subtest: R2 09 erreur de clé détournée : code stable et pas d’autorisation
+ok 9 - R2 09 erreur de clé détournée : code stable et pas d’autorisation
+  ---
+  duration_ms: 1.182443
+  type: 'test'
+  ...
+# Subtest: R2 10 collision d’un même ID entre deux instances
+ok 10 - R2 10 collision d’un même ID entre deux instances
+  ---
+  duration_ms: 1.249744
+  type: 'test'
+  ...
+# Subtest: R2 11 ancien v1 reste lisible sans modification silencieuse
+ok 11 - R2 11 ancien v1 reste lisible sans modification silencieuse
+  ---
+  duration_ms: 1.858798
+  type: 'test'
+  ...
+# Subtest: R2 12 même source v1 et v2 ne peut doubler crédit
+ok 12 - R2 12 même source v1 et v2 ne peut doubler crédit
+  ---
+  duration_ms: 1.611713
+  type: 'test'
+  ...
+# Subtest: R2 13 source enrichie rencontre et participant PJ/PNJ validés
+ok 13 - R2 13 source enrichie rencontre et participant PJ/PNJ validés
+  ---
+  duration_ms: 1.359978
+  type: 'test'
+  ...
+# Subtest: R2 14 PNJ exclu explicitement de la sélection
+ok 14 - R2 14 PNJ exclu explicitement de la sélection
+  ---
+  duration_ms: 0.719566
+  type: 'test'
+  ...
+# Subtest: R2 15 suggestion cible PJ non sélectionné rejetée
+ok 15 - R2 15 suggestion cible PJ non sélectionné rejetée
+  ---
+  duration_ms: 0.652687
+  type: 'test'
+  ...
+# Subtest: R2 16 niveau ennemi 26 refusé, indice M01 1..12 indépendant
+ok 16 - R2 16 niveau ennemi 26 refusé, indice M01 1..12 indépendant
+  ---
+  duration_ms: 1.928673
+  type: 'test'
+  ...
+# Subtest: R2 17 témoin N25 accepté comme menace, pas comme indice XP M01
+ok 17 - R2 17 témoin N25 accepté comme menace, pas comme indice XP M01
+  ---
+  duration_ms: 0.579916
+  type: 'test'
+  ...
+# Subtest: R2 18 doublon participant ou menace rejeté
+ok 18 - R2 18 doublon participant ou menace rejeté
+  ---
+  duration_ms: 1.524923
+  type: 'test'
+  ...
+# Subtest: R2 19 aide PNJ décisive requiert PNJ présent et justification
+ok 19 - R2 19 aide PNJ décisive requiert PNJ présent et justification
+  ---
+  duration_ms: 1.397187
+  type: 'test'
+  ...
+# Subtest: R2 20 one-shot run non concordant interdit, sans alias
+ok 20 - R2 20 one-shot run non concordant interdit, sans alias
+  ---
+  duration_ms: 0.610721
+  type: 'test'
+  ...
+# Subtest: R2 21 même accomplishment boss/quête ⇒ même idempotence et rejet registre
+ok 21 - R2 21 même accomplishment boss/quête ⇒ même idempotence et rejet registre
+  ---
+  duration_ms: 1.495324
+  type: 'test'
+  ...
+# Subtest: R2 22 accomplissements distincts, raison distincte : deux sources traçables
+ok 22 - R2 22 accomplissements distincts, raison distincte : deux sources traçables
+  ---
+  duration_ms: 2.377703
+  type: 'test'
+  ...
+# Subtest: R2 23 même source entre deux PJ éligibles = deux suggestions, pas de division
+ok 23 - R2 23 même source entre deux PJ éligibles = deux suggestions, pas de division
+  ---
+  duration_ms: 1.727092
+  type: 'test'
+  ...
+# Subtest: R2 24 versions/corrections garde l’identité d’accomplissement
+ok 24 - R2 24 versions/corrections garde l’identité d’accomplissement
+  ---
+  duration_ms: 3.028423
+  type: 'test'
+  ...
+# Subtest: R2 25 correction qui altère accomplishmentId bloque la continuité
+ok 25 - R2 25 correction qui altère accomplishmentId bloque la continuité
+  ---
+  duration_ms: 1.852018
+  type: 'test'
+  ...
+# Subtest: R2 26 correction qui altère run bloque la continuité
+ok 26 - R2 26 correction qui altère run bloque la continuité
+  ---
+  duration_ms: 1.808924
+  type: 'test'
+  ...
+# Subtest: R2 27 tentative forged approvedByMJ:true bloquée en contexte
+ok 27 - R2 27 tentative forged approvedByMJ:true bloquée en contexte
+  ---
+  duration_ms: 0.582259
+  type: 'test'
+  ...
+# Subtest: R2 28 aucune suggestion n’inscrit récompense ou level-up
+ok 28 - R2 28 aucune suggestion n’inscrit récompense ou level-up
+  ---
+  duration_ms: 1.187336
+  type: 'test'
+  ...
+# Subtest: R2 29 confiance MATH séparée : source/participant journal référencée sans XP
+ok 29 - R2 29 confiance MATH séparée : source/participant journal référencée sans XP
+  ---
+  duration_ms: 3.675192
+  type: 'test'
+  ...
+# Subtest: R2 30 receipt MATH PJ divergent refuse
+ok 30 - R2 30 receipt MATH PJ divergent refuse
+  ---
+  duration_ms: 3.055107
+  type: 'test'
+  ...
+# Subtest: R2 31 receipt contrefait avec approved:true refusé
+ok 31 - R2 31 receipt contrefait avec approved:true refusé
+  ---
+  duration_ms: 0.891411
+  type: 'test'
+  ...
+# Subtest: R2 32 snapshot registre enrichi JSON roundtrip conserve identité/provenance/inconnus permis
+ok 32 - R2 32 snapshot registre enrichi JSON roundtrip conserve identité/provenance/inconnus permis
+  ---
+  duration_ms: 4.141816
+  type: 'test'
+  ...
+# Subtest: R2 33 schéma MATH cité, pas de champ d’autorité validé depuis INDEX
+ok 33 - R2 33 schéma MATH cité, pas de champ d’autorité validé depuis INDEX
+  ---
+  duration_ms: 1.055332
+  type: 'test'
+  ...
+# Subtest: R2 34 MATH sourceEventId JSON canonique identique encounter/quest
+ok 34 - R2 34 MATH sourceEventId JSON canonique identique encounter/quest
+  ---
+  duration_ms: 2.183788
+  type: 'test'
+  ...
+# Subtest: R2 35 journal MATH historisé JSON autorisé sans normalisation
+ok 35 - R2 35 journal MATH historisé JSON autorisé sans normalisation
+  ---
+  duration_ms: 1.063774
+  type: 'test'
+  ...
+# Subtest: R2 36 historique M01 JSON forgé/ref altérée refusée
+ok 36 - R2 36 historique M01 JSON forgé/ref altérée refusée
+  ---
+  duration_ms: 1.16129
+  type: 'test'
+  ...
+# Subtest: R2 37 PNJ faussement typé PJ refusé même si sélectionné
+ok 37 - R2 37 PNJ faussement typé PJ refusé même si sélectionné
+  ---
+  duration_ms: 0.44251
+  type: 'test'
+  ...
+# Subtest: R2 38 un PJ camouflé en PNJ est refusé
+ok 38 - R2 38 un PJ camouflé en PNJ est refusé
+  ---
+  duration_ms: 1.009441
+  type: 'test'
+  ...
+# Subtest: R2 39 fragment importable vers MATH \#99 sans eventApprovedByMJ ni ledgers
+ok 39 - R2 39 fragment importable vers MATH \#99 sans eventApprovedByMJ ni ledgers
+  ---
+  duration_ms: 1.603375
+  type: 'test'
+  ...
+# Subtest: R2 40 fragment MATH refuse suggestion sans sourceContext
+ok 40 - R2 40 fragment MATH refuse suggestion sans sourceContext
+  ---
+  duration_ms: 0.616444
+  type: 'test'
+  ...
+# Subtest: R2 41 fragment signale difficulté manquante, sans l’inventer
+ok 41 - R2 41 fragment signale difficulté manquante, sans l’inventer
+  ---
+  duration_ms: 1.668202
+  type: 'test'
+  ...
+# Subtest: R2 42 reproduit exactement l’événement du runtime intégration \#95
+ok 42 - R2 42 reproduit exactement l’événement du runtime intégration \#95
+  ---
+  duration_ms: 0.405292
+  type: 'test'
+  ...
+# Subtest: R2 43 scénario \#95 alternatif PJ importé pj:dg004-fake-pj
+ok 43 - R2 43 scénario \#95 alternatif PJ importé pj:dg004-fake-pj
+  ---
+  duration_ms: 0.479133
+  type: 'test'
+  ...
+# Subtest: R2 44 cas erreur preview XP inclut code/issue
+ok 44 - R2 44 cas erreur preview XP inclut code/issue
+  ---
+  duration_ms: 0.614422
+  type: 'test'
+  ...
+# Subtest: R2 45 aucun désaccord silencieux entre indice INDEX et indice explicite MATH
+ok 45 - R2 45 aucun désaccord silencieux entre indice INDEX et indice explicite MATH
+  ---
+  duration_ms: 0.904337
+  type: 'test'
+  ...
+# Subtest: R2 46 indice absent : laisser MATH proposer via étiquette, ne pas inventer barème
+ok 46 - R2 46 indice absent : laisser MATH proposer via étiquette, ne pas inventer barème
+  ---
+  duration_ms: 0.539764
+  type: 'test'
+  ...
+# Subtest: R2 47 id stable SHA256 complet vérifié par Node crypto, jamais un alias
+ok 47 - R2 47 id stable SHA256 complet vérifié par Node crypto, jamais un alias
+  ---
+  duration_ms: 1.108773
+  type: 'test'
+  ...
+# Subtest: R2 48 même événement/PJ/run dans deux campagnes : ID et clé distincts
+ok 48 - R2 48 même événement/PJ/run dans deux campagnes : ID et clé distincts
+  ---
+  duration_ms: 0.883697
+  type: 'test'
+  ...
+# Subtest: R2 49 namespace invalide et borne rejetés avec erreur structurée
+ok 49 - R2 49 namespace invalide et borne rejetés avec erreur structurée
+  ---
+  duration_ms: 0.316013
+  type: 'test'
+  ...
+# Subtest: R2 50 SHA256 long multi-bloc conforme à node:crypto et sans collision tronquée
+ok 50 - R2 50 SHA256 long multi-bloc conforme à node:crypto et sans collision tronquée
+  ---
+  duration_ms: 0.674575
+  type: 'test'
+  ...
+# Subtest: XP01 schema et création inerte
+ok 51 - XP01 schema et création inerte
+  ---
+  duration_ms: 8.291986
+  type: 'test'
+  ...
+# Subtest: XP02 identité stable et idempotence déterministe
+ok 52 - XP02 identité stable et idempotence déterministe
+  ---
+  duration_ms: 3.473105
+  type: 'test'
+  ...
+# Subtest: XP03 isolation des entrées originales
+ok 53 - XP03 isolation des entrées originales
+  ---
+  duration_ms: 0.506472
+  type: 'test'
+  ...
+# Subtest: XP04 niveau initial 1 accepté
+ok 54 - XP04 niveau initial 1 accepté
+  ---
+  duration_ms: 0.586486
+  type: 'test'
+  ...
+# Subtest: XP05 niveau initial 25 accepté
+ok 55 - XP05 niveau initial 25 accepté
+  ---
+  duration_ms: 0.462826
+  type: 'test'
+  ...
+# Subtest: XP06 niveau initial 0 refusé
+ok 56 - XP06 niveau initial 0 refusé
+  ---
+  duration_ms: 0.940093
+  type: 'test'
+  ...
+# Subtest: XP07 niveau initial 26 refusé
+ok 57 - XP07 niveau initial 26 refusé
+  ---
+  duration_ms: 0.536084
+  type: 'test'
+  ...
+# Subtest: XP08 difficulté 1 acceptée
+ok 58 - XP08 difficulté 1 acceptée
+  ---
+  duration_ms: 0.739954
+  type: 'test'
+  ...
+# Subtest: XP09 difficulté 12 acceptée
+ok 59 - XP09 difficulté 12 acceptée
+  ---
+  duration_ms: 0.698498
+  type: 'test'
+  ...
+# Subtest: XP10 difficulté 0 refusée
+ok 60 - XP10 difficulté 0 refusée
+  ---
+  duration_ms: 0.702981
+  type: 'test'
+  ...
+# Subtest: XP11 difficulté 13 refusée
+ok 61 - XP11 difficulté 13 refusée
+  ---
+  duration_ms: 0.56586
+  type: 'test'
+  ...
+# Subtest: XP12 domaine M01 inconnu refusé
+ok 62 - XP12 domaine M01 inconnu refusé
+  ---
+  duration_ms: 0.307177
+  type: 'test'
+  ...
+# Subtest: XP13 statut version et provenance invalides refusés
+ok 63 - XP13 statut version et provenance invalides refusés
+  ---
+  duration_ms: 0.984013
+  type: 'test'
+  ...
+# Subtest: XP14 approved:true injection refusée
+ok 64 - XP14 approved:true injection refusée
+  ---
+  duration_ms: 0.443622
+  type: 'test'
+  ...
+# Subtest: XP15 injection XP explicite refusée
+ok 65 - XP15 injection XP explicite refusée
+  ---
+  duration_ms: 0.592342
+  type: 'test'
+  ...
+# Subtest: XP16 attack payload et getter JS refusés
+ok 66 - XP16 attack payload et getter JS refusés
+  ---
+  duration_ms: 0.297055
+  type: 'test'
+  ...
+# Subtest: XP17 prototypes hostiles refusés
+ok 67 - XP17 prototypes hostiles refusés
+  ---
+  duration_ms: 0.163281
+  type: 'test'
+  ...
+# Subtest: XP18 no provider no invented XP
+ok 68 - XP18 no provider no invented XP
+  ---
+  duration_ms: 0.850695
+  type: 'test'
+  ...
+# Subtest: XP19 pas d’historique implicite
+ok 69 - XP19 pas d’historique implicite
+  ---
+  duration_ms: 0.360694
+  type: 'test'
+  ...
+# Subtest: XP20 prévisualisation pure avec port injecté (stub non attesté)
+ok 70 - XP20 prévisualisation pure avec port injecté (stub non attesté)
+  ---
+  duration_ms: 0.479641
+  type: 'test'
+  ...
+# Subtest: XP21 résultat de port invalide bloqué
+ok 71 - XP21 résultat de port invalide bloqué
+  ---
+  duration_ms: 0.988816
+  type: 'test'
+  ...
+# Subtest: XP22 majeur jamais approuvé par INDEX
+ok 72 - XP22 majeur jamais approuvé par INDEX
+  ---
+  duration_ms: 0.390354
+  type: 'test'
+  ...
+# Subtest: XP23 légendaire jamais approuvé par INDEX
+ok 73 - XP23 légendaire jamais approuvé par INDEX
+  ---
+  duration_ms: 0.2656
+  type: 'test'
+  ...
+# Subtest: XP24 correction avance version et audit, sans mutation
+ok 74 - XP24 correction avance version et audit, sans mutation
+  ---
+  duration_ms: 1.168753
+  type: 'test'
+  ...
+# Subtest: XP25 correction semver non croissant refusée
+ok 75 - XP25 correction semver non croissant refusée
+  ---
+  duration_ms: 0.383542
+  type: 'test'
+  ...
+# Subtest: XP26 changement événement lors correction refusé
+ok 76 - XP26 changement événement lors correction refusé
+  ---
+  duration_ms: 0.338602
+  type: 'test'
+  ...
+# Subtest: XP27 changement one-shot run lors correction refusé
+ok 77 - XP27 changement one-shot run lors correction refusé
+  ---
+  duration_ms: 1.925533
+  type: 'test'
+  ...
+# Subtest: XP28 correction de one-shot conserve run
+ok 78 - XP28 correction de one-shot conserve run
+  ---
+  duration_ms: 0.552689
+  type: 'test'
+  ...
+# Subtest: XP29 révision sans parent non valide
+ok 79 - XP29 révision sans parent non valide
+  ---
+  duration_ms: 0.332357
+  type: 'test'
+  ...
+# Subtest: XP30 registre collision id-version
+ok 80 - XP30 registre collision id-version
+  ---
+  duration_ms: 0.692207
+  type: 'test'
+  ...
+# Subtest: XP31 registre idempotence entre ID divers
+ok 81 - XP31 registre idempotence entre ID divers
+  ---
+  duration_ms: 0.620604
+  type: 'test'
+  ...
+# Subtest: XP32 registre correction orpheline
+ok 82 - XP32 registre correction orpheline
+  ---
+  duration_ms: 0.50836
+  type: 'test'
+  ...
+# Subtest: XP33 runs de one-shot distincts à identité distincte
+ok 83 - XP33 runs de one-shot distincts à identité distincte
+  ---
+  duration_ms: 1.631603
+  type: 'test'
+  ...
+# Subtest: XP34 retrait définitif
+ok 84 - XP34 retrait définitif
+  ---
+  duration_ms: 0.525103
+  type: 'test'
+  ...
+# Subtest: M01-PORT1 matrice indisponible sans MATH
+ok 85 - M01-PORT1 matrice indisponible sans MATH
+  ---
+  duration_ms: 0.291379
+  type: 'test'
+  ...
+# Subtest: M01-PORT2 niveau et résultat M01 restitués sans calcul ajouté (stub)
+ok 86 - M01-PORT2 niveau et résultat M01 restitués sans calcul ajouté (stub)
+  ---
+  duration_ms: 0.278649
+  type: 'test'
+  ...
+# Subtest: M01-PORT3 niveaux de la matrice imposés
+ok 87 - M01-PORT3 niveaux de la matrice imposés
+  ---
+  duration_ms: 0.077795
+  type: 'test'
+  ...
+# Subtest: M01-PORT4 délégataire incohérent refusé
+ok 88 - M01-PORT4 délégataire incohérent refusé
+  ---
+  duration_ms: 0.178145
+  type: 'test'
+  ...
+# Subtest: CHAIN01 création des 4 références et statuts
+ok 89 - CHAIN01 création des 4 références et statuts
+  ---
+  duration_ms: 3.32736
+  type: 'test'
+  ...
+# Subtest: CHAIN02 validation non mutante
+ok 90 - CHAIN02 validation non mutante
+  ---
+  duration_ms: 0.901679
+  type: 'test'
+  ...
+# Subtest: CHAIN03 relations seulement descriptives
+ok 91 - CHAIN03 relations seulement descriptives
+  ---
+  duration_ms: 0.788499
+  type: 'test'
+  ...
+# Subtest: CHAIN04 source et instance restent distincts
+ok 92 - CHAIN04 source et instance restent distincts
+  ---
+  duration_ms: 1.022199
+  type: 'test'
+  ...
+# Subtest: CHAIN05 collision de deux instances
+ok 93 - CHAIN05 collision de deux instances
+  ---
+  duration_ms: 0.873829
+  type: 'test'
+  ...
+# Subtest: CHAIN06 campagne inter-tenant refusée
+ok 94 - CHAIN06 campagne inter-tenant refusée
+  ---
+  duration_ms: 2.077258
+  type: 'test'
+  ...
+# Subtest: CHAIN07 capacité doit être une identité catalogue
+ok 95 - CHAIN07 capacité doit être une identité catalogue
+  ---
+  duration_ms: 1.264046
+  type: 'test'
+  ...
+# Subtest: CHAIN08 créature sans profil/ruleset refusée
+ok 96 - CHAIN08 créature sans profil/ruleset refusée
+  ---
+  duration_ms: 0.851369
+  type: 'test'
+  ...
+# Subtest: CHAIN09 magnitude et objets numériques refusés
+ok 97 - CHAIN09 magnitude et objets numériques refusés
+  ---
+  duration_ms: 0.698418
+  type: 'test'
+  ...
+# Subtest: CHAIN10 approved:true forgé refusé
+ok 98 - CHAIN10 approved:true forgé refusé
+  ---
+  duration_ms: 0.560151
+  type: 'test'
+  ...
+# Subtest: CHAIN11 origine native sans SHA Git refusée
+ok 99 - CHAIN11 origine native sans SHA Git refusée
+  ---
+  duration_ms: 0.706928
+  type: 'test'
+  ...
+# Subtest: CHAIN12 version invalide refusée
+ok 100 - CHAIN12 version invalide refusée
+  ---
+  duration_ms: 0.709738
+  type: 'test'
+  ...
+# Subtest: CHAIN13 les deux fiches L003 sont valides et descriptives
+ok 101 - CHAIN13 les deux fiches L003 sont valides et descriptives
+  ---
+  duration_ms: 0.538612
+  type: 'test'
+  ...
+# Subtest: CHAIN14 refus des entrées sort/attaque chiffrée
+ok 102 - CHAIN14 refus des entrées sort/attaque chiffrée
+  ---
+  duration_ms: 0.577166
+  type: 'test'
+  ...
+# Subtest: CHAIN15 snapshot privé roundtrip et inconnus intacts
+ok 103 - CHAIN15 snapshot privé roundtrip et inconnus intacts
+  ---
+  duration_ms: 2.233317
+  type: 'test'
+  ...
+# Subtest: CHAIN16 mutation de source après snapshot impossible
+ok 104 - CHAIN16 mutation de source après snapshot impossible
+  ---
+  duration_ms: 0.729594
+  type: 'test'
+  ...
+# Subtest: CHAIN17 export de preview MJ sans canaris privés
+ok 105 - CHAIN17 export de preview MJ sans canaris privés
+  ---
+  duration_ms: 1.378308
+  type: 'test'
+  ...
+# Subtest: CHAIN18 flûte narrative sans malus numérique automatique
+ok 106 - CHAIN18 flûte narrative sans malus numérique automatique
+  ---
+  duration_ms: 0.666261
+  type: 'test'
+  ...
+# Subtest: CHAIN19 bad snapshot public refusé
+ok 107 - CHAIN19 bad snapshot public refusé
+  ---
+  duration_ms: 1.363744
+  type: 'test'
+  ...
+# Subtest: CHAIN20 raw sources manquantes refusées
+ok 108 - CHAIN20 raw sources manquantes refusées
+  ---
+  duration_ms: 0.60041
+  type: 'test'
+  ...
+# Subtest: CHAIN21 prototype pollution refusée
+ok 109 - CHAIN21 prototype pollution refusée
+  ---
+  duration_ms: 0.67158
+  type: 'test'
+  ...
+# Subtest: CHAIN22 JSON accessors refusés
+ok 110 - CHAIN22 JSON accessors refusés
+  ---
+  duration_ms: 0.345155
+  type: 'test'
+  ...
+# Subtest: CHAIN23 source statut reste documentaire, ne devient pas approbation
+ok 111 - CHAIN23 source statut reste documentaire, ne devient pas approbation
+  ---
+  duration_ms: 0.549139
+  type: 'test'
+  ...
+# Subtest: CHAIN24 source inconnue conservée dans snapshot et jamais au preview
+ok 112 - CHAIN24 source inconnue conservée dans snapshot et jamais au preview
+  ---
+  duration_ms: 0.98199
+  type: 'test'
+  ...
+# Subtest: SOURCE-01 fixtures L003 originales intègres
+ok 113 - SOURCE-01 fixtures L003 originales intègres
+  ---
+  duration_ms: 0.855284
+  type: 'test'
+  ...
+# Subtest: SOURCE-02 module L003 réutilisé sans modification
+ok 114 - SOURCE-02 module L003 réutilisé sans modification
+  ---
+  duration_ms: 0.249351
+  type: 'test'
+  ...
+1..114
+# tests 114
+# suites 0
+# pass 114
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 268.257864
