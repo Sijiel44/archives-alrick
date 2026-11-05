@@ -21,7 +21,7 @@ if(!originalHTML.includes('<div id="studio-root"></div>'))throw Error('DG003 HTM
 const html=originalHTML.replaceAll('Studio DG-LOT-003','Studio DG-LOT-004')
  .replace('<div id="studio-root"></div>','<section id="dg004-demo-root" aria-label="Mode démonstration fictif"></section><div id="studio-root"></div>');
 await writeFile(resolve(dist,'index.html'),html);
-const demoHTML='<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Studio fictif DG004 — MJ seulement</title><link rel="stylesheet" href="./assets/app.css"><link rel="stylesheet" href="./assets/creators.css"><link rel="stylesheet" href="./assets/demo.css"></head><body><main><header><h1>Studio DG004 — démonstration fictive</h1><p>Local seulement ; aucune donnée MJ réelle. <a href="/">Retour au cockpit local</a></p></header><p id="status" role="status" aria-live="polite">Chargement du Studio dédié…</p><p><button id="dg004-exit" type="button">Quitter et effacer la démonstration dédiée</button></p><div id="dg004-demo-root"></div></main><script type="module" src="./assets/demo.js"></script></body></html>';
+const demoHTML='<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Studio fictif DG004 — MJ seulement</title><link rel="stylesheet" href="./assets/app.css"><link rel="stylesheet" href="./assets/creators.css"><link rel="stylesheet" href="./assets/demo.css"><link rel="stylesheet" href="./assets/cycle.css"></head><body><main><header><h1>Studio DG004 — démonstration fictive</h1><p>Local seulement ; aucune donnée MJ réelle. <a href="/">Retour au cockpit local</a></p></header><p id="status" role="status" aria-live="polite">Chargement du Studio dédié…</p><p><button id="dg004-exit" type="button">Quitter et effacer la démonstration dédiée</button></p><div id="dg004-demo-root"></div><section id="dg004-cycle-root" aria-label="ATELIERS fictifs — privé MJ"></section><section id="dg004-xp-preview" aria-label="Suggestions XP M01 — lecture seule"></section></main><script type="module" src="./assets/demo.js"></script></body></html>';
 await writeFile(resolve(dist,'dg004-demo.html'),demoHTML);
 await copyFile(resolve(project,'src/studio/demo.css'),resolve(dist,'assets/demo.css'));
 await copyFile(resolve(l003,'player.html'),resolve(dist,'player.html'));
@@ -49,7 +49,10 @@ const creators=ownerManifest.components.find(x=>x.role==='creators');
 const module=await import(pathToFileURL(resolve(repo,creators.entry)).href);
 if(typeof module.CREATOR_STYLES!=='string')throw Error('CREATOR_STYLES missing');
 await writeFile(resolve(dist,'assets/creators.css'),module.CREATOR_STYLES);
+const cycleModule=await import(pathToFileURL(resolve(project,'src/creators/cycle-ui.mjs')).href);
+if(typeof cycleModule.CYCLE_STYLES!=='string')throw Error('ATELIERS CYCLE_STYLES absent');
+await writeFile(resolve(dist,'assets/cycle.css'),cycleModule.CYCLE_STYLES);
 await writeFile(resolve(dist,'style-csp.json'),JSON.stringify({hash:null}));
 await writeFile(resolve(dist,'manifest.json'),JSON.stringify({schema:spec.schema,
  sourceSha:spec.baseSha,mode:'local-fake-opt-in',ownerBlobs:ownerManifest.components.map(x=>({role:x.role,blobSha:x.blobSha}))},null,2));
-console.log('DG004_BUILD_OK',dist,'inheritedModules',ownerManifest.components.length,'ownerStudioDemo',true,'publicHosting',false);
+console.log('DG004_BUILD_OK',dist,'inheritedModules',ownerManifest.components.length,'ownerStudioDemo',true,'creatorCycle',true,'xpReadOnly',true,'publicHosting',false);
