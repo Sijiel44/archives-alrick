@@ -48,16 +48,15 @@
       ".github/workflows/dg-lot004-integrated.yml"
     ],
     "builder": [
-      "experiments/dg-lot004/src/ports/**",
-      "experiments/dg-lot004/tests/ports/**"
+      "experiments/dg-lot004/builder/**",
+      ".github/workflows/dg-lot004-builder-preview.yml"
     ],
     "studio": [
       "experiments/dg-lot004/src/studio/**",
       "experiments/dg-lot004/tests/studio/**"
     ],
     "math": [
-      "experiments/dg-lot004/src/rules/**",
-      "experiments/dg-lot004/tests/rules/**"
+      "experiments/dg-lot004/math-xp/**"
     ],
     "index": [
       "experiments/dg-lot004/src/catalog/**",
@@ -71,15 +70,31 @@
   "handoffs": {
     "p0a": {
       "issue": 92,
-      "status": "owner-delivery-pending; integration-only fallback P0-A active"
+      "status": "builder owner delivered 13 exact files; studio owner pending; integrator demo and nav under tools",
+      "builder": {
+        "branch": "prototype/dg004-preview-builder",
+        "commit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+        "files": 13
+      }
     },
     "p0b": {
       "issue": 93,
-      "status": "owner-contracts-not-delivered"
+      "status": "MATH 2-file exact owner delivery; INDEX only CONTRACT.md; executable INDEX not delivered",
+      "math": {
+        "branch": "prototype/dg004-xp-math",
+        "commit": "b2f6435be9e77a45aebb3f741a90cbf6bb1a1444",
+        "files": 2
+      },
+      "index": {
+        "branch": "prototype/dg004-index-xp-links",
+        "commit": "2ce7efd6e124597b11dc55edbc42a72ff92f3478",
+        "files": 1,
+        "status": "provisional contract only"
+      }
     },
     "p0c": {
       "issue": 94,
-      "status": "owner-UI-not-delivered"
+      "status": "ATELIERS owner delivery pending"
     }
   },
   "deployment": {
@@ -93,5 +108,136 @@
   "mutableOwners": false,
   "qa": {
     "status": "not-executed-for-lot004"
-  }
+  },
+  "provenance": [
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/README.md",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "546c13ca46536f6272961997f5e0673586a5867e",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/docs/FICHE_DIRECTION_L004_A_BUILDER.md",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "c6dee4605e4c4e8a88e6c256f38187b459e2171f",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/docs/L004_A_RAPPORT_TECHNIQUE.md",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "64d6f8bf75ae224318286b490534a9ac0d8b80ad",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/docs/PASSATIONS_STUDIO_INTEGRATION.md",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "bdc839ef799b3bf2b418a05921c0486c24447f23",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/src/browser-smoke.mjs",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "0575e8e7292ed98c7240c04dd45faa3eca2e9148",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/src/contract.mjs",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "d63706fd85784062e6c6eb10e2a894184ee311b1",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/src/launch-local.mjs",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "cab5730e6ee9a7a06973c3b1946f645f21c25502",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/src/navigation.mjs",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "a2e47969ddd6a1cce0c35d56ecb54d5bb165d16a",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/src/probe.mjs",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "41a916613429c1ba2671abe137106c0853e3771c",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/tests/SHA256_SOURCE_LOCAL.txt",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "c877f019aae5e90ad15cf382867045bd1ed3bbe6",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/tests/TEST_RESULTS_LOCAL.tap",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "1749de2c183923a222529c10f6caaaaeaa70fd87",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": "experiments/dg-lot004/builder/tests/ports.test.mjs",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "54cccde078a63e217705c06d90097835e125f0be",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "builder",
+      "path": ".github/workflows/dg-lot004-builder-preview.yml",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
+      "blobSha": "f6ec464a7f81207722dfa1cc0961014047f6a37e",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "math",
+      "path": "experiments/dg-lot004/math-xp/src/xp-decision.ts",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "sourceCommit": "b2f6435be9e77a45aebb3f741a90cbf6bb1a1444",
+      "blobSha": "76daeb8ec21702e9ebcb27845ccd3d6b709ff574",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "math",
+      "path": "experiments/dg-lot004/math-xp/tests/xp-decision.test.mjs",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "sourceCommit": "b2f6435be9e77a45aebb3f741a90cbf6bb1a1444",
+      "blobSha": "b54a79387cfd8055960b306db2daf298861d7b30",
+      "transport": "verbatim-git-blob"
+    },
+    {
+      "role": "index",
+      "path": "experiments/dg-lot004/src/catalog/CONTRACT.md",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "sourceCommit": "2ce7efd6e124597b11dc55edbc42a72ff92f3478",
+      "blobSha": "42ab07ba3eea9852f76a3684e83e8b5c9713b414",
+      "transport": "verbatim-git-blob"
+    }
+  ],
+  "ownerTreeNotes": "Issue #92 initially reserved src/ports/** but BUILDER actual owner path is builder/**, no movement; issue #93 reserved src/rules/** but MATH uses math-xp/**, no movement; INDEX only src/catalog/CONTRACT.md; no owner file modified."
 }
