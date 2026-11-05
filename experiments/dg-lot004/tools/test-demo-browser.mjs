@@ -6,6 +6,7 @@ import {join,resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {setTimeout as sleep} from 'node:timers/promises';
 import WebSocket from 'ws';
+import {Script} from 'node:vm';
 import {probeLocalPreview} from '../builder/src/probe.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const MJ='http://127.0.0.1:4173',PLAYER='http://127.0.0.1:4174';
@@ -113,7 +114,9 @@ try{
  await until(()=>mj.eval('!!document.querySelector("[data-l004-demo]")'),100);
  const loaded=await mj.eval('document.querySelector("#status")?.textContent');
  if(!loaded?.includes('propriétaire monté'))fail('OWNER_MOUNT_FAIL '+loaded);
- const ownerStatus=()=>mj.eval('document.querySelector("[aria-label=\"Guide de démonstration\"] [role=\"status\"]")?.textContent');
+ const ownerStatusExpression='document.querySelector('+JSON.stringify('[aria-label="Guide de démonstration"] [role="status"]')+')?.textContent';
+ new Script(ownerStatusExpression);
+ const ownerStatus=()=>mj.eval(ownerStatusExpression);
  async function step(label,expected){
   await mj.eval(click(label));
   await until(async()=>{
