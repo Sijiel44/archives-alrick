@@ -1,0 +1,12 @@
+L004-B — CONTROLE NATIVE-M01 (STATUT HONNETE)
+Base PR85 : 2ab809ef5351940e0fc272b859d10f21de894d00
+Module officiel à tester sur le clone complet : quartz/components/scripts/atelier5d6-progression.ts
+Blob officiel consulté via GitHub : d2040829ea0da7c0f6eae08dc8c701226bfc53c5
+Commande prévue sur clone complet (Node24, npm ci déjà disponibles chez intégrateur) :
+node --test experiments/dg-lot004/tests/catalog/native-m01.test.mjs
+Statut ICI : NON EXECUTE. Pas de checkout complet, esbuild absent dans ce conteneur.
+Les six attentes lues au code de référence sont N1=0/0, N5=400/24,
+N10=2025/54, N15=4900/84, N20=9025/114 et N25=14400/144 (XP/budget).
+La suite native-m01.test.mjs est fournie ; elle compile directement le TypeScript
+source via esbuild et compare la prévisualisation déléguée aux fonctions réelles.
+Aucun calcul M01 n'est copié dans le module INDEX.
