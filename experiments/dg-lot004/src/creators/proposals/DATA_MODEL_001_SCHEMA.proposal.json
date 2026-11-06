@@ -1,0 +1,708 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/chroniques/data-model-001/record.proposal.schema.json",
+  "title": "DATA-MODEL-001 — Fiche versionnée proposée, non canonique",
+  "description": "Contrat de conception P1; aucun moteur ni stockage de production ne doit accepter ce schéma sans arbitrage INDEX/ARCHIVES/DG.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "recordId",
+    "recordVersion",
+    "nodeType",
+    "entityType",
+    "provenance",
+    "continuity",
+    "mechanics",
+    "narrative",
+    "privacy",
+    "media",
+    "legacy"
+  ],
+  "properties": {
+    "schema": {
+      "const": "cer.p1.data-model.record.proposal.v0"
+    },
+    "recordId": {
+      "$ref": "#/$defs/id"
+    },
+    "recordVersion": {
+      "$ref": "#/$defs/semver"
+    },
+    "nodeType": {
+      "enum": [
+        "definition",
+        "variant",
+        "instance"
+      ]
+    },
+    "entityType": {
+      "enum": [
+        "pj",
+        "creature",
+        "npc",
+        "item",
+        "capability",
+        "spell",
+        "ritual",
+        "scene"
+      ]
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "continuity": {
+      "$ref": "#/$defs/continuity"
+    },
+    "mechanics": {
+      "$ref": "#/$defs/mechanics"
+    },
+    "narrative": {
+      "$ref": "#/$defs/narrative"
+    },
+    "privacy": {
+      "$ref": "#/$defs/privacy"
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/media"
+      },
+      "maxItems": 40
+    },
+    "legacy": {
+      "$ref": "#/$defs/legacy"
+    },
+    "definitionRef": {
+      "$ref": "#/$defs/id"
+    },
+    "baseDefinitionRef": {
+      "$ref": "#/$defs/id"
+    },
+    "variantChanges": {
+      "$ref": "#/$defs/variantChanges"
+    },
+    "campaignId": {
+      "$ref": "#/$defs/id"
+    },
+    "state": {
+      "$ref": "#/$defs/currentState"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/link"
+      },
+      "maxItems": 100
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Extensions de conception explicitement namespacées; ne jamais les exécuter ni les publier implicitement."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "nodeType": {
+            "const": "definition"
+          }
+        },
+        "required": [
+          "nodeType"
+        ]
+      },
+      "then": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "state"
+              ]
+            },
+            {
+              "required": [
+                "definitionRef"
+              ]
+            },
+            {
+              "required": [
+                "baseDefinitionRef"
+              ]
+            },
+            {
+              "required": [
+                "variantChanges"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "nodeType": {
+            "const": "variant"
+          }
+        },
+        "required": [
+          "nodeType"
+        ]
+      },
+      "then": {
+        "required": [
+          "baseDefinitionRef",
+          "variantChanges"
+        ],
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "state"
+              ]
+            },
+            {
+              "required": [
+                "definitionRef"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "nodeType": {
+            "const": "instance"
+          }
+        },
+        "required": [
+          "nodeType"
+        ]
+      },
+      "then": {
+        "required": [
+          "definitionRef",
+          "campaignId",
+          "state"
+        ],
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "baseDefinitionRef"
+              ]
+            },
+            {
+              "required": [
+                "variantChanges"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{1,25}:[a-zA-Z0-9][a-zA-Z0-9_.:-]{0,127}$",
+      "maxLength": 160
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "originKind",
+        "sourceId",
+        "sourceSchema",
+        "sourceVersion",
+        "fidelity"
+      ],
+      "properties": {
+        "originKind": {
+          "enum": [
+            "native",
+            "legacy",
+            "campaign",
+            "proposal"
+          ]
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 250
+        },
+        "sourceSchema": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 250
+        },
+        "sourceVersion": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "sourceSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sourceCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sourcePath": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "fidelity": {
+          "enum": [
+            "exact",
+            "adapted",
+            "reference-only",
+            "unknown"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 1000
+        }
+      }
+    },
+    "continuity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "referenceStatus",
+        "playedStatus",
+        "publicationStatus",
+        "scope"
+      ],
+      "properties": {
+        "referenceStatus": {
+          "enum": [
+            "proposal",
+            "canon",
+            "not-applicable",
+            "unverified"
+          ]
+        },
+        "playedStatus": {
+          "enum": [
+            "not-played",
+            "played",
+            "unverified"
+          ]
+        },
+        "publicationStatus": {
+          "enum": [
+            "unpublished",
+            "published",
+            "unverified"
+          ]
+        },
+        "scope": {
+          "enum": [
+            "sandbox-fixture",
+            "campaign",
+            "universe"
+          ]
+        },
+        "canonEvidenceRef": {
+          "type": "string",
+          "maxLength": 250
+        },
+        "playedEvidenceRef": {
+          "type": "string",
+          "maxLength": 250
+        },
+        "publicationEvidenceRef": {
+          "type": "string",
+          "maxLength": 250
+        }
+      }
+    },
+    "mechanics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "none",
+            "native-reference",
+            "pending"
+          ]
+        },
+        "engine": {
+          "enum": [
+            "M01",
+            "M02",
+            "M03",
+            "M04",
+            "M05",
+            "Grimoire",
+            "Ritual",
+            "INDEX"
+          ]
+        },
+        "nativeSchema": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "nativeId": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "nativeVersion": {
+          "type": [
+            "string",
+            "integer"
+          ]
+        },
+        "authority": {
+          "enum": [
+            "native-only",
+            "none",
+            "unresolved"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 500
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "native-reference"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "engine",
+              "nativeSchema",
+              "nativeId",
+              "nativeVersion",
+              "authority"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "none"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "authority": {
+                "const": "none"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "narrative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "publicDescription"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "publicDescription": {
+          "type": "string",
+          "maxLength": 5000
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 60
+          },
+          "uniqueItems": true,
+          "maxItems": 30
+        },
+        "locale": {
+          "type": "string",
+          "maxLength": 16
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visibility",
+        "gmOnly",
+        "publicFields"
+      ],
+      "properties": {
+        "visibility": {
+          "enum": [
+            "gm-private",
+            "shareable-on-approval",
+            "public-reference"
+          ]
+        },
+        "gmOnly": {
+          "type": "object",
+          "description": "Jamais transféré au joueur par défaut; contenu JSON confidentiel."
+        },
+        "publicFields": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "narrative.title",
+              "narrative.publicDescription",
+              "media.public"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "playerProjection": {
+          "const": "explicit-approval-only"
+        }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mediaId",
+        "mediaType",
+        "rights",
+        "audience",
+        "alt"
+      ],
+      "properties": {
+        "mediaId": {
+          "$ref": "#/$defs/id"
+        },
+        "mediaType": {
+          "enum": [
+            "image",
+            "audio",
+            "document",
+            "other"
+          ]
+        },
+        "sourceRef": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "rights": {
+          "enum": [
+            "cleared",
+            "restricted",
+            "unknown"
+          ]
+        },
+        "audience": {
+          "enum": [
+            "gm",
+            "public-after-approval"
+          ]
+        },
+        "alt": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "credit": {
+          "type": "string",
+          "maxLength": 500
+        }
+      }
+    },
+    "legacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "originalSchema",
+        "fieldDecisions",
+        "unknownFields"
+      ],
+      "properties": {
+        "originalSchema": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "originalSourceRef": {
+          "type": "string",
+          "maxLength": 250
+        },
+        "originalBytesSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "fieldDecisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "field",
+              "decision",
+              "targetOrReason"
+            ],
+            "properties": {
+              "field": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 150
+              },
+              "decision": {
+                "enum": [
+                  "reused",
+                  "adaptable",
+                  "obsolete",
+                  "unknown"
+                ]
+              },
+              "targetOrReason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              }
+            }
+          }
+        },
+        "unknownFields": {
+          "type": "object",
+          "description": "Quarantaine non exécutable, jamais supprimée lors du round-trip."
+        }
+      }
+    },
+    "currentState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "status",
+        "current"
+      ],
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "active",
+            "archived",
+            "unverified"
+          ]
+        },
+        "current": {
+          "type": "object",
+          "description": "État mutable de l'instance, distinct de la définition. Contrats natifs non recalculés."
+        },
+        "historyRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true
+        },
+        "versionOf": {
+          "type": "string",
+          "maxLength": 160
+        }
+      }
+    },
+    "variantChanges": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "narrative",
+        "mechanicPolicy"
+      ],
+      "properties": {
+        "narrative": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "publicDescription": {
+              "type": "string"
+            }
+          }
+        },
+        "mechanicPolicy": {
+          "const": "native-recalculation-required"
+        },
+        "nativeVariantRef": {
+          "type": "string",
+          "maxLength": 250
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 1000
+        }
+      }
+    },
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation",
+        "targetId"
+      ],
+      "properties": {
+        "relation": {
+          "enum": [
+            "contains",
+            "uses",
+            "refers-to",
+            "derived-from",
+            "participant",
+            "located-in",
+            "variant-of"
+          ]
+        },
+        "targetId": {
+          "$ref": "#/$defs/id"
+        },
+        "role": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "visibility": {
+          "enum": [
+            "gm-private",
+            "public-on-approval"
+          ]
+        }
+      }
+    }
+  }
+}
