@@ -481,3 +481,36 @@ test('REPAIR: deux copies concurrentes ne créent jamais deux instances STUDIO',
  assert.equal(x.calls.copies,1);
  assert.equal(m.getState().links.creatureInstanceId,'cr-1');
 });
+
+test('REPAIR: interdit annulation et restauration tant que copie STUDIO est en vol ou journal présent',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ const olderExport=await m.exportPrivate();
+ let allowCopy;
+ const gate=new Promise(resolve=>{allowCopy=resolve});
+ const originalCopy=x.studio.copyCreature;
+ x.studio.copyCreature=async()=>{await gate;return originalCopy()};
+ const task=m.attachCreature();
+ // Attendre que le journal soit effectivement sauvegardé avant d'examiner la fenêtre concurrente.
+ for(let n=0;n<50&&!x.disk.snapshot.extensions.pendingStudioOp;n++)await Promise.resolve();
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp?.kind,'creature');
+ const pending=m.getStudioRecovery();assert.equal(pending.status,'in-flight');
+ assert.equal(pending.canAbandon,false);
+ await assert.rejects(m.abandonStudioRecovery({confirm:true}),/en cours/);
+ await assert.rejects(m.reconcileStudioLink('cr-1',{confirm:true}),/en cours/);
+ await assert.rejects(m.load(),/rechargement interdit/);
+ const proposal=m.previewRestore(olderExport);
+ await assert.rejects(m.acceptRestore(proposal.token),/Réconciliation STUDIO requise/);
+ allowCopy();await task;
+ assert.equal(x.calls.copies,1);
+ assert.equal(m.getState().links.creatureInstanceId,'cr-1');
+ assert.equal(m.getStudioRecovery().pending,false);
+});
+test('REPAIR: interdit restauration obsolète pendant journal STUDIO après échec',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ const oldBackup=await m.exportPrivate();
+ x.disk.failFinal='creature';await assert.rejects(m.attachCreature(),/creature-link not saved/);
+ const proposal=m.previewRestore(oldBackup);
+ await assert.rejects(m.acceptRestore(proposal.token),/Réconciliation STUDIO requise/);
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp?.kind,'creature');
+ assert.equal(x.calls.copies,1);
+});
