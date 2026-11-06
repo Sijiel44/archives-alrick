@@ -547,3 +547,57 @@ test('REPAIR: bascule après journal STUDIO bloque la copie et garde la reprise 
  await second.abandonStudioRecovery({confirm:true});
  assert.equal(second.getStudioRecovery().pending,false);
 });
+
+
+test('REPAIR-CROSS: ambiguïté de deux copies nouvelles interdit toute liaison choisie arbitrairement',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ x.studio.copyCreature=async()=>{
+  x.calls.copies+=2;
+  for(const id of ['cr-double-1','cr-double-2'])x.campaign.creatures.push({
+   id,source:{documentId:'DOC-1',profileId:'PROFILE-1',ruleset:'M03'},
+   privateSnapshot:{secret:'CANARI-MJ-A-NE-PAS-PUBLIER'}
+  });
+  throw Error('Accusé STUDIO perdu après deux copies');
+ };
+ await assert.rejects(m.attachCreature(),/Accusé STUDIO perdu/);
+ const pending=m.getStudioRecovery();
+ assert.equal(pending.pending,true);
+ assert.equal(pending.status,'ambiguous');
+ assert.deepEqual(pending.candidates,[]);
+ assert.equal(pending.canAbandon,false);
+ assert.ok(!JSON.stringify(pending).includes('CANARI-MJ-A-NE-PAS-PUBLIER'));
+ await assert.rejects(m.reconcileStudioLink('cr-double-1',{confirm:true}),/non reconnue/);
+ await assert.rejects(m.reconcileStudioLink('cr-double-2',{confirm:true}),/non reconnue/);
+ await assert.rejects(m.attachCreature(),/Réconciliation/);
+ assert.equal(x.calls.copies,2);
+ assert.equal(m.getState().links.creatureInstanceId,null);
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp.kind,'creature');
+});
+test('REPAIR-CROSS: ancienne archive sans journal ne peut provoquer une seconde copie même source',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ const oldBackup=await m.exportPrivate();
+ await m.attachCreature();
+ assert.equal(x.calls.copies,1);
+ const proposal=m.previewRestore(oldBackup);
+ await m.acceptRestore(proposal.token); // Ancienne sauvegarde créée avant la copie STUDIO
+ assert.equal(m.getState().links.creatureInstanceId,null);
+ assert.equal(m.getState().extensions.pendingStudioOp,undefined);
+ await assert.rejects(m.attachCreature(),/préexistante sans journal attesté/);
+ assert.equal(x.calls.copies,1);
+ assert.equal(m.getState().links.creatureInstanceId,null);
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp,undefined);
+});
+test('REPAIR-CROSS: ancienne archive sans journal ne peut provoquer une seconde scène du même titre',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ await m.attachCreature();
+ await m.saveDraft('scene',x.fixtures.scene);await m.validateMJ('scene');
+ const backupWithoutSceneLink=await m.exportPrivate();
+ await m.attachScene();
+ assert.equal(x.calls.scenes,1);
+ const proposal=m.previewRestore(backupWithoutSceneLink);
+ await m.acceptRestore(proposal.token);
+ assert.equal(m.getState().links.sceneId,null);
+ await assert.rejects(m.attachScene(),/Scène STUDIO préexistante sans journal attesté/);
+ assert.equal(x.calls.scenes,1);
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp,undefined);
+});
