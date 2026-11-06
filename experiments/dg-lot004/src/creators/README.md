@@ -46,6 +46,27 @@ Les brouillons sont conservés et les champs **facultatifs/inconnus** restent da
 
 Le dépôt L004-C est privé par contrat applicatif, et `createBrowserCyclePersistence` refuse par défaut toute origine autre que `http://127.0.0.1:4173`. L'intégrateur peut remplacer `persistence` par le port ARCHIVES/IndexedDB de campagne sans changer la logique métier. Seule cette frontière est chargée d'assurer l'écriture atomique et la confidentialité d'accès. Les brouillons/exports contiennent des secrets MJ fictifs et **ne doivent jamais** être montés dans l'origine joueur `4174`.
 
+## L004-REPAIR — Journal STUDIO privé et réconciliation anti-doublons
+
+**Cause reproduite sur #100@`093d2504` :** avant correction, `attachCreature()` et `attachScene()` appelaient les méthodes STUDIO **avant** de sauvegarder le lien du cycle. Un échec de `persistence.save` laissait l'instance dans STUDIO sans référence dans le cycle ; réessayer créait une seconde instance.
+
+**Protocole correctif sous responsabilité ATELIERS :**
+
+1. Sauvegarder et faire confirmer **avant** l'appel STUDIO un `extensions.pendingStudioOp` privé : `kind`, `campaignId`, identifiants d'instances préexistantes `beforeIds` et, pour la créature, identité source `documentId/profileId/ruleset`. Le journal **ne contient pas** les notes privées de scène ni les copies de fichiers sources.
+2. Exécuter `copyCreature` ou `createScene` STUDIO une seule fois, sur geste MJ. Pour la scène, tenter aussi `updateScene` pour les participants.
+3. Sauvegarder le lien du cycle et retirer le journal **dans la même écriture locale confirmée**. Si l'étape 3 échoue, le journal reste durable et le bouton de création est bloqué, y compris après `load()`.
+4. Afficher le panneau de reprise privé. `getStudioRecovery()` inspecte **en lecture seule** la campagne STUDIO : les nouveaux identifiants absents de `beforeIds` sont candidats uniquement si les données correspondent (référence source pour créature, titre/description/notes/participants pour scène). Le résultat à l'interface ne contient **que** les identifiants, jamais les notes ou le snapshot MJ.
+5. `reconcileStudioLink(instanceId,{confirm:true})` exige une confirmation explicite du MJ, vérifie à nouveau la campagne/la provenance et crée **uniquement** le lien manquant. Il n'appelle ni `copyCreature`, ni `createScene`, ni une fonction de règles.
+6. `abandonStudioRecovery({confirm:true})` permet de recommencer **uniquement si aucune nouvelle instance n'existe** dans la collection STUDIO inspectée, campagne identique. Si une instance non reconnue existe, ou si la campagne est différente, c'est une intervention manuelle bloquante, **pas** une duplication automatique.
+
+Le journal empêche `saveDraft` modifiant les brouillons, `validateMJ`, restauration destructive et répétition de création tant qu'il subsiste. Les opérations de réconciliation/annulation/rechargement sont aussi interdites pendant une action STUDIO en vol. L'UI emploie uniquement le DOM texte (`textContent`), aucun HTML non fiable ou `style` inline.
+
+**API ajoutée** sur `createCreatorCycle` : `getStudioRecovery() -> {pending,status,kind?,candidates:[{id}],canAbandon,message?}` ; `reconcileStudioLink(instanceId,{confirm:true})` ; `abandonStudioRecovery({confirm:true})`. Le composant `mountCreatorCycle` affiche les candidats et un choix MJ, jamais une reprise automatique.
+
+**Limites bloquantes :** aucune atomicité distribuée entre STUDIO et ARCHIVES ; la fiabilité dépend de la confirmation réelle de `persistence.save` et de la persistance STUDIO. En cas de changement du profil source, de copie sans provenance STUDIO, de scène partiellement mise à jour ou d'autres créations concurrentes, la réconciliation peut être refusée : corriger/vérifier dans STUDIO avant de lier, sans relancer « Créer ». Un **ancien export restauré depuis une autre session**, sans le journal d'intention mais avec des instances STUDIO déjà créées, n'offre pas de preuve d'idempotence globale ; une vraie transaction multi-moteurs ou clé d'idempotence STUDIO/ARCHIVES devra être contractée séparément par 05/20/04. Aucune récupération silencieuse des données inconnues ni transformation de provenance n'est pratiquée.
+
+**Tests de panne** : nouvelle suite de neuf cas `REPAIR:` dans `tests/creators/cycle-state.test.mjs` (échec du journal avant création ; échecs après copie/création ; recharge et lien explicite ; absence d'instance ; provenance contradictoire ; export de journal et corruption ; concurrence ; opérations en vol ; restauration obsolète) et un test UI de confirmation sans canari. **Node/Chromium/CI sur HEAD intégré : à relancer par 05/02.** La vérification propriétaire JS en isolat V8 sur blobs GitHub ne remplace pas `node --test`, le vrai SHA-256 natif ni le navigateur.
+
 ## UX et sécurité
 
 `mountCreatorCycle(root,options)` réemploie `mountCreators` L003 avec `injectStyles:false` : **aucun `<style>` inline**. 05 copie `CYCLE_STYLES` et `CREATOR_STYLES` dans son fichier CSS externe sous CSP `style-src 'self'`, sans `unsafe-inline`. Navigation boutons DOM, champs étiquetés, messages `role=status` et focus-visible CSS ; mode guidé limite les étapes, expert autorise l'inspection et un sort narratif facultatif. Prévisualisation MJ seulement, sans iframe ni écran joueur.
