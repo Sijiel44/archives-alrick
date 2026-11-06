@@ -7,7 +7,7 @@ function ports(){
   async save(state){calls.saves++;disk.set('active',structuredClone(state));return {saved:true}}};
  const validator=x=>({valid:true,record:structuredClone(x),errors:{}});
  const catalogBridge=(r,cat,id)=>{calls.catalog.push({r,id});return {id:`cap:${id}:${r.kind}-${r.name.replace(/\s/g,'-').toLowerCase()}`,executable:false,version:r.version,effects:[{mode:'descriptive',text:r.description}]};};
- const studioCampaign={creatures:[],scenes:[],activeSceneId:''};
+ const studioCampaign={id:'campagne-fixture-1',creatures:[],scenes:[],activeSceneId:''};
  const studio={async previewCreature(ref){calls.studio.push(['previewCreature',ref]);return {documentId:'DOC-FICTIF',profileId:'P-FICTIF',ruleset:'M03',name:'Loup imaginaire'};},
   async copyCreature(){calls.studio.push(['copyCreature']);studioCampaign.creatures.push({id:'inst-fixture-1'});},
   async createScene(title,publicDescription,privateNotes){calls.studio.push(['createScene',title,publicDescription,privateNotes]);studioCampaign.scenes.push({id:'scene-fictive-1',title,publicDescription,privateNotes,participantIds:[]});studioCampaign.activeSceneId='scene-fictive-1';},
@@ -315,4 +315,169 @@ test('Immutabilité : aucune réécriture item/capacity/creature/spell après co
  }
  assert.equal(calls.saves,savesAfterScene);
  assert.deepEqual(disk.get('active'),archive);
+});
+
+
+/** Failure-injection fixture: real STUDIO side effects, durable journal, no rules. */
+function transactionPorts(){
+ const disk={snapshot:null,failStage:null,failFinal:null,writeCount:0};
+ const campaign={id:'camp-test-001',creatures:[],scenes:[],activeSceneId:''};
+ const calls={copies:0,scenes:0,updates:0};
+ const copy=structuredClone;
+ const persistence={
+  async load(){return disk.snapshot===null?null:copy(disk.snapshot)},
+  async save(next){
+   disk.writeCount++;
+   const intent=next.extensions.pendingStudioOp;
+   if(disk.failStage&&intent?.kind===disk.failStage && !next.links.creatureInstanceId && !next.links.sceneId)
+    throw Error('injected: journal not saved');
+   if(disk.failFinal==='creature'&&next.links.creatureInstanceId)throw Error('injected: creature-link not saved');
+   if(disk.failFinal==='scene'&&next.links.sceneId)throw Error('injected: scene-link not saved');
+   disk.snapshot=copy(next);return {saved:true};
+  }
+ };
+ const studio={
+  async previewCreature(){return {documentId:'DOC-1',profileId:'PROFILE-1',ruleset:'M03',name:'Fiction'}},
+  async copyCreature(){
+   calls.copies++;campaign.creatures.push({
+    id:'cr-'+calls.copies,source:{documentId:'DOC-1',profileId:'PROFILE-1',ruleset:'M03'},
+    publicLabel:'Créature fictive',privateSnapshot:{secret:'CANARI-CREATURE-PRIVÉ'}});
+  },
+  async createScene(title,publicDescription,privateNotes){
+   calls.scenes++;const id='scene-'+calls.scenes;campaign.scenes.push({
+    id,title,publicDescription,privateNotes,participantIds:[]});campaign.activeSceneId=id;
+  },
+  async updateScene(data){calls.updates++;Object.assign(campaign.scenes.at(-1),data)},
+  getCampaign(){return copy(campaign)}
+ };
+ const make=()=>createCreatorCycle({persistence,creatorValidator:x=>({valid:true,record:copy(x)}),
+  catalogBridge:x=>({id:'cap:local:'+x.kind,executable:false}),catalog:{},studio,
+  idFactory:()=> 'cycle-transaction-1'});
+ return {make,disk,campaign,calls,studio,fixtures:ports().fixtures};
+}
+async function readyCreature(m,fixtures){
+ for(const kind of ['item','capacity','creature']){
+  await m.saveDraft(kind,fixtures[kind]);await m.validateMJ(kind);
+ }
+}
+test('REPAIR: échec du journal AVANT STUDIO interdit toute copie et conserve le cycle',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ const previous=m.getState(),before=x.disk.writeCount;
+ x.disk.failStage='creature';
+ await assert.rejects(m.attachCreature(),/journal not saved/);
+ assert.equal(x.calls.copies,0);
+ assert.deepEqual(m.getState(),previous);
+ assert.equal(x.disk.writeCount,before+1);
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp,undefined);
+ x.disk.failStage=null;
+ await m.attachCreature();
+ assert.equal(x.calls.copies,1);
+ assert.equal(m.getStudioRecovery().pending,false);
+});
+test('REPAIR: échec APRES copie créature, recharge, refus du doublon et réconciliation MJ vérifiée',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ x.disk.failFinal='creature';
+ await assert.rejects(m.attachCreature(),/creature-link not saved/);
+ assert.equal(x.calls.copies,1);
+ assert.equal(m.getState().links.creatureInstanceId,null);
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp.kind,'creature');
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp.campaignId,'camp-test-001');
+ await assert.rejects(m.attachCreature(),/Réconciliation/);
+ await assert.rejects(m.saveDraft('scene',x.fixtures.scene),/ouvrir une nouvelle version/);
+ await assert.rejects(m.validateMJ('creature'),/Réconciliation/);
+ const restarted=x.make();await restarted.load();
+ const recovery=restarted.getStudioRecovery();
+ assert.deepEqual(recovery.candidates,[{id:'cr-1'}]);
+ assert.equal(recovery.status,'requires-confirmation');
+ assert.ok(!JSON.stringify(recovery).includes('CANARI-CREATURE-PRIVÉ'));
+ await assert.rejects(restarted.reconcileStudioLink('cr-1'),/Confirmation/);
+ await assert.rejects(restarted.reconcileStudioLink('cr-inconnue',{confirm:true}),/non reconnue/);
+ assert.equal(x.calls.copies,1);
+ x.disk.failFinal=null;
+ const result=await restarted.reconcileStudioLink('cr-1',{confirm:true});
+ assert.equal(result.reconciled,true);
+ assert.equal(restarted.getState().links.creatureInstanceId,'cr-1');
+ assert.equal(restarted.getState().links.creatureSource.profileId,'PROFILE-1');
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp,undefined);
+ assert.equal(restarted.getStudioRecovery().pending,false);
+ await assert.rejects(restarted.attachCreature(),/déjà liée/);
+ assert.equal(x.calls.copies,1);
+});
+test('REPAIR: échec après création scène, reprise sans duplication, canari privé jamais retourné',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);await m.attachCreature();
+ await m.saveDraft('scene',x.fixtures.scene);await m.validateMJ('scene');
+ x.disk.failFinal='scene';
+ await assert.rejects(m.attachScene(),/scene-link not saved/);
+ assert.equal(x.calls.scenes,1);
+ assert.equal(x.calls.updates,1);
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp.kind,'scene');
+ await assert.rejects(m.attachScene(),/Réconciliation/);
+ const restarted=x.make();await restarted.load();
+ const recovery=restarted.getStudioRecovery();
+ assert.deepEqual(recovery.candidates,[{id:'scene-1'}]);
+ assert.ok(!JSON.stringify(recovery).includes('CANARI-PRIVE-NON-PARTAGE'));
+ x.disk.failFinal=null;
+ await restarted.reconcileStudioLink('scene-1',{confirm:true});
+ assert.equal(restarted.getState().links.sceneId,'scene-1');
+ assert.equal(restarted.getState().drafts.scene.privateNotes,'CANARI-PRIVE-NON-PARTAGE');
+ assert.equal(x.campaign.scenes[0].privateNotes,'CANARI-PRIVE-NON-PARTAGE');
+ assert.deepEqual(x.campaign.scenes[0].participantIds,['cr-1']);
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp,undefined);
+ await assert.rejects(restarted.attachScene(),/déjà liée/);
+ assert.equal(x.calls.scenes,1);
+});
+test('REPAIR: journal durable mais copie STUDIO absente => abandon explicite seulement',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ x.studio.copyCreature=async()=>{throw Error('STUDIO ne répond pas')};
+ await assert.rejects(m.attachCreature(),/ne répond pas/);
+ const restarted=x.make();await restarted.load();
+ const r=restarted.getStudioRecovery();assert.equal(r.status,'no-side-effect-observed');
+ assert.equal(r.canAbandon,true);
+ await assert.rejects(restarted.abandonStudioRecovery(),/Confirmation/);
+ assert.equal(restarted.getStudioRecovery().pending,true);
+ await restarted.abandonStudioRecovery({confirm:true});
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp,undefined);
+ x.studio.copyCreature=async()=>{
+  x.calls.copies++;x.campaign.creatures.push({
+   id:'cr-'+x.calls.copies,source:{documentId:'DOC-1',profileId:'PROFILE-1',ruleset:'M03'}});
+ };
+ await restarted.attachCreature();assert.equal(x.calls.copies,1);
+});
+test('REPAIR: provenance contradictoire, autre campagne et nouvelle instance non reconnue => fail-closed',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ x.disk.failFinal='creature';
+ await assert.rejects(m.attachCreature(),/creature-link not saved/);
+ // The copied instance exists but the source metadata no longer agrees.
+ x.campaign.creatures[0].source.profileId='ALTERED';
+ let recovery=m.getStudioRecovery();
+ assert.equal(recovery.candidates.length,0);assert.equal(recovery.canAbandon,false);
+ await assert.rejects(m.reconcileStudioLink('cr-1',{confirm:true}),/non reconnue/);
+ await assert.rejects(m.abandonStudioRecovery({confirm:true}),/bloquée/);
+ const original=x.campaign.id;x.campaign.id='autre-campagne';
+ recovery=m.getStudioRecovery();assert.equal(recovery.status,'wrong-campaign');
+ await assert.rejects(m.reconcileStudioLink('cr-1',{confirm:true}),/non reconnue/);
+ x.campaign.id=original;
+ assert.equal(x.calls.copies,1);
+ assert.equal(m.getState().links.creatureInstanceId,null);
+});
+test('REPAIR: journal privé après copie est exportable/restaurable et refuse corruption',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ x.disk.failFinal='creature';await assert.rejects(m.attachCreature(),/creature-link not saved/);
+ const exported=await m.exportPrivate(),p=m.previewRestore(exported);
+ assert.equal(p.accepted,false);
+ const restarted=x.make();await restarted.load();
+ assert.equal(restarted.getStudioRecovery().pending,true);
+ const altered=structuredClone(restarted.getState());
+ altered.extensions.pendingStudioOp.beforeIds=['mauvais','mauvais'];
+ assert.throws(()=>validateCycle(altered),/Journal STUDIO privé invalide/);
+ assert.equal(JSON.stringify(restarted.getState()).includes('CANARI-CREATURE-PRIVÉ'),false);
+ assert.equal(x.calls.copies,1);
+});
+test('REPAIR: deux copies concurrentes ne créent jamais deux instances STUDIO',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ const results=await Promise.allSettled([m.attachCreature(),m.attachCreature()]);
+ assert.equal(results.filter(z=>z.status==='fulfilled').length,1);
+ assert.equal(results.filter(z=>z.status==='rejected').length,1);
+ assert.equal(x.calls.copies,1);
+ assert.equal(m.getState().links.creatureInstanceId,'cr-1');
 });
