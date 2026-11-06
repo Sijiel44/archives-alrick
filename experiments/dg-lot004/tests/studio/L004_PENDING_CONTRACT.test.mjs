@@ -136,9 +136,11 @@ function setupConfirmation({kind='creature',candidate='new-cr-1',recoveryOverrid
  let savedCycle=clone(cy),callCount=0;
  const store={async load(){return clone(savedCycle)}};
  const studio={getCampaign(){return clone(live)}},studioStorage={async load(){return clone(live)}};
- const recovery={pending:true,status:'requires-confirmation',kind,candidates:[{id:candidate}],
+ const recovery={pending:true,durableVerified:true,status:'requires-confirmation',kind,candidates:[{id:candidate}],
    unverifiedCount:0,canAbandon:false};
- const creator={getState(){return clone(cy)},getStudioRecovery(){return clone(recoveryOverride??recovery)},
+ const creator={getState(){return clone(cy)},
+ getStudioRecovery(){return {pending:true,status:'durability-unverified',kind,candidates:[],durableVerified:false}},
+ async inspectStudioRecovery(){return clone(recoveryOverride??recovery)},
  async reconcileStudioLink(id,{confirm}){callCount++;assert.equal(id,candidate);assert.equal(confirm,true);
    if(persistFailure)throw Error('quota: durable cycle link missing');
    const prop=kind==='creature'?'creatureInstanceId':'sceneId';
@@ -159,13 +161,13 @@ test('PENDING-21: confirmation with both durable proofs links ONLY existing ID',
 });
 test('PENDING-22: creator recovery disagreeing with STUDIO proof blocks before commit',async()=>{
  const p=setupConfirmation({recoveryOverride:{pending:true,status:'requires-confirmation',kind:'creature',
-   candidates:[{id:'unrelated'}],unverifiedCount:0,canAbandon:false}});
+   durableVerified:true,candidates:[{id:'unrelated'}],unverifiedCount:0,canAbandon:false}});
  await assert.rejects(confirmCreatorAttachmentWithEvidence(p),/discordant/);
  assert.equal(p.count(),0);
 });
 test('PENDING-23: ambiguous creator recovery (two candidates) blocks even if STUDIO gives one',async()=>{
  const p=setupConfirmation({recoveryOverride:{pending:true,status:'requires-confirmation',kind:'creature',
-   candidates:[{id:'new-cr-1'},{id:'new-cr-2'}],unverifiedCount:1,canAbandon:false}});
+   durableVerified:true,candidates:[{id:'new-cr-1'},{id:'new-cr-2'}],unverifiedCount:1,canAbandon:false}});
  await assert.rejects(confirmCreatorAttachmentWithEvidence(p),/discordant/);assert.equal(p.count(),0);
 });
 test('PENDING-24: after failure to persist final link, no second STUDIO copy is attempted',async()=>{
@@ -179,4 +181,59 @@ test('PENDING-25: scene explicit confirmation returns same scene ID and no secre
  assert.equal(out.kind,'scene');assert.equal(out.instanceId,'new-sc-1');
  assert.equal(p.getPersisted().links.sceneId,'new-sc-1');
  assert.doesNotMatch(JSON.stringify(out),/CANARI|privateNotes/);
+});
+
+test('PENDING-26: synchronous getStudioRecovery is deliberately durability-unverified',async()=>{
+ const p=setupConfirmation();
+ assert.equal(p.creator.getStudioRecovery().status,'durability-unverified');
+ const result=await confirmCreatorAttachmentWithEvidence(p);
+ assert.equal(result.status,'linked');assert.equal(p.count(),1);
+});
+test('PENDING-27: absence of async durable inspector refuses even if legacy hint claims success',async()=>{
+ const p=setupConfirmation();
+ p.creator={...p.creator,inspectStudioRecovery:undefined,getStudioRecovery:()=>({status:'requires-confirmation'})};
+ await assert.rejects(confirmCreatorAttachmentWithEvidence(p),/Ports de réconciliation/);
+ assert.equal(p.count(),0);
+});
+test('PENDING-28: no durableVerified flag is never enough',async()=>{
+ const p=setupConfirmation();const real=p.creator.inspectStudioRecovery.bind(p.creator);
+ p.creator={...p.creator,inspectStudioRecovery:async()=>{
+  const x=await real();delete x.durableVerified;return x;
+ }};
+ await assert.rejects(confirmCreatorAttachmentWithEvidence(p),/Journal ATELIERS discordant/);
+ assert.equal(p.count(),0);
+});
+test('PENDING-29: explicit durableVerified:false refuses status requires-confirmation',async()=>{
+ const p=setupConfirmation();const real=p.creator.inspectStudioRecovery.bind(p.creator);
+ p.creator={...p.creator,inspectStudioRecovery:async()=>({...await real(),durableVerified:false})};
+ await assert.rejects(confirmCreatorAttachmentWithEvidence(p),/Journal ATELIERS discordant/);
+ assert.equal(p.count(),0);
+});
+test('PENDING-30: asynchronous foreign candidate or two candidates refuses',async()=>{
+ for(const candidates of [[{id:'foreign'}],[{id:'new-cr-1'},{id:'new-cr-2'}]]){
+  const p=setupConfirmation();const real=p.creator.inspectStudioRecovery.bind(p.creator);
+  p.creator={...p.creator,inspectStudioRecovery:async()=>({...await real(),candidates})};
+  await assert.rejects(confirmCreatorAttachmentWithEvidence(p),/Journal ATELIERS discordant/);
+  assert.equal(p.count(),0);
+ }
+});
+test('PENDING-31: asynchronous inspector rejects during ARCHIVES read; no link attempt',async()=>{
+ const p=setupConfirmation();p.creator={...p.creator,inspectStudioRecovery:async()=>{throw Error('ARCHIVES unavailable')}};
+ await assert.rejects(confirmCreatorAttachmentWithEvidence(p),/ARCHIVES unavailable/);
+ assert.equal(p.count(),0);
+});
+test('PENDING-32: refusal after forged link acknowledgement with no durable save',async()=>{
+ const p=setupConfirmation();
+ p.creator={...p.creator,reconcileStudioLink:async()=>({kind:'creature',instanceId:p.instanceId,reconciled:true})};
+ await assert.rejects(confirmCreatorAttachmentWithEvidence(p),/Lien créateur non retrouvé durablement/);
+ assert.equal(p.getPersisted().extensions.pendingStudioOp.kind,'creature');
+});
+test('PENDING-33: async inspection is awaited rather than ignored',async()=>{
+ const p=setupConfirmation();const real=p.creator.inspectStudioRecovery.bind(p.creator);
+ let inspected=false;
+ p.creator={...p.creator,inspectStudioRecovery:async()=>{
+  await Promise.resolve();inspected=true;return real();
+ }};
+ const out=await confirmCreatorAttachmentWithEvidence(p);
+ assert.equal(inspected,true);assert.equal(out.instanceId,'new-cr-1');assert.equal(p.count(),1);
 });

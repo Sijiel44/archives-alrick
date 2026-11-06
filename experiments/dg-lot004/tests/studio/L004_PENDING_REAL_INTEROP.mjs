@@ -52,6 +52,7 @@ async function harness(){
  }};
  const validator=x=>({valid:true,record:copy(x),errors:{}});
  const creators=createCreatorCycle({persistence:creatorPersistence,studio,
+   loadPersistedStudio:()=>studioStorage.load(),inspectCreatorAttachment,
    creatorValidator:validator,catalogBridge:x=>({id:'cap:local:'+x.kind,executable:false}),catalog:{},
    idFactory:()=> 'cycle-fixture-001'});
  const fixture={
@@ -82,7 +83,10 @@ test('REAL-02: AFTER COPY failure — same ID after explicit MJ confirmation, re
  const h=await harness();await h.prepareCreature();h.setFinal('creature');
  await assert.rejects(h.creators.attachCreature(),/ACK/);
  const pending=h.getCycle();assert.equal(pending.extensions.pendingStudioOp.kind,'creature');
- assert.equal(h.copyCalls(),1);assert.equal(h.creators.getStudioRecovery().status,'requires-confirmation');
+ assert.equal(h.copyCalls(),1);assert.equal(h.creators.getStudioRecovery().status,'durability-unverified');
+ const proven=await h.creators.inspectStudioRecovery();
+ assert.equal(proven.status,'requires-confirmation');assert.equal(proven.durableVerified,true);
+ assert.deepEqual(proven.candidates,[{id:'creature-l004-1'}]);
  const plan=inspectCreatorAttachment({campaign:h.studio.getCampaign(),persistedCampaign:await h.studioStorage.load(),
    cycle:h.creators.getState(),persistedCycle:await h.creatorPersistence.load()});
  assert.equal(plan.creature.status,'reusable');assert.equal(plan.action,'link-existing-after-MJ-confirmation');
@@ -97,6 +101,8 @@ test('REAL-03: AFTER SCENE failure — no second scene, private notes stay priva
  const h=await harness();await h.prepareCreature();await h.creators.attachCreature();
  await h.creators.saveDraft('scene',h.fixture.scene);await h.creators.validateMJ('scene');
  h.setFinal('scene');await assert.rejects(h.creators.attachScene(),/ACK/);
+ const durable=await h.creators.inspectStudioRecovery();
+ assert.equal(durable.durableVerified,true);assert.deepEqual(durable.candidates,[{id:'scene-l004-1'}]);
  const plan=inspectCreatorAttachment({campaign:h.studio.getCampaign(),persistedCampaign:await h.studioStorage.load(),
    cycle:h.creators.getState(),persistedCycle:await h.creatorPersistence.load()});
  assert.equal(plan.scene.status,'reusable');assert.equal(h.sceneCalls(),1);
@@ -115,4 +121,36 @@ test('REAL-04: obsolete creator backup lacking journal cannot claim a previous i
  const plan=inspectCreatorAttachment({campaign:h.studio.getCampaign(),persistedCampaign:await h.studioStorage.load(),
   cycle:old,persistedCycle:old});
  assert.equal(plan.creature.status,'unattestable');assert.equal(plan.action,'block-automatic-retry');
+});
+
+// Deliberately exercise the real ATELIERS recovery API, not the synchronous hint.
+test('REAL-05: asynchronous durability port missing is a hard refusal',async()=>{
+ const h=await harness();await h.prepareCreature();h.setFinal('creature');
+ await assert.rejects(h.creators.attachCreature(),/ACK/);h.setFinal(null);
+ const fake={...h.creators,inspectStudioRecovery:undefined,
+  getStudioRecovery:()=>({status:'requires-confirmation',candidates:[{id:'creature-l004-1'}]})};
+ await assert.rejects(confirmCreatorAttachmentWithEvidence({creator:fake,studio:h.studio,
+  creatorPersistence:h.creatorPersistence,studioStorage:h.studioStorage,
+  instanceId:'creature-l004-1',confirm:true}),/Ports de réconciliation/);
+ assert.equal(h.copyCalls(),1);
+});
+test('REAL-06: durableVerified false blocks even if status and ID appear valid',async()=>{
+ const h=await harness();await h.prepareCreature();h.setFinal('creature');
+ await assert.rejects(h.creators.attachCreature(),/ACK/);h.setFinal(null);
+ const source=h.creators.inspectStudioRecovery.bind(h.creators);
+ const fake={...h.creators,inspectStudioRecovery:async()=>({...await source(),durableVerified:false})};
+ await assert.rejects(confirmCreatorAttachmentWithEvidence({creator:fake,studio:h.studio,
+  creatorPersistence:h.creatorPersistence,studioStorage:h.studioStorage,
+  instanceId:'creature-l004-1',confirm:true}),/Journal ATELIERS discordant/);
+ assert.equal(h.copyCalls(),1);
+});
+test('REAL-07: wrong candidate from async recovery blocks before committing',async()=>{
+ const h=await harness();await h.prepareCreature();h.setFinal('creature');
+ await assert.rejects(h.creators.attachCreature(),/ACK/);h.setFinal(null);
+ const source=h.creators.inspectStudioRecovery.bind(h.creators);
+ const fake={...h.creators,inspectStudioRecovery:async()=>({...await source(),candidates:[{id:'alien'}]})};
+ await assert.rejects(confirmCreatorAttachmentWithEvidence({creator:fake,studio:h.studio,
+  creatorPersistence:h.creatorPersistence,studioStorage:h.studioStorage,
+  instanceId:'creature-l004-1',confirm:true}),/Journal ATELIERS discordant/);
+ assert.equal(h.copyCalls(),1);
 });

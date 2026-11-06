@@ -158,7 +158,7 @@ export async function confirmCreatorAttachmentWithEvidence({creator,studio,creat
   studioStorage,instanceId,confirm=false}={}){
   if(confirm!==true)throw Error('Confirmation MJ explicite requise');
   if(!truthyString(instanceId)||typeof creator?.getState!=='function'||
-     typeof creator?.getStudioRecovery!=='function'||typeof creator?.reconcileStudioLink!=='function'||
+     typeof creator?.inspectStudioRecovery!=='function'||typeof creator?.reconcileStudioLink!=='function'||
      typeof studio?.getCampaign!=='function'||typeof creatorPersistence?.load!=='function'||
      typeof studioStorage?.load!=='function')throw Error('Ports de réconciliation L004 incomplets');
   // Load the two durable stores independently, rather than trusting the volatile UI.
@@ -172,8 +172,10 @@ export async function confirmCreatorAttachmentWithEvidence({creator,studio,creat
   const subject=kind==='creature'?verdict.creature:kind==='scene'?verdict.scene:null;
   if(verdict.action!=='link-existing-after-MJ-confirmation'||subject?.status!=='reusable'||
      subject.id!==instanceId)throw Error('Identité STUDIO non attestée : lien bloqué');
-  const claimed=creator.getStudioRecovery();
-  if(claimed?.pending!==true||claimed.kind!==kind||
+  // Only the asynchronous, independently persisted ATELIERS recovery is an
+  // attestation. getStudioRecovery() is intentionally durability-unverified.
+  const claimed=await creator.inspectStudioRecovery();
+  if(claimed?.durableVerified!==true||claimed.pending!==true||claimed.kind!==kind||
      claimed.status!=='requires-confirmation'||claimed.unverifiedCount!==0||
      !Array.isArray(claimed.candidates)||claimed.candidates.length!==1||
      claimed.candidates[0]?.id!==instanceId)

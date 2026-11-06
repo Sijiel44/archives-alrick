@@ -106,7 +106,7 @@ Signification des résultats :
 
 `confirmCreatorAttachmentWithEvidence({...}) -> Promise<{kind,instanceId,
 status:'linked',reconciled:true,executable:false}>` vérifie encore les deux
-magasins, le résultat de `creator.getStudioRecovery()`, une seule candidature,
+magasins, le résultat **attesté** de `await creator.inspectStudioRecovery()` (`durableVerified===true`, `status==='requires-confirmation'`, `kind` correspondant, une seule candidature avec le même ID, `unverifiedCount===0`),
 le consentement MJ explicite, puis délègue UNIQUEMENT à
 `creator.reconcileStudioLink(id,{confirm:true})`. Une relecture du cycle
 persisté confirme le **même ID**, sans journal restant. Aucune compensation,
@@ -121,3 +121,27 @@ marqueur transactionnel durable ou bloquer ces restaurations. Le navigateur rée
 la couche ARCHIVES et la CI au HEAD composite restent à recetter par 05/QA.
 
 Ce contrat est indépendant de l'UX ardoise/cuivre/or (toujours proposition non montée).
+
+
+## Correctif P0 — ATELIERS #100@ceb316e (05/11/2026)
+
+`getStudioRecovery()` est volontairement **synchrone et non attesté** : il retourne
+`status:'durability-unverified'` et `candidates:[]`. Ne jamais le promouvoir en
+preuve de sauvegarde. Le helper STUDIO `confirmCreatorAttachmentWithEvidence` exige
+maintenant **`creator.inspectStudioRecovery(): Promise<Recovery>`** et attend sa
+résolution après les lectures indépendantes des magasins `creatorPersistence.load()`
+et `studioStorage.load()`. Pour confirmer : `durableVerified === true`,
+`pending === true`, `status === 'requires-confirmation'`, `kind` égal au journal,
+`unverifiedCount === 0`, et un **unique** candidat avec `id === instanceId`. Toute
+erreur, absence du port ou promesse rejetée bloque la liaison.
+
+Après confirmation MJ, le helper délègue exactement une fois à
+`creator.reconcileStudioLink(instanceId,{confirm:true})`, puis relit
+`creatorPersistence.load()` et vérifie le lien au **même ID** sans journal restant.
+Il ne crée ni ne supprime de scène/créature et ne publie rien au joueur.
+
+**Recette avec vrais blobs dans le checkout composite (05, puis QA)** :
+`node --test experiments/dg-lot004/tests/studio/L004_PENDING_REAL_INTEROP.mjs`.
+Ce test importe les véritables modules `src/creators/cycle-state.mjs`,
+`src/storage/storage.mjs`, et l'adaptateur ARCHIVES L003. Sans fichier réel,
+le test doit **échouer**, jamais être ignoré. Chrome et la CI sont distincts.
