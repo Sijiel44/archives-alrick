@@ -519,7 +519,23 @@
       "media": [],
       "legacy": {
         "originalSchema": "alrick.bestiary.v1",
-        "fieldDecisions": [],
+        "fieldDecisions": [
+          {
+            "field": "id/source/privateSnapshot",
+            "decision": "reused",
+            "targetOrReason": "Instance créée par STUDIO, source M04 préservée et notes privées séparées."
+          },
+          {
+            "field": "level",
+            "decision": "adaptable",
+            "targetOrReason": "Niveau de référence pour consultation native, non recalculé par le modèle."
+          },
+          {
+            "field": "mechanical_stats",
+            "decision": "unknown",
+            "targetOrReason": "Profil natif M03/M04 absent de cette fixture, non fabriqué."
+          }
+        ],
         "unknownFields": {
           "fixtureUnknown": "préservé sans interprétation"
         }
@@ -1015,7 +1031,23 @@
       "media": [],
       "legacy": {
         "originalSchema": "cer.studio.dg003.provisional.v0",
-        "fieldDecisions": [],
+        "fieldDecisions": [
+          {
+            "field": "title,publicDescription",
+            "decision": "reused",
+            "targetOrReason": "Gabarit narratif issu des types Studio L003."
+          },
+          {
+            "field": "participantIds",
+            "decision": "adaptable",
+            "targetOrReason": "Désormais relation vers instances de la scène jouée, pas attribut du gabarit."
+          },
+          {
+            "field": "privateNotes",
+            "decision": "obsolete",
+            "targetOrReason": "Notes privées d'instance, non du gabarit de scène."
+          }
+        ],
         "unknownFields": {
           "fixtureUnknown": "préservé sans interprétation"
         }
