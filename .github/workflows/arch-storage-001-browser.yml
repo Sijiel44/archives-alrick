@@ -1,0 +1,59 @@
+name: P1-A ARCH-STORAGE-001 isolated browser (no Pages)
+on:
+  push:
+    branches: [prototype/p1a-arch-storage-builder-20261106]
+  pull_request:
+    paths:
+      - 'experiments/arch-storage-001/**'
+      - '.github/workflows/arch-storage-001-browser.yml'
+permissions:
+  contents: read
+jobs:
+  storage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact head SHA (not a virtual merge)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Assert exact SHA, isolated ancestry and Node
+        shell: bash
+        run: |
+          set -euo pipefail
+          tested='${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}'
+          test "$(git rev-parse HEAD)" = "$tested"
+          git merge-base --is-ancestor 2ab809ef5351940e0fc272b859d10f21de894d00 "$tested"
+          echo "P1A_TESTED_HEAD=$tested"
+          node --version
+      - run: npm ci
+      - run: npm test
+      - run: node --test experiments/arch-storage-001/tests/contracts.test.mjs
+      - name: Validate isolated scripts syntax
+        run: |
+          for f in experiments/arch-storage-001/src/*.mjs experiments/arch-storage-001/tools/*.mjs; do node --check "$f"; done
+      - name: Find official Chrome (no Snap fallback)
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome-stable || command -v google-chrome || true)"
+          if [ -z "$CHROME" ]; then echo 'NON EXÉCUTÉ : official Chrome missing'; exit 2; fi
+          "$CHROME" --version
+          echo "CHROMIUM_PATH=$CHROME" >> "$GITHUB_ENV"
+      - name: Set up isolated Python test harness (not app dependency)
+        shell: bash
+        run: |
+          python3 -m venv "$RUNNER_TEMP/arch-storage-py"
+          "$RUNNER_TEMP/arch-storage-py/bin/python" -m pip install --disable-pip-version-check playwright==1.56.0
+          echo "P1A_PY=$RUNNER_TEMP/arch-storage-py/bin/python" >> "$GITHUB_ENV"
+      - name: Actual Chrome + two tabs + crash/recovery + archive roundtrip
+        run: "$P1A_PY" experiments/arch-storage-001/tests/browser.spec.py
+      - name: Print exact SHA also on failure
+        if: always()
+        run: git rev-parse HEAD

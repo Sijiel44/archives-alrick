@@ -1,0 +1,106 @@
+{
+  "schema": "cer.arch-storage001.files-manifest.v0",
+  "sourceBaseSha": "2ab809ef5351940e0fc272b859d10f21de894d00",
+  "files": [
+    {
+      "path": ".github/workflows/arch-storage-001-browser.yml",
+      "bytes": 2491,
+      "sha256": "4947df258910ab99898716da4b3281abe29505c314f9120434292247fe87c82d"
+    },
+    {
+      "path": "experiments/arch-storage-001/README.md",
+      "bytes": 5440,
+      "sha256": "0343bf617b02d4853dbd1f69dc2877052143cb8094ff533337e9d54c9db19ef5"
+    },
+    {
+      "path": "experiments/arch-storage-001/docs/ADR-001_STORAGE_OPTIONS.md",
+      "bytes": 15870,
+      "sha256": "914d716b31ceeb92c7fd2fc3731755f197e2873917c34b86bab2058bac776038"
+    },
+    {
+      "path": "experiments/arch-storage-001/docs/CORE-COMPAT-001.md",
+      "bytes": 4529,
+      "sha256": "b6e74253572b8e49d12b1eaf947bfe0aff197113e68e60015c65cd28f9e4391d"
+    },
+    {
+      "path": "experiments/arch-storage-001/docs/FICHE_DIRECTION_ARCH_STORAGE_001.md",
+      "bytes": 1569,
+      "sha256": "d5b903b2c22c63d244b96e473b8b01df17bc554dc64a0db86b5c37da843b2950"
+    },
+    {
+      "path": "experiments/arch-storage-001/docs/PASSATIONS_DG_REFERENTS.md",
+      "bytes": 3253,
+      "sha256": "4317306ad6ed7e0a6ebeca0f5d9be08f9288189ddcb27840bb3c2b5f68c84fb1"
+    },
+    {
+      "path": "experiments/arch-storage-001/docs/PREUVES_LOCALES.md",
+      "bytes": 1188,
+      "sha256": "b0ec61670b8e284b1ec4fecebd02a8d056606d209b75dff25a9cf88bca77059c"
+    },
+    {
+      "path": "experiments/arch-storage-001/docs/UX-STUDIO-001.md",
+      "bytes": 2887,
+      "sha256": "85bf4175cd127add6cc947a1ccc457f4dab375b5ee79837350480e4c8c371742"
+    },
+    {
+      "path": "experiments/arch-storage-001/index.html",
+      "bytes": 2311,
+      "sha256": "1e850034370b28ef56106bdfe043c0258e0881ab85a5a45fa7027e6dcddb03ff"
+    },
+    {
+      "path": "experiments/arch-storage-001/src/app.mjs",
+      "bytes": 4363,
+      "sha256": "b62a3ef7ab39c393075743e1290a82bee2a8ef7e029fd0e391a9dec761557cc2"
+    },
+    {
+      "path": "experiments/arch-storage-001/src/contracts.mjs",
+      "bytes": 4941,
+      "sha256": "39e58ea89afa53d968f86265c00f0539cbc2491feb31032c164ed89987085260"
+    },
+    {
+      "path": "experiments/arch-storage-001/src/fixture.mjs",
+      "bytes": 1694,
+      "sha256": "f4e866487594aeb45f77913c3de1c450908e2241e5ddceb86e5a49864b801d20"
+    },
+    {
+      "path": "experiments/arch-storage-001/src/idb-store.mjs",
+      "bytes": 7191,
+      "sha256": "7d451043aa92d257a7875a2792405433dfde710fc4a4c139ca60e3919a0eb68f"
+    },
+    {
+      "path": "experiments/arch-storage-001/src/private-archive.mjs",
+      "bytes": 2336,
+      "sha256": "3cfd56a00d0dfda32c414df3b802876642307626374e18d4d83782e8b23cb6a1"
+    },
+    {
+      "path": "experiments/arch-storage-001/src/styles.css",
+      "bytes": 1531,
+      "sha256": "c866fba858ed4c9c74b275f6ffda77918761f947a15090ca852301cee471edf9"
+    },
+    {
+      "path": "experiments/arch-storage-001/tests/TEST_BROWSER_LOCAL_BLOCKED.txt",
+      "bytes": 2246,
+      "sha256": "c290bdac367fa8f7d744250f15f34c8aecb7f15e83c1023de4d7ced67207aa79"
+    },
+    {
+      "path": "experiments/arch-storage-001/tests/TEST_NODE_LOCAL.tap",
+      "bytes": 2158,
+      "sha256": "9ac7242a49847289b32ec8bcc9e12b8d8361215ee60328af6478357af771e2ba"
+    },
+    {
+      "path": "experiments/arch-storage-001/tests/browser.spec.py",
+      "bytes": 7852,
+      "sha256": "4c06253cce0da0a0ab5c5cb9b828cc5d58d0b7c856fadc3618ac492568917813"
+    },
+    {
+      "path": "experiments/arch-storage-001/tests/contracts.test.mjs",
+      "bytes": 2903,
+      "sha256": "4b7f70680a988641b6e7be1a12bb0c317e724bbdf7356148c5914083115eb136"
+    },
+    {
+      "path": "experiments/arch-storage-001/tools/serve.mjs",
+      "bytes": 1720,
+      "sha256": "a05c8bea68834f848febf94b9f99ebb5ef83d2a7674abdf061b8a90fbe53eaf0"
+    }
+  ]
+}
