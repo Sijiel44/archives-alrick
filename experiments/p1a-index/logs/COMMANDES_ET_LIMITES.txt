@@ -1,0 +1,14 @@
+INDEX / DATA-MODEL-001 & CORE-COMPAT-001 — 2026-11-06
+ENV LOCAL : Node 22.16.0, npm 10.9.2, tsc 5.8.3 ; esbuild absent ; clone GitHub absent.
+GIT : git ls-remote https://github.com/Sijiel44/archives-alrick.git HEAD
+RESULTAT : fatal: unable to access ... Could not resolve host: github.com.
+Lecture des sources via connecteur GitHub au SHA ; SHAs commits/blobs dans fixtures/CORE_SOURCE_SHA.json.
+CMD : python tests/generate-fixtures.py
+SORTIE : P1A_FICTION_11_RECORDS.json recordCount 11 bytes 15262
+CMD : node --test tests/data-model.test.mjs tests/core-compat.test.mjs
+SORTIE : 58 tests / 58 pass / 0 fail ; log NODE22_TESTS.tap.
+PREMIER ESSAI : 51/52, assertion profonde de prototype (Object.create(null)) trop restrictive ; corrigée en comparant les valeurs JSON, puis 58/58. Ce n'était pas un défaut d'intégrité métier.
+CMD : python -c jsonschema.Draft202012Validator.check_schema(...) ; validator.iter_errors(11 fixtures)
+SORTIE : Draft2020-12 valide ; 11/11 valides, 0 erreur.
+NON EXECUTES : npm ci/npm test complets, test native-core-on-clone.test.mjs, TypeScript natif, Chrome/DOM joueur, CI GitHub de ce prototype, recette humaine, SHA octet d'une archive historique.
+P0 #95 : aucune écriture, aucun merge, aucune publication, aucun changement des formules 5d6.
