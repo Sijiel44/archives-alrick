@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: 12 explicit entity families accounted for
+ok 1 - 12 explicit entity families accounted for
+  ---
+  duration_ms: 0.791326
+  type: 'test'
+  ...
+# Subtest: initial Campaign schema/provisional
+ok 2 - initial Campaign schema/provisional
+  ---
+  duration_ms: 0.20823
+  type: 'test'
+  ...
+# Subtest: six commands produce 2 PJ, 1 instance, 2 scenes, 1 note and revision 7
+ok 3 - six commands produce 2 PJ, 1 instance, 2 scenes, 1 note and revision 7
+  ---
+  duration_ms: 1.908375
+  type: 'test'
+  ...
+# Subtest: raw characteristic 14 retained
+ok 4 - raw characteristic 14 retained
+  ---
+  duration_ms: 1.884459
+  type: 'test'
+  ...
+# Subtest: source document/profile/instance identities stay disjoint
+ok 5 - source document/profile/instance identities stay disjoint
+  ---
+  duration_ms: 0.466332
+  type: 'test'
+  ...
+# Subtest: private note never flows to public-only status
+ok 6 - private note never flows to public-only status
+  ---
+  duration_ms: 0.472321
+  type: 'test'
+  ...
+# Subtest: mutations do not alter their input
+ok 7 - mutations do not alter their input
+  ---
+  duration_ms: 0.22904
+  type: 'test'
+  ...
+# Subtest: id collision refused
+ok 8 - id collision refused
+  ---
+  duration_ms: 0.641203
+  type: 'test'
+  ...
+# Subtest: missing scene reference refused
+ok 9 - missing scene reference refused
+  ---
+  duration_ms: 0.395588
+  type: 'test'
+  ...
+# Subtest: unknown command refused (not a second rules engine)
+ok 10 - unknown command refused (not a second rules engine)
+  ---
+  duration_ms: 0.394306
+  type: 'test'
+  ...
+# Subtest: JSON getters and prototype pollution refused
+ok 11 - JSON getters and prototype pollution refused
+  ---
+  duration_ms: 0.203442
+  type: 'test'
+  ...
+# Subtest: command signature is deterministic and includes payload
+ok 12 - command signature is deterministic and includes payload
+  ---
+  duration_ms: 0.147259
+  type: 'test'
+  ...
+# Subtest: duplicate ids in restored campaign refused
+ok 13 - duplicate ids in restored campaign refused
+  ---
+  duration_ms: 0.649765
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 75.322672
