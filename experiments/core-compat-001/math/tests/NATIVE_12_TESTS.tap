@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: I01 5d6: 7776 issues, 21 échecs naturels, borne 5..30
+ok 1 - I01 5d6: 7776 issues, 21 échecs naturels, borne 5..30
+  ---
+  duration_ms: 0.899957
+  type: 'test'
+  ...
+# Subtest: I02 lanceur injectable déterministe, toujours cinq d6
+ok 2 - I02 lanceur injectable déterministe, toujours cinq d6
+  ---
+  duration_ms: 0.678713
+  type: 'test'
+  ...
+# Subtest: I03 scores bruts >12 : même bonus M01 que M03
+ok 3 - I03 scores bruts >12 : même bonus M01 que M03
+  ---
+  duration_ms: 0.912596
+  type: 'test'
+  ...
+# Subtest: I04 N1/5/10/15/20/25 : seul M01 fournit XP et budget
+ok 4 - I04 N1/5/10/15/20/25 : seul M01 fournit XP et budget
+  ---
+  duration_ms: 0.227964
+  type: 'test'
+  ...
+# Subtest: I05 échec naturel 5–7 même avec gros bonus, M01 et M03
+ok 5 - I05 échec naturel 5–7 même avec gros bonus, M01 et M03
+  ---
+  duration_ms: 0.427074
+  type: 'test'
+  ...
+# Subtest: I06 faisabilité false : succès numérique ≠ réussite appliquée
+ok 6 - I06 faisabilité false : succès numérique ≠ réussite appliquée
+  ---
+  duration_ms: 0.131017
+  type: 'test'
+  ...
+# Subtest: I07 défense/protection distinctes, une protection modifie les dégâts
+ok 7 - I07 défense/protection distinctes, une protection modifie les dégâts
+  ---
+  duration_ms: 0.231539
+  type: 'test'
+  ...
+# Subtest: I08 effet absorption natif accepté mais NON appliqué (blocage connu)
+ok 8 - I08 effet absorption natif accepté mais NON appliqué (blocage connu)
+  ---
+  duration_ms: 0.381835
+  type: 'test'
+  ...
+# Subtest: I09 effet impact 2 approuvé est appliqué, non cumulable
+ok 9 - I09 effet impact 2 approuvé est appliqué, non cumulable
+  ---
+  duration_ms: 0.441085
+  type: 'test'
+  ...
+# Subtest: I10 entrées PJ/créature identiques M03 -> résultats identiques (moteur seulement)
+ok 10 - I10 entrées PJ/créature identiques M03 -> résultats identiques (moteur seulement)
+  ---
+  duration_ms: 1.517949
+  type: 'test'
+  ...
+# Subtest: I11 portée et répétition : pure suggestion M01 sans crédit
+ok 11 - I11 portée et répétition : pure suggestion M01 sans crédit
+  ---
+  duration_ms: 0.235575
+  type: 'test'
+  ...
+# Subtest: I12 niveaux hors 1–25, indice de difficulté hors 1–12 bloqués
+ok 12 - I12 niveaux hors 1–25, indice de difficulté hors 1–12 bloqués
+  ---
+  duration_ms: 0.349326
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 733.649049
