@@ -83,7 +83,8 @@ test('UI REPAIR : confirmation MJ lie une copie STUDIO existante sans nouvelle c
   async copyCreature(){copies++;campaign.creatures.push({id:'cr-'+copies,source:{documentId:'DOC-UI',profileId:'PROFILE-UI',ruleset:'M03'},privateSnapshot:{notes:'CANARI-MJ-NE-PAS-AFFICHER'}})},
   getCampaign(){return structuredClone(campaign)}
  };
- const x=setup({persistence,studio,catalogBridge:record=>({id:'cap:fixture:'+record.kind,executable:false})});
+ const x=setup({persistence,studio,loadPersistedStudio:async()=>structuredClone(campaign),
+  catalogBridge:record=>({id:'cap:fixture:'+record.kind,executable:false})});
  await x.instance.ready;
  const cycle=x.instance.cycle;
  const draft=name=>({name,provenance:'Fiction',version:'0.1.0',description:'Fiction descriptive.',limitations:'Sans application.'});
@@ -95,6 +96,10 @@ test('UI REPAIR : confirmation MJ lie une copie STUDIO existante sans nouvelle c
  x.instance.render();
  const select=x.root.find(e=>e.tagName==='SELECT'&&e.getAttribute('aria-label')==='Instance STUDIO à réconcilier');
  assert.ok(select);
+ assert.equal(select.children.length,0,'aucun ID sélectionnable avant preuve ARCHIVES');
+ assert.equal(button(x.root,'Confirmer lien vers instance existante (MJ)').disabled,true);
+ await button(x.root,'Vérifier sauvegarde STUDIO dans ARCHIVES').emit('click');
+ await nextTick();
  assert.equal(select.children.length,1);
  assert.equal(select.children[0].value,'cr-1');
  assert.equal(button(x.root,'Confirmer lien vers instance existante (MJ)').disabled,false);
@@ -107,5 +112,43 @@ test('UI REPAIR : confirmation MJ lie une copie STUDIO existante sans nouvelle c
  assert.equal(cycle.getState().links.creatureInstanceId,'cr-1');
  assert.equal(copies,1);
  assert.equal(cycle.getStudioRecovery().pending,false);
+ x.instance.destroy();
+});
+
+
+test('UI DURABLE : une créature uniquement en mémoire bloque confirmation, sans canari DOM',async()=>{
+ const memory=new Map(),campaign={id:'camp-ui-fixture',creatures:[],scenes:[],activeSceneId:''};
+ const persisted={id:'camp-ui-fixture',creatures:[],scenes:[],activeSceneId:''};
+ let saveLinkFails=true;
+ const persistence={
+  async load(){return memory.has('cycle')?structuredClone(memory.get('cycle')):null},
+  async save(data){if(saveLinkFails&&data.links.creatureInstanceId)throw Error('ACK cycle perdu');
+   memory.set('cycle',structuredClone(data));return {saved:true};}
+ };
+ const studio={
+  async previewCreature(){return {documentId:'DOC-UI',profileId:'PROFILE-UI',ruleset:'M03'}},
+  async copyCreature(){campaign.creatures.push({id:'cr-memoire',source:{documentId:'DOC-UI',profileId:'PROFILE-UI',ruleset:'M03'},
+   privateSnapshot:{notes:'CANARI-MJ-NE-PAS-AFFICHER'}})},
+  getCampaign(){return structuredClone(campaign)}
+ };
+ const x=setup({persistence,studio,loadPersistedStudio:async()=>structuredClone(persisted)});
+ await x.instance.ready;
+ const cycle=x.instance.cycle;
+ const draft=name=>({name,provenance:'Fiction',version:'0.1.0',description:'Narration sans effet.',limitations:'Aucun coût.'});
+ for(const kind of ['item','capacity','creature']){
+  await cycle.saveDraft(kind,{...draft(kind),...(kind==='creature'?{sourceReference:'DOC-UI'}:{})});
+  await cycle.validateMJ(kind);
+ }
+ await assert.rejects(cycle.attachCreature(),/ACK cycle perdu/);
+ x.instance.render();
+ const verify=button(x.root,'Vérifier sauvegarde STUDIO dans ARCHIVES');
+ await verify.emit('click');await nextTick();
+ assert.equal(button(x.root,'Confirmer lien vers instance existante (MJ)').disabled,true);
+ assert.equal(button(x.root,'Confirmer absence de copie et réessayer').disabled,true);
+ const status=x.root.all(e=>e.tagName==='P').map(e=>e.textContent).join(' ');
+ assert.match(status,/Instance seulement en mémoire|non attestée|absente ou ambiguë/);
+ assert.ok(!x.root.all(e=>typeof e.textContent==='string').some(e=>e.textContent.includes('CANARI-MJ-NE-PAS-AFFICHER')));
+ saveLinkFails=false;
+ assert.equal(cycle.getState().links.creatureInstanceId,null);
  x.instance.destroy();
 });
