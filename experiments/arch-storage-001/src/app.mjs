@@ -23,6 +23,7 @@ $('export').addEventListener('click',()=>act(async()=>{const a=await store.expor
 $('preview').addEventListener('click',()=>act(async()=>{const file=$('archive').files?.[0];if(!file)throw Error('Choisir fichier fictif');pending=await store.previewImport(new Uint8Array(await file.arrayBuffer()));$('import').disabled=false;message('Prévisualisation SANS ÉCRITURE : '+JSON.stringify(pending.summary)+' ; vérifier que la base cible est vierge.')}));
 $('import').addEventListener('click',()=>act(async()=>{if(!pending)throw Error('Prévisualisation manquante');const r=await store.commitImport(pending);pending=null;$('import').disabled=true;await render();message('Import confirmé : '+r.campaignId+' à révision '+r.revision)}));
 await render();
+document.body.dataset.p1aReady='true';
 // Test-only protocol, not available through player origin or any network API.
 window.__p1aDemo={store,render,seed:()=>seedFiction(store)};
 window.addEventListener('pagehide',()=>store.close());
