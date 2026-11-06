@@ -1,0 +1,9 @@
+date_utc=2026-11-06T02:29:12Z
+node=v22.16.0
+NODE_CHECK_PASS experiments/dg-lot004/src/studio/demo.mjs
+NODE_CHECK_PASS experiments/dg-lot004/src/studio/reconcile.mjs
+NODE_CHECK_PASS experiments/dg-lot004/tests/studio/L004_REPAIR_reconciliation.test.mjs
+PY_COMPILE_PASS experiments/dg-lot004/tests/studio/L004_REPAIR_BROWSER_SCENARIO.py
+BROWSER_NON_EXECUTE: real integrated L004 server/Chromium QA is unavailable in this container.
+ARCHIVES_REAL_NON_EXECUTE: native L004 integrated adapter and creator cycle not locally checked out.
+NPM_TEST_NON_EXECUTE: no full repository clone/npm CI in this runtime.

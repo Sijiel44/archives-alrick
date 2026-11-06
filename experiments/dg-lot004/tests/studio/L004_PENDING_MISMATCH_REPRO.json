@@ -1,0 +1,41 @@
+{
+  "previous": {
+    "action": "link-existing-after-MJ-confirmation",
+    "creature": {
+      "status": "reusable",
+      "id": "old-creature",
+      "persisted": true
+    },
+    "scene": {
+      "status": "reusable",
+      "id": "old-scene",
+      "persisted": true
+    }
+  },
+  "correctedNoJournal": {
+    "action": "block-automatic-retry",
+    "creature": {
+      "status": "unattestable",
+      "id": null,
+      "persisted": false
+    },
+    "scene": {
+      "status": "unattestable",
+      "id": null,
+      "persisted": false
+    }
+  },
+  "correctedWithDurableJournal": {
+    "action": "link-existing-after-MJ-confirmation",
+    "creature": {
+      "status": "reusable",
+      "id": "old-creature",
+      "persisted": true
+    },
+    "scene": {
+      "status": "not-targeted",
+      "id": null,
+      "persisted": false
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "tool": "V8 isolate via connected GitHub source retrieval; full source compiled with only ESM export token rewrite; TextEncoder/TextDecoder/structuredClone JSON polyfilled",
+  "sourceCreatorCommit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+  "sourceCreatorGitBlob": "5554b3b12728f0e63388beccec2c58b29b214281",
+  "sourceStudioParent": "6bb0b1aecdc1e37b79d3a53dd192a653999d5072",
+  "sourceStudioGitBlob": "0915b48f023e72ad87692ee9437cf7c837311fe4",
+  "patchedStudio": "exact source transformed by two replacements matching the shipped source: require inspectStudioRecovery async, await, durableVerified=true",
+  "results": {
+    "PASS": 14,
+    "FAIL": 0
+  },
+  "cases": [
+    "old helper fails on ATELIERS sync durability-unverified, reproduced",
+    "corrected helper links same creature ID after ACK lost; 1 creature",
+    "corrected helper links same scene ID; no private notes returned; 1 scene",
+    "missing async inspector refused",
+    "rejected async inspect does not mutate",
+    "durableVerified:false refused",
+    "async different candidate refused",
+    "two async candidates refused",
+    "wrong async status refused",
+    "persisted Studio source modified refused",
+    "old creator backup missing journal refused",
+    "lost final creator ACK does not duplicate Studio",
+    "claimed confirmation without durable link refused",
+    "explicit MJ confirmation required"
+  ],
+  "limits": [
+    "Not Node 24 test of checked-out composite",
+    "Not a native ARCHIVES adapter test",
+    "Not Chromium or UI security proof",
+    "JSDOM not used",
+    "V8 isolate polyfills are not browser/Node substitutes"
+  ]
+}

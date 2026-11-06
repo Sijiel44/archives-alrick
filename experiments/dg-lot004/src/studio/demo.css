@@ -1,0 +1,18 @@
+/* Scoped L004 demo enhancements. Served as a self-hosted CSS file, never inline. */
+[data-l004-demo] { color: #17263c; max-width: 80rem; margin-inline: auto; min-width: 0; }
+[data-l004-demo] > header { padding: 1rem 1.25rem; background: #eaf4ff; border: 2px solid #1c527d; border-radius: .6rem; }
+[data-l004-demo] section, [data-l004-demo] main { min-width: 0; }
+[data-l004-demo] [role='group'] { display: flex; flex-wrap: wrap; gap: .5rem; }
+[data-l004-demo] button, [data-l004-demo] input, [data-l004-demo] select, [data-l004-demo] textarea { max-width: 100%; font: inherit; }
+[data-l004-demo] button { min-height: 44px; min-width: 44px; white-space: normal; overflow-wrap: anywhere; padding: .5rem .85rem; }
+[data-l004-demo] button:focus-visible, [data-l004-demo] input:focus-visible,
+[data-l004-demo] textarea:focus-visible, [data-l004-demo] select:focus-visible {outline: 3px solid #1761b6; outline-offset: 2px;}
+[data-l004-demo] input[type=file] { width: 100%; }
+[data-l004-demo] textarea { width: min(100%, 50rem); box-sizing: border-box; }
+[data-l004-demo] pre, [data-l004-demo] p, [data-l004-demo] li { overflow-wrap: anywhere; }
+@media (max-width: 40rem) {
+  [data-l004-demo] { font-size: 1rem; }
+  [data-l004-demo] [role='group'] { display: grid; grid-template-columns: minmax(0,1fr); }
+  [data-l004-demo] [role='group'] button { width: 100%; text-align: left; }
+  [data-l004-demo] section { padding: .75rem; }
+}

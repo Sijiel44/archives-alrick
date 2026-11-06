@@ -1,0 +1,89 @@
+{
+  "source_parent_sha": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
+  "files": [
+    {
+      "path": "experiments/dg-lot004/src/studio/demo.mjs",
+      "bytes": 14463,
+      "git_blob_sha1": "2f9f239af4dfcec8c790bec20d3b2533e9dba7b9",
+      "sha256": "6a9bcf31d3e847529f3742c2ee99cb3345b71f3a35847d965236edb17122a63f",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/src/studio/reconcile.mjs",
+      "bytes": 9349,
+      "git_blob_sha1": "f2b3a0254aa8f6ca8fcd4c6299281eee7467581e",
+      "sha256": "6e2918407d43675986362b39c25ddfbb286fcf77c066624757b905bcde87e456",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/src/studio/CONTRACT.md",
+      "bytes": 10191,
+      "git_blob_sha1": "a0e7cffb6841c2b2f2eb82dd50a7d3566faed581",
+      "sha256": "3a1b58d6e67b9e3b046631aabbed280b52c403388de297fbb236fbb101ee0436",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/src/studio/ux-ardoise-cuivre-or.proposal.css",
+      "bytes": 2121,
+      "git_blob_sha1": "2083c9f5b050ff6133eeff61c891cad49f70bf8c",
+      "sha256": "6efe91dbfbddb80a005b7344b326434d956a06fd38fffa251b3c141c7a761190",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_reconciliation.test.mjs",
+      "bytes": 19740,
+      "git_blob_sha1": "effaf04e41130d821ff85db60ae6e5ed6d5fdf8a",
+      "sha256": "815b78ec8c2dcf9b59af9ad787bc711bb719ec802c8dbaf8b7fdfd2a96717c9d",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_BROWSER_SCENARIO.py",
+      "bytes": 3554,
+      "git_blob_sha1": "e135207f2fccbbe083c3fa1c9f15e75260699309",
+      "sha256": "215bd2d6a473ebb34b1638170dc69863253e84f4ca7d3c657f77ea134d58e0e3",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_PASSATIONS.md",
+      "bytes": 5415,
+      "git_blob_sha1": "4e93bf1b3a54cc632fd6519a3c44c66646c38ee4",
+      "sha256": "93e834cf0914e6c82df2cae7dca0d7af8f10c416345a6aaf8312d97cf8f0bda7",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_UX_PROPOSITION.md",
+      "bytes": 2293,
+      "git_blob_sha1": "af6a1a03fcfe9b840152fffb91bc83b284924e7b",
+      "sha256": "8d3e108de4196dda0ccfb9ce43cc2bb09cb520ca623d4ec11e51c1589d57c96e",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_RAPPORT_TECHNIQUE.md",
+      "bytes": 8361,
+      "git_blob_sha1": "09c76234a16ba5bebe763e7157d1914c9dcf3610",
+      "sha256": "2422e75298388a72b74fdd552e726b056bd4b8d308f936b99acb123960ace367",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_NODE_TESTS.tap",
+      "bytes": 8057,
+      "git_blob_sha1": "dee9a5aa89481c9dd3ce8a5002e0ec4b24c49836",
+      "sha256": "3979b23526344d0fa875a99735b91af3745b19ee8a649f43c6469265ea1efaef",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_L003_TESTS.tap",
+      "bytes": 4562,
+      "git_blob_sha1": "7f5391736b40a238fe828458bc849ea1a99ba0b4",
+      "sha256": "1314038e7f7870f5f524b0158835ee5e16234a032c1cc1d87efbf11f48a82504",
+      "trailing_newlines": 1
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_SYNTAX_LOG.txt",
+      "bytes": 602,
+      "git_blob_sha1": "e69a2220bac14dd44c146ddaab1694360979a87e",
+      "sha256": "5361bcd42353b2a5719d0780bbef6c9989f2c1b9470e1e7dc0c06e3bb0ef1393",
+      "trailing_newlines": 1
+    }
+  ]
+}

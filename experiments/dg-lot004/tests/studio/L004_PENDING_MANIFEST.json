@@ -1,0 +1,87 @@
+{
+  "kind": "L004-STUDIO-pendingStudioOp-contract-correction",
+  "source_base": "9729d1085a8714cc01d769908adfd5aa87e7ef9b",
+  "creator_review_sha": "ecce2ada4d20e401a5fff111c8d1902f133559af",
+  "entryCount": 11,
+  "entries": [
+    {
+      "path": "experiments/dg-lot004/src/studio/reconcile.mjs",
+      "git_blob": "0915b48f023e72ad87692ee9437cf7c837311fe4",
+      "sha256": "ae2a5c9440f472e4b1e0aab2a54302c109153286252d17e91db31bc1cee71aba",
+      "bytes": 15265
+    },
+    {
+      "path": "experiments/dg-lot004/src/studio/CONTRACT.md",
+      "git_blob": "9ed11678d43d9314feadaecfa9e1c96e13d1680c",
+      "sha256": "2dd689937bff38d01364e24daa7862ff5c34e2c93b68fac7a38c6f9eddc7cfd0",
+      "bytes": 14421
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_reconciliation.test.mjs",
+      "git_blob": "28cdc498e7447ded54f6bd62bfe802c0e4bea71d",
+      "sha256": "71b6047d252c03acd598d9e777a52ffcb39fafdb13f0477d1f1b769cee3e0bb7",
+      "bytes": 19944
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_CONTRACT.test.mjs",
+      "git_blob": "e28881568af580e0a21a06cbaca980d2b83e162b",
+      "sha256": "d4206899b43e7e0ed9b634ace8c55e8320e2454aedea3d987cf70c6425a737f2",
+      "bytes": 11544
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_REAL_INTEROP.mjs",
+      "git_blob": "a1c22d718360d34acd13d76f5eb177bdb13d63e4",
+      "sha256": "f2557e90b3b76a86e14ce2aad5912149654393482d488428433924efa7ad49b0",
+      "bytes": 7988
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_MISMATCH_REPRO.json",
+      "git_blob": "46bbd14fd0472cadd8a7e1176628368015b72d0f",
+      "sha256": "db2e69a8d2751b1d307dd41cb766cb50ac3efa607154e368fce3b3d20ab3018a",
+      "bytes": 840
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_RAPPORT_TECHNIQUE.md",
+      "git_blob": "27f01afbc22ebbd3367f5cf70ea94b1c6f336f3e",
+      "sha256": "ca05a5afd4b72a27142512208833d67255e22f35c1a097f5e39a25d5346eb5ff",
+      "bytes": 7081
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_PASSATION_05_21_04.md",
+      "git_blob": "588d5702000ce82a2b9e51a8ad7d140b1daa8592",
+      "sha256": "a3786681affb54aa2bf5e29cf5307c70dc9f58fa51d7f038e73159b6f2c7d413",
+      "bytes": 3882
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_NODE_L004.tap",
+      "git_blob": "7b4daa644c8bffbe90f3d0a4091018a46ea6c6fe",
+      "sha256": "6a2d0e272d79b5ea3681b0a639473e8145a133bae6a83c8bdd653ac364ff3f84",
+      "bytes": 13620
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_NODE_L003.tap",
+      "git_blob": "da932a5c6cf6fb1eb916ad7e81fd23a66d3e063f",
+      "sha256": "4c0f7bb3d63c440a541f5ca72822be8bfcec443bb275d020fe5e7f2086c41c38",
+      "bytes": 4563
+    },
+    {
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_REAL_INTEROP_BLOCKED.tap",
+      "git_blob": "2dfb8b62282da04973ec9d322c4ec3129e58fa01",
+      "sha256": "96ff3f6ceafaca8128d857a94e842af5b2982442295210cfd9e185406a3948ab",
+      "bytes": 1676
+    }
+  ],
+  "tests": {
+    "l004": {
+      "pass": 60,
+      "fail": 0,
+      "skip": 0
+    },
+    "l003": {
+      "pass": 22,
+      "fail": 0,
+      "skip": 0
+    },
+    "native_creator_archive": "NOT EXECUTED - ERR_MODULE_NOT_FOUND (missing creator module in local checkout)"
+  }
+}
