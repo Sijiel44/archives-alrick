@@ -190,12 +190,18 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
     (x.privateNotes??'')===(draft.privateNotes??'') &&
     (!studio.updateScene||Array.isArray(x.participantIds)&&x.participantIds.includes(state.links.creatureInstanceId));
   };
-  const candidates=created.filter(candidate).map(x=>({id:x.id})); // no source/secret payload
-  return {pending:true,kind:pending.kind,status:candidates.length?'requires-confirmation':
-    created.length?'manual-review':'no-side-effect-observed',
-    candidates,unverifiedCount:created.length-candidates.length,
+  const matches=created.filter(candidate);
+  // Une seule instance nouvelle, elle-même unique et de provenance concordante,
+  // est nécessaire. Deux copies admissibles (ou une copie et un intrus) bloquent
+  // toute sélection arbitraire, même sous confirmation MJ.
+  const unique=created.length===1&&matches.length===1;
+  const candidates=unique?[{id:matches[0].id}]:[]; // no source/secret payload
+  return {pending:true,kind:pending.kind,status:unique?'requires-confirmation':
+    created.length?'ambiguous':'no-side-effect-observed',
+    candidates,unverifiedCount:created.length-matches.length,
     canAbandon:created.length===0,
-    message:created.length?'Confirmer uniquement une copie STUDIO reconnue, sinon revue manuelle':
+    message:created.length?unique?'Confirmer cette unique copie STUDIO reconnue':
+     'Instances STUDIO multiples ou contradictoires : revue manuelle, aucun lien':
      'Aucune nouvelle instance visible ; confirmer explicitement avant un nouvel essai'};
  }
  async function reconcileStudioLink(instanceId,{confirm=false}={}){
@@ -245,6 +251,13 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   if(!preview||['documentId','profileId','ruleset'].some(k=>!text(preview[k],120)))
    fail('Aperçu BEST/STUDIO incomplet');
   const source=Object.fromEntries(['documentId','profileId','ruleset'].map(k=>[k,preview[k]]));
+  // Ancien backup sans journal : ne pas considérer le lien absent comme une
+  // autorisation de recopier une créature déjà présente de même provenance.
+  const priorMatches=before.filter(x=>isObject(x)&&
+   (x.privateSnapshot?.sourceId===reference||
+    (isObject(x.source)&&['documentId','profileId','ruleset'].every(k=>x.source[k]===source[k]))));
+  if(priorMatches.length)
+   fail('Copie STUDIO préexistante sans journal attesté : réconciliation manuelle avant nouvelle copie');
   // If the preflight save fails, copyCreature is never called.
   await commit(next=>{
    if(next.revision!==startingRevision||next.drafts.creature.sourceReference!==reference)
@@ -285,6 +298,10 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   if(!ids.test(campaign?.id)||!Array.isArray(before)||before.some(x=>!ids.test(x?.id)))
    fail('Campagne STUDIO invalide pour journal de reprise');
   const beforeIds=before.map(x=>x.id);
+  // Backup ancien sans journal : refuser même titre (copie potentielle ou
+  // conflit privé), sans inspecter/réécrire les notes du MJ.
+  if(before.some(x=>isObject(x)&&x.title===d.title))
+   fail('Scène STUDIO préexistante sans journal attesté : réconciliation manuelle avant nouvelle scène');
   await commit(next=>{
    if(next.revision!==startingRevision)fail('Cycle modifié pendant préparation de scène STUDIO');
    if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée avant scène');
