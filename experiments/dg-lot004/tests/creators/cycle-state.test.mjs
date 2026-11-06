@@ -711,7 +711,14 @@ test('DURABLE-GATE: inspecteur STUDIO optionnel rejette même ID non reusable',a
  assert.equal(proof.status,'inspector-rejected');
  assert.equal(proof.durableVerified,false);
  await assert.rejects(rejected.reconcileStudioLink('cr-1',{confirm:true}),/non attestée/);
- const accepted=x.make({inspectCreatorAttachment:()=>({creature:{status:'reusable',id:'cr-1',persisted:true}})});
+ const accepted=x.make({inspectCreatorAttachment:({cycle,persistedCycle,campaign,persistedCampaign,kind})=>{
+  assert.equal(kind,'creature');
+  assert.equal(cycle.id,'cycle-transaction-1');
+  assert.deepEqual(persistedCycle,x.disk.snapshot,'le vrai journal persistant est transmis à STUDIO');
+  assert.equal(campaign.id,persistedCampaign.id);
+  assert.equal(persistedCycle.extensions.pendingStudioOp.kind,'creature');
+  return {creature:{status:'reusable',id:'cr-1',persisted:true}};
+ }});
  await accepted.load();
  assert.equal((await accepted.inspectStudioRecovery()).durableVerified,true);
  await accepted.reconcileStudioLink('cr-1',{confirm:true});
