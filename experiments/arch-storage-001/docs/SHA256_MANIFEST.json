@@ -1,11 +1,12 @@
 {
   "schema": "cer.arch-storage001.files-manifest.v0",
   "sourceBaseSha": "2ab809ef5351940e0fc272b859d10f21de894d00",
+  "verifiedEvidenceRun": "https://github.com/Sijiel44/archives-alrick/actions/runs/42301287493",
   "files": [
     {
       "path": ".github/workflows/arch-storage-001-browser.yml",
-      "bytes": 2491,
-      "sha256": "4947df258910ab99898716da4b3281abe29505c314f9120434292247fe87c82d"
+      "bytes": 2503,
+      "sha256": "ad9eb7b7d48784bf9f9b39357f2e12b898dd06124fde5716d6e2f73915998e37"
     },
     {
       "path": "experiments/arch-storage-001/README.md",
@@ -38,6 +39,11 @@
       "sha256": "b0ec61670b8e284b1ec4fecebd02a8d056606d209b75dff25a9cf88bca77059c"
     },
     {
+      "path": "experiments/arch-storage-001/docs/RESULTATS_CI_P1A.md",
+      "bytes": 2861,
+      "sha256": "d71d91cc90bcac3193f57bd95451cfe525fba29eb4c2ab4ca9d9d7d5142cf2be"
+    },
+    {
       "path": "experiments/arch-storage-001/docs/UX-STUDIO-001.md",
       "bytes": 2887,
       "sha256": "85bf4175cd127add6cc947a1ccc457f4dab375b5ee79837350480e4c8c371742"
@@ -49,8 +55,8 @@
     },
     {
       "path": "experiments/arch-storage-001/src/app.mjs",
-      "bytes": 4363,
-      "sha256": "b62a3ef7ab39c393075743e1290a82bee2a8ef7e029fd0e391a9dec761557cc2"
+      "bytes": 4402,
+      "sha256": "877f0a28fce3c39910959e1c1c0287214de8da08f859c7ed29a2332abe9d1227"
     },
     {
       "path": "experiments/arch-storage-001/src/contracts.mjs",
@@ -88,9 +94,14 @@
       "sha256": "9ac7242a49847289b32ec8bcc9e12b8d8361215ee60328af6478357af771e2ba"
     },
     {
+      "path": "experiments/arch-storage-001/tests/__pycache__/browser.spec.cpython-313.pyc",
+      "bytes": 12901,
+      "sha256": "6c258fc2f53b2c1c87227de59ef21d252b0a56e17d581768006f670420dcbcf7"
+    },
+    {
       "path": "experiments/arch-storage-001/tests/browser.spec.py",
-      "bytes": 7852,
-      "sha256": "4c06253cce0da0a0ab5c5cb9b828cc5d58d0b7c856fadc3618ac492568917813"
+      "bytes": 7810,
+      "sha256": "be3e57945b3adf918f7fe9a504af5eac945ec2ef15d21f2b7018faecc8e961c7"
     },
     {
       "path": "experiments/arch-storage-001/tests/contracts.test.mjs",
