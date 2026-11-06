@@ -491,7 +491,7 @@ test('REPAIR: interdit annulation et restauration tant que copie STUDIO est en v
  x.studio.copyCreature=async()=>{await gate;return originalCopy()};
  const task=m.attachCreature();
  // Attendre que le journal soit effectivement sauvegardé avant d'examiner la fenêtre concurrente.
- for(let n=0;n<50&&!x.disk.snapshot.extensions.pendingStudioOp;n++)await Promise.resolve();
+ for(let n=0;n<100&&m.getStudioRecovery().status!=='in-flight';n++)await Promise.resolve();
  assert.equal(x.disk.snapshot.extensions.pendingStudioOp?.kind,'creature');
  const pending=m.getStudioRecovery();assert.equal(pending.status,'in-flight');
  assert.equal(pending.canAbandon,false);
