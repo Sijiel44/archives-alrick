@@ -258,7 +258,8 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
    if(typeof inspectCreatorAttachment==='function'){
     let report;
     try{
-     report=await inspectCreatorAttachment({campaign:memory,persistedCampaign,cycle:copy(),kind:pending.kind});
+     report=await inspectCreatorAttachment({campaign:memory,persistedCampaign,
+      persistedCycle:savedCycle,cycle:copy(),kind:pending.kind});
     }catch{
      return {...live,status:'inspector-unavailable',candidates:[],canAbandon:false,durableVerified:false,
       message:'Inspecteur STUDIO impossible sur ce maillon : contrat à corriger'};
