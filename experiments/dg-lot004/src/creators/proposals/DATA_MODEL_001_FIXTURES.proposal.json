@@ -1,0 +1,1025 @@
+{
+  "kind": "cer.p1.data-model.fixture-set.proposal.v0",
+  "warning": "Données entièrement fictives, aucun fait joué ni canon, aucun moteur de règles",
+  "records": [
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:pj:explorateur-atelier",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "pj",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:pj:explorateur-atelier",
+        "sourceSchema": "alrick.sheets.v3",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "PJ_TEMPLATE_FICTIF",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "Explorateur témoin",
+        "publicDescription": "Définition descriptive commune à trois personnages fictifs.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {},
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "alrick.sheets.v3",
+        "fieldDecisions": [
+          {
+            "field": "sheet",
+            "decision": "reused",
+            "targetOrReason": "Conserver les octets du document natif; non recoder en chiffres P1."
+          },
+          {
+            "field": "level",
+            "decision": "adaptable",
+            "targetOrReason": "Niveau lu et présenté, sans recalcul M01."
+          },
+          {
+            "field": "legacyUnknown",
+            "decision": "unknown",
+            "targetOrReason": "Préserver dans original brut, pas de décision sans source."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:pj:temoin-n1",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "pj",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:pj:temoin-n1",
+        "sourceSchema": "alrick.sheets.v3",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "pj:p1-n1",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "PJ témoin N1",
+        "publicDescription": "Explorateur fictif pour vérifier la lecture du niveau 1, sans conversion des statistiques.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "rawSheetRef": "raw:pj:p1-n1",
+          "privateNote": "Fiche synthétique, aucune récompense XP ou niveau accordé"
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "alrick.sheets.v3",
+        "fieldDecisions": [
+          {
+            "field": "id",
+            "decision": "reused",
+            "targetOrReason": "Identité d'instance native conservée sans alias."
+          },
+          {
+            "field": "level",
+            "decision": "adaptable",
+            "targetOrReason": "Déporté vers state.current.level, non dérivé."
+          },
+          {
+            "field": "M01_results",
+            "decision": "unknown",
+            "targetOrReason": "Aucune projection calculée sans port M01."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      },
+      "definitionRef": "def:pj:explorateur-atelier",
+      "campaignId": "camp:p1:fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "level": 1,
+          "resources": "référence au document M01/M03 natif, non modifiée"
+        },
+        "historyRefs": []
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:pj:temoin-n10",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "pj",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:pj:temoin-n10",
+        "sourceSchema": "alrick.sheets.v3",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "pj:p1-n10",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "PJ témoin N10",
+        "publicDescription": "Explorateur fictif pour vérifier la lecture du niveau 10, sans conversion des statistiques.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "rawSheetRef": "raw:pj:p1-n10",
+          "privateNote": "Fiche synthétique, aucune récompense XP ou niveau accordé"
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "alrick.sheets.v3",
+        "fieldDecisions": [
+          {
+            "field": "id",
+            "decision": "reused",
+            "targetOrReason": "Identité d'instance native conservée sans alias."
+          },
+          {
+            "field": "level",
+            "decision": "adaptable",
+            "targetOrReason": "Déporté vers state.current.level, non dérivé."
+          },
+          {
+            "field": "M01_results",
+            "decision": "unknown",
+            "targetOrReason": "Aucune projection calculée sans port M01."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      },
+      "definitionRef": "def:pj:explorateur-atelier",
+      "campaignId": "camp:p1:fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "level": 10,
+          "resources": "référence au document M01/M03 natif, non modifiée"
+        },
+        "historyRefs": []
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:pj:temoin-n25",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "pj",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:pj:temoin-n25",
+        "sourceSchema": "alrick.sheets.v3",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "pj:p1-n25",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "PJ témoin N25",
+        "publicDescription": "Explorateur fictif pour vérifier la lecture du niveau 25, sans conversion des statistiques.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "rawSheetRef": "raw:pj:p1-n25",
+          "privateNote": "Fiche synthétique, aucune récompense XP ou niveau accordé"
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "alrick.sheets.v3",
+        "fieldDecisions": [
+          {
+            "field": "id",
+            "decision": "reused",
+            "targetOrReason": "Identité d'instance native conservée sans alias."
+          },
+          {
+            "field": "level",
+            "decision": "adaptable",
+            "targetOrReason": "Déporté vers state.current.level, non dérivé."
+          },
+          {
+            "field": "M01_results",
+            "decision": "unknown",
+            "targetOrReason": "Aucune projection calculée sans port M01."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      },
+      "definitionRef": "def:pj:explorateur-atelier",
+      "campaignId": "camp:p1:fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "level": 25,
+          "resources": "référence au document M01/M03 natif, non modifiée"
+        },
+        "historyRefs": []
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:creature:veilleur-brume",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "creature",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:creature:veilleur-brume",
+        "sourceSchema": "alrick.bestiary.v1",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M04",
+        "nativeSchema": "alrick.bestiary.v1",
+        "nativeId": "B-FICTIF-001",
+        "nativeVersion": "v1",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "Veilleur des buées",
+        "publicDescription": "Créature témoin de brume; identité descriptive sans création de statistiques.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {},
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "alrick.bestiary.v1",
+        "fieldDecisions": [
+          {
+            "field": "kind,role,archetype,level",
+            "decision": "adaptable",
+            "targetOrReason": "Référencer profil M04 natif versionné, ne pas recalculer ici."
+          },
+          {
+            "field": "stats/masteries/pvMax/manaMax",
+            "decision": "reused",
+            "targetOrReason": "Conserver tels quels dans la source brute M04, sans réinterprétation."
+          },
+          {
+            "field": "status",
+            "decision": "adaptable",
+            "targetOrReason": "Statut workflow indépendant de la couche canon."
+          },
+          {
+            "field": "extension:any",
+            "decision": "unknown",
+            "targetOrReason": "Conserver dans quarantaine."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "var:creature:veilleur-n10",
+      "recordVersion": "0.1.0",
+      "nodeType": "variant",
+      "entityType": "creature",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-var:creature:veilleur-n10",
+        "sourceSchema": "alrick.bestiary.v1",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "pending",
+        "reason": "Profil variante N10 à générer/valider par module natif M04/M03, pas par P1",
+        "authority": "unresolved"
+      },
+      "narrative": {
+        "title": "Veilleur des buées — variante N10",
+        "publicDescription": "Variante de rencontre envisagée; chiffres à recalculer uniquement par M04/M03.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {},
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "alrick.bestiary.v1",
+        "fieldDecisions": [
+          {
+            "field": "level",
+            "decision": "adaptable",
+            "targetOrReason": "Variante distincte, jamais mutation de définition source."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      },
+      "baseDefinitionRef": "def:creature:veilleur-brume",
+      "variantChanges": {
+        "narrative": {
+          "publicDescription": "Veilleur des buées expérimenté (niveau de référence 10)."
+        },
+        "mechanicPolicy": "native-recalculation-required",
+        "nativeVariantRef": "B-FICTIF-001-LEVEL10",
+        "notes": "N10 est une entrée de scénario, pas une validation de statistiques."
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:creature:veilleur-1",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "creature",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:creature:veilleur-1",
+        "sourceSchema": "alrick.bestiary.v1",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "pending",
+        "reason": "Aucune valeur de combat copiée sans profil natif",
+        "authority": "unresolved"
+      },
+      "narrative": {
+        "title": "Veilleur en scène",
+        "publicDescription": "Copie fictive de la variante, suivi de l'état courant.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "gmSecret": "Ne pas transférer à la fenêtre joueur"
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "alrick.bestiary.v1",
+        "fieldDecisions": [],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      },
+      "definitionRef": "var:creature:veilleur-n10",
+      "campaignId": "camp:p1:fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "level": 10,
+          "condition": "sans effet mécanique approuvé"
+        },
+        "historyRefs": []
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:npc:passeur",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "npc",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:npc:passeur",
+        "sourceSchema": "alrick.bestiary.v1",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "none",
+        "authority": "none"
+      },
+      "narrative": {
+        "title": "Le passeur des galets",
+        "publicDescription": "PNJ narratif pouvant ouvrir un échange ou aider les voyageurs.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "intention": "Détient une information fictive réservée MJ"
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "alrick.bestiary.v1",
+        "fieldDecisions": [
+          {
+            "field": "name,description,origin,profession",
+            "decision": "reused",
+            "targetOrReason": "Réemploi des champs narratifs connus dans BestiaryCard PNJ."
+          },
+          {
+            "field": "kind=pnj,role",
+            "decision": "adaptable",
+            "targetOrReason": "Distinguer personne et rôle social; profil M04 facultatif."
+          },
+          {
+            "field": "stats/pvMax/manaMax",
+            "decision": "obsolete",
+            "targetOrReason": "Non requis pour PNJ purement narratif, laisser la source intacte."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:item:lanterne",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "item",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:item:lanterne",
+        "sourceSchema": "cer.creator.dg003.descriptive.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "none",
+        "authority": "none"
+      },
+      "narrative": {
+        "title": "Lanterne de roseaux",
+        "publicDescription": "Une lanterne décorée de fibres de roseaux, sans bonus actif.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {},
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "media:lanterne:croquis",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Emplacement réservé pour le dessin de la lanterne; aucune image fournie"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "cer.creator.dg003.descriptive.v0",
+        "fieldDecisions": [
+          {
+            "field": "category,appearance,description,limitations",
+            "decision": "reused",
+            "targetOrReason": "Provenance descriptive du formulaire L003."
+          },
+          {
+            "field": "charges",
+            "decision": "unknown",
+            "targetOrReason": "Ne pas déduire un compteur de ressources de la prose."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:capability:ecouter",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "capability",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:capability:ecouter",
+        "sourceSchema": "cer.creator.dg003.descriptive.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "none",
+        "authority": "none"
+      },
+      "narrative": {
+        "title": "Écoute des remous",
+        "publicDescription": "Capacité descriptive : écouter les changements du courant, sans bonus.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {},
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "cer.creator.dg003.descriptive.v0",
+        "fieldDecisions": [
+          {
+            "field": "trigger,tags,limitations",
+            "decision": "reused",
+            "targetOrReason": "Champs descriptifs L003."
+          },
+          {
+            "field": "numericEffect",
+            "decision": "obsolete",
+            "targetOrReason": "Interdit dans cette définition; uniquement un moteur natif pourrait l'autoriser."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:spell:voile",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "spell",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:spell:voile",
+        "sourceSchema": "cer.creator.dg003.descriptive.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "pending",
+        "reason": "Référence Grimoire à authentifier avant mécanique",
+        "authority": "unresolved"
+      },
+      "narrative": {
+        "title": "Voile des gouttes",
+        "publicDescription": "Sort uniquement référencé; manifestation à définir sans coût inventé.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {},
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "cer.creator.dg003.descriptive.v0",
+        "fieldDecisions": [
+          {
+            "field": "tradition,manifestation",
+            "decision": "reused",
+            "targetOrReason": "Champs descriptifs L003."
+          },
+          {
+            "field": "manaCost",
+            "decision": "unknown",
+            "targetOrReason": "Résoudre via Grimoire natif et sa version d'origine uniquement."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      },
+      "links": [
+        {
+          "relation": "refers-to",
+          "targetId": "ref:grimoire:source",
+          "visibility": "gm-private"
+        }
+      ]
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:ritual:chant-brume",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "ritual",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:ritual:chant-brume",
+        "sourceSchema": "ritual-source-unverified",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "pending",
+        "reason": "RitualDefinition exact non consulté, référence seule",
+        "authority": "unresolved"
+      },
+      "narrative": {
+        "title": "Chant des rives",
+        "publicDescription": "Rite descriptif associé à une source externe non chargée.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {},
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "ritual-source-unverified",
+        "fieldDecisions": [
+          {
+            "field": "RitualDefinition",
+            "decision": "unknown",
+            "targetOrReason": "Contrat à demander au référent MAG/INDEX; ne rien inventer."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      },
+      "links": [
+        {
+          "relation": "refers-to",
+          "targetId": "ref:rituel:source",
+          "visibility": "gm-private"
+        }
+      ]
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:scene:rive-aube",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "scene",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:scene:rive-aube",
+        "sourceSchema": "cer.studio.dg003.provisional.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "none",
+        "authority": "none"
+      },
+      "narrative": {
+        "title": "Rive au premier jour",
+        "publicDescription": "Deux voyageurs observent la brume au bord de l'eau.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "privateNotes": "Le passeur sait pourquoi la lanterne s'est éteinte. FICTIF.",
+          "notesCanary": "CANARI_MJ_NON_PUBLIC"
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "cer.studio.dg003.provisional.v0",
+        "fieldDecisions": [
+          {
+            "field": "id,title,publicDescription",
+            "decision": "reused",
+            "targetOrReason": "Copie des champs Studio L003."
+          },
+          {
+            "field": "participantIds,activeSceneId",
+            "decision": "adaptable",
+            "targetOrReason": "Relations d'instance et état de scène, pas définition source."
+          },
+          {
+            "field": "privateNotes",
+            "decision": "reused",
+            "targetOrReason": "Conserver exclusivement côté MJ, jamais en projection publique."
+          }
+        ],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      },
+      "definitionRef": "def:scene:cadre-fictif",
+      "campaignId": "camp:p1:fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "participantIds": [
+            "inst:pj:temoin-n1",
+            "inst:creature:veilleur-1"
+          ],
+          "active": false
+        },
+        "historyRefs": []
+      },
+      "links": [
+        {
+          "relation": "participant",
+          "targetId": "inst:pj:temoin-n1",
+          "role": "observateur",
+          "visibility": "gm-private"
+        },
+        {
+          "relation": "participant",
+          "targetId": "inst:creature:veilleur-1",
+          "role": "menace potentielle",
+          "visibility": "gm-private"
+        }
+      ]
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:scene:cadre-fictif",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "scene",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:scene:cadre-fictif",
+        "sourceSchema": "cer.studio.dg003.provisional.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only",
+        "notes": "100 % fictif; source historique réelle uniquement citée comme forme de comparaison"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "none",
+        "authority": "none"
+      },
+      "narrative": {
+        "title": "Cadre de rive fictif",
+        "publicDescription": "Modèle descriptif de scène pour usage fictif.",
+        "tags": [
+          "fictif",
+          "prototype"
+        ],
+        "locale": "fr"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {},
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [],
+      "legacy": {
+        "originalSchema": "cer.studio.dg003.provisional.v0",
+        "fieldDecisions": [],
+        "unknownFields": {
+          "fixtureUnknown": "préservé sans interprétation"
+        }
+      }
+    }
+  ]
+}
