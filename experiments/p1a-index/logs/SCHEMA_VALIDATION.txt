@@ -1,0 +1,2 @@
+Draft2020-12 schema: OK
+Fixtures count 11 Valid 11 errors 0

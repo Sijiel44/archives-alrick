@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cer:index:p1a:proposal:v0",
+  "title": "Entre-Rives DATA-MODEL-001 P1-A (PROPOSITION, pas un schéma canonique)",
+  "type": "object",
+  "required": [
+    "schema",
+    "recordKind",
+    "recordId",
+    "version",
+    "revision",
+    "identity",
+    "provenance",
+    "state",
+    "mechanics",
+    "narrative",
+    "privacy",
+    "media",
+    "data"
+  ],
+  "properties": {
+    "schema": {
+      "const": "cer.index.data-model.p1a.proposal.v0"
+    },
+    "recordKind": {
+      "enum": [
+        "pj",
+        "creature",
+        "npc",
+        "item",
+        "ability",
+        "spell-ref",
+        "ritual-ref",
+        "scene"
+      ]
+    },
+    "recordId": {
+      "$ref": "#/$defs/id"
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "definitionId",
+        "definitionVersion"
+      ],
+      "properties": {
+        "definitionId": {
+          "$ref": "#/$defs/id"
+        },
+        "definitionVersion": {
+          "$ref": "#/$defs/semver"
+        },
+        "instanceId": {
+          "$ref": "#/$defs/id"
+        },
+        "variantId": {
+          "$ref": "#/$defs/id"
+        },
+        "campaignId": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "origin",
+        "sourceSchema",
+        "sourceId"
+      ],
+      "properties": {
+        "origin": {
+          "enum": [
+            "synthetic",
+            "native-reference",
+            "historical-reference"
+          ]
+        },
+        "sourceSchema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceVersion": {
+          "type": [
+            "string",
+            "integer"
+          ]
+        },
+        "sourcePath": {
+          "type": "string"
+        },
+        "sourceCommit": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{40}$"
+        },
+        "sourceBlob": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{40}$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "state": {
+      "type": "object",
+      "required": [
+        "lifecycle",
+        "layer",
+        "attestation"
+      ],
+      "properties": {
+        "lifecycle": {
+          "enum": [
+            "draft",
+            "in-review",
+            "archived"
+          ]
+        },
+        "layer": {
+          "enum": [
+            "proposal",
+            "played",
+            "canon-reference"
+          ]
+        },
+        "attestation": {
+          "type": "object",
+          "required": [
+            "status",
+            "evidenceRefs"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "unverified",
+                "externally-attested"
+              ]
+            },
+            "evidenceRefs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "mechanics": {
+      "type": "object",
+      "required": [
+        "status",
+        "validationStatus"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not-evaluated",
+            "native-reference",
+            "blocked",
+            "not-applicable"
+          ]
+        },
+        "nativeRef": {
+          "type": "object",
+          "required": [
+            "module",
+            "sourceBlob"
+          ],
+          "properties": {
+            "module": {
+              "type": "string"
+            },
+            "sourceBlob": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{40}$"
+            }
+          },
+          "additionalProperties": true
+        },
+        "validationStatus": {
+          "enum": [
+            "unvalidated",
+            "reported-validated"
+          ]
+        },
+        "validationProof": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "narrative": {
+      "type": "object",
+      "required": [
+        "name",
+        "summary"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "privacy": {
+      "type": "object",
+      "required": [
+        "visibility",
+        "notes"
+      ],
+      "properties": {
+        "visibility": {
+          "const": "mj-private"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "assetId",
+          "rights",
+          "visibility"
+        ],
+        "properties": {
+          "assetId": {
+            "$ref": "#/$defs/id"
+          },
+          "rights": {
+            "enum": [
+              "pending",
+              "confirmed"
+            ]
+          },
+          "visibility": {
+            "enum": [
+              "mj-private",
+              "public-candidate"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?$"
+    }
+  }
+}

@@ -1,0 +1,597 @@
+[
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "pj",
+    "recordId": "rec:demo:pj-n1",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:pj-n1",
+      "definitionVersion": "0.1.0",
+      "instanceId": "pj:p1a-neri",
+      "campaignId": "camp:demo-rives-p1a"
+    },
+    "provenance": {
+      "origin": "synthetic",
+      "sourceSchema": "cer.p1a.synthetic.v0",
+      "sourceId": "fixture:pj-n1"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "not-evaluated"
+    },
+    "narrative": {
+      "name": "Néri, messagère fictive",
+      "summary": "PJ de démonstration, débutant."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_pj-n1",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [],
+    "data": {
+      "originNote": "prétirage fictif",
+      "level": 1
+    }
+  },
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "pj",
+    "recordId": "rec:demo:pj-n10",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:pj-n10",
+      "definitionVersion": "0.1.0",
+      "instanceId": "pj:p1a-talven",
+      "campaignId": "camp:demo-rives-p1a"
+    },
+    "provenance": {
+      "origin": "synthetic",
+      "sourceSchema": "cer.p1a.synthetic.v0",
+      "sourceId": "fixture:pj-n10"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "not-evaluated"
+    },
+    "narrative": {
+      "name": "Talven, artisan fictif",
+      "summary": "PJ de démonstration, aguerri."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_pj-n10",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [],
+    "data": {
+      "originNote": "personnage fictif",
+      "level": 10
+    }
+  },
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "pj",
+    "recordId": "rec:demo:pj-n25",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:pj-n25",
+      "definitionVersion": "0.1.0",
+      "instanceId": "pj:p1a-iria",
+      "campaignId": "camp:demo-rives-p1a"
+    },
+    "provenance": {
+      "origin": "synthetic",
+      "sourceSchema": "cer.p1a.synthetic.v0",
+      "sourceId": "fixture:pj-n25"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "not-evaluated"
+    },
+    "narrative": {
+      "name": "Iria, éclaireuse fictive",
+      "summary": "PJ de démonstration, accomplie ; aucune Autorité ajoutée."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_pj-n25",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [],
+    "data": {
+      "originNote": "niveau initial déclaré, pas calculé",
+      "level": 25
+    }
+  },
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "creature",
+    "recordId": "rec:demo:creature-base",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:creature-base",
+      "definitionVersion": "0.1.0",
+      "instanceId": "creature:p1a-mouflon",
+      "campaignId": "camp:demo-rives-p1a"
+    },
+    "provenance": {
+      "origin": "synthetic",
+      "sourceSchema": "cer.p1a.synthetic.v0",
+      "sourceId": "fixture:creature-base"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "native-reference",
+      "nativeRef": {
+        "module": "atelier5d6-bestiary-workshop.ts",
+        "sourceBlob": "4dd84b20ee0ff213a0c8f17ad172fafbd5bd9c10"
+      }
+    },
+    "narrative": {
+      "name": "Mouflon de verre fictif",
+      "summary": "Créature fictive de laboratoire, profil non chiffré."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_creature-base",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [],
+    "data": {
+      "profileReference": {
+        "schema": "alrick.bestiary.v1",
+        "sourceId": "fixture-fiction-mouflon",
+        "ruleset": "m03",
+        "resolved": false
+      },
+      "level": 10
+    }
+  },
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "creature",
+    "recordId": "rec:demo:creature-variant",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:creature-base",
+      "definitionVersion": "0.1.0",
+      "instanceId": "creature:p1a-mouflon-var",
+      "campaignId": "camp:demo-rives-p1a",
+      "variantId": "var:demo:crete"
+    },
+    "provenance": {
+      "origin": "synthetic",
+      "sourceSchema": "cer.p1a.synthetic.v0",
+      "sourceId": "fixture:creature-variant"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "not-evaluated"
+    },
+    "narrative": {
+      "name": "Mouflon des crêtes (variante fictive)",
+      "summary": "Variante narrative, aucune règle nouvelle."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_creature-variant",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [],
+    "data": {
+      "variantOf": "rec:demo:creature-base",
+      "difference": "Pelage argenté, passage en montagne ; mécanique non recalculée.",
+      "level": 15
+    }
+  },
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "npc",
+    "recordId": "rec:demo:npc",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:npc",
+      "definitionVersion": "0.1.0",
+      "instanceId": "pnj:p1a-archiviste",
+      "campaignId": "camp:demo-rives-p1a"
+    },
+    "provenance": {
+      "origin": "synthetic",
+      "sourceSchema": "cer.p1a.synthetic.v0",
+      "sourceId": "fixture:npc"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "not-evaluated"
+    },
+    "narrative": {
+      "name": "Archiviste fictif du gué",
+      "summary": "PNJ interprétable, sans niveau obligatoire."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_npc",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [],
+    "data": {
+      "role": "temoin"
+    }
+  },
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "item",
+    "recordId": "rec:demo:item",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:item",
+      "definitionVersion": "0.1.0",
+      "instanceId": "item:p1a-flute",
+      "campaignId": "camp:demo-rives-p1a"
+    },
+    "provenance": {
+      "origin": "synthetic",
+      "sourceSchema": "cer.p1a.synthetic.v0",
+      "sourceId": "fixture:item"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "not-evaluated"
+    },
+    "narrative": {
+      "name": "Flûte fictive du gué",
+      "summary": "Objet narratif ; aucun malus ni bonus chiffré."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_item",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [
+      {
+        "assetId": "media:demo:flute-dessin-en-attente",
+        "rights": "pending",
+        "visibility": "mj-private"
+      }
+    ],
+    "data": {
+      "effectText": "Le son rappelle un chemin de retour, sans effet numérique."
+    }
+  },
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "ability",
+    "recordId": "rec:demo:ability",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:ability",
+      "definitionVersion": "0.1.0"
+    },
+    "provenance": {
+      "origin": "synthetic",
+      "sourceSchema": "cer.p1a.synthetic.v0",
+      "sourceId": "fixture:ability"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "not-evaluated"
+    },
+    "narrative": {
+      "name": "Signe fictif du ralliement",
+      "summary": "Capacité descriptive, pas de bonus."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_ability",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [],
+    "data": {
+      "sourceKind": "narrative",
+      "effectText": "Rassembler le groupe par un signe."
+    }
+  },
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "spell-ref",
+    "recordId": "rec:demo:spell",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:spell",
+      "definitionVersion": "0.1.0"
+    },
+    "provenance": {
+      "origin": "native-reference",
+      "sourceSchema": "alrick.grimoire.v1",
+      "sourceId": "demo-lueur-guide",
+      "sourceVersion": "1",
+      "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
+      "sourceBlob": "4f6d97ce1a6e57b427be6a0d22651a8ec0db899f"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "native-reference",
+      "nativeRef": {
+        "module": "atelier5d6-grimoire.ts",
+        "sourceBlob": "4f6d97ce1a6e57b427be6a0d22651a8ec0db899f"
+      }
+    },
+    "narrative": {
+      "name": "Lueur de veille (référence démo)",
+      "summary": "Référence documentaire à un sort d’essai, sans lancer."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_spell",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [],
+    "data": {
+      "nativeSpellId": "demo-lueur-guide",
+      "nativeVersion": 1,
+      "castAllowed": false
+    }
+  },
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "ritual-ref",
+    "recordId": "rec:demo:ritual",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:ritual",
+      "definitionVersion": "0.1.0"
+    },
+    "provenance": {
+      "origin": "synthetic",
+      "sourceSchema": "cer.p1a.synthetic.v0",
+      "sourceId": "fixture:ritual"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "not-evaluated"
+    },
+    "narrative": {
+      "name": "Rite fictif de halte",
+      "summary": "Référence proposée, rite non enregistré dans moteur."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_ritual",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [],
+    "data": {
+      "sourceSchema": "alrick.ritual.v1",
+      "nativeRitualId": null,
+      "resolved": false
+    }
+  },
+  {
+    "schema": "cer.index.data-model.p1a.proposal.v0",
+    "recordKind": "scene",
+    "recordId": "rec:demo:scene",
+    "version": "0.1.0",
+    "revision": 0,
+    "identity": {
+      "definitionId": "def:demo:scene",
+      "definitionVersion": "0.1.0",
+      "instanceId": "scene:p1a-gue",
+      "campaignId": "camp:demo-rives-p1a"
+    },
+    "provenance": {
+      "origin": "synthetic",
+      "sourceSchema": "cer.p1a.synthetic.v0",
+      "sourceId": "fixture:scene"
+    },
+    "state": {
+      "lifecycle": "draft",
+      "layer": "proposal",
+      "attestation": {
+        "status": "unverified",
+        "evidenceRefs": []
+      }
+    },
+    "mechanics": {
+      "validationStatus": "unvalidated",
+      "status": "not-evaluated"
+    },
+    "narrative": {
+      "name": "Le Gué des miroirs (fiction)",
+      "summary": "Scène non jouée, locale au MJ."
+    },
+    "privacy": {
+      "visibility": "mj-private",
+      "notes": "LAB_PRIVATE_FICTIF_P1A_scene",
+      "legacyOriginal": {
+        "futureField": {
+          "count": 7,
+          "text": "ne jamais perdre"
+        },
+        "legacyState": "fictif"
+      }
+    },
+    "media": [],
+    "data": {
+      "participants": [
+        {
+          "recordId": "rec:demo:pj-n1",
+          "instanceId": "pj:p1a-neri",
+          "role": "pj"
+        },
+        {
+          "recordId": "rec:demo:pj-n10",
+          "instanceId": "pj:p1a-talven",
+          "role": "pj"
+        },
+        {
+          "recordId": "rec:demo:pj-n25",
+          "instanceId": "pj:p1a-iria",
+          "role": "pj"
+        },
+        {
+          "recordId": "rec:demo:npc",
+          "instanceId": "pnj:p1a-archiviste",
+          "role": "pnj"
+        },
+        {
+          "recordId": "rec:demo:creature-variant",
+          "instanceId": "creature:p1a-mouflon-var",
+          "role": "creature"
+        }
+      ],
+      "privateGoal": "SCENE_PRIVATE_FICTIVE_CANARY",
+      "published": false
+    }
+  }
+]
