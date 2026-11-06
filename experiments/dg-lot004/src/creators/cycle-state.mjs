@@ -37,6 +37,17 @@ export function validateCycle(value){
   if(s.entries[k]!==null&&!isObject(s.entries[k]))fail('Entrée invalide : '+k);
  }
  if(s.sourceSnapshots.length>100)fail('Trop de sources');
+ const pending=s.extensions.pendingStudioOp;
+ if(pending!==undefined){
+  if(!isObject(pending)||!['creature','scene'].includes(pending.kind)||!ids.test(pending.campaignId)||
+     !Array.isArray(pending.beforeIds)||pending.beforeIds.length>1000||
+     new Set(pending.beforeIds).size!==pending.beforeIds.length||
+     pending.beforeIds.some(id=>typeof id!=='string'||!ids.test(id)))
+   fail('Journal STUDIO privé invalide');
+  if(pending.kind==='creature'&&(!isObject(pending.source)||
+     ['documentId','profileId','ruleset'].some(k=>!text(pending.source[k],120))))
+   fail('Référence BEST invalide dans le journal STUDIO');
+ }
  return s;
 }
 function validateNarrative(draft,kind){
@@ -93,7 +104,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
     // Une copie de créature fige les fiches en amont, pas le brouillon de scène
     // qui n'a pas encore d'instance STUDIO. Une scène liée ou une chaîne INDEX
     // fige ensuite tous les brouillons, sans réécrire les sources existantes.
-    if(next.links.sceneId||next.extensions.indexL004||
+    if(next.extensions.pendingStudioOp||next.links.sceneId||next.extensions.indexL004||
        (next.links.creatureInstanceId&&kind!=='scene'))
       fail('Cycle lié à STUDIO/INDEX : ouvrir une nouvelle version avant modification');
     next.drafts[kind]=merged;
@@ -138,6 +149,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   if(kind==='creature'&&state.entries.capacity===null)fail('Capacité réutilisable non validée');
   if(kind==='scene'&&state.entries.creature===null)fail('Créature non validée');
   await commit(next=>{
+   if(next.extensions.pendingStudioOp)fail('Réconciliation STUDIO requise avant validation MJ');
    next.entries[kind]={kind,displayName:record.name,version:record.version,provenance:record.provenance,
     status:'mj-validated',catalogId:catalogEntry?.id??null,
     descriptive:cloneCycleJSON(record),catalogEntry:catalogEntry?cloneCycleJSON(catalogEntry):null};
@@ -148,41 +160,134 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   });
   return {kind,catalogEntry:catalogEntry?cloneCycleJSON(catalogEntry):null,executable:false};
  }
+
+ /**
+  * Recovery journal is written durably BEFORE any STUDIO side effect.
+  * A failed post-write leaves a journal, never a permission to repeat creation.
+  * Recovery validates IDs and provenance against the authoritative STUDIO campaign.
+  */
+ function recoveryStatus(){
+  const pending=state.extensions.pendingStudioOp;
+  if(!pending)return {pending:false,status:'none',candidates:[],canAbandon:false};
+  const campaign=studio?.getCampaign?.();
+  if(!isObject(campaign)||campaign.id!==pending.campaignId)
+   return {pending:true,kind:pending.kind,status:'wrong-campaign',candidates:[],canAbandon:false,
+    message:'Réouvrir la même campagne STUDIO avant réconciliation'};
+  const collection=pending.kind==='creature'?campaign.creatures:campaign.scenes;
+  if(!Array.isArray(collection))
+   return {pending:true,kind:pending.kind,status:'invalid-studio',candidates:[],canAbandon:false,
+    message:'Collections STUDIO inaccessibles'};
+  const before=new Set(pending.beforeIds),created=collection.filter(x=>isObject(x)&&
+   typeof x.id==='string'&&!before.has(x.id));
+  const candidate=x=>{
+   if(pending.kind==='creature')
+    return isObject(x.source)&&['documentId','profileId','ruleset'].every(k=>x.source[k]===pending.source[k]);
+   const draft=state.drafts.scene;
+   return x.title===draft.title &&
+    (x.publicDescription??'')===(draft.publicDescription??'') &&
+    (x.privateNotes??'')===(draft.privateNotes??'') &&
+    (!studio.updateScene||Array.isArray(x.participantIds)&&x.participantIds.includes(state.links.creatureInstanceId));
+  };
+  const candidates=created.filter(candidate).map(x=>({id:x.id})); // no source/secret payload
+  return {pending:true,kind:pending.kind,status:candidates.length?'requires-confirmation':
+    created.length?'manual-review':'no-side-effect-observed',
+    candidates,unverifiedCount:created.length-candidates.length,
+    canAbandon:created.length===0,
+    message:created.length?'Confirmer uniquement une copie STUDIO reconnue, sinon revue manuelle':
+     'Aucune nouvelle instance visible ; confirmer explicitement avant un nouvel essai'};
+ }
+ async function reconcileStudioLink(instanceId,{confirm=false}={}){
+  if(confirm!==true)fail('Confirmation MJ explicite requise');
+  const status=recoveryStatus(),pending=state.extensions.pendingStudioOp;
+  if(!pending||status.status!=='requires-confirmation'||!status.candidates.some(x=>x.id===instanceId))
+   fail('Instance non reconnue : réconciliation manuelle requise, aucune copie supplémentaire');
+  await commit(next=>{
+   if(!next.extensions.pendingStudioOp||next.extensions.pendingStudioOp.kind!==pending.kind||
+      next.extensions.pendingStudioOp.campaignId!==pending.campaignId)
+    fail('Journal STUDIO modifié pendant réconciliation');
+   if(pending.kind==='creature'){
+    if(next.links.creatureInstanceId)fail('Créature déjà liée');
+    next.links.creatureInstanceId=instanceId;
+    next.links.creatureSource=cloneCycleJSON(pending.source);
+    next.links.creatureCapacityCatalogId=next.links.capacityCatalogId;
+   }else{
+    if(next.links.sceneId)fail('Scène déjà liée');
+    next.links.sceneId=instanceId;next.status='mj-validated';
+   }
+   delete next.extensions.pendingStudioOp;
+  });
+  return {kind:pending.kind,instanceId,reconciled:true,executable:false};
+ }
+ async function abandonStudioRecovery({confirm=false}={}){
+  if(confirm!==true)fail('Confirmation MJ explicite requise');
+  const status=recoveryStatus();
+  if(!status.pending||!status.canAbandon)fail('Annulation bloquée : instance STUDIO possible ou campagne non vérifiée');
+  await commit(next=>{delete next.extensions.pendingStudioOp;});
+  return {abandoned:true,executable:false};
+ }
  async function attachCreature(){
-  if(!studio||typeof studio.previewCreature!=='function'||typeof studio.copyCreature!=='function'||typeof studio.getCampaign!=='function')fail('Port STUDIO créature absent');
+  if(!studio||typeof studio.previewCreature!=='function'||typeof studio.copyCreature!=='function'||typeof studio.getCampaign!=='function')
+   fail('Port STUDIO créature absent');
+  if(state.extensions.pendingStudioOp)fail('Réconciliation STUDIO requise : ne pas dupliquer la copie');
   if(!state.entries.creature||!state.entries.capacity)fail('Créature et capacité à valider');
   if(state.links.creatureInstanceId)fail('Créature déjà liée — pas de copie automatique');
-  const ref=state.drafts.creature.sourceReference;
-  const before=studio.getCampaign()?.creatures??[];
-  if(!Array.isArray(before))fail('Campagne STUDIO invalide');
-  const previousIds=new Set(before.map(x=>x.id));
-  // External STUDIO side effect only after explicit MJ button. Never send a whole private cycle.
-  const preview=await studio.previewCreature(ref);
-  if(!preview||typeof preview.documentId!=='string'||typeof preview.profileId!=='string'||typeof preview.ruleset!=='string')fail('Aperçu BEST/STUDIO incomplet');
+  const reference=state.drafts.creature.sourceReference;
+  const campaign=studio.getCampaign(),before=campaign?.creatures;
+  if(!ids.test(campaign?.id)||!Array.isArray(before)||before.some(x=>!ids.test(x?.id)))
+   fail('Campagne STUDIO invalide pour journal de reprise');
+  const beforeIds=before.map(x=>x.id);
+  const preview=await studio.previewCreature(reference);
+  if(!preview||['documentId','profileId','ruleset'].some(k=>!text(preview[k],120)))
+   fail('Aperçu BEST/STUDIO incomplet');
+  const source=Object.fromEntries(['documentId','profileId','ruleset'].map(k=>[k,preview[k]]));
+  // If the preflight save fails, copyCreature is never called.
+  await commit(next=>{
+   if(next.extensions.pendingStudioOp||next.links.creatureInstanceId)fail('Réconciliation STUDIO requise');
+   next.extensions.pendingStudioOp={kind:'creature',campaignId:campaign.id,beforeIds,source};
+  });
   await studio.copyCreature();
   const all=studio.getCampaign()?.creatures;
-  if(!Array.isArray(all)||!all.length||typeof all.at(-1)?.id!=='string')fail('Copie STUDIO non confirmée : réconciliation manuelle requise');
+  if(!Array.isArray(all)||!all.length||typeof all.at(-1)?.id!=='string')
+   fail('Copie STUDIO non confirmée : utiliser la réconciliation');
   const instanceId=all.at(-1).id;
-  if(previousIds.has(instanceId)||all.length!==before.length+1)fail('Copie STUDIO non vérifiable : réconciliation manuelle requise');
-  await commit(next=>{next.links.creatureInstanceId=instanceId;next.links.creatureSource={documentId:preview.documentId,profileId:preview.profileId,ruleset:preview.ruleset};
-   next.links.creatureCapacityCatalogId=next.links.capacityCatalogId;});
-  return {instanceId,documentId:preview.documentId,profileId:preview.profileId,ruleset:preview.ruleset};
+  if(beforeIds.includes(instanceId)||all.length!==beforeIds.length+1)
+   fail('Copie STUDIO non vérifiable : utiliser la réconciliation');
+  await commit(next=>{
+   if(next.extensions.pendingStudioOp?.kind!=='creature')fail('Journal STUDIO absent');
+   next.links.creatureInstanceId=instanceId;next.links.creatureSource=cloneCycleJSON(source);
+   next.links.creatureCapacityCatalogId=next.links.capacityCatalogId;
+   delete next.extensions.pendingStudioOp;
+  });
+  return {instanceId,...source};
  }
  async function attachScene(){
-  if(!studio||typeof studio.createScene!=='function'||typeof studio.getCampaign!=='function')fail('Port STUDIO scène absent');
-  if(!state.entries.scene||!state.links.creatureInstanceId)fail('Valider la scène et copier la créature d’abord');
+  if(!studio||typeof studio.createScene!=='function'||typeof studio.getCampaign!=='function')
+   fail('Port STUDIO scène absent');
+  if(state.extensions.pendingStudioOp)fail('Réconciliation STUDIO requise : ne pas dupliquer la scène');
+  if(!state.entries.scene||!state.links.creatureInstanceId)
+   fail('Valider la scène et copier la créature d’abord');
   if(state.links.sceneId)fail('Scène déjà liée — pas de duplication automatique');
-  const d=state.drafts.scene;
+  const d=state.drafts.scene,campaign=studio.getCampaign(),before=campaign?.scenes;
+  if(!ids.test(campaign?.id)||!Array.isArray(before)||before.some(x=>!ids.test(x?.id)))
+   fail('Campagne STUDIO invalide pour journal de reprise');
+  const beforeIds=before.map(x=>x.id);
+  await commit(next=>{
+   if(next.extensions.pendingStudioOp||next.links.sceneId)fail('Réconciliation STUDIO requise');
+   next.extensions.pendingStudioOp={kind:'scene',campaignId:campaign.id,beforeIds};
+  });
   await studio.createScene(d.title,d.publicDescription??'',d.privateNotes??'');
-  const current=studio.getCampaign();
-  const sceneId=current?.activeSceneId;
+  const current=studio.getCampaign(),sceneId=current?.activeSceneId;
   if(sceneId&&typeof studio.updateScene==='function'){
    const s=current.scenes?.find(x=>x.id===sceneId);
    if(s)await studio.updateScene({title:s.title,publicDescription:s.publicDescription??'',privateNotes:s.privateNotes??'',
     participantIds:[...new Set([...(s.participantIds??[]),state.links.creatureInstanceId])]});
   }
-  if(typeof sceneId!=='string'||!sceneId)fail('Création STUDIO non confirmée : réconciliation manuelle requise');
-  await commit(next=>{next.links.sceneId=sceneId;next.status='mj-validated';});
+  if(typeof sceneId!=='string'||!sceneId)fail('Création STUDIO non confirmée : utiliser la réconciliation');
+  await commit(next=>{
+   if(next.extensions.pendingStudioOp?.kind!=='scene')fail('Journal STUDIO absent');
+   next.links.sceneId=sceneId;next.status='mj-validated';
+   delete next.extensions.pendingStudioOp;
+  });
   return {sceneId};
  }
  /** INDEX L004-C real contract, injected by 05. No catalog code is duplicated here. */
@@ -196,6 +301,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   const campaign=studio.getCampaign(),s=copy();
   if(!campaign||typeof campaign.id!=='string'||!ids.test(campaign.id))fail('Campagne STUDIO avec ID requise');
   if(!CYCLE_STEPS.every(k=>s.entries[k]?.status==='mj-validated'))fail('Quatre validations descriptives MJ requises');
+  if(s.extensions.pendingStudioOp)fail('Réconciliation STUDIO requise avant INDEX');
   if(!s.links.creatureInstanceId||!s.links.sceneId||!s.links.creatureSource)fail('Copies réelles STUDIO créature/scène requises');
   if(!campaign.creatures?.some(x=>x.id===s.links.creatureInstanceId)||
       !campaign.scenes?.some(x=>x.id===s.links.sceneId))fail('Instances STUDIO manquantes : chaîne bloquée');
@@ -274,5 +380,6 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
  }
 
  return {getState:copy,getDraft:draft,saveDraft,setMode,go,validateMJ,attachCreature,attachScene,
+  getStudioRecovery:recoveryStatus,reconcileStudioLink,abandonStudioRecovery,
   load,exportPrivate,previewRestore,acceptRestore,addOriginalSource,addOriginalSourceBytes,bindIndexChain};
 }
