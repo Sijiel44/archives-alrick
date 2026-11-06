@@ -350,8 +350,9 @@ function transactionPorts(){
   async updateScene(data){calls.updates++;Object.assign(campaign.scenes.at(-1),data)},
   getCampaign(){return copy(campaign)}
  };
- const make=()=>createCreatorCycle({persistence,creatorValidator:x=>({valid:true,record:copy(x)}),
+ const make=(extra={})=>createCreatorCycle({persistence,creatorValidator:x=>({valid:true,record:copy(x)}),
   catalogBridge:x=>({id:'cap:local:'+x.kind,executable:false}),catalog:{},studio,
+  loadPersistedStudio:async()=>copy(campaign),...extra,
   idFactory:()=> 'cycle-transaction-1'});
  return {make,disk,campaign,calls,studio,persistence,fixtures:ports().fixtures};
 }
@@ -386,7 +387,11 @@ test('REPAIR: échec APRES copie créature, recharge, refus du doublon et récon
  await assert.rejects(m.saveDraft('scene',x.fixtures.scene),/ouvrir une nouvelle version/);
  await assert.rejects(m.validateMJ('creature'),/Réconciliation/);
  const restarted=x.make();await restarted.load();
- const recovery=restarted.getStudioRecovery();
+ const pendingBeforeInspection=restarted.getStudioRecovery();
+ assert.equal(pendingBeforeInspection.status,'durability-unverified');
+ assert.deepEqual(pendingBeforeInspection.candidates,[]);
+ const recovery=await restarted.inspectStudioRecovery();
+ assert.equal(recovery.durableVerified,true);
  assert.deepEqual(recovery.candidates,[{id:'cr-1'}]);
  assert.equal(recovery.status,'requires-confirmation');
  assert.ok(!JSON.stringify(recovery).includes('CANARI-CREATURE-PRIVÉ'));
@@ -413,7 +418,7 @@ test('REPAIR: échec après création scène, reprise sans duplication, canari p
  assert.equal(x.disk.snapshot.extensions.pendingStudioOp.kind,'scene');
  await assert.rejects(m.attachScene(),/Réconciliation/);
  const restarted=x.make();await restarted.load();
- const recovery=restarted.getStudioRecovery();
+ const recovery=await restarted.inspectStudioRecovery();
  assert.deepEqual(recovery.candidates,[{id:'scene-1'}]);
  assert.ok(!JSON.stringify(recovery).includes('CANARI-PRIVE-NON-PARTAGE'));
  x.disk.failFinal=null;
@@ -431,7 +436,7 @@ test('REPAIR: journal durable mais copie STUDIO absente => abandon explicite seu
  x.studio.copyCreature=async()=>{throw Error('STUDIO ne répond pas')};
  await assert.rejects(m.attachCreature(),/ne répond pas/);
  const restarted=x.make();await restarted.load();
- const r=restarted.getStudioRecovery();assert.equal(r.status,'no-side-effect-observed');
+ const r=await restarted.inspectStudioRecovery();assert.equal(r.status,'no-side-effect-observed');
  assert.equal(r.canAbandon,true);
  await assert.rejects(restarted.abandonStudioRecovery(),/Confirmation/);
  assert.equal(restarted.getStudioRecovery().pending,true);
@@ -449,12 +454,12 @@ test('REPAIR: provenance contradictoire, autre campagne et nouvelle instance non
  await assert.rejects(m.attachCreature(),/creature-link not saved/);
  // The copied instance exists but the source metadata no longer agrees.
  x.campaign.creatures[0].source.profileId='ALTERED';
- let recovery=m.getStudioRecovery();
+ let recovery=await m.inspectStudioRecovery();
  assert.equal(recovery.candidates.length,0);assert.equal(recovery.canAbandon,false);
  await assert.rejects(m.reconcileStudioLink('cr-1',{confirm:true}),/non reconnue/);
  await assert.rejects(m.abandonStudioRecovery({confirm:true}),/bloquée/);
  const original=x.campaign.id;x.campaign.id='autre-campagne';
- recovery=m.getStudioRecovery();assert.equal(recovery.status,'wrong-campaign');
+ recovery=await m.inspectStudioRecovery();assert.equal(recovery.status,'wrong-campaign');
  await assert.rejects(m.reconcileStudioLink('cr-1',{confirm:true}),/non reconnue/);
  x.campaign.id=original;
  assert.equal(x.calls.copies,1);
@@ -535,7 +540,8 @@ test('REPAIR: bascule après journal STUDIO bloque la copie et garde la reprise 
  };
  // Create a fresh controller with the modified persistence.
  const second=createCreatorCycle({persistence:x.persistence,studio:x.studio,creatorValidator:v=>({valid:true,record:structuredClone(v)}),
-  catalogBridge:v=>({id:'cap:local:'+v.kind,executable:false}),catalog:{},idFactory:()=> 'cycle-switch'});
+  catalogBridge:v=>({id:'cap:local:'+v.kind,executable:false}),catalog:{},
+  loadPersistedStudio:async()=>structuredClone(x.campaign),idFactory:()=> 'cycle-switch'});
  // Seed it with a fresh independent cycle; the first fixture remains unchanged.
  await readyCreature(second,x.fixtures);
  await assert.rejects(second.attachCreature(),/Campagne STUDIO changée après journal/);
@@ -543,7 +549,7 @@ test('REPAIR: bascule après journal STUDIO bloque la copie et garde la reprise 
  assert.equal(second.getStudioRecovery().status,'wrong-campaign');
  await assert.rejects(second.abandonStudioRecovery({confirm:true}),/bloquée/);
  x.campaign.id='camp-test-001';
- assert.equal(second.getStudioRecovery().status,'no-side-effect-observed');
+ assert.equal((await second.inspectStudioRecovery()).status,'no-side-effect-observed');
  await second.abandonStudioRecovery({confirm:true});
  assert.equal(second.getStudioRecovery().pending,false);
 });
@@ -560,7 +566,7 @@ test('REPAIR-CROSS: ambiguïté de deux copies nouvelles interdit toute liaison 
   throw Error('Accusé STUDIO perdu après deux copies');
  };
  await assert.rejects(m.attachCreature(),/Accusé STUDIO perdu/);
- const pending=m.getStudioRecovery();
+ const pending=await m.inspectStudioRecovery();
  assert.equal(pending.pending,true);
  assert.equal(pending.status,'ambiguous');
  assert.deepEqual(pending.candidates,[]);
@@ -600,4 +606,130 @@ test('REPAIR-CROSS: ancienne archive sans journal ne peut provoquer une seconde 
  await assert.rejects(m.attachScene(),/Scène STUDIO préexistante sans journal attesté/);
  assert.equal(x.calls.scenes,1);
  assert.equal(x.disk.snapshot.extensions.pendingStudioOp,undefined);
+});
+
+
+test('DURABLE-GATE: sans port ARCHIVES aucune copie en mémoire ne peut être liée',async()=>{
+ const x=transactionPorts(),m=x.make({loadPersistedStudio:undefined});
+ await readyCreature(m,x.fixtures);
+ x.disk.failFinal='creature';await assert.rejects(m.attachCreature(),/creature-link not saved/);
+ const pending=x.make({loadPersistedStudio:null});await pending.load();
+ const status=await pending.inspectStudioRecovery();
+ assert.equal(status.status,'persistence-unavailable');
+ assert.equal(status.durableVerified,false);
+ assert.deepEqual(status.candidates,[]);
+ x.disk.failFinal=null;
+ const before=structuredClone(x.disk.snapshot);
+ await assert.rejects(pending.reconcileStudioLink('cr-1',{confirm:true}),/non attestée/);
+ assert.deepEqual(x.disk.snapshot,before);
+ assert.equal(x.calls.copies,1);
+});
+test('DURABLE-GATE: copie uniquement en mémoire => unpersisted, aucun ACK/lien MJ',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ const durable={id:x.campaign.id,creatures:[],scenes:[],activeSceneId:''};
+ const model=x.make({loadPersistedStudio:async()=>structuredClone(durable)});
+ await model.load();
+ x.disk.failFinal='creature';await assert.rejects(model.attachCreature(),/creature-link not saved/);
+ const now=model.getStudioRecovery();assert.equal(now.status,'durability-unverified');
+ assert.equal(now.durableVerified,false);
+ assert.deepEqual(now.candidates,[]);
+ const checked=await model.inspectStudioRecovery();
+ assert.equal(checked.status,'unpersisted');assert.equal(checked.durableVerified,false);
+ x.disk.failFinal=null;
+ const previous=structuredClone(x.disk.snapshot);
+ await assert.rejects(model.reconcileStudioLink('cr-1',{confirm:true}),/non attestée/);
+ assert.deepEqual(x.disk.snapshot,previous);
+ assert.equal(x.calls.copies,1);
+});
+test('DURABLE-GATE: même ID sauvegardé et même provenance => reprise confirmée sans copie',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ x.disk.failFinal='creature';await assert.rejects(m.attachCreature(),/creature-link not saved/);
+ const durable=structuredClone(x.campaign);
+ const restarted=x.make({loadPersistedStudio:async()=>structuredClone(durable)});
+ await restarted.load();
+ const checked=await restarted.inspectStudioRecovery();
+ assert.equal(checked.status,'requires-confirmation');
+ assert.equal(checked.durableVerified,true);
+ assert.deepEqual(checked.candidates,[{id:'cr-1'}]);
+ assert.ok(!JSON.stringify(checked).includes('CANARI-CREATURE-PRIVÉ'));
+ x.disk.failFinal=null;
+ const result=await restarted.reconcileStudioLink('cr-1',{confirm:true});
+ assert.equal(result.instanceId,'cr-1');
+ assert.equal(x.disk.snapshot.links.creatureInstanceId,'cr-1');
+ assert.equal(x.calls.copies,1);
+});
+test('DURABLE-GATE: copie persistée discordante, ID différent ou campagne divergente => refus',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ x.disk.failFinal='creature';await assert.rejects(m.attachCreature(),/creature-link not saved/);
+ x.disk.failFinal=null;
+ for(const changed of [
+  {id:x.campaign.id,creatures:[{...structuredClone(x.campaign.creatures[0]),id:'cr-inconnu'}],scenes:[]},
+  {id:x.campaign.id,creatures:[{...structuredClone(x.campaign.creatures[0]),source:{documentId:'DOC-1',profileId:'AUTRE',ruleset:'M03'}}],scenes:[]},
+  {id:'camp-different',creatures:structuredClone(x.campaign.creatures),scenes:[]},
+ ]){
+  const controller=x.make({loadPersistedStudio:async()=>structuredClone(changed)});await controller.load();
+  const proof=await controller.inspectStudioRecovery();
+  assert.equal(proof.durableVerified,false);
+  await assert.rejects(controller.reconcileStudioLink('cr-1',{confirm:true}),/non attestée/);
+  assert.equal(controller.getState().links.creatureInstanceId,null);
+ }
+ assert.equal(x.calls.copies,1);
+});
+test('DURABLE-GATE: scène en mémoire mais notes privées/participants non persistés => refus',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);await m.attachCreature();
+ await m.saveDraft('scene',x.fixtures.scene);await m.validateMJ('scene');
+ x.disk.failFinal='scene';await assert.rejects(m.attachScene(),/scene-link not saved/);
+ x.disk.failFinal=null;
+ const durable=structuredClone(x.campaign);
+ durable.scenes[0].privateNotes='AUTRE-NOTE';
+ const c=x.make({loadPersistedStudio:async()=>structuredClone(durable)});await c.load();
+ const result=await c.inspectStudioRecovery();
+ assert.equal(result.status,'persisted-conflict');
+ assert.equal(result.durableVerified,false);
+ await assert.rejects(c.reconcileStudioLink('scene-1',{confirm:true}),/non attestée/);
+ assert.equal(x.calls.scenes,1);
+});
+test('DURABLE-GATE: reçu save:true sans journal relu => aucune création STUDIO',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ const legitLoad=x.persistence.load;
+ x.persistence.load=async()=>{const raw=await legitLoad();if(raw?.extensions?.pendingStudioOp){
+  const stale=structuredClone(raw);delete stale.extensions.pendingStudioOp;return stale;
+ }return raw;};
+ await assert.rejects(m.attachCreature(),/Journal STUDIO non attesté sur disque/);
+ assert.equal(x.calls.copies,0);
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp?.kind,'creature');
+ x.persistence.load=legitLoad;
+ await assert.rejects(m.attachCreature(),/Réconciliation STUDIO requise/);
+});
+test('DURABLE-GATE: inspecteur STUDIO optionnel rejette même ID non reusable',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ x.disk.failFinal='creature';await assert.rejects(m.attachCreature(),/creature-link not saved/);
+ x.disk.failFinal=null;
+ const rejected=x.make({inspectCreatorAttachment:()=>({creature:{status:'unpersisted',id:'cr-1',persisted:false}})});
+ await rejected.load();
+ const proof=await rejected.inspectStudioRecovery();
+ assert.equal(proof.status,'inspector-rejected');
+ assert.equal(proof.durableVerified,false);
+ await assert.rejects(rejected.reconcileStudioLink('cr-1',{confirm:true}),/non attestée/);
+ const accepted=x.make({inspectCreatorAttachment:()=>({creature:{status:'reusable',id:'cr-1',persisted:true}})});
+ await accepted.load();
+ assert.equal((await accepted.inspectStudioRecovery()).durableVerified,true);
+ await accepted.reconcileStudioLink('cr-1',{confirm:true});
+ assert.equal(x.calls.copies,1);
+});
+test('DURABLE-GATE: lecture ARCHIVES échouée, annulation non attestée et ancienne archive ambiguë bloquées',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ x.studio.copyCreature=async()=>{throw Error('STUDIO interrompu')};
+ await assert.rejects(m.attachCreature(),/STUDIO interrompu/);
+ const broken=x.make({loadPersistedStudio:async()=>{throw Error('ARCHIVES indisponible')}});
+ await broken.load();
+ const proof=await broken.inspectStudioRecovery();
+ assert.equal(proof.status,'persistence-unverified');
+ await assert.rejects(broken.abandonStudioRecovery({confirm:true}),/non attestée/);
+ // A stale backup that discards the journal but keeps the copied actor cannot authorize a duplicate.
+ const d=transactionPorts(),c=d.make();await readyCreature(c,d.fixtures);
+ const backup=await c.exportPrivate();await c.attachCreature();
+ const plan=c.previewRestore(backup);await c.acceptRestore(plan.token);
+ await assert.rejects(c.attachCreature(),/préexistante sans journal attesté/);
+ assert.equal(d.calls.copies,1);
 });
