@@ -19,6 +19,11 @@ const persistence=createBrowserCyclePersistence({
 const component=mountCreatorCycle(document.getElementById('creator-cycle'),{
   mountCreators,validateCreatorDraft,catalogBridge:creatorToCatalog,catalog,
   indexChain, studio:studioController, persistence,
+  // Port distinct : le vrai adaptateur ARCHIVES L003 de campagne STUDIO,
+  // jamais studioController.getCampaign() (mémoire) ni le stockage du cycle.
+  loadPersistedStudio:()=>validatedStudioStorage.load(),
+  // Exiger la variante STUDIO corrigée, inspection du maillon seule avant scène.
+  inspectCreatorAttachment:studioReconcile.inspectCreatorAttachment,
   idFactory:()=>crypto.randomUUID(),
   onExport:async(bytes,name)=>saveConfidentialFile(bytes,name),
 });
@@ -33,7 +38,7 @@ await component.ready;
 
 ## État et API
 
-`createCreatorCycle({persistence,creatorValidator,catalogBridge,catalog,studio,indexChain,idFactory})` retourne :
+`createCreatorCycle({persistence,creatorValidator,catalogBridge,catalog,studio,indexChain,loadPersistedStudio,inspectCreatorAttachment?,idFactory})` retourne :
 
 - `getState`, `getDraft(kind)`, `saveDraft(kind,partialData)`, `setMode('guided'|'expert')`, `go(kind)` ; `kind` = item, capacity, creature, scene, spell (sort facultatif, expert).
 - `validateMJ(kind)` : validation descriptive et INDEX v0.2 pour objet/capacité/sort ; **pas d'approbation native d'effet**.
@@ -46,6 +51,16 @@ Les brouillons sont conservés et les champs **facultatifs/inconnus** restent da
 
 Le dépôt L004-C est privé par contrat applicatif, et `createBrowserCyclePersistence` refuse par défaut toute origine autre que `http://127.0.0.1:4173`. L'intégrateur peut remplacer `persistence` par le port ARCHIVES/IndexedDB de campagne sans changer la logique métier. Seule cette frontière est chargée d'assurer l'écriture atomique et la confidentialité d'accès. Les brouillons/exports contiennent des secrets MJ fictifs et **ne doivent jamais** être montés dans l'origine joueur `4174`.
 
+## P0 ARCHIVES + STUDIO — Port de preuve durable obligatoire (05/11/2026)
+
+**Contrat d'intégration précis :** `loadPersistedStudio: async () => validatedStudioStorage.load()` — lecture indépendante de la campagne **réellement enregistrée par ARCHIVES L003** (file d'écriture, archive privée validée), distincte de `studio.getCampaign()` et de `persistence.load()` du journal CREATORS. `createValidatedStorage.save(studio)` renvoie une Promise sans `{saved:true}` ; ne pas la brancher telle quelle sur le stockage du cycle. `persistence.save(cycle)` doit, quant à lui, acquitter explicitement `{saved:true}` seulement après l'écriture du brouillon/journal ; `attachCreature/attachScene` rechargent maintenant le journal pour s'assurer de son existence avant l'effet STUDIO.
+
+**Vérification MJ :** `inspectStudioRecovery()` refuse un port manquant, une lecture/validation échouée, un journal non retrouvé, une campagne divergente, une copie seulement en mémoire, un ID différent, un snapshot/notes/participants discordants, ou plusieurs copies ambiguës. Un **même ID** doit être observé à la fois en mémoire et dans ARCHIVES avec une représentation privée identique. `reconcileStudioLink` réexécute cette preuve, même si le panneau avait précédemment affiché une correspondance. Une lecture persistée ne doit jamais être remplacée par `getCampaign()` ou par une valeur locale prédéfinie dans le candidat réel.
+
+**Interop STUDIO #98 :** l'ancienne fonction `inspectCreatorAttachment` du blob `f2b3a0254aa8f6ca8fcd4c6299281eee7467581e` exige une scène déjà renseignée pour vérifier la créature ; son injection avant la scène entraîne `inspector-unavailable` et un refus, démontré par exécution des deux blobs. **20 STUDIO doit fournir un inspecteur par maillon `kind:'creature'|'scene'`**, donnant `{[kind]:{status:'reusable',id,persisted:true}}` uniquement si l'instance est attestée, sans transférer les notes. ATELIERS rejette toute réponse différente. La vérification interne d'égalité exacte reste obligatoire même avec l'inspecteur.
+
+**Limites à 05 et 04 :** il n'existe pas de transaction ACID entre les deux magasins. Une écriture STUDIO encore différée renvoie correctement `unpersisted` tant que le drain ARCHIVES n'est pas achevé ; elle ne doit **jamais** être confirmée provisoirement. La validation des originaux et de la propriété des clés préexistantes, les conflits multi-onglets, les restaurations anciennes sans journal fiable et le drain du vrai stockage relèvent de l'intégration/ARCHIVES. Ne jamais convertir un refus en permission de recréer ou supprimer. Qualification seulement après tests Node24 + Chrome au **même HEAD composite**.
+
 ## L004-REPAIR — Journal STUDIO privé et réconciliation anti-doublons
 
 **Cause reproduite sur #100@`093d2504` :** avant correction, `attachCreature()` et `attachScene()` appelaient les méthodes STUDIO **avant** de sauvegarder le lien du cycle. Un échec de `persistence.save` laissait l'instance dans STUDIO sans référence dans le cycle ; réessayer créait une seconde instance.
@@ -55,13 +70,13 @@ Le dépôt L004-C est privé par contrat applicatif, et `createBrowserCyclePersi
 1. Sauvegarder et faire confirmer **avant** l'appel STUDIO un `extensions.pendingStudioOp` privé : `kind`, `campaignId`, identifiants d'instances préexistantes `beforeIds` et, pour la créature, identité source `documentId/profileId/ruleset`. Le journal **ne contient pas** les notes privées de scène ni les copies de fichiers sources.
 2. Exécuter `copyCreature` ou `createScene` STUDIO une seule fois, sur geste MJ. Pour la scène, tenter aussi `updateScene` pour les participants.
 3. Sauvegarder le lien du cycle et retirer le journal **dans la même écriture locale confirmée**. Si l'étape 3 échoue, le journal reste durable et le bouton de création est bloqué, y compris après `load()`.
-4. Afficher le panneau de reprise privé. `getStudioRecovery()` inspecte **en lecture seule** la campagne STUDIO : les nouveaux identifiants absents de `beforeIds` sont candidats uniquement si les données correspondent (référence source pour créature, titre/description/notes/participants pour scène). Le résultat à l'interface ne contient **que** les identifiants, jamais les notes ou le snapshot MJ.
-5. `reconcileStudioLink(instanceId,{confirm:true})` exige une confirmation explicite du MJ, vérifie à nouveau la campagne/la provenance et crée **uniquement** le lien manquant. Il n'appelle ni `copyCreature`, ni `createScene`, ni une fonction de règles.
-6. `abandonStudioRecovery({confirm:true})` permet de recommencer **uniquement si aucune nouvelle instance n'existe** dans la collection STUDIO inspectée, campagne identique. Si une instance non reconnue existe, ou si la campagne est différente, c'est une intervention manuelle bloquante, **pas** une duplication automatique.
+4. Afficher le panneau de reprise privé. `getStudioRecovery()` est **provisoire et sans candidat réconciliable** ; `inspectStudioRecovery()` lit le journal créateur confirmé et la sauvegarde STUDIO via `loadPersistedStudio()` (ARCHIVES indépendant), vérifie campagne, même ID, provenance et contenu privé exact, puis propose **uniquement** un candidat durable. Le résultat d'interface ne contient que des IDs, jamais notes ou snapshots MJ. L'UI exige le clic « Vérifier sauvegarde STUDIO dans ARCHIVES » avant toute confirmation.
+5. `reconcileStudioLink(instanceId,{confirm:true})` exige une confirmation explicite du MJ **et** réexécute la lecture persistée indépendante, y compris avant l'écriture du lien ; sans port, journal confirmé, ID identique ou instance durable, refus ferme. Si un `inspectCreatorAttachment` STUDIO est injecté, son statut doit être `reusable` et `persisted:true` pour le même ID. La méthode ne crée aucun objet STUDIO et n'exécute aucune règle.
+6. `abandonStudioRecovery({confirm:true})` permet de recommencer **uniquement si aucune nouvelle instance n'existe ni en mémoire STUDIO ni dans ARCHIVES rechargé**, campagne identique, journal créateur durable relu et confirmation MJ explicite. Les sauvegardes sans attestation restent bloquées. Si une instance non reconnue existe, ou si la campagne est différente, c'est une intervention manuelle bloquante, **pas** une duplication automatique.
 
 Le contrôleur vérifie également l'identité de campagne **avant la sauvegarde du journal, immédiatement avant chaque création STUDIO et après son résultat** ; une bascule ne déclenche ni copie dans la mauvaise campagne ni liaison trompeuse. Les modifications concurrentes de brouillon pendant la prévisualisation sont refusées. Le journal empêche `saveDraft` modifiant les brouillons, `validateMJ`, restauration destructive et répétition de création tant qu'il subsiste. Les opérations de réconciliation/annulation/rechargement sont aussi interdites pendant une action STUDIO en vol. L'UI emploie uniquement le DOM texte (`textContent`), aucun HTML non fiable ou `style` inline.
 
-**API ajoutée** sur `createCreatorCycle` : `getStudioRecovery() -> {pending,status,kind?,candidates:[{id}],canAbandon,message?}` ; `reconcileStudioLink(instanceId,{confirm:true})` ; `abandonStudioRecovery({confirm:true})`. Le composant `mountCreatorCycle` affiche les candidats et un choix MJ, jamais une reprise automatique.
+**API actuelle :** `getStudioRecovery()` fournit un statut **non attesté** (`durability-unverified`, `candidates:[]`) ; `await inspectStudioRecovery()` fournit `{pending,status,kind?,candidates:[{id}],canAbandon,durableVerified,message?}`. `reconcileStudioLink(instanceId,{confirm:true})` et `abandonStudioRecovery({confirm:true})` relisent les preuves dans leur propre transaction. `loadPersistedStudio` est optionnel au montage pour les brouillons, **mais indispensable à toute reprise**. Le panneau MJ vérifie la durabilité avant d'activer un choix ; aucune copie/reprise automatique.
 
 **Limites bloquantes :** aucune atomicité distribuée entre STUDIO et ARCHIVES ; la fiabilité dépend de la confirmation réelle de `persistence.save` et de la persistance STUDIO. En cas de changement du profil source, de copie sans provenance STUDIO, de scène partiellement mise à jour ou d'autres créations concurrentes, la réconciliation peut être refusée : corriger/vérifier dans STUDIO avant de lier, sans relancer « Créer ». Un **ancien export restauré depuis une autre session**, sans le journal d'intention mais avec des instances STUDIO déjà créées, n'offre pas de preuve d'idempotence globale ; une vraie transaction multi-moteurs ou clé d'idempotence STUDIO/ARCHIVES devra être contractée séparément par 05/20/04. Aucune récupération silencieuse des données inconnues ni transformation de provenance n'est pratiquée.
 
