@@ -20,3 +20,14 @@ Exécution locale : `node --test /mnt/data/dg004/tests/creators/*.test.mjs` sur 
 **Risques restants:** liaison avec les vraies interfaces INDEX/STUDIO, persistance IndexedDB et isolation joueur en Chromium, recette clavier/lecteur écran ; une erreur après un appel externe STUDIO et avant l'enregistrement local impose réconciliation manuelle, jamais duplication silencieuse. Les P0/P1 ne sont pas homologués sans QA intégrée.
 
 **À revoir par:** 05 INTÉGRATION, 20 STUDIO, 11 INDEX, 10 MATH, 14 OBJETS, 13 MAG, 35 BESTIAIRE, 04 ARCHIVES et 02 QA. **À valider par DG/créateur:** adoption du parcours dans la branche intégrée, QA au SHA final, activation éventuelle de suggestions XP après contrats ; aucun merge/Pages/canonisation.
+
+## Addendum DG — L004-REPAIR transactionnel (05/11/2026)
+
+Défaut observé sur #100@`093d2504` : `attachCreature()` copie dans STUDIO puis `persistence.save` échoue ; tentative suivante reproduit une deuxième copie, prouvé par injection : `inst-1` puis `inst-2`. Même vulnérabilité structurelle pour la scène.
+
+**Décision correctrice :** journal privé de pré-intention durable avant effet STUDIO, reprise manuelle obligatoire après échec, candidate vérifiée par identifiants/provenance, aucune création répétée. UI MJ explicite. Restaurations pendant journal bloquées. Aucun changement aux règles, aux ports STUDIO ou INDEX, au site ni aux données réelles.
+
+**Contrat de livraison :** module `cycle-state.mjs`, UI `cycle-ui.mjs`, tests correspondants et README du seul sous-arbre ATELIERS. Le nouvel HEAD et les blobs sont indiqués dans la PR #100 et la passation à PR #95. Les tests Node natifs/Chromium sur le HEAD intégré appartiennent à 05/QA ; aucune homologation automatique.
+
+**Limites à arbitrer par 05/STUDIO/ARCHIVES :** identifiants uniques/provenance d'une copie, durabilité du port, scène partiellement mise à jour, intervention humaine en cas de données discordantes, restauration d'un backup obsolète sans journal. Une clé d'idempotence native et une transaction inter-moteurs ne sont pas introduites par ATELIERS.
+
