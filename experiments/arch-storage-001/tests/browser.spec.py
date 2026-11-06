@@ -21,8 +21,9 @@ async def test():
    browser=await pw.chromium.launch(executable_path=CHROME,headless=True)
    ctx=await browser.new_context(viewport={'width':768,'height':1024})
    page=await ctx.new_page();await page.goto(BASE)
-   await page.wait_for_selector('#seed');await page.get_by_text('Créer campagne fictive, 2 PJ, créature, 2 scènes et note MJ').click()
-   await page.wait_for_function('document.querySelector("#stats").textContent.includes("Campagne fictive")')
+   await page.locator('body[data-p1a-ready="true"]').wait_for()
+   await page.get_by_text('Créer campagne fictive, 2 PJ, créature, 2 scènes et note MJ').click()
+   await page.get_by_text('Campagne fictive — Deux Rives',exact=True).wait_for()
    base=await page.evaluate('async()=>{let s=window.__p1aDemo.store;return {c:await s.readCampaign("campagne-fictive-p1a"),events:await s.listEvents("campagne-fictive-p1a")}}')
    assert [len(base['c'][k]) for k in ['characters','instances','scenes','privateNotes']]==[2,1,2,1]
    assert len(base['events'])==7 and base['c']['revision']==7
@@ -30,7 +31,7 @@ async def test():
    print('PASS B01 fixture 2PJ / 1 creature / 2 scenes / private note / revision7')
    # cross-tab: both pages access real same-origin IndexedDB
    second=await ctx.new_page();await second.goto(BASE)
-   await second.wait_for_function('window.__p1aDemo && window.__p1aDemo.store')
+   await second.locator('body[data-p1a-ready="true"]').wait_for()
    changed=await second.evaluate('async()=>{const c=await window.__p1aDemo.store.readCampaign("campagne-fictive-p1a");return c?.revision}')
    assert changed==7
    print('PASS B02 shared IndexedDB across 2 real tabs')
@@ -49,7 +50,7 @@ async def test():
    print('PASS B05 real two-tab optimistic concurrency: one commit / one stale')
    # reload preserving same browser profile
    await page.reload()
-   await page.wait_for_function('window.__p1aDemo && window.__p1aDemo.store')
+   await page.locator('body[data-p1a-ready="true"]').wait_for()
    persisted=await page.evaluate('async()=>{const s=window.__p1aDemo.store,c=await s.readCampaign("campagne-fictive-p1a");return {revision:c.revision,j:(await s.listEvents(c.id)).length}}')
    assert persisted=={'revision':9,'j':9}
    print('PASS B06 reload preserves state and event journal')
@@ -63,7 +64,7 @@ async def test():
    print('PASS B07 export SHA, collision rejected and corrupt import refused')
    # imported into empty indexeddb in separate isolated browser context, event count exact
    other=await browser.new_context();dest=await other.new_page();await dest.goto(BASE)
-   await dest.wait_for_function('window.__p1aDemo && window.__p1aDemo.store')
+   await dest.locator('body[data-p1a-ready="true"]').wait_for()
    restored=await dest.evaluate('async arr=>{const s=window.__p1aDemo.store,p=await s.previewImport(Uint8Array.from(arr));const r=await s.commitImport(p);const c=await s.readCampaign(r.campaignId),j=await s.listEvents(c.id),e=await s.exportPrivate(c.id);return {revision:c.revision,count:j.length,notes:c.privateNotes.length,bytes:[...e.bytes]}}',exported['bytes'])
    assert restored['revision']==9 and restored['count']==9 and restored['notes']==3 and restored['bytes']==exported['bytes']
    print('PASS B08 import into fresh profile and byte-exact private re-export')
