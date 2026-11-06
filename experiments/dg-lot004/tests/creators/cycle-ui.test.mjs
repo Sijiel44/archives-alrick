@@ -67,3 +67,45 @@ test('passation MAG / XP : question prérequis, aucun contrôle de récompense o
  assert.equal(x.root.all(e=>e.tagName==='BUTTON'&&/lancer|XP attribu|créditer/i.test(e.textContent)).length,0);
  x.instance.destroy();
 });
+
+test('UI REPAIR : confirmation MJ lie une copie STUDIO existante sans nouvelle création ni canari',async()=>{
+ const memory=new Map(),campaign={id:'camp-ui-fixture',creatures:[],scenes:[],activeSceneId:''};
+ let failAfterCopy=true,copies=0;
+ const persistence={
+  async load(){return memory.has('cycle')?structuredClone(memory.get('cycle')):null},
+  async save(data){
+   if(failAfterCopy&&data.links.creatureInstanceId)throw Error('disk full after STUDIO copy');
+   memory.set('cycle',structuredClone(data));return {saved:true};
+  }
+ };
+ const studio={
+  async previewCreature(){return {documentId:'DOC-UI',profileId:'PROFILE-UI',ruleset:'M03'}},
+  async copyCreature(){copies++;campaign.creatures.push({id:'cr-'+copies,source:{documentId:'DOC-UI',profileId:'PROFILE-UI',ruleset:'M03'},privateSnapshot:{notes:'CANARI-MJ-NE-PAS-AFFICHER'}})},
+  getCampaign(){return structuredClone(campaign)}
+ };
+ const x=setup({persistence,studio,catalogBridge:record=>({id:'cap:fixture:'+record.kind,executable:false})});
+ await x.instance.ready;
+ const cycle=x.instance.cycle;
+ const draft=name=>({name,provenance:'Fiction',version:'0.1.0',description:'Fiction descriptive.',limitations:'Sans application.'});
+ for(const kind of ['item','capacity','creature']){
+  await cycle.saveDraft(kind,{...draft(kind),...(kind==='creature'?{sourceReference:'DOC-UI'}:{})});
+  await cycle.validateMJ(kind);
+ }
+ await assert.rejects(cycle.attachCreature(),/disk full/);
+ x.instance.render();
+ const select=x.root.find(e=>e.tagName==='SELECT'&&e.getAttribute('aria-label')==='Instance STUDIO à réconcilier');
+ assert.ok(select);
+ assert.equal(select.children.length,1);
+ assert.equal(select.children[0].value,'cr-1');
+ assert.equal(button(x.root,'Confirmer lien vers instance existante (MJ)').disabled,false);
+ assert.equal(button(x.root,'Confirmer absence de copie et réessayer').disabled,true);
+ assert.ok(!x.root.all(e=>typeof e.textContent==='string').some(e=>e.textContent.includes('CANARI-MJ-NE-PAS-AFFICHER')));
+ failAfterCopy=false;
+ select.value='cr-1';
+ await button(x.root,'Confirmer lien vers instance existante (MJ)').emit('click');
+ await nextTick();
+ assert.equal(cycle.getState().links.creatureInstanceId,'cr-1');
+ assert.equal(copies,1);
+ assert.equal(cycle.getStudioRecovery().pending,false);
+ x.instance.destroy();
+});
