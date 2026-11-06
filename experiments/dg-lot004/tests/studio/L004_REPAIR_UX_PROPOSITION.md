@@ -1,0 +1,11 @@
+# L004-REPAIR — UX ardoise/cuivre/or (proposition pour 01 BUILDER et 21 ATELIERS)
+
+Ce document et la feuille `src/studio/ux-ardoise-cuivre-or.proposal.css` **ne sont pas montés** dans le candidat intégré P0. Le créateur a demandé de préparer les choix visuels sans modifier le candidat.
+
+Palette ardoise de fond `#14212D` et de panneau `#233347`, texte craie `#F4EFE5`, cuivre d'action `#E4B179`, or de titre `#E9C56E`, focus `#FFE299`. Ratios calculés avec luminance relative WCAG : texte/fond 14,26:1 ; cuivre/fond 8,45:1 ; or/fond 9,86:1 ; craie/panneau 11,20:1 ; cuivre/panneau 6,64:1 ; texte ardoise sur bouton cuivre 8,45:1. Ces ratios analytiques **ne remplacent pas** une recette visuelle du rendu réel, ni la vérification des états disabled/contrastes sous navigateur.
+
+Parcours recommandé : barre de progression (campagne → PJ → créature → scène → publication), informations MJ explicites et privées visuellement distinctes des champs publics, confirmation/déblocage du retry après sauvegarde, signaux `aria-live` « En cours », « Sauvegardé », « Écriture incertaine / vérifier » et « Bloqué — instance ambiguë ». Lors de toute réconciliation, montrer l'identifiant d'instance et la scène **côté MJ seulement** sans révéler de note dans les statuts ni logs. Les boutons dépendent de l'état de transaction, désactivés dès le début de l'action plutôt qu'après son achèvement.
+
+Accessibilité à contrôler par 01/21/02 : tabulation et focus restauré après DOM `render()` (limite connue de L003), `:focus-visible` ≥3 px, cibles tactiles ≥44×44 px, largeur 390 px sans scroll horizontal, zoom 200 %, étiquettes de champs explicites, `role=status`, messages d'erreur ciblés, `prefers-reduced-motion`. Vérifier le contraste de l'état `disabled` et l'ordre de lecture au lecteur d'écran. Ne pas masquer une validation non obtenue par couleur seule ; libellés PASS/FAIL/INCONNU textuels.
+
+Application proposée uniquement sur le conteneur `[data-l004-demo].l004-theme-proposal` par CSS externe local, jamais du style inline, sans images ni polices externes et sans import dans l'origine joueur. Intégration visuelle sous propriété de 05 après approbation BUILDER et tests QA, pas de modification automatique de PR #95.
