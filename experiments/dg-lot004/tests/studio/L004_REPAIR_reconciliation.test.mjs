@@ -23,17 +23,27 @@ const scene=(id='scene-01',participants=['creature-01'])=>({id,title:DEMO_SCENE_
 function campaign({creatures=[creature()],scenes=[scene()]}={}){return {schema:'cer.studio.dg003.provisional.v0',id:'demo-repair-1',
  title:'Reproduction fictive',revision:4,characters:[],creatures,scenes,activeSceneId:scenes.at(-1)?.id??'',
  extensions:{__dg004_fictional_demo:DEMO_MARKER}};}
-function cycle(){return {drafts:{creature:{sourceReference:DEMO_CREATURE_SOURCE},scene:{title:DEMO_SCENE_TITLE,
- publicDescription:DEMO_SCENE_DESCRIPTION,privateNotes:DEMO_PRIVATE_NOTE}},links:{creatureInstanceId:null,sceneId:null}};}
+function cycle(kind='creature'){
+ return {schema:'cer.creators.dg004.private.v0',id:'cycle-repair-01',revision:8,
+   drafts:{creature:{sourceReference:DEMO_CREATURE_SOURCE},scene:{title:DEMO_SCENE_TITLE,
+     publicDescription:DEMO_SCENE_DESCRIPTION,privateNotes:DEMO_PRIVATE_NOTE}},
+   links:{creatureInstanceId:kind==='scene'?'creature-01':null,sceneId:null},
+   extensions:{pendingStudioOp:kind==='creature'?{kind,campaignId:'demo-repair-1',beforeIds:[],
+     source:{documentId:'aucun-document-canonique',profileId:DEMO_CREATURE_PROFILE,ruleset:'m03'}}:
+     {kind,campaignId:'demo-repair-1',beforeIds:[]}}};
+}
+function inspectWithJournal(c,p,kind='creature',options={}){
+ const cy=cycle(kind);return inspectCreatorAttachment({campaign:c,persistedCampaign:p,cycle:cy,persistedCycle:clone(cy),...options});
+}
 function recordState(records=[]){const c=campaign();c.extensions.creatorDrafts=records.map(original=>({original:clone(original)}));return c;}
 
 // Pure reconciliation: neither function calls a service, changes an ID, nor copies notes into its return value.
 test('REPAIR-01: failed creator link write after creature+scene persisted returns existing IDs',()=>{
  const c=campaign(),p=clone(c),before=JSON.stringify(c);
- const result=inspectCreatorAttachment({campaign:c,persistedCampaign:p,cycle:cycle()});
+ const result=inspectWithJournal(c,p);
  assert.equal(result.action,'link-existing-after-MJ-confirmation');
- assert.equal(result.creature.id,'creature-01');assert.equal(result.scene.id,'scene-01');
- assert.equal(result.creature.status,'reusable');assert.equal(result.scene.status,'reusable');
+ assert.equal(result.creature.id,'creature-01');assert.equal(result.scene.id,null);
+ assert.equal(result.creature.status,'reusable');assert.equal(result.scene.status,'not-targeted');
  assert.equal(JSON.stringify(c),before);assert.doesNotMatch(JSON.stringify(result),/CANARI|SENTINELLE|privateNotes/);
 });
 test('REPAIR-02: scene write persisted but creator link write failed, no second scene required',()=>{
@@ -43,32 +53,32 @@ test('REPAIR-02: scene write persisted but creator link write failed, no second 
 });
 test('REPAIR-03: after browser reload the same persisted identities are still reconciled',()=>{
  const saved=clone(campaign()),reloaded=clone(saved);
- assert.deepEqual(inspectCreatorAttachment({campaign:reloaded,persistedCampaign:saved,cycle:cycle()}).action,'link-existing-after-MJ-confirmation');
+ assert.equal(inspectWithJournal(reloaded,saved).action,'link-existing-after-MJ-confirmation');
 });
 test('REPAIR-04: in-memory-only copy not marked persisted; do not link automatically',()=>{
  const live=campaign(),disk=campaign({creatures:[],scenes:[]});
- const x=inspectCreatorAttachment({campaign:live,persistedCampaign:disk,cycle:cycle()});
- assert.equal(x.creature.status,'unpersisted');assert.equal(x.scene.status,'unpersisted');
+ const x=inspectWithJournal(live,disk);
+ assert.equal(x.creature.status,'unpersisted');assert.equal(x.scene.status,'not-targeted');
  assert.equal(x.action,'block-automatic-retry');
 });
 test('REPAIR-05: same source twice => ambiguous rather than arbitrary first/last',()=>{
  const c=campaign({creatures:[creature('creature-01'),creature('creature-02')],scenes:[]});
- assert.equal(inspectCreatorAttachment({campaign:c,persistedCampaign:clone(c),cycle:cycle()}).creature.status,'ambiguous');
+ assert.equal(inspectWithJournal(c,clone(c)).creature.status,'ambiguous');
  assert.equal(inspectDemoFootprints(c,{persistedCampaign:clone(c)}).creature.status,'ambiguous');
 });
 test('REPAIR-06: same scene title twice => no silent reconciliation',()=>{
  const c=campaign({scenes:[scene('scene-01'),scene('scene-02')]});
- assert.equal(inspectCreatorAttachment({campaign:c,persistedCampaign:clone(c),cycle:cycle()}).scene.status,'ambiguous');
+ assert.equal(inspectWithJournal(c,clone(c),'scene').scene.status,'ambiguous');
  assert.equal(inspectDemoFootprints(c,{persistedCampaign:clone(c)}).scene.status,'ambiguous');
 });
 test('REPAIR-07: scene title equal but altered MJ notes => conflict, no rollback/delete',()=>{
  const altered=scene();altered.privateNotes='Changé par MJ';const c=campaign({scenes:[altered]});
- assert.equal(inspectCreatorAttachment({campaign:c,persistedCampaign:clone(c),cycle:cycle()}).scene.status,'conflict');
+ assert.equal(inspectWithJournal(c,clone(c),'scene').scene.status,'conflict');
  assert.equal(inspectDemoFootprints(c,{persistedCampaign:clone(c)}).scene.status,'conflict');
 });
 test('REPAIR-08: participant missing is flagged for explicit attachment, not recreated',()=>{
  const c=campaign({scenes:[scene('scene-01',[])]});
- assert.equal(inspectCreatorAttachment({campaign:c,persistedCampaign:clone(c),cycle:cycle()}).scene.status,'needs-participants');
+ assert.equal(inspectWithJournal(c,clone(c),'scene').scene.status,'needs-participants');
  assert.equal(inspectDemoFootprints(c,{persistedCampaign:clone(c)}).scene.status,'needs-participants');
 });
 test('REPAIR-09: mismatched source/profile is conflict, never reused',()=>{
@@ -77,7 +87,7 @@ test('REPAIR-09: mismatched source/profile is conflict, never reused',()=>{
 });
 test('REPAIR-10: stored copy ID differs from live ID => conflict, never auto-overwrite',()=>{
  const c=campaign(),p=clone(c);p.creatures[0].id='different-id';
- assert.equal(inspectCreatorAttachment({campaign:c,persistedCampaign:p,cycle:cycle()}).creature.status,'conflict');
+ assert.equal(inspectWithJournal(c,p).creature.status,'conflict');
 });
 test('REPAIR-11: lost creator persistence ACK re-reads existing saved record; no duplicate insert',async()=>{
  const r=draft('item','Lanterne'),store={value:recordState()};let calls=0;

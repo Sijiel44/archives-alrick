@@ -1,0 +1,370 @@
+TAP version 13
+# Subtest: PENDING-01: older matching creature without journal is NOT proof of ownership
+ok 1 - PENDING-01: older matching creature without journal is NOT proof of ownership
+  ---
+  duration_ms: 1.713773
+  type: 'test'
+  ...
+# Subtest: PENDING-02: preflight journal durable BEFORE external action -> missing, never retry blindly
+ok 2 - PENDING-02: preflight journal durable BEFORE external action -> missing, never retry blindly
+  ---
+  duration_ms: 3.135265
+  type: 'test'
+  ...
+# Subtest: PENDING-03: journal failed before persisting -> no attestation even when STUDIO has actor
+ok 3 - PENDING-03: journal failed before persisting -> no attestation even when STUDIO has actor
+  ---
+  duration_ms: 0.339884
+  type: 'test'
+  ...
+# Subtest: PENDING-04: copy succeeded only in RAM -> unpersisted, no link
+ok 4 - PENDING-04: copy succeeded only in RAM -> unpersisted, no link
+  ---
+  duration_ms: 0.300244
+  type: 'test'
+  ...
+# Subtest: PENDING-05: after action durable, only NEW identified creature can be confirmed
+ok 5 - PENDING-05: after action durable, only NEW identified creature can be confirmed
+  ---
+  duration_ms: 0.571265
+  type: 'test'
+  ...
+# Subtest: PENDING-06: two new creatures, even only one with matching provenance -> ambiguous
+ok 6 - PENDING-06: two new creatures, even only one with matching provenance -> ambiguous
+  ---
+  duration_ms: 0.21099
+  type: 'test'
+  ...
+# Subtest: PENDING-07: two copies with the same provenance -> ambiguous
+ok 7 - PENDING-07: two copies with the same provenance -> ambiguous
+  ---
+  duration_ms: 0.221125
+  type: 'test'
+  ...
+# Subtest: PENDING-08: same name but other profile/ruleset -> conflict, not a candidate
+ok 8 - PENDING-08: same name but other profile/ruleset -> conflict, not a candidate
+  ---
+  duration_ms: 0.196488
+  type: 'test'
+  ...
+# Subtest: PENDING-09: changed campaign ID after journal => fail closed
+ok 9 - PENDING-09: changed campaign ID after journal => fail closed
+  ---
+  duration_ms: 0.421138
+  type: 'test'
+  ...
+# Subtest: PENDING-10: restored older STUDIO campaign missing baseline IDs => stale
+ok 10 - PENDING-10: restored older STUDIO campaign missing baseline IDs => stale
+  ---
+  duration_ms: 0.380626
+  type: 'test'
+  ...
+# Subtest: PENDING-11: current journal and persisted journal differ => unattestable
+ok 11 - PENDING-11: current journal and persisted journal differ => unattestable
+  ---
+  duration_ms: 0.197649
+  type: 'test'
+  ...
+# Subtest: PENDING-12: spoofed/broken journal with duplicate baseline IDs rejected
+ok 12 - PENDING-12: spoofed/broken journal with duplicate baseline IDs rejected
+  ---
+  duration_ms: 0.216287
+  type: 'test'
+  ...
+# Subtest: PENDING-13: duplicate instance IDs in either store never reusable
+ok 13 - PENDING-13: duplicate instance IDs in either store never reusable
+  ---
+  duration_ms: 0.188055
+  type: 'test'
+  ...
+# Subtest: PENDING-14: one new durable scene with same text, notes and participant -> reusable
+ok 14 - PENDING-14: one new durable scene with same text, notes and participant -> reusable
+  ---
+  duration_ms: 0.212141
+  type: 'test'
+  ...
+# Subtest: PENDING-15: scene missing creator-linked creature in participants blocks linking
+ok 15 - PENDING-15: scene missing creator-linked creature in participants blocks linking
+  ---
+  duration_ms: 0.13899
+  type: 'test'
+  ...
+# Subtest: PENDING-16: altered private scene notes => conflict; no private note in outcome
+ok 16 - PENDING-16: altered private scene notes => conflict; no private note in outcome
+  ---
+  duration_ms: 0.222397
+  type: 'test'
+  ...
+# Subtest: PENDING-17: scene present in RAM but absent from ARCHIVES -> unpersisted
+ok 17 - PENDING-17: scene present in RAM but absent from ARCHIVES -> unpersisted
+  ---
+  duration_ms: 0.200464
+  type: 'test'
+  ...
+# Subtest: PENDING-18: another persisted scene ID than in RAM => conflict
+ok 18 - PENDING-18: another persisted scene ID than in RAM => conflict
+  ---
+  duration_ms: 0.13902
+  type: 'test'
+  ...
+# Subtest: PENDING-19: identical replay after reload returns same ID without creating an instance
+ok 19 - PENDING-19: identical replay after reload returns same ID without creating an instance
+  ---
+  duration_ms: 0.765218
+  type: 'test'
+  ...
+# Subtest: PENDING-20: explicit confirmation is mandatory, no commit without it
+ok 20 - PENDING-20: explicit confirmation is mandatory, no commit without it
+  ---
+  duration_ms: 0.87255
+  type: 'test'
+  ...
+# Subtest: PENDING-21: confirmation with both durable proofs links ONLY existing ID
+ok 21 - PENDING-21: confirmation with both durable proofs links ONLY existing ID
+  ---
+  duration_ms: 0.513337
+  type: 'test'
+  ...
+# Subtest: PENDING-22: creator recovery disagreeing with STUDIO proof blocks before commit
+ok 22 - PENDING-22: creator recovery disagreeing with STUDIO proof blocks before commit
+  ---
+  duration_ms: 0.432484
+  type: 'test'
+  ...
+# Subtest: PENDING-23: ambiguous creator recovery (two candidates) blocks even if STUDIO gives one
+ok 23 - PENDING-23: ambiguous creator recovery (two candidates) blocks even if STUDIO gives one
+  ---
+  duration_ms: 0.20462
+  type: 'test'
+  ...
+# Subtest: PENDING-24: after failure to persist final link, no second STUDIO copy is attempted
+ok 24 - PENDING-24: after failure to persist final link, no second STUDIO copy is attempted
+  ---
+  duration_ms: 0.214114
+  type: 'test'
+  ...
+# Subtest: PENDING-25: scene explicit confirmation returns same scene ID and no secret
+ok 25 - PENDING-25: scene explicit confirmation returns same scene ID and no secret
+  ---
+  duration_ms: 0.299293
+  type: 'test'
+  ...
+# Subtest: REPAIR-01: failed creator link write after creature+scene persisted returns existing IDs
+ok 26 - REPAIR-01: failed creator link write after creature+scene persisted returns existing IDs
+  ---
+  duration_ms: 2.201402
+  type: 'test'
+  ...
+# Subtest: REPAIR-02: scene write persisted but creator link write failed, no second scene required
+ok 27 - REPAIR-02: scene write persisted but creator link write failed, no second scene required
+  ---
+  duration_ms: 1.134988
+  type: 'test'
+  ...
+# Subtest: REPAIR-03: after browser reload the same persisted identities are still reconciled
+ok 28 - REPAIR-03: after browser reload the same persisted identities are still reconciled
+  ---
+  duration_ms: 0.346795
+  type: 'test'
+  ...
+# Subtest: REPAIR-04: in-memory-only copy not marked persisted; do not link automatically
+ok 29 - REPAIR-04: in-memory-only copy not marked persisted; do not link automatically
+  ---
+  duration_ms: 0.315397
+  type: 'test'
+  ...
+# Subtest: REPAIR-05: same source twice => ambiguous rather than arbitrary first/last
+ok 30 - REPAIR-05: same source twice => ambiguous rather than arbitrary first/last
+  ---
+  duration_ms: 0.346445
+  type: 'test'
+  ...
+# Subtest: REPAIR-06: same scene title twice => no silent reconciliation
+ok 31 - REPAIR-06: same scene title twice => no silent reconciliation
+  ---
+  duration_ms: 0.268957
+  type: 'test'
+  ...
+# Subtest: REPAIR-07: scene title equal but altered MJ notes => conflict, no rollback/delete
+ok 32 - REPAIR-07: scene title equal but altered MJ notes => conflict, no rollback/delete
+  ---
+  duration_ms: 0.425003
+  type: 'test'
+  ...
+# Subtest: REPAIR-08: participant missing is flagged for explicit attachment, not recreated
+ok 33 - REPAIR-08: participant missing is flagged for explicit attachment, not recreated
+  ---
+  duration_ms: 0.273143
+  type: 'test'
+  ...
+# Subtest: REPAIR-09: mismatched source/profile is conflict, never reused
+ok 34 - REPAIR-09: mismatched source/profile is conflict, never reused
+  ---
+  duration_ms: 0.524414
+  type: 'test'
+  ...
+# Subtest: REPAIR-10: stored copy ID differs from live ID => conflict, never auto-overwrite
+ok 35 - REPAIR-10: stored copy ID differs from live ID => conflict, never auto-overwrite
+  ---
+  duration_ms: 0.525715
+  type: 'test'
+  ...
+# Subtest: REPAIR-11: lost creator persistence ACK re-reads existing saved record; no duplicate insert
+ok 36 - REPAIR-11: lost creator persistence ACK re-reads existing saved record; no duplicate insert
+  ---
+  duration_ms: 0.764717
+  type: 'test'
+  ...
+# Subtest: REPAIR-12: failure before persistence is reported, second attempt does not create STUDIO actor
+ok 37 - REPAIR-12: failure before persistence is reported, second attempt does not create STUDIO actor
+  ---
+  duration_ms: 0.727191
+  type: 'test'
+  ...
+# Subtest: REPAIR-13: same identity but changed creator content blocks replay
+ok 38 - REPAIR-13: same identity but changed creator content blocks replay
+  ---
+  duration_ms: 0.319133
+  type: 'test'
+  ...
+# Subtest: REPAIR-14: durable creator drafts recovered after reload; duplicates blocked
+ok 39 - REPAIR-14: durable creator drafts recovered after reload; duplicates blocked
+  ---
+  duration_ms: 0.395999
+  type: 'test'
+  ...
+# Subtest: REPAIR-15: real STUDIO demo retry after creator write failure keeps one creature and scene
+ok 40 - REPAIR-15: real STUDIO demo retry after creator write failure keeps one creature and scene
+  ---
+  duration_ms: 37.704143
+  type: 'test'
+  ...
+# Subtest: REPAIR-16: split write failure leaves scene in memory; retry persists same ID not second scene
+ok 41 - REPAIR-16: split write failure leaves scene in memory; retry persists same ID not second scene
+  ---
+  duration_ms: 16.870729
+  type: 'test'
+  ...
+# Subtest: REPAIR-17: changing scene via real STUDIO revokes player projection, no automatic SHOW
+ok 42 - REPAIR-17: changing scene via real STUDIO revokes player projection, no automatic SHOW
+  ---
+  duration_ms: 12.780222
+  type: 'test'
+  ...
+# Subtest: REPAIR-18: real STUDIO reload then repeat demo steps keeps the same copy and scene IDs
+ok 43 - REPAIR-18: real STUDIO reload then repeat demo steps keeps the same copy and scene IDs
+  ---
+  duration_ms: 17.870376
+  type: 'test'
+  ...
+# Subtest: REPAIR-19: creator reports saved but durable ARCHIVES record missing => explicit refusal
+ok 44 - REPAIR-19: creator reports saved but durable ARCHIVES record missing => explicit refusal
+  ---
+  duration_ms: 0.411713
+  type: 'test'
+  ...
+# Subtest: REPAIR-20: actor reconciliation after sharing sends CLEAR, never SHOW on its own
+ok 45 - REPAIR-20: actor reconciliation after sharing sends CLEAR, never SHOW on its own
+  ---
+  duration_ms: 11.297533
+  type: 'test'
+  ...
+# Subtest: L004-01 key partition refuses arbitrary real MJ key reads/writes
+ok 46 - L004-01 key partition refuses arbitrary real MJ key reads/writes
+  ---
+  duration_ms: 2.765355
+  type: 'test'
+  ...
+# Subtest: L004-02 demo area removing one backup never deletes real MJ campaign
+ok 47 - L004-02 demo area removing one backup never deletes real MJ campaign
+  ---
+  duration_ms: 0.196808
+  type: 'test'
+  ...
+# Subtest: L004-03 missing authoritative ARCHIVES-backed storage is refused
+ok 48 - L004-03 missing authoritative ARCHIVES-backed storage is refused
+  ---
+  duration_ms: 0.315998
+  type: 'test'
+  ...
+# Subtest: L004-04 save tags only clone of fictional campaign, delegates to native service
+ok 49 - L004-04 save tags only clone of fictional campaign, delegates to native service
+  ---
+  duration_ms: 0.612127
+  type: 'test'
+  ...
+# Subtest: L004-05 load refuses foreign project even from namespaced storage
+ok 50 - L004-05 load refuses foreign project even from namespaced storage
+  ---
+  duration_ms: 0.45627
+  type: 'test'
+  ...
+# Subtest: L004-06 export uses native bytes and records only sha256 of demo backup
+ok 51 - L004-06 export uses native bytes and records only sha256 of demo backup
+  ---
+  duration_ms: 9.946754
+  type: 'test'
+  ...
+# Subtest: L004-07 unfamiliar private archive rejected BEFORE native preview
+ok 52 - L004-07 unfamiliar private archive rejected BEFORE native preview
+  ---
+  duration_ms: 1.300989
+  type: 'test'
+  ...
+# Subtest: L004-08 known demo export goes through native ARCHIVES preview unchanged
+ok 53 - L004-08 known demo export goes through native ARCHIVES preview unchanged
+  ---
+  duration_ms: 3.017993
+  type: 'test'
+  ...
+# Subtest: L004-09 restore refuses previews not issued through demo allowlist
+ok 54 - L004-09 restore refuses previews not issued through demo allowlist
+  ---
+  duration_ms: 0.554799
+  type: 'test'
+  ...
+# Subtest: L004-10 valid native restore requires fictional marker, cannot import real project
+ok 55 - L004-10 valid native restore requires fictional marker, cannot import real project
+  ---
+  duration_ms: 2.837494
+  type: 'test'
+  ...
+# Subtest: L004-11 synthetic PJ is single v3 sheet, raw stat >12, unknown fields
+ok 56 - L004-11 synthetic PJ is single v3 sheet, raw stat >12, unknown fields
+  ---
+  duration_ms: 0.308647
+  type: 'test'
+  ...
+# Subtest: L004-12 player DTO is whitelist and cannot include private scene links, snapshots, sentinels
+ok 57 - L004-12 player DTO is whitelist and cannot include private scene links, snapshots, sentinels
+  ---
+  duration_ms: 0.503532
+  type: 'test'
+  ...
+# Subtest: L004-C-13 descriptive object→capacity→creature→scene link stays private/preview-only
+ok 58 - L004-C-13 descriptive object→capacity→creature→scene link stays private/preview-only
+  ---
+  duration_ms: 0.344591
+  type: 'test'
+  ...
+# Subtest: L004-C-14 numerical effect and resource charge blocked
+ok 59 - L004-C-14 numerical effect and resource charge blocked
+  ---
+  duration_ms: 0.120583
+  type: 'test'
+  ...
+# Subtest: L004-15 demo mount refuses missing dedicated factory before any campaign DOM mutation
+ok 60 - L004-15 demo mount refuses missing dedicated factory before any campaign DOM mutation
+  ---
+  duration_ms: 0.455259
+  type: 'test'
+  ...
+1..60
+# tests 60
+# suites 0
+# pass 60
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 192.573445

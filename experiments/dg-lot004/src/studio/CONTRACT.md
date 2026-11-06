@@ -50,3 +50,74 @@ Lancer `node --test experiments/dg-lot004/tests/studio/*.test.mjs`. Puis `python
 - UX ardoise/cuivre/or : **fichier seulement proposé**, `src/studio/ux-ardoise-cuivre-or.proposal.css`. Ne pas charger ni appliquer dans le candidat P0 sans revue 01 BUILDER + 21 ATELIERS + QA. Aucun changement de style ou source du candidat intégré PR #95.
 
 **Gates propriétaires :** `node --test experiments/dg-lot004/tests/studio/*.test.mjs` (L004), `node --test experiments/dg-lot003/tests/studio/*.test.mjs` (régression). Le scénario `tests/studio/L004_REPAIR_BROWSER_SCENARIO.py` exige la vraie page intégrée servie sur 4173 et joueur sur 4174 ; il n'est pas une preuve navigateur tant qu'il n'est pas réellement exécuté. Les tests sur `createCreatorCycle.attachCreature/attachScene` réels appartiennent au 21 ; seul ce propriétaire peut effectuer le commit/rollback de son état. 
+
+## L004-REPAIR — raccord `pendingStudioOp` (PR #100 @ ecce2ada)
+
+**Changement de contrat STUDIO** : `inspectCreatorAttachment` (module `reconcile.mjs`)
+exige désormais le journal **durablement présent** dans `persistedCycle`, lu depuis le
+stockage privé ATELIERS/ARCHIVES, ainsi qu'une `persistedCampaign` validée et relue
+**indépendamment** de la campagne volatile STUDIO. Une ancienne restauration dont
+le journal manque n'est **pas attestable** : `action:'block-automatic-retry'` et
+`status:'unattestable'`, même si le titre/source de l'instance ressemble à la fixture.
+
+```js
+import {inspectCreatorAttachment,confirmCreatorAttachmentWithEvidence} from './reconcile.mjs';
+const creatorState=creator.getState();
+const [persistedCycle,persistedCampaign]=await Promise.all([
+  creatorPersistence.load(), studioStorage.load(),
+]);
+const candidate=inspectCreatorAttachment({
+  cycle:creatorState,persistedCycle,
+  campaign:studio.getCampaign(),persistedCampaign,
+});
+// Le port 05 affiche uniquement IDs/statuts ; les notes privées ne sont jamais retournées.
+// Le MJ doit sélectionner le seul ID attesté ET confirmer explicitement.
+if(candidate.action==='link-existing-after-MJ-confirmation' && userConfirmed === true){
+  const kind=creatorState.extensions.pendingStudioOp.kind;
+  const id=(kind==='creature'?candidate.creature:candidate.scene).id;
+  await confirmCreatorAttachmentWithEvidence({creator,studio,creatorPersistence,
+    studioStorage,instanceId:id,confirm:true});
+}
+```
+
+`pendingStudioOp` : `{kind:'creature'|'scene',campaignId,beforeIds,
+source?:{documentId,profileId,ruleset}}`. `beforeIds` désigne les IDs présents AVANT
+la tentative. Il est créé par ATELIERS **avant** l'appel STUDIO ; STUDIO ne le
+crée pas et ne le supprime pas. Il est supprimé par ATELIERS dans la même écriture
+confirmée que son lien. La campagne STUDIO doit déjà avoir été sauvegardée par le
+vrai adaptateur ARCHIVES (sa vérification de SHA et d'enveloppe reste son autorité).
+
+Signification des résultats :
+
+- `reusable` : **un seul nouvel ID**, absent de `beforeIds`, correspondant à la
+  provenance/description du journal, trouvé dans les deux états STUDIO et dont
+  la session créateur possède le **même journal durable** ; autorise uniquement
+  une **proposition de rattachement manuel**, jamais un appel `copyCreature` ou
+  `createScene` automatique.
+- `missing` : journal présent, mais aucune nouvelle instance visible. Le protocole
+  ATELIERS `abandonStudioRecovery({confirm:true})` demeure distinct et ne doit
+  être proposé qu'après inspection de l'absence d'effet et nouvelle confirmation.
+- `unpersisted` : une instance volatile existe, mais le stockage ARCHIVES ne la
+  retrouve pas. **Aucune confirmation du lien**, aucune nouvelle copie, vérifier
+  l'état et la file d'écritures.
+- `ambiguous`, `conflict`, `stale`, `wrong-campaign`, `invalid-journal`,
+  `unattestable`, `needs-participants` : blocage, revue humaine et conservation
+  des sauvegardes originales. `not-targeted` qualifie l'autre famille non en cours.
+
+`confirmCreatorAttachmentWithEvidence({...}) -> Promise<{kind,instanceId,
+status:'linked',reconciled:true,executable:false}>` vérifie encore les deux
+magasins, le résultat de `creator.getStudioRecovery()`, une seule candidature,
+le consentement MJ explicite, puis délègue UNIQUEMENT à
+`creator.reconcileStudioLink(id,{confirm:true})`. Une relecture du cycle
+persisté confirme le **même ID**, sans journal restant. Aucune compensation,
+suppression, transaction de ressources, publication ou `postMessage`.
+
+**Limite structurelle non levée :** le journal ATELIERS actuel n'inscrit pas de
+`operationId` unique dans l'instance STUDIO ; `beforeIds`+provenance ne permettent
+pas de certifier une opération au travers de restaurations concurrentes ou de
+lignes temporelles divergentes avec le même `campaignId`. En cas de doute, ne
+pas valider le P0 et conserver les originaux ; 04/21/05 doivent convenir d'un
+marqueur transactionnel durable ou bloquer ces restaurations. Le navigateur réel,
+la couche ARCHIVES et la CI au HEAD composite restent à recetter par 05/QA.
+
+Ce contrat est indépendant de l'UX ardoise/cuivre/or (toujours proposition non montée).
