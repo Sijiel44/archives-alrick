@@ -236,7 +236,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   if(state.extensions.pendingStudioOp)fail('Réconciliation STUDIO requise : ne pas dupliquer la copie');
   if(!state.entries.creature||!state.entries.capacity)fail('Créature et capacité à valider');
   if(state.links.creatureInstanceId)fail('Créature déjà liée — pas de copie automatique');
-  const reference=state.drafts.creature.sourceReference;
+  const reference=state.drafts.creature.sourceReference,startingRevision=state.revision;
   const campaign=studio.getCampaign(),before=campaign?.creatures;
   if(!ids.test(campaign?.id)||!Array.isArray(before)||before.some(x=>!ids.test(x?.id)))
    fail('Campagne STUDIO invalide pour journal de reprise');
@@ -247,13 +247,19 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   const source=Object.fromEntries(['documentId','profileId','ruleset'].map(k=>[k,preview[k]]));
   // If the preflight save fails, copyCreature is never called.
   await commit(next=>{
+   if(next.revision!==startingRevision||next.drafts.creature.sourceReference!==reference)
+    fail('Cycle modifié pendant prévisualisation : recommencer avant copie STUDIO');
+   if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée avant copie');
    if(next.extensions.pendingStudioOp||next.links.creatureInstanceId)fail('Réconciliation STUDIO requise');
    next.extensions.pendingStudioOp={kind:'creature',campaignId:campaign.id,beforeIds,source};
   });
   studioActionInFlight=true;
   try{
+  if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée après journal : reprise manuelle requise');
   await studio.copyCreature();
-  const all=studio.getCampaign()?.creatures;
+  const afterCampaign=studio.getCampaign();
+  if(afterCampaign?.id!==campaign.id)fail('Campagne STUDIO changée après copie : reprise manuelle requise');
+  const all=afterCampaign.creatures;
   if(!Array.isArray(all)||!all.length||typeof all.at(-1)?.id!=='string')
    fail('Copie STUDIO non confirmée : utiliser la réconciliation');
   const instanceId=all.at(-1).id;
@@ -275,23 +281,29 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   if(!state.entries.scene||!state.links.creatureInstanceId)
    fail('Valider la scène et copier la créature d’abord');
   if(state.links.sceneId)fail('Scène déjà liée — pas de duplication automatique');
-  const d=state.drafts.scene,campaign=studio.getCampaign(),before=campaign?.scenes;
+  const d=state.drafts.scene,startingRevision=state.revision,campaign=studio.getCampaign(),before=campaign?.scenes;
   if(!ids.test(campaign?.id)||!Array.isArray(before)||before.some(x=>!ids.test(x?.id)))
    fail('Campagne STUDIO invalide pour journal de reprise');
   const beforeIds=before.map(x=>x.id);
   await commit(next=>{
+   if(next.revision!==startingRevision)fail('Cycle modifié pendant préparation de scène STUDIO');
+   if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée avant scène');
    if(next.extensions.pendingStudioOp||next.links.sceneId)fail('Réconciliation STUDIO requise');
    next.extensions.pendingStudioOp={kind:'scene',campaignId:campaign.id,beforeIds};
   });
   studioActionInFlight=true;
   try{
+  if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée après journal : reprise manuelle requise');
   await studio.createScene(d.title,d.publicDescription??'',d.privateNotes??'');
-  const current=studio.getCampaign(),sceneId=current?.activeSceneId;
+  const current=studio.getCampaign();
+  if(current?.id!==campaign.id)fail('Campagne STUDIO changée après scène : reprise manuelle requise');
+  const sceneId=current.activeSceneId;
   if(sceneId&&typeof studio.updateScene==='function'){
    const s=current.scenes?.find(x=>x.id===sceneId);
    if(s)await studio.updateScene({title:s.title,publicDescription:s.publicDescription??'',privateNotes:s.privateNotes??'',
     participantIds:[...new Set([...(s.participantIds??[]),state.links.creatureInstanceId])]});
   }
+  if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée après mise à jour : reprise manuelle requise');
   if(typeof sceneId!=='string'||!sceneId)fail('Création STUDIO non confirmée : utiliser la réconciliation');
   await commit(next=>{
    if(next.extensions.pendingStudioOp?.kind!=='scene')fail('Journal STUDIO absent');
