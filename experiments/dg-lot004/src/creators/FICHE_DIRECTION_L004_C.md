@@ -31,3 +31,8 @@ Défaut observé sur #100@`093d2504` : `attachCreature()` copie dans STUDIO puis
 
 **Limites à arbitrer par 05/STUDIO/ARCHIVES :** identifiants uniques/provenance d'une copie, durabilité du port, scène partiellement mise à jour, intervention humaine en cas de données discordantes, restauration d'un backup obsolète sans journal. Une clé d'idempotence native et une transaction inter-moteurs ne sont pas introduites par ATELIERS.
 
+### Complément preuve interop STUDIO/ARCHIVES — DG L004-REPAIR
+
+
+Sources exactes : ATELIERS #100, STUDIO #98@`9729d1085a8714cc01d769908adfd5aa87e7ef9b` / blob `reconcile.mjs=f2b3a0254aa8f6ca8fcd4c6299281eee7467581e`, ARCHIVES L003 `tools/runtime.mjs` blob `444066ca6dbeaf59a9f8097e550bfff6105e47c7`. **Incompatibilités prouvées :** l'inspection STUDIO exige une scène avant la copie de créature ; `unpersisted` en STUDIO peut encore correspondre à `requires-confirmation` dans l'ATELIERS antérieur sans lecture durable ; les anciens backups sans journal et doubles candidats pouvaient recréer ou relier arbitrairement des copies. Dernières gardes propriétaires : refus d'ambiguïté et refus de la nouvelle création devant source/titre préexistants, avec tests ciblés. Le port de preuve de persistance `loadPersistedStudio()`, la politique de sauvegarde atomique et le raccord d'inspection par maillon appartiennent à 05/20/04, **non prétendus résolus** par le correctif propriétaire. Aucun merge ni QA Alpha.
+
