@@ -81,7 +81,7 @@ export function createBrowserCyclePersistence({storage,key='cer.dg004.creators.p
 /** State machine. Only persisted snapshot becomes committed state; failed writes leave it unchanged. */
 export function createCreatorCycle({persistence,creatorValidator,catalogBridge,catalog,studio,indexChain,idFactory=()=>globalThis.crypto?.randomUUID?.()}={}){
  if(!persistence||typeof persistence.save!=='function'||typeof persistence.load!=='function')throw new TypeError('Port de persistance load/save requis');
- let state=createCycle(idFactory()),queue=Promise.resolve(),pendingRestore=null;
+ let state=createCycle(idFactory()),queue=Promise.resolve(),pendingRestore=null,studioActionInFlight=false;
  const copy=()=>cloneCycleJSON(state);
  const steps=[...CYCLE_STEPS,...OPTIONAL_STEPS];
  const checkKind=k=>{if(!steps.includes(k))fail('Étape inconnue');};
@@ -169,6 +169,8 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
  function recoveryStatus(){
   const pending=state.extensions.pendingStudioOp;
   if(!pending)return {pending:false,status:'none',candidates:[],canAbandon:false};
+  if(studioActionInFlight)return {pending:true,kind:pending.kind,status:'in-flight',
+   candidates:[],canAbandon:false,message:'Écriture STUDIO en cours : ne pas intervenir'};
   const campaign=studio?.getCampaign?.();
   if(!isObject(campaign)||campaign.id!==pending.campaignId)
    return {pending:true,kind:pending.kind,status:'wrong-campaign',candidates:[],canAbandon:false,
@@ -197,13 +199,15 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
      'Aucune nouvelle instance visible ; confirmer explicitement avant un nouvel essai'};
  }
  async function reconcileStudioLink(instanceId,{confirm=false}={}){
+  if(studioActionInFlight)fail('Opération STUDIO en cours : attendre son résultat');
   if(confirm!==true)fail('Confirmation MJ explicite requise');
   const status=recoveryStatus(),pending=state.extensions.pendingStudioOp;
   if(!pending||status.status!=='requires-confirmation'||!status.candidates.some(x=>x.id===instanceId))
    fail('Instance non reconnue : réconciliation manuelle requise, aucune copie supplémentaire');
   await commit(next=>{
    if(!next.extensions.pendingStudioOp||next.extensions.pendingStudioOp.kind!==pending.kind||
-      next.extensions.pendingStudioOp.campaignId!==pending.campaignId)
+      next.extensions.pendingStudioOp.campaignId!==pending.campaignId||
+      !recoveryStatus().candidates.some(x=>x.id===instanceId))
     fail('Journal STUDIO modifié pendant réconciliation');
    if(pending.kind==='creature'){
     if(next.links.creatureInstanceId)fail('Créature déjà liée');
@@ -219,6 +223,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   return {kind:pending.kind,instanceId,reconciled:true,executable:false};
  }
  async function abandonStudioRecovery({confirm=false}={}){
+  if(studioActionInFlight)fail('Opération STUDIO en cours : attendre son résultat');
   if(confirm!==true)fail('Confirmation MJ explicite requise');
   const status=recoveryStatus();
   if(!status.pending||!status.canAbandon)fail('Annulation bloquée : instance STUDIO possible ou campagne non vérifiée');
@@ -245,6 +250,8 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
    if(next.extensions.pendingStudioOp||next.links.creatureInstanceId)fail('Réconciliation STUDIO requise');
    next.extensions.pendingStudioOp={kind:'creature',campaignId:campaign.id,beforeIds,source};
   });
+  studioActionInFlight=true;
+  try{
   await studio.copyCreature();
   const all=studio.getCampaign()?.creatures;
   if(!Array.isArray(all)||!all.length||typeof all.at(-1)?.id!=='string')
@@ -259,6 +266,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
    delete next.extensions.pendingStudioOp;
   });
   return {instanceId,...source};
+  }finally{studioActionInFlight=false;}
  }
  async function attachScene(){
   if(!studio||typeof studio.createScene!=='function'||typeof studio.getCampaign!=='function')
@@ -275,6 +283,8 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
    if(next.extensions.pendingStudioOp||next.links.sceneId)fail('Réconciliation STUDIO requise');
    next.extensions.pendingStudioOp={kind:'scene',campaignId:campaign.id,beforeIds};
   });
+  studioActionInFlight=true;
+  try{
   await studio.createScene(d.title,d.publicDescription??'',d.privateNotes??'');
   const current=studio.getCampaign(),sceneId=current?.activeSceneId;
   if(sceneId&&typeof studio.updateScene==='function'){
@@ -289,6 +299,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
    delete next.extensions.pendingStudioOp;
   });
   return {sceneId};
+  }finally{studioActionInFlight=false;}
  }
  /** INDEX L004-C real contract, injected by 05. No catalog code is duplicated here. */
  async function bindIndexChain(){
@@ -343,7 +354,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
    privateSnapshot:cloneCycleJSON(privateResult.snapshot),visibility:'mj-private-only'};});
   return {chain:cloneCycleJSON(validated.chain),snapshot:cloneCycleJSON(privateResult.snapshot),executable:false};
  }
- async function load(){await queue;const loaded=await persistence.load();if(loaded!==null)state=validateCycle(loaded);return copy();}
+ async function load(){if(studioActionInFlight)fail('Opération STUDIO en cours : rechargement interdit');await queue;const loaded=await persistence.load();if(loaded!==null)state=validateCycle(loaded);return copy();}
  async function exportPrivate(){await queue;const s=copy(),out={kind:'cer.dg004.creators.confidential-export.v0',cycle:s};return encoder.encode(JSON.stringify(out));}
  function previewRestore(input){
   const bytes=input instanceof Uint8Array?new Uint8Array(input):null;
@@ -356,6 +367,8 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   return {token:pendingRestore.token,display:makeSummary(next),accepted:false};
  }
  async function acceptRestore(token){
+  if(studioActionInFlight||state.extensions.pendingStudioOp)
+   fail('Réconciliation STUDIO requise avant restauration');
   if(!pendingRestore||token!==pendingRestore.token)fail('Restauration non prévisualisée');
   const next=cloneCycleJSON(pendingRestore.state);
   const op=queue.catch(()=>{}).then(async()=>{
