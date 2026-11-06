@@ -514,3 +514,36 @@ test('REPAIR: interdit restauration obsolète pendant journal STUDIO après éch
  assert.equal(x.disk.snapshot.extensions.pendingStudioOp?.kind,'creature');
  assert.equal(x.calls.copies,1);
 });
+
+test('REPAIR: bascule de campagne pendant prévisualisation ne crée rien et n’écrit aucun journal',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ x.studio.previewCreature=async()=>{x.campaign.id='autre-campagne';return {documentId:'DOC-1',profileId:'PROFILE-1',ruleset:'M03'}};
+ const original=m.getState(),copyCount=x.calls.copies;
+ await assert.rejects(m.attachCreature(),/Campagne STUDIO changée avant copie/);
+ assert.equal(x.calls.copies,copyCount);
+ assert.equal(x.disk.snapshot.extensions.pendingStudioOp,undefined);
+ assert.deepEqual(m.getState(),original);
+});
+test('REPAIR: bascule après journal STUDIO bloque la copie et garde la reprise durable',async()=>{
+ const x=transactionPorts(),m=x.make();await readyCreature(m,x.fixtures);
+ const originalSave=x.persistence.save;
+ // Journal saved, then Studio changes the active campaign before copy.
+ x.persistence.save=async data=>{
+  const receipt=await originalSave(data);
+  if(data.extensions.pendingStudioOp?.kind==='creature'&&!data.links.creatureInstanceId)x.campaign.id='camp-test-switch';
+  return receipt;
+ };
+ // Create a fresh controller with the modified persistence.
+ const second=createCreatorCycle({persistence:x.persistence,studio:x.studio,creatorValidator:v=>({valid:true,record:structuredClone(v)}),
+  catalogBridge:v=>({id:'cap:local:'+v.kind,executable:false}),catalog:{},idFactory:()=> 'cycle-switch'});
+ // Seed it with a fresh independent cycle; the first fixture remains unchanged.
+ await readyCreature(second,x.fixtures);
+ await assert.rejects(second.attachCreature(),/Campagne STUDIO changée après journal/);
+ assert.equal(x.calls.copies,0);
+ assert.equal(second.getStudioRecovery().status,'wrong-campaign');
+ await assert.rejects(second.abandonStudioRecovery({confirm:true}),/bloquée/);
+ x.campaign.id='camp-test-001';
+ assert.equal(second.getStudioRecovery().status,'no-side-effect-observed');
+ await second.abandonStudioRecovery({confirm:true});
+ assert.equal(second.getStudioRecovery().pending,false);
+});
