@@ -1,0 +1,78 @@
+{
+  "schema": "core.compat.math.v1",
+  "base_code": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
+  "base_l003": "2ab809ef5351940e0fc272b859d10f21de894d00",
+  "math_xp": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+  "index_r2": "d071842639d0adc952dedf3e279c6a1b7004855c",
+  "source_git_blobs": {
+    "quartz/components/scripts/atelier5d6-probabilities.ts": "bfee984fad47902623f7117e9f024a5b6e042d2d",
+    "quartz/components/scripts/atelier5d6-progression.ts": "d2040829ea0da7c0f6eae08dc8c701226bfc53c5",
+    "quartz/components/scripts/atelier5d6-combat-m03.ts": "09929f1b852a971d73d40474847bae036bf11ffb",
+    "experiments/dg-lot004/math-xp/src/xp-decision.ts": "76daeb8ec21702e9ebcb27845ccd3d6b709ff574",
+    "experiments/dg-lot004/math-xp/src/encounter-recommendations.ts": "58ee80a8345113aff89bfc58a3f276f3c401d7c2"
+  },
+  "executed": {
+    "node": "v22.16.0",
+    "typescript": "5.8.3",
+    "native_core": {
+      "pass": 12,
+      "fail": 0,
+      "skip": 0
+    },
+    "math_xp": {
+      "pass": 67,
+      "fail": 0,
+      "skip": 0
+    }
+  },
+  "non_executed": [
+    "npm test global",
+    "INDEX #97 ESM in current container",
+    "Chrome P0-B post-patch",
+    "actual PJ/creature adapters",
+    "mana/grimoire/rites current execution",
+    "full original git checkout"
+  ],
+  "files": [
+    {
+      "path": "experiments/core-compat-001/math/README.md",
+      "git_blob": "581f170debe620b147def23cc336c6d7b672c61f",
+      "sha256": "9420d0aab91d02b00fb85699bb2ef5b2e943457f68a6de0d4d9e723f03e3a3a7"
+    },
+    {
+      "path": "experiments/core-compat-001/math/docs/CORE_COMPAT_001_CONTRATS_ET_GATES.md",
+      "git_blob": "16ba49a9b2cee0f0b28d49dad04b5791aa1c3a0b",
+      "sha256": "04a41604300f96869f6616e0607508f29d5ad48a90916320a4568cf3044a7cb1"
+    },
+    {
+      "path": "experiments/core-compat-001/math/docs/CORE_COMPAT_001_MATRICE.csv",
+      "git_blob": "671fef029d8e306c7e4d2ab7740df29e1856b765",
+      "sha256": "065dfce4e801be9623bcdcb0f9a127ca6be67fe8e01c479571efa4c048dc4bcf"
+    },
+    {
+      "path": "experiments/core-compat-001/math/docs/CORE_COMPAT_001_RAPPORT_TECHNIQUE.md",
+      "git_blob": "c551d96bf77d883117d34d40140d2026b6fb46d1",
+      "sha256": "4b6552434e19dedfd52beab9f4bd15bc4f0960853220ee785eb132ecbc8fa51b"
+    },
+    {
+      "path": "experiments/core-compat-001/math/docs/FICHE_DIRECTION_CORE_COMPAT_001.md",
+      "git_blob": "4982ad3f591401f04d754013a943b4b1746d2748",
+      "sha256": "03c21bccf8018b959d0d25748670e2ab096883f15caf70fee5617fbc864f41c3"
+    },
+    {
+      "path": "experiments/core-compat-001/math/tests/MATH_XP_67_TESTS.tap",
+      "git_blob": "5332c140944bc98142d5b4e7a4ff8c91e7a664ae",
+      "sha256": "38ba01e118c462845c2fdedcc02e6f6c9abad9e249b517030a85ab0d89a3f626"
+    },
+    {
+      "path": "experiments/core-compat-001/math/tests/NATIVE_12_TESTS.tap",
+      "git_blob": "25d1b8c11a43372adbe1ff9266269022ed8ec659",
+      "sha256": "e568cd6f3426b4de9b4474d501cdc866ab9f42320279c2e21e659890e19b4df7"
+    },
+    {
+      "path": "experiments/core-compat-001/math/tests/native-invariants.test.mjs",
+      "git_blob": "6d892aeab68a5cb5c61fc929a2caeea32ca7d71f",
+      "sha256": "e2a26a02e58877152653408a8cce969e872143e8e0163f7aabf5c9e415a73fc3"
+    }
+  ]
+}
