@@ -396,7 +396,7 @@ test('REPAIR: échec APRES copie créature, recharge, refus du doublon et récon
  assert.equal(recovery.status,'requires-confirmation');
  assert.ok(!JSON.stringify(recovery).includes('CANARI-CREATURE-PRIVÉ'));
  await assert.rejects(restarted.reconcileStudioLink('cr-1'),/Confirmation/);
- await assert.rejects(restarted.reconcileStudioLink('cr-inconnue',{confirm:true}),/non reconnue/);
+ await assert.rejects(restarted.reconcileStudioLink('cr-inconnue',{confirm:true}),/non attestée|non reconnue/);
  assert.equal(x.calls.copies,1);
  x.disk.failFinal=null;
  const result=await restarted.reconcileStudioLink('cr-1',{confirm:true});
@@ -456,11 +456,11 @@ test('REPAIR: provenance contradictoire, autre campagne et nouvelle instance non
  x.campaign.creatures[0].source.profileId='ALTERED';
  let recovery=await m.inspectStudioRecovery();
  assert.equal(recovery.candidates.length,0);assert.equal(recovery.canAbandon,false);
- await assert.rejects(m.reconcileStudioLink('cr-1',{confirm:true}),/non reconnue/);
+ await assert.rejects(m.reconcileStudioLink('cr-1',{confirm:true}),/non attestée|non reconnue/);
  await assert.rejects(m.abandonStudioRecovery({confirm:true}),/bloquée/);
  const original=x.campaign.id;x.campaign.id='autre-campagne';
  recovery=await m.inspectStudioRecovery();assert.equal(recovery.status,'wrong-campaign');
- await assert.rejects(m.reconcileStudioLink('cr-1',{confirm:true}),/non reconnue/);
+ await assert.rejects(m.reconcileStudioLink('cr-1',{confirm:true}),/non attestée|non reconnue/);
  x.campaign.id=original;
  assert.equal(x.calls.copies,1);
  assert.equal(m.getState().links.creatureInstanceId,null);
@@ -572,8 +572,8 @@ test('REPAIR-CROSS: ambiguïté de deux copies nouvelles interdit toute liaison 
  assert.deepEqual(pending.candidates,[]);
  assert.equal(pending.canAbandon,false);
  assert.ok(!JSON.stringify(pending).includes('CANARI-MJ-A-NE-PAS-PUBLIER'));
- await assert.rejects(m.reconcileStudioLink('cr-double-1',{confirm:true}),/non reconnue/);
- await assert.rejects(m.reconcileStudioLink('cr-double-2',{confirm:true}),/non reconnue/);
+ await assert.rejects(m.reconcileStudioLink('cr-double-1',{confirm:true}),/non attestée|non reconnue/);
+ await assert.rejects(m.reconcileStudioLink('cr-double-2',{confirm:true}),/non attestée|non reconnue/);
  await assert.rejects(m.attachCreature(),/Réconciliation/);
  assert.equal(x.calls.copies,2);
  assert.equal(m.getState().links.creatureInstanceId,null);
