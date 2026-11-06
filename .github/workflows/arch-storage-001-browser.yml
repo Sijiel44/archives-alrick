@@ -53,7 +53,8 @@ jobs:
           "$RUNNER_TEMP/arch-storage-py/bin/python" -m pip install --disable-pip-version-check playwright==1.56.0
           echo "P1A_PY=$RUNNER_TEMP/arch-storage-py/bin/python" >> "$GITHUB_ENV"
       - name: Actual Chrome + two tabs + crash/recovery + archive roundtrip
-        run: "$P1A_PY" experiments/arch-storage-001/tests/browser.spec.py
+        run: |
+          "$P1A_PY" experiments/arch-storage-001/tests/browser.spec.py
       - name: Print exact SHA also on failure
         if: always()
         run: git rev-parse HEAD
