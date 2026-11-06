@@ -353,7 +353,7 @@ function transactionPorts(){
  const make=()=>createCreatorCycle({persistence,creatorValidator:x=>({valid:true,record:copy(x)}),
   catalogBridge:x=>({id:'cap:local:'+x.kind,executable:false}),catalog:{},studio,
   idFactory:()=> 'cycle-transaction-1'});
- return {make,disk,campaign,calls,studio,fixtures:ports().fixtures};
+ return {make,disk,campaign,calls,studio,persistence,fixtures:ports().fixtures};
 }
 async function readyCreature(m,fixtures){
  for(const kind of ['item','capacity','creature']){
