@@ -203,7 +203,7 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
   if(current.id!==requested?.id)fail('Private draft causal ownership conflict');
   if(!Number.isSafeInteger(requested.revision)||
      requested.revision!==current.revision+1)
-   fail('Private draft revision conflict: exact +1 required');
+   fail('Private draft revision conflict: exact +1 required; durable='+current.revision+' draft='+requested.revision+' field='+jsonDifference(current,requested));
   function retain(base,next,path){
    if(jsonDifference(base,next)===null)return;
    if(Array.isArray(base)){
