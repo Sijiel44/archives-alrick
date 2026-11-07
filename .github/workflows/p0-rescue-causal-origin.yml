@@ -64,6 +64,8 @@ jobs:
           "$BROWSER" --version
       - name: Chrome two real tabs (with & without Web Locks), L004, rollback
         run: node experiments/dg-lot004/tools/test-demo-browser.mjs
+      - name: Build L003 standalone dist before independent historical Chrome regression
+        run: node experiments/dg-lot003/tools/build.mjs
       - name: Chrome L003 historical native regression
         run: node experiments/dg-lot003/tools/test-browser.mjs
       - name: Record exact SHA on failure too
