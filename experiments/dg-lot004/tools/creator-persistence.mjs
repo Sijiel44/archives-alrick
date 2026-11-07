@@ -30,6 +30,8 @@ export function createGuardedCreatorPersistence({area,locks,cryptoAPI,key=CYCLE_
     typeof area.removeItem!=='function')fail('Stockage local en lecture/écriture requis');
  if(key!==CYCLE_KEY)fail('Clé de cycle non contractuelle');
  if(!locks||typeof locks.request!=='function')fail('Web Locks requis : écriture concurrente interdite');
+ // Fail closed before mounting any creator UI or writing to a preexisting key.
+ parseOwned(area.getItem(key));
  const withLock=fn=>locks.request(LOCK,{mode:'exclusive'},fn);
  async function loadEnvelope(){
   const e=parseOwned(area.getItem(key));
