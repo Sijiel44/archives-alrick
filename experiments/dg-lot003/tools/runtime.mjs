@@ -7,7 +7,7 @@ const STORAGE_KEY='cer.dg003.private.campaign.v0';
 const fail=reason=>{throw Error(reason);};
 const copy=x=>structuredClone(x);
 
-export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalThis.navigator?.locks??null}={}) {
+export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalThis.navigator?.locks??null,browserContext=typeof window!=='undefined'}={}) {
  if(!owner)return null;
  const methods=['createCampaign','previewImport','commitImport','exportPrivate','previewRestore','commitRestore','recoverOriginalBytes'];
  if(methods.some(k=>typeof owner[k]!=='function'))fail('Interface ARCHIVES incomplète');
@@ -38,7 +38,7 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
  const decoder=new TextDecoder();
  const withCrossTabLock=operation=>{
   // Never rely only on a per-instance Promise queue for two browser tabs.
-  if(typeof window!=='undefined'&&typeof locks?.request!=='function')
+  if(browserContext&&typeof locks?.request!=='function')
    fail('Private browser Web Locks unavailable: refusing an unsafe write');
   return typeof locks?.request==='function'
    ?locks.request('cer.dg003.private.campaign.v0.commit',{mode:'exclusive'},operation)
