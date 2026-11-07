@@ -86,6 +86,8 @@ try{
   fail('OLD_USER_BACKUP_CHANGED');
  await mj.eval('localStorage.removeItem("cer.dg003.private.campaign.v0")');
  await mj.eval(click('Démarrer la démonstration fictive'));
+ await sleep(1400);
+ console.log('DG004_RESCUE_SECOND_CLICK_TRACE',JSON.stringify(await mj.eval('({root:document.querySelector("#dg004-demo-root")?.innerText?.slice(0,950),privateKey:localStorage.getItem("cer.dg003.private.campaign.v0")?.slice(0,120),marker:localStorage.getItem("cer.dg004.demo.marker.v0")})')));
  await until(()=>mj.eval(textContains('DEMO_READY')),130);
  const before=await mj.eval('({privateEnvelope:localStorage.getItem("cer.dg003.private.campaign.v0"),marker:localStorage.getItem("cer.dg004.demo.marker.v0")})');
  if(!before.privateEnvelope||!before.marker)fail('DG004_DEMO_NOT_PERSISTED');
