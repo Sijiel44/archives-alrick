@@ -407,7 +407,10 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
      // not come from before the last confirmed durable scene.
      if(!Number.isSafeInteger(studio.revision)||studio.revision!==current.revision)
       fail('Private catalog stale campaign revision conflict');
-     const candidate=copy(studio),base=copy(current);
+     // The Studio L003 API may omit independently persisted catalog/drafts.
+     // Put back only those ABSENT optional fields; never accept a divergent
+     // present entry or synthesize missing scenes, notes or unknown metadata.
+     const candidate=mergePersistentCatalog(studio,current),base=copy(current);
      delete candidate.revision;delete base.revision;
      if(jsonDifference(candidate,base)!==null)
       fail('Private catalog causal origin unverified: reload exact campaign');
