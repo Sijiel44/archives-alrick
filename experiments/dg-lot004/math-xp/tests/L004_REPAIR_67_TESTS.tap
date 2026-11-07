@@ -1,0 +1,415 @@
+TAP version 13
+# DG004 L004-B.R2 engine=M01 official TS, backend=tsc
+# Subtest: N1 seuil officiel M01 et niveau PJ conservé
+ok 1 - N1 seuil officiel M01 et niveau PJ conservé
+  ---
+  duration_ms: 2.750083
+  type: 'test'
+  ...
+# Subtest: N5 seuil officiel M01 et niveau PJ conservé
+ok 2 - N5 seuil officiel M01 et niveau PJ conservé
+  ---
+  duration_ms: 0.326604
+  type: 'test'
+  ...
+# Subtest: N10 seuil officiel M01 et niveau PJ conservé
+ok 3 - N10 seuil officiel M01 et niveau PJ conservé
+  ---
+  duration_ms: 0.279664
+  type: 'test'
+  ...
+# Subtest: N15 seuil officiel M01 et niveau PJ conservé
+ok 4 - N15 seuil officiel M01 et niveau PJ conservé
+  ---
+  duration_ms: 0.192865
+  type: 'test'
+  ...
+# Subtest: N20 seuil officiel M01 et niveau PJ conservé
+ok 5 - N20 seuil officiel M01 et niveau PJ conservé
+  ---
+  duration_ms: 0.340684
+  type: 'test'
+  ...
+# Subtest: N25 seuil officiel M01 et niveau PJ conservé
+ok 6 - N25 seuil officiel M01 et niveau PJ conservé
+  ---
+  duration_ms: 0.206366
+  type: 'test'
+  ...
+# Subtest: niveaux de menace N2 / N15 / N20 / N25 : ne deviennent jamais indices 1..12
+ok 7 - niveaux de menace N2 / N15 / N20 / N25 : ne deviennent jamais indices 1..12
+  ---
+  duration_ms: 0.319964
+  type: 'test'
+  ...
+# Subtest: modèle A = M01 exact ; modèle B coefficient visible et indépendant
+ok 8 - modèle A = M01 exact ; modèle B coefficient visible et indépendant
+  ---
+  duration_ms: 0.272534
+  type: 'test'
+  ...
+# Subtest: indice M01 explicite 1..12 du MJ prime toujours la cartographie expérimentale
+ok 9 - indice M01 explicite 1..12 du MJ prime toujours la cartographie expérimentale
+  ---
+  duration_ms: 0.351822
+  type: 'test'
+  ...
+# Subtest: PNJ N20 décisif aidant PJ N3 contre ennemi N15 : abaisse la proposition mais ne l’efface pas
+ok 10 - PNJ N20 décisif aidant PJ N3 contre ennemi N15 : abaisse la proposition mais ne l’efface pas
+  ---
+  duration_ms: 0.838272
+  type: 'test'
+  ...
+# Subtest: aide secondaire ou difficulté réellement arrêtée par MJ : pas de réduction cachée
+ok 11 - aide secondaire ou difficulté réellement arrêtée par MJ : pas de réduction cachée
+  ---
+  duration_ms: 0.299744
+  type: 'test'
+  ...
+# Subtest: boss portée majeure : 3× natif si validation explicite ; pas de bonus boss automatique
+ok 12 - boss portée majeure : 3× natif si validation explicite ; pas de bonus boss automatique
+  ---
+  duration_ms: 0.351932
+  type: 'test'
+  ...
+# Subtest: héroïque légendaire M01 : approbation explicite et alerte de rythme
+ok 13 - héroïque légendaire M01 : approbation explicite et alerte de rythme
+  ---
+  duration_ms: 0.149532
+  type: 'test'
+  ...
+# Subtest: rencontre plusieurs ennemis : effectif décrit, aucun XP x nombre
+ok 14 - rencontre plusieurs ennemis : effectif décrit, aucun XP x nombre
+  ---
+  duration_ms: 0.125016
+  type: 'test'
+  ...
+# Subtest: quête pacifique / négociation : XP natif sans victime ni attaque
+ok 15 - quête pacifique / négociation : XP natif sans victime ni attaque
+  ---
+  duration_ms: 0.798011
+  type: 'test'
+  ...
+# Subtest: groupe hétérogène : suggestions individuelles sans division par participants
+ok 16 - groupe hétérogène : suggestions individuelles sans division par participants
+  ---
+  duration_ms: 0.625186
+  type: 'test'
+  ...
+# Subtest: seuls PJ sélectionnés : pas de PJ absent, jamais un PNJ
+ok 17 - seuls PJ sélectionnés : pas de PJ absent, jamais un PNJ
+  ---
+  duration_ms: 0.150463
+  type: 'test'
+  ...
+# Subtest: décision MJ commune 42, exception 0 pour PJ beta, journaux non mutés
+ok 18 - décision MJ commune 42, exception 0 pour PJ beta, journaux non mutés
+  ---
+  duration_ms: 1.435136
+  type: 'test'
+  ...
+# Subtest: décision MJ individuelle 17/35 explicitement ; aucun montant auto
+ok 19 - décision MJ individuelle 17/35 explicitement ; aucun montant auto
+  ---
+  duration_ms: 0.323108
+  type: 'test'
+  ...
+# Subtest: répétition requête : idempotence 2 PJ et aucun double XP
+ok 20 - répétition requête : idempotence 2 PJ et aucun double XP
+  ---
+  duration_ms: 0.384961
+  type: 'test'
+  ...
+# Subtest: même boss + quête même accomplishmentId : second paiement bloqué
+ok 21 - même boss + quête même accomplishmentId : second paiement bloqué
+  ---
+  duration_ms: 0.60082
+  type: 'test'
+  ...
+# Subtest: même commande ID autre montant : collision puis aucun journal modifié
+ok 22 - même commande ID autre montant : collision puis aucun journal modifié
+  ---
+  duration_ms: 0.286795
+  type: 'test'
+  ...
+# Subtest: lot atomique par résultat : rejet deuxième PJ ne délivre aucun nouveau journal
+ok 23 - lot atomique par résultat : rejet deuxième PJ ne délivre aucun nouveau journal
+  ---
+  duration_ms: 0.25704
+  type: 'test'
+  ...
+# Subtest: farming : répétition M01 120,60,30,30,0 sur 5 sources, sans barème parallèle
+ok 24 - farming : répétition M01 120,60,30,30,0 sur 5 sources, sans barème parallèle
+  ---
+  duration_ms: 0.430097
+  type: 'test'
+  ...
+# Subtest: one-shot même événement dans run différent : source unique par run, pas re-crédit même run
+ok 25 - one-shot même événement dans run différent : source unique par run, pas re-crédit même run
+  ---
+  duration_ms: 0.221118
+  type: 'test'
+  ...
+# Subtest: level 25 au maximum ; 25+ menace ou PJ bloque explicitement, sans règle épique
+ok 26 - level 25 au maximum ; 25+ menace ou PJ bloque explicitement, sans règle épique
+  ---
+  duration_ms: 0.198584
+  type: 'test'
+  ...
+# Subtest: aide décisive non attestée rejetée, no fantasy NPC rewards
+ok 27 - aide décisive non attestée rejetée, no fantasy NPC rewards
+  ---
+  duration_ms: 0.147378
+  type: 'test'
+  ...
+# Subtest: bords M01 : indice 13, champ inconnu, PNJ sélectionné, doublon PJ
+ok 28 - bords M01 : indice 13, champ inconnu, PNJ sélectionné, doublon PJ
+  ---
+  duration_ms: 0.108521
+  type: 'test'
+  ...
+# Subtest: répartition invalide ou approval manquante : refus, aucune mutation
+ok 29 - répartition invalide ou approval manquante : refus, aucune mutation
+  ---
+  duration_ms: 0.291733
+  type: 'test'
+  ...
+# Subtest: identité native PJ avec : autorisée pour la passerelle, INDEX distinct reste à vérifier
+ok 30 - identité native PJ avec : autorisée pour la passerelle, INDEX distinct reste à vérifier
+  ---
+  duration_ms: 0.16872
+  type: 'test'
+  ...
+# Subtest: le port existant n est pas réécrit et A se superpose à la suggestion M01 officielle
+ok 31 - le port existant n est pas réécrit et A se superpose à la suggestion M01 officielle
+  ---
+  duration_ms: 0.164944
+  type: 'test'
+  ...
+# L004_REPAIR_MATH_NATIVE compiler=tsc
+# Subtest: même événement que le clic Chrome b75: M01 natif = port MATH, 60 XP consultatifs
+ok 32 - même événement que le clic Chrome b75: M01 natif = port MATH, 60 XP consultatifs
+  ---
+  duration_ms: 1.920675
+  type: 'test'
+  ...
+# Subtest: menace N15 + PJ faibles + PNJ N20 décisif: 2 PJ proposés, 0 PNJ crédité
+ok 33 - menace N15 + PJ faibles + PNJ N20 décisif: 2 PJ proposés, 0 PNJ crédité
+  ---
+  duration_ms: 1.75542
+  type: 'test'
+  ...
+# Subtest: décision MJ commune, exception individuelle, rejeu idempotent, correction et journal sans fiche
+ok 34 - décision MJ commune, exception individuelle, rejeu idempotent, correction et journal sans fiche
+  ---
+  duration_ms: 2.338474
+  type: 'test'
+  ...
+# Subtest: boss + quête: même accomplishmentId empêchera une double décision; PJ-only et erreur 25+
+ok 35 - boss + quête: même accomplishmentId empêchera une double décision; PJ-only et erreur 25+
+  ---
+  duration_ms: 1.125857
+  type: 'test'
+  ...
+# L004-B moteur officiel M01 chargé ; backend tsc ; aucun changement de barème
+# Subtest: parité native M01 XP/coûts N1
+ok 36 - parité native M01 XP/coûts N1
+  ---
+  duration_ms: 2.122494
+  type: 'test'
+  ...
+# Subtest: parité native M01 XP/coûts N5
+ok 37 - parité native M01 XP/coûts N5
+  ---
+  duration_ms: 0.168049
+  type: 'test'
+  ...
+# Subtest: parité native M01 XP/coûts N10
+ok 38 - parité native M01 XP/coûts N10
+  ---
+  duration_ms: 1.153138
+  type: 'test'
+  ...
+# Subtest: parité native M01 XP/coûts N15
+ok 39 - parité native M01 XP/coûts N15
+  ---
+  duration_ms: 0.174829
+  type: 'test'
+  ...
+# Subtest: parité native M01 XP/coûts N20
+ok 40 - parité native M01 XP/coûts N20
+  ---
+  duration_ms: 0.117034
+  type: 'test'
+  ...
+# Subtest: parité native M01 XP/coûts N25
+ok 41 - parité native M01 XP/coûts N25
+  ---
+  duration_ms: 0.084835
+  type: 'test'
+  ...
+# Subtest: coûts M01 au-delà de caractéristique 12, sans division, sans gain
+ok 42 - coûts M01 au-delà de caractéristique 12, sans division, sans gain
+  ---
+  duration_ms: 0.606328
+  type: 'test'
+  ...
+# Subtest: table exacte historique et moderne N1/5/10/15/20/25
+ok 43 - table exacte historique et moderne N1/5/10/15/20/25
+  ---
+  duration_ms: 0.16224
+  type: 'test'
+  ...
+# Subtest: niveau initial choisi et XP indépendants, prétiré one-shot sans bonus caché
+ok 44 - niveau initial choisi et XP indépendants, prétiré one-shot sans bonus caché
+  ---
+  duration_ms: 3.91286
+  type: 'test'
+  ...
+# Subtest: rythmes de campagne descriptifs : aucune multiplication XP
+ok 45 - rythmes de campagne descriptifs : aucune multiplication XP
+  ---
+  duration_ms: 1.209692
+  type: 'test'
+  ...
+# Subtest: suggestion M01 ordinaire/majeure/légendaire, aucune récompense écrite
+ok 46 - suggestion M01 ordinaire/majeure/légendaire, aucune récompense écrite
+  ---
+  duration_ms: 0.377889
+  type: 'test'
+  ...
+# Subtest: décision du MJ libre 42 vs recommandation native 120, sans mutation source
+ok 47 - décision du MJ libre 42 vs recommandation native 120, sans mutation source
+  ---
+  duration_ms: 1.325493
+  type: 'test'
+  ...
+# Subtest: décision zéro XP explicitement légale sans effacer le témoin
+ok 48 - décision zéro XP explicitement légale sans effacer le témoin
+  ---
+  duration_ms: 2.894096
+  type: 'test'
+  ...
+# Subtest: idempotence événement identique, révision inchangée, collision refusée
+ok 49 - idempotence événement identique, révision inchangée, collision refusée
+  ---
+  duration_ms: 0.545328
+  type: 'test'
+  ...
+# Subtest: identifiant source d événement unique même pour attribution zéro
+ok 50 - identifiant source d événement unique même pour attribution zéro
+  ---
+  duration_ms: 0.219795
+  type: 'test'
+  ...
+# Subtest: optimisme de révision et identifiants de décision obligatoires
+ok 51 - optimisme de révision et identifiants de décision obligatoires
+  ---
+  duration_ms: 0.377509
+  type: 'test'
+  ...
+# Subtest: correction négative auditée append-only, aucune substitution
+ok 52 - correction négative auditée append-only, aucune substitution
+  ---
+  duration_ms: 0.529244
+  type: 'test'
+  ...
+# Subtest: correction sans référence et correction à montant zéro rejetées
+ok 53 - correction sans référence et correction à montant zéro rejetées
+  ---
+  duration_ms: 0.315958
+  type: 'test'
+  ...
+# Subtest: répétition de motif suit expérienceAward M01 et décision MJ à chaque événement
+ok 54 - répétition de motif suit expérienceAward M01 et décision MJ à chaque événement
+  ---
+  duration_ms: 0.99291
+  type: 'test'
+  ...
+# Subtest: un événement attribué zéro ne sert pas de précédent de répétition M02
+ok 55 - un événement attribué zéro ne sert pas de précédent de répétition M02
+  ---
+  duration_ms: 0.221388
+  type: 'test'
+  ...
+# Subtest: erreurs événement, difficulté, scope et montant négatif refusés sans exception
+ok 56 - erreurs événement, difficulté, scope et montant négatif refusés sans exception
+  ---
+  duration_ms: 0.269739
+  type: 'test'
+  ...
+# Subtest: dépassement entier sûr refusé, jamais tronqué
+ok 57 - dépassement entier sûr refusé, jamais tronqué
+  ---
+  duration_ms: 0.252284
+  type: 'test'
+  ...
+# Subtest: progression N5 vers N6 exige XP seuil M01 + validation MJ distincte
+ok 58 - progression N5 vers N6 exige XP seuil M01 + validation MJ distincte
+  ---
+  duration_ms: 0.369838
+  type: 'test'
+  ...
+# Subtest: ni saut de niveau ni progression au-delà de 25
+ok 59 - ni saut de niveau ni progression au-delà de 25
+  ---
+  duration_ms: 0.185495
+  type: 'test'
+  ...
+# Subtest: M01 N21 exige paliers explicites malgré XP suffisants
+ok 60 - M01 N21 exige paliers explicites malgré XP suffisants
+  ---
+  duration_ms: 0.310069
+  type: 'test'
+  ...
+# Subtest: paliers 22–25 uniquement dans ordre et avec consentement MJ explicite
+ok 61 - paliers 22–25 uniquement dans ordre et avec consentement MJ explicite
+  ---
+  duration_ms: 0.394595
+  type: 'test'
+  ...
+# Subtest: paliers initiaux doivent être vérifiés et ordonnés
+ok 62 - paliers initiaux doivent être vérifiés et ordonnés
+  ---
+  duration_ms: 1.686819
+  type: 'test'
+  ...
+# Subtest: correction après promotion : signaler le réexamen, sans rétrogradation
+ok 63 - correction après promotion : signaler le réexamen, sans rétrogradation
+  ---
+  duration_ms: 0.305322
+  type: 'test'
+  ...
+# Subtest: import JSON synthétique préserve journal, idempotence, pas de stat modifiée
+ok 64 - import JSON synthétique préserve journal, idempotence, pas de stat modifiée
+  ---
+  duration_ms: 0.570465
+  type: 'test'
+  ...
+# Subtest: champs inconnus et bénéficiaire non validé : refus fermé
+ok 65 - champs inconnus et bénéficiaire non validé : refus fermé
+  ---
+  duration_ms: 0.496205
+  type: 'test'
+  ...
+# Subtest: snapshot de décision : mutation postérieure du formulaire sans effet sur journal
+ok 66 - snapshot de décision : mutation postérieure du formulaire sans effet sur journal
+  ---
+  duration_ms: 0.188269
+  type: 'test'
+  ...
+# Subtest: correction hors solde refusée et journal inchangé
+ok 67 - correction hors solde refusée et journal inchangé
+  ---
+  duration_ms: 0.185595
+  type: 'test'
+  ...
+1..67
+# tests 67
+# suites 0
+# pass 67
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1571.266562
