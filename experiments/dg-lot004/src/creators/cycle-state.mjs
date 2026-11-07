@@ -37,6 +37,17 @@ export function validateCycle(value){
   if(s.entries[k]!==null&&!isObject(s.entries[k]))fail('Entrée invalide : '+k);
  }
  if(s.sourceSnapshots.length>100)fail('Trop de sources');
+ const pending=s.extensions.pendingStudioOp;
+ if(pending!==undefined){
+  if(!isObject(pending)||!['creature','scene'].includes(pending.kind)||!ids.test(pending.campaignId)||
+     !Array.isArray(pending.beforeIds)||pending.beforeIds.length>1000||
+     new Set(pending.beforeIds).size!==pending.beforeIds.length||
+     pending.beforeIds.some(id=>typeof id!=='string'||!ids.test(id)))
+   fail('Journal STUDIO privé invalide');
+  if(pending.kind==='creature'&&(!isObject(pending.source)||
+     ['documentId','profileId','ruleset'].some(k=>!text(pending.source[k],120))))
+   fail('Référence BEST invalide dans le journal STUDIO');
+ }
  return s;
 }
 function validateNarrative(draft,kind){
@@ -68,9 +79,10 @@ export function createBrowserCyclePersistence({storage,key='cer.dg004.creators.p
   if(encoder.encode(raw).length>MAX_CYCLE_BYTES)fail('Sauvegarde trop volumineuse');storage.setItem(key,raw);return {saved:true};}};
 }
 /** State machine. Only persisted snapshot becomes committed state; failed writes leave it unchanged. */
-export function createCreatorCycle({persistence,creatorValidator,catalogBridge,catalog,studio,indexChain,idFactory=()=>globalThis.crypto?.randomUUID?.()}={}){
+export function createCreatorCycle({persistence,creatorValidator,catalogBridge,catalog,studio,indexChain,
+  loadPersistedStudio,inspectCreatorAttachment,idFactory=()=>globalThis.crypto?.randomUUID?.()}={}){
  if(!persistence||typeof persistence.save!=='function'||typeof persistence.load!=='function')throw new TypeError('Port de persistance load/save requis');
- let state=createCycle(idFactory()),queue=Promise.resolve(),pendingRestore=null;
+ let state=createCycle(idFactory()),queue=Promise.resolve(),pendingRestore=null,studioActionInFlight=false;
  const copy=()=>cloneCycleJSON(state);
  const steps=[...CYCLE_STEPS,...OPTIONAL_STEPS];
  const checkKind=k=>{if(!steps.includes(k))fail('Étape inconnue');};
@@ -90,7 +102,11 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   return commit(next=>{
    const merged={...next.drafts[kind],...update};
    if(JSON.stringify(merged)!==JSON.stringify(next.drafts[kind])){
-    if(next.links.creatureInstanceId||next.links.sceneId||next.extensions.indexL004)
+    // Une copie de créature fige les fiches en amont, pas le brouillon de scène
+    // qui n'a pas encore d'instance STUDIO. Une scène liée ou une chaîne INDEX
+    // fige ensuite tous les brouillons, sans réécrire les sources existantes.
+    if(next.extensions.pendingStudioOp||next.links.sceneId||next.extensions.indexL004||
+       (next.links.creatureInstanceId&&kind!=='scene'))
       fail('Cycle lié à STUDIO/INDEX : ouvrir une nouvelle version avant modification');
     next.drafts[kind]=merged;
     const from=CYCLE_STEPS.indexOf(kind);
@@ -134,6 +150,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   if(kind==='creature'&&state.entries.capacity===null)fail('Capacité réutilisable non validée');
   if(kind==='scene'&&state.entries.creature===null)fail('Créature non validée');
   await commit(next=>{
+   if(next.extensions.pendingStudioOp)fail('Réconciliation STUDIO requise avant validation MJ');
    next.entries[kind]={kind,displayName:record.name,version:record.version,provenance:record.provenance,
     status:'mj-validated',catalogId:catalogEntry?.id??null,
     descriptive:cloneCycleJSON(record),catalogEntry:catalogEntry?cloneCycleJSON(catalogEntry):null};
@@ -144,42 +161,280 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   });
   return {kind,catalogEntry:catalogEntry?cloneCycleJSON(catalogEntry):null,executable:false};
  }
+
+ /**
+  * Recovery journal is written durably BEFORE any STUDIO side effect.
+  * A failed post-write leaves a journal, never a permission to repeat creation.
+  * Recovery validates IDs and provenance against the authoritative STUDIO campaign.
+  */
+ function recoveryStatus(){
+  const pending=state.extensions.pendingStudioOp;
+  if(!pending)return {pending:false,status:'none',candidates:[],canAbandon:false};
+  if(studioActionInFlight)return {pending:true,kind:pending.kind,status:'in-flight',
+   candidates:[],canAbandon:false,message:'Écriture STUDIO en cours : ne pas intervenir'};
+  const campaign=studio?.getCampaign?.();
+  if(!isObject(campaign)||campaign.id!==pending.campaignId)
+   return {pending:true,kind:pending.kind,status:'wrong-campaign',candidates:[],canAbandon:false,
+    message:'Réouvrir la même campagne STUDIO avant réconciliation'};
+  const collection=pending.kind==='creature'?campaign.creatures:campaign.scenes;
+  if(!Array.isArray(collection))
+   return {pending:true,kind:pending.kind,status:'invalid-studio',candidates:[],canAbandon:false,
+    message:'Collections STUDIO inaccessibles'};
+  const before=new Set(pending.beforeIds),created=collection.filter(x=>isObject(x)&&
+   typeof x.id==='string'&&!before.has(x.id));
+  const candidate=x=>{
+   if(pending.kind==='creature')
+    return isObject(x.source)&&['documentId','profileId','ruleset'].every(k=>x.source[k]===pending.source[k]);
+   const draft=state.drafts.scene;
+   return x.title===draft.title &&
+    (x.publicDescription??'')===(draft.publicDescription??'') &&
+    (x.privateNotes??'')===(draft.privateNotes??'') &&
+    (!studio.updateScene||Array.isArray(x.participantIds)&&x.participantIds.includes(state.links.creatureInstanceId));
+  };
+  const matches=created.filter(candidate);
+  // Une seule instance nouvelle, elle-même unique et de provenance concordante,
+  // est nécessaire. Deux copies admissibles (ou une copie et un intrus) bloquent
+  // toute sélection arbitraire, même sous confirmation MJ.
+  const unique=created.length===1&&matches.length===1;
+  const candidates=unique?[{id:matches[0].id}]:[]; // no source/secret payload
+  return {pending:true,kind:pending.kind,status:unique?'requires-confirmation':
+    created.length?'ambiguous':'no-side-effect-observed',
+    candidates,unverifiedCount:created.length-matches.length,
+    canAbandon:created.length===0,
+    message:created.length?unique?'Confirmer cette unique copie STUDIO reconnue':
+     'Instances STUDIO multiples ou contradictoires : revue manuelle, aucun lien':
+     'Aucune nouvelle instance visible ; confirmer explicitement avant un nouvel essai'};
+ }
+ /**
+  * Read-only durability check. STUDIO memory is not a persisted receipt.
+  * The injected loader MUST be the validated ARCHIVES L003 adapter's load(),
+  * on the SAME fictive campaign and distinct from studio.getCampaign().
+  * Optional STUDIO inspector is an additional fail-closed provenance check.
+  */
+ async function inspectStudioRecovery(){
+  const pending=state.extensions.pendingStudioOp,live=recoveryStatus();
+  if(!pending)return live;
+  if(studioActionInFlight)return {...live,durableVerified:false};
+  if(typeof loadPersistedStudio!=='function')
+   return {...live,status:'persistence-unavailable',candidates:[],canAbandon:false,durableVerified:false,
+    message:'Lecture ARCHIVES persistée indépendante requise avant toute réconciliation'};
+  // Verify that the journal itself actually survived the creator-store write.
+  let savedCycle,persistedCampaign;
+  try{
+   savedCycle=validateCycle(await persistence.load());
+   persistedCampaign=await loadPersistedStudio();
+  }catch{
+   return {...live,status:'persistence-unverified',candidates:[],canAbandon:false,durableVerified:false,
+    message:'Lecture privée refusée ou impossible : journal/ARCHIVES non attesté'};
+  }
+  if(savedCycle.id!==state.id||savedCycle.revision!==state.revision||
+     JSON.stringify(savedCycle.extensions.pendingStudioOp)!==JSON.stringify(pending))
+   return {...live,status:'journal-unverified',candidates:[],canAbandon:false,durableVerified:false,
+    message:'Journal créateur non confirmé sur disque'};
+  const memory=studio?.getCampaign?.();
+  if(!isObject(memory)||memory.id!==pending.campaignId||
+     !isObject(persistedCampaign)||persistedCampaign.id!==pending.campaignId)
+   return {...live,status:'wrong-campaign',candidates:[],canAbandon:false,durableVerified:false,
+    message:'Campagne mémoire ou ARCHIVES différente du journal privé'};
+  const field=pending.kind==='creature'?'creatures':'scenes';
+  const mem=memory[field],disk=persistedCampaign[field];
+  if(!Array.isArray(mem)||!Array.isArray(disk))
+   return {...live,status:'persistence-unverified',candidates:[],canAbandon:false,durableVerified:false,
+    message:'Collection STUDIO persistée manquante'};
+  const before=new Set(pending.beforeIds),newMemory=mem.filter(x=>isObject(x)&&!before.has(x.id)),
+    newDisk=disk.filter(x=>isObject(x)&&!before.has(x.id));
+  // Never attest two candidates or a nonmatching identity.
+  if(live.status==='requires-confirmation'&&live.candidates.length===1){
+   const id=live.candidates[0].id;
+   if(newMemory.length!==1||newDisk.length!==1||
+      newMemory[0].id!==id||newDisk[0].id!==id)
+    return {...live,status:newDisk.length?'ambiguous':'unpersisted',
+     candidates:[],canAbandon:false,durableVerified:false,
+     message:'Instance seulement en mémoire, absente ou ambiguë dans ARCHIVES'};
+   // Exact private snapshot equality: no source/provenance/notes conversion or copying out.
+   if(JSON.stringify(newMemory[0])!==JSON.stringify(newDisk[0]))
+    return {...live,status:'persisted-conflict',candidates:[],canAbandon:false,durableVerified:false,
+     message:'Instance STUDIO et ARCHIVES divergentes : refus de liaison'};
+   if(typeof inspectCreatorAttachment==='function'){
+    let report;
+    try{
+     report=await inspectCreatorAttachment({campaign:memory,persistedCampaign,
+      persistedCycle:savedCycle,cycle:copy(),kind:pending.kind});
+    }catch{
+     return {...live,status:'inspector-unavailable',candidates:[],canAbandon:false,durableVerified:false,
+      message:'Inspecteur STUDIO impossible sur ce maillon : contrat à corriger'};
+    }
+    const verdict=report?.[pending.kind];
+    if(verdict?.status!=='reusable'||verdict?.persisted!==true||verdict?.id!==id)
+     return {...live,status:'inspector-rejected',candidates:[],canAbandon:false,durableVerified:false,
+      message:'Inspecteur STUDIO refuse le même ID persisté'};
+   }
+   return {...live,durableVerified:true,
+    message:'Instance unique attestée dans ARCHIVES ; confirmation MJ encore requise'};
+  }
+  // No side effect visible in memory: a retry is unsafe until persisted absence
+  // is checked too. No automatic retry; explicit MJ only.
+  if(live.status==='no-side-effect-observed'&&newMemory.length===0&&newDisk.length===0)
+   return {...live,durableVerified:true,message:'Aucune nouvelle instance mémoire/ARCHIVES observée'};
+  return {...live,status:live.status==='wrong-campaign'?'wrong-campaign':'ambiguous',
+   candidates:[],canAbandon:false,durableVerified:false,
+   message:'Reprise ambiguë : intervention MJ et contrôle ARCHIVES requis'};
+ }
+ function safeRecoveryStatus(){
+  const live=recoveryStatus();
+  if(!live.pending||live.status==='in-flight')return live;
+  return {...live,status:live.status==='wrong-campaign'?'wrong-campaign':'durability-unverified',
+   candidates:[],canAbandon:false,durableVerified:false,
+   message:'Inspecter la sauvegarde STUDIO ARCHIVES avant confirmation MJ'};
+ }
+ async function requirePersistedJournal(expected){
+  let stored;
+  try{stored=validateCycle(await persistence.load());}
+  catch{fail('Journal STUDIO non relu dans le stockage privé : aucune création autorisée');}
+  if(stored.id!==state.id||stored.revision!==state.revision||
+     JSON.stringify(stored.extensions.pendingStudioOp)!==JSON.stringify(expected))
+   fail('Journal STUDIO non attesté sur disque : aucune création autorisée');
+ }
+ async function reconcileStudioLink(instanceId,{confirm=false}={}){
+  if(studioActionInFlight)fail('Opération STUDIO en cours : attendre son résultat');
+  if(confirm!==true)fail('Confirmation MJ explicite requise');
+  const pending=state.extensions.pendingStudioOp;
+  if(!pending)fail('Réconciliation STUDIO non prévisualisée');
+  const initial=await inspectStudioRecovery();
+  if(!initial.durableVerified||initial.status!=='requires-confirmation'||
+     !initial.candidates.some(x=>x.id===instanceId))
+   fail('Instance STUDIO non attestée dans ARCHIVES : liaison refusée sans duplication');
+  await commit(async next=>{
+   if(!next.extensions.pendingStudioOp||next.extensions.pendingStudioOp.kind!==pending.kind||
+      next.extensions.pendingStudioOp.campaignId!==pending.campaignId)
+    fail('Journal STUDIO modifié pendant réconciliation');
+   const fresh=await inspectStudioRecovery();
+   if(!fresh.durableVerified||fresh.status!=='requires-confirmation'||
+      !fresh.candidates.some(x=>x.id===instanceId))
+    fail('Preuve STUDIO/ARCHIVES perdue : aucun lien écrit');
+   if(pending.kind==='creature'){
+    if(next.links.creatureInstanceId)fail('Créature déjà liée');
+    next.links.creatureInstanceId=instanceId;
+    next.links.creatureSource=cloneCycleJSON(pending.source);
+    next.links.creatureCapacityCatalogId=next.links.capacityCatalogId;
+   }else{
+    if(next.links.sceneId)fail('Scène déjà liée');
+    next.links.sceneId=instanceId;next.status='mj-validated';
+   }
+   delete next.extensions.pendingStudioOp;
+  });
+  return {kind:pending.kind,instanceId,reconciled:true,executable:false};
+ }
+ async function abandonStudioRecovery({confirm=false}={}){
+  if(studioActionInFlight)fail('Opération STUDIO en cours : attendre son résultat');
+  if(confirm!==true)fail('Confirmation MJ explicite requise');
+  const initial=await inspectStudioRecovery();
+  if(!initial.durableVerified||!initial.pending||!initial.canAbandon)
+   fail('Annulation bloquée : absence durable d’instance non attestée');
+  await commit(async next=>{
+   const fresh=await inspectStudioRecovery();
+   if(!fresh.durableVerified||!fresh.pending||!fresh.canAbandon||
+      next.extensions.pendingStudioOp?.campaignId!==state.extensions.pendingStudioOp?.campaignId)
+    fail('Réconciliation STUDIO non attestée au moment de l’annulation');
+   delete next.extensions.pendingStudioOp;
+  });
+  return {abandoned:true,executable:false};
+ }
  async function attachCreature(){
-  if(!studio||typeof studio.previewCreature!=='function'||typeof studio.copyCreature!=='function'||typeof studio.getCampaign!=='function')fail('Port STUDIO créature absent');
+  if(!studio||typeof studio.previewCreature!=='function'||typeof studio.copyCreature!=='function'||typeof studio.getCampaign!=='function')
+   fail('Port STUDIO créature absent');
+  if(state.extensions.pendingStudioOp)fail('Réconciliation STUDIO requise : ne pas dupliquer la copie');
   if(!state.entries.creature||!state.entries.capacity)fail('Créature et capacité à valider');
   if(state.links.creatureInstanceId)fail('Créature déjà liée — pas de copie automatique');
-  const ref=state.drafts.creature.sourceReference;
-  const before=studio.getCampaign()?.creatures??[];
-  if(!Array.isArray(before))fail('Campagne STUDIO invalide');
-  const previousIds=new Set(before.map(x=>x.id));
-  // External STUDIO side effect only after explicit MJ button. Never send a whole private cycle.
-  const preview=await studio.previewCreature(ref);
-  if(!preview||typeof preview.documentId!=='string'||typeof preview.profileId!=='string'||typeof preview.ruleset!=='string')fail('Aperçu BEST/STUDIO incomplet');
+  const reference=state.drafts.creature.sourceReference,startingRevision=state.revision;
+  const campaign=studio.getCampaign(),before=campaign?.creatures;
+  if(!ids.test(campaign?.id)||!Array.isArray(before)||before.some(x=>!ids.test(x?.id)))
+   fail('Campagne STUDIO invalide pour journal de reprise');
+  const beforeIds=before.map(x=>x.id);
+  const preview=await studio.previewCreature(reference);
+  if(!preview||['documentId','profileId','ruleset'].some(k=>!text(preview[k],120)))
+   fail('Aperçu BEST/STUDIO incomplet');
+  const source=Object.fromEntries(['documentId','profileId','ruleset'].map(k=>[k,preview[k]]));
+  // Ancien backup sans journal : ne pas considérer le lien absent comme une
+  // autorisation de recopier une créature déjà présente de même provenance.
+  const priorMatches=before.filter(x=>isObject(x)&&
+   (x.privateSnapshot?.sourceId===reference||
+    (isObject(x.source)&&['documentId','profileId','ruleset'].every(k=>x.source[k]===source[k]))));
+  if(priorMatches.length)
+   fail('Copie STUDIO préexistante sans journal attesté : réconciliation manuelle avant nouvelle copie');
+  // If the preflight save fails, copyCreature is never called.
+  await commit(next=>{
+   if(next.revision!==startingRevision||next.drafts.creature.sourceReference!==reference)
+    fail('Cycle modifié pendant prévisualisation : recommencer avant copie STUDIO');
+   if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée avant copie');
+   if(next.extensions.pendingStudioOp||next.links.creatureInstanceId)fail('Réconciliation STUDIO requise');
+   next.extensions.pendingStudioOp={kind:'creature',campaignId:campaign.id,beforeIds,source};
+  });
+  await requirePersistedJournal(state.extensions.pendingStudioOp);
+  studioActionInFlight=true;
+  try{
+  if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée après journal : reprise manuelle requise');
   await studio.copyCreature();
-  const all=studio.getCampaign()?.creatures;
-  if(!Array.isArray(all)||!all.length||typeof all.at(-1)?.id!=='string')fail('Copie STUDIO non confirmée : réconciliation manuelle requise');
+  const afterCampaign=studio.getCampaign();
+  if(afterCampaign?.id!==campaign.id)fail('Campagne STUDIO changée après copie : reprise manuelle requise');
+  const all=afterCampaign.creatures;
+  if(!Array.isArray(all)||!all.length||typeof all.at(-1)?.id!=='string')
+   fail('Copie STUDIO non confirmée : utiliser la réconciliation');
   const instanceId=all.at(-1).id;
-  if(previousIds.has(instanceId)||all.length!==before.length+1)fail('Copie STUDIO non vérifiable : réconciliation manuelle requise');
-  await commit(next=>{next.links.creatureInstanceId=instanceId;next.links.creatureSource={documentId:preview.documentId,profileId:preview.profileId,ruleset:preview.ruleset};
-   next.links.creatureCapacityCatalogId=next.links.capacityCatalogId;});
-  return {instanceId,documentId:preview.documentId,profileId:preview.profileId,ruleset:preview.ruleset};
+  if(beforeIds.includes(instanceId)||all.length!==beforeIds.length+1)
+   fail('Copie STUDIO non vérifiable : utiliser la réconciliation');
+  await commit(next=>{
+   if(next.extensions.pendingStudioOp?.kind!=='creature')fail('Journal STUDIO absent');
+   next.links.creatureInstanceId=instanceId;next.links.creatureSource=cloneCycleJSON(source);
+   next.links.creatureCapacityCatalogId=next.links.capacityCatalogId;
+   delete next.extensions.pendingStudioOp;
+  });
+  return {instanceId,...source};
+  }finally{studioActionInFlight=false;}
  }
  async function attachScene(){
-  if(!studio||typeof studio.createScene!=='function'||typeof studio.getCampaign!=='function')fail('Port STUDIO scène absent');
-  if(!state.entries.scene||!state.links.creatureInstanceId)fail('Valider la scène et copier la créature d’abord');
+  if(!studio||typeof studio.createScene!=='function'||typeof studio.getCampaign!=='function')
+   fail('Port STUDIO scène absent');
+  if(state.extensions.pendingStudioOp)fail('Réconciliation STUDIO requise : ne pas dupliquer la scène');
+  if(!state.entries.scene||!state.links.creatureInstanceId)
+   fail('Valider la scène et copier la créature d’abord');
   if(state.links.sceneId)fail('Scène déjà liée — pas de duplication automatique');
-  const d=state.drafts.scene;
+  const d=state.drafts.scene,startingRevision=state.revision,campaign=studio.getCampaign(),before=campaign?.scenes;
+  if(!ids.test(campaign?.id)||!Array.isArray(before)||before.some(x=>!ids.test(x?.id)))
+   fail('Campagne STUDIO invalide pour journal de reprise');
+  const beforeIds=before.map(x=>x.id);
+  // Backup ancien sans journal : refuser même titre (copie potentielle ou
+  // conflit privé), sans inspecter/réécrire les notes du MJ.
+  if(before.some(x=>isObject(x)&&x.title===d.title))
+   fail('Scène STUDIO préexistante sans journal attesté : réconciliation manuelle avant nouvelle scène');
+  await commit(next=>{
+   if(next.revision!==startingRevision)fail('Cycle modifié pendant préparation de scène STUDIO');
+   if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée avant scène');
+   if(next.extensions.pendingStudioOp||next.links.sceneId)fail('Réconciliation STUDIO requise');
+   next.extensions.pendingStudioOp={kind:'scene',campaignId:campaign.id,beforeIds};
+  });
+  await requirePersistedJournal(state.extensions.pendingStudioOp);
+  studioActionInFlight=true;
+  try{
+  if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée après journal : reprise manuelle requise');
   await studio.createScene(d.title,d.publicDescription??'',d.privateNotes??'');
   const current=studio.getCampaign();
-  const sceneId=current?.activeSceneId;
+  if(current?.id!==campaign.id)fail('Campagne STUDIO changée après scène : reprise manuelle requise');
+  const sceneId=current.activeSceneId;
   if(sceneId&&typeof studio.updateScene==='function'){
    const s=current.scenes?.find(x=>x.id===sceneId);
    if(s)await studio.updateScene({title:s.title,publicDescription:s.publicDescription??'',privateNotes:s.privateNotes??'',
     participantIds:[...new Set([...(s.participantIds??[]),state.links.creatureInstanceId])]});
   }
-  if(typeof sceneId!=='string'||!sceneId)fail('Création STUDIO non confirmée : réconciliation manuelle requise');
-  await commit(next=>{next.links.sceneId=sceneId;next.status='mj-validated';});
+  if(studio.getCampaign()?.id!==campaign.id)fail('Campagne STUDIO changée après mise à jour : reprise manuelle requise');
+  if(typeof sceneId!=='string'||!sceneId)fail('Création STUDIO non confirmée : utiliser la réconciliation');
+  await commit(next=>{
+   if(next.extensions.pendingStudioOp?.kind!=='scene')fail('Journal STUDIO absent');
+   next.links.sceneId=sceneId;next.status='mj-validated';
+   delete next.extensions.pendingStudioOp;
+  });
   return {sceneId};
+  }finally{studioActionInFlight=false;}
  }
  /** INDEX L004-C real contract, injected by 05. No catalog code is duplicated here. */
  async function bindIndexChain(){
@@ -192,6 +447,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   const campaign=studio.getCampaign(),s=copy();
   if(!campaign||typeof campaign.id!=='string'||!ids.test(campaign.id))fail('Campagne STUDIO avec ID requise');
   if(!CYCLE_STEPS.every(k=>s.entries[k]?.status==='mj-validated'))fail('Quatre validations descriptives MJ requises');
+  if(s.extensions.pendingStudioOp)fail('Réconciliation STUDIO requise avant INDEX');
   if(!s.links.creatureInstanceId||!s.links.sceneId||!s.links.creatureSource)fail('Copies réelles STUDIO créature/scène requises');
   if(!campaign.creatures?.some(x=>x.id===s.links.creatureInstanceId)||
       !campaign.scenes?.some(x=>x.id===s.links.sceneId))fail('Instances STUDIO manquantes : chaîne bloquée');
@@ -233,7 +489,7 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
    privateSnapshot:cloneCycleJSON(privateResult.snapshot),visibility:'mj-private-only'};});
   return {chain:cloneCycleJSON(validated.chain),snapshot:cloneCycleJSON(privateResult.snapshot),executable:false};
  }
- async function load(){await queue;const loaded=await persistence.load();if(loaded!==null)state=validateCycle(loaded);return copy();}
+ async function load(){if(studioActionInFlight)fail('Opération STUDIO en cours : rechargement interdit');await queue;const loaded=await persistence.load();if(loaded!==null)state=validateCycle(loaded);return copy();}
  async function exportPrivate(){await queue;const s=copy(),out={kind:'cer.dg004.creators.confidential-export.v0',cycle:s};return encoder.encode(JSON.stringify(out));}
  function previewRestore(input){
   const bytes=input instanceof Uint8Array?new Uint8Array(input):null;
@@ -246,6 +502,8 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
   return {token:pendingRestore.token,display:makeSummary(next),accepted:false};
  }
  async function acceptRestore(token){
+  if(studioActionInFlight||state.extensions.pendingStudioOp)
+   fail('Réconciliation STUDIO requise avant restauration');
   if(!pendingRestore||token!==pendingRestore.token)fail('Restauration non prévisualisée');
   const next=cloneCycleJSON(pendingRestore.state);
   const op=queue.catch(()=>{}).then(async()=>{
@@ -270,5 +528,6 @@ export function createCreatorCycle({persistence,creatorValidator,catalogBridge,c
  }
 
  return {getState:copy,getDraft:draft,saveDraft,setMode,go,validateMJ,attachCreature,attachScene,
+  getStudioRecovery:safeRecoveryStatus,inspectStudioRecovery,reconcileStudioLink,abandonStudioRecovery,
   load,exportPrivate,previewRestore,acceptRestore,addOriginalSource,addOriginalSourceBytes,bindIndexChain};
 }
