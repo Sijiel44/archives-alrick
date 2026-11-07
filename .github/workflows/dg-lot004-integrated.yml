@@ -39,7 +39,7 @@ jobs:
       - name: Build DG004 with pinned DG003 owner modules
         run: node experiments/dg-lot004/tools/build.mjs
       - name: Test DG004 integration-only demo contract
-        run: node --test experiments/dg-lot004/tests/integration/*.test.mjs
+        run: node --import tsx --test experiments/dg-lot004/tests/integration/*.test.mjs
       - name: BUILDER owner local preview contract (real source)
         run: node --test experiments/dg-lot004/builder/tests/ports.test.mjs
       - name: MATH owner XP decisions against M01 (real TS)
