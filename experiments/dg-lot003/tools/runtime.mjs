@@ -396,7 +396,7 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
    const right=ticket.source?studioToArchive(ticket.source,owner.createCampaign):null;
    const sourceMismatch=jsonDifference(left,right);
    if(sourceMismatch)
-    fail('Private restore source snapshot conflict at '+sourceMismatch+': reload and preview again');
+    fail('Private restore source snapshot conflict at '+sourceMismatch+' [uiRevision='+String(uiParent?.revision)+' durableRevision='+String(ticket.source?.revision)+']: reload and preview again');
    if(parentRaw()!==ticket.parentRaw){
     previewAnchors.delete(preview.privatePending);
     fail('Private restore causal parent conflict: changed since preview');
