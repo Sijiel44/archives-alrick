@@ -100,3 +100,68 @@ Sur cette exécution locale : Node 22.16.0, clone GitHub non disponible (`Could 
 **STUDIO / ARCHIVES :** enveloppe privée, sauvegarde des révisions, politique de liens manquants et de suppression d'instance, whitelist joueur.
 **QA :** consentement, permissions fail-closed, collisions inter-campagnes, canaris privés, import round-trip.
 **INTÉGRATION :** importer uniquement ce module/ces tests ; ne pas fusionner PR propriétaire ; relancer test TypeScript natif au HEAD final.
+
+---
+
+## R2 du 05/11/2026 — compatibilité ARCHIVES, contrat MATH #99 et XP de rencontre/quête
+
+**Origine de la correction :** [DG commentaire #6658247764](https://github.com/Sijiel44/archives-alrick/issues/93#issuecomment-6658247764) reproduit sur le vrai Chrome CI [run 42028928740](https://github.com/Sijiel44/archives-alrick/actions/runs/42028928740) l'échec `createXpSuggestion` sur l'ID ARCHIVES littéral `pj:l004-hero-fiction`. [DG enrichissement #6659005380](https://github.com/Sijiel44/archives-alrick/issues/93#issuecomment-6659005380) et [MATH #99@e3fcbce49074bfcbe8814842a5ad57d0ba76160d](https://github.com/Sijiel44/archives-alrick/pull/99), passation [#6662346332](https://github.com/Sijiel44/archives-alrick/issues/93#issuecomment-6662346332).
+
+Le module **accepte l'ID natif tel quel**, sans convertir `:` en `-`, sans modifier la casse et sans inventer d'alias. Il accepte un unique segment typé `prefix:source-id`, format ASCII et **longueur totale ≤ 40** pour rester compatible avec la borne actuelle de `previewEncounterXp` MATH #99. Les identifiants plus longs d'ARCHIVES restent **refusés avec `code:'INVALID_NATIVE_INSTANCE_ID'`** jusqu'à accord MATH/ARCHIVES (ne jamais les tronquer). Un `pnj:` ne peut être ciblé comme PJ ; le rôle explicite est revérifié dans `sourceContext`.
+
+### Génération et idempotence
+
+- L'identifiant de suggestion reste **distinct** de l'ID d'instance : `xp:<namespace>:v2-<base32-url-safe>` est dérivé d'un tuple canonique (eventId, instanceId, run, accomplishmentId optionnel), encodé en base32 injectif, sans hachage tronqué. Si le résultat dépasse la limite du schéma, la factory renvoie **`ID_DERIVATION_TOO_LONG`** : donner un **`id` explicite**, jamais un alias silencieux.
+- La clé d'idempotence v2 est un tuple JSON exact `[campaignId,characterInstanceId,runId,accomplishmentId|eventId]`, avec préfixe `xpkey:v2:` ; deux-quatre champs ne se recollent plus ambiguës via des séparateurs. Les **anciens** documents de suggestion sans `sourceContext` portant une clé v1 originale peuvent encore être validés *sans mutation* ; `validateXpRegistry` compare aussi les **sources canoniques** pour refuser le double crédit v1 + v2 et le doublon boss/quête.
+- `code`, `issues:[{code,path,message}]` sont ajoutés sur les erreurs XP tout en conservant `errors:string[]` des consommateurs existants. La correction est immuable et chaque tentative de détourner `accomplishmentId` ou `runId` est refusée.
+
+### Entrée fictive enrichie — jamais un montant accordé
+
+```js
+import {
+  createXpSuggestion, previewXpSuggestion, validateXpRegistry,
+  previewMathEncounterFragment, createXpMathJournalReference,
+} from './experiments/dg-lot004/src/catalog/index.mjs';
+
+const result=createXpSuggestion({
+  id:'xp:demo:boss-et-quete-pj1',namespace:'demo',
+  target:{campaignId:'camp-a',characterInstanceId:'pj:l004-hero-fiction'},
+  event:{id:'evt-a',pattern:'paix-negociee',domain:'diplomatie',difficulty:6,scope:'ordinaire'},
+  context:{initialLevel:5,oneShot:{id:'session-fictive',runId:'run-01'}},
+  provenance:{originKind:'illustrative',sourceSchema:'dg004.fictive',sourceId:'scene-1'},
+  rationale:'Résolution pacifique grâce aux PJ et au secours PNJ N20.',
+  sourceContext:{
+    kind:'encounter',accomplishmentId:'boss-et-quete-1',runId:'run-01',
+    eventStatus:'observed',participants:[
+      {instanceId:'pj:l004-hero-fiction',role:'pj',level:5},
+      {instanceId:'pnj:mentor',role:'pnj',level:20}],
+    selectedPjIds:['pj:l004-hero-fiction'],
+    threats:[{instanceId:'boss-1',level:15,count:1,boss:true}],
+    assistance:{level:'decisive',npcIds:['pnj:mentor'],reason:'Aide décisive'},
+    difficultyBeforeAssistance:'difficile',realizedDifficulty:'moderee',
+    explicitM01Index:6, // explicitement proposé ; jamais N15→indice 6 automatiquement
+  },
+});
+if(!result.ok)throw Error(result.code+' '+JSON.stringify(result.issues));
+const m=previewMathEncounterFragment(result.suggestion);
+// m.mathInputFragment contient la correspondance des champs MATH #99.
+// m.missingExternalFields : ['eventApprovedByMJ','ledgersByPj'].
+// Seul MATH/STUDIO fournit l'autorisation MJ réelle et les ledgers privés.
+// MATH.previewEncounterXp({...m.mathInputFragment,eventApprovedByMJ:FROM_MJ,ledgersByPj:FROM_MATH});
+```
+
+**Contrat MATH exact :** `cer.math.encounter-xp.provisional.v0` expose `previewEncounterXp(scene)` et `recordEncounterXpChoice(scene,allocation)`. INDEX ne dépend pas de ces fonctions à l'exécution et ne fabrique **ni `eventApprovedByMJ`, ni `ledgersByPj`**, ni `decision.approvedByMJ:true`. Les suggestions INDEX ne contiennent aucun `decidedXp`, `commonXp`, `individualXp` ou `grantAward`. Un événement enrichi utilise comme **ID M01 natif de source** `JSON.stringify([campaignId,runId,accomplishmentId])`, exactement comme MATH #99 ; un historique M01 contenant ces ID JSON canoniques est accepté. `previewXpSuggestion` délègue à un port `experienceAward` injecté, **n'adopte aucun barème** et ne calcule pas d'indice depuis un niveau hostile. Sans `explicitM01Index`, cette prévisualisation directe est indisponible : passer par la proposition expérimentale `previewEncounterXp` MATH.
+
+`createXpMathJournalReference(suggestion,receipt)` produit uniquement une **référence inerte** à un reçu `recordEncounterXpChoice` existant (`{status:'recorded'|'duplicate',pjId,decisionId}`), avec `authority:'unverified-external-math-journal'`, jamais un reçu authentifié ou une entrée de journal créée par INDEX. **MATH** reste propriétaire du journal append-only, des choix MJ globaux/individuels (y compris zéro) et de la détection de doublons. Une simple référence INDEX ne confirme jamais une décision.
+
+La chaîne fictive L004-C (flûte descriptive → capacité → créature → scène) et ses snapshots MJ privés demeurent inchangés ; aucun malus numérique et aucune publication automatique.
+
+### Tests et limites de R2
+
+```bash
+node --test experiments/dg-lot004/tests/catalog/catalog.test.mjs experiments/dg-lot004/tests/catalog/catalog-r2.test.mjs
+# dans un clone complet avec npm ci/esbuild :
+node --test experiments/dg-lot004/tests/catalog/native-m01.test.mjs
+```
+
+La première commande exécute les **64 tests L004 d'origine + 50 nouveaux tests R2** (régression Chrome, limites d'identifiant et namespace, absence d'alias, collisions, source boss/quête, sélection PJ/PNJ, PNJ N20, aides, indice 1–12 distinct du niveau de menace, corrections, journal de référence, no-apply, source MATH canonique et round-trip). La seconde **n'a PAS pu s'exécuter ici** faute de clone complet / esbuild (le refus `ERR_MODULE_NOT_FOUND` est conservé en preuve), et la recette Chrome intégrée doit être relancée par 05/QA **sur le nouveau HEAD intégré**, sans prétendre corriger rétroactivement le run #42028928740.
