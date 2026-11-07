@@ -47,7 +47,7 @@ export function mountCreatorCycle(root,options={}){
  const scenePanel=el(doc,'section','','cycle-panel');panels.append(scenePanel);
  const preview=el(doc,'pre',RULES_UNAVAILABLE+' — prévisualisation descriptive uniquement.','cycle-preview');
  const actions=el(doc,'div','','cycle-actions'),bottom=el(doc,'section','','cycle-panel');shell.append(preview,actions,bottom);
- const modeButtons={},stepButtons={};let disposed=false,working=false,restoreToken=null;
+ const modeButtons={},stepButtons={};let disposed=false,working=false,restoreToken=null,recoveryProof=null;
  const notify=x=>{status.textContent=x;};
  const creator=options.mountCreators(creatorHost,{initialKind:'item',initialMode:'guided',injectStyles:false,
   onSave:async record=>{await cycle.saveDraft(record.kind,{...cycle.getDraft(record.kind),...record});notify('Brouillon enregistré localement. Validation MJ distincte.');render();return {saved:true};}});
@@ -71,10 +71,42 @@ export function mountCreatorCycle(root,options={}){
  const chainButton=el(doc,'button','Enregistrer chaîne descriptive INDEX — MJ privé');chainButton.type='button';chainButton.addEventListener('click',()=>void act(async()=>{const r=await cycle.bindIndexChain();notify('Chaîne INDEX enregistrée en privé : '+r.chain.id+'. Aucune application.');render();}));
  const sceneButton=el(doc,'button','Créer la scène dans STUDIO (MJ)');sceneButton.type='button';sceneButton.addEventListener('click',()=>void act(async()=>{const x=await cycle.attachScene();notify('Scène STUDIO liée : '+x.sceneId+'. Aucune projection joueur.');render();}));
  actions.append(draftButton,validButton,nextButton,creatureButton,sceneButton,chainButton);
+ // Explicit, private-only reconciliation. Never retry STUDIO automatically.
+ const recoveryPanel=el(doc,'section','','cycle-panel');
+ recoveryPanel.append(el(doc,'h3','Reprise après écriture STUDIO interrompue'));
+ const recoveryInfo=el(doc,'p','Aucune reprise en attente.','cycle-status');
+ const recoveryLabel=el(doc,'label','Instance STUDIO à confirmer (identifiant)','cycle-field');
+ const recoveryChoice=el(doc,'select');recoveryChoice.setAttribute('aria-label','Instance STUDIO à réconcilier');
+ recoveryLabel.append(recoveryChoice);
+ const recoveryVerify=el(doc,'button','Vérifier sauvegarde STUDIO dans ARCHIVES');
+ recoveryVerify.type='button';
+ recoveryVerify.addEventListener('click',()=>void act(async()=>{
+  const proof=await cycle.inspectStudioRecovery();
+  recoveryProof={revision:cycle.getState().revision,proof};
+  notify(proof.durableVerified?'Lecture ARCHIVES confirmée : sélectionner le même ID, puis confirmer MJ.':
+   'Reprise bloquée : '+(proof.message??'persistance STUDIO non attestée'));
+  render();
+ }));
+ const recoveryConfirm=el(doc,'button','Confirmer lien vers instance existante (MJ)');
+ recoveryConfirm.type='button';
+ recoveryConfirm.addEventListener('click',()=>void act(async()=>{
+  const result=await cycle.reconcileStudioLink(recoveryChoice.value,{confirm:true});
+  recoveryProof=null;
+  notify('Instance STUDIO réconciliée sans nouvelle copie : '+result.instanceId);render();
+ }));
+ const recoveryAbandon=el(doc,'button','Confirmer absence de copie et réessayer');
+ recoveryAbandon.type='button';
+ recoveryAbandon.addEventListener('click',()=>void act(async()=>{
+  await cycle.abandonStudioRecovery({confirm:true});
+  recoveryProof=null;
+  notify('Journal de reprise clos : aucune instance nouvelle détectée dans STUDIO/ARCHIVES.');render();
+ }));
+ recoveryPanel.append(recoveryInfo,recoveryVerify,recoveryLabel,recoveryConfirm,recoveryAbandon);
+ shell.append(recoveryPanel);
  const loadBtn=el(doc,'button','Recharger brouillons'),exportBtn=el(doc,'button','Exporter archive CONFIDENTIELLE'),restoreBtn=el(doc,'button','Prévisualiser restauration'),confirmBtn=el(doc,'button','Confirmer restauration');
  for(const b of [loadBtn,exportBtn,restoreBtn,confirmBtn])b.type='button';
  const upload=input(doc,bottom,'backup','Archive JSON privée à restaurer');upload.type='file';upload.accept='.json,application/json';
- loadBtn.addEventListener('click',()=>void act(async()=>{await cycle.load();populate();notify('Brouillons rechargés depuis le stockage local.');render();}));
+ loadBtn.addEventListener('click',()=>void act(async()=>{await cycle.load();recoveryProof=null;populate();notify('Brouillons rechargés depuis le stockage local.');render();}));
  exportBtn.addEventListener('click',()=>void act(async()=>{
   await persistCurrent();const bytes=await cycle.exportPrivate();
   if(typeof options.onExport==='function')await options.onExport(new Uint8Array(bytes),'CONFIDENTIEL_L004_C_creators.json');
@@ -89,7 +121,7 @@ export function mountCreatorCycle(root,options={}){
   const bytes=new Uint8Array(await file.arrayBuffer());const proposal=cycle.previewRestore(bytes);restoreToken=proposal.token;
   notify('Restauration proposée sans mutation : '+proposal.display.saved.join(', ')+' ; confirmer explicitement.');render();}));
  confirmBtn.addEventListener('click',()=>void act(async()=>{if(!restoreToken)throw Error('Prévisualiser avant restauration');
-  await cycle.acceptRestore(restoreToken);restoreToken=null;populate();notify('Restauration privée confirmée.');render();}));
+  await cycle.acceptRestore(restoreToken);restoreToken=null;recoveryProof=null;populate();notify('Restauration privée confirmée.');render();}));
  bottom.append(el(doc,'h3','Sauvegarde, export et restauration privés'),loadBtn,exportBtn,restoreBtn,confirmBtn);
  function readCurrent(){const s=cycle.getState(),k=s.step;
   if(indexKeys(k)){
@@ -122,8 +154,24 @@ export function mountCreatorCycle(root,options={}){
   const done=s.entries[kind];const view={step:kind,status:done?.status??'draft',provenance:s.drafts[kind].provenance??'',
    version:s.drafts[kind].version??'',linked:s.links,mechanics:RULES_UNAVAILABLE};
   preview.textContent=JSON.stringify(view,null,2);
-  creatureButton.hidden=kind!=='creature';creatureButton.disabled=working||!s.entries.creature||!s.entries.capacity||!!s.links.creatureInstanceId;
-  sceneButton.hidden=kind!=='scene';sceneButton.disabled=working||!s.entries.scene||!s.links.creatureInstanceId||!!s.links.sceneId;
+  const liveRecovery=cycle.getStudioRecovery();
+  const recovery=recoveryProof&&recoveryProof.revision===s.revision&&liveRecovery.pending&&
+   liveRecovery.status!=='in-flight'?recoveryProof.proof:liveRecovery;
+  recoveryPanel.hidden=!recovery.pending;
+  if(recovery.pending){
+   recoveryInfo.textContent='Création '+recovery.kind+' interrompue : '+(recovery.message??'Vérification MJ requise')+'. Aucune nouvelle création automatique.';
+   recoveryChoice.replaceChildren();
+   for(const candidate of recovery.candidates){
+    const option=el(doc,'option',candidate.id);option.value=candidate.id;recoveryChoice.append(option);
+   }
+   recoveryLabel.hidden=recovery.candidates.length===0;
+  }
+  recoveryVerify.disabled=working||!recovery.pending||liveRecovery.status==='in-flight';
+  recoveryConfirm.disabled=working||!recovery.durableVerified||
+   recovery.status!=='requires-confirmation'||recovery.candidates?.length!==1;
+  recoveryAbandon.disabled=working||!recovery.durableVerified||!recovery.canAbandon;
+  creatureButton.hidden=kind!=='creature';creatureButton.disabled=working||!!recovery.pending||!s.entries.creature||!s.entries.capacity||!!s.links.creatureInstanceId;
+  sceneButton.hidden=kind!=='scene';sceneButton.disabled=working||!!recovery.pending||!s.entries.scene||!s.links.creatureInstanceId||!!s.links.sceneId;
   chainButton.hidden=kind!=='scene';chainButton.disabled=working||!s.links.sceneId||!!s.extensions.indexL004;
   nextButton.hidden=kind==='spell'||kind==='scene';nextButton.disabled=working||!s.entries[kind];
   confirmBtn.disabled=working||!restoreToken;
