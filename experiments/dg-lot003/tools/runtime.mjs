@@ -178,6 +178,20 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
   // A PRESENT divergent value remains a causal conflict.
   if(!Object.hasOwn(snapshot,'privateNotes')&&Object.hasOwn(current,'privateNotes'))
    snapshot.privateNotes=copy(current.privateNotes);
+  // Native ARCHIVES adds __archiveCharacter to every imported sheet on roundtrip.
+  // Legacy Studio still holds its original accepted copy without that *optional*
+  // backing envelope. Reattach only if every other field matches the durable
+  // character exactly; a present divergent backing envelope is never replaced.
+  for(const item of snapshot.characters??[]){
+   const saved=current.characters?.find(x=>x.id===item.id);
+   if(!saved?.privateSnapshot?.__archiveCharacter||
+      !item?.privateSnapshot||
+      Object.hasOwn(item.privateSnapshot,'__archiveCharacter'))continue;
+   const without=copy(saved.privateSnapshot);
+   delete without.__archiveCharacter;
+   if(jsonDifference(without,item.privateSnapshot)===null)
+    item.privateSnapshot.__archiveCharacter=copy(saved.privateSnapshot.__archiveCharacter);
+  }
   // Preserve absent keys as absent. An old archive with extensions:{} must
   // roundtrip byte-semantically as {} rather than acquiring empty collections.
   const hadCatalog=Object.hasOwn(snapshot.extensions??{},'catalog') ||
