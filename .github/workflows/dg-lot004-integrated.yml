@@ -70,6 +70,13 @@ jobs:
           echo 'd89dea819a387dc9fdc5b61dfdaf62bc7e17aed3d930576f57cd2da4db3259b5  experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs' | sha256sum --check
       - name: ARCHIVES P0 owner nine real tests (strict; native TS resolution, no skips)
         run: node --import tsx --test experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs
+      - name: ARCHIVES P0 causality original three tests - source SHA256
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'da6aa2d7ba2528f26261eceea1afd6e8987c9388eda495f80c62f11ee9644af0  experiments/dg-lot004/tests/storage/P0_CAUSALITY_ARCHIVES.test.mjs' | sha256sum --check
+      - name: ARCHIVES P0 three independent causality tests (strict)
+        run: node --import tsx --test experiments/dg-lot004/tests/storage/P0_CAUSALITY_ARCHIVES.test.mjs
       - name: Record source SHA on failure too
         if: always()
         run: |
