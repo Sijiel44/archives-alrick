@@ -34,6 +34,8 @@ jobs:
           test "$(git rev-parse HEAD)" = "$TESTED_HEAD"
       - run: npm ci
       - run: npm test
+      - name: Verify byte-identical owner sources and executable tests at exact HEAD
+        run: node experiments/dg-lot004/tools/verify-owner-blobs.mjs
       - name: Build DG004 with pinned DG003 owner modules
         run: node experiments/dg-lot004/tools/build.mjs
       - name: Test DG004 integration-only demo contract
