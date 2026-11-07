@@ -1,0 +1,88 @@
+{
+  "schema": "cer.math.core-compat-r2.proof.v0",
+  "references": {
+    "INDEX105_HEAD": "4f3dffd51f16c0c1881f925a94a677a87feff17c",
+    "MATH103_HEAD": "af27e13be443b2776a207dd870413fab33c1b76a",
+    "OFFICIAL_M01_HEAD": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
+    "MATH99_HEAD": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2"
+  },
+  "local_environment": {
+    "node": "22.16.0",
+    "typescript": "5.8.3",
+    "checkout": "isolated verified source copies; full INDEX #105 DATA validator not present",
+    "esbuild": "not locally installed; tsc used"
+  },
+  "source_blobs": {
+    "quartz/components/scripts/atelier5d6-probabilities.ts": "bfee984fad47902623f7117e9f024a5b6e042d2d",
+    "quartz/components/scripts/atelier5d6-progression.ts": "d2040829ea0da7c0f6eae08dc8c701226bfc53c5",
+    "quartz/components/scripts/atelier5d6-combat-m03.ts": "09929f1b852a971d73d40474847bae036bf11ffb",
+    "experiments/dg-lot004/math-xp/src/xp-decision.ts": "76daeb8ec21702e9ebcb27845ccd3d6b709ff574"
+  },
+  "index_core_port_blob": "c8ced9d82cf64d9092e5d6d8a35ab12358876740",
+  "index_data_model_blob_expected": "042e603a19a6c809b782e87c207eb8eecf8cbfdd",
+  "index_fixture_blob_expected": "0693198e7703ab89cc77cdeb9aad4beb9ce7e222",
+  "tests": {
+    "local_native_port": {
+      "pass": 19,
+      "fail": 0,
+      "skip": 0
+    },
+    "full_index105_data_model": {
+      "status": "NOT_EXECUTED",
+      "reason": "INDEX_105_SOURCE_ABSENT",
+      "precondition_command_exit": 1
+    }
+  },
+  "files": [
+    {
+      "path": "experiments/core-compat-001/math/r2/README.md",
+      "git_blob": "25073684882406ccd88b0c5ab71b5f476d8bdd63",
+      "sha256": "e1cda48e82fee83932d59db187b819d92b7534a32fe5978b22f6160746158f8e"
+    },
+    {
+      "path": "experiments/core-compat-001/math/r2/docs/CORE_COMPAT_001_R2_RAPPORT_TECHNIQUE.md",
+      "git_blob": "3e8002ecc70b7cf58e37eb18f0c41661e053a3c9",
+      "sha256": "a8f8c474c357ff56e502814ccf18d97819d4dff8e5407b1e293c45f65db6c492"
+    },
+    {
+      "path": "experiments/core-compat-001/math/r2/docs/FICHE_DIRECTION_CORE_COMPAT_001_R2.md",
+      "git_blob": "2b8a38555c75cac46bd0e0024dff41ad3929b06f",
+      "sha256": "fa0e60259ea2a7f526b19e6fa197c5a1d3a1a1d13af94a7b3f7e75823019a1cf"
+    },
+    {
+      "path": "experiments/core-compat-001/math/r2/src/data-native-ports.mjs",
+      "git_blob": "a658333df4b21a0467c1b2ba0816a51aba40e9a6",
+      "sha256": "5997512699bc62c9fcc4bf93b4793978ef839a5d4597195724809ee672b8e5af"
+    },
+    {
+      "path": "experiments/core-compat-001/math/r2/tests/R2_INDEX_COMPOSITE_PRECONDITION.log",
+      "git_blob": "73f8664bdd03facfd5fb51564b0e6c0c5f5d6143",
+      "sha256": "e8aad21bf59fb333937961936e6cc9ce1f8e03a65f3dbd4e1560f434be8a803f"
+    },
+    {
+      "path": "experiments/core-compat-001/math/r2/tests/R2_NATIVE_LOCAL.tap",
+      "git_blob": "8e0acbac14eacedef5447d38701e5fe3115e04a8",
+      "sha256": "9cc793b937cdebf27ed91fd3e2b77472fbdb490bfb32a4f5eb6c04480021fb7d"
+    },
+    {
+      "path": "experiments/core-compat-001/math/r2/tests/data-native-bridge.test.mjs",
+      "git_blob": "85645c7c3230477ec0fcf9f8425f68be6aac27f7",
+      "sha256": "afc3cdaeab8087b5e7087d2edb3976bcd4a23690020e6633c059d71deb99d55c"
+    },
+    {
+      "path": "experiments/core-compat-001/math/r2/tests/index-105-on-clone.test.mjs",
+      "git_blob": "59c131ee2962597d581258b8d87ef23df7d73018",
+      "sha256": "df39f4391a0432b4d5e49ae7b558bbb34f5baa0db238ab35095e20d729ad8856"
+    },
+    {
+      "path": "experiments/core-compat-001/math/r2/tests/reference-index105/core-ports.mjs",
+      "git_blob": "c8ced9d82cf64d9092e5d6d8a35ab12358876740",
+      "sha256": "5b6bf364393edf24c9ac53e709cad9aa5f1871dcd393c7e5551d488abc429dc6"
+    },
+    {
+      "path": "experiments/core-compat-001/math/r2/tests/reference-index105/data-model.mjs",
+      "git_blob": "c9d716654d0cc452b6abd4300abbbc8567787606",
+      "sha256": "3adf261735c81a3a6176f9e2c7d6cb2447aa472bb45474a34174690c80d24836"
+    }
+  ]
+}
