@@ -109,3 +109,16 @@ test('DG004-PARENT-03: appendCatalog from old campaign parent refuses overwrite 
   ()=>({ok:true}),{schema:'fictional.creator.v0',name:'description'}),/causal parent conflict/);
  assert.equal(a.raw(),raw);
 });
+
+test('DG004-RESTORE-05: optional Studio UI privateNotes absent is native [] without hiding real edits',async()=>{
+ const a=area(),l=locks(),tab=port(a,l),initial=campaign(3);
+ delete initial.privateNotes;
+ await tab.save(initial);
+ const backup=await owner.exportPrivate(studioToArchive(scene(campaign(0),'old-backup'),owner.createCampaign));
+ const preview=await tab.previewRestore({bytes:backup.bytes});
+ const restored=await tab.restore(preview,{previous:structuredClone(initial)});
+ await tab.save(restored);
+ const persisted=await port(a,l).load();
+ assert.deepEqual(persisted.scenes.map(x=>x.id),['old-backup']);
+ assert.equal(persisted.extensions.unknownFuture.id,'preserve');
+});
