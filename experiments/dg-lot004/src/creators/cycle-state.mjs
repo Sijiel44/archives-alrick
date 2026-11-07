@@ -69,14 +69,52 @@ function validateNarrative(draft,kind){
 function makeSummary(state){return {cycleId:state.id,revision:state.revision,status:state.status,step:state.step,
  saved:Object.entries(state.entries).filter(([,v])=>v!==null).map(([k])=>k),
  sources:state.sourceSnapshots.length};}
+/** Browser fallback: reject foreign values and stale observed revisions.
+ * This is NOT an atomic cross-tab CAS. No localStorage lock is claimed.
+ * For true concurrent writers use an ARCHIVES/IndexedDB transactional port.
+ */
 export function createBrowserCyclePersistence({storage,key='cer.dg004.creators.private',origin,allowedOrigin='http://127.0.0.1:4173'}={}){
  if(!storage||typeof storage.getItem!=='function'||typeof storage.setItem!=='function')throw new TypeError('Stockage local requis');
- // No player-origin secrets. Integrator may inject a stronger ARCHIVES/IndexedDB adapter instead.
  if(origin!==allowedOrigin)throw Error('Stockage privé interdit hors origine MJ vérifiée');
  if(!/^cer\.[a-z0-9._-]{1,120}$/.test(key))throw Error('Clé de stockage non permise');
- return {async load(){const raw=storage.getItem(key);return raw===null?null:validateCycle(JSON.parse(raw));},
- async save(state){const next=validateCycle(state);const raw=JSON.stringify(next);
-  if(encoder.encode(raw).length>MAX_CYCLE_BYTES)fail('Sauvegarde trop volumineuse');storage.setItem(key,raw);return {saved:true};}};
+ let lastObservedRaw=null,observed=false;
+ function parseOwned(raw){
+  try{return validateCycle(JSON.parse(raw));}
+  catch{fail('Clé créateurs étrangère ou incompatible : refus sans écriture');}
+ }
+ function read(){
+  const raw=storage.getItem(key);
+  // Disappearance of an already observed record is an external change, not permission to recreate it.
+  if(raw===null&&observed&&lastObservedRaw!==null)
+   fail('Conflit stale revision : sauvegarde créateurs disparue, refus de remplacement');
+  const value=raw===null?null:parseOwned(raw);
+  lastObservedRaw=raw;observed=true;
+  return value;
+ }
+ return {async load(){return read();},
+ async save(state){
+  const next=validateCycle(state),raw=JSON.stringify(next);
+  if(encoder.encode(raw).length>MAX_CYCLE_BYTES)fail('Sauvegarde trop volumineuse');
+  const actual=storage.getItem(key);
+  if(actual!==null){
+   const prior=parseOwned(actual);
+   if(prior.id!==next.id)fail('Conflit de propriété : cycle créateurs étranger, refus de remplacement');
+   // An instance must first load a pre-existing cycle. A same-ID guess is not an ownership proof.
+   if(!observed||lastObservedRaw!==actual)
+    fail('Conflit stale revision : la sauvegarde créateurs a changé ou n\'a pas été relue');
+   if(next.revision!==prior.revision&&next.revision!==prior.revision+1)
+    fail('Conflit stale revision : progression de révision invalide');
+   if(next.revision===prior.revision&&raw!==actual)
+    fail('Conflit stale revision : même révision avec un contenu différent');
+  }else if(observed&&lastObservedRaw!==null)
+   fail('Conflit stale revision : une sauvegarde observée a disparu');
+  // localStorage setItem is one operation; getItem+setItem is NOT an atomic transaction.
+  storage.setItem(key,raw);
+  if(storage.getItem(key)!==raw)
+   fail('Sauvegarde créateurs non confirmée : conflit après écriture');
+  lastObservedRaw=raw;observed=true;
+  return {saved:true};
+ }};
 }
 /** State machine. Only persisted snapshot becomes committed state; failed writes leave it unchanged. */
 export function createCreatorCycle({persistence,creatorValidator,catalogBridge,catalog,studio,indexChain,
