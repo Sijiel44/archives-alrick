@@ -1,0 +1,134 @@
+{
+  "status": "experimental-not-canonical",
+  "base105": "4f3dffd51f16c0c1881f925a94a677a87feff17c",
+  "ateliers102": "85f473d2005903a6fc81d37a83fcc6b3c6d16466",
+  "arch104": "f84f8c54361b3701ebb0251700f2d0d09d4acf4d",
+  "files": [
+    {
+      "path": "r2/README.md",
+      "bytes": 3770,
+      "sha256": "4f8c15fcfbb595a7c37f88ad065742877eacb2656ac2eaddf38c5f6a39733cef",
+      "git_blob_sha1": "7e35544f2c9ebf0be8ca0e4e478b14db809f8e9f"
+    },
+    {
+      "path": "r2/docs/COMMANDES_ET_LIMITES_R2.md",
+      "bytes": 2156,
+      "sha256": "81c2bc7b9f5ebf2b34ec117537f60c485898ebcb85e84702fa77d1d0d9b90c1f",
+      "git_blob_sha1": "3fc79a8539e58ffb90dc9c6ad246e66787bd0f93"
+    },
+    {
+      "path": "r2/docs/CORE_COMPAT_001_R2.md",
+      "bytes": 3163,
+      "sha256": "b6b8d0c70e0c9165d59446e09a425f5d4868d8d0a82d804b02f75b5dd27a8c36",
+      "git_blob_sha1": "0ea67736ce9b1974f3ab988993f5e15cde55841c"
+    },
+    {
+      "path": "r2/docs/CORRESPONDANCE_102_105.md",
+      "bytes": 5399,
+      "sha256": "39c914360f308c12ef5fb8d4c0be1c6f9ca4c69b79140be97c572c29ed22cfb8",
+      "git_blob_sha1": "58724160d6e17bdf80fbcd1835a00d5f50b0caeb"
+    },
+    {
+      "path": "r2/docs/FICHE_DIRECTION_R2.md",
+      "bytes": 3814,
+      "sha256": "59eedd4517e1c608322e667e04886a578e34f5e4d37925da912ec6721c90ff51",
+      "git_blob_sha1": "de8c1491d38850dfb9e51830e22427e2c1c83521"
+    },
+    {
+      "path": "r2/docs/PASSATION_04_21_10_DG.md",
+      "bytes": 2847,
+      "sha256": "cee0f2ff26319c0fe85adf70b3660704486406e6a4c327533d27629083bc8614",
+      "git_blob_sha1": "9b2a97c741a0f61966b89cce00253452d98def05"
+    },
+    {
+      "path": "r2/docs/STOCKAGE_ARCHIVES_104.md",
+      "bytes": 3856,
+      "sha256": "ed71f73a5df456718803b6b0ea8b0a503904c16b410ade20763ca0526320794c",
+      "git_blob_sha1": "047006165bc980757396e9b00a1492f26551ecb2"
+    },
+    {
+      "path": "r2/fixtures/R2_SYNTHETIC_CHAIN.json",
+      "bytes": 110149,
+      "sha256": "9afe53735f5d700e475761c63735a957f626ee735b6f9ea0ce127c9e625a8925",
+      "git_blob_sha1": "c9896647e3bf907c6ef06a2b06d84c4d19f09bc5"
+    },
+    {
+      "path": "r2/logs/NATIVE_UNEXECUTED.txt",
+      "bytes": 652,
+      "sha256": "7296c62c976570165788e2e751f5d1136a16579588b1a8a854091fe24df3389a",
+      "git_blob_sha1": "af0a7284809704b1001460ee6780d8c2dcbc4f11"
+    },
+    {
+      "path": "r2/logs/NODE_ALL_TESTS.tap",
+      "bytes": 19906,
+      "sha256": "30751dde5b9043116a751c1dd11a5f842dc205edcd94d0a89e33533465677836",
+      "git_blob_sha1": "873457f0bea95e0d83debc5b3eb7f4814b1be667"
+    },
+    {
+      "path": "r2/logs/NODE_R2_TESTS.tap",
+      "bytes": 9822,
+      "sha256": "24ae1adef57a2a70f2707e62366f575787ef1af5489c50f366f0a8b8a121a840",
+      "git_blob_sha1": "9e97377eb39c0e8d25670d2a7c533ca76806e3ba"
+    },
+    {
+      "path": "r2/logs/SCHEMA_R2_CHECKS.txt",
+      "bytes": 368,
+      "sha256": "cd3bfb3a623f5bce19e25487ac982cfe1e8c196e89b5deb1caddc531c27c4ebf",
+      "git_blob_sha1": "962130762328edb203ac9d0c384567cf0c41f39b"
+    },
+    {
+      "path": "r2/schema/DATA_MODEL_P1A_R2.profile.schema.json",
+      "bytes": 11951,
+      "sha256": "dfcd61381db7df1ad8e0b1b3d3e675818e0eb9df2e74695b29bdf1c72b7e142c",
+      "git_blob_sha1": "99bac563f96473722cbad354e2a028598c631021"
+    },
+    {
+      "path": "r2/src/model-r2.mjs",
+      "bytes": 15525,
+      "sha256": "3888443012801cefea1f6a93ee5032629a685e8d5e0b3c15125e244da62a9fbd",
+      "git_blob_sha1": "93758604be90e872e78d4851dee4be994aaee6b0"
+    },
+    {
+      "path": "r2/tests/build-profile-schema.py",
+      "bytes": 3335,
+      "sha256": "55eb7e8391c303cead1543cb21e5411332baa9ec58109882180a308d71494210",
+      "git_blob_sha1": "dfe1185d68bd69fba1c4183a54eee8397deb6978"
+    },
+    {
+      "path": "r2/tests/check-r2-schema.py",
+      "bytes": 2284,
+      "sha256": "182b56ddbc67567dcfa7aa96562df8f61d165c0676557bb4d04727954804477a",
+      "git_blob_sha1": "9ceb99fad54fe2fc877c58b0dc17b430764d42c3"
+    },
+    {
+      "path": "r2/tests/generate-r2-fixtures.mjs",
+      "bytes": 4952,
+      "sha256": "9f02bd92624d5e36d458818211cf71e0f81e63237dd7c6ba60481f9e0ab1a788",
+      "git_blob_sha1": "21fa599c05de0e8c528afda2a9ac7879eb70d055"
+    },
+    {
+      "path": "r2/tests/model-r2.test.mjs",
+      "bytes": 16538,
+      "sha256": "4d80a4721d2f99d3767428a75d805238bd5f700fdc177d550f222e3a746a3627",
+      "git_blob_sha1": "3f489c55a738aedffceb0d64781dde22f6d6d1f8"
+    },
+    {
+      "path": "r2/tests/native-core-on-assembled-clone.test.mjs",
+      "bytes": 2407,
+      "sha256": "3966773c631e6c5d20e85d51efaf5a436868bbf8e8b945e72474a76edaf71c88",
+      "git_blob_sha1": "b96adc280f0e1a29f8cbba4e9922629af5975f11"
+    },
+    {
+      "path": "r2/tests/native-storage-on-assembled-clone.test.mjs",
+      "bytes": 2445,
+      "sha256": "da420a40f5bc3a34ed87e2ecce1ecf3677f74653b2c8f5ec80dc67f082739e34",
+      "git_blob_sha1": "686a4c182799774f2750e7530777c9656ad1fba6"
+    },
+    {
+      "path": "r2/tests/original-ateliers102-on-assembled-clone.test.mjs",
+      "bytes": 1179,
+      "sha256": "0fe88c176e0692313be821561c1841a14ddf3a10864564ccfd1b50cb1c593ad4",
+      "git_blob_sha1": "8e0ca3fdc24934669a4235d4523e821e320d1771"
+    }
+  ]
+}
