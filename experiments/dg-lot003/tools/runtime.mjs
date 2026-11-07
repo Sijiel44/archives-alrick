@@ -239,7 +239,12 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
    const ticket=previewAnchors.get(preview.privatePending);
    if(!ticket)fail('Private restore unverified preview: a fresh preview is required');
    // An old in-memory campaign cannot stand in for the latest ARCHIVES parent.
-   const sourceMismatch=jsonDifference(previous??null,ticket.source);
+   // Compare the exact NATIVE ARCHIVES projection, not optional Studio UI
+   // defaults (e.g. absent privateNotes vs [] added during round-trip).
+   // This is validation-only: it never rewrites the source, its order or bytes.
+   const left=previous?studioToArchive(previous,owner.createCampaign):null;
+   const right=ticket.source?studioToArchive(ticket.source,owner.createCampaign):null;
+   const sourceMismatch=jsonDifference(left,right);
    if(sourceMismatch)
     fail('Private restore source snapshot conflict at '+sourceMismatch+': reload and preview again');
    if(parentRaw()!==ticket.parentRaw){
