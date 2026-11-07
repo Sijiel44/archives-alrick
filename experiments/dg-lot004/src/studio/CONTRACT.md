@@ -35,3 +35,113 @@ L004 ne réimplémente ni `previewRestore`, ni le parseur, ni la vérification S
 Lancer `node --test experiments/dg-lot004/tests/studio/*.test.mjs`. Puis `python experiments/dg-lot004/tests/studio/browser-scenario.py` après `build/serve` de 05 et présence de `dg004-demo.html` à 4173 et de `player.html` à 4174. Le script exige les vraies pages et les vrais adaptateurs ; il vérifie l'import, le flux, la popup, les canaris, CLEAR, stockage joueur et export/reimport. **Ne pas attribuer PASS** si Chromium est bloqué ou absent : noter `NON EXÉCUTÉ` et joindre la trace.
 
 `mountStudioDemo()` reste distinct de `mountStudio()` L003 : il ne déploie pas de nouveau site et n'ouvre pas de réseau en dehors des deux origines local-only autorisées par DG.
+
+## Addendum L004-REPAIR — réconciliation après écriture partielle (05/11/2026)
+
+- Nouveau module **sans effet à l'import** : `src/studio/reconcile.mjs` :
+  - `inspectDemoFootprints(campaign,{persistedCampaign,sourceId?,profileId?,sceneTitle?,sceneDescription?,privateNote?})` : identifiants seulement, aucun snapshot ni note retourné ; statuts `missing`, `unpersisted`, `reusable`, `stale`, `ambiguous`, `conflict`, `needs-participants`.
+  - `inspectCreatorAttachment({campaign,persistedCampaign,cycle})` : **lecture seule** de deux états distincts STUDIO/CREATORS. Les liens `creatureInstanceId` et `sceneId` ne doivent être écrits que par le propriétaire 21 après confirmation du MJ et validation de persistance par 04. Aucun `copyCreature()` / `createScene()` dans cette fonction.
+  - `inspectCreatorRecord(campaign,record)`, `persistentCreatorRecords(campaign)` : provenance depuis `extensions.creatorDrafts[].original` de L003, rejet des identités descriptives ambiguës.
+  - `saveCreatorWithReconciliation({record,storage,creatorSave,studioSnapshot})` : lit avant et après l'écriture, considère un accusé perdu comme réussite **uniquement si la version exacte existe durablement**. Ne retente aucune création et n'efface aucun objet STUDIO.
+- `mountStudioDemo(root,options)` conserve toutes ses options et ajoute `mountCreatorsPort?(root,{onSave,...})` (**injection de banc uniquement** ; la production garde `mountCreators` L003 réel) et `creatureProfileId?` (défaut `fixture-profile-001`, utilisé avec `creatureCode?` pour la réconciliation). Le handle expose désormais `reconcileDrafts():Promise<records>` et `inspectFootprints():Promise<status>` ; `getDrafts()` reste lecture de la dernière copie réconciliée.
+- Les boutons fictifs « Accepter copie créature » et « Créer scène... » réutilisent une instance/scène unique et identique, sans générer de nouvel identifiant. Ambiguïté, titre identique mais contenu privé modifié, ou divergence persistée : **refus fermé** et arbitrage MJ ; aucune suppression ni rollback automatique. Une scène incomplète de ses participants réemploie son ID et complète l'association explicitement dans l'étape guidée.
+- **Critère de persistance :** `storageFactory` doit fournir les méthodes L003/ARCHIVES existantes et sérialiser les écritures. La vue tente jusqu'à cinq réconciliations bornées du même snapshot ; elle refuse un état plus récent ou un état non vérifié, sans prétendre fournir de transaction entre deux magasins. `createScene()`/`updateScene()` L003 ont des sauvegardes différées ; 05/04 doivent tester leur drain réel et le dernier SHA. Une erreur de `storage.save` n'autorise jamais un nouveau `copyCreature`.
+- Sélection joueur : la reprise/sélection de scène utilise `setActiveScene` pour `PLAYER_CLEAR` et interdit une publication `PLAYER_SHOW` automatique. La reprise d'une créature avec scène active révoque également la sélection, même si l'instance est déjà présente. `makePlayerProjection` de L003 reste seul générateur de DTO whitelist.
+- UX ardoise/cuivre/or : **fichier seulement proposé**, `src/studio/ux-ardoise-cuivre-or.proposal.css`. Ne pas charger ni appliquer dans le candidat P0 sans revue 01 BUILDER + 21 ATELIERS + QA. Aucun changement de style ou source du candidat intégré PR #95.
+
+**Gates propriétaires :** `node --test experiments/dg-lot004/tests/studio/*.test.mjs` (L004), `node --test experiments/dg-lot003/tests/studio/*.test.mjs` (régression). Le scénario `tests/studio/L004_REPAIR_BROWSER_SCENARIO.py` exige la vraie page intégrée servie sur 4173 et joueur sur 4174 ; il n'est pas une preuve navigateur tant qu'il n'est pas réellement exécuté. Les tests sur `createCreatorCycle.attachCreature/attachScene` réels appartiennent au 21 ; seul ce propriétaire peut effectuer le commit/rollback de son état. 
+
+## L004-REPAIR — raccord `pendingStudioOp` (PR #100 @ ecce2ada)
+
+**Changement de contrat STUDIO** : `inspectCreatorAttachment` (module `reconcile.mjs`)
+exige désormais le journal **durablement présent** dans `persistedCycle`, lu depuis le
+stockage privé ATELIERS/ARCHIVES, ainsi qu'une `persistedCampaign` validée et relue
+**indépendamment** de la campagne volatile STUDIO. Une ancienne restauration dont
+le journal manque n'est **pas attestable** : `action:'block-automatic-retry'` et
+`status:'unattestable'`, même si le titre/source de l'instance ressemble à la fixture.
+
+```js
+import {inspectCreatorAttachment,confirmCreatorAttachmentWithEvidence} from './reconcile.mjs';
+const creatorState=creator.getState();
+const [persistedCycle,persistedCampaign]=await Promise.all([
+  creatorPersistence.load(), studioStorage.load(),
+]);
+const candidate=inspectCreatorAttachment({
+  cycle:creatorState,persistedCycle,
+  campaign:studio.getCampaign(),persistedCampaign,
+});
+// Le port 05 affiche uniquement IDs/statuts ; les notes privées ne sont jamais retournées.
+// Le MJ doit sélectionner le seul ID attesté ET confirmer explicitement.
+if(candidate.action==='link-existing-after-MJ-confirmation' && userConfirmed === true){
+  const kind=creatorState.extensions.pendingStudioOp.kind;
+  const id=(kind==='creature'?candidate.creature:candidate.scene).id;
+  await confirmCreatorAttachmentWithEvidence({creator,studio,creatorPersistence,
+    studioStorage,instanceId:id,confirm:true});
+}
+```
+
+`pendingStudioOp` : `{kind:'creature'|'scene',campaignId,beforeIds,
+source?:{documentId,profileId,ruleset}}`. `beforeIds` désigne les IDs présents AVANT
+la tentative. Il est créé par ATELIERS **avant** l'appel STUDIO ; STUDIO ne le
+crée pas et ne le supprime pas. Il est supprimé par ATELIERS dans la même écriture
+confirmée que son lien. La campagne STUDIO doit déjà avoir été sauvegardée par le
+vrai adaptateur ARCHIVES (sa vérification de SHA et d'enveloppe reste son autorité).
+
+Signification des résultats :
+
+- `reusable` : **un seul nouvel ID**, absent de `beforeIds`, correspondant à la
+  provenance/description du journal, trouvé dans les deux états STUDIO et dont
+  la session créateur possède le **même journal durable** ; autorise uniquement
+  une **proposition de rattachement manuel**, jamais un appel `copyCreature` ou
+  `createScene` automatique.
+- `missing` : journal présent, mais aucune nouvelle instance visible. Le protocole
+  ATELIERS `abandonStudioRecovery({confirm:true})` demeure distinct et ne doit
+  être proposé qu'après inspection de l'absence d'effet et nouvelle confirmation.
+- `unpersisted` : une instance volatile existe, mais le stockage ARCHIVES ne la
+  retrouve pas. **Aucune confirmation du lien**, aucune nouvelle copie, vérifier
+  l'état et la file d'écritures.
+- `ambiguous`, `conflict`, `stale`, `wrong-campaign`, `invalid-journal`,
+  `unattestable`, `needs-participants` : blocage, revue humaine et conservation
+  des sauvegardes originales. `not-targeted` qualifie l'autre famille non en cours.
+
+`confirmCreatorAttachmentWithEvidence({...}) -> Promise<{kind,instanceId,
+status:'linked',reconciled:true,executable:false}>` vérifie encore les deux
+magasins, le résultat **attesté** de `await creator.inspectStudioRecovery()` (`durableVerified===true`, `status==='requires-confirmation'`, `kind` correspondant, une seule candidature avec le même ID, `unverifiedCount===0`),
+le consentement MJ explicite, puis délègue UNIQUEMENT à
+`creator.reconcileStudioLink(id,{confirm:true})`. Une relecture du cycle
+persisté confirme le **même ID**, sans journal restant. Aucune compensation,
+suppression, transaction de ressources, publication ou `postMessage`.
+
+**Limite structurelle non levée :** le journal ATELIERS actuel n'inscrit pas de
+`operationId` unique dans l'instance STUDIO ; `beforeIds`+provenance ne permettent
+pas de certifier une opération au travers de restaurations concurrentes ou de
+lignes temporelles divergentes avec le même `campaignId`. En cas de doute, ne
+pas valider le P0 et conserver les originaux ; 04/21/05 doivent convenir d'un
+marqueur transactionnel durable ou bloquer ces restaurations. Le navigateur réel,
+la couche ARCHIVES et la CI au HEAD composite restent à recetter par 05/QA.
+
+Ce contrat est indépendant de l'UX ardoise/cuivre/or (toujours proposition non montée).
+
+
+## Correctif P0 — ATELIERS #100@ceb316e (05/11/2026)
+
+`getStudioRecovery()` est volontairement **synchrone et non attesté** : il retourne
+`status:'durability-unverified'` et `candidates:[]`. Ne jamais le promouvoir en
+preuve de sauvegarde. Le helper STUDIO `confirmCreatorAttachmentWithEvidence` exige
+maintenant **`creator.inspectStudioRecovery(): Promise<Recovery>`** et attend sa
+résolution après les lectures indépendantes des magasins `creatorPersistence.load()`
+et `studioStorage.load()`. Pour confirmer : `durableVerified === true`,
+`pending === true`, `status === 'requires-confirmation'`, `kind` égal au journal,
+`unverifiedCount === 0`, et un **unique** candidat avec `id === instanceId`. Toute
+erreur, absence du port ou promesse rejetée bloque la liaison.
+
+Après confirmation MJ, le helper délègue exactement une fois à
+`creator.reconcileStudioLink(instanceId,{confirm:true})`, puis relit
+`creatorPersistence.load()` et vérifie le lien au **même ID** sans journal restant.
+Il ne crée ni ne supprime de scène/créature et ne publie rien au joueur.
+
+**Recette avec vrais blobs dans le checkout composite (05, puis QA)** :
+`node --test experiments/dg-lot004/tests/studio/L004_PENDING_REAL_INTEROP.mjs`.
+Ce test importe les véritables modules `src/creators/cycle-state.mjs`,
+`src/storage/storage.mjs`, et l'adaptateur ARCHIVES L003. Sans fichier réel,
+le test doit **échouer**, jamais être ignoré. Chrome et la CI sont distincts.
