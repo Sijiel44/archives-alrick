@@ -6,6 +6,23 @@ const MJ='http://127.0.0.1:4173', PLAYER='http://127.0.0.1:4174';
 const STORAGE_KEY='cer.dg003.private.campaign.v0';
 const fail=reason=>{throw Error(reason);};
 const copy=x=>structuredClone(x);
+// Pure structural equality for an in-memory MJ snapshot vs its ARCHIVES-backed
+// re-read. Key insertion order is not an edit; arrays and all JSON values must
+// match exactly. This never changes serialized archive order or bytes.
+function jsonDifference(a,b,path='root'){
+ if(Object.is(a,b))return null;
+ if(a===null||b===null||typeof a!=='object'||typeof b!=='object')return path;
+ if(Array.isArray(a)!==Array.isArray(b))return path;
+ if(Array.isArray(a)){
+  if(a.length!==b.length)return path+'.length';
+  for(let i=0;i<a.length;i++){const d=jsonDifference(a[i],b[i],path+'['+i+']');if(d)return d;}
+  return null;
+ }
+ const ka=Object.keys(a).sort(),kb=Object.keys(b).sort();
+ if(ka.length!==kb.length||ka.some((k,i)=>k!==kb[i]))return path+'.keys';
+ for(const k of ka){const d=jsonDifference(a[k],b[k],path+'.'+k);if(d)return d;}
+ return null;
+}
 
 export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalThis.navigator?.locks??null,browserContext=typeof window!=='undefined'}={}) {
  if(!owner)return null;
@@ -177,7 +194,7 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
     fail('Private restore causal parent conflict: project changed after preview');
    }
    if(studio.id!==restoreTicket.id||
-      JSON.stringify(studio)!==JSON.stringify(restoreTicket.restored)){
+      jsonDifference(studio,restoreTicket.restored)!==null){
     exactRestorePending=null;
     fail('Private restore payload conflict: new preview and confirmation required');
    }
@@ -222,8 +239,9 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
    const ticket=previewAnchors.get(preview.privatePending);
    if(!ticket)fail('Private restore unverified preview: a fresh preview is required');
    // An old in-memory campaign cannot stand in for the latest ARCHIVES parent.
-   if(JSON.stringify(previous??null)!==JSON.stringify(ticket.source))
-    fail('Private restore source snapshot conflict: reload and preview again');
+   const sourceMismatch=jsonDifference(previous??null,ticket.source);
+   if(sourceMismatch)
+    fail('Private restore source snapshot conflict at '+sourceMismatch+': reload and preview again');
    if(parentRaw()!==ticket.parentRaw){
     previewAnchors.delete(preview.privatePending);
     fail('Private restore causal parent conflict: changed since preview');
