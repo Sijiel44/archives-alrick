@@ -171,7 +171,14 @@ try{
  await mj.eval(click('Prévisualiser restauration'));
  await until(()=>mj.eval(textContains('Restauration proposée')),110);
  await mj.eval(click('Confirmer restauration'));
- await until(()=>mj.eval(textContains('Campagne restaurée')),110);
+ const restoreStatuses=()=>mj.eval('[...document.querySelectorAll("[role=status]")].map(e=>e.textContent).filter(Boolean).slice(0,7)');
+ await until(async()=>{
+  if(await mj.eval(textContains('Campagne restaurée')))return true;
+  const statuses=await restoreStatuses();
+  const rejected=statuses.find(x=>/causal parent conflict|source snapshot conflict|Échec de persistance|unverified preview|Private restore/.test(x));
+  if(rejected)fail('OWNER_RESTORE_CAUSAL_GUARD '+JSON.stringify(statuses).slice(0,850));
+  return false;
+ },110);
  if((await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")'))!=='REAL_MJ_NOT_DEMO')
   fail('OWNER_RESTORE_OVERWROTE_REAL');
  await mj.eval(click('Quitter et effacer la démonstration dédiée'));
