@@ -68,8 +68,8 @@ jobs:
         run: |
           set -euo pipefail
           echo 'd89dea819a387dc9fdc5b61dfdaf62bc7e17aed3d930576f57cd2da4db3259b5  experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs' | sha256sum --check
-      - name: ARCHIVES P0 owner nine real tests (strict; no skips)
-        run: node --test experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs
+      - name: ARCHIVES P0 owner nine real tests (strict; native TS resolution, no skips)
+        run: node --import tsx --test experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs
       - name: Record source SHA on failure too
         if: always()
         run: |
