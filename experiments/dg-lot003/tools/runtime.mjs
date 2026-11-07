@@ -246,7 +246,20 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
    // Compare the exact NATIVE ARCHIVES projection, not optional Studio UI
    // defaults (e.g. absent privateNotes vs [] added during round-trip).
    // This is validation-only: it never rewrites the source, its order or bytes.
-   const left=previous?studioToArchive(previous,owner.createCampaign):null;
+   // The legacy STUDIO UI does not mirror catalogue/creatorDrafts committed
+   // independently by this integration adapter. Admit ONLY fields that are
+   // genuinely absent in the UI while retaining the real ARCHIVES values.
+   // Any present but divergent field (or unrelated unknown) remains a conflict.
+   const uiParent=previous?copy(previous):null;
+   if(uiParent&&ticket.source?.id===uiParent.id){
+    uiParent.extensions??={};
+    for(const key of ['catalog','creatorDrafts']){
+     if(!Object.hasOwn(uiParent.extensions,key)&&
+        Object.hasOwn(ticket.source.extensions??{},key))
+      uiParent.extensions[key]=copy(ticket.source.extensions[key]);
+    }
+   }
+   const left=uiParent?studioToArchive(uiParent,owner.createCampaign):null;
    const right=ticket.source?studioToArchive(ticket.source,owner.createCampaign):null;
    const sourceMismatch=jsonDifference(left,right);
    if(sourceMismatch)
