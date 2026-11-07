@@ -3,6 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as owner from '../../../dg-lot003/src/storage/storage.mjs';
 import {createValidatedStorage} from '../../../dg-lot003/tools/runtime.mjs';
+import {studioToArchive} from '../../../dg-lot003/tools/adapters.mjs';
 
 const KEY='cer.dg003.private.campaign.v0';
 const campaign=(revision=0)=>({schema:owner.STORAGE_SCHEMA,
@@ -44,7 +45,7 @@ test('DG004-RESTORE-01: project changed between preview and restore => no replac
  const a=area(),l=locks(),tabA=port(a,l),tabB=port(a,l);
  await tabA.save(scene(campaign(1),'original'));
  const previous=await tabA.load(),baseB=await tabB.load();
- const backup=await owner.exportPrivate(scene(campaign(0),'old-backup'));
+ const backup=await owner.exportPrivate(studioToArchive(scene(campaign(0),'old-backup'),owner.createCampaign));
  const preview=await tabA.previewRestore({bytes:backup.bytes});
  await tabB.save(scene({...baseB,revision:2},'newer-tab-B'));
  const intact=a.raw();
@@ -56,7 +57,7 @@ test('DG004-RESTORE-02: B writes after A restore() but before A save() => replac
  const a=area(),l=locks(),tabA=port(a,l),tabB=port(a,l);
  await tabA.save(scene(campaign(1),'original'));
  const previous=await tabA.load(),baseB=await tabB.load();
- const backup=await owner.exportPrivate(scene(campaign(0),'old-backup'));
+ const backup=await owner.exportPrivate(studioToArchive(scene(campaign(0),'old-backup'),owner.createCampaign));
  const preview=await tabA.previewRestore({bytes:backup.bytes});
  const replacement=await tabA.restore(preview,{previous});
  await tabB.save(scene({...baseB,revision:2},'newer-tab-B'));
@@ -72,7 +73,7 @@ test('DG004-RESTORE-03: unchanged parent permits explicit exact restoration, pre
  await tab.save(scene(campaign(2),'original'));const previous=await tab.load();
  const input=scene(campaign(0),'old-backup');
  input.extensions.anotherUnknown={bytes:['1','2'],private:'MUST_KEEP'};
- const backup=await owner.exportPrivate(input);
+ const backup=await owner.exportPrivate(studioToArchive(input,owner.createCampaign));
  const preview=await tab.previewRestore({bytes:backup.bytes});
  const restored=await tab.restore(preview,{previous});
  await tab.save(restored);
@@ -84,7 +85,7 @@ test('DG004-RESTORE-03: unchanged parent permits explicit exact restoration, pre
 test('DG004-RESTORE-04: restoration with manufactured preview or different source denied',async()=>{
  const a=area(),l=locks(),tab=port(a,l);
  await tab.save(campaign(0));
- const original=await tab.load(),backup=await owner.exportPrivate(campaign(3));
+ const original=await tab.load(),backup=await owner.exportPrivate(studioToArchive(campaign(3),owner.createCampaign));
  const preview=await tab.previewRestore({bytes:backup.bytes});
  await assert.rejects(tab.restore({...preview},{previous:original}),/unverified preview/);
  const changed=scene(original,'uncommitted');
