@@ -257,7 +257,11 @@ try{
   const result=await until(async()=>{
    const x=await getCycle(),status=await mj.eval(statusSelector);
    if(x?.step===stepName&&x.status==='mj-validated')return {ok:true,status};
-   if(status&&status!==before)return {ok:false,status,preview:x};
+   // Some owner UI status messages are written just BEFORE render() updates
+   // the public preview; a positive message is not proof and not a failure.
+   if(status&&status!==before&&
+      /(?:refusé|indisponible|invalide|conflit|CREATOR_.*CONFLICT|Réconciliation requise)/i.test(status))
+    return {ok:false,status,preview:x};
    return null;
   },110);
   if(!result.ok)fail('CYCLE_'+stepName+'_VALIDATION_REJECTED '+JSON.stringify(result).slice(0,1200));
