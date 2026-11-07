@@ -70,40 +70,39 @@
   "handoffs": {
     "p0a": {
       "issue": 92,
-      "status": "BUILDER 13 files and STUDIO 13 files copied verbatim; owner demo wired at /dg004-demo.html; CI browser under test",
+      "status": "Proprietary BUILDER and STUDIO source/test copied; integrated real Chrome P0A has passed on earlier head; new final gate pending",
       "builder": {
         "branch": "prototype/dg004-preview-builder",
-        "commit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-        "files": 13
+        "commit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+        "deliveredPaths": 13
       },
       "studio": {
         "branch": "prototype/dg004-studio",
-        "commit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
-        "files": 13,
-        "localTests": "15/15 reported; browser NOT EXECUTED by owner"
+        "commit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+        "deliveredPaths": 39
       }
     },
     "p0b": {
       "issue": 93,
-      "status": "MATH 8 owner files, INDEX 9 owner files copied verbatim; integrated native M01 and read-only XP preview under CI",
+      "status": "Proprietary MATH and INDEX R2, native M01 and readonly XP, latest integrated tests/Chrome pending",
       "math": {
         "branch": "prototype/dg004-xp-math",
-        "commit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
-        "files": 8
+        "commit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+        "deliveredPaths": 22
       },
       "index": {
         "branch": "prototype/dg004-index-xp-links",
-        "commit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-        "files": 9
+        "commit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+        "deliveredPaths": 16
       }
     },
     "p0c": {
       "issue": 94,
-      "status": "ATELIERS 6 owner files copied verbatim; cycle+INDEX bridge mounted in separate fictitious MJ page; full browser gate pending",
+      "status": "Proprietary ATELIERS latest, journal and real ARCHIVES reread wired; newest Chrome exact-head gate pending",
       "creators": {
         "branch": "prototype/dg004-creators",
-        "commit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
-        "files": 6
+        "commit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+        "deliveredPaths": 6
       }
     }
   },
@@ -117,400 +116,272 @@
   },
   "mutableOwners": false,
   "qa": {
-    "status": "not-executed-for-lot004"
+    "status": "P0-UNBLOCK NON QUALIFIÉ; integrator CI not independent QA; independent QA PR not opened"
   },
   "provenance": [
     {
       "role": "builder",
-      "path": "experiments/dg-lot004/builder/README.md",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
       "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "546c13ca46536f6272961997f5e0673586a5867e",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "builder",
-      "path": "experiments/dg-lot004/builder/docs/FICHE_DIRECTION_L004_A_BUILDER.md",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "c6dee4605e4c4e8a88e6c256f38187b459e2171f",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "builder",
-      "path": "experiments/dg-lot004/builder/docs/L004_A_RAPPORT_TECHNIQUE.md",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "64d6f8bf75ae224318286b490534a9ac0d8b80ad",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "builder",
-      "path": "experiments/dg-lot004/builder/docs/PASSATIONS_STUDIO_INTEGRATION.md",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "bdc839ef799b3bf2b418a05921c0486c24447f23",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "builder",
       "path": "experiments/dg-lot004/builder/src/browser-smoke.mjs",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "0575e8e7292ed98c7240c04dd45faa3eca2e9148",
-      "transport": "verbatim-git-blob"
+      "blobSha": "2b1d599189727a82233a4a76e3a490964b5d09c5",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "builder",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "sourceBranch": "prototype/dg004-preview-builder",
       "path": "experiments/dg-lot004/builder/src/contract.mjs",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "d63706fd85784062e6c6eb10e2a894184ee311b1",
-      "transport": "verbatim-git-blob"
+      "blobSha": "c5456967d90838de97e8d267f4f01daf976743c6",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "builder",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "sourceBranch": "prototype/dg004-preview-builder",
       "path": "experiments/dg-lot004/builder/src/launch-local.mjs",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "cab5730e6ee9a7a06973c3b1946f645f21c25502",
-      "transport": "verbatim-git-blob"
+      "blobSha": "763a5cd240396b91a8067a72aef68efb4a67ef25",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "builder",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "sourceBranch": "prototype/dg004-preview-builder",
       "path": "experiments/dg-lot004/builder/src/navigation.mjs",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "a2e47969ddd6a1cce0c35d56ecb54d5bb165d16a",
-      "transport": "verbatim-git-blob"
+      "blobSha": "f1521dca3efe4a1a214ca4a33ad98090b8bb64f5",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "builder",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "sourceBranch": "prototype/dg004-preview-builder",
       "path": "experiments/dg-lot004/builder/src/probe.mjs",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "41a916613429c1ba2671abe137106c0853e3771c",
-      "transport": "verbatim-git-blob"
+      "blobSha": "e7a589b48c9eedc5f3cee8809f54ee995d45251b",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "builder",
-      "path": "experiments/dg-lot004/builder/tests/SHA256_SOURCE_LOCAL.txt",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
       "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "c877f019aae5e90ad15cf382867045bd1ed3bbe6",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "builder",
-      "path": "experiments/dg-lot004/builder/tests/TEST_RESULTS_LOCAL.tap",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "1749de2c183923a222529c10f6caaaaeaa70fd87",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "builder",
       "path": "experiments/dg-lot004/builder/tests/ports.test.mjs",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "54cccde078a63e217705c06d90097835e125f0be",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "builder",
-      "path": ".github/workflows/dg-lot004-builder-preview.yml",
-      "sourceBranch": "prototype/dg004-preview-builder",
-      "sourceCommit": "4747a97676324fa40fd40c80c5db59a0f0681bae",
-      "blobSha": "f6ec464a7f81207722dfa1cc0961014047f6a37e",
-      "transport": "verbatim-git-blob"
+      "blobSha": "acf67c633af9ff4807aec30502ab541c044ddd44",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
       "path": "experiments/dg-lot004/src/studio/CONTRACT.md",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
-      "blobSha": "24c65269af57aabaff0b2d2272755a6a05cd77f1",
-      "transport": "verbatim-git-blob"
+      "blobSha": "77a0fa06a18ccc542dc17f2a7a16ded274063e61",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
       "path": "experiments/dg-lot004/src/studio/demo-storage.mjs",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
       "blobSha": "57f38f946c9592e9bd75462ff7e4a91e25b0b756",
-      "transport": "verbatim-git-blob"
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
       "path": "experiments/dg-lot004/src/studio/demo.css",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
       "blobSha": "8568184f8314aab170da176b78f53aed68aff352",
-      "transport": "verbatim-git-blob"
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
       "path": "experiments/dg-lot004/src/studio/demo.mjs",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
-      "blobSha": "6288cb394788e16b267f2540983eeeb57be22747",
-      "transport": "verbatim-git-blob"
+      "blobSha": "2f9f239af4dfcec8c790bec20d3b2533e9dba7b9",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/src/studio/reconcile.mjs",
+      "blobSha": "61cc35376f80b1845472109332ecc681d81d2fe3",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
       "path": "experiments/dg-lot004/src/studio/scene-bridge.mjs",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
       "blobSha": "1e11d083a2f4625ae2dd5face4bbd01cc174fc5b",
-      "transport": "verbatim-git-blob"
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "studio",
-      "path": "experiments/dg-lot004/tests/studio/FICHE_DIRECTION_L004_STUDIO.md",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
       "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
-      "blobSha": "a61b0697472fe4d3759abe2c5868b67b82803fd1",
-      "transport": "verbatim-git-blob"
+      "path": "experiments/dg-lot004/src/studio/ux-ardoise-cuivre-or.proposal.css",
+      "blobSha": "2083c9f5b050ff6133eeff61c891cad49f70bf8c",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "studio",
-      "path": "experiments/dg-lot004/tests/studio/GUIDE_SCENARIO_L004.md",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
       "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
-      "blobSha": "1bdc1dc5b339fbc27dcb87befda3cdbbf8d50245",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "studio",
-      "path": "experiments/dg-lot004/tests/studio/L004_A_RAPPORT_TECHNIQUE.md",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
-      "blobSha": "d509c00fea48a9497657ff1cde0a4aa77b16c356",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "studio",
-      "path": "experiments/dg-lot004/tests/studio/L004_BROWSER_ATTEMPT.txt",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
-      "blobSha": "4f739bc3ed310fb3a7cbe2390ce0cc3138cd0f0d",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "studio",
-      "path": "experiments/dg-lot004/tests/studio/L004_NODE_TESTS.tap",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
-      "blobSha": "ceebc606d263488d80cd57b0a61d6e6236170a49",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "studio",
-      "path": "experiments/dg-lot004/tests/studio/L004_SYNTAX_LOG.txt",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
-      "blobSha": "b0db20b165c2e7491a465f7c2c1696dd175b69dc",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "studio",
-      "path": "experiments/dg-lot004/tests/studio/browser-scenario.py",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
-      "blobSha": "5eef360e37c3577bf563abd05758965c7cc36cbc",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "studio",
       "path": "experiments/dg-lot004/tests/studio/demo.test.mjs",
-      "sourceBranch": "prototype/dg004-studio",
-      "sourceCommit": "18602be2d0b281478ebd9693b6ff0be63ef862ee",
       "blobSha": "ad78d0dbf133618cc5f5b7b645cd930e903bd9f0",
-      "transport": "verbatim-git-blob"
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
-      "role": "index",
-      "path": "experiments/dg-lot004/src/catalog/CONTRACT.md",
-      "sourceBranch": "prototype/dg004-index-xp-links",
-      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-      "blobSha": "42ab07ba3eea9852f76a3684e83e8b5c9713b414",
-      "transport": "verbatim-git-blob"
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_CONTRACT.test.mjs",
+      "blobSha": "1677144f384e7994bbcdc5dc934e4659c4f850de",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
-      "role": "index",
-      "path": "experiments/dg-lot004/src/catalog/README.md",
-      "sourceBranch": "prototype/dg004-index-xp-links",
-      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-      "blobSha": "8f20f53f8b5844ee1460653e99ef0417328268e2",
-      "transport": "verbatim-git-blob"
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_REAL_INTEROP.mjs",
+      "blobSha": "5e9aae7d1dd9b6b9abeb9ec0458e689cd6c7334a",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
-      "role": "index",
-      "path": "experiments/dg-lot004/src/catalog/index.mjs",
-      "sourceBranch": "prototype/dg004-index-xp-links",
-      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-      "blobSha": "18cfa95cee60258322f0f0e32b8214ec95b509ac",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "index",
-      "path": "experiments/dg-lot004/tests/catalog/FICHE_DIRECTION_L004_INDEX.md",
-      "sourceBranch": "prototype/dg004-index-xp-links",
-      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-      "blobSha": "26cdf543e5291de9d735e475bffbf95b1dbc5fd7",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "index",
-      "path": "experiments/dg-lot004/tests/catalog/MANIFEST_L004_INDEX.json",
-      "sourceBranch": "prototype/dg004-index-xp-links",
-      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-      "blobSha": "1072dc60ef8da602ccf4e7c1ca025ddfafe2b2f3",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "index",
-      "path": "experiments/dg-lot004/tests/catalog/NATIVE_M01_STATUS.txt",
-      "sourceBranch": "prototype/dg004-index-xp-links",
-      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-      "blobSha": "9303c0d285563bdd511217bfaa602692b86c3624",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "index",
-      "path": "experiments/dg-lot004/tests/catalog/TEST_RESULTS_NODE22.tap",
-      "sourceBranch": "prototype/dg004-index-xp-links",
-      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-      "blobSha": "ed1b55699ed0f792b3f5357bad359b6338836996",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "index",
-      "path": "experiments/dg-lot004/tests/catalog/catalog.test.mjs",
-      "sourceBranch": "prototype/dg004-index-xp-links",
-      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-      "blobSha": "33f58cb76486503b1d0fe48a63ccf855421e28dc",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "index",
-      "path": "experiments/dg-lot004/tests/catalog/native-m01.test.mjs",
-      "sourceBranch": "prototype/dg004-index-xp-links",
-      "sourceCommit": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
-      "blobSha": "3475aa4e643d41ef03c35facdcc7d0e45e2ca146",
-      "transport": "verbatim-git-blob"
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_reconciliation.test.mjs",
+      "blobSha": "28cdc498e7447ded54f6bd62bfe802c0e4bea71d",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "math",
-      "path": "experiments/dg-lot004/math-xp/README.md",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
       "sourceBranch": "prototype/dg004-xp-math",
-      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
-      "blobSha": "d5b0702564282b3233055de870bb61e87a10e330",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "math",
-      "path": "experiments/dg-lot004/math-xp/docs/FICHE_DIRECTION_L004_B.md",
-      "sourceBranch": "prototype/dg004-xp-math",
-      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
-      "blobSha": "4aba3393d511a527c7fdb999055175fa63a50078",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "math",
-      "path": "experiments/dg-lot004/math-xp/docs/L004_B_RAPPORT_TECHNIQUE.md",
-      "sourceBranch": "prototype/dg004-xp-math",
-      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
-      "blobSha": "f3b306c992368a4e8e5503514abf134f5ac2820b",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "math",
-      "path": "experiments/dg-lot004/math-xp/docs/MATRICE_DEPENDANCES_L004_B.md",
-      "sourceBranch": "prototype/dg004-xp-math",
-      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
-      "blobSha": "64fab890796874ff0ee8cd8542066d8ded7d03f2",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "math",
       "path": "experiments/dg-lot004/math-xp/src/xp-decision.ts",
-      "sourceBranch": "prototype/dg004-xp-math",
-      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
       "blobSha": "76daeb8ec21702e9ebcb27845ccd3d6b709ff574",
-      "transport": "verbatim-git-blob"
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "math",
-      "path": "experiments/dg-lot004/math-xp/tests/L004_B_RUN_RESULT.json",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
       "sourceBranch": "prototype/dg004-xp-math",
-      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
-      "blobSha": "39cc59b1a2d42fcd6d21aa4c938f4ed351584841",
-      "transport": "verbatim-git-blob"
+      "path": "experiments/dg-lot004/math-xp/src/encounter-recommendations.ts",
+      "blobSha": "58ee80a8345113aff89bfc58a3f276f3c401d7c2",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "math",
-      "path": "experiments/dg-lot004/math-xp/tests/L004_B_TEST_OUTPUT.tap",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
       "sourceBranch": "prototype/dg004-xp-math",
-      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
-      "blobSha": "8d1bc045ee9ac53f4083613fdec0771d82f8b7a3",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "math",
       "path": "experiments/dg-lot004/math-xp/tests/xp-decision.test.mjs",
-      "sourceBranch": "prototype/dg004-xp-math",
-      "sourceCommit": "969ed8ffb11ea89dc17b59b56b494705a3f4da97",
       "blobSha": "b54a79387cfd8055960b306db2daf298861d7b30",
-      "transport": "verbatim-git-blob"
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/tests/encounter-recommendations.test.mjs",
+      "blobSha": "219b570b03b53b66ff1822a67a45f6d458554f35",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/tests/repair-math-browser-parity.test.mjs",
+      "blobSha": "55b6b7d0d267dc5c70f43ff337ef983c04545eee",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/tests/verify-index-browser-bridge.mjs",
+      "blobSha": "2fc2b3c8e2b10ef6f5e5c196663aaee7b01aaa",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/tests/generate-xp-simulations.mjs",
+      "blobSha": "8c2fffff09e295071fabbc1c7b65f596b5db4cf2",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "index",
+      "sourceCommit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "path": "experiments/dg-lot004/src/catalog/CONTRACT.md",
+      "blobSha": "42ab07ba3eea9852f76a3684e83e8b5c9713b414",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "index",
+      "sourceCommit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "path": "experiments/dg-lot004/src/catalog/index.mjs",
+      "blobSha": "27ffd1dbb520eed8fff3efd293948c94ea57cf95",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "index",
+      "sourceCommit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "path": "experiments/dg-lot004/tests/catalog/catalog.test.mjs",
+      "blobSha": "33f58cb76486503b1d0fe48a63ccf855421e28dc",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "index",
+      "sourceCommit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "path": "experiments/dg-lot004/tests/catalog/catalog-r2.test.mjs",
+      "blobSha": "cbd6989fc0c7c1d5f7d790f9f75194bff8a9b9ea",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "index",
+      "sourceCommit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "path": "experiments/dg-lot004/tests/catalog/native-m01.test.mjs",
+      "blobSha": "3475aa4e643d41ef03c35facdcc7d0e45e2ca146",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "creators",
-      "path": "experiments/dg-lot004/src/creators/FICHE_DIRECTION_L004_C.md",
+      "sourceCommit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
       "sourceBranch": "prototype/dg004-creators",
-      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
-      "blobSha": "be358c93d9f7b1f70fb8b207e3296d2cbbcbd397",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "creators",
-      "path": "experiments/dg-lot004/src/creators/README.md",
-      "sourceBranch": "prototype/dg004-creators",
-      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
-      "blobSha": "db33ba9ae8cd59cb1ccc7f9b6e08c7d6aeebf3a5",
-      "transport": "verbatim-git-blob"
-    },
-    {
-      "role": "creators",
       "path": "experiments/dg-lot004/src/creators/cycle-state.mjs",
-      "sourceBranch": "prototype/dg004-creators",
-      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
-      "blobSha": "86675c04d0cb525f0144bf5da9be037ec5698d47",
-      "transport": "verbatim-git-blob"
+      "blobSha": "5554b3b12728f0e63388beccec2c58b29b214281",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "creators",
+      "sourceCommit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+      "sourceBranch": "prototype/dg004-creators",
       "path": "experiments/dg-lot004/src/creators/cycle-ui.mjs",
-      "sourceBranch": "prototype/dg004-creators",
-      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
-      "blobSha": "372d83c876990fca3cdf3204f209772d1f007b52",
-      "transport": "verbatim-git-blob"
+      "blobSha": "aef3aa1383b4d283f4dea877c62e1ee9329d407d",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "creators",
+      "sourceCommit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+      "sourceBranch": "prototype/dg004-creators",
       "path": "experiments/dg-lot004/tests/creators/cycle-state.test.mjs",
-      "sourceBranch": "prototype/dg004-creators",
-      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
-      "blobSha": "bc8d46d69eae2671b3fb2d32c80c541b2b2a8957",
-      "transport": "verbatim-git-blob"
+      "blobSha": "6ed92bf73433fab61f5e7abf5af7e72501f50c7b",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "creators",
-      "path": "experiments/dg-lot004/tests/creators/cycle-ui.test.mjs",
+      "sourceCommit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
       "sourceBranch": "prototype/dg004-creators",
-      "sourceCommit": "469424d044c8f62871c4ed77f07a09814d7c72d6",
-      "blobSha": "121211ae242039bad1ddf778544fe1156ad81bdb",
-      "transport": "verbatim-git-blob"
+      "path": "experiments/dg-lot004/tests/creators/cycle-ui.test.mjs",
+      "blobSha": "5a1c2143b382a30f7b58d62cb9a14ede7936dee7",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     }
   ],
   "ownerTreeNotes": "Issue #92 initially reserved src/ports/** but BUILDER actual owner path is builder/**, no movement; issue #93 reserved src/rules/** but MATH uses math-xp/**, no movement; INDEX only src/catalog/CONTRACT.md; no owner file modified.",
@@ -524,5 +395,41 @@
     "noPublicHosting": true,
     "ownerCreatorCycle": "http://127.0.0.1:4173/dg004-demo.html#dg004-cycle-root",
     "xpPreview": "read-only MATH+INDEX/M01 parity; never apply"
+  },
+  "ownerDeliveries": {
+    "builder": {
+      "branch": "prototype/dg004-preview-builder",
+      "commit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "deliveredPaths": 13
+    },
+    "studio": {
+      "branch": "prototype/dg004-studio",
+      "commit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "deliveredPaths": 39
+    },
+    "math": {
+      "branch": "prototype/dg004-xp-math",
+      "commit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "deliveredPaths": 22
+    },
+    "index": {
+      "branch": "prototype/dg004-index-xp-links",
+      "commit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "deliveredPaths": 16
+    },
+    "creators": {
+      "branch": "prototype/dg004-creators",
+      "commit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+      "deliveredPaths": 6
+    }
+  },
+  "provenanceScope": "Source code and executable test byte blobs certified. Ancillary owner docs/logs copied via contents API but not separately listed as CI-certified source blobs.",
+  "p0StorageSupport": {
+    "archive": "P0_STORAGE_SUPPORT_001_PASSATION.zip",
+    "sha256": "38b1e055a94562aa8a6e35073a0997fcb88583b21582dc58d8eeb3cf2b88c2d1",
+    "source": "library:libfile_8940c0ec91d881919e88831fc2ed76e0",
+    "retrieval": "BLOCKED: files materialize raw-file authorized path unavailable; files read ZIP internal error",
+    "nineOfficialTests": "NOT EXECUTED",
+    "relatedIntegrationTests": "tests/integration/creator-persistence.test.mjs; distinct handcrafted regression, not the owner supplied nine"
   }
 }
