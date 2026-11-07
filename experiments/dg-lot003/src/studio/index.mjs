@@ -141,18 +141,52 @@ export function mountStudio(root,options={}){
     c.scenes.push(scene);c.activeSceneId=scene.id;touch();resetSelection();render();
     root.querySelector('textarea[aria-label="Notes MJ — privées"]')?.focus();void save();
   }
-  async function setActiveScene(id){const c=requireCampaign();if(!c.scenes.some(s=>s.id===id))throw Error('Scène introuvable');
-    const changed=c.activeSceneId!==id;
-    c.activeSceneId=id;if(changed)touch();
-    // No automatic republication: clear previous consent and the player window first.
-    resetSelection();render();
-    if(changed)await save();
+  async function setActiveScene(id){
+    const current=requireCampaign();
+    if(!current.scenes.some(s=>s.id===id))throw Error('Scène introuvable');
+    const changed=current.activeSceneId!==id;
+    // Player consent is revoked before any local mutation; never republish.
+    resetSelection();
+    if(!changed){render();return;}
+    if(storage?.beginEdit&&storage?.commitEdit){
+      const prior=clone(current);
+      await pendingSave; // a failed preceding write is NOT an attested parent
+      const ticket=await storage.beginEdit();
+      if(ticket.base.id!==prior.id||ticket.base.revision!==prior.revision||
+         ticket.base.activeSceneId!==prior.activeSceneId)
+        throw Error('Studio scene selection causal parent conflict: reload before editing');
+      const saved=await storage.commitEdit(ticket.handle,[{kind:'select-scene',id}]);
+      campaign=clone(saved);resetSelection();render();
+      status('Scène active sauvegardée sur parent confirmé. Projection révoquée.');
+      return;
+    }
+    current.activeSceneId=id;touch();resetSelection();render();await save();
   }
-  function updateScene(data){const s=currentScene();if(!s)throw Error('Scène absente');
-    s.title=plainText(data.title,160);s.publicDescription=plainText(data.publicDescription,2000);
-    s.privateNotes=plainText(data.privateNotes,4000);
-    s.participantIds=Array.isArray(data.participantIds)?[...new Set(data.participantIds)].filter(x=>actorSet().some(a=>a.id===x)):[];
-    touch();resetSelection();render();void save();
+  async function updateScene(data){
+    const scene=currentScene();if(!scene)throw Error('Scène absente');
+    const changes={title:plainText(data.title,160),
+      publicDescription:plainText(data.publicDescription,2000),
+      privateNotes:plainText(data.privateNotes,4000),
+      participantIds:Array.isArray(data.participantIds)
+       ?[...new Set(data.participantIds)].filter(x=>actorSet().some(a=>a.id===x)):[]
+    };
+    if(storage?.beginEdit&&storage?.commitEdit){
+      const old=clone(requireCampaign()),oldScene=clone(scene);
+      // No full snapshot is issued or silently rebased on an editor's last load.
+      await pendingSave;
+      const ticket=await storage.beginEdit();
+      const verified=ticket.base.scenes.find(s=>s.id===oldScene.id);
+      if(ticket.base.id!==old.id||ticket.base.revision!==old.revision||
+         JSON.stringify(verified)!==JSON.stringify(oldScene))
+        throw Error('Studio scene edit causal draft conflict: reload before editing');
+      const saved=await storage.commitEdit(ticket.handle,[{kind:'update-scene',id:oldScene.id,changes}]);
+      campaign=clone(saved);resetSelection();render();
+      status('Scène et notes MJ sauvegardées sur brouillon attesté.');
+      return;
+    }
+    scene.title=changes.title;scene.publicDescription=changes.publicDescription;
+    scene.privateNotes=changes.privateNotes;scene.participantIds=changes.participantIds;
+    touch();resetSelection();render();await save();
   }
   async function exportPrivate(){
     if(!storage||typeof storage.exportPrivate!=='function')throw Error('Export privé ARCHIVES indisponible');
