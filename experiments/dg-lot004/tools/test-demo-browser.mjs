@@ -189,6 +189,25 @@ try{
  await step('Créer campagne fictive','Campagne active : Campagne vitrine');
  await step('Prévisualiser PJ fictif','À importer');
  await step('Accepter copie PJ','PJ copiés :');
+ // Real second MJ tab: the owner browser session must not overwrite a newer
+ // creator revision from a stale tab. This is not a simulated localStorage map.
+ const browserControl=await CDP.open(versionInfo.webSocketDebuggerUrl);
+ const otherTarget=(await browserControl.call('Target.createTarget',{url:MJ+'/dg004-demo.html'})).targetId;
+ const otherInfo=await until(async()=>(await json(base+'/json')).find(x=>x.id===otherTarget),110);
+ const otherMj=await CDP.open(otherInfo.webSocketDebuggerUrl);
+ await otherMj.call('Runtime.enable');
+ await until(()=>otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("Parcours privé prêt")'),110);
+ await mj.eval(click('Enregistrer brouillon'));
+ await until(()=>mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")!==null'),110);
+ const guardedBefore=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ await otherMj.eval(click('Enregistrer brouillon'));
+ await until(()=>otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("CREATOR_INITIAL_REVISION_CONFLICT")'),110);
+ const guardedAfter=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ if(guardedBefore!==guardedAfter)fail('DG004_INTERTAB_OVERWROTE_CREATOR');
+ otherMj.close();
+ await browserControl.call('Target.closeTarget',{targetId:otherTarget});
+ browserControl.close();
+ console.log('DG004_TWO_MJ_TABS_CAS_OK',JSON.stringify({actualTabs:2,staleWriteRejected:true,rawBytesPreserved:true}));
  // The dedicated owner page also mounts MATH/INDEX XP (read-only) and the
  // real ATELIERS guided chain. Neither may credit XP or publish to the player.
  const xpBefore=await mj.eval('localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")');
@@ -286,7 +305,18 @@ try{
  const secondAfter=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0"),creator:localStorage.getItem("cer.dg004.creators.private.demo.v0")})');
  if(secondAfter.real!=='REAL_MJ_NOT_DEMO'||secondAfter.demo!==null||secondAfter.creator!==null)
   fail('OWNER_CREATOR_ROLLBACK_NOT_ATTESTED '+JSON.stringify(secondAfter));
- secondPlayer.close();mj.close();
+ secondPlayer.close();
+ // Browser P0 S07: a foreign fixed-key JSON must be preserved, never treated
+ // as an owned creator envelope or silently cleaned during page mount.
+ const foreignCreatorRaw=JSON.stringify({kind:'external-legacy',private:'KEEP_OLD_BYTES'});
+ await mj.eval('localStorage.setItem("cer.dg004.creators.private.demo.v0",'+JSON.stringify(foreignCreatorRaw)+')');
+ await mj.call('Page.navigate',{url:MJ+'/dg004-demo.html'});
+ await until(()=>mj.eval('document.querySelector("#status")?.textContent.includes("FOREIGN_CREATOR_KEY")'),110);
+ if(await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")')!==foreignCreatorRaw)
+  fail('DG004_FOREIGN_CREATOR_BYTES_CHANGED');
+ await mj.eval('localStorage.removeItem("cer.dg004.creators.private.demo.v0")');
+ mj.close();
+ console.log('DG004_FOREIGN_KEY_BROWSER_OK',JSON.stringify({rejectedBeforeMount:true,oldBytesIntact:true}));
  console.log('DG004_STUDIO_OWNER_BROWSER_OK',JSON.stringify({ownerCommit:'18602be2d0b281478ebd9693b6ff0be63ef862ee',
   v3PJ:true,creature:true,scene:true,namespace:true,privateCanaryAbsent:true,
   foreignArchiveRejected:true,backupBytes:ownerBytes.length,roundtrip:true,rollback:true,oldMJIntact:true}));
