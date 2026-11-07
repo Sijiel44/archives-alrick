@@ -1,7 +1,7 @@
 /** Single-purpose, local-only static server; no network API and no Pages. */
 import {createServer} from 'node:http';import {readFile} from 'node:fs/promises';import {fileURLToPath} from 'node:url';import {dirname,resolve,extname,sep} from 'node:path';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),port=4181;
-const accept=new Set(['/','/index.html','/src/styles.css','/src/app.mjs','/src/contracts.mjs','/src/fixture.mjs','/src/idb-store.mjs','/src/private-archive.mjs']);
+const accept=new Set(['/','/index.html','/src/styles.css','/src/app.mjs','/src/contracts.mjs','/src/fixture.mjs','/src/idb-store.mjs','/src/private-archive.mjs','/src/a-guard.mjs']);
 const server=createServer(async(req,res)=>{
  try{if(req.method!=='GET'||req.headers.host!=='127.0.0.1:'+port){res.writeHead(403);res.end();return;}
   const pathname=new URL(req.url,'http://127.0.0.1:'+port).pathname;if(!accept.has(pathname)){res.writeHead(404);res.end();return;}
