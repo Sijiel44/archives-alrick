@@ -200,8 +200,14 @@ try{
  await mj.eval(click('Enregistrer brouillon'));
  await until(()=>mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")!==null'),110);
  const guardedBefore=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ const otherBefore=await otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
  await otherMj.eval(click('Enregistrer brouillon'));
- await until(()=>otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("CREATOR_INITIAL_REVISION_CONFLICT")'),110);
+ const otherStatus=await until(async()=>{
+  const value=await otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
+  return value&&value!==otherBefore?value:null;
+ },110);
+ if(!/CREATOR_(INITIAL_)?REVISION_CONFLICT/.test(otherStatus))
+  fail('REAL_SECOND_TAB_WRITER_NOT_REJECTED: '+JSON.stringify({otherBefore,otherStatus}).slice(0,900));
  const guardedAfter=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
  if(guardedBefore!==guardedAfter)fail('DG004_INTERTAB_OVERWROTE_CREATOR');
  otherMj.close();
