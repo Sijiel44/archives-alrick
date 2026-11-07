@@ -1,0 +1,50 @@
+{
+  "project": "Les Chroniques d’Entre-Rives v0.1",
+  "mission": "UX-STUDIO-001.R2",
+  "scope": "P1 design only",
+  "source_prs": {
+    "studio_101": "3499004dd47d706b06d2dc3e2f5b670df3f60220",
+    "ateliers_102": "85f473d2005903a6fc81d37a83fcc6b3c6d16466",
+    "builder_104": "f84f8c54361b3701ebb0251700f2d0d09d4acf4d",
+    "studio_p0_98": "35e2de3bcc702def3d37906997fb07155d2c44a3"
+  },
+  "file_checksums": [
+    {
+      "file": "UX_STUDIO_001_R2_DECISIONS_PASSATIONS.md",
+      "utf8": true,
+      "n_lines": 88,
+      "n_bytes": 11735,
+      "git_blob_sha1": "d5e20f4711f8323265d7276b9d270f06317732c1",
+      "sha256": "4ef060ea7dc522f5bac634ad375f51053d9f315d99b7e31cd5449475aae8a55a",
+      "table_column_counts": [
+        6
+      ]
+    },
+    {
+      "file": "UX_STUDIO_001_R2_MATRICE_GESTES_CONTRATS.md",
+      "utf8": true,
+      "n_lines": 84,
+      "n_bytes": 12632,
+      "git_blob_sha1": "188e3d8d38eb6e848ad46a8f2f71366b1f12f6c4",
+      "sha256": "eb0f9a7c55caec96f84ae2cd135737b1530820377e60023f2e1eee588d13d4a9",
+      "table_column_counts": [
+        3,
+        4,
+        7
+      ]
+    },
+    {
+      "file": "UX_STUDIO_001_R2_RAPPORT_CONSOLIDE.md",
+      "utf8": true,
+      "n_lines": 133,
+      "n_bytes": 20841,
+      "git_blob_sha1": "f30eaa5ac869f8731f3bc27210c9269a839d2f53",
+      "sha256": "67f621f7535fbfc55ed2042025268812a159434dc29af8578a238758fc284437",
+      "table_column_counts": [
+        3,
+        4
+      ]
+    }
+  ],
+  "validation": "structural documentation checks only; no UX/browser/CI/recovery test run"
+}
