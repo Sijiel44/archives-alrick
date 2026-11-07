@@ -13,7 +13,7 @@ const expected={builder:'ee3f428843fea64a285366032e677c5bc7284b9d',
  studio:'35e2de3bcc702def3d37906997fb07155d2c44a3',
  math:'86cf1d57eb2d587b88e253c7f0c207db8edf2db2',
  index:'d071842639d0adc952dedf3e279c6a1b7004855c',
- creators:'ceb316e00d667ba9d5155822fd57cabc931f3380'};
+ creators:'1542891066ee88d5f6f4414856b7cf13a6199572'};
 for(const [role,commit] of Object.entries(expected))
  if(manifest.ownerDeliveries?.[role]?.commit!==commit)throw Error('Owner reference diverged: '+role);
 if(!Array.isArray(manifest.provenance)||manifest.provenance.length!==33)
