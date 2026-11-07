@@ -1,0 +1,37 @@
+/* STUDIO L004-REPAIR / BUILDER review only — NOT loaded in P0, no network fonts/assets. */
+[data-l004-demo].l004-theme-proposal {
+  --slate-950:#14212d;--slate-800:#233347;--copper:#e4b179;--gold:#e9c56e;
+  --chalk:#f4efe5;--muted:#dccfbd;--focus:#ffe299;
+  color:var(--chalk);background:var(--slate-950);border:1px solid var(--copper);
+  border-radius:14px;padding:clamp(12px,2vw,24px);font:inherit;max-width:100%;
+}
+[data-l004-demo].l004-theme-proposal :is(section,article,aside){
+  color:var(--chalk);background:var(--slate-800);border:1px solid var(--copper);
+  border-radius:10px;min-width:0;overflow-wrap:anywhere;
+}
+[data-l004-demo].l004-theme-proposal :is(h1,h2,h3){color:var(--gold);line-height:1.25;}
+[data-l004-demo].l004-theme-proposal :is(p,li,label){color:var(--chalk);}
+[data-l004-demo].l004-theme-proposal :is(button,input,select,textarea){
+  font:inherit;min-height:44px;border-radius:8px;max-width:100%;
+}
+[data-l004-demo].l004-theme-proposal button{
+  border:1px solid var(--copper);color:var(--slate-950);background:var(--copper);
+  padding:10px 14px;cursor:pointer;
+}
+[data-l004-demo].l004-theme-proposal button:not(:disabled):hover{background:var(--gold);}
+[data-l004-demo].l004-theme-proposal button:disabled{opacity:.65;cursor:not-allowed;}
+[data-l004-demo].l004-theme-proposal :is(input,select,textarea){
+  color:var(--chalk);background:var(--slate-950);border:1px solid var(--copper);padding:8px 10px;
+}
+[data-l004-demo].l004-theme-proposal :is(button,input,select,textarea,a):focus-visible{
+  outline:3px solid var(--focus);outline-offset:3px;
+}
+[data-l004-demo].l004-theme-proposal :is([role=status],[aria-live]){border-left:3px solid var(--gold);padding:.6em .8em;}
+[data-l004-demo].l004-theme-proposal :is([aria-invalid=true]){outline:3px solid #ffb4a4;}
+@media(max-width:700px){
+  [data-l004-demo].l004-theme-proposal{padding:10px;}
+  [data-l004-demo].l004-theme-proposal :is(button,input,select,textarea){width:100%;}
+}
+@media(prefers-reduced-motion:reduce){
+  [data-l004-demo].l004-theme-proposal *{animation:none!important;transition:none!important;scroll-behavior:auto!important;}
+}
