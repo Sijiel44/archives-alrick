@@ -206,14 +206,25 @@ try{
   const value=await otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
   return value&&value!==otherBefore?value:null;
  },110);
- if(!/CREATOR_(INITIAL_)?REVISION_CONFLICT/.test(otherStatus))
-  fail('REAL_SECOND_TAB_WRITER_NOT_REJECTED: '+JSON.stringify({otherBefore,otherStatus}).slice(0,900));
+ if(!/CREATOR_IDENTITY_CONFLICT/.test(otherStatus))
+  fail('REAL_SECOND_TAB_FOREIGN_ID_NOT_REJECTED: '+JSON.stringify({otherBefore,otherStatus}).slice(0,900));
  const guardedAfter=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
  if(guardedBefore!==guardedAfter)fail('DG004_INTERTAB_OVERWROTE_CREATOR');
+ // Now align both tabs to the SAME durable cycle. A's later revision must
+ // not be overwritten by the stale, previously loaded revision in B.
+ await otherMj.eval(click('Recharger brouillons'));
+ await until(()=>otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("Brouillons rechargés")'),110);
+ await mj.eval(click('Enregistrer brouillon'));
+ await until(()=>mj.eval('JSON.parse(localStorage.getItem("cer.dg004.creators.private.demo.v0")).revision===2'),110);
+ const beforeRevisionConflict=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ await otherMj.eval(click('Enregistrer brouillon'));
+ await until(()=>otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("CREATOR_REVISION_CONFLICT")'),110);
+ const afterRevisionConflict=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ if(beforeRevisionConflict!==afterRevisionConflict)fail('DG004_INTERTAB_REVISION_OVERWROTE_CREATOR');
  otherMj.close();
  await browserControl.call('Target.closeTarget',{targetId:otherTarget});
  browserControl.close();
- console.log('DG004_TWO_MJ_TABS_CAS_OK',JSON.stringify({actualTabs:2,staleWriteRejected:true,rawBytesPreserved:true}));
+ console.log('DG004_TWO_MJ_TABS_CAS_OK',JSON.stringify({actualTabs:2,foreignCycleIdRejected:true,staleRevisionRejected:true,rawBytesPreserved:true}));
  // The dedicated owner page also mounts MATH/INDEX XP (read-only) and the
  // real ATELIERS guided chain. Neither may credit XP or publish to the player.
  const xpBefore=await mj.eval('localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")');
