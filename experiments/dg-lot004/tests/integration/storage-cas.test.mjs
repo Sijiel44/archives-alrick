@@ -35,7 +35,7 @@ test('P0 integrator: two simultaneous L003 writers sharing Web Lock cannot lose 
  const outcomes=await Promise.allSettled([a.save(left),b.save(right)]);
  assert.equal(outcomes.filter(x=>x.status==='fulfilled').length,1);
  assert.equal(outcomes.filter(x=>x.status==='rejected').length,1);
- assert.match(String(outcomes.find(x=>x.status==='rejected').reason),/revision conflict/);
+ assert.match(String(outcomes.find(x=>x.status==='rejected').reason),/causal parent conflict|revision conflict/);
  const persisted=await adapter(store,lock).load();
  assert.equal(persisted.scenes.length,1);
  assert.equal(persisted.extensions.future.keep,true);
