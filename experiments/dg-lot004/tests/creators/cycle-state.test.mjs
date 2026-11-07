@@ -740,3 +740,91 @@ test('DURABLE-GATE: lecture ARCHIVES échouée, annulation non attestée et anci
  await assert.rejects(c.attachCreature(),/préexistante sans journal attesté/);
  assert.equal(d.calls.copies,1);
 });
+
+
+/** P0-S07/S09 — reproductions adapted from unchanged original ARCHIVES owner bank.
+ * These tests intentionally do NOT assert atomic cross-tab CAS on localStorage.
+ */
+function p0CreatorArea(initial={}){
+ const values=new Map(Object.entries(initial));let writes=0;
+ return {getItem:key=>values.has(key)?values.get(key):null,
+  setItem(key,value){writes++;values.set(key,String(value));},
+  get:key=>values.get(key),writes:()=>writes};
+}
+const P0_CREATOR_KEY='cer.dg004.creators.private.demo.v0';
+const p0CreatorPort=storage=>createBrowserCyclePersistence({
+ storage,key:P0_CREATOR_KEY,origin:'http://127.0.0.1:4173'
+});
+test('P0-S07-S09: S07 opaque foreign creator key refused and bytes intact',async()=>{
+ const foreign='FOREIGN_CREATOR_BACKUP',storage=p0CreatorArea({[P0_CREATOR_KEY]:foreign});
+ const port=p0CreatorPort(storage);
+ await assert.rejects(port.save(createCycle('different-cycle')),
+  /foreign|ownership|collision|conflict|refus|étrang|propri|ancien/i);
+ assert.equal(storage.get(P0_CREATOR_KEY),foreign);
+ assert.equal(storage.writes(),0);
+ await assert.rejects(port.load(),/étrangère|incompatible/i);
+ assert.equal(storage.get(P0_CREATOR_KEY),foreign);
+});
+test('P0-S07-S09: same schema but foreign cycle ID never silently overwritten',async()=>{
+ const foreign=createCycle('old-cycle'),storage=p0CreatorArea({[P0_CREATOR_KEY]:JSON.stringify(foreign)});
+ const port=p0CreatorPort(storage);
+ await assert.rejects(port.save(createCycle('another-cycle')),/propriété|étranger/i);
+ assert.equal(storage.writes(),0);
+ assert.deepEqual(JSON.parse(storage.get(P0_CREATOR_KEY)),foreign);
+});
+test('P0-S07-S09: valid pre-existing same ID requires observed read before any mutation',async()=>{
+ const former=createCycle('shared-cycle'),storage=p0CreatorArea({[P0_CREATOR_KEY]:JSON.stringify(former)});
+ const fresh=p0CreatorPort(storage),future=structuredClone(former);
+ future.revision=1;future.extensions.writer='A';
+ await assert.rejects(fresh.save(future),/stale revision/);
+ assert.equal(storage.writes(),0);
+ await fresh.load();await fresh.save(future);
+ assert.equal((await fresh.load()).extensions.writer,'A');
+});
+test('P0-S07-S09: S09 two creator adapters refuse stale equal revision, keep tab A',async()=>{
+ const a=p0CreatorArea(),A=p0CreatorPort(a),B=p0CreatorPort(a);
+ await A.save(createCycle('single-cycle'));
+ const left=await A.load(),right=await B.load();
+ left.revision=1;left.extensions.writer='A';await A.save(left);
+ right.revision=1;right.extensions.writer='B';
+ await assert.rejects(B.save(right),/revision|stale|collision|conflict|concurrent|verrou/i);
+ assert.equal((await A.load()).extensions.writer,'A');
+ assert.equal(a.writes(),2);
+});
+test('P0-S07-S09: same revision but different content and revision jump rejected',async()=>{
+ const a=p0CreatorArea(),p=p0CreatorPort(a);
+ const c=createCycle('same-revision');await p.save(c);
+ const conflict=structuredClone(c);conflict.extensions.private='WRONG';
+ await assert.rejects(p.save(conflict),/revision|stale/i);
+ const jump=structuredClone(c);jump.revision=3;
+ await assert.rejects(p.save(jump),/revision|stale/i);
+ assert.equal(a.writes(),1);
+ assert.deepEqual(await p.load(),c);
+});
+test('P0-S07-S09: vanished observed key and readback mismatch fail closed',async()=>{
+ const values=new Map(),storage={
+  getItem:key=>values.has(key)?values.get(key):null,
+  setItem(key,value){values.set(key,String(value))},
+  removeItem:key=>values.delete(key)
+ };
+ const p=p0CreatorPort(storage),initial=createCycle('missing-key');
+ await p.save(initial);storage.removeItem(P0_CREATOR_KEY);
+ const next=structuredClone(initial);next.revision++;
+ await assert.rejects(p.save(next),/stale revision/);
+ await assert.rejects(p.load(),/stale revision/);
+ // A newly constructed instance cannot manufacture an ACK after an inconsistent setItem.
+ const corrupt={getItem:key=>values.get(key)??null,
+  setItem(key,value){values.set(key,String(value).replace('"draft"','"foreign"'))}};
+ const fresh=p0CreatorPort(corrupt);
+ await assert.rejects(fresh.save(createCycle('readback-fault')),/non confirmée/);
+});
+test('P0-S07-S09: journal, drafts and foreign unrelated key remain intact',async()=>{
+ const a=p0CreatorArea({'cer.dg003.private.campaign.v0':'FOREIGN_PRIVATE_ORIGINAL'});
+ const p=p0CreatorPort(a),c=createCycle('journal-cycle');
+ c.extensions.pendingStudioOp={kind:'creature',campaignId:'fixture-campaign',
+  beforeIds:[],source:{documentId:'DOC-FICTIF',profileId:'P-FICTIF',ruleset:'m03'}};
+ await p.save(c);
+ const persisted=await p0CreatorPort(a).load();
+ assert.deepEqual(persisted.extensions.pendingStudioOp,c.extensions.pendingStudioOp);
+ assert.equal(a.get('cer.dg003.private.campaign.v0'),'FOREIGN_PRIVATE_ORIGINAL');
+});
