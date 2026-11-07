@@ -34,7 +34,7 @@ jobs:
           node --version
       - run: npm ci
       - run: npm test
-      - run: node --test experiments/arch-storage-001/tests/contracts.test.mjs
+      - run: node --test experiments/arch-storage-001/tests/contracts.test.mjs experiments/arch-storage-001/tests/r2-contracts.test.mjs
       - name: Validate isolated scripts syntax
         run: |
           for f in experiments/arch-storage-001/src/*.mjs experiments/arch-storage-001/tools/*.mjs; do node --check "$f"; done
@@ -55,6 +55,9 @@ jobs:
       - name: Actual Chrome + two tabs + crash/recovery + archive roundtrip
         run: |
           "$P1A_PY" experiments/arch-storage-001/tests/browser.spec.py
+      - name: R2 atomic export + A/B same fixtures + version/quota/off-profile in real Chrome
+        run: |
+          "$P1A_PY" experiments/arch-storage-001/tests/browser-r2.spec.py
       - name: Print exact SHA also on failure
         if: always()
         run: git rev-parse HEAD

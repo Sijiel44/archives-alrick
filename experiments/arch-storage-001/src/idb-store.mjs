@@ -1,6 +1,6 @@
 import {initialCampaign,assertCampaign,applyCommand,commandSignature,fail,clone,DEMO_ID} from './contracts.mjs';
 export const DB_NAME='cer.arch-storage001.fiction-only.v1';
-const DB_VERSION=1;
+export const DB_VERSION=1; // R2: explicit fixed version; no implicit upgrade or destructive migration
 function requestResult(request,resolve,reject){request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error??Error('IDB_REQUEST_ERROR'));}
 export async function openStore({factory=globalThis.indexedDB,name=DB_NAME}={}){
  if(!factory)fail('IDB_UNAVAILABLE');
@@ -15,8 +15,10 @@ export async function openStore({factory=globalThis.indexedDB,name=DB_NAME}={}){
   req.onerror=()=>reject(req.error??Error('DB_OPEN_FAILED'));
   req.onsuccess=()=>resolve(req.result);
  });
- db.onversionchange=()=>db.close();
  let closed=false;
+ // A different tab can request a new version: release this connection, never delete data.
+ db.onversionchange=()=>{closed=true;db.close();};
+ db.onclose=()=>{closed=true;};
  const approvedPreviews=new WeakMap(); // an untrusted caller cannot forge an import preview with a fresh object
  function txReadCampaign(id){return new Promise((resolve,reject)=>{
   if(closed)return reject(Error('DB_CLOSED'));
@@ -25,13 +27,29 @@ export async function openStore({factory=globalThis.indexedDB,name=DB_NAME}={}){
   req.onsuccess=()=>{value=req.result?clone(req.result):null;};
   tx.oncomplete=()=>resolve(value);tx.onabort=()=>reject(tx.error??Error('TX_ABORTED'));tx.onerror=()=>{};
  });}
- function getEvents(id){return new Promise((resolve,reject)=>{
-  if(closed)return reject(Error('DB_CLOSED'));
-  const tx=db.transaction('events','readonly'),range=IDBKeyRange.bound([id,''],[id,'\uffff']);
-  let value=[];const req=tx.objectStore('events').getAll(range);
-  req.onsuccess=()=>{value=req.result.map(clone).sort((a,b)=>a.seq-b.seq);};
-  tx.oncomplete=()=>resolve(value);tx.onabort=()=>reject(tx.error??Error('TX_ABORTED'));
- });}
+ /** R2: campaign and its journal are one logically indivisible read snapshot.
+  * Both requests belong to ONE readonly transaction before the first async boundary.
+  * The result may be a past revision if a writer commits just after completion;
+  * it can never combine a campaign revision with a later/earlier journal.
+  */
+ function readConsistentSnapshot(id=DEMO_ID,{onTransactionOpen}={}){
+  return new Promise((resolve,reject)=>{
+   if(closed)return reject(Object.assign(Error('DB_CLOSED'),{code:'DB_CLOSED'}));
+   let campaign=null,journal=[];
+   const tx=db.transaction(['campaigns','events'],'readonly');
+   const range=IDBKeyRange.bound([id,''],[id,'\uffff']);
+   const campaignReq=tx.objectStore('campaigns').get(id);
+   const journalReq=tx.objectStore('events').getAll(range);
+   campaignReq.onsuccess=()=>{campaign=campaignReq.result?clone(campaignReq.result):null;};
+   journalReq.onsuccess=()=>{journal=journalReq.result.map(clone).sort((a,b)=>a.seq-b.seq);};
+   tx.oncomplete=()=>resolve({campaign,journal,dbVersion:db.version});
+   tx.onabort=()=>reject(tx.error??Object.assign(Error('TX_ABORTED'),{code:'TX_ABORTED'}));
+   // Synchronous test hook: only observes the opened transaction. No await inside it.
+   // A thrown hook aborts; callers may request a competing write from another tab.
+   if(onTransactionOpen){try{onTransactionOpen();}catch(e){try{tx.abort();}catch{};reject(e);}}
+  });
+ }
+ function getEvents(id){return readConsistentSnapshot(id).then(x=>x.journal);}
  function writeCommand(command,{injectFailure=null}={}){
   const signature=commandSignature(command);
   let outcome=null;
@@ -61,6 +79,7 @@ export async function openStore({factory=globalThis.indexedDB,name=DB_NAME}={}){
       campaigns.put(next);
       events.add({campaignId:command.campaignId,eventId:command.eventId,seq:next.revision,kind:command.kind,signature});
       if(injectFailure==='before-commit')raise(Object.assign(Error('INJECTED_FAILURE_BEFORE_COMMIT'),{code:'INJECTED_FAILURE_BEFORE_COMMIT'}));
+      if(injectFailure==='quota')raise(Object.assign(Error('QUOTA_EXCEEDED_SIMULATED'),{code:'QUOTA_EXCEEDED_SIMULATED'}));
      }catch(e){raise(e);}
     };
    };
@@ -76,12 +95,17 @@ export async function openStore({factory=globalThis.indexedDB,name=DB_NAME}={}){
    tx.oncomplete=()=>resolve({status:'committed',revision:1});tx.onabort=()=>reject(error??tx.error??Error('TX_ABORTED'));
   });
  }
- async function makeExport(id=DEMO_ID){
-  const [campaign,journal]=await Promise.all([txReadCampaign(id),getEvents(id)]);
+ async function makeExport(id=DEMO_ID,{afterSnapshotRead,onTransactionOpen}={}){
+  // R2 replaces Promise.all([readCampaign(), listEvents()]) (TWO transactions).
+  const {campaign,journal}=await readConsistentSnapshot(id,{onTransactionOpen});
   if(!campaign)fail('CAMPAIGN_NOT_FOUND');
-  // Revision check detects incomplete journal or unknown extra writes.
-  if(journal.length!==campaign.revision||journal[journal.length-1]?.seq!==campaign.revision)fail('JOURNAL_INCONSISTENT');
-  const {makePrivateArchive}=await import('./private-archive.mjs');return makePrivateArchive({campaign,journal});
+  if(journal.length!==campaign.revision||journal[journal.length-1]?.seq!==campaign.revision||
+     journal.some((e,i)=>e.seq!==i+1||e.campaignId!==campaign.id))fail('JOURNAL_INCONSISTENT');
+  // Controlled race test hook, AFTER consistent snapshot but BEFORE archive SHA.
+  // A second tab may commit now; this archive must still be the older coherent revision.
+  if(afterSnapshotRead)await afterSnapshotRead({revision:campaign.revision,journalLength:journal.length});
+  const {makePrivateArchive}=await import('./private-archive.mjs');
+  return makePrivateArchive({campaign,journal});
  }
  async function previewImport(bytes){
   const {inspectPrivateArchive}=await import('./private-archive.mjs');
@@ -105,7 +129,7 @@ export async function openStore({factory=globalThis.indexedDB,name=DB_NAME}={}){
    tx.onabort=()=>reject(problem??tx.error??Error('TX_ABORTED'));
   });
  }
- return Object.freeze({name,readCampaign:txReadCampaign,listEvents:getEvents,createCampaign:create,applyEvent:writeCommand,exportPrivate:makeExport,previewImport,commitImport,close(){if(!closed){closed=true;db.close();}}});
+ return Object.freeze({name,dbVersion:DB_VERSION,readCampaign:txReadCampaign,listEvents:getEvents,readConsistentSnapshot,createCampaign:create,applyEvent:writeCommand,exportPrivate:makeExport,previewImport,commitImport,close(){if(!closed){closed=true;db.close();}}});
 }
 export async function seedFiction(store){
  const {demoCommands}=await import('./fixture.mjs');
