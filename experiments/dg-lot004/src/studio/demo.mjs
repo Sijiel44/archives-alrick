@@ -160,14 +160,14 @@ export function mountStudioDemo(root,options={}){
       if(f.scene.status==='missing'){
         studio.createScene(DEMO_SCENE_TITLE,DEMO_SCENE_DESCRIPTION,DEMO_PRIVATE_NOTE);
         const scene=studio.getCampaign().scenes.at(-1);
-        studio.updateScene({title:scene.title,publicDescription:scene.publicDescription,
+        await studio.updateScene({title:scene.title,publicDescription:scene.publicDescription,
           privateNotes:scene.privateNotes,participantIds:[...c.characters,...c.creatures].map(x=>x.id)});
       }else{
         const id=f.scene.id;
         await studio.setActiveScene(id); // Resets public selection; no SHOW, only CLEAR.
         if(f.scene.status==='needs-participants'){
           const s=studio.getCampaign().scenes.find(x=>x.id===id);
-          studio.updateScene({title:s.title,publicDescription:s.publicDescription,privateNotes:s.privateNotes,
+          await studio.updateScene({title:s.title,publicDescription:s.publicDescription,privateNotes:s.privateNotes,
             participantIds:[...new Set([...(s.participantIds??[]),...c.characters.map(x=>x.id),...c.creatures.map(x=>x.id)])]});
         }
       }
