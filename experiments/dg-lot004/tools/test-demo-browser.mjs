@@ -79,6 +79,8 @@ try{
  // Refuse an existing local private backup before any mock scenario is started.
  await mj.eval('localStorage.setItem("cer.dg003.private.campaign.v0","LEGACY_USER_BACKUP");localStorage.setItem("dg004-unrelated","keep")');
  await mj.eval(click('Démarrer la démonstration fictive'));
+ const blockedAtClick=await mj.eval('({root:document.querySelector("#dg004-demo-root")?.innerText?.slice(0,600),privateKey:localStorage.getItem("cer.dg003.private.campaign.v0")})');
+ console.log('DG004_RESCUE_FIRST_CLICK_TRACE',JSON.stringify(blockedAtClick));
  await until(()=>mj.eval(textContains('DEMO_BLOCKED')));
  if((await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")'))!=='LEGACY_USER_BACKUP')
   fail('OLD_USER_BACKUP_CHANGED');
