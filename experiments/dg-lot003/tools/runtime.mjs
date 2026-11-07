@@ -19,7 +19,11 @@ function jsonDifference(a,b,path='root'){
   return null;
  }
  const ka=Object.keys(a).sort(),kb=Object.keys(b).sort();
- if(ka.length!==kb.length||ka.some((k,i)=>k!==kb[i]))return path+'.keys';
+ if(ka.length!==kb.length||ka.some((k,i)=>k!==kb[i])){
+  const leftOnly=ka.filter(k=>!kb.includes(k)).slice(0,7);
+  const rightOnly=kb.filter(k=>!ka.includes(k)).slice(0,7);
+  return path+'.keys(leftOnly='+leftOnly.join(',')+',rightOnly='+rightOnly.join(',')+')';
+ }
  for(const k of ka){const d=jsonDifference(a[k],b[k],path+'.'+k);if(d)return d;}
  return null;
 }
