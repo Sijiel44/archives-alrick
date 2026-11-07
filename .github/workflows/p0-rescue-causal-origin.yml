@@ -1,0 +1,71 @@
+name: P0 rescue causal origin - no Pages
+on:
+  push:
+    branches: ['rescue/p0-causal-origin-builder-6004369']
+  pull_request:
+    paths:
+      - 'experiments/dg-lot003/tools/runtime.mjs'
+      - 'experiments/dg-lot004/**'
+      - '.github/workflows/p0-rescue-causal-origin.yml'
+permissions: {contents: read}
+jobs:
+  rescue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TESTED_HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Checkout exact source SHA
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Assert exact SHA, rescue ancestry and no virtual merge
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "RESCUE_TESTED_HEAD=$TESTED_HEAD"
+          test "$(git rev-parse HEAD)" = "$TESTED_HEAD"
+          git merge-base --is-ancestor 6004369bc1192f1619ecb0fb71182315be947e6b HEAD
+      - run: npm ci
+      - run: npm test
+      - name: L003 historical test modules
+        run: node --import tsx --test experiments/dg-lot003/tools/*.test.mjs experiments/dg-lot003/tests/storage/*.test.mjs
+      - name: Verify original ARCHIVES Q and S fixtures remain unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'da6aa2d7ba2528f26261eceea1afd6e8987c9388eda495f80c62f11ee9644af0  experiments/dg-lot004/tests/storage/P0_CAUSALITY_ARCHIVES.test.mjs' | sha256sum --check
+          echo 'd89dea819a387dc9fdc5b61dfdaf62bc7e17aed3d930576f57cd2da4db3259b5  experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs' | sha256sum --check
+      - name: ARCHIVES S01-S09 exact original tests
+        run: node --import tsx --test experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs
+      - name: ARCHIVES Q R2 with B.load attestation
+        run: node --import tsx --test experiments/dg-lot004/tests/storage/P0_CAUSALITY_ARCHIVES_ATTESTED_04.test.mjs
+      - name: QA independent A/B/C unmodified assertions
+        run: node --import tsx --test experiments/dg-lot004/tests/qa-independent/causal-origin-precheck.test.mjs
+      - name: BUILDER opaque draft / clone / overwrite / append tests
+        run: node --import tsx --test experiments/dg-lot004/tests/storage/P0_CAUSAL_ORIGIN_BUILDER.test.mjs
+      - name: Verify owner blobs and build DG004 real runtime
+        run: |
+          node experiments/dg-lot004/tools/verify-owner-blobs.mjs
+          node experiments/dg-lot004/tools/build.mjs
+      - name: Find official Chrome; no sandbox bypass
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome-stable || command -v google-chrome || true)"
+          test -n "$BROWSER" || { echo 'NON EXECUTE Chrome unavailable'; exit 2; }
+          echo "CHROMIUM_PATH=$BROWSER" >> "$GITHUB_ENV"
+          "$BROWSER" --version
+      - name: Chrome two real tabs (with & without Web Locks), L004, rollback
+        run: node experiments/dg-lot004/tools/test-demo-browser.mjs
+      - name: Chrome L003 historical native regression
+        run: node experiments/dg-lot003/tools/test-browser.mjs
+      - name: Record exact SHA on failure too
+        if: always()
+        run: git rev-parse HEAD
