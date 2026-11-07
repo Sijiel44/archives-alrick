@@ -43,6 +43,9 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
  // revision guess. A first explicit load establishes the editing baseline;
  // subsequent background reads must NEVER silently rebase an unsaved editor.
  let observedParent=null;
+ // An editing ticket is held by the draft, NEVER inferred from an adapter's
+ // most recent load. Structured-cloned/serialized handles have no authority.
+ const editTickets=new WeakMap();
  const parentRaw=()=>area.getItem(STORAGE_KEY);
  const captureParent=studio=>({
   raw:parentRaw(),id:studio?.id??null,revision:studio?.revision??null
@@ -187,6 +190,108 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
   }
   return snapshot;
  }
+ // Compatibility with L003 full-snapshot callers is strictly *additive*.
+ // Existing entities and unknown fields must survive byte-semantically.
+ // Changing or removing an existing field requires a targeted edit ticket.
+ function assertLegacyAdditive(current,requested){
+  if(!current)return;
+  if(current.id!==requested?.id)fail('Private draft causal ownership conflict');
+  if(!Number.isSafeInteger(requested.revision)||
+     requested.revision!==current.revision+1)
+   fail('Private draft revision conflict: exact +1 required');
+  function retain(base,next,path){
+   if(jsonDifference(base,next)===null)return;
+   if(Array.isArray(base)){
+    if(!Array.isArray(next)||next.length<base.length)
+     fail('Private draft causal deletion/replacement forbidden: '+path);
+    for(let i=0;i<base.length;i++)
+     if(jsonDifference(base[i],next[i])!==null)
+      fail('Private draft stale existing entry: '+path+'['+i+']');
+    return;
+   }
+   if(base!==null&&typeof base==='object'){
+    if(next===null||typeof next!=='object'||Array.isArray(next))
+     fail('Private draft causal replacement forbidden: '+path);
+    for(const k of Object.keys(base)){
+     if(!Object.hasOwn(next,k))
+      fail('Private draft causal field lost: '+path+'.'+k);
+     retain(base[k],next[k],path+'.'+k);
+    }
+    return;
+   }
+   fail('Private draft causal prior value changed: '+path);
+  }
+  const original=copy(current),target=copy(requested);
+  delete original.revision;delete target.revision;
+  const oldScene=original.activeSceneId,newScene=target.activeSceneId;
+  delete original.activeSceneId;delete target.activeSceneId;
+  retain(original,target,'campaign');
+  if(oldScene!==newScene){
+   const newIds=(requested.scenes??[]).slice((current.scenes??[]).length).map(x=>x.id);
+   if(!newIds.includes(newScene))
+    fail('Private draft causal scene selection requires targeted edit');
+  }
+ }
+ function beginEdit(){return enqueue(async()=>{
+  const before=parentRaw(),current=await readStudio({bindIfAbsent:false});
+  if(!current||parentRaw()!==before)fail('Private edit parent unavailable or changed');
+  const handle=Object.freeze({});
+  editTickets.set(handle,{raw:before,base:copy(current),used:false});
+  return {handle,base:copy(current)};
+ });}
+ function forkEdit(handle){
+  const t=editTickets.get(handle);
+  if(!t||t.used)fail('Private draft provenance unverified (clone/cross-session)');
+  const child=Object.freeze({});
+  editTickets.set(child,{raw:t.raw,base:copy(t.base),used:false});
+  return child;
+ }
+ function commitEdit(handle,operations){return enqueue(()=>withCrossTabLock(async()=>{
+  const anchor=editTickets.get(handle);
+  if(!anchor||anchor.used)fail('Private draft provenance unverified (foreign/consumed ticket)');
+  if(!Array.isArray(operations)||operations.length<1||operations.length>40)
+   fail('Private edit operations missing');
+  const durable=await readStudio({bindIfAbsent:false});
+  if(parentRaw()!==anchor.raw||!durable||
+     durable.id!==anchor.base.id||durable.revision!==anchor.base.revision||
+     jsonDifference(durable,anchor.base)!==null)
+   fail('Private edit causal parent conflict: reload before editing');
+  const next=copy(anchor.base);
+  for(const op of operations){
+   if(!op||typeof op!=='object'||Array.isArray(op))fail('Private edit operation invalid');
+   if(op.kind==='add-scene'){
+    const scene=copy(op.scene);
+    if(!scene||typeof scene.id!=='string'||!scene.id||
+       next.scenes.some(x=>x.id===scene.id))fail('Private edit scene collision');
+    next.scenes.push(scene);next.activeSceneId=scene.id;
+   }else if(op.kind==='update-scene'){
+    const scene=next.scenes.find(x=>x.id===op.id);
+    if(!scene)fail('Private edit scene missing');
+    const allowed=['title','publicDescription','privateNotes','participantIds'];
+    const changes=op.changes;
+    if(!changes||typeof changes!=='object'||Array.isArray(changes)||
+       Object.keys(changes).some(k=>!allowed.includes(k)))
+     fail('Private edit scene fields forbidden');
+    for(const [key,value] of Object.entries(changes))scene[key]=copy(value);
+   }else if(op.kind==='select-scene'){
+    if(typeof op.id!=='string'||!next.scenes.some(x=>x.id===op.id))
+     fail('Private edit scene selection invalid');
+    next.activeSceneId=op.id;
+   }else if(op.kind==='add-character'||op.kind==='add-creature'){
+    const list=op.kind==='add-character'?next.characters:next.creatures;
+    const item=copy(op.value);
+    const occupied=[...next.characters,...next.creatures,...next.scenes];
+    if(!item||typeof item.id!=='string'||!item.id||
+       occupied.some(x=>x.id===item.id))fail('Private edit entity collision');
+    list.push(item);
+   }else fail('Private edit operation unsupported: '+String(op.kind));
+  }
+  next.revision=durable.revision+1;
+  await persist(next);
+  anchor.used=true;
+  observedParent=captureParent(next);
+  return copy(next);
+ }));}
  function save(studio){return enqueue(()=>withCrossTabLock(async()=>{
   const current=await readStudio({bindIfAbsent:false});
   const restoreTicket=exactRestorePending;
@@ -208,6 +313,9 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
     fail('Private campaign ownership conflict: implicit campaign replacement forbidden');
   }
   const prepared=restoreTicket?copy(studio):mergePersistentCatalog(studio,current);
+  if(!restoreTicket&&current?.id===studio.id&&
+     !(studio.revision===current.revision&&jsonDifference(prepared,current)===null))
+   assertLegacyAdditive(current,prepared);
   if(!restoreTicket&&current?.id===studio.id){
    if(!Number.isSafeInteger(studio.revision)||!Number.isSafeInteger(current.revision))
     fail('Private campaign revision invalid');
@@ -223,7 +331,7 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
   if(restoreTicket)exactRestorePending=null;
  }));}
  return {
-  owner,readStudio,readArchive,save,
+  owner,readStudio,readArchive,save,beginEdit,forkEdit,commitEdit,
   subscribe(listener){if(typeof listener!=='function')fail('Listener invalid');subscribers.add(listener);return ()=>subscribers.delete(listener);},
   async load(){return await readStudio();},
   async previewRestore({bytes}){
@@ -294,8 +402,16 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
     assertCausalParent(current);
     if(current?.id!==undefined&&current.id!==studio.id)
      fail('Private catalog campaign ownership conflict');
-    if(current?.id===studio.id&&studio.revision<current.revision)
-     fail('Private catalog stale campaign revision conflict');
+    if(current?.id===studio.id){
+     // A catalog append is deliberate, but the supplied Studio snapshot may
+     // not come from before the last confirmed durable scene.
+     if(!Number.isSafeInteger(studio.revision)||studio.revision!==current.revision)
+      fail('Private catalog stale campaign revision conflict');
+     const candidate=copy(studio),base=copy(current);
+     delete candidate.revision;delete base.revision;
+     if(jsonDifference(candidate,base)!==null)
+      fail('Private catalog causal origin unverified: reload exact campaign');
+    }
     const foundation=current?.id===studio.id?current:copy(studio);
     foundation.extensions??={};
     const previous=foundation.extensions.catalog??[];
