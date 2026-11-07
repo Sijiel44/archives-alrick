@@ -229,7 +229,11 @@ try{
  await mj.eval(click('Prévisualiser restauration'));
  await checkDOM(mj,hasText('Restauration proposée'));
  await mj.eval(click('Confirmer restauration'));
- await checkDOM(mj,hasText('Campagne restaurée'));
+ try{await checkDOM(mj,hasText('Campagne restaurée'));}
+ catch(error){
+  const statuses=await mj.eval('[...document.querySelectorAll("[role=status]")].map(x=>x.textContent).filter(Boolean).slice(0,8)');
+  throw Error('L003_RESTORE_PARENT_STATUS '+JSON.stringify(statuses).slice(0,1100),{cause:error});
+ }
  await mj.eval(click('Ouvrir la fenêtre joueur'));
  const playerTarget=await until(async()=>{const xs=await json(debuggerUrl+'/json');return xs.find(x=>x.type==='page'&&x.url.startsWith(PLAYER));},{tries:80});
  const player=await CDP.connect(playerTarget.webSocketDebuggerUrl);
