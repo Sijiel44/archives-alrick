@@ -1,0 +1,34 @@
+name: QA-L004 causal-origin precheck only (no qualification)
+on:
+  push:
+    branches: [test/qa-l004-causality-precheck]
+permissions:
+  contents: read
+jobs:
+  origin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: SHA exact and source ancestor
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -eu
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          git merge-base --is-ancestor 6004369bc1192f1619ecb0fb71182315be947e6b "$EXPECTED_HEAD"
+          echo "QA_ORIGIN_SOURCE_HEAD=6004369bc1192f1619ecb0fb71182315be947e6b"
+          echo "QA_ORIGIN_TESTED_HEAD=$EXPECTED_HEAD"
+      - run: npm ci
+      - name: Test 3 independent causality scenarios on actual owner modules
+        run: node --import tsx --test experiments/dg-lot004/tests/qa-independent/causal-origin-precheck.test.mjs
+      - name: Print SHA even when test fails
+        if: always()
+        run: git rev-parse HEAD
