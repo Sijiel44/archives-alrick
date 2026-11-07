@@ -172,6 +172,12 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
  function mergePersistentCatalog(studio,current){
   const snapshot=copy(studio);
   if(current?.id!==snapshot.id)return snapshot;
+  // L003 Studio originally omits campaign.privateNotes when it has no root
+  // notes; native ARCHIVES projects the harmless [] default on reload.
+  // Carry the durable value through instead of treating omission as deletion.
+  // A PRESENT divergent value remains a causal conflict.
+  if(!Object.hasOwn(snapshot,'privateNotes')&&Object.hasOwn(current,'privateNotes'))
+   snapshot.privateNotes=copy(current.privateNotes);
   // Preserve absent keys as absent. An old archive with extensions:{} must
   // roundtrip byte-semantically as {} rather than acquiring empty collections.
   const hadCatalog=Object.hasOwn(snapshot.extensions??{},'catalog') ||
