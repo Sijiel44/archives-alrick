@@ -1,0 +1,125 @@
+TAP version 13
+# CORE-COMPAT.R2 official M01/M03/MATH XP compiled using tsc; INDEX \#105 exact frozen core ports, DATA validator stub only
+# Subtest: INDEX port M01+M01 native N1 (no mutation)
+ok 1 - INDEX port M01+M01 native N1 (no mutation)
+  ---
+  duration_ms: 1.905973
+  type: 'test'
+  ...
+# Subtest: INDEX port M01+M01 native N5 (no mutation)
+ok 2 - INDEX port M01+M01 native N5 (no mutation)
+  ---
+  duration_ms: 0.257888
+  type: 'test'
+  ...
+# Subtest: INDEX port M01+M01 native N10 (no mutation)
+ok 3 - INDEX port M01+M01 native N10 (no mutation)
+  ---
+  duration_ms: 0.148292
+  type: 'test'
+  ...
+# Subtest: INDEX port M01+M01 native N15 (no mutation)
+ok 4 - INDEX port M01+M01 native N15 (no mutation)
+  ---
+  duration_ms: 0.233871
+  type: 'test'
+  ...
+# Subtest: INDEX port M01+M01 native N20 (no mutation)
+ok 5 - INDEX port M01+M01 native N20 (no mutation)
+  ---
+  duration_ms: 0.149204
+  type: 'test'
+  ...
+# Subtest: INDEX port M01+M01 native N25 (no mutation)
+ok 6 - INDEX port M01+M01 native N25 (no mutation)
+  ---
+  duration_ms: 0.281573
+  type: 'test'
+  ...
+# Subtest: PJ candidate -> official native 5d6 M03 exact result, no copy of formula
+ok 7 - PJ candidate -> official native 5d6 M03 exact result, no copy of formula
+  ---
+  duration_ms: 0.875174
+  type: 'test'
+  ...
+# Subtest: parité PJ/créature : mêmes valeurs natives -> même résultat M03
+ok 8 - parité PJ/créature : mêmes valeurs natives -> même résultat M03
+  ---
+  duration_ms: 0.294663
+  type: 'test'
+  ...
+# Subtest: aucune autorité native issue de DATA reported-validated
+ok 9 - aucune autorité native issue de DATA reported-validated
+  ---
+  duration_ms: 0.317837
+  type: 'test'
+  ...
+# Subtest: absorption/item/malus/narration ne traversent pas la frontière M03
+ok 10 - absorption/item/malus/narration ne traversent pas la frontière M03
+  ---
+  duration_ms: 0.535464
+  type: 'test'
+  ...
+# Subtest: N26, niveau décalé ou booléen feasible impropre refusés avant M03
+ok 11 - N26, niveau décalé ou booléen feasible impropre refusés avant M03
+  ---
+  duration_ms: 0.197967
+  type: 'test'
+  ...
+# Subtest: ressources, capacités, objets, sorts, rites sont des références non exécutables
+ok 12 - ressources, capacités, objets, sorts, rites sont des références non exécutables
+  ---
+  duration_ms: 0.286761
+  type: 'test'
+  ...
+# Subtest: suggestion XP M01 native via port INDEX sans attribuer / muter fiche
+ok 13 - suggestion XP M01 native via port INDEX sans attribuer / muter fiche
+  ---
+  duration_ms: 0.6458
+  type: 'test'
+  ...
+# Subtest: événement explicite, appartenance PJ et ref de journal nécessaires
+ok 14 - événement explicite, appartenance PJ et ref de journal nécessaires
+  ---
+  duration_ms: 0.164107
+  type: 'test'
+  ...
+# Subtest: port obligatoire : aucun fallback numérique
+ok 15 - port obligatoire : aucun fallback numérique
+  ---
+  duration_ms: 0.140461
+  type: 'test'
+  ...
+# Subtest: 5d6 officiels exacts ; les naturels 5-7 échouent
+ok 16 - 5d6 officiels exacts ; les naturels 5-7 échouent
+  ---
+  duration_ms: 0.368885
+  type: 'test'
+  ...
+# Subtest: même événement: décision MJ idempotente, retour de preview bloqué, correction append-only
+ok 17 - même événement: décision MJ idempotente, retour de preview bloqué, correction append-only
+  ---
+  duration_ms: 2.108978
+  type: 'test'
+  ...
+# Subtest: créature N15 : combat natif disponible mais aucun budget PJ M01 accordé
+ok 18 - créature N15 : combat natif disponible mais aucun budget PJ M01 accordé
+  ---
+  duration_ms: 0.321322
+  type: 'test'
+  ...
+# Subtest: statut mécanique explicitement bloqué ou non applicable refuse la simulation
+ok 19 - statut mécanique explicitement bloqué ou non applicable refuse la simulation
+  ---
+  duration_ms: 0.253922
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 705.984807
