@@ -2,7 +2,8 @@
 import {mountStudioDemo} from '../src/studio/demo.mjs';
 import {DEMO_MARKER} from '../src/studio/demo-storage.mjs';
 import {mountCreatorCycle} from '../src/creators/cycle-ui.mjs';
-import {createBrowserCyclePersistence} from '../src/creators/cycle-state.mjs';
+import {createGuardedCreatorPersistence,CYCLE_KEY} from './creator-persistence.mjs';
+import {inspectCreatorAttachment} from '../src/studio/reconcile.mjs';
 import * as indexL004 from '../src/catalog/index.mjs';
 import {createXpDecisionLedger,suggestXpFromM01} from '../math-xp/src/xp-decision.ts';
 import {experienceAward} from '../../../quartz/components/scripts/atelier5d6-progression.ts';
@@ -86,6 +87,11 @@ export function mountIntegratedOwnerDemo({owners,doc}){
    }
   };
  }
+ // Fail CLOSED on any foreign/opaque existing creator key before mounting owner UI.
+ // All DG004 writers must take the same origin-scoped Web Lock and revision CAS.
+ const creatorPersistence=createGuardedCreatorPersistence({
+  area:view.localStorage,locks:view.navigator?.locks,cryptoAPI:view.crypto
+ });
  const root=doc.getElementById('dg004-demo-root');
  const demo=mountStudioDemo(root,{
   window:view,
@@ -96,15 +102,38 @@ export function mountIntegratedOwnerDemo({owners,doc}){
  });
  const cycleRoot=doc.getElementById('dg004-cycle-root');
  if(!cycleRoot)fail('Zone ATELIERS privée DG004 absente');
- const cycleKey='cer.dg004.creators.private.demo.v0';
- const browserPersistence=createBrowserCyclePersistence({
-  storage:view.localStorage,key:cycleKey,origin:view.location.origin
- });
+ const cycleKey=CYCLE_KEY;
+ const durableStudio={
+  ...demo.studio,
+  async copyCreature(...args){
+   const result=await demo.studio.copyCreature(...args);
+   const persisted=await demo.storage.load(); // L003 ARCHIVES queue, never in-memory substitute.
+   if(!persisted||persisted.id!==demo.studio.getCampaign()?.id)
+    fail('ARCHIVES_CREATURE_DURABILITY_NOT_ATTESTED');
+   return result;
+  },
+  async createScene(...args){
+   const result=await demo.studio.createScene(...args);
+   const persisted=await demo.storage.load();
+   if(!persisted||persisted.id!==demo.studio.getCampaign()?.id)
+    fail('ARCHIVES_SCENE_DURABILITY_NOT_ATTESTED');
+   return result;
+  },
+  async updateScene(...args){
+   const result=await demo.studio.updateScene(...args);
+   const persisted=await demo.storage.load();
+   if(!persisted||persisted.id!==demo.studio.getCampaign()?.id)
+    fail('ARCHIVES_SCENE_UPDATE_NOT_ATTESTED');
+   return result;
+  }
+ };
  const cycle=mountCreatorCycle(cycleRoot,{
   mountCreators:owners.creators.mountCreators,
   validateCreatorDraft:owners.creators.validateCreatorDraft,
   catalogBridge:creatorToCatalog,catalog:owners.catalog,indexChain:indexL004,
-  studio:demo.studio,persistence:browserPersistence,
+  studio:durableStudio,persistence:creatorPersistence,
+  loadPersistedStudio:()=>demo.storage.load(),
+  inspectCreatorAttachment,
   idFactory:()=>view.crypto.randomUUID(),
   injectStyles:false
  });
@@ -161,9 +190,18 @@ export function mountIntegratedOwnerDemo({owners,doc}){
     fail('Refus de nettoyage : projet DEMO non attesté');
    const privateBefore=view.localStorage.getItem('cer.dg003.private.campaign.v0');
    demo.dispose(); // Sends PLAYER_CLEAR when the validated player is connected.
+   // Preserve a foreign cycle or a revision changed in another tab; never
+   // delete a fixed key merely because the MJ clicked Exit.
+   const cycleStored=await creatorPersistence.load();
+   const currentCycle=cycle.cycle.getState();
+   if(cycleStored&&(cycleStored.id!==currentCycle.id||
+      cycleStored.revision!==currentCycle.revision))
+    fail('CREATOR_CLEANUP_CONFLICT: révision/identité concurrente');
+   if(cycleStored)await creatorPersistence.deleteIfOwned({
+    cycleId:cycleStored.id,revision:cycleStored.revision
+   });
    demo.area.removeItem('cer.dg003.private.campaign.v0');
    demo.area.removeItem('approved-backup-sha256');
-   view.localStorage.removeItem(cycleKey);
    cycle.destroy();
    if(demo.area.getItem('cer.dg003.private.campaign.v0')!==null||
       view.localStorage.getItem('cer.dg003.private.campaign.v0')!==privateBefore)
