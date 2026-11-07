@@ -141,26 +141,31 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
   const verified=await owner.commitRestore(preview,{existingProject:null,replace:false});
   if(JSON.stringify(verified)!==JSON.stringify(prepared))fail('ARCHIVES roundtrip mismatch');
   const previous=area.getItem(STORAGE_KEY);
+  let expectedRaw;
   if(result.bytes.byteLength>LARGE_THRESHOLD){
    // A native IndexedDB commit must succeed before switching the pointer.
    await idbWrite({kind:'cer.dg003.indexeddb-bytes.v0',sha256:result.sha256,bytes:result.bytes});
    const check=await idbRead(result.sha256);
    if(check?.sha256!==result.sha256||!(check.bytes instanceof Uint8Array)||
       check.bytes.length!==result.bytes.length)fail('IndexedDB write verification failed');
-   try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.indexeddb-pointer.v0',sha256:result.sha256}));}
+   expectedRaw=JSON.stringify({kind:'cer.dg003.indexeddb-pointer.v0',sha256:result.sha256});
+   try{area.setItem(STORAGE_KEY,expectedRaw);}
    catch(error){
      if(area.getItem(STORAGE_KEY)!==previous)
       throw Error('Private pointer ACK uncertain: '+(error?.message??error),{cause:error});
      throw error;
     }
   }else{
-   try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.local-validated-envelope.v0',sha256:result.sha256,raw:decoder.decode(result.bytes)}));}
+   expectedRaw=JSON.stringify({kind:'cer.dg003.local-validated-envelope.v0',sha256:result.sha256,raw:decoder.decode(result.bytes)});
+   try{area.setItem(STORAGE_KEY,expectedRaw);}
    catch(error){
      if(area.getItem(STORAGE_KEY)!==previous)
       throw Error('Private storage ACK uncertain: '+(error?.message??error),{cause:error});
      throw error;
     }
   }
+  if(area.getItem(STORAGE_KEY)!==expectedRaw)
+   fail('Private durable save verification failed: ACK uncertain');
   for(const listener of subscribers){try{listener(copy(snapshot));}catch{ /* UI observer cannot roll back validated save */ }}
   return snapshot;
  }
@@ -346,7 +351,7 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
    previewAnchors.set(pending,{parentRaw:sourceRaw,source:copy(source)});
    return preview;
   },
-  async restore(preview,{previous}){
+  async restore(preview,{previous}){return enqueue(()=>withCrossTabLock(async()=>{
    if(!preview?.privatePending)fail('Restoration preview missing');
    const ticket=previewAnchors.get(preview.privatePending);
    if(!ticket)fail('Private restore unverified preview: a fresh preview is required');
@@ -386,7 +391,7 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
    previewAnchors.delete(preview.privatePending);
    exactRestorePending={id:exact.id,restored:copy(exact),parentRaw:ticket.parentRaw};
    return exact;
-  },
+  }));},
   async exportPrivate(studio){
    await queue;
    const current=await readStudio({bindIfAbsent:false});
