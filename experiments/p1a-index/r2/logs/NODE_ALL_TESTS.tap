@@ -1,0 +1,682 @@
+TAP version 13
+# Subtest: R2 porte le schéma unique \#105 (pas un second standard)
+ok 1 - R2 porte le schéma unique \#105 (pas un second standard)
+  ---
+  duration_ms: 1.569128
+  type: 'test'
+  ...
+# Subtest: adapteur conservateur des 15 fiches \#102-shaped fictives
+ok 2 - adapteur conservateur des 15 fiches \#102-shaped fictives
+  ---
+  duration_ms: 12.801747
+  type: 'test'
+  ...
+# Subtest: rétablissement de chaque source \#102-shaped sans perte d’inconnus
+ok 3 - rétablissement de chaque source \#102-shaped sans perte d’inconnus
+  ---
+  duration_ms: 7.778808
+  type: 'test'
+  ...
+# Subtest: identités source/version/rôle conservées
+ok 4 - identités source/version/rôle conservées
+  ---
+  duration_ms: 0.289276
+  type: 'test'
+  ...
+# Subtest: source version et champs inconnus restent privés
+ok 5 - source version et champs inconnus restent privés
+  ---
+  duration_ms: 0.180943
+  type: 'test'
+  ...
+# Subtest: rôles définition→instance→variante sont séparés
+ok 6 - rôles définition→instance→variante sont séparés
+  ---
+  duration_ms: 0.175014
+  type: 'test'
+  ...
+# Subtest: PJ N1/10/25 et scène à cinq participants
+ok 7 - PJ N1/10/25 et scène à cinq participants
+  ---
+  duration_ms: 0.907359
+  type: 'test'
+  ...
+# Subtest: PNJ narratif sans niveau automatique, flûte sans malus
+ok 8 - PNJ narratif sans niveau automatique, flûte sans malus
+  ---
+  duration_ms: 0.153331
+  type: 'test'
+  ...
+# Subtest: port moteur natif \#102 représenté uniquement comme bloqué tant que non épinglé
+ok 9 - port moteur natif \#102 représenté uniquement comme bloqué tant que non épinglé
+  ---
+  duration_ms: 0.452693
+  type: 'test'
+  ...
+# Subtest: une instance avec ID `:` natif est acceptée sans alias
+ok 10 - une instance avec ID `:` natif est acceptée sans alias
+  ---
+  duration_ms: 0.912447
+  type: 'test'
+  ...
+# Subtest: document sans nodeType explicite bloqué
+ok 11 - document sans nodeType explicite bloqué
+  ---
+  duration_ms: 0.68224
+  type: 'test'
+  ...
+# Subtest: definition possédant instanceId bloquée
+ok 12 - definition possédant instanceId bloquée
+  ---
+  duration_ms: 0.478542
+  type: 'test'
+  ...
+# Subtest: instance sans campagne bloquée
+ok 13 - instance sans campagne bloquée
+  ---
+  duration_ms: 0.56339
+  type: 'test'
+  ...
+# Subtest: instance mal classifiée bloque identité
+ok 14 - instance mal classifiée bloque identité
+  ---
+  duration_ms: 0.520706
+  type: 'test'
+  ...
+# Subtest: variante sans base explicite bloquée
+ok 15 - variante sans base explicite bloquée
+  ---
+  duration_ms: 0.530591
+  type: 'test'
+  ...
+# Subtest: variante sans sa définition du dataset bloquée
+ok 16 - variante sans sa définition du dataset bloquée
+  ---
+  duration_ms: 4.896479
+  type: 'test'
+  ...
+# Subtest: référence de définition de mauvaise famille bloquée
+ok 17 - référence de définition de mauvaise famille bloquée
+  ---
+  duration_ms: 4.866723
+  type: 'test'
+  ...
+# Subtest: doublon d’instance dans une campagne bloqué
+ok 18 - doublon d’instance dans une campagne bloqué
+  ---
+  duration_ms: 1.991986
+  type: 'test'
+  ...
+# Subtest: doublon variante de même définition bloqué
+ok 19 - doublon variante de même définition bloqué
+  ---
+  duration_ms: 1.897834
+  type: 'test'
+  ...
+# Subtest: participant inexistant bloqué
+ok 20 - participant inexistant bloqué
+  ---
+  duration_ms: 2.238267
+  type: 'test'
+  ...
+# Subtest: participant PNJ déguisé en PJ bloqué
+ok 21 - participant PNJ déguisé en PJ bloqué
+  ---
+  duration_ms: 1.952917
+  type: 'test'
+  ...
+# Subtest: statuts canon/joué/public indépendants avec preuve externe requise
+ok 22 - statuts canon/joué/public indépendants avec preuve externe requise
+  ---
+  duration_ms: 0.939628
+  type: 'test'
+  ...
+# Subtest: fixture ne s’auto-homologue jamais
+ok 23 - fixture ne s’auto-homologue jamais
+  ---
+  duration_ms: 0.33129
+  type: 'test'
+  ...
+# Subtest: couche R1 dérivée ne doit jamais masquer le statut joué
+ok 24 - couche R1 dérivée ne doit jamais masquer le statut joué
+  ---
+  duration_ms: 0.290519
+  type: 'test'
+  ...
+# Subtest: aucun `approved:true` dans la zone mécanique
+ok 25 - aucun `approved:true` dans la zone mécanique
+  ---
+  duration_ms: 0.475537
+  type: 'test'
+  ...
+# Subtest: une source historique native sans SHA blob est refusée, sans faux SHA
+ok 26 - une source historique native sans SHA blob est refusée, sans faux SHA
+  ---
+  duration_ms: 0.267924
+  type: 'test'
+  ...
+# Subtest: un format \#102 inconnu refusé
+ok 27 - un format \#102 inconnu refusé
+  ---
+  duration_ms: 0.136225
+  type: 'test'
+  ...
+# Subtest: les droits inconnus ne sont pas élevés au rang publics
+ok 28 - les droits inconnus ne sont pas élevés au rang publics
+  ---
+  duration_ms: 0.062273
+  type: 'test'
+  ...
+# Subtest: un média candidat public sans droits confirmés est refusé
+ok 29 - un média candidat public sans droits confirmés est refusé
+  ---
+  duration_ms: 0.41081
+  type: 'test'
+  ...
+# Subtest: un DTO candidat joueur n’inclut ni canaris, ni original, ni provenance
+ok 30 - un DTO candidat joueur n’inclut ni canaris, ni original, ni provenance
+  ---
+  duration_ms: 0.634147
+  type: 'test'
+  ...
+# Subtest: sélection explicite obligatoire avant toute projection candidate
+ok 31 - sélection explicite obligatoire avant toute projection candidate
+  ---
+  duration_ms: 0.652635
+  type: 'test'
+  ...
+# Subtest: aucune méthode de projection réelle sur origine joueur
+ok 32 - aucune méthode de projection réelle sur origine joueur
+  ---
+  duration_ms: 0.481427
+  type: 'test'
+  ...
+# Subtest: aller-retour privé R2 conserve tous les champs sources et les IDs
+ok 33 - aller-retour privé R2 conserve tous les champs sources et les IDs
+  ---
+  duration_ms: 21.966963
+  type: 'test'
+  ...
+# Subtest: un export R2 modifié échoue par validation sans transaction
+ok 34 - un export R2 modifié échoue par validation sans transaction
+  ---
+  duration_ms: 14.688204
+  type: 'test'
+  ...
+# Subtest: projection P1-ARCH STORAGE ne persiste pas et conserve le dataset complet
+ok 35 - projection P1-ARCH STORAGE ne persiste pas et conserve le dataset complet
+  ---
+  duration_ms: 22.763689
+  type: 'test'
+  ...
+# Subtest: le pont stockage conserve provenance et extension future
+ok 36 - le pont stockage conserve provenance et extension future
+  ---
+  duration_ms: 15.810667
+  type: 'test'
+  ...
+# Subtest: la sortie P1 stockage ne doit jamais devenir DTO joueur
+ok 37 - la sortie P1 stockage ne doit jamais devenir DTO joueur
+  ---
+  duration_ms: 6.712799
+  type: 'test'
+  ...
+# Subtest: stockage inconnu refusé à la restauration
+ok 38 - stockage inconnu refusé à la restauration
+  ---
+  duration_ms: 0.106391
+  type: 'test'
+  ...
+# Subtest: P1 bridge distinct des garanties transactionnelles de \#104
+ok 39 - P1 bridge distinct des garanties transactionnelles de \#104
+  ---
+  duration_ms: 5.211504
+  type: 'test'
+  ...
+# Subtest: pas d’effet chiffré créé à partir de capacités descriptives
+ok 40 - pas d’effet chiffré créé à partir de capacités descriptives
+  ---
+  duration_ms: 0.330749
+  type: 'test'
+  ...
+# Subtest: un PJ instance non validé M01 rend UNAVAILABLE et ne reçoit aucun XP
+ok 41 - un PJ instance non validé M01 rend UNAVAILABLE et ne reçoit aucun XP
+  ---
+  duration_ms: 0.295236
+  type: 'test'
+  ...
+# Subtest: M01 port inj. : preview délègue, ne calcule ni ne mute la fiche
+ok 42 - M01 port inj. : preview délègue, ne calcule ni ne mute la fiche
+  ---
+  duration_ms: 0.8286
+  type: 'test'
+  ...
+# Subtest: M01 erreur native ne produit pas de valeur inventée
+ok 43 - M01 erreur native ne produit pas de valeur inventée
+  ---
+  duration_ms: 0.513615
+  type: 'test'
+  ...
+# Subtest: M01 absence de port produit UNAVAILABLE
+ok 44 - M01 absence de port produit UNAVAILABLE
+  ---
+  duration_ms: 0.358882
+  type: 'test'
+  ...
+# Subtest: M03 port injecté readOnly et retour non mutateur
+ok 45 - M03 port injecté readOnly et retour non mutateur
+  ---
+  duration_ms: 0.425181
+  type: 'test'
+  ...
+# Subtest: M03 effet absorption indisponible dans port
+ok 46 - M03 effet absorption indisponible dans port
+  ---
+  duration_ms: 0.131388
+  type: 'test'
+  ...
+# Subtest: M03 demande d’application rejetée même avec faux port
+ok 47 - M03 demande d’application rejetée même avec faux port
+  ---
+  duration_ms: 0.076706
+  type: 'test'
+  ...
+# Subtest: test exclusif du validateur R1 continue de passer
+ok 48 - test exclusif du validateur R1 continue de passer
+  ---
+  duration_ms: 2.035401
+  type: 'test'
+  ...
+# Subtest: la fixture et les fonctions ne mutent pas les objets sources
+ok 49 - la fixture et les fonctions ne mutent pas les objets sources
+  ---
+  duration_ms: 6.902686
+  type: 'test'
+  ...
+# Subtest: refus du proto dangereux injecté
+ok 50 - refus du proto dangereux injecté
+  ---
+  duration_ms: 0.17915
+  type: 'test'
+  ...
+# Subtest: stockage refuse un autre campaignId même si son ID est valide
+ok 51 - stockage refuse un autre campaignId même si son ID est valide
+  ---
+  duration_ms: 6.425556
+  type: 'test'
+  ...
+# Subtest: stockage refuse un ID natif contenant un point non supporté par \#104, sans alias
+ok 52 - stockage refuse un ID natif contenant un point non supporté par \#104, sans alias
+  ---
+  duration_ms: 5.591017
+  type: 'test'
+  ...
+# Subtest: round-trip stockage détecte une instance altérée dans la projection matérialisée
+ok 53 - round-trip stockage détecte une instance altérée dans la projection matérialisée
+  ---
+  duration_ms: 16.347507
+  type: 'test'
+  ...
+# Subtest: round-trip stockage détecte une note MJ altérée
+ok 54 - round-trip stockage détecte une note MJ altérée
+  ---
+  duration_ms: 16.484574
+  type: 'test'
+  ...
+# Subtest: six niveaux d’invariant conformes à la matrice demandée
+ok 55 - six niveaux d’invariant conformes à la matrice demandée
+  ---
+  duration_ms: 1.978225
+  type: 'test'
+  ...
+# Subtest: toutes les sources figées ont un SHA commit + blob explicites
+ok 56 - toutes les sources figées ont un SHA commit + blob explicites
+  ---
+  duration_ms: 0.376127
+  type: 'test'
+  ...
+# Subtest: M01 sans port fail closed, aucune formule de secours
+ok 57 - M01 sans port fail closed, aucune formule de secours
+  ---
+  duration_ms: 0.294865
+  type: 'test'
+  ...
+# Subtest: M01 niveau invalide 0 refusé avant délégation
+ok 58 - M01 niveau invalide 0 refusé avant délégation
+  ---
+  duration_ms: 0.162455
+  type: 'test'
+  ...
+# Subtest: M01 niveau invalide 26 refusé avant délégation
+ok 59 - M01 niveau invalide 26 refusé avant délégation
+  ---
+  duration_ms: 0.13258
+  type: 'test'
+  ...
+# Subtest: M01 niveau invalide 2.5 refusé avant délégation
+ok 60 - M01 niveau invalide 2.5 refusé avant délégation
+  ---
+  duration_ms: 0.122325
+  type: 'test'
+  ...
+# Subtest: M01 niveau invalide -1 refusé avant délégation
+ok 61 - M01 niveau invalide -1 refusé avant délégation
+  ---
+  duration_ms: 0.218059
+  type: 'test'
+  ...
+# Subtest: M01: 6 appels à la fonction native injectée, résultats inchangés
+ok 62 - M01: 6 appels à la fonction native injectée, résultats inchangés
+  ---
+  duration_ms: 0.361505
+  type: 'test'
+  ...
+# Subtest: port M01 réponse falsifiée rejetée
+ok 63 - port M01 réponse falsifiée rejetée
+  ---
+  duration_ms: 0.405622
+  type: 'test'
+  ...
+# Subtest: port XP absent non remplacé par barème local
+ok 64 - port XP absent non remplacé par barème local
+  ---
+  duration_ms: 1.634467
+  type: 'test'
+  ...
+# Subtest: port XP ne convertit pas niveau ennemi en indice
+ok 65 - port XP ne convertit pas niveau ennemi en indice
+  ---
+  duration_ms: 0.298381
+  type: 'test'
+  ...
+# Subtest: XP unauthorized approved/commit bloqués
+ok 66 - XP unauthorized approved/commit bloqués
+  ---
+  duration_ms: 0.161794
+  type: 'test'
+  ...
+# Subtest: M03 sans port ne calcule aucun dégât
+ok 67 - M03 sans port ne calcule aucun dégât
+  ---
+  duration_ms: 0.161684
+  type: 'test'
+  ...
+# Subtest: M03 absorption et objet numérique restent bloqués
+ok 68 - M03 absorption et objet numérique restent bloqués
+  ---
+  duration_ms: 0.139821
+  type: 'test'
+  ...
+# Subtest: M03 délègue intégralement un aperçu natif sans mutation
+ok 69 - M03 délègue intégralement un aperçu natif sans mutation
+  ---
+  duration_ms: 0.192551
+  type: 'test'
+  ...
+# Subtest: M03 refuse un délégué qui prétend avoir appliqué une action
+ok 70 - M03 refuse un délégué qui prétend avoir appliqué une action
+  ---
+  duration_ms: 0.126581
+  type: 'test'
+  ...
+# Subtest: M03 réponse native absente refusée (fail-closed)
+ok 71 - M03 réponse native absente refusée (fail-closed)
+  ---
+  duration_ms: 0.11953
+  type: 'test'
+  ...
+# Subtest: jeu fictif: 11 objets et catégories explicites
+ok 72 - jeu fictif: 11 objets et catégories explicites
+  ---
+  duration_ms: 7.115823
+  type: 'test'
+  ...
+# Subtest: tous les objets correspondent au contrat proposé
+ok 73 - tous les objets correspondent au contrat proposé
+  ---
+  duration_ms: 6.48797
+  type: 'test'
+  ...
+# Subtest: PJ N1 accepté sans progression calculée
+ok 74 - PJ N1 accepté sans progression calculée
+  ---
+  duration_ms: 0.348896
+  type: 'test'
+  ...
+# Subtest: PJ N10 accepté sans progression calculée
+ok 75 - PJ N10 accepté sans progression calculée
+  ---
+  duration_ms: 0.266822
+  type: 'test'
+  ...
+# Subtest: PJ N25 accepté sans progression calculée
+ok 76 - PJ N25 accepté sans progression calculée
+  ---
+  duration_ms: 0.387855
+  type: 'test'
+  ...
+# Subtest: créature + variante: même définition, instances distinctes
+ok 77 - créature + variante: même définition, instances distinctes
+  ---
+  duration_ms: 0.352261
+  type: 'test'
+  ...
+# Subtest: PNJ narratif sans niveau explicite est valide
+ok 78 - PNJ narratif sans niveau explicite est valide
+  ---
+  duration_ms: 0.394455
+  type: 'test'
+  ...
+# Subtest: niveau 26 rejeté sans interpréter M01
+ok 79 - niveau 26 rejeté sans interpréter M01
+  ---
+  duration_ms: 0.53037
+  type: 'test'
+  ...
+# Subtest: absence niveau 0 ou décimal
+ok 80 - absence niveau 0 ou décimal
+  ---
+  duration_ms: 1.039709
+  type: 'test'
+  ...
+# Subtest: ID ARCHIVES natif avec : accepté à l’identique
+ok 81 - ID ARCHIVES natif avec : accepté à l’identique
+  ---
+  duration_ms: 0.651803
+  type: 'test'
+  ...
+# Subtest: IDs sans alias : et - restent différents
+ok 82 - IDs sans alias : et - restent différents
+  ---
+  duration_ms: 0.521577
+  type: 'test'
+  ...
+# Subtest: instance native invalide rejetée sur chemin structuré
+ok 83 - instance native invalide rejetée sur chemin structuré
+  ---
+  duration_ms: 0.357058
+  type: 'test'
+  ...
+# Subtest: collision instance campagne même avec IDs documentaires différents
+ok 84 - collision instance campagne même avec IDs documentaires différents
+  ---
+  duration_ms: 0.378391
+  type: 'test'
+  ...
+# Subtest: collision recordId interversions dans un seul snapshot
+ok 85 - collision recordId interversions dans un seul snapshot
+  ---
+  duration_ms: 0.470941
+  type: 'test'
+  ...
+# Subtest: variante ne devient pas automatiquement canon
+ok 86 - variante ne devient pas automatiquement canon
+  ---
+  duration_ms: 0.144087
+  type: 'test'
+  ...
+# Subtest: statut joué/canon sans preuve refuse
+ok 87 - statut joué/canon sans preuve refuse
+  ---
+  duration_ms: 0.969954
+  type: 'test'
+  ...
+# Subtest: une attestation déclarée n’est pas vérification cryptographique
+ok 88 - une attestation déclarée n’est pas vérification cryptographique
+  ---
+  duration_ms: 0.301586
+  type: 'test'
+  ...
+# Subtest: approved/autoApply/creditXp ne passent pas même imbriqués
+ok 89 - approved/autoApply/creditXp ne passent pas même imbriqués
+  ---
+  duration_ms: 0.568037
+  type: 'test'
+  ...
+# Subtest: inconnus dans original privé sont conservés sans exécution
+ok 90 - inconnus dans original privé sont conservés sans exécution
+  ---
+  duration_ms: 0.386002
+  type: 'test'
+  ...
+# Subtest: méta provenance non épinglée refusée pour source historique
+ok 91 - méta provenance non épinglée refusée pour source historique
+  ---
+  duration_ms: 0.257749
+  type: 'test'
+  ...
+# Subtest: empreinte commit et blob native sont distinctes
+ok 92 - empreinte commit et blob native sont distinctes
+  ---
+  duration_ms: 0.170707
+  type: 'test'
+  ...
+# Subtest: médias non autorisés sans droits confirmés
+ok 93 - médias non autorisés sans droits confirmés
+  ---
+  duration_ms: 0.345831
+  type: 'test'
+  ...
+# Subtest: sélection explicite obligatoire pour candidat joueur
+ok 94 - sélection explicite obligatoire pour candidat joueur
+  ---
+  duration_ms: 0.239732
+  type: 'test'
+  ...
+# Subtest: projection candidate à liste blanche, aucune donnée privée ni provenance
+ok 95 - projection candidate à liste blanche, aucune donnée privée ni provenance
+  ---
+  duration_ms: 0.457561
+  type: 'test'
+  ...
+# Subtest: roundtrip import/export JSON, ext inconnues et version exacte
+ok 96 - roundtrip import/export JSON, ext inconnues et version exacte
+  ---
+  duration_ms: 8.101555
+  type: 'test'
+  ...
+# Subtest: export privé ne publie ni ne modifie des fiches
+ok 97 - export privé ne publie ni ne modifie des fiches
+  ---
+  duration_ms: 0.867519
+  type: 'test'
+  ...
+# Subtest: package privé inconnu rejeté
+ok 98 - package privé inconnu rejeté
+  ---
+  duration_ms: 0.094192
+  type: 'test'
+  ...
+# Subtest: JSON non valide refusé
+ok 99 - JSON non valide refusé
+  ---
+  duration_ms: 0.19231
+  type: 'test'
+  ...
+# Subtest: prototype pollution refusée même en zone privée
+ok 100 - prototype pollution refusée même en zone privée
+  ---
+  duration_ms: 0.28496
+  type: 'test'
+  ...
+# Subtest: getter, classe, cycle et fonction refusés
+ok 101 - getter, classe, cycle et fonction refusés
+  ---
+  duration_ms: 0.222275
+  type: 'test'
+  ...
+# Subtest: participant renvoyant à un autre ID est refusé
+ok 102 - participant renvoyant à un autre ID est refusé
+  ---
+  duration_ms: 2.79029
+  type: 'test'
+  ...
+# Subtest: participant dupliqué refusé sans effectuer transaction
+ok 103 - participant dupliqué refusé sans effectuer transaction
+  ---
+  duration_ms: 0.990555
+  type: 'test'
+  ...
+# Subtest: adaptateur historique garde tout Markdown et classe canon en proposition
+ok 104 - adaptateur historique garde tout Markdown et classe canon en proposition
+  ---
+  duration_ms: 0.534747
+  type: 'test'
+  ...
+# Subtest: adaptateur natif conserve source brute et n’autorise aucun effet
+ok 105 - adaptateur natif conserve source brute et n’autorise aucun effet
+  ---
+  duration_ms: 0.25813
+  type: 'test'
+  ...
+# Subtest: adaptateur historique refuse SHA non épinglé
+ok 106 - adaptateur historique refuse SHA non épinglé
+  ---
+  duration_ms: 0.201604
+  type: 'test'
+  ...
+# Subtest: schema de l’enveloppe reste versionné en propre
+ok 107 - schema de l’enveloppe reste versionné en propre
+  ---
+  duration_ms: 0.071087
+  type: 'test'
+  ...
+# Subtest: variante sans origine liée refusée
+ok 108 - variante sans origine liée refusée
+  ---
+  duration_ms: 0.667307
+  type: 'test'
+  ...
+# Subtest: collision de variantId dans une même définition refusée
+ok 109 - collision de variantId dans une même définition refusée
+  ---
+  duration_ms: 0.84155
+  type: 'test'
+  ...
+# Subtest: mention de validation externe ne crée pas une règle exécutable
+ok 110 - mention de validation externe ne crée pas une règle exécutable
+  ---
+  duration_ms: 0.162626
+  type: 'test'
+  ...
+# Subtest: flûte narrative ne crée aucun malus ou décompte de charge
+ok 111 - flûte narrative ne crée aucun malus ou décompte de charge
+  ---
+  duration_ms: 0.194494
+  type: 'test'
+  ...
+# Subtest: PNJ participant ne reçoit pas de crédit XP implicite
+ok 112 - PNJ participant ne reçoit pas de crédit XP implicite
+  ---
+  duration_ms: 0.144909
+  type: 'test'
+  ...
+1..112
+# tests 112
+# suites 0
+# pass 112
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 277.245098
