@@ -1,0 +1,51 @@
+{
+  "sources": {
+    "src/studio/reconcile.mjs": {
+      "sha256": "836e7fbc4040bdfe71b604a4968997246fe6768b677e734c0feb2d41431a16bf",
+      "git_blob": "61cc35376f80b1845472109332ecc681d81d2fe3",
+      "bytes": 15465
+    },
+    "src/studio/CONTRACT.md": {
+      "sha256": "4783c83fdb5bc4a74524f5f7d6c55bfef4d7d326dc83b70a24d0709c4df36084",
+      "git_blob": "77a0fa06a18ccc542dc17f2a7a16ded274063e61",
+      "bytes": 16030
+    },
+    "tests/studio/L004_PENDING_CONTRACT.test.mjs": {
+      "sha256": "644250521c5131dac088b9876242e400d9680b7e68674bc280da9e45d784e5a8",
+      "git_blob": "1677144f384e7994bbcdc5dc934e4659c4f850de",
+      "bytes": 14981
+    },
+    "tests/studio/L004_PENDING_REAL_INTEROP.mjs": {
+      "sha256": "ce385c7948ac33066d8bd1dcb3def5c708079bd361e4ac632f524cfd9834726a",
+      "git_blob": "5e9aae7d1dd9b6b9abeb9ec0458e689cd6c7334a",
+      "bytes": 10560
+    },
+    "tests/studio/L004_ASYNC_HEAD100_RAPPORT.md": {
+      "sha256": "9665b0b87cedeb3d7a621ddd55b0b774570db55a3363fc9ce60f9d779153e8dc",
+      "git_blob": "3a19045486e7046e954d74c3a3a2f09d7bdf4f0b",
+      "bytes": 5391
+    },
+    "tests/studio/L004_ASYNC_V8_ACTUAL_BLOBS_RESULTS.json": {
+      "sha256": "cee9033b4430ee5f9fee1f8a976e0513d4af4c5e265c67923f0a212f02229e39",
+      "git_blob": "aae99ce72907a9f671d78740690c65942e3d38c5",
+      "bytes": 1630
+    },
+    "tests/studio/L004_ASYNC_NODE_68.tap": {
+      "sha256": "d72e4e58ebb58590dd18b10962189df86dd92a5d2682f642f532b0f8f472f882",
+      "git_blob": "ab385755549e8d28c41783c7face5289be8bb848",
+      "bytes": 15352
+    },
+    "tests/studio/L004_ASYNC_L003_22.tap": {
+      "sha256": "f8bb2db88835fcf1f1e18364c6ed8c92d20d5b6313b36dcb1da1326ad1c6e070",
+      "git_blob": "4707e60ab1b5e7650fa75ed64e67b9bae5c150ad",
+      "bytes": 4565
+    },
+    "tests/studio/L004_ASYNC_REAL_INTEROP_BLOCKED.tap": {
+      "sha256": "58089996325a5a87403fb135bd62d23264935de84db25d8f5265146b262cc8c9",
+      "git_blob": "b9e165bc5d4b1df5e443de50cb009fbe0028b55f",
+      "bytes": 1676
+    }
+  },
+  "sourceATELIERS": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+  "originStudio": "6bb0b1aecdc1e37b79d3a53dd192a653999d5072"
+}
