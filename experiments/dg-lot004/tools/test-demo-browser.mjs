@@ -336,6 +336,92 @@ try{
  if(await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")')!==foreignCreatorRaw)
   fail('DG004_FOREIGN_CREATOR_BYTES_CHANGED');
  await mj.eval('localStorage.removeItem("cer.dg004.creators.private.demo.v0")');
+ // DG P0-UNBLOCK: two real Chrome MJ tabs run the L003 native ARCHIVES-backed
+ // storage adapter, not a simulated JS store or a fake environment lock.
+ if((await fetch(PLAYER+'/assets/p0.js')).status!==404 ||
+    (await fetch(PLAYER+'/p0-storage-test.html')).status!==404)
+  fail('P0_BROWSER_TEST_ASSETS_LEAKED_TO_PLAYER');
+ const userMarker=await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")');
+ if(userMarker!=='REAL_MJ_NOT_DEMO')fail('P0_PRIOR_PRIVATE_SENTINEL_UNEXPECTED');
+ await mj.call('Page.navigate',{url:MJ+'/p0-storage-test.html'});
+ await until(()=>mj.eval('window.__dg004P0?.isReady===true'),120);
+ const p0Control=await CDP.open(versionInfo.webSocketDebuggerUrl);
+ const p0TabId=(await p0Control.call('Target.createTarget',{url:MJ+'/p0-storage-test.html'})).targetId;
+ const p0Info=await until(async()=>(await json(base+'/json')).find(x=>x.id===p0TabId),120);
+ const p0Other=await CDP.open(p0Info.webSocketDebuggerUrl);
+ await p0Other.call('Runtime.enable');
+ await until(()=>p0Other.eval('window.__dg004P0?.isReady===true'),120);
+ if(await mj.eval('window.__dg004P0.lockAvailable()')!==true||
+    await p0Other.eval('window.__dg004P0.lockAvailable()')!==true)
+  fail('P0_REAL_CHROME_WEB_LOCKS_UNAVAILABLE');
+ async function runP0(tab,expr){
+  const source='(async()=>{try{return {ok:true,value:await ('+expr+')}}catch(error){return {ok:false,error:error?.message??String(error)}}})()';
+  new Script(source);
+  return tab.eval(source);
+ }
+ const requireOk=(r,label)=>{if(r?.ok!==true)fail('P0_'+label+' '+JSON.stringify(r));return r.value;};
+ const requireConflict=(r,label,re)=>{
+  if(r?.ok!==false||!re.test(r.error??''))fail('P0_'+label+' NOT_BLOCKED '+JSON.stringify(r));
+ };
+ await mj.eval('window.__dg004P0.reset()');
+ const p0A=await mj.eval('window.__dg004P0.create()');
+ requireOk(await runP0(mj,'window.__dg004P0.save('+p0A+',window.__dg004P0.make(4))'),'INIT');
+ const p0B=await p0Other.eval('window.__dg004P0.create()');
+ const p0OldA=requireOk(await runP0(mj,'window.__dg004P0.load('+p0A+')'),'LOAD_A');
+ const p0OldB=requireOk(await runP0(p0Other,'window.__dg004P0.load('+p0B+')'),'LOAD_B');
+ requireOk(await runP0(p0Other,'window.__dg004P0.save('+p0B+',window.__dg004P0.edit('+JSON.stringify(p0OldB)+',5,"browser-rev5"))'),'TAB_B_NEW_PARENT');
+ const rawRev5=await mj.eval('window.__dg004P0.original()');
+ requireConflict(await runP0(mj,'window.__dg004P0.save('+p0A+',window.__dg004P0.edit('+JSON.stringify(p0OldA)+',9,"forged-rev9"))'),
+  'FORGED_REVISION',/causal parent conflict/);
+ if(await mj.eval('window.__dg004P0.original()')!==rawRev5)
+  fail('P0_FORGED_REV9_OVERWROTE_REV5');
+
+ // Restore race variant A: concurrent write after preview but before restore.
+ await mj.eval('window.__dg004P0.reset()');
+ const p0RestoreA=await mj.eval('window.__dg004P0.create()');
+ requireOk(await runP0(mj,'window.__dg004P0.save('+p0RestoreA+',window.__dg004P0.make(1))'),'RESTORE_A_START');
+ const p0RestoreB=await p0Other.eval('window.__dg004P0.create()');
+ const bParent=requireOk(await runP0(p0Other,'window.__dg004P0.load('+p0RestoreB+')'),'RESTORE_B_LOAD');
+ requireOk(await runP0(mj,'window.__dg004P0.preview('+p0RestoreA+')'),'RESTORE_A_PREVIEW');
+ requireOk(await runP0(p0Other,'window.__dg004P0.save('+p0RestoreB+',window.__dg004P0.edit('+JSON.stringify(bParent)+',2,"browser-after-preview"))'),'RESTORE_B_WRITE');
+ const rawAfterPreview=await mj.eval('window.__dg004P0.original()');
+ requireConflict(await runP0(mj,'window.__dg004P0.restore('+p0RestoreA+')'),
+  'RESTORE_PREVIEW_CHANGED',/restore causal parent conflict/);
+ if(await mj.eval('window.__dg004P0.original()')!==rawAfterPreview)
+  fail('P0_RESTORE_PREVIEW_OVERWROTE_TAB_B');
+
+ // Restore race variant B: preview+pure restore, then another tab writes
+ // BEFORE the actual save. exactRestorePending must not bypass this.
+ await mj.eval('window.__dg004P0.reset()');
+ const p0LateA=await mj.eval('window.__dg004P0.create()');
+ requireOk(await runP0(mj,'window.__dg004P0.save('+p0LateA+',window.__dg004P0.make(1))'),'LATE_A_START');
+ const p0LateB=await p0Other.eval('window.__dg004P0.create()');
+ const bOld=requireOk(await runP0(p0Other,'window.__dg004P0.load('+p0LateB+')'),'LATE_B_LOAD');
+ requireOk(await runP0(mj,'window.__dg004P0.preview('+p0LateA+')'),'LATE_A_PREVIEW');
+ requireOk(await runP0(mj,'window.__dg004P0.restore('+p0LateA+')'),'LATE_A_PURE_RESTORE');
+ requireOk(await runP0(p0Other,'window.__dg004P0.save('+p0LateB+',window.__dg004P0.edit('+JSON.stringify(bOld)+',2,"browser-after-restore"))'),'LATE_B_WRITE');
+ const rawAfterRestore=await mj.eval('window.__dg004P0.original()');
+ requireConflict(await runP0(mj,'window.__dg004P0.commit('+p0LateA+')'),
+  'RESTORE_COMMIT_CHANGED',/restore causal parent conflict/);
+ if(await mj.eval('window.__dg004P0.original()')!==rawAfterRestore)
+  fail('P0_RESTORE_COMMIT_OVERWROTE_TAB_B');
+
+ // Missing Web Lock is fail-closed in a real Window, even for a new save.
+ await mj.eval('window.__dg004P0.reset()');
+ const p0NoLock=await mj.eval('window.__dg004P0.create({withoutLock:true})');
+ requireConflict(await runP0(mj,'window.__dg004P0.save('+p0NoLock+',window.__dg004P0.make(3))'),
+  'WEB_LOCK_UNAVAILABLE',/Web Locks unavailable/);
+ if(await mj.eval('window.__dg004P0.original()')!==null)
+  fail('P0_UNSAFE_BROWSER_WRITE_WITHOUT_LOCK');
+ await mj.eval('localStorage.setItem("cer.dg003.private.campaign.v0",'+JSON.stringify(userMarker)+')');
+ p0Other.close();
+ await p0Control.call('Target.closeTarget',{targetId:p0TabId});
+ p0Control.close();
+ console.log('DG004_P0_CAUSAL_BROWSER_OK',JSON.stringify({
+  actualTabs:2,chromeWebLocks:true,forgedRevision9Rejected:true,
+  restoreAfterPreviewRejected:true,restoreBeforeFinalSaveRejected:true,
+  browserMissingLockFailClosed:true,previousLocalValueRestored:true
+ }));
  mj.close();
  console.log('DG004_FOREIGN_KEY_BROWSER_OK',JSON.stringify({rejectedBeforeMount:true,oldBytesIntact:true}));
  console.log('DG004_STUDIO_OWNER_BROWSER_OK',JSON.stringify({ownerCommit:'18602be2d0b281478ebd9693b6ff0be63ef862ee',
