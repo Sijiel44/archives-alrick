@@ -1,0 +1,445 @@
+/** L004 genuine Chrome/HTTP demonstration walkthrough, isolated test profile, no mocks. */
+import {spawn,spawnSync} from 'node:child_process';
+import {mkdtemp,rm,readFile,mkdir,readdir,writeFile} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join,resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {setTimeout as sleep} from 'node:timers/promises';
+import WebSocket from 'ws';
+import {Script} from 'node:vm';
+import {probeLocalPreview} from '../builder/src/probe.mjs';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const MJ='http://127.0.0.1:4173',PLAYER='http://127.0.0.1:4174';
+const binary=process.env.CHROMIUM_PATH??'google-chrome-stable';
+const version=spawnSync(binary,['--version'],{encoding:'utf8',timeout:8000});
+if(version.status!==0)throw Error('OFFICIAL_CHROME_NOT_AVAILABLE '+String(version.error??version.stderr));
+console.log('DG004_CHROME',version.stdout.trim());
+const tmp=await mkdtemp(join(tmpdir(),'dg004-e2e-'));
+let server,browser,stderr='',out='',spawnError=null,exit=null,endpoint=null;
+const fail=x=>{throw Error(x)};
+async function until(fn,attempts=90){
+ let last;for(let i=0;i<attempts;i++){
+  try{const x=await fn();if(x)return x;}catch(e){last=e;}
+  await sleep(160);
+ }throw Error('DG004_TIMEOUT '+(last?.message??''));
+}
+async function json(uri){const r=await fetch(uri,{signal:AbortSignal.timeout(1800)});if(!r.ok)throw Error('HTTP '+r.status);return r.json();}
+function verifyEndpoint(text){
+ const m=text.match(/DevTools listening on (ws:\/\/127\.0\.0\.1:\d+\/devtools\/browser\/[0-9a-zA-Z-]+)/);
+ if(!m)return null;const url=new URL(m[1]),n=Number(url.port);
+ if(url.protocol!=='ws:'||url.hostname!=='127.0.0.1'||!Number.isSafeInteger(n)||n<1||n>65535||
+  !/^\/devtools\/browser\/[0-9a-zA-Z-]+$/.test(url.pathname))fail('CHROME_NOT_CHILD_LOOPBACK');
+ return {port:n,ws:url.href};
+}
+class CDP{
+ constructor(ws){this.ws=ws;this.id=0;this.waiting=new Map();ws.on('message',value=>{
+  const v=JSON.parse(String(value)),p=this.waiting.get(v.id);if(!p)return;
+  this.waiting.delete(v.id);if(v.error)p.reject(Error(v.error.message));else p.resolve(v.result);
+ });}
+ static async open(url){const ws=new WebSocket(url);await new Promise((ok,no)=>{ws.once('open',ok);ws.once('error',no);});return new CDP(ws);}
+ call(method,params={}){return new Promise((ok,no)=>{const id=++this.id;this.waiting.set(id,{resolve:ok,reject:no});this.ws.send(JSON.stringify({id,method,params}),e=>{if(e){this.waiting.delete(id);no(e);}});});}
+ async eval(expression){const result=await this.call('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true,userGesture:true});
+  if(result.exceptionDetails)throw Error('DOM:'+result.exceptionDetails.text+' '+(result.exceptionDetails.exception?.description??''));
+  return result.result?.value;}
+ close(){this.ws.close();}
+}
+function click(label){return '(()=>{const e=[...document.querySelectorAll("button")].find(x=>x.textContent.trim()==='+JSON.stringify(label)+');if(!e)throw Error("missing "+'+JSON.stringify(label)+');e.click();return true;})()';}
+const textContains=x=>'document.body.innerText.includes('+JSON.stringify(x)+')';
+try{
+ server=spawn(process.execPath,[resolve(root,'tools/serve.mjs')],{stdio:['ignore','pipe','pipe']});
+ let serverLog='';server.stderr?.on('data',x=>serverLog=(serverLog+String(x)).slice(-6000));
+ await until(async()=>{const a=await fetch(MJ,{signal:AbortSignal.timeout(1500)}),b=await fetch(PLAYER,{signal:AbortSignal.timeout(1500)});return a.status===200&&b.status===200;});
+ const builderProbe=await probeLocalPreview();
+ if(!builderProbe.ok||builderProbe.checks.length!==8)
+  fail('BUILDER_PROBE_FAIL '+JSON.stringify(builderProbe.checks));
+ if((await fetch(PLAYER+'/assets/mj.js')).status!==404|| (await fetch(MJ+'/player.html')).status!==404)
+  fail('ORIGIN_ISOLATION_FAIL');
+ browser=spawn(binary,['--headless=new','--no-first-run','--no-default-browser-check','--disable-gpu',
+  '--remote-debugging-port=0','--user-data-dir='+join(tmp,'chrome'),MJ],{stdio:['ignore','pipe','pipe']});
+ browser.stderr?.on('data',x=>{stderr=(stderr+String(x)).slice(-14000);endpoint??=verifyEndpoint(stderr);});
+ browser.stdout?.on('data',x=>out=(out+String(x)).slice(-3000));
+ browser.on('error',e=>{spawnError=e.message;});browser.on('exit',(code,signal)=>exit={code,signal});
+ const located=await until(async()=>{
+  if(spawnError||exit)fail('BROWSER_START '+JSON.stringify({spawnError,exit,stderr}));
+  if(endpoint)return endpoint;
+  try{const raw=await readFile(join(tmp,'chrome/DevToolsActivePort'),'utf8');
+   const [port,path]=raw.split(/\r?\n/);const n=Number(port);
+   if(!Number.isSafeInteger(n)||n<=0||n>65535||!/^\/devtools\/browser\/[a-zA-Z0-9-]+$/.test(path??''))return null;
+   return {port:n,ws:'ws://127.0.0.1:'+n+path};
+  }catch(e){if(e.code==='ENOENT')return null;throw e;}
+ },125);
+ const base='http://127.0.0.1:'+located.port;
+ const versionInfo=await until(()=>json(base+'/json/version'));
+ if(versionInfo.webSocketDebuggerUrl!==located.ws)fail('CHROME_CDP_SESSION_MISMATCH');
+ const target=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(MJ)));
+ const mj=await CDP.open(target.webSocketDebuggerUrl);await mj.call('Runtime.enable');
+ await until(()=>mj.eval('!!document.querySelector("#dg004-demo-root button")'));
+ const nav=await mj.eval('(()=>{const root=document.querySelector("[data-l004-preview-navigation]");if(!root)return null;return {count:root.querySelectorAll("button[data-preview-step]").length,labels:[...root.querySelectorAll("button")].map(x=>x.textContent.trim())};})()');
+ if(nav?.count!==7)fail('BUILDER_NAV_NOT_MOUNTED '+JSON.stringify(nav));
+ // Refuse an existing local private backup before any mock scenario is started.
+ await mj.eval('localStorage.setItem("cer.dg003.private.campaign.v0","LEGACY_USER_BACKUP");localStorage.setItem("dg004-unrelated","keep")');
+ await mj.eval(click('Démarrer la démonstration fictive'));
+ await until(()=>mj.eval(textContains('DEMO_BLOCKED')));
+ if((await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")'))!=='LEGACY_USER_BACKUP')
+  fail('OLD_USER_BACKUP_CHANGED');
+ await mj.eval('localStorage.removeItem("cer.dg003.private.campaign.v0")');
+ await mj.eval(click('Démarrer la démonstration fictive'));
+ await until(()=>mj.eval(textContains('DEMO_READY')),130);
+ const before=await mj.eval('({privateEnvelope:localStorage.getItem("cer.dg003.private.campaign.v0"),marker:localStorage.getItem("cer.dg004.demo.marker.v0")})');
+ if(!before.privateEnvelope||!before.marker)fail('DG004_DEMO_NOT_PERSISTED');
+ await mj.eval(click('Ouvrir la fenêtre joueur'));
+ const playerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)));
+ const player=await CDP.open(playerTarget.webSocketDebuggerUrl);await player.call('Runtime.enable');
+ await until(()=>mj.eval(textContains('Fenêtre joueur connectée')));
+ const checkbox='(()=>{const e=[...document.querySelectorAll("label")].find(x=>x.textContent.includes("Partager le titre de la scène"));if(!e)throw Error("missing share title");e.querySelector("input").click();return true;})()';
+ await mj.eval(checkbox);
+ await mj.eval(click('Publier uniquement la sélection'));
+ await until(()=>player.eval(textContains('Passerelle d’essai (fiction)')));
+ const playerHtml=await player.eval('document.documentElement.outerHTML+JSON.stringify(localStorage)');
+ if(/CANARY_DG004_PRIVATE_FAKE_NOT_FOR_PLAYER|DG004_FAKE_PRIVATE|privateSnapshot|DG004_SYNTHETIC_ONLY/.test(playerHtml)||await player.eval('localStorage.length')!==0)
+  fail('DG004_PRIVATE_LEAK');
+ await mj.eval(click('Quitter et effacer uniquement la démonstration'));
+ await until(()=>mj.eval(textContains('DEMO_CLEARED')));
+ const after=await mj.eval('({privateEnvelope:localStorage.getItem("cer.dg003.private.campaign.v0"),marker:localStorage.getItem("cer.dg004.demo.marker.v0"),unrelated:localStorage.getItem("dg004-unrelated")})');
+ if(after.privateEnvelope!==null||after.marker!==null||after.unrelated!=='keep')
+  fail('DG004_ROLLBACK_CHANGED_OTHER_DATA '+JSON.stringify(after));
+ player.close();
+ // Real STUDIO owner page, separate from L003 and the earlier integrator demo.
+ if((await fetch(MJ+'/dg004-demo.html')).status!==200||
+    (await fetch(PLAYER+'/dg004-demo.html')).status!==404||
+    (await fetch(PLAYER+'/assets/demo.js')).status!==404)fail('OWNER_ORIGIN_ROUTE_FAIL');
+ await mj.eval('localStorage.setItem("cer.dg003.private.campaign.v0","REAL_MJ_NOT_DEMO")');
+ await mj.call('Page.enable');
+ await mj.call('Page.navigate',{url:MJ+'/dg004-demo.html'});
+ await until(()=>mj.eval('!!document.querySelector("[data-l004-demo]")'),100);
+ const loaded=await mj.eval('document.querySelector("#status")?.textContent');
+ if(!loaded?.includes('propriétaire monté'))fail('OWNER_MOUNT_FAIL '+loaded);
+ const ownerStatusExpression='document.querySelector('+JSON.stringify('[aria-label="Guide de démonstration"] [role="status"]')+')?.textContent';
+ new Script(ownerStatusExpression);
+ const ownerStatus=()=>mj.eval(ownerStatusExpression);
+ async function step(label,expected){
+  await mj.eval(click(label));
+  await until(async()=>{
+   const status=await ownerStatus();
+   if(status?.includes('Action refusée'))fail('OWNER_STEP_REJECTED '+label+' '+status);
+   return mj.eval(textContains(expected));
+  },110);
+ }
+ await step('Créer campagne fictive','Campagne active : Campagne vitrine');
+ await step('Prévisualiser PJ fictif','À importer');
+ await step('Accepter copie PJ','PJ copiés :');
+ await step('Prévisualiser créature fictive','Créature témoin N5');
+ await step('Accepter copie créature','Copies : Créature témoin N5');
+ await step('Créer scène et notes MJ fictives','La Lanterne des Deux Rives');
+ const spaces=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")})');
+ if(spaces.real!=='REAL_MJ_NOT_DEMO'||!spaces.demo)fail('OWNER_NAMESPACE_FAIL '+JSON.stringify(spaces));
+ await mj.eval(click('Ouvrir la fenêtre joueur'));
+ const ownerPlayerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)&&x.url!==playerTarget.url),110);
+ const ownerPlayer=await CDP.open(ownerPlayerTarget.webSocketDebuggerUrl);
+ await ownerPlayer.call('Runtime.enable');
+ await until(()=>mj.eval(textContains('Fenêtre joueur connectée')),110);
+ await mj.eval(checkbox);
+ await mj.eval(click('Publier uniquement la sélection'));
+ await until(()=>ownerPlayer.eval(textContains('La Lanterne des Deux Rives')),110);
+ const published=await ownerPlayer.eval('document.documentElement.outerHTML+JSON.stringify(localStorage)');
+ if(/SENTINELLE_MJ_L004_FICTIVE|DG004_FAKE_PRIVATE|privateSnapshot|demo.only|fictional.session/.test(published)||
+    await ownerPlayer.eval('localStorage.length')!==0)fail('OWNER_PRIVATE_CANARY_LEAK');
+ // Verify the owner ARCHIVES allowlist refuses a foreign backup before native preview.
+ const foreign=join(tmp,'foreign.json');
+ await writeFile(foreign,JSON.stringify({schema:'foreign',unknown:'REAL_MJ'}));
+ await mj.call('DOM.enable');
+ async function uploadOwner(file){
+  const rootId=(await mj.call('DOM.getDocument')).root.nodeId;
+  const id=(await mj.call('DOM.querySelector',{nodeId:rootId,selector:'input[type="file"][aria-label="Fichier de restauration confidentiel"]'})).nodeId;
+  if(!id)fail('OWNER_FILE_INPUT_MISSING');
+  await mj.call('DOM.setFileInputFiles',{nodeId:id,files:[file]});
+ }
+ await uploadOwner(foreign);
+ await mj.eval(click('Prévisualiser restauration'));
+ await until(()=>mj.eval(textContains('Archive non reconnue comme export fictif')),100);
+ const downloadDir=join(tmp,'owner-export');
+ await mkdir(downloadDir,{recursive:true});
+ await mj.call('Page.setDownloadBehavior',{behavior:'allow',downloadPath:downloadDir});
+ await mj.eval(click('Exporter campagne CONFIDENTIELLE'));
+ const backup=await until(async()=>{
+  const files=(await readdir(downloadDir)).filter(x=>x.endsWith('.json'));
+  return files.length===1?join(downloadDir,files[0]):null;
+ },100);
+ const ownerBytes=new Uint8Array(await readFile(backup));
+ if(ownerBytes.length<512||ownerBytes.length>1024*1024)fail('OWNER_NATIVE_EXPORT_INVALID '+ownerBytes.length);
+ await uploadOwner(backup);
+ await mj.eval(click('Prévisualiser restauration'));
+ await until(()=>mj.eval(textContains('Restauration proposée')),110);
+ await mj.eval(click('Confirmer restauration'));
+ const restoreStatuses=()=>mj.eval('[...document.querySelectorAll("[role=status]")].map(e=>e.textContent).filter(Boolean).slice(0,7)');
+ await until(async()=>{
+  if(await mj.eval(textContains('Campagne restaurée')))return true;
+  const statuses=await restoreStatuses();
+  const rejected=statuses.find(x=>/causal parent conflict|source snapshot conflict|Échec de persistance|unverified preview|Private restore/.test(x));
+  if(rejected)fail('OWNER_RESTORE_CAUSAL_GUARD '+JSON.stringify(statuses).slice(0,850));
+  return false;
+ },110);
+ if((await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")'))!=='REAL_MJ_NOT_DEMO')
+  fail('OWNER_RESTORE_OVERWROTE_REAL');
+ await mj.eval(click('Quitter et effacer la démonstration dédiée'));
+ await until(()=>mj.eval(textContains('DG004_OWNER_CLEARED')),110);
+ const final=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0"),allow:localStorage.getItem("cer.dg004.demo.only.v0.approved-backup-sha256")})');
+ if(final.real!=='REAL_MJ_NOT_DEMO'||final.demo!==null||final.allow!==null)
+  fail('OWNER_ROLLBACK_FAIL '+JSON.stringify(final));
+ ownerPlayer.close();
+ // A completely new fictional campaign is required for ATELIERS: the first
+ // STUDIO owner walkthrough already copied the same BEST profile. Treating it
+ // as a fresh copy without an intent journal would correctly be rejected.
+ await mj.call('Page.navigate',{url:MJ+'/dg004-demo.html'});
+ await until(()=>mj.eval('!!document.querySelector("[data-l004-demo]")'),110);
+ await until(()=>mj.eval('document.querySelector("#status")?.textContent.includes("propriétaire monté")'),110);
+ await step('Créer campagne fictive','Campagne active : Campagne vitrine');
+ await step('Prévisualiser PJ fictif','À importer');
+ await step('Accepter copie PJ','PJ copiés :');
+ // Real second MJ tab: the owner browser session must not overwrite a newer
+ // creator revision from a stale tab. This is not a simulated localStorage map.
+ const browserControl=await CDP.open(versionInfo.webSocketDebuggerUrl);
+ const otherTarget=(await browserControl.call('Target.createTarget',{url:MJ+'/dg004-demo.html'})).targetId;
+ const otherInfo=await until(async()=>(await json(base+'/json')).find(x=>x.id===otherTarget),110);
+ const otherMj=await CDP.open(otherInfo.webSocketDebuggerUrl);
+ await otherMj.call('Runtime.enable');
+ await until(()=>otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("Parcours privé prêt")'),110);
+ await mj.eval(click('Enregistrer brouillon'));
+ await until(()=>mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")!==null'),110);
+ const guardedBefore=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ const otherBefore=await otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
+ await otherMj.eval(click('Enregistrer brouillon'));
+ const otherStatus=await until(async()=>{
+  const value=await otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
+  return value&&value!==otherBefore?value:null;
+ },110);
+ if(!/CREATOR_IDENTITY_CONFLICT/.test(otherStatus))
+  fail('REAL_SECOND_TAB_FOREIGN_ID_NOT_REJECTED: '+JSON.stringify({otherBefore,otherStatus}).slice(0,900));
+ const guardedAfter=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ if(guardedBefore!==guardedAfter)fail('DG004_INTERTAB_OVERWROTE_CREATOR');
+ // Now align both tabs to the SAME durable cycle. A's later revision must
+ // not be overwritten by the stale, previously loaded revision in B.
+ await otherMj.eval(click('Recharger brouillons'));
+ await until(()=>otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("Brouillons rechargés")'),110);
+ await mj.eval(click('Enregistrer brouillon'));
+ await until(()=>mj.eval('JSON.parse(localStorage.getItem("cer.dg004.creators.private.demo.v0")).revision===2'),110);
+ const beforeRevisionConflict=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ await otherMj.eval(click('Enregistrer brouillon'));
+ await until(()=>otherMj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("CREATOR_REVISION_CONFLICT")'),110);
+ const afterRevisionConflict=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ if(beforeRevisionConflict!==afterRevisionConflict)fail('DG004_INTERTAB_REVISION_OVERWROTE_CREATOR');
+ otherMj.close();
+ await browserControl.call('Target.closeTarget',{targetId:otherTarget});
+ browserControl.close();
+ console.log('DG004_TWO_MJ_TABS_CAS_OK',JSON.stringify({actualTabs:2,foreignCycleIdRejected:true,staleRevisionRejected:true,rawBytesPreserved:true}));
+ // The dedicated owner page also mounts MATH/INDEX XP (read-only) and the
+ // real ATELIERS guided chain. Neither may credit XP or publish to the player.
+ const xpBefore=await mj.eval('localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")');
+ await mj.eval(click('Prévisualiser XP fictifs (sans attribution)'));
+ await until(async()=>{
+  const value=await mj.eval('document.querySelector("#dg004-xp-preview [role=status]")?.textContent');
+  return value?.includes('DG004_XP_PREVIEW_OK')||value?.includes('DG004_XP_UNAVAILABLE');
+ },100);
+ const xpStatus=await mj.eval('document.querySelector("#dg004-xp-preview [role=status]")?.textContent');
+ const xpBlocked=xpStatus?.includes('DG004_XP_UNAVAILABLE')?xpStatus:null;
+ if(xpBlocked)console.error('DG004_P0B_XP_BLOCKED',xpBlocked);
+ if(await mj.eval('localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")')!==xpBefore)
+  fail('XP_PREVIEW_CHANGED_CAMPAIGN');
+ const getCycle=()=>mj.eval('(()=>{const e=document.querySelector("#dg004-cycle-root pre.cycle-preview");return e?JSON.parse(e.textContent):null;})()');
+ await until(async()=>{const x=await getCycle();return x?.step==='item'&&x.status==='draft';},100);
+ function fillCycle(kind,fields){
+  const selector='#dg004-cycle-root form[data-creator-kind="'+kind+'"]';
+  const expression='(()=>{const root=document.querySelector('+JSON.stringify(selector)+');if(!root)throw Error("form missing");for(const [key,value] of Object.entries('+JSON.stringify(fields)+')){const el=root.querySelector("[name="+JSON.stringify(key)+"]");if(!el)throw Error("input missing "+key);el.value=value;el.dispatchEvent(new Event("input",{bubbles:true}));}return true;})()';
+  new Script(expression);return expression;
+ }
+ function fillCyclePanel(prefix,fields){
+  const expression='(()=>{const heading=[...document.querySelectorAll("#dg004-cycle-root h3")].find(e=>e.textContent.startsWith('+JSON.stringify(prefix)+'));const root=heading?.closest("section.cycle-panel");if(!root)throw Error("panel missing");for(const [key,value] of Object.entries('+JSON.stringify(fields)+')){const el=root.querySelector("[name="+JSON.stringify(key)+"]");if(!el)throw Error("input missing "+key);el.value=value;el.dispatchEvent(new Event("input",{bubbles:true}));}return true;})()';
+  new Script(expression);return expression;
+ }
+ const narrative={provenance:'Laboratoire fictif',version:'0.1.0',description:'Un effet entièrement narratif pour le jeu fictif.',limitations:'Aucun effet numérique ni dépense'};
+ async function validateCycle(stepName){
+  const statusSelector='document.querySelector("#dg004-cycle-root .cycle-status")?.textContent';
+  const before=await mj.eval(statusSelector);
+  await mj.eval(click('Valider MJ — descriptif'));
+  const result=await until(async()=>{
+   const x=await getCycle(),status=await mj.eval(statusSelector);
+   if(x?.step===stepName&&x.status==='mj-validated')return {ok:true,status};
+   // Some owner UI status messages are written just BEFORE render() updates
+   // the public preview; a positive message is not proof and not a failure.
+   if(status&&status!==before&&
+      /(?:refusé|indisponible|invalide|conflit|CREATOR_.*CONFLICT|Réconciliation requise)/i.test(status))
+    return {ok:false,status,preview:x};
+   return null;
+  },110);
+  if(!result.ok)fail('CYCLE_'+stepName+'_VALIDATION_REJECTED '+JSON.stringify(result).slice(0,1200));
+ }
+ async function nextCycle(stepName){
+  await mj.eval(click('Étape suivante'));
+  await until(async()=>{const x=await getCycle();return x?.step===stepName;},110);
+ }
+ await mj.eval(fillCycle('item',{...narrative,name:'Lanterne de la rive'}));
+ await validateCycle('item');
+ await nextCycle('capacity');
+ await mj.eval(fillCycle('capacity',{...narrative,name:'Lueur de passage'}));
+ await validateCycle('capacity');
+ await nextCycle('creature');
+ await mj.eval(fillCyclePanel('Créature fictive',{...narrative,name:'Créature sentinelle',sourceReference:'fixture-source-001'}));
+ await validateCycle('creature');
+ const beforeAttachStatus=await mj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
+ await mj.eval(click('Copier la créature dans STUDIO (MJ)'));
+ await until(async()=>{
+  const state=await getCycle();
+  if(state?.linked?.creatureInstanceId)return true;
+  const status=await mj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
+  if(status&&status!==beforeAttachStatus)throw Error('CREATURE_ATTACH_BLOCKED '+JSON.stringify({status,state}).slice(0,1100));
+  return false;
+ },110);
+ await nextCycle('scene');
+ await mj.eval(fillCyclePanel('Scène locale',{...narrative,name:'Scène de passage',title:'Lueur sur Entre-Rives',publicDescription:'La lanterne guide les voyageurs fictifs.',privateNotes:'CANARY_PRIVATE_CYCLE_004'}));
+ await validateCycle('scene');
+ await mj.eval(click('Créer la scène dans STUDIO (MJ)'));
+ await until(async()=>Boolean((await getCycle())?.linked?.sceneId),110);
+ await mj.eval(click('Enregistrer chaîne descriptive INDEX — MJ privé'));
+ await until(()=>mj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("Chaîne INDEX enregistrée en privé")'),110);
+ const cycleRaw=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
+ if(!cycleRaw)fail('CYCLE_NOT_PERSISTED');
+ const cycleEnvelope=JSON.parse(cycleRaw);
+ if(cycleEnvelope.kind!=='cer.dg004.creators.demo-owned.v1'||!cycleEnvelope.digest)
+  fail('CREATOR_PRIVATE_ENVELOPE_NOT_ATTESTED');
+ const cycleState=cycleEnvelope.cycle;
+ if(!cycleState.extensions?.indexL004?.chain?.schema||
+    !cycleState.extensions?.indexL004?.privateSnapshot?.schema||
+    cycleState.extensions.indexL004.chain.links?.map(x=>x.kind).join(',')!=='item,capability,creature,scene')
+  fail('INDEX_CHAIN_NOT_PERSISTED');
+ if(/"approved":true|"autoApply":true|"awardedXp":\d/.test(cycleRaw))
+  fail('CYCLE_AUTO_AUTHORITY');
+ console.log('DG004_CREATOR_CHAIN_BROWSER_OK',JSON.stringify({item:true,capacity:true,creatureInstance:!!cycleState.links.creatureInstanceId,
+  scene:!!cycleState.links.sceneId,indexPrivate:true,xpPreview:!xpBlocked,autoApply:false}));
+
+ // Verify that the private INDEX cycle cannot leak through actual player DTO.
+ await mj.eval(click('Ouvrir la fenêtre joueur'));
+ const secondPlayerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)&&x.url!==ownerPlayerTarget.url),110);
+ const secondPlayer=await CDP.open(secondPlayerTarget.webSocketDebuggerUrl);
+ await secondPlayer.call('Runtime.enable');
+ await until(()=>mj.eval(textContains('Fenêtre joueur connectée')),110);
+ await mj.eval(checkbox);
+ await mj.eval(click('Publier uniquement la sélection'));
+ await until(()=>secondPlayer.eval(textContains('Lueur sur Entre-Rives')),110);
+ const secondPublic=await secondPlayer.eval('document.documentElement.outerHTML+JSON.stringify(localStorage)');
+ if(/CANARY_PRIVATE_CYCLE_004|indexL004|pendingStudioOp|creatorDrafts|privateSnapshot/.test(secondPublic)||
+    await secondPlayer.eval('localStorage.length')!==0)fail('OWNER_CREATOR_PRIVATE_PROJECTION_LEAK');
+ await mj.eval(click('Quitter et effacer la démonstration dédiée'));
+ await until(()=>mj.eval(textContains('DG004_OWNER_CLEARED')),110);
+ const secondAfter=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0"),creator:localStorage.getItem("cer.dg004.creators.private.demo.v0")})');
+ if(secondAfter.real!=='REAL_MJ_NOT_DEMO'||secondAfter.demo!==null||secondAfter.creator!==null)
+  fail('OWNER_CREATOR_ROLLBACK_NOT_ATTESTED '+JSON.stringify(secondAfter));
+ secondPlayer.close();
+ // Browser P0 S07: a foreign fixed-key JSON must be preserved, never treated
+ // as an owned creator envelope or silently cleaned during page mount.
+ const foreignCreatorRaw=JSON.stringify({kind:'external-legacy',private:'KEEP_OLD_BYTES'});
+ await mj.eval('localStorage.setItem("cer.dg004.creators.private.demo.v0",'+JSON.stringify(foreignCreatorRaw)+')');
+ await mj.call('Page.navigate',{url:MJ+'/dg004-demo.html'});
+ await until(()=>mj.eval('document.querySelector("#status")?.textContent.includes("FOREIGN_CREATOR_KEY")'),110);
+ if(await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")')!==foreignCreatorRaw)
+  fail('DG004_FOREIGN_CREATOR_BYTES_CHANGED');
+ await mj.eval('localStorage.removeItem("cer.dg004.creators.private.demo.v0")');
+ // DG P0-UNBLOCK: two real Chrome MJ tabs run the L003 native ARCHIVES-backed
+ // storage adapter, not a simulated JS store or a fake environment lock.
+ if((await fetch(PLAYER+'/assets/p0.js')).status!==404 ||
+    (await fetch(PLAYER+'/p0-storage-test.html')).status!==404)
+  fail('P0_BROWSER_TEST_ASSETS_LEAKED_TO_PLAYER');
+ const userMarker=await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")');
+ if(userMarker!=='REAL_MJ_NOT_DEMO')fail('P0_PRIOR_PRIVATE_SENTINEL_UNEXPECTED');
+ await mj.call('Page.navigate',{url:MJ+'/p0-storage-test.html'});
+ await until(()=>mj.eval('window.__dg004P0?.isReady===true'),120);
+ const p0Control=await CDP.open(versionInfo.webSocketDebuggerUrl);
+ const p0TabId=(await p0Control.call('Target.createTarget',{url:MJ+'/p0-storage-test.html'})).targetId;
+ const p0Info=await until(async()=>(await json(base+'/json')).find(x=>x.id===p0TabId),120);
+ const p0Other=await CDP.open(p0Info.webSocketDebuggerUrl);
+ await p0Other.call('Runtime.enable');
+ await until(()=>p0Other.eval('window.__dg004P0?.isReady===true'),120);
+ if(await mj.eval('window.__dg004P0.lockAvailable()')!==true||
+    await p0Other.eval('window.__dg004P0.lockAvailable()')!==true)
+  fail('P0_REAL_CHROME_WEB_LOCKS_UNAVAILABLE');
+ async function runP0(tab,expr){
+  const source='(async()=>{try{return {ok:true,value:await ('+expr+')}}catch(error){return {ok:false,error:error?.message??String(error)}}})()';
+  new Script(source);
+  return tab.eval(source);
+ }
+ const requireOk=(r,label)=>{if(r?.ok!==true)fail('P0_'+label+' '+JSON.stringify(r));return r.value;};
+ const requireConflict=(r,label,re)=>{
+  if(r?.ok!==false||!re.test(r.error??''))fail('P0_'+label+' NOT_BLOCKED '+JSON.stringify(r));
+ };
+ await mj.eval('window.__dg004P0.reset()');
+ const p0A=await mj.eval('window.__dg004P0.create()');
+ requireOk(await runP0(mj,'window.__dg004P0.save('+p0A+',window.__dg004P0.make(4))'),'INIT');
+ const p0B=await p0Other.eval('window.__dg004P0.create()');
+ const p0OldA=requireOk(await runP0(mj,'window.__dg004P0.load('+p0A+')'),'LOAD_A');
+ const p0OldB=requireOk(await runP0(p0Other,'window.__dg004P0.load('+p0B+')'),'LOAD_B');
+ requireOk(await runP0(p0Other,'window.__dg004P0.save('+p0B+',window.__dg004P0.edit('+JSON.stringify(p0OldB)+',5,"browser-rev5"))'),'TAB_B_NEW_PARENT');
+ const rawRev5=await mj.eval('window.__dg004P0.original()');
+ requireConflict(await runP0(mj,'window.__dg004P0.save('+p0A+',window.__dg004P0.edit('+JSON.stringify(p0OldA)+',9,"forged-rev9"))'),
+  'FORGED_REVISION',/causal parent conflict/);
+ if(await mj.eval('window.__dg004P0.original()')!==rawRev5)
+  fail('P0_FORGED_REV9_OVERWROTE_REV5');
+
+ // Restore race variant A: concurrent write after preview but before restore.
+ await mj.eval('window.__dg004P0.reset()');
+ const p0RestoreA=await mj.eval('window.__dg004P0.create()');
+ requireOk(await runP0(mj,'window.__dg004P0.save('+p0RestoreA+',window.__dg004P0.make(1))'),'RESTORE_A_START');
+ const p0RestoreB=await p0Other.eval('window.__dg004P0.create()');
+ const bParent=requireOk(await runP0(p0Other,'window.__dg004P0.load('+p0RestoreB+')'),'RESTORE_B_LOAD');
+ requireOk(await runP0(mj,'window.__dg004P0.preview('+p0RestoreA+')'),'RESTORE_A_PREVIEW');
+ requireOk(await runP0(p0Other,'window.__dg004P0.save('+p0RestoreB+',window.__dg004P0.edit('+JSON.stringify(bParent)+',2,"browser-after-preview"))'),'RESTORE_B_WRITE');
+ const rawAfterPreview=await mj.eval('window.__dg004P0.original()');
+ requireConflict(await runP0(mj,'window.__dg004P0.restore('+p0RestoreA+')'),
+  'RESTORE_PREVIEW_CHANGED',/restore causal parent conflict/);
+ if(await mj.eval('window.__dg004P0.original()')!==rawAfterPreview)
+  fail('P0_RESTORE_PREVIEW_OVERWROTE_TAB_B');
+
+ // Restore race variant B: preview+pure restore, then another tab writes
+ // BEFORE the actual save. exactRestorePending must not bypass this.
+ await mj.eval('window.__dg004P0.reset()');
+ const p0LateA=await mj.eval('window.__dg004P0.create()');
+ requireOk(await runP0(mj,'window.__dg004P0.save('+p0LateA+',window.__dg004P0.make(1))'),'LATE_A_START');
+ const p0LateB=await p0Other.eval('window.__dg004P0.create()');
+ const bOld=requireOk(await runP0(p0Other,'window.__dg004P0.load('+p0LateB+')'),'LATE_B_LOAD');
+ requireOk(await runP0(mj,'window.__dg004P0.preview('+p0LateA+')'),'LATE_A_PREVIEW');
+ requireOk(await runP0(mj,'window.__dg004P0.restore('+p0LateA+')'),'LATE_A_PURE_RESTORE');
+ requireOk(await runP0(p0Other,'window.__dg004P0.save('+p0LateB+',window.__dg004P0.edit('+JSON.stringify(bOld)+',2,"browser-after-restore"))'),'LATE_B_WRITE');
+ const rawAfterRestore=await mj.eval('window.__dg004P0.original()');
+ requireConflict(await runP0(mj,'window.__dg004P0.commit('+p0LateA+')'),
+  'RESTORE_COMMIT_CHANGED',/restore causal parent conflict/);
+ if(await mj.eval('window.__dg004P0.original()')!==rawAfterRestore)
+  fail('P0_RESTORE_COMMIT_OVERWROTE_TAB_B');
+
+ // Missing Web Lock is fail-closed in a real Window, even for a new save.
+ await mj.eval('window.__dg004P0.reset()');
+ const p0NoLock=await mj.eval('window.__dg004P0.create({withoutLock:true})');
+ requireConflict(await runP0(mj,'window.__dg004P0.save('+p0NoLock+',window.__dg004P0.make(3))'),
+  'WEB_LOCK_UNAVAILABLE',/Web Locks unavailable/);
+ if(await mj.eval('window.__dg004P0.original()')!==null)
+  fail('P0_UNSAFE_BROWSER_WRITE_WITHOUT_LOCK');
+ await mj.eval('localStorage.setItem("cer.dg003.private.campaign.v0",'+JSON.stringify(userMarker)+')');
+ p0Other.close();
+ await p0Control.call('Target.closeTarget',{targetId:p0TabId});
+ p0Control.close();
+ console.log('DG004_P0_CAUSAL_BROWSER_OK',JSON.stringify({
+  actualTabs:2,chromeWebLocks:true,forgedRevision9Rejected:true,
+  restoreAfterPreviewRejected:true,restoreBeforeFinalSaveRejected:true,
+  browserMissingLockFailClosed:true,previousLocalValueRestored:true
+ }));
+ mj.close();
+ console.log('DG004_FOREIGN_KEY_BROWSER_OK',JSON.stringify({rejectedBeforeMount:true,oldBytesIntact:true}));
+ console.log('DG004_STUDIO_OWNER_BROWSER_OK',JSON.stringify({ownerCommit:'18602be2d0b281478ebd9693b6ff0be63ef862ee',
+  v3PJ:true,creature:true,scene:true,namespace:true,privateCanaryAbsent:true,
+  foreignArchiveRejected:true,backupBytes:ownerBytes.length,roundtrip:true,rollback:true,oldMJIntact:true}));
+ if(xpBlocked)fail('DG004_P0B_XP_BLOCKING_OWNER_CONTRACT: '+xpBlocked);
+ console.log('DG004_BROWSER_DEMO_OK',JSON.stringify({source:'local-only',originMJ:MJ,originPlayer:PLAYER,
+  optIn:true,builderHttpChecks:builderProbe.checks.length,builderNavigationSteps:nav.count,seededPJ:1,seededCreature:1,seededScenes:1,playerCanaryAbsent:true,rollback:true,unrelatedKept:true}));
+}catch(error){console.error('DG004_BROWSER_FAIL',error.stack??error.message,JSON.stringify({stderr:stderr.slice(-1400),out:out.slice(-500)}));process.exitCode=1;}
+finally{
+ const terminate=async(child)=>{if(!child||child.exitCode!==null||child.signalCode!==null)return;
+  const closed=new Promise(resolve=>child.once('close',resolve));child.kill();await Promise.race([closed,sleep(2500)]);};
+ await terminate(browser);await terminate(server);await rm(tmp,{recursive:true,force:true,maxRetries:8,retryDelay:200});
+}

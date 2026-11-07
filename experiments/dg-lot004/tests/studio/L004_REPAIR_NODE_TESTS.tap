@@ -1,0 +1,220 @@
+TAP version 13
+# Subtest: REPAIR-01: failed creator link write after creature+scene persisted returns existing IDs
+ok 1 - REPAIR-01: failed creator link write after creature+scene persisted returns existing IDs
+  ---
+  duration_ms: 2.037543
+  type: 'test'
+  ...
+# Subtest: REPAIR-02: scene write persisted but creator link write failed, no second scene required
+ok 2 - REPAIR-02: scene write persisted but creator link write failed, no second scene required
+  ---
+  duration_ms: 1.030664
+  type: 'test'
+  ...
+# Subtest: REPAIR-03: after browser reload the same persisted identities are still reconciled
+ok 3 - REPAIR-03: after browser reload the same persisted identities are still reconciled
+  ---
+  duration_ms: 0.334584
+  type: 'test'
+  ...
+# Subtest: REPAIR-04: in-memory-only copy not marked persisted; do not link automatically
+ok 4 - REPAIR-04: in-memory-only copy not marked persisted; do not link automatically
+  ---
+  duration_ms: 0.19232
+  type: 'test'
+  ...
+# Subtest: REPAIR-05: same source twice => ambiguous rather than arbitrary first/last
+ok 5 - REPAIR-05: same source twice => ambiguous rather than arbitrary first/last
+  ---
+  duration_ms: 0.334654
+  type: 'test'
+  ...
+# Subtest: REPAIR-06: same scene title twice => no silent reconciliation
+ok 6 - REPAIR-06: same scene title twice => no silent reconciliation
+  ---
+  duration_ms: 0.439923
+  type: 'test'
+  ...
+# Subtest: REPAIR-07: scene title equal but altered MJ notes => conflict, no rollback/delete
+ok 7 - REPAIR-07: scene title equal but altered MJ notes => conflict, no rollback/delete
+  ---
+  duration_ms: 0.313002
+  type: 'test'
+  ...
+# Subtest: REPAIR-08: participant missing is flagged for explicit attachment, not recreated
+ok 8 - REPAIR-08: participant missing is flagged for explicit attachment, not recreated
+  ---
+  duration_ms: 0.296407
+  type: 'test'
+  ...
+# Subtest: REPAIR-09: mismatched source/profile is conflict, never reused
+ok 9 - REPAIR-09: mismatched source/profile is conflict, never reused
+  ---
+  duration_ms: 0.52391
+  type: 'test'
+  ...
+# Subtest: REPAIR-10: stored copy ID differs from live ID => conflict, never auto-overwrite
+ok 10 - REPAIR-10: stored copy ID differs from live ID => conflict, never auto-overwrite
+  ---
+  duration_ms: 0.516999
+  type: 'test'
+  ...
+# Subtest: REPAIR-11: lost creator persistence ACK re-reads existing saved record; no duplicate insert
+ok 11 - REPAIR-11: lost creator persistence ACK re-reads existing saved record; no duplicate insert
+  ---
+  duration_ms: 0.799225
+  type: 'test'
+  ...
+# Subtest: REPAIR-12: failure before persistence is reported, second attempt does not create STUDIO actor
+ok 12 - REPAIR-12: failure before persistence is reported, second attempt does not create STUDIO actor
+  ---
+  duration_ms: 0.698813
+  type: 'test'
+  ...
+# Subtest: REPAIR-13: same identity but changed creator content blocks replay
+ok 13 - REPAIR-13: same identity but changed creator content blocks replay
+  ---
+  duration_ms: 0.334625
+  type: 'test'
+  ...
+# Subtest: REPAIR-14: durable creator drafts recovered after reload; duplicates blocked
+ok 14 - REPAIR-14: durable creator drafts recovered after reload; duplicates blocked
+  ---
+  duration_ms: 0.406883
+  type: 'test'
+  ...
+# Subtest: REPAIR-15: real STUDIO demo retry after creator write failure keeps one creature and scene
+ok 15 - REPAIR-15: real STUDIO demo retry after creator write failure keeps one creature and scene
+  ---
+  duration_ms: 35.75398
+  type: 'test'
+  ...
+# Subtest: REPAIR-16: split write failure leaves scene in memory; retry persists same ID not second scene
+ok 16 - REPAIR-16: split write failure leaves scene in memory; retry persists same ID not second scene
+  ---
+  duration_ms: 15.158237
+  type: 'test'
+  ...
+# Subtest: REPAIR-17: changing scene via real STUDIO revokes player projection, no automatic SHOW
+ok 17 - REPAIR-17: changing scene via real STUDIO revokes player projection, no automatic SHOW
+  ---
+  duration_ms: 12.763217
+  type: 'test'
+  ...
+# Subtest: REPAIR-18: real STUDIO reload then repeat demo steps keeps the same copy and scene IDs
+ok 18 - REPAIR-18: real STUDIO reload then repeat demo steps keeps the same copy and scene IDs
+  ---
+  duration_ms: 19.723221
+  type: 'test'
+  ...
+# Subtest: REPAIR-19: creator reports saved but durable ARCHIVES record missing => explicit refusal
+ok 19 - REPAIR-19: creator reports saved but durable ARCHIVES record missing => explicit refusal
+  ---
+  duration_ms: 0.426704
+  type: 'test'
+  ...
+# Subtest: REPAIR-20: actor reconciliation after sharing sends CLEAR, never SHOW on its own
+ok 20 - REPAIR-20: actor reconciliation after sharing sends CLEAR, never SHOW on its own
+  ---
+  duration_ms: 16.569676
+  type: 'test'
+  ...
+# Subtest: L004-01 key partition refuses arbitrary real MJ key reads/writes
+ok 21 - L004-01 key partition refuses arbitrary real MJ key reads/writes
+  ---
+  duration_ms: 1.680074
+  type: 'test'
+  ...
+# Subtest: L004-02 demo area removing one backup never deletes real MJ campaign
+ok 22 - L004-02 demo area removing one backup never deletes real MJ campaign
+  ---
+  duration_ms: 0.181594
+  type: 'test'
+  ...
+# Subtest: L004-03 missing authoritative ARCHIVES-backed storage is refused
+ok 23 - L004-03 missing authoritative ARCHIVES-backed storage is refused
+  ---
+  duration_ms: 0.272661
+  type: 'test'
+  ...
+# Subtest: L004-04 save tags only clone of fictional campaign, delegates to native service
+ok 24 - L004-04 save tags only clone of fictional campaign, delegates to native service
+  ---
+  duration_ms: 0.646224
+  type: 'test'
+  ...
+# Subtest: L004-05 load refuses foreign project even from namespaced storage
+ok 25 - L004-05 load refuses foreign project even from namespaced storage
+  ---
+  duration_ms: 0.396348
+  type: 'test'
+  ...
+# Subtest: L004-06 export uses native bytes and records only sha256 of demo backup
+ok 26 - L004-06 export uses native bytes and records only sha256 of demo backup
+  ---
+  duration_ms: 10.341624
+  type: 'test'
+  ...
+# Subtest: L004-07 unfamiliar private archive rejected BEFORE native preview
+ok 27 - L004-07 unfamiliar private archive rejected BEFORE native preview
+  ---
+  duration_ms: 1.358689
+  type: 'test'
+  ...
+# Subtest: L004-08 known demo export goes through native ARCHIVES preview unchanged
+ok 28 - L004-08 known demo export goes through native ARCHIVES preview unchanged
+  ---
+  duration_ms: 1.870792
+  type: 'test'
+  ...
+# Subtest: L004-09 restore refuses previews not issued through demo allowlist
+ok 29 - L004-09 restore refuses previews not issued through demo allowlist
+  ---
+  duration_ms: 0.730882
+  type: 'test'
+  ...
+# Subtest: L004-10 valid native restore requires fictional marker, cannot import real project
+ok 30 - L004-10 valid native restore requires fictional marker, cannot import real project
+  ---
+  duration_ms: 1.683388
+  type: 'test'
+  ...
+# Subtest: L004-11 synthetic PJ is single v3 sheet, raw stat >12, unknown fields
+ok 31 - L004-11 synthetic PJ is single v3 sheet, raw stat >12, unknown fields
+  ---
+  duration_ms: 0.450189
+  type: 'test'
+  ...
+# Subtest: L004-12 player DTO is whitelist and cannot include private scene links, snapshots, sentinels
+ok 32 - L004-12 player DTO is whitelist and cannot include private scene links, snapshots, sentinels
+  ---
+  duration_ms: 0.58975
+  type: 'test'
+  ...
+# Subtest: L004-C-13 descriptive object→capacity→creature→scene link stays private/preview-only
+ok 33 - L004-C-13 descriptive object→capacity→creature→scene link stays private/preview-only
+  ---
+  duration_ms: 0.359111
+  type: 'test'
+  ...
+# Subtest: L004-C-14 numerical effect and resource charge blocked
+ok 34 - L004-C-14 numerical effect and resource charge blocked
+  ---
+  duration_ms: 0.184278
+  type: 'test'
+  ...
+# Subtest: L004-15 demo mount refuses missing dedicated factory before any campaign DOM mutation
+ok 35 - L004-15 demo mount refuses missing dedicated factory before any campaign DOM mutation
+  ---
+  duration_ms: 0.643571
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 35
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 195.678389

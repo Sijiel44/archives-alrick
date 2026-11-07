@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: projection ne retourne que les clés listées et conserve les noms explicitement autorisés
+ok 1 - projection ne retourne que les clés listées et conserve les noms explicitement autorisés
+  ---
+  duration_ms: 2.187005
+  type: 'test'
+  ...
+# Subtest: sélection absente = DTO public vide
+ok 2 - sélection absente = DTO public vide
+  ---
+  duration_ms: 0.234626
+  type: 'test'
+  ...
+# Subtest: aucun personnage extérieur à la scène ne peut être projeté
+ok 3 - aucun personnage extérieur à la scène ne peut être projeté
+  ---
+  duration_ms: 0.159262
+  type: 'test'
+  ...
+# Subtest: objet campagne enrichi ne contamine pas DTO
+ok 4 - objet campagne enrichi ne contamine pas DTO
+  ---
+  duration_ms: 0.134934
+  type: 'test'
+  ...
+# Subtest: validation joueur rejette extension top-level
+ok 5 - validation joueur rejette extension top-level
+  ---
+  duration_ms: 0.113672
+  type: 'test'
+  ...
+# Subtest: validation joueur rejette champs cachés sous scene
+ok 6 - validation joueur rejette champs cachés sous scene
+  ---
+  duration_ms: 0.114884
+  type: 'test'
+  ...
+# Subtest: validation joueur rejette champs cachés par acteur
+ok 7 - validation joueur rejette champs cachés par acteur
+  ---
+  duration_ms: 0.13875
+  type: 'test'
+  ...
+# Subtest: validation joueur rejette chaînes trop longues et structure invalide
+ok 8 - validation joueur rejette chaînes trop longues et structure invalide
+  ---
+  duration_ms: 0.181124
+  type: 'test'
+  ...
+# Subtest: validation rejette origines arbitraires, mêmes origines et localhost
+ok 9 - validation rejette origines arbitraires, mêmes origines et localhost
+  ---
+  duration_ms: 0.438974
+  type: 'test'
+  ...
+# Subtest: projection refuse absence de scène
+ok 10 - projection refuse absence de scène
+  ---
+  duration_ms: 0.604715
+  type: 'test'
+  ...
+# Subtest: les modules montables sont importables sans DOM ni effets
+ok 11 - les modules montables sont importables sans DOM ni effets
+  ---
+  duration_ms: 0.134924
+  type: 'test'
+  ...
+# Subtest: REVUE-01: UI restauration accepte 5 Mio + 1 octet et transmet les octets intacts
+ok 12 - REVUE-01: UI restauration accepte 5 Mio + 1 octet et transmet les octets intacts
+  ---
+  duration_ms: 6.536403
+  type: 'test'
+  ...
+# Subtest: REVUE-01: borne UI 16 Mio incluse et sans mutation
+ok 13 - REVUE-01: borne UI 16 Mio incluse et sans mutation
+  ---
+  duration_ms: 0.969067
+  type: 'test'
+  ...
+# Subtest: REVUE-01: UI refuse un fichier annoncé >16 Mio avant lecture et sans mutation
+ok 14 - REVUE-01: UI refuse un fichier annoncé >16 Mio avant lecture et sans mutation
+  ---
+  duration_ms: 2.439442
+  type: 'test'
+  ...
+# Subtest: REVUE-01: données de restauration >16 Mio refusées par API avant adaptateur
+ok 15 - REVUE-01: données de restauration >16 Mio refusées par API avant adaptateur
+  ---
+  duration_ms: 0.909206
+  type: 'test'
+  ...
+# Subtest: REVUE-01: taille mensongère relue, refuse buffer réel >16 Mio
+ok 16 - REVUE-01: taille mensongère relue, refuse buffer réel >16 Mio
+  ---
+  duration_ms: 2.374253
+  type: 'test'
+  ...
+# Subtest: REVUE-01: import PJ reste limité à 5 Mio, distinct de la restauration
+ok 17 - REVUE-01: import PJ reste limité à 5 Mio, distinct de la restauration
+  ---
+  duration_ms: 1.221458
+  type: 'test'
+  ...
+# Subtest: REVUE-02: A/B puis A persiste la scène active et incrémente la révision une seule fois
+ok 18 - REVUE-02: A/B puis A persiste la scène active et incrémente la révision une seule fois
+  ---
+  duration_ms: 3.170789
+  type: 'test'
+  ...
+# Subtest: REVUE-02: changement de scène révoque la sélection et CLEAR sans SHOW automatique
+ok 19 - REVUE-02: changement de scène révoque la sélection et CLEAR sans SHOW automatique
+  ---
+  duration_ms: 1.695096
+  type: 'test'
+  ...
+# Subtest: REVUE-02: scène inconnue refusée avant mutation et persistance
+ok 20 - REVUE-02: scène inconnue refusée avant mutation et persistance
+  ---
+  duration_ms: 1.312726
+  type: 'test'
+  ...
+# Subtest: REVUE-02: choisir la scène déjà active révoque consentement sans révision ni sauvegarde
+ok 21 - REVUE-02: choisir la scène déjà active révoque consentement sans révision ni sauvegarde
+  ---
+  duration_ms: 1.44012
+  type: 'test'
+  ...
+# Subtest: REVUE-02: sauvegarde B lente ne peut écraser sélection A demandée ensuite
+ok 22 - REVUE-02: sauvegarde B lente ne peut écraser sélection A demandée ensuite
+  ---
+  duration_ms: 36.154438
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 128.84459

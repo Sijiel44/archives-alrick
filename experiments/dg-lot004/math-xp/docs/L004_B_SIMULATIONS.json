@@ -1,0 +1,466 @@
+{
+  "schema": "cer.math.dg004.xp-simulations.v1",
+  "sourceReference": "PR85@2ab809ef5351940e0fc272b859d10f21de894d00",
+  "engine": "M01 official TypeScript",
+  "candidateMapping": {
+    "facile": 3,
+    "moderee": 6,
+    "difficile": 9,
+    "heroique": 12
+  },
+  "alternativeCoefficients": {
+    "facile": 0.75,
+    "moderee": 1,
+    "difficile": 1.25,
+    "heroique": 1.5
+  },
+  "experimentalNotApproved": true,
+  "noAutomaticGrant": true,
+  "noNpcsPaid": true,
+  "matrix": [
+    {
+      "level": 1,
+      "requiredXpM01": 0,
+      "legacyXp": 0,
+      "developmentBudget": 0,
+      "incrementToNextM01": 25
+    },
+    {
+      "level": 5,
+      "requiredXpM01": 400,
+      "legacyXp": 320,
+      "developmentBudget": 24,
+      "incrementToNextM01": 225
+    },
+    {
+      "level": 10,
+      "requiredXpM01": 2025,
+      "legacyXp": 3645,
+      "developmentBudget": 54,
+      "incrementToNextM01": 475
+    },
+    {
+      "level": 15,
+      "requiredXpM01": 4900,
+      "legacyXp": 13720,
+      "developmentBudget": 84,
+      "incrementToNextM01": 725
+    },
+    {
+      "level": 20,
+      "requiredXpM01": 9025,
+      "legacyXp": 34295,
+      "developmentBudget": 114,
+      "incrementToNextM01": 975
+    },
+    {
+      "level": 25,
+      "requiredXpM01": 14400,
+      "legacyXp": 69120,
+      "developmentBudget": 144,
+      "incrementToNextM01": null
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "enemy-N2",
+      "kind": "encounter",
+      "threatCount": 1,
+      "maxThreatLevel": 2,
+      "pjLevels": [
+        1,
+        1
+      ],
+      "npcLevels": [],
+      "boss": false,
+      "helpDecisive": false,
+      "from": "moderee",
+      "realized": "moderee",
+      "indexA": 6,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "ordinaire",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 120,
+          "xpModelBHypothetical": 120,
+          "coefficientB": 1,
+          "xpToNextLevel": 25
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 120,
+          "xpModelBHypothetical": 120,
+          "coefficientB": 1,
+          "xpToNextLevel": 25
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "enemy-N15",
+      "kind": "encounter",
+      "threatCount": 1,
+      "maxThreatLevel": 15,
+      "pjLevels": [
+        5,
+        5
+      ],
+      "npcLevels": [],
+      "boss": false,
+      "helpDecisive": false,
+      "from": "difficile",
+      "realized": "difficile",
+      "indexA": 9,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "ordinaire",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 180,
+          "xpModelBHypothetical": 150,
+          "coefficientB": 1.25,
+          "xpToNextLevel": 625
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 180,
+          "xpModelBHypothetical": 150,
+          "coefficientB": 1.25,
+          "xpToNextLevel": 625
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "enemy-N20",
+      "kind": "encounter",
+      "threatCount": 1,
+      "maxThreatLevel": 20,
+      "pjLevels": [
+        15,
+        15
+      ],
+      "npcLevels": [],
+      "boss": false,
+      "helpDecisive": false,
+      "from": "difficile",
+      "realized": "difficile",
+      "indexA": 9,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "ordinaire",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 180,
+          "xpModelBHypothetical": 150,
+          "coefficientB": 1.25,
+          "xpToNextLevel": 5625
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 180,
+          "xpModelBHypothetical": 150,
+          "coefficientB": 1.25,
+          "xpToNextLevel": 5625
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "enemy-N25",
+      "kind": "encounter",
+      "threatCount": 1,
+      "maxThreatLevel": 25,
+      "pjLevels": [
+        20,
+        20
+      ],
+      "npcLevels": [],
+      "boss": false,
+      "helpDecisive": false,
+      "from": "heroique",
+      "realized": "heroique",
+      "indexA": 12,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "ordinaire",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 240,
+          "xpModelBHypothetical": 180,
+          "coefficientB": 1.5,
+          "xpToNextLevel": 10000
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 240,
+          "xpModelBHypothetical": 180,
+          "coefficientB": 1.5,
+          "xpToNextLevel": 10000
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "boss-N20-major",
+      "kind": "encounter",
+      "threatCount": 1,
+      "maxThreatLevel": 20,
+      "pjLevels": [
+        10,
+        10
+      ],
+      "npcLevels": [],
+      "boss": true,
+      "helpDecisive": false,
+      "from": "difficile",
+      "realized": "difficile",
+      "indexA": 9,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "majeur",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 540,
+          "xpModelBHypothetical": 150,
+          "coefficientB": 1.25,
+          "xpToNextLevel": 2500
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 540,
+          "xpModelBHypothetical": 150,
+          "coefficientB": 1.25,
+          "xpToNextLevel": 2500
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "boss-N25-legendary",
+      "kind": "encounter",
+      "threatCount": 1,
+      "maxThreatLevel": 25,
+      "pjLevels": [
+        20,
+        20
+      ],
+      "npcLevels": [],
+      "boss": true,
+      "helpDecisive": false,
+      "from": "heroique",
+      "realized": "heroique",
+      "indexA": 12,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "legendaire",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 1920,
+          "xpModelBHypothetical": 180,
+          "coefficientB": 1.5,
+          "xpToNextLevel": 10000
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 1920,
+          "xpModelBHypothetical": 180,
+          "coefficientB": 1.5,
+          "xpToNextLevel": 10000
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "multiple-enemies",
+      "kind": "encounter",
+      "threatCount": 5,
+      "maxThreatLevel": 15,
+      "pjLevels": [
+        5,
+        5
+      ],
+      "npcLevels": [],
+      "boss": false,
+      "helpDecisive": false,
+      "from": "difficile",
+      "realized": "difficile",
+      "indexA": 9,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "ordinaire",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 180,
+          "xpModelBHypothetical": 150,
+          "coefficientB": 1.25,
+          "xpToNextLevel": 625
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 180,
+          "xpModelBHypothetical": 150,
+          "coefficientB": 1.25,
+          "xpToNextLevel": 625
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "assisted-by-N20",
+      "kind": "encounter",
+      "threatCount": 1,
+      "maxThreatLevel": 15,
+      "pjLevels": [
+        3,
+        3
+      ],
+      "npcLevels": [
+        20
+      ],
+      "boss": false,
+      "helpDecisive": true,
+      "from": "difficile",
+      "realized": "moderee",
+      "indexA": 6,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "ordinaire",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 120,
+          "xpModelBHypothetical": 120,
+          "coefficientB": 1,
+          "xpToNextLevel": 225
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 120,
+          "xpModelBHypothetical": 120,
+          "coefficientB": 1,
+          "xpToNextLevel": 225
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "peaceful-quest",
+      "kind": "quest",
+      "threatCount": 0,
+      "maxThreatLevel": null,
+      "pjLevels": [
+        5,
+        5
+      ],
+      "npcLevels": [],
+      "boss": false,
+      "helpDecisive": false,
+      "from": "moderee",
+      "realized": "moderee",
+      "indexA": 6,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "ordinaire",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 120,
+          "xpModelBHypothetical": 120,
+          "coefficientB": 1,
+          "xpToNextLevel": 625
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 120,
+          "xpModelBHypothetical": 120,
+          "coefficientB": 1,
+          "xpToNextLevel": 625
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "heterogeneous-party",
+      "kind": "encounter",
+      "threatCount": 1,
+      "maxThreatLevel": 15,
+      "pjLevels": [
+        1,
+        20
+      ],
+      "npcLevels": [],
+      "boss": false,
+      "helpDecisive": false,
+      "from": "difficile",
+      "realized": "difficile",
+      "indexA": 9,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "ordinaire",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 180,
+          "xpModelBHypothetical": 150,
+          "coefficientB": 1.25,
+          "xpToNextLevel": 25
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 180,
+          "xpModelBHypothetical": 150,
+          "coefficientB": 1.25,
+          "xpToNextLevel": 10000
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "oneshot-N10",
+      "kind": "quest",
+      "threatCount": 0,
+      "maxThreatLevel": null,
+      "pjLevels": [
+        10,
+        10
+      ],
+      "npcLevels": [],
+      "boss": false,
+      "helpDecisive": false,
+      "from": "facile",
+      "realized": "facile",
+      "indexA": 3,
+      "indexOrigin": "experimental_label_mapping",
+      "scope": "ordinaire",
+      "results": [
+        {
+          "pj": "pj:1",
+          "xpM01Candidate": 60,
+          "xpModelBHypothetical": 90,
+          "coefficientB": 0.75,
+          "xpToNextLevel": 2500
+        },
+        {
+          "pj": "pj:2",
+          "xpM01Candidate": 60,
+          "xpModelBHypothetical": 90,
+          "coefficientB": 0.75,
+          "xpToNextLevel": 2500
+        }
+      ],
+      "canAutoApply": false
+    },
+    {
+      "caseId": "level-25-plus-blocked",
+      "status": "unavailable",
+      "code": "INVALID_THREAT",
+      "reason": "Menace hors N1–25, nombre ou danger invalide."
+    }
+  ],
+  "farmingRepetitionM01": [
+    120,
+    60,
+    30,
+    30,
+    0
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "mission": "L004-B/C INDEX",
+  "base_pr85_commit": "2ab809ef5351940e0fc272b859d10f21de894d00",
+  "local_runtime": "Node 22.16.0",
+  "node_tests": {
+    "command": "node --test experiments/dg-lot004/tests/catalog/catalog.test.mjs",
+    "pass": 64,
+    "fail": 0
+  },
+  "native_m01_tests": "NON EXECUTES localement — necessitent esbuild + clone complet",
+  "source_l003_git_blob": "6c35e0da2c56a51dea9bce37b9cdc60cd2c75de5",
+  "files": [
+    {
+      "path": "experiments/dg-lot004/src/catalog/README.md",
+      "size": 8111,
+      "sha256": "b6a01db0aef2b73e1f297764be5db921ca73acc21c1edbe653c53592247a1f56",
+      "git_blob_sha1": "8f20f53f8b5844ee1460653e99ef0417328268e2"
+    },
+    {
+      "path": "experiments/dg-lot004/src/catalog/index.mjs",
+      "size": 25180,
+      "sha256": "a961756ca31bba07eb09bf41e2882539054f23843d80544add45389c560903b5",
+      "git_blob_sha1": "18cfa95cee60258322f0f0e32b8214ec95b509ac"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/FICHE_DIRECTION_L004_INDEX.md",
+      "size": 2599,
+      "sha256": "a7d86854e8dd9529a25e80ba2f9048dbace458e8240b5fc1018a710ff734019c",
+      "git_blob_sha1": "26cdf543e5291de9d735e475bffbf95b1dbc5fd7"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/NATIVE_M01_STATUS.txt",
+      "size": 883,
+      "sha256": "7cc966f07f92d568aeb5897befbb68f89a5976878d1dd2c8190c488e4bad1602",
+      "git_blob_sha1": "9303c0d285563bdd511217bfaa602692b86c3624"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/TEST_RESULTS_NODE22.tap",
+      "size": 10065,
+      "sha256": "9f4a1e7e81ed37692326f3e0b2696e318459aa00206f96abebe65af39a36fb2b",
+      "git_blob_sha1": "ed1b55699ed0f792b3f5357bad359b6338836996"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/catalog.test.mjs",
+      "size": 17734,
+      "sha256": "78dc9b2ac521f16ac00299e2f657a2d6bf8f4d545afc8fcab5b3f4a1fba4d68f",
+      "git_blob_sha1": "33f58cb76486503b1d0fe48a63ccf855421e28dc"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/native-m01.test.mjs",
+      "size": 4259,
+      "sha256": "e8b184fdd8c7e058cfbcd25af1accffad9906774ad2dd615390aae6848009f8c",
+      "git_blob_sha1": "3475aa4e643d41ef03c35facdcc7d0e45e2ca146"
+    }
+  ]
+}

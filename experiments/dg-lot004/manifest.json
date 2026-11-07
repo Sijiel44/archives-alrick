@@ -1,0 +1,465 @@
+{
+  "schema": "cer.dg004.integration-manifest.v0",
+  "baseSha": "2ab809ef5351940e0fc272b859d10f21de894d00",
+  "referenceQA": "20679f7bf5c744f29dd041413cc63801ce5daea1",
+  "ownerSnapshot": [
+    {
+      "role": "ports",
+      "blobSha": "07154546e2258c3795f2608bc2ef93e20d5beac2",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "rules",
+      "blobSha": "3e2a0260bd49e9447fae06ad4c14f76a5a9766c9",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "catalog",
+      "blobSha": "6c35e0da2c56a51dea9bce37b9cdc60cd2c75de5",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "storage",
+      "blobSha": "be6a881018ae1709ecef71c3c5a155acfb94a658",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "studio",
+      "blobSha": "5ce963e6120404f7cadbf6512cb0639c2adc888f",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "player",
+      "blobSha": "fed7091c044bac004521d9ff0ad0d632a37752ba",
+      "source": "L003 preserved, no copy into owner subtree"
+    },
+    {
+      "role": "creators",
+      "blobSha": "b53f1868baa8a5eb5ed4415000247a128e668846",
+      "source": "L003 preserved, no copy into owner subtree"
+    }
+  ],
+  "paths": {
+    "integrator": [
+      "experiments/dg-lot004/tools/**",
+      "experiments/dg-lot004/tests/integration/**",
+      "experiments/dg-lot004/manifest.json",
+      "experiments/dg-lot004/README.md",
+      ".github/workflows/dg-lot004-integrated.yml"
+    ],
+    "builder": [
+      "experiments/dg-lot004/builder/**",
+      ".github/workflows/dg-lot004-builder-preview.yml"
+    ],
+    "studio": [
+      "experiments/dg-lot004/src/studio/**",
+      "experiments/dg-lot004/tests/studio/**"
+    ],
+    "math": [
+      "experiments/dg-lot004/math-xp/**"
+    ],
+    "index": [
+      "experiments/dg-lot004/src/catalog/**",
+      "experiments/dg-lot004/tests/catalog/**"
+    ],
+    "creators": [
+      "experiments/dg-lot004/src/creators/**",
+      "experiments/dg-lot004/tests/creators/**"
+    ]
+  },
+  "handoffs": {
+    "p0a": {
+      "issue": 92,
+      "status": "Integrated P0-A Chrome actual 4173/4174 PASS; no public hosting",
+      "builder": {
+        "branch": "prototype/dg004-preview-builder",
+        "commit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+        "deliveredPaths": 13
+      },
+      "studio": {
+        "branch": "prototype/dg004-studio",
+        "commit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+        "deliveredPaths": 39
+      }
+    },
+    "p0b": {
+      "issue": 93,
+      "status": "MATH/INDEX read-only M01 XP parity and native tests PASS on composite; no automatic award",
+      "math": {
+        "branch": "prototype/dg004-xp-math",
+        "commit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+        "deliveredPaths": 22
+      },
+      "index": {
+        "branch": "prototype/dg004-index-xp-links",
+        "commit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+        "deliveredPaths": 16
+      }
+    },
+    "p0c": {
+      "issue": 94,
+      "status": "ATELIERS 154289 copied byte-exact; creator/scene/INDEX chain and 2 real MJ tabs PASS; native S07/S09 PASS",
+      "creators": {
+        "branch": "prototype/dg004-creators",
+        "commit": "1542891066ee88d5f6f4414856b7cf13a6199572",
+        "deliveredPaths": 6
+      }
+    }
+  },
+  "deployment": {
+    "internet": false,
+    "loopbackOrigins": [
+      "http://127.0.0.1:4173",
+      "http://127.0.0.1:4174"
+    ],
+    "publicPages": false
+  },
+  "mutableOwners": false,
+  "qa": {
+    "status": "DG004 product and P0 S01-S09 gates previously green; original 04 Q test fails on B lacking observed parent. Pending revised 04 contract and independent QA/REVUE; PR95 DRAFT"
+  },
+  "provenance": [
+    {
+      "role": "builder",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "path": "experiments/dg-lot004/builder/src/browser-smoke.mjs",
+      "blobSha": "2b1d599189727a82233a4a76e3a490964b5d09c5",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "builder",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "path": "experiments/dg-lot004/builder/src/contract.mjs",
+      "blobSha": "c5456967d90838de97e8d267f4f01daf976743c6",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "builder",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "path": "experiments/dg-lot004/builder/src/launch-local.mjs",
+      "blobSha": "763a5cd240396b91a8067a72aef68efb4a67ef25",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "builder",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "path": "experiments/dg-lot004/builder/src/navigation.mjs",
+      "blobSha": "f1521dca3efe4a1a214ca4a33ad98090b8bb64f5",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "builder",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "path": "experiments/dg-lot004/builder/src/probe.mjs",
+      "blobSha": "e7a589b48c9eedc5f3cee8809f54ee995d45251b",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "builder",
+      "sourceCommit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "sourceBranch": "prototype/dg004-preview-builder",
+      "path": "experiments/dg-lot004/builder/tests/ports.test.mjs",
+      "blobSha": "acf67c633af9ff4807aec30502ab541c044ddd44",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/src/studio/CONTRACT.md",
+      "blobSha": "77a0fa06a18ccc542dc17f2a7a16ded274063e61",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/src/studio/demo-storage.mjs",
+      "blobSha": "57f38f946c9592e9bd75462ff7e4a91e25b0b756",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/src/studio/demo.css",
+      "blobSha": "8568184f8314aab170da176b78f53aed68aff352",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/src/studio/demo.mjs",
+      "blobSha": "2f9f239af4dfcec8c790bec20d3b2533e9dba7b9",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/src/studio/reconcile.mjs",
+      "blobSha": "61cc35376f80b1845472109332ecc681d81d2fe3",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/src/studio/scene-bridge.mjs",
+      "blobSha": "1e11d083a2f4625ae2dd5face4bbd01cc174fc5b",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/src/studio/ux-ardoise-cuivre-or.proposal.css",
+      "blobSha": "2083c9f5b050ff6133eeff61c891cad49f70bf8c",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/tests/studio/demo.test.mjs",
+      "blobSha": "ad78d0dbf133618cc5f5b7b645cd930e903bd9f0",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_CONTRACT.test.mjs",
+      "blobSha": "1677144f384e7994bbcdc5dc934e4659c4f850de",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/tests/studio/L004_PENDING_REAL_INTEROP.mjs",
+      "blobSha": "5e9aae7d1dd9b6b9abeb9ec0458e689cd6c7334a",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "studio",
+      "sourceCommit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "sourceBranch": "prototype/dg004-studio",
+      "path": "experiments/dg-lot004/tests/studio/L004_REPAIR_reconciliation.test.mjs",
+      "blobSha": "28cdc498e7447ded54f6bd62bfe802c0e4bea71d",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/src/xp-decision.ts",
+      "blobSha": "76daeb8ec21702e9ebcb27845ccd3d6b709ff574",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/src/encounter-recommendations.ts",
+      "blobSha": "58ee80a8345113aff89bfc58a3f276f3c401d7c2",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/tests/xp-decision.test.mjs",
+      "blobSha": "b54a79387cfd8055960b306db2daf298861d7b30",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/tests/encounter-recommendations.test.mjs",
+      "blobSha": "219b570b03b53b66ff1822a67a45f6d458554f35",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/tests/repair-math-browser-parity.test.mjs",
+      "blobSha": "55b6b7d0d267dc5c70f43ff337ef983c04545eee",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/tests/verify-index-browser-bridge.mjs",
+      "blobSha": "2fc2b3c8e2b10ef6f5f6e5c196663aaee7b01aaa",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "math",
+      "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "sourceBranch": "prototype/dg004-xp-math",
+      "path": "experiments/dg-lot004/math-xp/tests/generate-xp-simulations.mjs",
+      "blobSha": "8c2fffff09e295071fabbc1c7b65f596b5db4cf2",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "index",
+      "sourceCommit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "path": "experiments/dg-lot004/src/catalog/CONTRACT.md",
+      "blobSha": "42ab07ba3eea9852f76a3684e83e8b5c9713b414",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "index",
+      "sourceCommit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "path": "experiments/dg-lot004/src/catalog/index.mjs",
+      "blobSha": "27ffd1dbb520eed8fff3efd293948c94ea57cf95",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "index",
+      "sourceCommit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "path": "experiments/dg-lot004/tests/catalog/catalog.test.mjs",
+      "blobSha": "33f58cb76486503b1d0fe48a63ccf855421e28dc",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "index",
+      "sourceCommit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "path": "experiments/dg-lot004/tests/catalog/catalog-r2.test.mjs",
+      "blobSha": "cbd6989fc0c7c1d5f7d790f9f75194bff8a9b9ea",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "index",
+      "sourceCommit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "sourceBranch": "prototype/dg004-index-xp-links",
+      "path": "experiments/dg-lot004/tests/catalog/native-m01.test.mjs",
+      "blobSha": "3475aa4e643d41ef03c35facdcc7d0e45e2ca146",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "creators",
+      "sourceCommit": "1542891066ee88d5f6f4414856b7cf13a6199572",
+      "sourceBranch": "prototype/dg004-creators",
+      "path": "experiments/dg-lot004/src/creators/cycle-state.mjs",
+      "blobSha": "c55558abe319d490c239a44aa967a9b2c9433134",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "creators",
+      "sourceCommit": "1542891066ee88d5f6f4414856b7cf13a6199572",
+      "sourceBranch": "prototype/dg004-creators",
+      "path": "experiments/dg-lot004/src/creators/cycle-ui.mjs",
+      "blobSha": "aef3aa1383b4d283f4dea877c62e1ee9329d407d",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "creators",
+      "sourceCommit": "1542891066ee88d5f6f4414856b7cf13a6199572",
+      "sourceBranch": "prototype/dg004-creators",
+      "path": "experiments/dg-lot004/tests/creators/cycle-state.test.mjs",
+      "blobSha": "cb7258da166f62498a02cc03d5d41aaf84f08da0",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    },
+    {
+      "role": "creators",
+      "sourceCommit": "1542891066ee88d5f6f4414856b7cf13a6199572",
+      "sourceBranch": "prototype/dg004-creators",
+      "path": "experiments/dg-lot004/tests/creators/cycle-ui.test.mjs",
+      "blobSha": "5a1c2143b382a30f7b58d62cb9a14ede7936dee7",
+      "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
+    }
+  ],
+  "ownerTreeNotes": "Issue #92 initially reserved src/ports/** but BUILDER actual owner path is builder/**, no movement; issue #93 reserved src/rules/** but MATH uses math-xp/**, no movement; INDEX only src/catalog/CONTRACT.md; no owner file modified.",
+  "runtime": {
+    "ownerDemoEntry": "http://127.0.0.1:4173/dg004-demo.html",
+    "ownerJs": "dist/assets/demo.js",
+    "ownerCss": "dist/assets/demo.css",
+    "playerOrigin": "http://127.0.0.1:4174",
+    "privateStorage": "cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0",
+    "sharedLegacyDemoEntry": "http://127.0.0.1:4173/",
+    "noPublicHosting": true,
+    "ownerCreatorCycle": "http://127.0.0.1:4173/dg004-demo.html#dg004-cycle-root",
+    "xpPreview": "read-only MATH+INDEX/M01 parity; never apply"
+  },
+  "ownerDeliveries": {
+    "builder": {
+      "branch": "prototype/dg004-preview-builder",
+      "commit": "ee3f428843fea64a285366032e677c5bc7284b9d",
+      "deliveredPaths": 13
+    },
+    "studio": {
+      "branch": "prototype/dg004-studio",
+      "commit": "35e2de3bcc702def3d37906997fb07155d2c44a3",
+      "deliveredPaths": 39
+    },
+    "math": {
+      "branch": "prototype/dg004-xp-math",
+      "commit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
+      "deliveredPaths": 22
+    },
+    "index": {
+      "branch": "prototype/dg004-index-xp-links",
+      "commit": "d071842639d0adc952dedf3e279c6a1b7004855c",
+      "deliveredPaths": 16
+    },
+    "creators": {
+      "branch": "prototype/dg004-creators",
+      "commit": "1542891066ee88d5f6f4414856b7cf13a6199572",
+      "deliveredPaths": 6
+    }
+  },
+  "provenanceScope": "Source code and executable test byte blobs certified. Ancillary owner docs/logs copied via contents API but not separately listed as CI-certified source blobs.",
+  "p0StorageSupport": {
+    "archive": "P0_STORAGE_SUPPORT_001_PASSATION.zip",
+    "sha256": "38b1e055a94562aa8a6e35073a0997fcb88583b21582dc58d8eeb3cf2b88c2d1",
+    "source": "library:libfile_8940c0ec91d881919e88831fc2ed76e0",
+    "retrieval": "Original ZIP raw-byte materialization unavailable; complete test source recovered verbatim from owner GitHub comment; source SHA256 verified in CI before execution",
+    "nineOfficialTests": "9 PASS / 0 FAIL / 0 SKIP / 0 CANCELLED; Node24, original assertions unchanged",
+    "relatedIntegrationTests": "tests/integration/creator-persistence.test.mjs; distinct handcrafted regression, not the owner supplied nine",
+    "zipBytesAccessibleHere": false,
+    "sourceComment": "https://github.com/Sijiel44/archives-alrick/pull/95#issuecomment-6702273364",
+    "exactTest": "experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs",
+    "testSha256": "d89dea819a387dc9fdc5b61dfdaf62bc7e17aed3d930576f57cd2da4db3259b5",
+    "runner": "node --import tsx --test experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs",
+    "evidenceRun": 42341117494,
+    "evidenceTestedHead": "69235ac3249f2548599d876fbaa556d0b90bac2c",
+    "interpretation": "Native owner functions plus integrator-owned L003 storage runtime, not a substitute for independent QA"
+  },
+  "ciEvidence": {
+    "testedHead": "69235ac3249f2548599d876fbaa556d0b90bac2c",
+    "run": 42341117494,
+    "integratorResult": "success",
+    "archivesHistoricalRun": 42341117488,
+    "archivesHistoricalConclusion": "success",
+    "status": "prior exact HEAD evidence; recheck after this manifest update"
+  },
+  "p0Causality": {
+    "advisory": "https://github.com/Sijiel44/archives-alrick/pull/95#issuecomment-6702594940",
+    "ownerContract": "https://github.com/Sijiel44/archives-alrick/pull/95#issuecomment-6702652319",
+    "ownerTest": "experiments/dg-lot004/tests/storage/P0_CAUSALITY_ARCHIVES.test.mjs",
+    "ownerTestComment": "https://github.com/Sijiel44/archives-alrick/pull/95#issuecomment-6702670015",
+    "ownerTestSha256": "da6aa2d7ba2528f26261eceea1afd6e8987c9388eda495f80c62f11ee9644af0",
+    "originalTestStatus": "FAIL 0/3 under current causal contract: B.save(rev5) never attests parent via its own load; strict fail-closed. Owner reversion of test precondition requested; original file unchanged",
+    "ownerDiscrepancyComment": "https://github.com/Sijiel44/archives-alrick/pull/95#issuecomment-6702813924",
+    "separateAttestedVariant": "experiments/dg-lot004/tests/storage/P0_CAUSALITY_ATTESTED_05.test.mjs",
+    "nodeRegressions": "experiments/dg-lot004/tests/integration/storage-lineage.test.mjs; includes forged rev9, restore races, historic catalog rehydration",
+    "chromeReal": "DG004_P0_CAUSAL_BROWSER_OK, two Chrome MJ tabs, no-lock fail-closed, both restore windows, forged rev9 blocked, previous private value restored",
+    "integrationContract": "observed native parent envelope byte identity pinned per session; all writers Web Locks in browser, restore preview linked to native pending identity and original private envelope; no migration/canon",
+    "status": "NOT QUALIFIED until 04 independent Q contract/test precondition is reconciled and exact HEAD re-tested by QA/REVUE"
+  }
+}

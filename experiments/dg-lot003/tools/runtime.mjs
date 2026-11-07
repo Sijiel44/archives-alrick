@@ -6,8 +6,29 @@ const MJ='http://127.0.0.1:4173', PLAYER='http://127.0.0.1:4174';
 const STORAGE_KEY='cer.dg003.private.campaign.v0';
 const fail=reason=>{throw Error(reason);};
 const copy=x=>structuredClone(x);
+// Pure structural equality for an in-memory MJ snapshot vs its ARCHIVES-backed
+// re-read. Key insertion order is not an edit; arrays and all JSON values must
+// match exactly. This never changes serialized archive order or bytes.
+function jsonDifference(a,b,path='root'){
+ if(Object.is(a,b))return null;
+ if(a===null||b===null||typeof a!=='object'||typeof b!=='object')return path;
+ if(Array.isArray(a)!==Array.isArray(b))return path;
+ if(Array.isArray(a)){
+  if(a.length!==b.length)return path+'.length';
+  for(let i=0;i<a.length;i++){const d=jsonDifference(a[i],b[i],path+'['+i+']');if(d)return d;}
+  return null;
+ }
+ const ka=Object.keys(a).sort(),kb=Object.keys(b).sort();
+ if(ka.length!==kb.length||ka.some((k,i)=>k!==kb[i])){
+  const leftOnly=ka.filter(k=>!kb.includes(k)).slice(0,7);
+  const rightOnly=kb.filter(k=>!ka.includes(k)).slice(0,7);
+  return path+'.keys(leftOnly='+leftOnly.join(',')+',rightOnly='+rightOnly.join(',')+')';
+ }
+ for(const k of ka){const d=jsonDifference(a[k],b[k],path+'.'+k);if(d)return d;}
+ return null;
+}
 
-export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
+export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalThis.navigator?.locks??null,browserContext=typeof window!=='undefined'}={}) {
  if(!owner)return null;
  const methods=['createCampaign','previewImport','commitImport','exportPrivate','previewRestore','commitRestore','recoverOriginalBytes'];
  if(methods.some(k=>typeof owner[k]!=='function'))fail('Interface ARCHIVES incomplète');
@@ -15,8 +36,37 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
  let queue=Promise.resolve();
  const subscribers=new Set();
  let exactRestorePending=null;
+ // Key by the native privatePending object: the STUDIO demo allowlist
+ // legitimately shallow-spreads the outer preview, preserving this identity.
+ const previewAnchors=new WeakMap();
+ // Causal parent attestation belongs to the adapter/session, not a numeric
+ // revision guess. A first explicit load establishes the editing baseline;
+ // subsequent background reads must NEVER silently rebase an unsaved editor.
+ let observedParent=null;
+ const parentRaw=()=>area.getItem(STORAGE_KEY);
+ const captureParent=studio=>({
+  raw:parentRaw(),id:studio?.id??null,revision:studio?.revision??null
+ });
+ const assertCausalParent=(current,{allowEmpty=false}={})=>{
+  const raw=parentRaw();
+  if(raw===null&&current===null&&
+     (!observedParent||observedParent.raw===null))return raw;
+  if(!observedParent||observedParent.raw!==raw||
+     observedParent.id!==(current?.id??null)||
+     observedParent.revision!==(current?.revision??null))
+   fail('Private campaign causal parent conflict: reload verified state before saving');
+  return raw;
+ };
  const encoder=new TextEncoder();
  const decoder=new TextDecoder();
+ const withCrossTabLock=operation=>{
+  // Never rely only on a per-instance Promise queue for two browser tabs.
+  if(browserContext&&typeof locks?.request!=='function')
+   fail('Private browser Web Locks unavailable: refusing an unsafe write');
+  return typeof locks?.request==='function'
+   ?locks.request('cer.dg003.private.campaign.v0.commit',{mode:'exclusive'},operation)
+   :operation();
+ };
  // Keep the original localStorage envelope readable. For large validated backups,
  // put their raw bytes in IndexedDB and change only a small localStorage pointer
  // after the IndexedDB transaction completes. Never delete the old payload first.
@@ -69,9 +119,15 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
   const preview=await owner.previewRestore(bytes,{expectedSha256:envelope.sha256});
   return await owner.commitRestore(preview,{existingProject:null,replace:false});
  }
- async function readStudio(){
+ async function readStudio({bindIfAbsent=true}={}){
+  // Only the first explicit load may establish the session's editing parent.
+  // Internal save/append/export reads pass bindIfAbsent:false.
+  const rawBefore=parentRaw();
   const archive=await readArchive();
-  return archive?archiveToStudio(archive):null;
+  if(parentRaw()!==rawBefore)fail('Private campaign read changed concurrently: retry explicitly');
+  const studio=archive?archiveToStudio(archive):null;
+  if(bindIfAbsent&&!observedParent)observedParent=captureParent(studio);
+  return studio;
  }
  async function persist(snapshot){
   const prepared=studioToArchive(snapshot,owner.createCampaign);
@@ -89,10 +145,18 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
    if(check?.sha256!==result.sha256||!(check.bytes instanceof Uint8Array)||
       check.bytes.length!==result.bytes.length)fail('IndexedDB write verification failed');
    try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.indexeddb-pointer.v0',sha256:result.sha256}));}
-   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private pointer write not atomic');throw error;}
+   catch(error){
+     if(area.getItem(STORAGE_KEY)!==previous)
+      throw Error('Private pointer ACK uncertain: '+(error?.message??error),{cause:error});
+     throw error;
+    }
   }else{
    try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.local-validated-envelope.v0',sha256:result.sha256,raw:decoder.decode(result.bytes)}));}
-   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private storage write not atomic');throw error;}
+   catch(error){
+     if(area.getItem(STORAGE_KEY)!==previous)
+      throw Error('Private storage ACK uncertain: '+(error?.message??error),{cause:error});
+     throw error;
+    }
   }
   for(const listener of subscribers){try{listener(copy(snapshot));}catch{ /* UI observer cannot roll back validated save */ }}
   return snapshot;
@@ -123,33 +187,101 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
   }
   return snapshot;
  }
- function save(studio){return enqueue(async()=>{
-  const current=await readStudio();
-  const exact=exactRestorePending && exactRestorePending.id===studio.id;
-  const prepared=exact?copy(studio):mergePersistentCatalog(studio,current);
+ function save(studio){return enqueue(()=>withCrossTabLock(async()=>{
+  const current=await readStudio({bindIfAbsent:false});
+  const restoreTicket=exactRestorePending;
+  if(restoreTicket){
+   // The preview was tied to the exact previous private pointer, not merely
+   // a matching campaign ID or an apparently newer revision.
+   if(parentRaw()!==restoreTicket.parentRaw){
+    exactRestorePending=null; // Explicit new MJ preview required; no replay.
+    fail('Private restore causal parent conflict: project changed after preview');
+   }
+   if(studio.id!==restoreTicket.id||
+      jsonDifference(studio,restoreTicket.restored)!==null){
+    exactRestorePending=null;
+    fail('Private restore payload conflict: new preview and confirmation required');
+   }
+  }else{
+   assertCausalParent(current);
+   if(current&&current.id!==studio.id)
+    fail('Private campaign ownership conflict: implicit campaign replacement forbidden');
+  }
+  const prepared=restoreTicket?copy(studio):mergePersistentCatalog(studio,current);
+  if(!restoreTicket&&current?.id===studio.id){
+   if(!Number.isSafeInteger(studio.revision)||!Number.isSafeInteger(current.revision))
+    fail('Private campaign revision invalid');
+   if(studio.revision<=current.revision){
+    // Idempotent no-op only if BOTH contents and causal base are exact.
+    if(studio.revision===current.revision&&JSON.stringify(prepared)===JSON.stringify(current))
+     return;
+    fail('Private campaign revision conflict: stale or concurrent writer');
+   }
+  }
   await persist(prepared);
-  if(exact)exactRestorePending=null;
- });}
+  observedParent=captureParent(prepared);
+  if(restoreTicket)exactRestorePending=null;
+ }));}
  return {
   owner,readStudio,readArchive,save,
   subscribe(listener){if(typeof listener!=='function')fail('Listener invalid');subscribers.add(listener);return ()=>subscribers.delete(listener);},
   async load(){return await readStudio();},
   async previewRestore({bytes}){
+   // Drain only this adapter's writes; snapshot the actual persisted parent.
+   await queue;
+   const sourceRaw=parentRaw(),source=await readStudio({bindIfAbsent:false});
+   if(parentRaw()!==sourceRaw)fail('Private restore preview causal parent changed');
    const pending=await owner.previewRestore(bytes);
    if(pending?.kind!=='private-restore-preview')fail('ARCHIVES preview missing');
-   return {display:{title:'Campagne privée '+pending.projectId},privatePending:pending};
+   if(parentRaw()!==sourceRaw)fail('Private restore preview causal parent changed');
+   const preview={display:{title:'Campagne privée '+pending.projectId},privatePending:pending};
+   previewAnchors.set(pending,{parentRaw:sourceRaw,source:copy(source)});
+   return preview;
   },
   async restore(preview,{previous}){
    if(!preview?.privatePending)fail('Restoration preview missing');
+   const ticket=previewAnchors.get(preview.privatePending);
+   if(!ticket)fail('Private restore unverified preview: a fresh preview is required');
+   // An old in-memory campaign cannot stand in for the latest ARCHIVES parent.
+   // Compare the exact NATIVE ARCHIVES projection, not optional Studio UI
+   // defaults (e.g. absent privateNotes vs [] added during round-trip).
+   // This is validation-only: it never rewrites the source, its order or bytes.
+   // The legacy STUDIO UI does not mirror catalogue/creatorDrafts committed
+   // independently by this integration adapter. Admit ONLY fields that are
+   // genuinely absent in the UI while retaining the real ARCHIVES values.
+   // Any present but divergent field (or unrelated unknown) remains a conflict.
+   const uiParent=previous?copy(previous):null;
+   if(uiParent&&ticket.source?.id===uiParent.id){
+    uiParent.extensions??={};
+    for(const key of ['catalog','creatorDrafts']){
+     if(!Object.hasOwn(uiParent.extensions,key)&&
+        Object.hasOwn(ticket.source.extensions??{},key))
+      uiParent.extensions[key]=copy(ticket.source.extensions[key]);
+    }
+   }
+   const left=uiParent?studioToArchive(uiParent,owner.createCampaign):null;
+   const right=ticket.source?studioToArchive(ticket.source,owner.createCampaign):null;
+   const sourceMismatch=jsonDifference(left,right);
+   if(sourceMismatch)
+    fail('Private restore source snapshot conflict at '+sourceMismatch+': reload and preview again');
+   if(parentRaw()!==ticket.parentRaw){
+    previewAnchors.delete(preview.privatePending);
+    fail('Private restore causal parent conflict: changed since preview');
+   }
    const prior=previous?studioToArchive(previous,owner.createCampaign):null;
    const restored=await owner.commitRestore(preview.privatePending,{existingProject:prior,replace:prior!==null});
    const exact=archiveToStudio(restored);
-   exactRestorePending={id:exact.id};
+   if(parentRaw()!==ticket.parentRaw){
+    previewAnchors.delete(preview.privatePending);
+    fail('Private restore causal parent conflict: changed during preview commit');
+   }
+   previewAnchors.delete(preview.privatePending);
+   exactRestorePending={id:exact.id,restored:copy(exact),parentRaw:ticket.parentRaw};
    return exact;
   },
   async exportPrivate(studio){
    await queue;
-   const current=await readStudio();
+   const current=await readStudio({bindIfAbsent:false});
    const coherent=mergePersistentCatalog(studio,current);
    const result=await owner.exportPrivate(studioToArchive(coherent,owner.createCampaign));
    if(result?.confidential!==true||!(result.bytes instanceof Uint8Array)||!/^[a-f0-9]{64}$/.test(result.sha256))
@@ -157,8 +289,13 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
    return result.bytes;
   },
   async appendCatalog(studio,entry,validateRegistry,originalRecord){
-   return enqueue(async()=>{
-    const current=await readStudio();
+   return enqueue(()=>withCrossTabLock(async()=>{
+    const current=await readStudio({bindIfAbsent:false});
+    assertCausalParent(current);
+    if(current?.id!==undefined&&current.id!==studio.id)
+     fail('Private catalog campaign ownership conflict');
+    if(current?.id===studio.id&&studio.revision<current.revision)
+     fail('Private catalog stale campaign revision conflict');
     const foundation=current?.id===studio.id?current:copy(studio);
     foundation.extensions??={};
     const previous=foundation.extensions.catalog??[];
@@ -171,8 +308,9 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
     foundation.extensions.creatorDrafts=[...drafts,{catalogId:entry.id,catalogVersion:entry.version,
       sourceSchema:originalRecord.schema,original:copy(originalRecord),visibility:'mj-private'}];
     await persist(foundation);
+    observedParent=captureParent(foundation);
     return next;
-   });
+   }));
   }
  };
 }
