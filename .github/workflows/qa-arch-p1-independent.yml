@@ -1,0 +1,59 @@
+name: QA-ARCH-P1 independent prototype checks (no Pages)
+on:
+  push:
+    branches: [test/qa-arch-p1-independent]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa-arch-p1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify P1 source ancestry and exact SHA
+        env:
+          QA_EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$QA_EXPECTED_HEAD"
+          git merge-base --is-ancestor f84f8c54361b3701ebb0251700f2d0d09d4acf4d "$QA_EXPECTED_HEAD"
+          echo "QA_SOURCE_HEAD=f84f8c54361b3701ebb0251700f2d0d09d4acf4d"
+          echo "QA_TESTED_HEAD=$QA_EXPECTED_HEAD"
+      - name: Node baseline contracts on exact checkout
+        run: node --test experiments/arch-storage-001/tests/contracts.test.mjs
+      - name: Find official Chrome
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome-stable || command -v google-chrome || true)"
+          test -n "$CHROME"
+          "$CHROME" --version
+          echo "CHROMIUM_PATH=$CHROME" >> "$GITHUB_ENV"
+      - name: Python playwright isolated test dependency
+        run: |
+          python3 -m venv "$RUNNER_TEMP/qa-arch-p1"
+          "$RUNNER_TEMP/qa-arch-p1/bin/python" -m pip install --disable-pip-version-check playwright==1.56.0
+          echo "QA_PY=$RUNNER_TEMP/qa-arch-p1/bin/python" >> "$GITHUB_ENV"
+      - name: Independent browser B01-B10 + concurrent export
+        env:
+          QA_EXPECTED_HEAD: ${{ github.sha }}
+          QA_ARCH_P1_REPORT: qa-arch-p1-evidence.json
+        run: |
+          "$QA_PY" experiments/arch-storage-001/tests/qa-independent/qa_arch_p1.py
+      - name: Upload proof even on test failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-arch-p1-evidence
+          path: qa-arch-p1-evidence.json
+          if-no-files-found: warn
+      - name: Print tested checkout even on failure
+        if: always()
+        run: git rev-parse HEAD
