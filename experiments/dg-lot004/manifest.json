@@ -70,7 +70,7 @@
   "handoffs": {
     "p0a": {
       "issue": 92,
-      "status": "Proprietary BUILDER and STUDIO source/test copied; integrated real Chrome P0A has passed on earlier head; new final gate pending",
+      "status": "Integrated P0-A Chrome actual 4173/4174 PASS; no public hosting",
       "builder": {
         "branch": "prototype/dg004-preview-builder",
         "commit": "ee3f428843fea64a285366032e677c5bc7284b9d",
@@ -84,7 +84,7 @@
     },
     "p0b": {
       "issue": 93,
-      "status": "Proprietary MATH and INDEX R2, native M01 and readonly XP, latest integrated tests/Chrome pending",
+      "status": "MATH/INDEX read-only M01 XP parity and native tests PASS on composite; no automatic award",
       "math": {
         "branch": "prototype/dg004-xp-math",
         "commit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
@@ -98,7 +98,7 @@
     },
     "p0c": {
       "issue": 94,
-      "status": "ATELIERS P0-S07/S09 verbatim owner update 154289; native nine-test re-execution pending",
+      "status": "ATELIERS 154289 copied byte-exact; creator/scene/INDEX chain and 2 real MJ tabs PASS; native S07/S09 PASS",
       "creators": {
         "branch": "prototype/dg004-creators",
         "commit": "1542891066ee88d5f6f4414856b7cf13a6199572",
@@ -116,7 +116,7 @@
   },
   "mutableOwners": false,
   "qa": {
-    "status": "DG004 exact-owner sources copied; P0 owner bank must pass before full qualification; no independent QA"
+    "status": "INTEGRATION P0 gates passed on evidence SHA; INDEPENDENT QA/REVUE not executed, PR95 DRAFT, no merge or publication"
   },
   "provenance": [
     {
@@ -428,8 +428,24 @@
     "archive": "P0_STORAGE_SUPPORT_001_PASSATION.zip",
     "sha256": "38b1e055a94562aa8a6e35073a0997fcb88583b21582dc58d8eeb3cf2b88c2d1",
     "source": "library:libfile_8940c0ec91d881919e88831fc2ed76e0",
-    "retrieval": "BLOCKED: files materialize raw-file authorized path unavailable; files read ZIP internal error",
-    "nineOfficialTests": "NOT EXECUTED",
-    "relatedIntegrationTests": "tests/integration/creator-persistence.test.mjs; distinct handcrafted regression, not the owner supplied nine"
+    "retrieval": "Original ZIP raw-byte materialization unavailable; complete test source recovered verbatim from owner GitHub comment; source SHA256 verified in CI before execution",
+    "nineOfficialTests": "9 PASS / 0 FAIL / 0 SKIP / 0 CANCELLED; Node24, original assertions unchanged",
+    "relatedIntegrationTests": "tests/integration/creator-persistence.test.mjs; distinct handcrafted regression, not the owner supplied nine",
+    "zipBytesAccessibleHere": false,
+    "sourceComment": "https://github.com/Sijiel44/archives-alrick/pull/95#issuecomment-6702273364",
+    "exactTest": "experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs",
+    "testSha256": "d89dea819a387dc9fdc5b61dfdaf62bc7e17aed3d930576f57cd2da4db3259b5",
+    "runner": "node --import tsx --test experiments/dg-lot004/tests/storage/P0_STORAGE_SUPPORT_REAL.test.mjs",
+    "evidenceRun": 42341117494,
+    "evidenceTestedHead": "69235ac3249f2548599d876fbaa556d0b90bac2c",
+    "interpretation": "Native owner functions plus integrator-owned L003 storage runtime, not a substitute for independent QA"
+  },
+  "ciEvidence": {
+    "testedHead": "69235ac3249f2548599d876fbaa556d0b90bac2c",
+    "run": 42341117494,
+    "integratorResult": "success",
+    "archivesHistoricalRun": 42341117488,
+    "archivesHistoricalConclusion": "success",
+    "status": "prior exact HEAD evidence; recheck after this manifest update"
   }
 }
