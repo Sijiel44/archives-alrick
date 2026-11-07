@@ -7,7 +7,7 @@ const STORAGE_KEY='cer.dg003.private.campaign.v0';
 const fail=reason=>{throw Error(reason);};
 const copy=x=>structuredClone(x);
 
-export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
+export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalThis.navigator?.locks??null}={}) {
  if(!owner)return null;
  const methods=['createCampaign','previewImport','commitImport','exportPrivate','previewRestore','commitRestore','recoverOriginalBytes'];
  if(methods.some(k=>typeof owner[k]!=='function'))fail('Interface ARCHIVES incomplète');
@@ -17,6 +17,14 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
  let exactRestorePending=null;
  const encoder=new TextEncoder();
  const decoder=new TextDecoder();
+ const withCrossTabLock=operation=>{
+  // Never rely only on a per-instance Promise queue for two browser tabs.
+  if(typeof window!=='undefined'&&typeof locks?.request!=='function')
+   fail('Private browser Web Locks unavailable: refusing an unsafe write');
+  return typeof locks?.request==='function'
+   ?locks.request('cer.dg003.private.campaign.v0.commit',{mode:'exclusive'},operation)
+   :operation();
+ };
  // Keep the original localStorage envelope readable. For large validated backups,
  // put their raw bytes in IndexedDB and change only a small localStorage pointer
  // after the IndexedDB transaction completes. Never delete the old payload first.
@@ -89,10 +97,18 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
    if(check?.sha256!==result.sha256||!(check.bytes instanceof Uint8Array)||
       check.bytes.length!==result.bytes.length)fail('IndexedDB write verification failed');
    try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.indexeddb-pointer.v0',sha256:result.sha256}));}
-   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private pointer write not atomic');throw error;}
+   catch(error){
+     if(area.getItem(STORAGE_KEY)!==previous)
+      throw Error('Private pointer ACK uncertain: '+(error?.message??error),{cause:error});
+     throw error;
+    }
   }else{
    try{area.setItem(STORAGE_KEY,JSON.stringify({kind:'cer.dg003.local-validated-envelope.v0',sha256:result.sha256,raw:decoder.decode(result.bytes)}));}
-   catch(error){if(area.getItem(STORAGE_KEY)!==previous)fail('Private storage write not atomic');throw error;}
+   catch(error){
+     if(area.getItem(STORAGE_KEY)!==previous)
+      throw Error('Private storage ACK uncertain: '+(error?.message??error),{cause:error});
+     throw error;
+    }
   }
   for(const listener of subscribers){try{listener(copy(snapshot));}catch{ /* UI observer cannot roll back validated save */ }}
   return snapshot;
@@ -123,13 +139,23 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
   }
   return snapshot;
  }
- function save(studio){return enqueue(async()=>{
+ function save(studio){return enqueue(()=>withCrossTabLock(async()=>{
   const current=await readStudio();
   const exact=exactRestorePending && exactRestorePending.id===studio.id;
   const prepared=exact?copy(studio):mergePersistentCatalog(studio,current);
+  if(!exact&&current?.id===studio.id){
+   if(!Number.isSafeInteger(studio.revision)||!Number.isSafeInteger(current.revision))
+    fail('Private campaign revision invalid');
+   if(studio.revision<=current.revision){
+    // A byte-semantic idempotent no-op is acceptable; a stale writer is not.
+    if(studio.revision===current.revision&&JSON.stringify(prepared)===JSON.stringify(current))
+     return;
+    fail('Private campaign revision conflict: stale or concurrent writer');
+   }
+  }
   await persist(prepared);
   if(exact)exactRestorePending=null;
- });}
+ }));}
  return {
   owner,readStudio,readArchive,save,
   subscribe(listener){if(typeof listener!=='function')fail('Listener invalid');subscribers.add(listener);return ()=>subscribers.delete(listener);},
@@ -157,8 +183,10 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
    return result.bytes;
   },
   async appendCatalog(studio,entry,validateRegistry,originalRecord){
-   return enqueue(async()=>{
+   return enqueue(()=>withCrossTabLock(async()=>{
     const current=await readStudio();
+    if(current?.id===studio.id&&studio.revision<current.revision)
+     fail('Private catalog stale campaign revision conflict');
     const foundation=current?.id===studio.id?current:copy(studio);
     foundation.extensions??={};
     const previous=foundation.extensions.catalog??[];
@@ -172,7 +200,7 @@ export function createValidatedStorage(owner,area,{indexedDB=null}={}) {
       sourceSchema:originalRecord.schema,original:copy(originalRecord),visibility:'mj-private'}];
     await persist(foundation);
     return next;
-   });
+   }));
   }
  };
 }
