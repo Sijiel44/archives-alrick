@@ -1,0 +1,104 @@
+{
+  "schema": "cer.catalog.dg004.r2.proof-manifest.v1",
+  "project": "INDEX L004-B.R2",
+  "date": "2026-11-05",
+  "base_commit": "2ab809ef5351940e0fc272b859d10f21de894d00",
+  "prior_pr97_head": "62ff4332b9e9ecb9a5437719eaefa61fad01d57d",
+  "math_pr99_head": "e3fcbce49074bfcbe8814842a5ad57d0ba76160d",
+  "source_math_blob": "58ee80a8345113aff89bfc58a3f276f3c401d7c2",
+  "source_archives_blob": "be6a881018ae1709ecef71c3c5a155acfb94a658",
+  "test_execution": {
+    "command": "node --test experiments/dg-lot004/tests/catalog/catalog.test.mjs experiments/dg-lot004/tests/catalog/catalog-r2.test.mjs",
+    "node": "v22.16.0",
+    "total": 114,
+    "passed": 114,
+    "failed": 0,
+    "skipped": 0
+  },
+  "not_executed": {
+    "typescript_m01": "esbuild missing; attempted and failed (not green)",
+    "native_math99": "no checkout of full repo",
+    "chrome_after_fix": "not run",
+    "github_ci_after_commit": "to check from final PR head"
+  },
+  "files": [
+    {
+      "path": "experiments/dg-lot004/src/catalog/index.mjs",
+      "bytes": 41742,
+      "sha256": "59ca7ac9f8c44d267461a2ce240cab405adf69e4b06bf2e4cbb6ac604ebba4fa",
+      "git_blob_sha1": "27ffd1dbb520eed8fff3efd293948c94ea57cf95"
+    },
+    {
+      "path": "experiments/dg-lot004/src/catalog/README.md",
+      "bytes": 14963,
+      "sha256": "857e1e638184865677c796c2cf741dd1e1785dc9ed6a5f5909d5f319c2a8c925",
+      "git_blob_sha1": "d443e3c36995b874828b684c579e1eb22801ea85"
+    },
+    {
+      "path": "experiments/dg-lot004/src/catalog/PASSATION_R2_A_05_INTEGRATION.md",
+      "bytes": 5483,
+      "sha256": "e76e41daba254b61a36a56e47d074484848fb8f87365c05d2804773bc61a27b4",
+      "git_blob_sha1": "79106a321070d09725f5f704d224756f9b8a8f5b"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/catalog-r2.test.mjs",
+      "bytes": 20373,
+      "sha256": "5f94ddc620d9ba8e337fd4983c13bfe0080af0c6248e0d017f1329e8e20774be",
+      "git_blob_sha1": "cbd6989fc0c7c1d5f7d790f9f75194bff8a9b9ea"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/FICHE_DIRECTION_L004_INDEX.md",
+      "bytes": 5252,
+      "sha256": "7e94df9a6af3eacd39b80cc37dbf367249338d280fcae32580886be97993ee54",
+      "git_blob_sha1": "2427582226deedb19b1d700ac89dc03ef63ae971"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/RAPPORT_L004_B_R2_INDEX.md",
+      "bytes": 7857,
+      "sha256": "5052428dc3fbc1003d027b11633de7b76c7438ccd2b0e2e4a898a5f973a0d314",
+      "git_blob_sha1": "80e883743eee1cb3191774a717e8007ba5e0f565"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/L004_R2_TEST_RESULTS_NODE22.tap",
+      "bytes": 19865,
+      "sha256": "f9c09feb30ab844694e09f995eacedb75c0911630c700963e1603751e65cdf0f",
+      "git_blob_sha1": "de359bad514e29249b0e6fb1d3b728461ac1a85f"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/L004_R2_NATIVE_M01_NON_EXECUTE.txt",
+      "bytes": 1539,
+      "sha256": "f0feca1c904394b9e5f0d14fae2306351278743f750cc781ffc56ac36a16e46b",
+      "git_blob_sha1": "0a0068c07f2943890eabe8f5648d8977a229f423"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/L004_R2_COMMANDES_ET_LIMITES.md",
+      "bytes": 1574,
+      "sha256": "1657f83cbf16a288a34905a70b84920864ae35d05412c896cf1a8e95714036cd",
+      "git_blob_sha1": "a59037ab2dded607ce55aa72313b8608d4d425b7"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/catalog.test.mjs",
+      "bytes": 17734,
+      "sha256": "78dc9b2ac521f16ac00299e2f657a2d6bf8f4d545afc8fcab5b3f4a1fba4d68f",
+      "git_blob_sha1": "33f58cb76486503b1d0fe48a63ccf855421e28dc"
+    },
+    {
+      "path": "experiments/dg-lot004/tests/catalog/native-m01.test.mjs",
+      "bytes": 4259,
+      "sha256": "e8b184fdd8c7e058cfbcd25af1accffad9906774ad2dd615390aae6848009f8c",
+      "git_blob_sha1": "3475aa4e643d41ef03c35facdcc7d0e45e2ca146"
+    },
+    {
+      "path": "experiments/dg-lot003/src/catalog/index.mjs",
+      "bytes": 24131,
+      "sha256": "fee87f6d939e1c8687c575fe0e3e4e2740ee7cb695d0dbb4bbd9e303831586ae",
+      "git_blob_sha1": "6c35e0da2c56a51dea9bce37b9cdc60cd2c75de5"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/fixtures-v02-original.json",
+      "bytes": 7910,
+      "sha256": "7396a5eaade764dd048c243ee1765d12ab22a473e88a4ebad15b6c08a1480a89",
+      "git_blob_sha1": "5b0a17e1d0c8049d406648621d4fefb1a78d97e9"
+    }
+  ]
+}
