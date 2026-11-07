@@ -122,3 +122,23 @@ test('DG004-RESTORE-05: optional Studio UI privateNotes absent is native [] with
  assert.deepEqual(persisted.scenes.map(x=>x.id),['old-backup']);
  assert.equal(persisted.extensions.unknownFuture.id,'preserve');
 });
+
+test('DG004-RESTORE-06: legacy MJ UI lacks only integrator-persisted catalogue fields; restore preserves both',async()=>{
+ const a=area(),l=locks(),tab=port(a,l),ui=campaign(0);
+ await tab.save(ui);
+ const entry={id:'catalog:fiction',version:'0.1.0',name:'Objet fictif',entryType:'item'};
+ const original={schema:'cer.creator.dg003.descriptive.v0',kind:'item',name:'Objet fictif',version:'0.1.0',unknownPrivate:{keep:true}};
+ await tab.appendCatalog(ui,entry,()=>({ok:true}),original);
+ const durable=await tab.load();
+ assert.equal(durable.extensions.catalog.length,1);
+ assert.equal(durable.extensions.creatorDrafts[0].original.unknownPrivate.keep,true);
+ assert.equal(ui.extensions.catalog,undefined,'legacy UI does not adopt creator tables');
+ const bytes=await tab.exportPrivate(ui);
+ const preview=await tab.previewRestore({bytes});
+ const restored=await tab.restore(preview,{previous:ui});
+ await tab.save(restored);
+ const reread=await port(a,l).load();
+ assert.deepEqual(reread.extensions.catalog,durable.extensions.catalog);
+ assert.deepEqual(reread.extensions.creatorDrafts,durable.extensions.creatorDrafts);
+ assert.deepEqual(reread.extensions.unknownFuture,ui.extensions.unknownFuture);
+});
