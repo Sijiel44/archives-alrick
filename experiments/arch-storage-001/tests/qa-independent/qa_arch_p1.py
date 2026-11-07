@@ -3,7 +3,7 @@ import asyncio, hashlib, json, os, subprocess, sys, time, urllib.request
 from pathlib import Path
 from playwright.async_api import async_playwright
 
-ROOT=Path(__file__).resolve().parents[3]
+ROOT=Path(__file__).resolve().parents[2]
 URL='http://127.0.0.1:4181/'
 HEAD=os.environ.get('QA_EXPECTED_HEAD','')
 RESULTS=[]
