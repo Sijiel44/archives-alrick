@@ -180,8 +180,15 @@ try{
  await nextCycle('creature');
  await mj.eval(fillCyclePanel('Créature fictive',{...narrative,name:'Créature sentinelle',sourceReference:'fixture-source-001'}));
  await validateCycle('creature');
+ const beforeAttachStatus=await mj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
  await mj.eval(click('Copier la créature dans STUDIO (MJ)'));
- await until(async()=>Boolean((await getCycle())?.linked?.creatureInstanceId),110);
+ await until(async()=>{
+  const state=await getCycle();
+  if(state?.linked?.creatureInstanceId)return true;
+  const status=await mj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent');
+  if(status&&status!==beforeAttachStatus)throw Error('CREATURE_ATTACH_BLOCKED '+JSON.stringify({status,state}).slice(0,1100));
+  return false;
+ },110);
  await nextCycle('scene');
  await mj.eval(fillCyclePanel('Scène locale',{...narrative,name:'Scène de passage',title:'Lueur sur Entre-Rives',publicDescription:'La lanterne guide les voyageurs fictifs.',privateNotes:'CANARY_PRIVATE_CYCLE_004'}));
  await validateCycle('scene');
@@ -191,7 +198,10 @@ try{
  await until(()=>mj.eval('document.querySelector("#dg004-cycle-root .cycle-status")?.textContent.includes("Chaîne INDEX enregistrée en privé")'),110);
  const cycleRaw=await mj.eval('localStorage.getItem("cer.dg004.creators.private.demo.v0")');
  if(!cycleRaw)fail('CYCLE_NOT_PERSISTED');
- const cycleState=JSON.parse(cycleRaw);
+ const cycleEnvelope=JSON.parse(cycleRaw);
+ if(cycleEnvelope.kind!=='cer.dg004.creators.demo-owned.v1'||!cycleEnvelope.digest)
+  fail('CREATOR_PRIVATE_ENVELOPE_NOT_ATTESTED');
+ const cycleState=cycleEnvelope.cycle;
  if(!cycleState.extensions?.indexL004?.chain?.schema||
     !cycleState.extensions?.indexL004?.privateSnapshot?.schema||
     cycleState.extensions.indexL004.chain.links?.map(x=>x.kind).join(',')!=='item,capability,creature,scene')
