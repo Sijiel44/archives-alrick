@@ -6,7 +6,7 @@ import * as owner from '../../dg-lot003/src/storage/storage.mjs';
 import {createValidatedStorage} from '../../dg-lot003/tools/runtime.mjs';
 import {studioToArchive} from '../../dg-lot003/tools/adapters.mjs';
 const KEY='cer.dg003.private.campaign.v0';
-const ports=[],previews=new Map(),replacements=new Map();
+const ports=[],previews=new Map(),replacements=new Map(),edits=new Map();let editSequence=0;
 const make=(revision=0)=>({
  schema:owner.STORAGE_SCHEMA,id:'browser-parent-p0',title:'Navigateur fictif',revision,
  characters:[],creatures:[],scenes:[],activeSceneId:'',privateNotes:[],
@@ -30,6 +30,23 @@ const operations={
  create,make,edit,
  load:async i=>ports[i].load(),
  save:async(i,x)=>{await ports[i].save(x);return {saved:true}},
+ async beginEdit(i){
+  const session=await ports[i].beginEdit();
+  const id='edit-'+(++editSequence);
+  edits.set(id,{port:i,handle:session.handle});
+  return {id,base:session.base};
+ },
+ async commitEdit(i,id,ops){
+  const e=edits.get(id);
+  if(!e||e.port!==i)throw Error('Private edit foreign session');
+  return await ports[i].commitEdit(e.handle,ops);
+ },
+ async forkEdit(i,id){
+  const e=edits.get(id);if(!e||e.port!==i)throw Error('Private edit foreign session');
+  const fork=ports[i].forkEdit(e.handle),newId='edit-'+(++editSequence);
+  edits.set(newId,{port:i,handle:fork});
+  return newId;
+ },
  async preview(i){
   const previous=await ports[i].load();
   const candidate=edit(make(0),0,'old-backup');
