@@ -55,7 +55,7 @@ export function installDemo(app,doc){
    app.studio.createScene(DEMO_SCENE,'Une passerelle fictive, sans canon ni secrets réels.',DEMO_PRIVATE);
    const current=app.studio.getCampaign();
    const participants=[...current.characters,...current.creatures].map(x=>x.id);
-   app.studio.updateScene({title:DEMO_SCENE,
+   await app.studio.updateScene({title:DEMO_SCENE,
     publicDescription:'Une passerelle fictive, sans canon ni secrets réels.',
     privateNotes:DEMO_PRIVATE,participantIds:participants});
    // Flush the same native ARCHIVES storage queue used by the Studio owner.
