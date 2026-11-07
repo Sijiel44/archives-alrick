@@ -300,7 +300,7 @@
       "sourceCommit": "86cf1d57eb2d587b88e253c7f0c207db8edf2db2",
       "sourceBranch": "prototype/dg004-xp-math",
       "path": "experiments/dg-lot004/math-xp/tests/verify-index-browser-bridge.mjs",
-      "blobSha": "2fc2b3c8e2b10ef6f5e5c196663aaee7b01aaa",
+      "blobSha": "2fc2b3c8e2b10ef6f5f6e5c196663aaee7b01aaa",
       "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
