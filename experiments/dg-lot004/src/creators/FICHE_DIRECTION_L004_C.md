@@ -20,3 +20,35 @@ Exécution locale : `node --test /mnt/data/dg004/tests/creators/*.test.mjs` sur 
 **Risques restants:** liaison avec les vraies interfaces INDEX/STUDIO, persistance IndexedDB et isolation joueur en Chromium, recette clavier/lecteur écran ; une erreur après un appel externe STUDIO et avant l'enregistrement local impose réconciliation manuelle, jamais duplication silencieuse. Les P0/P1 ne sont pas homologués sans QA intégrée.
 
 **À revoir par:** 05 INTÉGRATION, 20 STUDIO, 11 INDEX, 10 MATH, 14 OBJETS, 13 MAG, 35 BESTIAIRE, 04 ARCHIVES et 02 QA. **À valider par DG/créateur:** adoption du parcours dans la branche intégrée, QA au SHA final, activation éventuelle de suggestions XP après contrats ; aucun merge/Pages/canonisation.
+
+## Addendum DG — L004-REPAIR transactionnel (05/11/2026)
+
+Défaut observé sur #100@`093d2504` : `attachCreature()` copie dans STUDIO puis `persistence.save` échoue ; tentative suivante reproduit une deuxième copie, prouvé par injection : `inst-1` puis `inst-2`. Même vulnérabilité structurelle pour la scène.
+
+**Décision correctrice :** journal privé de pré-intention durable avant effet STUDIO, reprise manuelle obligatoire après échec, candidate vérifiée par identifiants/provenance, aucune création répétée. UI MJ explicite. Restaurations pendant journal bloquées. Aucun changement aux règles, aux ports STUDIO ou INDEX, au site ni aux données réelles.
+
+**Contrat de livraison :** module `cycle-state.mjs`, UI `cycle-ui.mjs`, tests correspondants et README du seul sous-arbre ATELIERS. Le nouvel HEAD et les blobs sont indiqués dans la PR #100 et la passation à PR #95. Les tests Node natifs/Chromium sur le HEAD intégré appartiennent à 05/QA ; aucune homologation automatique.
+
+**Limites à arbitrer par 05/STUDIO/ARCHIVES :** identifiants uniques/provenance d'une copie, durabilité du port, scène partiellement mise à jour, intervention humaine en cas de données discordantes, restauration d'un backup obsolète sans journal. Une clé d'idempotence native et une transaction inter-moteurs ne sont pas introduites par ATELIERS.
+
+### Complément preuve interop STUDIO/ARCHIVES — DG L004-REPAIR
+
+
+Sources exactes : ATELIERS #100, STUDIO #98@`9729d1085a8714cc01d769908adfd5aa87e7ef9b` / blob `reconcile.mjs=f2b3a0254aa8f6ca8fcd4c6299281eee7467581e`, ARCHIVES L003 `tools/runtime.mjs` blob `444066ca6dbeaf59a9f8097e550bfff6105e47c7`. **Incompatibilités prouvées :** l'inspection STUDIO exige une scène avant la copie de créature ; `unpersisted` en STUDIO peut encore correspondre à `requires-confirmation` dans l'ATELIERS antérieur sans lecture durable ; les anciens backups sans journal et doubles candidats pouvaient recréer ou relier arbitrairement des copies. Dernières gardes propriétaires : refus d'ambiguïté et refus de la nouvelle création devant source/titre préexistants, avec tests ciblés. Le port de preuve de persistance `loadPersistedStudio()`, la politique de sauvegarde atomique et le raccord d'inspection par maillon appartiennent à 05/20/04, **non prétendus résolus** par le correctif propriétaire. Aucun merge ni QA Alpha.
+
+## Addendum P0 — Persistance ARCHIVES requise avant réconciliation (05/11/2026)
+
+Le contrôle croisé des blobs ATELIERS et STUDIO #98 révèle un chemin où une copie uniquement dans `studio.getCampaign()` pouvait être liée malgré le statut STUDIO `unpersisted`. Ce chemin est maintenant refusé par le contrat propriétaire : l'option injectée `loadPersistedStudio` (réel `createValidatedStorage(...).load()` d'ARCHIVES L003, **pas** le getter mémoire) doit confirmer la même campagne, le même ID et un snapshot privé exact. Le contrôleur relit en outre le journal `pendingStudioOp` depuis `persistence.load()` avant toute création et au moment de la réconciliation.
+
+API : `inspectStudioRecovery()` asynchrone, résultat privé sans secrets ni DTO ; `getStudioRecovery()` seul n'atteste aucune instance. `reconcileStudioLink(...,{confirm:true})` et `abandonStudioRecovery({confirm:true})` sont bloqués sans port, en cas de manque de preuve durable, conflit, pluralité de candidats, provenance ou notes différentes, archive ancienne ambiguë. L'interface ne débloque la confirmation qu'après l'inspection durable explicite du MJ.
+
+Le port optionnel `inspectCreatorAttachment({campaign,persistedCampaign,cycle,kind})` peut ajouter le contrôle STUDIO ; la version propriétaire #98@`9729d1085a8714cc01d769908adfd5aa87e7ef9b` ne prend pas encore en charge le contrôle isolé de créature avant la scène. L'injection de l'ancien inspecteur renvoie `inspector-unavailable`, résultat **bloqué**, constaté sur vrais blobs. À 20 STUDIO : livrer inspection par maillon et statut `reusable/persisted:true` correspondant exactement à l'ID. À 04 ARCHIVES/05 : fournir le vrai port de relecture fiable, attendre les écritures différées, ne pas remplacer la preuve par un mock au candidat et protéger l'ancien stockage.
+
+Tests ciblés ajoutés à `tests/creators/cycle-state.test.mjs` : absence de port, instance uniquement mémoire, ID durable identique, divergence ID/provenance/campagne, notes privées divergentes, journal non relu après ACK, inspecteur STUDIO refusé/admis, lecture échouée et ancien backup ambigu. Dans `tests/creators/cycle-ui.test.mjs` : bouton MJ bloqué sans preuve durable et canari masqué. Exécution des blobs sources et tests dans V8 : 50 réussis sur 51, seul test WebCrypto SHA256 natif non exécutable ici ; **aucun Node24/CI/Chrome composite ni vrai adaptateur ARCHIVES intégral qualifié**. Aucune formule, dépôt réel, suppression, merge ni publication.
+
+## Vérification croisée actualisée — STUDIO #98 nouveau HEAD 6bb0b1a (05/11)
+
+Exécution sur blobs JS GitHub : ATELIERS `cycle-state.mjs` `5554b3b12728f0e63388beccec2c58b29b214281` et STUDIO `reconcile.mjs` `0915b48f023e72ad87692ee9437cf7c837311fe4` : après une copie fictive de `cr-only-1` dont l'ACK créateur échoue, les deux magasins persistés sont relus, `inspectCreatorAttachment` accepte le seul maillon créature et `inspectStudioRecovery` retourne `durableVerified:true`, puis `reconcileStudioLink(...,confirm:true)` lie `cr-only-1` **sans seconde copie**.
+
+Écart restant confirmé : le helper STUDIO `confirmCreatorAttachmentWithEvidence` consulte `getStudioRecovery()` synchrone, statut propriétaire volontairement `durability-unverified`, et rejette `Journal ATELIERS discordant`. Transmission à 20 via commentaire PR #98 : lire `await inspectStudioRecovery()` et exiger la preuve durable avant la confirmation. Les tests V8/fixtures ne remplacent ni les vrais adaptateurs ARCHIVES, ni Node 24/Chrome/CI sur composite.
+
