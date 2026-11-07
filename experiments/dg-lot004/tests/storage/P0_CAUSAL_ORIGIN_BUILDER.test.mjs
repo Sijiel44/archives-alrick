@@ -3,6 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as owner from '../../../dg-lot003/src/storage/storage.mjs';
 import {createValidatedStorage} from '../../../dg-lot003/tools/runtime.mjs';
+import {archiveToStudio} from '../../../dg-lot003/tools/adapters.mjs';
 const KEY='cer.dg003.private.campaign.v0';
 const cp=x=>structuredClone(x);
 const base=()=>({schema:owner.STORAGE_SCHEMA,id:'rescue-fiction',title:'Fiction causale',revision:0,
@@ -81,6 +82,7 @@ test('D09 tampered current existing private field not accepted under an adapter 
 test('D10 original source semantics via native ARCHIVES export remain readable',async()=>{
  const e=await setup5(),c=e.open(),current=await c.load();const bytes=await c.exportPrivate(current);
  const preview=await owner.previewRestore(bytes);const restored=await owner.commitRestore(preview,{existingProject:null,replace:false});
- assert.equal(restored.extensions.futureUnknown.deep.keep,'ALWAYS');
- assert.equal(restored.extensions.privateSentinel,'MJ_ONLY_NOT_PUBLIC');
+ const studio=archiveToStudio(restored);
+ assert.equal(studio.extensions.futureUnknown.deep.keep,'ALWAYS');
+ assert.equal(studio.extensions.privateSentinel,'MJ_ONLY_NOT_PUBLIC');
 });
