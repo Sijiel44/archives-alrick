@@ -98,10 +98,10 @@
     },
     "p0c": {
       "issue": 94,
-      "status": "Proprietary ATELIERS latest, journal and real ARCHIVES reread wired; newest Chrome exact-head gate pending",
+      "status": "ATELIERS P0-S07/S09 verbatim owner update 154289; native nine-test re-execution pending",
       "creators": {
         "branch": "prototype/dg004-creators",
-        "commit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+        "commit": "1542891066ee88d5f6f4414856b7cf13a6199572",
         "deliveredPaths": 6
       }
     }
@@ -116,7 +116,7 @@
   },
   "mutableOwners": false,
   "qa": {
-    "status": "P0-UNBLOCK NON QUALIFIÉ; integrator CI not independent QA; independent QA PR not opened"
+    "status": "DG004 exact-owner sources copied; P0 owner bank must pass before full qualification; no independent QA"
   },
   "provenance": [
     {
@@ -353,15 +353,15 @@
     },
     {
       "role": "creators",
-      "sourceCommit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+      "sourceCommit": "1542891066ee88d5f6f4414856b7cf13a6199572",
       "sourceBranch": "prototype/dg004-creators",
       "path": "experiments/dg-lot004/src/creators/cycle-state.mjs",
-      "blobSha": "5554b3b12728f0e63388beccec2c58b29b214281",
+      "blobSha": "c55558abe319d490c239a44aa967a9b2c9433134",
       "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "creators",
-      "sourceCommit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+      "sourceCommit": "1542891066ee88d5f6f4414856b7cf13a6199572",
       "sourceBranch": "prototype/dg004-creators",
       "path": "experiments/dg-lot004/src/creators/cycle-ui.mjs",
       "blobSha": "aef3aa1383b4d283f4dea877c62e1ee9329d407d",
@@ -369,15 +369,15 @@
     },
     {
       "role": "creators",
-      "sourceCommit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+      "sourceCommit": "1542891066ee88d5f6f4414856b7cf13a6199572",
       "sourceBranch": "prototype/dg004-creators",
       "path": "experiments/dg-lot004/tests/creators/cycle-state.test.mjs",
-      "blobSha": "6ed92bf73433fab61f5e7abf5af7e72501f50c7b",
+      "blobSha": "cb7258da166f62498a02cc03d5d41aaf84f08da0",
       "verifiedBy": "DG004_OWNER_BLOBS_OK in CI"
     },
     {
       "role": "creators",
-      "sourceCommit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+      "sourceCommit": "1542891066ee88d5f6f4414856b7cf13a6199572",
       "sourceBranch": "prototype/dg004-creators",
       "path": "experiments/dg-lot004/tests/creators/cycle-ui.test.mjs",
       "blobSha": "5a1c2143b382a30f7b58d62cb9a14ede7936dee7",
@@ -419,7 +419,7 @@
     },
     "creators": {
       "branch": "prototype/dg004-creators",
-      "commit": "ceb316e00d667ba9d5155822fd57cabc931f3380",
+      "commit": "1542891066ee88d5f6f4414856b7cf13a6199572",
       "deliveredPaths": 6
     }
   },
