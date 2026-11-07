@@ -131,6 +131,64 @@ try{
  await step('Prévisualiser créature fictive','Créature témoin N5');
  await step('Accepter copie créature','Copies : Créature témoin N5');
  await step('Créer scène et notes MJ fictives','La Lanterne des Deux Rives');
+ const spaces=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")})');
+ if(spaces.real!=='REAL_MJ_NOT_DEMO'||!spaces.demo)fail('OWNER_NAMESPACE_FAIL '+JSON.stringify(spaces));
+ await mj.eval(click('Ouvrir la fenêtre joueur'));
+ const ownerPlayerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)&&x.url!==playerTarget.url),110);
+ const ownerPlayer=await CDP.open(ownerPlayerTarget.webSocketDebuggerUrl);
+ await ownerPlayer.call('Runtime.enable');
+ await until(()=>mj.eval(textContains('Fenêtre joueur connectée')),110);
+ await mj.eval(checkbox);
+ await mj.eval(click('Publier uniquement la sélection'));
+ await until(()=>ownerPlayer.eval(textContains('La Lanterne des Deux Rives')),110);
+ const published=await ownerPlayer.eval('document.documentElement.outerHTML+JSON.stringify(localStorage)');
+ if(/SENTINELLE_MJ_L004_FICTIVE|DG004_FAKE_PRIVATE|privateSnapshot|demo.only|fictional.session/.test(published)||
+    await ownerPlayer.eval('localStorage.length')!==0)fail('OWNER_PRIVATE_CANARY_LEAK');
+ // Verify the owner ARCHIVES allowlist refuses a foreign backup before native preview.
+ const foreign=join(tmp,'foreign.json');
+ await writeFile(foreign,JSON.stringify({schema:'foreign',unknown:'REAL_MJ'}));
+ await mj.call('DOM.enable');
+ async function uploadOwner(file){
+  const rootId=(await mj.call('DOM.getDocument')).root.nodeId;
+  const id=(await mj.call('DOM.querySelector',{nodeId:rootId,selector:'input[type="file"][aria-label="Fichier de restauration confidentiel"]'})).nodeId;
+  if(!id)fail('OWNER_FILE_INPUT_MISSING');
+  await mj.call('DOM.setFileInputFiles',{nodeId:id,files:[file]});
+ }
+ await uploadOwner(foreign);
+ await mj.eval(click('Prévisualiser restauration'));
+ await until(()=>mj.eval(textContains('Archive non reconnue comme export fictif')),100);
+ const downloadDir=join(tmp,'owner-export');
+ await mkdir(downloadDir,{recursive:true});
+ await mj.call('Page.setDownloadBehavior',{behavior:'allow',downloadPath:downloadDir});
+ await mj.eval(click('Exporter campagne CONFIDENTIELLE'));
+ const backup=await until(async()=>{
+  const files=(await readdir(downloadDir)).filter(x=>x.endsWith('.json'));
+  return files.length===1?join(downloadDir,files[0]):null;
+ },100);
+ const ownerBytes=new Uint8Array(await readFile(backup));
+ if(ownerBytes.length<512||ownerBytes.length>1024*1024)fail('OWNER_NATIVE_EXPORT_INVALID '+ownerBytes.length);
+ await uploadOwner(backup);
+ await mj.eval(click('Prévisualiser restauration'));
+ await until(()=>mj.eval(textContains('Restauration proposée')),110);
+ await mj.eval(click('Confirmer restauration'));
+ await until(()=>mj.eval(textContains('Campagne restaurée')),110);
+ if((await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")'))!=='REAL_MJ_NOT_DEMO')
+  fail('OWNER_RESTORE_OVERWROTE_REAL');
+ await mj.eval(click('Quitter et effacer la démonstration dédiée'));
+ await until(()=>mj.eval(textContains('DG004_OWNER_CLEARED')),110);
+ const final=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0"),allow:localStorage.getItem("cer.dg004.demo.only.v0.approved-backup-sha256")})');
+ if(final.real!=='REAL_MJ_NOT_DEMO'||final.demo!==null||final.allow!==null)
+  fail('OWNER_ROLLBACK_FAIL '+JSON.stringify(final));
+ ownerPlayer.close();
+ // A completely new fictional campaign is required for ATELIERS: the first
+ // STUDIO owner walkthrough already copied the same BEST profile. Treating it
+ // as a fresh copy without an intent journal would correctly be rejected.
+ await mj.call('Page.navigate',{url:MJ+'/dg004-demo.html'});
+ await until(()=>mj.eval('!!document.querySelector("[data-l004-demo]")'),110);
+ await until(()=>mj.eval('document.querySelector("#status")?.textContent.includes("propriétaire monté")'),110);
+ await step('Créer campagne fictive','Campagne active : Campagne vitrine');
+ await step('Prévisualiser PJ fictif','À importer');
+ await step('Accepter copie PJ','PJ copiés :');
  // The dedicated owner page also mounts MATH/INDEX XP (read-only) and the
  // real ATELIERS guided chain. Neither may credit XP or publish to the player.
  const xpBefore=await mj.eval('localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")');
@@ -210,55 +268,25 @@ try{
   fail('CYCLE_AUTO_AUTHORITY');
  console.log('DG004_CREATOR_CHAIN_BROWSER_OK',JSON.stringify({item:true,capacity:true,creatureInstance:!!cycleState.links.creatureInstanceId,
   scene:!!cycleState.links.sceneId,indexPrivate:true,xpPreview:!xpBlocked,autoApply:false}));
- const spaces=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0")})');
- if(spaces.real!=='REAL_MJ_NOT_DEMO'||!spaces.demo)fail('OWNER_NAMESPACE_FAIL '+JSON.stringify(spaces));
+
+ // Verify that the private INDEX cycle cannot leak through actual player DTO.
  await mj.eval(click('Ouvrir la fenêtre joueur'));
- const ownerPlayerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)&&x.url!==playerTarget.url),110);
- const ownerPlayer=await CDP.open(ownerPlayerTarget.webSocketDebuggerUrl);
- await ownerPlayer.call('Runtime.enable');
+ const secondPlayerTarget=await until(async()=>(await json(base+'/json')).find(x=>x.type==='page'&&x.url.startsWith(PLAYER)&&x.url!==ownerPlayerTarget.url),110);
+ const secondPlayer=await CDP.open(secondPlayerTarget.webSocketDebuggerUrl);
+ await secondPlayer.call('Runtime.enable');
  await until(()=>mj.eval(textContains('Fenêtre joueur connectée')),110);
  await mj.eval(checkbox);
  await mj.eval(click('Publier uniquement la sélection'));
- await until(()=>ownerPlayer.eval(textContains('La Lanterne des Deux Rives')),110);
- const published=await ownerPlayer.eval('document.documentElement.outerHTML+JSON.stringify(localStorage)');
- if(/SENTINELLE_MJ_L004_FICTIVE|DG004_FAKE_PRIVATE|privateSnapshot|demo.only|fictional.session/.test(published)||
-    await ownerPlayer.eval('localStorage.length')!==0)fail('OWNER_PRIVATE_CANARY_LEAK');
- // Verify the owner ARCHIVES allowlist refuses a foreign backup before native preview.
- const foreign=join(tmp,'foreign.json');
- await writeFile(foreign,JSON.stringify({schema:'foreign',unknown:'REAL_MJ'}));
- await mj.call('DOM.enable');
- async function uploadOwner(file){
-  const rootId=(await mj.call('DOM.getDocument')).root.nodeId;
-  const id=(await mj.call('DOM.querySelector',{nodeId:rootId,selector:'input[type="file"][aria-label="Fichier de restauration confidentiel"]'})).nodeId;
-  if(!id)fail('OWNER_FILE_INPUT_MISSING');
-  await mj.call('DOM.setFileInputFiles',{nodeId:id,files:[file]});
- }
- await uploadOwner(foreign);
- await mj.eval(click('Prévisualiser restauration'));
- await until(()=>mj.eval(textContains('Archive non reconnue comme export fictif')),100);
- const downloadDir=join(tmp,'owner-export');
- await mkdir(downloadDir,{recursive:true});
- await mj.call('Page.setDownloadBehavior',{behavior:'allow',downloadPath:downloadDir});
- await mj.eval(click('Exporter campagne CONFIDENTIELLE'));
- const backup=await until(async()=>{
-  const files=(await readdir(downloadDir)).filter(x=>x.endsWith('.json'));
-  return files.length===1?join(downloadDir,files[0]):null;
- },100);
- const ownerBytes=new Uint8Array(await readFile(backup));
- if(ownerBytes.length<512||ownerBytes.length>1024*1024)fail('OWNER_NATIVE_EXPORT_INVALID '+ownerBytes.length);
- await uploadOwner(backup);
- await mj.eval(click('Prévisualiser restauration'));
- await until(()=>mj.eval(textContains('Restauration proposée')),110);
- await mj.eval(click('Confirmer restauration'));
- await until(()=>mj.eval(textContains('Campagne restaurée')),110);
- if((await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")'))!=='REAL_MJ_NOT_DEMO')
-  fail('OWNER_RESTORE_OVERWROTE_REAL');
+ await until(()=>secondPlayer.eval(textContains('Lueur sur Entre-Rives')),110);
+ const secondPublic=await secondPlayer.eval('document.documentElement.outerHTML+JSON.stringify(localStorage)');
+ if(/CANARY_PRIVATE_CYCLE_004|indexL004|pendingStudioOp|creatorDrafts|privateSnapshot/.test(secondPublic)||
+    await secondPlayer.eval('localStorage.length')!==0)fail('OWNER_CREATOR_PRIVATE_PROJECTION_LEAK');
  await mj.eval(click('Quitter et effacer la démonstration dédiée'));
  await until(()=>mj.eval(textContains('DG004_OWNER_CLEARED')),110);
- const final=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0"),allow:localStorage.getItem("cer.dg004.demo.only.v0.approved-backup-sha256")})');
- if(final.real!=='REAL_MJ_NOT_DEMO'||final.demo!==null||final.allow!==null)
-  fail('OWNER_ROLLBACK_FAIL '+JSON.stringify(final));
- ownerPlayer.close();mj.close();
+ const secondAfter=await mj.eval('({real:localStorage.getItem("cer.dg003.private.campaign.v0"),demo:localStorage.getItem("cer.dg004.demo.only.v0.cer.dg003.private.campaign.v0"),creator:localStorage.getItem("cer.dg004.creators.private.demo.v0")})');
+ if(secondAfter.real!=='REAL_MJ_NOT_DEMO'||secondAfter.demo!==null||secondAfter.creator!==null)
+  fail('OWNER_CREATOR_ROLLBACK_NOT_ATTESTED '+JSON.stringify(secondAfter));
+ secondPlayer.close();mj.close();
  console.log('DG004_STUDIO_OWNER_BROWSER_OK',JSON.stringify({ownerCommit:'18602be2d0b281478ebd9693b6ff0be63ef862ee',
   v3PJ:true,creature:true,scene:true,namespace:true,privateCanaryAbsent:true,
   foreignArchiveRejected:true,backupBytes:ownerBytes.length,roundtrip:true,rollback:true,oldMJIntact:true}));
