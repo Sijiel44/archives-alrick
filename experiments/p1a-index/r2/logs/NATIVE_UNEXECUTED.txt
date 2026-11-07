@@ -1,0 +1,5 @@
+NON EXÉCUTÉ dans ce conteneur P1-R2 : ni checkout composite des PR #102/#104, ni esbuild local. Les modules #102, #104 et TypeScript M01 ont été examinés par GitHub connecté aux SHA exacts indiqués. L'exécution des scripts suivants requiert un checkout composite sur un SHA figé par 05/01/DG :
+  node --test experiments/p1a-index/r2/tests/native-core-on-assembled-clone.test.mjs
+  node --test experiments/p1a-index/r2/tests/native-storage-on-assembled-clone.test.mjs
+  node --test experiments/p1a-index/r2/tests/original-ateliers102-on-assembled-clone.test.mjs
+Aucun PASS natif / IndexedDB / navigateur / SHA d'archive #104 n'est revendiqué.
