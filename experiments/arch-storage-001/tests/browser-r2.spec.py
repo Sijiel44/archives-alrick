@@ -32,7 +32,7 @@ async def main():
     window.__r2A=a;window.__r2B=b;
     await seedFiction(a);await seedFiction(b);
     const [ac,bc,aj,bj,ae,be]=await Promise.all([
-     a.readCampaign(),b.readCampaign(),a.listEvents(),b.listEvents(),a.exportPrivate(),b.exportPrivate()]);
+     a.readCampaign(),b.readCampaign('campagne-fictive-p1a'),a.listEvents(),b.listEvents('campagne-fictive-p1a'),a.exportPrivate(),b.exportPrivate()]);
     return{campaignsEqual:JSON.stringify(ac)===JSON.stringify(bc),
      journalsEqual:JSON.stringify(aj)===JSON.stringify(bj),
      archivesEqual:JSON.stringify([...ae.bytes])===JSON.stringify([...be.bytes]),
