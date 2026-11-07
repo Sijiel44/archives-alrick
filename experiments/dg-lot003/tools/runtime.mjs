@@ -15,6 +15,8 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
  let queue=Promise.resolve();
  const subscribers=new Set();
  let exactRestorePending=null;
+ // Key by the native privatePending object: the STUDIO demo allowlist
+ // legitimately shallow-spreads the outer preview, preserving this identity.
  const previewAnchors=new WeakMap();
  // Causal parent attestation belongs to the adapter/session, not a numeric
  // revision guess. A first explicit load establishes the editing baseline;
@@ -212,28 +214,28 @@ export function createValidatedStorage(owner,area,{indexedDB=null,locks=globalTh
    if(pending?.kind!=='private-restore-preview')fail('ARCHIVES preview missing');
    if(parentRaw()!==sourceRaw)fail('Private restore preview causal parent changed');
    const preview={display:{title:'Campagne privée '+pending.projectId},privatePending:pending};
-   previewAnchors.set(preview,{parentRaw:sourceRaw,source:copy(source)});
+   previewAnchors.set(pending,{parentRaw:sourceRaw,source:copy(source)});
    return preview;
   },
   async restore(preview,{previous}){
    if(!preview?.privatePending)fail('Restoration preview missing');
-   const ticket=previewAnchors.get(preview);
+   const ticket=previewAnchors.get(preview.privatePending);
    if(!ticket)fail('Private restore unverified preview: a fresh preview is required');
    // An old in-memory campaign cannot stand in for the latest ARCHIVES parent.
    if(JSON.stringify(previous??null)!==JSON.stringify(ticket.source))
     fail('Private restore source snapshot conflict: reload and preview again');
    if(parentRaw()!==ticket.parentRaw){
-    previewAnchors.delete(preview);
+    previewAnchors.delete(preview.privatePending);
     fail('Private restore causal parent conflict: changed since preview');
    }
    const prior=previous?studioToArchive(previous,owner.createCampaign):null;
    const restored=await owner.commitRestore(preview.privatePending,{existingProject:prior,replace:prior!==null});
    const exact=archiveToStudio(restored);
    if(parentRaw()!==ticket.parentRaw){
-    previewAnchors.delete(preview);
+    previewAnchors.delete(preview.privatePending);
     fail('Private restore causal parent conflict: changed during preview commit');
    }
-   previewAnchors.delete(preview);
+   previewAnchors.delete(preview.privatePending);
    exactRestorePending={id:exact.id,restored:copy(exact),parentRaw:ticket.parentRaw};
    return exact;
   },
