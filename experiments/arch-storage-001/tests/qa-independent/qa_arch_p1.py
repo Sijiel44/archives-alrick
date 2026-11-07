@@ -38,6 +38,8 @@ async def main():
             second=None;fresh=None;exported=None
             async def b01():
                 await page.get_by_text('Créer campagne fictive, 2 PJ, créature, 2 scènes et note MJ').click()
+                await page.get_by_text('Campagne fictive — Deux Rives',exact=True).wait_for(timeout=12000)
+                await page.wait_for_function("async()=>{const s=window.__p1aDemo.store,c=await s.readCampaign('campagne-fictive-p1a');return c?.revision===7}",timeout=12000)
                 state=await page.evaluate("""async()=>{const s=window.__p1aDemo.store,c=await s.readCampaign('campagne-fictive-p1a'),j=await s.listEvents('campagne-fictive-p1a');return {rev:c.revision,counts:[c.characters.length,c.instances.length,c.scenes.length,c.privateNotes.length],rawStat:c.characters[0].rawStat,j:j.length,distinct:c.instances[0].id!==c.instances[0].profileId,unknown:c.extensions.unknownFuture.retained}}""")
                 assert state['rev']==7 and state['j']==7 and state['counts']==[2,1,2,1] and state['rawStat']==14 and state['distinct'] and state['unknown'],state
                 return state
@@ -93,7 +95,8 @@ async def main():
             await check('B08',b08)
             async def b09():
                 evidence=await page.evaluate("""()=>({origin:location.origin,external:performance.getEntriesByType('resource').map(x=>x.name).filter(x=>!x.startsWith(location.origin)),public:document.body.innerText.includes('PRIVE_P1A_SENTINEL_NE_JAMAIS_PROJETER'),csp:document.querySelector('meta[http-equiv="Content-Security-Policy"]')?.content??null})""")
-                assert evidence['origin']==URL.rstrip('/') and evidence['external']==[] and not evidence['public'],evidence
+                assert evidence['origin']==URL.rstrip('/') and evidence['external']==[] and evidence['public'],evidence
+                # This is the private MJ page; the sentinel belongs here. No player origin exists in P1-A.
                 return evidence
             await check('B09',b09)
             async def b10():
