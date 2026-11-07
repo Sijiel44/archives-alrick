@@ -79,11 +79,15 @@ try{
  // Refuse an existing local private backup before any mock scenario is started.
  await mj.eval('localStorage.setItem("cer.dg003.private.campaign.v0","LEGACY_USER_BACKUP");localStorage.setItem("dg004-unrelated","keep")');
  await mj.eval(click('Démarrer la démonstration fictive'));
+ const blockedAtClick=await mj.eval('({root:document.querySelector("#dg004-demo-root")?.innerText?.slice(0,600),privateKey:localStorage.getItem("cer.dg003.private.campaign.v0")})');
+ console.log('DG004_RESCUE_FIRST_CLICK_TRACE',JSON.stringify(blockedAtClick));
  await until(()=>mj.eval(textContains('DEMO_BLOCKED')));
  if((await mj.eval('localStorage.getItem("cer.dg003.private.campaign.v0")'))!=='LEGACY_USER_BACKUP')
   fail('OLD_USER_BACKUP_CHANGED');
  await mj.eval('localStorage.removeItem("cer.dg003.private.campaign.v0")');
  await mj.eval(click('Démarrer la démonstration fictive'));
+ await sleep(1400);
+ console.log('DG004_RESCUE_SECOND_CLICK_TRACE',JSON.stringify(await mj.eval('({root:document.querySelector("#dg004-demo-root")?.innerText?.slice(0,950),privateKey:localStorage.getItem("cer.dg003.private.campaign.v0")?.slice(0,120),marker:localStorage.getItem("cer.dg004.demo.marker.v0")})')));
  await until(()=>mj.eval(textContains('DEMO_READY')),130);
  const before=await mj.eval('({privateEnvelope:localStorage.getItem("cer.dg003.private.campaign.v0"),marker:localStorage.getItem("cer.dg004.demo.marker.v0")})');
  if(!before.privateEnvelope||!before.marker)fail('DG004_DEMO_NOT_PERSISTED');
@@ -382,6 +386,21 @@ try{
   'FORGED_REVISION',/causal parent conflict/);
  if(await mj.eval('window.__dg004P0.original()')!==rawRev5)
   fail('P0_FORGED_REV9_OVERWROTE_REV5');
+ // Independent QA-CAUSAL-B in real Chrome: C loads R5 before receiving R4/R9.
+ const p0C=await p0Other.eval('window.__dg004P0.create()');
+ const cParent=requireOk(await runP0(p0Other,'window.__dg004P0.load('+p0C+')'),'QA_B_C_LOAD');
+ if(cParent.revision!==5||!cParent.scenes.some(x=>x.id==='browser-rev5'))fail('P0_QA_B_R5_MISSING');
+ requireConflict(await runP0(p0Other,'window.__dg004P0.save('+p0C+',window.__dg004P0.edit('+JSON.stringify(p0OldA)+',9,"stale-r4"))'),
+  'QA_B_NEW_ADAPTER',/causal|parent|draft|stale|revision|conflict/);
+ if(await p0Other.eval('window.__dg004P0.original()')!==rawRev5)fail('P0_QA_B_R5_ERASED');
+ const ticket=requireOk(await runP0(p0Other,'window.__dg004P0.beginEdit('+p0C+')'),'QA_C_EDIT_START');
+ const r6=requireOk(await runP0(p0Other,'window.__dg004P0.commitEdit('+p0C+','+JSON.stringify(ticket.id)+
+   ',[{kind:"add-scene",scene:{id:"browser-r6",title:"Genuine R6",privateNotes:"MJ_R6_PRIVATE"}}])'),'QA_C_EDIT_COMMIT');
+ if(r6.revision!==6||!r6.scenes.some(x=>x.id==='browser-rev5')||!r6.scenes.some(x=>x.id==='browser-r6'))
+  fail('P0_QA_C_R6_INVALID');
+ requireConflict(await runP0(p0Other,'window.__dg004P0.commitEdit('+p0C+','+JSON.stringify(ticket.id)+
+   ',[{kind:"select-scene",id:"browser-rev5"}])'),'QA_EDIT_REPLAY',/provenance|used|unverified/);
+ console.log('DG004_QA_CAUSAL_BROWSER_OK',JSON.stringify({twoTabs:true,R4AsR9Rejected:true,R5Preserved:true,R6Committed:true,opaqueReplayRejected:true}));
 
  // Restore race variant A: concurrent write after preview but before restore.
  await mj.eval('window.__dg004P0.reset()');

@@ -55,6 +55,20 @@ export function isolateDemoAdapter(base, area, {cryptoAPI}={}) {
   return Object.freeze({
     async load(){const value=await base.load();return value ? clone(requireTagged(value)) : null;},
     async save(campaign){return base.save(tagged(campaign));},
+    async beginEdit(){
+      if(typeof base.beginEdit!=='function')throw Error('P0 causal edit unavailable');
+      const ticket=await base.beginEdit();
+      return {handle:ticket.handle,base:clone(requireTagged(ticket.base))};
+    },
+    async commitEdit(handle,operations){
+      if(typeof base.commitEdit!=='function')throw Error('P0 causal commit unavailable');
+      const saved=await base.commitEdit(handle,operations);
+      return clone(requireTagged(saved));
+    },
+    forkEdit(handle){
+      if(typeof base.forkEdit!=='function')throw Error('P0 causal fork unavailable');
+      return base.forkEdit(handle);
+    },
     async exportPrivate(campaign){
       const result=await base.exportPrivate(tagged(campaign));
       if (!(result instanceof Uint8Array)) throw Error('Archive native en octets requise');
