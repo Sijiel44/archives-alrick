@@ -87,7 +87,7 @@ test('DG004-RESTORE-04: restoration with manufactured preview or different sourc
  await tab.save(campaign(0));
  const original=await tab.load(),backup=await owner.exportPrivate(studioToArchive(campaign(3),owner.createCampaign));
  const preview=await tab.previewRestore({bytes:backup.bytes});
- await assert.rejects(tab.restore({...preview},{previous:original}),/unverified preview/);
+ await assert.rejects(tab.restore({...preview,privatePending:{...preview.privatePending}},{previous:original}),/unverified preview/);
  const changed=scene(original,'uncommitted');
  await assert.rejects(tab.restore(preview,{previous:changed}),/source snapshot conflict/);
  assert.deepEqual((await port(a,l).load()).scenes,[]);
