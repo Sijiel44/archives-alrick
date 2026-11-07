@@ -1,0 +1,1 @@
+{"schema": "Draft202012", "schemaCheck": "PASS", "r2_positive": 15, "r2_negative": 9, "negative_cases": ["missing-node", "wrong-version", "played-without-evidence", "canon-without-evidence", "published-without-evidence", "rights-unknown-public", "private-public-fields", "wrong-node", "missing-variant-base"], "original_r1_untouched": 11, "no_implicit_upgrade": true}

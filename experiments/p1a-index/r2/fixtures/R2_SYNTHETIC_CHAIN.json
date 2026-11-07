@@ -1,0 +1,3663 @@
+{
+  "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+  "warning": "Fiction indépendante. #102-shaped synthetic reproductions, NOT original #102 fixture bytes.",
+  "referenceSources": {
+    "ateliers102": "85f473d2005903a6fc81d37a83fcc6b3c6d16466",
+    "index105": "4f3dffd51f16c0c1881f925a94a677a87feff17c",
+    "arch104": "f84f8c54361b3701ebb0251700f2d0d09d4acf4d"
+  },
+  "originals": [
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:pj:explorateur-test",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "pj",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:pj:explorateur-test",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "def:pj:explorateur-test",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "def:pj:explorateur-test",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "def:pj:explorateur-test",
+          "marker": "unknown-kept"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:pj:temoin-n1",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "pj",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:pj:temoin-n1",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "inst:pj:temoin-n1",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "inst:pj:temoin-n1",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "inst:pj:temoin-n1",
+          "marker": "unknown-kept"
+        }
+      },
+      "definitionRef": "def:pj:explorateur-test",
+      "campaignId": "camp:p1r2-fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "level": 1,
+          "futureState": {
+            "flag": "kept"
+          }
+        },
+        "historyRefs": []
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:pj:temoin-n10",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "pj",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:pj:temoin-n10",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "inst:pj:temoin-n10",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "inst:pj:temoin-n10",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "inst:pj:temoin-n10",
+          "marker": "unknown-kept"
+        }
+      },
+      "definitionRef": "def:pj:explorateur-test",
+      "campaignId": "camp:p1r2-fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "level": 10,
+          "futureState": {
+            "flag": "kept"
+          }
+        },
+        "historyRefs": []
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:pj:temoin-n25",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "pj",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:pj:temoin-n25",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "inst:pj:temoin-n25",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "inst:pj:temoin-n25",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "inst:pj:temoin-n25",
+          "marker": "unknown-kept"
+        }
+      },
+      "definitionRef": "def:pj:explorateur-test",
+      "campaignId": "camp:p1r2-fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "level": 25,
+          "futureState": {
+            "flag": "kept"
+          }
+        },
+        "historyRefs": []
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:creature:veilleur-fictif",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "creature",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:creature:veilleur-fictif",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "def:creature:veilleur-fictif",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "def:creature:veilleur-fictif",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "def:creature:veilleur-fictif",
+          "marker": "unknown-kept"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:creature:veilleur-1",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "creature",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:creature:veilleur-1",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "inst:creature:veilleur-1",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "inst:creature:veilleur-1",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "inst:creature:veilleur-1",
+          "marker": "unknown-kept"
+        }
+      },
+      "definitionRef": "def:creature:veilleur-fictif",
+      "campaignId": "camp:p1r2-fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "level": 10,
+          "futureState": {
+            "flag": "kept"
+          }
+        },
+        "historyRefs": []
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "var:creature:veilleur-argente",
+      "recordVersion": "0.1.0",
+      "nodeType": "variant",
+      "entityType": "creature",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-var:creature:veilleur-argente",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "var:creature:veilleur-argente",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "var:creature:veilleur-argente",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "var:creature:veilleur-argente",
+          "marker": "unknown-kept"
+        }
+      },
+      "baseDefinitionRef": "def:creature:veilleur-fictif",
+      "variantChanges": {
+        "mechanicPolicy": "native-recalculation-required",
+        "descriptive": {
+          "note": "Cornes argentées (fiction); aucun modificateur de dégâts"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:npc:archiviste",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "npc",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:npc:archiviste",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "none",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "def:npc:archiviste",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "def:npc:archiviste",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "def:npc:archiviste",
+          "marker": "unknown-kept"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:npc:archiviste-1",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "npc",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:npc:archiviste-1",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "none",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "inst:npc:archiviste-1",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "inst:npc:archiviste-1",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "inst:npc:archiviste-1",
+          "marker": "unknown-kept"
+        }
+      },
+      "definitionRef": "def:npc:archiviste",
+      "campaignId": "camp:p1r2-fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "futureState": {
+            "flag": "kept"
+          }
+        },
+        "historyRefs": []
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:item:flute-fictive",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "item",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:item:flute-fictive",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "def:item:flute-fictive",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "def:item:flute-fictive",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "def:item:flute-fictive",
+          "marker": "unknown-kept"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:capability:souffle-descriptif",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "capability",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:capability:souffle-descriptif",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "def:capability:souffle-descriptif",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "def:capability:souffle-descriptif",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "def:capability:souffle-descriptif",
+          "marker": "unknown-kept"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:spell:lueur-demo",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "spell",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:spell:lueur-demo",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "def:spell:lueur-demo",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "def:spell:lueur-demo",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "def:spell:lueur-demo",
+          "marker": "unknown-kept"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:ritual:chant-demo",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "ritual",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:ritual:chant-demo",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "def:ritual:chant-demo",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "def:ritual:chant-demo",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "def:ritual:chant-demo",
+          "marker": "unknown-kept"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "def:scene:pont-fictif",
+      "recordVersion": "0.1.0",
+      "nodeType": "definition",
+      "entityType": "scene",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-def:scene:pont-fictif",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "def:scene:pont-fictif",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "def:scene:pont-fictif",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "def:scene:pont-fictif",
+          "marker": "unknown-kept"
+        }
+      }
+    },
+    {
+      "schema": "cer.p1.data-model.record.proposal.v0",
+      "recordId": "inst:scene:pont-fictif",
+      "recordVersion": "0.1.0",
+      "nodeType": "instance",
+      "entityType": "scene",
+      "provenance": {
+        "originKind": "proposal",
+        "sourceId": "P1-fixture-inst:scene:pont-fictif",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceVersion": "fixture-0",
+        "fidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "mechanics": {
+        "mode": "native-reference",
+        "engine": "M01",
+        "nativeSchema": "alrick.sheets.v3",
+        "nativeId": "inst:scene:pont-fictif",
+        "nativeVersion": "v3",
+        "authority": "native-only"
+      },
+      "narrative": {
+        "title": "inst:scene:pont-fictif",
+        "publicDescription": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "gm-private",
+        "gmOnly": {
+          "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+          "unknownJson": {
+            "future": true,
+            "nested": {
+              "foo": "bar"
+            }
+          }
+        },
+        "publicFields": [
+          "narrative.title",
+          "narrative.publicDescription"
+        ],
+        "playerProjection": "explicit-approval-only"
+      },
+      "media": [
+        {
+          "mediaId": "med:p1r2-fake",
+          "mediaType": "image",
+          "rights": "unknown",
+          "audience": "gm",
+          "alt": "Dessin fictif non validé"
+        }
+      ],
+      "legacy": {
+        "originalSchema": "legacy.test.v0",
+        "fieldDecisions": [
+          {
+            "field": "unknownJson",
+            "decision": "unknown",
+            "targetOrReason": "Conserver"
+          }
+        ],
+        "unknownFields": {
+          "inventedFuture": {
+            "foo": "preserved"
+          }
+        }
+      },
+      "extensions": {
+        "unrecognizedProvider": {
+          "recordId": "inst:scene:pont-fictif",
+          "marker": "unknown-kept"
+        }
+      },
+      "definitionRef": "def:scene:pont-fictif",
+      "campaignId": "camp:p1r2-fiction",
+      "state": {
+        "revision": 0,
+        "status": "draft",
+        "current": {
+          "futureState": {
+            "flag": "kept"
+          }
+        },
+        "historyRefs": []
+      }
+    }
+  ],
+  "records": [
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "pj",
+      "recordId": "def:pj:explorateur-test",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "definition",
+      "identity": {
+        "definitionId": "def:pj:explorateur-test",
+        "definitionVersion": "0.1.0"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-def:pj:explorateur-test",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "def:pj:explorateur-test",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "def:pj:explorateur-test",
+          "recordVersion": "0.1.0",
+          "nodeType": "definition",
+          "entityType": "pj",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-def:pj:explorateur-test",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "def:pj:explorateur-test",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "def:pj:explorateur-test",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "def:pj:explorateur-test",
+              "marker": "unknown-kept"
+            }
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {},
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "definition"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "pj",
+      "recordId": "inst:pj:temoin-n1",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "instance",
+      "identity": {
+        "definitionId": "def:pj:explorateur-test",
+        "definitionVersion": "0.1.0",
+        "instanceId": "inst:pj:temoin-n1",
+        "campaignId": "camp:p1r2-fiction"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-inst:pj:temoin-n1",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "inst:pj:temoin-n1",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "inst:pj:temoin-n1",
+          "recordVersion": "0.1.0",
+          "nodeType": "instance",
+          "entityType": "pj",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-inst:pj:temoin-n1",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "inst:pj:temoin-n1",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "inst:pj:temoin-n1",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "inst:pj:temoin-n1",
+              "marker": "unknown-kept"
+            }
+          },
+          "definitionRef": "def:pj:explorateur-test",
+          "campaignId": "camp:p1r2-fiction",
+          "state": {
+            "revision": 0,
+            "status": "draft",
+            "current": {
+              "level": 1,
+              "futureState": {
+                "flag": "kept"
+              }
+            },
+            "historyRefs": []
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {
+        "level": 1,
+        "futureState": {
+          "flag": "kept"
+        },
+        "sourceStatus": "draft"
+      },
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "instance"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "pj",
+      "recordId": "inst:pj:temoin-n10",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "instance",
+      "identity": {
+        "definitionId": "def:pj:explorateur-test",
+        "definitionVersion": "0.1.0",
+        "instanceId": "inst:pj:temoin-n10",
+        "campaignId": "camp:p1r2-fiction"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-inst:pj:temoin-n10",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "inst:pj:temoin-n10",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "inst:pj:temoin-n10",
+          "recordVersion": "0.1.0",
+          "nodeType": "instance",
+          "entityType": "pj",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-inst:pj:temoin-n10",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "inst:pj:temoin-n10",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "inst:pj:temoin-n10",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "inst:pj:temoin-n10",
+              "marker": "unknown-kept"
+            }
+          },
+          "definitionRef": "def:pj:explorateur-test",
+          "campaignId": "camp:p1r2-fiction",
+          "state": {
+            "revision": 0,
+            "status": "draft",
+            "current": {
+              "level": 10,
+              "futureState": {
+                "flag": "kept"
+              }
+            },
+            "historyRefs": []
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {
+        "level": 10,
+        "futureState": {
+          "flag": "kept"
+        },
+        "sourceStatus": "draft"
+      },
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "instance"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "pj",
+      "recordId": "inst:pj:temoin-n25",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "instance",
+      "identity": {
+        "definitionId": "def:pj:explorateur-test",
+        "definitionVersion": "0.1.0",
+        "instanceId": "inst:pj:temoin-n25",
+        "campaignId": "camp:p1r2-fiction"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-inst:pj:temoin-n25",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "inst:pj:temoin-n25",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "inst:pj:temoin-n25",
+          "recordVersion": "0.1.0",
+          "nodeType": "instance",
+          "entityType": "pj",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-inst:pj:temoin-n25",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "inst:pj:temoin-n25",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "inst:pj:temoin-n25",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "inst:pj:temoin-n25",
+              "marker": "unknown-kept"
+            }
+          },
+          "definitionRef": "def:pj:explorateur-test",
+          "campaignId": "camp:p1r2-fiction",
+          "state": {
+            "revision": 0,
+            "status": "draft",
+            "current": {
+              "level": 25,
+              "futureState": {
+                "flag": "kept"
+              }
+            },
+            "historyRefs": []
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {
+        "level": 25,
+        "futureState": {
+          "flag": "kept"
+        },
+        "sourceStatus": "draft"
+      },
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "instance"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "creature",
+      "recordId": "def:creature:veilleur-fictif",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "definition",
+      "identity": {
+        "definitionId": "def:creature:veilleur-fictif",
+        "definitionVersion": "0.1.0"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-def:creature:veilleur-fictif",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "def:creature:veilleur-fictif",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "def:creature:veilleur-fictif",
+          "recordVersion": "0.1.0",
+          "nodeType": "definition",
+          "entityType": "creature",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-def:creature:veilleur-fictif",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "def:creature:veilleur-fictif",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "def:creature:veilleur-fictif",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "def:creature:veilleur-fictif",
+              "marker": "unknown-kept"
+            }
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {},
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "definition"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "creature",
+      "recordId": "inst:creature:veilleur-1",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "instance",
+      "identity": {
+        "definitionId": "def:creature:veilleur-fictif",
+        "definitionVersion": "0.1.0",
+        "instanceId": "inst:creature:veilleur-1",
+        "campaignId": "camp:p1r2-fiction"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-inst:creature:veilleur-1",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "inst:creature:veilleur-1",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "inst:creature:veilleur-1",
+          "recordVersion": "0.1.0",
+          "nodeType": "instance",
+          "entityType": "creature",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-inst:creature:veilleur-1",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "inst:creature:veilleur-1",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "inst:creature:veilleur-1",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "inst:creature:veilleur-1",
+              "marker": "unknown-kept"
+            }
+          },
+          "definitionRef": "def:creature:veilleur-fictif",
+          "campaignId": "camp:p1r2-fiction",
+          "state": {
+            "revision": 0,
+            "status": "draft",
+            "current": {
+              "level": 10,
+              "futureState": {
+                "flag": "kept"
+              }
+            },
+            "historyRefs": []
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {
+        "level": 10,
+        "futureState": {
+          "flag": "kept"
+        },
+        "sourceStatus": "draft"
+      },
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "instance"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "creature",
+      "recordId": "var:creature:veilleur-argente",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "variant",
+      "identity": {
+        "definitionId": "def:creature:veilleur-fictif",
+        "definitionVersion": "0.1.0",
+        "variantId": "var:creature:veilleur-argente"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-var:creature:veilleur-argente",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "var:creature:veilleur-argente",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "var:creature:veilleur-argente",
+          "recordVersion": "0.1.0",
+          "nodeType": "variant",
+          "entityType": "creature",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-var:creature:veilleur-argente",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "var:creature:veilleur-argente",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "var:creature:veilleur-argente",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "var:creature:veilleur-argente",
+              "marker": "unknown-kept"
+            }
+          },
+          "baseDefinitionRef": "def:creature:veilleur-fictif",
+          "variantChanges": {
+            "mechanicPolicy": "native-recalculation-required",
+            "descriptive": {
+              "note": "Cornes argentées (fiction); aucun modificateur de dégâts"
+            }
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {
+        "variantOf": "def:creature:veilleur-fictif",
+        "variantChangesSummary": "voir original #102 privé; moteur requis"
+      },
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "variant"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "npc",
+      "recordId": "def:npc:archiviste",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "definition",
+      "identity": {
+        "definitionId": "def:npc:archiviste",
+        "definitionVersion": "0.1.0"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-def:npc:archiviste",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "not-applicable",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "none",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "def:npc:archiviste",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "def:npc:archiviste",
+          "recordVersion": "0.1.0",
+          "nodeType": "definition",
+          "entityType": "npc",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-def:npc:archiviste",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "none",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "def:npc:archiviste",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "def:npc:archiviste",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "def:npc:archiviste",
+              "marker": "unknown-kept"
+            }
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {},
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "definition"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "npc",
+      "recordId": "inst:npc:archiviste-1",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "instance",
+      "identity": {
+        "definitionId": "def:npc:archiviste",
+        "definitionVersion": "0.1.0",
+        "instanceId": "inst:npc:archiviste-1",
+        "campaignId": "camp:p1r2-fiction"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-inst:npc:archiviste-1",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "not-applicable",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "none",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "inst:npc:archiviste-1",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "inst:npc:archiviste-1",
+          "recordVersion": "0.1.0",
+          "nodeType": "instance",
+          "entityType": "npc",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-inst:npc:archiviste-1",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "none",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "inst:npc:archiviste-1",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "inst:npc:archiviste-1",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "inst:npc:archiviste-1",
+              "marker": "unknown-kept"
+            }
+          },
+          "definitionRef": "def:npc:archiviste",
+          "campaignId": "camp:p1r2-fiction",
+          "state": {
+            "revision": 0,
+            "status": "draft",
+            "current": {
+              "futureState": {
+                "flag": "kept"
+              }
+            },
+            "historyRefs": []
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {
+        "futureState": {
+          "flag": "kept"
+        },
+        "sourceStatus": "draft"
+      },
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "instance"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "item",
+      "recordId": "def:item:flute-fictive",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "definition",
+      "identity": {
+        "definitionId": "def:item:flute-fictive",
+        "definitionVersion": "0.1.0"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-def:item:flute-fictive",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "def:item:flute-fictive",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "def:item:flute-fictive",
+          "recordVersion": "0.1.0",
+          "nodeType": "definition",
+          "entityType": "item",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-def:item:flute-fictive",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "def:item:flute-fictive",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "def:item:flute-fictive",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "def:item:flute-fictive",
+              "marker": "unknown-kept"
+            }
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {},
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "definition"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "ability",
+      "recordId": "def:capability:souffle-descriptif",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "definition",
+      "identity": {
+        "definitionId": "def:capability:souffle-descriptif",
+        "definitionVersion": "0.1.0"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-def:capability:souffle-descriptif",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "def:capability:souffle-descriptif",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "def:capability:souffle-descriptif",
+          "recordVersion": "0.1.0",
+          "nodeType": "definition",
+          "entityType": "capability",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-def:capability:souffle-descriptif",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "def:capability:souffle-descriptif",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "def:capability:souffle-descriptif",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "def:capability:souffle-descriptif",
+              "marker": "unknown-kept"
+            }
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {},
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "definition"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "spell-ref",
+      "recordId": "def:spell:lueur-demo",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "definition",
+      "identity": {
+        "definitionId": "def:spell:lueur-demo",
+        "definitionVersion": "0.1.0"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-def:spell:lueur-demo",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "def:spell:lueur-demo",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "def:spell:lueur-demo",
+          "recordVersion": "0.1.0",
+          "nodeType": "definition",
+          "entityType": "spell",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-def:spell:lueur-demo",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "def:spell:lueur-demo",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "def:spell:lueur-demo",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "def:spell:lueur-demo",
+              "marker": "unknown-kept"
+            }
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {},
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "definition"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "ritual-ref",
+      "recordId": "def:ritual:chant-demo",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "definition",
+      "identity": {
+        "definitionId": "def:ritual:chant-demo",
+        "definitionVersion": "0.1.0"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-def:ritual:chant-demo",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "def:ritual:chant-demo",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "def:ritual:chant-demo",
+          "recordVersion": "0.1.0",
+          "nodeType": "definition",
+          "entityType": "ritual",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-def:ritual:chant-demo",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "def:ritual:chant-demo",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "def:ritual:chant-demo",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "def:ritual:chant-demo",
+              "marker": "unknown-kept"
+            }
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {},
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "definition"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "scene",
+      "recordId": "def:scene:pont-fictif",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "definition",
+      "identity": {
+        "definitionId": "def:scene:pont-fictif",
+        "definitionVersion": "0.1.0"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-def:scene:pont-fictif",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "def:scene:pont-fictif",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "Original ATELIERS #102 privé et non destructif",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "def:scene:pont-fictif",
+          "recordVersion": "0.1.0",
+          "nodeType": "definition",
+          "entityType": "scene",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-def:scene:pont-fictif",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "def:scene:pont-fictif",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "def:scene:pont-fictif",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "def:scene:pont-fictif",
+              "marker": "unknown-kept"
+            }
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {
+        "participants": []
+      },
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "definition"
+      }
+    },
+    {
+      "schema": "cer.index.data-model.p1a.proposal.v0",
+      "recordKind": "scene",
+      "recordId": "inst:scene:pont-fictif",
+      "version": "0.1.0",
+      "revision": 0,
+      "nodeType": "instance",
+      "identity": {
+        "definitionId": "def:scene:pont-fictif",
+        "definitionVersion": "0.1.0",
+        "instanceId": "inst:scene:pont-fictif",
+        "campaignId": "camp:p1r2-fiction"
+      },
+      "provenance": {
+        "origin": "synthetic",
+        "sourceSchema": "cer.synthetic.source.v0",
+        "sourceId": "P1-fixture-inst:scene:pont-fictif",
+        "sourceVersion": "fixture-0",
+        "sourceFidelity": "reference-only"
+      },
+      "continuity": {
+        "referenceStatus": "proposal",
+        "playedStatus": "not-played",
+        "publicationStatus": "unpublished",
+        "scope": "sandbox-fixture"
+      },
+      "state": {
+        "lifecycle": "draft",
+        "layer": "proposal",
+        "attestation": {
+          "status": "unverified",
+          "evidenceRefs": []
+        }
+      },
+      "mechanics": {
+        "status": "blocked",
+        "validationStatus": "unvalidated",
+        "sourceEngine": "M01",
+        "originalMode": "native-reference",
+        "reason": "Référence native non homologuée par INDEX ; aucun calcul ni effet"
+      },
+      "narrative": {
+        "name": "inst:scene:pont-fictif",
+        "summary": "Fiction de test; aucune règle appliquée"
+      },
+      "privacy": {
+        "visibility": "mj-private",
+        "notes": "PRIVATE_SCENE_CANARY_P1R2",
+        "publicFields": [
+          "narrative.name",
+          "narrative.summary"
+        ],
+        "playerProjection": "explicit-approval-only",
+        "ateliersOriginal": {
+          "schema": "cer.p1.data-model.record.proposal.v0",
+          "recordId": "inst:scene:pont-fictif",
+          "recordVersion": "0.1.0",
+          "nodeType": "instance",
+          "entityType": "scene",
+          "provenance": {
+            "originKind": "proposal",
+            "sourceId": "P1-fixture-inst:scene:pont-fictif",
+            "sourceSchema": "cer.synthetic.source.v0",
+            "sourceVersion": "fixture-0",
+            "fidelity": "reference-only"
+          },
+          "continuity": {
+            "referenceStatus": "proposal",
+            "playedStatus": "not-played",
+            "publicationStatus": "unpublished",
+            "scope": "sandbox-fixture"
+          },
+          "mechanics": {
+            "mode": "native-reference",
+            "engine": "M01",
+            "nativeSchema": "alrick.sheets.v3",
+            "nativeId": "inst:scene:pont-fictif",
+            "nativeVersion": "v3",
+            "authority": "native-only"
+          },
+          "narrative": {
+            "title": "inst:scene:pont-fictif",
+            "publicDescription": "Fiction de test; aucune règle appliquée"
+          },
+          "privacy": {
+            "visibility": "gm-private",
+            "gmOnly": {
+              "PRIVATE_CANARY": "NE_JAMAIS_PARTAGER",
+              "unknownJson": {
+                "future": true,
+                "nested": {
+                  "foo": "bar"
+                }
+              }
+            },
+            "publicFields": [
+              "narrative.title",
+              "narrative.publicDescription"
+            ],
+            "playerProjection": "explicit-approval-only"
+          },
+          "media": [
+            {
+              "mediaId": "med:p1r2-fake",
+              "mediaType": "image",
+              "rights": "unknown",
+              "audience": "gm",
+              "alt": "Dessin fictif non validé"
+            }
+          ],
+          "legacy": {
+            "originalSchema": "legacy.test.v0",
+            "fieldDecisions": [
+              {
+                "field": "unknownJson",
+                "decision": "unknown",
+                "targetOrReason": "Conserver"
+              }
+            ],
+            "unknownFields": {
+              "inventedFuture": {
+                "foo": "preserved"
+              }
+            }
+          },
+          "extensions": {
+            "unrecognizedProvider": {
+              "recordId": "inst:scene:pont-fictif",
+              "marker": "unknown-kept"
+            }
+          },
+          "definitionRef": "def:scene:pont-fictif",
+          "campaignId": "camp:p1r2-fiction",
+          "state": {
+            "revision": 0,
+            "status": "draft",
+            "current": {
+              "futureState": {
+                "flag": "kept"
+              }
+            },
+            "historyRefs": []
+          }
+        }
+      },
+      "media": [
+        {
+          "assetId": "med:p1r2-fake",
+          "rights": "pending",
+          "visibility": "mj-private",
+          "alt": "Dessin fictif non validé",
+          "sourceRef": null,
+          "sourceRights": "unknown"
+        }
+      ],
+      "data": {
+        "futureState": {
+          "flag": "kept"
+        },
+        "sourceStatus": "draft",
+        "participants": [
+          {
+            "role": "pj",
+            "recordId": "inst:pj:temoin-n1",
+            "instanceId": "inst:pj:temoin-n1"
+          },
+          {
+            "role": "pj",
+            "recordId": "inst:pj:temoin-n10",
+            "instanceId": "inst:pj:temoin-n10"
+          },
+          {
+            "role": "pj",
+            "recordId": "inst:pj:temoin-n25",
+            "instanceId": "inst:pj:temoin-n25"
+          },
+          {
+            "role": "creature",
+            "recordId": "inst:creature:veilleur-1",
+            "instanceId": "inst:creature:veilleur-1"
+          },
+          {
+            "role": "pnj",
+            "recordId": "inst:npc:archiviste-1",
+            "instanceId": "inst:npc:archiviste-1"
+          }
+        ]
+      },
+      "extensions": {
+        "profile": "cer.index.data-model.p1a.profile.r2.experimental",
+        "sourceModel": "cer.p1.data-model.record.proposal.v0",
+        "sourceNodeType": "instance"
+      }
+    }
+  ]
+}
