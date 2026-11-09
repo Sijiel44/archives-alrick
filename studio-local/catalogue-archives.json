@@ -1,0 +1,1877 @@
+{
+  "revision": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
+  "entries": [
+    {
+      "id": "GEO-001",
+      "version": "f69022a85142853ab412a9770bb4e885d52643fc",
+      "name": "Les Montagnes de l’Aube",
+      "description": "Royaume septentrional de sept grandes cités, de clans, métiers, cols, bassins et peuples pluriels ; Torngard est le siège actuel de la Couronne.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Régions et royaumes",
+      "status": "lore",
+      "path": "content/lieux/GEO-001.md",
+      "tags": "atlas montagnes-de-laube sept-cites royaume geographie",
+      "links": [
+        "atlas-schema-regional",
+        "GEO-007",
+        "GEO-008",
+        "GEO-002",
+        "sept-grandes-cites-illustrees",
+        "GEO-013",
+        "villages-sept-cites-portail",
+        "quetes-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages"
+      ]
+    },
+    {
+      "id": "GEO-002",
+      "version": "9ab54e7ad8468f7604b7752d67c37c6f86913697",
+      "name": "Orinor",
+      "description": "Orinor garde ses institutions, ses ports et ses communautés ; les réformes envisagées ne l'intègrent pas aux Montagnes de l'Aube.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Régions et royaumes",
+      "status": "lore",
+      "path": "content/lieux/GEO-002.md",
+      "tags": "atlas orinor royaumes ports institutions aurignac",
+      "links": [
+        "GEO-001"
+      ]
+    },
+    {
+      "id": "GEO-021",
+      "version": "6c610ffbd24328072b70d3bd7627bb6fe77f445d",
+      "name": "Le Mérien et Entre-Rives",
+      "description": "Le Mérien, ses cultures et villages, et Entre-Rives, pôle de terroir à la lisière ; échanges sans assimilation ni accords imaginaires.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Régions et royaumes",
+      "status": "lore",
+      "path": "content/lieux/GEO-021.md",
+      "tags": "atlas merien entre-rives nahrim terroirs agriculture",
+      "links": [
+        "GEO-001",
+        "GEO-CB2-ENTRE-RIVES"
+      ]
+    },
+    {
+      "id": "GEO-025",
+      "version": "7a645d9f61a4faf1ef3126893f245d79ebe796f0",
+      "name": "Ligue des Trois-Fleuves",
+      "description": "Alliance de cités humaines et cosmopolites du Sud, structurée autour de fleuves, plaines, échanges et rivalités de maisons marchandes.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Régions et royaumes",
+      "status": "lore",
+      "path": "content/lieux/GEO-025.md",
+      "tags": "trois-fleuves commerce fleuves cités ligue marchandises",
+      "links": [
+        "atlas-circulations-echanges"
+      ]
+    },
+    {
+      "id": "GEO-027",
+      "version": "9694fa53b3d86bd8b5eb53e196bc9fd24cfabf61",
+      "name": "Vael-Sur",
+      "description": "Ensemble de territoires gouvernés par des dragons anciens et leurs lignées, avec des institutions mortelles très diverses.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Régions et royaumes",
+      "status": "lore",
+      "path": "content/lieux/GEO-027.md",
+      "tags": "vael-sur dragons souveraineté nord-est cultures alliances",
+      "links": []
+    },
+    {
+      "id": "GEO-028",
+      "version": "7a5554269903e8c5fde2e73804d103c75087a693",
+      "name": "Empire de la Chaîne écarlate",
+      "description": "Puissance orientale expansionniste, associée dans l'Atlas à des procédés de capture et d'exploitation des dragons.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Régions et royaumes",
+      "status": "lore",
+      "path": "content/lieux/GEO-028.md",
+      "tags": "empire chaine-ecarlate dragons est conflits servitude",
+      "links": []
+    },
+    {
+      "id": "GEO-007",
+      "version": "2829b0a2b24f9eceb6681fd4b1ba448ff540a703",
+      "name": "Skalor",
+      "description": "Ville de bâtisseurs, d'écoles techniques et du Hall des Pierres, attachée à son autonomie et aux œuvres qu'elle transmet.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villes",
+      "status": "lore",
+      "path": "content/lieux/GEO-007.md",
+      "tags": "atlas skalor artisans batisseurs hall-des-pierres",
+      "links": [
+        "GEO-001",
+        "plan-skalor",
+        "skalor-carnet-de-terrain",
+        "institutions",
+        "quetes-sept-cites",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites",
+        "village-banc-de-roche",
+        "village-garde-ponts"
+      ]
+    },
+    {
+      "id": "GEO-008",
+      "version": "a7c58e4fac7053d5ea30e77c3b976c6787317a0f",
+      "name": "Torngard",
+      "description": "Siège contemporain de la Couronne, centre des délibérations politiques et des Veillées qui réunissent métiers et peuples.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villes",
+      "status": "lore",
+      "path": "content/lieux/GEO-008.md",
+      "tags": "atlas torngard capitale conseil colloque veillees",
+      "links": [
+        "GEO-001",
+        "plan-torngard",
+        "torngard-carnet-de-terrain",
+        "quetes-sept-cites",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites",
+        "village-courtil-daube",
+        "village-chantemarches",
+        "contrats-guilde-sept-cites-villages"
+      ]
+    },
+    {
+      "id": "GEO-009",
+      "version": "fddedeb41fb1a0c7c3c434052fe30608b72c7b15",
+      "name": "Forgeciel",
+      "description": "Grand centre métallurgique des Montagnes de l'Aube, haut plateau volcanique et coopération entre métiers et dragons.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villes",
+      "status": "lore",
+      "path": "content/lieux/GEO-009.md",
+      "tags": "atlas forgeciel forges dragons recherche",
+      "links": [
+        "GEO-001",
+        "plan-forgeciel",
+        "forgeciel-carnet-de-terrain",
+        "quetes-sept-cites",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites",
+        "village-haut-soufflet",
+        "village-pied-des-cendres",
+        "contrats-guilde-sept-cites-villages"
+      ]
+    },
+    {
+      "id": "GEO-010",
+      "version": "e683407f1082b5d937edb0106c38ae33b911665c",
+      "name": "Nacrecombe",
+      "description": "Cité du lac souterrain, échanges entre communautés naines et alfes, ressources de caverne et arbitrages des profondeurs.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villes",
+      "status": "lore",
+      "path": "content/lieux/GEO-010.md",
+      "tags": "atlas nacrecombe alfes nains ressources lac",
+      "links": [
+        "GEO-001",
+        "plan-nacrecombe",
+        "nacrecombe-carnet-de-terrain",
+        "quetes-sept-cites",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites",
+        "village-mousselune",
+        "village-rive-cendre",
+        "contrats-guilde-sept-cites-villages"
+      ]
+    },
+    {
+      "id": "GEO-011",
+      "version": "55f83c95ce10f73f413b15e102b6b572c015e5c0",
+      "name": "Aldhammar",
+      "description": "Ancienne capitale des Montagnes de l'Aube, lieu d'artisans, de mémoire dynastique et de revitalisation à venir.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villes",
+      "status": "lore",
+      "path": "content/lieux/GEO-011.md",
+      "tags": "atlas aldhammar ancienne-capitale patrimoine nains",
+      "links": [
+        "GEO-001",
+        "plan-aldhammar",
+        "aldhammar-carnet-de-terrain",
+        "GEO-008",
+        "quetes-sept-cites",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites",
+        "village-perron-vieux",
+        "village-trois-foyers"
+      ]
+    },
+    {
+      "id": "GEO-012",
+      "version": "88b30b5eab56c9213a613b084bec4655b715bbd4",
+      "name": "Keldrun",
+      "description": "Cité fortifiée orientale : cols, douanes, caravanes, communautés orques et gobelines et choix de sécurité.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villes",
+      "status": "lore",
+      "path": "content/lieux/GEO-012.md",
+      "tags": "atlas keldrun cols caravanes commerce peuples",
+      "links": [
+        "GEO-001",
+        "plan-keldrun",
+        "keldrun-carnet-de-terrain",
+        "aventure-pilote-les-registres-du-col",
+        "quetes-sept-cites",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites",
+        "village-quatre-bornes",
+        "village-degel-court"
+      ]
+    },
+    {
+      "id": "GEO-013",
+      "version": "0f6c38013bda50d4ad9470f8672a0343b6959c5d",
+      "name": "Dornaël",
+      "description": "Dornaël, cité de l'eau glacée et des lanternes chaudes, l'une des sept grandes villes des Montagnes de l'Aube ; hydraulique, thermes et nouveau quartier runique proposé.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villes",
+      "status": "lore",
+      "path": "content/lieux/GEO-013.md",
+      "tags": "atlas dornael sept-cites eaux hydraulique runes quartiers",
+      "links": [
+        "GEO-001",
+        "plan-dornael",
+        "dornael-carnet-de-terrain",
+        "quetes-sept-cites",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites",
+        "village-brumecaille",
+        "village-clair-reflet",
+        "contrats-guilde-sept-cites-villages"
+      ]
+    },
+    {
+      "id": "GEO-CB2-ENTRE-RIVES",
+      "version": "7202a3a8316cb795f5edea5e2581b5e8bbd07cf1",
+      "name": "Entre-Rives",
+      "description": "Une fondation autour d'un ancien pont devenue un pôle de villages, de terroir et de transmission, sans effacer les autonomies du Mérien.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Sites et environs",
+      "status": "lore",
+      "path": "content/lieux/GEO-CB2-ENTRE-RIVES.md",
+      "tags": "entre-rives lieu fondation agriculture merien",
+      "links": [
+        "GEO-021"
+      ]
+    },
+    {
+      "id": "village-banc-de-roche",
+      "version": "848bcbadd8b719a3ac8b2ff5b23ab2eb2c9b1757",
+      "name": "Banc-de-Roche",
+      "description": "Village proposé relié à Skalor, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-banc-de-roche.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-007",
+        "bestiaire-mache-rune",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-brumecaille",
+      "version": "a0772311f5aa77178f326b80e505ec7b70499079",
+      "name": "Brumecaille",
+      "description": "Village proposé relié à Dornaël, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-brumecaille.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-013",
+        "bestiaire-mache-rune",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-chantemarches",
+      "version": "6f241fbae8c8135b4a0a888c01c141fa57af683f",
+      "name": "Chantemarches",
+      "description": "Village proposé relié à Torngard, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-chantemarches.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-008",
+        "bestiaire-cerf-des-brumes-froides",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-clair-reflet",
+      "version": "d6360dd405f51c4901703ca130ff392351a81bc1",
+      "name": "Clair-Reflet",
+      "description": "Village proposé relié à Dornaël, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-clair-reflet.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-013",
+        "bestiaire-lamproie-de-nacre",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-courtil-daube",
+      "version": "b84866e5fcca3dc357e0721175e35e8748d72e1b",
+      "name": "Courtil-d'Aube",
+      "description": "Village proposé relié à Torngard, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-courtil-daube.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-008",
+        "bestiaire-cerf-des-brumes-froides",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-degel-court",
+      "version": "90bad875bed8abef895c9ef21e5e0d5b6c102f4a",
+      "name": "Dégel-Court",
+      "description": "Village proposé relié à Keldrun, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-degel-court.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-012",
+        "bestiaire-ver-des-frontieres",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-garde-ponts",
+      "version": "e8a2cb11700f13e6b6a0f05be7f15ff877ef4c66",
+      "name": "Garde-Ponts",
+      "description": "Village proposé relié à Skalor, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-garde-ponts.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-007",
+        "bestiaire-ver-des-frontieres",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-haut-soufflet",
+      "version": "80996c82e2e38914b36a5f7fee059fc3120d3608",
+      "name": "Haut-Soufflet",
+      "description": "Village proposé relié à Forgeciel, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-haut-soufflet.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-009",
+        "bestiaire-garde-cendre",
+        "bestiaire-mache-rune",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-mousselune",
+      "version": "5ac96707ccfaf8eceecb97d4e59d8a225dca3222",
+      "name": "Mousselune",
+      "description": "Village proposé relié à Nacrecombe, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-mousselune.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-010",
+        "bestiaire-lamproie-de-nacre",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-perron-vieux",
+      "version": "5783df9d6b2859e1f1b8ff2a0f4578a1f94d2770",
+      "name": "Perron-Vieux",
+      "description": "Village proposé relié à Aldhammar, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-perron-vieux.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-011",
+        "bestiaire-garde-cendre",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-pied-des-cendres",
+      "version": "493203d603283ca91c2fe232f2ceede8feaefe30",
+      "name": "Pied-des-Cendres",
+      "description": "Village proposé relié à Forgeciel, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-pied-des-cendres.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-009",
+        "bestiaire-garde-cendre",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-quatre-bornes",
+      "version": "3e6fcc144255a2b76b0d91bedd6354d7ab93a9ee",
+      "name": "Quatre-Bornes",
+      "description": "Village proposé relié à Keldrun, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-quatre-bornes.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-012",
+        "bestiaire-chasses-faim",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-rive-cendre",
+      "version": "cb33756ebe62baf118b2793ea3190c4a05e3902b",
+      "name": "Rive-Cendre",
+      "description": "Village proposé relié à Nacrecombe, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-rive-cendre.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-010",
+        "bestiaire-harpiste-creuse",
+        "bestiaire-lamproie-de-nacre",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "village-trois-foyers",
+      "version": "ee080a1de05cbaa453c7d2c48c658059b34c932a",
+      "name": "Trois-Foyers",
+      "description": "Village proposé relié à Aldhammar, deux PNJ, deux quêtes locales et un contrat de guilde optionnel.",
+      "shelf": "atlas",
+      "kind": "place",
+      "group": "Villages",
+      "status": "proposal",
+      "path": "content/lieux/village-trois-foyers.md",
+      "tags": "villages atlas quetes pnjs guilde",
+      "links": [
+        "GEO-011",
+        "bestiaire-harpiste-creuse",
+        "protocole-failles-guildes",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages",
+        "quetes-villages-sept-cites"
+      ]
+    },
+    {
+      "id": "skalor-carnet-de-terrain",
+      "version": "40260d368ccf90b846ee279f37cdd573f66b5c4b",
+      "name": "Carnet de terrain — Skalor : quartiers, adresses et quêtes",
+      "description": "Six adresses, habitants préparatoires et trois intrigues locales, dans Skalor, sans scènes imposées à Orin.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Quartiers et carnets",
+      "status": "proposal",
+      "path": "content/lieux/skalor-carnet-de-terrain.md",
+      "tags": "sept-cites quartiers skalor pnjs missions",
+      "links": [
+        "plan-skalor",
+        "GEO-007",
+        "sept-grandes-cites-illustrees",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites"
+      ]
+    },
+    {
+      "id": "torngard-carnet-de-terrain",
+      "version": "2e30e711811c0d2e51f5e750df0b92b9285e6770",
+      "name": "Carnet de terrain — Torngard : quartiers, adresses et quêtes",
+      "description": "Six adresses, habitants préparatoires et trois intrigues locales, dans Torngard, sans scènes imposées à Orin.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Quartiers et carnets",
+      "status": "proposal",
+      "path": "content/lieux/torngard-carnet-de-terrain.md",
+      "tags": "sept-cites quartiers torngard pnjs missions",
+      "links": [
+        "plan-torngard",
+        "GEO-008",
+        "sept-grandes-cites-illustrees",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites"
+      ]
+    },
+    {
+      "id": "forgeciel-carnet-de-terrain",
+      "version": "95a6bab739d81a14dba992d34789ac63bb117064",
+      "name": "Carnet de terrain — Forgeciel : quartiers, adresses et quêtes",
+      "description": "Six adresses, habitants préparatoires et trois intrigues locales, dans Forgeciel, sans scènes imposées à Orin.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Quartiers et carnets",
+      "status": "proposal",
+      "path": "content/lieux/forgeciel-carnet-de-terrain.md",
+      "tags": "sept-cites quartiers forgeciel pnjs missions",
+      "links": [
+        "plan-forgeciel",
+        "GEO-009",
+        "sept-grandes-cites-illustrees",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites"
+      ]
+    },
+    {
+      "id": "nacrecombe-carnet-de-terrain",
+      "version": "7eeaaabfbbc32453d6a0afde48149b124e9eb38d",
+      "name": "Carnet de terrain — Nacrecombe : quartiers, adresses et quêtes",
+      "description": "Six adresses, habitants préparatoires et trois intrigues locales, dans Nacrecombe, sans scènes imposées à Orin.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Quartiers et carnets",
+      "status": "proposal",
+      "path": "content/lieux/nacrecombe-carnet-de-terrain.md",
+      "tags": "sept-cites quartiers nacrecombe pnjs missions",
+      "links": [
+        "plan-nacrecombe",
+        "GEO-010",
+        "sept-grandes-cites-illustrees",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites"
+      ]
+    },
+    {
+      "id": "aldhammar-carnet-de-terrain",
+      "version": "ce09cc3582bc930c742c7dde34e7e5f908d6e3bb",
+      "name": "Carnet de terrain — Aldhammar : quartiers, adresses et quêtes",
+      "description": "Six adresses, habitants préparatoires et trois intrigues locales, dans Aldhammar, sans scènes imposées à Orin.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Quartiers et carnets",
+      "status": "proposal",
+      "path": "content/lieux/aldhammar-carnet-de-terrain.md",
+      "tags": "sept-cites quartiers aldhammar pnjs missions",
+      "links": [
+        "plan-aldhammar",
+        "GEO-011",
+        "sept-grandes-cites-illustrees",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites"
+      ]
+    },
+    {
+      "id": "keldrun-carnet-de-terrain",
+      "version": "c84d6f6a8f7901ab8a41eb6234c78e7ff9945aeb",
+      "name": "Carnet de terrain — Keldrun : quartiers, adresses et quêtes",
+      "description": "Six adresses, habitants préparatoires et trois intrigues locales, dans Keldrun, sans scènes imposées à Orin.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Quartiers et carnets",
+      "status": "proposal",
+      "path": "content/lieux/keldrun-carnet-de-terrain.md",
+      "tags": "sept-cites quartiers keldrun pnjs missions",
+      "links": [
+        "plan-keldrun",
+        "GEO-012",
+        "aventure-pilote-les-registres-du-col",
+        "sept-grandes-cites-illustrees",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites"
+      ]
+    },
+    {
+      "id": "dornael-carnet-de-terrain",
+      "version": "1c9db1e475891849bf5834d01e255bb6e58c7298",
+      "name": "Carnet de terrain — Dornaël : quartiers, adresses et quêtes",
+      "description": "Six adresses, habitants préparatoires et trois intrigues locales, dans Dornaël, sans scènes imposées à Orin.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Quartiers et carnets",
+      "status": "proposal",
+      "path": "content/lieux/dornael-carnet-de-terrain.md",
+      "tags": "sept-cites quartiers dornael pnjs missions",
+      "links": [
+        "plan-dornael",
+        "GEO-013",
+        "sept-grandes-cites-illustrees",
+        "les-registres-des-sept-cites",
+        "la-veille-des-sept-cites"
+      ]
+    },
+    {
+      "id": "sept-grandes-cites-illustrees",
+      "version": "e3fc7d816520fc8fd07baf5bc30876523f0cf327",
+      "name": "Les Sept Grandes Cités — Atlas urbain illustré",
+      "description": "Parcours visuel, cartes de quartiers, métiers et missions à travers les sept grandes villes des Montagnes de l'Aube.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Cartes et itinéraires",
+      "status": "lore",
+      "path": "content/lieux/sept-grandes-cites-illustrees.md",
+      "tags": "sept-cites atlas quartiers villes illustrations",
+      "links": [
+        "GEO-008",
+        "GEO-011",
+        "GEO-007",
+        "GEO-009",
+        "GEO-012",
+        "GEO-010",
+        "GEO-013",
+        "GEO-001",
+        "atlas-circulations-echanges"
+      ]
+    },
+    {
+      "id": "atlas-circulations-echanges",
+      "version": "bcc56b481639bd64db0ff745f6f02141a5abb865",
+      "name": "Commerce, routes et institutions — Corridors de l’Atlas",
+      "description": "Quels échanges et routes existent, lesquels sont des projets, et comment faire circuler des personnages sans inventer une géographie complète.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Cartes et itinéraires",
+      "status": "reference",
+      "path": "content/lieux/atlas-circulations-echanges.md",
+      "tags": "atlas commerce routes caravanes ports institutions",
+      "links": [
+        "GEO-012",
+        "GEO-021",
+        "GEO-009",
+        "GEO-010",
+        "GEO-002",
+        "atlas-schema-regional",
+        "GEO-025",
+        "GEO-027",
+        "GEO-028"
+      ]
+    },
+    {
+      "id": "atlas-schema-regional",
+      "version": "83930d6c551356348b4b0099021b6b64d81cc5a0",
+      "name": "Lire les cartes de l’Atlas — Relief, liaisons et incertitudes",
+      "description": "Une carte schématique du monde connu et une méthode pour distinguer routes existantes et réseaux encore en projet.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Cartes et itinéraires",
+      "status": "reference",
+      "path": "content/lieux/atlas-schema-regional.md",
+      "tags": "atlas carte routes geographie source",
+      "links": [
+        "GEO-001",
+        "GEO-007",
+        "GEO-008",
+        "GEO-021",
+        "GEO-002"
+      ]
+    },
+    {
+      "id": "villages-sept-cites-portail",
+      "version": "a914584cec409e60a701f2ff737265a885241cc1",
+      "name": "Quatorze villages candidats — Portail des Sept Cités",
+      "description": "Villages proposés, habitants, quêtes locales, contrats et origines documentaires.",
+      "shelf": "atlas",
+      "kind": "guide",
+      "group": "Cartes et itinéraires",
+      "status": "proposal",
+      "path": "content/lieux/villages-sept-cites-portail.md",
+      "tags": "villages sept-cites atlas pnjs",
+      "links": [
+        "GEO-001",
+        "GEO-013",
+        "village-brumecaille",
+        "village-clair-reflet",
+        "GEO-011",
+        "village-perron-vieux",
+        "village-trois-foyers",
+        "GEO-007",
+        "village-banc-de-roche"
+      ]
+    },
+    {
+      "id": "bestiaire-cerf-des-brumes-froides",
+      "version": "afb92de0c4c4b8e32c7215031d3dce5afab100f1",
+      "name": "Cerf des Brumes froides",
+      "description": "forêts claires, lisières, terrasses sauvages et zones de brouillard.",
+      "shelf": "bestiaire",
+      "kind": "creature",
+      "group": "Créatures de rencontre",
+      "status": "proposal",
+      "path": "content/creatures/bestiaire-cerf-des-brumes-froides.md",
+      "tags": "bestiary creatures monstres sept-cites non-joue",
+      "links": [
+        "systeme-5d6-base12",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages"
+      ],
+      "details": [
+        [
+          "Milieux possibles",
+          "forêts claires, lisières, terrasses sauvages et zones de brouillard."
+        ],
+        [
+          "Indices avant la rencontre",
+          "Écorce frottée à hauteur inhabituelle, sabots profondément marqués et arbres pelés autour d'une clairière."
+        ],
+        [
+          "Lors d'un affrontement",
+          "Charge brutale, ruade et balayage de bois sur les chemins étroits. Les jeunes ne quittent pas toujours la zone sous menace."
+        ],
+        [
+          "Contournement et points faibles possibles",
+          "Éloigner les curieux, contourner la clairière, utiliser des barrières de sécurité et respecter les périodes sensibles ; il peut être apaisé en cessant de le poursuivre."
+        ]
+      ]
+    },
+    {
+      "id": "bestiaire-chasses-faim",
+      "version": "545b37b457a2ae441b99ef0535bf5843ec438be6",
+      "name": "Chasses-Faim",
+      "description": "cols et pistes abandonnées, bordures de pâturages, chemins forestiers de montagne.",
+      "shelf": "bestiaire",
+      "kind": "creature",
+      "group": "Créatures de rencontre",
+      "status": "proposal",
+      "path": "content/creatures/bestiaire-chasses-faim.md",
+      "tags": "bestiary creatures monstres sept-cites non-joue",
+      "links": [
+        "systeme-5d6-base12",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages"
+      ],
+      "details": [
+        [
+          "Milieux possibles",
+          "cols et pistes abandonnées, bordures de pâturages, chemins forestiers de montagne."
+        ],
+        [
+          "Indices avant la rencontre",
+          "Marques de griffe par groupes, traces circulaires autour des sons et silence soudain des petits charognards."
+        ],
+        [
+          "Lors d'un affrontement",
+          "Les individus dispersent les convois, harcèlent les retardataires et tentent d'isoler un guide ; deux attaquent pendant qu'un troisième coupe la retraite."
+        ],
+        [
+          "Contournement et points faibles possibles",
+          "Les odeurs de nourriture détournées, un abri fermé et la coordination des gardes peuvent sauver un groupe ; le silence n'est pas un sort de contrôle universel."
+        ]
+      ]
+    },
+    {
+      "id": "bestiaire-garde-cendre",
+      "version": "f9746e580847ca3942dd1c06d25b4f791dd30ab2",
+      "name": "Garde-Cendre",
+      "description": "four abandonné, cheminée oubliée ou salle où subsistent les braises d'un dispositif.",
+      "shelf": "bestiaire",
+      "kind": "creature",
+      "group": "Créatures de rencontre",
+      "status": "proposal",
+      "path": "content/creatures/bestiaire-garde-cendre.md",
+      "tags": "bestiary creatures monstres sept-cites non-joue",
+      "links": [
+        "systeme-5d6-base12",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages"
+      ],
+      "details": [
+        [
+          "Milieux possibles",
+          "four abandonné, cheminée oubliée ou salle où subsistent les braises d'un dispositif."
+        ],
+        [
+          "Indices avant la rencontre",
+          "Suie chaude sur métal froid, cliquetis de rondes répétées, objets déplacés toujours vers le même seuil."
+        ],
+        [
+          "Lors d'un affrontement",
+          "Charge les portes, projette braises et impose un terrain brûlant. Son corps peut rester dangereux après qu'il cesse de bouger."
+        ],
+        [
+          "Contournement et points faibles possibles",
+          "Lire ou reproduire le mot d'arrêt seulement si le MJ en a préparé la preuve, détourner sa ronde ou couper l'alimentation sont des possibilités ; pas d'ordre divin universel."
+        ]
+      ]
+    },
+    {
+      "id": "bestiaire-harpiste-creuse",
+      "version": "55ee3930e5de5121d10017e9d677cca1ba69e260",
+      "name": "La Harpiste creuse",
+      "description": "ouvrage ancien, grotte à forte résonance ou galerie abandonnée.",
+      "shelf": "bestiaire",
+      "kind": "creature",
+      "group": "Créatures de rencontre",
+      "status": "proposal",
+      "path": "content/creatures/bestiaire-harpiste-creuse.md",
+      "tags": "bestiary creatures monstres sept-cites non-joue",
+      "links": [
+        "systeme-5d6-base12",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages"
+      ],
+      "details": [
+        [
+          "Milieux possibles",
+          "ouvrage ancien, grotte à forte résonance ou galerie abandonnée."
+        ],
+        [
+          "Indices avant la rencontre",
+          "Échos qui répètent une parole en changeant légèrement de timbre, empreintes absentes là où une voix semble appeler."
+        ],
+        [
+          "Lors d'un affrontement",
+          "Elle isole un PJ, brouille les directions et frappe lorsqu'une personne se trouve sans témoin ; sa menace principale est le terrain."
+        ],
+        [
+          "Contournement et points faibles possibles",
+          "Deux personnes liées par corde, repères physiques tracés et protocoles de réponse peuvent éviter une séparation ; elle ne lit pas les pensées et n'imite pas toutes les voix du monde."
+        ]
+      ]
+    },
+    {
+      "id": "bestiaire-lamproie-de-nacre",
+      "version": "857d1d6a4efdc209e477f139e960f2e07d32ddef",
+      "name": "Lamproie de nacre",
+      "description": "lacs souterrains, rives profondes et conduits saturés d'eau.",
+      "shelf": "bestiaire",
+      "kind": "creature",
+      "group": "Créatures de rencontre",
+      "status": "proposal",
+      "path": "content/creatures/bestiaire-lamproie-de-nacre.md",
+      "tags": "bestiary creatures monstres sept-cites non-joue",
+      "links": [
+        "systeme-5d6-base12",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages"
+      ],
+      "details": [
+        [
+          "Milieux possibles",
+          "lacs souterrains, rives profondes et conduits saturés d'eau."
+        ],
+        [
+          "Indices avant la rencontre",
+          "Trous réguliers sur les filets, traces d'adhérence sur les coques, petits poissons rassemblés contre les bords."
+        ],
+        [
+          "Lors d'un affrontement",
+          "Saisit une cheville ou un aviron et entraîne les victimes vers l'eau ; une attaque sur la berge est moins dangereuse qu'une chute dans le lac."
+        ],
+        [
+          "Contournement et points faibles possibles",
+          "Filets à mailles adaptées, lumières sous-marines et travail en binôme permettent de surveiller son approche ; aucun chant alfe n'est un sort de domination automatique."
+        ]
+      ]
+    },
+    {
+      "id": "bestiaire-mache-rune",
+      "version": "16ef38232e66071a2c29f0e07757ad9dc2931e04",
+      "name": "Mâche-Rune",
+      "description": "ouvrages marqués de runes, mines, vannes et relais.",
+      "shelf": "bestiaire",
+      "kind": "creature",
+      "group": "Créatures de rencontre",
+      "status": "proposal",
+      "path": "content/creatures/bestiaire-mache-rune.md",
+      "tags": "bestiary creatures monstres sept-cites non-joue",
+      "links": [
+        "systeme-5d6-base12",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages"
+      ],
+      "details": [
+        [
+          "Milieux possibles",
+          "ouvrages marqués de runes, mines, vannes et relais."
+        ],
+        [
+          "Indices avant la rencontre",
+          "Rainures polies, marques rongées par l'intérieur et dépôts de pierre chaude au pied des dispositifs."
+        ],
+        [
+          "Lors d'un affrontement",
+          "Il arrache les plaques actives, coupe une protection et se glisse dans les conduites ; un individu acculé mord les outils puis les mains qui les tiennent."
+        ],
+        [
+          "Contournement et points faibles possibles",
+          "Une installation éteinte et isolée l'attire moins ; un treillis de cuivre ou un conduit fermé peut détourner un petit spécimen, mais ces mesures sont hypothèses de scénario à tester."
+        ]
+      ]
+    },
+    {
+      "id": "bestiaire-ver-des-frontieres",
+      "version": "dfe00ff9eeb297b631c39923c8bbe21955ab55e2",
+      "name": "Ver des Frontières",
+      "description": "terrains fracturés et anomalies de chemin, parfois près d'une Faille, sans relation obligatoire.",
+      "shelf": "bestiaire",
+      "kind": "creature",
+      "group": "Créatures de rencontre",
+      "status": "proposal",
+      "path": "content/creatures/bestiaire-ver-des-frontieres.md",
+      "tags": "bestiary creatures monstres sept-cites non-joue",
+      "links": [
+        "systeme-5d6-base12",
+        "bestiaire-villages-sept-cites",
+        "contrats-guilde-sept-cites-villages"
+      ],
+      "details": [
+        [
+          "Milieux possibles",
+          "terrains fracturés et anomalies de chemin, parfois près d'une Faille, sans relation obligatoire."
+        ],
+        [
+          "Indices avant la rencontre",
+          "Roche comme rabotée de l'intérieur, petits objets déplacés et passages dont l'orientation semble décalée."
+        ],
+        [
+          "Lors d'un affrontement",
+          "Émergence brutale, morsure de masse, effondrement de sol ; le combat frontal est fortement déconseillé aux débutants."
+        ],
+        [
+          "Contournement et points faibles possibles",
+          "Repérer ses vibrations, évacuer le bourg et refuser la confrontation peuvent être les meilleurs choix ; un spécialiste peut chercher à le détourner, jamais le contrôler d'un seul jet."
+        ]
+      ]
+    },
+    {
+      "id": "dragons-et-souverainetes",
+      "version": "39cdc46d0f7882060b2a6ab174fa2ec4b9916252",
+      "name": "Dragons, lignées et souverainetés — Guide de rencontre",
+      "description": "Diversité politique des dragons : Drakon, Vael-Sur, Hautes-Ailes, captivité impériale et dragons artificiels à distinguer.",
+      "shelf": "bestiaire",
+      "kind": "guide",
+      "group": "Guides et profils",
+      "status": "lore",
+      "path": "content/creatures/dragons-et-souverainetes.md",
+      "tags": "dragons drakon vael-sur hauts-ailes empire libertes",
+      "links": [
+        "GEO-027",
+        "GEO-028",
+        "MON-FAI-02"
+      ]
+    },
+    {
+      "id": "bestiaire-villages-sept-cites",
+      "version": "dfda801b29929d71d900980fe2261f0103bcdca2",
+      "name": "Bestiaire de village — Sept Cités et vallées",
+      "description": "Sept monstres et animaux de scénario, indices, danger et stratégies de survie, non canoniques.",
+      "shelf": "bestiaire",
+      "kind": "guide",
+      "group": "Guides et profils",
+      "status": "proposal",
+      "path": "content/creatures/bestiaire-villages-sept-cites.md",
+      "tags": "bestiary monstres aventure failles",
+      "links": [
+        "bestiaire-mache-rune",
+        "bestiaire-chasses-faim",
+        "bestiaire-harpiste-creuse",
+        "bestiaire-garde-cendre",
+        "bestiaire-ver-des-frontieres",
+        "bestiaire-lamproie-de-nacre",
+        "bestiaire-cerf-des-brumes-froides",
+        "systeme-5d6-base12",
+        "contrats-guilde-sept-cites-villages"
+      ]
+    },
+    {
+      "id": "bestiaire-evolutif-25",
+      "version": "ba3cfd3a7a37dfabfdf3f9f0a6ea12f167901ca5",
+      "name": "Bestiaire évolutif — profils de niveau 1 à 25",
+      "description": "Cinq archétypes adaptables de créatures pour le MJ, sans inventer de nouvelles espèces canoniques.",
+      "shelf": "bestiaire",
+      "kind": "guide",
+      "group": "Guides et profils",
+      "status": "proposal",
+      "path": "content/jouer/bestiaire-evolutif-25.md",
+      "tags": "5d6 bestiaire creatures niveaux mj resistance prototype",
+      "links": []
+    },
+    {
+      "id": "atelier-bestiary-5d6",
+      "version": "69011e4936f9cbdf7543fffbe9f89435b010e806",
+      "name": "Atelier du Bestiaire 5d6 — créer et équilibrer une créature ou un PNJ",
+      "description": "Création interactive 5d6 M03, calculs exacts, profils de référence, sauvegarde et import/export local.",
+      "shelf": "bestiaire",
+      "kind": "guide",
+      "group": "Guides et profils",
+      "status": "proposal",
+      "path": "content/jouer/atelier-bestiary-5d6.md",
+      "tags": "5d6 bestiaire pnj atelier creature experimentation",
+      "links": [
+        "systeme-5d6-base12",
+        "bestiaire-evolutif-25"
+      ]
+    },
+    {
+      "id": "OBJ-CB31-ARMURE-PERE-ORIN",
+      "version": "add85450d15bf2ac718984a951bde81e17e82de3",
+      "name": "Armure de Harald — Dain, son nom d’aventure de jeunesse",
+      "description": "Armure de Harald, restaurée par Mara et marquée de sept runes serties de rubis; Dain était son nom d’aventure dans sa jeunesse.",
+      "shelf": "objets",
+      "kind": "object",
+      "group": "Objets documentés",
+      "status": "played",
+      "path": "content/objets/OBJ-CB31-ARMURE-PERE-ORIN.md",
+      "tags": "armure mara orin runes rubis cb31",
+      "links": []
+    },
+    {
+      "id": "OBJ-CB38-BIJOU-COMMUNICATION",
+      "version": "a6e77093bd079fd2e9e053b7415c38bef44f429a",
+      "name": "Bijoux de communication des Revenants",
+      "description": "Appareils personnels de communication testés puis distribués d’abord aux Revenants, avec consentement d’appel et canal d’urgence séparé.",
+      "shelf": "objets",
+      "kind": "object",
+      "group": "Objets documentés",
+      "status": "played",
+      "path": "content/objets/OBJ-CB38-BIJOU-COMMUNICATION.md",
+      "tags": "bijou communication revenants urgence consentement cb38",
+      "links": []
+    },
+    {
+      "id": "OBJ-CB38-LYRE-TAIRIN",
+      "version": "23d4ec89ef05889787bfe695a2f8ed293a09ffa7",
+      "name": "Lyre de voyage destinée à Tairin",
+      "description": "Petite lyre de voyage à sept cordes, choisie par Orin pour Tairin et achetée à titre personnel.",
+      "shelf": "objets",
+      "kind": "object",
+      "group": "Objets documentés",
+      "status": "played",
+      "path": "content/objets/OBJ-CB38-LYRE-TAIRIN.md",
+      "tags": "lyre tairin musique mael-torvenn cb38",
+      "links": []
+    },
+    {
+      "id": "modele-objet",
+      "version": "3a70a819f7bdb1b45e3d7124f70670b11532df22",
+      "name": "Modèle de fiche d’objet",
+      "description": "Trame pour décrire la fonction, l’origine, le propriétaire et les limites d’un objet de jeu.",
+      "shelf": "objets",
+      "kind": "guide",
+      "group": "Création",
+      "status": "reference",
+      "path": "modeles/objet.md",
+      "tags": "objet alrick",
+      "links": []
+    },
+    {
+      "id": "demo-lueur-guide",
+      "version": "4f6d97ce1a6e57b427be6a0d22651a8ec0db899f",
+      "name": "Lueur de veille",
+      "description": "Une petite lumière stable accompagne le voyageur et éclaire un objet ou une alcôve.",
+      "shelf": "sorts",
+      "kind": "spell",
+      "group": "Sorts de démonstration",
+      "status": "test",
+      "path": "quartz/components/scripts/atelier5d6-grimoire.ts",
+      "tags": "utilitaire lumiere cercle 1",
+      "links": [
+        "grimoire-5d6"
+      ],
+      "details": [
+        [
+          "Cercle indiqué",
+          "1"
+        ],
+        [
+          "Coût de base en mana",
+          "2"
+        ],
+        [
+          "Limites de l’essai",
+          "Ne révèle pas un secret, ne traverse pas un sceau et n'aveugle pas automatiquement."
+        ]
+      ]
+    },
+    {
+      "id": "demo-brise-outils",
+      "version": "4f6d97ce1a6e57b427be6a0d22651a8ec0db899f",
+      "name": "Souffle d'atelier",
+      "description": "Une brise légère emporte poussières et copeaux sans remplacer la main de l'artisan.",
+      "shelf": "sorts",
+      "kind": "spell",
+      "group": "Sorts de démonstration",
+      "status": "test",
+      "path": "quartz/components/scripts/atelier5d6-grimoire.ts",
+      "tags": "artisanat vent cercle 1",
+      "links": [
+        "grimoire-5d6"
+      ],
+      "details": [
+        [
+          "Cercle indiqué",
+          "1"
+        ],
+        [
+          "Coût de base en mana",
+          "2"
+        ],
+        [
+          "Limites de l’essai",
+          "Ne soulève ni une créature ni une charge lourde ; aucune précision artisanale automatique."
+        ]
+      ]
+    },
+    {
+      "id": "demo-lecture-eau",
+      "version": "4f6d97ce1a6e57b427be6a0d22651a8ec0db899f",
+      "name": "Lecture des remous",
+      "description": "Rend un courant local plus lisible, sans prédire tous les dangers du fleuve.",
+      "shelf": "sorts",
+      "kind": "spell",
+      "group": "Sorts de démonstration",
+      "status": "test",
+      "path": "quartz/components/scripts/atelier5d6-grimoire.ts",
+      "tags": "perception eau cercle 1",
+      "links": [
+        "grimoire-5d6"
+      ],
+      "details": [
+        [
+          "Cercle indiqué",
+          "1"
+        ],
+        [
+          "Coût de base en mana",
+          "3"
+        ],
+        [
+          "Limites de l’essai",
+          "Exige une eau observable ; ne sonde pas les pensées ni les profondeurs fermées."
+        ]
+      ]
+    },
+    {
+      "id": "demo-voile-protecteur",
+      "version": "4f6d97ce1a6e57b427be6a0d22651a8ec0db899f",
+      "name": "Voile de fortune",
+      "description": "Une protection fragile se déploie contre une gêne momentanée ; ses effets sont arbitrés par le MJ.",
+      "shelf": "sorts",
+      "kind": "spell",
+      "group": "Sorts de démonstration",
+      "status": "test",
+      "path": "quartz/components/scripts/atelier5d6-grimoire.ts",
+      "tags": "protection magie cercle 2",
+      "links": [
+        "grimoire-5d6"
+      ],
+      "details": [
+        [
+          "Cercle indiqué",
+          "2"
+        ],
+        [
+          "Coût de base en mana",
+          "4"
+        ],
+        [
+          "Limites de l’essai",
+          "N'accorde ni immunité ni absorption chiffrée sans règle spécifique du MJ."
+        ]
+      ]
+    },
+    {
+      "id": "demo-etincelle",
+      "version": "4f6d97ce1a6e57b427be6a0d22651a8ec0db899f",
+      "name": "Étincelle contrôlée",
+      "description": "Une décharge brève peut provoquer un impact magique sur une cible ordinaire.",
+      "shelf": "sorts",
+      "kind": "spell",
+      "group": "Sorts de démonstration",
+      "status": "test",
+      "path": "quartz/components/scripts/atelier5d6-grimoire.ts",
+      "tags": "attaque foudre cercle 1",
+      "links": [
+        "grimoire-5d6"
+      ],
+      "details": [
+        [
+          "Cercle indiqué",
+          "1"
+        ],
+        [
+          "Coût de base en mana",
+          "4"
+        ],
+        [
+          "Limites de l’essai",
+          "Aucun effet sur une immunité à la foudre reconnue ; pas de pénétration ontologique."
+        ]
+      ]
+    },
+    {
+      "id": "demo-onde-murailles",
+      "version": "4f6d97ce1a6e57b427be6a0d22651a8ec0db899f",
+      "name": "Onde des murailles (essai)",
+      "description": "Une onde de force préparée dans une matrice de démonstration ; puissance déterminée par le concepteur, et non le Cercle du porteur.",
+      "shelf": "sorts",
+      "kind": "spell",
+      "group": "Sorts de démonstration",
+      "status": "test",
+      "path": "quartz/components/scripts/atelier5d6-grimoire.ts",
+      "tags": "attaque terre cercle 8",
+      "links": [
+        "grimoire-5d6"
+      ],
+      "details": [
+        [
+          "Cercle indiqué",
+          "8"
+        ],
+        [
+          "Coût de base en mana",
+          "16"
+        ],
+        [
+          "Limites de l’essai",
+          "Aucune destruction automatique. La protection, le terrain, la stabilité et les immunités continuent de s'appliquer."
+        ]
+      ]
+    },
+    {
+      "id": "codex-arts-magiques",
+      "version": "1eade3517ad1d83ca8080278e958881c58eefb7b",
+      "name": "Le Codex des Arts magiques",
+      "description": "Cercles, mana, traditions, ingénierie et expériences, avec les limites propres à chaque résultat.",
+      "shelf": "sorts",
+      "kind": "guide",
+      "group": "Codex et pratiques",
+      "status": "reference",
+      "path": "content/magie/index.md",
+      "tags": "univers magie index",
+      "links": [
+        "magie-pour-jouer"
+      ]
+    },
+    {
+      "id": "grimoire-5d6",
+      "version": "874b3154c5fd75ccbf86812d8bdf301c3c6edb58",
+      "name": "Grimoire 5d6",
+      "description": "Apprentissage, Cercles, préparation, mana et limites du catalogue de démonstration.",
+      "shelf": "sorts",
+      "kind": "guide",
+      "group": "Codex et pratiques",
+      "status": "test",
+      "path": "docs/GRIMOIRE_5D6_V1.md",
+      "tags": "",
+      "links": [
+        "codex-arts-magiques",
+        "demo-lueur-guide"
+      ]
+    },
+    {
+      "id": "rites-cooperation",
+      "version": "c0ec50873376b770bc3a64d4489b81a708530e81",
+      "name": "Rites et coopération",
+      "description": "Dossier des rites personnels et des cérémonies collectives. Accès, rôle des participants et validation des ressources.",
+      "shelf": "sorts",
+      "kind": "ritual",
+      "group": "Rituels et cérémonies",
+      "status": "test",
+      "path": "docs/rapports-missions/MAG_003_B_RITES_COOPERATION.md",
+      "tags": "",
+      "links": [
+        "grimoire-5d6"
+      ]
+    },
+    {
+      "id": "systeme-5d6-base12",
+      "version": "57c1dd8d58ce52557818b515c0faee50052d91a4",
+      "name": "Système de jeu 5d6 / Base 12 — prototype jouable",
+      "description": "Une règle d'action commune, quatre caractéristiques, des critiques rares et des ressources en multiples de trois.",
+      "shelf": "actions",
+      "kind": "action",
+      "group": "Résolution et protocoles",
+      "status": "proposal",
+      "path": "content/jouer/systeme-5d6-base12.md",
+      "tags": "jdr 5d6 regles base12 prototype",
+      "links": [
+        "atelier-bestiary-5d6",
+        "SYS-DECH-01",
+        "bestiaire-evolutif-25",
+        "progression-voies-incidents",
+        "magie-pour-jouer"
+      ]
+    },
+    {
+      "id": "playtest-5d6-probabilites",
+      "version": "0e6cf311ee3d2d7a38a9541849ca50b18dc732f1",
+      "name": "Playtest 5d6 — probabilités exactes et protocole PJ/MJ/MJ-IA",
+      "description": "Audit mathématique des 7 776 issues 5d6, effet de la formation, critiques rares, magie et test de compatibilité de la Déchéance.",
+      "shelf": "actions",
+      "kind": "action",
+      "group": "Résolution et protocoles",
+      "status": "proposal",
+      "path": "content/jouer/playtest-5d6-probabilites.md",
+      "tags": "jdr cinq-des 5d6 probabilites playtest magie",
+      "links": [
+        "systeme-5d6-base12",
+        "magie-pour-jouer",
+        "SYS-DECH-01",
+        "progression-voies-incidents",
+        "protocole-failles-guildes"
+      ],
+      "protocol": true
+    },
+    {
+      "id": "protocole-failles-guildes",
+      "version": "8b26e254a4dcf9864b70c664676349d1ff8b1d9a",
+      "name": "Secours aux passages — missions et guildes d’aventuriers",
+      "description": "Dispositif jouable de missions, certification, prise en charge des civils et coordination avec les Revenants.",
+      "shelf": "actions",
+      "kind": "action",
+      "group": "Résolution et protocoles",
+      "status": "proposal",
+      "path": "content/jouer/protocole-failles-guildes.md",
+      "tags": "failles aventuriers secours contrat guildes revenants",
+      "links": [
+        "MON-FAI-02",
+        "contrats-guilde-sept-cites-villages"
+      ]
+    },
+    {
+      "id": "SYS-DECH-01",
+      "version": "48f9ca47c41d985f4b85bdce807d51f45dff89b4",
+      "name": "Jouer la Déchéance — mini-système v1.0",
+      "description": "Mini-système optionnel autonome à 2d6 : Emprise, dons, prix, Chutes liées, pyramidisation et affrontements.",
+      "shelf": "actions",
+      "kind": "action",
+      "group": "Résolution et protocoles",
+      "status": "lore",
+      "path": "content/jouer/decheance-systeme.md",
+      "tags": "decheance jdr regles 2d6 joueurs mj pactes aventure",
+      "links": []
+    },
+    {
+      "id": "SYS-ORIG-05",
+      "version": "f140eec95855318088cec486dd704e96b21c4214",
+      "name": "Création d'un aventurier niveau 5 — parcours de vie, affinités et capacités",
+      "description": "Quatre questions pour construire les origines, répartir les caractéristiques et commencer une aventure au niveau 5 ; hub 5d6 et affinités.",
+      "shelf": "actions",
+      "kind": "ability",
+      "group": "Capacités et progression",
+      "status": "proposal",
+      "path": "content/jouer/parcours-de-vie-affinites.md",
+      "tags": "5d6 creation personnage origines affinites mj progression",
+      "links": []
+    },
+    {
+      "id": "progression-voies-incidents",
+      "version": "9026e604f39634bf812936072d6d34158582075c",
+      "name": "Progression libre, voies et aléas — atelier 5d6 (proposition)",
+      "description": "Douze niveaux, spécialités combinables, talents narratifs, bénédictions, malédictions, objets singuliers et incidents d12.",
+      "shelf": "actions",
+      "kind": "ability",
+      "group": "Capacités et progression",
+      "status": "proposal",
+      "path": "content/jouer/progression-voies-incidents.md",
+      "tags": "5d6 progression niveaux voies incidents aleatoire objets prototype",
+      "links": [
+        "SYS-DECH-01",
+        "systeme-5d6-base12",
+        "magie-pour-jouer"
+      ]
+    },
+    {
+      "id": "capacites-m02",
+      "version": "b84605828131abf8c7fe13f8f33ce9d24896b2e4",
+      "name": "Aptitudes, techniques et signatures",
+      "description": "Contrat des capacités 5d6, rangs, prérequis, limites et approbation MJ.",
+      "shelf": "actions",
+      "kind": "ability",
+      "group": "Capacités et progression",
+      "status": "test",
+      "path": "docs/rapports-missions/M02_ATELIER_CAPACITES_5D6.md",
+      "tags": "",
+      "links": [
+        "SYS-ORIG-05",
+        "systeme-5d6-base12"
+      ]
+    },
+    {
+      "id": "aventure-pilote-les-registres-du-col",
+      "version": "3364058b67d3d9d0494e8cd42ec559308448a523",
+      "name": "Les Registres du Col — Aventure indépendante à Keldrun",
+      "description": "One-shot d'enquête, caravane et secours dans les cols orientaux ; entièrement séparé de l'Odyssée d'Orin, avec options 5d6.",
+      "shelf": "aventures",
+      "kind": "adventure",
+      "group": "Aventures",
+      "status": "proposal",
+      "path": "content/jouer/aventure-pilote-les-registres-du-col.md",
+      "tags": "aventure keldrun caravanes enquetes guilde 5d6",
+      "links": [
+        "GEO-012",
+        "GEO-025",
+        "systeme-5d6-base12",
+        "playtest-5d6-probabilites",
+        "SYS-DECH-01",
+        "atlas-circulations-echanges",
+        "protocole-failles-guildes"
+      ]
+    },
+    {
+      "id": "la-veille-des-sept-cites",
+      "version": "f275685da6691ee12500a78bcc7daf35097accc9",
+      "name": "La Veille des Sept Cités — Aventure itinérante de Faille",
+      "description": "Squelette de cinq à huit séances : une rupture locale imprévisible, des secours, des savoirs spécialisés et des décisions réparties entre cités.",
+      "shelf": "aventures",
+      "kind": "adventure",
+      "group": "Aventures",
+      "status": "proposal",
+      "path": "content/jouer/la-veille-des-sept-cites.md",
+      "tags": "failles sept-cites secours campagne-itinerante mj",
+      "links": [
+        "les-registres-des-sept-cites",
+        "MON-FAI-02",
+        "GEO-010",
+        "GEO-012",
+        "GEO-013",
+        "GEO-007",
+        "GEO-009",
+        "GEO-011",
+        "GEO-008"
+      ]
+    },
+    {
+      "id": "les-registres-des-sept-cites",
+      "version": "e6cb82979074db8f2693eca4c4e9e44ad4774071",
+      "name": "Les Registres des Sept Cités — Campagne itinérante d'enquête",
+      "description": "Squelette d'aventure de six à neuf séances dans les Sept Grandes Cités : registres contestés, contrats, cartes et réseaux humains.",
+      "shelf": "aventures",
+      "kind": "adventure",
+      "group": "Aventures",
+      "status": "proposal",
+      "path": "content/jouer/les-registres-des-sept-cites.md",
+      "tags": "enquete sept-cites campagne-itinerante guildes scenario",
+      "links": [
+        "GEO-012",
+        "GEO-011",
+        "GEO-007",
+        "GEO-009",
+        "GEO-010",
+        "GEO-013",
+        "GEO-008",
+        "playtest-5d6-probabilites",
+        "GEO-001"
+      ]
+    },
+    {
+      "id": "quetes-sept-cites",
+      "version": "86bc146192f224353ba8f55984b094c0490274d4",
+      "name": "35 petites quêtes pour les Sept Grandes Cités",
+      "description": "35 quêtes locales, et deux campagnes itinérantes de 7 villes, sans imposer une aventure passée à Orin.",
+      "shelf": "aventures",
+      "kind": "adventure",
+      "group": "Quêtes et contrats",
+      "status": "proposal",
+      "path": "content/jouer/quetes-sept-cites.md",
+      "tags": "aventures quetes sept-cites mj scenarios",
+      "links": [
+        "dornael-carnet-de-terrain",
+        "aldhammar-carnet-de-terrain",
+        "skalor-carnet-de-terrain",
+        "nacrecombe-carnet-de-terrain",
+        "forgeciel-carnet-de-terrain",
+        "keldrun-carnet-de-terrain",
+        "torngard-carnet-de-terrain",
+        "playtest-5d6-probabilites",
+        "sept-grandes-cites-illustrees"
+      ]
+    },
+    {
+      "id": "quetes-villages-sept-cites",
+      "version": "86fd675fa75fe7a593413c6a10108202f0460d47",
+      "name": "28 quêtes de villages — les Sept Grandes Cités",
+      "description": "28 courtes missions rurales, avec PNJ, décisions et conséquences locales indépendantes.",
+      "shelf": "aventures",
+      "kind": "adventure",
+      "group": "Quêtes et contrats",
+      "status": "proposal",
+      "path": "content/jouer/quetes-villages-sept-cites.md",
+      "tags": "aventures villages quetes sept-cites",
+      "links": [
+        "GEO-013",
+        "village-brumecaille",
+        "village-clair-reflet",
+        "GEO-011",
+        "village-perron-vieux",
+        "village-trois-foyers",
+        "GEO-007",
+        "village-banc-de-roche",
+        "village-garde-ponts"
+      ]
+    },
+    {
+      "id": "contrats-guilde-sept-cites-villages",
+      "version": "b7a02ae27400775011c7e24b6e0edf5c719e1d21",
+      "name": "Guilde d'aventuriers — Missions des Sept Cités vers les villages",
+      "description": "14 avis de guilde et procédures de départ des cités vers les villages : secours, chasse, reconnaissance, escorte.",
+      "shelf": "aventures",
+      "kind": "adventure",
+      "group": "Quêtes et contrats",
+      "status": "proposal",
+      "path": "content/jouer/contrats-guilde-sept-cites-villages.md",
+      "tags": "guilde missions aventure villages secours",
+      "links": [
+        "GEO-013",
+        "village-brumecaille",
+        "village-clair-reflet",
+        "GEO-011",
+        "village-perron-vieux",
+        "village-trois-foyers",
+        "GEO-007",
+        "village-banc-de-roche",
+        "village-garde-ponts"
+      ]
+    },
+    {
+      "id": "cosmologie",
+      "version": "923b18f20861e0e1966a875645ed4f2992a6bdfa",
+      "name": "Cosmologie et Couronnes",
+      "description": "Origines, Couronnes, puissances, croyances et limites du savoir sur l'existence.",
+      "shelf": "univers",
+      "kind": "lore",
+      "group": "Les fondations",
+      "status": "reference",
+      "path": "content/monde/index.md",
+      "tags": "univers cosmologie index",
+      "links": [
+        "MON-PASS-01",
+        "MON-FAI-02",
+        "MON-005",
+        "SYS-DECH-01",
+        "MON-COUR-01",
+        "protocole-failles-guildes",
+        "peuples-cultures"
+      ]
+    },
+    {
+      "id": "MON-PASS-01",
+      "version": "5de406b6cf6ef57be5fa424b89f28622490644cb",
+      "name": "Passages entre Couronnes",
+      "description": "Six catégories canoniques de passages entre Couronnes ; distinction entre Faille, Porte, Reflet, Confluence, Route saisonnière et Passage vivant.",
+      "shelf": "univers",
+      "kind": "lore",
+      "group": "Les fondations",
+      "status": "lore",
+      "path": "content/monde/passages-entre-couronnes.md",
+      "tags": "couronnes passages failles yggdrasil exploration magie",
+      "links": [
+        "MON-FAI-02",
+        "protocole-failles-guildes"
+      ]
+    },
+    {
+      "id": "MON-FAI-02",
+      "version": "c13fee3e3243827b0ae92c5c73b15d82064d31c3",
+      "name": "Failles et ruptures",
+      "description": "Les Failles sont des blessures du réel qui peuvent surgir sans avertissement et bouleverser une famille, un village ou une région entière.",
+      "shelf": "univers",
+      "kind": "lore",
+      "group": "Les fondations",
+      "status": "lore",
+      "path": "content/monde/failles-et-ruptures.md",
+      "tags": "failles passages aleatoire catastrophes veilleurs decheance secours",
+      "links": [
+        "protocole-failles-guildes",
+        "MON-PASS-01"
+      ]
+    },
+    {
+      "id": "MON-005",
+      "version": "77efe700c6d91d57d57f329a03bf9645aae4ee4a",
+      "name": "Les Dix-Huit Grandes Puissances",
+      "description": "Les dix-huit Grandes Puissances, leurs domaines indicatifs et leur place distincte des Fondements et des Archétypes draconiques.",
+      "shelf": "univers",
+      "kind": "lore",
+      "group": "Les fondations",
+      "status": "lore",
+      "path": "content/monde/dix-huit-grandes-puissances.md",
+      "tags": "divinites grandes-puissances conseil cosmologie religions",
+      "links": [
+        "MON-COUR-01"
+      ]
+    },
+    {
+      "id": "MON-COUR-01",
+      "version": "42eda982cf975e7b884f63e76972272afd40a99b",
+      "name": "Les sept courants divins",
+      "description": "Sept sensibilités du Grand Conseil : croissance, droit, mémoire, liberté, précaution, conquête et prédation, sans factions figées.",
+      "shelf": "univers",
+      "kind": "lore",
+      "group": "Les fondations",
+      "status": "lore",
+      "path": "content/monde/courants-et-antagonismes.md",
+      "tags": "courants-divins neuvieme-couronne conseil politique divinites",
+      "links": [
+        "MON-005",
+        "MON-PASS-01"
+      ]
+    },
+    {
+      "id": "peuples-cultures",
+      "version": "d5f1a52868799c95a3fc47dfee78af33161b39f4",
+      "name": "Peuples et cultures",
+      "description": "Vie quotidienne, fêtes, pratiques et transmission des peuples de l'univers.",
+      "shelf": "univers",
+      "kind": "lore",
+      "group": "La vie quotidienne",
+      "status": "reference",
+      "path": "content/cultures/index.md",
+      "tags": "univers cultures traditions index",
+      "links": [
+        "GEO-021",
+        "institutions"
+      ]
+    },
+    {
+      "id": "institutions",
+      "version": "18e80bb33039fba91fe7026d4f9cf6f2302ff4d2",
+      "name": "Institutions et services",
+      "description": "Conseils, école, justice, secours et défense : distinguer l'adoption des réformes de leur déploiement.",
+      "shelf": "univers",
+      "kind": "lore",
+      "group": "La vie quotidienne",
+      "status": "reference",
+      "path": "content/institutions/index.md",
+      "tags": "univers institutions droit index",
+      "links": [
+        "protocole-failles-guildes",
+        "MON-FAI-02"
+      ]
+    },
+    {
+      "id": "magie-pour-jouer",
+      "version": "807a01c269a2017471822e84519c95bbc2b740ee",
+      "name": "Comprendre la magie",
+      "description": "Mana, maîtrise, Cercles, traditions et ingénierie : un guide de lecture sans inventer de règles chiffrées.",
+      "shelf": "univers",
+      "kind": "lore",
+      "group": "La vie quotidienne",
+      "status": "reference",
+      "path": "content/univers/magie-pour-jouer.md",
+      "tags": "univers magie guide",
+      "links": [
+        "codex-arts-magiques",
+        "grimoire-5d6"
+      ]
+    },
+    {
+      "id": "carte-ensembles",
+      "version": "07600bb3fbe81ffd9974b079155d0a6fcbbe5f29",
+      "name": "Schéma des grands ensembles",
+      "description": "Schéma documentaire sans échelle. Il présente les ensembles régionaux et les Sept Cités sans fixer leurs positions exactes.",
+      "shelf": "imagerie",
+      "kind": "image",
+      "group": "Plans et cartes",
+      "status": "proposal",
+      "path": "quartz/static/images/atlas/schema-ensembles.svg",
+      "asset": "/media/atlas/schema-ensembles.svg",
+      "links": [
+        "atlas-schema-regional",
+        "GEO-001",
+        "GEO-021"
+      ]
+    },
+    {
+      "id": "plan-skalor",
+      "version": "5b800ec4b7a57dba20480034ebbee8ca509c8b9d",
+      "name": "Plan de quartiers · Skalor",
+      "description": "Schéma relationnel des quartiers proposés de Skalor. Les positions, trajets et distances restent symboliques.",
+      "shelf": "imagerie",
+      "kind": "image",
+      "group": "Plans et cartes",
+      "status": "proposal",
+      "path": "quartz/static/images/atlas/plans/skalor-quartiers-schematiques.svg",
+      "asset": "/media/atlas/skalor-quartiers-schematiques.svg",
+      "links": [
+        "GEO-007",
+        "skalor-carnet-de-terrain"
+      ]
+    },
+    {
+      "id": "plan-torngard",
+      "version": "7b6bc67cccd918a7fc6f7c25e002cc5135630363",
+      "name": "Plan de quartiers · Torngard",
+      "description": "Schéma relationnel des quartiers proposés de Torngard. Les positions, trajets et distances restent symboliques.",
+      "shelf": "imagerie",
+      "kind": "image",
+      "group": "Plans et cartes",
+      "status": "proposal",
+      "path": "quartz/static/images/atlas/plans/torngard-quartiers-schematiques.svg",
+      "asset": "/media/atlas/torngard-quartiers-schematiques.svg",
+      "links": [
+        "GEO-008",
+        "torngard-carnet-de-terrain"
+      ]
+    },
+    {
+      "id": "plan-forgeciel",
+      "version": "6198e7136be7f61386e4b66e89e7bb38f5747968",
+      "name": "Plan de quartiers · Forgeciel",
+      "description": "Schéma relationnel des quartiers proposés de Forgeciel. Les positions, trajets et distances restent symboliques.",
+      "shelf": "imagerie",
+      "kind": "image",
+      "group": "Plans et cartes",
+      "status": "proposal",
+      "path": "quartz/static/images/atlas/plans/forgeciel-quartiers-schematiques.svg",
+      "asset": "/media/atlas/forgeciel-quartiers-schematiques.svg",
+      "links": [
+        "GEO-009",
+        "forgeciel-carnet-de-terrain"
+      ]
+    },
+    {
+      "id": "plan-nacrecombe",
+      "version": "4e98c279ae5d0d97293035abd1a4328da2ea914d",
+      "name": "Plan de quartiers · Nacrecombe",
+      "description": "Schéma relationnel des quartiers proposés de Nacrecombe. Les positions, trajets et distances restent symboliques.",
+      "shelf": "imagerie",
+      "kind": "image",
+      "group": "Plans et cartes",
+      "status": "proposal",
+      "path": "quartz/static/images/atlas/plans/nacrecombe-quartiers-schematiques.svg",
+      "asset": "/media/atlas/nacrecombe-quartiers-schematiques.svg",
+      "links": [
+        "GEO-010",
+        "nacrecombe-carnet-de-terrain"
+      ]
+    },
+    {
+      "id": "plan-aldhammar",
+      "version": "f50a859448b0349db607edf054a7604569229a18",
+      "name": "Plan de quartiers · Aldhammar",
+      "description": "Schéma relationnel des quartiers proposés de Aldhammar. Les positions, trajets et distances restent symboliques.",
+      "shelf": "imagerie",
+      "kind": "image",
+      "group": "Plans et cartes",
+      "status": "proposal",
+      "path": "quartz/static/images/atlas/plans/aldhammar-quartiers-schematiques.svg",
+      "asset": "/media/atlas/aldhammar-quartiers-schematiques.svg",
+      "links": [
+        "GEO-011",
+        "aldhammar-carnet-de-terrain"
+      ]
+    },
+    {
+      "id": "plan-keldrun",
+      "version": "c1178e224294aaa900d7cfb89eb03f19bf7fa331",
+      "name": "Plan de quartiers · Keldrun",
+      "description": "Schéma relationnel des quartiers proposés de Keldrun. Les positions, trajets et distances restent symboliques.",
+      "shelf": "imagerie",
+      "kind": "image",
+      "group": "Plans et cartes",
+      "status": "proposal",
+      "path": "quartz/static/images/atlas/plans/keldrun-quartiers-schematiques.svg",
+      "asset": "/media/atlas/keldrun-quartiers-schematiques.svg",
+      "links": [
+        "GEO-012",
+        "keldrun-carnet-de-terrain"
+      ]
+    },
+    {
+      "id": "plan-dornael",
+      "version": "7ae9ef6bd51563adaebf827dd821d186558f1631",
+      "name": "Plan de quartiers · Dornaël",
+      "description": "Schéma relationnel des quartiers proposés de Dornaël. Les positions, trajets et distances restent symboliques.",
+      "shelf": "imagerie",
+      "kind": "image",
+      "group": "Plans et cartes",
+      "status": "proposal",
+      "path": "quartz/static/images/atlas/plans/dornael-quartiers-schematiques.svg",
+      "asset": "/media/atlas/dornael-quartiers-schematiques.svg",
+      "links": [
+        "GEO-013",
+        "dornael-carnet-de-terrain"
+      ]
+    }
+  ]
+}

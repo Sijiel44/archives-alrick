@@ -1,0 +1,1213 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Studio MJ · Les Chroniques d’Entre-Rives</title>
+  <link rel="stylesheet" href="./studio.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#workspace">Aller à l’espace de travail</a>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Studio MJ">
+      <a class="wordmark" href="#home" data-view="home">
+        <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <path d="M24 2 46 24 24 46 2 24Z M24 7v34 M11 24h26 M24 13l9 11-9 11-9-11Z M20 24l4-4 4 4-4 4Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span>Les Chroniques<br><strong>d’Entre-Rives</strong></span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <div class="nav-group" role="group" aria-label="Campagne">
+          <p class="eyebrow sidebar-label" aria-hidden="true">Campagne</p>
+          <button id="nav-home" type="button" data-view="home" aria-current="page"><span aria-hidden="true">⌂</span> Accueil</button>
+          <button id="nav-prepare" type="button" data-view="prepare" disabled><span aria-hidden="true">◇</span> Préparer</button>
+          <button id="nav-play" type="button" data-view="play" disabled><span aria-hidden="true">▷</span> Jouer</button>
+          <button id="nav-interludes" type="button" data-view="interludes" disabled><span aria-hidden="true">◷</span> Interludes</button>
+          <button id="nav-archive" type="button" data-view="archive" disabled><span aria-hidden="true">≡</span> Archiver</button>
+        </div>
+        <div class="nav-group" role="group" aria-label="Ressources et création">
+          <p class="eyebrow sidebar-label" aria-hidden="true">Ressources et création</p>
+          <button id="nav-library" type="button" data-view="library"><span aria-hidden="true">▤</span> Bibliothèque</button>
+          <button id="nav-creations" type="button" data-view="creations"><span aria-hidden="true">✧</span> Créations</button>
+          <button id="nav-workshop" type="button" data-view="workshop"><span aria-hidden="true">✦</span> Bestiaire 5d6</button>
+          <button id="nav-universe" type="button" data-view="universe"><span aria-hidden="true">✧</span> Univers</button>
+        </div>
+        <div class="nav-group" role="group" aria-label="Conservation">
+          <p class="eyebrow sidebar-label" aria-hidden="true">Conservation</p>
+          <button id="nav-backups" type="button" data-view="backups"><span aria-hidden="true">↓</span> Sauvegardes</button>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <p class="eyebrow">Campagne active</p>
+        <p id="active-campaign">Aucune campagne ouverte</p>
+        <p class="local-state"><span aria-hidden="true"></span> Pilote local</p>
+      </div>
+    </aside>
+
+    <main id="workspace" tabindex="-1">
+      <header class="topbar">
+        <div class="topbar-context">
+          <p class="eyebrow">Régie du maître de jeu</p>
+          <a href="/accueil">Découvrir l’univers</a>
+        </div>
+        <div class="topbar-context">
+          <div class="status-chip"><span aria-hidden="true"></span><p id="save-status" class="status" role="status" aria-live="polite" aria-atomic="true">Ouverture du stockage local…</p></div>
+          <button id="stop-player-window" class="secondary" type="button" hidden>Retirer la fiche joueur</button>
+        </div>
+      </header>
+      <div id="app-error" class="notice error" hidden>
+        <p id="app-error-text" role="alert"></p>
+        <button id="refresh-campaign" type="button" class="secondary" hidden>Recharger la campagne</button>
+      </div>
+      <div id="campaign-recovery" class="notice" role="status" tabindex="-1" hidden>
+        <p><strong id="campaign-recovery-title"></strong> Les enregistrements concernés sont conservés dans ce profil.</p>
+        <p>Vous pouvez ouvrir les campagnes lisibles et en télécharger une copie dans <strong>Sauvegardes</strong>.</p>
+      </div>
+
+      <section id="view-home" aria-labelledby="home-title">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow accent">Carnet du maître de jeu</p>
+            <h1 id="home-title" tabindex="-1">Préparez votre prochaine séance.</h1>
+            <p>Rassemblez le groupe, posez la première scène et reprenez la partie là où vous l’avez laissée.</p>
+            <div class="actions hero-actions">
+              <button id="resume-campaign" type="button" hidden>Reprendre la dernière campagne</button>
+              <a class="hero-create" href="#campaign-name">Nouvelle campagne <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <figure class="hero-artwork">
+            <img class="hero-illustration" src="./media/entre-rives-accueil.webp" width="1200" height="800" alt="Un pont de pierre éclairé par des lanternes traverse une rivière dans la brume" fetchpriority="high" decoding="async">
+            <figcaption>Les rives dans la brume</figcaption>
+          </figure>
+        </div>
+        <section id="campaign-dashboard" class="panel campaign-dashboard" aria-labelledby="dashboard-campaign" hidden>
+          <div class="panel-heading">
+            <div><p class="eyebrow accent">Tableau de bord · Privé MJ</p><h2 id="dashboard-campaign"></h2></div>
+            <div class="actions">
+              <button type="button" class="secondary" data-dashboard-view="prepare">Préparer</button>
+              <button type="button" data-dashboard-view="play">Jouer</button>
+              <button type="button" class="secondary" data-dashboard-view="archive">Archiver</button>
+            </div>
+          </div>
+          <dl class="campaign-facts">
+            <div><dt>Point de reprise</dt><dd id="dashboard-scene"></dd></div>
+            <div><dt>Personnages joueurs</dt><dd id="dashboard-group"></dd></div>
+            <div><dt>Dernière séance archivée</dt><dd id="dashboard-session"></dd></div>
+          </dl>
+          <div id="dashboard-next" class="private-note" hidden>
+            <h3>Pour la prochaine séance</h3>
+            <p id="dashboard-next-text" class="narrative"></p>
+          </div>
+        </section>
+        <div class="dashboard-grid">
+          <article class="panel new-campaign-panel">
+            <p class="eyebrow accent">01 · Nouveau départ</p>
+            <h2>Créer une partie</h2>
+            <p class="muted">Pour une soirée ou une campagne libre. Le niveau sert de départ aux nouveaux PJ.</p>
+            <form id="create-campaign">
+              <label for="campaign-name">Nom de la campagne</label>
+              <input id="campaign-name" name="name" required maxlength="120" autocomplete="off" placeholder="Les Lanternes du gué">
+              <div class="form-row">
+                <div>
+                  <label for="campaign-style">Format</label>
+                  <select id="campaign-style" name="style">
+                    <option value="one-shot">Partie courte guidée</option>
+                    <option value="campaign">Campagne libre</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="starting-level">Niveau de départ</label>
+                  <input id="starting-level" name="startingLevel" type="number" required min="1" max="25" value="1">
+                </div>
+              </div>
+              <label for="campaign-description">Amorce <span class="muted">· facultative</span></label>
+              <textarea id="campaign-description" name="description" rows="2" maxlength="8000"></textarea>
+              <button id="create-campaign-submit" type="submit" disabled>Créer et préparer</button>
+            </form>
+          </article>
+          <article class="panel">
+            <p class="eyebrow accent">02 · Reprendre</p>
+            <h2>Mes campagnes</h2>
+            <p id="campaigns-empty" class="empty">Vos campagnes apparaîtront ici après leur première sauvegarde.</p>
+            <ul id="campaign-list" class="record-list"></ul>
+            <button class="text-button" type="button" data-view="backups">Restaurer un fichier de sauvegarde</button>
+          </article>
+        </div>
+        <details class="help panel">
+          <summary>Prise en main du pilote</summary>
+          <p>Créez une campagne fictive, ajoutez des PJ et copiez une créature de la bibliothèque. Préparez une scène, puis ouvrez le mode Jouer.</p>
+          <p>Chaque bouton Enregistrer valide une action. Exportez une sauvegarde pour conserver une copie hors de ce profil de navigateur.</p>
+        </details>
+      </section>
+
+      <section id="view-prepare" aria-labelledby="prepare-title" hidden>
+        <header class="view-heading">
+          <div>
+            <p class="eyebrow accent">Studio · Préparation</p>
+            <h1 id="prepare-title" tabindex="-1">Préparer la séance</h1>
+            <p id="prepare-description" class="muted"></p>
+          </div>
+          <div class="actions">
+            <button type="button" class="secondary" data-play-protocol>Consulter le protocole</button>
+            <button type="button" class="secondary" data-view="interludes">Préparer les interludes</button>
+            <button type="button" data-view="play">Ouvrir le mode Jouer</button>
+          </div>
+        </header>
+        <ol id="guided-steps" class="guided" aria-label="Étapes de la partie courte" hidden>
+          <li id="guide-characters"><span aria-hidden="true">01</span> Former le groupe</li>
+          <li id="guide-creatures"><span aria-hidden="true">02</span> Copier une créature</li>
+          <li id="guide-scenes"><span aria-hidden="true">03</span> Préparer une scène</li>
+        </ol>
+        <div class="dashboard-grid">
+          <article id="fresque" class="panel wide fresque" aria-labelledby="fresque-title">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow accent">Parcours de campagne</p>
+                <h2 id="fresque-title">Fresque de campagne</h2>
+              </div>
+              <div class="actions">
+                <button type="button" id="toggle-scene-list" class="secondary" aria-controls="scene-list" aria-pressed="false" hidden>Vue liste</button>
+                <button type="button" class="secondary" data-view="library">Ouvrir la bibliothèque</button>
+                <button type="button" id="import-adventure" class="secondary">Importer une aventure</button>
+                <button type="button" id="add-marker" class="secondary">Ajouter un repère</button>
+                <button type="button" id="add-scene" class="secondary">Créer une scène</button>
+              </div>
+            </div>
+            <p id="scenes-empty" class="empty">Donnez un titre à votre première scène. Vous pourrez ensuite y relier les participants.</p>
+            <p><a id="fresque-adventures" href="#rayon/aventures">Ouvrir les aventures du MJ</a></p>
+            <p id="fresque-help" class="muted" hidden>Les cartes suivent l’ordre de préparation. Les embranchements proposent des chemins que le MJ choisit en séance.</p>
+            <details id="fresque-lane-tools" class="fresque-minimap">
+              <summary>Couloirs de campagne</summary>
+              <p class="muted">Regroupez les scènes par fil narratif. Attribuez un couloir depuis une carte.</p>
+              <button type="button" id="add-fresque-lane" class="secondary">Créer un couloir</button>
+              <ul id="fresque-lane-list" class="record-list"></ul>
+            </details>
+            <div class="fresque-controls">
+              <div id="fresque-lane-filter-field" hidden>
+                <label for="fresque-lane-filter">Filtrer par couloir</label>
+                <select id="fresque-lane-filter" aria-controls="scene-list"></select>
+              </div>
+              <div>
+                <label for="marker-filter">Filtrer les repères</label>
+                <select id="marker-filter" aria-controls="scene-list marker-reserve-list"><option value="">Tous les repères</option></select>
+              </div>
+              <div>
+                <label for="fresque-density">Taille des cartes</label>
+                <select id="fresque-density" aria-controls="scene-list">
+                  <option value="compact">Compacte</option>
+                  <option value="standard" selected>Standard</option>
+                  <option value="large">Large</option>
+                </select>
+              </div>
+              <p id="marker-filter-status" class="muted" role="status"></p>
+            </div>
+            <p id="fresque-lane-status" class="muted" role="status" hidden></p>
+            <details id="fresque-minimap" class="fresque-minimap" hidden>
+              <summary>Mini-carte de la Fresque <span id="fresque-map-count" class="muted"></span></summary>
+              <div class="minimap-controls">
+                <div>
+                  <label for="fresque-map-select">Scène à repérer</label>
+                  <select id="fresque-map-select"></select>
+                </div>
+                <button id="fresque-map-current" type="button" class="secondary">Repérer la scène courante</button>
+              </div>
+              <div id="fresque-map-scroll" class="minimap-scroll">
+                <div id="fresque-map-track" class="minimap-track">
+                  <svg id="fresque-map-graph" viewBox="0 0 54 45" aria-hidden="true" focusable="false">
+                    <defs><marker id="fresque-map-arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+                      <path d="M0 0 L8 4 L0 8 Z"></path>
+                    </marker></defs>
+                    <line id="fresque-map-rail" x1="27" y1="39" x2="27" y2="39"></line>
+                    <g id="fresque-map-arcs"></g>
+                  </svg>
+                  <ol id="fresque-map-markers" role="list" aria-label="Repères numérotés de la Fresque"></ol>
+                </div>
+              </div>
+              <p class="minimap-key muted"><span>◆ Scène courante</span><span>• Scène avec embranchement</span></p>
+              <section class="minimap-selection" aria-labelledby="fresque-map-selected">
+                <div class="panel-heading">
+                  <div><p class="eyebrow accent">Scène repérée</p><h3 id="fresque-map-selected" aria-live="polite"></h3></div>
+                  <button id="fresque-map-jump" type="button" class="secondary" aria-controls="scene-list">Rejoindre la carte</button>
+                </div>
+                <p id="fresque-map-empty" class="muted">Aucun embranchement pour cette scène.</p>
+                <ul id="fresque-map-branches" class="record-list" aria-label="Embranchements de la scène repérée"></ul>
+              </section>
+            </details>
+            <ol id="scene-list" class="fresque-scenes" role="list" aria-label="Scènes dans l’ordre de préparation"></ol>
+            <section id="marker-reserve" class="marker-reserve" aria-labelledby="marker-reserve-title" hidden>
+              <h3 id="marker-reserve-title">Réserve de repères</h3>
+              <p class="muted">Ces repères peuvent être rattachés à une scène depuis leur fiche.</p>
+              <ul id="marker-reserve-list" class="marker-list"></ul>
+            </section>
+            <details id="scene-link-tools" hidden>
+              <summary>Ajouter un embranchement</summary>
+              <form id="scene-link-form">
+                <div class="form-row">
+                  <div>
+                    <label for="scene-link-from">Depuis la scène</label>
+                    <select id="scene-link-from" name="fromId" required></select>
+                  </div>
+                  <div>
+                    <label for="scene-link-to">Vers la scène</label>
+                    <select id="scene-link-to" name="toId" required></select>
+                  </div>
+                </div>
+                <label for="scene-link-label">Condition ou repère <span class="muted">· facultatif</span></label>
+                <input id="scene-link-label" name="label" maxlength="120" placeholder="Si le groupe suit les traces">
+                <button type="submit" id="add-scene-link" class="secondary">Relier les scènes</button>
+              </form>
+            </details>
+          </article>
+          <article class="panel">
+            <div class="panel-heading">
+              <h2>Personnages joueurs</h2>
+              <div class="actions">
+                <button type="button" id="add-character" class="secondary">Ajouter un PJ</button>
+                <button type="button" id="guide-pj" disabled>Créer par parcours de vie</button>
+                <button type="button" id="free-pj" class="secondary" disabled>Créer un PJ libre</button>
+                <button type="button" id="import-pj" class="secondary" disabled>Importer un PJ M02</button>
+              </div>
+            </div>
+            <p id="characters-empty" class="empty">Ajoutez un personnage avec son nom et son niveau.</p>
+            <ul id="character-list" class="record-list"></ul>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><h2>Créatures et PNJ</h2><div class="actions"><button type="button" class="secondary" data-library-shelf="bestiaire">Ouvrir le Bestiaire</button><button type="button" class="secondary" data-view="workshop">Créer un profil 5d6</button></div></div>
+            <p id="creatures-empty" class="empty">Les copies du catalogue rejoignent cette campagne.</p>
+            <ul id="creature-list" class="record-list"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="view-play" aria-labelledby="play-title" hidden>
+        <header class="view-heading">
+          <div><p class="eyebrow accent">Studio · Séance</p><h1 id="play-title" tabindex="-1">Jouer la séance</h1></div>
+          <button class="secondary" type="button" data-view="prepare">Revenir à la préparation</button>
+        </header>
+        <div class="session-actions" role="group" aria-label="Actions rapides de séance">
+          <div class="session-action-group" role="group" aria-label="Actions de table">
+            <p class="eyebrow accent">À la table</p>
+            <div class="actions">
+              <button id="open-play-action" type="button" disabled>Arbitrer une action · 5d6</button>
+              <button id="open-play-opposition" class="secondary" type="button" aria-describedby="play-opposition-hint" disabled>Opposition · M03</button>
+              <button id="quick-notes" class="secondary" type="button" disabled>Notes MJ</button>
+              <button id="improvise-scene" class="secondary" type="button">Improviser une scène</button>
+            </div>
+            <p id="play-opposition-hint" class="muted action-hint" hidden></p>
+          </div>
+          <div class="session-action-group" role="group" aria-label="Références et diffusion">
+            <p class="eyebrow">Régie et références</p>
+            <div class="actions">
+              <button id="quick-search" class="secondary" type="button">Rechercher</button>
+              <button id="open-play-protocol" class="secondary" type="button" data-play-protocol>Protocole de jeu</button>
+              <button id="quick-present" class="secondary" type="button" disabled>Présenter</button>
+              <button id="quick-ambiances" class="secondary" type="button" disabled>Ambiances</button>
+              <button class="secondary" type="button" data-view="interludes">Activités entre les scènes</button>
+              <button class="secondary" type="button" data-view="archive">Archiver la séance</button>
+              <button class="secondary" type="button" data-view="backups">Sauvegardes</button>
+            </div>
+          </div>
+        </div>
+        <p id="play-engine-unavailable" class="notice error" hidden>Le moteur 5d6 est indisponible. Ouvrez le Studio depuis le dépôt complet pour accéder à l’arbitrage.</p>
+        <div class="panel search-panel cockpit-search" role="search" aria-label="Recherche de séance">
+          <label for="cockpit-search">Chercher dans la campagne</label>
+          <input id="cockpit-search" type="search" aria-describedby="cockpit-search-help" placeholder="Scène, personnage, lieu…">
+          <p id="cockpit-search-help" class="muted">Retrouvez les fiches de cette campagne, les Archives et le bestiaire de démonstration.</p>
+          <p id="cockpit-search-status" class="muted" role="status"></p>
+          <ul id="cockpit-results" class="record-list"></ul>
+        </div>
+        <p id="play-empty" class="empty">Préparez une scène pour disposer d’un point de reprise.</p>
+        <div id="play-content" class="dashboard-grid" hidden>
+          <article class="panel session-scene">
+            <div class="panel-heading scene-context">
+              <div><p class="eyebrow accent">Scène courante · Point de reprise</p><h2 id="current-scene-title"></h2></div>
+              <div class="scene-picker"><label for="jump-scene">Changer de scène</label><select id="jump-scene"></select></div>
+            </div>
+            <p id="current-scene-description" class="narrative"></p>
+            <div id="play-branches" hidden>
+              <h3>Embranchements possibles</h3>
+              <ul id="play-branch-list" class="record-list"></ul>
+            </div>
+            <div class="private-note">
+              <p class="badge">Privé MJ</p>
+              <h3>Notes de la scène</h3>
+              <p id="current-private-notes" class="narrative"></p>
+            </div>
+            <section id="play-adventure" class="private-note" aria-labelledby="play-adventure-title" hidden>
+              <p class="badge">Privé MJ</p>
+              <h3 id="play-adventure-title">Fiches de préparation</h3>
+              <ul id="play-adventure-references" class="adventure-references"></ul>
+            </section>
+            <button id="edit-current-scene" class="secondary" type="button">Modifier la scène ou ses notes</button>
+            <div class="private-note" aria-labelledby="play-markers-title">
+              <div class="panel-heading">
+                <div><p class="badge">Privé MJ</p><h3 id="play-markers-title">Repères de la scène</h3></div>
+                <button id="play-add-marker" class="secondary" type="button">Ajouter un repère</button>
+              </div>
+              <p id="play-markers-empty" class="muted">Aucun repère rattaché à cette scène.</p>
+              <ul id="play-marker-list" class="marker-list"></ul>
+            </div>
+          </article>
+          <div class="stack">
+            <article class="panel">
+              <h2>Participants</h2>
+              <p id="participants-empty" class="empty">Aucun participant relié à cette scène.</p>
+              <ul id="participant-list" class="record-list"></ul>
+            </article>
+            <article class="panel">
+              <p class="eyebrow accent">Écran de séance</p>
+              <h2>Présenter la scène</h2>
+              <p class="muted">Vérifiez l’aperçu avant d’ouvrir une fenêtre joueur ou d’afficher la scène sur cet écran.</p>
+              <button id="prepare-scene-share" type="button" disabled>Préparer la projection</button>
+              <fieldset id="projection-fields" class="checks">
+                <legend>Affichage rapide sur cet écran</legend>
+                <label><input id="share-title" type="checkbox"> Titre de la scène</label>
+                <label><input id="share-description" type="checkbox"> Description de la scène</label>
+              </fieldset>
+              <button id="show-projection" class="secondary" type="button" disabled>Montrer la sélection</button>
+            </article>
+            <section class="panel" aria-labelledby="play-ambiances-title">
+              <p class="eyebrow accent">Scène courante · Privé MJ</p>
+              <h2 id="play-ambiances-title" tabindex="-1">Carnet d’ambiances</h2>
+              <p class="muted">Retrouvez vos textes et images préparés pour cette scène.</p>
+              <div id="play-ambiances"></div>
+            </section>
+          </div>
+          <section class="panel wide" aria-labelledby="play-journal-title">
+            <div class="panel-heading">
+              <div><p class="eyebrow accent">Scène courante · Privé MJ</p><h2 id="play-journal-title">Journal de jeu</h2></div>
+              <button id="journal-add-action" class="secondary" type="button" disabled>Nouvelle action</button>
+            </div>
+            <p id="play-actions-empty" class="muted">Les actions consignées pour cette scène apparaîtront ici.</p>
+            <ol id="play-actions-list" class="play-journal-list"></ol>
+          </section>
+        </div>
+      </section>
+
+      <section id="view-interludes" aria-labelledby="interludes-title" hidden>
+        <header class="view-heading">
+          <div>
+            <p class="eyebrow accent">Campagne · Privé MJ</p>
+            <h1 id="interludes-title" tabindex="-1">Interludes de campagne</h1>
+            <p class="muted">Préparez les activités entre deux scènes ou deux séances. Une fois jouées, consignez leur résultat dans le journal.</p>
+          </div>
+          <div class="actions">
+            <button id="add-interlude" type="button">Préparer un interlude</button>
+            <button id="open-interlude-journal" class="secondary" type="button">Voir le journal des interludes</button>
+          </div>
+        </header>
+        <article class="panel" aria-labelledby="interludes-planned-title">
+          <h2 id="interludes-planned-title">À jouer</h2>
+          <p id="interludes-empty" class="empty">Aucun interlude à jouer.</p>
+          <ul id="interludes-planned" class="record-list interlude-list"></ul>
+        </article>
+      </section>
+
+      <section id="view-archive" aria-labelledby="archive-title" hidden>
+        <header class="view-heading">
+          <div><p class="eyebrow accent">Studio · Fin de séance</p><h1 id="archive-title" tabindex="-1">Archiver la séance</h1>
+            <p class="muted">Consignez ce qui s’est passé et préparez la reprise.</p></div>
+          <button id="add-session" type="button">Archiver une séance</button>
+        </header>
+        <div class="dashboard-grid">
+          <article class="panel" aria-labelledby="archive-history-title">
+            <h2 id="archive-history-title">Séances archivées</h2>
+            <p id="archives-empty" class="empty">Les séances apparaîtront ici après enregistrement.</p>
+            <ul id="archive-history" class="record-list"></ul>
+          </article>
+          <article id="archive-detail" class="panel" aria-labelledby="archive-detail-title" hidden>
+            <p id="archive-date" class="eyebrow accent"></p>
+            <h2 id="archive-detail-title" tabindex="-1"></h2>
+            <p id="archive-resume" class="muted"></p>
+            <button id="edit-session" class="secondary" type="button">Modifier cette archive</button>
+            <div class="private-note">
+              <span class="badge">Privé MJ</span>
+              <h3>Résumé de la séance</h3>
+              <p id="archive-summary" class="narrative"></p>
+              <h3>Pour la prochaine séance</h3>
+              <p id="archive-next" class="narrative"></p>
+              <h3>Scènes jouées et confirmées</h3>
+              <p id="confirmed-empty" class="muted">Aucune scène confirmée pour cette séance.</p>
+              <ul id="archive-confirmed"></ul>
+            </div>
+            <div class="chronicle-panel">
+              <p id="chronicle-state" class="badge"></p>
+              <h3>Chronique destinée aux joueurs</h3>
+              <p id="chronicle-preview" class="narrative" tabindex="-1"></p>
+              <p class="muted">Seul ce texte est copié ou téléchargé après approbation.</p>
+              <div class="actions">
+                <button id="approve-chronicle" type="button">Approuver la chronique</button>
+                <button id="revoke-chronicle" class="secondary" type="button" hidden>Retirer l’approbation</button>
+                <button id="copy-chronicle" class="secondary" type="button" disabled>Copier le texte</button>
+                <button id="download-chronicle" class="secondary" type="button" disabled>Télécharger le texte</button>
+              </div>
+            </div>
+          </article>
+        </div>
+        <article id="interlude-journal" class="panel" aria-labelledby="interlude-journal-title">
+          <p class="eyebrow accent">Journal de campagne · Privé MJ</p>
+          <h2 id="interlude-journal-title" tabindex="-1">Interludes consignés</h2>
+          <p id="interlude-journal-empty" class="empty">Les interludes apparaîtront ici après la saisie de leur résultat.</p>
+          <ul id="interlude-journal-list" class="record-list interlude-list"></ul>
+        </article>
+      </section>
+
+      <section id="view-library" aria-labelledby="library-title" hidden>
+        <header class="view-heading library-heading">
+          <div id="library-overview"><p class="eyebrow accent">Studio · Ressources de jeu</p><h1 id="library-title" tabindex="-1">Bibliothèque</h1>
+            <p class="muted">Choisissez un rayon pour préparer la table, ou cherchez dans toutes les fiches.</p></div>
+          <div id="library-shelf-header" hidden>
+            <button id="library-back" type="button" class="text-button" data-library-shelf="">← Tous les rayons</button>
+            <h1 id="library-shelf-title" tabindex="-1"></h1>
+            <p id="library-shelf-description" class="muted"></p>
+            <div id="atlas-quick-links" class="actions" hidden></div>
+          </div>
+          <div class="actions">
+            <button id="library-universe" class="secondary" type="button" data-view="universe">Explorer l’univers</button>
+            <button id="library-add-creation" type="button" data-view="creations">Atelier de création</button>
+            <button id="library-add-image" type="button" hidden>Ajouter une image par lien</button>
+            <button id="library-import-adventure" class="secondary" type="button" hidden disabled>Importer une aventure</button>
+            <button id="library-add-marker" type="button" disabled>Créer un repère</button>
+            <button id="bestiary-quick-link" type="button" class="secondary" data-view="workshop" hidden>Ouvrir l’Atelier du Bestiaire</button>
+          </div>
+        </header>
+        <div class="panel search-panel library-search" role="search" aria-label="Recherche de fiches">
+          <div>
+            <label id="catalogue-search-label" for="catalogue-search">Chercher dans toute la bibliothèque</label>
+            <input id="catalogue-search" type="search" placeholder="Nom, mot-clé ou code…" aria-controls="catalogue-list">
+          </div>
+          <details id="catalogue-filters" open hidden>
+            <summary id="catalogue-filter-summary">Filtres de recherche</summary>
+            <div class="library-filters">
+              <div id="catalogue-group-field" hidden><label for="catalogue-group">Catégorie du rayon</label><select id="catalogue-group" aria-controls="catalogue-list"><option value="">Toutes les catégories</option></select></div>
+              <div><label for="catalogue-type">Type de fiche</label><select id="catalogue-type" aria-controls="catalogue-list"><option value="">Tous les types</option></select></div>
+              <div><label for="catalogue-origin">Origine</label><select id="catalogue-origin" aria-controls="catalogue-list"><option value="">Toutes les origines</option></select></div>
+              <div><label for="catalogue-status">Statut</label><select id="catalogue-status" aria-controls="catalogue-list"><option value="">Tous les statuts</option></select></div>
+              <div id="catalogue-level-field"><label for="catalogue-level">Niveau du PJ</label><select id="catalogue-level" aria-controls="catalogue-list"><option value="">Tous les niveaux</option></select></div>
+            </div>
+          </details>
+          <p id="catalogue-context" class="muted" hidden></p>
+        </div>
+        <div id="library-directory">
+          <div class="panel-heading library-directory-heading">
+            <div><p class="eyebrow accent">Choisir un rayon</p><h2>Ressources pour la table</h2></div>
+            <a href="#rayon/tout" data-library-shelf="tout">Toutes les fiches</a>
+          </div>
+          <nav id="library-shelves" class="library-shelves" aria-label="Rayons de la bibliothèque"></nav>
+        </div>
+        <div id="library-results" hidden>
+          <div class="panel-heading catalogue-toolbar">
+            <p id="catalogue-count" class="eyebrow" role="status" tabindex="-1"></p>
+            <div class="segmented" role="group" aria-label="Affichage des fiches">
+              <button id="library-layout-cards" class="secondary" type="button" aria-pressed="true" aria-controls="catalogue-list">Cartes</button>
+              <button id="library-layout-list" class="secondary" type="button" aria-pressed="false" aria-controls="catalogue-list">Liste</button>
+            </div>
+          </div>
+          <div id="catalogue-list" class="catalogue" aria-label="Fiches de la bibliothèque"></div>
+          <p id="catalogue-empty" class="empty" hidden>Aucune fiche ne correspond à cette recherche.</p>
+          <nav id="catalogue-pages" class="actions" aria-label="Pages de la bibliothèque" hidden>
+            <button id="catalogue-previous" class="secondary" type="button" aria-controls="catalogue-list">Page précédente</button>
+            <button id="catalogue-next" class="secondary" type="button" aria-controls="catalogue-list">Page suivante</button>
+          </nav>
+        </div>
+      </section>
+
+      <section id="view-creations" aria-labelledby="creations-title" hidden>
+        <header class="view-heading">
+          <div><p class="eyebrow accent">Studio · Préparation</p><h1 id="creations-title" tabindex="-1">Atelier de création</h1>
+            <p id="creations-context" class="muted"></p></div>
+          <div class="actions">
+            <button type="button" class="secondary" data-view="library">Ouvrir la bibliothèque</button>
+            <button type="button" class="secondary" data-view="workshop">Ouvrir le Bestiaire 5d6</button>
+          </div>
+        </header>
+        <div id="creations-directory"></div>
+      </section>
+
+      <section id="view-workshop" aria-labelledby="workshop-title" hidden>
+        <header class="view-heading workshop-heading">
+          <div><p class="eyebrow accent">Atelier · Profils 5d6</p><h1 id="workshop-title" tabindex="-1">Atelier du Bestiaire</h1>
+            <p class="muted">Composez une créature ou un PNJ, vérifiez sa fiche et ajoutez-la à votre campagne.</p></div>
+          <button type="button" class="secondary" data-library-shelf="bestiaire">Parcourir le Bestiaire</button>
+        </header>
+        <div class="workshop-grid">
+          <section class="panel workshop-controls" aria-labelledby="workshop-controls-title">
+            <h2 id="workshop-controls-title">Préparer un profil</h2>
+            <div class="segmented" role="group" aria-label="Mode de préparation">
+              <button id="workshop-mode-create" class="secondary" type="button" aria-pressed="true" aria-controls="workshop-create">Composer</button>
+              <button id="workshop-mode-import" class="secondary" type="button" aria-pressed="false" aria-controls="workshop-import">Importer une fiche</button>
+            </div>
+            <p id="workshop-unavailable" class="notice error" hidden>Le moteur historique du Bestiaire est indisponible.</p>
+            <form id="workshop-create">
+              <label for="workshop-name">Nom</label>
+              <input id="workshop-name" name="name" required maxlength="100" placeholder="Le veilleur des galeries">
+              <div class="form-row">
+                <div><label for="workshop-kind">Type</label><select id="workshop-kind" name="kind"><option value="creature">Créature</option><option value="pnj">PNJ</option></select></div>
+                <div><label for="workshop-level">Niveau</label><input id="workshop-level" name="level" type="number" min="1" max="25" value="1" required></div>
+              </div>
+              <div class="form-row">
+                <div><label for="workshop-archetype">Archétype</label><select id="workshop-archetype" name="archetype"><option value="faune">Faune</option><option value="predateur">Prédateur</option><option value="gardien">Gardien</option><option value="mystique">Mystique</option><option value="colosse">Colosse</option></select></div>
+                <div><label for="workshop-role">Rôle</label><select id="workshop-role" name="role"><option value="offensif">Offensif</option><option value="defensif">Défensif</option><option value="soutien">Soutien</option></select></div>
+              </div>
+              <label for="workshop-description">Description <span class="muted">· facultative</span></label>
+              <textarea id="workshop-description" name="description" rows="3" maxlength="1500"></textarea>
+              <button id="workshop-generate" type="submit" disabled>Prévisualiser le profil</button>
+            </form>
+            <div id="workshop-import" class="workshop-import" hidden>
+              <label for="workshop-file">Fichier JSON du Bestiaire</label>
+              <p id="workshop-format" class="muted">Choisissez l’export d’une fiche <code>alrick.bestiary.v1</code> depuis l’Atelier d’origine.</p>
+              <input id="workshop-file" type="file" accept=".json,application/json" aria-describedby="workshop-format" disabled>
+            </div>
+            <p id="workshop-error" class="notice error" role="alert" hidden></p>
+          </section>
+          <section class="panel workshop-preview" aria-labelledby="workshop-preview-title">
+            <div class="workshop-preview-heading"><p class="eyebrow accent">Fiche de table · M03</p><h2 id="workshop-preview-title" tabindex="-1">Aperçu du profil</h2></div>
+            <figure id="workshop-empty" class="workshop-artwork">
+              <img src="./media/lamproie-de-nacre.webp" alt="Une lamproie à collerette nacrée dans un lac souterrain" width="1024" height="683" loading="lazy" decoding="async">
+              <figcaption>Lamproie de nacre · illustration de jeu</figcaption>
+            </figure>
+            <div id="workshop-sheet"></div>
+            <p id="workshop-destination" class="muted"></p>
+            <button id="workshop-save" type="button" disabled>Ajouter à la campagne</button>
+          </section>
+        </div>
+      </section>
+
+      <section id="view-universe" aria-labelledby="universe-title" hidden>
+        <header class="universe-hero">
+          <div>
+            <p class="eyebrow accent">Les Archives d’Alrick</p>
+            <h1 id="universe-title" tabindex="-1">Univers</h1>
+            <p>Des vallées du Mérien aux Couronnes, les territoires, les peuples et les savoirs des Archives offrent des points de départ pour de nouvelles aventures.</p>
+            <a href="#rayon/atlas" data-library-shelf="atlas">Explorer l’Atlas →</a>
+          </div>
+          <img src="./media/entre-rives-accueil.webp" alt="Un passage entre deux rives au crépuscule" width="1200" height="800" loading="lazy">
+        </header>
+        <div id="universe-topics" class="universe-topics"></div>
+      </section>
+
+      <section id="view-backups" aria-labelledby="backups-title" hidden>
+        <header class="view-heading">
+          <div><p class="eyebrow accent">Conservation · Profil local</p><h1 id="backups-title" tabindex="-1">Sauvegardes</h1>
+            <p class="muted">Gardez une copie privée de la campagne, indépendante du navigateur.</p></div>
+        </header>
+        <div class="dashboard-grid">
+          <article class="panel">
+            <p class="eyebrow accent">Export · Privé MJ</p>
+            <h2>Télécharger une sauvegarde</h2>
+            <p id="export-context" class="muted"></p>
+            <p>Le fichier JSON inclut les notes privées et les fiches de la campagne. Conservez-le dans un emplacement réservé au MJ.</p>
+            <button id="export-backup" type="button" disabled>Exporter la campagne</button>
+          </article>
+          <article class="panel">
+            <p class="eyebrow accent">Import · Aperçu</p>
+            <h2>Restaurer une sauvegarde</h2>
+            <label for="backup-file">Choisir un fichier JSON du Studio</label>
+            <input id="backup-file" type="file" accept=".json,application/json" disabled>
+            <div id="backup-preview" class="notice" hidden>
+              <h3 id="backup-name"></h3>
+              <p id="backup-summary"></p>
+              <p id="backup-conflict" hidden>Cette campagne existe déjà dans ce profil. Pour vérifier la restauration, ouvrez le Studio dans un autre profil de navigateur.</p>
+              <button id="restore-backup" type="button" disabled>Confirmer la restauration</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <noscript><p class="notice error">Activez JavaScript pour utiliser le Studio et accéder au stockage local.</p></noscript>
+    </main>
+  </div>
+
+  <dialog id="player-share-dialog" aria-labelledby="player-share-title">
+    <p class="eyebrow accent">Présentation · Privé MJ</p>
+    <h2 id="player-share-title" tabindex="-1" autofocus>Préparer la fiche joueur</h2>
+    <p id="player-share-character" class="muted"></p>
+    <p class="muted">Choisissez les informations à montrer. L’aperçu ci-dessous contient exactement les champs envoyés à la vue joueur.</p>
+    <div id="player-share-live" class="notice player-share-live" hidden>
+      <p class="muted">La fenêtre joueur conserve la présentation en cours jusqu’au remplacement.</p>
+      <button id="withdraw-player-preview" class="secondary" type="button">Retirer la projection en cours</button>
+    </div>
+    <form id="player-share-form">
+      <fieldset id="player-share-fields" class="checks player-share-fields">
+        <legend>Champs visibles par le joueur</legend>
+        <label><input type="checkbox" name="fields" value="name"> Nom</label>
+        <label><input type="checkbox" name="fields" value="identity"> Niveau et métier</label>
+        <label><input type="checkbox" name="fields" value="hp"> Points de vie</label>
+        <label><input type="checkbox" name="fields" value="mana"> Mana</label>
+        <label><input type="checkbox" name="fields" value="xp"> Expérience</label>
+        <label><input type="checkbox" name="fields" value="stats"> Caractéristiques</label>
+        <label><input type="checkbox" name="fields" value="masteries"> Maîtrises</label>
+        <label><input type="checkbox" name="fields" value="inventory"> Inventaire · noms et quantités</label>
+      </fieldset>
+      <fieldset id="scene-share-fields" class="checks player-share-fields" hidden disabled>
+        <legend>Champs visibles par le joueur</legend>
+        <label><input type="checkbox" name="fields" value="title"> <span id="scene-share-title-label">Titre de la scène</span></label>
+        <label><input type="checkbox" name="fields" value="description"> <span id="scene-share-text-label">Texte de la scène</span></label>
+      </fieldset>
+      <div id="player-share-image-field" hidden>
+        <label for="player-share-image">Carte ou portrait à montrer</label>
+        <select id="player-share-image" disabled></select>
+      </div>
+      <div class="player-share-preview">
+        <p class="eyebrow accent">Aperçu de la vue joueur</p>
+        <p id="player-share-empty" class="muted">Cochez un champ pour voir l’aperçu.</p>
+        <p id="player-share-image-status" class="muted" role="status" hidden>Préparation de l’image…</p>
+        <div id="player-share-preview"></div>
+      </div>
+      <p id="player-share-message" class="notice error" role="alert" hidden></p>
+      <div class="actions">
+        <button id="open-player-window" type="button" disabled>Ouvrir une fenêtre joueur</button>
+        <button id="show-player-here" class="secondary" type="button" disabled>Montrer sur cet écran</button>
+        <button id="cancel-player-share" class="secondary" type="button">Annuler</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="projection-dialog" aria-label="Projection locale">
+    <div class="projection-bar">
+      <p class="eyebrow accent">Les Chroniques d’Entre-Rives · Projection locale</p>
+      <button id="stop-projection" class="secondary" type="button" autofocus>Retirer la projection</button>
+    </div>
+    <div id="projection"></div>
+  </dialog>
+
+  <dialog id="play-protocol-dialog" aria-labelledby="play-protocol-heading">
+    <div class="protocol-body">
+      <header class="panel-heading">
+        <div><p class="eyebrow accent">Aide de table · Archives d’Alrick</p><h2 id="play-protocol-heading" tabindex="-1" autofocus>Protocole de jeu</h2></div>
+        <form method="dialog"><button class="secondary" type="submit">Fermer le protocole</button></form>
+      </header>
+      <ol class="protocol-steps">
+        <li><strong>Reprendre au dernier fait joué.</strong> Relisez la dernière décision et les notes de reprise. Pour un détail déterminant, vérifiez la fiche et sa source. Distinguez un événement joué, un fait validé et une proposition.</li>
+        <li><strong>Écouter l’intention.</strong> Le joueur choisit ce que son personnage tente. Le MJ décrit ce que le personnage peut percevoir, ses moyens et les obstacles.</li>
+        <li><strong>Annoncer l’enjeu.</strong> Résolvez une action certaine directement. Pour une action impossible, identifiez le préalable. Pour une action possible et incertaine, annoncez le seuil, les bonus et ce que le résultat peut changer avant de lancer.</li>
+        <li><strong>Résoudre et arbitrer.</strong> Lisez les cinq dés, le naturel et le total. Dans le moteur M01, les naturels 5 à 7 échouent. Les naturels 27 à 30 renforcent une réussite qui franchit le seuil. Un échec de justesse peut donner un progrès avec un coût décidé par le MJ.</li>
+        <li><strong>Consigner puis rendre la main.</strong> Inscrivez la conséquence dans le journal de la scène. Revenez au choix du joueur. En fin de séance, confirmez les scènes jouées, préparez la reprise et relisez la chronique avant de l’approuver.</li>
+      </ol>
+      <details>
+        <summary>Combat, magie et autres modules historiques</summary>
+        <dl class="protocol-references">
+          <dt><a href="https://github.com/Sijiel44/archives-alrick/blob/88f774f3d0d6d520d8d11443b72202b9caf4f94b/docs/rapports-missions/M03_COMBAT_BESTIAIRE_5D6.md" target="_blank" rel="noopener noreferrer">Opposition M03</a></dt><dd>Vérifiez la faisabilité, puis distinguez le contact, la pénétration et l’impact. Confirmez les dégâts après lecture des protections. Une riposte est une action distincte.</dd>
+          <dt><a href="https://github.com/Sijiel44/archives-alrick/blob/88f774f3d0d6d520d8d11443b72202b9caf4f94b/docs/GRIMOIRE_5D6_V1.md" target="_blank" rel="noopener noreferrer">Magie et Grimoire</a></dt><dd>Vérifiez le Cercle, la capacité approuvée, ses limites, les moyens et le coût réel. Pour un rite, vérifiez aussi les participants et leurs engagements.</dd>
+          <dt><a href="https://github.com/Sijiel44/archives-alrick/blob/88f774f3d0d6d520d8d11443b72202b9caf4f94b/docs/rapports-missions/M01_PROGRESSION_5D6.md" target="_blank" rel="noopener noreferrer">Progression M01/M02</a></dt><dd>Consignez l’accomplissement et ses circonstances. L’attribution d’XP et l’activation d’une capacité relèvent d’une décision du MJ.</dd>
+          <dt><a href="https://github.com/Sijiel44/archives-alrick/blob/88f774f3d0d6d520d8d11443b72202b9caf4f94b/content/jouer/decheance-systeme.md" target="_blank" rel="noopener noreferrer">Déchéance</a></dt><dd>Ce module thématique a son propre système 2d6, ses pactes et son Emprise.</dd>
+          <dt><a href="https://github.com/Sijiel44/archives-alrick/blob/88f774f3d0d6d520d8d11443b72202b9caf4f94b/content/jouer/protocole-failles-guildes.md" target="_blank" rel="noopener noreferrer">Failles et secours</a></dt><dd>Identifiez les personnes menacées et les moyens disponibles. Protégez, évacuez ou cherchez un relais selon l’urgence.</dd>
+          <dt>MJ assisté</dt><dd>Vérifiez les sources et donnez la priorité aux choix des joueurs. Consignez les dés réellement lancés et le résultat vérifiable.</dd>
+        </dl>
+      </details>
+      <p class="muted">Le Studio résout les actions simples avec M01 et les oppositions M03 contre les profils 5d6 de la scène. Les autres modules sont consultables dans les Archives.</p>
+      <ul class="protocol-links">
+        <li><a href="https://github.com/Sijiel44/archives-alrick/blob/88f774f3d0d6d520d8d11443b72202b9caf4f94b/docs/PROTOCOLE_RECHERCHE_AVANT_REPONSE_JDR.md" target="_blank" rel="noopener noreferrer">Vérification documentaire du MJ</a></li>
+        <li><a href="https://github.com/Sijiel44/archives-alrick/blob/88f774f3d0d6d520d8d11443b72202b9caf4f94b/content/jouer/playtest-5d6-probabilites.md" target="_blank" rel="noopener noreferrer">Playtest et protocole 5d6</a></li>
+        <li><a href="https://github.com/Sijiel44/archives-alrick/tree/88f774f3d0d6d520d8d11443b72202b9caf4f94b/content/jouer" target="_blank" rel="noopener noreferrer">Guides et modules du projet initial</a></li>
+      </ul>
+    </div>
+  </dialog>
+
+  <dialog id="play-action-dialog" aria-labelledby="play-action-heading">
+    <form id="play-action-form">
+      <p class="eyebrow accent">Arbitrage · Privé MJ</p>
+      <h2 id="play-action-heading">Arbitrer une action</h2>
+      <p id="play-action-context" class="muted"></p>
+      <fieldset id="play-declaration" class="protocol-step">
+        <legend>1 · Annoncer l’action</legend>
+        <label for="play-intent">Intention du personnage</label>
+        <input id="play-intent" name="intent" required maxlength="160" placeholder="Traverser le gué avant la crue" autofocus>
+        <label for="play-actor">Personnage ou groupe <span class="muted">· facultatif</span></label>
+        <input id="play-actor" name="actor" maxlength="120">
+        <label for="play-stakes">Enjeu annoncé</label>
+        <textarea id="play-stakes" name="stakes" rows="2" required maxlength="8000" placeholder="À la réussite, la compagnie traverse. En cas d’échec, le courant l’oblige à rebrousser chemin."></textarea>
+        <label for="play-mode">Type de résolution</label>
+        <select id="play-mode" name="mode">
+          <option value="check">Action possible et incertaine · 5d6</option>
+          <option value="opposition" disabled>Opposition contre une fiche 5d6 · M03</option>
+          <option value="certain">Action certaine · sans jet</option>
+          <option value="blocked">Action impossible · sans jet</option>
+        </select>
+        <fieldset id="play-opposition-fields" class="protocol-step" hidden disabled>
+          <legend>Cible et impact</legend>
+          <label for="play-target">Cible dans la scène</label>
+          <select id="play-target" name="targetId" aria-describedby="play-target-info" required></select>
+          <div class="form-row opposition-params">
+            <div><label for="play-impact-mode">Type d’impact</label><select id="play-impact-mode" name="impactMode"></select></div>
+            <div><label for="play-attacker-level">Niveau de l’attaquant</label><input id="play-attacker-level" name="level" type="number" min="1" max="25" required></div>
+          </div>
+          <fieldset id="play-impact-values" class="form-row" aria-label="Valeurs d’impact">
+            <div><label for="play-base-damage">Dégâts de base</label><input id="play-base-damage" name="baseDamage" type="number" min="1" max="12" value="6" required></div>
+            <div><label for="play-penetration">Pénétration</label><input id="play-penetration" name="penetration" type="number" min="0" max="8" value="0" required></div>
+          </fieldset>
+          <p id="play-target-info" class="muted action-hint" role="status"></p>
+        </fieldset>
+        <fieldset id="play-check-fields" class="protocol-step">
+          <legend id="play-parameter-legend">Paramètres de l’action simple · M01 en essai</legend>
+          <p class="muted">Reprenez les valeurs brutes de la fiche. Le moteur calcule les bonus effectifs.</p>
+          <p id="play-profile-hint" class="badge" hidden></p>
+          <div class="form-row">
+            <div><label for="play-stat">Caractéristique</label><select id="play-stat" name="stat"></select></div>
+            <div><label for="play-raw-stat">Score brut</label><input id="play-raw-stat" name="rawStat" type="number" min="1" max="9007199254740991" required></div>
+          </div>
+          <div class="form-row">
+            <div><label for="play-mastery">Rang de maîtrise</label><input id="play-mastery" name="masteryRank" type="number" min="0" max="9007199254740991" value="0" required></div>
+            <div><label for="play-situation">Situation (−2 à +2)</label><input id="play-situation" name="situation" type="number" min="-2" max="2" value="0" required></div>
+          </div>
+          <div id="play-profile-mastery-field" hidden><label for="play-profile-mastery">Choisir une maîtrise de la fiche</label><select id="play-profile-mastery"></select></div>
+          <label id="play-threshold-label" for="play-threshold">Seuil annoncé</label>
+          <input id="play-threshold" name="threshold" type="number" min="0" max="9007199254740991" value="21" list="play-thresholds" required>
+          <datalist id="play-thresholds"><option value="15"><option value="18"><option value="21"><option value="24"><option value="27"><option value="30"></datalist>
+        </fieldset>
+        <button id="play-lock" type="button">Valider l’annonce</button>
+      </fieldset>
+      <div id="play-locked" class="announced-action" hidden>
+        <p class="eyebrow accent">Annonce validée</p>
+        <p id="play-locked-intent"></p>
+        <p id="play-locked-target" class="badge" hidden></p>
+        <p id="play-locked-parameters" class="muted" hidden></p>
+        <p id="play-locked-stakes" class="narrative"></p>
+      </div>
+      <fieldset id="play-dice-step" class="protocol-step" hidden disabled>
+        <legend>2 · Résoudre le jet</legend>
+        <label for="play-dice-source">Origine des dés</label>
+        <select id="play-dice-source"><option value="studio">Lancer dans le Studio</option><option value="table">Saisir les dés de la table</option></select>
+        <fieldset id="play-manual-dice" class="protocol-step dice-fields" hidden disabled>
+          <legend>Les cinq faces obtenues</legend>
+          <label>Dé 1 <input type="number" name="die1" min="1" max="6" inputmode="numeric" required></label>
+          <label>Dé 2 <input type="number" name="die2" min="1" max="6" inputmode="numeric" required></label>
+          <label>Dé 3 <input type="number" name="die3" min="1" max="6" inputmode="numeric" required></label>
+          <label>Dé 4 <input type="number" name="die4" min="1" max="6" inputmode="numeric" required></label>
+          <label>Dé 5 <input type="number" name="die5" min="1" max="6" inputmode="numeric" required></label>
+        </fieldset>
+        <div class="actions">
+          <button id="play-resolve" type="button">Lancer les 5d6</button>
+          <button id="play-revise" class="secondary" type="button">Modifier l’annonce</button>
+        </div>
+      </fieldset>
+      <div id="play-resolution" class="play-resolution" role="status" tabindex="-1" hidden></div>
+      <fieldset id="play-consequence-step" class="protocol-step" hidden disabled>
+        <legend id="play-consequence-legend">3 · Consigner la conséquence</legend>
+        <label for="play-consequence">Décision ou conséquence retenue par le MJ</label>
+        <textarea id="play-consequence" name="consequence" rows="3" required maxlength="8000"></textarea>
+        <div id="play-impact-confirm" class="impact-confirm" hidden>
+          <p class="eyebrow accent">Impact proposé</p>
+          <p id="play-impact-change"></p>
+          <label><input id="play-apply-damage" name="applyDamage" type="checkbox" aria-describedby="play-impact-change"> Appliquer ce changement de PV</label>
+        </div>
+        <button id="play-record" type="submit">Consigner dans le journal</button>
+      </fieldset>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <button class="secondary cancel-edit" type="button">Annuler l’action</button>
+    </form>
+  </dialog>
+
+  <dialog id="character-dialog" aria-labelledby="character-heading">
+    <form id="character-form">
+      <p class="eyebrow accent">Campagne · Personnage joueur</p>
+      <h2 id="character-heading">Ajouter un PJ</h2>
+      <label for="character-name">Nom</label>
+      <input id="character-name" name="name" required maxlength="120" autofocus>
+      <label for="character-level">Niveau</label>
+      <input id="character-level" name="level" type="number" required min="1" max="25">
+      <label for="character-notes">Notes <span class="muted">· privées</span></label>
+      <textarea id="character-notes" name="notes" rows="3" maxlength="8000"></textarea>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer le PJ</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="creation-dialog" aria-labelledby="creation-title">
+    <form id="creation-form">
+      <p class="eyebrow accent">Atelier de création · Privé MJ</p>
+      <h2 id="creation-title">Créer une fiche</h2>
+      <label for="creation-kind">Type de fiche</label>
+      <select id="creation-kind" name="kind" required></select>
+      <label for="creation-name">Nom</label>
+      <input id="creation-name" name="name" required maxlength="160" autofocus>
+      <label for="creation-description">Description</label>
+      <textarea id="creation-description" name="description" rows="3" maxlength="8000"></textarea>
+      <label for="creation-state">État de préparation</label>
+      <select id="creation-state" name="state"></select>
+      <div id="creation-specific-fields" class="creation-fields"></div>
+      <div id="creation-parent-field" hidden>
+        <label for="creation-parent">Lieu parent</label>
+        <select id="creation-parent" name="parentId"></select>
+      </div>
+      <details id="creation-link-tools" class="protocol-step">
+        <summary>Relier des fiches</summary>
+        <p class="muted">Choisissez des fiches de cette campagne ou du catalogue. Vous pouvez aussi coller un raccourci Markdown dans un champ de texte.</p>
+        <label for="creation-link-select">Fiche à relier</label>
+        <select id="creation-link-select"></select>
+        <div class="actions"><button id="creation-add-link" class="secondary" type="button">Ajouter le lien</button></div>
+        <ul id="creation-link-list" class="records"></ul>
+      </details>
+      <label for="creation-notes">Notes privées du MJ</label>
+      <textarea id="creation-notes" name="notes" rows="3" maxlength="8000"></textarea>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer la création</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="adventure-import-dialog" aria-labelledby="adventure-import-title">
+    <form id="adventure-import-form">
+      <p class="eyebrow accent">Aventure → Fresque · Privé MJ</p>
+      <h2 id="adventure-import-title">Importer une aventure</h2>
+      <p id="adventure-import-context" class="muted"></p>
+      <label for="adventure-import-file">Fichier d’aventure</label>
+      <input id="adventure-import-file" type="file" accept="application/json,.json" aria-describedby="adventure-import-help" autofocus>
+      <p id="adventure-import-help" class="muted">Sélectionnez un fichier JSON d’aventure. Vous pourrez relire son contenu avant de l’ajouter à la campagne.</p>
+      <p id="adventure-import-status" class="muted" role="status"></p>
+      <section id="adventure-import-preview" class="protocol-step" aria-labelledby="adventure-import-name" hidden>
+        <h3 id="adventure-import-name" tabindex="-1"></h3>
+        <p id="adventure-import-source" class="muted"></p>
+        <p id="adventure-import-audience"></p>
+        <div class="private-note">
+          <p class="eyebrow accent">Accroche à lire aux joueurs</p>
+          <p id="adventure-import-hook" class="narrative"></p>
+        </div>
+        <details class="private-note">
+          <summary>Consulter les scènes et les notes privées du MJ</summary>
+          <div id="adventure-import-preparation"></div>
+        </details>
+        <p id="adventure-import-resume" class="muted"></p>
+      </section>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button id="adventure-import-submit" type="submit" disabled>Ajouter l’aventure à la Fresque</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="adventure-plan-dialog" aria-labelledby="adventure-plan-title">
+    <form id="adventure-plan-form">
+      <p class="eyebrow accent">Aventure → Fresque · Privé MJ</p>
+      <h2 id="adventure-plan-title">Préparer la Fresque</h2>
+      <p id="adventure-plan-context" class="muted"></p>
+      <fieldset id="adventure-plan-input" class="protocol-step">
+        <legend>1 · Choisir les jalons</legend>
+        <label for="adventure-milestones">Jalons de l’aventure</label>
+        <textarea id="adventure-milestones" rows="6" maxlength="2000" aria-describedby="adventure-milestone-help" autofocus></textarea>
+        <p id="adventure-milestone-help" class="muted">Un titre par ligne, dans l’ordre de la Fresque. Ajoutez une note privée après <code> :: </code>, par exemple <code>Le gué :: La passe s’ouvre à minuit.</code> Modifier la liste des jalons reconstruit l’aperçu.</p>
+        <button id="adventure-plan-review" type="button">Prévisualiser les scènes</button>
+      </fieldset>
+      <fieldset id="adventure-plan-review-panel" class="protocol-step" hidden disabled>
+        <legend>2 · Relire les scènes</legend>
+        <p id="adventure-plan-preview-title" tabindex="-1"></p>
+        <p class="muted">Seuls le titre et le texte partageable peuvent être choisis pour la projection. Les fiches liées et les notes sont réservées au MJ.</p>
+        <p id="adventure-plan-link-hint" class="muted" hidden>Pour répartir des fiches entre les scènes, reliez-les d’abord à l’aventure dans l’atelier de création.</p>
+        <div id="adventure-plan-rows"></div>
+        <label class="adventure-chain"><input type="checkbox" name="chain" checked> Relier les scènes dans l’ordre par des embranchements</label>
+        <div class="actions">
+          <button id="adventure-plan-add" type="submit">Ajouter à la Fresque</button>
+          <button id="adventure-plan-revise" class="secondary" type="button">Revenir aux jalons</button>
+        </div>
+      </fieldset>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <button class="secondary cancel-edit" type="button">Annuler</button>
+    </form>
+  </dialog>
+
+  <dialog id="pj-free-dialog" aria-labelledby="pj-free-title">
+    <form id="pj-free-form">
+      <p class="eyebrow accent">Création libre M02 · Privé MJ</p>
+      <h2 id="pj-free-title">Créer un PJ libre</h2>
+      <fieldset id="pj-free-choices" class="protocol-step">
+        <legend>1 · Composer le personnage</legend>
+        <label for="pj-free-name">Nom du PJ</label>
+        <input id="pj-free-name" name="name" maxlength="90" required autofocus>
+        <div class="form-row">
+          <div><label for="pj-free-profession">Métier ou rôle</label><input id="pj-free-profession" name="profession" maxlength="120"></div>
+          <div><label for="pj-free-level">Niveau</label><input id="pj-free-level" name="level" type="number" min="1" max="25" required></div>
+        </div>
+        <p class="muted">Répartissez 12 points de départ entre les quatre caractéristiques. Les hausses et les maîtrises utilisent le budget de développement du niveau choisi.</p>
+        <p id="pj-free-budget" class="muted" role="status"></p>
+        <div id="pj-free-stats" class="creation-fields"></div>
+        <details id="pj-free-training">
+          <summary>Choisir les maîtrises</summary>
+          <div id="pj-free-masteries" class="creation-fields"></div>
+        </details>
+        <details id="pj-free-story" class="pj-guide-story">
+          <summary>Écrire le récit et les liens du PJ <span class="muted">· facultatif</span></summary>
+          <label for="pj-free-backstory">Histoire personnelle</label>
+          <textarea id="pj-free-backstory" name="backstory" maxlength="4000" rows="3"></textarea>
+          <label for="pj-free-connections">Liens et mentors</label>
+          <input id="pj-free-connections" name="connections" maxlength="600">
+          <label for="pj-free-goal">But au début de la campagne</label>
+          <input id="pj-free-goal" name="goal" maxlength="600">
+        </details>
+        <button id="pj-free-review" type="button">Vérifier le budget et la fiche</button>
+      </fieldset>
+      <section id="pj-free-review-panel" class="protocol-step" aria-labelledby="pj-free-preview-title" hidden>
+        <h3 id="pj-free-preview-title" tabindex="-1">2 · Vérifier la fiche</h3>
+        <div id="pj-free-preview"></div>
+        <div class="actions">
+          <button type="submit">Créer le PJ</button>
+          <button id="pj-free-revise" class="secondary" type="button">Revenir aux choix</button>
+        </div>
+      </section>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <button class="secondary cancel-edit" type="button">Annuler</button>
+    </form>
+  </dialog>
+
+  <dialog id="pj-guide-dialog" aria-labelledby="pj-guide-title">
+    <form id="pj-guide-form">
+      <p class="eyebrow accent">Création guidée · Privé MJ</p>
+      <h2 id="pj-guide-title">Parcours de vie</h2>
+      <p id="pj-guide-level" class="muted"></p>
+      <fieldset id="pj-guide-choices" class="protocol-step">
+        <legend>1 · Choisir les origines</legend>
+        <label for="pj-guide-name">Nom du PJ</label>
+        <input id="pj-guide-name" name="name" maxlength="90" required autofocus>
+        <div id="pj-guide-steps" class="form-row"></div>
+        <div id="pj-guide-training" class="form-row"></div>
+        <details class="pj-guide-story">
+          <summary>Écrire le récit et les liens du PJ <span class="muted">· facultatif</span></summary>
+          <label for="pj-guide-backstory">Histoire personnelle</label>
+          <textarea id="pj-guide-backstory" name="backstory" rows="3" maxlength="4000"></textarea>
+          <label for="pj-guide-connections">Liens et mentors</label>
+          <input id="pj-guide-connections" name="connections" maxlength="600">
+          <label for="pj-guide-goal">But au début de la campagne</label>
+          <input id="pj-guide-goal" name="goal" maxlength="600">
+        </details>
+        <p class="muted">L’éducation, la lecture et le récit libre décrivent le personnage. Les quatre périodes orientent les achats du budget M02.</p>
+        <button id="pj-guide-review" type="button">Prévisualiser le PJ</button>
+      </fieldset>
+      <section id="pj-guide-review-panel" class="protocol-step" aria-labelledby="pj-guide-preview-title" hidden>
+        <h3 id="pj-guide-preview-title" tabindex="-1">2 · Vérifier la fiche</h3>
+        <div id="pj-guide-preview"></div>
+        <div class="actions">
+          <button id="pj-guide-create" type="submit">Créer le PJ niveau 5</button>
+          <button id="pj-guide-revise" class="secondary" type="button">Revenir aux choix</button>
+        </div>
+      </section>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <button class="secondary cancel-edit" type="button">Annuler</button>
+    </form>
+  </dialog>
+
+  <dialog id="pj-import-dialog" aria-labelledby="pj-import-title">
+    <form id="pj-import-form">
+      <p class="eyebrow accent">Campagne · Privé MJ</p>
+      <h2 id="pj-import-title">Importer un PJ M02</h2>
+      <p class="muted">Choisissez un export JSON <code>alrick.sheets.v3</code> de l’Atelier historique, puis une fiche à ajouter.</p>
+      <label for="pj-import-file">Fichier de fiches</label>
+      <input id="pj-import-file" type="file" accept=".json,application/json" autofocus>
+      <p id="pj-import-status" class="muted" role="status"></p>
+      <div id="pj-import-selection" hidden>
+        <label for="pj-import-source">Fiche source</label>
+        <select id="pj-import-source" name="selection"></select>
+        <label for="pj-import-destination">Dans la campagne</label>
+        <select id="pj-import-destination" name="destination"></select>
+        <p class="muted">Le rattachement conserve le nom, les notes et les scènes du PJ existant. Le niveau vient de la fiche importée.</p>
+      </div>
+      <div id="pj-import-preview"></div>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button id="pj-import-submit" type="submit" disabled>Importer dans la campagne</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="creature-dialog" aria-labelledby="creature-heading">
+    <form id="creature-form">
+      <p class="eyebrow accent">Campagne · Variante locale</p>
+      <h2 id="creature-heading">Adapter la créature</h2>
+      <div id="creature-art" hidden></div>
+      <p id="creature-source" class="muted"></p>
+      <label for="creature-name">Nom</label>
+      <input id="creature-name" name="name" required maxlength="120" autofocus>
+      <label for="creature-description">Description</label>
+      <textarea id="creature-description" name="description" rows="4" maxlength="8000"></textarea>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer la variante</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="fresque-lane-dialog" aria-labelledby="fresque-lane-heading">
+    <form id="fresque-lane-form">
+      <p class="eyebrow accent">Fresque · Privé MJ</p>
+      <h2 id="fresque-lane-heading">Créer un couloir</h2>
+      <label for="fresque-lane-name">Nom du couloir</label>
+      <input id="fresque-lane-name" name="name" maxlength="80" required autofocus>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer le couloir</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="scene-dialog" aria-labelledby="scene-heading">
+    <form id="scene-form">
+      <p class="eyebrow accent">Studio · Scène</p>
+      <h2 id="scene-heading">Créer une scène</h2>
+      <label for="scene-title">Titre</label>
+      <input id="scene-title" name="title" required maxlength="120" autofocus>
+      <label for="scene-description">Description</label>
+      <textarea id="scene-description" name="description" rows="3" maxlength="8000" aria-describedby="scene-shortcuts"></textarea>
+      <fieldset id="scene-participants" class="checks">
+        <legend>Participants</legend>
+        <div id="scene-participant-options"></div>
+      </fieldset>
+      <label for="scene-private-notes">Notes de la scène <span class="badge">Privé MJ</span></label>
+      <textarea id="scene-private-notes" name="privateNotes" rows="3" maxlength="8000" aria-describedby="scene-shortcuts"></textarea>
+      <p id="scene-shortcuts" class="muted">Dans la régie, <code>[[GEO-013|Dornaël]]</code> ouvre la fiche du lieu.</p>
+      <div id="improvise-options" hidden>
+        <label for="improvise-destination">Après l’enregistrement</label>
+        <select id="improvise-destination" name="destination" disabled>
+          <option value="reserve">Garder en réserve</option>
+          <option value="play">Jouer maintenant</option>
+        </select>
+        <p id="improvise-first-scene" class="muted" hidden>Cette première scène devient le point de reprise.</p>
+      </div>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer la scène</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="ambiance-dialog" aria-labelledby="ambiance-heading">
+    <form id="ambiance-form">
+      <p class="eyebrow accent">Carnet d’ambiances · Privé MJ</p>
+      <h2 id="ambiance-heading">Ajouter une ambiance</h2>
+      <p id="ambiance-context" class="muted"></p>
+      <label for="ambiance-name">Nom privé de l’ambiance</label>
+      <input id="ambiance-name" name="name" required maxlength="160" autofocus>
+      <p class="muted">Ajoutez au moins un élément à montrer. Chaque ambiance s’ouvre d’abord dans l’aperçu.</p>
+      <button id="ambiance-copy-scene" class="secondary" type="button">Reprendre le titre et le texte de la scène</button>
+      <label for="ambiance-title">Titre à projeter</label>
+      <input id="ambiance-title" name="title" maxlength="160">
+      <label for="ambiance-description">Texte à projeter</label>
+      <textarea id="ambiance-description" name="description" rows="4" maxlength="16000"></textarea>
+      <label for="ambiance-image">Image du catalogue</label>
+      <select id="ambiance-image" name="imageId"></select>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer l’ambiance</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="interlude-dialog" aria-labelledby="interlude-heading">
+    <form id="interlude-form">
+      <p class="eyebrow accent">Interludes · Privé MJ</p>
+      <h2 id="interlude-heading">Préparer un interlude</h2>
+      <label for="interlude-title">Titre de l’interlude</label>
+      <input id="interlude-title" name="title" required maxlength="160" autofocus>
+      <label for="interlude-kind">Type d’activité</label>
+      <select id="interlude-kind" name="kind" required></select>
+      <label for="interlude-scene">Quand se déroule l’interlude ?</label>
+      <select id="interlude-scene" name="afterSceneId"></select>
+      <label for="interlude-preparation">Notes de préparation</label>
+      <textarea id="interlude-preparation" name="preparation" rows="4" maxlength="8000"></textarea>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer la préparation</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="interlude-result-dialog" aria-labelledby="interlude-result-heading">
+    <form id="interlude-result-form">
+      <p class="eyebrow accent">Journal de campagne · Privé MJ</p>
+      <h2 id="interlude-result-heading">Consigner un interlude</h2>
+      <p id="interlude-result-context" class="muted"></p>
+      <label for="interlude-date">Date de jeu</label>
+      <input id="interlude-date" name="date" type="date" required min="0001-01-01" max="9999-12-31">
+      <label for="interlude-result">Résultat et conséquences</label>
+      <textarea id="interlude-result" name="notes" required rows="4" maxlength="8000" autofocus></textarea>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer dans le journal</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="archive-dialog" aria-labelledby="archive-heading">
+    <form id="archive-form">
+      <p class="eyebrow accent">Studio · Archive de séance</p>
+      <h2 id="archive-heading">Archiver une séance</h2>
+      <label for="session-title">Titre de la séance</label>
+      <input id="session-title" name="title" required maxlength="120" autofocus>
+      <label for="session-date">Date de la séance</label>
+      <input id="session-date" name="date" type="date" required min="0001-01-01" max="9999-12-31">
+      <input name="resumeSceneId" type="hidden">
+      <p id="session-resume" class="muted"></p>
+      <fieldset id="session-scenes" class="checks">
+        <legend>Scènes jouées à confirmer</legend>
+        <p class="muted">Cochez uniquement les scènes dont le déroulement est confirmé.</p>
+        <div id="session-scene-options"></div>
+      </fieldset>
+      <label for="session-summary">Résumé de la séance <span class="badge">Privé MJ</span></label>
+      <textarea id="session-summary" name="privateSummary" rows="3" maxlength="8000"></textarea>
+      <label for="session-next">Repères et conséquences pour la suite <span class="badge">Privé MJ</span></label>
+      <textarea id="session-next" name="nextSession" rows="3" maxlength="8000"></textarea>
+      <label for="session-chronicle">Chronique destinée aux joueurs</label>
+      <textarea id="session-chronicle" name="chronicle" rows="4" maxlength="8000" aria-describedby="session-chronicle-help"></textarea>
+      <p id="session-chronicle-help" class="muted">Relisez et approuvez ce texte dans l’archive avant de le partager.</p>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer l’archive</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="linked-image-dialog" aria-labelledby="linked-image-heading">
+    <form id="linked-image-form">
+      <p class="eyebrow accent">Imagerie · Campagne</p>
+      <h2 id="linked-image-heading">Ajouter une image par lien</h2>
+      <label for="linked-image-url">Lien direct de l’image</label>
+      <input id="linked-image-url" name="url" type="url" placeholder="https://…" required maxlength="2048" aria-describedby="linked-image-help" autofocus>
+      <p id="linked-image-help" class="muted">Collez une adresse HTTPS qui affiche directement l’image. Elle reste hébergée à cette adresse.</p>
+      <label for="linked-image-name">Titre de l’image</label>
+      <input id="linked-image-name" name="name" required maxlength="160">
+      <label for="linked-image-alt">Description courte de l’image</label>
+      <input id="linked-image-alt" name="alt" maxlength="300">
+      <label for="linked-image-target">Fiche illustrée</label>
+      <select id="linked-image-target" name="targetId"></select>
+      <label for="linked-image-origin">Provenance et droits</label>
+      <select id="linked-image-origin" name="origin" required></select>
+      <label for="linked-image-credit">Auteur, crédit ou licence</label>
+      <textarea id="linked-image-credit" name="credit" rows="2" maxlength="600"></textarea>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer l’image</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="resource-dialog" aria-labelledby="resource-title">
+    <div class="resource-body">
+      <div class="panel-heading resource-toolbar">
+        <button id="resource-previous" class="text-button" type="button" hidden>← Fiche précédente</button>
+        <form method="dialog"><button class="secondary" type="submit">Fermer la fiche</button></form>
+      </div>
+      <p id="resource-kind" class="eyebrow accent"></p>
+      <h2 id="resource-title" tabindex="-1" autofocus></h2>
+      <p id="resource-status" class="badge"></p>
+      <p id="resource-context" class="muted"></p>
+      <div id="resource-art" hidden></div>
+      <a id="resource-image-link" target="_blank" rel="noopener noreferrer" hidden>Agrandir l’image <span class="muted">(nouvel onglet)</span></a>
+      <p id="resource-description" class="narrative" hidden></p>
+      <dl id="resource-details" class="resource-details" hidden></dl>
+      <details id="resource-creation-notes" class="private-note" hidden>
+        <summary>Notes privées du MJ</summary><p id="resource-creation-notes-text" class="narrative"></p>
+      </details>
+      <div id="resource-profile" hidden></div>
+      <p id="resource-provenance" class="muted" hidden></p>
+      <a id="resource-source-link" target="_blank" rel="noopener noreferrer" hidden>Lire la source des Archives <span class="muted">(nouvel onglet)</span></a>
+      <div id="resource-actions" class="actions"></div>
+      <section id="resource-related" class="resource-related" aria-labelledby="resource-related-title" hidden>
+        <h3 id="resource-related-title">Fiches liées</h3><ul id="resource-related-list"></ul>
+      </section>
+      <div id="resource-markdown" class="resource-markdown" hidden>
+        <label for="resource-shortcut">Raccourci Markdown</label>
+        <div class="actions"><input id="resource-shortcut" readonly><button id="resource-copy-shortcut" class="secondary" type="button">Copier</button></div>
+        <p id="resource-shortcut-status" class="muted" role="status"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="marker-dialog" aria-labelledby="marker-heading">
+    <form id="marker-form">
+      <p class="eyebrow accent">Fresque · Privé MJ</p>
+      <h2 id="marker-heading">Ajouter un repère</h2>
+      <p id="marker-provenance" class="muted" hidden></p>
+      <label for="marker-title">Titre du repère</label>
+      <input id="marker-title" name="title" required maxlength="120" autofocus>
+      <label for="marker-kind">Type de repère</label>
+      <select id="marker-kind" name="kind" required></select>
+      <label for="marker-scene">Emplacement</label>
+      <select id="marker-scene" name="sceneId"></select>
+      <label for="marker-description">Description privée</label>
+      <textarea id="marker-description" name="description" rows="4" maxlength="8000" aria-describedby="marker-shortcuts"></textarea>
+      <p id="marker-shortcuts" class="muted">Insérez un lien vers une fiche avec <code>[[GEO-013]]</code> ou <code>[[GEO-013|Dornaël]]</code>.</p>
+      <p class="muted">Un repère décrit une idée de préparation. Les scènes jouées se confirment dans les archives de séance.</p>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer le repère</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

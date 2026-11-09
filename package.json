@@ -13,7 +13,7 @@
   "scripts": {
     "quartz": "node ./quartz/bootstrap-cli.mjs",
     "plugins:install": "node ./quartz/bootstrap-cli.mjs plugin install --from-config",
-    "build": "node ./quartz/bootstrap-cli.mjs build",
+    "build": "node ./quartz/bootstrap-cli.mjs build && node scripts/assemble-pages.mjs",
     "dev": "node ./quartz/bootstrap-cli.mjs build --serve",
     "preview:pages": "node ./quartz/bootstrap-cli.mjs build --serve --baseDir archives-alrick",
     "check:types": "tsc --noEmit",

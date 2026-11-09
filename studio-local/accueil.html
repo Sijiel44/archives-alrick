@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Découvrez les Chroniques d’Entre-Rives, préparez votre table et entrez dans le Studio du maître de jeu.">
+  <title>Les Chroniques d’Entre-Rives</title>
+  <link rel="stylesheet" href="/accueil.css">
+  <script type="module" src="/accueil.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header">
+    <div class="shell masthead">
+      <a class="brand" href="/accueil">
+        <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true" focusable="false">
+          <path d="M20 2 38 20 20 38 2 20Z M20 7v26 M7 20h26 M20 11l9 9-9 9-9-9Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M20 16l4 4-4 4-4-4Z" fill="currentColor"/>
+        </svg>
+        <span>Les Chroniques <strong>d’Entre-Rives</strong></span>
+      </a>
+      <div class="masthead-actions">
+        <button class="menu-toggle" type="button" popovertarget="parcours-menu">Parcours <span aria-hidden="true">⌄</span></button>
+        <a class="studio-entry" href="/">Studio MJ <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="path-menu" id="parcours-menu" popover>
+      <div class="menu-head">
+        <p class="eyebrow">Choisir un parcours</p>
+        <button type="button" popovertarget="parcours-menu" popovertargetaction="hide" autofocus>Fermer</button>
+      </div>
+      <nav aria-label="Parcours de découverte" class="menu-grid">
+        <a href="#univers">
+          <img src="/media/renarde-de-brume.webp" alt="" width="900" height="600" loading="lazy" decoding="async">
+          <span><strong>Univers</strong><small>Découvrir les rives</small></span>
+        </a>
+        <a href="#joueurs">
+          <img src="/media/heron-des-lanternes.webp" alt="" width="900" height="600" loading="lazy" decoding="async">
+          <span><strong>Joueurs</strong><small>Préparer sa première partie</small></span>
+        </a>
+        <a href="/">
+          <img src="/media/gardien-des-salines.webp" alt="" width="900" height="600" loading="lazy" decoding="async">
+          <span><strong>Studio MJ</strong><small>Préparer ou reprendre une séance</small></span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1">
+    <section class="cover" aria-labelledby="titre">
+      <img class="cover-image" src="/media/entre-rives-accueil.webp" width="1200" height="800"
+        alt="Un pont de pierre éclairé de lanternes franchit une rivière au crépuscule." fetchpriority="high" decoding="async">
+      <div class="shell cover-inner">
+        <div class="cover-copy">
+          <p class="eyebrow cover-kicker">Jeu de rôle · Fantasy</p>
+          <h1 id="titre">Les Chroniques <em>d’Entre-Rives</em></h1>
+          <p class="cover-intro">Traversez le fleuve, rassemblez votre table et racontez la suite ensemble.</p>
+          <div class="actions">
+            <a class="button primary" href="/#reprendre">Reprendre ma partie <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#univers">Explorer les rives <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <a class="landmark" href="#univers">
+          <span aria-hidden="true">◇</span>
+          <span><small>Halte de découverte</small>Le pont aux lanternes</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="univers" class="shell discovery" tabindex="-1" aria-labelledby="titre-univers">
+      <div class="section-intro">
+        <p class="eyebrow"><span>01</span> · L’univers</p>
+        <h2 id="titre-univers">Une nuit au gué</h2>
+        <p>À la tombée du jour, les lanternes du pont se reflètent dans le courant. Une silhouette attend au passage. Plus loin, dans la brume, une lumière file d’une rive à l’autre.</p>
+        <a class="text-link" href="/#bibliotheque">Ouvrir le bestiaire de démonstration <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="discovery-figure">
+        <img src="/media/renarde-de-brume.webp" width="900" height="600" loading="lazy" decoding="async"
+          alt="Une renarde rousse traverse un gué brumeux, la pointe de sa queue luisant dans le soir.">
+        <figcaption>Renarde de brume · Illustration de démonstration</figcaption>
+      </figure>
+      <div class="public-route">
+        <nav aria-label="Étapes du parcours Univers">
+          <a href="#univers-territoires">1 · Se situer</a>
+          <a href="#univers-habitants">2 · Rencontrer les habitants</a>
+          <a href="#univers-failles">3 · Comprendre les passages</a>
+        </nav>
+        <div class="route-stages">
+          <article id="univers-territoires" tabindex="-1">
+            <p class="eyebrow">01 · Atlas</p>
+            <h3>Des villages aux grandes cités</h3>
+            <p>Commencez par un lieu où les gens vivent et travaillent. Dans les Montagnes de l’Aube, les Sept Grandes Cités forment un repère pour situer les voyages, les échanges et les rencontres.</p>
+            <a class="text-link" href="/media/atlas/schema-ensembles.svg">Consulter le schéma de l’Atlas</a>
+          </article>
+          <article id="univers-habitants" tabindex="-1">
+            <p class="eyebrow">02 · Vie quotidienne</p>
+            <h3>Qui habite ces rives ?</h3>
+            <p>Un métier, une fête ou une dette donnent un point de départ à une aventure. Imaginez qui attend au prochain relais et ce que cette personne espère du passage des voyageurs.</p>
+          </article>
+          <article id="univers-failles" tabindex="-1">
+            <p class="eyebrow">03 · Couronnes</p>
+            <h3>Des passages entre les mondes</h3>
+            <p>Les Archives distinguent les passages établis des Failles imprévisibles. Ce que les habitants savent d’une traversée dépend du lieu, de leur expérience et de ce qu’ils ont entendu.</p>
+            <a class="text-link" href="#joueurs">Préparer un personnage pour ces rives</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="joueurs" class="table-section" tabindex="-1" aria-labelledby="titre-joueurs">
+      <div class="shell table-inner">
+        <div class="section-intro">
+          <p class="eyebrow"><span>02</span> · Côté joueurs</p>
+          <h2 id="titre-joueurs">Avant la première séance</h2>
+          <p>Arrivez avec une envie de jeu et une idée simple de la personne que vous aimeriez incarner. Le groupe décidera ensemble de la suite.</p>
+          <a class="text-link" href="https://discord.gg/ET5Pkx5s7" rel="noreferrer">Rejoindre la communauté sur Discord <span aria-hidden="true">↗</span></a>
+        </div>
+        <ol class="table-steps">
+          <li><strong>Choisissez une intention.</strong> Qu’est-ce qui vous pousse à franchir le pont ce soir&nbsp;?</li>
+          <li><strong>Reliez-vous au groupe.</strong> Qui vous accompagne, et quelle promesse vous lie&nbsp;?</li>
+          <li><strong>Convenez du ton.</strong> Exploration, mystère ou aventure. Partagez vos envies avec le MJ avant de jouer.</li>
+        </ol>
+        <div class="public-route">
+          <nav aria-label="Étapes du parcours Joueurs">
+            <a href="#joueurs-personnage">1 · Imaginer son personnage</a>
+            <a href="#joueurs-table">2 · Se mettre d’accord</a>
+            <a href="#joueurs-essai">3 · Jouer une action</a>
+          </nav>
+          <div class="route-stages">
+            <article id="joueurs-personnage" tabindex="-1">
+              <p class="eyebrow">01 · Personnage</p>
+              <h3>Donnez-lui une raison de partir</h3>
+              <p>Notez un métier, une personne qui compte, un objectif pour ce soir et une limite. Une batelière qui cherche son frère et refuse d’abandonner ses passagers suffit pour commencer.</p>
+            </article>
+            <article id="joueurs-table" tabindex="-1">
+              <p class="eyebrow">02 · Groupe</p>
+              <h3>Décidez ensemble du départ</h3>
+              <p>Choisissez pourquoi vos personnages voyagent ensemble, le ton de la partie et les sujets à écarter. Le MJ confirme ensuite le niveau de départ et la version des règles utilisée à la table.</p>
+              <a class="text-link" href="#univers-territoires">Choisir un lieu de départ</a>
+            </article>
+            <article id="joueurs-essai" tabindex="-1">
+              <p class="eyebrow">03 · Exemple 5d6</p>
+              <h3>Décrivez votre action avant les dés</h3>
+              <p>« J’attache la barque à la pile du pont avant que le courant l’emporte. » Le MJ annonce l’enjeu et, si l’action est incertaine, la difficulté et les bonus à utiliser.</p>
+              <details>
+                <summary>Voir un jet d’exemple</summary>
+                <p>Les dés donnent 4, 4, 3, 3 et 2, soit 16. Avec un bonus de 2 en caractéristique et de 1 en maîtrise, le total monte à 19. Si le MJ a annoncé un seuil de 18, la barque est amarrée.</p>
+              </details>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="studio" class="shell studio-section" aria-labelledby="titre-studio">
+      <div class="section-intro">
+        <p class="eyebrow"><span>03</span> · Côté MJ</p>
+        <h2 id="titre-studio">Préparer la traversée</h2>
+        <p>Disposez vos scènes sur la Fresque, reliez les pistes et retrouvez la scène active. Le Studio ouvre vos campagnes dans ce navigateur.</p>
+      </div>
+      <div class="actions">
+        <a class="button primary" href="/#campagne">Créer une campagne <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="/">Ouvrir le Studio MJ <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span>Les Chroniques d’Entre-Rives</span>
+      <a class="text-link" href="https://discord.gg/ET5Pkx5s7" rel="noreferrer">Rejoindre le Discord <span aria-hidden="true">↗</span></a>
+      <span>Édition pilote · Découverte</span>
+    </div>
+  </footer>
+</body>
+</html>

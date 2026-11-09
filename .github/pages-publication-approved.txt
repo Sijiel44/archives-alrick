@@ -1,5 +1,7 @@
 Approbation explicite du créateur — 29 octobre 2026.
 
+Le créateur demande le remplacement de l’accueil GitHub Pages par le portail des Chroniques d’Entre-Rives. Le lot inclut le Studio statique, le guide de contribution et l’accès aux Archives existantes. Le périmètre éditorial des fiches reste celui défini ci-dessous. Les fichiers locaux du MJ sont exclus de l’assemblage Pages.
+
 Déclencher après fusion la publication GitHub Pages du lot relu des Archives d’Alrick. Le périmètre approuvé est la liste exacte des 171 fiches codées ci-dessous : 109 validées (vert) et 62 en cours (jaune). Les jaunes doivent conserver dans leur texte les réserves et la différence entre acquis et mise en place.
 
 Les 101 pages rouges restent avec publish: false; les 15 index éditoriaux (dont quatre possèdent un code) ne font pas partie du lot de fiches approuvées. Toute page contenant des spoilers affiche un avertissement fermé et porte unlisted: true; elle reste accessible par lien après avertissement, mais hors recherche, sitemap et bibliothèque générale. Les fiches de monde réutilisables sans révélation d’intrigue peuvent être listées normalement.
