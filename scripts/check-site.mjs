@@ -24,6 +24,7 @@ for (const file of htmlFiles) {
 let checked = 0
 const failures = []
 const exists = async file => { try { return (await stat(file)).isFile() } catch { return false } }
+const studioRoutes = new Set(['reprendre', 'bibliotheque', 'campagne', 'home', 'rayon/aventures', 'rayon/tout', 'rayon/atlas'])
 async function check(ref, fromFile, checkAnchor = true) {
   if (/^(data:|mailto:|tel:|javascript:)/.test(ref)) return
   const relative = path.relative(root, fromFile).split(path.sep).join('/')
@@ -36,7 +37,10 @@ async function check(ref, fromFile, checkAnchor = true) {
   const candidates = [target, `${target}.html`, path.join(target, 'index.html')]
   const found = (await Promise.all(candidates.map(exists))).findIndex(Boolean)
   if (found < 0) { failures.push(`${relative} → 404 : ${ref}`); return }
-  if (checkAnchor && url.hash && pages.has(candidates[found]) && !pages.get(candidates[found]).ids.has(decodeURIComponent(url.hash.slice(1)))) failures.push(`${relative} → ancre absente : ${ref}`)
+  const anchor = decodeURIComponent(url.hash.slice(1))
+  const targetPage = candidates[found]
+  const studioRoute = targetPage === path.join(root, 'studio', 'index.html') && studioRoutes.has(anchor)
+  if (checkAnchor && anchor && pages.has(targetPage) && !pages.get(targetPage).ids.has(anchor) && !studioRoute) failures.push(`${relative} → ancre absente : ${ref}`)
   checked++
 }
 for (const [file, page] of pages) {
@@ -73,7 +77,14 @@ for (const file of sourceFiles.filter(f => f.endsWith('.md'))) {
 // Contrat de publication de l'Atelier 5d6 : les modes et les champs doivent exister dans le HTML.
 // Les tests de navigateur réels restent nécessaires pour les interactions et le stockage local.
 // L'accueil est un portail de choix ; le catalogue complet n'y figure plus.
-const homepageHtml = await readFile(path.join(root, 'index.html'), 'utf8')
+const portalHtml = await readFile(path.join(root, 'index.html'), 'utf8')
+for (const token of ['Les Chroniques', './studio/', './archives.html', 'CONTRIBUTING.md']) {
+  assert(portalHtml.includes(token), `Le portail des Chroniques ne contient pas ${token}`)
+}
+const studioHtml = await readFile(path.join(root, 'studio', 'index.html'), 'utf8')
+assert(studioHtml.includes('data-pages-studio') && studioHtml.includes('adventure-import-form'), 'Le Studio est incomplet dans le build Pages')
+assert(!files.some(file => /[/\\](?:private|atelier-mj|archives-source)[/\\]|\.cer-aventure\.json$/i.test(file)), 'Un dossier ou fichier privé figure dans le build Pages')
+const homepageHtml = await readFile(path.join(root, 'archives.html'), 'utf8')
 const catalogHtml = await readFile(path.join(root, 'bibliotheque.html'), 'utf8')
 for(const token of ['id="alrick-home-title"', 'id="home-paths-title"', 'class="home-path-grid"', 'home-catalog-link', 'bibliotheque']){
   assert(homepageHtml.includes(token), `Accueil guidé incomplet : ${token}`)

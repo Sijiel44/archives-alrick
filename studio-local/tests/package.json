@@ -1,0 +1,10 @@
+{
+  "name": "studio-local-browser-tests",
+  "private": true,
+  "scripts": {
+    "test": "node --test --test-concurrency=1 *.test.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.65.0"
+  }
+}

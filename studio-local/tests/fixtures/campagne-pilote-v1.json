@@ -1,0 +1,99 @@
+{
+  "format": "chroniques-entre-rives.studio-local",
+  "version": 1,
+  "sha256": "32a9c0a12a054d9f4f387da6a55124ab1d3e9ca44c6b8c6cb2e4ca362a916434",
+  "payload": {
+    "campaign": {
+      "id": "campagne-lab-v1-fictive",
+      "revision": 6,
+      "name": "La passe fictive",
+      "description": "Campagne fictive de recette",
+      "style": "one-shot",
+      "startingLevel": 6,
+      "characters": [
+        {
+          "id": "pj-eloise",
+          "name": "Éloïse des Saules",
+          "level": 6,
+          "notes": "CANARI_PJ_LAB_SEUL_MJ"
+        }
+      ],
+      "creatures": [
+        {
+          "id": "instance-renarde",
+          "name": "Renarde de brume",
+          "description": "Une silhouette au bord de l’eau.",
+          "source": {
+            "id": "renarde-de-brume",
+            "version": 1
+          }
+        }
+      ],
+      "scenes": [
+        {
+          "id": "scene-gue",
+          "title": "Le gué des cloches",
+          "description": "Un reflet sur l’eau.",
+          "privateNotes": "CANARI_SCENE_LAB_MJ",
+          "participantIds": [
+            "pj-eloise",
+            "instance-renarde"
+          ]
+        },
+        {
+          "id": "scene-ruines",
+          "title": "Les ruines",
+          "description": "Un mur couvert de lierre.",
+          "privateNotes": "",
+          "participantIds": []
+        },
+        {
+          "id": "scene-tour",
+          "title": "La tour des brumes",
+          "description": "Une tour à l’horizon.",
+          "privateNotes": "",
+          "participantIds": []
+        }
+      ],
+      "activeSceneId": "scene-gue"
+    },
+    "journal": [
+      {
+        "operationId": "operation-v1-0",
+        "revision": 1,
+        "type": "create",
+        "signature": "aa630baf0c267aa8d9c7da531ad6649d301ecb48eab08e281d73c403dbaf4345"
+      },
+      {
+        "operationId": "operation-v1-1",
+        "revision": 2,
+        "type": "save-character",
+        "signature": "6df05d4f76ccf693166b602d74bb80a9d2f46a57adfe6bf16932b2bafba663b0"
+      },
+      {
+        "operationId": "operation-v1-2",
+        "revision": 3,
+        "type": "copy-creature",
+        "signature": "4d3590c5136a044a350468368fab41971f6ee84a0732e5ba9c88fecf2c0cf8ca"
+      },
+      {
+        "operationId": "operation-v1-3",
+        "revision": 4,
+        "type": "save-scene",
+        "signature": "80fe697571e237f3ca08ff82738fe166ae6bd7a53ae307d4d1514627eee0c319"
+      },
+      {
+        "operationId": "operation-v1-4",
+        "revision": 5,
+        "type": "save-scene",
+        "signature": "f08382771aafb55cd8e55a644b0af33d5e249958c8e442c0697655a881e540f9"
+      },
+      {
+        "operationId": "operation-v1-5",
+        "revision": 6,
+        "type": "save-scene",
+        "signature": "1d5acdbeb389efa65cc79ac8647f79daef4aa797c0bd79daef89044956d2c69b"
+      }
+    ]
+  }
+}

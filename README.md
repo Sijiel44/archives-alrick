@@ -2,7 +2,7 @@
 
 Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **259 fiches codées approuvées**, dont quatre nouveaux dossiers Atlas détaillant l'Hiver, le Printemps, l'Été et l'Automne de l'Île des Divertissements. L’ancien décompte des fiches jaunes/rouges sur 285 entrées est un état historique, pas la classification actuelle des 645 sujets. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
 
-**Publication active :** le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. Une PR seule ne publie rien.
+Le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. L’assemblage sert le portail des Chroniques à la racine, le Studio MJ sous `studio/` et l’ancien accueil des Archives sous `archives.html`. Les fiches gardent leurs adresses. [Proposer une contribution](CONTRIBUTING.md)
 
 ## Continuité et sauvegardes
 
