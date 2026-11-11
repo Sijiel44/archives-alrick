@@ -177,3 +177,20 @@ Les symboles SVG des courants sont **des repères visuels d'interface**, non des
 **Continuité :** tous les codes anciens sont conservés. Les onze entrées `code: null` de B-001 ne sont pas remplies sans arbitrage individuel et source. Les homonymes restent des individus distincts, et les capacités d'un individu ne se transmettent pas automatiquement à l'espèce.
 
 **Confidentialité et liens :** le registre est documentaire ; `documentaryLink` reste déclaratif et les liens publics automatiques sont désactivés. Les sept prototypes MJ actuellement publiés restent explicitement `proposition_non_jouee` ; leur politique de publication ne change pas par cette décision. Les secrets et les sources brutes privés restent hors GitHub.
+
+## Autonomie du monde et canonisation du vivant indépendamment de l'Odyssée d'Orin
+
+**Décision éditoriale du créateur — mission B-003.1 (1er novembre 2026).** Les Archives décrivent un monde qui possède son histoire, ses peuples, ses espèces et ses écosystèmes indépendamment de ce qu'Orin/Alrick a vu, su, exploré ou vécu. L'absence d'apparition en campagne **n'interdit jamais** qu'une espèce, un lieu, un phénomène ou une caractéristique naturaliste devienne officiellement canonique par **approbation explicite du créateur**. Aucun événement joué, observation d'Orin, migration ou lien de causalité avec son aventure ne peut être fabriqué rétroactivement pour la justifier.
+
+**Axes distincts, traçables assertion par assertion :**
+
+- `lore_valide` : existence et caractéristiques précisément approuvées de l'univers. Peut provenir d'une décision créatrice directe sans séance de jeu.
+- `faits_joues` : épisode, rencontre, observation ou acte attesté par une source de campagne effectivement jouée ; ne jamais lui attribuer une scène inventée.
+- `proposition_non_jouee` : contenu soumis à arbitrage ou amorce narrative non jouée. Une espèce approuvée ne reste pas intégralement en proposition parce qu'une scène éventuelle est non jouée.
+- `a_verifier` : donnée encore indéterminée ; une hypothèse écologique ponctuelle doit rester étiquetée `hypothese`, même au sein d'une espèce validée.
+
+Une même fiche peut avoir l'**existence de l'espèce** en `lore_valide`, un **habitat général** approuvé en `lore_valide`, une **migration** en `hypothese`, une **rencontre suggérée** en `proposition_non_jouee` et, séparément, un fait futur en `faits_joues` une fois joué et sourcé. Le statut synthétique de la fiche ne doit pas effacer les réserves des affirmations particulières.
+
+**Procédure :** enregistrer l'identifiant de travail, la décision explicite (espèce individuelle ou lot délimité), sa date, son auteur, sa source, les éléments approuvés et les exclusions. Une validation par lot exige la traçabilité individuelle de chaque fiche ; elle ne vaut ni validation automatique de noms, d'évolutions, de localisations, de codes, de profils 5d6, d'images ni autorisation de publication. La validation de la règle d'autonomie **ne canonise pas les 41 propositions B-003**. Une fiche peut être canonique sans profil de combat. Les nouveaux codes `ESP-`, `FAMT-`, `INDC-`, `BIO-`, `VARC-` et `P5C-` sont attribués selon le registre B-002, une fois chaque entité définie et explicitement validée. Les codes historiques sont préservés ; les stades d'âge ou niveaux ne sont pas des variantes automatiques.
+
+**Gouvernance :** la validation du lore, l'attestation d'une scène jouée et la publication Quartz sont trois autorités distinctes. La protection des secrets MJ et la politique M05 demeurent applicables. Cette règle vaut pour B-003.1, B-004 et toutes les créations encyclopédiques ultérieures.

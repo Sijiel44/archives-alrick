@@ -1,0 +1,284 @@
+{
+  "schema": "alrick.bestiaire.b0031-inventaire.v1",
+  "date": "2026-11-01",
+  "source_pr": 73,
+  "source_branch": "bestiaire/b003-montagnes-aube",
+  "source_commit": "4bcbbc234e77dd1881bb4211aee21c484e4fcb1e",
+  "target_base_commit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
+  "classification": "41 propositions, aucun code ni canonisation automatique",
+  "conservation": "Copie des objets Git historiques par SHA ; intégrité vérifiable entre source et branche reconstruite",
+  "lots": [
+    {
+      "lot": "I",
+      "intervalle": "P01–P12",
+      "count": 12
+    },
+    {
+      "lot": "II",
+      "intervalle": "P13–P24",
+      "count": 12
+    },
+    {
+      "lot": "III",
+      "intervalle": "P25–P36",
+      "count": 12
+    },
+    {
+      "lot": "IV",
+      "intervalle": "P37–P41",
+      "count": 5
+    }
+  ],
+  "fiches": [
+    {
+      "id": "P01",
+      "source_path": "docs/bestiaire/B003_FICHES/P01_bourdon_des_terrasses.md",
+      "source_blob_sha": "2b4df39d59110062bd4c8263720cd7b62b62702b",
+      "destination_path": "docs/bestiaire/B003_FICHES/P01_bourdon_des_terrasses.md"
+    },
+    {
+      "id": "P02",
+      "source_path": "docs/bestiaire/B003_FICHES/P02_campagnol_des_murets.md",
+      "source_blob_sha": "23b92d440bdba5f219742e8521065af9a1eafd5a",
+      "destination_path": "docs/bestiaire/B003_FICHES/P02_campagnol_des_murets.md"
+    },
+    {
+      "id": "P03",
+      "source_path": "docs/bestiaire/B003_FICHES/P03_marmotte_des_pierriers.md",
+      "source_blob_sha": "81c0ce5ba86bc15fd7b42e9ea32ef740f7912188",
+      "destination_path": "docs/bestiaire/B003_FICHES/P03_marmotte_des_pierriers.md"
+    },
+    {
+      "id": "P04",
+      "source_path": "docs/bestiaire/B003_FICHES/P04_lagopede_des_cretes.md",
+      "source_blob_sha": "23e402ef53eb1a5ff80e720b5e4372ebf1f7ba42",
+      "destination_path": "docs/bestiaire/B003_FICHES/P04_lagopede_des_cretes.md"
+    },
+    {
+      "id": "P05",
+      "source_path": "docs/bestiaire/B003_FICHES/P05_lievre_des_pentes_froides.md",
+      "source_blob_sha": "e32046c353467422d91fc49bc382c6af83d0ac22",
+      "destination_path": "docs/bestiaire/B003_FICHES/P05_lievre_des_pentes_froides.md"
+    },
+    {
+      "id": "P06",
+      "source_path": "docs/bestiaire/B003_FICHES/P06_truite_des_torrents_d_aube.md",
+      "source_blob_sha": "8e49e7726121e8cd7fc30ba09b08369920c9abd3",
+      "destination_path": "docs/bestiaire/B003_FICHES/P06_truite_des_torrents_d_aube.md"
+    },
+    {
+      "id": "P07",
+      "source_path": "docs/bestiaire/B003_FICHES/P07_ecrevisse_des_resurgences.md",
+      "source_blob_sha": "4669377e9ebdbe25ae47689885b2af9743031da1",
+      "destination_path": "docs/bestiaire/B003_FICHES/P07_ecrevisse_des_resurgences.md"
+    },
+    {
+      "id": "P08",
+      "source_path": "docs/bestiaire/B003_FICHES/P08_chauve_souris_des_galeries.md",
+      "source_blob_sha": "440ed8818e45368e2d98929ea8b4d424f72442b6",
+      "destination_path": "docs/bestiaire/B003_FICHES/P08_chauve_souris_des_galeries.md"
+    },
+    {
+      "id": "P09",
+      "source_path": "docs/bestiaire/B003_FICHES/P09_renard_des_cols.md",
+      "source_blob_sha": "df18b6d62e79d5abb4f731e87895472b7a820550",
+      "destination_path": "docs/bestiaire/B003_FICHES/P09_renard_des_cols.md"
+    },
+    {
+      "id": "P10",
+      "source_path": "docs/bestiaire/B003_FICHES/P10_corneille_des_charrois.md",
+      "source_blob_sha": "20797aaa8f3fe1d926e2295cd7470fab8b0b24f9",
+      "destination_path": "docs/bestiaire/B003_FICHES/P10_corneille_des_charrois.md"
+    },
+    {
+      "id": "P11",
+      "source_path": "docs/bestiaire/B003_FICHES/P11_salamandre_des_pierres_tiedes.md",
+      "source_blob_sha": "af5e6cd671ce9c9e22373cb083f178ada49db01a",
+      "destination_path": "docs/bestiaire/B003_FICHES/P11_salamandre_des_pierres_tiedes.md"
+    },
+    {
+      "id": "P12",
+      "source_path": "docs/bestiaire/B003_FICHES/P12_poisson_pale_des_profondeurs.md",
+      "source_blob_sha": "5c6c4c96be7372b339e679c57f8f2d0d35ecda36",
+      "destination_path": "docs/bestiaire/B003_FICHES/P12_poisson_pale_des_profondeurs.md"
+    },
+    {
+      "id": "P13",
+      "source_path": "docs/bestiaire/B003_FICHES/P13_grive_des_haies_froides.md",
+      "source_blob_sha": "74be97bd60a9585c5e93d7109b56f7bf7038008e",
+      "destination_path": "docs/bestiaire/B003_FICHES/P13_grive_des_haies_froides.md"
+    },
+    {
+      "id": "P14",
+      "source_path": "docs/bestiaire/B003_FICHES/P14_escargot_des_roches_suintantes.md",
+      "source_blob_sha": "d65294543042e8ae047262adec23e770eb07827d",
+      "destination_path": "docs/bestiaire/B003_FICHES/P14_escargot_des_roches_suintantes.md"
+    },
+    {
+      "id": "P15",
+      "source_path": "docs/bestiaire/B003_FICHES/P15_phrygane_des_torrents_clairs.md",
+      "source_blob_sha": "031e65fbb177f3fdd28d945959b1461f891f1fa8",
+      "destination_path": "docs/bestiaire/B003_FICHES/P15_phrygane_des_torrents_clairs.md"
+    },
+    {
+      "id": "P16",
+      "source_path": "docs/bestiaire/B003_FICHES/P16_crapaud_des_resurgences.md",
+      "source_blob_sha": "cd4a65757ce5fe4ff5adcc437c359632247fb963",
+      "destination_path": "docs/bestiaire/B003_FICHES/P16_crapaud_des_resurgences.md"
+    },
+    {
+      "id": "P17",
+      "source_path": "docs/bestiaire/B003_FICHES/P17_sauterelle_des_patures_ventees.md",
+      "source_blob_sha": "505fdb0bebc1f944721f83be75adbda98ccff0c3",
+      "destination_path": "docs/bestiaire/B003_FICHES/P17_sauterelle_des_patures_ventees.md"
+    },
+    {
+      "id": "P18",
+      "source_path": "docs/bestiaire/B003_FICHES/P18_hirondelle_des_arches.md",
+      "source_blob_sha": "e0b4272b22813f2d60dfe6752e760f02de98b9b9",
+      "destination_path": "docs/bestiaire/B003_FICHES/P18_hirondelle_des_arches.md"
+    },
+    {
+      "id": "P19",
+      "source_path": "docs/bestiaire/B003_FICHES/P19_fouine_des_relais.md",
+      "source_blob_sha": "6e68a0d180325366581729bc20eb2aefee224b2a",
+      "destination_path": "docs/bestiaire/B003_FICHES/P19_fouine_des_relais.md"
+    },
+    {
+      "id": "P20",
+      "source_path": "docs/bestiaire/B003_FICHES/P20_faucon_des_pierriers.md",
+      "source_blob_sha": "3f993cc9225591c6b0099a2397a78c0c7405ba98",
+      "destination_path": "docs/bestiaire/B003_FICHES/P20_faucon_des_pierriers.md"
+    },
+    {
+      "id": "P21",
+      "source_path": "docs/bestiaire/B003_FICHES/P21_ardoiselle_des_moraines.md",
+      "source_blob_sha": "a0efdb671daea24bf4c6e8977580b31deac098be",
+      "destination_path": "docs/bestiaire/B003_FICHES/P21_ardoiselle_des_moraines.md"
+    },
+    {
+      "id": "P22",
+      "source_path": "docs/bestiaire/B003_FICHES/P22_araignee_tisse_gouttes.md",
+      "source_blob_sha": "a6485895f04cdadb37a378b6303aa1764019ebf4",
+      "destination_path": "docs/bestiaire/B003_FICHES/P22_araignee_tisse_gouttes.md"
+    },
+    {
+      "id": "P23",
+      "source_path": "docs/bestiaire/B003_FICHES/P23_luciolume_de_nacrecombe.md",
+      "source_blob_sha": "dad49b018077c09795430f830386a97acddc4bd2",
+      "destination_path": "docs/bestiaire/B003_FICHES/P23_luciolume_de_nacrecombe.md"
+    },
+    {
+      "id": "P24",
+      "source_path": "docs/bestiaire/B003_FICHES/P24_rochebrouteur_des_scories.md",
+      "source_blob_sha": "2595fd5da946ca56e09da3095242acb789c20919",
+      "destination_path": "docs/bestiaire/B003_FICHES/P24_rochebrouteur_des_scories.md"
+    },
+    {
+      "id": "P25",
+      "source_path": "docs/bestiaire/B003_FICHES/P25_cicadelle_des_herbes_givrees.md",
+      "source_blob_sha": "b60b9be28ce7e86a83de71b43fbf5867431ddbf9",
+      "destination_path": "docs/bestiaire/B003_FICHES/P25_cicadelle_des_herbes_givrees.md"
+    },
+    {
+      "id": "P26",
+      "source_path": "docs/bestiaire/B003_FICHES/P26_pic_des_ecorces_bleues.md",
+      "source_blob_sha": "e7308c926f320d715e9ce848bd2b5542c3140067",
+      "destination_path": "docs/bestiaire/B003_FICHES/P26_pic_des_ecorces_bleues.md"
+    },
+    {
+      "id": "P27",
+      "source_path": "docs/bestiaire/B003_FICHES/P27_musaraigne_des_mousses_froides.md",
+      "source_blob_sha": "fa04d058009b8d94ef51dd563331268a793826a2",
+      "destination_path": "docs/bestiaire/B003_FICHES/P27_musaraigne_des_mousses_froides.md"
+    },
+    {
+      "id": "P28",
+      "source_path": "docs/bestiaire/B003_FICHES/P28_sanglier_des_vallons_d_aube.md",
+      "source_blob_sha": "1d042a466ce7fb31bfa324ef3d21c2938e2e369e",
+      "destination_path": "docs/bestiaire/B003_FICHES/P28_sanglier_des_vallons_d_aube.md"
+    },
+    {
+      "id": "P29",
+      "source_path": "docs/bestiaire/B003_FICHES/P29_couleuvre_des_rives_de_pierre.md",
+      "source_blob_sha": "5f671945e1d1cc476176bf0eef681b9217802b50",
+      "destination_path": "docs/bestiaire/B003_FICHES/P29_couleuvre_des_rives_de_pierre.md"
+    },
+    {
+      "id": "P30",
+      "source_path": "docs/bestiaire/B003_FICHES/P30_loutre_des_eaux_vives.md",
+      "source_blob_sha": "958f515c327b1446fdef951b520ef98c56bc3052",
+      "destination_path": "docs/bestiaire/B003_FICHES/P30_loutre_des_eaux_vives.md"
+    },
+    {
+      "id": "P31",
+      "source_path": "docs/bestiaire/B003_FICHES/P31_heron_des_bassins_froids.md",
+      "source_blob_sha": "740790f11ac21cc07cd339ec56892fe263a39265",
+      "destination_path": "docs/bestiaire/B003_FICHES/P31_heron_des_bassins_froids.md"
+    },
+    {
+      "id": "P32",
+      "source_path": "docs/bestiaire/B003_FICHES/P32_tardigrade_des_lichens_d_altitude.md",
+      "source_blob_sha": "704177468722339ef35c072578e6302ffaab06ca",
+      "destination_path": "docs/bestiaire/B003_FICHES/P32_tardigrade_des_lichens_d_altitude.md"
+    },
+    {
+      "id": "P33",
+      "source_path": "docs/bestiaire/B003_FICHES/P33_fourmi_des_dalles_tiedes.md",
+      "source_blob_sha": "76320a6da44e2bbf915e3a6d92385144edcc88bf",
+      "destination_path": "docs/bestiaire/B003_FICHES/P33_fourmi_des_dalles_tiedes.md"
+    },
+    {
+      "id": "P34",
+      "source_path": "docs/bestiaire/B003_FICHES/P34_filtreuse_du_lac_de_nacrecombe.md",
+      "source_blob_sha": "0fc6c7df4ad7fada3391dd15891970014f09f0ac",
+      "destination_path": "docs/bestiaire/B003_FICHES/P34_filtreuse_du_lac_de_nacrecombe.md"
+    },
+    {
+      "id": "P35",
+      "source_path": "docs/bestiaire/B003_FICHES/P35_siffloroc_des_cimes.md",
+      "source_blob_sha": "4c0ed08071def2e90a14fc4d4036ad65b2ded2a3",
+      "destination_path": "docs/bestiaire/B003_FICHES/P35_siffloroc_des_cimes.md"
+    },
+    {
+      "id": "P36",
+      "source_path": "docs/bestiaire/B003_FICHES/P36_echopode_des_galeries.md",
+      "source_blob_sha": "cfd706011d7d8a6dc1ea7aa8be5ca3bf4dafd176",
+      "destination_path": "docs/bestiaire/B003_FICHES/P36_echopode_des_galeries.md"
+    },
+    {
+      "id": "P37",
+      "source_path": "docs/bestiaire/B003_FICHES/P37_chamoine_de_verrelune.md",
+      "source_blob_sha": "3a844a2bcd513dd4a1c076385e22676ba943abec",
+      "destination_path": "docs/bestiaire/B003_FICHES/P37_chamoine_de_verrelune.md"
+    },
+    {
+      "id": "P38",
+      "source_path": "docs/bestiaire/B003_FICHES/P38_nacrevole_des_profondeurs.md",
+      "source_blob_sha": "8c522442abd79069a8ef48641056bfa631a42a90",
+      "destination_path": "docs/bestiaire/B003_FICHES/P38_nacrevole_des_profondeurs.md"
+    },
+    {
+      "id": "P39",
+      "source_path": "docs/bestiaire/B003_FICHES/P39_tisse_aurore_des_cols.md",
+      "source_blob_sha": "e7161a23dc4ab22166bd99e7aa5b0c02f7d0c52b",
+      "destination_path": "docs/bestiaire/B003_FICHES/P39_tisse_aurore_des_cols.md"
+    },
+    {
+      "id": "P40",
+      "source_path": "docs/bestiaire/B003_FICHES/P40_huppe_des_echos_bleus.md",
+      "source_blob_sha": "353462796d73f585565f6465a8ae251e876c8080",
+      "destination_path": "docs/bestiaire/B003_FICHES/P40_huppe_des_echos_bleus.md"
+    },
+    {
+      "id": "P41",
+      "source_path": "docs/bestiaire/B003_FICHES/P41_garde_braise_des_fumerolles_froides.md",
+      "source_blob_sha": "f4488f6956ba7a44a229e53598d70ac44b24f75f",
+      "destination_path": "docs/bestiaire/B003_FICHES/P41_garde_braise_des_fumerolles_froides.md"
+    }
+  ],
+  "medias": {
+    "lot_IV": "5 références d'images, binaires absents du dépôt, droits non vérifiés",
+    "publish": false
+  }
+}
