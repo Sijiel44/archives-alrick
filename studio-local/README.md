@@ -16,6 +16,16 @@ Ouvrir [l’accueil de découverte](http://127.0.0.1:4380/accueil) ou [le Studio
 
 Le Studio existe aussi en version statique sur [GitHub Pages](https://sijiel44.github.io/archives-alrick/studio/). Les campagnes sont enregistrées dans le navigateur à l’adresse utilisée. Pour continuer en ligne une campagne commencée sur `127.0.0.1`, la télécharger dans **Sauvegardes** depuis le Studio local, puis la restaurer dans le Studio en ligne. Les fichiers d’aventure privés se sélectionnent depuis le poste du MJ.
 
+## Créer et jouer son personnage
+
+Ouvrir **Espace joueur** depuis [l’accueil de découverte](http://127.0.0.1:4380/accueil). Le parcours de vie crée un PJ de niveau 5. La création libre vérifie le budget M02 pour un niveau choisi de 1 à 25. Après l’aperçu, enregistrer le personnage pour retrouver sa fiche dans ce navigateur.
+
+- Dans la fiche, consulter les maîtrises et les capacités. Ajuster manuellement les PV et le mana, ajouter un objet à l’inventaire ou inscrire une note personnelle. Les jets 5d6 libres et les jets d’action affichent leur résultat sur place.
+- **Sauvegarder mon personnage** télécharge la fiche et les notes affichées, y compris le texte en cours après un conflit de sauvegarde. **Importer une fiche** vérifie la sauvegarde et affiche son aperçu. La confirmation ajoute une nouvelle copie. Les exports PJ M02 de l’Atelier historique sont également acceptés.
+- **Exporter la fiche M02 pour le MJ** télécharge le profil de jeu, les capacités et l’inventaire. L’histoire personnelle et les notes restent dans la sauvegarde joueur. Le MJ relit et ajoute la fiche dans sa campagne avec **Importer un PJ M02**.
+
+Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent manuellement. Lorsqu’une fiche joueur a changé dans un autre onglet, copier le texte en cours avant de recharger sa version enregistrée.
+
 ## Préparer une soirée
 
 Sur [l’accueil public](http://127.0.0.1:4380/accueil), le menu **Parcours** mène à **Univers** et **Joueurs**. Le premier relie l’Atlas, la vie quotidienne et les passages entre les mondes. Le second accompagne la création d’un personnage, la préparation du groupe et une première action 5d6. Les étapes se lisent directement dans l’accueil.

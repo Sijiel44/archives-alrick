@@ -5,6 +5,7 @@ import { effectiveStat, effectiveMastery, experienceRequired } from './moteur/at
 import { checkJSON, validPJSource } from './store.mjs';
 
 export const MAX_PJ_FILE_BYTES = 2 * 1024 * 1024;
+export { M02_SCHEMA };
 export { effectiveStat, effectiveMastery };
 export { EDUCATION_PATHS, LITERACY_LEVELS, ORIGIN_STEPS };
 export const FREE_PJ_MASTERIES = [...ORIGIN_MASTERIES, 'esquive', 'parade', 'resistance_magique', 'volonte'];

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Espace joueur · Les Chroniques d’Entre-Rives</title>
+  <link rel="stylesheet" href="./studio.css">
+  <link rel="stylesheet" href="./espace-joueur.css">
+  <script type="module" src="./espace-joueur.mjs"></script>
+</head>
+<body class="player-space">
+  <a class="skip" href="#contenu-joueur">Aller à mon espace</a>
+  <nav class="topbar" aria-label="Les trois espaces">
+    <a href="/accueil">Accueil des Chroniques</a>
+    <a href="/accueil#univers">Univers et ressources</a>
+    <a href="./index.html">Studio MJ</a>
+  </nav>
+  <main id="contenu-joueur" tabindex="-1">
+    <header class="view-heading">
+      <div><p class="eyebrow accent">Les Chroniques d’Entre-Rives</p><h1>Espace joueur</h1>
+        <p class="muted">Crée ton personnage et retrouve-le dans ce navigateur.</p></div>
+      <p id="player-save-status" role="status">Ouverture du stockage…</p>
+    </header>
+    <p id="player-error" class="notice error" role="alert" hidden></p>
+    <section class="panel player-panel" aria-labelledby="player-library-title">
+      <h2 id="player-library-title">Mes personnages</h2>
+      <div id="player-library" hidden>
+        <label for="player-selection">Reprendre mon personnage</label>
+        <select id="player-selection" disabled></select>
+      </div>
+      <div class="actions">
+        <button id="player-create" type="button" disabled>Créer mon personnage</button>
+        <button id="player-import" class="secondary" type="button" disabled>Importer une fiche</button>
+      </div>
+    </section>
+    <section id="player-sheet" class="panel player-panel" aria-labelledby="player-name" hidden>
+      <p class="eyebrow accent">Fiche personnelle · À présenter au MJ</p>
+      <h2 id="player-name" tabindex="-1"></h2>
+      <p id="player-resources" class="muted"></p>
+      <nav class="actions" aria-label="Sections de la fiche">
+        <a href="#player-stats">Fiche</a><a href="#player-rolls">Dés</a><a href="#player-inventory">Inventaire</a>
+        <a href="#player-abilities">Capacités</a><a href="#player-notes">Notes</a>
+      </nav>
+      <section id="player-stats" class="protocol-step">
+        <h3>Caractéristiques et maîtrises</h3><p id="player-stat-line"></p><p id="player-mastery-line" class="muted"></p>
+        <details id="player-story" hidden><summary>Histoire et liens</summary><dl id="player-story-fields"></dl></details>
+        <details>
+          <summary>Ajuster mes PV et mon mana</summary>
+          <form id="player-resources-form">
+            <div class="creation-fields">
+              <div><label for="player-pv">PV actuels</label><input id="player-pv" type="number" min="0" required></div>
+              <div><label for="player-mana">Mana actuel</label><input id="player-mana" type="number" min="0" required></div>
+            </div>
+            <button class="secondary" type="submit">Enregistrer mes ressources</button>
+          </form>
+        </details>
+      </section>
+      <section id="player-rolls" class="protocol-step">
+        <h3>Dés</h3>
+        <form id="player-roll-form">
+          <div class="creation-fields">
+            <div><label for="roll-stat">Caractéristique</label><select id="roll-stat"></select></div>
+            <div><label for="roll-mastery">Maîtrise</label><select id="roll-mastery"></select></div>
+            <div><label for="roll-threshold">Seuil annoncé par le MJ</label><input id="roll-threshold" type="number" min="0" max="999" value="15" required></div>
+          </div>
+          <div class="actions"><button type="submit">Lancer une action 5d6</button><button id="player-free-roll" class="secondary" type="button">Lancer 5d6 libres</button></div>
+        </form>
+        <p id="player-roll-result" class="muted" role="status"></p>
+      </section>
+      <section id="player-inventory" class="protocol-step">
+        <h3>Inventaire</h3><ul id="player-items"></ul>
+        <form id="player-item-form">
+          <div class="creation-fields">
+            <div><label for="item-name">Objet</label><input id="item-name" name="name" maxlength="90" required></div>
+            <div><label for="item-count">Quantité</label><input id="item-count" name="quantity" type="number" value="1" min="1" max="999" required></div>
+          </div>
+          <label for="item-description">Description de l’objet</label><input id="item-description" name="description" maxlength="600">
+          <button class="secondary" type="submit">Ajouter l’objet</button>
+        </form>
+      </section>
+      <section id="player-abilities" class="protocol-step"><h3>Capacités</h3><div id="player-ability-list"></div></section>
+      <form id="player-notes" class="protocol-step">
+        <label for="personal-notes">Notes personnelles</label><textarea id="personal-notes" rows="4" maxlength="8000"></textarea>
+        <button class="secondary" type="submit">Enregistrer mes notes</button>
+      </form>
+      <section class="protocol-step">
+        <h3>Sauvegarde et remise au MJ</h3>
+        <p class="muted">La sauvegarde personnelle inclut ton histoire et tes notes. La fiche M02 à remettre au MJ contient le profil de jeu, ses capacités et son inventaire.</p>
+        <div class="actions"><button id="player-backup" class="secondary" type="button">Sauvegarder mon personnage</button><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
+      </section>
+    </section>
+  </main>
+  <dialog id="player-create-dialog" aria-labelledby="create-player-title">
+    <form id="player-create-form">
+      <h2 id="create-player-title">Créer mon personnage</h2>
+      <label for="new-player-name">Nom du personnage</label><input id="new-player-name" name="name" maxlength="120" required autofocus>
+      <label for="new-player-mode">Mode de création</label><select id="new-player-mode"><option value="guided">Parcours de vie · niveau 5</option><option value="free">Création libre · niveaux 1 à 25</option></select>
+      <fieldset id="new-player-guided" class="protocol-step"><legend>Parcours de vie</legend><div id="origin-fields"></div></fieldset>
+      <fieldset id="new-player-free" class="protocol-step" hidden disabled>
+        <legend>Création libre</legend><label for="new-player-level">Niveau</label><input id="new-player-level" name="level" type="number" value="1" min="1" max="25" required>
+        <div id="free-stats" class="creation-fields"></div>
+        <details><summary>Choisir les maîtrises</summary><div id="free-masteries" class="creation-fields"></div></details>
+      </fieldset>
+      <details class="protocol-step">
+        <summary>Histoire et liens · facultatif</summary>
+        <label for="new-player-backstory">Histoire personnelle</label><textarea id="new-player-backstory" name="backstory" rows="3" maxlength="4000"></textarea>
+        <label for="new-player-connections">Liens avec d’autres personnages</label><textarea id="new-player-connections" name="connections" rows="2" maxlength="1600"></textarea>
+        <label for="new-player-goal">Objectif</label><textarea id="new-player-goal" name="goal" rows="2" maxlength="1600"></textarea>
+      </details>
+      <p id="player-create-result" role="status" class="muted"></p>
+      <div class="actions"><button type="submit">Vérifier la fiche</button><button id="confirm-player-create" type="button" disabled>Enregistrer le personnage</button><button class="secondary" type="button" data-close>Fermer</button></div>
+    </form>
+  </dialog>
+  <dialog id="player-import-dialog" aria-labelledby="import-player-title">
+    <form id="player-import-form">
+      <h2 id="import-player-title">Importer une fiche</h2>
+      <label for="player-file">Sauvegarde joueur ou export M02</label><input id="player-file" type="file" accept=".json,application/json" autofocus>
+      <label for="player-import-choice">Personnage à copier</label><select id="player-import-choice" disabled></select>
+      <p id="player-import-preview" role="status" class="muted">Choisis un fichier pour voir son contenu.</p>
+      <div class="actions"><button id="confirm-player-import" type="submit" disabled>Importer une nouvelle copie</button><button class="secondary" type="button" data-close>Fermer</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

@@ -14,6 +14,10 @@ export const studioAssets = new Map([
   ["/accueil.mjs", ["accueil.mjs", "text/javascript"]],
   ["/joueur", ["joueur.html", "text/html"]],
   ["/joueur.js", ["joueur.js", "text/javascript"]],
+  ["/espace-joueur.html", ["espace-joueur.html", "text/html"]],
+  ["/espace-joueur.css", ["espace-joueur.css", "text/css"]],
+  ["/espace-joueur.mjs", ["espace-joueur.mjs", "text/javascript"]],
+  ["/espace-joueur-store.mjs", ["espace-joueur-store.mjs", "text/javascript"]],
   ["/studio.css", ["studio.css", "text/css"]],
   ["/app.mjs", ["app.mjs", "text/javascript"]],
   ["/bibliotheque.mjs", ["bibliotheque.mjs", "text/javascript"]],
@@ -43,7 +47,9 @@ for (const entry of catalogue.entries) {
 export async function readStudioAsset([filename, , version]) {
   const contents = await readFile(new URL(filename, import.meta.url));
   if (version && createHash("sha1").update(`blob ${contents.length}\0`).update(contents).digest("hex") !== version) return null;
-  return filename.endsWith(".ts") ? stripTypeScriptTypes(contents.toString("utf8")) : contents;
+  if (!filename.endsWith(".ts")) return contents;
+  // GitHub Pages sert les modules statiques sans la redirection du serveur local.
+  return stripTypeScriptTypes(contents.toString("utf8")).replace(/(from\s+["'])(\.\/atelier5d6-[a-z0-9-]+)(["'])/g, "$1$2.js$3");
 }
 
 export function startStudioServer(port = 4380) {
@@ -51,6 +57,7 @@ export function startStudioServer(port = 4380) {
     const path = request.url.split("?")[0];
     const discovery = path === "/accueil" || path === "/accueil/";
     const player = path === "/joueur";
+    const personal = path === "/espace-joueur.html";
     const localPort = server.address().port;
     response.setHeader("Cache-Control", "no-store");
     response.setHeader("X-Content-Type-Options", "nosniff");
@@ -59,12 +66,12 @@ export function startStudioServer(port = 4380) {
       "default-src 'none'",
       ...(player ? ["sandbox allow-scripts", `script-src http://127.0.0.1:${localPort}/joueur.js`] :
         [discovery ? `script-src http://127.0.0.1:${localPort}/accueil.mjs` : "script-src 'self'"]),
-      discovery || player ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json`,
-      discovery ? "style-src 'self'" : "style-src 'self' 'unsafe-inline'",
-      player ? "img-src data:" : discovery ? "img-src 'self'" : "img-src 'self' data: https:",
-      player ? "frame-src about:" : discovery ? "frame-src 'none'" : "frame-src 'self'",
+      discovery || player || personal ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json`,
+      discovery || personal ? "style-src 'self'" : "style-src 'self' 'unsafe-inline'",
+      player ? "img-src data:" : personal ? "img-src 'none'" : discovery ? "img-src 'self'" : "img-src 'self' data: https:",
+      player ? "frame-src about:" : discovery || personal ? "frame-src 'none'" : "frame-src 'self'",
       "frame-ancestors 'none'",
-      discovery || player ? "form-action 'none'" : "form-action 'self'",
+      discovery || player || personal ? "form-action 'none'" : "form-action 'self'",
       "base-uri 'none'",
     ].join("; "));
 

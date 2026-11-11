@@ -10,11 +10,28 @@ Relevé du 7 novembre 2026 sur `codex/studio-local-pilote`. Le lot M03 part d’
 | 3 · Fresque horizontale | En place | Scènes, ordre, taille des cartes, vue liste, embranchements, repères, références et scènes jouées confirmées. Préparation depuis des jalons, import d’une aventure, mini-carte et filtre par couloir. |
 | 4 · Bibliothèque et catalogue | Partiel | 92 références des Archives, ressources de démonstration et variantes locales, rayons, recherche, filtres, cartes et liste, raccourcis Markdown. Imagerie accepte les liens HTTPS et leurs crédits. L’interopérabilité INDEX et les sources communautaires restent à instruire. |
 | 5 · Ateliers et Atlas | Partiel | Douze modèles de fiches privées, Atlas hiérarchique, liens Markdown et repères. Création et import M04, lecture M05 et cibles M03. Les aventures peuvent alimenter la Fresque. Raccord mécanique des créations à développer. |
-| 6 · Hub joueur | Partiel | Import M02, création guidée niveau 5 et création libre niveaux 1 à 25 avec budget natif. Vue joueur locale en lecture seule avec sélection des champs. Progression, journal et accès indépendant à développer. |
+| 6 · Hub joueur | Partiel | Espace autonome, création guidée niveau 5 et libre de 1 à 25, état, inventaire, capacités, 5d6, sauvegarde personnelle et remise M02 au MJ. Progression, journal de jeu, sorts et mises à jour entre les deux espaces à développer. |
 | 7 · Activités et progression | Partiel | Carnet d’interludes avec cinq types d’activité, rattachement aux scènes et journal privé. Catalogue détaillé, effets du repos, mentors et décisions d’XP restent à intégrer. |
 | 8 · Régie audiovisuelle | Partiel | Aperçu et fenêtre séparée pour les scènes, les fiches PJ et les images locales. Carnet d’ambiances et remplacement confirmé dans la même fenêtre. Retrait depuis la régie et lors des changements de contexte. |
 | 9 · Communauté et modèles | Partiel | Lien Discord dans le parcours Joueurs et le pied de page de l’accueil public. Recherche de table, paquets expurgés, export de modèles, import partiel et circuit éditorial à définir. Les sauvegardes existantes sont des archives privées. |
 | 10 · Stabilisation | Partiel | Recettes automatisées du Studio et de Quartz, clavier, largeurs mobiles et restauration dans un profil vierge. Prévoir recette humaine MJ, appareil tactile réel et décision de publication. |
+
+## Lot Espace joueur · 8 novembre 2026
+
+Le lot part de `be42464` sur `main`. L’accueil distingue la découverte de l’univers, le Studio MJ et l’espace joueur. Le navigateur stocke les PJ dans une base dédiée. Les deux outils appellent les mêmes moteurs M01 et M02. L’assemblage statique précise l’extension des imports 5d6 pour que les moteurs se chargent aussi sur GitHub Pages.
+
+| Mission | Avancement |
+| --- | --- |
+| TABLE-01 · Sauvegardes | Campagnes `chroniques-entre-rives.studio-local` v1 à v16, sauvegardes personnelles `chroniques-entre-rives.joueur` v1 avec empreinte et imports historiques PJ `alrick.sheets.v3`. La restauration joueur crée une copie. Une révision divergente entre onglets bloque l’écriture. |
+| TABLE-02 · Visibilité | L’espace joueur utilise son propre stockage. Son export M02 sélectionne les champs de jeu. La projection reste un récepteur dédié, limité aux éléments approuvés dans la régie. |
+| TABLE-03 · Création autonome | Parcours guidé au niveau 5, création libre de 1 à 25, histoire et liens facultatifs, aperçu avant enregistrement. Le brouillon de création entre deux visites reste à prévoir. |
+| TABLE-04 · Fiche de jeu | PV et mana ajustables, inventaire descriptif, lecture des capacités, jets libres et d’action, notes privées. Grimoire, gestion de l’équipement et historique restent à développer. |
+| TABLE-05 · Échange | Remise d’une copie M02 au MJ testée. Le prochain lot doit relier les copies par une identité et une version, montrer les divergences et permettre au joueur d’accepter un retour du MJ. |
+| TABLE-06 à TABLE-09 | Régie des participants, paquets d’aventure `chroniques-entre-rives.aventure` v1, étude des tables synchronisées et enrichissement de l’univers se poursuivent séparément. |
+
+La revue du 10 novembre retrouve 39 PR ouvertes. Leurs listes de fichiers ne recoupent ni les fichiers de ce lot ni les modules historiques qu’il utilise. La recette vérifie la création guidée, les niveaux libres 1, 5, 10, 15, 20 et 25, l’ajout d’un objet, la lecture d’une capacité, l’aller-retour dans un profil vierge et l’import MJ. Les cas de confidentialité, fichier altéré, version inconnue, extensions personnelles, transaction interrompue et conflit entre onglets sont couverts. Le texte divergent peut être téléchargé dans une sauvegarde personnelle.
+
+Le lot a été contrôlé dans Chrome et Edge, au clavier et sur des largeurs de 320 à 1 440 px. L’assemblage Pages fait l’objet d’une recette navigateur distincte. La validation en séance et sur appareil tactile réel reste à réaliser.
 
 ## Dépendances et PR
 

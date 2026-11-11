@@ -78,7 +78,7 @@ for (const file of sourceFiles.filter(f => f.endsWith('.md'))) {
 // Les tests de navigateur réels restent nécessaires pour les interactions et le stockage local.
 // L'accueil est un portail de choix ; le catalogue complet n'y figure plus.
 const portalHtml = await readFile(path.join(root, 'index.html'), 'utf8')
-for (const token of ['Les Chroniques', './studio/', './archives.html', 'CONTRIBUTING.md']) {
+for (const token of ['Les Chroniques', './studio/', './archives.html', './studio/espace-joueur.html', 'CONTRIBUTING.md']) {
   assert(portalHtml.includes(token), `Le portail des Chroniques ne contient pas ${token}`)
 }
 const studioHtml = await readFile(path.join(root, 'studio', 'index.html'), 'utf8')

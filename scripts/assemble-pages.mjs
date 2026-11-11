@@ -38,6 +38,9 @@ for (const [route, asset] of studioAssets) {
   } else if (route === '/joueur') {
     content = withPolicy(content.toString('utf8').replace('src="/joueur.js"', 'src="./joueur.js"'),
       `${basePolicy}; style-src 'unsafe-inline'; img-src data:; frame-src 'self' about:; form-action 'none'`);
+  } else if (route === '/espace-joueur.html') {
+    content = withPolicy(content.toString('utf8').replace('href="/accueil#univers"', 'href="../bibliotheque.html"')
+      .replace('href="/accueil"', 'href="../"'), `${basePolicy}; style-src 'self'; form-action 'none'`);
   }
   await mkdir(dirname(filename), { recursive: true });
   await writeFile(filename, content);

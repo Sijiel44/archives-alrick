@@ -1,0 +1,12 @@
+.player-space { width: min(100% - 2rem, 66rem); margin-inline: auto; }
+.player-space .topbar { flex-wrap: wrap; gap: .65rem 1.2rem; }
+.player-space nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.player-panel nav a { padding-inline: .35rem; }
+.player-panel { margin-block: 1rem; overflow-wrap: anywhere; }
+.player-panel > * + *, .player-space .protocol-step > * + * { margin-top: .65rem; }
+.player-space fieldset { margin-block: .65rem; }
+.player-space .creation-fields { margin-block: .5rem; }
+#origin-fields > * + * { margin-top: .5rem; }
+#player-ability-list details + details { margin-top: .5rem; }
+#player-items { padding-inline-start: 1.2rem; }
+#player-roll-result { min-height: 1.5em; }
