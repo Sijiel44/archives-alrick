@@ -1,0 +1,48 @@
+# ARCHIVES D'ALRICK — LORE-01.B : état de certification des sources (rapport public expurgé)
+
+**Date :** 1er novembre 2026  
+**Branche / PR :** `lore/lore-01a-controle-sources` — PR #77 (brouillon, sans fusion)  
+**Base :** `main` @ `88f774f3d0d6d520d8d11443b72202b9caf4f94b`  
+**Statut : PARTIELLEMENT RÉALISÉE — aucune validation cosmologique définitive.**
+
+## Mesures vérifiables
+
+- Le registre `sources/campagnes/README.md` désigne **15 unités originales** et fournit des nombres indicatifs de paragraphes et de balises d'échange. Les fichiers sources et leurs manifestes ne sont **pas actuellement importés dans le dépôt**.
+- Le contrôle de travail a récupéré **447 tranches d'extraction**, avec des balises correspondant à **11 588 pages sur 11 590 indexées**. Il ne s'agit pas d'une lecture sémantique exhaustive.
+- **0/15** original `.docx` certifié dans cet environnement par SHA256, les octets d'origine étant inaccessibles ; **0/15** transcription relue et certifiée sémantiquement du premier au dernier échange.
+- **13/15** références de noms d'originaux dans le registre de transfert diffèrent des noms des exemplaires utilisés dans le premier audit : leur équivalence textuelle et binaire reste à démontrer, sans présumer une divergence.
+- Le registre bibliothécaire possède des compilations et copies homonymes : elles ne forment pas de nouveaux épisodes.
+- L'audit du dépôt a couvert les **852 éléments** de l'arborescence (dont **527 fichiers Markdown**) et inspecté individuellement les **35 pages Markdown de `content/monde/`**. Les **24 codes explicites trouvés dans ce sous-ensemble** sont distincts ; **aucun audit global des 527 fichiers Markdown n'est revendiqué**. Les liens Quartz n'ont pas été validés par compilation.
+
+## Protocole de validation restant
+
+1. Obtenir les quinze originaux et `INVENTAIRE_GENERAL.csv`/`manifest.json` dans un espace autorisé, comparer les SHA256 binaires **et** les textes normalisés des versions homonymes.
+2. Compléter la récupération des pages absentes de l'index texte, puis **relire et qualifier chaque échange** des quinze transcriptions en gardant la séparation entre action, déclaration, croyance, hypothèse et proposition.
+3. Vérifier chaque correspondance `CBxx Pxxxxx` sur **l'original effectivement retenu**, sans interpolation tacite des numéros.
+4. Exécuter l'audit intégral des codes, références et liens Quartz sur le clone complet et vérifier le contrat éditorial.
+5. Faire approuver par la Direction tout choix relatif à la diffusion des sources et à la publication de contenu sensible. Une page `unlisted:true` **n'est pas un espace confidentiel** dans GitHub.
+
+**Recommandation : LORE-01 NON VALIDABLE À CE STADE.** Aucune conclusion nouvelle n'est officialisée, aucune fiche canonique n'a été modifiée, aucune publication de campagne n'est demandée. Le dossier interne de preuve, ses matrices et ses fichiers dérivés restent **hors du dépôt public**.
+
+**Sources de contrôle :** `CONTRAT_EDITORIAL.md` ; `sources/campagnes/README.md` ; documents existants dans `content/monde/` ; PR #77.
+
+
+## Addendum — réception directe des quinze DOCX (1er novembre 2026)
+
+Un lot de quinze documents Word a été reçu directement par le contrôleur. **15/15** ont été ouverts comme packages DOCX valides, vérifiés par contrôle ZIP, hachés au format **SHA256 sur les octets réels** et analysés sur l'intégralité de leur structure de paragraphes. Les **15 décomptes de paragraphes textuels** concordent avec `sources/campagnes/README.md` (y compris les paragraphes contenus dans les tableaux lorsqu'ils font partie du décompte). Les noms des fichiers reçus diffèrent dans **9 cas** des noms de référence du registre ; cela ne prouve aucune divergence du contenu.
+
+Un contrôle **échantillonné** retrouve **1 318/1 350** ancres de douze mots dans les exports textuels préexistants. Les octets des autres exemplaires et le manifeste original avec empreintes officielles restent indisponibles pour vérification comparative ; **0/15 rapprochement au SHA256 officiel** et **0/15 lecture sémantique intégrale certifiée**. La traçabilité des scènes ciblées a été améliorée au moyen de paragraphes P directs du DOCX reçu, sans homologation globale des renvois des dossiers consolidés.
+
+**Statut et recommandation inchangés : LORE-01 NON VALIDABLE.** Aucun texte de campagne ni détail confidentiel n'a été ajouté à GitHub ; les hashes exacts et la matrice de provenance demeurent dans le dossier privé remis à la Direction. La PR reste en brouillon, sans fusion ni modification des fiches canoniques.
+
+## Complément DG-LORE — 1er novembre 2026
+
+**Décision de la Direction : poursuivre, sans clôture ni fusion.**
+
+- **Authentification :** les quinze DOCX reçus sont intègres et leurs SHA256 complets ont été calculés. La Direction a confirmé **15/15 correspondances de préfixes** avec le registre historique du 30 octobre. Cette attestation ne remplace pas notre comparaison indépendante des **64 caractères** avec `INVENTAIRE_GENERAL.csv` et les `manifest.json`, dont les fichiers binaires ne sont pas actuellement accessibles.
+- **Trente-deux ancres :** les 32 échecs initiaux résultaient d'en-têtes et pieds de page insérés lors de l'extraction ; après leur retrait par un script reproductible, **1 350/1 350** ancres de contrôle concordent. Ce contrôle échantillonné ne constitue pas une diff textuelle intégrale entre copies DOCX.
+- **Paragraphes :** 352 724 paragraphes directs non vides + 381 paragraphes dans les tableaux des CB4.1 à CB4.4 = **353 105** paragraphes textuels tous niveaux. La différence de compteurs est expliquée et ne prouve aucune altération.
+- **Relecture sémantique bornée :** CB3.3 **P00001–P00780**, soit **780/8 146** paragraphes directs (9,58 %) lus en continuité, avec distinction des scènes, paroles, hypothèses et consignes. **0/15** épisodes intégralement certifiés.
+- **Audit d'indexation :** **89/527** fichiers Markdown individuellement vérifiés pour leurs métadonnées dans six secteurs prioritaires ; **67 codes explicites distincts** dans ce seul périmètre. Unicité globale, correspondances des anciens `CBxx Pxxxxx` et compilation Quartz non certifiées.
+
+**Statut inchangé : LORE-01.B PARTIELLEMENT RÉALISÉE ; LORE-01 NON VALIDABLE.** Les annexes détaillées sont gardées hors du dépôt public, aucune fiche canonique n'est modifiée et la PR #77 n'est pas fusionnée.
