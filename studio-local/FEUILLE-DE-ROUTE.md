@@ -33,6 +33,24 @@ La revue du 10 novembre retrouve 39 PR ouvertes. Leurs listes de fichiers ne rec
 
 Le lot a été contrôlé dans Chrome et Edge, au clavier et sur des largeurs de 320 à 1 440 px. L’assemblage Pages fait l’objet d’une recette navigateur distincte. La validation en séance et sur appareil tactile réel reste à réaliser.
 
+## Amélioration du parcours joueur · 10 novembre 2026
+
+La carte Personnage de l’accueil ouvre directement la création. Les autres accès déplient les accords de table et l’exemple 5d6. L’espace joueur réutilise l’illustration du pont, présente le portrait sur la fiche et affiche cinq dés après le lancer. Les animations d’entrée sont brèves et respectent la préférence de mouvement réduit.
+
+Le portrait utilise le champ historique `sheet.portrait`. Le fichier JPG, PNG ou WebP est réduit à 320 pixels sur son plus grand côté et encodé en JPEG dans la fiche. La limite de 3 Mio à l’entrée et celle de 180 000 caractères pour le portrait suivent l’Atelier historique. Les liens HTTPS directs sont également acceptés. La sauvegarde personnelle v1 conserve les données de la fiche, et l’export M02 sélectionne le portrait valide. Une panne d’image affiche un remplacement, et une interruption d’enregistrement laisse le choix du portrait dans le formulaire pour réessayer.
+
+La création libre présente la base de 12 points, les dépenses et les points disponibles au niveau choisi. Les coûts et bonus proviennent de M01/M02, y compris le prix du rang suivant. Les maîtrises sont classées par usage. Les domaines ajoutés par le joueur restent des propositions de spécialisation à valider avec le MJ. Un mentor, une école et un apprentissage peuvent être déclarés dans l’histoire personnelle.
+
+La suite complète passe 63 tests dans Chrome, avec la recette Pages exécutée séparément et réussie. Les six scénarios ciblés Accueil/Joueur et la recette Pages passent également dans Edge. `npm test` réussit. Les nouveaux contrôles couvrent l’entrée depuis la carte Personnage, les portraits par fichier et par lien, leur restauration, le refus d’un format ou protocole incompatible, le retrait, la reprise après interruption d’écriture, les coûts affichés, les domaines personnalisés et le mouvement réduit.
+
+### Avis MATH et prochain lot de règles
+
+MATH a été consulté à la demande du créateur. Son avis recommande des crédits d’achat pour étudier la dotation initiale et les paliers, avec un suivi dédié. Le moteur actuel accorde 0, 24, 54, 84, 114 et 144 points de développement aux niveaux 1, 5, 10, 15, 20 et 25, en plus des 12 points de caractéristiques de départ. Les maîtrises sont payées dans ce budget commun.
+
+La proposition de travail prévoit deux crédits de maîtrise au départ et deux aux paliers 5, 10, 15, 20 et 25. Le montant, les paliers définitifs et le traitement d’un personnage créé directement à haut niveau restent à décider. Les crédits et les rangs ont des valeurs différentes aux rangs élevés. Le mentorat devra conserver le mentor, le domaine, la période d’apprentissage, le coût, la décision MJ et un identifiant d’acquisition unique. Le contrat de sauvegarde et l’échange joueur/MJ devront transporter ces décisions avant qu’elles deviennent des gains mécaniques.
+
+Cette tranche améliore la création avec le budget M02 existant. Les dotations et acquisitions par mentor constituent un prochain lot mécanique à examiner. L’échange de mises à jour entre copies joueur et MJ reste également prévu dans TABLE-05.
+
 ## Dépendances et PR
 
 Le `main` distant et le `main` de référence concordent. Les listes de fichiers des 39 PR ouvertes ont été comparées au répertoire `studio-local/` et aux modules historiques de progression, dés, Bestiaire M04 et combat M03 utilisés ici. Aucun fichier commun n’a été relevé dans ce périmètre. Les sources natives restent la référence des calculs. [PR ouvertes](https://github.com/Sijiel44/archives-alrick/pulls) · [Moteur M03 épinglé](https://github.com/Sijiel44/archives-alrick/blob/88f774f3d0d6d520d8d11443b72202b9caf4f94b/quartz/components/scripts/atelier5d6-combat-m03.ts)

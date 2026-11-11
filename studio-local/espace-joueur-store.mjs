@@ -1,5 +1,6 @@
 import { checkJSON, sha256, validPJSource } from './store.mjs';
 import { evaluatePJ, MAX_PJ_FILE_BYTES, M02_SCHEMA, readPJExport } from './pj-m02.mjs';
+import { validPortrait } from './portraits.mjs';
 
 const FORMAT = 'chroniques-entre-rives.joueur';
 const take = (value, keys) => Object.fromEntries(keys.filter(key => Object.hasOwn(value, key)).map(key => [key, value[key]]));
@@ -39,6 +40,7 @@ export function playerExchange(sheet) {
   const copy = take(sheet, ['id', 'name', 'kind', 'ruleset', 'level', 'pv', 'pvMax', 'mana', 'manaMax', 'xp', 'stats', 'masteries']);
   for (const key of ['resistanceBonus', 'protection', 'equipmentGrades']) copy[key] = take(sheet[key], ['physique', 'magie', 'mental']);
   copy.stats = take(sheet.stats, ['physique', 'agilite', 'esprit', 'presence']);
+  if (validPortrait(sheet.portrait) && sheet.portrait) copy.portrait = sheet.portrait;
   copy.development = {
     startingStats: take(sheet.development.startingStats, ['physique', 'agilite', 'esprit', 'presence']),
     abilities: sheet.development.abilities.map(ability => scalarFields(ability, ['id', 'name', 'description', 'domain', 'kind',

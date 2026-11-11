@@ -42,10 +42,12 @@ test("Accueil de découverte illustré, navigation clavier et formats étroits",
   await menu.waitFor({ state: "hidden" });
   assert.equal(await page.evaluate(() => location.hash), "#joueurs");
 
-  await page.getByRole("navigation", { name: "Étapes du parcours Joueurs" }).getByRole("link", { name: /Jouer une action/ }).click();
+  await page.getByRole("navigation", { name: "Étapes du parcours Joueurs" }).getByRole("link", { name: /Comprendre les 5d6/ }).click();
   assert.equal(await page.evaluate(() => location.hash), "#joueurs-essai");
-  await page.getByText("Voir un jet d’exemple", { exact: true }).click();
   await page.getByText(/le total monte à 19/).waitFor();
+  assert.equal(await page.locator("#joueurs-des").getAttribute("open"), "");
+  await page.getByRole("navigation", { name: "Étapes du parcours Joueurs" }).getByRole("link", { name: /Préparer notre table/ }).click();
+  await page.getByText("Un moyen de demander une pause ou de revenir sur une scène.", { exact: true }).waitFor();
   await page.getByRole("link", { name: "Choisir un lieu de départ" }).click();
   assert.equal(await page.evaluate(() => location.hash), "#univers-territoires");
   const atlas = page.getByRole("link", { name: "Consulter le schéma de l’Atlas" });

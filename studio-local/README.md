@@ -20,9 +20,13 @@ Le Studio existe aussi en version statique sur [GitHub Pages](https://sijiel44.g
 
 Ouvrir **Espace joueur** depuis [l’accueil de découverte](http://127.0.0.1:4380/accueil). Le parcours de vie crée un PJ de niveau 5. La création libre vérifie le budget M02 pour un niveau choisi de 1 à 25. Après l’aperçu, enregistrer le personnage pour retrouver sa fiche dans ce navigateur.
 
+- La carte **Donnez-lui une raison de partir** et **1 · Créer mon personnage** ouvrent directement le formulaire. Les deux autres accès du parcours Joueurs déplient les accords de table et les explications des 5d6.
+- Dans le formulaire, **Portrait du personnage** accepte un JPG, PNG ou WebP de 3 Mio maximum, réduit sur l’appareil selon le format historique du portrait. Un lien HTTPS direct peut également être utilisé. **Mon portrait** permet de le remplacer ou de le retirer après la création. La sauvegarde personnelle et la fiche M02 destinée au MJ conservent le portrait. Une image par lien reste chez son hébergeur.
+- En création libre, les compteurs affichent les 12 points de base, la dépense et le reste du budget du niveau. Chaque caractéristique ou maîtrise donne son coût, son bonus et le prix du prochain point. Les repères des niveaux 1, 5, 10, 15, 20 et 25 utilisent le moteur existant.
+- Les maîtrises sont regroupées par armes et défenses, magie et soins, savoirs et métiers. Un domaine personnalisé peut être proposé au MJ. Le mentor, l’école et l’apprentissage déclaré se renseignent dans **Histoire et liens**.
 - Dans la fiche, consulter les maîtrises et les capacités. Ajuster manuellement les PV et le mana, ajouter un objet à l’inventaire ou inscrire une note personnelle. Les jets 5d6 libres et les jets d’action affichent leur résultat sur place.
 - **Sauvegarder mon personnage** télécharge la fiche et les notes affichées, y compris le texte en cours après un conflit de sauvegarde. **Importer une fiche** vérifie la sauvegarde et affiche son aperçu. La confirmation ajoute une nouvelle copie. Les exports PJ M02 de l’Atelier historique sont également acceptés.
-- **Exporter la fiche M02 pour le MJ** télécharge le profil de jeu, les capacités et l’inventaire. L’histoire personnelle et les notes restent dans la sauvegarde joueur. Le MJ relit et ajoute la fiche dans sa campagne avec **Importer un PJ M02**.
+- **Exporter la fiche M02 pour le MJ** télécharge le profil de jeu, le portrait, les capacités et l’inventaire. L’histoire personnelle, les repères d’apprentissage et les notes restent dans la sauvegarde joueur. Le MJ relit et ajoute la fiche dans sa campagne avec **Importer un PJ M02**.
 
 Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent manuellement. Lorsqu’une fiche joueur a changé dans un autre onglet, copier le texte en cours avant de recharger sa version enregistrée.
 

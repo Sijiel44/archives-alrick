@@ -7,6 +7,7 @@ import { checkJSON, validPJSource } from './store.mjs';
 export const MAX_PJ_FILE_BYTES = 2 * 1024 * 1024;
 export { M02_SCHEMA };
 export { effectiveStat, effectiveMastery };
+export { developmentBudget, masteryCost, statCost } from './moteur/atelier5d6-progression.js';
 export { EDUCATION_PATHS, LITERACY_LEVELS, ORIGIN_STEPS };
 export const FREE_PJ_MASTERIES = [...ORIGIN_MASTERIES, 'esquive', 'parade', 'resistance_magique', 'volonte'];
 

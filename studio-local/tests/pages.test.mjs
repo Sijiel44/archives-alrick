@@ -81,5 +81,18 @@ test('GitHub Pages relie les Archives et le Studio et isole le récepteur joueur
   assert.equal((await page.request.get(new URL(await resources.getAttribute('href'), page.url()).href)).status(), 200);
   await page.getByRole('button', { name: 'Créer mon personnage' }).press('Enter');
   await page.getByRole('dialog', { name: 'Créer mon personnage' }).waitFor();
+  await page.locator('#new-player-mode').selectOption('free');
+  await page.locator('#new-player-name').fill('PJ fictif Pages');
+  await page.locator('#creation-portrait-file').setInputFiles({ name: 'portrait-fictif.webp', mimeType: 'image/webp',
+    buffer: await readFile(new URL('../media/heron-des-lanternes.webp', import.meta.url)) });
+  await page.locator('#creation-portrait').getByText(/Portrait prêt/).waitFor();
+  await page.getByRole('button', { name: 'Vérifier la fiche' }).click();
+  await page.locator('#confirm-player-create').click();
+  await page.getByRole('heading', { name: 'PJ fictif Pages', exact: true }).waitFor();
+  assert.equal(await page.locator('#player-portrait').evaluate(async img => { await img.decode(); return img.naturalWidth <= 320; }), true);
+  await page.goto(base);
+  await page.locator('#joueurs-personnage').getByRole('link', { name: /Donnez-lui une raison de partir/ }).click();
+  await page.getByRole('dialog', { name: 'Créer mon personnage' }).waitFor();
+  assert.equal(new URL(page.url()).pathname, new URL('./studio/espace-joueur.html', base).pathname);
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
 });

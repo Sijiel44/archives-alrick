@@ -125,29 +125,45 @@
         </ol>
         <div class="public-route">
           <nav aria-label="Étapes du parcours Joueurs">
-            <a href="#joueurs-personnage">1 · Imaginer son personnage</a>
-            <a href="#joueurs-table">2 · Se mettre d’accord</a>
-            <a href="#joueurs-essai">3 · Jouer une action</a>
+            <a href="/espace-joueur.html?creer=1">1 · Créer mon personnage</a>
+            <a href="#joueurs-table">2 · Préparer notre table</a>
+            <a href="#joueurs-essai">3 · Comprendre les 5d6</a>
           </nav>
           <div class="route-stages">
             <article id="joueurs-personnage" tabindex="-1">
-              <p class="eyebrow">01 · Personnage</p>
-              <h3>Donnez-lui une raison de partir</h3>
-              <p>Notez un métier, une personne qui compte, un objectif pour ce soir et une limite. Une batelière qui cherche son frère et refuse d’abandonner ses passagers suffit pour commencer.</p>
+              <a class="route-create" href="/espace-joueur.html?creer=1">
+                <p class="eyebrow">01 · Personnage</p>
+                <h3>Donnez-lui une raison de partir</h3>
+                <p>Notez un métier, une personne qui compte, un objectif pour ce soir et une limite. Une batelière qui cherche son frère et refuse d’abandonner ses passagers suffit pour commencer.</p>
+                <span class="text-link">Créer mon personnage <span aria-hidden="true">↗</span></span>
+              </a>
             </article>
             <article id="joueurs-table" tabindex="-1">
               <p class="eyebrow">02 · Groupe</p>
               <h3>Décidez ensemble du départ</h3>
               <p>Choisissez pourquoi vos personnages voyagent ensemble, le ton de la partie et les sujets à écarter. Le MJ confirme ensuite le niveau de départ et la version des règles utilisée à la table.</p>
+              <details id="joueurs-accords">
+                <summary>Les cinq points à préparer ensemble</summary>
+                <ul>
+                  <li>Une envie commune pour cette première aventure.</li>
+                  <li>Une raison de se faire confiance et de rester ensemble.</li>
+                  <li>Le ton souhaité et les sujets à écarter.</li>
+                  <li>Le niveau de départ et les règles confirmés par le MJ.</li>
+                  <li>Un moyen de demander une pause ou de revenir sur une scène.</li>
+                </ul>
+                <p>Notez les accords utiles dans vos notes personnelles et partagez-les avant la séance.</p>
+              </details>
               <a class="text-link" href="#univers-territoires">Choisir un lieu de départ</a>
             </article>
             <article id="joueurs-essai" tabindex="-1">
               <p class="eyebrow">03 · Exemple 5d6</p>
               <h3>Décrivez votre action avant les dés</h3>
               <p>« J’attache la barque à la pile du pont avant que le courant l’emporte. » Le MJ annonce l’enjeu et, si l’action est incertaine, la difficulté et les bonus à utiliser.</p>
-              <details>
+              <details id="joueurs-des">
                 <summary>Voir un jet d’exemple</summary>
                 <p>Les dés donnent 4, 4, 3, 3 et 2, soit 16. Avec un bonus de 2 en caractéristique et de 1 en maîtrise, le total monte à 19. Si le MJ a annoncé un seuil de 18, la barque est amarrée.</p>
+                <p>Les cinq dés sont additionnés. La fiche calcule les bonus à partir des caractéristiques et des maîtrises. Le MJ annonce le seuil et confirme les effets de l’action. Une action certaine se décrit directement.</p>
+                <a class="text-link" href="/espace-joueur.html#player-rolls">Ouvrir mes dés et ma fiche</a>
               </details>
             </article>
           </div>
