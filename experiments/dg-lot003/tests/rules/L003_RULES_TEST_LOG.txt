@@ -1,0 +1,161 @@
+TAP version 13
+# L003-RULES backend=tsc ; sources M01/M03/probabilities officielles sans modification
+# Subtest: M03 natif égal à passerelle PJ/créature N1
+ok 1 - M03 natif égal à passerelle PJ/créature N1
+  ---
+  duration_ms: 2.927376
+  type: 'test'
+  ...
+# Subtest: M01 natif égal à passerelle N1
+ok 2 - M01 natif égal à passerelle N1
+  ---
+  duration_ms: 0.354664
+  type: 'test'
+  ...
+# Subtest: absorption non homologuée refusée N1
+ok 3 - absorption non homologuée refusée N1
+  ---
+  duration_ms: 1.297713
+  type: 'test'
+  ...
+# Subtest: M03 natif égal à passerelle PJ/créature N5
+ok 4 - M03 natif égal à passerelle PJ/créature N5
+  ---
+  duration_ms: 0.169026
+  type: 'test'
+  ...
+# Subtest: M01 natif égal à passerelle N5
+ok 5 - M01 natif égal à passerelle N5
+  ---
+  duration_ms: 0.505280
+  type: 'test'
+  ...
+# Subtest: absorption non homologuée refusée N5
+ok 6 - absorption non homologuée refusée N5
+  ---
+  duration_ms: 0.094282
+  type: 'test'
+  ...
+# Subtest: M03 natif égal à passerelle PJ/créature N10
+ok 7 - M03 natif égal à passerelle PJ/créature N10
+  ---
+  duration_ms: 0.270187
+  type: 'test'
+  ...
+# Subtest: M01 natif égal à passerelle N10
+ok 8 - M01 natif égal à passerelle N10
+  ---
+  duration_ms: 0.212907
+  type: 'test'
+  ...
+# Subtest: absorption non homologuée refusée N10
+ok 9 - absorption non homologuée refusée N10
+  ---
+  duration_ms: 0.376377
+  type: 'test'
+  ...
+# Subtest: M03 natif égal à passerelle PJ/créature N15
+ok 10 - M03 natif égal à passerelle PJ/créature N15
+  ---
+  duration_ms: 1.091534
+  type: 'test'
+  ...
+# Subtest: M01 natif égal à passerelle N15
+ok 11 - M01 natif égal à passerelle N15
+  ---
+  duration_ms: 0.149976
+  type: 'test'
+  ...
+# Subtest: absorption non homologuée refusée N15
+ok 12 - absorption non homologuée refusée N15
+  ---
+  duration_ms: 0.074863
+  type: 'test'
+  ...
+# Subtest: M03 natif égal à passerelle PJ/créature N20
+ok 13 - M03 natif égal à passerelle PJ/créature N20
+  ---
+  duration_ms: 0.263745
+  type: 'test'
+  ...
+# Subtest: M01 natif égal à passerelle N20
+ok 14 - M01 natif égal à passerelle N20
+  ---
+  duration_ms: 0.078490
+  type: 'test'
+  ...
+# Subtest: absorption non homologuée refusée N20
+ok 15 - absorption non homologuée refusée N20
+  ---
+  duration_ms: 0.166791
+  type: 'test'
+  ...
+# Subtest: M03 natif égal à passerelle PJ/créature N25
+ok 16 - M03 natif égal à passerelle PJ/créature N25
+  ---
+  duration_ms: 0.089890
+  type: 'test'
+  ...
+# Subtest: M01 natif égal à passerelle N25
+ok 17 - M01 natif égal à passerelle N25
+  ---
+  duration_ms: 0.047894
+  type: 'test'
+  ...
+# Subtest: absorption non homologuée refusée N25
+ok 18 - absorption non homologuée refusée N25
+  ---
+  duration_ms: 0.049023
+  type: 'test'
+  ...
+# Subtest: impact +2 nativement approuvé, calcul identique M03 direct, sans débit
+ok 19 - impact +2 nativement approuvé, calcul identique M03 direct, sans débit
+  ---
+  duration_ms: 0.806540
+  type: 'test'
+  ...
+# Subtest: deux effets impact validés ne se cumulent pas : moteur M03 choisit max
+ok 20 - deux effets impact validés ne se cumulent pas : moteur M03 choisit max
+  ---
+  duration_ms: 0.180191
+  type: 'test'
+  ...
+# Subtest: validation native M03 refuse magnitude 3, durée 4, mauvais trigger et non-approuvé
+ok 21 - validation native M03 refuse magnitude 3, durée 4, mauvais trigger et non-approuvé
+  ---
+  duration_ms: 0.302045
+  type: 'test'
+  ...
+# Subtest: injection approved et champs effets natifs interdits
+ok 22 - injection approved et champs effets natifs interdits
+  ---
+  duration_ms: 0.196045
+  type: 'test'
+  ...
+# Subtest: objets numériques / MATH002 / débit mana & charges tous indisponibles
+ok 23 - objets numériques / MATH002 / débit mana & charges tous indisponibles
+  ---
+  duration_ms: 0.203225
+  type: 'test'
+  ...
+# Subtest: M01 interdit effet non référencé, succès forcé et champ de débit
+ok 24 - M01 interdit effet non référencé, succès forcé et champ de débit
+  ---
+  duration_ms: 0.097838
+  type: 'test'
+  ...
+# Subtest: 5d6 officiels : 7 776 issues, aucun second générateur
+ok 25 - 5d6 officiels : 7 776 issues, aucun second générateur
+  ---
+  duration_ms: 0.374153
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 913.959103
