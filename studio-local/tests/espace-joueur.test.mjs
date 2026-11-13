@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import { browserFixture } from './browser.mjs';
 
 async function download(page, id) {
+  await page.getByRole('tab', { name: 'Sauvegarde', exact: true }).click();
   const [file] = await Promise.all([page.waitForEvent('download'), page.locator(`#${id}`).click()]);
   return readFile(await file.path());
 }
@@ -32,13 +33,16 @@ test('Le joueur crée et restaure son personnage indépendamment de la campagne 
   await page.locator('#player-pv').fill('1');
   await page.getByRole('button', { name: 'Enregistrer mes ressources' }).press('Enter');
   await page.locator('#player-resources').getByText(/PV 1 \/ /).waitFor();
+  await page.getByRole('tab', { name: 'Dés', exact: true }).click();
   await page.locator('#player-free-roll').click();
   await page.locator('#player-roll-result').getByText(/^Jet libre/).waitFor();
   await page.getByRole('button', { name: 'Lancer une action 5d6' }).click();
   await page.locator('#player-roll-result').getByText(/seuil 15/).waitFor();
+  await page.getByRole('tab', { name: 'Inventaire', exact: true }).click();
   await page.locator('#item-name').fill('Corde');
   await page.getByRole('button', { name: 'Ajouter l’objet' }).click();
   await page.locator('#player-items').getByText('Corde × 1').waitFor();
+  await page.getByRole('tab', { name: 'Notes', exact: true }).click();
   await page.locator('#personal-notes').fill('CANARI_PRIVE_JOUEUR');
   await page.getByRole('button', { name: 'Enregistrer mes notes' }).click();
   await page.locator('#player-save-status').getByText('Sauvegarde locale confirmée').waitFor();
@@ -59,7 +63,7 @@ test('Le joueur crée et restaure son personnage indépendamment de la campagne 
   await restored.goto(fixture.url + 'espace-joueur.html');
   await restored.locator('#player-import').click();
   const file = { name: 'personnage.json', mimeType: 'application/json' };
-  const future = { ...JSON.parse(backup), version: 2 };
+  const future = { ...JSON.parse(backup), version: 99 };
   await restored.locator('#player-file').setInputFiles({ ...file, buffer: Buffer.from(JSON.stringify(future)) });
   await restored.locator('#player-import-preview').getByText(/version de sauvegarde joueur est inconnue/).waitFor();
   assert.equal(await restored.locator('#confirm-player-import').isDisabled(), true);
@@ -74,6 +78,7 @@ test('Le joueur crée et restaure son personnage indépendamment de la campagne 
   await restored.getByText('Histoire et liens', { exact: true }).click();
   await restored.getByText('Mentor de recette', { exact: true }).waitFor();
   assert.equal(await restored.locator('#personal-notes').inputValue(), 'CANARI_PRIVE_JOUEUR');
+  await restored.getByRole('tab', { name: 'Inventaire', exact: true }).click();
   await restored.locator('#player-items').getByText('Corde × 1').waitFor();
   await restored.locator('#player-resources').getByText(/PV 1 \/ /).waitFor();
 
@@ -127,6 +132,7 @@ test('Les coûts de création sont visibles et les portraits par lien restent mo
   await page.locator('#confirm-player-create').click();
   await page.getByRole('heading', { name: 'Astrée', exact: true }).waitFor();
   await page.locator('#player-mastery-line').getByText(/Magie du feu 2/).waitFor();
+  await page.getByRole('tab', { name: 'Dés', exact: true }).click();
   await page.locator('#player-free-roll').click();
   assert.equal(await page.locator('#player-dice .die').count(), 5);
   assert.equal(await page.locator('#player-dice .die').first().evaluate(die => getComputedStyle(die).animationName), 'none');
@@ -189,6 +195,8 @@ test('La création libre suit M02 aux niveaux repères et signale un conflit ent
   const second = await context.newPage();
   await second.goto(page.url());
   await second.getByRole('heading', { name: 'Libre 25' }).waitFor();
+  await page.getByRole('tab', { name: 'Notes', exact: true }).click();
+  await second.getByRole('tab', { name: 'Notes', exact: true }).click();
   await page.locator('#personal-notes').fill('Note confirmée');
   await page.getByRole('button', { name: 'Enregistrer mes notes' }).click();
   await page.locator('#player-save-status').getByText('Sauvegarde locale confirmée').waitFor();
@@ -253,6 +261,7 @@ test('Les extensions personnelles restent dans la sauvegarde et un enregistremen
   await page.locator('#player-import').click();
   await page.locator('#player-file').setInputFiles({ name: 'fiche-fictive.json', mimeType: 'application/json', buffer: Buffer.from(result.backup) });
   await page.locator('#confirm-player-import').click();
+  await page.getByRole('tab', { name: 'Capacités', exact: true }).click();
   await page.getByText('Aptitude de recette · Survie', { exact: true }).click();
   await page.getByText('Effet descriptif à arbitrer.', { exact: true }).waitFor();
 });

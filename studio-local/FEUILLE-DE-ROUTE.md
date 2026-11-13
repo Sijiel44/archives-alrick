@@ -10,7 +10,7 @@ Relevé du 7 novembre 2026 sur `codex/studio-local-pilote`. Le lot M03 part d’
 | 3 · Fresque horizontale | En place | Scènes, ordre, taille des cartes, vue liste, embranchements, repères, références et scènes jouées confirmées. Préparation depuis des jalons, import d’une aventure, mini-carte et filtre par couloir. |
 | 4 · Bibliothèque et catalogue | Partiel | 92 références des Archives, ressources de démonstration et variantes locales, rayons, recherche, filtres, cartes et liste, raccourcis Markdown. Imagerie accepte les liens HTTPS et leurs crédits. L’interopérabilité INDEX et les sources communautaires restent à instruire. |
 | 5 · Ateliers et Atlas | Partiel | Douze modèles de fiches privées, Atlas hiérarchique, liens Markdown et repères. Création et import M04, lecture M05 et cibles M03. Les aventures peuvent alimenter la Fresque. Raccord mécanique des créations à développer. |
-| 6 · Hub joueur | Partiel | Espace autonome, création guidée niveau 5 et libre de 1 à 25, état, inventaire, capacités, 5d6, sauvegarde personnelle et remise M02 au MJ. Progression, journal de jeu, sorts et mises à jour entre les deux espaces à développer. |
+| 6 · Hub joueur | Partiel | Espace autonome, création guidée niveau 5 et libre de 1 à 25, panneaux de jeu, inventaire modifiable et filtrable, recherche des capacités, historique des 5d6 et sauvegarde personnelle v2. Progression, grimoire et mises à jour entre les deux espaces à développer. |
 | 7 · Activités et progression | Partiel | Carnet d’interludes avec cinq types d’activité, rattachement aux scènes et journal privé. Catalogue détaillé, effets du repos, mentors et décisions d’XP restent à intégrer. |
 | 8 · Régie audiovisuelle | Partiel | Aperçu et fenêtre séparée pour les scènes, les fiches PJ et les images locales. Carnet d’ambiances et remplacement confirmé dans la même fenêtre. Retrait depuis la régie et lors des changements de contexte. |
 | 9 · Communauté et modèles | Partiel | Lien Discord dans le parcours Joueurs et le pied de page de l’accueil public. Recherche de table, paquets expurgés, export de modèles, import partiel et circuit éditorial à définir. Les sauvegardes existantes sont des archives privées. |
@@ -22,10 +22,10 @@ Le lot part de `be42464` sur `main`. L’accueil distingue la découverte de l�
 
 | Mission | Avancement |
 | --- | --- |
-| TABLE-01 · Sauvegardes | Campagnes `chroniques-entre-rives.studio-local` v1 à v16, sauvegardes personnelles `chroniques-entre-rives.joueur` v1 avec empreinte et imports historiques PJ `alrick.sheets.v3`. La restauration joueur crée une copie. Une révision divergente entre onglets bloque l’écriture. |
+| TABLE-01 · Sauvegardes | Campagnes `chroniques-entre-rives.studio-local` v1 à v16, sauvegardes personnelles `chroniques-entre-rives.joueur` v2 avec empreinte, lecture des v1 et imports historiques PJ `alrick.sheets.v3`. La restauration joueur crée une copie. Une révision divergente entre onglets bloque l’écriture. |
 | TABLE-02 · Visibilité | L’espace joueur utilise son propre stockage. Son export M02 sélectionne les champs de jeu. La projection reste un récepteur dédié, limité aux éléments approuvés dans la régie. |
 | TABLE-03 · Création autonome | Parcours guidé au niveau 5, création libre de 1 à 25, histoire et liens facultatifs, aperçu avant enregistrement. Le brouillon de création entre deux visites reste à prévoir. |
-| TABLE-04 · Fiche de jeu | PV et mana ajustables, inventaire descriptif, lecture des capacités, jets libres et d’action, notes privées. Grimoire, gestion de l’équipement et historique restent à développer. |
+| TABLE-04 · Fiche de jeu | Six panneaux accessibles au clavier, PV et mana ajustables, inventaire recherché et modifiable, marquage descriptif des objets portés, recherche des capacités, jets libres et d’action, historique des 50 derniers jets consignés et notes privées. Grimoire et effets mécaniques de l’équipement restent à développer. |
 | TABLE-05 · Échange | Remise d’une copie M02 au MJ testée. Le prochain lot doit relier les copies par une identité et une version, montrer les divergences et permettre au joueur d’accepter un retour du MJ. |
 | TABLE-06 à TABLE-09 | Régie des participants, paquets d’aventure `chroniques-entre-rives.aventure` v1, étude des tables synchronisées et enrichissement de l’univers se poursuivent séparément. |
 
@@ -50,6 +50,22 @@ MATH a été consulté à la demande du créateur. Son avis recommande des créd
 La proposition de travail prévoit deux crédits de maîtrise au départ et deux aux paliers 5, 10, 15, 20 et 25. Le montant, les paliers définitifs et le traitement d’un personnage créé directement à haut niveau restent à décider. Les crédits et les rangs ont des valeurs différentes aux rangs élevés. Le mentorat devra conserver le mentor, le domaine, la période d’apprentissage, le coût, la décision MJ et un identifiant d’acquisition unique. Le contrat de sauvegarde et l’échange joueur/MJ devront transporter ces décisions avant qu’elles deviennent des gains mécaniques.
 
 Cette tranche améliore la création avec le budget M02 existant. Les dotations et acquisitions par mentor constituent un prochain lot mécanique à examiner. L’échange de mises à jour entre copies joueur et MJ reste également prévu dans TABLE-05.
+
+## Poste de jeu joueur · 12 novembre 2026
+
+Le créateur a confirmé le cadrage du 8 novembre comme source de référence. Cette tranche poursuit TABLE-04. Le poste joueur utilise six panneaux, une sélection de personnage latérale sur ordinateur, un en-tête compact pendant le jeu et une navigation au clavier avec les flèches, Début et Fin. Les liens directs ouvrent le panneau visé. Les caractéristiques et les maîtrises disposent de cartes et de repères visuels. Sur téléphone, les six onglets restent visibles sur deux rangées et l’en-tête du personnage est compact.
+
+L’inventaire reprend les catégories de l’Atelier historique. La recherche porte sur le nom, la catégorie et la description. Le filtre distingue les objets portés. Les détails permettent de modifier la quantité et les champs descriptifs, puis de sauvegarder ou de retirer l’objet après confirmation. Les autres champs d’une entrée existante sont conservés. Les entrées illisibles restent dans la sauvegarde personnelle. Les longues listes se chargent par groupes de 30 résultats. Le marquage d’équipement est descriptif et les effets se décident avec le MJ.
+
+Un jet libre ou d’action peut être consigné explicitement avec ses cinq dés, son résultat, ses modificateurs, un intitulé et une date. L’historique conserve les 50 derniers jets consignés. Une interruption laisse le dernier résultat affiché et permet de réessayer son enregistrement. Un résultat déjà consigné est reconnu dans la même fiche. Les capacités sont recherchables et leurs sources et limites restent consultables.
+
+La sauvegarde personnelle `chroniques-entre-rives.joueur` v2 ajoute le journal des jets au contenu vérifié par empreinte. Les fichiers v1 et les exports PJ M02 restent lus par des adaptateurs. La base IndexedDB conserve son nom et passe à la version 2 pour fermer les anciennes connexions avant les nouvelles écritures. Les personnages locaux sont repris. L’export M02 destiné au MJ contient le marquage de l’équipement et conserve sa sélection de champs partageables. Les notes et l’historique personnel restent dans la sauvegarde du joueur.
+
+La branche `codex/espace-joueur` part de `3674e35` pour ce lot. Le `main` distant reste à `be42464`. Les listes de fichiers des 39 autres PR ouvertes ont été contrôlées le 12 novembre et ne touchent aucun fichier du Studio ni son assemblage Pages. Le lot poursuit la proposition de la PR 112.
+
+La suite du Studio passe 67 tests dans Chrome, avec la recette Pages exécutée séparément. Huit scénarios Joueur et Séance passent dans Edge. `npm test`, l’assemblage Pages, ses liens et sa recette navigateur dans Chrome et Edge réussissent. Les vérifications ajoutées couvrent la sauvegarde v1, une base locale v1 encore ouverte, les champs inconnus d’objets, une modification périmée, l’interruption et le réessai d’un jet, la conservation de la maîtrise sélectionnée et d’une saisie de PV en cours, la restauration privée, la limite des 50 entrées et le refus de dés invalides. Les panneaux et commandes tactiles ont été contrôlés de 320 à 1 440 px. Le rendu final a été inspecté à 390, 768 et 1 440 px. La recette en partie et sur appareil tactile réel reste à réaliser.
+
+La prochaine tranche prioritaire est TABLE-05, avec identité des copies joueur/MJ, comparaison des versions et décision explicite lors d’un échange. Le grimoire et les brouillons persistants de création restent également prévus. Les dotations de maîtrise et le mentorat demeurent l’étude de règles décrite ci-dessus.
 
 ## Dépendances et PR
 

@@ -26,7 +26,8 @@
       </div>
     </header>
     <p id="player-error" class="notice error" role="alert" hidden></p>
-    <section class="panel player-panel" aria-labelledby="player-library-title">
+    <div class="player-workspace">
+    <aside id="player-shelf" class="panel player-panel" aria-labelledby="player-library-title">
       <div class="panel-heading"><div><p class="eyebrow accent">Mon carnet d’aventures</p><h2 id="player-library-title">Mes personnages</h2></div><span class="player-emblem" aria-hidden="true">◇</span></div>
       <p id="player-welcome" class="muted">Commence par un parcours de vie ou compose librement ta fiche. Le portrait et les notes voyagent avec ta sauvegarde personnelle.</p>
       <div id="player-library" hidden>
@@ -37,7 +38,8 @@
         <button id="player-create" type="button" disabled>Créer mon personnage</button>
         <button id="player-import" class="secondary" type="button" disabled>Importer une fiche</button>
       </div>
-    </section>
+      <p class="shelf-caption">Ta fiche, tes choix et tes souvenirs de table.</p>
+    </aside>
     <section id="player-sheet" class="panel player-panel" aria-labelledby="player-name" hidden>
       <header class="character-heading">
         <div class="character-portrait">
@@ -49,15 +51,21 @@
           <h2 id="player-name" tabindex="-1"></h2>
           <p id="player-resources" class="resource-line"></p>
           <p id="player-portrait-message" class="muted" role="status" hidden></p>
+          <a class="player-quick-action" href="#player-rolls">Préparer une action <span aria-hidden="true">↗</span></a>
         </div>
       </header>
-      <nav class="actions sheet-nav" aria-label="Sections de la fiche">
-        <a href="#player-stats">Fiche</a><a href="#player-rolls">Dés</a><a href="#player-inventory">Inventaire</a>
-        <a href="#player-abilities">Capacités</a><a href="#player-notes">Notes</a>
-      </nav>
+      <div class="actions sheet-nav" role="tablist" aria-label="Sections de la fiche">
+        <a id="tab-player-stats" role="tab" aria-controls="player-stats" aria-selected="true" href="#player-stats">Fiche</a>
+        <a id="tab-player-rolls" role="tab" aria-controls="player-rolls" aria-selected="false" tabindex="-1" href="#player-rolls">Dés</a>
+        <a id="tab-player-inventory" role="tab" aria-controls="player-inventory" aria-selected="false" tabindex="-1" href="#player-inventory">Inventaire</a>
+        <a id="tab-player-abilities" role="tab" aria-controls="player-abilities" aria-selected="false" tabindex="-1" href="#player-abilities">Capacités</a>
+        <a id="tab-player-notes" role="tab" aria-controls="player-notes" aria-selected="false" tabindex="-1" href="#player-notes">Notes</a>
+        <a id="tab-player-backups" role="tab" aria-controls="player-backups" aria-selected="false" tabindex="-1" href="#player-backups">Sauvegarde</a>
+      </div>
       <div class="player-content-grid">
-      <section id="player-stats" class="protocol-step">
-        <h3>Caractéristiques et maîtrises</h3><p id="player-stat-line"></p><p id="player-mastery-line" class="muted"></p>
+      <section id="player-stats" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-stats" tabindex="0">
+        <p class="eyebrow accent">Les forces de mon personnage</p>
+        <h3>Caractéristiques et maîtrises</h3><div id="player-stat-line" class="character-stats"></div><div id="player-mastery-line" class="mastery-chips"></div>
         <details id="player-story" hidden><summary>Histoire et liens</summary><dl id="player-story-fields"></dl></details>
         <details>
           <summary>Ajuster mes PV et mon mana</summary>
@@ -70,9 +78,10 @@
           </form>
         </details>
       </section>
-      <section id="player-rolls" class="protocol-step">
-        <h3>Dés</h3>
+      <section id="player-rolls" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-rolls" tabindex="0" hidden>
+        <div class="panel-heading"><div><p class="eyebrow accent">Le moment de tenter</p><h3>Actions et dés</h3></div><span class="section-symbol" aria-hidden="true">◇</span></div>
         <form id="player-roll-form">
+          <label for="roll-intent">Action annoncée · facultatif</label><input id="roll-intent" maxlength="120" placeholder="Franchir le gué, convaincre un garde…">
           <div class="creation-fields">
             <div><label for="roll-stat">Caractéristique</label><select id="roll-stat"></select></div>
             <div><label for="roll-mastery">Maîtrise</label><select id="roll-mastery"></select></div>
@@ -82,31 +91,73 @@
         </form>
         <div id="player-dice" class="dice-tray" aria-hidden="true"></div>
         <p id="player-roll-result" class="muted" role="status"></p>
+        <button id="player-keep-roll" class="secondary" type="button" disabled>Consigner ce jet</button>
+        <div class="history-heading"><h3>Mon historique</h3><span id="player-roll-count" class="muted"></span></div>
+        <p class="field-help">Les 50 derniers jets consignés suivent ta sauvegarde personnelle.</p>
+        <ol id="player-roll-history" class="roll-history"></ol>
       </section>
-      <section id="player-inventory" class="protocol-step">
-        <h3>Inventaire</h3><ul id="player-items"></ul>
+      <section id="player-inventory" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-inventory" tabindex="0" hidden>
+        <div class="panel-heading"><div><p class="eyebrow accent">Ce que j’emporte</p><h3 id="player-inventory-title" tabindex="-1">Inventaire</h3></div><span id="player-item-count" class="count-badge"></span></div>
+        <div class="inventory-tools">
+          <div><label for="player-item-search">Rechercher un objet</label><input id="player-item-search" type="search" placeholder="Nom, catégorie ou description"></div>
+          <div><label for="player-item-filter">Afficher</label><select id="player-item-filter"><option value="all">Tous les objets</option><option value="equipped">Objets portés</option></select></div>
+        </div>
+        <ul id="player-items" class="inventory-list"></ul>
+        <button id="player-items-more" class="secondary" type="button" hidden>Afficher davantage d’objets</button>
+        <p id="player-item-status" class="field-help" role="status"></p>
+        <details class="inventory-add" open><summary>Ajouter un objet</summary>
         <form id="player-item-form">
           <div class="creation-fields">
             <div><label for="item-name">Objet</label><input id="item-name" name="name" maxlength="90" required></div>
             <div><label for="item-count">Quantité</label><input id="item-count" name="quantity" type="number" value="1" min="1" max="999" required></div>
+            <div><label for="item-category">Catégorie</label><select id="item-category" name="category"></select></div>
           </div>
           <label for="item-description">Description de l’objet</label><input id="item-description" name="description" maxlength="600">
+          <label class="equipped-choice"><input id="item-equipped" name="equipped" type="checkbox">Porté ou équipé</label>
           <button class="secondary" type="submit">Ajouter l’objet</button>
         </form>
+        </details>
+        <p class="field-help">Le marquage « porté » sert à organiser ton équipement. Les effets des objets se règlent avec le MJ.</p>
       </section>
-      <section id="player-abilities" class="protocol-step"><h3>Capacités</h3><div id="player-ability-list"></div></section>
-      <form id="player-notes" class="protocol-step">
+      <section id="player-abilities" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-abilities" tabindex="0" hidden>
+        <p class="eyebrow accent">Mes savoir-faire</p><h3>Capacités</h3>
+        <label for="player-ability-search">Rechercher une capacité</label><input id="player-ability-search" type="search" placeholder="Nom, domaine ou description">
+        <p id="player-ability-count" class="field-help" role="status"></p><div id="player-ability-list"></div>
+      </section>
+      <section id="player-notes" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-notes" tabindex="0" hidden>
+        <p class="eyebrow accent">Au fil des séances</p><h3>Mon carnet personnel</h3>
+      <form id="player-notes-form">
         <label for="personal-notes">Notes personnelles</label><textarea id="personal-notes" rows="4" maxlength="8000"></textarea>
         <button class="secondary" type="submit">Enregistrer mes notes</button>
       </form>
-      <section class="protocol-step player-transfer">
-        <h3>Sauvegarde et remise au MJ</h3>
-        <p class="muted">La sauvegarde personnelle inclut ton histoire et tes notes. La fiche M02 à remettre au MJ contient le profil de jeu, le portrait, les capacités et l’inventaire.</p>
-        <div class="actions"><button id="player-backup" class="secondary" type="button">Sauvegarder mon personnage</button><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
+      </section>
+      <section id="player-backups" class="protocol-step player-transfer" role="tabpanel" aria-labelledby="tab-player-backups" tabindex="0" hidden>
+        <p class="eyebrow accent">Retrouver mon aventure</p><h3>Sauvegarde et remise au MJ</h3>
+        <div class="player-save-options">
+          <div class="save-option"><span class="badge">Personnel</span><h4>Emporter toute ma fiche</h4><p class="muted">Le personnage, son portrait, son inventaire, son histoire, ses notes et les jets consignés.</p><button id="player-backup" type="button">Sauvegarder mon personnage</button></div>
+          <div class="save-option"><span class="badge">À partager</span><h4>Remettre ma fiche au MJ</h4><p class="muted">Le profil de jeu, le portrait, les capacités et l’inventaire. L’histoire personnelle, les notes et les jets restent dans ta sauvegarde personnelle.</p><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
+        </div>
+        <p id="player-download-status" class="field-help" role="status"></p>
+        <p class="field-help">Le personnage est enregistré dans ce navigateur. Télécharge une sauvegarde pour le reprendre sur un autre appareil, puis utilise « Importer une fiche ».</p>
       </section>
       </div>
     </section>
+    </div>
   </main>
+  <dialog id="player-item-dialog" aria-labelledby="player-item-dialog-title">
+    <form id="player-item-edit-form">
+      <h2 id="player-item-dialog-title">Détails de l’objet</h2>
+      <label for="edit-item-name">Nom</label><input id="edit-item-name" name="name" maxlength="90" required autofocus>
+      <div class="creation-fields">
+        <div><label for="edit-item-quantity">Quantité</label><input id="edit-item-quantity" name="quantity" type="number" min="1" max="999" required></div>
+        <div><label for="edit-item-category">Catégorie</label><select id="edit-item-category" name="category"></select></div>
+      </div>
+      <label for="edit-item-description">Description</label><textarea id="edit-item-description" name="description" rows="3" maxlength="600"></textarea>
+      <label class="equipped-choice"><input id="edit-item-equipped" name="equipped" type="checkbox">Porté ou équipé</label>
+      <p class="muted" role="status" data-save-message></p>
+      <div class="actions"><button type="submit">Enregistrer l’objet</button><button id="player-remove-item" class="secondary" type="button">Retirer l’objet</button><button class="secondary" type="button" data-close>Fermer</button></div>
+    </form>
+  </dialog>
   <dialog id="player-create-dialog" class="character-creator" aria-labelledby="create-player-title">
     <form id="player-create-form">
       <h2 id="create-player-title">Créer mon personnage</h2>

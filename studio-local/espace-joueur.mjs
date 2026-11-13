@@ -2,7 +2,7 @@ import { PLAY_STATS, validImageUrl } from './store.mjs';
 import { buildFreePJ, createFreePJ, createGuidedPJ, EDUCATION_PATHS, FREE_PJ_MASTERIES, LITERACY_LEVELS,
   MAX_PJ_FILE_BYTES, ORIGIN_STEPS, developmentBudget, effectiveMastery, effectiveStat, evaluatePJ, masteryCost, statCost } from './pj-m02.mjs';
 import { resolvePlayAction, studioDice } from './protocole.mjs';
-import { checkPlayerSheet, openPlayerStore, playerBackup, playerExchange, readPlayerFile } from './espace-joueur-store.mjs';
+import { checkPlayerSheet, openPlayerStore, playerBackup, playerExchange, PLAYER_ROLL_LIMIT, readPlayerFile } from './espace-joueur-store.mjs';
 import { readPortrait, validPortrait } from './portraits.mjs';
 
 const $ = id => document.getElementById(id);
@@ -15,7 +15,12 @@ const masteryName = key => Object.hasOwn(masteryLabels, key) ? masteryLabels[key
 const storyFields = [['profession', 'Métier'], ['backstory', 'Histoire personnelle'], ['connections', 'Liens'], ['goal', 'Objectif'],
   ['mentor', 'Mentor ou école'], ['training', 'Apprentissage en cours']];
 const archiveDate = new Intl.DateTimeFormat('fr', { dateStyle: 'medium', timeStyle: 'short' });
+const itemCategories = { monnaie: 'Monnaie', arme: 'Arme', armure: 'Armure', artefact: 'Artefact',
+  consommable: 'Consommable', ingredient: 'Ingrédient', outil: 'Outil', munition: 'Munition',
+  livre: 'Livre', bijou: 'Bijou', provision: 'Provision', materiau: 'Matériau', quete: 'Objet de quête', autre: 'Autre' };
 const notes = $('personal-notes');
+const tabs = [...document.querySelectorAll('.sheet-nav [role="tab"]')];
+let selectedPanel = tabs.find(tab => tab.hash === location.hash)?.getAttribute('aria-controls') ?? 'player-stats';
 let store;
 let records = [];
 let active;
@@ -23,6 +28,9 @@ let pending = false;
 let reviewed;
 let imports = [];
 let fileRequest = 0;
+let latestRoll;
+let itemEdit;
+let inventoryLimit = 30;
 
 function node(tag, content) {
   const element = document.createElement(tag);
@@ -142,7 +150,173 @@ function inventory(sheet) {
   return Array.isArray(sheet.inventory) ? sheet.inventory : [];
 }
 
+const searchText = value => String(value ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase('fr');
+const categoryName = key => typeof key === 'string' && Object.hasOwn(itemCategories, key) ? itemCategories[key] : 'Autre';
+
+function selectPanel(id, focus = false) {
+  if (!tabs.some(tab => tab.getAttribute('aria-controls') === id)) return;
+  selectedPanel = id;
+  for (const tab of tabs) {
+    const selected = tab.getAttribute('aria-controls') === id;
+    tab.setAttribute('aria-selected', String(selected));
+    tab.tabIndex = selected ? 0 : -1;
+    $(tab.getAttribute('aria-controls')).hidden = !selected;
+    if (selected && focus) {
+      tab.focus();
+      tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    }
+  }
+}
+for (const tab of tabs) {
+  tab.addEventListener('click', event => {
+    event.preventDefault();
+    selectPanel(tab.getAttribute('aria-controls'));
+    history.replaceState(null, '', tab.hash);
+  });
+  tab.addEventListener('keydown', event => {
+    const current = tabs.indexOf(tab);
+    const target = { ArrowRight: (current + 1) % tabs.length, ArrowLeft: (current + tabs.length - 1) % tabs.length,
+      Home: 0, End: tabs.length - 1 }[event.key];
+    if (target === undefined) return;
+    event.preventDefault();
+    selectPanel(tabs[target].getAttribute('aria-controls'), true);
+    history.replaceState(null, '', tabs[target].hash);
+  });
+}
+function followPanelLink() {
+  const id = location.hash.slice(1);
+  if (!tabs.some(tab => tab.getAttribute('aria-controls') === id)) return;
+  selectPanel(id);
+  if (active) {
+    $(id).focus({ preventScroll: true });
+    $(id).scrollIntoView({ block: 'start' });
+  }
+}
+window.addEventListener('hashchange', followPanelLink);
+
+function renderInventory() {
+  if (!active) return;
+  const items = inventory(active.sheet);
+  const query = searchText($('player-item-search').value);
+  const equippedOnly = $('player-item-filter').value === 'equipped';
+  const readable = items.map((item, index) => ({ item, index })).filter(({ item }) => typeof item?.name === 'string');
+  const matches = readable.filter(({ item }) => (!equippedOnly || item.equipped === true) &&
+    searchText([item.name, categoryName(item.category), typeof item.description === 'string' ? item.description : ''].join(' ')).includes(query));
+  $('player-item-count').textContent = `${readable.length} objet${readable.length > 1 ? 's' : ''}`;
+  const rows = matches.slice(0, inventoryLimit).map(({ item, index }) => {
+    const row = document.createElement('li');
+    row.className = 'inventory-item';
+    const symbol = node('span', categoryName(item.category).slice(0, 2));
+    symbol.className = 'item-token';
+    symbol.setAttribute('aria-hidden', 'true');
+    const copy = document.createElement('div');
+    const tag = node('span', `${categoryName(item.category)}${item.equipped === true ? ' · Porté' : ''}`);
+    tag.className = 'item-kind';
+    const quantity = item.quantity ?? 1;
+    const quantityLabel = typeof quantity === 'number' || typeof quantity === 'string' ? quantity : '?';
+    copy.append(tag, node('h4', `${item.name || 'Objet sans nom'} × ${quantityLabel}`));
+    if (typeof item.description === 'string' && item.description) copy.append(node('p', item.description));
+    const button = node('button', 'Détails');
+    button.type = 'button';
+    button.className = 'secondary';
+    button.setAttribute('aria-label', `Modifier ${item.name || 'cet objet'}`);
+    button.addEventListener('click', () => editItem(index));
+    row.append(symbol, copy, button);
+    return row;
+  });
+  const empty = node('li', readable.length ? 'Aucun objet ne correspond à cette recherche.' : 'Ton inventaire attend les premiers préparatifs.');
+  empty.className = 'empty';
+  $('player-items').replaceChildren(...(rows.length ? rows : [empty]));
+  $('player-items-more').hidden = matches.length <= inventoryLimit;
+  const supported = active.sheet.inventory === undefined || Array.isArray(active.sheet.inventory);
+  for (const control of $('player-item-form').querySelectorAll('input, select, button')) control.disabled = !supported;
+  $('player-item-status').textContent = supported
+    ? `Résultats affichés · ${Math.min(inventoryLimit, matches.length)} / ${matches.length}.${items.length > readable.length ? ' Les entrées de format inconnu restent dans la sauvegarde personnelle.' : ''}`
+    : 'Cet inventaire utilise un format encore inconnu. Sa sauvegarde personnelle conserve les données d’origine.';
+}
+
+function renderAbilities() {
+  if (!active) return;
+  const query = searchText($('player-ability-search').value);
+  const abilities = active.sheet.development.abilities.filter(ability =>
+    searchText([ability.name, ability.domain, ability.description, ability.effect, ability.provenance].join(' ')).includes(query));
+  $('player-ability-count').textContent = `${abilities.length} capacité${abilities.length > 1 ? 's' : ''} · ouvrir une fiche pour consulter sa source et ses limites.`;
+  const rows = abilities.map(ability => {
+    const item = document.createElement('details');
+    item.className = 'ability-card';
+    item.append(node('summary', `${ability.name} · ${ability.status === 'defined' ? ability.domain : 'Emplacement à définir'}`));
+    const badge = node('p', `Niveau ${ability.levelRequired} · ${ability.approvedByGM ? 'Validation MJ indiquée' : 'À discuter avec le MJ'}`);
+    badge.className = 'field-help';
+    item.append(badge);
+    for (const key of ['description', 'effect', 'limitations', 'provenance']) {
+      if (ability[key]) item.append(node('p', ability[key]));
+    }
+    return item;
+  });
+  const empty = node('p', 'Aucune capacité à afficher.');
+  empty.className = 'empty';
+  $('player-ability-list').replaceChildren(...(rows.length ? rows : [empty]));
+}
+
+function syncRollButton() {
+  const kept = Boolean(latestRoll && active?.rolls?.some(roll => roll.id === latestRoll.id));
+  $('player-keep-roll').disabled = pending || !latestRoll || kept;
+  $('player-keep-roll').textContent = kept ? 'Jet consigné' : 'Consigner ce jet';
+}
+
+function renderHistory() {
+  const rolls = active?.rolls ?? [];
+  $('player-roll-count').textContent = `${rolls.length} / ${PLAYER_ROLL_LIMIT}`;
+  const rows = rolls.map(roll => {
+    const row = document.createElement('li');
+    const heading = document.createElement('div');
+    heading.className = 'roll-entry-heading';
+    const date = node('time', archiveDate.format(new Date(roll.createdAt)));
+    date.dateTime = roll.createdAt;
+    heading.append(node('strong', roll.label), date);
+    row.append(heading, node('p', roll.summary));
+    return row;
+  });
+  const empty = node('li', 'Après un lancer, choisis « Consigner ce jet » pour le retrouver ici.');
+  empty.className = 'empty';
+  $('player-roll-history').replaceChildren(...(rows.length ? rows : [empty]));
+  syncRollButton();
+}
+
+function fillCategories(control, selected = 'autre') {
+  control.replaceChildren(...Object.entries(itemCategories).map(([key, label]) => new Option(label, key, key === selected, key === selected)));
+  if (typeof selected === 'string' && !Object.hasOwn(itemCategories, selected)) control.append(new Option(selected, selected, true, true));
+}
+fillCategories($('item-category'));
+
+function editItem(index) {
+  if (pending || !active) return;
+  const item = inventory(active.sheet)[index];
+  if (!item || typeof item.name !== 'string') return;
+  itemEdit = { record: active, index };
+  $('player-item-dialog-title').textContent = item.name || 'Détails de l’objet';
+  $('edit-item-name').value = item.name;
+  $('edit-item-quantity').value = typeof item.quantity === 'number' || typeof item.quantity === 'string' ? item.quantity : 1;
+  $('edit-item-description').value = typeof item.description === 'string' ? item.description : '';
+  $('edit-item-equipped').checked = item.equipped === true;
+  fillCategories($('edit-item-category'), typeof item.category === 'string' ? item.category : 'autre');
+  $('player-item-dialog').querySelector('[data-save-message]').textContent = '';
+  $('player-item-dialog').showModal();
+}
+
+function itemFromForm(form, previous) {
+  const values = new FormData(form);
+  const name = values.get('name').trim();
+  const quantity = Number(values.get('quantity'));
+  if (!name || name.length > 90 || !Number.isInteger(quantity) || quantity < 1 || quantity > 999) {
+    throw new Error('Renseigne un nom et une quantité entière entre 1 et 999.');
+  }
+  return { ...previous, name, quantity, description: values.get('description').trim(),
+    category: values.get('category'), equipped: values.has('equipped') };
+}
+
 function render(record) {
+  const previous = active;
   const changed = active?.id !== record?.id;
   active = record;
   $('player-library').hidden = records.length === 0;
@@ -151,40 +325,53 @@ function render(record) {
   $('player-selection').disabled = records.length === 0;
   $('player-sheet').hidden = !active;
   $('player-welcome').hidden = Boolean(active);
+  document.body.classList.toggle('has-character', Boolean(active));
   if (!active) return;
+  selectPanel(selectedPanel);
+  if (changed) {
+    latestRoll = undefined;
+    inventoryLimit = 30;
+    $('player-item-search').value = $('player-ability-search').value = '';
+    $('player-item-filter').value = 'all';
+  }
   const { sheet } = active;
+  $('player-portrait-placeholder').textContent = sheet.name.trim().split(/\s+/u).slice(0, 2)
+    .map(word => Array.from(word)[0]).join('').toLocaleUpperCase('fr');
   const portrait = validPortrait(sheet.portrait) ? sheet.portrait : '';
-  $('player-portrait').hidden = !portrait;
-  $('player-portrait-placeholder').hidden = Boolean(portrait);
-  $('player-portrait-message').hidden = true;
-  if (portrait) {
-    $('player-portrait').src = portrait;
-    $('player-portrait').alt = `Portrait de ${sheet.name}`;
-  } else $('player-portrait').removeAttribute('src');
+  if (changed || ($('player-portrait').getAttribute('src') ?? '') !== portrait) {
+    $('player-portrait').hidden = !portrait;
+    $('player-portrait-placeholder').hidden = Boolean(portrait);
+    $('player-portrait-message').hidden = true;
+    if (portrait) $('player-portrait').src = portrait;
+    else $('player-portrait').removeAttribute('src');
+  }
+  $('player-portrait').alt = `Portrait de ${sheet.name}`;
   $('player-name').textContent = sheet.name;
   $('player-resources').textContent = `Niveau ${sheet.level} · PV ${sheet.pv} / ${sheet.pvMax} · Mana ${sheet.mana} / ${sheet.manaMax} · ${sheet.xp} XP`;
-  $('player-pv').value = sheet.pv;
+  if (changed || previous.sheet.pv !== sheet.pv || previous.sheet.mana !== sheet.mana) {
+    $('player-pv').value = sheet.pv;
+    $('player-mana').value = sheet.mana;
+  }
   $('player-pv').max = sheet.pvMax;
-  $('player-mana').value = sheet.mana;
   $('player-mana').max = sheet.manaMax;
-  $('player-stat-line').textContent = stats.map(([key, label]) => `${label} ${sheet.stats[key]} (+${effectiveStat(sheet.stats[key])})`).join(' · ');
+  $('player-stat-line').replaceChildren(...stats.map(([key, label]) => {
+    const card = document.createElement('div');
+    card.append(node('span', label), node('strong', sheet.stats[key]), node('small', `Bonus +${effectiveStat(sheet.stats[key])}`));
+    return card;
+  }));
   const story = storyFields.filter(([key]) => typeof sheet[key] === 'string' && sheet[key]);
   $('player-story').hidden = story.length === 0;
   $('player-story-fields').replaceChildren(...story.flatMap(([key, label]) => [node('dt', label), node('dd', sheet[key])]));
   const masteries = Object.entries(sheet.masteries).filter(([, rank]) => rank > 0);
-  $('player-mastery-line').textContent = masteries.length ? masteries.map(([key, rank]) => `${masteryName(key)} ${rank}`).join(' · ') : 'Aucune maîtrise renseignée.';
+  $('player-mastery-line').replaceChildren(...(masteries.length
+    ? masteries.map(([key, rank]) => { const chip = node('span', `${masteryName(key)} ${rank}`); chip.className = 'mastery-chip'; return chip; })
+    : [node('p', 'Aucune maîtrise renseignée.')]));
+  const selectedMastery = changed ? '' : $('roll-mastery').value;
   $('roll-mastery').replaceChildren(new Option('Aucune', ''), ...masteries.map(([key, rank]) => new Option(`${masteryName(key)} · ${rank}`, key)));
-  const items = inventory(sheet).filter(item => typeof item?.name === 'string');
-  $('player-items').replaceChildren(...(items.length ? items.map(item => node('li', `${item.name} × ${item.quantity ?? 1}${typeof item.description === 'string' && item.description ? ` · ${item.description}` : ''}`)) : [node('li', 'Inventaire vide.') ]));
-  const abilities = sheet.development.abilities.map(ability => {
-    const item = document.createElement('details');
-    item.append(node('summary', `${ability.name} · ${ability.status === 'defined' ? ability.domain : 'Emplacement à définir'}`));
-    for (const key of ['description', 'effect', 'limitations', 'provenance']) {
-      if (ability[key]) item.append(node('p', ability[key]));
-    }
-    return item;
-  });
-  $('player-ability-list').replaceChildren(...(abilities.length ? abilities : [node('p', 'Aucune capacité renseignée.') ]));
+  $('roll-mastery').value = masteries.some(([key]) => key === selectedMastery) ? selectedMastery : '';
+  renderInventory();
+  renderAbilities();
+  renderHistory();
   if (changed) {
     notes.value = active.notes;
     $('player-roll-result').textContent = '';
@@ -197,9 +384,10 @@ function report(error, target = $('player-error')) {
   target.hidden = false;
 }
 
-async function save(record, dialog) {
+async function save(record, dialog, focusTarget = $('player-name')) {
   if (pending) return false;
   pending = true;
+  syncRollButton();
   $('player-error').hidden = true;
   $('player-save-status').textContent = 'Enregistrement…';
   try {
@@ -209,14 +397,14 @@ async function save(record, dialog) {
     $('player-save-status').textContent = 'Sauvegarde locale confirmée';
     if (dialog) {
       dialog.close();
-      $('player-name').focus();
+      focusTarget.focus();
     }
     return true;
   } catch (error) {
     $('player-save-status').textContent = 'Enregistrement interrompu';
     report(error, dialog?.querySelector('[data-save-message]') ?? $('player-error'));
     return false;
-  } finally { pending = false; }
+  } finally { pending = false; syncRollButton(); }
 }
 
 for (const step of ORIGIN_STEPS) {
@@ -465,7 +653,7 @@ $('player-selection').addEventListener('change', event => {
 window.addEventListener('beforeunload', event => {
   if (active && notes.value !== active.notes) event.preventDefault();
 });
-$('player-notes').addEventListener('submit', event => {
+$('player-notes-form').addEventListener('submit', event => {
   event.preventDefault();
   void save({ ...active, notes: notes.value });
 });
@@ -495,34 +683,70 @@ $('player-item-form').addEventListener('submit', async event => {
   event.preventDefault();
   if (pending) return;
   const form = event.currentTarget;
-  const fields = new FormData(form);
-  const name = fields.get('name').trim();
-  if (!name) return report(new Error('Saisis le nom de l’objet.'));
-  const item = { id: crypto.randomUUID(), templateId: '', name, quantity: Number(fields.get('quantity')),
-    description: fields.get('description').trim(), category: 'autre', value: '' };
-  if (await save({ ...active, sheet: { ...active.sheet, inventory: [...inventory(active.sheet), item] } })) form.reset();
+  try {
+    const item = itemFromForm(form, { id: crypto.randomUUID(), templateId: '', value: '' });
+    if (await save({ ...active, sheet: { ...active.sheet, inventory: [item, ...inventory(active.sheet)] } })) {
+      form.reset();
+      inventoryLimit = 30;
+      $('player-item-search').value = '';
+      $('player-item-filter').value = 'all';
+      renderInventory();
+    }
+  } catch (error) { report(error); }
 });
 
-function showRoll(dice, text) {
+for (const control of [$('player-item-search'), $('player-item-filter')]) control.addEventListener('input', () => {
+  inventoryLimit = 30;
+  renderInventory();
+});
+$('player-items-more').addEventListener('click', () => { inventoryLimit += 30; renderInventory(); });
+$('player-ability-search').addEventListener('input', renderAbilities);
+
+$('player-item-edit-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  if (pending || !itemEdit) return;
+  try {
+    const { record, index } = itemEdit;
+    const items = [...inventory(record.sheet)];
+    items[index] = itemFromForm(event.currentTarget, items[index]);
+    await save({ ...record, sheet: { ...record.sheet, inventory: items } }, $('player-item-dialog'), $('player-inventory-title'));
+  } catch (error) { report(error, $('player-item-dialog').querySelector('[data-save-message]')); }
+});
+$('player-remove-item').addEventListener('click', async () => {
+  if (pending || !itemEdit || !window.confirm('Retirer cet objet de l’inventaire ?')) return;
+  const { record, index } = itemEdit;
+  const items = inventory(record.sheet).filter((_, position) => position !== index);
+  await save({ ...record, sheet: { ...record.sheet, inventory: items } }, $('player-item-dialog'), $('player-inventory-title'));
+});
+
+function showRoll(dice, text, kind, label) {
+  latestRoll = { id: crypto.randomUUID(), createdAt: new Date().toISOString(), kind, label, summary: text, dice };
   $('player-dice').replaceChildren(...dice.map(value => {
     const face = node('span', value);
     face.className = 'die';
     return face;
   }));
   $('player-roll-result').textContent = text;
+  syncRollButton();
 }
 
 $('player-free-roll').addEventListener('click', () => {
+  if (pending) return;
   const dice = studioDice();
-  showRoll(dice, `Jet libre · ${dice.join(' + ')} = ${dice.reduce((sum, die) => sum + die, 0)}`);
+  showRoll(dice, `Jet libre · ${dice.join(' + ')} = ${dice.reduce((sum, die) => sum + die, 0)}`, 'free', 'Jet libre 5d6');
 });
 $('player-roll-form').addEventListener('submit', event => {
   event.preventDefault();
+  if (pending) return;
   const stat = $('roll-stat').value;
   const dice = studioDice();
   const result = resolvePlayAction({ mode: 'roll', roll: { dice, stat, rawStat: active.sheet.stats[stat],
     masteryRank: active.sheet.masteries[$('roll-mastery').value] ?? 0, threshold: $('roll-threshold').valueAsNumber, situation: 0, source: 'studio' } });
-  showRoll(dice, `${result.title} · ${dice.join(' + ')} · ${result.balance} · ${result.bonuses}`);
+  showRoll(dice, `${result.title} · ${dice.join(' + ')} · ${result.balance} · ${result.bonuses}`, 'action', $('roll-intent').value.trim() || 'Action 5d6');
+});
+$('player-keep-roll').addEventListener('click', async () => {
+  if (pending || !latestRoll || active.rolls.some(roll => roll.id === latestRoll.id)) return;
+  await save({ ...active, rolls: [latestRoll, ...active.rolls].slice(0, PLAYER_ROLL_LIMIT) });
 });
 
 function download(content, name) {
@@ -532,6 +756,7 @@ function download(content, name) {
   anchor.download = name;
   anchor.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+  $('player-download-status').textContent = 'Fichier proposé au téléchargement. Choisis où le conserver dans ton navigateur.';
 }
 
 $('player-backup').addEventListener('click', async () => {
@@ -551,7 +776,7 @@ try {
     const url = new URL(location.href);
     url.searchParams.delete('creer');
     history.replaceState(null, '', url);
-  }
+  } else followPanelLink();
 } catch (error) {
   $('player-save-status').textContent = 'Stockage inaccessible';
   report(error);

@@ -90,6 +90,18 @@ test('GitHub Pages relie les Archives et le Studio et isole le récepteur joueur
   await page.locator('#confirm-player-create').click();
   await page.getByRole('heading', { name: 'PJ fictif Pages', exact: true }).waitFor();
   assert.equal(await page.locator('#player-portrait').evaluate(async img => { await img.decode(); return img.naturalWidth <= 320; }), true);
+  await page.getByRole('link', { name: /Préparer une action/ }).click();
+  await page.getByRole('tabpanel', { name: 'Dés', exact: true }).waitFor();
+  await page.locator('#player-free-roll').click();
+  await page.locator('#player-keep-roll').click();
+  await page.locator('#player-roll-count').getByText('1 / 50', { exact: true }).waitFor();
+  await page.getByRole('tab', { name: 'Sauvegarde', exact: true }).click();
+  const [backupFile] = await Promise.all([page.waitForEvent('download'), page.locator('#player-backup').click()]);
+  const backupText = await readFile(await backupFile.path(), 'utf8');
+  const playerBackup = JSON.parse(backupText);
+  assert.equal(playerBackup.version, 2);
+  assert.equal(playerBackup.payload.rolls.length, 1);
+  assert.doesNotMatch(backupText, /NOTE_MJ_PAGES|Campagne fictive Pages/);
   await page.goto(base);
   await page.locator('#joueurs-personnage').getByRole('link', { name: /Donnez-lui une raison de partir/ }).click();
   await page.getByRole('dialog', { name: 'Créer mon personnage' }).waitFor();

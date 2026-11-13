@@ -24,11 +24,16 @@ Ouvrir **Espace joueur** depuis [l’accueil de découverte](http://127.0.0.1:43
 - Dans le formulaire, **Portrait du personnage** accepte un JPG, PNG ou WebP de 3 Mio maximum, réduit sur l’appareil selon le format historique du portrait. Un lien HTTPS direct peut également être utilisé. **Mon portrait** permet de le remplacer ou de le retirer après la création. La sauvegarde personnelle et la fiche M02 destinée au MJ conservent le portrait. Une image par lien reste chez son hébergeur.
 - En création libre, les compteurs affichent les 12 points de base, la dépense et le reste du budget du niveau. Chaque caractéristique ou maîtrise donne son coût, son bonus et le prix du prochain point. Les repères des niveaux 1, 5, 10, 15, 20 et 25 utilisent le moteur existant.
 - Les maîtrises sont regroupées par armes et défenses, magie et soins, savoirs et métiers. Un domaine personnalisé peut être proposé au MJ. Le mentor, l’école et l’apprentissage déclaré se renseignent dans **Histoire et liens**.
-- Dans la fiche, consulter les maîtrises et les capacités. Ajuster manuellement les PV et le mana, ajouter un objet à l’inventaire ou inscrire une note personnelle. Les jets 5d6 libres et les jets d’action affichent leur résultat sur place.
+- La fiche se parcourt dans **Fiche**, **Dés**, **Inventaire**, **Capacités**, **Notes** et **Sauvegarde**. Les flèches gauche et droite parcourent les onglets au clavier. Les liens directs vers un panneau restent utilisables. **Préparer une action** rejoint les dés.
+- Dans **Inventaire**, rechercher un nom, une catégorie ou une description, puis filtrer les objets portés. **Détails** permet de corriger le nom, la quantité, la catégorie et la description, de marquer l’objet comme porté ou de le retirer après confirmation. Le marquage décrit l’équipement choisi. Les effets se règlent avec le MJ.
+- Dans **Dés**, annoncer éventuellement l’action, choisir les valeurs et lancer les 5d6. **Consigner ce jet** conserve le résultat et ses modificateurs. L’historique garde les 50 derniers jets consignés. Un enregistrement interrompu peut être réessayé avec le même résultat.
+- **Capacités** propose une recherche par nom, domaine ou description. Chaque fiche se déplie avec sa source, ses limites et l’indication de validation MJ. **Notes** conserve le carnet personnel.
 - **Sauvegarder mon personnage** télécharge la fiche et les notes affichées, y compris le texte en cours après un conflit de sauvegarde. **Importer une fiche** vérifie la sauvegarde et affiche son aperçu. La confirmation ajoute une nouvelle copie. Les exports PJ M02 de l’Atelier historique sont également acceptés.
 - **Exporter la fiche M02 pour le MJ** télécharge le profil de jeu, le portrait, les capacités et l’inventaire. L’histoire personnelle, les repères d’apprentissage et les notes restent dans la sauvegarde joueur. Le MJ relit et ajoute la fiche dans sa campagne avec **Importer un PJ M02**.
 
 Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent manuellement. Lorsqu’une fiche joueur a changé dans un autre onglet, copier le texte en cours avant de recharger sa version enregistrée.
+
+La sauvegarde personnelle v2 inclut les jets consignés. Les sauvegardes personnelles v1 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
 
 ## Préparer une soirée
 
