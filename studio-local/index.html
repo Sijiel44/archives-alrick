@@ -1006,7 +1006,8 @@
       <div id="pj-exchange-review" hidden>
         <label for="pj-compare-choice">Comparer avec un PJ de la campagne</label><select id="pj-compare-choice"></select>
         <div id="pj-compare-preview"></div>
-        <p class="muted">L’import crée un nouveau participant. La fiche précédente, ses notes MJ et ses liens de scène restent en place. Vous pourrez choisir la nouvelle copie dans les participants de la scène.</p>
+        <label for="pj-exchange-mode">Utiliser la version reçue</label><select id="pj-exchange-mode"><option value="copy">Créer un nouveau participant</option><option value="update" disabled>Actualiser le PJ comparé</option></select>
+        <p id="pj-exchange-impact" class="notice"></p>
         <label class="exchange-accept"><input id="pj-exchange-accept" type="checkbox">J’ai comparé et je choisis d’importer cette version.</label>
       </div>
       <details id="pj-import-full" open><summary>Consulter la fiche reçue</summary><div id="pj-import-preview"></div></details>
@@ -1021,6 +1022,20 @@
     <div id="pj-export-preview"></div>
     <p id="pj-export-status" class="muted" role="status"></p>
     <div class="actions"><button id="pj-export-download" type="button" disabled>Télécharger l’échange joueur</button><button id="pj-export-close" class="secondary" type="button">Fermer</button></div>
+  </dialog>
+
+  <dialog id="pj-versions-dialog" aria-labelledby="pj-versions-title">
+    <form id="pj-versions-form">
+      <p class="eyebrow accent">Campagne · Versions privées</p>
+      <h2 id="pj-versions-title">Historique du personnage</h2>
+      <p id="pj-versions-name" class="resource-line"></p>
+      <label for="pj-versions-choice">État à consulter</label><select id="pj-versions-choice" name="version" required autofocus></select>
+      <div id="pj-versions-preview"></div>
+      <p class="muted">Rétablir reprend le profil, le nom et les PV conservés avant ce changement. Les notes MJ et les liens de scène restent en place. Les combats et les changements ultérieurs restent dans l’historique.</p>
+      <label class="exchange-accept"><input id="pj-versions-accept" type="checkbox" required>Je choisis de rétablir cet état du personnage.</label>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button id="pj-versions-restore" type="submit" disabled>Rétablir cette version</button><button class="secondary cancel-edit" type="button">Fermer</button></div>
+    </form>
   </dialog>
 
   <dialog id="creature-dialog" aria-labelledby="creature-heading">

@@ -19,6 +19,7 @@ const LANE_BACKUP_VERSION = 13;
 const INTERLUDE_BACKUP_VERSION = 14;
 const LINKED_IMAGE_BACKUP_VERSION = 15;
 const ADVENTURE_PACKAGE_BACKUP_VERSION = 16;
+const PJ_UPDATE_BACKUP_VERSION = 17;
 const ADVENTURE_PACKAGE_FORMAT = 'chroniques-entre-rives.aventure';
 export const MAX_ADVENTURE_PACKAGE_BYTES = 512 * 1024;
 export const ADVENTURE_SOURCE_KEY = 'entreRivesAdventurePackageV16';
@@ -38,6 +39,7 @@ export const FRESQUE_REFERENCE_KEY = 'entreRivesFresqueReferenceV5';
 export const PLAY_ACTIONS_KEY = 'entreRivesPlayActionsV6';
 export const BESTIARY_PROFILE_KEY = 'entreRivesBestiaryProfileV7';
 export const PJ_SOURCE_KEY = 'entreRivesPJSourceV9';
+export const PJ_UPDATES_KEY = 'entreRivesPJUpdatesV17';
 export const CREATIONS_KEY = 'entreRivesCreationsV10';
 export const ADVENTURE_SCENE_KEY = 'entreRivesAdventureSceneV11';
 export const SCENE_AMBIANCES_KEY = 'entreRivesSceneAmbiancesV12';
@@ -132,6 +134,8 @@ function validSource(value) {
 const bestiaryArchetypes = ['faune', 'predateur', 'gardien', 'mystique', 'colosse'];
 const defenses = ['physique', 'magie', 'mental'];
 const integerBetween = (value, min, max) => Number.isSafeInteger(value) && value >= min && value <= max;
+const validTimestamp = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) &&
+  Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value;
 
 export function validPJSource(source) {
   if (!isRecord(source) || source.ruleset !== 'm02' || source.kind !== 'pj' ||
@@ -434,8 +438,33 @@ function validPlayAction(value) {
 }
 
 export function currentHitPoints(campaign, creature) {
-  const last = campaign[PLAY_ACTIONS_KEY]?.findLast(action => action.mode === 'opposition' && action.roll.targetId === creature.id);
+  const offset = creature[PJ_UPDATES_KEY]?.at(-1)?.actionCount ?? 0;
+  const last = campaign[PLAY_ACTIONS_KEY]?.slice(offset).findLast(action => action.mode === 'opposition' && action.roll.targetId === creature.id);
   return last?.combat.hpAfter ?? initialHitPoints(creature);
+}
+
+function profileAtAction(actor, index) {
+  return actor[PJ_UPDATES_KEY]?.find(update => update.actionCount > index)?.before.source ?? combatProfile(actor);
+}
+
+function validatePJUpdates(character, actionCount) {
+  const updates = character[PJ_UPDATES_KEY];
+  if (!Array.isArray(updates) || !updates.length || updates.length > MAX_ITEMS || !character[PJ_SOURCE_KEY]) {
+    fail('invalid-data', 'L’historique des versions du PJ est illisible.');
+  }
+  const seen = new Set();
+  let offset = 0;
+  for (const update of updates) {
+    if (!exactKeys(update, ['id', 'at', 'actionCount', 'before', 'restoredFrom']) || !isId(update.id) || seen.has(update.id) ||
+        !validTimestamp(update.at) || !integerBetween(update.actionCount, offset, actionCount) ||
+        !exactKeys(update.before, ['name', 'source', 'pv']) || !isTitle(update.before.name) || !validPJSource(update.before.source) ||
+        update.before.source.id !== character[PJ_SOURCE_KEY].id || !integerBetween(update.before.pv, 0, update.before.source.pvMax) ||
+        (update.restoredFrom !== null && !seen.has(update.restoredFrom))) {
+      fail('invalid-data', 'Une version antérieure du PJ est incohérente.');
+    }
+    seen.add(update.id);
+    offset = update.actionCount;
+  }
 }
 
 export const hitPointsAfterDamage = (current, damage) => Math.max(0, current - damage);
@@ -454,6 +483,17 @@ const operations = {
     fields: ['id', 'attach', 'source'],
     valid: value => isId(value.id) && typeof value.attach === 'boolean' && validPJSource(value.source),
     backupVersion: PJ_BACKUP_VERSION,
+  },
+  'update-pj-source': {
+    fields: ['id', 'source', 'at'],
+    valid: value => isId(value.id) && validPJSource(value.source) && validTimestamp(value.at) &&
+      value.source.entreRivesExchangeV1?.version === 1 && typeof value.source.entreRivesExchangeV1.revision === 'string' && digestPattern.test(value.source.entreRivesExchangeV1.revision),
+    backupVersion: PJ_UPDATE_BACKUP_VERSION,
+  },
+  'restore-pj-source': {
+    fields: ['id', 'updateId', 'at'],
+    valid: value => isId(value.id) && isId(value.updateId) && validTimestamp(value.at),
+    backupVersion: PJ_UPDATE_BACKUP_VERSION,
   },
   'copy-creature': {
     fields: ['id', 'name', 'description', 'source'],
@@ -594,9 +634,10 @@ function validateCampaign(campaign) {
         (!validPJSource(character[PJ_SOURCE_KEY]) || character.level !== character[PJ_SOURCE_KEY].level))) {
       fail('invalid-data', 'Une fiche PJ M02 est incohérente.');
     }
+    if (Object.hasOwn(character, PJ_UPDATES_KEY)) validatePJUpdates(character, (campaign[PLAY_ACTIONS_KEY] ?? []).length);
   }
   for (const creature of campaign.creatures) {
-    if (Object.hasOwn(creature, PJ_SOURCE_KEY) ||
+    if (Object.hasOwn(creature, PJ_SOURCE_KEY) || Object.hasOwn(creature, PJ_UPDATES_KEY) ||
         (Object.hasOwn(creature, BESTIARY_PROFILE_KEY) && !validBestiarySource(creature.source, creature[BESTIARY_PROFILE_KEY]))) {
       fail('invalid-data', 'Un profil de Bestiaire ne correspond pas à sa référence M03.');
     }
@@ -628,7 +669,7 @@ function validateCampaign(campaign) {
   if (Object.hasOwn(campaign, FRESQUE_MARKERS_KEY)) {
     validateFresqueMarkers(campaign[FRESQUE_MARKERS_KEY], sceneIds);
   }
-  if (Object.hasOwn(campaign, PLAY_ACTIONS_KEY)) validatePlayActions(campaign, sceneIds);
+  if (Object.hasOwn(campaign, PLAY_ACTIONS_KEY) || campaign.characters.some(character => Object.hasOwn(character, PJ_UPDATES_KEY))) validatePlayActions(campaign, sceneIds);
   let creations;
   if (Object.hasOwn(campaign, CREATIONS_KEY)) {
     creations = validateCreations(campaign[CREATIONS_KEY], new Set([...participantIds, ...sceneIds,
@@ -665,11 +706,27 @@ function validateLinkedImages(images, targets, reserved) {
 }
 
 function validatePlayActions(campaign, sceneIds) {
-  const actions = campaign[PLAY_ACTIONS_KEY];
+  const actions = Object.hasOwn(campaign, PLAY_ACTIONS_KEY) ? campaign[PLAY_ACTIONS_KEY] : [];
   if (!Array.isArray(actions)) fail('invalid-data', 'Le journal de jeu est illisible.');
   const ids = new Set();
-  const hitPoints = new Map([...campaign.characters, ...campaign.creatures].map(actor => [actor.id, initialHitPoints(actor)]));
-  for (const action of actions) {
+  const hitPoints = new Map([...campaign.characters, ...campaign.creatures].map(actor => [actor.id,
+    actor[PJ_UPDATES_KEY]?.[0]?.before.source.pv ?? initialHitPoints(actor)]));
+  const changes = new Map();
+  for (const actor of campaign.characters) {
+    const updates = actor[PJ_UPDATES_KEY] ?? [];
+    for (const [index, update] of updates.entries()) {
+      const group = changes.get(update.actionCount) ?? [];
+      group.push({ actorId: actor.id, before: update.before.pv, after: (updates[index + 1]?.before.source ?? actor[PJ_SOURCE_KEY]).pv });
+      changes.set(update.actionCount, group);
+    }
+  }
+  for (let index = 0; index <= actions.length; index++) {
+    for (const change of changes.get(index) ?? []) {
+      if (hitPoints.get(change.actorId) !== change.before) fail('invalid-data', 'Les PV avant un changement de version ne correspondent pas au journal.');
+      hitPoints.set(change.actorId, change.after);
+    }
+    if (index === actions.length) break;
+    const action = actions[index];
     if (!validPlayAction(action)) fail('invalid-data', 'Une action ne correspond pas au format du journal de jeu.');
     if (!sceneIds.has(action.sceneId)) fail('foreign-key', 'La scène de cette action doit appartenir à la campagne.');
     if (ids.has(action.id)) fail('conflict', 'Deux actions du journal ont le même identifiant.');
@@ -779,6 +836,21 @@ function validatePayload(payload) {
   if (journal.filter(event => event.type === 'record-opposition').length !== oppositions) {
     fail('invalid-journal', 'Les oppositions et leurs opérations de sauvegarde ne correspondent pas.');
   }
+  const updates = campaign.characters.flatMap(character => character[PJ_UPDATES_KEY] ?? []);
+  const updateEvents = journal.filter(event => ['update-pj-source', 'restore-pj-source'].includes(event.type));
+  const eventsById = new Map(updateEvents.map(event => [event.operationId, event]));
+  if (updates.length !== updateEvents.length || new Set(updates.map(update => update.id)).size !== updates.length ||
+      updates.some(update => eventsById.get(update.id)?.type !== (update.restoredFrom === null ? 'update-pj-source' : 'restore-pj-source'))) {
+    fail('invalid-journal', 'Les versions du PJ et leurs opérations de sauvegarde ne correspondent pas.');
+  }
+  for (const character of campaign.characters) {
+    let revision = 0;
+    for (const update of character[PJ_UPDATES_KEY] ?? []) {
+      const next = eventsById.get(update.id).revision;
+      if (next <= revision) fail('invalid-journal', 'L’ordre des versions du PJ est incohérent.');
+      revision = next;
+    }
+  }
   const adventures = new Set(campaign.scenes.map(scene => scene[ADVENTURE_SCENE_KEY]?.adventureId).filter(Boolean));
   const imported = (campaign[CREATIONS_KEY] ?? []).filter(entry => Object.hasOwn(entry, ADVENTURE_SOURCE_KEY));
   const imports = journal.filter(event => event.type === 'import-adventure').length;
@@ -804,6 +876,7 @@ function backupVersionFor({ campaign, journal }) {
   if (Object.hasOwn(campaign, INTERLUDES_KEY)) version = INTERLUDE_BACKUP_VERSION;
   if (Object.hasOwn(campaign, LINKED_IMAGES_KEY)) version = LINKED_IMAGE_BACKUP_VERSION;
   if (campaign[CREATIONS_KEY]?.some(entry => Object.hasOwn(entry, ADVENTURE_SOURCE_KEY))) version = ADVENTURE_PACKAGE_BACKUP_VERSION;
+  if (campaign.characters.some(character => Object.hasOwn(character, PJ_UPDATES_KEY))) version = PJ_UPDATE_BACKUP_VERSION;
   return journal.reduce((minimum, event) => Math.max(minimum, operations[event.type].backupVersion ?? LEGACY_BACKUP_VERSION), version);
 }
 
@@ -875,7 +948,7 @@ function importAdventure(campaign, { source, adventureId, creations, scenes, lin
   if (links.length) (campaign[FRESQUE_LINKS_KEY] ??= []).push(...links);
 }
 
-function applyCommand(previous, { id, type, data }, resolveOpposition) {
+function applyCommand(previous, { id, operationId, type, data }, resolveOpposition) {
   if (type === 'create') {
     return { id, revision: 1, ...data, characters: [], creatures: [], scenes: [], activeSceneId: null };
   }
@@ -921,6 +994,23 @@ function applyCommand(previous, { id, type, data }, resolveOpposition) {
         id: data.id, name: character?.name ?? data.source.name.trim(), notes: character?.notes ?? '',
         level: data.source.level, [PJ_SOURCE_KEY]: data.source,
       });
+      break;
+    }
+    case 'update-pj-source':
+    case 'restore-pj-source': {
+      const character = campaign.characters.find(item => item.id === data.id);
+      if (!character?.[PJ_SOURCE_KEY]) fail('foreign-key', 'Choisissez un PJ M02 de cette campagne.');
+      const selected = type === 'restore-pj-source' ? character[PJ_UPDATES_KEY]?.find(update => update.id === data.updateId) : undefined;
+      if (type === 'restore-pj-source' && !selected) fail('foreign-key', 'Cette version ne fait pas partie de l’historique du PJ.');
+      const source = selected ? { ...selected.before.source, pv: selected.before.pv } : data.source;
+      if (source.id !== character[PJ_SOURCE_KEY].id) fail('foreign-key', 'La version reçue doit avoir la même identité que le PJ.');
+      const update = { id: operationId, at: data.at, actionCount: campaign[PLAY_ACTIONS_KEY]?.length ?? 0,
+        before: { name: character.name, source: structuredClone(character[PJ_SOURCE_KEY]), pv: currentHitPoints(campaign, character) },
+        restoredFrom: selected ? selected.id : null };
+      (character[PJ_UPDATES_KEY] ??= []).push(update);
+      character[PJ_SOURCE_KEY] = structuredClone(source);
+      character.name = selected ? selected.before.name : source.name.trim();
+      character.level = source.level;
       break;
     }
     case 'copy-creature':
@@ -1092,7 +1182,7 @@ function commandSignature({ id, type, data, expectedRevision }) {
   const values = fields.map(key => {
     if (['copy-creature', 'save-bestiary-profile'].includes(type) && key === 'source') return [data.source.id, data.source.version];
     if (type === 'save-bestiary-profile' && key === 'profile') return orderedJSON(data.profile);
-    if (type === 'attach-pj-source' && key === 'source') return orderedJSON(data.source);
+    if (['attach-pj-source', 'update-pj-source'].includes(type) && key === 'source') return orderedJSON(data.source);
     if (type === 'save-creation' && key === 'details') return orderedJSON(data.details);
     if (type === 'plan-adventure' && key === 'scenes') return orderedJSON(data.scenes);
     if (type === 'import-adventure') return orderedJSON(data.bundle);
@@ -1122,6 +1212,9 @@ async function checkPJBuilds(sources) {
 
 function storageError(error) {
   if (error instanceof StudioError) return error;
+  if (['AbortError', 'InvalidStateError', 'TransactionInactiveError'].includes(error?.name)) {
+    return new StudioError('storage', 'L’enregistrement local a été interrompu. Réessayez avec cet aperçu.', { cause: error });
+  }
   if (error?.name === 'QuotaExceededError') {
     return new StudioError('quota', 'Le navigateur n’a plus assez d’espace pour sauvegarder.', { cause: error });
   }
@@ -1182,8 +1275,8 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
           request.onsuccess = () => {
             try { callback(request.result); }
             catch (problem) {
-              error = problem;
-              transaction.abort();
+              error = problem instanceof DOMException ? storageError(problem) : problem;
+              try { transaction.abort(); } catch { /* La transaction peut déjà être interrompue. */ }
             }
           };
         };
@@ -1248,7 +1341,12 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     const input = structuredClone(command);
     const { id, operationId, expectedRevision, type } = input;
     const rules = type === 'record-opposition' ? await loadOppositionRules() : undefined;
-    if (type === 'attach-pj-source') await checkPJBuilds([input.data.source]);
+    if (['attach-pj-source', 'update-pj-source'].includes(type)) await checkPJBuilds([input.data.source]);
+    if (type === 'restore-pj-source') {
+      const previous = await snapshot(id);
+      const selected = previous?.campaign.characters.find(actor => actor.id === input.data.id)?.[PJ_UPDATES_KEY]?.find(update => update.id === input.data.updateId);
+      if (selected) await checkPJBuilds([selected.before.source]);
+    }
     const signature = await commandSignature(input);
     let wrote = false;
     const campaign = await transact('readwrite', (store, read, result) => {
@@ -1293,7 +1391,7 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     try { archive = JSON.parse(text); }
     catch { fail('invalid-backup', 'Ce fichier ne contient pas un document JSON valide.'); }
     if (archive?.format !== FORMAT) fail('invalid-backup', 'Ce fichier n’est pas une sauvegarde privée du Studio.');
-    if (!Number.isInteger(archive.version) || archive.version < LEGACY_BACKUP_VERSION || archive.version > ADVENTURE_PACKAGE_BACKUP_VERSION) {
+    if (!Number.isInteger(archive.version) || archive.version < LEGACY_BACKUP_VERSION || archive.version > PJ_UPDATE_BACKUP_VERSION) {
       fail('backup-version', 'La version de cette sauvegarde n’est pas prise en charge.');
     }
     if (!exactKeys(archive, ['format', 'version', 'sha256', 'payload']) ||
@@ -1309,12 +1407,13 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     }
     const campaign = archive.payload.campaign;
     const playerSheets = campaign.characters.flatMap(character => character[PJ_SOURCE_KEY] ? [character[PJ_SOURCE_KEY]] : []);
-    await checkPJBuilds(playerSheets);
+    await checkPJBuilds([...playerSheets, ...campaign.characters.flatMap(character => (character[PJ_UPDATES_KEY] ?? []).map(update => update.before.source))]);
     const oppositions = campaign[PLAY_ACTIONS_KEY]?.filter(action => action.mode === 'opposition') ?? [];
     if (oppositions.length) {
       const { resolveOpposition } = await loadOppositionRules();
-      const profiles = new Map([...campaign.characters, ...campaign.creatures].map(actor => [actor.id, combatProfile(actor)]));
-      if (oppositions.some(action => resolveOpposition(action.roll, profiles.get(action.roll.targetId)).damage !== action.combat.damage)) {
+      const actors = new Map([...campaign.characters, ...campaign.creatures].map(actor => [actor.id, actor]));
+      if ((campaign[PLAY_ACTIONS_KEY] ?? []).some((action, index) => action.mode === 'opposition' &&
+          resolveOpposition(action.roll, profileAtAction(actors.get(action.roll.targetId), index)).damage !== action.combat.damage)) {
         fail('invalid-data', 'Un impact enregistré ne correspond pas au moteur M03.');
       }
     }
@@ -1327,6 +1426,7 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
       revision: campaign.revision,
       characters: campaign.characters.length,
       playerSheets: playerSheets.length,
+      playerUpdates: campaign.characters.reduce((count, character) => count + (character[PJ_UPDATES_KEY]?.length ?? 0), 0),
       creations: campaign[CREATIONS_KEY]?.length ?? 0,
       images: campaign[LINKED_IMAGES_KEY]?.length ?? 0,
       creatures: campaign.creatures.length,
