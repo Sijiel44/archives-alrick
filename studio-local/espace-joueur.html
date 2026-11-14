@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Espace joueur · Les Chroniques d’Entre-Rives</title>
+  <link rel="stylesheet" href="./studio.css">
+  <link rel="stylesheet" href="./espace-joueur.css">
+  <link rel="stylesheet" href="./echanges-pj.css">
+  <script type="module" src="./espace-joueur.mjs"></script>
+</head>
+<body class="player-space">
+  <a class="skip" href="#contenu-joueur">Aller à mon espace</a>
+  <nav class="topbar" aria-label="Les trois espaces">
+    <a href="/accueil">Accueil des Chroniques</a>
+    <a href="/accueil#univers">Univers et ressources</a>
+    <a href="./index.html">Studio MJ</a>
+  </nav>
+  <main id="contenu-joueur" tabindex="-1">
+    <header class="player-hero">
+      <img class="player-hero-image" src="./media/entre-rives-accueil.webp" alt="" width="1200" height="800" fetchpriority="high">
+      <div class="player-hero-copy">
+        <p class="eyebrow accent">Les Chroniques d’Entre-Rives</p><h1>Espace joueur</h1>
+        <p class="player-invitation">Un nom, une histoire, une raison de franchir le pont.</p>
+        <p class="muted">Crée ton personnage, prépare son équipement et retrouve tes dés pour la prochaine séance.</p>
+        <p id="player-save-status" class="player-status" role="status">Ouverture du stockage…</p>
+      </div>
+    </header>
+    <p id="player-error" class="notice error" role="alert" hidden></p>
+    <div class="player-workspace">
+    <aside id="player-shelf" class="panel player-panel" aria-labelledby="player-library-title">
+      <div class="panel-heading"><div><p class="eyebrow accent">Mon carnet d’aventures</p><h2 id="player-library-title">Mes personnages</h2></div><span class="player-emblem" aria-hidden="true">◇</span></div>
+      <p id="player-welcome" class="muted">Commence par un parcours de vie ou compose librement ta fiche. Le portrait et les notes voyagent avec ta sauvegarde personnelle.</p>
+      <div id="player-library" hidden>
+        <label for="player-selection">Reprendre mon personnage</label>
+        <select id="player-selection" disabled></select>
+      </div>
+      <div class="actions">
+        <button id="player-create" type="button" disabled>Créer mon personnage</button>
+        <button id="player-import" class="secondary" type="button" disabled>Importer une fiche</button>
+      </div>
+      <p class="shelf-caption">Ta fiche, tes choix et tes souvenirs de table.</p>
+    </aside>
+    <section id="player-sheet" class="panel player-panel" aria-labelledby="player-name" hidden>
+      <header class="character-heading">
+        <div class="character-portrait">
+          <img id="player-portrait" alt="Portrait du personnage" hidden width="240" height="300" referrerpolicy="no-referrer">
+          <span id="player-portrait-placeholder" class="portrait-placeholder" aria-hidden="true">◇</span>
+          <button id="player-edit-portrait" class="secondary" type="button">Mon portrait</button>
+        </div>
+        <div><p class="eyebrow accent">Fiche personnelle · À présenter au MJ</p>
+          <h2 id="player-name" tabindex="-1"></h2>
+          <p id="player-resources" class="resource-line"></p>
+          <p id="player-portrait-message" class="muted" role="status" hidden></p>
+          <a class="player-quick-action" href="#player-rolls">Préparer une action <span aria-hidden="true">↗</span></a>
+        </div>
+      </header>
+      <div class="actions sheet-nav" role="tablist" aria-label="Sections de la fiche">
+        <a id="tab-player-stats" role="tab" aria-controls="player-stats" aria-selected="true" href="#player-stats">Fiche</a>
+        <a id="tab-player-rolls" role="tab" aria-controls="player-rolls" aria-selected="false" tabindex="-1" href="#player-rolls">Dés</a>
+        <a id="tab-player-inventory" role="tab" aria-controls="player-inventory" aria-selected="false" tabindex="-1" href="#player-inventory">Inventaire</a>
+        <a id="tab-player-abilities" role="tab" aria-controls="player-abilities" aria-selected="false" tabindex="-1" href="#player-abilities">Capacités</a>
+        <a id="tab-player-notes" role="tab" aria-controls="player-notes" aria-selected="false" tabindex="-1" href="#player-notes">Notes</a>
+        <a id="tab-player-backups" role="tab" aria-controls="player-backups" aria-selected="false" tabindex="-1" href="#player-backups">Sauvegarde</a>
+      </div>
+      <div class="player-content-grid">
+      <section id="player-stats" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-stats" tabindex="0">
+        <p class="eyebrow accent">Les forces de mon personnage</p>
+        <h3>Caractéristiques et maîtrises</h3><div id="player-stat-line" class="character-stats"></div><div id="player-mastery-line" class="mastery-chips"></div>
+        <details id="player-story" hidden><summary>Histoire et liens</summary><dl id="player-story-fields"></dl></details>
+        <details>
+          <summary>Ajuster mes PV et mon mana</summary>
+          <form id="player-resources-form">
+            <div class="creation-fields">
+              <div><label for="player-pv">PV actuels</label><input id="player-pv" type="number" min="0" required></div>
+              <div><label for="player-mana">Mana actuel</label><input id="player-mana" type="number" min="0" required></div>
+            </div>
+            <button class="secondary" type="submit">Enregistrer mes ressources</button>
+          </form>
+        </details>
+      </section>
+      <section id="player-rolls" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-rolls" tabindex="0" hidden>
+        <div class="panel-heading"><div><p class="eyebrow accent">Le moment de tenter</p><h3>Actions et dés</h3></div><span class="section-symbol" aria-hidden="true">◇</span></div>
+        <form id="player-roll-form">
+          <label for="roll-intent">Action annoncée · facultatif</label><input id="roll-intent" maxlength="120" placeholder="Franchir le gué, convaincre un garde…">
+          <div class="creation-fields">
+            <div><label for="roll-stat">Caractéristique</label><select id="roll-stat"></select></div>
+            <div><label for="roll-mastery">Maîtrise</label><select id="roll-mastery"></select></div>
+            <div><label for="roll-threshold">Seuil annoncé par le MJ</label><input id="roll-threshold" type="number" min="0" max="999" value="15" required></div>
+          </div>
+          <div class="actions"><button type="submit">Lancer une action 5d6</button><button id="player-free-roll" class="secondary" type="button">Lancer 5d6 libres</button></div>
+        </form>
+        <div id="player-dice" class="dice-tray" aria-hidden="true"></div>
+        <p id="player-roll-result" class="muted" role="status"></p>
+        <button id="player-keep-roll" class="secondary" type="button" disabled>Consigner ce jet</button>
+        <div class="history-heading"><h3>Mon historique</h3><span id="player-roll-count" class="muted"></span></div>
+        <p class="field-help">Les 50 derniers jets consignés suivent ta sauvegarde personnelle.</p>
+        <ol id="player-roll-history" class="roll-history"></ol>
+      </section>
+      <section id="player-inventory" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-inventory" tabindex="0" hidden>
+        <div class="panel-heading"><div><p class="eyebrow accent">Ce que j’emporte</p><h3 id="player-inventory-title" tabindex="-1">Inventaire</h3></div><span id="player-item-count" class="count-badge"></span></div>
+        <div class="inventory-tools">
+          <div><label for="player-item-search">Rechercher un objet</label><input id="player-item-search" type="search" placeholder="Nom, catégorie ou description"></div>
+          <div><label for="player-item-filter">Afficher</label><select id="player-item-filter"><option value="all">Tous les objets</option><option value="equipped">Objets portés</option></select></div>
+        </div>
+        <ul id="player-items" class="inventory-list"></ul>
+        <button id="player-items-more" class="secondary" type="button" hidden>Afficher davantage d’objets</button>
+        <p id="player-item-status" class="field-help" role="status"></p>
+        <details class="inventory-add" open><summary>Ajouter un objet</summary>
+        <form id="player-item-form">
+          <div class="creation-fields">
+            <div><label for="item-name">Objet</label><input id="item-name" name="name" maxlength="90" required></div>
+            <div><label for="item-count">Quantité</label><input id="item-count" name="quantity" type="number" value="1" min="1" max="999" required></div>
+            <div><label for="item-category">Catégorie</label><select id="item-category" name="category"></select></div>
+          </div>
+          <label for="item-description">Description de l’objet</label><input id="item-description" name="description" maxlength="600">
+          <label class="equipped-choice"><input id="item-equipped" name="equipped" type="checkbox">Porté ou équipé</label>
+          <button class="secondary" type="submit">Ajouter l’objet</button>
+        </form>
+        </details>
+        <p class="field-help">Le marquage « porté » sert à organiser ton équipement. Les effets des objets se règlent avec le MJ.</p>
+      </section>
+      <section id="player-abilities" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-abilities" tabindex="0" hidden>
+        <p class="eyebrow accent">Mes savoir-faire</p><h3>Capacités</h3>
+        <label for="player-ability-search">Rechercher une capacité</label><input id="player-ability-search" type="search" placeholder="Nom, domaine ou description">
+        <p id="player-ability-count" class="field-help" role="status"></p><div id="player-ability-list"></div>
+      </section>
+      <section id="player-notes" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-notes" tabindex="0" hidden>
+        <p class="eyebrow accent">Au fil des séances</p><h3>Mon carnet personnel</h3>
+      <form id="player-notes-form">
+        <label for="personal-notes">Notes personnelles</label><textarea id="personal-notes" rows="4" maxlength="8000"></textarea>
+        <button class="secondary" type="submit">Enregistrer mes notes</button>
+      </form>
+      </section>
+      <section id="player-backups" class="protocol-step player-transfer" role="tabpanel" aria-labelledby="tab-player-backups" tabindex="0" hidden>
+        <p class="eyebrow accent">Retrouver mon aventure</p><h3>Sauvegarde et remise au MJ</h3>
+        <div class="player-save-options">
+          <div class="save-option"><span class="badge">Personnel</span><h4>Emporter toute ma fiche</h4><p class="muted">Le personnage, son portrait, son inventaire, son histoire, ses notes et les jets consignés.</p><button id="player-backup" type="button">Sauvegarder mon personnage</button></div>
+          <div class="save-option"><span class="badge">À partager</span><h4>Échanger avec ma table</h4><p class="muted">Le profil de jeu, le portrait, les capacités et l’inventaire, avec une identité et une version pour comparer au retour du MJ. Les notes et les jets restent personnels.</p><button id="player-send" type="button">Préparer un échange pour le MJ</button><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
+        </div>
+        <p id="player-download-status" class="field-help" role="status"></p>
+        <p class="field-help">Le personnage est enregistré dans ce navigateur. Télécharge une sauvegarde pour le reprendre sur un autre appareil, puis utilise « Importer une fiche ».</p>
+      </section>
+      </div>
+    </section>
+    </div>
+  </main>
+  <dialog id="player-item-dialog" aria-labelledby="player-item-dialog-title">
+    <form id="player-item-edit-form">
+      <h2 id="player-item-dialog-title">Détails de l’objet</h2>
+      <label for="edit-item-name">Nom</label><input id="edit-item-name" name="name" maxlength="90" required autofocus>
+      <div class="creation-fields">
+        <div><label for="edit-item-quantity">Quantité</label><input id="edit-item-quantity" name="quantity" type="number" min="1" max="999" required></div>
+        <div><label for="edit-item-category">Catégorie</label><select id="edit-item-category" name="category"></select></div>
+      </div>
+      <label for="edit-item-description">Description</label><textarea id="edit-item-description" name="description" rows="3" maxlength="600"></textarea>
+      <label class="equipped-choice"><input id="edit-item-equipped" name="equipped" type="checkbox">Porté ou équipé</label>
+      <p class="muted" role="status" data-save-message></p>
+      <div class="actions"><button type="submit">Enregistrer l’objet</button><button id="player-remove-item" class="secondary" type="button">Retirer l’objet</button><button class="secondary" type="button" data-close>Fermer</button></div>
+    </form>
+  </dialog>
+  <dialog id="player-create-dialog" class="character-creator" aria-labelledby="create-player-title">
+    <form id="player-create-form">
+      <h2 id="create-player-title">Créer mon personnage</h2>
+      <p class="creator-intro muted">Imagine la personne qui fera le premier pas. Tu pourras vérifier sa fiche avant de l’enregistrer.</p>
+      <label for="new-player-name">Nom du personnage</label><input id="new-player-name" name="name" maxlength="120" required autofocus>
+      <fieldset id="creation-portrait" class="protocol-step"><legend>Portrait du personnage · facultatif</legend></fieldset>
+      <label for="new-player-mode">Mode de création</label><select id="new-player-mode"><option value="guided">Parcours de vie · niveau 5</option><option value="free">Création libre · niveaux 1 à 25</option></select>
+      <fieldset id="new-player-guided" class="protocol-step"><legend>Parcours de vie</legend><div id="origin-fields"></div><p id="guided-preview" class="build-preview" role="status"></p></fieldset>
+      <fieldset id="new-player-free" class="protocol-step" hidden disabled>
+        <legend>Création libre</legend><label for="new-player-level">Niveau</label><input id="new-player-level" name="level" type="number" value="1" min="1" max="25" required>
+        <p class="field-help">La base comporte 12 points à répartir entre quatre caractéristiques, de 1 à 5 chacune. Un départ équilibré donne 3 dans chaque caractéristique.</p>
+        <section class="build-dashboard" aria-labelledby="build-dashboard-title">
+          <h3 id="build-dashboard-title">Mes points de création</h3>
+          <dl class="budget-counters"><div><dt>Base répartie</dt><dd id="creation-base-count">12 / 12</dd></div><div><dt>Développement dépensé</dt><dd id="creation-spent-count">0 / 0</dd></div><div><dt>Points disponibles</dt><dd id="creation-remaining-count">0</dd></div></dl>
+          <p id="creation-budget-help" class="field-help"></p>
+          <p id="creation-budget-issues" role="status"></p>
+        </section>
+        <div id="free-stats" class="creation-fields"></div>
+        <details>
+          <summary>Choisir les maîtrises</summary>
+          <p class="field-help">Les caractéristiques améliorées, les maîtrises et les capacités utilisent le même budget de développement. Le coût et le bonus de chaque maîtrise apparaissent sous son rang.</p>
+          <div id="free-masteries"></div>
+          <fieldset class="protocol-step"><legend>Un autre domaine à proposer au MJ</legend>
+            <label for="custom-mastery-name">Arme, domaine magique ou autre spécialisation</label>
+            <input id="custom-mastery-name" maxlength="60" list="mastery-suggestions" placeholder="Par exemple, magie du feu">
+            <datalist id="mastery-suggestions"><option value="Magie du feu"><option value="Magie de l’eau"><option value="Magie de la glace"><option value="Magie du vent"><option value="Magie de la terre"><option value="Magie de la lumière"><option value="Magie de l’ombre"></datalist>
+            <button id="add-custom-mastery" class="secondary" type="button">Ajouter ce domaine</button>
+            <p id="custom-mastery-message" class="field-help" role="status"></p>
+            <div id="custom-masteries" class="creation-fields"></div>
+          </fieldset>
+        </details>
+        <details>
+          <summary>Comprendre les valeurs par niveau</summary>
+          <p class="field-help">Les 12 points de départ servent à l’origine du personnage. Au niveau choisi, dépense les points supplémentaires pour ses scores actuels et ses maîtrises. Les coûts augmentent avec les rangs. Les points conservés restent disponibles pour préparer la fiche avec le MJ.</p>
+          <table class="level-budgets"><caption>Repères du budget commun actuel</caption><thead><tr><th scope="col">Niveau</th><th scope="col">Base</th><th scope="col">Développement</th></tr></thead><tbody id="creation-level-budgets"></tbody></table>
+        </details>
+      </fieldset>
+      <details class="protocol-step">
+        <summary>Histoire et liens · facultatif</summary>
+        <label for="new-player-backstory">Histoire personnelle</label><textarea id="new-player-backstory" name="backstory" rows="3" maxlength="4000"></textarea>
+        <label for="new-player-connections">Liens avec d’autres personnages</label><textarea id="new-player-connections" name="connections" rows="2" maxlength="1600"></textarea>
+        <label for="new-player-goal">Objectif</label><textarea id="new-player-goal" name="goal" rows="2" maxlength="1600"></textarea>
+        <label for="new-player-mentor">Mentor ou école</label><input id="new-player-mentor" name="mentor" maxlength="120">
+        <label for="new-player-training">Apprentissage ou entraînement en cours</label><textarea id="new-player-training" name="training" rows="2" maxlength="1200"></textarea>
+        <p class="field-help">Ces repères racontent le parcours du personnage. Les acquisitions de maîtrise se préparent avec le MJ.</p>
+      </details>
+      <p id="player-create-result" role="status" class="muted" data-save-message></p>
+      <div class="actions"><button type="submit">Vérifier la fiche</button><button id="confirm-player-create" type="button" disabled>Enregistrer le personnage</button><button class="secondary" type="button" data-close>Fermer</button></div>
+    </form>
+  </dialog>
+  <dialog id="player-import-dialog" aria-labelledby="import-player-title">
+    <form id="player-import-form">
+      <h2 id="import-player-title">Importer une fiche</h2>
+      <details id="player-import-file-choice" class="exchange-file-choice" open><summary>Fichier à importer</summary>
+      <label for="player-file">Sauvegarde joueur, échange de table ou export M02</label><input id="player-file" type="file" accept=".json,application/json" autofocus>
+      <label for="player-import-choice">Personnage à copier</label><select id="player-import-choice" disabled></select>
+      </details>
+      <p id="player-import-preview" role="status" class="muted" data-save-message>Choisis un fichier pour voir son contenu.</p>
+      <div id="player-exchange-review" hidden>
+        <label for="player-compare-choice">Comparer avec ma fiche</label><select id="player-compare-choice"></select>
+        <div id="player-compare-preview"></div>
+        <p class="field-help">Adopter crée une nouvelle copie et la rend active. La fiche précédente reste dans « Mes personnages ». Les notes et les jets de la copie comparée sont conservés.</p>
+        <label class="equipped-choice"><input id="player-exchange-accept" type="checkbox">J’ai comparé et je choisis la version reçue.</label>
+      </div>
+      <div class="actions"><button id="confirm-player-import" type="submit" disabled>Importer une nouvelle copie</button><button class="secondary" type="button" data-close>Fermer</button></div>
+    </form>
+  </dialog>
+  <dialog id="player-portrait-dialog" aria-labelledby="portrait-dialog-title">
+    <form id="player-portrait-form">
+      <h2 id="portrait-dialog-title">Le visage de mon personnage</h2>
+      <fieldset id="sheet-portrait" class="protocol-step"><legend>Portrait personnel</legend></fieldset>
+      <p class="muted" role="status" data-save-message></p>
+      <div class="actions"><button type="submit">Enregistrer le portrait</button><button class="secondary" type="button" data-close>Fermer</button></div>
+    </form>
+  </dialog>
+  <template id="portrait-editor-template">
+    <div class="portrait-editor">
+      <div class="portrait-preview"><img data-portrait-preview alt="Aperçu du portrait" hidden referrerpolicy="no-referrer"><span data-portrait-placeholder class="portrait-placeholder" aria-hidden="true">◇</span></div>
+      <div>
+        <label data-portrait-label="file">Depuis mon appareil</label><input data-portrait-field="file" type="file" accept="image/jpeg,image/png,image/webp">
+        <p class="field-help">JPG, PNG ou WebP, jusqu’à 3 Mio. Une copie réduite est conservée dans la fiche et sa sauvegarde.</p>
+        <label data-portrait-label="url">Lien direct vers une image HTTPS</label><input data-portrait-field="url" type="url" maxlength="2048" placeholder="https://…">
+        <div class="actions"><button data-portrait-action="link" class="secondary" type="button">Utiliser le lien</button><button data-portrait-action="clear" class="secondary" type="button">Retirer le portrait</button></div>
+        <p data-portrait-status class="field-help" role="status">Choisis le portrait qui accompagnera ton personnage.</p>
+      </div>
+    </div>
+  </template>
+</body>
+</html>

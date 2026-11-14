@@ -1076,7 +1076,7 @@ function applyCommand(previous, { id, type, data }, resolveOpposition) {
   return campaign;
 }
 
-async function sha256(text) {
+export async function sha256(text) {
   const hash = await crypto.subtle.digest('SHA-256', encoder.encode(text));
   return Array.from(new Uint8Array(hash), byte => byte.toString(16).padStart(2, '0')).join('');
 }

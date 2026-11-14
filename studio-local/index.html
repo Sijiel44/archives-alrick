@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="dark">
   <title>Studio MJ · Les Chroniques d’Entre-Rives</title>
   <link rel="stylesheet" href="./studio.css">
+  <link rel="stylesheet" href="./echanges-pj.css">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body>
@@ -51,6 +52,7 @@
         <div class="topbar-context">
           <p class="eyebrow">Régie du maître de jeu</p>
           <a href="/accueil">Découvrir l’univers</a>
+          <a href="./espace-joueur.html">Espace joueur</a>
         </div>
         <div class="topbar-context">
           <div class="status-chip"><span aria-hidden="true"></span><p id="save-status" class="status" role="status" aria-live="polite" aria-atomic="true">Ouverture du stockage local…</p></div>
@@ -267,7 +269,7 @@
                 <button type="button" id="add-character" class="secondary">Ajouter un PJ</button>
                 <button type="button" id="guide-pj" disabled>Créer par parcours de vie</button>
                 <button type="button" id="free-pj" class="secondary" disabled>Créer un PJ libre</button>
-                <button type="button" id="import-pj" class="secondary" disabled>Importer un PJ M02</button>
+                <button type="button" id="import-pj" class="secondary" disabled>Importer une fiche PJ</button>
               </div>
             </div>
             <p id="characters-empty" class="empty">Ajoutez un personnage avec son nom et son niveau.</p>
@@ -810,6 +812,7 @@
       <input id="character-level" name="level" type="number" required min="1" max="25">
       <label for="character-notes">Notes <span class="muted">· privées</span></label>
       <textarea id="character-notes" name="notes" rows="3" maxlength="8000"></textarea>
+      <button id="character-export-player" class="secondary" type="button" hidden>Préparer un échange pour le joueur</button>
       <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
       <div class="actions"><button type="submit">Enregistrer le PJ</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
     </form>
@@ -986,8 +989,9 @@
   <dialog id="pj-import-dialog" aria-labelledby="pj-import-title">
     <form id="pj-import-form">
       <p class="eyebrow accent">Campagne · Privé MJ</p>
-      <h2 id="pj-import-title">Importer un PJ M02</h2>
-      <p class="muted">Choisissez un export JSON <code>alrick.sheets.v3</code> de l’Atelier historique, puis une fiche à ajouter.</p>
+      <h2 id="pj-import-title">Importer une fiche PJ</h2>
+      <p class="muted">Choisissez un échange joueur / MJ ou un export JSON <code>alrick.sheets.v3</code>, puis une fiche à ajouter.</p>
+      <details id="pj-import-file-choice" class="exchange-file-choice" open><summary>Fichier à importer</summary>
       <label for="pj-import-file">Fichier de fiches</label>
       <input id="pj-import-file" type="file" accept=".json,application/json" autofocus>
       <p id="pj-import-status" class="muted" role="status"></p>
@@ -998,10 +1002,25 @@
         <select id="pj-import-destination" name="destination"></select>
         <p class="muted">Le rattachement conserve le nom, les notes et les scènes du PJ existant. Le niveau vient de la fiche importée.</p>
       </div>
-      <div id="pj-import-preview"></div>
+      </details>
+      <div id="pj-exchange-review" hidden>
+        <label for="pj-compare-choice">Comparer avec un PJ de la campagne</label><select id="pj-compare-choice"></select>
+        <div id="pj-compare-preview"></div>
+        <p class="muted">L’import crée un nouveau participant. La fiche précédente, ses notes MJ et ses liens de scène restent en place. Vous pourrez choisir la nouvelle copie dans les participants de la scène.</p>
+        <label class="exchange-accept"><input id="pj-exchange-accept" type="checkbox">J’ai comparé et je choisis d’importer cette version.</label>
+      </div>
+      <details id="pj-import-full" open><summary>Consulter la fiche reçue</summary><div id="pj-import-preview"></div></details>
       <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
       <div class="actions"><button id="pj-import-submit" type="submit" disabled>Importer dans la campagne</button><button class="secondary cancel-edit" type="button">Annuler</button></div>
     </form>
+  </dialog>
+
+  <dialog id="pj-export-dialog" aria-labelledby="pj-export-title">
+    <h2 id="pj-export-title">Remettre une fiche au joueur</h2>
+    <p class="muted">Relisez la fiche enregistrée qui sera transmise. Les notes MJ, les scènes, la campagne et les données des autres participants restent dans votre sauvegarde privée.</p>
+    <div id="pj-export-preview"></div>
+    <p id="pj-export-status" class="muted" role="status"></p>
+    <div class="actions"><button id="pj-export-download" type="button" disabled>Télécharger l’échange joueur</button><button id="pj-export-close" class="secondary" type="button">Fermer</button></div>
   </dialog>
 
   <dialog id="creature-dialog" aria-labelledby="creature-heading">

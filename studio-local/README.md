@@ -16,6 +16,35 @@ Ouvrir [l’accueil de découverte](http://127.0.0.1:4380/accueil) ou [le Studio
 
 Le Studio existe aussi en version statique sur [GitHub Pages](https://sijiel44.github.io/archives-alrick/studio/). Les campagnes sont enregistrées dans le navigateur à l’adresse utilisée. Pour continuer en ligne une campagne commencée sur `127.0.0.1`, la télécharger dans **Sauvegardes** depuis le Studio local, puis la restaurer dans le Studio en ligne. Les fichiers d’aventure privés se sélectionnent depuis le poste du MJ.
 
+## Créer et jouer son personnage
+
+Ouvrir **Espace joueur** depuis [l’accueil de découverte](http://127.0.0.1:4380/accueil). Le parcours de vie crée un PJ de niveau 5. La création libre vérifie le budget M02 pour un niveau choisi de 1 à 25. Après l’aperçu, enregistrer le personnage pour retrouver sa fiche dans ce navigateur.
+
+- La carte **Donnez-lui une raison de partir** et **1 · Créer mon personnage** ouvrent directement le formulaire. Les deux autres accès du parcours Joueurs déplient les accords de table et les explications des 5d6.
+- Dans le formulaire, **Portrait du personnage** accepte un JPG, PNG ou WebP de 3 Mio maximum, réduit sur l’appareil selon le format historique du portrait. Un lien HTTPS direct peut également être utilisé. **Mon portrait** permet de le remplacer ou de le retirer après la création. La sauvegarde personnelle et la fiche M02 destinée au MJ conservent le portrait. Une image par lien reste chez son hébergeur.
+- En création libre, les compteurs affichent les 12 points de base, la dépense et le reste du budget du niveau. Chaque caractéristique ou maîtrise donne son coût, son bonus et le prix du prochain point. Les repères des niveaux 1, 5, 10, 15, 20 et 25 utilisent le moteur existant.
+- Les maîtrises sont regroupées par armes et défenses, magie et soins, savoirs et métiers. Un domaine personnalisé peut être proposé au MJ. Le mentor, l’école et l’apprentissage déclaré se renseignent dans **Histoire et liens**.
+- La fiche se parcourt dans **Fiche**, **Dés**, **Inventaire**, **Capacités**, **Notes** et **Sauvegarde**. Les flèches gauche et droite parcourent les onglets au clavier. Les liens directs vers un panneau restent utilisables. **Préparer une action** rejoint les dés.
+- Dans **Inventaire**, rechercher un nom, une catégorie ou une description, puis filtrer les objets portés. **Détails** permet de corriger le nom, la quantité, la catégorie et la description, de marquer l’objet comme porté ou de le retirer après confirmation. Le marquage décrit l’équipement choisi. Les effets se règlent avec le MJ.
+- Dans **Dés**, annoncer éventuellement l’action, choisir les valeurs et lancer les 5d6. **Consigner ce jet** conserve le résultat et ses modificateurs. L’historique garde les 50 derniers jets consignés. Un enregistrement interrompu peut être réessayé avec le même résultat.
+- **Capacités** propose une recherche par nom, domaine ou description. Chaque fiche se déplie avec sa source, ses limites et l’indication de validation MJ. **Notes** conserve le carnet personnel.
+- **Sauvegarder mon personnage** télécharge la fiche et les notes affichées, y compris le texte en cours après un conflit de sauvegarde. **Importer une fiche** vérifie la sauvegarde et affiche son aperçu. La confirmation ajoute une nouvelle copie. Les exports PJ M02 de l’Atelier historique sont également acceptés.
+- **Exporter la fiche M02 pour le MJ** télécharge le profil de jeu, le portrait, les capacités et l’inventaire. L’histoire personnelle, les repères d’apprentissage et les notes restent dans la sauvegarde joueur. Le MJ relit et ajoute la fiche dans sa campagne avec **Importer une fiche PJ**.
+
+Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent manuellement. Lorsqu’une fiche joueur a changé dans un autre onglet, copier le texte en cours avant de recharger sa version enregistrée.
+
+La sauvegarde personnelle v2 inclut les jets consignés. Les sauvegardes personnelles v1 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
+
+### Échanger une version avec le MJ
+
+Dans **Sauvegarde**, **Préparer un échange pour le MJ** télécharge un profil partageable avec son identité et sa version. Transmettre le fichier à la table. Le format M02 historique reste disponible à côté. Dans le Studio, **Importer une fiche PJ** ouvre l’aperçu du fichier et permet de comparer avec un PJ de même identité. Cocher le choix explicite puis importer une nouvelle copie.
+
+Le MJ peut ouvrir **Modifier** sur un PJ M02 ou sa fiche dans la bibliothèque, puis **Préparer un échange pour le joueur**. L’aperçu contient le profil enregistré et les PV courants de la séance. Le téléchargement sélectionne cette seule fiche. Le joueur reçoit le fichier avec **Importer une fiche**, compare les valeurs et adopte s’il le souhaite. La nouvelle copie devient active ; les notes et les jets de la copie comparée sont repris. La fiche précédente reste dans **Mes personnages** et les versions reçues portent un repère dans la liste.
+
+Une divergence est signalée quand la base reçue ne correspond pas au profil local. Une version identique est reconnue. Le choix du fichier et la provenance se déplient pour laisser place aux changements. Une fiche comparée modifiée dans un autre onglet oblige à refaire la comparaison.
+
+Chaque adoption crée une copie. Les notes MJ et les liens de scène restent sur le participant précédent ; le MJ choisit la nouvelle copie dans la scène quand il souhaite l’utiliser. Les échanges restent manuels et l’expéditeur est déclaré dans le fichier. Voir le [contrat d’échange v1](ECHANGE-PJ.md) pour les champs transférés et les limites.
+
 ## Préparer une soirée
 
 Sur [l’accueil public](http://127.0.0.1:4380/accueil), le menu **Parcours** mène à **Univers** et **Joueurs**. Le premier relie l’Atlas, la vie quotidienne et les passages entre les mondes. Le second accompagne la création d’un personnage, la préparation du groupe et une première action 5d6. Les étapes se lisent directement dans l’accueil.
@@ -124,7 +153,7 @@ Le paquet contient une fiche **Aventure** et jusqu’à douze fiches liées, ain
 
 ## Importer un personnage joueur M02
 
-1. Dans **Préparer → Personnages joueurs**, choisir **Importer un PJ M02** puis un export JSON `alrick.sheets.v3` de l’Atelier historique.
+1. Dans **Préparer → Personnages joueurs**, choisir **Importer une fiche PJ** puis un export JSON `alrick.sheets.v3` de l’Atelier historique.
 2. Sélectionner une fiche. L’aperçu montre les caractéristiques, les ressources, les maîtrises, les résistances, les capacités et l’inventaire. L’Atelier M02 fournit le contrôle de budget.
 3. Créer un PJ ou rattacher la fiche à un PJ narratif. Le rattachement conserve le nom, les notes et les scènes. Le niveau vient de la fiche. Seule l’entrée sélectionnée est conservée dans la sauvegarde privée.
 4. Dans **Jouer**, ouvrir la fiche d’un participant pour préremplir un jet ou la cibler en opposition. Les PV partent de la valeur de l’export et évoluent après validation du MJ.

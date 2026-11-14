@@ -1,0 +1,22 @@
+.exchange-identity { margin-block: .65rem; color: var(--gold); font-size: .8rem; overflow-wrap: anywhere; }
+.exchange-file-choice, .exchange-provenance { margin-block: .6rem; }
+.exchange-file-choice > summary, .exchange-provenance > summary { min-height: 2.75rem; padding-block: .6rem; color: #b9d7e0; }
+.exchange-provenance { font-size: .85rem; }
+#player-import-form > .actions, #pj-import-form > .actions { position: sticky; bottom: -.5rem; z-index: 1; padding-block: .75rem; background: var(--surface); border-top: 1px solid var(--line); }
+.exchange-comparison { display: grid; gap: .75rem; margin-block: 1rem; }
+.exchange-change { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; padding: .9rem; border: 1px solid var(--line); border-radius: .6rem; background: #192b34; }
+.exchange-change h4 { grid-column: 1 / -1; margin: 0; color: #f0d3a6; }
+.exchange-value { min-width: 0; padding: .6rem; border: 1px solid #657c8266; border-radius: .35rem; }
+.exchange-value > strong { display: block; color: #b9d7e0; font-size: .75rem; margin-bottom: .35rem; }
+.exchange-items { max-height: 22rem; overflow: auto; padding-inline-start: 1.3rem; font-size: .85rem; }
+.exchange-items > li + li { margin-top: .5rem; }
+.exchange-portrait { width: 5rem; height: 7rem; margin-top: .5rem; object-fit: cover; border-radius: .4rem; }
+#player-exchange-review, #pj-exchange-review { margin-block: 1rem; }
+#player-import-dialog { width: min(48rem, calc(100% - 2rem)); }
+#pj-export-dialog { width: min(45rem, calc(100% - 2rem)); }
+.exchange-accept { display: flex; gap: .6rem; align-items: start; padding-block: .8rem; }
+.exchange-accept input[type="checkbox"] { flex: 0 0 1.2rem; width: 1.2rem; margin-top: .25rem; accent-color: var(--copper); }
+@media (max-width: 35rem) {
+  .exchange-change { grid-template-columns: minmax(0, 1fr); }
+  .exchange-change h4 { grid-column: auto; }
+}

@@ -326,3 +326,11 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # La PR documentaire #56 B-001 demeure distincte, ses liens publics non activés ; pas de données MJ privées publiées.
 # Limites connues : audit lecteurs d'écran/appareils physiques et droits des portraits futurs à compléter.
 # Exiger pour ce lot npm test, Chrome, déploiement Pages et smoke sur l'URL publique après deploy.
+
+# Espace joueur et échanges TABLE-05 — publication autorisée le 14 novembre 2026.
+# Demande du créateur dans le chat : revoir les derniers rendus, poursuivre selon les sources et mettre les modifications en ligne.
+# Portée : PR 112, création autonome, portraits, budgets M02, poste de jeu, inventaire, journal privé des jets et échanges explicites versionnés.
+# Les échanges joueur/MJ sont des fichiers à comparer puis à adopter en nouvelle copie ; les liens de scène du participant précédent restent en place.
+# Les campagnes privées, notes MJ, paquets privés et données personnelles ne sont pas inclus dans l'assemblage public.
+# Aucun nouveau canon, aucune nouvelle règle mécanique et aucune des autres PR ouvertes ne sont inclus dans ce lot.
+# Vérifier npm test, les navigateurs de recette, le workflow Pages et le site public après déploiement.
