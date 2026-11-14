@@ -1,0 +1,42 @@
+.grimoire-intro { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; margin-bottom: 1.2rem; border: 1px solid #9b805d88; border-radius: .8rem; background: radial-gradient(ellipse at 100% 0, #74624344, transparent 70%), #192b32; }
+.grimoire-intro > div { flex: 1; min-width: 0; }
+.grimoire-intro h3 { font: clamp(1.65rem, 4vw, 2.1rem)/1.2 Georgia, serif; margin: .4rem 0 .6rem; }
+.grimoire-intro p { line-height: 1.65; }
+.grimoire-intro svg { flex: 0 0 6rem; width: 6rem; fill: none; stroke: #d9b77b; stroke-width: 1; opacity: .8; }
+.grimoire-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 1rem 0; }
+.grimoire-query { grid-column: 1 / -1; }
+.grimoire-tools > div { min-width: 0; }
+.grimoire-tools label { font-size: .8rem; }
+.grimoire-tools input, .grimoire-tools select { min-height: 2.75rem; }
+.grimoire-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; padding: 0; margin: 1rem 0; list-style: none; }
+.grimoire-card { display: flex; flex-direction: column; gap: .7rem; min-width: 0; padding: 1rem; border: 1px solid #657b8199; border-radius: .65rem; background: linear-gradient(135deg, #30464b99, #15252e); }
+.grimoire-card-heading { display: flex; align-items: center; gap: .75rem; }
+.grimoire-card-heading > div { min-width: 0; }
+.grimoire-card .eyebrow { font-size: .58rem; margin: 0 0 .35rem; }
+.grimoire-card h4 { font: 1.2rem/1.3 Georgia, serif; color: #f1dfbd; overflow-wrap: anywhere; }
+.grimoire-symbol { display: grid; flex: 0 0 2.8rem; height: 2.8rem; place-items: center; border: 1px solid #aa8c5f99; border-radius: 50%; color: #e4c485; background: #15272d; font-size: 1.65rem; }
+.grimoire-card-copy { flex: 1; line-height: 1.65; font-size: .86rem; overflow-wrap: anywhere; }
+.grimoire-card-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; }
+.grimoire-card-actions button { min-height: 2.75rem; font-size: .8rem; }
+.grimoire-saved { color: #e1c48f; font-size: .7rem; }
+.grimoire-references { padding-top: 1rem; border-top: 1px solid var(--line); }
+.grimoire-references li { margin: 1rem 0; }
+.grimoire-references li p { margin-top: .4rem; color: var(--muted); font-size: .84rem; line-height: 1.6; }
+#grimoire-dialog { width: min(44rem, calc(100% - 2rem)); }
+#grimoire-dialog button, #grimoire-more { min-height: 2.75rem; }
+#grimoire-dialog h2, #grimoire-dialog dd { overflow-wrap: anywhere; }
+#grimoire-detail-source { display: inline-block; margin: 1rem 0; }
+#grimoire-edit-fields { border: 1px solid var(--line); border-radius: .6rem; padding: 1rem; min-width: 0; }
+#grimoire-edit-fields .actions { margin-top: 1rem; }
+@media (max-width: 45rem) {
+  .grimoire-intro { padding: 1rem; }
+  .grimoire-intro svg { display: none; }
+  .grimoire-intro p:not(.eyebrow):not(.field-help) { display: none; }
+  .grimoire-list { grid-template-columns: minmax(0, 1fr); }
+  .grimoire-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grimoire-tools > div:nth-child(2) { grid-column: 1 / -1; }
+  .grimoire-card { padding: .85rem; }
+  .sheet-nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .sheet-nav a { font-size: .72rem; padding-inline: .1rem; }
+  #tab-player-backups { grid-column: span 2; }
+}

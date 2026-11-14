@@ -5,6 +5,8 @@ import { resolvePlayAction, studioDice } from './protocole.mjs';
 import { checkPlayerSheet, openPlayerStore, playerBackup, playerExchange, PLAYER_ROLL_LIMIT, readPlayerFile } from './espace-joueur-store.mjs';
 import { readPortrait, validPortrait } from './portraits.mjs';
 import { EXCHANGE_KEY, compareExchange, makeExchange, receivedSheet, renderExchangePreview } from './echanges-pj.mjs';
+import { PLAYER_GRIMOIRE_LIMIT, PLAYER_MAGIC_DOMAINS, PLAYER_MAGIC_REFERENCES, PLAYER_SPELLS,
+  grimoireRows, grimoireSearchText, playerSpell } from './grimoire-joueur.mjs';
 
 const $ = id => document.getElementById(id);
 const stats = Object.entries(PLAY_STATS);
@@ -36,6 +38,8 @@ let incomingExchange;
 let comparedRecord;
 let comparisonRequest = 0;
 let importReady = false;
+let grimoireEdit;
+let grimoireLimit = 12;
 
 function node(tag, content) {
   const element = document.createElement(tag);
@@ -342,6 +346,9 @@ function render(record) {
     inventoryLimit = 30;
     $('player-item-search').value = $('player-ability-search').value = '';
     $('player-item-filter').value = 'all';
+    $('grimoire-search').value = $('grimoire-domain').value = $('grimoire-circle').value = '';
+    $('grimoire-scope').value = 'catalogue';
+    grimoireLimit = 12;
   }
   const { sheet } = active;
   $('player-portrait-placeholder').textContent = sheet.name.trim().split(/\s+/u).slice(0, 2)
@@ -380,6 +387,7 @@ function render(record) {
   $('roll-mastery').value = masteries.some(([key]) => key === selectedMastery) ? selectedMastery : '';
   renderInventory();
   renderAbilities();
+  renderGrimoire();
   renderHistory();
   if (changed) {
     notes.value = active.notes;
@@ -387,6 +395,129 @@ function render(record) {
     $('player-dice').replaceChildren();
   }
 }
+
+const spellCircle = entry => entry.details?.find(([label]) => label === 'Cercle indiqué')?.[1] ?? '';
+
+function renderGrimoire() {
+  if (!active) return;
+  const bookmarks = active.grimoire ?? [];
+  const terms = grimoireSearchText($('grimoire-search').value).split(/\s+/u).filter(Boolean);
+  const scope = $('grimoire-scope').value;
+  const entries = grimoireRows(bookmarks).filter(entry =>
+    (scope === 'catalogue' || Boolean(entry.bookmark && (scope !== 'session' || entry.bookmark.session))) &&
+    (!$('grimoire-domain').value || entry.domain === $('grimoire-domain').value) &&
+    (!$('grimoire-circle').value || spellCircle(entry) === $('grimoire-circle').value) &&
+    terms.every(term => grimoireSearchText([entry.id, entry.name, entry.description, entry.domainName, entry.categoryName].join(' ')).includes(term)))
+    .sort((a, b) => Number(Boolean(b.bookmark?.session)) - Number(Boolean(a.bookmark?.session)) || a.name.localeCompare(b.name, 'fr'));
+  $('grimoire-count').textContent = `${entries.length} référence${entries.length > 1 ? 's' : ''} · ${bookmarks.length} / ${PLAYER_GRIMOIRE_LIMIT} dans mon grimoire · ${bookmarks.filter(entry => entry.session).length} pour ma séance`;
+  const symbols = { lumiere: '✧', vent: '≋', eau: '≈', foudre: 'ϟ', terre: '◇', magie: '✦' };
+  $('grimoire-list').replaceChildren(...entries.slice(0, grimoireLimit).map(entry => {
+    const item = node('li', '');
+    item.className = 'grimoire-card';
+    const mark = node('span', symbols[entry.domain] ?? '◇');
+    mark.className = 'grimoire-symbol';
+    mark.setAttribute('aria-hidden', 'true');
+    const head = node('div', '');
+    const domain = node('p', entry.domainName ?? 'Référence conservée');
+    domain.className = 'eyebrow accent';
+    head.append(domain, node('h4', entry.name));
+    const heading = node('div', '');
+    heading.className = 'grimoire-card-heading';
+    heading.append(mark, head);
+    const meta = node('p', entry.domain ? `${entry.categoryName} · Cercle ${spellCircle(entry)} · Prototype` : 'Absente du catalogue courant');
+    meta.className = 'field-help';
+    const copy = node('p', entry.description);
+    copy.className = 'grimoire-card-copy';
+    const bottom = node('div', '');
+    bottom.className = 'grimoire-card-actions';
+    const status = node('span', entry.bookmark ? entry.bookmark.session ? '✦ Pour ma séance' : 'Dans mon grimoire' : 'À découvrir');
+    status.className = 'grimoire-saved';
+    const open = node('button', 'Consulter');
+    open.type = 'button';
+    open.className = 'secondary';
+    open.setAttribute('aria-label', `Consulter le sort ${entry.name}`);
+    open.addEventListener('click', () => openGrimoireEntry(entry.id));
+    bottom.append(status, open);
+    item.append(heading, meta, copy, bottom);
+    return item;
+  }));
+  if (!entries.length) {
+    const empty = node('li', scope === 'catalogue' ? 'Aucun sort ne correspond à ces filtres.' : 'Aucune référence ici. Consulte le catalogue pour composer ton grimoire, ou ajuste les filtres.');
+    empty.className = 'empty';
+    $('grimoire-list').append(empty);
+  }
+  $('grimoire-more').hidden = entries.length <= grimoireLimit;
+}
+
+function openGrimoireEntry(id) {
+  if (!active || pending) return;
+  const entry = playerSpell(id);
+  const bookmark = active.grimoire?.find(item => item.id === id);
+  if (!entry && !bookmark) return;
+  grimoireEdit = { record: active, id };
+  const changed = Boolean(entry && bookmark && entry.version !== bookmark.version);
+  $('grimoire-detail-title').textContent = entry?.name ?? bookmark.name;
+  $('grimoire-detail-status').textContent = entry ? 'Prototype · Démonstration non canonique' : 'Référence absente · Repères conservés';
+  $('grimoire-detail-description').textContent = entry?.description ?? 'Le catalogue courant ne contient plus cette référence. Tes notes restent consultables et modifiables.';
+  $('grimoire-detail-fields').replaceChildren(...(entry ? [['Domaine / affinité', entry.domainName], ...entry.details] : [['Identifiant conservé', bookmark.id]])
+    .flatMap(([label, value]) => [node('dt', label), node('dd', value)]));
+  $('grimoire-detail-version').textContent = changed ? `La référence a changé depuis l’ajout de « ${bookmark.name} ». L’aperçu montre le catalogue courant ; tes repères restent conservés.` : '';
+  $('grimoire-detail-version').hidden = !changed;
+  const link = $('grimoire-detail-source');
+  link.hidden = !entry;
+  if (entry) link.href = entry.href;
+  else link.removeAttribute('href');
+  $('grimoire-update-reference').hidden = !changed;
+  $('grimoire-adopt-version').checked = false;
+  $('grimoire-session').checked = bookmark?.session ?? false;
+  $('grimoire-notes').value = bookmark?.notes ?? '';
+  $('grimoire-remove').hidden = !bookmark;
+  const full = !bookmark && (active.grimoire?.length ?? 0) >= PLAYER_GRIMOIRE_LIMIT;
+  $('grimoire-save').disabled = full;
+  $('grimoire-save').textContent = bookmark ? 'Enregistrer mes repères' : 'Ajouter à mon grimoire';
+  $('grimoire-form').querySelector('[data-save-message]').textContent = full ? 'Le grimoire contient déjà 80 références. Retire un repère avant d’en ajouter un autre.' : '';
+  $('grimoire-dialog').showModal();
+}
+
+for (const [id, label] of PLAYER_MAGIC_DOMAINS) $('grimoire-domain').append(new Option(label, id));
+for (const circle of [...new Set(PLAYER_SPELLS.map(spellCircle))].sort((a, b) => Number(a) - Number(b))) {
+  $('grimoire-circle').append(new Option(`Cercle ${circle}`, circle));
+}
+for (const entry of PLAYER_MAGIC_REFERENCES) {
+  const link = node('a', entry.name);
+  link.href = entry.href;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  const row = node('li', '');
+  row.append(link, node('p', entry.description));
+  $('grimoire-references').append(row);
+}
+for (const id of ['grimoire-search', 'grimoire-domain', 'grimoire-circle', 'grimoire-scope']) $(id).addEventListener('input', () => {
+  grimoireLimit = 12;
+  renderGrimoire();
+});
+$('grimoire-more').addEventListener('click', () => { grimoireLimit += 12; renderGrimoire(); });
+$('grimoire-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  if (pending || !grimoireEdit) return;
+  const { record, id } = grimoireEdit;
+  const entry = playerSpell(id);
+  const previous = record.grimoire?.find(item => item.id === id);
+  if (!previous && !entry) return;
+  const reference = entry && (!previous || $('grimoire-adopt-version').checked) ? { id, name: entry.name, version: entry.version } : previous;
+  const next = { ...previous, ...reference, notes: $('grimoire-notes').value, session: $('grimoire-session').checked };
+  const grimoire = [...(record.grimoire ?? []).filter(item => item.id !== id), next];
+  $('grimoire-edit-fields').disabled = true;
+  try { await save({ ...record, grimoire }, $('grimoire-dialog'), $('player-grimoire-title')); }
+  finally { $('grimoire-edit-fields').disabled = false; }
+});
+$('grimoire-remove').addEventListener('click', async () => {
+  if (pending || !grimoireEdit || !window.confirm('Retirer cette référence et ses notes de ton grimoire ?')) return;
+  const { record, id } = grimoireEdit;
+  $('grimoire-edit-fields').disabled = true;
+  try { await save({ ...record, grimoire: record.grimoire.filter(item => item.id !== id) }, $('grimoire-dialog'), $('player-grimoire-title')); }
+  finally { $('grimoire-edit-fields').disabled = false; }
+});
 
 function report(error, target = $('player-error')) {
   target.textContent = error.message;
@@ -696,7 +827,8 @@ $('player-import-form').addEventListener('submit', event => {
   if (!record) return;
   if (incomingExchange) {
     if (!importReady || !$('player-exchange-accept').checked) return;
-    const next = { sheet: receivedSheet(incomingExchange, comparedRecord?.sheet), notes: comparedRecord?.notes ?? '', rolls: comparedRecord?.rolls ?? [] };
+    const next = { sheet: receivedSheet(incomingExchange, comparedRecord?.sheet), notes: comparedRecord?.notes ?? '', rolls: comparedRecord?.rolls ?? [],
+      grimoire: comparedRecord?.grimoire ?? [] };
     void save(next, $('player-import-dialog'), $('player-name'), comparedRecord);
   } else void save(record, $('player-import-dialog'));
 });

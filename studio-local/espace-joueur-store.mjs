@@ -1,6 +1,7 @@
 import { checkJSON, sha256, validPJSource } from './store.mjs';
 import { evaluatePJ, MAX_PJ_FILE_BYTES, readPJExport } from './pj-m02.mjs';
 import { EXCHANGE_FORMAT, readExchange, receivedSheet } from './echanges-pj.mjs';
+import { checkPlayerGrimoire } from './grimoire-joueur.mjs';
 export { playerExchange } from './echanges-pj.mjs';
 
 const FORMAT = 'chroniques-entre-rives.joueur';
@@ -31,14 +32,14 @@ export async function readPlayerFile(text) {
   if (archive?.format === EXCHANGE_FORMAT) {
     const exchange = await readExchange(text);
     return { format: 'Échange joueur / MJ v1', created: exchange.created, exchange,
-      records: [{ sheet: receivedSheet(exchange), notes: '', rolls: [] }] };
+      records: [{ sheet: receivedSheet(exchange), notes: '', rolls: [], grimoire: [] }] };
   }
   if (archive?.format !== FORMAT) {
-    return { format: 'Export M02', created: archive?.created, records: readPJExport(text).sheets.map(sheet => ({ sheet, notes: '', rolls: [] })) };
+    return { format: 'Export M02', created: archive?.created, records: readPJExport(text).sheets.map(sheet => ({ sheet, notes: '', rolls: [], grimoire: [] })) };
   }
-  if (![1, 2].includes(archive.version)) throw new Error('Cette version de sauvegarde joueur est inconnue.');
+  if (![1, 2, 3].includes(archive.version)) throw new Error('Cette version de sauvegarde joueur est inconnue.');
   const { payload, checksum } = archive;
-  const keys = archive.version === 1 ? 'notes,sheet' : 'notes,rolls,sheet';
+  const keys = archive.version === 1 ? 'notes,sheet' : archive.version === 2 ? 'notes,rolls,sheet' : 'grimoire,notes,rolls,sheet';
   if (!payload || Object.keys(payload).sort().join(',') !== keys || typeof payload.notes !== 'string' ||
       payload.notes.length > 8000 || checksum !== await sha256(JSON.stringify(payload))) {
     throw new Error('La sauvegarde joueur est incomplète ou altérée.');
@@ -46,19 +47,23 @@ export async function readPlayerFile(text) {
   checkPlayerSheet(payload.sheet);
   const rolls = archive.version === 1 ? [] : payload.rolls;
   checkRolls(rolls);
-  return { format: `Sauvegarde joueur v${archive.version}`, created: archive.created, records: [{ ...payload, rolls }] };
+  const grimoire = archive.version < 3 ? [] : payload.grimoire;
+  checkPlayerGrimoire(grimoire);
+  return { format: `Sauvegarde joueur v${archive.version}`, created: archive.created, records: [{ ...payload, rolls, grimoire }] };
 }
 
-export async function playerBackup({ sheet, notes, rolls = [] }) {
+export async function playerBackup({ sheet, notes, rolls = [], grimoire = [] }) {
+  checkJSON(grimoire);
+  checkPlayerGrimoire(grimoire);
   checkRolls(rolls);
-  const payload = { sheet, notes, rolls };
-  return { format: FORMAT, version: 2, created: new Date().toISOString(), checksum: await sha256(JSON.stringify(payload)), payload };
+  const payload = { sheet, notes, rolls, grimoire };
+  return { format: FORMAT, version: 3, created: new Date().toISOString(), checksum: await sha256(JSON.stringify(payload)), payload };
 }
 
 export async function openPlayerStore() {
   const db = await new Promise((resolve, reject) => {
     let blocked = false;
-    const request = indexedDB.open('entre-rives.espace-joueur.v1', 2);
+    const request = indexedDB.open('entre-rives.espace-joueur.v1', 3);
     request.onupgradeneeded = () => {
       if (!request.result.objectStoreNames.contains('personnages')) request.result.createObjectStore('personnages', { keyPath: 'id' });
     };
@@ -90,19 +95,21 @@ export async function openPlayerStore() {
   return {
     list: () => transact('readonly', (table, done) => {
       const request = table.getAll();
-      request.onsuccess = () => done(request.result.map(record => ({ ...record, rolls: record.rolls ?? [] }))
+      request.onsuccess = () => done(request.result.map(record => ({ ...record, rolls: record.rolls ?? [], grimoire: record.grimoire ?? [] }))
         .sort((a, b) => b.updatedAt - a.updatedAt));
     }),
-    save: ({ sheet, notes, rolls = [], id = crypto.randomUUID(), revision = 0 }, compared) => {
+    save: ({ sheet, notes, rolls = [], grimoire = [], id = crypto.randomUUID(), revision = 0 }, compared) => {
       checkJSON(sheet);
       checkJSON(rolls);
+      checkJSON(grimoire);
+      checkPlayerGrimoire(grimoire);
       checkPlayerSheet(sheet);
       checkRolls(rolls);
       if (typeof notes !== 'string' || notes.length > 8000 ||
-          new TextEncoder().encode(JSON.stringify({ sheet, notes, rolls })).length > MAX_PJ_FILE_BYTES - 512) {
+          new TextEncoder().encode(JSON.stringify({ sheet, notes, rolls, grimoire })).length > MAX_PJ_FILE_BYTES - 512) {
         throw new Error('Le personnage dépasse la taille prise en charge.');
       }
-      const record = { id, revision: revision + 1, updatedAt: Date.now(), sheet, notes, rolls };
+      const record = { id, revision: revision + 1, updatedAt: Date.now(), sheet, notes, rolls, grimoire };
       return transact('readwrite', (table, done, abort) => {
         if (compared) {
           const guard = table.get(compared.id);

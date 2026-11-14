@@ -18,6 +18,8 @@ export const studioAssets = new Map([
   ["/espace-joueur.css", ["espace-joueur.css", "text/css"]],
   ["/espace-joueur.mjs", ["espace-joueur.mjs", "text/javascript"]],
   ["/espace-joueur-store.mjs", ["espace-joueur-store.mjs", "text/javascript"]],
+  ["/grimoire-joueur.mjs", ["grimoire-joueur.mjs", "text/javascript"]],
+  ["/grimoire-joueur.css", ["grimoire-joueur.css", "text/css"]],
   ["/echanges-pj.mjs", ["echanges-pj.mjs", "text/javascript"]],
   ["/echanges-pj.css", ["echanges-pj.css", "text/css"]],
   ["/regie-participants.css", ["regie-participants.css", "text/css"]],
@@ -70,7 +72,7 @@ export function startStudioServer(port = 4380) {
       "default-src 'none'",
       ...(player ? ["sandbox allow-scripts", `script-src http://127.0.0.1:${localPort}/joueur.js`] :
         [discovery ? `script-src http://127.0.0.1:${localPort}/accueil.mjs` : "script-src 'self'"]),
-      discovery || player || personal ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json`,
+      discovery || player ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json`,
       discovery || personal ? "style-src 'self'" : "style-src 'self' 'unsafe-inline'",
       player ? "img-src data:" : discovery ? "img-src 'self'" : personal ? "img-src 'self' data: blob: https:" : "img-src 'self' data: https:",
       player ? "frame-src about:" : discovery || personal ? "frame-src 'none'" : "frame-src 'self'",

@@ -24,7 +24,7 @@ Ouvrir **Espace joueur** depuis [l’accueil de découverte](http://127.0.0.1:43
 - Dans le formulaire, **Portrait du personnage** accepte un JPG, PNG ou WebP de 3 Mio maximum, réduit sur l’appareil selon le format historique du portrait. Un lien HTTPS direct peut également être utilisé. **Mon portrait** permet de le remplacer ou de le retirer après la création. La sauvegarde personnelle et la fiche M02 destinée au MJ conservent le portrait. Une image par lien reste chez son hébergeur.
 - En création libre, les compteurs affichent les 12 points de base, la dépense et le reste du budget du niveau. Chaque caractéristique ou maîtrise donne son coût, son bonus et le prix du prochain point. Les repères des niveaux 1, 5, 10, 15, 20 et 25 utilisent le moteur existant.
 - Les maîtrises sont regroupées par armes et défenses, magie et soins, savoirs et métiers. Un domaine personnalisé peut être proposé au MJ. Le mentor, l’école et l’apprentissage déclaré se renseignent dans **Histoire et liens**.
-- La fiche se parcourt dans **Fiche**, **Dés**, **Inventaire**, **Capacités**, **Notes** et **Sauvegarde**. Les flèches gauche et droite parcourent les onglets au clavier. Les liens directs vers un panneau restent utilisables. **Préparer une action** rejoint les dés.
+- La fiche se parcourt dans **Fiche**, **Dés**, **Inventaire**, **Capacités**, **Grimoire**, **Notes** et **Sauvegarde**. Les flèches gauche et droite parcourent les onglets au clavier. Les liens directs vers un panneau restent utilisables. **Préparer une action** rejoint les dés.
 - Dans **Inventaire**, rechercher un nom, une catégorie ou une description, puis filtrer les objets portés. **Détails** permet de corriger le nom, la quantité, la catégorie et la description, de marquer l’objet comme porté ou de le retirer après confirmation. Le marquage décrit l’équipement choisi. Les effets se règlent avec le MJ.
 - Dans **Dés**, annoncer éventuellement l’action, choisir les valeurs et lancer les 5d6. **Consigner ce jet** conserve le résultat et ses modificateurs. L’historique garde les 50 derniers jets consignés. Un enregistrement interrompu peut être réessayé avec le même résultat.
 - **Capacités** propose une recherche par nom, domaine ou description. Chaque fiche se déplie avec sa source, ses limites et l’indication de validation MJ. **Notes** conserve le carnet personnel.
@@ -33,7 +33,17 @@ Ouvrir **Espace joueur** depuis [l’accueil de découverte](http://127.0.0.1:43
 
 Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent manuellement. Lorsqu’une fiche joueur a changé dans un autre onglet, copier le texte en cours avant de recharger sa version enregistrée.
 
-La sauvegarde personnelle v2 inclut les jets consignés. Les sauvegardes personnelles v1 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
+La sauvegarde personnelle v3 inclut les jets consignés et le grimoire de références. Les sauvegardes personnelles v1 et v2 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
+
+### Composer mon grimoire
+
+Dans **Grimoire**, rechercher un sort et filtrer le domaine ou le Cercle indiqué. **Consulter** ouvre sa description, son coût de base, ses limites et sa source. Les six sorts actuels sont des démonstrations du catalogue commun, signalées comme prototypes non canoniques. Les références dépliables donnent accès aux documents sur les écoles, les Cercles et les pratiques.
+
+Choisir **Ajouter à mon grimoire** pour garder une référence avec ses notes personnelles. **Garder à portée de main pour ma séance** la retrouve dans la collection **Pour ma séance**. Ces repères ne valent ni apprentissage ni préparation mécanique d’un sort ; ils n’accordent aucun Cercle et ne changent pas le mana. Chaque personnage conserve son propre grimoire, limité à 80 références.
+
+Si le catalogue change, l’aperçu le signale : **Rattacher à la version affichée du catalogue** est un choix explicite. Une référence absente garde son nom et ses notes. **Retirer du grimoire** demande confirmation. Les notes sont conservées en cas d’échec d’enregistrement ; copier le brouillon avant de recharger après un conflit entre onglets.
+
+La sauvegarde personnelle v3 conserve ces repères, y compris les références absentes. Les échanges joueur/MJ et l’export M02 les excluent. L’adoption d’un échange reporte le grimoire personnel de la fiche comparée sur la nouvelle copie, sans modifier l’originale. Voir le [contrat du grimoire](GRIMOIRE-JOUEUR.md).
 
 ### Échanger une version avec le MJ
 
@@ -51,7 +61,7 @@ Dans **Importer une fiche PJ**, charger un échange versionné, puis comparer av
 
 Le bouton **Versions**, dans la liste des PJ ou leur fiche, donne accès aux états précédents. Choisir un état pour consulter son profil et ses PV au moment du changement. **Rétablir cette version**, après confirmation, enregistre une nouvelle décision. Les combats et les changements ultérieurs restent consultables. Les anciens impacts sont toujours vérifiés avec le profil utilisé à l’époque.
 
-La sauvegarde privée de campagne passe à la version 17 dès le premier changement de version. Elle conserve les états précédents ; aucune suppression automatique ne les réduit. Si la sauvegarde dépasse la limite existante de 4 Mio, le Studio refuse l’écriture et conserve les données enregistrées. Les sauvegardes antérieures restent importables. Le joueur continue de recevoir uniquement le profil partageable et garde sa sauvegarde personnelle v2.
+La sauvegarde privée de campagne passe à la version 17 dès le premier changement de version. Elle conserve les états précédents ; aucune suppression automatique ne les réduit. Si la sauvegarde dépasse la limite existante de 4 Mio, le Studio refuse l’écriture et conserve les données enregistrées. Les sauvegardes antérieures restent importables. Le joueur continue de recevoir uniquement le profil partageable et garde sa sauvegarde personnelle v3.
 
 ## Préparer une soirée
 

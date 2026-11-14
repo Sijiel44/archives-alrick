@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./studio.css">
   <link rel="stylesheet" href="./espace-joueur.css">
   <link rel="stylesheet" href="./echanges-pj.css">
+  <link rel="stylesheet" href="./grimoire-joueur.css">
   <script type="module" src="./espace-joueur.mjs"></script>
 </head>
 <body class="player-space">
@@ -60,6 +61,7 @@
         <a id="tab-player-rolls" role="tab" aria-controls="player-rolls" aria-selected="false" tabindex="-1" href="#player-rolls">Dés</a>
         <a id="tab-player-inventory" role="tab" aria-controls="player-inventory" aria-selected="false" tabindex="-1" href="#player-inventory">Inventaire</a>
         <a id="tab-player-abilities" role="tab" aria-controls="player-abilities" aria-selected="false" tabindex="-1" href="#player-abilities">Capacités</a>
+        <a id="tab-player-grimoire" role="tab" aria-controls="player-grimoire" aria-selected="false" tabindex="-1" href="#player-grimoire">Grimoire</a>
         <a id="tab-player-notes" role="tab" aria-controls="player-notes" aria-selected="false" tabindex="-1" href="#player-notes">Notes</a>
         <a id="tab-player-backups" role="tab" aria-controls="player-backups" aria-selected="false" tabindex="-1" href="#player-backups">Sauvegarde</a>
       </div>
@@ -125,6 +127,23 @@
         <label for="player-ability-search">Rechercher une capacité</label><input id="player-ability-search" type="search" placeholder="Nom, domaine ou description">
         <p id="player-ability-count" class="field-help" role="status"></p><div id="player-ability-list"></div>
       </section>
+      <section id="player-grimoire" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-grimoire" tabindex="0" hidden>
+        <div class="grimoire-intro">
+          <div><p class="eyebrow accent">Mes pages de magie</p><h3 id="player-grimoire-title" tabindex="-1">Mon grimoire</h3>
+          <p>Explore les essais du catalogue et garde les références utiles à ton personnage.</p><p class="field-help">Un favori ne vaut pas apprentissage : les Cercles et l’usage d’un sort se décident avec le MJ.</p></div>
+          <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52"/><circle cx="60" cy="60" r="40"/><path d="M60 89V38m0 4c-10-10-25-12-34-9v45c12-3 24 0 34 9 10-9 22-12 34-9V33c-9-3-24-1-34 9M35 46l15 5m-15 6 15 5m20-11 15-5m-15 16 15-5M60 9v12m0 78v12M9 60h12m78 0h12"/></svg>
+        </div>
+        <div class="grimoire-tools">
+          <div class="grimoire-query"><label for="grimoire-search">Rechercher un sort</label><input id="grimoire-search" type="search" placeholder="Nom, domaine, effet…"></div>
+          <div><label for="grimoire-scope">Collection</label><select id="grimoire-scope"><option value="catalogue">Catalogue et grimoire</option><option value="saved">Mon grimoire</option><option value="session">Pour ma séance</option></select></div>
+          <div><label for="grimoire-domain">Domaine / affinité</label><select id="grimoire-domain"><option value="">Tous les domaines</option></select></div>
+          <div><label for="grimoire-circle">Cercle indiqué</label><select id="grimoire-circle"><option value="">Tous les Cercles</option></select></div>
+        </div>
+        <p id="grimoire-count" class="field-help" role="status"></p>
+        <ul id="grimoire-list" class="grimoire-list"></ul>
+        <button id="grimoire-more" class="secondary" type="button" hidden>Afficher davantage de références</button>
+        <details class="grimoire-references"><summary>Écoles, Cercles et pratiques : les références</summary><p class="field-help">Les domaines reprennent les affinités du système. Le catalogue actuel présente des essais non canoniques. Consulte les sources pour distinguer activation, composition et traditions.</p><ul id="grimoire-references"></ul></details>
+      </section>
       <section id="player-notes" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-notes" tabindex="0" hidden>
         <p class="eyebrow accent">Au fil des séances</p><h3>Mon carnet personnel</h3>
       <form id="player-notes-form">
@@ -135,8 +154,8 @@
       <section id="player-backups" class="protocol-step player-transfer" role="tabpanel" aria-labelledby="tab-player-backups" tabindex="0" hidden>
         <p class="eyebrow accent">Retrouver mon aventure</p><h3>Sauvegarde et remise au MJ</h3>
         <div class="player-save-options">
-          <div class="save-option"><span class="badge">Personnel</span><h4>Emporter toute ma fiche</h4><p class="muted">Le personnage, son portrait, son inventaire, son histoire, ses notes et les jets consignés.</p><button id="player-backup" type="button">Sauvegarder mon personnage</button></div>
-          <div class="save-option"><span class="badge">À partager</span><h4>Échanger avec ma table</h4><p class="muted">Le profil de jeu, le portrait, les capacités et l’inventaire, avec une identité et une version pour comparer au retour du MJ. Les notes et les jets restent personnels.</p><button id="player-send" type="button">Préparer un échange pour le MJ</button><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
+          <div class="save-option"><span class="badge">Personnel</span><h4>Emporter toute ma fiche</h4><p class="muted">Le personnage, son portrait, son inventaire, son histoire, son grimoire, ses notes et les jets consignés.</p><button id="player-backup" type="button">Sauvegarder mon personnage</button></div>
+          <div class="save-option"><span class="badge">À partager</span><h4>Échanger avec ma table</h4><p class="muted">Le profil de jeu, le portrait, les capacités et l’inventaire, avec une identité et une version pour comparer au retour du MJ. Le grimoire, les notes et les jets restent personnels.</p><button id="player-send" type="button">Préparer un échange pour le MJ</button><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
         </div>
         <p id="player-download-status" class="field-help" role="status"></p>
         <p class="field-help">Le personnage est enregistré dans ce navigateur. Télécharge une sauvegarde pour le reprendre sur un autre appareil, puis utilise « Importer une fiche ».</p>
@@ -145,6 +164,26 @@
     </section>
     </div>
   </main>
+  <dialog id="grimoire-dialog" aria-labelledby="grimoire-detail-title">
+    <p class="eyebrow accent">Référence personnelle · Grimoire</p>
+    <h2 id="grimoire-detail-title" tabindex="-1" autofocus></h2>
+    <p id="grimoire-detail-status" class="badge"></p>
+    <p id="grimoire-detail-description" class="narrative"></p>
+    <dl id="grimoire-detail-fields" class="resource-details"></dl>
+    <p id="grimoire-detail-version" class="notice" hidden></p>
+    <a id="grimoire-detail-source" target="_blank" rel="noopener noreferrer">Lire la source du catalogue <span class="muted">(nouvel onglet)</span></a>
+    <form id="grimoire-form">
+      <fieldset id="grimoire-edit-fields">
+        <legend>Mes repères personnels</legend>
+        <label class="equipped-choice"><input id="grimoire-session" type="checkbox">Garder à portée de main pour ma séance</label>
+        <label for="grimoire-notes">Mes notes sur ce sort</label><textarea id="grimoire-notes" rows="3" maxlength="4000" placeholder="Une idée d’usage, une question à poser au MJ…"></textarea>
+        <label id="grimoire-update-reference" class="equipped-choice" hidden><input id="grimoire-adopt-version" type="checkbox">Rattacher à la version affichée du catalogue</label>
+        <p class="field-help">Ces repères restent dans ta sauvegarde personnelle. Consulter ou garder un sort ne change ni tes maîtrises, ni ton mana, ni tes capacités.</p>
+        <p class="muted" role="status" data-save-message></p>
+        <div class="actions"><button id="grimoire-save" type="submit">Ajouter à mon grimoire</button><button id="grimoire-remove" class="text-button" type="button" hidden>Retirer du grimoire</button><button class="secondary" type="button" data-close>Fermer</button></div>
+      </fieldset>
+    </form>
+  </dialog>
   <dialog id="player-item-dialog" aria-labelledby="player-item-dialog-title">
     <form id="player-item-edit-form">
       <h2 id="player-item-dialog-title">Détails de l’objet</h2>
