@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./espace-joueur.css">
   <link rel="stylesheet" href="./echanges-pj.css">
   <link rel="stylesheet" href="./grimoire-joueur.css">
+  <link rel="stylesheet" href="./creation-brouillon.css">
   <script type="module" src="./espace-joueur.mjs"></script>
 </head>
 <body class="player-space">
@@ -41,6 +42,12 @@
         <button id="player-import" class="secondary" type="button" disabled>Importer une fiche</button>
       </div>
       <p class="shelf-caption">Ta fiche, tes choix et tes souvenirs de table.</p>
+      <div id="creation-draft-card" class="creation-draft-card" hidden>
+        <span class="eyebrow accent">Création en cours</span><h3 id="creation-draft-name"></h3>
+        <p id="creation-draft-date" class="field-help"></p>
+        <button id="creation-draft-resume" class="secondary" type="button">Reprendre mon brouillon</button>
+      </div>
+      <button id="creation-draft-import-open" class="text-button" type="button" disabled>Importer un brouillon</button>
     </aside>
     <section id="player-sheet" class="panel player-panel" aria-labelledby="player-name" hidden>
       <header class="character-heading">
@@ -201,6 +208,11 @@
   <dialog id="player-create-dialog" class="character-creator" aria-labelledby="create-player-title">
     <form id="player-create-form">
       <h2 id="create-player-title">Créer mon personnage</h2>
+      <aside class="creation-draft-tools" aria-label="Brouillon de création">
+        <p id="creation-draft-status" role="status">Tes choix seront conservés dans ce navigateur.</p>
+        <p class="field-help">Le brouillon peut rester incomplet. Seule une fiche vérifiée peut devenir un personnage.</p>
+        <div class="actions"><button id="creation-draft-save" class="secondary" type="button">Garder mon brouillon</button><button id="creation-draft-export" class="secondary" type="button">Télécharger le brouillon</button><button id="creation-draft-reload" class="secondary" type="button" hidden>Relire le brouillon enregistré</button><button id="creation-draft-new" class="text-button" type="button">Recommencer</button></div>
+      </aside>
       <p class="creator-intro muted">Imagine la personne qui fera le premier pas. Tu pourras vérifier sa fiche avant de l’enregistrer.</p>
       <label for="new-player-name">Nom du personnage</label><input id="new-player-name" name="name" maxlength="120" required autofocus>
       <fieldset id="creation-portrait" class="protocol-step"><legend>Portrait du personnage · facultatif</legend></fieldset>
@@ -246,6 +258,16 @@
       </details>
       <p id="player-create-result" role="status" class="muted" data-save-message></p>
       <div class="actions"><button type="submit">Vérifier la fiche</button><button id="confirm-player-create" type="button" disabled>Enregistrer le personnage</button><button class="secondary" type="button" data-close>Fermer</button></div>
+    </form>
+  </dialog>
+  <dialog id="creation-draft-import-dialog" aria-labelledby="creation-draft-import-title">
+    <form id="creation-draft-import-form">
+      <h2 id="creation-draft-import-title">Reprendre un fichier de brouillon</h2>
+      <label for="creation-draft-file">Brouillon PJ · fichier JSON</label><input id="creation-draft-file" type="file" accept=".json,application/json" autofocus>
+      <p id="creation-draft-import-preview" class="notice" role="status">Choisis un fichier pour voir son contenu.</p>
+      <label id="creation-draft-replace-wrap" class="equipped-choice" hidden><input id="creation-draft-replace" type="checkbox">Je remplace mon brouillon local. J’ai conservé sa copie si nécessaire.</label>
+      <p class="field-help">Le fichier reprend une création à terminer. Les personnages déjà enregistrés restent dans leur liste.</p>
+      <div class="actions"><button id="creation-draft-import-confirm" type="submit" disabled>Reprendre ce brouillon</button><button class="secondary" type="button" data-close>Fermer</button></div>
     </form>
   </dialog>
   <dialog id="player-import-dialog" aria-labelledby="import-player-title">

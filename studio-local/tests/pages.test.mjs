@@ -86,6 +86,21 @@ test('GitHub Pages relie les Archives et le Studio et isole le récepteur joueur
   await page.locator('#creation-portrait-file').setInputFiles({ name: 'portrait-fictif.webp', mimeType: 'image/webp',
     buffer: await readFile(new URL('../media/heron-des-lanternes.webp', import.meta.url)) });
   await page.locator('#creation-portrait').getByText(/Portrait prêt/).waitFor();
+  await page.locator('#creation-draft-save').click();
+  await page.locator('#creation-draft-status').getByText('Brouillon enregistré dans ce navigateur.', { exact: true }).waitFor();
+  const [draftFile] = await Promise.all([page.waitForEvent('download'), page.locator('#creation-draft-export').click()]);
+  const draftText = await readFile(await draftFile.path(), 'utf8');
+  const draftBackup = JSON.parse(draftText);
+  assert.equal(draftBackup.format, 'chroniques-entre-rives.brouillon-pj');
+  assert.equal(draftBackup.payload.fields['new-player-name'], 'PJ fictif Pages');
+  assert.doesNotMatch(draftText, /NOTE_MJ_PAGES|Campagne fictive Pages/);
+  await page.locator('#player-create-dialog [data-close]').click();
+  await page.locator('#player-create-dialog').waitFor({ state: 'hidden' });
+  await page.reload();
+  await page.locator('#creation-draft-resume').click();
+  await page.locator('#player-create-dialog').waitFor();
+  assert.equal(await page.locator('#new-player-name').inputValue(), 'PJ fictif Pages');
+  assert.equal(await page.locator('#confirm-player-create').isDisabled(), true);
   await page.getByRole('button', { name: 'Vérifier la fiche' }).click();
   await page.locator('#confirm-player-create').click();
   await page.getByRole('heading', { name: 'PJ fictif Pages', exact: true }).waitFor();

@@ -2,6 +2,7 @@ import { checkJSON, sha256, validPJSource } from './store.mjs';
 import { evaluatePJ, MAX_PJ_FILE_BYTES, readPJExport } from './pj-m02.mjs';
 import { EXCHANGE_FORMAT, readExchange, receivedSheet } from './echanges-pj.mjs';
 import { checkPlayerGrimoire } from './grimoire-joueur.mjs';
+import { DRAFT_ID, checkCreationDraft, checkDraftRecord } from './brouillons-pj.mjs';
 export { playerExchange } from './echanges-pj.mjs';
 
 const FORMAT = 'chroniques-entre-rives.joueur';
@@ -63,9 +64,10 @@ export async function playerBackup({ sheet, notes, rolls = [], grimoire = [] }) 
 export async function openPlayerStore() {
   const db = await new Promise((resolve, reject) => {
     let blocked = false;
-    const request = indexedDB.open('entre-rives.espace-joueur.v1', 3);
+    const request = indexedDB.open('entre-rives.espace-joueur.v1', 4);
     request.onupgradeneeded = () => {
       if (!request.result.objectStoreNames.contains('personnages')) request.result.createObjectStore('personnages', { keyPath: 'id' });
+      if (!request.result.objectStoreNames.contains('brouillons')) request.result.createObjectStore('brouillons', { keyPath: 'id' });
     };
     request.onblocked = () => {
       blocked = true;
@@ -79,38 +81,71 @@ export async function openPlayerStore() {
   });
   db.onversionchange = () => db.close();
 
-  function transact(mode, work) {
+  function transact(mode, work, names = 'personnages') {
     return new Promise((resolve, reject) => {
-      const tx = db.transaction('personnages', mode);
+      const tx = db.transaction(names, mode);
       let result, error;
       tx.oncomplete = () => resolve(result);
       tx.onabort = () => reject(error ?? tx.error ?? new Error('Enregistrement interrompu.'));
-      work(tx.objectStore('personnages'), value => { result = value; }, message => {
+      work(tx.objectStore(Array.isArray(names) ? names[0] : names), value => { result = value; }, message => {
         error = new Error(message);
         tx.abort();
-      });
+      }, tx);
     });
   }
 
   return {
+    readDraft: async () => checkDraftRecord(await transact('readonly', (table, done) => {
+      const request = table.get(DRAFT_ID);
+      request.onsuccess = () => done(request.result);
+    }, 'brouillons')),
+    saveDraft: (snapshot, revision = 0) => {
+      if (snapshot !== null) checkCreationDraft(snapshot);
+      if (!Number.isSafeInteger(revision) || revision < 0 || revision >= Number.MAX_SAFE_INTEGER) throw new Error('Révision de brouillon invalide.');
+      const record = { id: DRAFT_ID, version: 1, revision: revision + 1, updatedAt: Date.now(), snapshot };
+      return transact('readwrite', (table, done, abort) => {
+        const request = table.get(DRAFT_ID);
+        request.onsuccess = () => {
+          try { checkDraftRecord(request.result); } catch (error) { return abort(error.message); }
+          if ((request.result?.revision ?? 0) !== revision) return abort('Le brouillon a changé dans un autre onglet. Télécharge tes choix avant de relire le brouillon enregistré.');
+          table.put(record);
+          done(record);
+        };
+      }, 'brouillons');
+    },
     list: () => transact('readonly', (table, done) => {
       const request = table.getAll();
       request.onsuccess = () => done(request.result.map(record => ({ ...record, rolls: record.rolls ?? [], grimoire: record.grimoire ?? [] }))
         .sort((a, b) => b.updatedAt - a.updatedAt));
     }),
-    save: ({ sheet, notes, rolls = [], grimoire = [], id = crypto.randomUUID(), revision = 0 }, compared) => {
+    save: ({ sheet, notes, rolls = [], grimoire = [], id = crypto.randomUUID(), revision = 0 }, compared, fromDraft) => {
       checkJSON(sheet);
       checkJSON(rolls);
       checkJSON(grimoire);
       checkPlayerGrimoire(grimoire);
       checkPlayerSheet(sheet);
       checkRolls(rolls);
+      if (fromDraft) {
+        checkCreationDraft(fromDraft.snapshot);
+        if (!Number.isSafeInteger(fromDraft.revision) || fromDraft.revision < 1 ||
+            fromDraft.snapshot.id !== id || sheet.id !== id || revision !== 0) throw new Error('La création ne correspond pas au brouillon vérifié.');
+      }
       if (typeof notes !== 'string' || notes.length > 8000 ||
           new TextEncoder().encode(JSON.stringify({ sheet, notes, rolls, grimoire })).length > MAX_PJ_FILE_BYTES - 512) {
         throw new Error('Le personnage dépasse la taille prise en charge.');
       }
       const record = { id, revision: revision + 1, updatedAt: Date.now(), sheet, notes, rolls, grimoire };
-      return transact('readwrite', (table, done, abort) => {
+      return transact('readwrite', (table, done, abort, tx) => {
+        if (fromDraft) {
+          const drafts = tx.objectStore('brouillons');
+          const guard = drafts.get(DRAFT_ID);
+          guard.onsuccess = () => {
+            if (guard.result?.version !== 1 || guard.result?.revision !== fromDraft.revision || JSON.stringify(guard.result?.snapshot) !== JSON.stringify(fromDraft.snapshot)) {
+              return abort('Le brouillon a changé dans un autre onglet. La création est interrompue ; tes choix restent disponibles.');
+            }
+            drafts.put({ id: DRAFT_ID, version: 1, revision: fromDraft.revision + 1, updatedAt: Date.now(), snapshot: null });
+          };
+        }
         if (compared) {
           const guard = table.get(compared.id);
           guard.onsuccess = () => {
@@ -126,7 +161,7 @@ export async function openPlayerStore() {
           table.put(record);
           done(record);
         };
-      });
+      }, fromDraft ? ['personnages', 'brouillons'] : 'personnages');
     },
   };
 }

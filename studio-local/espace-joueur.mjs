@@ -7,6 +7,8 @@ import { readPortrait, validPortrait } from './portraits.mjs';
 import { EXCHANGE_KEY, compareExchange, makeExchange, receivedSheet, renderExchangePreview } from './echanges-pj.mjs';
 import { PLAYER_GRIMOIRE_LIMIT, PLAYER_MAGIC_DOMAINS, PLAYER_MAGIC_REFERENCES, PLAYER_SPELLS,
   grimoireRows, grimoireSearchText, playerSpell } from './grimoire-joueur.mjs';
+import { creationDraftController } from './creation-brouillon.mjs';
+import { checkCreationDraft } from './brouillons-pj.mjs';
 
 const $ = id => document.getElementById(id);
 const stats = Object.entries(PLAY_STATS);
@@ -40,6 +42,9 @@ let comparisonRequest = 0;
 let importReady = false;
 let grimoireEdit;
 let grimoireLimit = 12;
+let creationDraft;
+let creationId;
+let creating = false;
 
 function node(tag, content) {
   const element = document.createElement(tag);
@@ -152,7 +157,7 @@ function portraitEditor(container, prefix, onChange = () => {}) {
   };
 }
 
-const creationPortrait = portraitEditor($('creation-portrait'), 'creation', resetCreationReview);
+const creationPortrait = portraitEditor($('creation-portrait'), 'creation', () => { resetCreationReview(); creationDraft?.changed(); });
 const sheetPortrait = portraitEditor($('sheet-portrait'), 'sheet');
 
 function inventory(sheet) {
@@ -524,14 +529,14 @@ function report(error, target = $('player-error')) {
   target.hidden = false;
 }
 
-async function save(record, dialog, focusTarget = $('player-name'), compared) {
+async function save(record, dialog, focusTarget = $('player-name'), compared, fromDraft) {
   if (pending) return false;
   pending = true;
   syncRollButton();
   $('player-error').hidden = true;
   $('player-save-status').textContent = 'Enregistrement…';
   try {
-    const saved = await store.save(record, compared);
+    const saved = await store.save(record, compared, fromDraft);
     records = [saved, ...records.filter(entry => entry.id !== saved.id)];
     render(saved);
     $('player-save-status').textContent = 'Sauvegarde locale confirmée';
@@ -672,46 +677,90 @@ function updateMode() {
   updateCreationPreview();
 }
 
-$('player-create').addEventListener('click', () => {
-  if (pending || !leaveNotes()) return;
+function resetCreationForm() {
+  creationId = `pj-${crypto.randomUUID()}`;
   $('player-create-form').reset();
   creationPortrait.reset();
   $('custom-masteries').replaceChildren();
+  for (const detail of $('player-create-form').querySelectorAll('details')) detail.open = false;
   $('custom-mastery-message').textContent = '';
   for (const step of ORIGIN_STEPS) $(`origin-${step.id}-help`).textContent = step.question;
   updateMode();
-  $('player-create-dialog').showModal();
+}
+const draftControls = () => [...$('player-create-form').querySelectorAll('input[id], select[id], textarea[id]')]
+  .filter(control => control.type !== 'file' && !control.closest('#custom-masteries'));
+function captureCreation() {
+  return { id: creationId, fields: Object.fromEntries(draftControls().map(control => [control.id, control.value])),
+    customMasteries: [...$('custom-masteries').querySelectorAll('[data-mastery]')].map(control => ({ name: control.dataset.mastery, rank: control.value })),
+    portrait: creationPortrait.value, expanded: [...$('player-create-form').querySelectorAll('details')].flatMap((detail, index) => detail.open ? [index] : []) };
+}
+function validateCreationSnapshot(snapshot) {
+  checkCreationDraft(snapshot);
+  const controls = draftControls();
+  if (Object.keys(snapshot.fields).length !== controls.length || controls.some(control => {
+    const value = snapshot.fields[control.id];
+    return typeof value !== 'string' || (control.maxLength >= 0 && value.length > control.maxLength) ||
+      (control.tagName === 'SELECT' && ![...control.options].some(option => option.value === value)) ||
+      (control.type === 'number' && value !== '' && !Number.isFinite(Number(value)));
+  }) || snapshot.expanded.some(index => index >= $('player-create-form').querySelectorAll('details').length)) {
+    throw new Error('Ce brouillon contient des champs ou choix que cette version ne peut pas reprendre. Le brouillon local est conservé.');
+  }
+  const names = new Set([...$('free-masteries').querySelectorAll('[data-mastery]')].map(control => normalizedMastery(masteryName(control.dataset.mastery))));
+  for (const entry of snapshot.customMasteries) {
+    if (entry.name !== entry.name.trim() || ['__proto__', 'constructor', 'prototype'].includes(entry.name) ||
+        names.has(normalizedMastery(entry.name)) || (entry.rank !== '' && !Number.isFinite(Number(entry.rank)))) {
+      throw new Error('Un domaine personnalisé de ce brouillon ne peut pas être repris sans modification.');
+    }
+    names.add(normalizedMastery(entry.name));
+  }
+}
+function restoreCreation(snapshot) {
+  validateCreationSnapshot(snapshot);
+  resetCreationForm();
+  creationId = snapshot.id;
+  for (const entry of snapshot.customMasteries) addCustomMastery(entry.name, entry.rank, false);
+  creationPortrait.reset(snapshot.portrait);
+  for (const control of draftControls()) control.value = snapshot.fields[control.id];
+  for (const [index, detail] of [...$('player-create-form').querySelectorAll('details')].entries()) detail.open = snapshot.expanded.includes(index);
+  for (const step of ORIGIN_STEPS) $(`origin-${step.id}-help`).textContent = step.options.find(option => option.id === $(`origin-${step.id}`).value)?.description ?? step.question;
+  updateMode();
+}
+$('player-create').addEventListener('click', async () => {
+  if (pending || creating || !creationDraft) return;
+  try { await creationDraft.open(); } catch (error) { report(error); }
 });
 $('new-player-mode').addEventListener('change', updateMode);
 $('player-create-form').addEventListener('input', () => { resetCreationReview(); updateCreationPreview(); });
-$('add-custom-mastery').addEventListener('click', () => {
-  const name = $('custom-mastery-name').value.trim();
-  const normalize = value => value.normalize('NFKD').replace(/\p{M}/gu, '').toLocaleLowerCase('fr');
+const normalizedMastery = value => value.normalize('NFKD').replace(/\p{M}/gu, '').toLocaleLowerCase('fr');
+function addCustomMastery(name, rank = '0', focus = true) {
   const controls = [...$('new-player-free').querySelectorAll('[data-mastery]')];
   if (!name || ['__proto__', 'constructor', 'prototype'].includes(name) ||
-      controls.some(control => normalize(masteryName(control.dataset.mastery)) === normalize(name)) ||
+      controls.some(control => normalizedMastery(masteryName(control.dataset.mastery)) === normalizedMastery(name)) ||
       $('custom-masteries').childElementCount >= 12) {
     $('custom-mastery-message').textContent = 'Choisis un nom distinct et jusqu’à douze domaines personnalisés.';
     return;
   }
   const control = masteryField($('custom-masteries'), `mastery-custom-${crypto.randomUUID()}`, name);
+  control.value = rank;
   const remove = node('button', 'Retirer');
   remove.type = 'button';
   remove.className = 'secondary';
   remove.setAttribute('aria-label', `Retirer le domaine ${name}`);
-  remove.addEventListener('click', () => { control.parentElement.remove(); resetCreationReview(); updateCreationPreview(); });
+  remove.addEventListener('click', () => { control.parentElement.remove(); resetCreationReview(); updateCreationPreview(); creationDraft?.changed(); });
   control.parentElement.append(remove);
   $('custom-mastery-name').value = '';
   $('custom-mastery-message').textContent = 'Domaine proposé à la table. Son rang utilise le budget commun.';
   resetCreationReview();
   updateCreationPreview();
-  control.focus();
-});
+  if (focus) control.focus();
+  creationDraft?.changed();
+}
+$('add-custom-mastery').addEventListener('click', () => addCustomMastery($('custom-mastery-name').value.trim()));
 $('player-create-form').addEventListener('submit', event => {
   event.preventDefault();
   if (pending) return;
   const fields = new FormData(event.currentTarget);
-  const identity = { id: `pj-${crypto.randomUUID()}`, name: fields.get('name').trim(),
+  const identity = { id: creationId, name: fields.get('name').trim(),
     backstory: fields.get('backstory').trim(), connections: fields.get('connections').trim(), goal: fields.get('goal').trim() };
   try {
     if (creationPortrait.loading) throw new Error('Le portrait est en cours de préparation.');
@@ -730,8 +779,17 @@ $('player-create-form').addEventListener('submit', event => {
     $('confirm-player-create').disabled = false;
   } catch (error) { report(error, $('player-create-result')); }
 });
-$('confirm-player-create').addEventListener('click', () => {
-  if (reviewed) void save({ sheet: reviewed, notes: '' }, $('player-create-dialog'));
+$('confirm-player-create').addEventListener('click', async () => {
+  if (!reviewed || creating || pending || !creationDraft) return;
+  const approved = reviewed;
+  creating = true;
+  $('player-create-form').inert = true;
+  try {
+    const fromDraft = await creationDraft.prepareCreation();
+    if (reviewed !== approved) throw new Error('La création a changé. Vérifie de nouveau la fiche.');
+    if (await save({ id: creationId, sheet: approved, notes: '' }, $('player-create-dialog'), $('player-name'), undefined, fromDraft)) creationDraft.consumed();
+  } catch (error) { report(error, $('player-create-result')); }
+  finally { creating = false; $('player-create-form').inert = false; }
 });
 
 $('player-import').addEventListener('click', () => {
@@ -834,10 +892,13 @@ $('player-import-form').addEventListener('submit', event => {
 });
 
 for (const button of document.querySelectorAll('[data-close]')) button.addEventListener('click', () => {
-  if (!pending) button.closest('dialog').close();
+  if (pending || creating) return;
+  if (button.closest('dialog').id === 'player-create-dialog') void creationDraft?.close();
+  else button.closest('dialog').close();
 });
 for (const dialog of document.querySelectorAll('dialog')) dialog.addEventListener('cancel', event => {
-  if (pending) event.preventDefault();
+  if (pending || creating || dialog.id === 'player-create-dialog') event.preventDefault();
+  if (!pending && !creating && dialog.id === 'player-create-dialog') void creationDraft?.close();
 });
 
 $('player-selection').addEventListener('change', event => {
@@ -970,7 +1031,12 @@ try {
   store = await openPlayerStore();
   records = await store.list();
   render(records[0]);
-  $('player-create').disabled = $('player-import').disabled = false;
+  try {
+    creationDraft = await creationDraftController({ store, capture: captureCreation, restore: restoreCreation, reset: resetCreationForm,
+      validate: validateCreationSnapshot, isLoading: () => creationPortrait.loading, download, canOpen: () => !pending && !creating && leaveNotes() });
+  } catch (error) { report(error); }
+  $('player-create').disabled = !creationDraft;
+  $('player-import').disabled = false;
   $('player-save-status').textContent = 'Stockage joueur prêt';
   if (new URLSearchParams(location.search).get('creer') === '1') {
     $('player-create').click();

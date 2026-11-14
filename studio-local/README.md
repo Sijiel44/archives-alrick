@@ -35,6 +35,16 @@ Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent
 
 La sauvegarde personnelle v3 inclut les jets consignés et le grimoire de références. Les sauvegardes personnelles v1 et v2 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
 
+### Reprendre une création commencée
+
+Le créateur garde automatiquement les choix modifiés dans un **brouillon local**, même si le budget ou le parcours reste incomplet. Le portrait préparé, les champs vides, les domaines personnalisés et les rubriques dépliées suivent ce brouillon. Attendre **Brouillon enregistré dans ce navigateur** ou utiliser **Garder mon brouillon** avant de quitter. **Fermer** et Échap attendent l’enregistrement. Une fermeture forcée avant la confirmation peut perdre les dernières saisies.
+
+**Reprendre mon brouillon** retrouve le formulaire depuis **Mes personnages**. Le navigateur garde un seul brouillon de création à la fois, séparé des PJ enregistrés. **Recommencer** demande confirmation et retire ce brouillon. Après reprise, choisir **Vérifier la fiche**, puis **Enregistrer le personnage** : la création et le retrait du brouillon sont confirmés ensemble. Une erreur d’écriture conserve le brouillon et permet de réessayer.
+
+**Télécharger le brouillon** garde un fichier personnel, y compris les choix non encore enregistrés après un conflit. Sur un autre appareil, utiliser **Importer un brouillon**, lire l’aperçu et confirmer. S’il existe déjà un brouillon local, sa substitution nécessite un choix explicite ; le téléchargement préalable permet d’en garder une copie. L’import reprend une création à terminer et ne modifie aucun PJ enregistré.
+
+Le fichier `chroniques-entre-rives.brouillon-pj` v1 est distinct d’une sauvegarde de personnage ou d’un échange M02. Il conserve les champs du formulaire et le portrait préparé, jusqu’à 512 Kio. Il ne transporte pas les campagnes MJ. Les fichiers altérés, futurs ou contenant des champs inconnus sont refusés. Si deux onglets divergent, télécharger les choix affichés avant de relire le brouillon enregistré. Voir le [contrat des brouillons](BROUILLONS-PJ.md).
+
 ### Composer mon grimoire
 
 Dans **Grimoire**, rechercher un sort et filtrer le domaine ou le Cercle indiqué. **Consulter** ouvre sa description, son coût de base, ses limites et sa source. Les six sorts actuels sont des démonstrations du catalogue commun, signalées comme prototypes non canoniques. Les références dépliables donnent accès aux documents sur les écoles, les Cercles et les pratiques.
