@@ -6,6 +6,7 @@
   <title>Espace joueur · Les Chroniques d’Entre-Rives</title>
   <link rel="stylesheet" href="./studio.css">
   <link rel="stylesheet" href="./espace-joueur.css">
+  <link rel="stylesheet" href="./echanges-pj.css">
   <script type="module" src="./espace-joueur.mjs"></script>
 </head>
 <body class="player-space">
@@ -135,7 +136,7 @@
         <p class="eyebrow accent">Retrouver mon aventure</p><h3>Sauvegarde et remise au MJ</h3>
         <div class="player-save-options">
           <div class="save-option"><span class="badge">Personnel</span><h4>Emporter toute ma fiche</h4><p class="muted">Le personnage, son portrait, son inventaire, son histoire, ses notes et les jets consignés.</p><button id="player-backup" type="button">Sauvegarder mon personnage</button></div>
-          <div class="save-option"><span class="badge">À partager</span><h4>Remettre ma fiche au MJ</h4><p class="muted">Le profil de jeu, le portrait, les capacités et l’inventaire. L’histoire personnelle, les notes et les jets restent dans ta sauvegarde personnelle.</p><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
+          <div class="save-option"><span class="badge">À partager</span><h4>Échanger avec ma table</h4><p class="muted">Le profil de jeu, le portrait, les capacités et l’inventaire, avec une identité et une version pour comparer au retour du MJ. Les notes et les jets restent personnels.</p><button id="player-send" type="button">Préparer un échange pour le MJ</button><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
         </div>
         <p id="player-download-status" class="field-help" role="status"></p>
         <p class="field-help">Le personnage est enregistré dans ce navigateur. Télécharge une sauvegarde pour le reprendre sur un autre appareil, puis utilise « Importer une fiche ».</p>
@@ -211,9 +212,17 @@
   <dialog id="player-import-dialog" aria-labelledby="import-player-title">
     <form id="player-import-form">
       <h2 id="import-player-title">Importer une fiche</h2>
-      <label for="player-file">Sauvegarde joueur ou export M02</label><input id="player-file" type="file" accept=".json,application/json" autofocus>
+      <details id="player-import-file-choice" class="exchange-file-choice" open><summary>Fichier à importer</summary>
+      <label for="player-file">Sauvegarde joueur, échange de table ou export M02</label><input id="player-file" type="file" accept=".json,application/json" autofocus>
       <label for="player-import-choice">Personnage à copier</label><select id="player-import-choice" disabled></select>
+      </details>
       <p id="player-import-preview" role="status" class="muted" data-save-message>Choisis un fichier pour voir son contenu.</p>
+      <div id="player-exchange-review" hidden>
+        <label for="player-compare-choice">Comparer avec ma fiche</label><select id="player-compare-choice"></select>
+        <div id="player-compare-preview"></div>
+        <p class="field-help">Adopter crée une nouvelle copie et la rend active. La fiche précédente reste dans « Mes personnages ». Les notes et les jets de la copie comparée sont conservés.</p>
+        <label class="equipped-choice"><input id="player-exchange-accept" type="checkbox">J’ai comparé et je choisis la version reçue.</label>
+      </div>
       <div class="actions"><button id="confirm-player-import" type="submit" disabled>Importer une nouvelle copie</button><button class="secondary" type="button" data-close>Fermer</button></div>
     </form>
   </dialog>

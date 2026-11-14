@@ -102,6 +102,11 @@ test('GitHub Pages relie les Archives et le Studio et isole le récepteur joueur
   assert.equal(playerBackup.version, 2);
   assert.equal(playerBackup.payload.rolls.length, 1);
   assert.doesNotMatch(backupText, /NOTE_MJ_PAGES|Campagne fictive Pages/);
+  const [exchangeFile] = await Promise.all([page.waitForEvent('download'), page.locator('#player-send').click()]);
+  const exchange = JSON.parse(await readFile(await exchangeFile.path(), 'utf8'));
+  assert.equal(exchange.format, 'chroniques-entre-rives.echange-pj');
+  assert.equal(exchange.payload.sheet.name, 'PJ fictif Pages');
+  assert.doesNotMatch(JSON.stringify(exchange), /NOTE_MJ_PAGES|Campagne fictive Pages/);
   await page.goto(base);
   await page.locator('#joueurs-personnage').getByRole('link', { name: /Donnez-lui une raison de partir/ }).click();
   await page.getByRole('dialog', { name: 'Créer mon personnage' }).waitFor();

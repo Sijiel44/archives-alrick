@@ -54,6 +54,8 @@ let playRules;
 let bestiaryRules;
 let oppositionRules;
 let pjRules;
+let exchangeRules;
+let playerExport;
 let workshopDraft;
 let workshopRead = 0;
 
@@ -1033,7 +1035,10 @@ function previewResource(entry, remember = true) {
     if (canIllustrate(entry)) {
       add(entry.linkedImage ? 'Modifier l’image liée' : 'Ajouter une image par lien', () => editLinkedImage(entry.linkedImage, entry));
     }
-    if (pjSource) add('Préparer la fiche joueur', () => preparePlayerShare(entry.record.id));
+    if (pjSource) {
+      add('Préparer la fiche joueur', () => preparePlayerShare(entry.record.id));
+      if (exchangeRules) add('Préparer un échange pour le joueur', () => openPJExport(entry.record.id));
+    }
     if ((profile || pjSource) && playRules && view === 'play' && activeScene()) {
       add('Préparer un jet 5d6', () => editPlayAction({ attacker: entry.record }));
       if (oppositionRules && activeScene().participantIds.includes(entry.record.id)) {
@@ -2013,6 +2018,7 @@ function editCharacter(character) {
   form.elements.level.value = character?.level ?? campaign.startingLevel;
   form.elements.level.readOnly = Boolean(character?.[PJ_SOURCE_KEY]);
   form.elements.notes.value = character?.notes || '';
+  $('character-export-player').hidden = !character?.[PJ_SOURCE_KEY] || !exchangeRules;
   beginEdit(form, character?.id, 'save-character');
 }
 
@@ -2190,7 +2196,11 @@ function openPJImport() {
   const form = $('pj-import-form');
   form.reset();
   $('pj-import-status').textContent = '';
+  $('pj-import-file-choice').open = $('pj-import-full').open = true;
   $('pj-import-source').replaceChildren();
+  $('pj-exchange-review').hidden = true;
+  $('pj-exchange-accept').checked = $('pj-exchange-accept').required = false;
+  $('pj-import-destination').disabled = false;
   $('pj-import-destination').replaceChildren(new Option('Créer un nouveau PJ', ''), ...campaign.characters
     .filter(character => !character[PJ_SOURCE_KEY])
     .map(character => new Option(`Rattacher à ${character.name}`, character.id)));
@@ -2198,18 +2208,38 @@ function openPJImport() {
   renderPJImport();
 }
 
-function renderPJImport() {
+async function renderPJImport() {
+  const attempt = draft;
+  if (!attempt) return;
+  const request = attempt.pjComparison = Symbol();
   const source = draft?.pjSources?.[$('pj-import-source').value];
   $('pj-import-selection').hidden = !draft?.pjSources?.length;
   const preview = $('pj-import-preview');
   preview.replaceChildren();
   $('pj-import-submit').disabled = true;
+  attempt.exchangeReady = false;
+  $('pj-exchange-accept').checked = false;
   if (!source) return;
   const budget = pjRules.evaluatePJ(source);
   preview.append(node('h3', source.name), buildPJSheet(source),
     node('p', `Budget M02 · ${budget.spent} / ${budget.budget}`, 'muted'));
   if (!budget.valid) preview.append(node('p', budget.issues.join(' '), 'notice error'));
   $('pj-import-submit').disabled = !budget.valid;
+  if (attempt.pjExchange) {
+    $('pj-import-submit').disabled = true;
+    $('pj-compare-preview').textContent = 'Comparaison…';
+    try {
+      const character = campaign.characters.find(item => item.id === $('pj-compare-choice').value);
+      const comparison = character ? await exchangeRules.compareExchange({ ...character[PJ_SOURCE_KEY], name: character.name,
+        pv: currentHitPoints(campaign, character) }, attempt.pjExchange) : undefined;
+      if (draft !== attempt || request !== attempt.pjComparison) return;
+      exchangeRules.renderExchangePreview($('pj-compare-preview'), attempt.pjExchange, comparison);
+      attempt.adoptSource = exchangeRules.receivedSheet(attempt.pjExchange, character?.[PJ_SOURCE_KEY]);
+      const evaluated = pjRules.evaluatePJ(attempt.adoptSource);
+      attempt.exchangeReady = !comparison?.identical && evaluated.valid;
+      if (!evaluated.valid) $('pj-compare-preview').append(node('p', evaluated.issues.join(' '), 'notice error'));
+    } catch (error) { if (draft === attempt && request === attempt.pjComparison) $('pj-compare-preview').textContent = error.message; }
+  }
 }
 
 async function inspectPJImport() {
@@ -2218,6 +2248,11 @@ async function inspectPJImport() {
   const request = attempt.pjRequest = Symbol();
   const file = $('pj-import-file').files[0];
   attempt.pjSources = [];
+  $('pj-import-file-choice').open = $('pj-import-full').open = true;
+  attempt.pjExchange = attempt.adoptSource = undefined;
+  $('pj-exchange-review').hidden = true;
+  $('pj-exchange-accept').checked = $('pj-exchange-accept').required = false;
+  $('pj-import-destination').disabled = false;
   $('pj-import-source').replaceChildren();
   renderPJImport();
   const status = $('pj-import-status');
@@ -2227,17 +2262,56 @@ async function inspectPJImport() {
     if (file.size > pjRules.MAX_PJ_FILE_BYTES) throw new Error('Choisissez un export de 2 Mio ou moins.');
     const text = await file.text();
     if (draft !== attempt || request !== attempt.pjRequest) return;
-    const { sheets, skipped } = pjRules.readPJExport(text);
+    const isExchange = JSON.parse(text)?.format === 'chroniques-entre-rives.echange-pj';
+    if (isExchange && !exchangeRules) throw new Error('Le module d’échange est indisponible. Conservez le fichier original.');
+    const exchange = isExchange ? await exchangeRules.readExchange(text) : undefined;
+    if (draft !== attempt || request !== attempt.pjRequest) return;
+    const { sheets, skipped } = exchange ? { sheets: [exchangeRules.receivedSheet(exchange)], skipped: 0 } : pjRules.readPJExport(text);
+    attempt.pjExchange = exchange;
     attempt.pjSources = sheets;
     const select = $('pj-import-source');
     select.replaceChildren(new Option('Choisir une fiche', ''), ...sheets.map((source, index) =>
       new Option(`${source.name} · niveau ${source.level} · ${source.id}`, String(index))));
     if (sheets.length === 1) select.value = '0';
     status.textContent = `${sheets.length} fiche(s) PJ M02 lisible(s)${skipped ? ` · ${skipped} autre(s) entrée(s) écartée(s)` : ''}`;
+    if (exchange) {
+      const matches = campaign.characters.filter(character => character[PJ_SOURCE_KEY]?.id === exchange.sheet.id);
+      $('pj-compare-choice').replaceChildren(new Option('Importer sans copie à comparer', ''), ...matches.map(character =>
+        new Option(`${character.name} · copie ${character.id.slice(0, 8)}`, character.id)));
+      $('pj-compare-choice').value = matches[0]?.id ?? '';
+      $('pj-import-destination').value = '';
+      $('pj-import-destination').disabled = true;
+      $('pj-exchange-accept').required = true;
+      $('pj-exchange-review').hidden = false;
+      $('pj-import-file-choice').open = false;
+      $('pj-import-full').open = matches.length === 0;
+    }
     renderPJImport();
   } catch (error) {
-    if (draft === attempt && request === attempt.pjRequest) status.textContent = error.message;
+    if (draft === attempt && request === attempt.pjRequest) status.textContent = error instanceof SyntaxError ? 'Le fichier doit contenir du JSON valide.' : error.message;
   }
+}
+
+async function openPJExport(characterId) {
+  if (!campaign || !exchangeRules || busy) return;
+  const character = campaign.characters.find(item => item.id === characterId);
+  if (!character?.[PJ_SOURCE_KEY]) return;
+  playerExport = undefined;
+  $('pj-export-download').disabled = true;
+  $('pj-export-status').textContent = 'Préparation de la copie partageable…';
+  $('pj-export-preview').replaceChildren();
+  $('pj-export-dialog').showModal();
+  const campaignId = campaign.id, revision = campaign.revision;
+  try {
+    const source = { ...character[PJ_SOURCE_KEY], name: character.name, pv: currentHitPoints(campaign, character) };
+    const packet = await exchangeRules.makeExchange(source, 'mj');
+    if (!$('pj-export-dialog').open || campaign?.id !== campaignId || campaign.revision !== revision) return;
+    playerExport = { campaignId, revision, packet };
+    $('pj-export-preview').append(buildPJSheet(packet.payload.sheet),
+      node('p', `Identité ${source.id} · version ${packet.payload.revision.slice(0, 12)}`, 'exchange-identity'));
+    $('pj-export-status').textContent = 'Copie prête à relire. Les changements non enregistrés ne sont pas inclus.';
+    $('pj-export-download').disabled = false;
+  } catch (error) { $('pj-export-status').textContent = error.message; }
 }
 
 function editCreature(creature) {
@@ -2789,6 +2863,27 @@ $('pj-guide-revise').addEventListener('click', () => {
 $('import-pj').addEventListener('click', openPJImport);
 $('pj-import-file').addEventListener('change', inspectPJImport);
 $('pj-import-source').addEventListener('change', renderPJImport);
+$('pj-compare-choice').addEventListener('change', renderPJImport);
+$('pj-exchange-accept').addEventListener('change', () => {
+  $('pj-import-submit').disabled = !draft?.exchangeReady || !$('pj-exchange-accept').checked;
+});
+$('character-export-player').addEventListener('click', () => openPJExport(draft?.id));
+$('pj-export-close').addEventListener('click', () => { playerExport = undefined; $('pj-export-dialog').close(); });
+$('pj-export-dialog').addEventListener('cancel', () => { playerExport = undefined; });
+$('pj-export-download').addEventListener('click', async () => {
+  const ready = playerExport;
+  if (!ready) return;
+  $('pj-export-download').disabled = true;
+  try {
+    const current = await store.get(ready.campaignId);
+    if (ready !== playerExport || !current || current.revision !== ready.revision || campaign?.id !== ready.campaignId) {
+      throw new Error('La campagne a changé. Fermez cet aperçu puis préparez un nouvel échange.');
+    }
+    downloadFile(JSON.stringify(ready.packet), 'application/json', 'personnage-pour-le-joueur.json');
+    $('pj-export-status').textContent = 'Fichier proposé au téléchargement. Transmettez-le au joueur concerné.';
+  } catch (error) { $('pj-export-status').textContent = error.message; }
+  finally { if (ready === playerExport) $('pj-export-download').disabled = false; }
+});
 $('add-scene').addEventListener('click', () => editScene());
 $('add-marker').addEventListener('click', () => editMarker());
 $('play-add-marker').addEventListener('click', () => editMarker(undefined, activeScene()?.id));
@@ -3096,6 +3191,10 @@ attachEditor($('pj-free-form'), (_data, id, _type, attempt) =>
   return $('free-pj');
 });
 attachEditor($('pj-import-form'), (data, id, _type, attempt) => {
+  if (attempt.pjExchange) {
+    if (!attempt.exchangeReady || !$('pj-exchange-accept').checked || !attempt.adoptSource) return undefined;
+    return { id, attach: false, source: attempt.adoptSource };
+  }
   const source = attempt.pjSources?.[data.get('selection')];
   if (!source || !pjRules.evaluatePJ(source).valid) return undefined;
   const destination = data.get('destination');
@@ -3552,13 +3651,14 @@ async function init() {
     } catch { /* préférences facultatives */ }
     store = await openStudioStore();
     await loadCampaignInventory();
-    const [playEngine, bestiaryEngine, oppositionEngine, pjEngine] = await Promise.allSettled([
-      import('./protocole.mjs'), import('./atelier-bestiaire.mjs'), import('./opposition.mjs'), import('./pj-m02.mjs'),
+    const [playEngine, bestiaryEngine, oppositionEngine, pjEngine, exchangeEngine] = await Promise.allSettled([
+      import('./protocole.mjs'), import('./atelier-bestiaire.mjs'), import('./opposition.mjs'), import('./pj-m02.mjs'), import('./echanges-pj.mjs'),
     ]);
     playRules = playEngine.status === 'fulfilled' ? playEngine.value : undefined;
     bestiaryRules = bestiaryEngine.status === 'fulfilled' ? bestiaryEngine.value : undefined;
     oppositionRules = oppositionEngine.status === 'fulfilled' ? oppositionEngine.value : undefined;
     pjRules = pjEngine.status === 'fulfilled' ? pjEngine.value : undefined;
+    exchangeRules = exchangeEngine.status === 'fulfilled' ? exchangeEngine.value : undefined;
     $('play-engine-unavailable').hidden = Boolean(playRules);
     $('workshop-unavailable').hidden = Boolean(bestiaryRules);
     $('workshop-generate').disabled = !bestiaryRules;

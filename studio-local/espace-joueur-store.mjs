@@ -1,12 +1,10 @@
 import { checkJSON, sha256, validPJSource } from './store.mjs';
-import { evaluatePJ, MAX_PJ_FILE_BYTES, M02_SCHEMA, readPJExport } from './pj-m02.mjs';
-import { validPortrait } from './portraits.mjs';
+import { evaluatePJ, MAX_PJ_FILE_BYTES, readPJExport } from './pj-m02.mjs';
+import { EXCHANGE_FORMAT, readExchange, receivedSheet } from './echanges-pj.mjs';
+export { playerExchange } from './echanges-pj.mjs';
 
 const FORMAT = 'chroniques-entre-rives.joueur';
 export const PLAYER_ROLL_LIMIT = 50;
-const take = (value, keys) => Object.fromEntries(keys.filter(key => Object.hasOwn(value, key)).map(key => [key, value[key]]));
-const scalarFields = (value, keys) => Object.fromEntries(Object.entries(take(value, keys))
-  .filter(([, field]) => ['string', 'number', 'boolean'].includes(typeof field)));
 
 export function checkPlayerSheet(sheet) {
   if (!validPJSource(sheet)) throw new Error('Cette fiche PJ M02 est incomplète.');
@@ -30,6 +28,11 @@ export async function readPlayerFile(text) {
   if (new TextEncoder().encode(text).length > MAX_PJ_FILE_BYTES) throw new Error('Le fichier dépasse 2 Mio.');
   const archive = JSON.parse(text);
   checkJSON(archive);
+  if (archive?.format === EXCHANGE_FORMAT) {
+    const exchange = await readExchange(text);
+    return { format: 'Échange joueur / MJ v1', created: exchange.created, exchange,
+      records: [{ sheet: receivedSheet(exchange), notes: '', rolls: [] }] };
+  }
   if (archive?.format !== FORMAT) {
     return { format: 'Export M02', created: archive?.created, records: readPJExport(text).sheets.map(sheet => ({ sheet, notes: '', rolls: [] })) };
   }
@@ -50,24 +53,6 @@ export async function playerBackup({ sheet, notes, rolls = [] }) {
   checkRolls(rolls);
   const payload = { sheet, notes, rolls };
   return { format: FORMAT, version: 2, created: new Date().toISOString(), checksum: await sha256(JSON.stringify(payload)), payload };
-}
-
-export function playerExchange(sheet) {
-  const copy = take(sheet, ['id', 'name', 'kind', 'ruleset', 'level', 'pv', 'pvMax', 'mana', 'manaMax', 'xp', 'stats', 'masteries']);
-  for (const key of ['resistanceBonus', 'protection', 'equipmentGrades']) copy[key] = take(sheet[key], ['physique', 'magie', 'mental']);
-  copy.stats = take(sheet.stats, ['physique', 'agilite', 'esprit', 'presence']);
-  if (validPortrait(sheet.portrait) && sheet.portrait) copy.portrait = sheet.portrait;
-  copy.development = {
-    startingStats: take(sheet.development.startingStats, ['physique', 'agilite', 'esprit', 'presence']),
-    abilities: sheet.development.abilities.map(ability => scalarFields(ability, ['id', 'name', 'description', 'domain', 'kind',
-      'levelRequired', 'masteryDomain', 'masteryRequired', 'effect', 'limitations', 'resources', 'provenance', 'approvedByGM', 'status', 'rank', 'parentId'])),
-    awards: [], approvedMilestones: Array.isArray(sheet.development.approvedMilestones)
-      ? sheet.development.approvedMilestones.filter(level => Number.isInteger(level) && level >= 21 && level <= 25) : [],
-    history: [],
-  };
-  copy.inventory = Array.isArray(sheet.inventory) ? sheet.inventory.filter(item => typeof item?.name === 'string').map(item =>
-    scalarFields(item, ['id', 'templateId', 'name', 'category', 'quantity', 'description', 'value', 'equipped'])) : [];
-  return { schema: M02_SCHEMA, created: new Date().toISOString(), sheets: [copy] };
 }
 
 export async function openPlayerStore() {
@@ -108,7 +93,7 @@ export async function openPlayerStore() {
       request.onsuccess = () => done(request.result.map(record => ({ ...record, rolls: record.rolls ?? [] }))
         .sort((a, b) => b.updatedAt - a.updatedAt));
     }),
-    save: ({ sheet, notes, rolls = [], id = crypto.randomUUID(), revision = 0 }) => {
+    save: ({ sheet, notes, rolls = [], id = crypto.randomUUID(), revision = 0 }, compared) => {
       checkJSON(sheet);
       checkJSON(rolls);
       checkPlayerSheet(sheet);
@@ -119,6 +104,12 @@ export async function openPlayerStore() {
       }
       const record = { id, revision: revision + 1, updatedAt: Date.now(), sheet, notes, rolls };
       return transact('readwrite', (table, done, abort) => {
+        if (compared) {
+          const guard = table.get(compared.id);
+          guard.onsuccess = () => {
+            if (guard.result?.revision !== compared.revision) abort('La fiche comparée a changé dans un autre onglet. Recharge la page pour refaire la comparaison.');
+          };
+        }
         const request = table.get(id);
         request.onsuccess = () => {
           if ((request.result?.revision ?? 0) !== revision) {

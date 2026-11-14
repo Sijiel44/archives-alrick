@@ -88,6 +88,15 @@ test('Import M02 ciblé, rattachement sans perte, jet et opposition en séance, 
   await page.locator('#play-record').click();
   await page.locator('#play-action-dialog').waitFor({ state: 'hidden' });
   await participant.getByText(/23 \/ 36 PV/).waitFor();
+  await participant.getByRole('button', { name: 'Ouvrir la fiche de Néria en campagne' }).click();
+  await page.getByRole('button', { name: 'Préparer un échange pour le joueur', exact: true }).click();
+  await page.locator('#pj-export-status').getByText(/Copie prête/).waitFor();
+  const [exchangeFile] = await Promise.all([page.waitForEvent('download'), page.locator('#pj-export-download').click()]);
+  const packet = JSON.parse(await readFile(await exchangeFile.path(), 'utf8'));
+  assert.equal(packet.payload.sheet.pv, 23);
+  assert.equal(packet.payload.sheet.name, 'Néria en campagne');
+  assert.doesNotMatch(JSON.stringify(packet), /CANARI/);
+  await page.locator('#pj-export-close').click();
   await page.locator('#share-title').check();
   await page.locator('#show-projection').click();
   assert.doesNotMatch(await page.locator('#projection iframe').getAttribute('srcdoc'), /CANARI|Néria|23 \/ 36 PV/);

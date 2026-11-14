@@ -26,7 +26,7 @@ Le lot part de `be42464` sur `main`. L’accueil distingue la découverte de l�
 | TABLE-02 · Visibilité | L’espace joueur utilise son propre stockage. Son export M02 sélectionne les champs de jeu. La projection reste un récepteur dédié, limité aux éléments approuvés dans la régie. |
 | TABLE-03 · Création autonome | Parcours guidé au niveau 5, création libre de 1 à 25, histoire et liens facultatifs, aperçu avant enregistrement. Le brouillon de création entre deux visites reste à prévoir. |
 | TABLE-04 · Fiche de jeu | Six panneaux accessibles au clavier, PV et mana ajustables, inventaire recherché et modifiable, marquage descriptif des objets portés, recherche des capacités, jets libres et d’action, historique des 50 derniers jets consignés et notes privées. Grimoire et effets mécaniques de l’équipement restent à développer. |
-| TABLE-05 · Échange | Remise d’une copie M02 au MJ testée. Le prochain lot doit relier les copies par une identité et une version, montrer les divergences et permettre au joueur d’accepter un retour du MJ. |
+| TABLE-05 · Échange | Aller-retour joueur/MJ par fichiers versionnés, identité stable, comparaison, divergence signalée et adoption explicite en nouvelle copie. Les mises à jour en place et le rattachement aux références de campagne restent à développer. |
 | TABLE-06 à TABLE-09 | Régie des participants, paquets d’aventure `chroniques-entre-rives.aventure` v1, étude des tables synchronisées et enrichissement de l’univers se poursuivent séparément. |
 
 La revue du 10 novembre retrouve 39 PR ouvertes. Leurs listes de fichiers ne recoupent ni les fichiers de ce lot ni les modules historiques qu’il utilise. La recette vérifie la création guidée, les niveaux libres 1, 5, 10, 15, 20 et 25, l’ajout d’un objet, la lecture d’une capacité, l’aller-retour dans un profil vierge et l’import MJ. Les cas de confidentialité, fichier altéré, version inconnue, extensions personnelles, transaction interrompue et conflit entre onglets sont couverts. Le texte divergent peut être téléchargé dans une sauvegarde personnelle.
@@ -67,7 +67,21 @@ La suite du Studio passe 67 tests dans Chrome, avec la recette Pages exécutée 
 
 La prochaine tranche prioritaire est TABLE-05, avec identité des copies joueur/MJ, comparaison des versions et décision explicite lors d’un échange. Le grimoire et les brouillons persistants de création restent également prévus. Les dotations de maîtrise et le mentorat demeurent l’étude de règles décrite ci-dessus.
 
-## Dépendances et PR
+## Échanges joueur / MJ · 14 novembre 2026
+
+L’audit reprend la branche propre `codex/espace-joueur` à `88093e2`, la PR 112 ouverte et `main` à `be42464`. Les 39 autres propositions ont été contrôlées par leurs listes de fichiers ; aucune ne touche le Studio ou son assemblage Pages. Le créateur demande de revoir le rendu, de poursuivre les missions du cadrage du 8 novembre et de mettre les modifications en ligne.
+
+TABLE-05 dispose d’une première tranche d’échange dans les deux sens. Le format identifié `chroniques-entre-rives.echange-pj` v1 réutilise la sélection M02 historique, l’identité de la source et une empreinte de version. Le fichier reçu est vérifié puis comparé à une copie locale de même identité. Les divergences et les versions identiques sont indiquées. L’adoption nécessite une confirmation et crée une nouvelle copie. Chez le joueur, elle reprend les notes, les jets et les extensions personnelles de la copie comparée. Chez le MJ, le participant précédent et ses liens restent en place. La mise à jour en place reste un lot distinct, notamment pour la continuité du journal des PV. [Contrat v1](ECHANGE-PJ.md)
+
+L’export MJ dispose d’un aperçu spécifique et utilise les PV courants après une opposition réellement consignée. Il sélectionne une seule fiche et refuse un aperçu périmé. Les champs privés et les données des autres participants sont exclus. Les anciennes sauvegardes restent lisibles et conservent le suivi de version dans les extensions de la source. Une transaction interrompue ou une comparaison périmée laisse l’aperçu disponible et n’ajoute aucune copie partielle.
+
+Le rendu joueur a été revu sur ordinateur et téléphone : en-tête mobile plus compact, commande de portrait d’au moins 44 px, provenance et choix du fichier repliables, comparaison par groupes et commandes d’importation conservées au bas de l’aperçu. Les valeurs complexes se lisent avec leurs noms et leurs descriptions.
+
+La suite du Studio compte 71 scénarios réussis dans Chrome, avec la recette Pages séparée. Les 14 scénarios ciblant joueur, séance, M02 et échange passent dans Edge. Les nouveaux cas couvrent l’aller-retour dans les deux sens, les sauvegardes restaurées dans des profils vierges, les champs privés, les copies précédentes, les liens de scène, les divergences, les versions futures et les empreintes altérées. Les comparaisons sont contrôlées de 320 à 1 440 px. L’essai humain en partie et sur appareil tactile réel reste à réaliser.
+
+La suite de TABLE-05 doit permettre au MJ de rattacher une version approuvée au participant existant en préservant ses références et la cohérence de ses PV historiques. Le grimoire, les brouillons persistants et le poste de séance TABLE-06 restent prévus. Le lot ne modifie aucune règle 5d6 ni aucun élément de canon.
+
+## Relevé des dépendances du pilote initial
 
 Le `main` distant et le `main` de référence concordent. Les listes de fichiers des 39 PR ouvertes ont été comparées au répertoire `studio-local/` et aux modules historiques de progression, dés, Bestiaire M04 et combat M03 utilisés ici. Aucun fichier commun n’a été relevé dans ce périmètre. Les sources natives restent la référence des calculs. [PR ouvertes](https://github.com/Sijiel44/archives-alrick/pulls) · [Moteur M03 épinglé](https://github.com/Sijiel44/archives-alrick/blob/88f774f3d0d6d520d8d11443b72202b9caf4f94b/quartz/components/scripts/atelier5d6-combat-m03.ts)
 

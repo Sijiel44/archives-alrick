@@ -18,6 +18,8 @@ export const studioAssets = new Map([
   ["/espace-joueur.css", ["espace-joueur.css", "text/css"]],
   ["/espace-joueur.mjs", ["espace-joueur.mjs", "text/javascript"]],
   ["/espace-joueur-store.mjs", ["espace-joueur-store.mjs", "text/javascript"]],
+  ["/echanges-pj.mjs", ["echanges-pj.mjs", "text/javascript"]],
+  ["/echanges-pj.css", ["echanges-pj.css", "text/css"]],
   ["/portraits.mjs", ["portraits.mjs", "text/javascript"]],
   ["/studio.css", ["studio.css", "text/css"]],
   ["/app.mjs", ["app.mjs", "text/javascript"]],

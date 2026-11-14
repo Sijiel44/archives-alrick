@@ -4,6 +4,7 @@ import { buildFreePJ, createFreePJ, createGuidedPJ, EDUCATION_PATHS, FREE_PJ_MAS
 import { resolvePlayAction, studioDice } from './protocole.mjs';
 import { checkPlayerSheet, openPlayerStore, playerBackup, playerExchange, PLAYER_ROLL_LIMIT, readPlayerFile } from './espace-joueur-store.mjs';
 import { readPortrait, validPortrait } from './portraits.mjs';
+import { EXCHANGE_KEY, compareExchange, makeExchange, receivedSheet, renderExchangePreview } from './echanges-pj.mjs';
 
 const $ = id => document.getElementById(id);
 const stats = Object.entries(PLAY_STATS);
@@ -31,6 +32,10 @@ let fileRequest = 0;
 let latestRoll;
 let itemEdit;
 let inventoryLimit = 30;
+let incomingExchange;
+let comparedRecord;
+let comparisonRequest = 0;
+let importReady = false;
 
 function node(tag, content) {
   const element = document.createElement(tag);
@@ -320,7 +325,11 @@ function render(record) {
   const changed = active?.id !== record?.id;
   active = record;
   $('player-library').hidden = records.length === 0;
-  $('player-selection').replaceChildren(...records.map(entry => new Option(`${entry.sheet.name} · niveau ${entry.sheet.level}`, entry.id)));
+  $('player-selection').replaceChildren(...records.map(entry => {
+    const revision = entry.sheet[EXCHANGE_KEY]?.revision;
+    const version = typeof revision === 'string' ? ` · version ${revision.slice(0, 8)}` : '';
+    return new Option(`${entry.sheet.name} · niveau ${entry.sheet.level}${version}`, entry.id);
+  }));
   $('player-selection').value = active?.id ?? '';
   $('player-selection').disabled = records.length === 0;
   $('player-sheet').hidden = !active;
@@ -384,14 +393,14 @@ function report(error, target = $('player-error')) {
   target.hidden = false;
 }
 
-async function save(record, dialog, focusTarget = $('player-name')) {
+async function save(record, dialog, focusTarget = $('player-name'), compared) {
   if (pending) return false;
   pending = true;
   syncRollButton();
   $('player-error').hidden = true;
   $('player-save-status').textContent = 'Enregistrement…';
   try {
-    const saved = await store.save(record);
+    const saved = await store.save(record, compared);
     records = [saved, ...records.filter(entry => entry.id !== saved.id)];
     render(saved);
     $('player-save-status').textContent = 'Sauvegarde locale confirmée';
@@ -597,7 +606,14 @@ $('confirm-player-create').addEventListener('click', () => {
 $('player-import').addEventListener('click', () => {
   if (pending || !leaveNotes()) return;
   fileRequest++;
+  comparisonRequest++;
+  incomingExchange = comparedRecord = undefined;
+  importReady = false;
+  $('player-exchange-review').hidden = true;
+  $('player-exchange-accept').checked = $('player-exchange-accept').required = false;
+  $('confirm-player-import').textContent = 'Importer une nouvelle copie';
   $('player-import-form').reset();
+  $('player-import-file-choice').open = true;
   $('player-import-choice').replaceChildren();
   $('player-import-choice').disabled = $('confirm-player-import').disabled = true;
   $('player-import-preview').textContent = 'Choisis un fichier pour voir son contenu.';
@@ -606,9 +622,16 @@ $('player-import').addEventListener('click', () => {
 $('player-file').addEventListener('change', async event => {
   const id = ++fileRequest;
   const file = event.target.files[0];
+  $('player-import-file-choice').open = true;
   $('confirm-player-import').disabled = $('player-import-choice').disabled = true;
   $('player-import-choice').replaceChildren();
   imports = [];
+  comparisonRequest++;
+  incomingExchange = comparedRecord = undefined;
+  importReady = false;
+  $('player-exchange-review').hidden = true;
+  $('player-exchange-accept').checked = $('player-exchange-accept').required = false;
+  $('confirm-player-import').textContent = 'Importer une nouvelle copie';
   $('player-import-preview').textContent = file ? 'Lecture du fichier…' : 'Choisis un fichier pour voir son contenu.';
   if (!file) return;
   try {
@@ -626,14 +649,56 @@ $('player-file').addEventListener('change', async event => {
     const count = items.length === 1 ? '1 fiche compatible' : `${items.length} fiches compatibles`;
     $('player-import-preview').textContent = `${archive.format}${date} · ${count}. Chaque import crée une copie dans ton espace.`;
     $('confirm-player-import').disabled = $('player-import-choice').disabled = false;
+    if (archive.exchange) {
+      incomingExchange = archive.exchange;
+      const matches = records.filter(record => record.sheet.id === incomingExchange.sheet.id);
+      $('player-compare-choice').replaceChildren(new Option('Créer une fiche indépendante', ''), ...matches.map(record =>
+        new Option(`${record.sheet.name} · ${archiveDate.format(record.updatedAt)} · copie ${record.id.slice(0, 8)}`, record.id)));
+      $('player-compare-choice').value = matches.some(record => record.id === active?.id) ? active.id : matches[0]?.id ?? '';
+      $('player-exchange-review').hidden = false;
+      $('player-import-file-choice').open = false;
+      $('player-import-preview').textContent = `${incomingExchange.sheet.name} · niveau ${incomingExchange.sheet.level} · échange joueur / MJ v1`;
+      $('player-exchange-accept').required = true;
+      $('confirm-player-import').textContent = 'Adopter dans une nouvelle copie';
+      await reviewIncomingExchange();
+    }
   } catch (error) {
     if (id === fileRequest) report(error instanceof SyntaxError ? new Error('Le fichier doit contenir du JSON valide.') : error, $('player-import-preview'));
   }
 });
+async function reviewIncomingExchange() {
+  const request = ++comparisonRequest;
+  const exchange = incomingExchange;
+  if (!exchange) return;
+  importReady = false;
+  comparedRecord = undefined;
+  $('confirm-player-import').disabled = true;
+  $('player-exchange-accept').checked = false;
+  $('player-compare-preview').textContent = 'Comparaison…';
+  try {
+    const record = records.find(item => item.id === $('player-compare-choice').value);
+    const comparison = record ? await compareExchange(record.sheet, exchange) : undefined;
+    if (request !== comparisonRequest || exchange !== incomingExchange) return;
+    renderExchangePreview($('player-compare-preview'), exchange, comparison);
+    comparedRecord = record;
+    importReady = !comparison?.identical;
+  } catch (error) {
+    if (request === comparisonRequest) report(error, $('player-compare-preview'));
+  }
+}
+$('player-compare-choice').addEventListener('change', reviewIncomingExchange);
+$('player-exchange-accept').addEventListener('change', () => {
+  $('confirm-player-import').disabled = !importReady || !$('player-exchange-accept').checked;
+});
 $('player-import-form').addEventListener('submit', event => {
   event.preventDefault();
   const record = imports[$('player-import-choice').value];
-  if (record) void save(record, $('player-import-dialog'));
+  if (!record) return;
+  if (incomingExchange) {
+    if (!importReady || !$('player-exchange-accept').checked) return;
+    const next = { sheet: receivedSheet(incomingExchange, comparedRecord?.sheet), notes: comparedRecord?.notes ?? '', rolls: comparedRecord?.rolls ?? [] };
+    void save(next, $('player-import-dialog'), $('player-name'), comparedRecord);
+  } else void save(record, $('player-import-dialog'));
 });
 
 for (const button of document.querySelectorAll('[data-close]')) button.addEventListener('click', () => {
@@ -764,6 +829,10 @@ $('player-backup').addEventListener('click', async () => {
   catch (error) { report(error); }
 });
 $('player-exchange').addEventListener('click', () => download(playerExchange(active.sheet), 'personnage-pour-le-mj.m02.json'));
+$('player-send').addEventListener('click', async () => {
+  try { download(await makeExchange(active.sheet, 'joueur'), 'personnage-echange-table.json'); }
+  catch (error) { report(error); }
+});
 
 try {
   store = await openPlayerStore();

@@ -156,8 +156,11 @@
   .has-character #player-shelf .panel-heading .eyebrow, .has-character #player-shelf .player-emblem, .has-character .shelf-caption { display: none; }
   .has-character #player-shelf .actions > button { flex: 1 1 8rem; width: auto; font-size: .8rem; }
   .has-character #player-shelf .panel-heading h2 { font-size: 1.2rem; }
-  .has-character .player-hero-copy { padding: 1.2rem; }
-  .has-character .player-hero h1 { font-size: 2rem; }
+  .has-character .player-hero-copy { padding: .8rem 1.2rem; }
+  .has-character .player-hero h1 { font-size: 1.65rem; }
+  .has-character #player-shelf { padding: .85rem 1rem; }
+  .has-character #player-shelf .panel-heading { margin-bottom: .35rem; }
+  .has-character #player-shelf .actions { gap: .4rem; }
   .has-character .player-invitation { display: none; }
   .has-character .player-status { position: static; max-width: 100%; margin-top: .5rem; }
   .sheet-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; }
@@ -168,7 +171,7 @@
   .character-heading h2 { font-size: 1.6rem; }
   .character-heading .eyebrow { font-size: .6rem; letter-spacing: .06em; }
   .character-portrait { flex-basis: 5rem; }
-  .character-portrait > button { font-size: .6rem; min-height: 2rem; }
+  .character-portrait > button { font-size: .6rem; min-height: 2.75rem; }
   .character-portrait .portrait-placeholder { min-height: 0; font-size: 1.6rem; }
   .resource-line { font-size: .8rem; line-height: 1.7; }
   .player-quick-action { font-size: .78rem; }
