@@ -107,6 +107,9 @@ test('Actualiser et rétablir un PJ garde ses scènes et les profils historiques
   await page.locator('#pj-versions-restore').press('Enter');
   await page.locator('#pj-versions-dialog').waitFor({ state: 'hidden' });
   await damage(page, 'Néria', 23, 14);
+  const middleCombat = page.locator('#play-actions-list > li > details').nth(1);
+  await middleCombat.locator('summary').click();
+  await middleCombat.getByText(/Impact brut 9 · protection 4/).waitFor();
   const archive = await backup(page);
   const { campaign } = archive.payload, [character] = campaign.characters;
   assert.equal(archive.version, 17);

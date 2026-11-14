@@ -447,6 +447,11 @@ function profileAtAction(actor, index) {
   return actor[PJ_UPDATES_KEY]?.find(update => update.actionCount > index)?.before.source ?? combatProfile(actor);
 }
 
+export function historicalCombatProfile(campaign, actor, actionId) {
+  const index = campaign[PLAY_ACTIONS_KEY]?.findIndex(action => action.id === actionId) ?? -1;
+  return index < 0 ? combatProfile(actor) : profileAtAction(actor, index);
+}
+
 function validatePJUpdates(character, actionCount) {
   const updates = character[PJ_UPDATES_KEY];
   if (!Array.isArray(updates) || !updates.length || updates.length > MAX_ITEMS || !character[PJ_SOURCE_KEY]) {

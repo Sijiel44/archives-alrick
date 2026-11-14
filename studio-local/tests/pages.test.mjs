@@ -136,6 +136,18 @@ test('GitHub Pages relie les Archives et le Studio et isole le récepteur joueur
   await page.locator('#nav-backups').click();
   const [campaignDownload] = await Promise.all([page.waitForEvent('download'), page.locator('#export-backup').click()]);
   assert.equal(JSON.parse(await readFile(await campaignDownload.path(), 'utf8')).version, 17);
+  await page.locator('#nav-play').click();
+  await page.locator('#open-session-roster').click();
+  await page.locator('#roster-count').getByText('1 fiche · 1 affichée', { exact: true }).waitFor();
+  await page.locator('#roster-search').fill('actualise pages');
+  await page.locator('#roster-search').press('Enter');
+  await page.locator('#resource-title').getByText('PJ actualisé Pages', { exact: true }).waitFor();
+  assert.equal(await page.locator('#session-roster').isVisible(), false);
+  assert.equal(await page.locator('#resource-dialog').evaluate(el => el.scrollWidth <= el.clientWidth), true);
+  await page.locator('#roster-return').click();
+  await page.waitForFunction(() => document.activeElement === document.getElementById('current-scene-title'));
+  await page.locator('#current-scene-title').getByText('Le gué fictif', { exact: true }).waitFor();
+  assert.equal(await page.locator('#participant-list > li').count(), 0);
   await page.goto(base);
   await page.locator('#joueurs-personnage').getByRole('link', { name: /Donnez-lui une raison de partir/ }).click();
   await page.getByRole('dialog', { name: 'Créer mon personnage' }).waitFor();

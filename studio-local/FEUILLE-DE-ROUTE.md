@@ -6,7 +6,7 @@ Relevé du 7 novembre 2026 sur `codex/studio-local-pilote`. Le lot M03 part d’
 | --- | --- | --- |
 | 0 · Audit et socle | En place | Branche locale, serveur restreint à localhost, IndexedDB transactionnel, aperçu et restauration avec contrôle de révision. Une entrée illisible ne bloque plus l’accès aux campagnes saines. L’adoption des contrats communs reste à arbitrer. |
 | 1 · Accueil et navigation | En place | Découverte illustrée, accès à l’univers et au Studio, menus et vues adaptables. Le parcours joueur de découverte est disponible. |
-| 2 · Cockpit MJ | En place | Reprise, Préparer → Jouer → Archiver, recherche de scène, improvisation, notes, chronique approuvée. Arbitrage M01 et opposition M03 avec décision MJ explicite dans le journal de la scène. |
+| 2 · Cockpit MJ | En place | Reprise, Préparer → Jouer → Archiver, recherche de scène, improvisation, notes, chronique approuvée. Répertoire filtré PJ, PNJ et créatures sans quitter la scène. Arbitrage M01 et opposition M03 avec décision MJ explicite dans le journal de la scène. |
 | 3 · Fresque horizontale | En place | Scènes, ordre, taille des cartes, vue liste, embranchements, repères, références et scènes jouées confirmées. Préparation depuis des jalons, import d’une aventure, mini-carte et filtre par couloir. |
 | 4 · Bibliothèque et catalogue | Partiel | 92 références des Archives, ressources de démonstration et variantes locales, rayons, recherche, filtres, cartes et liste, raccourcis Markdown. Imagerie accepte les liens HTTPS et leurs crédits. L’interopérabilité INDEX et les sources communautaires restent à instruire. |
 | 5 · Ateliers et Atlas | Partiel | Douze modèles de fiches privées, Atlas hiérarchique, liens Markdown et repères. Création et import M04, lecture M05 et cibles M03. Les aventures peuvent alimenter la Fresque. Raccord mécanique des créations à développer. |
@@ -27,7 +27,8 @@ Le lot part de `be42464` sur `main`. L’accueil distingue la découverte de l�
 | TABLE-03 · Création autonome | Parcours guidé au niveau 5, création libre de 1 à 25, histoire et liens facultatifs, aperçu avant enregistrement. Le brouillon de création entre deux visites reste à prévoir. |
 | TABLE-04 · Fiche de jeu | Six panneaux accessibles au clavier, PV et mana ajustables, inventaire recherché et modifiable, marquage descriptif des objets portés, recherche des capacités, jets libres et d’action, historique des 50 derniers jets consignés et notes privées. Grimoire et effets mécaniques de l’équipement restent à développer. |
 | TABLE-05 · Échange | Aller-retour joueur/MJ par fichiers versionnés, identité stable, comparaison et divergence signalée. Nouvelle copie par défaut ou actualisation explicite du PJ de campagne avec liens conservés, versions privées consultables et rétablissement. Archivage des copies indépendantes et qualification en table à prévoir. |
-| TABLE-06 à TABLE-09 | Régie des participants, paquets d’aventure `chroniques-entre-rives.aventure` v1, étude des tables synchronisées et enrichissement de l’univers se poursuivent séparément. |
+| TABLE-06 · Régie des participants | Répertoire de séance, filtres de type et de contexte, recherche, navigation clavier et lecture mobile. Fiches et commandes natives réutilisées ; relecture explicite après changement dans un autre onglet. Qualification en séance à réaliser. |
+| TABLE-07 à TABLE-09 | Paquets d’aventure `chroniques-entre-rives.aventure` v1, étude des tables synchronisées et enrichissement de l’univers se poursuivent séparément. |
 
 La revue du 10 novembre retrouve 39 PR ouvertes. Leurs listes de fichiers ne recoupent ni les fichiers de ce lot ni les modules historiques qu’il utilise. La recette vérifie la création guidée, les niveaux libres 1, 5, 10, 15, 20 et 25, l’ajout d’un objet, la lecture d’une capacité, l’aller-retour dans un profil vierge et l’import MJ. Les cas de confidentialité, fichier altéré, version inconnue, extensions personnelles, transaction interrompue et conflit entre onglets sont couverts. Le texte divergent peut être téléchargé dans une sauvegarde personnelle.
 
@@ -96,6 +97,22 @@ La recette ajoute trois scénarios : combats avant et après échange puis réta
 `npm test` réussit. La suite complète du Studio passe 74 scénarios dans Chrome ; la recette Pages est exécutée séparément et réussit dans Chrome et Edge. Les neuf scénarios ciblés M02, échange et actualisation passent dans Edge. Le catalogue conserve ses 92 références sourcées. Les formulaires sont contrôlés de 320 à 1 440 px, et l’historique a été inspecté à 390 et 1 440 px avec une campagne fictive.
 
 La suite prioritaire est TABLE-06 : faciliter le passage entre les fiches PJ, PNJ et créatures pendant la séance en conservant la scène courante. Le grimoire, les brouillons de création et les décisions de progression restent prévus. Ce lot est préparé pour relecture, sans signal de publication supplémentaire.
+
+## Répertoire des participants en séance · 14 novembre 2026
+
+Le lot TABLE-06 part de `c538196`, tête de la [PR 113](https://github.com/Sijiel44/archives-alrick/pull/113), sur `codex/regie-participants`. La proposition dépend donc de l’actualisation des PJ préparée dans cette PR. Le dossier était propre au départ. Les 39 autres PR ouvertes gardent leurs têtes précédemment contrôlées et ne recoupent pas les fichiers du Studio. Aucun paquet ni moteur de règles n’est ajouté.
+
+**Répertoire de séance** complète le dialogue de fiche existant. Il réunit les PJ, les PNJ et les créatures de la campagne courante, y compris les créations descriptives. Les filtres distinguent les participants de la scène et les autres fiches de campagne. La recherche accepte plusieurs mots et ignore les accents ; elle porte sur le nom, le type, le métier, le rôle et la description, sans utiliser les notes ni l’histoire privée comme résultats de recherche.
+
+La fiche reste à côté du répertoire sur ordinateur ; les deux vues alternent sur téléphone. Les listes longues se chargent par groupes de 30. Les commandes précédente/suivante parcourent tous les résultats, et la liste se parcourt au clavier. Le retour rend le focus à la scène. Le choix et les filtres restent en mémoire dans l’onglet et sont réinitialisés lors d’un changement de scène ou de campagne.
+
+Consulter une fiche ne change ni les participants, ni les PV, ni la sauvegarde, ni la projection approuvée. Les commandes réutilisent les outils natifs existants. Un changement annoncé par un autre onglet bloque ces commandes jusqu’à la relecture explicite. Si la scène courante a changé, le dialogue se ferme sur le nouveau contexte. Le répertoire reste privé MJ ; aucun nouveau format d’export ou stockage synchronisé n’est créé.
+
+Le journal des oppositions utilise aussi le profil historique de la cible pour afficher un ancien impact. Cela complète la validation de sauvegarde de la PR 113 : la protection affichée reste celle de l’action même après actualisation ou rétablissement d’un PJ. Le test de combat vérifie cette valeur dans le journal.
+
+La recette couvre la consultation sans écriture, les types et contextes, les fiches descriptives, les longues listes, le clavier, les largeurs de 320 à 1 440 px, la concurrence entre onglets, la scène vide et les noms contenant du balisage. Un scénario distinct vérifie que la projection ne contient que les champs approuvés et reste inchangée pendant la consultation d’un autre participant. La recette Pages exerce également ce répertoire sur le site assemblé. L’essai en partie et sur appareil tactile réel reste à réaliser ; la proposition n’ajoute aucune autorisation de publication.
+
+`npm test` réussit. La suite complète du Studio passe 79 scénarios dans Chrome, avec un scénario Pages ignoré dans cette commande puis exécuté séparément et réussi. Dans Edge, les 12 scénarios ciblés répertoire, M02, actualisation et projection ainsi que la recette Pages réussissent. Les trois vues ordinateur, répertoire mobile et fiche mobile ont été inspectées avec une campagne fictive. Aucun fichier de campagne réelle n’est inclus.
 
 ## Relevé des dépendances du pilote initial
 
@@ -266,4 +283,6 @@ Les suites passent 59 tests sur Chrome et 59 sur Edge, ainsi que la recette hist
 
 ## Prochains lots recommandés
 
-Faire essayer l’aventure à une table et relever les gestes qui demandent encore de quitter la scène courante. Rattacher les décisions de progression aux PJ et à leur contexte de jeu. Le [comparatif en sept langues et les 18 pistes de développement](PISTES-DE-DEVELOPPEMENT.md) détaillent les résultats à vérifier.
+Le prochain lot recommandé est le **grimoire du joueur** : retrouver les sorts et écoles du catalogue commun, relier les références à sa fiche et conserver les choix dans sa sauvegarde personnelle. Il doit reprendre les règles et statuts existants et distinguer la consultation d’un sort de ses effets mécaniques, sans automatiser de nouvelle dépense de mana.
+
+Faire aussi essayer l’aventure et le répertoire à une table pour relever les gestes qui demandent encore de quitter la scène. Les brouillons de création persistants et les décisions de progression liées aux PJ restent prévus. Le [comparatif en sept langues et les 18 pistes de développement](PISTES-DE-DEVELOPPEMENT.md) détaille les résultats à vérifier.

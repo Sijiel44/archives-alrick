@@ -65,6 +65,14 @@ Sur [l’accueil public](http://127.0.0.1:4380/accueil), le menu **Parcours** m�
 
 En cas de conflit entre deux onglets, le premier enregistrement validé est conservé. Garder ou copier le brouillon du second onglet avant de recharger l’état enregistré. Vérifier les changements puis les reporter depuis cet état.
 
+## Consulter les participants pendant la séance
+
+Dans **Jouer**, ouvrir **Répertoire de séance**, ou **Ouvrir la fiche** sur un participant. Rechercher un nom ou un métier, filtrer par **PJ**, **PNJ** ou **Créature**, puis choisir **Cette scène** ou **Toute la campagne**. Les créations descriptives PNJ et créatures apparaissent aussi dans la campagne ; les consulter ne les rattache pas à la scène et ne leur attribue pas de profil mécanique.
+
+Sur ordinateur, le répertoire reste à côté de la fiche. Sur téléphone, **Choisir une fiche** et **Lire la fiche** alternent les deux vues. **Fiche précédente** et **Fiche suivante** suivent les résultats filtrés. Au clavier, les flèches, Début et Fin déplacent le focus dans la liste, Entrée ouvre la fiche et Échap ferme le dialogue. **Retour à la scène** rend le focus au titre de la scène courante. Les filtres et le dernier choix restent disponibles tant que la campagne et la scène restent les mêmes dans cet onglet.
+
+La consultation conserve la campagne telle quelle. Les notes restent dans la régie MJ, et la projection joueur conserve sa sélection approuvée. Après une sauvegarde dans un autre onglet, **Actualiser les fiches** relit les données avant de permettre une nouvelle action. Les commandes de fiche réutilisent les outils existants : profil natif 5d6, préparation d’action, projection choisie et, pour les PJ, échange et historique de versions.
+
 ## Préparer dans la Fresque et improviser
 
 - Dans **Préparer**, la Fresque présente les scènes de gauche à droite. La vue liste donne accès aux mêmes commandes. Déplacer une scène change son ordre dans la préparation. La scène courante reste la même.

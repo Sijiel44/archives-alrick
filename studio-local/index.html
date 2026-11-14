@@ -7,6 +7,7 @@
   <title>Studio MJ · Les Chroniques d’Entre-Rives</title>
   <link rel="stylesheet" href="./studio.css">
   <link rel="stylesheet" href="./echanges-pj.css">
+  <link rel="stylesheet" href="./regie-participants.css">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body>
@@ -324,7 +325,7 @@
         <div id="play-content" class="dashboard-grid" hidden>
           <article class="panel session-scene">
             <div class="panel-heading scene-context">
-              <div><p class="eyebrow accent">Scène courante · Point de reprise</p><h2 id="current-scene-title"></h2></div>
+              <div><p class="eyebrow accent">Scène courante · Point de reprise</p><h2 id="current-scene-title" tabindex="-1"></h2></div>
               <div class="scene-picker"><label for="jump-scene">Changer de scène</label><select id="jump-scene"></select></div>
             </div>
             <p id="current-scene-description" class="narrative"></p>
@@ -354,7 +355,7 @@
           </article>
           <div class="stack">
             <article class="panel">
-              <h2>Participants</h2>
+              <div class="panel-heading"><h2>Participants</h2><button id="open-session-roster" class="secondary" type="button">Répertoire de séance</button></div>
               <p id="participants-empty" class="empty">Aucun participant relié à cette scène.</p>
               <ul id="participant-list" class="record-list"></ul>
             </article>
@@ -1193,6 +1194,28 @@
   </dialog>
 
   <dialog id="resource-dialog" aria-labelledby="resource-title">
+    <header id="session-roster-context" class="roster-context" hidden>
+      <div><p class="eyebrow accent">Répertoire de séance · Privé MJ</p><p id="roster-scene-context"></p></div>
+      <div class="actions"><button id="roster-toggle" class="secondary" type="button" aria-controls="session-roster" aria-expanded="false">Choisir une fiche</button><button id="roster-previous" class="secondary" type="button" aria-label="Fiche précédente du répertoire">← Précédente</button><button id="roster-next" class="secondary" type="button" aria-label="Fiche suivante du répertoire">Suivante →</button><button id="roster-return" type="button">Retour à la scène</button></div>
+      <p id="roster-freshness" class="notice" role="status" hidden></p>
+    </header>
+    <div class="resource-layout">
+    <aside id="session-roster" class="session-roster" aria-labelledby="session-roster-title" hidden>
+      <h3 id="session-roster-title">Retrouver une fiche</h3>
+      <div class="roster-controls">
+        <label for="roster-search">Nom ou métier</label><input id="roster-search" type="search" placeholder="Éloïse, garde, batelière…">
+        <div class="roster-filters">
+          <div><label for="roster-kind">Type de fiche</label><select id="roster-kind"><option value="all">Tous les types</option><option value="PJ">Personnages joueurs</option><option value="PNJ">Personnages non joueurs</option><option value="Créature">Créatures</option></select></div>
+          <div><label for="roster-scope">Emplacement</label><select id="roster-scope"><option value="scene">Dans cette scène</option><option value="campaign">Toute la campagne</option></select></div>
+        </div>
+      </div>
+      <p id="roster-count" class="field-help" role="status"></p>
+      <p id="roster-outside-filter" class="field-help" hidden>La fiche ouverte est hors des résultats de cette recherche.</p>
+      <ul id="roster-list" class="roster-list" aria-label="Fiches du répertoire"></ul>
+      <button id="roster-more" class="secondary" type="button" hidden>Afficher davantage de fiches</button>
+      <button id="roster-refresh" class="secondary" type="button">Actualiser les fiches</button>
+      <p class="field-help">Consulter une fiche ne l’ajoute pas à la scène. Les notes MJ restent privées.</p>
+    </aside>
     <div class="resource-body">
       <div class="panel-heading resource-toolbar">
         <button id="resource-previous" class="text-button" type="button" hidden>← Fiche précédente</button>
@@ -1221,6 +1244,7 @@
         <div class="actions"><input id="resource-shortcut" readonly><button id="resource-copy-shortcut" class="secondary" type="button">Copier</button></div>
         <p id="resource-shortcut-status" class="muted" role="status"></p>
       </div>
+    </div>
     </div>
   </dialog>
 
