@@ -294,10 +294,11 @@ test('La base joueur v3 conserve ses fiches et son grimoire pendant la migration
   await start(updated, f.url);
   await updated.getByRole('heading', { name: 'PJ avant les brouillons', exact: true }).waitFor();
   assert.equal(await page.evaluate(() => window.oldDraftConnectionClosed), true);
-  assert.deepEqual(await readState(updated), { draft: undefined, characters: [original] });
+  const expected = { ...original, filing: { archivedAt: null } };
+  assert.deepEqual(await readState(updated), { draft: undefined, characters: [expected] });
   await updated.getByRole('tab', { name: 'Grimoire', exact: true }).click();
   await updated.getByRole('button', { name: 'Consulter le sort Ancien repère', exact: true }).waitFor();
   await openFree(updated, 'Nouveau brouillon indépendant');
   await checkpoint(updated);
-  assert.deepEqual((await readState(updated)).characters, [original]);
+  assert.deepEqual((await readState(updated)).characters, [expected]);
 });

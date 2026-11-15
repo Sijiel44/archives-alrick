@@ -82,7 +82,7 @@ test('Le grimoire classe les références communes sans accorder un sort ni dép
   await page.locator('#grimoire-scope').selectOption('session');
   assert.equal(await page.locator('#grimoire-list button').count(), 1);
   const backup = await download(page);
-  assert.equal(backup.version, 3);
+  assert.equal(backup.version, 4);
   assert.deepEqual(backup.payload.grimoire, after.grimoire);
   assert.doesNotMatch(JSON.stringify(backup), /CANARI_CAMPAGNE_MJ|CANARI_SECRET_MJ/);
   await page.reload();
@@ -212,7 +212,7 @@ test('Le stockage contrôle les limites du grimoire et reprend la base joueur pr
     const backup = await playerBackup({ ...record, grimoire: [entry] });
     for (const kind of ['future', 'downgrade', 'altered', 'invalid']) {
       const b = structuredClone(backup);
-      if (kind === 'future') b.version = 4;
+      if (kind === 'future') b.version = 5;
       if (kind === 'downgrade') b.version = 2;
       if (kind === 'altered') b.payload.grimoire[0].notes = 'CHANGEMENT';
       if (kind === 'invalid') { b.payload.grimoire[0].session = null; b.checksum = await sha256(JSON.stringify(b.payload)); }

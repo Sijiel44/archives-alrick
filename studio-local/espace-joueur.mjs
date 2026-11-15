@@ -9,6 +9,7 @@ import { PLAYER_GRIMOIRE_LIMIT, PLAYER_MAGIC_DOMAINS, PLAYER_MAGIC_REFERENCES, P
   grimoireRows, grimoireSearchText, playerSpell } from './grimoire-joueur.mjs';
 import { creationDraftController } from './creation-brouillon.mjs';
 import { checkCreationDraft } from './brouillons-pj.mjs';
+import { createPlayerDirectory, isPlayerArchived } from './rangement-joueur.mjs';
 
 const $ = id => document.getElementById(id);
 const stats = Object.entries(PLAY_STATS);
@@ -45,6 +46,8 @@ let grimoireLimit = 12;
 let creationDraft;
 let creationId;
 let creating = false;
+let playerDirectory;
+const preferredPlayerKey = 'entre-rives:pj-ouvert';
 
 function node(tag, content) {
   const element = document.createElement(tag);
@@ -243,7 +246,7 @@ function renderInventory() {
   $('player-items').replaceChildren(...(rows.length ? rows : [empty]));
   $('player-items-more').hidden = matches.length <= inventoryLimit;
   const supported = active.sheet.inventory === undefined || Array.isArray(active.sheet.inventory);
-  for (const control of $('player-item-form').querySelectorAll('input, select, button')) control.disabled = !supported;
+  for (const control of $('player-item-form').querySelectorAll('input, select, button')) control.disabled = !supported || isPlayerArchived(active);
   $('player-item-status').textContent = supported
     ? `Résultats affichés · ${Math.min(inventoryLimit, matches.length)} / ${matches.length}.${items.length > readable.length ? ' Les entrées de format inconnu restent dans la sauvegarde personnelle.' : ''}`
     : 'Cet inventaire utilise un format encore inconnu. Sa sauvegarde personnelle conserve les données d’origine.';
@@ -274,7 +277,7 @@ function renderAbilities() {
 
 function syncRollButton() {
   const kept = Boolean(latestRoll && active?.rolls?.some(roll => roll.id === latestRoll.id));
-  $('player-keep-roll').disabled = pending || !latestRoll || kept;
+  $('player-keep-roll').disabled = pending || isPlayerArchived(active) || !latestRoll || kept;
   $('player-keep-roll').textContent = kept ? 'Jet consigné' : 'Consigner ce jet';
 }
 
@@ -315,6 +318,7 @@ function editItem(index) {
   $('edit-item-equipped').checked = item.equipped === true;
   fillCategories($('edit-item-category'), typeof item.category === 'string' ? item.category : 'autre');
   $('player-item-dialog').querySelector('[data-save-message]').textContent = '';
+  for (const control of $('player-item-edit-form').querySelectorAll('input, select, textarea, button[type=submit], #player-remove-item')) control.disabled = isPlayerArchived(active);
   $('player-item-dialog').showModal();
 }
 
@@ -334,10 +338,10 @@ function render(record) {
   const changed = active?.id !== record?.id;
   active = record;
   $('player-library').hidden = records.length === 0;
-  $('player-selection').replaceChildren(...records.map(entry => {
+  $('player-selection').replaceChildren(...records.filter(entry => !isPlayerArchived(entry) || entry.id === active?.id).map(entry => {
     const revision = entry.sheet[EXCHANGE_KEY]?.revision;
     const version = typeof revision === 'string' ? ` · version ${revision.slice(0, 8)}` : '';
-    return new Option(`${entry.sheet.name} · niveau ${entry.sheet.level}${version}`, entry.id);
+    return new Option(`${entry.sheet.name} · niveau ${entry.sheet.level}${version}${isPlayerArchived(entry) ? ' · Archive' : ''}`, entry.id);
   }));
   $('player-selection').value = active?.id ?? '';
   $('player-selection').disabled = records.length === 0;
@@ -345,8 +349,13 @@ function render(record) {
   $('player-welcome').hidden = Boolean(active);
   document.body.classList.toggle('has-character', Boolean(active));
   if (!active) return;
+  try {
+    if (isPlayerArchived(active)) { if (localStorage.getItem(preferredPlayerKey) === active.id) localStorage.removeItem(preferredPlayerKey); }
+    else localStorage.setItem(preferredPlayerKey, active.id);
+  } catch { /* Le choix reste utilisable sans stockage des préférences. */ }
   selectPanel(selectedPanel);
   if (changed) {
+    $('player-filing-message').textContent = '';
     latestRoll = undefined;
     inventoryLimit = 30;
     $('player-item-search').value = $('player-ability-search').value = '';
@@ -369,7 +378,7 @@ function render(record) {
   $('player-portrait').alt = `Portrait de ${sheet.name}`;
   $('player-name').textContent = sheet.name;
   $('player-resources').textContent = `Niveau ${sheet.level} · PV ${sheet.pv} / ${sheet.pvMax} · Mana ${sheet.mana} / ${sheet.manaMax} · ${sheet.xp} XP`;
-  if (changed || previous.sheet.pv !== sheet.pv || previous.sheet.mana !== sheet.mana) {
+  if (changed || isPlayerArchived(previous) !== isPlayerArchived(active) || previous.sheet.pv !== sheet.pv || previous.sheet.mana !== sheet.mana) {
     $('player-pv').value = sheet.pv;
     $('player-mana').value = sheet.mana;
   }
@@ -394,12 +403,49 @@ function render(record) {
   renderAbilities();
   renderGrimoire();
   renderHistory();
+  updatePlayerAccess();
+  playerDirectory?.render();
   if (changed) {
     notes.value = active.notes;
     $('player-roll-result').textContent = '';
     $('player-dice').replaceChildren();
   }
 }
+
+function updatePlayerAccess() {
+  if (!active) return;
+  const archived = isPlayerArchived(active);
+  $('player-filing-strip').toggleAttribute('data-archived', archived);
+  $('player-filing-state').textContent = archived ? `Archive personnelle · ${archiveDate.format(new Date(active.filing.archivedAt))}` : 'Fiche en activité';
+  $('player-filing-copy').textContent = archived ? 'Consultation et sauvegarde disponibles. Remets cette fiche en activité pour la modifier ou jouer.' : 'L’archivage range cette copie et conserve toutes ses données.';
+  $('player-filing-toggle').textContent = archived ? 'Remettre cette fiche en activité' : 'Archiver cette copie';
+  $('player-filing-toggle').disabled = pending;
+  for (const form of ['player-resources-form', 'player-roll-form']) {
+    for (const control of $(form).querySelectorAll('input, select, button')) control.disabled = archived || pending;
+  }
+  for (const button of $('player-notes-form').querySelectorAll('button')) button.disabled = archived || pending;
+  notes.readOnly = archived;
+  $('player-edit-portrait').disabled = $('player-free-roll').disabled = archived || pending;
+  syncRollButton();
+}
+
+$('player-filing-toggle').addEventListener('click', async () => {
+  if (!active || pending || creating || !leaveNotes()) return;
+  const selected = active;
+  pending = true;
+  updatePlayerAccess();
+  try {
+    const saved = await store.setArchived({ id: selected.id, revision: selected.revision, archived: !isPlayerArchived(selected) });
+    records = [saved, ...records.filter(record => record.id !== saved.id)];
+    notes.value = saved.notes;
+    render(saved);
+    $('player-filing-message').textContent = isPlayerArchived(saved) ? 'Copie archivée. Retrouve-la dans « Parcourir mes personnages → Archives ».' : 'Fiche remise en activité. Toutes ses données sont conservées.';
+  } catch (error) { $('player-filing-message').textContent = error.message; }
+  finally { pending = false; updatePlayerAccess(); }
+});
+$('player-directory-open').addEventListener('click', () => {
+  if (!pending && !creating) void playerDirectory?.open();
+});
 
 const spellCircle = entry => entry.details?.find(([label]) => label === 'Cercle indiqué')?.[1] ?? '';
 
@@ -478,7 +524,10 @@ function openGrimoireEntry(id) {
   $('grimoire-notes').value = bookmark?.notes ?? '';
   $('grimoire-remove').hidden = !bookmark;
   const full = !bookmark && (active.grimoire?.length ?? 0) >= PLAYER_GRIMOIRE_LIMIT;
-  $('grimoire-save').disabled = full;
+  $('grimoire-save').disabled = full || isPlayerArchived(active);
+  $('grimoire-remove').disabled = isPlayerArchived(active);
+  $('grimoire-notes').readOnly = isPlayerArchived(active);
+  $('grimoire-session').disabled = $('grimoire-adopt-version').disabled = isPlayerArchived(active);
   $('grimoire-save').textContent = bookmark ? 'Enregistrer mes repères' : 'Ajouter à mon grimoire';
   $('grimoire-form').querySelector('[data-save-message]').textContent = full ? 'Le grimoire contient déjà 80 références. Retire un repère avant d’en ajouter un autre.' : '';
   $('grimoire-dialog').showModal();
@@ -531,6 +580,10 @@ function report(error, target = $('player-error')) {
 
 async function save(record, dialog, focusTarget = $('player-name'), compared, fromDraft) {
   if (pending) return false;
+  if (record.id && isPlayerArchived(record)) {
+    report(new Error('Remets cette fiche en activité pour la modifier.'), dialog?.querySelector('[data-save-message]') ?? $('player-error'));
+    return false;
+  }
   pending = true;
   syncRollButton();
   $('player-error').hidden = true;
@@ -549,7 +602,7 @@ async function save(record, dialog, focusTarget = $('player-name'), compared, fr
     $('player-save-status').textContent = 'Enregistrement interrompu';
     report(error, dialog?.querySelector('[data-save-message]') ?? $('player-error'));
     return false;
-  } finally { pending = false; syncRollButton(); }
+  } finally { pending = false; updatePlayerAccess(); }
 }
 
 for (const step of ORIGIN_STEPS) {
@@ -836,11 +889,11 @@ $('player-file').addEventListener('change', async event => {
     const timestamp = typeof archive.created === 'string' ? Date.parse(archive.created) : NaN;
     const date = Number.isFinite(timestamp) ? ` du ${archiveDate.format(timestamp)}` : '';
     const count = items.length === 1 ? '1 fiche compatible' : `${items.length} fiches compatibles`;
-    $('player-import-preview').textContent = `${archive.format}${date} · ${count}. Chaque import crée une copie dans ton espace.`;
+    $('player-import-preview').textContent = `${archive.format}${date} · ${count}. Chaque import crée une copie dans ton espace.${items.some(isPlayerArchived) ? ' Les fiches archivées restent en consultation après import.' : ''}`;
     $('confirm-player-import').disabled = $('player-import-choice').disabled = false;
     if (archive.exchange) {
       incomingExchange = archive.exchange;
-      const matches = records.filter(record => record.sheet.id === incomingExchange.sheet.id);
+      const matches = records.filter(record => !isPlayerArchived(record) && record.sheet.id === incomingExchange.sheet.id);
       $('player-compare-choice').replaceChildren(new Option('Créer une fiche indépendante', ''), ...matches.map(record =>
         new Option(`${record.sheet.name} · ${archiveDate.format(record.updatedAt)} · copie ${record.id.slice(0, 8)}`, record.id)));
       $('player-compare-choice').value = matches.some(record => record.id === active?.id) ? active.id : matches[0]?.id ?? '';
@@ -978,6 +1031,7 @@ $('player-remove-item').addEventListener('click', async () => {
 });
 
 function showRoll(dice, text, kind, label) {
+  if (isPlayerArchived(active)) return;
   latestRoll = { id: crypto.randomUUID(), createdAt: new Date().toISOString(), kind, label, summary: text, dice };
   $('player-dice').replaceChildren(...dice.map(value => {
     const face = node('span', value);
@@ -1030,7 +1084,20 @@ $('player-send').addEventListener('click', async () => {
 try {
   store = await openPlayerStore();
   records = await store.list();
-  render(records[0]);
+  let preferred;
+  try { preferred = localStorage.getItem(preferredPlayerKey); } catch { /* Préférence facultative. */ }
+  render(records.find(record => record.id === preferred && !isPlayerArchived(record)) ?? records.find(record => !isPlayerArchived(record)) ?? records[0]);
+  playerDirectory = createPlayerDirectory({ getRecords: () => records, getActive: () => active,
+    refresh: async () => { records = await store.list(); },
+    select: async id => {
+      if (pending || creating || !leaveNotes()) return false;
+      const record = records.find(record => record.id === id);
+      if (!record) return false;
+      notes.value = record.notes;
+      render(record);
+      return true;
+    },
+  });
   try {
     creationDraft = await creationDraftController({ store, capture: captureCreation, restore: restoreCreation, reset: resetCreationForm,
       validate: validateCreationSnapshot, isLoading: () => creationPortrait.loading, download, canOpen: () => !pending && !creating && leaveNotes() });

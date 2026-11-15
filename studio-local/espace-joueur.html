@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./echanges-pj.css">
   <link rel="stylesheet" href="./grimoire-joueur.css">
   <link rel="stylesheet" href="./creation-brouillon.css">
+  <link rel="stylesheet" href="./rangement-joueur.css">
   <script type="module" src="./espace-joueur.mjs"></script>
 </head>
 <body class="player-space">
@@ -36,6 +37,7 @@
       <div id="player-library" hidden>
         <label for="player-selection">Reprendre mon personnage</label>
         <select id="player-selection" disabled></select>
+        <button id="player-directory-open" class="secondary" type="button">Parcourir mes personnages</button>
       </div>
       <div class="actions">
         <button id="player-create" type="button" disabled>Créer mon personnage</button>
@@ -50,6 +52,11 @@
       <button id="creation-draft-import-open" class="text-button" type="button" disabled>Importer un brouillon</button>
     </aside>
     <section id="player-sheet" class="panel player-panel" aria-labelledby="player-name" hidden>
+      <div id="player-filing-strip" class="player-filing-strip">
+        <div><p id="player-filing-state" class="eyebrow accent"></p><p id="player-filing-copy" class="field-help"></p></div>
+        <button id="player-filing-toggle" class="secondary" type="button">Archiver cette copie</button>
+        <p id="player-filing-message" class="field-help" role="status"></p>
+      </div>
       <header class="character-heading">
         <div class="character-portrait">
           <img id="player-portrait" alt="Portrait du personnage" hidden width="240" height="300" referrerpolicy="no-referrer">
@@ -161,7 +168,7 @@
       <section id="player-backups" class="protocol-step player-transfer" role="tabpanel" aria-labelledby="tab-player-backups" tabindex="0" hidden>
         <p class="eyebrow accent">Retrouver mon aventure</p><h3>Sauvegarde et remise au MJ</h3>
         <div class="player-save-options">
-          <div class="save-option"><span class="badge">Personnel</span><h4>Emporter toute ma fiche</h4><p class="muted">Le personnage, son portrait, son inventaire, son histoire, son grimoire, ses notes et les jets consignés.</p><button id="player-backup" type="button">Sauvegarder mon personnage</button></div>
+          <div class="save-option"><span class="badge">Personnel</span><h4>Emporter toute ma fiche</h4><p class="muted">Le personnage, son portrait, son inventaire, son histoire, son grimoire, ses notes, les jets consignés et son état d’archive.</p><button id="player-backup" type="button">Sauvegarder mon personnage</button></div>
           <div class="save-option"><span class="badge">À partager</span><h4>Échanger avec ma table</h4><p class="muted">Le profil de jeu, le portrait, les capacités et l’inventaire, avec une identité et une version pour comparer au retour du MJ. Le grimoire, les notes et les jets restent personnels.</p><button id="player-send" type="button">Préparer un échange pour le MJ</button><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
         </div>
         <p id="player-download-status" class="field-help" role="status"></p>
@@ -171,6 +178,23 @@
     </section>
     </div>
   </main>
+  <dialog id="player-directory-dialog" aria-labelledby="player-directory-title">
+    <header class="player-directory-heading"><div><p class="eyebrow accent">Mon carnet d’aventures</p><h2 id="player-directory-title">Retrouver un personnage</h2></div><button id="player-directory-close" class="secondary" type="button">Fermer</button></header>
+    <div class="player-directory-body">
+      <p class="field-help">Les copies d’un même personnage gardent leur identité d’échange. L’archivage est personnel et réversible.</p>
+      <div class="player-directory-tools">
+        <div class="player-directory-search"><label for="player-directory-query">Nom, métier ou niveau</label><input id="player-directory-query" type="search" placeholder="Aveline, batelière…" aria-controls="player-directory-list"></div>
+        <div><label for="player-directory-state">Afficher</label><select id="player-directory-state"><option value="active">En activité</option><option value="archived">Archives</option><option value="all">Toutes les fiches</option></select></div>
+        <div><label for="player-directory-sort">Trier</label><select id="player-directory-sort"><option value="recent">Récemment modifiées</option><option value="name">Nom</option><option value="level">Niveau décroissant</option></select></div>
+      </div>
+      <label class="equipped-choice"><input id="player-directory-copies" type="checkbox">Plusieurs copies du même personnage</label>
+      <div id="player-directory-group-tools" class="notice" hidden><p id="player-directory-group"></p><button id="player-directory-group-clear" class="text-button" type="button">Tous les personnages</button></div>
+      <p id="player-directory-count" class="field-help" role="status"></p>
+      <p id="player-directory-message" class="field-help" role="status"></p>
+      <ul id="player-directory-list" class="player-directory-list"></ul>
+      <div class="actions"><button id="player-directory-more" class="secondary" type="button" hidden>Afficher davantage de fiches</button><button id="player-directory-refresh" class="secondary" type="button">Actualiser les fiches</button></div>
+    </div>
+  </dialog>
   <dialog id="grimoire-dialog" aria-labelledby="grimoire-detail-title">
     <p class="eyebrow accent">Référence personnelle · Grimoire</p>
     <h2 id="grimoire-detail-title" tabindex="-1" autofocus></h2>
@@ -281,7 +305,7 @@
       <div id="player-exchange-review" hidden>
         <label for="player-compare-choice">Comparer avec ma fiche</label><select id="player-compare-choice"></select>
         <div id="player-compare-preview"></div>
-        <p class="field-help">Adopter crée une nouvelle copie et la rend active. La fiche précédente reste dans « Mes personnages ». Les notes et les jets de la copie comparée sont conservés.</p>
+        <p class="field-help">Adopter crée une nouvelle copie et la rend active. La fiche précédente reste dans « Mes personnages ». Les notes et les jets de la copie comparée sont conservés. Les archives sont exclues des copies à comparer ; remets une fiche en activité pour la proposer comme référence.</p>
         <label class="equipped-choice"><input id="player-exchange-accept" type="checkbox">J’ai comparé et je choisis la version reçue.</label>
       </div>
       <div class="actions"><button id="confirm-player-import" type="submit" disabled>Importer une nouvelle copie</button><button class="secondary" type="button" data-close>Fermer</button></div>

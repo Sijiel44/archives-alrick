@@ -1,5 +1,7 @@
 # Grimoire personnel · références et sauvegarde v3
 
+Depuis le lot [Rangement joueur](RANGEMENT-JOUEUR.md), la sauvegarde personnelle v4 conserve aussi l’état d’archive. Le grimoire garde le contrat décrit ici ; les fichiers v1 à v3 restent importables. Une archive se consulte, et sa remise en activité rétablit les commandes de modification.
+
 Ce lot complète TABLE-04 du cadrage « Espaces Univers, MJ et Joueur » du 8 novembre 2026. Il permet de consulter les essais de sorts du catalogue commun et de conserver ses repères personnels. Il ne traduit aucune technique de campagne en sort et ne change aucun moteur 5d6.
 
 ## Référentiel et statut

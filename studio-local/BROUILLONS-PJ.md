@@ -1,5 +1,7 @@
 # Création PJ · reprise locale et transport du brouillon
 
+Le lot [Rangement joueur](RANGEMENT-JOUEUR.md) fait ensuite passer la base en version IndexedDB 5 et la sauvegarde personnelle en v4. Le magasin de brouillons et son fichier v1 restent inchangés ; leur contenu est conservé lors de cette migration.
+
 Ces deux lots complètent TABLE-03 et les protections de TABLE-01 du cadrage « Espaces Univers, MJ et Joueur » du 8 novembre 2026. Le créateur guidé et libre et les moteurs M01/M02 restent les mêmes. Un brouillon conserve une intention de création, pas une fiche jouable validée.
 
 ## Lot A · reprise locale

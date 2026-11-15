@@ -23,6 +23,8 @@ export const studioAssets = new Map([
   ["/brouillons-pj.mjs", ["brouillons-pj.mjs", "text/javascript"]],
   ["/creation-brouillon.mjs", ["creation-brouillon.mjs", "text/javascript"]],
   ["/creation-brouillon.css", ["creation-brouillon.css", "text/css"]],
+  ["/rangement-joueur.mjs", ["rangement-joueur.mjs", "text/javascript"]],
+  ["/rangement-joueur.css", ["rangement-joueur.css", "text/css"]],
   ["/echanges-pj.mjs", ["echanges-pj.mjs", "text/javascript"]],
   ["/echanges-pj.css", ["echanges-pj.css", "text/css"]],
   ["/regie-participants.css", ["regie-participants.css", "text/css"]],

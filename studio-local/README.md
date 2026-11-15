@@ -33,7 +33,17 @@ Ouvrir **Espace joueur** depuis [l’accueil de découverte](http://127.0.0.1:43
 
 Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent manuellement. Lorsqu’une fiche joueur a changé dans un autre onglet, copier le texte en cours avant de recharger sa version enregistrée.
 
-La sauvegarde personnelle v3 inclut les jets consignés et le grimoire de références. Les sauvegardes personnelles v1 et v2 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
+La sauvegarde personnelle v4 inclut les jets consignés, le grimoire de références et le rangement de la fiche. Les sauvegardes personnelles v1 à v3 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
+
+### Retrouver et ranger mes personnages
+
+**Parcourir mes personnages** ouvre le répertoire illustré. Rechercher plusieurs mots d’un nom ou d’un métier, choisir **En activité**, **Archives** ou **Toutes les fiches**, puis trier par nom, niveau ou modification récente. Les accents ne changent pas la recherche. Les notes privées ne servent pas de résultats de recherche. Les longues listes s’affichent par groupes de vingt.
+
+**Voir les copies** retrouve les fiches qui partagent la même identité M02, y compris les anciennes versions archivées. Le repère de version d’échange et la date aident à les distinguer ; ils ne remplacent pas la comparaison de la fiche avec le MJ. La fiche ouverte est signalée. La dernière fiche en activité ouverte est retrouvée à la prochaine visite.
+
+**Archiver cette copie** conserve ses données et la retire du sélecteur habituel. Elle reste consultable dans le répertoire et exportable. Ses notes, jets, objets et sorts restent lisibles ; les modifications et les nouveaux jets nécessitent **Remettre cette fiche en activité**. Les valeurs affichées dans une archive sont celles enregistrées. Aucune fiche ni copie liée n’est supprimée automatiquement.
+
+La sauvegarde personnelle v4 conserve cet état d’archive. Restaurer ce fichier ajoute une copie qui garde son état, annoncé dans l’aperçu. Un échange joueur/MJ exclut le rangement privé ; son adoption crée une fiche en activité. Les archives ne sont pas proposées comme copies à comparer avant leur remise en activité. Voir le [contrat de rangement](RANGEMENT-JOUEUR.md).
 
 ### Reprendre une création commencée
 
@@ -53,7 +63,7 @@ Choisir **Ajouter à mon grimoire** pour garder une référence avec ses notes p
 
 Si le catalogue change, l’aperçu le signale : **Rattacher à la version affichée du catalogue** est un choix explicite. Une référence absente garde son nom et ses notes. **Retirer du grimoire** demande confirmation. Les notes sont conservées en cas d’échec d’enregistrement ; copier le brouillon avant de recharger après un conflit entre onglets.
 
-La sauvegarde personnelle v3 conserve ces repères, y compris les références absentes. Les échanges joueur/MJ et l’export M02 les excluent. L’adoption d’un échange reporte le grimoire personnel de la fiche comparée sur la nouvelle copie, sans modifier l’originale. Voir le [contrat du grimoire](GRIMOIRE-JOUEUR.md).
+La sauvegarde personnelle v4 conserve ces repères, y compris les références absentes. Les échanges joueur/MJ et l’export M02 les excluent. L’adoption d’un échange reporte le grimoire personnel de la fiche comparée sur la nouvelle copie, sans modifier l’originale. Voir le [contrat du grimoire](GRIMOIRE-JOUEUR.md).
 
 ### Échanger une version avec le MJ
 
@@ -71,7 +81,7 @@ Dans **Importer une fiche PJ**, charger un échange versionné, puis comparer av
 
 Le bouton **Versions**, dans la liste des PJ ou leur fiche, donne accès aux états précédents. Choisir un état pour consulter son profil et ses PV au moment du changement. **Rétablir cette version**, après confirmation, enregistre une nouvelle décision. Les combats et les changements ultérieurs restent consultables. Les anciens impacts sont toujours vérifiés avec le profil utilisé à l’époque.
 
-La sauvegarde privée de campagne passe à la version 17 dès le premier changement de version. Elle conserve les états précédents ; aucune suppression automatique ne les réduit. Si la sauvegarde dépasse la limite existante de 4 Mio, le Studio refuse l’écriture et conserve les données enregistrées. Les sauvegardes antérieures restent importables. Le joueur continue de recevoir uniquement le profil partageable et garde sa sauvegarde personnelle v3.
+La sauvegarde privée de campagne passe à la version 17 dès le premier changement de version. Elle conserve les états précédents ; aucune suppression automatique ne les réduit. Si la sauvegarde dépasse la limite existante de 4 Mio, le Studio refuse l’écriture et conserve les données enregistrées. Les sauvegardes antérieures restent importables. Le joueur continue de recevoir uniquement le profil partageable et garde sa sauvegarde personnelle v4.
 
 ## Préparer une soirée
 
