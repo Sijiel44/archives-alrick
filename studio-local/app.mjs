@@ -15,6 +15,7 @@ import {
 } from './store.mjs';
 import { ADVENTURE_SCENE_LIMIT, CREATION_STATES, CREATION_TYPES, adventureMilestones } from './creations.mjs';
 import { createObjectGrantUI } from './objets-mj-ui.mjs';
+import { createAudioUI } from './audio-ui.mjs';
 import { clearProjection, createPlayerProjection, createProjection, loadPresentationImage, openPlayerWindow, playerSheetPresentation, scenePresentation, showPresentation } from './projection.mjs';
 
 const $ = (id) => document.getElementById(id);
@@ -41,6 +42,8 @@ let view = 'home';
 let busy = false;
 const objectGrantUI = createObjectGrantUI({ getCampaign: () => campaign, canOpen: () => Boolean(campaign && !busy),
   save: saveCommand, exportCharacter: openPJExport, refresh: refreshCampaign, status: message => setStatus(message, 'saved') });
+const audioUI = createAudioUI({ getCampaign: () => campaign, canWrite: () => Boolean(campaign && !busy),
+  save: saveCommand, refresh: refreshCampaign, open: () => { navigate('play'); $('audio-title').focus(); } });
 let draft;
 let createDraft;
 let quickDraft;
@@ -1663,6 +1666,7 @@ function render() {
   if (view === 'workshop') renderWorkshop();
   if (campaign) renderPrepare();
   renderPlay();
+  audioUI.render();
   renderInterludes();
   renderArchive();
 }
@@ -2959,7 +2963,8 @@ function displayPreview() {
   const ambiances = preview.ambiances ? ` · ${preview.ambiances} ambiance(s)` : '';
   const interludes = preview.interludes ? ` · ${preview.interludes} interlude(s)` : '';
   const images = preview.images ? ` · ${preview.images} image(s) par lien` : '';
-  $('backup-summary').textContent = `Révision ${preview.revision} · ${preview.characters} PJ${playerSheets}${playerUpdates} · ${preview.creatures} créature(s) · ${preview.scenes} scène(s)${ambiances} · ${preview.sessions} séance(s) archivée(s)${interludes} · ${preview.markers} repère(s)${actions}${oppositions}${profiles}${creations}${images}`;
+  const audio = preview.audioTracks || preview.audioPlaylists ? ` · ${preview.audioTracks} piste(s) audio · ${preview.audioPlaylists} playlist(s)` : '';
+  $('backup-summary').textContent = `Révision ${preview.revision} · ${preview.characters} PJ${playerSheets}${playerUpdates} · ${preview.creatures} créature(s) · ${preview.scenes} scène(s)${ambiances} · ${preview.sessions} séance(s) archivée(s)${interludes} · ${preview.markers} repère(s)${actions}${oppositions}${profiles}${creations}${images}${audio}`;
   $('backup-conflict').hidden = !preview.conflict;
 }
 

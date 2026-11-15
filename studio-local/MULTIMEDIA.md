@@ -1,6 +1,6 @@
-# Régie multimédia · plan des prochains lots
+# Régie multimédia · état et prochains lots
 
-**État au 14 novembre 2026 : prévu, non implémenté.** Le Studio possède déjà les ambiances de scène, les aperçus, le remplacement dans une fenêtre joueur et le retrait. Il ne possède pas encore de lecteur audio, de playlists ni de fonds vidéo. Ce document propose leur raccord après le lot des objets MJ, sans modifier les règles 5d6 ou le canon.
+**État au 15 novembre 2026 : la tranche audio MJ est implémentée et recettée localement ; les fonds vidéo restent prévus.** Le lot des objets MJ a été intégré par la PR 120 et publié. Le Studio possède déjà les ambiances de scène, les aperçus, le remplacement dans une fenêtre joueur et le retrait. Le [guide de régie sonore](REGIE-SONORE.md) décrit le lecteur, son contrat privé et les résultats de recette. La publication audio est autorisée ; sa CI, son déploiement Pages et son contrôle public restent à confirmer. Aucun changement de règle 5d6 ou de canon n’est prévu par ces lots.
 
 ## Socle à réutiliser
 
@@ -8,17 +8,19 @@
 - `projection.mjs` : sélection des champs partageables et génération de documents de présentation. Les contenus affichés restent dans une iframe sans scripts.
 - `joueur.js` et `joueur.html` : récepteur d’origine opaque, relié au MJ par un `MessageChannel` et un ticket. Il ne lit pas les campagnes ni le stockage du Studio.
 - `store.mjs` : carnet d’ambiances v12, limité à douze entrées par scène. Ses champs sont strictement `id`, `name`, `title`, `description`, `imageId` ; leur ajouter un champ vidéo directement rendrait les anciennes validations incompatibles.
-- `serve.mjs` et `scripts/assemble-pages.mjs` : mêmes assets et politiques de sécurité à raccorder pour localhost et GitHub Pages. Aujourd’hui, l’absence de `media-src` et le repli sur `default-src 'none'` bloquent les médias.
+- `serve.mjs` et `scripts/assemble-pages.mjs` : mêmes assets et politiques de sécurité pour localhost et GitHub Pages. La tranche audio ajoute `media-src https:` au Studio MJ. Les politiques de la projection et de l’espace joueur restent inchangées ; l’autorisation des fonds vidéo dans le récepteur appartient à la tranche suivante.
 
 ## Tranche 1 · playlists audio du MJ
 
-Le résultat attendu est une régie sonore utilisable pendant une séance locale : retrouver une ambiance, lancer sa playlist, ajuster le volume et arrêter le son sans quitter la scène.
+Le contrat retenu est documenté dans [Régie sonore du MJ](REGIE-SONORE.md). Le périmètre commence par les URL HTTPS absolues directes ; l’import de fichiers locaux et les URL relatives restent des extensions ultérieures.
+
+Le premier lot permet de retrouver une ambiance, lancer sa playlist, ajuster le volume et arrêter le son sans quitter la scène.
 
 1. Ajouter une bibliothèque privée de pistes, avec nom, lien direct vers le fichier, crédit ou provenance et durée constatée lorsque disponible.
 2. Composer une playlist ordonnée et la rattacher facultativement à une scène. Les commandes initiales sont lecture/pause, précédent/suivant, volume et boucle de playlist.
 3. Utiliser un seul lecteur audio natif dans le Studio. Le chargement d’une campagne ne démarre aucun son. La lecture débute par une commande du MJ ; les boutons et erreurs décrivent l’état réel du lecteur.
 4. Conserver les playlists indépendamment du changement de scène. Présenter la playlist suggérée par la nouvelle scène et laisser le MJ choisir de la lancer. Un changement de scène ne doit pas provoquer une coupure ou une reprise sonore implicite.
-5. Commencer par les fichiers directement accessibles à une URL du site ou en HTTPS, sans compte, SDK ou service tiers. Une page de partage qui ne mène pas à un fichier lisible n’est pas une source audio native.
+5. Commencer par les fichiers directement accessibles à une URL HTTPS absolue, sans compte, SDK ou service tiers. Une page de partage qui ne mène pas à un fichier lisible n’est pas une source audio native.
 
 Le lecteur doit traiter `ended`, `error`, les chargements interrompus et les promesses rejetées de `play()`. Une piste indisponible est signalée ; le passage automatique à la suivante ne doit pas masquer une série d’échecs. Les refus d’autoplay exigent une commande de lecture disponible, conformément au [guide MDN sur l’autoplay](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay).
 
@@ -41,15 +43,15 @@ Pour `prefers-reduced-motion: reduce`, proposer d’abord l’image de remplacem
 
 ## Contrats de données et sauvegardes proposés
 
-La prochaine version de sauvegarde disponible est **v18**, le lot des objets restant compatible avec la v17. Cette attribution est prévue pour le multimédia et devra être confirmée au démarrage de son implémentation.
+La version de sauvegarde **v18** est retenue pour la régie sonore ; le lot précédent des objets reste compatible avec la v17. Les pistes, playlists et associations privées utilisent l’extension `entreRivesMediaV18`. Les fonds vidéo auront leur propre évolution de contrat, à définir lors de leur implémentation.
 
-Préparer une extension privée séparée, par exemple `entreRivesMediaV18`, plutôt que réécrire le carnet d’ambiances v12. Elle contiendrait un registre de sources, des playlists ordonnées et les rattachements aux scènes. Des identifiants stables relieraient les entrées ; les noms privés resteraient distincts des éventuels libellés explicitement projetés.
+L’extension audio est séparée du carnet d’ambiances v12. Elle contient un registre de sources, des playlists ordonnées et les rattachements aux scènes. Des identifiants stables relient les entrées. Ses noms, crédits et autres métadonnées restent privés ; aucune de ces données n’est envoyée à la projection dans la tranche audio.
 
 Proposition initiale de limites techniques : cent sources, vingt playlists et cinquante pistes par playlist, sans dépasser le plafond de sauvegarde de campagne existant de 4 Mio. Les vidéos et fichiers audio ne seraient pas encodés dans le JSON : seuls les liens et réglages voyageraient. Le transfert des fichiers eux-mêmes nécessiterait un paquet séparé ultérieur.
 
-Les commandes de sauvegarde, déplacement, suppression et rattachement devront valider les références, contrôler la révision attendue et s’exécuter dans les transactions existantes. Une suppression ne laissera pas de piste orpheline silencieuse. L’import refusera les formats futurs et conservera la lecture des sauvegardes v1 à v17. Les données musicales ne modifieront aucun profil PJ ou calcul de jeu.
+Les commandes de sauvegarde, déplacement dans l’ordre de playlist, suppression et rattachement valident les références, contrôlent la révision attendue et s’exécutent dans les transactions existantes. Une suppression de piste retire ses occurrences ; une suppression de playlist retire ses associations. Modifier une playlist chargée ou ses pistes arrête la lecture et demande de charger la nouvelle version. L’import refuse les formats futurs et conserve la lecture des sauvegardes v1 à v17. Les données musicales ne modifient aucun profil PJ ou calcul de jeu.
 
-Les URLs acceptées seront validées comme données, avec taille bornée et refus des identifiants intégrés à l’URL et des protocoles exécutables. Le lecteur attribuera ses sources par l’API DOM ; aucun HTML, script ou iframe fourni par un fichier ne sera exécuté. Les limites de format et de durée constatées seront des états du lecteur, sans supposer qu’une extension de fichier garantit sa compatibilité.
+Les URL audio acceptées sont validées comme données, avec taille bornée et refus des identifiants intégrés à l’URL et des protocoles exécutables. Le lecteur attribue ses sources par l’API DOM ; aucun HTML, script ou iframe fourni par un fichier n’est exécuté. La durée constatée est affichée par le lecteur, sans supposer qu’une extension de fichier garantit sa compatibilité. Les sources vidéo restent à raccorder dans leur tranche propre.
 
 ## Raccords techniques à prévoir
 
@@ -62,7 +64,7 @@ Les URLs acceptées seront validées comme données, avec taille bornée et refu
 | `joueur.js`, `joueur.html` | Couche vidéo, commandes de mouvement, nettoyage lors des remplacements et retraits. |
 | `serve.mjs`, `scripts/assemble-pages.mjs` | Liste explicite des nouveaux assets et CSP cohérentes pour localhost et Pages. |
 
-Les CSP devront autoriser précisément les sources nécessaires via `media-src`, tout en gardant les restrictions de scripts et de stockage du récepteur. Le [contrat de la directive `media-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/media-src) distingue cette autorisation de celles des images et des connexions scriptées. Les scripts du récepteur resteront des assets contrôlés ; un module ou un lecteur externe ne devra pas être introduit implicitement.
+La CSP de la régie audio autorise les médias HTTPS directs dans le Studio MJ. Pour les vidéos, les CSP devront autoriser les sources sélectionnées dans le récepteur tout en conservant ses restrictions de scripts et de stockage. Le [contrat de la directive `media-src`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/media-src) distingue cette autorisation de celles des images et des connexions scriptées. Les scripts du récepteur resteront des assets contrôlés ; un module ou un lecteur externe ne devra pas être introduit implicitement.
 
 ## Recettes et critères de clôture
 
@@ -76,4 +78,4 @@ Prolonger `tests/ambiances.test.mjs`, `tests/transitions-joueur.test.mjs`, `test
 - Sauvegarde/restauration v18 et lecture des v1 à v17 ; absence de binaires et de secrets dans les commits ou assets publiés.
 - Clavier, focus, téléphone, fermeture de fenêtre et résultats identiques dans l’assemblage Pages.
 
-Une tranche ne sera déclarée implémentée qu’après son code, ses recettes navigateur et sa documentation. La qualification en séance restera identifiée séparément. L’ordre proposé est : terminer et publier le lot des objets, développer la playlist audio MJ, puis ajouter le fond vidéo choisi dans la régie.
+La tranche audio dispose de son code, de sa documentation et de recettes locales réussies. La CI et la publication autorisée restent à contrôler avant d’annoncer sa disponibilité publique. La qualification en séance reste distincte. L’ordre retenu est : publier la régie sonore MJ après contrôle, puis ajouter le fond vidéo choisi dans la régie. La [feuille de route](FEUILLE-DE-ROUTE.md#prochains-lots-recommandés) situe ces tranches parmi les autres besoins de la table.

@@ -35,6 +35,12 @@ Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent
 
 La sauvegarde personnelle v4 inclut les jets consignés, le grimoire de références et le rangement de la fiche. Les sauvegardes personnelles v1 à v3 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
 
+### Régie sonore du MJ
+
+Dans **Jouer → Régie sonore**, ouvrir la **Bibliothèque de pistes** et ajouter des liens directs HTTPS avec leurs crédits. Composer une playlist, régler son ordre, puis **Charger** et **Lecture**. Le chargement de la playlist attend la commande de lecture avant de contacter l’hébergeur audio. Pause, arrêt, précédent/suivant, volume et boucle restent accessibles pendant la séance ; **Arrêter le son** reste disponible dans la barre du Studio.
+
+Une playlist associée à une scène est une suggestion : changer de scène conserve le son courant. Changer de campagne arrête le lecteur. Les sauvegardes de campagne v18 conservent les liens, playlists et associations ; les fichiers audio restent chez leur hébergeur. Le son sort uniquement de l’appareil du MJ. Voir [le guide et les limites](REGIE-SONORE.md).
+
 ### Attribuer une copie d’objet depuis un modèle MJ
 
 Créer une fiche **Objet** dans **Créations**, puis ouvrir sa fiche dans la **Bibliothèque** et choisir **Attribuer une copie à un PJ**. Relire les champs destinés au joueur, choisir le PJ et confirmer la relecture. **Attribuer et préparer l’échange** enregistre une copie indépendante et ouvre l’échange à relire avant téléchargement. Le modèle, ses notes et ses identifiants privés restent dans la campagne. Les versions du PJ permettent le rétablissement ; les PV effectifs et les scènes sont conservés. Voir [le parcours d’attribution](OBJETS-MJ.md).
