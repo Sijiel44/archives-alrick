@@ -1,4 +1,5 @@
 import { ADVENTURE_SCENE_LIMIT, CREATION_STATES, CREATION_TYPES } from './creations.mjs';
+import { AUDIO_KEY, audioLibrary, validAudioTrack, validAudioPlaylist, validateAudioLibrary } from './audio.mjs';
 
 const DATABASE = 'entre-rives.studio-local.v1';
 const FORMAT = 'chroniques-entre-rives.studio-local';
@@ -20,6 +21,7 @@ const INTERLUDE_BACKUP_VERSION = 14;
 const LINKED_IMAGE_BACKUP_VERSION = 15;
 const ADVENTURE_PACKAGE_BACKUP_VERSION = 16;
 const PJ_UPDATE_BACKUP_VERSION = 17;
+const AUDIO_BACKUP_VERSION = 18;
 const ADVENTURE_PACKAGE_FORMAT = 'chroniques-entre-rives.aventure';
 export const MAX_ADVENTURE_PACKAGE_BYTES = 512 * 1024;
 export const ADVENTURE_SOURCE_KEY = 'entreRivesAdventurePackageV16';
@@ -477,6 +479,12 @@ export const hitPointsAfterDamage = (current, damage) => Math.max(0, current - d
 const sceneFields = ['id', 'title', 'description', 'privateNotes', 'participantIds'];
 const markerFields = ['id', 'kind', 'title', 'description', 'sceneId'];
 const operations = {
+  'save-audio-track': { fields: ['id', 'name', 'url', 'credit'], valid: validAudioTrack, backupVersion: AUDIO_BACKUP_VERSION },
+  'remove-audio-track': { fields: ['id'], valid: value => isId(value.id), backupVersion: AUDIO_BACKUP_VERSION },
+  'save-audio-playlist': { fields: ['id', 'name', 'trackIds', 'loop'], valid: validAudioPlaylist, backupVersion: AUDIO_BACKUP_VERSION },
+  'remove-audio-playlist': { fields: ['id'], valid: value => isId(value.id), backupVersion: AUDIO_BACKUP_VERSION },
+  'set-scene-playlist': { fields: ['sceneId', 'playlistId'], valid: value => isId(value.sceneId) &&
+    (value.playlistId === null || isId(value.playlistId)), backupVersion: AUDIO_BACKUP_VERSION },
   'import-adventure': { fields: ['bundle'], valid: value => validateAdventurePackage(value.bundle), backupVersion: ADVENTURE_PACKAGE_BACKUP_VERSION },
   'plan-adventure': { fields: ['adventureId', 'chain', 'scenes'], valid: validAdventurePlan, backupVersion: ADVENTURE_BACKUP_VERSION },
   'save-creation': { fields: creationFields, valid: validCreation, backupVersion: CREATION_BACKUP_VERSION },
@@ -663,6 +671,10 @@ function validateCampaign(campaign) {
   }
   if (sceneIds.size === 0 ? campaign.activeSceneId !== null : !sceneIds.has(campaign.activeSceneId)) {
     fail('foreign-key', 'La scène active doit appartenir à la campagne.');
+  }
+  if (Object.hasOwn(campaign, AUDIO_KEY)) {
+    try { validateAudioLibrary(campaign[AUDIO_KEY], sceneIds); }
+    catch (error) { fail('invalid-data', error.message); }
   }
   if (Object.hasOwn(campaign, FRESQUE_LINKS_KEY)) {
     validateSceneLinks(campaign[FRESQUE_LINKS_KEY], sceneIds, participantIds);
@@ -882,6 +894,7 @@ function backupVersionFor({ campaign, journal }) {
   if (Object.hasOwn(campaign, LINKED_IMAGES_KEY)) version = LINKED_IMAGE_BACKUP_VERSION;
   if (campaign[CREATIONS_KEY]?.some(entry => Object.hasOwn(entry, ADVENTURE_SOURCE_KEY))) version = ADVENTURE_PACKAGE_BACKUP_VERSION;
   if (campaign.characters.some(character => Object.hasOwn(character, PJ_UPDATES_KEY))) version = PJ_UPDATE_BACKUP_VERSION;
+  if (Object.hasOwn(campaign, AUDIO_KEY)) version = AUDIO_BACKUP_VERSION;
   return journal.reduce((minimum, event) => Math.max(minimum, operations[event.type].backupVersion ?? LEGACY_BACKUP_VERSION), version);
 }
 
@@ -960,6 +973,38 @@ function applyCommand(previous, { id, operationId, type, data }, resolveOppositi
 
   const campaign = structuredClone(previous);
   switch (type) {
+    case 'save-audio-track':
+    case 'save-audio-playlist': {
+      const library = campaign[AUDIO_KEY] ??= audioLibrary();
+      upsert(type === 'save-audio-track' ? library.tracks : library.playlists, data);
+      break;
+    }
+    case 'remove-audio-track': {
+      const library = campaign[AUDIO_KEY];
+      const index = library?.tracks.findIndex(track => track.id === data.id) ?? -1;
+      if (index === -1) fail('foreign-key', 'Cette piste ne fait pas partie de la campagne.');
+      library.tracks.splice(index, 1);
+      for (const playlist of library.playlists) playlist.trackIds = playlist.trackIds.filter(trackId => trackId !== data.id);
+      break;
+    }
+    case 'remove-audio-playlist': {
+      const library = campaign[AUDIO_KEY];
+      const index = library?.playlists.findIndex(playlist => playlist.id === data.id) ?? -1;
+      if (index === -1) fail('foreign-key', 'Cette playlist ne fait pas partie de la campagne.');
+      library.playlists.splice(index, 1);
+      library.scenePlaylists = library.scenePlaylists.filter(assignment => assignment.playlistId !== data.id);
+      break;
+    }
+    case 'set-scene-playlist': {
+      if (!campaign.scenes.some(scene => scene.id === data.sceneId)) fail('foreign-key', 'Cette scène ne fait pas partie de la campagne.');
+      const library = campaign[AUDIO_KEY] ??= audioLibrary();
+      if (data.playlistId !== null && !library.playlists.some(playlist => playlist.id === data.playlistId)) {
+        fail('foreign-key', 'Cette playlist ne fait pas partie de la campagne.');
+      }
+      library.scenePlaylists = library.scenePlaylists.filter(assignment => assignment.sceneId !== data.sceneId);
+      if (data.playlistId !== null) library.scenePlaylists.push(data);
+      break;
+    }
     case 'import-adventure':
       importAdventure(campaign, data.bundle);
       break;
@@ -1396,7 +1441,7 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     try { archive = JSON.parse(text); }
     catch { fail('invalid-backup', 'Ce fichier ne contient pas un document JSON valide.'); }
     if (archive?.format !== FORMAT) fail('invalid-backup', 'Ce fichier n’est pas une sauvegarde privée du Studio.');
-    if (!Number.isInteger(archive.version) || archive.version < LEGACY_BACKUP_VERSION || archive.version > PJ_UPDATE_BACKUP_VERSION) {
+    if (!Number.isInteger(archive.version) || archive.version < LEGACY_BACKUP_VERSION || archive.version > AUDIO_BACKUP_VERSION) {
       fail('backup-version', 'La version de cette sauvegarde n’est pas prise en charge.');
     }
     if (!exactKeys(archive, ['format', 'version', 'sha256', 'payload']) ||
@@ -1434,6 +1479,8 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
       playerUpdates: campaign.characters.reduce((count, character) => count + (character[PJ_UPDATES_KEY]?.length ?? 0), 0),
       creations: campaign[CREATIONS_KEY]?.length ?? 0,
       images: campaign[LINKED_IMAGES_KEY]?.length ?? 0,
+      audioTracks: campaign[AUDIO_KEY]?.tracks.length ?? 0,
+      audioPlaylists: campaign[AUDIO_KEY]?.playlists.length ?? 0,
       creatures: campaign.creatures.length,
       scenes: campaign.scenes.length,
       ambiances: campaign.scenes.reduce((count, scene) => count + (scene[SCENE_AMBIANCES_KEY]?.length ?? 0), 0),

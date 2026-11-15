@@ -341,3 +341,12 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Aucun autre chantier ouvert, nouveau canon, campagne privée, note MJ ou paquet privé n’est publié.
 # Le document multimédia décrit les prochains lots ; les playlists et fonds vidéo ne sont pas encore implémentés.
 # Publication via workflow Pages, après CI et recettes, puis contrôle de l’URL publique.
+
+# Régie sonore du MJ — publication autorisée le 15 novembre 2026.
+# Demande du créateur : continuer le développement du site, assurer sa publication et partager son lien avec la feuille de route.
+# Portée : pistes HTTPS et crédits privés, playlists ordonnées, lecteur MJ unique par onglet, suggestions de scène et sauvegardes v18.
+# Aucun son ni fichier distant chargé avant Lecture ; arrêt explicite et arrêt au changement de campagne.
+# La projection joueur ne reçoit pas de piste, URL ou métadonnée sonore privée. Les fonds vidéo restent un prochain lot.
+# Playwright est verrouillé pour les recettes ; CI et Pages vérifient le Studio et le lecteur sur le site assemblé puis public.
+# Aucun contenu canonique, fichier de campagne ou média utilisateur n’est ajouté aux assets publics.
+# Fusion puis déploiement Pages après les recettes et la CI ; vérifier les deux parcours Studio sur l’URL publique.

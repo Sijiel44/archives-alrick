@@ -4,10 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
+  <meta name="referrer" content="no-referrer">
   <title>Studio MJ · Les Chroniques d’Entre-Rives</title>
   <link rel="stylesheet" href="./studio.css">
   <link rel="stylesheet" href="./echanges-pj.css">
   <link rel="stylesheet" href="./regie-participants.css">
+  <link rel="stylesheet" href="./audio.css">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body>
@@ -58,6 +60,8 @@
         <div class="topbar-context">
           <div class="status-chip"><span aria-hidden="true"></span><p id="save-status" class="status" role="status" aria-live="polite" aria-atomic="true">Ouverture du stockage local…</p></div>
           <button id="stop-player-window" class="secondary" type="button" hidden>Retirer la fiche joueur</button>
+          <button id="audio-global-open" class="secondary" type="button" hidden>Régie sonore</button>
+          <button id="audio-global-stop" class="secondary" type="button" hidden>Arrêter le son</button>
         </div>
       </header>
       <div id="app-error" class="notice error" hidden>
@@ -307,6 +311,7 @@
               <button id="open-play-protocol" class="secondary" type="button" data-play-protocol>Protocole de jeu</button>
               <button id="quick-present" class="secondary" type="button" disabled>Présenter</button>
               <button id="quick-ambiances" class="secondary" type="button" disabled>Ambiances</button>
+              <button id="quick-audio" class="secondary" type="button">Régie sonore</button>
               <button class="secondary" type="button" data-view="interludes">Activités entre les scènes</button>
               <button class="secondary" type="button" data-view="archive">Archiver la séance</button>
               <button class="secondary" type="button" data-view="backups">Sauvegardes</button>
@@ -387,6 +392,54 @@
             <ol id="play-actions-list" class="play-journal-list"></ol>
           </section>
         </div>
+        <section id="audio-panel" class="panel audio-panel" aria-labelledby="audio-title">
+          <div class="panel-heading">
+            <div><p class="eyebrow accent">Ambiances de séance · Privé MJ</p><h2 id="audio-title" tabindex="-1">Régie sonore</h2></div>
+            <span class="badge">Sortie audio de cet ordinateur</span>
+          </div>
+          <p class="muted audio-intro">Préparez vos musiques et paysages sonores, puis lancez-les au moment choisi. Le son reste sur cet appareil.</p>
+          <div class="audio-layout">
+            <div class="audio-deck">
+              <div class="audio-now">
+                <div class="audio-disc" aria-hidden="true"><span>♪</span></div>
+                <div><p id="audio-now-context" class="eyebrow">Aucune playlist chargée</p><h3 id="audio-now-title">Composez votre ambiance</h3><p id="audio-now-credit" class="muted"></p></div>
+              </div>
+              <audio id="audio-element" preload="none"></audio>
+              <div class="audio-progress-row"><progress id="audio-progress" max="1" value="0" aria-label="Avancement de la piste"></progress><span id="audio-clock" class="muted">0:00 / —</span></div>
+              <div class="audio-transport" role="group" aria-label="Lecture de la playlist">
+                <button id="audio-previous" class="secondary" type="button" disabled>Précédent</button>
+                <button id="audio-play" type="button" disabled>Lecture</button>
+                <button id="audio-pause" class="secondary" type="button" disabled>Pause</button>
+                <button id="audio-next" class="secondary" type="button" disabled>Suivant</button>
+                <button id="audio-stop" class="text-button" type="button" disabled>Arrêter</button>
+              </div>
+              <div class="audio-settings">
+                <label for="audio-volume">Volume <output id="audio-volume-value" for="audio-volume">70 %</output><input id="audio-volume" type="range" min="0" max="100" value="70" step="1"></label>
+                <label class="audio-check"><input id="audio-loop" type="checkbox"> Boucler la playlist</label>
+              </div>
+              <p id="audio-status" class="audio-status muted" role="status" aria-live="polite" aria-atomic="true">Aucun son ne démarre à l’ouverture de la campagne.</p>
+              <ol id="audio-queue" class="audio-queue" aria-label="Playlist chargée"></ol>
+            </div>
+            <div class="audio-collection">
+              <div class="panel-heading"><h3>Mes playlists</h3><button id="audio-playlist-add" class="secondary" type="button">Créer une playlist</button></div>
+              <p id="audio-playlists-empty" class="muted">Une traversée calme, une ville animée, une rencontre… Préparez une playlist pour chaque moment.</p>
+              <ul id="audio-playlists" class="audio-list"></ul>
+              <div class="audio-suggestion">
+                <h3>Pour cette scène</h3><p id="audio-scene-context" class="muted"></p>
+                <label for="audio-scene-playlist">Playlist suggérée</label><select id="audio-scene-playlist"></select>
+                <div class="actions"><button id="audio-scene-save" class="secondary" type="button">Associer à la scène</button><button id="audio-scene-load" class="secondary" type="button" disabled>Charger la suggestion</button></div>
+                <p class="muted">Changer de scène conserve la lecture en cours. Charger une suggestion attend votre commande Lecture.</p>
+              </div>
+            </div>
+          </div>
+          <details id="audio-library-tools" class="audio-library">
+            <summary>Bibliothèque de pistes <span id="audio-track-count"></span></summary>
+            <div class="panel-heading"><p class="muted">Un lien direct HTTPS vers un fichier audio. Les pages Spotify et YouTube ne sont pas des fichiers audio.</p><button id="audio-track-add" class="secondary" type="button">Ajouter une piste</button></div>
+            <p id="audio-tracks-empty" class="muted">Ajoutez une première piste pour composer vos playlists.</p>
+            <ul id="audio-tracks" class="audio-list"></ul>
+            <p class="muted">Les sauvegardes conservent les liens et les crédits. Les fichiers restent chez leur hébergeur et sont chargés à votre demande.</p>
+          </details>
+        </section>
       </section>
 
       <section id="view-interludes" aria-labelledby="interludes-title" hidden>
@@ -1093,6 +1146,31 @@
     </form>
   </dialog>
 
+  <dialog id="audio-track-dialog" aria-labelledby="audio-track-heading">
+    <form id="audio-track-form">
+      <p class="eyebrow accent">Régie sonore · Privé MJ</p><h2 id="audio-track-heading">Ajouter une piste</h2>
+      <label for="audio-track-name">Nom de la piste</label><input id="audio-track-name" required maxlength="160" autofocus>
+      <label for="audio-track-url">Lien direct du fichier audio</label><input id="audio-track-url" type="url" required maxlength="2048" placeholder="https://…/ambiance.mp3" aria-describedby="audio-track-help">
+      <p id="audio-track-help" class="muted">HTTPS, sans identifiant ni mot de passe. MP3, Ogg ou WAV selon votre navigateur. Aucun fichier n’est chargé avant Lecture.</p>
+      <label for="audio-track-credit">Crédit ou provenance · facultatif</label><textarea id="audio-track-credit" rows="2" maxlength="600"></textarea>
+      <p class="muted">Utilisez des fichiers dont vous avez l’autorisation d’usage. Le lien et le crédit seront conservés dans votre sauvegarde privée.</p>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer la piste</button><button class="secondary audio-cancel" type="button">Annuler</button></div>
+    </form>
+  </dialog>
+  <dialog id="audio-playlist-dialog" aria-labelledby="audio-playlist-heading">
+    <form id="audio-playlist-form">
+      <p class="eyebrow accent">Régie sonore · Privé MJ</p><h2 id="audio-playlist-heading">Créer une playlist</h2>
+      <label for="audio-playlist-name">Nom de la playlist</label><input id="audio-playlist-name" required maxlength="160" autofocus>
+      <div class="audio-track-picker"><div><label for="audio-playlist-track">Ajouter une piste de la bibliothèque</label><select id="audio-playlist-track"></select></div><button id="audio-playlist-track-add" class="secondary" type="button">Ajouter à la playlist</button></div>
+      <p id="audio-playlist-order-help" class="muted">Réordonnez les pistes avec Monter et Descendre. Une piste peut apparaître plusieurs fois.</p>
+      <ol id="audio-playlist-order" class="audio-order" aria-describedby="audio-playlist-order-help"></ol>
+      <p id="audio-playlist-order-status" class="muted" role="status"></p>
+      <label class="audio-check"><input id="audio-playlist-loop" type="checkbox"> Boucler cette playlist par défaut</label>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer la playlist</button><button class="secondary audio-cancel" type="button">Annuler</button></div>
+    </form>
+  </dialog>
   <dialog id="ambiance-dialog" aria-labelledby="ambiance-heading">
     <form id="ambiance-form">
       <p class="eyebrow accent">Carnet d’ambiances · Privé MJ</p>

@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { test } from 'node:test';
 import { browserFixture } from './browser.mjs';
+import { waveResponse } from './audio-fixture.mjs';
 
 async function servePages(t) {
   const root = new URL('../../public/', import.meta.url);
@@ -237,4 +238,59 @@ test('GitHub Pages relie les Archives et le Studio et isole le récepteur joueur
   await page.getByRole('dialog', { name: 'Créer mon personnage' }).waitFor();
   assert.equal(new URL(page.url()).pathname, new URL('./studio/espace-joueur.html', base).pathname);
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+});
+
+test('GitHub Pages charge la régie sonore et autorise seulement sa lecture choisie', {
+  skip: !process.env.PUBLIC_BASE && process.env.STUDIO_PAGES_TEST !== '1', timeout: 45000,
+}, async t => {
+  const base = process.env.PUBLIC_BASE ? `${process.env.PUBLIC_BASE.replace(/\/$/, '')}/` : await servePages(t);
+  const fixture = await browserFixture(t);
+  const { page } = await fixture.open('pages-regie-audio', { viewport: { width: 390, height: 844 } });
+  const requests = [];
+  await page.route('https://audio.test/**', async route => {
+    requests.push(route.request());
+    await route.fulfill(waveResponse(route));
+  });
+  await page.goto(new URL('./studio/', base).href);
+  await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
+  await page.evaluate(() => {
+    window.blockedAudio = [];
+    document.addEventListener('securitypolicyviolation', event => {
+      if (event.violatedDirective === 'media-src') window.blockedAudio.push(event.blockedURI);
+    });
+  });
+  await page.locator('#campaign-name').fill('Régie Pages fictive');
+  await page.locator('#create-campaign-submit').click();
+  await page.locator('#nav-play').click();
+  await page.locator('#quick-audio').click();
+  await page.locator('#audio-library-tools summary').click();
+  await page.locator('#audio-track-add').click();
+  await page.locator('#audio-track-name').fill('Piste fictive Pages');
+  await page.locator('#audio-track-url').fill('https://audio.test/pages.wav');
+  await page.locator('#audio-track-credit').fill('Son synthétique du test');
+  await page.locator('#audio-track-form button[type=submit]').click();
+  await page.locator('#audio-track-dialog').waitFor({ state: 'hidden' });
+  await page.locator('#audio-playlist-add').click();
+  await page.locator('#audio-playlist-name').fill('Une rive sur Pages');
+  await page.locator('#audio-playlist-track-add').click();
+  await page.locator('#audio-playlist-form button[type=submit]').click();
+  await page.locator('#audio-playlist-dialog').waitFor({ state: 'hidden' });
+  await page.getByRole('button', { name: 'Charger la playlist Une rive sur Pages', exact: true }).click();
+  assert.equal(requests.length, 0);
+  await page.locator('#audio-play').click();
+  await page.waitForFunction(() => {
+    const audio = document.getElementById('audio-element');
+    return !audio.paused && audio.currentTime > 0;
+  });
+  assert.ok(requests.length > 0);
+  assert.equal(requests[0].headers().referer, undefined);
+  assert.deepEqual(await page.evaluate(() => window.blockedAudio), []);
+  await page.locator('#audio-global-stop').click();
+  assert.equal(await page.locator('#audio-element').evaluate(audio => audio.paused && !audio.getAttribute('src')), true);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await page.locator('#nav-backups').click();
+  const [file] = await Promise.all([page.waitForEvent('download'), page.locator('#export-backup').click()]);
+  const archive = JSON.parse(await readFile(await file.path(), 'utf8'));
+  assert.equal(archive.version, 18);
+  assert.equal(archive.payload.campaign.entreRivesMediaV18.playlists[0].trackIds.length, 1);
 });
