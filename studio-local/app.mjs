@@ -14,6 +14,7 @@ import {
   combatProfile, currentHitPoints, historicalCombatProfile, hitPointsAfterDamage, openStudioStore,
 } from './store.mjs';
 import { ADVENTURE_SCENE_LIMIT, CREATION_STATES, CREATION_TYPES, adventureMilestones } from './creations.mjs';
+import { createObjectGrantUI } from './objets-mj-ui.mjs';
 import { clearProjection, createPlayerProjection, createProjection, loadPresentationImage, openPlayerWindow, playerSheetPresentation, scenePresentation, showPresentation } from './projection.mjs';
 
 const $ = (id) => document.getElementById(id);
@@ -38,6 +39,8 @@ let selectedArchiveId;
 let miniMapSceneId;
 let view = 'home';
 let busy = false;
+const objectGrantUI = createObjectGrantUI({ getCampaign: () => campaign, canOpen: () => Boolean(campaign && !busy),
+  save: saveCommand, exportCharacter: openPJExport, refresh: refreshCampaign, status: message => setStatus(message, 'saved') });
 let draft;
 let createDraft;
 let quickDraft;
@@ -1179,6 +1182,7 @@ function previewResource(entry, remember = true) {
       add('Retirer l’image', () => removeLinkedImage(entry));
     } else if (entry.creation) {
       add('Modifier la création', () => openCreation(entry.kind, entry.record));
+      if (entry.kind === 'object') add('Attribuer une copie à un PJ', () => objectGrantUI.open(entry.id), !exchangeRules);
       add('Ajouter comme repère', () => editMarker(undefined, view === 'play' ? activeScene()?.id : null, undefined, entry));
       if (entry.kind === 'adventure') {
         const first = campaign.scenes.find(scene => scene[ADVENTURE_SCENE_KEY]?.adventureId === entry.id);

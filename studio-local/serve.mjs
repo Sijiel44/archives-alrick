@@ -31,6 +31,8 @@ export const studioAssets = new Map([
   ["/objets-joueur.mjs", ["objets-joueur.mjs", "text/javascript"]],
   ["/objets-joueur-ui.mjs", ["objets-joueur-ui.mjs", "text/javascript"]],
   ["/objets-joueur.css", ["objets-joueur.css", "text/css"]],
+  ["/objets-mj.mjs", ["objets-mj.mjs", "text/javascript"]],
+  ["/objets-mj-ui.mjs", ["objets-mj-ui.mjs", "text/javascript"]],
   ["/echanges-pj.mjs", ["echanges-pj.mjs", "text/javascript"]],
   ["/echanges-pj.css", ["echanges-pj.css", "text/css"]],
   ["/regie-participants.css", ["regie-participants.css", "text/css"]],

@@ -1248,6 +1248,23 @@
     </div>
   </dialog>
 
+  <dialog id="object-grant-dialog" aria-labelledby="object-grant-title">
+    <form id="object-grant-form">
+      <p class="eyebrow accent">Modèle privé du MJ · copie pour un PJ</p><h2 id="object-grant-title">Attribuer un objet</h2>
+      <p id="object-grant-model" class="field-help"></p>
+      <label for="object-grant-character">PJ destinataire</label><select id="object-grant-character" required></select>
+      <p id="object-grant-target" class="field-help" role="status"></p>
+      <label for="object-grant-name">Nom partagé de la copie</label><input id="object-grant-name" maxlength="90" required>
+      <div class="creation-fields"><div><label for="object-grant-quantity">Quantité</label><input id="object-grant-quantity" type="number" min="1" max="999" value="1" required></div><div><label for="object-grant-category">Catégorie</label><select id="object-grant-category"></select></div></div>
+      <label for="object-grant-description">Description partagée</label><textarea id="object-grant-description" rows="3" maxlength="600"></textarea>
+      <label for="object-grant-value">Valeur descriptive · facultatif</label><input id="object-grant-value" maxlength="100">
+      <label class="equipped-choice"><input id="object-grant-equipped" type="checkbox">Porté ou équipé · repère descriptif</label>
+      <p class="field-help">Le modèle et ses notes MJ restent dans la campagne. Cette attribution ne modifie aucun bonus, protection ou capacité. L’historique du PJ permet de rétablir sa version précédente.</p>
+      <label class="equipped-choice"><input id="object-grant-reviewed" type="checkbox" required>J’ai relu les champs de cette copie et j’accepte de les transmettre au joueur.</label>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button class="secondary reload-draft" type="button">Fermer et actualiser la campagne</button></div>
+      <div class="actions"><button id="object-grant-submit" type="submit" disabled>Attribuer et préparer l’échange</button><button id="object-grant-close" type="button" class="secondary">Fermer</button></div>
+    </form>
+  </dialog>
   <dialog id="marker-dialog" aria-labelledby="marker-heading">
     <form id="marker-form">
       <p class="eyebrow accent">Fresque · Privé MJ</p>

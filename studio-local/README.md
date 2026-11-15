@@ -35,6 +35,10 @@ Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent
 
 La sauvegarde personnelle v4 inclut les jets consignés, le grimoire de références et le rangement de la fiche. Les sauvegardes personnelles v1 à v3 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
 
+### Attribuer une copie d’objet depuis un modèle MJ
+
+Créer une fiche **Objet** dans **Créations**, puis ouvrir sa fiche dans la **Bibliothèque** et choisir **Attribuer une copie à un PJ**. Relire les champs destinés au joueur, choisir le PJ et confirmer la relecture. **Attribuer et préparer l’échange** enregistre une copie indépendante et ouvre l’échange à relire avant téléchargement. Le modèle, ses notes et ses identifiants privés restent dans la campagne. Les versions du PJ permettent le rétablissement ; les PV effectifs et les scènes sont conservés. Voir [le parcours d’attribution](OBJETS-MJ.md).
+
 ### Préparer mon équipement depuis le catalogue
 
 Dans **Inventaire → Objets du catalogue**, rechercher une référence publique, filtrer sa catégorie et consulter sa source épinglée. **Préparer une adaptation pour ma table** remplit le formulaire d’ajout ; modifier le nom, la quantité et la description avant **Ajouter l’objet**. Le remplacement d’une saisie en cours demande confirmation. Ces objets documentés appartiennent à l’univers : leur attribution et leurs effets se décident avec le MJ.

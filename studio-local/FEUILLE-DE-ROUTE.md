@@ -174,6 +174,16 @@ Les fiches deviennent consultables depuis les lignes d’inventaire et proposent
 
 `npm test` réussit. La suite complète du Studio passe 114 scénarios Chrome, Pages étant exécuté séparément. Après le renforcement de la conservation des champs historiques, treize contrôles Chrome couvrent les objets, l’inventaire et Pages ; quarante-huit contrôles ciblés Edge réussissent. Une session Edge interrompue par une mise à jour de l’environnement a été relancée entièrement. Le rendu final est inspecté à 1 440 et 390 px ; les recettes couvrent les largeurs de 320 à 1 440 px, le clavier, les sources non masquées par les commandes fixes, les références futures et les champs opaques. L’assemblage final et ses 64 270 liens et ressources internes sont vérifiés. La qualification humaine en partie et sur appareil tactile réel reste à réaliser. Ce lot est proposé après la PR 118, sans fusion ni déploiement.
 
+## Modèles d’objets MJ et publication · 14 novembre 2026
+
+Le lot part de `c647eed`, tête de la PR 119, sur `codex/objets-mj-publication`, avec un dossier propre. Il réutilise les créations Objet, les PJ M02, l’historique v17 et les échanges versionnés. Aucun format ni règle mécanique n’est ajouté. Le créateur demande maintenant explicitement la mise en ligne des lots actuels et du prochain lot : la publication regroupe les PR 113 à 119 et cette attribution, sans intégrer les 39 autres propositions ni changer les contenus canoniques.
+
+Depuis une création Objet de la Bibliothèque, **Attribuer une copie à un PJ** propose une copie à relire. L’attribution conserve le modèle, les champs opaques, les PV effectifs, les liens et les profils historiques des combats. Elle est transactionnelle, protégée contre les révisions périmées et réutilisable après acquittement perdu. La provenance et les identifiants du modèle restent privés. L’échange destiné au joueur s’ouvre après confirmation, avec téléchargement et adoption explicites. [Contrat et parcours](OBJETS-MJ.md)
+
+Le multimédia est cadré séparément dans [le plan de régie](MULTIMEDIA.md) : playlists audio natives côté MJ puis fonds vidéo muets dans le récepteur joueur. Les commandes de lecture, le mouvement réduit, les politiques CSP et les sauvegardes seront traités dans ces prochains lots ; aucun lecteur multimédia n’est annoncé livré ici.
+
+Recette de publication : `npm test` réussit ; la suite complète du Studio passe 121 scénarios Chrome et les 27 contrôles ciblés Edge réussissent, Pages compris. Le parcours Pages est aussi exécuté séparément dans Chrome, avec attribution et échange expurgé. L’assemblage final et ses 64 270 liens et ressources internes sont vérifiés. Les rendus sont inspectés à 1 440 et 390 px ; les tests couvrent les largeurs de 320 à 1 440 px. Les 39 autres PR ne recoupent pas le périmètre de publication. La CI et le workflow Pages doivent réussir avant le contrôle public ; la qualification en partie reste à réaliser.
+
 ## Relevé des dépendances du pilote initial
 
 Le `main` distant et le `main` de référence concordent. Les listes de fichiers des 39 PR ouvertes ont été comparées au répertoire `studio-local/` et aux modules historiques de progression, dés, Bestiaire M04 et combat M03 utilisés ici. Aucun fichier commun n’a été relevé dans ce périmètre. Les sources natives restent la référence des calculs. [PR ouvertes](https://github.com/Sijiel44/archives-alrick/pulls) · [Moteur M03 épinglé](https://github.com/Sijiel44/archives-alrick/blob/88f774f3d0d6d520d8d11443b72202b9caf4f94b/quartz/components/scripts/atelier5d6-combat-m03.ts)
@@ -343,6 +353,6 @@ Les suites passent 59 tests sur Chrome et 59 sur Edge, ainsi que la recette hist
 
 ## Prochains lots recommandés
 
-Le prochain lot recommandé est de **reprendre les modèles d’objets de table et leur attribution MJ** : préparer des modèles privés, consulter leurs sources, puis proposer une transmission expurgée et une attribution choisie. L’Atelier historique possède déjà les modèles et l’attribution réservée au MJ ; la nouvelle version devra préserver les sauvegardes existantes et les champs personnels des objets.
+Le prochain lot recommandé est la **régie sonore du MJ** : pistes par liens directs, playlists ordonnées, lecture/pause, suivant/précédent, boucle et volume. Les fonds vidéo muets viennent ensuite dans la fenêtre joueur, avec image de remplacement, arrêt et mouvement réduit. Le [plan multimédia](MULTIMEDIA.md) décrit les raccords et les recettes à réaliser.
 
 Faire aussi essayer l’aventure, le répertoire et le grimoire à une table pour relever les gestes qui demandent encore de quitter la scène ou la fiche. L’apprentissage validé des sorts et les décisions de progression liées aux PJ restent prévus. Le [comparatif en sept langues et les 18 pistes de développement](PISTES-DE-DEVELOPPEMENT.md) détaille les résultats à vérifier.
