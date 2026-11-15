@@ -350,3 +350,12 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Playwright est verrouillé pour les recettes ; CI et Pages vérifient le Studio et le lecteur sur le site assemblé puis public.
 # Aucun contenu canonique, fichier de campagne ou média utilisateur n’est ajouté aux assets publics.
 # Fusion puis déploiement Pages après les recettes et la CI ; vérifier les deux parcours Studio sur l’URL publique.
+
+# Fonds vidéo choisis — publication autorisée le 15 novembre 2026.
+# Demande du créateur : développer le prochain lot vidéo puis le publier une fois les contrôles réussis ; Fiabilité et séance réelle restent le lot suivant.
+# Portée : fond vidéo HTTPS par scène, aperçu explicite, diffusion muette dans la fenêtre joueur, pause/reprise, retrait et image de remplacement.
+# Mouvement réduit, nettoyage des sources, remplacement préparé puis validé et contrôle de révision avant affichage.
+# Sauvegarde privée v19 avec liens/réglages, sans fichier vidéo ni données utilisateur ajoutés au dépôt.
+# La projection n’emporte que le texte choisi, l’image et le lien vidéo approuvés ; crédits et notes restent privés.
+# Guide de contribution ChatGPT/GitHub et feuille de route actualisés ; aucune nouvelle fiche canonique ni import automatique de sources.
+# Recettes locales, CI puis workflow Pages et trois parcours Studio sur l’URL publique avant l’annonce de publication.

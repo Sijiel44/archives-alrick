@@ -16,6 +16,8 @@ import {
 import { ADVENTURE_SCENE_LIMIT, CREATION_STATES, CREATION_TYPES, adventureMilestones } from './creations.mjs';
 import { createObjectGrantUI } from './objets-mj-ui.mjs';
 import { createAudioUI } from './audio-ui.mjs';
+import { videoForScene } from './video.mjs';
+import { createSceneVideoUI } from './video-ui.mjs';
 import { clearProjection, createPlayerProjection, createProjection, loadPresentationImage, openPlayerWindow, playerSheetPresentation, scenePresentation, showPresentation } from './projection.mjs';
 
 const $ = (id) => document.getElementById(id);
@@ -44,6 +46,9 @@ const objectGrantUI = createObjectGrantUI({ getCampaign: () => campaign, canOpen
   save: saveCommand, exportCharacter: openPJExport, refresh: refreshCampaign, status: message => setStatus(message, 'saved') });
 const audioUI = createAudioUI({ getCampaign: () => campaign, canWrite: () => Boolean(campaign && !busy),
   save: saveCommand, refresh: refreshCampaign, open: () => { navigate('play'); $('audio-title').focus(); } });
+const sceneVideoUI = createSceneVideoUI({ getCampaign: () => campaign, canWrite: () => Boolean(campaign && !busy),
+  images: LIBRARY_ILLUSTRATIONS, save: saveCommand, refresh: refreshCampaign,
+  prepare: event => prepareSceneShare(event, undefined, { useVideo: true }) });
 let draft;
 let createDraft;
 let quickDraft;
@@ -1667,6 +1672,7 @@ function render() {
   if (campaign) renderPrepare();
   renderPlay();
   audioUI.render();
+  sceneVideoUI.render();
   renderInterludes();
   renderArchive();
 }
@@ -2964,7 +2970,8 @@ function displayPreview() {
   const interludes = preview.interludes ? ` · ${preview.interludes} interlude(s)` : '';
   const images = preview.images ? ` · ${preview.images} image(s) par lien` : '';
   const audio = preview.audioTracks || preview.audioPlaylists ? ` · ${preview.audioTracks} piste(s) audio · ${preview.audioPlaylists} playlist(s)` : '';
-  $('backup-summary').textContent = `Révision ${preview.revision} · ${preview.characters} PJ${playerSheets}${playerUpdates} · ${preview.creatures} créature(s) · ${preview.scenes} scène(s)${ambiances} · ${preview.sessions} séance(s) archivée(s)${interludes} · ${preview.markers} repère(s)${actions}${oppositions}${profiles}${creations}${images}${audio}`;
+  const videos = preview.videos ? ` · ${preview.videos} fond(s) vidéo` : '';
+  $('backup-summary').textContent = `Révision ${preview.revision} · ${preview.characters} PJ${playerSheets}${playerUpdates} · ${preview.creatures} créature(s) · ${preview.scenes} scène(s)${ambiances} · ${preview.sessions} séance(s) archivée(s)${interludes} · ${preview.markers} repère(s)${actions}${oppositions}${profiles}${creations}${images}${audio}${videos}`;
   $('backup-conflict').hidden = !preview.conflict;
 }
 
@@ -3604,6 +3611,10 @@ function stopPlayerWindow() {
 }
 
 function closePlayerPreview() {
+  if (playerShare) {
+    playerShare.videoPreviewToken = (playerShare.videoPreviewToken ?? 0) + 1;
+    playerShare.sendingPopup?.cancelPending();
+  }
   playerShare = undefined;
   clearProjection($('player-share-preview'));
   if ($('player-share-dialog').open) $('player-share-dialog').close();
@@ -3627,18 +3638,51 @@ function playerShareMessage(message = '') {
 
 function renderPlayerPreview() {
   if (!playerShare) return;
+  playerShare.videoPreviewToken = (playerShare.videoPreviewToken ?? 0) + 1;
+  playerShare.videoPending = false;
   const fields = new Set(new FormData($('player-share-form')).getAll('fields'));
   const choice = playerShare.imageChoice;
   const waiting = choice?.pending || choice?.error;
-  playerShare.presentation = !waiting && (fields.size || choice?.image)
+  const video = Boolean(playerShare.videoConfig && $('player-share-video-use').checked);
+  const fallback = !waiting && (fields.size || choice?.image)
     ? playerShare.build(fields, choice?.image) : undefined;
+  playerShare.presentation = video ? undefined : fallback;
   $('player-share-empty').hidden = Boolean(playerShare.presentation || waiting);
+  if (video && fallback) $('player-share-empty').hidden = true;
   $('player-share-image-status').hidden = !choice?.pending;
   $('open-player-window').disabled = $('show-player-here').disabled = !playerShare.presentation;
+  $('player-share-video-preview').disabled = !video || !choice?.image || Boolean(waiting);
+  $('player-share-video-status').textContent = video ? 'Image de remplacement uniquement. Cliquez sur Préparer la vidéo, puis relisez et confirmez la diffusion.' : '';
   playerShareMessage(choice?.error);
   const preview = $('player-share-preview');
-  if (playerShare.presentation) showPresentation(preview, playerShare.presentation);
+  if (fallback) showPresentation(preview, fallback);
   else clearProjection(preview);
+}
+
+async function prepareVideoPreview() {
+  const prepared = playerShare, choice = prepared?.imageChoice;
+  if (!prepared?.videoConfig || !$('player-share-video-use').checked || !choice?.image || choice.pending || choice.error || prepared.videoPending || busy) return;
+  const token = prepared.videoPreviewToken = (prepared.videoPreviewToken ?? 0) + 1;
+  prepared.presentation = undefined; prepared.videoPending = true;
+  $('open-player-window').disabled = $('show-player-here').disabled = $('player-share-video-preview').disabled = true;
+  $('player-share-video-status').textContent = 'Préparation de la vidéo muette… La fenêtre joueur conserve sa présentation.';
+  const fields = new Set(new FormData($('player-share-form')).getAll('fields'));
+  const { url, loop, dim } = prepared.videoConfig;
+  const presentation = prepared.build(fields, choice.image, { url, loop, dim });
+  let ready = false;
+  try {
+    const controller = showPresentation($('player-share-preview'), presentation);
+    ready = Boolean(controller && await controller.ready);
+  } catch { /* Le statut ci-dessous garde la diffusion à l’arrêt. */ }
+  if (playerShare !== prepared || prepared.videoPreviewToken !== token) return;
+  prepared.videoPending = false;
+  prepared.presentation = ready ? presentation : undefined;
+  $('player-share-video-preview').disabled = false;
+  $('open-player-window').disabled = !ready;
+  $('show-player-here').disabled = true;
+  $('player-share-video-status').textContent = ready
+    ? 'Fond prêt. Relisez puis confirmez la diffusion dans la fenêtre joueur. Avec le mouvement réduit, l’image attend une activation volontaire.'
+    : 'La vidéo n’a pas pu être préparée. Vérifiez le lien ou décochez le fond vidéo pour afficher l’image seule.';
 }
 
 async function choosePresentationImage() {
@@ -3688,12 +3732,16 @@ function configurePresentationImages(prepared, related, initialImage, initialIma
   select.disabled = $('player-share-image-field').hidden = !images.length;
 }
 
-function preparePresentation(kind, subject, build, { returnFocus, related = [], initialImage, initialImageId, ambianceFields } = {}) {
+function preparePresentation(kind, subject, build, { returnFocus, related = [], initialImage, initialImageId, ambianceFields, videoConfig, useVideo = false } = {}) {
   updatePlayerWindowControls();
   const fieldsets = { scene: $('scene-share-fields'), sheet: $('player-share-fields') };
   const fieldset = fieldsets[kind];
-  playerShare = { campaignId: campaign?.id, revision: campaign?.revision, kind, fieldset, build, returnFocus };
+  playerShare = { campaignId: campaign?.id, revision: campaign?.revision, kind, fieldset, build, returnFocus, videoConfig };
   $('player-share-form').reset();
+  $('player-share-video-field').hidden = $('player-share-video-field').disabled = !videoConfig;
+  $('player-share-video-use').checked = Boolean(videoConfig && useVideo);
+  $('player-share-video-source').textContent = videoConfig ? `Lien qui sera diffusé : ${videoConfig.url}` : '';
+  $('player-share-video-status').textContent = '';
   for (const option of Object.values(fieldsets)) option.hidden = option.disabled = option !== fieldset;
   if (kind === 'scene') {
     $('scene-share-title-label').textContent = ambianceFields ? 'Titre de l’ambiance' : 'Titre de la scène';
@@ -3742,15 +3790,17 @@ function sceneIllustrations(scene) {
     .map(libraryIllustration).filter(Boolean);
 }
 
-function prepareSceneShare(event, ambiance) {
+function prepareSceneShare(event, ambiance, { useVideo = false } = {}) {
   const scene = activeScene();
   if (!scene || view !== 'play' || busy) return;
-  const build = (fields, image) => scenePresentation(createProjection(ambiance ?? scene, {
+  const videoConfig = videoForScene(campaign, scene.id);
+  const build = (fields, image, video) => scenePresentation(createProjection(ambiance ?? scene, {
     title: fields.has('title'), description: fields.has('description'),
-  }), image);
+  }), image, 'Scène de jeu', video);
   preparePresentation('scene', ambiance ? `Ambiance · ${ambiance.name}` : `Scène · ${scene.title}`, build, {
     returnFocus: event.currentTarget, related: sceneIllustrations(scene),
-    initialImageId: ambiance?.imageId,
+    initialImageId: useVideo && videoConfig ? videoConfig.imageId : ambiance?.imageId,
+    videoConfig, useVideo,
     ambianceFields: ambiance && [ambiance.title && 'title', ambiance.description.trim() && 'description'].filter(Boolean),
   });
 }
@@ -3763,6 +3813,9 @@ async function presentPlayerContent(separate) {
   const prepared = playerShare;
   const presentation = prepared?.presentation;
   if (!presentation || busy) return;
+  const fallbackMessage = presentation.video
+    ? 'Autorisez la fenêtre joueur, ou décochez le fond vidéo pour afficher l’image seule sur cet écran.'
+    : 'Vous pouvez montrer la sélection sur cet écran.';
   const isScene = prepared.kind === 'scene';
   const existing = separate && playerWindow?.active() ? playerWindow : undefined;
   let popup;
@@ -3770,7 +3823,7 @@ async function presentPlayerContent(separate) {
     try { popup = existing ?? openPlayerWindow(); }
     catch { /* Le navigateur peut refuser l’accès à une nouvelle fenêtre. */ }
     if (!popup) {
-      playerShareMessage('La fenêtre a été bloquée par le navigateur. Vous pouvez montrer la sélection sur cet écran.');
+      playerShareMessage(`La fenêtre a été bloquée par le navigateur. ${fallbackMessage}`);
       return;
     }
     if (!existing) {
@@ -3781,11 +3834,12 @@ async function presentPlayerContent(separate) {
   busy = true;
   if (prepared.fieldset) prepared.fieldset.disabled = true;
   $('player-share-image').disabled = true;
+  $('player-share-video-field').disabled = true;
   $('open-player-window').disabled = $('show-player-here').disabled = true;
   let shown = false;
   try {
     if (popup && !await popup.ready) {
-      if (playerShare === prepared) playerShareMessage('La fenêtre joueur ne répond pas. Vous pouvez montrer la sélection sur cet écran.');
+      if (playerShare === prepared) playerShareMessage(`La fenêtre joueur ne répond pas. ${fallbackMessage}`);
       return;
     }
     const current = prepared.campaignId ? await store.get(prepared.campaignId) : undefined;
@@ -3797,9 +3851,21 @@ async function presentPlayerContent(separate) {
     }
     if (!popup && document.hidden) return;
     if (popup) {
-      shown = popup === playerWindow && popup.show(presentation);
+      prepared.sendingPopup = popup;
+      shown = popup === playerWindow && await popup.show(presentation, { beforeCommit: async () => {
+        const latest = prepared.campaignId ? await store.get(prepared.campaignId) : undefined;
+        if (playerShare !== prepared || popup !== playerWindow || !popup.active()) return false;
+        if (latest?.revision !== prepared.revision) {
+          stopPlayerWindow();
+          playerShareMessage('La campagne a changé pendant la préparation. Actualisez avant de présenter la sélection.');
+          return false;
+        }
+        return true;
+      } });
+      prepared.sendingPopup = undefined;
+      if (playerShare !== prepared) return;
       if (!shown) {
-        playerShareMessage('La fenêtre joueur a été retirée ou fermée avant l’affichage.');
+        if (!$('player-share-message').textContent) playerShareMessage('Le remplacement n’a pas abouti. La présentation précédente est conservée si la fenêtre est encore ouverte. Vérifiez la vidéo ou réessayez.');
         return;
       }
       playerWindowKind = prepared.kind;
@@ -3826,15 +3892,21 @@ async function presentPlayerContent(separate) {
     if (playerShare === prepared) {
       if (prepared.fieldset) prepared.fieldset.disabled = false;
       $('player-share-image').disabled = !prepared.illustrations.size;
-      $('open-player-window').disabled = $('show-player-here').disabled = false;
+      $('player-share-video-field').disabled = !prepared.videoConfig;
+      $('open-player-window').disabled = !prepared.presentation;
+      $('show-player-here').disabled = !prepared.presentation || Boolean(prepared.presentation.video);
     }
   }
 }
 
 $('player-share-form').addEventListener('change', event => {
-  if (event.target.id === 'player-share-image') choosePresentationImage();
+  if (event.target.id === 'player-share-video-use' && event.target.checked && !$('player-share-image').value && playerShare?.videoConfig) {
+    $('player-share-image').value = playerShare.videoConfig.imageId;
+    choosePresentationImage();
+  } else if (event.target.id === 'player-share-image') choosePresentationImage();
   else renderPlayerPreview();
 });
+$('player-share-video-preview').addEventListener('click', prepareVideoPreview);
 $('open-player-window').addEventListener('click', () => presentPlayerContent(true));
 $('show-player-here').addEventListener('click', () => presentPlayerContent(false));
 $('cancel-player-share').addEventListener('click', closePlayerPreview);

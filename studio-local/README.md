@@ -41,6 +41,16 @@ Dans **Jouer → Régie sonore**, ouvrir la **Bibliothèque de pistes** et ajout
 
 Une playlist associée à une scène est une suggestion : changer de scène conserve le son courant. Changer de campagne arrête le lecteur. Les sauvegardes de campagne v18 conservent les liens, playlists et associations ; les fichiers audio restent chez leur hébergeur. Le son sort uniquement de l’appareil du MJ. Voir [le guide et les limites](REGIE-SONORE.md).
 
+### Fonds vidéo choisis
+
+Dans **Jouer → Fond vidéo**, configurer un lien HTTPS vers un fichier MP4 ou WebM, une image de remplacement, la boucle et l’assombrissement. **Préparer ce fond** ouvre la régie de projection ; choisir les textes à montrer puis **Préparer la vidéo**. Après relecture, ouvrir ou remplacer la présentation dans la fenêtre joueur. L’enregistrement du réglage ne charge ni ne diffuse le fichier. La vidéo reste muette, avec pause et retrait du fond. Le mouvement réduit affiche d’abord l’image et attend une activation volontaire.
+
+Les sauvegardes v19 conservent ces réglages privés et les liens ; les vidéos restent chez leur hébergeur. Une erreur de remplacement conserve la présentation précédente. Une campagne modifiée pendant le chargement provoque le retrait selon les contrôles de confidentialité existants. [Guide et recette vidéo](FONDS-VIDEO.md)
+
+### Compléter l’univers avec ChatGPT
+
+La page **Univers** relie le [guide de contribution](ENRICHIR-UNIVERS.md) et un prompt à copier : sources, recherche des doublons, fiches reliées, brouillons et validation éditoriale. Le catalogue du Studio est un extrait versionné des Archives ; son actualisation et l’édition structurée de l’univers restent des lots à développer. Les créations privées de campagne conservent leur propre usage de table.
+
 ### Attribuer une copie d’objet depuis un modèle MJ
 
 Créer une fiche **Objet** dans **Créations**, puis ouvrir sa fiche dans la **Bibliothèque** et choisir **Attribuer une copie à un PJ**. Relire les champs destinés au joueur, choisir le PJ et confirmer la relecture. **Attribuer et préparer l’échange** enregistre une copie indépendante et ouvre l’échange à relire avant téléchargement. Le modèle, ses notes et ses identifiants privés restent dans la campagne. Les versions du PJ permettent le rétablissement ; les PV effectifs et les scènes sont conservés. Voir [le parcours d’attribution](OBJETS-MJ.md).

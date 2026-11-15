@@ -4,6 +4,7 @@ import { createServer } from 'node:http';
 import { test } from 'node:test';
 import { browserFixture } from './browser.mjs';
 import { waveResponse } from './audio-fixture.mjs';
+import { videoResponse } from './video-fixture.mjs';
 
 async function servePages(t) {
   const root = new URL('../../public/', import.meta.url);
@@ -238,6 +239,73 @@ test('GitHub Pages relie les Archives et le Studio et isole le récepteur joueur
   await page.getByRole('dialog', { name: 'Créer mon personnage' }).waitFor();
   assert.equal(new URL(page.url()).pathname, new URL('./studio/espace-joueur.html', base).pathname);
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+});
+
+test('GitHub Pages prépare et diffuse un fond vidéo dans le récepteur opaque', {
+  skip: !process.env.PUBLIC_BASE && process.env.STUDIO_PAGES_TEST !== '1', timeout: 45000,
+}, async t => {
+  const base = process.env.PUBLIC_BASE ? `${process.env.PUBLIC_BASE.replace(/\/$/, '')}/` : await servePages(t);
+  const fixture = await browserFixture(t);
+  const { page, context } = await fixture.open('pages-regie-video', { viewport: { width: 390, height: 844 }, reducedMotion: 'no-preference' });
+  const requests = [];
+  await context.route('https://video.test/**', async route => {
+    requests.push(route.request()); await route.fulfill(videoResponse(route));
+  });
+  await page.goto(new URL('./studio/', base).href);
+  await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
+  await page.locator('#campaign-name').fill('Table vidéo Pages fictive');
+  await page.locator('#create-campaign-submit').click();
+  await page.locator('#add-scene').click();
+  await page.locator('#scene-title').fill('La brume du gué');
+  await page.locator('#scene-description').fill('Une lumière paraît sur la rive.');
+  await page.locator('#scene-private-notes').fill('CANARI_VIDEO_PAGES');
+  await page.locator('#scene-form button[type=submit]').click();
+  await page.locator('#scene-dialog').waitFor({ state: 'hidden' });
+  await page.locator('#nav-play').click();
+  await page.locator('#scene-video-edit').click();
+  await page.locator('#scene-video-url').fill('https://video.test/pages.webm');
+  await page.locator('#scene-video-image').selectOption('image-gardien-des-salines');
+  await page.locator('#scene-video-credit').fill('CANARI_CREDIT_VIDEO_PAGES');
+  await page.locator('#scene-video-form button[type=submit]').click();
+  await page.locator('#scene-video-dialog').waitFor({ state: 'hidden' });
+  await page.locator('#scene-video-prepare').click();
+  assert.equal(requests.length, 0);
+  await page.locator('#scene-share-fields').getByRole('checkbox', { name: 'Texte de la scène' }).check();
+  await page.locator('#player-share-video-preview:not(:disabled)').waitFor();
+  await page.locator('#player-share-video-preview').click();
+  await page.locator('#open-player-window:not(:disabled)').waitFor();
+  const [player] = await Promise.all([context.waitForEvent('page'), page.locator('#open-player-window').click()]);
+  const receiver = player.frameLocator('iframe[title="Présentation joueur"]');
+  const media = receiver.locator('#player-sheet > .video-scene:not([hidden]) .video-background');
+  await media.evaluate(async video => {
+    if (!video.paused && video.currentTime > 0) return;
+    await new Promise((resolve, reject) => {
+      const done = () => { if (!video.paused && video.currentTime > 0) { clearTimeout(timer); video.removeEventListener('timeupdate', done); resolve(); } };
+      const timer = setTimeout(() => { video.removeEventListener('timeupdate', done); reject(new Error('La vidéo publique ne démarre pas.')); }, 8000);
+      video.addEventListener('timeupdate', done); done();
+    });
+  });
+  assert.equal(await media.evaluate(video => !video.paused && video.currentTime > 0 && video.muted && video.volume === 0), true);
+  assert.equal(await receiver.locator('body').evaluate(() => self.origin), 'null');
+  assert.equal(await receiver.locator('body').evaluate(() => { try { indexedDB.open('test-video-pages'); return false; } catch (error) { return error.name === 'SecurityError'; } }), true);
+  const frame = receiver.locator('#player-sheet iframe');
+  assert.equal(await frame.getAttribute('sandbox'), '');
+  const html = await frame.getAttribute('srcdoc');
+  assert.match(html, /Une lumière paraît sur la rive/);
+  assert.doesNotMatch(html, /CANARI_|Table vidéo Pages|entreRivesVideo|<script|video\.test/);
+  assert.doesNotMatch(await receiver.locator('body').textContent(), /CANARI_/);
+  assert.ok(requests.length >= 2, 'Aperçu MJ puis récepteur chargent leur média après le choix explicite.');
+  assert.equal(requests.at(-1).headers().referer, undefined);
+  await receiver.locator('.video-toggle').click();
+  assert.equal(await media.evaluate(video => video.paused), true);
+  await receiver.locator('.video-withdraw').click();
+  assert.equal(await media.evaluate(video => video.paused && !video.getAttribute('src')), true);
+  const closed = player.waitForEvent('close');
+  await page.locator('#stop-player-window').click(); await closed;
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await page.locator('#nav-backups').click();
+  const [backup] = await Promise.all([page.waitForEvent('download'), page.locator('#export-backup').click()]);
+  assert.equal(JSON.parse(await readFile(await backup.path(), 'utf8')).version, 19);
 });
 
 test('GitHub Pages charge la régie sonore et autorise seulement sa lecture choisie', {
