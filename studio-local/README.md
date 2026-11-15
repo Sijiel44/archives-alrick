@@ -45,6 +45,14 @@ La sauvegarde personnelle v4 inclut les jets consignés, le grimoire de référe
 
 La sauvegarde personnelle v4 conserve cet état d’archive. Restaurer ce fichier ajoute une copie qui garde son état, annoncé dans l’aperçu. Un échange joueur/MJ exclut le rangement privé ; son adoption crée une fiche en activité. Les archives ne sont pas proposées comme copies à comparer avant leur remise en activité. Voir le [contrat de rangement](RANGEMENT-JOUEUR.md).
 
+### Emporter plusieurs personnages
+
+**Sauvegarder mon carnet**, dans **Mes personnages**, propose les fiches enregistrées, archives comprises. Cocher les personnages à emporter, rechercher un nom ou un métier et filtrer les archives si nécessaire. **Cocher les résultats** inclut tous les résultats, même ceux hors écran ; les choix restent conservés lors d’un changement de filtre. Le carnet accepte jusqu’à 100 fiches et 20 Mio. Enregistrer les notes en cours avant l’export si elles doivent être incluses.
+
+Sur un autre appareil, **Restaurer un carnet** vérifie le fichier puis annonce les identités déjà présentes et les contenus identiques. Ces derniers sont décochés par défaut ; leur ajout volontaire reste possible. La confirmation ajoute les copies cochées ensemble et conserve toutes les fiches locales. Une interruption ne laisse aucun import partiel. Un changement depuis un autre onglet impose **Actualiser l’aperçu**.
+
+Le fichier contient les notes, portraits, objets, jets, grimoires et états d’archive. Il reste personnel ; transmettre une fiche au MJ via l’échange individuel. Les sauvegardes individuelles v1 à v4 et le brouillon de création conservent leurs parcours. Le brouillon est transporté séparément. Voir le [contrat du carnet](CARNET-JOUEUR.md).
+
 ### Reprendre une création commencée
 
 Le créateur garde automatiquement les choix modifiés dans un **brouillon local**, même si le budget ou le parcours reste incomplet. Le portrait préparé, les champs vides, les domaines personnalisés et les rubriques dépliées suivent ce brouillon. Attendre **Brouillon enregistré dans ce navigateur** ou utiliser **Garder mon brouillon** avant de quitter. **Fermer** et Échap attendent l’enregistrement. Une fermeture forcée avant la confirmation peut perdre les dernières saisies.

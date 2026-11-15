@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./grimoire-joueur.css">
   <link rel="stylesheet" href="./creation-brouillon.css">
   <link rel="stylesheet" href="./rangement-joueur.css">
+  <link rel="stylesheet" href="./carnet-joueur.css">
   <script type="module" src="./espace-joueur.mjs"></script>
 </head>
 <body class="player-space">
@@ -50,6 +51,11 @@
         <button id="creation-draft-resume" class="secondary" type="button">Reprendre mon brouillon</button>
       </div>
       <button id="creation-draft-import-open" class="text-button" type="button" disabled>Importer un brouillon</button>
+      <div class="notebook-shelf">
+        <p class="eyebrow accent">D’un appareil à l’autre</p>
+        <div class="actions"><button id="player-notebook-export" class="secondary" type="button" disabled>Sauvegarder mon carnet</button><button id="player-notebook-import" class="text-button" type="button" disabled>Restaurer un carnet</button></div>
+        <p class="field-help">Plusieurs personnages dans un fichier personnel, archives comprises.</p>
+      </div>
     </aside>
     <section id="player-sheet" class="panel player-panel" aria-labelledby="player-name" hidden>
       <div id="player-filing-strip" class="player-filing-strip">
@@ -178,6 +184,23 @@
     </section>
     </div>
   </main>
+  <dialog id="notebook-dialog" aria-labelledby="notebook-title" aria-describedby="notebook-privacy">
+    <header class="player-directory-heading"><div><p class="eyebrow accent">Mon carnet d’aventures</p><h2 id="notebook-title" tabindex="-1">Emporter mes personnages</h2></div><button id="notebook-close" class="secondary" type="button">Fermer</button></header>
+    <div class="player-directory-body">
+      <p id="notebook-privacy" class="notebook-intro">Fichier personnel · notes privées et portraits inclus.</p>
+      <details class="notebook-guide"><summary>Ce qui voyage dans le carnet</summary><p class="field-help">Les objets, jets, grimoires et états d’archive suivent les fiches. Pour transmettre une fiche au MJ, utilise l’échange depuis « Sauvegarde ». Le brouillon de création se transporte séparément.</p><p class="field-help">Jusqu’à 100 fiches et 20 Mio par carnet. La restauration ajoute les copies cochées ensemble et conserve les fiches existantes.</p></details>
+      <div id="notebook-file-group" hidden><label for="notebook-file">Carnet de personnages · JSON</label><input id="notebook-file" type="file" accept=".json,application/json"></div>
+      <p id="notebook-message" role="status"></p>
+      <div id="notebook-preview" hidden>
+        <div class="notebook-tools"><div><label for="notebook-query">Nom, métier ou niveau</label><input id="notebook-query" type="search" placeholder="Une fiche à emporter…"></div><div><label for="notebook-state">Afficher</label><select id="notebook-state"><option value="all">Toutes les fiches</option><option value="active">En activité</option><option value="archived">Archives</option></select></div></div>
+        <div class="actions"><button id="notebook-select-results" class="secondary" type="button">Cocher les résultats</button><button id="notebook-clear" class="text-button" type="button">Tout décocher</button></div>
+        <p id="notebook-count" class="field-help" role="status"></p>
+        <ul id="notebook-list" class="player-directory-list"></ul>
+        <button id="notebook-more" class="secondary" type="button" hidden>Afficher davantage de fiches</button>
+      </div>
+    </div>
+    <footer class="notebook-footer"><div class="actions"><button id="notebook-confirm" type="button" disabled>Télécharger les fiches</button><button id="notebook-refresh" class="secondary" type="button">Actualiser l’aperçu</button></div></footer>
+  </dialog>
   <dialog id="player-directory-dialog" aria-labelledby="player-directory-title">
     <header class="player-directory-heading"><div><p class="eyebrow accent">Mon carnet d’aventures</p><h2 id="player-directory-title">Retrouver un personnage</h2></div><button id="player-directory-close" class="secondary" type="button">Fermer</button></header>
     <div class="player-directory-body">

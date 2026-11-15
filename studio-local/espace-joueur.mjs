@@ -10,6 +10,7 @@ import { PLAYER_GRIMOIRE_LIMIT, PLAYER_MAGIC_DOMAINS, PLAYER_MAGIC_REFERENCES, P
 import { creationDraftController } from './creation-brouillon.mjs';
 import { checkCreationDraft } from './brouillons-pj.mjs';
 import { createPlayerDirectory, isPlayerArchived } from './rangement-joueur.mjs';
+import { createPlayerNotebookUI } from './carnet-joueur-ui.mjs';
 
 const $ = id => document.getElementById(id);
 const stats = Object.entries(PLAY_STATS);
@@ -47,6 +48,7 @@ let creationDraft;
 let creationId;
 let creating = false;
 let playerDirectory;
+let playerNotebookUI;
 const preferredPlayerKey = 'entre-rives:pj-ouvert';
 
 function node(tag, content) {
@@ -337,6 +339,7 @@ function render(record) {
   const previous = active;
   const changed = active?.id !== record?.id;
   active = record;
+  playerNotebookUI?.update();
   $('player-library').hidden = records.length === 0;
   $('player-selection').replaceChildren(...records.filter(entry => !isPlayerArchived(entry) || entry.id === active?.id).map(entry => {
     const revision = entry.sheet[EXCHANGE_KEY]?.revision;
@@ -1096,6 +1099,17 @@ try {
       notes.value = record.notes;
       render(record);
       return true;
+    },
+  });
+  playerNotebookUI = createPlayerNotebookUI({ store, getRecords: () => records,
+    canOpen: () => !pending && !creating, beforeImport: leaveNotes,
+    setBusy: value => { pending = value; updatePlayerAccess(); }, download,
+    imported: result => {
+      records = result.records;
+      const record = result.created.find(record => !isPlayerArchived(record)) ?? result.created[0];
+      notes.value = record.notes;
+      render(record);
+      $('player-save-status').textContent = `${result.created.length} copie${result.created.length > 1 ? 's' : ''} ajoutée${result.created.length > 1 ? 's' : ''} au carnet`;
     },
   });
   try {

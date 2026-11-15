@@ -8,7 +8,22 @@ export { playerExchange } from './echanges-pj.mjs';
 
 const FORMAT = 'chroniques-entre-rives.joueur';
 export const PLAYER_ROLL_LIMIT = 50;
+export const PLAYER_NOTEBOOK_LIMIT = 100;
+export const MAX_PLAYER_NOTEBOOK_BYTES = 20 * 1024 * 1024;
 const recordDefaults = record => ({ ...record, rolls: record.rolls ?? [], grimoire: record.grimoire ?? [], filing: record.filing ?? { archivedAt: null } });
+
+export const playerPayload = ({ sheet, notes, rolls = [], grimoire = [], filing = { archivedAt: null } }) => ({ sheet, notes, rolls, grimoire, filing });
+export function checkPlayerPayload(payload) {
+  checkJSON(payload);
+  if (!payload || Object.keys(payload).sort().join(',') !== 'filing,grimoire,notes,rolls,sheet' ||
+      typeof payload.notes !== 'string' || payload.notes.length > 8000 ||
+      new TextEncoder().encode(JSON.stringify(payload)).length > MAX_PJ_FILE_BYTES - 512) throw new Error('Une fiche du carnet est incomplète ou dépasse la taille prise en charge.');
+  checkPlayerSheet(payload.sheet);
+  checkRolls(payload.rolls);
+  checkPlayerGrimoire(payload.grimoire);
+  checkPlayerFiling(payload.filing);
+  return payload;
+}
 
 export function checkPlayerSheet(sheet) {
   if (!validPJSource(sheet)) throw new Error('Cette fiche PJ M02 est incomplète.');
@@ -32,6 +47,7 @@ export async function readPlayerFile(text) {
   if (new TextEncoder().encode(text).length > MAX_PJ_FILE_BYTES) throw new Error('Le fichier dépasse 2 Mio.');
   const archive = JSON.parse(text);
   checkJSON(archive);
+  if (archive?.format === 'chroniques-entre-rives.carnet-joueur') throw new Error('Pour ce fichier, utilise « Restaurer un carnet » dans Mes personnages.');
   if (archive?.format === EXCHANGE_FORMAT) {
     const exchange = await readExchange(text);
     return { format: 'Échange joueur / MJ v1', created: exchange.created, exchange,
@@ -57,12 +73,8 @@ export async function readPlayerFile(text) {
   return { format: `Sauvegarde joueur v${archive.version}`, created: archive.created, records: [{ ...payload, rolls, grimoire, filing }] };
 }
 
-export async function playerBackup({ sheet, notes, rolls = [], grimoire = [], filing = { archivedAt: null } }) {
-  checkJSON(grimoire);
-  checkPlayerGrimoire(grimoire);
-  checkRolls(rolls);
-  checkPlayerFiling(filing);
-  const payload = { sheet, notes, rolls, grimoire, filing };
+export async function playerBackup(record) {
+  const payload = checkPlayerPayload(playerPayload(record));
   return { format: FORMAT, version: 4, created: new Date().toISOString(), checksum: await sha256(JSON.stringify(payload)), payload };
 }
 
@@ -100,6 +112,30 @@ export async function openPlayerStore() {
   }
 
   return {
+    importNotebook: ({ entries, expected }) => {
+      const copies = structuredClone(entries);
+      const snapshot = structuredClone(expected);
+      if (!Array.isArray(copies) || !copies.length || copies.length > PLAYER_NOTEBOOK_LIMIT ||
+          new TextEncoder().encode(JSON.stringify(copies)).length > MAX_PLAYER_NOTEBOOK_BYTES ||
+          !Array.isArray(snapshot) || new Set(snapshot.map(item => item?.id)).size !== snapshot.length ||
+          snapshot.some(item => !item || typeof item.id !== 'string' || !item.id || !Number.isSafeInteger(item.revision) || item.revision < 1)) {
+        throw new Error('La sélection ou l’aperçu du carnet est invalide.');
+      }
+      for (const payload of copies) checkPlayerPayload(payload);
+      const created = copies.map(payload => ({ ...payload, id: crypto.randomUUID(), revision: 1, updatedAt: Date.now() }));
+      return transact('readwrite', (table, done, abort) => {
+        const request = table.getAll();
+        request.onsuccess = () => {
+          const current = request.result;
+          const revisions = new Map(snapshot.map(item => [item.id, item.revision]));
+          if (current.length !== snapshot.length || current.some(item => revisions.get(item.id) !== item.revision)) {
+            return abort('Le carnet a changé dans un autre onglet. Actualise l’aperçu avant de choisir les copies à ajouter.');
+          }
+          for (const record of created) table.add(record);
+          done({ created: created.map(recordDefaults), records: [...created, ...current].map(recordDefaults).sort((a, b) => b.updatedAt - a.updatedAt) });
+        };
+      });
+    },
     setArchived: ({ id, revision, archived }) => {
       if (typeof id !== 'string' || !id || !Number.isSafeInteger(revision) || revision < 1 || typeof archived !== 'boolean') throw new Error('Choix de rangement invalide.');
       return transact('readwrite', (table, done, abort) => {
