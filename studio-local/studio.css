@@ -436,6 +436,8 @@ dialog::backdrop { background: #0a0e12b8; }
 .player-share-preview > * + * { margin-top: .4rem; }
 #player-share-preview:empty { display: none; }
 #player-share-preview iframe { display: block; width: 100%; height: clamp(13rem, 34vh, 24rem); border: 1px solid var(--line); border-radius: .35rem; }
+#player-share-dialog { scroll-padding-bottom: 10rem; }
+#player-share-form > .actions { position: sticky; bottom: -1rem; z-index: 3; padding-block: .8rem; border-top: 1px solid var(--line); background: var(--surface); }
 
 @media (max-width: 62rem) {
   .shell { grid-template-columns: 12rem minmax(0, 1fr); }

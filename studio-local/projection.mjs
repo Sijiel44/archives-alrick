@@ -1,4 +1,7 @@
 import { PLAY_STATS } from "./store.mjs";
+import './video-player.js';
+
+const videoPreviews = new WeakMap();
 
 export function createProjection(scene, fields) {
   const projection = {};
@@ -52,12 +55,28 @@ function projectionDocument(contents, css = "", withImage = false) {
     </style></head><body><main>${contents}</main></body></html>`;
 }
 
-export function showPresentation(container, { label, html }) {
+export function showPresentation(container, { label, html, video }) {
+  clearProjection(container);
   const frame = container.ownerDocument.createElement("iframe");
   frame.title = label;
   frame.setAttribute("sandbox", "");
   frame.srcdoc = html;
-  container.replaceChildren(frame);
+  if (video) {
+    const controller = globalThis.EntreRivesVideo.create(container, video);
+    let finishFrame, frameTimer;
+    const frameReady = new Promise(resolve => {
+      finishFrame = result => { clearTimeout(frameTimer); resolve(result); };
+      frame.addEventListener('load', () => finishFrame(true), { once: true });
+      frameTimer = setTimeout(() => finishFrame(false), 10000);
+    });
+    frame.className = 'video-content-frame';
+    controller.content.append(frame);
+    const preview = { ...controller, ready: controller.ready.then(ok => ok ? frameReady : false),
+      dispose() { finishFrame(false); controller.dispose(); } };
+    videoPreviews.set(container, preview);
+    return preview;
+  }
+  container.append(frame);
 }
 
 export async function loadPresentationImage(art) {
@@ -81,12 +100,17 @@ export async function loadPresentationImage(art) {
   return { src, alt: art.alt, map: Boolean(art.map) };
 }
 
-export function scenePresentation(projection, image, label = "Scène de jeu") {
+export function scenePresentation(projection, image, label = "Scène de jeu", videoConfig) {
   const title = typeof projection.title === "string" ? `<h1>${escapeText(projection.title)}</h1>` : "";
   const description = typeof projection.description === "string" ? `<p>${escapeText(projection.description)}</p>` : "";
-  const illustration = image && /^data:image\/png;base64,[A-Za-z0-9+/]+={0,2}$/.test(image.src)
+  let video;
+  if (videoConfig) {
+    video = { url: videoConfig.url, loop: videoConfig.loop, dim: videoConfig.dim, poster: { src: image?.src, alt: image?.alt } };
+    if (!globalThis.EntreRivesVideo.valid(video)) throw new Error('Préparez une vidéo HTTPS et son image de remplacement avant de la présenter.');
+  }
+  const illustration = !video && image && /^data:image\/png;base64,[A-Za-z0-9+/]+={0,2}$/.test(image.src)
     ? `<figure${image.map ? ' class="map"' : ''}><img src="${image.src}" alt="${escapeText(image.alt).replaceAll('"', '&quot;')}"></figure>` : "";
-  return { label, html: projectionDocument(title + description + illustration, `
+  const presentation = { label, html: projectionDocument(title + description + illustration, `
     body { min-height: 100vh; box-sizing: border-box; padding: clamp(1rem, 5vw, 4rem);
       background: radial-gradient(ellipse at top, #27343b, #171d24 45rem) no-repeat; }
     main { max-width: 50rem; margin-inline: auto; overflow-wrap: anywhere; }
@@ -97,7 +121,13 @@ export function scenePresentation(projection, image, label = "Scène de jeu") {
     figure img { display: block; width: auto; max-width: 100%; max-height: 78vh; margin-inline: auto; border-radius: .45rem; }
     figure.map img { border-radius: 0; }
     main:has(figure.map) { max-width: 78rem; }
+    ${video ? `:root, body { background: transparent; }
+    body { padding-bottom: 11rem; }
+    main { padding: clamp(.85rem, 3vw, 1.5rem); border-radius: .5rem; background: #101820c9; }
+    main:empty { display: none; }` : ''}
   `, Boolean(illustration)) };
+  if (video) presentation.video = video;
+  return presentation;
 }
 
 function playerSheetDocument(projection) {
@@ -147,6 +177,8 @@ export function openPlayerWindow() {
   let port;
   let retired = false;
   let finish;
+  let pending;
+  let lastError;
   const ready = new Promise(resolve => { finish = resolve; });
   const active = () => !retired && !popup.closed;
   const receive = event => {
@@ -155,7 +187,22 @@ export function openPlayerWindow() {
     if (hosted) popup.opener = null;
     port = event.ports[0];
     port.onmessage = ({ data }) => {
-      if (data?.type === "retired") retired = true;
+      if (data?.type === "retired") { retired = true; finishPending(false); }
+      else if (data?.type === 'prepared' && data.requestId === pending?.requestId && !pending.checking) {
+        const attempt = pending; attempt.checking = true;
+        Promise.resolve().then(attempt.beforeCommit).then(allowed => {
+          if (pending !== attempt || !active()) return;
+          if (allowed === true) port.postMessage({ type: 'commit-presentation', requestId: attempt.requestId });
+          else { lastError = 'La présentation a été annulée avant affichage. La présentation précédente est conservée.'; cancelPending(); }
+        }).catch(() => {
+          if (pending !== attempt) return;
+          lastError = 'La vérification de la présentation a échoué. La présentation précédente est conservée.'; cancelPending();
+        });
+      }
+      else if (data?.type === 'presented' && data.requestId === pending?.requestId) {
+        lastError = data.ok ? undefined : 'La vidéo ou la présentation n’a pas pu être chargée. La présentation précédente est conservée.';
+        finishPending(data.ok === true);
+      }
     };
     settle(true);
   };
@@ -166,15 +213,33 @@ export function openPlayerWindow() {
     finish(connected);
   }
   window.addEventListener("message", receive);
+  function finishPending(result) {
+    if (!pending) return;
+    clearTimeout(pending.timer);
+    const resolve = pending.resolve; pending = undefined; resolve(result);
+  }
+  function cancelPending() {
+    if (pending) port?.postMessage({ type: 'cancel-presentation', requestId: pending.requestId });
+    finishPending(false);
+  }
   return {
-    active, ready,
-    show({ label, html }) {
-      if (!port || !active()) return false;
-      port.postMessage({ type: "presentation", label, html });
-      return true;
+    active, ready, cancelPending,
+    get error() { return lastError; },
+    show({ label, html, video }, { beforeCommit = () => true } = {}) {
+      if (!port || !active()) return Promise.resolve(false);
+      cancelPending(); lastError = undefined;
+      const requestId = crypto.randomUUID();
+      return new Promise(resolve => {
+        pending = { requestId, resolve, beforeCommit, timer: setTimeout(() => {
+          lastError = 'Le chargement de la présentation a expiré. La présentation précédente est conservée.';
+          cancelPending();
+        }, 15000) };
+        port.postMessage({ type: "presentation", requestId, label, html, ...(video ? { video } : {}) });
+      });
     },
     close() {
       settle(false);
+      cancelPending();
       port?.postMessage({ type: "retire" });
       port?.close();
       if (active()) popup.close();
@@ -184,5 +249,7 @@ export function openPlayerWindow() {
 }
 
 export function clearProjection(container) {
+  videoPreviews.get(container)?.dispose();
+  videoPreviews.delete(container);
   container.replaceChildren();
 }

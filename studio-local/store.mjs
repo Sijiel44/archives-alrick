@@ -1,5 +1,6 @@
 import { ADVENTURE_SCENE_LIMIT, CREATION_STATES, CREATION_TYPES } from './creations.mjs';
 import { AUDIO_KEY, audioLibrary, validAudioTrack, validAudioPlaylist, validateAudioLibrary } from './audio.mjs';
+import { VIDEO_KEY, validSceneVideo, validateSceneVideos } from './video.mjs';
 
 const DATABASE = 'entre-rives.studio-local.v1';
 const FORMAT = 'chroniques-entre-rives.studio-local';
@@ -22,6 +23,7 @@ const LINKED_IMAGE_BACKUP_VERSION = 15;
 const ADVENTURE_PACKAGE_BACKUP_VERSION = 16;
 const PJ_UPDATE_BACKUP_VERSION = 17;
 const AUDIO_BACKUP_VERSION = 18;
+const VIDEO_BACKUP_VERSION = 19;
 const ADVENTURE_PACKAGE_FORMAT = 'chroniques-entre-rives.aventure';
 export const MAX_ADVENTURE_PACKAGE_BYTES = 512 * 1024;
 export const ADVENTURE_SOURCE_KEY = 'entreRivesAdventurePackageV16';
@@ -479,6 +481,8 @@ export const hitPointsAfterDamage = (current, damage) => Math.max(0, current - d
 const sceneFields = ['id', 'title', 'description', 'privateNotes', 'participantIds'];
 const markerFields = ['id', 'kind', 'title', 'description', 'sceneId'];
 const operations = {
+  'save-scene-video': { fields: ['sceneId', 'url', 'imageId', 'loop', 'dim', 'credit'], valid: validSceneVideo, backupVersion: VIDEO_BACKUP_VERSION },
+  'remove-scene-video': { fields: ['sceneId'], valid: value => isId(value.sceneId), backupVersion: VIDEO_BACKUP_VERSION },
   'save-audio-track': { fields: ['id', 'name', 'url', 'credit'], valid: validAudioTrack, backupVersion: AUDIO_BACKUP_VERSION },
   'remove-audio-track': { fields: ['id'], valid: value => isId(value.id), backupVersion: AUDIO_BACKUP_VERSION },
   'save-audio-playlist': { fields: ['id', 'name', 'trackIds', 'loop'], valid: validAudioPlaylist, backupVersion: AUDIO_BACKUP_VERSION },
@@ -674,6 +678,10 @@ function validateCampaign(campaign) {
   }
   if (Object.hasOwn(campaign, AUDIO_KEY)) {
     try { validateAudioLibrary(campaign[AUDIO_KEY], sceneIds); }
+    catch (error) { fail('invalid-data', error.message); }
+  }
+  if (Object.hasOwn(campaign, VIDEO_KEY)) {
+    try { validateSceneVideos(campaign[VIDEO_KEY], sceneIds); }
     catch (error) { fail('invalid-data', error.message); }
   }
   if (Object.hasOwn(campaign, FRESQUE_LINKS_KEY)) {
@@ -895,6 +903,7 @@ function backupVersionFor({ campaign, journal }) {
   if (campaign[CREATIONS_KEY]?.some(entry => Object.hasOwn(entry, ADVENTURE_SOURCE_KEY))) version = ADVENTURE_PACKAGE_BACKUP_VERSION;
   if (campaign.characters.some(character => Object.hasOwn(character, PJ_UPDATES_KEY))) version = PJ_UPDATE_BACKUP_VERSION;
   if (Object.hasOwn(campaign, AUDIO_KEY)) version = AUDIO_BACKUP_VERSION;
+  if (Object.hasOwn(campaign, VIDEO_KEY)) version = VIDEO_BACKUP_VERSION;
   return journal.reduce((minimum, event) => Math.max(minimum, operations[event.type].backupVersion ?? LEGACY_BACKUP_VERSION), version);
 }
 
@@ -973,6 +982,21 @@ function applyCommand(previous, { id, operationId, type, data }, resolveOppositi
 
   const campaign = structuredClone(previous);
   switch (type) {
+    case 'save-scene-video': {
+      if (!campaign.scenes.some(scene => scene.id === data.sceneId)) fail('foreign-key', 'Cette scène ne fait pas partie de la campagne.');
+      const videos = campaign[VIDEO_KEY] ??= [];
+      const index = videos.findIndex(video => video.sceneId === data.sceneId);
+      if (index === -1) videos.push(data);
+      else videos[index] = data;
+      break;
+    }
+    case 'remove-scene-video': {
+      const videos = campaign[VIDEO_KEY];
+      const index = videos?.findIndex(video => video.sceneId === data.sceneId) ?? -1;
+      if (index === -1) fail('foreign-key', 'Cette scène ne possède pas de fond vidéo enregistré.');
+      videos.splice(index, 1);
+      break;
+    }
     case 'save-audio-track':
     case 'save-audio-playlist': {
       const library = campaign[AUDIO_KEY] ??= audioLibrary();
@@ -1441,7 +1465,7 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     try { archive = JSON.parse(text); }
     catch { fail('invalid-backup', 'Ce fichier ne contient pas un document JSON valide.'); }
     if (archive?.format !== FORMAT) fail('invalid-backup', 'Ce fichier n’est pas une sauvegarde privée du Studio.');
-    if (!Number.isInteger(archive.version) || archive.version < LEGACY_BACKUP_VERSION || archive.version > AUDIO_BACKUP_VERSION) {
+    if (!Number.isInteger(archive.version) || archive.version < LEGACY_BACKUP_VERSION || archive.version > VIDEO_BACKUP_VERSION) {
       fail('backup-version', 'La version de cette sauvegarde n’est pas prise en charge.');
     }
     if (!exactKeys(archive, ['format', 'version', 'sha256', 'payload']) ||
@@ -1481,6 +1505,7 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
       images: campaign[LINKED_IMAGES_KEY]?.length ?? 0,
       audioTracks: campaign[AUDIO_KEY]?.tracks.length ?? 0,
       audioPlaylists: campaign[AUDIO_KEY]?.playlists.length ?? 0,
+      videos: campaign[VIDEO_KEY]?.length ?? 0,
       creatures: campaign.creatures.length,
       scenes: campaign.scenes.length,
       ambiances: campaign.scenes.reduce((count, scene) => count + (scene[SCENE_AMBIANCES_KEY]?.length ?? 0), 0),

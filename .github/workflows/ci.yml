@@ -30,11 +30,11 @@ jobs:
           path: artifacts/b002/
           if-no-files-found: ignore
       - run: npm run test:m04:browser
-      - name: Recette Studio et régie sonore sur le site assemblé
+      - name: Recette Studio et régies multimédias sur le site assemblé
         env:
           STUDIO_PAGES_TEST: '1'
           STUDIO_SCREENSHOT_DIR: artifacts/studio
-        run: node --test --test-concurrency=2 studio-local/tests/audio-data.test.mjs studio-local/tests/audio.test.mjs studio-local/tests/pages.test.mjs
+        run: node --test --test-concurrency=2 studio-local/tests/audio-data.test.mjs studio-local/tests/audio.test.mjs studio-local/tests/video-data.test.mjs studio-local/tests/video.test.mjs studio-local/tests/pages.test.mjs
       - name: Conserver les captures du Studio
         if: always()
         uses: actions/upload-artifact@v4

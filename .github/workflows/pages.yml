@@ -69,7 +69,7 @@ jobs:
       - run: npm ci
       - name: Recette Chrome complète sur l'URL PUBLIQUE
         run: PUBLIC_BASE=https://sijiel44.github.io/archives-alrick npm run test:m04:browser
-      - name: Recette Studio et lecture audio sur l’URL publique
+      - name: Recette Studio, audio et vidéo sur l’URL publique
         env:
           PUBLIC_BASE: https://sijiel44.github.io/archives-alrick
         run: node --test studio-local/tests/pages.test.mjs

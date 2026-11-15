@@ -36,8 +36,8 @@ for (const [route, asset] of studioAssets) {
       .replace('href="/accueil"', 'href="../"'),
     `${basePolicy}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; media-src https:; connect-src 'self'; frame-src 'self'; form-action 'none'`);
   } else if (route === '/joueur') {
-    content = withPolicy(content.toString('utf8').replace('src="/joueur.js"', 'src="./joueur.js"'),
-      `${basePolicy}; style-src 'unsafe-inline'; img-src data:; frame-src 'self' about:; form-action 'none'`);
+    content = withPolicy(content.toString('utf8').replace('src="/joueur.js"', 'src="./joueur.js"').replace('src="/video-player.js"', 'src="./video-player.js"'),
+      `${basePolicy}; style-src 'self' 'unsafe-inline'; img-src data:; media-src https:; frame-src 'self' about:; form-action 'none'`);
   } else if (route === '/espace-joueur.html') {
     content = withPolicy(content.toString('utf8').replace('href="/accueil#univers"', 'href="../bibliotheque.html"')
       .replace('href="/accueil"', 'href="../"'), `${basePolicy}; style-src 'self'; img-src 'self' data: blob: https:; connect-src 'self'; form-action 'none'`);

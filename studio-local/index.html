@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./echanges-pj.css">
   <link rel="stylesheet" href="./regie-participants.css">
   <link rel="stylesheet" href="./audio.css">
+  <link rel="stylesheet" href="./video-player.css">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body>
@@ -312,6 +313,7 @@
               <button id="quick-present" class="secondary" type="button" disabled>Présenter</button>
               <button id="quick-ambiances" class="secondary" type="button" disabled>Ambiances</button>
               <button id="quick-audio" class="secondary" type="button">Régie sonore</button>
+              <button id="quick-video" class="secondary" type="button" disabled>Fond vidéo</button>
               <button class="secondary" type="button" data-view="interludes">Activités entre les scènes</button>
               <button class="secondary" type="button" data-view="archive">Archiver la séance</button>
               <button class="secondary" type="button" data-view="backups">Sauvegardes</button>
@@ -381,6 +383,13 @@
               <h2 id="play-ambiances-title" tabindex="-1">Carnet d’ambiances</h2>
               <p class="muted">Retrouvez vos textes et images préparés pour cette scène.</p>
               <div id="play-ambiances"></div>
+            </section>
+            <section id="video-scene-panel" class="panel" aria-labelledby="video-scene-title">
+              <p class="eyebrow accent">Scène courante · Privé MJ</p>
+              <h2 id="video-scene-title" tabindex="-1">Fond vidéo choisi</h2>
+              <p id="scene-video-summary" class="muted">Préparez un mouvement discret pour la fenêtre joueur.</p>
+              <div class="actions"><button id="scene-video-edit" class="secondary" type="button">Configurer le fond vidéo</button><button id="scene-video-prepare" class="secondary" type="button" hidden>Préparer ce fond</button><button id="scene-video-remove" class="text-button" type="button" hidden>Supprimer le réglage</button></div>
+              <p class="muted">La vidéo reste muette. L’enregistrement ne charge rien et ne diffuse rien.</p>
             </section>
           </div>
           <section class="panel wide" aria-labelledby="play-journal-title">
@@ -642,6 +651,11 @@
           <img src="./media/entre-rives-accueil.webp" alt="Un passage entre deux rives au crépuscule" width="1200" height="800" loading="lazy">
         </header>
         <div id="universe-topics" class="universe-topics"></div>
+        <article class="panel">
+          <p class="eyebrow accent">Construire la suite</p><h2>Enrichir les Archives avec ChatGPT</h2>
+          <p>Retrouvez la méthode pour compléter les lieux, personnages, créatures, objets, sorts et capacités à partir des sources, en conservant leurs liens et leur statut.</p>
+          <a href="https://github.com/Sijiel44/archives-alrick/blob/main/studio-local/ENRICHIR-UNIVERS.md" target="_blank" rel="noopener noreferrer">Ouvrir le guide de contribution et son prompt →</a>
+        </article>
       </section>
 
       <section id="view-backups" aria-labelledby="backups-title" hidden>
@@ -706,6 +720,14 @@
         <label for="player-share-image">Carte ou portrait à montrer</label>
         <select id="player-share-image" disabled></select>
       </div>
+      <fieldset id="player-share-video-field" class="checks" hidden disabled>
+        <legend>Fond animé de la scène</legend>
+        <label><input id="player-share-video-use" type="checkbox"> Utiliser le fond vidéo dans la fenêtre joueur</label>
+        <p id="player-share-video-source" class="muted"></p>
+        <p class="muted">Le lien vidéo sera transmis à cette fenêtre. L’image choisie sert de remplacement. Les crédits et notes de préparation restent privés.</p>
+        <button id="player-share-video-preview" class="secondary" type="button" disabled>Préparer la vidéo</button>
+        <p id="player-share-video-status" class="muted" role="status" aria-live="polite"></p>
+      </fieldset>
       <div class="player-share-preview">
         <p class="eyebrow accent">Aperçu de la vue joueur</p>
         <p id="player-share-empty" class="muted">Cochez un champ pour voir l’aperçu.</p>
@@ -1146,6 +1168,21 @@
     </form>
   </dialog>
 
+  <dialog id="scene-video-dialog" aria-labelledby="scene-video-heading">
+    <form id="scene-video-form">
+      <p class="eyebrow accent">Projection de scène · Privé MJ</p><h2 id="scene-video-heading">Configurer le fond vidéo</h2>
+      <p id="scene-video-context" class="muted"></p>
+      <label for="scene-video-url">Lien direct du fichier vidéo</label><input id="scene-video-url" type="url" required maxlength="2048" placeholder="https://…/brume.webm" aria-describedby="scene-video-help">
+      <p id="scene-video-help" class="muted">Fichier MP4 ou WebM accessible en HTTPS, sans identifiant ni mot de passe. Les pages de partage ne sont pas des fichiers vidéo. Le son du fichier ne sera pas diffusé.</p>
+      <label for="scene-video-image">Image de remplacement</label><select id="scene-video-image" required></select>
+      <label class="audio-check"><input id="scene-video-loop" type="checkbox" checked> Boucler le mouvement</label>
+      <label for="scene-video-dim">Assombrissement <output id="scene-video-dim-value" for="scene-video-dim">45 %</output></label><input id="scene-video-dim" type="range" min="0" max="80" step="1" value="45">
+      <label for="scene-video-credit">Crédit ou provenance · privé</label><textarea id="scene-video-credit" rows="2" maxlength="600"></textarea>
+      <p class="muted">Utilisez un fichier dont vous avez l’autorisation d’usage. La sauvegarde conserve le lien et les réglages ; elle ne contient pas la vidéo.</p>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button type="submit">Enregistrer le fond vidéo</button><button id="scene-video-cancel" class="secondary" type="button">Annuler</button></div>
+    </form>
+  </dialog>
   <dialog id="audio-track-dialog" aria-labelledby="audio-track-heading">
     <form id="audio-track-form">
       <p class="eyebrow accent">Régie sonore · Privé MJ</p><h2 id="audio-track-heading">Ajouter une piste</h2>

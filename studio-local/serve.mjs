@@ -36,6 +36,10 @@ export const studioAssets = new Map([
   ["/audio.mjs", ["audio.mjs", "text/javascript"]],
   ["/audio-ui.mjs", ["audio-ui.mjs", "text/javascript"]],
   ["/audio.css", ["audio.css", "text/css"]],
+  ["/video.mjs", ["video.mjs", "text/javascript"]],
+  ["/video-ui.mjs", ["video-ui.mjs", "text/javascript"]],
+  ["/video-player.js", ["video-player.js", "text/javascript"]],
+  ["/video-player.css", ["video-player.css", "text/css"]],
   ["/echanges-pj.mjs", ["echanges-pj.mjs", "text/javascript"]],
   ["/echanges-pj.css", ["echanges-pj.css", "text/css"]],
   ["/regie-participants.css", ["regie-participants.css", "text/css"]],
@@ -86,12 +90,12 @@ export function startStudioServer(port = 4380) {
     response.setHeader("Referrer-Policy", "no-referrer");
     response.setHeader("Content-Security-Policy", [
       "default-src 'none'",
-      ...(player ? ["sandbox allow-scripts", `script-src http://127.0.0.1:${localPort}/joueur.js`] :
+      ...(player ? ["sandbox allow-scripts", `script-src http://127.0.0.1:${localPort}/joueur.js http://127.0.0.1:${localPort}/video-player.js`] :
         [discovery ? `script-src http://127.0.0.1:${localPort}/accueil.mjs` : "script-src 'self'"]),
       discovery || player ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json`,
       discovery || personal ? "style-src 'self'" : "style-src 'self' 'unsafe-inline'",
       player ? "img-src data:" : discovery ? "img-src 'self'" : personal ? "img-src 'self' data: blob: https:" : "img-src 'self' data: https:",
-      discovery || player || personal ? "media-src 'none'" : "media-src https:",
+      discovery || personal ? "media-src 'none'" : "media-src https:",
       player ? "frame-src about:" : discovery || personal ? "frame-src 'none'" : "frame-src 'self'",
       "frame-ancestors 'none'",
       discovery || player || personal ? "form-action 'none'" : "form-action 'self'",
