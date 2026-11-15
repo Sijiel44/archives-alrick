@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 import { browserFixture } from './browser.mjs';
+import { assertDecodedPortrait } from './portrait-assertions.mjs';
 
 async function download(page, id) {
   await page.getByRole('tab', { name: 'Sauvegarde', exact: true }).click();
@@ -27,7 +28,7 @@ test('Le joueur crée et restaure son personnage indépendamment de la campagne 
   await page.getByRole('button', { name: 'Vérifier la fiche' }).click();
   await page.locator('#confirm-player-create').click();
   await page.getByRole('heading', { name: 'Nérée' }).waitFor();
-  assert.equal(await page.locator('#player-portrait').evaluate(async image => { await image.decode(); return image.naturalWidth <= 320; }), true);
+  await assertDecodedPortrait(page.locator('#player-portrait'));
   await page.locator('#player-resources').getByText(/Niveau 5/).waitFor();
   await page.getByText('Ajuster mes PV et mon mana', { exact: true }).click();
   await page.locator('#player-pv').fill('1');
