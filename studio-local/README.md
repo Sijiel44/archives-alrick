@@ -35,6 +35,14 @@ Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent
 
 La sauvegarde personnelle v4 inclut les jets consignés, le grimoire de références et le rangement de la fiche. Les sauvegardes personnelles v1 à v3 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
 
+### Préparer mon équipement depuis le catalogue
+
+Dans **Inventaire → Objets du catalogue**, rechercher une référence publique, filtrer sa catégorie et consulter sa source épinglée. **Préparer une adaptation pour ma table** remplit le formulaire d’ajout ; modifier le nom, la quantité et la description avant **Ajouter l’objet**. Le remplacement d’une saisie en cours demande confirmation. Ces objets documentés appartiennent à l’univers : leur attribution et leurs effets se décident avec le MJ.
+
+Pour un objet déjà saisi, **Détails → Choisir une référence** prépare un lien, confirmé par **Enregistrer l’objet**, en conservant ses autres champs. **Consulter la référence** reste accessible dans la liste. Une source modifiée est signalée ; son actualisation est volontaire. Les références absentes ou futures restent conservées. Les archives peuvent consulter le catalogue et leurs sources.
+
+Le raccourci Markdown de chaque fiche est disponible dans son aperçu. La provenance reste personnelle, conservée dans la sauvegarde v4 et le carnet v1, et exclue des échanges au MJ. Le formulaire libre et les quantités existantes restent utilisables. Voir le [contrat des objets reliés](OBJETS-JOUEUR.md).
+
 ### Retrouver et ranger mes personnages
 
 **Parcourir mes personnages** ouvre le répertoire illustré. Rechercher plusieurs mots d’un nom ou d’un métier, choisir **En activité**, **Archives** ou **Toutes les fiches**, puis trier par nom, niveau ou modification récente. Les accents ne changent pas la recherche. Les notes privées ne servent pas de résultats de recherche. Les longues listes s’affichent par groupes de vingt.

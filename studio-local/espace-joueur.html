@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./creation-brouillon.css">
   <link rel="stylesheet" href="./rangement-joueur.css">
   <link rel="stylesheet" href="./carnet-joueur.css">
+  <link rel="stylesheet" href="./objets-joueur.css">
   <script type="module" src="./espace-joueur.mjs"></script>
 </head>
 <body class="player-space">
@@ -121,6 +122,7 @@
       </section>
       <section id="player-inventory" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-inventory" tabindex="0" hidden>
         <div class="panel-heading"><div><p class="eyebrow accent">Ce que j’emporte</p><h3 id="player-inventory-title" tabindex="-1">Inventaire</h3></div><span id="player-item-count" class="count-badge"></span></div>
+        <button id="player-item-catalogue-open" class="secondary" type="button">Objets du catalogue</button>
         <div class="inventory-tools">
           <div><label for="player-item-search">Rechercher un objet</label><input id="player-item-search" type="search" placeholder="Nom, catégorie ou description"></div>
           <div><label for="player-item-filter">Afficher</label><select id="player-item-filter"><option value="all">Tous les objets</option><option value="equipped">Objets portés</option></select></div>
@@ -136,6 +138,11 @@
             <div><label for="item-category">Catégorie</label><select id="item-category" name="category"></select></div>
           </div>
           <label for="item-description">Description de l’objet</label><input id="item-description" name="description" maxlength="600">
+          <div id="item-source-panel" class="item-reference-panel" hidden>
+            <p class="eyebrow accent">Référence d’inspiration</p><p id="item-source-info"></p><p id="item-source-state" class="field-help" role="status"></p>
+            <a id="item-source-link" target="_blank" rel="noopener noreferrer" hidden>Lire la version enregistrée de la source (nouvel onglet)</a>
+            <div class="actions"><button id="item-source-change" class="secondary" type="button">Changer la référence</button><button id="item-source-update" class="secondary" type="button" hidden>Rattacher à la version actuelle</button><button id="item-source-clear" class="text-button" type="button">Détacher la référence</button></div>
+          </div>
           <label class="equipped-choice"><input id="item-equipped" name="equipped" type="checkbox">Porté ou équipé</label>
           <button class="secondary" type="submit">Ajouter l’objet</button>
         </form>
@@ -184,6 +191,22 @@
     </section>
     </div>
   </main>
+  <dialog id="object-catalogue-dialog" aria-labelledby="object-catalogue-title">
+    <header class="player-directory-heading"><div><p class="eyebrow accent">Ce que raconte un objet</p><h2 id="object-catalogue-title">Objets du catalogue</h2></div><button id="object-catalogue-close" class="secondary" type="button">Fermer</button></header>
+    <div class="player-directory-body">
+      <p class="field-help">Des objets documentés de l’univers. Prépare une adaptation pour ta table ou relie un objet que tu possèdes déjà. L’attribution et les effets se décident avec le MJ.</p>
+      <p id="object-catalogue-saved" class="field-help"></p>
+      <div class="object-catalogue-tools"><div><label for="object-catalogue-query">Rechercher une référence</label><input id="object-catalogue-query" type="search" placeholder="Nom, code ou description…"></div><div><label for="object-catalogue-category">Catégorie</label><select id="object-catalogue-category"><option value="">Toutes les catégories</option></select></div></div>
+      <p id="object-catalogue-count" class="field-help" role="status"></p><ul id="object-catalogue-list" class="object-catalogue-list"></ul>
+      <button id="object-catalogue-more" class="secondary" type="button" hidden>Afficher davantage de références</button>
+      <section id="object-catalogue-detail" class="object-catalogue-detail" aria-labelledby="object-catalogue-detail-title" hidden>
+        <h3 id="object-catalogue-detail-title" tabindex="-1"></h3><p id="object-catalogue-status" class="field-help"></p><p id="object-catalogue-description"></p>
+        <a id="object-catalogue-source" target="_blank" rel="noopener noreferrer">Lire la source du catalogue (nouvel onglet)</a>
+        <details><summary>Raccourci vers cette fiche</summary><label for="object-catalogue-shortcut">Lien Markdown à coller dans mes notes</label><input id="object-catalogue-shortcut" readonly><button id="object-catalogue-copy" class="secondary" type="button">Copier le raccourci</button><p id="object-catalogue-copy-status" class="field-help" role="status"></p></details>
+      </section>
+    </div>
+    <footer class="object-catalogue-footer"><button id="object-catalogue-use" type="button" disabled>Préparer une adaptation pour ma table</button></footer>
+  </dialog>
   <dialog id="notebook-dialog" aria-labelledby="notebook-title" aria-describedby="notebook-privacy">
     <header class="player-directory-heading"><div><p class="eyebrow accent">Mon carnet d’aventures</p><h2 id="notebook-title" tabindex="-1">Emporter mes personnages</h2></div><button id="notebook-close" class="secondary" type="button">Fermer</button></header>
     <div class="player-directory-body">
@@ -247,6 +270,11 @@
         <div><label for="edit-item-category">Catégorie</label><select id="edit-item-category" name="category"></select></div>
       </div>
       <label for="edit-item-description">Description</label><textarea id="edit-item-description" name="description" rows="3" maxlength="600"></textarea>
+      <div id="edit-item-source-panel" class="item-reference-panel">
+        <p class="eyebrow accent">Référence d’inspiration</p><p id="edit-item-source-info"></p><p id="edit-item-source-state" class="field-help" role="status"></p>
+        <a id="edit-item-source-link" target="_blank" rel="noopener noreferrer" hidden>Lire la version enregistrée de la source (nouvel onglet)</a>
+        <div class="actions"><button id="edit-item-source-change" class="secondary" type="button">Choisir une référence</button><button id="edit-item-source-update" class="secondary" type="button" hidden>Rattacher à la version actuelle</button><button id="edit-item-source-clear" class="text-button" type="button" hidden>Détacher la référence</button></div>
+      </div>
       <label class="equipped-choice"><input id="edit-item-equipped" name="equipped" type="checkbox">Porté ou équipé</label>
       <p class="muted" role="status" data-save-message></p>
       <div class="actions"><button type="submit">Enregistrer l’objet</button><button id="player-remove-item" class="secondary" type="button">Retirer l’objet</button><button class="secondary" type="button" data-close>Fermer</button></div>

@@ -11,6 +11,8 @@ import { creationDraftController } from './creation-brouillon.mjs';
 import { checkCreationDraft } from './brouillons-pj.mjs';
 import { createPlayerDirectory, isPlayerArchived } from './rangement-joueur.mjs';
 import { createPlayerNotebookUI } from './carnet-joueur-ui.mjs';
+import { ITEM_SOURCE_KEY, objectSource, objectReference, itemWithSource } from './objets-joueur.mjs';
+import { createObjectPicker } from './objets-joueur-ui.mjs';
 
 const $ = id => document.getElementById(id);
 const stats = Object.entries(PLAY_STATS);
@@ -49,11 +51,14 @@ let creationId;
 let creating = false;
 let playerDirectory;
 let playerNotebookUI;
+let newItemSource;
+const objectPicker = createObjectPicker({ canOpen: () => !pending && !creating });
 const preferredPlayerKey = 'entre-rives:pj-ouvert';
 
-function node(tag, content) {
+function node(tag, content, className) {
   const element = document.createElement(tag);
   element.textContent = content;
+  if (className) element.className = className;
   return element;
 }
 
@@ -235,6 +240,13 @@ function renderInventory() {
     const quantityLabel = typeof quantity === 'number' || typeof quantity === 'string' ? quantity : '?';
     copy.append(tag, node('h4', `${item.name || 'Objet sans nom'} × ${quantityLabel}`));
     if (typeof item.description === 'string' && item.description) copy.append(node('p', item.description));
+    if (Object.hasOwn(item, ITEM_SOURCE_KEY)) {
+      const reference = objectReference(item[ITEM_SOURCE_KEY]);
+      const link = node('button', 'Consulter la référence', 'text-button item-reference-link'); link.type = 'button';
+      link.setAttribute('aria-label', `Consulter la référence de ${item.name}`);
+      link.addEventListener('click', () => objectPicker.open({ mode: 'view', source: item[ITEM_SOURCE_KEY], readOnly: true }));
+      copy.append(node('p', reference.state === 'current' ? 'Référence du catalogue liée' : reference.state === 'changed' ? 'Référence du catalogue modifiée' : reference.state === 'missing' ? 'Référence absente du catalogue' : 'Référence de format inconnu conservée', 'field-help'), link);
+    }
     const button = node('button', 'Détails');
     button.type = 'button';
     button.className = 'secondary';
@@ -249,6 +261,7 @@ function renderInventory() {
   $('player-items-more').hidden = matches.length <= inventoryLimit;
   const supported = active.sheet.inventory === undefined || Array.isArray(active.sheet.inventory);
   for (const control of $('player-item-form').querySelectorAll('input, select, button')) control.disabled = !supported || isPlayerArchived(active);
+  renderItemSourcePanel('item', newItemSource, !supported || isPlayerArchived(active));
   $('player-item-status').textContent = supported
     ? `Résultats affichés · ${Math.min(inventoryLimit, matches.length)} / ${matches.length}.${items.length > readable.length ? ' Les entrées de format inconnu restent dans la sauvegarde personnelle.' : ''}`
     : 'Cet inventaire utilise un format encore inconnu. Sa sauvegarde personnelle conserve les données d’origine.';
@@ -312,7 +325,7 @@ function editItem(index) {
   if (pending || !active) return;
   const item = inventory(active.sheet)[index];
   if (!item || typeof item.name !== 'string') return;
-  itemEdit = { record: active, index };
+  itemEdit = { record: active, index, source: item[ITEM_SOURCE_KEY], changedFields: new Set() };
   $('player-item-dialog-title').textContent = item.name || 'Détails de l’objet';
   $('edit-item-name').value = item.name;
   $('edit-item-quantity').value = typeof item.quantity === 'number' || typeof item.quantity === 'string' ? item.quantity : 1;
@@ -321,18 +334,78 @@ function editItem(index) {
   fillCategories($('edit-item-category'), typeof item.category === 'string' ? item.category : 'autre');
   $('player-item-dialog').querySelector('[data-save-message]').textContent = '';
   for (const control of $('player-item-edit-form').querySelectorAll('input, select, textarea, button[type=submit], #player-remove-item')) control.disabled = isPlayerArchived(active);
+  renderItemSourcePanel('edit-item', itemEdit.source, isPlayerArchived(active));
   $('player-item-dialog').showModal();
 }
 
-function itemFromForm(form, previous) {
+function renderItemSourcePanel(prefix, source, readOnly = false) {
+  const info = objectReference(source);
+  $(prefix + '-source-panel').hidden = prefix === 'item' && source === undefined;
+  $(prefix + '-source-info').textContent = info.label;
+  $(prefix + '-source-state').textContent = ({ none: 'Tu peux relier cet objet à une fiche du catalogue.',
+    current: 'Référence d’inspiration. L’attribution et les effets restent à convenir avec le MJ.',
+    changed: 'Le catalogue a changé depuis ce lien. Tes données restent conservées ; le rattachement à la version actuelle est volontaire.',
+    missing: 'Absente du catalogue actuel. Le repère enregistré reste conservé.',
+    unsupported: 'Le client actuel conserve ce repère de format inconnu.' })[info.state];
+  const link = $(prefix + '-source-link'); link.hidden = !info.href;
+  if (info.href) link.href = info.href; else link.removeAttribute('href');
+  $(prefix + '-source-change').disabled = readOnly || info.state === 'unsupported';
+  $(prefix + '-source-clear').hidden = source === undefined;
+  $(prefix + '-source-clear').disabled = readOnly || info.state === 'unsupported';
+  $(prefix + '-source-update').hidden = info.state !== 'changed';
+  $(prefix + '-source-update').disabled = readOnly;
+}
+function chooseItemReference(prefix) {
+  const editing = prefix === 'edit-item';
+  const record = editing ? itemEdit?.record : active;
+  const source = editing ? itemEdit?.source : newItemSource;
+  if (!record || pending || isPlayerArchived(record) || objectReference(source).state === 'unsupported' ||
+      (record.sheet.inventory !== undefined && !Array.isArray(record.sheet.inventory))) return;
+  objectPicker.open({ mode: editing ? 'link' : 'create', source, readOnly: false, onChoose: entry => {
+    if (active?.id !== record.id || pending) return false;
+    if (editing) itemEdit.source = objectSource(entry, itemEdit.source);
+    else {
+      const form = $('player-item-form');
+      if (($('item-name').value || $('item-description').value || $('item-count').value !== '1' || $('item-equipped').checked || $('item-category').value !== 'autre') &&
+          !window.confirm('Remplacer les champs de l’ajout en cours par une adaptation de cette référence ?')) return false;
+      newItemSource = objectSource(entry, newItemSource);
+      $('item-name').value = `Adaptation · ${entry.name}`.slice(0, 90);
+      $('item-description').value = `Adaptation de table d’après « ${entry.name} ». ${entry.description}`.slice(0, 600);
+      $('item-category').value = entry.category; $('item-count').value = '1'; $('item-equipped').checked = false;
+      form.closest('details').open = true;
+    }
+    renderItemSourcePanel(prefix, editing ? itemEdit.source : newItemSource);
+    return editing ? $(prefix + '-source-change') : $('item-name');
+  } });
+}
+$('player-item-catalogue-open').addEventListener('click', () => {
+  if (active && (isPlayerArchived(active) || (active.sheet.inventory !== undefined && !Array.isArray(active.sheet.inventory)))) objectPicker.open({ mode: 'view', readOnly: true });
+  else chooseItemReference('item');
+});
+for (const prefix of ['item', 'edit-item']) {
+  $(prefix + '-source-change').addEventListener('click', () => chooseItemReference(prefix));
+  for (const action of ['clear', 'update']) $(prefix + '-source-' + action).addEventListener('click', () => {
+    const editing = prefix === 'edit-item', record = editing ? itemEdit?.record : active, source = editing ? itemEdit?.source : newItemSource;
+    const info = objectReference(source);
+    if (!record || pending || isPlayerArchived(record) || info.state === 'unsupported') return;
+    if (action === 'clear' && !window.confirm('Détacher la référence de cet objet ? Ses autres champs sont conservés.')) return;
+    if (action === 'update' && info.state !== 'changed') return;
+    const next = action === 'clear' ? undefined : objectSource(info.entry, source);
+    if (editing) itemEdit.source = next; else newItemSource = next;
+    renderItemSourcePanel(prefix, next);
+  });
+}
+
+function itemFromForm(form, previous, changedFields) {
   const values = new FormData(form);
   const name = values.get('name').trim();
   const quantity = Number(values.get('quantity'));
   if (!name || name.length > 90 || !Number.isInteger(quantity) || quantity < 1 || quantity > 999) {
     throw new Error('Renseigne un nom et une quantité entière entre 1 et 999.');
   }
-  return { ...previous, name, quantity, description: values.get('description').trim(),
+  const fields = { name, quantity, description: values.get('description').trim(),
     category: values.get('category'), equipped: values.has('equipped') };
+  return { ...previous, ...Object.fromEntries(Object.entries(fields).filter(([key]) => !changedFields || changedFields.has(key))) };
 }
 
 function render(record) {
@@ -358,6 +431,8 @@ function render(record) {
   } catch { /* Le choix reste utilisable sans stockage des préférences. */ }
   selectPanel(selectedPanel);
   if (changed) {
+    newItemSource = undefined;
+    $('player-item-form').reset();
     $('player-filing-message').textContent = '';
     latestRoll = undefined;
     inventoryLimit = 30;
@@ -998,9 +1073,10 @@ $('player-item-form').addEventListener('submit', async event => {
   if (pending) return;
   const form = event.currentTarget;
   try {
-    const item = itemFromForm(form, { id: crypto.randomUUID(), templateId: '', value: '' });
+    const item = itemWithSource(itemFromForm(form, { id: crypto.randomUUID(), templateId: '', value: '' }), newItemSource);
     if (await save({ ...active, sheet: { ...active.sheet, inventory: [item, ...inventory(active.sheet)] } })) {
       form.reset();
+      newItemSource = undefined;
       inventoryLimit = 30;
       $('player-item-search').value = '';
       $('player-item-filter').value = 'all';
@@ -1016,13 +1092,16 @@ for (const control of [$('player-item-search'), $('player-item-filter')]) contro
 $('player-items-more').addEventListener('click', () => { inventoryLimit += 30; renderInventory(); });
 $('player-ability-search').addEventListener('input', renderAbilities);
 
+$('player-item-edit-form').addEventListener('input', event => {
+  if (itemEdit && event.target.name) itemEdit.changedFields.add(event.target.name);
+});
 $('player-item-edit-form').addEventListener('submit', async event => {
   event.preventDefault();
   if (pending || !itemEdit) return;
   try {
     const { record, index } = itemEdit;
     const items = [...inventory(record.sheet)];
-    items[index] = itemFromForm(event.currentTarget, items[index]);
+    items[index] = itemWithSource(itemFromForm(event.currentTarget, items[index], itemEdit.changedFields), itemEdit.source);
     await save({ ...record, sheet: { ...record.sheet, inventory: items } }, $('player-item-dialog'), $('player-inventory-title'));
   } catch (error) { report(error, $('player-item-dialog').querySelector('[data-save-message]')); }
 });
