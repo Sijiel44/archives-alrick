@@ -84,7 +84,7 @@ test('Les panneaux et l’inventaire préservent les anciens objets et refusent 
   await second.locator('#player-item-dialog').getByRole('button', { name: 'Fermer', exact: true }).click();
 
   const backup = await download(page, 'player-backup');
-  assert.equal(backup.version, 2);
+  assert.equal(backup.version, 4);
   assert.equal(backup.payload.sheet.inventory[0].quantity, 5);
   assert.equal(backup.payload.sheet.inventory[0].equipped, true);
   assert.equal(backup.payload.sheet.inventory[0].extensionFuture.preuve, 'CANARI_OBJET');
@@ -225,7 +225,7 @@ test('La mise à jour du stockage reprend les personnages locaux et ferme une an
   await updated.locator('#player-roll-count').getByText('0 / 50', { exact: true }).waitFor();
   assert.equal(await page.evaluate(() => window.legacyPlayerClosed), true);
   const backup = await download(updated, 'player-backup');
-  assert.equal(backup.version, 2);
+  assert.equal(backup.version, 4);
   assert.equal(backup.payload.notes, 'CANARI_NOTES');
   assert.equal(backup.payload.sheet.extensionFuture.valeur, 'CANARI_EXTENSION');
   assert.deepEqual(backup.payload.rolls, []);

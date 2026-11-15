@@ -7,6 +7,7 @@
   <title>Studio MJ · Les Chroniques d’Entre-Rives</title>
   <link rel="stylesheet" href="./studio.css">
   <link rel="stylesheet" href="./echanges-pj.css">
+  <link rel="stylesheet" href="./regie-participants.css">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body>
@@ -324,7 +325,7 @@
         <div id="play-content" class="dashboard-grid" hidden>
           <article class="panel session-scene">
             <div class="panel-heading scene-context">
-              <div><p class="eyebrow accent">Scène courante · Point de reprise</p><h2 id="current-scene-title"></h2></div>
+              <div><p class="eyebrow accent">Scène courante · Point de reprise</p><h2 id="current-scene-title" tabindex="-1"></h2></div>
               <div class="scene-picker"><label for="jump-scene">Changer de scène</label><select id="jump-scene"></select></div>
             </div>
             <p id="current-scene-description" class="narrative"></p>
@@ -354,7 +355,7 @@
           </article>
           <div class="stack">
             <article class="panel">
-              <h2>Participants</h2>
+              <div class="panel-heading"><h2>Participants</h2><button id="open-session-roster" class="secondary" type="button">Répertoire de séance</button></div>
               <p id="participants-empty" class="empty">Aucun participant relié à cette scène.</p>
               <ul id="participant-list" class="record-list"></ul>
             </article>
@@ -1006,7 +1007,8 @@
       <div id="pj-exchange-review" hidden>
         <label for="pj-compare-choice">Comparer avec un PJ de la campagne</label><select id="pj-compare-choice"></select>
         <div id="pj-compare-preview"></div>
-        <p class="muted">L’import crée un nouveau participant. La fiche précédente, ses notes MJ et ses liens de scène restent en place. Vous pourrez choisir la nouvelle copie dans les participants de la scène.</p>
+        <label for="pj-exchange-mode">Utiliser la version reçue</label><select id="pj-exchange-mode"><option value="copy">Créer un nouveau participant</option><option value="update" disabled>Actualiser le PJ comparé</option></select>
+        <p id="pj-exchange-impact" class="notice"></p>
         <label class="exchange-accept"><input id="pj-exchange-accept" type="checkbox">J’ai comparé et je choisis d’importer cette version.</label>
       </div>
       <details id="pj-import-full" open><summary>Consulter la fiche reçue</summary><div id="pj-import-preview"></div></details>
@@ -1021,6 +1023,20 @@
     <div id="pj-export-preview"></div>
     <p id="pj-export-status" class="muted" role="status"></p>
     <div class="actions"><button id="pj-export-download" type="button" disabled>Télécharger l’échange joueur</button><button id="pj-export-close" class="secondary" type="button">Fermer</button></div>
+  </dialog>
+
+  <dialog id="pj-versions-dialog" aria-labelledby="pj-versions-title">
+    <form id="pj-versions-form">
+      <p class="eyebrow accent">Campagne · Versions privées</p>
+      <h2 id="pj-versions-title">Historique du personnage</h2>
+      <p id="pj-versions-name" class="resource-line"></p>
+      <label for="pj-versions-choice">État à consulter</label><select id="pj-versions-choice" name="version" required autofocus></select>
+      <div id="pj-versions-preview"></div>
+      <p class="muted">Rétablir reprend le profil, le nom et les PV conservés avant ce changement. Les notes MJ et les liens de scène restent en place. Les combats et les changements ultérieurs restent dans l’historique.</p>
+      <label class="exchange-accept"><input id="pj-versions-accept" type="checkbox" required>Je choisis de rétablir cet état du personnage.</label>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
+      <div class="actions"><button id="pj-versions-restore" type="submit" disabled>Rétablir cette version</button><button class="secondary cancel-edit" type="button">Fermer</button></div>
+    </form>
   </dialog>
 
   <dialog id="creature-dialog" aria-labelledby="creature-heading">
@@ -1178,6 +1194,28 @@
   </dialog>
 
   <dialog id="resource-dialog" aria-labelledby="resource-title">
+    <header id="session-roster-context" class="roster-context" hidden>
+      <div><p class="eyebrow accent">Répertoire de séance · Privé MJ</p><p id="roster-scene-context"></p></div>
+      <div class="actions"><button id="roster-toggle" class="secondary" type="button" aria-controls="session-roster" aria-expanded="false">Choisir une fiche</button><button id="roster-previous" class="secondary" type="button" aria-label="Fiche précédente du répertoire">← Précédente</button><button id="roster-next" class="secondary" type="button" aria-label="Fiche suivante du répertoire">Suivante →</button><button id="roster-return" type="button">Retour à la scène</button></div>
+      <p id="roster-freshness" class="notice" role="status" hidden></p>
+    </header>
+    <div class="resource-layout">
+    <aside id="session-roster" class="session-roster" aria-labelledby="session-roster-title" hidden>
+      <h3 id="session-roster-title">Retrouver une fiche</h3>
+      <div class="roster-controls">
+        <label for="roster-search">Nom ou métier</label><input id="roster-search" type="search" placeholder="Éloïse, garde, batelière…">
+        <div class="roster-filters">
+          <div><label for="roster-kind">Type de fiche</label><select id="roster-kind"><option value="all">Tous les types</option><option value="PJ">Personnages joueurs</option><option value="PNJ">Personnages non joueurs</option><option value="Créature">Créatures</option></select></div>
+          <div><label for="roster-scope">Emplacement</label><select id="roster-scope"><option value="scene">Dans cette scène</option><option value="campaign">Toute la campagne</option></select></div>
+        </div>
+      </div>
+      <p id="roster-count" class="field-help" role="status"></p>
+      <p id="roster-outside-filter" class="field-help" hidden>La fiche ouverte est hors des résultats de cette recherche.</p>
+      <ul id="roster-list" class="roster-list" aria-label="Fiches du répertoire"></ul>
+      <button id="roster-more" class="secondary" type="button" hidden>Afficher davantage de fiches</button>
+      <button id="roster-refresh" class="secondary" type="button">Actualiser les fiches</button>
+      <p class="field-help">Consulter une fiche ne l’ajoute pas à la scène. Les notes MJ restent privées.</p>
+    </aside>
     <div class="resource-body">
       <div class="panel-heading resource-toolbar">
         <button id="resource-previous" class="text-button" type="button" hidden>← Fiche précédente</button>
@@ -1207,8 +1245,26 @@
         <p id="resource-shortcut-status" class="muted" role="status"></p>
       </div>
     </div>
+    </div>
   </dialog>
 
+  <dialog id="object-grant-dialog" aria-labelledby="object-grant-title">
+    <form id="object-grant-form">
+      <p class="eyebrow accent">Modèle privé du MJ · copie pour un PJ</p><h2 id="object-grant-title">Attribuer un objet</h2>
+      <p id="object-grant-model" class="field-help"></p>
+      <label for="object-grant-character">PJ destinataire</label><select id="object-grant-character" required></select>
+      <p id="object-grant-target" class="field-help" role="status"></p>
+      <label for="object-grant-name">Nom partagé de la copie</label><input id="object-grant-name" maxlength="90" required>
+      <div class="creation-fields"><div><label for="object-grant-quantity">Quantité</label><input id="object-grant-quantity" type="number" min="1" max="999" value="1" required></div><div><label for="object-grant-category">Catégorie</label><select id="object-grant-category"></select></div></div>
+      <label for="object-grant-description">Description partagée</label><textarea id="object-grant-description" rows="3" maxlength="600"></textarea>
+      <label for="object-grant-value">Valeur descriptive · facultatif</label><input id="object-grant-value" maxlength="100">
+      <label class="equipped-choice"><input id="object-grant-equipped" type="checkbox">Porté ou équipé · repère descriptif</label>
+      <p class="field-help">Le modèle et ses notes MJ restent dans la campagne. Cette attribution ne modifie aucun bonus, protection ou capacité. L’historique du PJ permet de rétablir sa version précédente.</p>
+      <label class="equipped-choice"><input id="object-grant-reviewed" type="checkbox" required>J’ai relu les champs de cette copie et j’accepte de les transmettre au joueur.</label>
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button class="secondary reload-draft" type="button">Fermer et actualiser la campagne</button></div>
+      <div class="actions"><button id="object-grant-submit" type="submit" disabled>Attribuer et préparer l’échange</button><button id="object-grant-close" type="button" class="secondary">Fermer</button></div>
+    </form>
+  </dialog>
   <dialog id="marker-dialog" aria-labelledby="marker-heading">
     <form id="marker-form">
       <p class="eyebrow accent">Fresque · Privé MJ</p>

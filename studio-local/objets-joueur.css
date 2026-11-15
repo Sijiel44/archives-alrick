@@ -1,0 +1,27 @@
+.item-reference-panel { padding: .8rem; margin-block: .8rem; border: 1px solid #8c795b88; border-radius: .6rem; background: #25363c; }
+.item-reference-panel p { overflow-wrap: anywhere; line-height: 1.6; }
+.item-reference-panel .actions { margin-top: .6rem; }
+.item-reference-panel button, #player-item-catalogue-open, .item-reference-link { min-height: 2.75rem; }
+#object-catalogue-dialog { width: min(64rem, calc(100% - 2rem)); padding: 0; scroll-padding-block: 7rem 6rem; }
+#object-catalogue-dialog .player-directory-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+.object-catalogue-tools { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: .8rem; margin-block: 1rem; }
+.object-catalogue-tools > div { min-width: 0; }
+.object-catalogue-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin-block: 1rem; }
+.object-catalogue-card { min-width: 0; padding: .8rem; background: #1a2c34; border: 1px solid #6f858c88; border-radius: .6rem; }
+.object-catalogue-card button { width: 100%; margin-block: .6rem; min-height: 3rem; text-align: left; line-height: 1.5; overflow-wrap: anywhere; }
+.object-catalogue-card button[aria-pressed=true] { border-color: var(--gold); color: #f4d7a7; }
+.object-catalogue-card .field-help { overflow-wrap: anywhere; font-size: .7rem; }
+.object-catalogue-detail { padding: 1rem; margin-block: 1rem; border: 1px solid #bc995d; border-radius: .6rem; background: linear-gradient(140deg, #32464a, #192a33); }
+.object-catalogue-detail h3 { font: 1.5rem/1.3 Georgia, serif; overflow-wrap: anywhere; margin-bottom: .7rem; }
+.object-catalogue-detail p { margin-block: .7rem; line-height: 1.7; }
+.object-catalogue-detail > a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.object-catalogue-footer { position: sticky; bottom: 0; padding: .85rem 1.2rem; background: #24333b; border-top: 1px solid var(--line); }
+.object-catalogue-footer button { min-height: 2.75rem; }
+#object-catalogue-shortcut { width: 100%; }
+@media (max-width: 42rem) {
+  .object-catalogue-tools, .object-catalogue-list { grid-template-columns: minmax(0, 1fr); }
+  #object-catalogue-title { font-size: 1.25rem; }
+  .object-catalogue-detail { padding: .8rem; }
+  .object-catalogue-footer { padding: .85rem; }
+  .object-catalogue-footer button { width: 100%; }
+}

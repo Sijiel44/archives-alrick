@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="./studio.css">
   <link rel="stylesheet" href="./espace-joueur.css">
   <link rel="stylesheet" href="./echanges-pj.css">
+  <link rel="stylesheet" href="./grimoire-joueur.css">
+  <link rel="stylesheet" href="./creation-brouillon.css">
+  <link rel="stylesheet" href="./rangement-joueur.css">
+  <link rel="stylesheet" href="./carnet-joueur.css">
+  <link rel="stylesheet" href="./objets-joueur.css">
   <script type="module" src="./espace-joueur.mjs"></script>
 </head>
 <body class="player-space">
@@ -34,14 +39,31 @@
       <div id="player-library" hidden>
         <label for="player-selection">Reprendre mon personnage</label>
         <select id="player-selection" disabled></select>
+        <button id="player-directory-open" class="secondary" type="button">Parcourir mes personnages</button>
       </div>
       <div class="actions">
         <button id="player-create" type="button" disabled>Créer mon personnage</button>
         <button id="player-import" class="secondary" type="button" disabled>Importer une fiche</button>
       </div>
       <p class="shelf-caption">Ta fiche, tes choix et tes souvenirs de table.</p>
+      <div id="creation-draft-card" class="creation-draft-card" hidden>
+        <span class="eyebrow accent">Création en cours</span><h3 id="creation-draft-name"></h3>
+        <p id="creation-draft-date" class="field-help"></p>
+        <button id="creation-draft-resume" class="secondary" type="button">Reprendre mon brouillon</button>
+      </div>
+      <button id="creation-draft-import-open" class="text-button" type="button" disabled>Importer un brouillon</button>
+      <div class="notebook-shelf">
+        <p class="eyebrow accent">D’un appareil à l’autre</p>
+        <div class="actions"><button id="player-notebook-export" class="secondary" type="button" disabled>Sauvegarder mon carnet</button><button id="player-notebook-import" class="text-button" type="button" disabled>Restaurer un carnet</button></div>
+        <p class="field-help">Plusieurs personnages dans un fichier personnel, archives comprises.</p>
+      </div>
     </aside>
     <section id="player-sheet" class="panel player-panel" aria-labelledby="player-name" hidden>
+      <div id="player-filing-strip" class="player-filing-strip">
+        <div><p id="player-filing-state" class="eyebrow accent"></p><p id="player-filing-copy" class="field-help"></p></div>
+        <button id="player-filing-toggle" class="secondary" type="button">Archiver cette copie</button>
+        <p id="player-filing-message" class="field-help" role="status"></p>
+      </div>
       <header class="character-heading">
         <div class="character-portrait">
           <img id="player-portrait" alt="Portrait du personnage" hidden width="240" height="300" referrerpolicy="no-referrer">
@@ -60,6 +82,7 @@
         <a id="tab-player-rolls" role="tab" aria-controls="player-rolls" aria-selected="false" tabindex="-1" href="#player-rolls">Dés</a>
         <a id="tab-player-inventory" role="tab" aria-controls="player-inventory" aria-selected="false" tabindex="-1" href="#player-inventory">Inventaire</a>
         <a id="tab-player-abilities" role="tab" aria-controls="player-abilities" aria-selected="false" tabindex="-1" href="#player-abilities">Capacités</a>
+        <a id="tab-player-grimoire" role="tab" aria-controls="player-grimoire" aria-selected="false" tabindex="-1" href="#player-grimoire">Grimoire</a>
         <a id="tab-player-notes" role="tab" aria-controls="player-notes" aria-selected="false" tabindex="-1" href="#player-notes">Notes</a>
         <a id="tab-player-backups" role="tab" aria-controls="player-backups" aria-selected="false" tabindex="-1" href="#player-backups">Sauvegarde</a>
       </div>
@@ -99,6 +122,7 @@
       </section>
       <section id="player-inventory" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-inventory" tabindex="0" hidden>
         <div class="panel-heading"><div><p class="eyebrow accent">Ce que j’emporte</p><h3 id="player-inventory-title" tabindex="-1">Inventaire</h3></div><span id="player-item-count" class="count-badge"></span></div>
+        <button id="player-item-catalogue-open" class="secondary" type="button">Objets du catalogue</button>
         <div class="inventory-tools">
           <div><label for="player-item-search">Rechercher un objet</label><input id="player-item-search" type="search" placeholder="Nom, catégorie ou description"></div>
           <div><label for="player-item-filter">Afficher</label><select id="player-item-filter"><option value="all">Tous les objets</option><option value="equipped">Objets portés</option></select></div>
@@ -114,6 +138,11 @@
             <div><label for="item-category">Catégorie</label><select id="item-category" name="category"></select></div>
           </div>
           <label for="item-description">Description de l’objet</label><input id="item-description" name="description" maxlength="600">
+          <div id="item-source-panel" class="item-reference-panel" hidden>
+            <p class="eyebrow accent">Référence d’inspiration</p><p id="item-source-info"></p><p id="item-source-state" class="field-help" role="status"></p>
+            <a id="item-source-link" target="_blank" rel="noopener noreferrer" hidden>Lire la version enregistrée de la source (nouvel onglet)</a>
+            <div class="actions"><button id="item-source-change" class="secondary" type="button">Changer la référence</button><button id="item-source-update" class="secondary" type="button" hidden>Rattacher à la version actuelle</button><button id="item-source-clear" class="text-button" type="button">Détacher la référence</button></div>
+          </div>
           <label class="equipped-choice"><input id="item-equipped" name="equipped" type="checkbox">Porté ou équipé</label>
           <button class="secondary" type="submit">Ajouter l’objet</button>
         </form>
@@ -125,6 +154,23 @@
         <label for="player-ability-search">Rechercher une capacité</label><input id="player-ability-search" type="search" placeholder="Nom, domaine ou description">
         <p id="player-ability-count" class="field-help" role="status"></p><div id="player-ability-list"></div>
       </section>
+      <section id="player-grimoire" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-grimoire" tabindex="0" hidden>
+        <div class="grimoire-intro">
+          <div><p class="eyebrow accent">Mes pages de magie</p><h3 id="player-grimoire-title" tabindex="-1">Mon grimoire</h3>
+          <p>Explore les essais du catalogue et garde les références utiles à ton personnage.</p><p class="field-help">Un favori ne vaut pas apprentissage : les Cercles et l’usage d’un sort se décident avec le MJ.</p></div>
+          <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52"/><circle cx="60" cy="60" r="40"/><path d="M60 89V38m0 4c-10-10-25-12-34-9v45c12-3 24 0 34 9 10-9 22-12 34-9V33c-9-3-24-1-34 9M35 46l15 5m-15 6 15 5m20-11 15-5m-15 16 15-5M60 9v12m0 78v12M9 60h12m78 0h12"/></svg>
+        </div>
+        <div class="grimoire-tools">
+          <div class="grimoire-query"><label for="grimoire-search">Rechercher un sort</label><input id="grimoire-search" type="search" placeholder="Nom, domaine, effet…"></div>
+          <div><label for="grimoire-scope">Collection</label><select id="grimoire-scope"><option value="catalogue">Catalogue et grimoire</option><option value="saved">Mon grimoire</option><option value="session">Pour ma séance</option></select></div>
+          <div><label for="grimoire-domain">Domaine / affinité</label><select id="grimoire-domain"><option value="">Tous les domaines</option></select></div>
+          <div><label for="grimoire-circle">Cercle indiqué</label><select id="grimoire-circle"><option value="">Tous les Cercles</option></select></div>
+        </div>
+        <p id="grimoire-count" class="field-help" role="status"></p>
+        <ul id="grimoire-list" class="grimoire-list"></ul>
+        <button id="grimoire-more" class="secondary" type="button" hidden>Afficher davantage de références</button>
+        <details class="grimoire-references"><summary>Écoles, Cercles et pratiques : les références</summary><p class="field-help">Les domaines reprennent les affinités du système. Le catalogue actuel présente des essais non canoniques. Consulte les sources pour distinguer activation, composition et traditions.</p><ul id="grimoire-references"></ul></details>
+      </section>
       <section id="player-notes" class="protocol-step" role="tabpanel" aria-labelledby="tab-player-notes" tabindex="0" hidden>
         <p class="eyebrow accent">Au fil des séances</p><h3>Mon carnet personnel</h3>
       <form id="player-notes-form">
@@ -135,8 +181,8 @@
       <section id="player-backups" class="protocol-step player-transfer" role="tabpanel" aria-labelledby="tab-player-backups" tabindex="0" hidden>
         <p class="eyebrow accent">Retrouver mon aventure</p><h3>Sauvegarde et remise au MJ</h3>
         <div class="player-save-options">
-          <div class="save-option"><span class="badge">Personnel</span><h4>Emporter toute ma fiche</h4><p class="muted">Le personnage, son portrait, son inventaire, son histoire, ses notes et les jets consignés.</p><button id="player-backup" type="button">Sauvegarder mon personnage</button></div>
-          <div class="save-option"><span class="badge">À partager</span><h4>Échanger avec ma table</h4><p class="muted">Le profil de jeu, le portrait, les capacités et l’inventaire, avec une identité et une version pour comparer au retour du MJ. Les notes et les jets restent personnels.</p><button id="player-send" type="button">Préparer un échange pour le MJ</button><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
+          <div class="save-option"><span class="badge">Personnel</span><h4>Emporter toute ma fiche</h4><p class="muted">Le personnage, son portrait, son inventaire, son histoire, son grimoire, ses notes, les jets consignés et son état d’archive.</p><button id="player-backup" type="button">Sauvegarder mon personnage</button></div>
+          <div class="save-option"><span class="badge">À partager</span><h4>Échanger avec ma table</h4><p class="muted">Le profil de jeu, le portrait, les capacités et l’inventaire, avec une identité et une version pour comparer au retour du MJ. Le grimoire, les notes et les jets restent personnels.</p><button id="player-send" type="button">Préparer un échange pour le MJ</button><button id="player-exchange" class="secondary" type="button">Exporter la fiche M02 pour le MJ</button></div>
         </div>
         <p id="player-download-status" class="field-help" role="status"></p>
         <p class="field-help">Le personnage est enregistré dans ce navigateur. Télécharge une sauvegarde pour le reprendre sur un autre appareil, puis utilise « Importer une fiche ».</p>
@@ -145,6 +191,76 @@
     </section>
     </div>
   </main>
+  <dialog id="object-catalogue-dialog" aria-labelledby="object-catalogue-title">
+    <header class="player-directory-heading"><div><p class="eyebrow accent">Ce que raconte un objet</p><h2 id="object-catalogue-title">Objets du catalogue</h2></div><button id="object-catalogue-close" class="secondary" type="button">Fermer</button></header>
+    <div class="player-directory-body">
+      <p class="field-help">Des objets documentés de l’univers. Prépare une adaptation pour ta table ou relie un objet que tu possèdes déjà. L’attribution et les effets se décident avec le MJ.</p>
+      <p id="object-catalogue-saved" class="field-help"></p>
+      <div class="object-catalogue-tools"><div><label for="object-catalogue-query">Rechercher une référence</label><input id="object-catalogue-query" type="search" placeholder="Nom, code ou description…"></div><div><label for="object-catalogue-category">Catégorie</label><select id="object-catalogue-category"><option value="">Toutes les catégories</option></select></div></div>
+      <p id="object-catalogue-count" class="field-help" role="status"></p><ul id="object-catalogue-list" class="object-catalogue-list"></ul>
+      <button id="object-catalogue-more" class="secondary" type="button" hidden>Afficher davantage de références</button>
+      <section id="object-catalogue-detail" class="object-catalogue-detail" aria-labelledby="object-catalogue-detail-title" hidden>
+        <h3 id="object-catalogue-detail-title" tabindex="-1"></h3><p id="object-catalogue-status" class="field-help"></p><p id="object-catalogue-description"></p>
+        <a id="object-catalogue-source" target="_blank" rel="noopener noreferrer">Lire la source du catalogue (nouvel onglet)</a>
+        <details><summary>Raccourci vers cette fiche</summary><label for="object-catalogue-shortcut">Lien Markdown à coller dans mes notes</label><input id="object-catalogue-shortcut" readonly><button id="object-catalogue-copy" class="secondary" type="button">Copier le raccourci</button><p id="object-catalogue-copy-status" class="field-help" role="status"></p></details>
+      </section>
+    </div>
+    <footer class="object-catalogue-footer"><button id="object-catalogue-use" type="button" disabled>Préparer une adaptation pour ma table</button></footer>
+  </dialog>
+  <dialog id="notebook-dialog" aria-labelledby="notebook-title" aria-describedby="notebook-privacy">
+    <header class="player-directory-heading"><div><p class="eyebrow accent">Mon carnet d’aventures</p><h2 id="notebook-title" tabindex="-1">Emporter mes personnages</h2></div><button id="notebook-close" class="secondary" type="button">Fermer</button></header>
+    <div class="player-directory-body">
+      <p id="notebook-privacy" class="notebook-intro">Fichier personnel · notes privées et portraits inclus.</p>
+      <details class="notebook-guide"><summary>Ce qui voyage dans le carnet</summary><p class="field-help">Les objets, jets, grimoires et états d’archive suivent les fiches. Pour transmettre une fiche au MJ, utilise l’échange depuis « Sauvegarde ». Le brouillon de création se transporte séparément.</p><p class="field-help">Jusqu’à 100 fiches et 20 Mio par carnet. La restauration ajoute les copies cochées ensemble et conserve les fiches existantes.</p></details>
+      <div id="notebook-file-group" hidden><label for="notebook-file">Carnet de personnages · JSON</label><input id="notebook-file" type="file" accept=".json,application/json"></div>
+      <p id="notebook-message" role="status"></p>
+      <div id="notebook-preview" hidden>
+        <div class="notebook-tools"><div><label for="notebook-query">Nom, métier ou niveau</label><input id="notebook-query" type="search" placeholder="Une fiche à emporter…"></div><div><label for="notebook-state">Afficher</label><select id="notebook-state"><option value="all">Toutes les fiches</option><option value="active">En activité</option><option value="archived">Archives</option></select></div></div>
+        <div class="actions"><button id="notebook-select-results" class="secondary" type="button">Cocher les résultats</button><button id="notebook-clear" class="text-button" type="button">Tout décocher</button></div>
+        <p id="notebook-count" class="field-help" role="status"></p>
+        <ul id="notebook-list" class="player-directory-list"></ul>
+        <button id="notebook-more" class="secondary" type="button" hidden>Afficher davantage de fiches</button>
+      </div>
+    </div>
+    <footer class="notebook-footer"><div class="actions"><button id="notebook-confirm" type="button" disabled>Télécharger les fiches</button><button id="notebook-refresh" class="secondary" type="button">Actualiser l’aperçu</button></div></footer>
+  </dialog>
+  <dialog id="player-directory-dialog" aria-labelledby="player-directory-title">
+    <header class="player-directory-heading"><div><p class="eyebrow accent">Mon carnet d’aventures</p><h2 id="player-directory-title">Retrouver un personnage</h2></div><button id="player-directory-close" class="secondary" type="button">Fermer</button></header>
+    <div class="player-directory-body">
+      <p class="field-help">Les copies d’un même personnage gardent leur identité d’échange. L’archivage est personnel et réversible.</p>
+      <div class="player-directory-tools">
+        <div class="player-directory-search"><label for="player-directory-query">Nom, métier ou niveau</label><input id="player-directory-query" type="search" placeholder="Aveline, batelière…" aria-controls="player-directory-list"></div>
+        <div><label for="player-directory-state">Afficher</label><select id="player-directory-state"><option value="active">En activité</option><option value="archived">Archives</option><option value="all">Toutes les fiches</option></select></div>
+        <div><label for="player-directory-sort">Trier</label><select id="player-directory-sort"><option value="recent">Récemment modifiées</option><option value="name">Nom</option><option value="level">Niveau décroissant</option></select></div>
+      </div>
+      <label class="equipped-choice"><input id="player-directory-copies" type="checkbox">Plusieurs copies du même personnage</label>
+      <div id="player-directory-group-tools" class="notice" hidden><p id="player-directory-group"></p><button id="player-directory-group-clear" class="text-button" type="button">Tous les personnages</button></div>
+      <p id="player-directory-count" class="field-help" role="status"></p>
+      <p id="player-directory-message" class="field-help" role="status"></p>
+      <ul id="player-directory-list" class="player-directory-list"></ul>
+      <div class="actions"><button id="player-directory-more" class="secondary" type="button" hidden>Afficher davantage de fiches</button><button id="player-directory-refresh" class="secondary" type="button">Actualiser les fiches</button></div>
+    </div>
+  </dialog>
+  <dialog id="grimoire-dialog" aria-labelledby="grimoire-detail-title">
+    <p class="eyebrow accent">Référence personnelle · Grimoire</p>
+    <h2 id="grimoire-detail-title" tabindex="-1" autofocus></h2>
+    <p id="grimoire-detail-status" class="badge"></p>
+    <p id="grimoire-detail-description" class="narrative"></p>
+    <dl id="grimoire-detail-fields" class="resource-details"></dl>
+    <p id="grimoire-detail-version" class="notice" hidden></p>
+    <a id="grimoire-detail-source" target="_blank" rel="noopener noreferrer">Lire la source du catalogue <span class="muted">(nouvel onglet)</span></a>
+    <form id="grimoire-form">
+      <fieldset id="grimoire-edit-fields">
+        <legend>Mes repères personnels</legend>
+        <label class="equipped-choice"><input id="grimoire-session" type="checkbox">Garder à portée de main pour ma séance</label>
+        <label for="grimoire-notes">Mes notes sur ce sort</label><textarea id="grimoire-notes" rows="3" maxlength="4000" placeholder="Une idée d’usage, une question à poser au MJ…"></textarea>
+        <label id="grimoire-update-reference" class="equipped-choice" hidden><input id="grimoire-adopt-version" type="checkbox">Rattacher à la version affichée du catalogue</label>
+        <p class="field-help">Ces repères restent dans ta sauvegarde personnelle. Consulter ou garder un sort ne change ni tes maîtrises, ni ton mana, ni tes capacités.</p>
+        <p class="muted" role="status" data-save-message></p>
+        <div class="actions"><button id="grimoire-save" type="submit">Ajouter à mon grimoire</button><button id="grimoire-remove" class="text-button" type="button" hidden>Retirer du grimoire</button><button class="secondary" type="button" data-close>Fermer</button></div>
+      </fieldset>
+    </form>
+  </dialog>
   <dialog id="player-item-dialog" aria-labelledby="player-item-dialog-title">
     <form id="player-item-edit-form">
       <h2 id="player-item-dialog-title">Détails de l’objet</h2>
@@ -154,6 +270,11 @@
         <div><label for="edit-item-category">Catégorie</label><select id="edit-item-category" name="category"></select></div>
       </div>
       <label for="edit-item-description">Description</label><textarea id="edit-item-description" name="description" rows="3" maxlength="600"></textarea>
+      <div id="edit-item-source-panel" class="item-reference-panel">
+        <p class="eyebrow accent">Référence d’inspiration</p><p id="edit-item-source-info"></p><p id="edit-item-source-state" class="field-help" role="status"></p>
+        <a id="edit-item-source-link" target="_blank" rel="noopener noreferrer" hidden>Lire la version enregistrée de la source (nouvel onglet)</a>
+        <div class="actions"><button id="edit-item-source-change" class="secondary" type="button">Choisir une référence</button><button id="edit-item-source-update" class="secondary" type="button" hidden>Rattacher à la version actuelle</button><button id="edit-item-source-clear" class="text-button" type="button" hidden>Détacher la référence</button></div>
+      </div>
       <label class="equipped-choice"><input id="edit-item-equipped" name="equipped" type="checkbox">Porté ou équipé</label>
       <p class="muted" role="status" data-save-message></p>
       <div class="actions"><button type="submit">Enregistrer l’objet</button><button id="player-remove-item" class="secondary" type="button">Retirer l’objet</button><button class="secondary" type="button" data-close>Fermer</button></div>
@@ -162,6 +283,11 @@
   <dialog id="player-create-dialog" class="character-creator" aria-labelledby="create-player-title">
     <form id="player-create-form">
       <h2 id="create-player-title">Créer mon personnage</h2>
+      <aside class="creation-draft-tools" aria-label="Brouillon de création">
+        <p id="creation-draft-status" role="status">Tes choix seront conservés dans ce navigateur.</p>
+        <p class="field-help">Le brouillon peut rester incomplet. Seule une fiche vérifiée peut devenir un personnage.</p>
+        <div class="actions"><button id="creation-draft-save" class="secondary" type="button">Garder mon brouillon</button><button id="creation-draft-export" class="secondary" type="button">Télécharger le brouillon</button><button id="creation-draft-reload" class="secondary" type="button" hidden>Relire le brouillon enregistré</button><button id="creation-draft-new" class="text-button" type="button">Recommencer</button></div>
+      </aside>
       <p class="creator-intro muted">Imagine la personne qui fera le premier pas. Tu pourras vérifier sa fiche avant de l’enregistrer.</p>
       <label for="new-player-name">Nom du personnage</label><input id="new-player-name" name="name" maxlength="120" required autofocus>
       <fieldset id="creation-portrait" class="protocol-step"><legend>Portrait du personnage · facultatif</legend></fieldset>
@@ -209,6 +335,16 @@
       <div class="actions"><button type="submit">Vérifier la fiche</button><button id="confirm-player-create" type="button" disabled>Enregistrer le personnage</button><button class="secondary" type="button" data-close>Fermer</button></div>
     </form>
   </dialog>
+  <dialog id="creation-draft-import-dialog" aria-labelledby="creation-draft-import-title">
+    <form id="creation-draft-import-form">
+      <h2 id="creation-draft-import-title">Reprendre un fichier de brouillon</h2>
+      <label for="creation-draft-file">Brouillon PJ · fichier JSON</label><input id="creation-draft-file" type="file" accept=".json,application/json" autofocus>
+      <p id="creation-draft-import-preview" class="notice" role="status">Choisis un fichier pour voir son contenu.</p>
+      <label id="creation-draft-replace-wrap" class="equipped-choice" hidden><input id="creation-draft-replace" type="checkbox">Je remplace mon brouillon local. J’ai conservé sa copie si nécessaire.</label>
+      <p class="field-help">Le fichier reprend une création à terminer. Les personnages déjà enregistrés restent dans leur liste.</p>
+      <div class="actions"><button id="creation-draft-import-confirm" type="submit" disabled>Reprendre ce brouillon</button><button class="secondary" type="button" data-close>Fermer</button></div>
+    </form>
+  </dialog>
   <dialog id="player-import-dialog" aria-labelledby="import-player-title">
     <form id="player-import-form">
       <h2 id="import-player-title">Importer une fiche</h2>
@@ -220,7 +356,7 @@
       <div id="player-exchange-review" hidden>
         <label for="player-compare-choice">Comparer avec ma fiche</label><select id="player-compare-choice"></select>
         <div id="player-compare-preview"></div>
-        <p class="field-help">Adopter crée une nouvelle copie et la rend active. La fiche précédente reste dans « Mes personnages ». Les notes et les jets de la copie comparée sont conservés.</p>
+        <p class="field-help">Adopter crée une nouvelle copie et la rend active. La fiche précédente reste dans « Mes personnages ». Les notes et les jets de la copie comparée sont conservés. Les archives sont exclues des copies à comparer ; remets une fiche en activité pour la proposer comme référence.</p>
         <label class="equipped-choice"><input id="player-exchange-accept" type="checkbox">J’ai comparé et je choisis la version reçue.</label>
       </div>
       <div class="actions"><button id="confirm-player-import" type="submit" disabled>Importer une nouvelle copie</button><button class="secondary" type="button" data-close>Fermer</button></div>

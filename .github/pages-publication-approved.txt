@@ -334,3 +334,10 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Les campagnes privées, notes MJ, paquets privés et données personnelles ne sont pas inclus dans l'assemblage public.
 # Aucun nouveau canon, aucune nouvelle règle mécanique et aucune des autres PR ouvertes ne sont inclus dans ce lot.
 # Vérifier npm test, les navigateurs de recette, le workflow Pages et le site public après déploiement.
+
+# Lots joueur et modèles d’objets MJ — publication autorisée le 14 novembre 2026.
+# Demande explicite du créateur dans le chat : faire le prochain lot puis mettre la version actuelle sur Internet.
+# Portée : PR 113 à 119, attribution relue d’une copie d’objet MJ à un PJ, échanges et sauvegardes existants.
+# Aucun autre chantier ouvert, nouveau canon, campagne privée, note MJ ou paquet privé n’est publié.
+# Le document multimédia décrit les prochains lots ; les playlists et fonds vidéo ne sont pas encore implémentés.
+# Publication via workflow Pages, après CI et recettes, puis contrôle de l’URL publique.

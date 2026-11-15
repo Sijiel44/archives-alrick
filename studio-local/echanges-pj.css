@@ -14,6 +14,11 @@
 #player-exchange-review, #pj-exchange-review { margin-block: 1rem; }
 #player-import-dialog { width: min(48rem, calc(100% - 2rem)); }
 #pj-export-dialog { width: min(45rem, calc(100% - 2rem)); }
+#pj-versions-dialog { width: min(48rem, calc(100% - 2rem)); }
+#pj-import-dialog { width: min(48rem, calc(100% - 2rem)); }
+#pj-versions-preview { margin-block: 1rem; }
+.pj-version-name { margin-block: .8rem; font: 1.4rem/1.3 Georgia, serif; color: var(--gold); }
+#pj-versions-form > .actions { position: sticky; bottom: -.5rem; padding-block: .75rem; background: var(--surface); border-top: 1px solid var(--line); }
 .exchange-accept { display: flex; gap: .6rem; align-items: start; padding-block: .8rem; }
 .exchange-accept input[type="checkbox"] { flex: 0 0 1.2rem; width: 1.2rem; margin-top: .25rem; accent-color: var(--copper); }
 @media (max-width: 35rem) {

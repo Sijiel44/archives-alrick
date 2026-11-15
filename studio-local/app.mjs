@@ -6,14 +6,15 @@ import {
 import {
   ADVENTURE_SCENE_KEY, ADVENTURE_SOURCE_KEY, MAX_ADVENTURE_PACKAGE_BYTES, importedAdventure, readAdventurePackage,
   BESTIARY_PROFILE_KEY, BESTIARY_SCHEMA, CREATIONS_KEY, FRESQUE_LINKS_KEY, FRESQUE_MARKERS_KEY, FRESQUE_REFERENCE_KEY,
-  LIBRARY_SOURCE_SCHEMAS, MARKER_KINDS, OPPOSITION_MODES, PJ_SOURCE_KEY, PLAY_ACTIONS_KEY, PLAY_STATS,
+  LIBRARY_SOURCE_SCHEMAS, MARKER_KINDS, OPPOSITION_MODES, PJ_SOURCE_KEY, PJ_UPDATES_KEY, PLAY_ACTIONS_KEY, PLAY_STATS,
   SCENE_AMBIANCE_LIMIT, SCENE_AMBIANCES_KEY, SESSION_ARCHIVES_KEY,
   FRESQUE_LANE_KEY, FRESQUE_LANES_KEY, FRESQUE_LANE_LIMIT,
   INTERLUDES_KEY, INTERLUDE_KINDS,
   IMAGE_ORIGINS, validImageUrl,
-  combatProfile, currentHitPoints, hitPointsAfterDamage, openStudioStore,
+  combatProfile, currentHitPoints, historicalCombatProfile, hitPointsAfterDamage, openStudioStore,
 } from './store.mjs';
 import { ADVENTURE_SCENE_LIMIT, CREATION_STATES, CREATION_TYPES, adventureMilestones } from './creations.mjs';
+import { createObjectGrantUI } from './objets-mj-ui.mjs';
 import { clearProjection, createPlayerProjection, createProjection, loadPresentationImage, openPlayerWindow, playerSheetPresentation, scenePresentation, showPresentation } from './projection.mjs';
 
 const $ = (id) => document.getElementById(id);
@@ -38,6 +39,8 @@ let selectedArchiveId;
 let miniMapSceneId;
 let view = 'home';
 let busy = false;
+const objectGrantUI = createObjectGrantUI({ getCampaign: () => campaign, canOpen: () => Boolean(campaign && !busy),
+  save: saveCommand, exportCharacter: openPJExport, refresh: refreshCampaign, status: message => setStatus(message, 'saved') });
 let draft;
 let createDraft;
 let quickDraft;
@@ -56,6 +59,9 @@ let oppositionRules;
 let pjRules;
 let exchangeRules;
 let playerExport;
+let sessionRoster;
+let rosterReturnFocus;
+let campaignMayBeStale = false;
 let workshopDraft;
 let workshopRead = 0;
 
@@ -240,6 +246,7 @@ function renderPrepare() {
     const controls = [action('Modifier', () => editCharacter(character), 'secondary', `Modifier ${character.name}`)];
     if (linked) controls.unshift(action('Fiche 5d6', () => openCombatProfile(character.id), 'secondary', `Ouvrir le profil 5d6 de ${character.name}`));
     else controls.unshift(action('Voir la fiche', () => previewResource(campaignEntry(character.id)), 'secondary', `Voir la fiche de ${character.name}`));
+    if (character[PJ_UPDATES_KEY]?.length) controls.push(action('Versions', () => openPJVersions(character.id), 'secondary', `Historique des versions de ${character.name}`));
     return record(character.name, `Niveau ${character.level}${linked ? ' · Fiche M02' : ''}${character.notes ? ' · Notes privées' : ''}`, controls);
   }));
   $('creature-list').replaceChildren(...campaign.creatures.map(creature => {
@@ -630,6 +637,7 @@ function hitPointsLabel(current, max) {
 function renderPlay() {
   renderCockpitSearch();
   const scene = activeScene();
+  $('open-session-roster').disabled = !scene;
   $('quick-notes').disabled = !scene;
   $('quick-present').disabled = !scene;
   $('quick-ambiances').disabled = !scene;
@@ -691,7 +699,7 @@ function renderPlayResolution(container, actionData, guide = false, preview) {
   const { roll, combat } = actionData;
   const opposition = actionData.mode === 'opposition';
   const target = opposition ? [...campaign.characters, ...campaign.creatures].find(actor => actor.id === roll.targetId) : undefined;
-  const result = preview ?? (target && oppositionRules?.resolveOpposition(roll, combatProfile(target)));
+  const result = preview ?? (target && oppositionRules?.resolveOpposition(roll, historicalCombatProfile(campaign, target, actionData.id)));
   const outcome = opposition ? (result && oppositionRules.describeOppositionResult(result)) : playRules?.resolvePlayAction(actionData);
   container.dataset.state = outcome?.state || '';
   const parts = [node('p', outcome?.title ?? 'Résolution enregistrée', 'play-verdict')];
@@ -814,10 +822,160 @@ function renderArchive() {
 }
 
 function openActor(entry) {
-  const resource = campaignEntry(entry.id);
-  if (resource?.linkedImage || combatProfile(entry)) previewResource(resource);
-  else if (entry.kind === 'PJ') editCharacter(entry);
-  else editCreature(entry);
+  openSessionRoster(entry.id);
+}
+
+function rosterIsActive() {
+  return sessionRoster?.active && view === 'play' && campaign?.id === sessionRoster.campaignId && activeScene()?.id === sessionRoster.sceneId;
+}
+
+function sessionRosterEntries() {
+  if (!campaign) return [];
+  const resources = new Map(libraryEntries.filter(entry => entry.campaignId === campaign.id).map(entry => [entry.id, entry]));
+  const scene = activeScene();
+  const entries = [...actors(), ...(campaign[CREATIONS_KEY] ?? []).filter(entry => ['npc', 'creature'].includes(entry.kind))];
+  return entries.flatMap(record => {
+    const entry = resources.get(record.id);
+    if (!entry) return [];
+    const card = combatProfile(record);
+    const kind = entry.creation ? (record.kind === 'npc' ? 'PNJ' : 'Créature') : record.kind;
+    const inScene = Boolean(scene?.participantIds.includes(record.id));
+    const caption = card ? `Niveau ${card.level} · ${hitPointsLabel(currentHitPoints(campaign, record), card.pvMax)}`
+      : entry.creation ? 'Fiche descriptive' : `Fiche descriptive${record.level ? ` · niveau ${record.level}` : ''}`;
+    return [{ id: record.id, name: record.name, kind, inScene, caption, entry,
+      search: normalize([record.name, kind, card?.profession, entry.creation && record.details?.role, entry.description].filter(Boolean).join(' ')) }];
+  }).sort((a, b) => Number(b.inScene) - Number(a.inScene) || ['PJ', 'PNJ', 'Créature'].indexOf(a.kind) - ['PJ', 'PNJ', 'Créature'].indexOf(b.kind) ||
+    a.name.localeCompare(b.name, 'fr', { sensitivity: 'base', numeric: true }));
+}
+
+function filteredSessionRoster() {
+  const terms = normalize($('roster-search').value).split(/\s+/u).filter(Boolean);
+  return sessionRosterEntries().filter(entry => ($('roster-scope').value !== 'scene' || entry.inScene) &&
+    ($('roster-kind').value === 'all' || entry.kind === $('roster-kind').value) && terms.every(term => entry.search.includes(term)));
+}
+
+function showRosterDirectory(show) {
+  $('resource-dialog').dataset.rosterDirectory = String(show);
+  $('roster-toggle').setAttribute('aria-expanded', String(show));
+  $('roster-toggle').textContent = show ? 'Lire la fiche' : 'Choisir une fiche';
+}
+
+function renderSessionRoster() {
+  const active = Boolean(rosterIsActive());
+  const dialog = $('resource-dialog');
+  $('session-roster-context').hidden = $('session-roster').hidden = !active;
+  if (!active) { delete dialog.dataset.roster; return; }
+  dialog.dataset.roster = 'true';
+  const entries = filteredSessionRoster();
+  const selected = entries.findIndex(entry => entry.id === resourceEntry?.id && resourceEntry?.campaignId === campaign.id);
+  const visible = entries.slice(0, sessionRoster.limit);
+  $('roster-scene-context').textContent = `Scène courante · ${activeScene().title}`;
+  $('roster-count').textContent = `${entries.length} fiche${entries.length > 1 ? 's' : ''} · ${visible.length} affichée${visible.length > 1 ? 's' : ''}`;
+  $('roster-outside-filter').hidden = !resourceEntry || selected >= 0;
+  $('roster-more').hidden = visible.length === entries.length;
+  $('roster-list').replaceChildren(...visible.map((entry, index) => {
+    const row = node('li');
+    const button = action('', () => selectSessionActor(entry.id), '', `Consulter la fiche de ${entry.name}`);
+    button.dataset.rosterId = entry.id;
+    button.tabIndex = index === (selected >= 0 && selected < visible.length ? selected : 0) ? 0 : -1;
+    button.disabled = sessionRoster.loading;
+    if (index === selected) button.setAttribute('aria-current', 'true');
+    button.append(node('span', entry.kind, 'roster-kind'), node('strong', entry.name), node('small', entry.caption),
+      node('small', entry.inScene ? 'Dans cette scène' : 'Autre fiche de campagne'));
+    row.append(button);
+    return row;
+  }));
+  if (!visible.length) $('roster-list').append(node('li', 'Aucune fiche ne correspond aux filtres.', 'empty'));
+  $('roster-previous').disabled = $('roster-next').disabled = sessionRoster.loading || !entries.length || (entries.length === 1 && selected === 0);
+  for (const id of ['roster-search', 'roster-kind', 'roster-scope', 'roster-more', 'roster-refresh']) $(id).disabled = sessionRoster.loading;
+  const status = sessionRoster.loading ? 'Relecture de la campagne…' : sessionRoster.stale
+    ? sessionRoster.error || 'La campagne a changé dans un autre onglet. Actualisez les fiches avant de préparer une action.' : '';
+  $('roster-freshness').textContent = status;
+  $('roster-freshness').hidden = !status;
+  if (sessionRoster.loading || sessionRoster.stale) for (const button of $('resource-actions').querySelectorAll('button')) button.disabled = true;
+}
+
+function selectSessionActor(id) {
+  if (!rosterIsActive() || busy) return;
+  const entries = filteredSessionRoster();
+  const index = entries.findIndex(entry => entry.id === id);
+  const selected = entries[index];
+  if (!selected) return;
+  sessionRoster.actorId = id;
+  sessionRoster.limit = Math.max(sessionRoster.limit, Math.ceil((index + 1) / 30) * 30);
+  resourceTrail = [];
+  showRosterDirectory(false);
+  previewResource(selected.entry, false);
+  const button = [...$('roster-list').querySelectorAll('button')].find(button => button.dataset.rosterId === id);
+  button?.scrollIntoView({ block: 'nearest' });
+}
+
+function openSessionRoster(actorId) {
+  const scene = activeScene();
+  if (view !== 'play' || !campaign || !scene || busy) return;
+  const sameContext = sessionRoster?.campaignId === campaign.id && sessionRoster?.sceneId === scene.id;
+  if (!sameContext) {
+    sessionRoster = { campaignId: campaign.id, sceneId: scene.id, limit: 30, active: false, loading: false, stale: campaignMayBeStale };
+    $('roster-search').value = '';
+    $('roster-kind').value = 'all';
+    $('roster-scope').value = scene.participantIds.length ? 'scene' : 'campaign';
+  }
+  sessionRoster.active = true;
+  sessionRoster.stale ||= campaignMayBeStale;
+  rosterReturnFocus = document.activeElement;
+  if (actorId) {
+    $('roster-search').value = '';
+    $('roster-kind').value = 'all';
+    $('roster-scope').value = scene.participantIds.includes(actorId) ? 'scene' : 'campaign';
+  }
+  const entries = filteredSessionRoster();
+  const selected = entries.find(entry => entry.id === (actorId ?? sessionRoster.actorId)) ?? entries[0]
+    ?? sessionRosterEntries().find(entry => entry.id === sessionRoster.actorId);
+  if (selected) {
+    if (entries.some(entry => entry.id === selected.id)) selectSessionActor(selected.id);
+    else { resourceTrail = []; previewResource(selected.entry, false); }
+    if (!actorId) { showRosterDirectory(true); $('roster-search').focus(); }
+  } else {
+    resourceEntry = undefined;
+    resourceTrail = [];
+    $('resource-kind').textContent = 'Répertoire · Privé MJ';
+    $('resource-title').textContent = 'Aucune fiche à consulter';
+    $('resource-status').textContent = 'Privé MJ';
+    $('resource-context').textContent = campaign.name;
+    $('resource-description').textContent = 'Ajoutez des PJ, PNJ ou créatures depuis Préparer ou Créations, ou ajustez les filtres.';
+    $('resource-description').hidden = false;
+    for (const id of ['resource-previous', 'resource-art', 'resource-image-link', 'resource-details', 'resource-creation-notes', 'resource-profile',
+      'resource-provenance', 'resource-source-link', 'resource-related', 'resource-markdown']) $(id).hidden = true;
+    $('resource-actions').replaceChildren();
+    renderSessionRoster();
+    $('resource-dialog').showModal();
+    showRosterDirectory(true);
+    $('roster-search').focus();
+  }
+}
+
+async function refreshSessionRoster() {
+  if (!rosterIsActive() || busy) return;
+  const state = sessionRoster;
+  state.loading = busy = true;
+  renderSessionRoster();
+  try {
+    const next = await store.get(state.campaignId);
+    if (!next) throw new Error('Cette campagne est indisponible. Revenez à la scène pour choisir une autre campagne.');
+    setCampaign(next);
+    state.stale = false;
+    state.error = '';
+  } catch (error) {
+    state.stale = true;
+    state.error = error.message;
+  } finally {
+    state.loading = busy = false;
+    if (rosterIsActive()) {
+      const fresh = campaignEntry(resourceEntry?.id) ?? campaignEntry(state.actorId) ?? filteredSessionRoster()[0]?.entry;
+      if (fresh) previewResource(fresh, false);
+      else renderSessionRoster();
+    }
+  }
 }
 
 function openCombatProfile(id) {
@@ -968,7 +1126,8 @@ function previewResource(entry, remember = true) {
     return [node('dt', label), description];
   }));
   details.hidden = !entry.details?.length;
-  const privateNotes = entry.creation ? entry.record.notes : '';
+  const privateNotes = entry.creation ? entry.record.notes : rosterIsActive() && entry.campaignId === campaign.id
+    ? [entry.record?.notes, entry.record?.[BESTIARY_PROFILE_KEY]?.card.notes].filter(value => typeof value === 'string' && value).join('\n\n') : '';
   const notes = $('resource-creation-notes');
   notes.hidden = !privateNotes;
   notes.open = false;
@@ -1003,10 +1162,11 @@ function previewResource(entry, remember = true) {
   const actions = [];
   const add = (label, onClick, disabled = false) => {
     const button = action(label, () => {
+      if (busy || (rosterIsActive() && sessionRoster.stale)) return;
       dialog.close();
       onClick();
     });
-    button.disabled = disabled;
+    button.disabled = disabled || (rosterIsActive() && (sessionRoster.stale || sessionRoster.loading));
     actions.push(button);
   };
   const illustration = libraryIllustration(entry);
@@ -1022,6 +1182,7 @@ function previewResource(entry, remember = true) {
       add('Retirer l’image', () => removeLinkedImage(entry));
     } else if (entry.creation) {
       add('Modifier la création', () => openCreation(entry.kind, entry.record));
+      if (entry.kind === 'object') add('Attribuer une copie à un PJ', () => objectGrantUI.open(entry.id), !exchangeRules);
       add('Ajouter comme repère', () => editMarker(undefined, view === 'play' ? activeScene()?.id : null, undefined, entry));
       if (entry.kind === 'adventure') {
         const first = campaign.scenes.find(scene => scene[ADVENTURE_SCENE_KEY]?.adventureId === entry.id);
@@ -1038,6 +1199,7 @@ function previewResource(entry, remember = true) {
     if (pjSource) {
       add('Préparer la fiche joueur', () => preparePlayerShare(entry.record.id));
       if (exchangeRules) add('Préparer un échange pour le joueur', () => openPJExport(entry.record.id));
+      if (entry.record[PJ_UPDATES_KEY]?.length) add('Historique des versions', () => openPJVersions(entry.record.id));
     }
     if ((profile || pjSource) && playRules && view === 'play' && activeScene()) {
       add('Préparer un jet 5d6', () => editPlayAction({ attacker: entry.record }));
@@ -1065,9 +1227,11 @@ function previewResource(entry, remember = true) {
   $('resource-markdown').hidden = Boolean(entry.record && !entry.creation && entry.kind !== 'image');
   $('resource-shortcut').value = $('resource-markdown').hidden ? '' : `[[${entry.id}]]`;
   $('resource-shortcut-status').textContent = '';
+  renderSessionRoster();
   if (!dialog.open) dialog.showModal();
   else $('resource-title').focus();
   dialog.scrollTop = 0;
+  dialog.querySelector('.resource-body').scrollTop = 0;
 }
 
 function shelfIcon(path) {
@@ -1504,6 +1668,10 @@ function render() {
 }
 
 function setCampaign(next) {
+  if (sessionRoster && (sessionRoster.campaignId !== next.id || sessionRoster.sceneId !== next.activeSceneId)) {
+    if (rosterIsActive() && $('resource-dialog').open) $('resource-dialog').close();
+    sessionRoster = undefined;
+  }
   if (campaign?.revision !== next.revision || campaign?.id !== next.id) revokePlayerShare();
   if (campaign?.revision !== next.revision || campaign?.id !== next.id) linkDraft = undefined;
   if (campaign?.id !== next.id) {
@@ -1522,6 +1690,7 @@ function setCampaign(next) {
     revokeProjection();
   }
   campaign = next;
+  campaignMayBeStale = false;
   campaigns = [next, ...campaigns.filter((entry) => entry.id !== next.id)];
   remember(next.id);
   render();
@@ -2199,6 +2368,7 @@ function openPJImport() {
   $('pj-import-file-choice').open = $('pj-import-full').open = true;
   $('pj-import-source').replaceChildren();
   $('pj-exchange-review').hidden = true;
+  $('pj-exchange-mode').value = 'copy';
   $('pj-exchange-accept').checked = $('pj-exchange-accept').required = false;
   $('pj-import-destination').disabled = false;
   $('pj-import-destination').replaceChildren(new Option('Créer un nouveau PJ', ''), ...campaign.characters
@@ -2218,6 +2388,9 @@ async function renderPJImport() {
   preview.replaceChildren();
   $('pj-import-submit').disabled = true;
   attempt.exchangeReady = false;
+  attempt.updateTargetId = undefined;
+  attempt.type = 'attach-pj-source';
+  $('pj-import-submit').textContent = 'Importer dans la campagne';
   $('pj-exchange-accept').checked = false;
   if (!source) return;
   const budget = pjRules.evaluatePJ(source);
@@ -2230,6 +2403,13 @@ async function renderPJImport() {
     $('pj-compare-preview').textContent = 'Comparaison…';
     try {
       const character = campaign.characters.find(item => item.id === $('pj-compare-choice').value);
+      const updateOption = $('pj-exchange-mode').querySelector('[value="update"]');
+      updateOption.disabled = !character;
+      if (!character) $('pj-exchange-mode').value = 'copy';
+      const updating = $('pj-exchange-mode').value === 'update';
+      $('pj-exchange-impact').textContent = updating
+        ? 'Le PJ sélectionné garde son identifiant, ses notes MJ et ses liens de scène. Le profil reçu, son nom et ses PV deviennent actifs. La version précédente reste consultable et peut être rétablie.'
+        : 'L’import crée un nouveau participant. La fiche précédente, ses notes MJ et ses liens de scène restent en place. Vous pourrez choisir la nouvelle copie dans les participants de la scène.';
       const comparison = character ? await exchangeRules.compareExchange({ ...character[PJ_SOURCE_KEY], name: character.name,
         pv: currentHitPoints(campaign, character) }, attempt.pjExchange) : undefined;
       if (draft !== attempt || request !== attempt.pjComparison) return;
@@ -2237,6 +2417,11 @@ async function renderPJImport() {
       attempt.adoptSource = exchangeRules.receivedSheet(attempt.pjExchange, character?.[PJ_SOURCE_KEY]);
       const evaluated = pjRules.evaluatePJ(attempt.adoptSource);
       attempt.exchangeReady = !comparison?.identical && evaluated.valid;
+      if (updating) {
+        attempt.type = 'update-pj-source';
+        attempt.updateTargetId = character.id;
+        $('pj-import-submit').textContent = 'Actualiser le PJ existant';
+      }
       if (!evaluated.valid) $('pj-compare-preview').append(node('p', evaluated.issues.join(' '), 'notice error'));
     } catch (error) { if (draft === attempt && request === attempt.pjComparison) $('pj-compare-preview').textContent = error.message; }
   }
@@ -2244,12 +2429,14 @@ async function renderPJImport() {
 
 async function inspectPJImport() {
   const attempt = draft;
-  if (attempt?.type !== 'attach-pj-source' || busy) return;
+  if (!['attach-pj-source', 'update-pj-source'].includes(attempt?.type) || busy) return;
   const request = attempt.pjRequest = Symbol();
   const file = $('pj-import-file').files[0];
   attempt.pjSources = [];
   $('pj-import-file-choice').open = $('pj-import-full').open = true;
   attempt.pjExchange = attempt.adoptSource = undefined;
+  attempt.appliedAt = undefined;
+  $('pj-exchange-mode').value = 'copy';
   $('pj-exchange-review').hidden = true;
   $('pj-exchange-accept').checked = $('pj-exchange-accept').required = false;
   $('pj-import-destination').disabled = false;
@@ -2312,6 +2499,36 @@ async function openPJExport(characterId) {
     $('pj-export-status').textContent = 'Copie prête à relire. Les changements non enregistrés ne sont pas inclus.';
     $('pj-export-download').disabled = false;
   } catch (error) { $('pj-export-status').textContent = error.message; }
+}
+
+function openPJVersions(characterId) {
+  if (!campaign || !pjRules || busy) return;
+  const character = campaign.characters.find(item => item.id === characterId);
+  if (!character?.[PJ_UPDATES_KEY]?.length) return;
+  $('pj-versions-form').reset();
+  const versions = character[PJ_UPDATES_KEY];
+  $('pj-versions-name').textContent = `${character.name} · ${currentHitPoints(campaign, character)} / ${character[PJ_SOURCE_KEY].pvMax} PV · ${versions.length} changement${versions.length > 1 ? 's' : ''}`;
+  $('pj-versions-choice').replaceChildren(new Option('Choisir une version antérieure', ''), ...versions.map((update, index) =>
+    new Option(`${index + 1} · ${actionDateFormat.format(new Date(update.at))} · avant ${update.restoredFrom ? 'rétablissement' : 'échange'} · ${update.before.name} · ${update.before.pv} → ${(versions[index + 1]?.before.source ?? character[PJ_SOURCE_KEY]).pv} PV`, update.id)));
+  beginEdit($('pj-versions-form'), character.id, 'restore-pj-source');
+  draft.versionCharacter = character;
+  renderPJVersions();
+}
+
+function renderPJVersions() {
+  if (draft?.type !== 'restore-pj-source') return;
+  draft.dirty = false;
+  const version = draft.versionCharacter[PJ_UPDATES_KEY].find(update => update.id === $('pj-versions-choice').value);
+  $('pj-versions-accept').checked = false;
+  $('pj-versions-restore').disabled = true;
+  $('pj-versions-preview').replaceChildren();
+  if (version) {
+    const versions = draft.versionCharacter[PJ_UPDATES_KEY], index = versions.indexOf(version);
+    const after = versions[index + 1]?.before.source ?? draft.versionCharacter[PJ_SOURCE_KEY];
+    $('pj-versions-preview').append(node('p', `Changement du ${actionDateFormat.format(new Date(version.at))} · ${version.before.pv} → ${after.pv} PV. Le profil ci-dessous est celui conservé avant ce changement.`, 'notice'),
+      node('h3', version.before.name, 'pj-version-name'),
+      buildPJSheet({ ...version.before.source, name: version.before.name }, version.before.pv));
+  }
 }
 
 function editCreature(creature) {
@@ -2737,11 +2954,12 @@ function displayPreview() {
   const oppositions = preview.oppositions ? ` · ${preview.oppositions} opposition(s) M03` : '';
   const profiles = preview.profiles ? ` · ${preview.profiles} profil(s) M03` : '';
   const playerSheets = preview.playerSheets ? ` · ${preview.playerSheets} fiche(s) PJ M02` : '';
+  const playerUpdates = preview.playerUpdates ? ` · ${preview.playerUpdates} changement(s) de version PJ` : '';
   const creations = preview.creations ? ` · ${preview.creations} création(s) MJ` : '';
   const ambiances = preview.ambiances ? ` · ${preview.ambiances} ambiance(s)` : '';
   const interludes = preview.interludes ? ` · ${preview.interludes} interlude(s)` : '';
   const images = preview.images ? ` · ${preview.images} image(s) par lien` : '';
-  $('backup-summary').textContent = `Révision ${preview.revision} · ${preview.characters} PJ${playerSheets} · ${preview.creatures} créature(s) · ${preview.scenes} scène(s)${ambiances} · ${preview.sessions} séance(s) archivée(s)${interludes} · ${preview.markers} repère(s)${actions}${oppositions}${profiles}${creations}${images}`;
+  $('backup-summary').textContent = `Révision ${preview.revision} · ${preview.characters} PJ${playerSheets}${playerUpdates} · ${preview.creatures} créature(s) · ${preview.scenes} scène(s)${ambiances} · ${preview.sessions} séance(s) archivée(s)${interludes} · ${preview.markers} repère(s)${actions}${oppositions}${profiles}${creations}${images}`;
   $('backup-conflict').hidden = !preview.conflict;
 }
 
@@ -2864,6 +3082,12 @@ $('import-pj').addEventListener('click', openPJImport);
 $('pj-import-file').addEventListener('change', inspectPJImport);
 $('pj-import-source').addEventListener('change', renderPJImport);
 $('pj-compare-choice').addEventListener('change', renderPJImport);
+$('pj-exchange-mode').addEventListener('change', renderPJImport);
+$('pj-versions-choice').addEventListener('change', renderPJVersions);
+$('pj-versions-accept').addEventListener('change', () => {
+  if (draft?.type === 'restore-pj-source') draft.dirty = false;
+  $('pj-versions-restore').disabled = !$('pj-versions-accept').checked || !$('pj-versions-choice').value;
+});
 $('pj-exchange-accept').addEventListener('change', () => {
   $('pj-import-submit').disabled = !draft?.exchangeReady || !$('pj-exchange-accept').checked;
 });
@@ -2969,6 +3193,62 @@ for (const [kind, label] of Object.entries(MARKER_KINDS)) {
 }
 $('improvise-scene').addEventListener('click', () => editScene(undefined, { improvised: true }));
 $('quick-search').addEventListener('click', () => $('cockpit-search').focus());
+$('open-session-roster').addEventListener('click', () => openSessionRoster());
+$('roster-return').addEventListener('click', () => {
+  rosterReturnFocus = $('current-scene-title');
+  $('resource-dialog').close();
+});
+$('roster-toggle').addEventListener('click', () => {
+  const show = $('resource-dialog').dataset.rosterDirectory !== 'true';
+  showRosterDirectory(show);
+  (show ? $('roster-search') : $('resource-title')).focus();
+});
+for (const id of ['roster-search', 'roster-kind', 'roster-scope']) $(id).addEventListener('input', () => {
+  if (!rosterIsActive()) return;
+  sessionRoster.limit = 30;
+  renderSessionRoster();
+});
+$('roster-search').addEventListener('keydown', event => {
+  if (event.key !== 'Enter' || !rosterIsActive()) return;
+  event.preventDefault();
+  const first = filteredSessionRoster()[0];
+  if (first) selectSessionActor(first.id);
+});
+$('roster-list').addEventListener('keydown', event => {
+  const current = event.target.closest('button[data-roster-id]');
+  if (!current || !['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+  event.preventDefault();
+  const buttons = [...$('roster-list').querySelectorAll('button[data-roster-id]')];
+  const index = buttons.indexOf(current);
+  const next = event.key === 'Home' ? 0 : event.key === 'End' ? buttons.length - 1 : (index + (event.key === 'ArrowDown' ? 1 : -1) + buttons.length) % buttons.length;
+  for (const [i, button] of buttons.entries()) button.tabIndex = i === next ? 0 : -1;
+  buttons[next]?.focus();
+});
+for (const [id, direction] of [['roster-previous', -1], ['roster-next', 1]]) $(id).addEventListener('click', () => {
+  if (!rosterIsActive()) return;
+  const entries = filteredSessionRoster();
+  if (!entries.length) return;
+  const index = entries.findIndex(entry => entry.id === sessionRoster.actorId);
+  const next = index < 0 ? (direction > 0 ? 0 : entries.length - 1) : (index + direction + entries.length) % entries.length;
+  selectSessionActor(entries[next].id);
+});
+$('roster-more').addEventListener('click', () => {
+  if (rosterIsActive()) { sessionRoster.limit += 30; renderSessionRoster(); }
+});
+$('roster-refresh').addEventListener('click', refreshSessionRoster);
+$('resource-dialog').addEventListener('close', () => {
+  const dialog = $('resource-dialog');
+  if (!dialog.hasAttribute('data-roster')) return;
+  if (sessionRoster) sessionRoster.active = false;
+  delete dialog.dataset.roster;
+  $('session-roster-context').hidden = $('session-roster').hidden = true;
+  queueMicrotask(() => {
+    if (document.querySelector('dialog[open]')) return;
+    const target = rosterReturnFocus?.isConnected && rosterReturnFocus.getClientRects().length ? rosterReturnFocus
+      : $('open-session-roster').getClientRects().length ? $('open-session-roster') : $(`${view}-title`);
+    target?.focus({ preventScroll: true });
+  });
+});
 $('quick-notes').addEventListener('click', () => {
   const scene = activeScene();
   if (!scene || busy) return;
@@ -3193,14 +3473,22 @@ attachEditor($('pj-free-form'), (_data, id, _type, attempt) =>
 attachEditor($('pj-import-form'), (data, id, _type, attempt) => {
   if (attempt.pjExchange) {
     if (!attempt.exchangeReady || !$('pj-exchange-accept').checked || !attempt.adoptSource) return undefined;
+    if (_type === 'update-pj-source') return { id: attempt.updateTargetId, source: attempt.adoptSource, at: attempt.appliedAt ??= new Date().toISOString() };
     return { id, attach: false, source: attempt.adoptSource };
   }
   const source = attempt.pjSources?.[data.get('selection')];
   if (!source || !pjRules.evaluatePJ(source).valid) return undefined;
   const destination = data.get('destination');
   return { id: destination || id, attach: Boolean(destination), source };
+}, type => {
+  setStatus(type === 'update-pj-source' ? 'Version du PJ actualisée · liens conservés' : 'Fiche PJ M02 importée', 'saved');
+  return $('import-pj');
+});
+attachEditor($('pj-versions-form'), (data, id, _type, attempt) => {
+  if (!$('pj-versions-accept').checked || !attempt.versionCharacter[PJ_UPDATES_KEY].some(update => update.id === data.get('version'))) return undefined;
+  return { id, updateId: data.get('version'), at: attempt.restoredAt ??= new Date().toISOString() };
 }, () => {
-  setStatus('Fiche PJ M02 importée', 'saved');
+  setStatus('Version du PJ rétablie · historique conservé', 'saved');
   return $('import-pj');
 });
 attachEditor($('play-action-form'), (fields, id, type, attempt) => {
@@ -3667,6 +3955,9 @@ async function init() {
       notifications = new BroadcastChannel('entre-rives:notifications-studio');
       notifications.addEventListener('message', (event) => {
         if (event.data !== 'saved') return;
+        campaignMayBeStale = Boolean(campaign);
+        if (sessionRoster) sessionRoster.stale = true;
+        if (rosterIsActive() && $('resource-dialog').open) renderSessionRoster();
         revokeProjection();
         revokePlayerShare();
         setStatus('Une sauvegarde a été enregistrée dans un autre onglet');

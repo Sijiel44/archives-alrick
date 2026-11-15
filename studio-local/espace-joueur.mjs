@@ -5,6 +5,14 @@ import { resolvePlayAction, studioDice } from './protocole.mjs';
 import { checkPlayerSheet, openPlayerStore, playerBackup, playerExchange, PLAYER_ROLL_LIMIT, readPlayerFile } from './espace-joueur-store.mjs';
 import { readPortrait, validPortrait } from './portraits.mjs';
 import { EXCHANGE_KEY, compareExchange, makeExchange, receivedSheet, renderExchangePreview } from './echanges-pj.mjs';
+import { PLAYER_GRIMOIRE_LIMIT, PLAYER_MAGIC_DOMAINS, PLAYER_MAGIC_REFERENCES, PLAYER_SPELLS,
+  grimoireRows, grimoireSearchText, playerSpell } from './grimoire-joueur.mjs';
+import { creationDraftController } from './creation-brouillon.mjs';
+import { checkCreationDraft } from './brouillons-pj.mjs';
+import { createPlayerDirectory, isPlayerArchived } from './rangement-joueur.mjs';
+import { createPlayerNotebookUI } from './carnet-joueur-ui.mjs';
+import { ITEM_SOURCE_KEY, objectSource, objectReference, itemWithSource } from './objets-joueur.mjs';
+import { createObjectPicker } from './objets-joueur-ui.mjs';
 
 const $ = id => document.getElementById(id);
 const stats = Object.entries(PLAY_STATS);
@@ -36,10 +44,21 @@ let incomingExchange;
 let comparedRecord;
 let comparisonRequest = 0;
 let importReady = false;
+let grimoireEdit;
+let grimoireLimit = 12;
+let creationDraft;
+let creationId;
+let creating = false;
+let playerDirectory;
+let playerNotebookUI;
+let newItemSource;
+const objectPicker = createObjectPicker({ canOpen: () => !pending && !creating });
+const preferredPlayerKey = 'entre-rives:pj-ouvert';
 
-function node(tag, content) {
+function node(tag, content, className) {
   const element = document.createElement(tag);
   element.textContent = content;
+  if (className) element.className = className;
   return element;
 }
 
@@ -148,7 +167,7 @@ function portraitEditor(container, prefix, onChange = () => {}) {
   };
 }
 
-const creationPortrait = portraitEditor($('creation-portrait'), 'creation', resetCreationReview);
+const creationPortrait = portraitEditor($('creation-portrait'), 'creation', () => { resetCreationReview(); creationDraft?.changed(); });
 const sheetPortrait = portraitEditor($('sheet-portrait'), 'sheet');
 
 function inventory(sheet) {
@@ -221,6 +240,13 @@ function renderInventory() {
     const quantityLabel = typeof quantity === 'number' || typeof quantity === 'string' ? quantity : '?';
     copy.append(tag, node('h4', `${item.name || 'Objet sans nom'} × ${quantityLabel}`));
     if (typeof item.description === 'string' && item.description) copy.append(node('p', item.description));
+    if (Object.hasOwn(item, ITEM_SOURCE_KEY)) {
+      const reference = objectReference(item[ITEM_SOURCE_KEY]);
+      const link = node('button', 'Consulter la référence', 'text-button item-reference-link'); link.type = 'button';
+      link.setAttribute('aria-label', `Consulter la référence de ${item.name}`);
+      link.addEventListener('click', () => objectPicker.open({ mode: 'view', source: item[ITEM_SOURCE_KEY], readOnly: true }));
+      copy.append(node('p', reference.state === 'current' ? 'Référence du catalogue liée' : reference.state === 'changed' ? 'Référence du catalogue modifiée' : reference.state === 'missing' ? 'Référence absente du catalogue' : 'Référence de format inconnu conservée', 'field-help'), link);
+    }
     const button = node('button', 'Détails');
     button.type = 'button';
     button.className = 'secondary';
@@ -234,7 +260,8 @@ function renderInventory() {
   $('player-items').replaceChildren(...(rows.length ? rows : [empty]));
   $('player-items-more').hidden = matches.length <= inventoryLimit;
   const supported = active.sheet.inventory === undefined || Array.isArray(active.sheet.inventory);
-  for (const control of $('player-item-form').querySelectorAll('input, select, button')) control.disabled = !supported;
+  for (const control of $('player-item-form').querySelectorAll('input, select, button')) control.disabled = !supported || isPlayerArchived(active);
+  renderItemSourcePanel('item', newItemSource, !supported || isPlayerArchived(active));
   $('player-item-status').textContent = supported
     ? `Résultats affichés · ${Math.min(inventoryLimit, matches.length)} / ${matches.length}.${items.length > readable.length ? ' Les entrées de format inconnu restent dans la sauvegarde personnelle.' : ''}`
     : 'Cet inventaire utilise un format encore inconnu. Sa sauvegarde personnelle conserve les données d’origine.';
@@ -265,7 +292,7 @@ function renderAbilities() {
 
 function syncRollButton() {
   const kept = Boolean(latestRoll && active?.rolls?.some(roll => roll.id === latestRoll.id));
-  $('player-keep-roll').disabled = pending || !latestRoll || kept;
+  $('player-keep-roll').disabled = pending || isPlayerArchived(active) || !latestRoll || kept;
   $('player-keep-roll').textContent = kept ? 'Jet consigné' : 'Consigner ce jet';
 }
 
@@ -298,7 +325,7 @@ function editItem(index) {
   if (pending || !active) return;
   const item = inventory(active.sheet)[index];
   if (!item || typeof item.name !== 'string') return;
-  itemEdit = { record: active, index };
+  itemEdit = { record: active, index, source: item[ITEM_SOURCE_KEY], changedFields: new Set() };
   $('player-item-dialog-title').textContent = item.name || 'Détails de l’objet';
   $('edit-item-name').value = item.name;
   $('edit-item-quantity').value = typeof item.quantity === 'number' || typeof item.quantity === 'string' ? item.quantity : 1;
@@ -306,29 +333,91 @@ function editItem(index) {
   $('edit-item-equipped').checked = item.equipped === true;
   fillCategories($('edit-item-category'), typeof item.category === 'string' ? item.category : 'autre');
   $('player-item-dialog').querySelector('[data-save-message]').textContent = '';
+  for (const control of $('player-item-edit-form').querySelectorAll('input, select, textarea, button[type=submit], #player-remove-item')) control.disabled = isPlayerArchived(active);
+  renderItemSourcePanel('edit-item', itemEdit.source, isPlayerArchived(active));
   $('player-item-dialog').showModal();
 }
 
-function itemFromForm(form, previous) {
+function renderItemSourcePanel(prefix, source, readOnly = false) {
+  const info = objectReference(source);
+  $(prefix + '-source-panel').hidden = prefix === 'item' && source === undefined;
+  $(prefix + '-source-info').textContent = info.label;
+  $(prefix + '-source-state').textContent = ({ none: 'Tu peux relier cet objet à une fiche du catalogue.',
+    current: 'Référence d’inspiration. L’attribution et les effets restent à convenir avec le MJ.',
+    changed: 'Le catalogue a changé depuis ce lien. Tes données restent conservées ; le rattachement à la version actuelle est volontaire.',
+    missing: 'Absente du catalogue actuel. Le repère enregistré reste conservé.',
+    unsupported: 'Le client actuel conserve ce repère de format inconnu.' })[info.state];
+  const link = $(prefix + '-source-link'); link.hidden = !info.href;
+  if (info.href) link.href = info.href; else link.removeAttribute('href');
+  $(prefix + '-source-change').disabled = readOnly || info.state === 'unsupported';
+  $(prefix + '-source-clear').hidden = source === undefined;
+  $(prefix + '-source-clear').disabled = readOnly || info.state === 'unsupported';
+  $(prefix + '-source-update').hidden = info.state !== 'changed';
+  $(prefix + '-source-update').disabled = readOnly;
+}
+function chooseItemReference(prefix) {
+  const editing = prefix === 'edit-item';
+  const record = editing ? itemEdit?.record : active;
+  const source = editing ? itemEdit?.source : newItemSource;
+  if (!record || pending || isPlayerArchived(record) || objectReference(source).state === 'unsupported' ||
+      (record.sheet.inventory !== undefined && !Array.isArray(record.sheet.inventory))) return;
+  objectPicker.open({ mode: editing ? 'link' : 'create', source, readOnly: false, onChoose: entry => {
+    if (active?.id !== record.id || pending) return false;
+    if (editing) itemEdit.source = objectSource(entry, itemEdit.source);
+    else {
+      const form = $('player-item-form');
+      if (($('item-name').value || $('item-description').value || $('item-count').value !== '1' || $('item-equipped').checked || $('item-category').value !== 'autre') &&
+          !window.confirm('Remplacer les champs de l’ajout en cours par une adaptation de cette référence ?')) return false;
+      newItemSource = objectSource(entry, newItemSource);
+      $('item-name').value = `Adaptation · ${entry.name}`.slice(0, 90);
+      $('item-description').value = `Adaptation de table d’après « ${entry.name} ». ${entry.description}`.slice(0, 600);
+      $('item-category').value = entry.category; $('item-count').value = '1'; $('item-equipped').checked = false;
+      form.closest('details').open = true;
+    }
+    renderItemSourcePanel(prefix, editing ? itemEdit.source : newItemSource);
+    return editing ? $(prefix + '-source-change') : $('item-name');
+  } });
+}
+$('player-item-catalogue-open').addEventListener('click', () => {
+  if (active && (isPlayerArchived(active) || (active.sheet.inventory !== undefined && !Array.isArray(active.sheet.inventory)))) objectPicker.open({ mode: 'view', readOnly: true });
+  else chooseItemReference('item');
+});
+for (const prefix of ['item', 'edit-item']) {
+  $(prefix + '-source-change').addEventListener('click', () => chooseItemReference(prefix));
+  for (const action of ['clear', 'update']) $(prefix + '-source-' + action).addEventListener('click', () => {
+    const editing = prefix === 'edit-item', record = editing ? itemEdit?.record : active, source = editing ? itemEdit?.source : newItemSource;
+    const info = objectReference(source);
+    if (!record || pending || isPlayerArchived(record) || info.state === 'unsupported') return;
+    if (action === 'clear' && !window.confirm('Détacher la référence de cet objet ? Ses autres champs sont conservés.')) return;
+    if (action === 'update' && info.state !== 'changed') return;
+    const next = action === 'clear' ? undefined : objectSource(info.entry, source);
+    if (editing) itemEdit.source = next; else newItemSource = next;
+    renderItemSourcePanel(prefix, next);
+  });
+}
+
+function itemFromForm(form, previous, changedFields) {
   const values = new FormData(form);
   const name = values.get('name').trim();
   const quantity = Number(values.get('quantity'));
   if (!name || name.length > 90 || !Number.isInteger(quantity) || quantity < 1 || quantity > 999) {
     throw new Error('Renseigne un nom et une quantité entière entre 1 et 999.');
   }
-  return { ...previous, name, quantity, description: values.get('description').trim(),
+  const fields = { name, quantity, description: values.get('description').trim(),
     category: values.get('category'), equipped: values.has('equipped') };
+  return { ...previous, ...Object.fromEntries(Object.entries(fields).filter(([key]) => !changedFields || changedFields.has(key))) };
 }
 
 function render(record) {
   const previous = active;
   const changed = active?.id !== record?.id;
   active = record;
+  playerNotebookUI?.update();
   $('player-library').hidden = records.length === 0;
-  $('player-selection').replaceChildren(...records.map(entry => {
+  $('player-selection').replaceChildren(...records.filter(entry => !isPlayerArchived(entry) || entry.id === active?.id).map(entry => {
     const revision = entry.sheet[EXCHANGE_KEY]?.revision;
     const version = typeof revision === 'string' ? ` · version ${revision.slice(0, 8)}` : '';
-    return new Option(`${entry.sheet.name} · niveau ${entry.sheet.level}${version}`, entry.id);
+    return new Option(`${entry.sheet.name} · niveau ${entry.sheet.level}${version}${isPlayerArchived(entry) ? ' · Archive' : ''}`, entry.id);
   }));
   $('player-selection').value = active?.id ?? '';
   $('player-selection').disabled = records.length === 0;
@@ -336,12 +425,22 @@ function render(record) {
   $('player-welcome').hidden = Boolean(active);
   document.body.classList.toggle('has-character', Boolean(active));
   if (!active) return;
+  try {
+    if (isPlayerArchived(active)) { if (localStorage.getItem(preferredPlayerKey) === active.id) localStorage.removeItem(preferredPlayerKey); }
+    else localStorage.setItem(preferredPlayerKey, active.id);
+  } catch { /* Le choix reste utilisable sans stockage des préférences. */ }
   selectPanel(selectedPanel);
   if (changed) {
+    newItemSource = undefined;
+    $('player-item-form').reset();
+    $('player-filing-message').textContent = '';
     latestRoll = undefined;
     inventoryLimit = 30;
     $('player-item-search').value = $('player-ability-search').value = '';
     $('player-item-filter').value = 'all';
+    $('grimoire-search').value = $('grimoire-domain').value = $('grimoire-circle').value = '';
+    $('grimoire-scope').value = 'catalogue';
+    grimoireLimit = 12;
   }
   const { sheet } = active;
   $('player-portrait-placeholder').textContent = sheet.name.trim().split(/\s+/u).slice(0, 2)
@@ -357,7 +456,7 @@ function render(record) {
   $('player-portrait').alt = `Portrait de ${sheet.name}`;
   $('player-name').textContent = sheet.name;
   $('player-resources').textContent = `Niveau ${sheet.level} · PV ${sheet.pv} / ${sheet.pvMax} · Mana ${sheet.mana} / ${sheet.manaMax} · ${sheet.xp} XP`;
-  if (changed || previous.sheet.pv !== sheet.pv || previous.sheet.mana !== sheet.mana) {
+  if (changed || isPlayerArchived(previous) !== isPlayerArchived(active) || previous.sheet.pv !== sheet.pv || previous.sheet.mana !== sheet.mana) {
     $('player-pv').value = sheet.pv;
     $('player-mana').value = sheet.mana;
   }
@@ -380,7 +479,10 @@ function render(record) {
   $('roll-mastery').value = masteries.some(([key]) => key === selectedMastery) ? selectedMastery : '';
   renderInventory();
   renderAbilities();
+  renderGrimoire();
   renderHistory();
+  updatePlayerAccess();
+  playerDirectory?.render();
   if (changed) {
     notes.value = active.notes;
     $('player-roll-result').textContent = '';
@@ -388,19 +490,184 @@ function render(record) {
   }
 }
 
+function updatePlayerAccess() {
+  if (!active) return;
+  const archived = isPlayerArchived(active);
+  $('player-filing-strip').toggleAttribute('data-archived', archived);
+  $('player-filing-state').textContent = archived ? `Archive personnelle · ${archiveDate.format(new Date(active.filing.archivedAt))}` : 'Fiche en activité';
+  $('player-filing-copy').textContent = archived ? 'Consultation et sauvegarde disponibles. Remets cette fiche en activité pour la modifier ou jouer.' : 'L’archivage range cette copie et conserve toutes ses données.';
+  $('player-filing-toggle').textContent = archived ? 'Remettre cette fiche en activité' : 'Archiver cette copie';
+  $('player-filing-toggle').disabled = pending;
+  for (const form of ['player-resources-form', 'player-roll-form']) {
+    for (const control of $(form).querySelectorAll('input, select, button')) control.disabled = archived || pending;
+  }
+  for (const button of $('player-notes-form').querySelectorAll('button')) button.disabled = archived || pending;
+  notes.readOnly = archived;
+  $('player-edit-portrait').disabled = $('player-free-roll').disabled = archived || pending;
+  syncRollButton();
+}
+
+$('player-filing-toggle').addEventListener('click', async () => {
+  if (!active || pending || creating || !leaveNotes()) return;
+  const selected = active;
+  pending = true;
+  updatePlayerAccess();
+  try {
+    const saved = await store.setArchived({ id: selected.id, revision: selected.revision, archived: !isPlayerArchived(selected) });
+    records = [saved, ...records.filter(record => record.id !== saved.id)];
+    notes.value = saved.notes;
+    render(saved);
+    $('player-filing-message').textContent = isPlayerArchived(saved) ? 'Copie archivée. Retrouve-la dans « Parcourir mes personnages → Archives ».' : 'Fiche remise en activité. Toutes ses données sont conservées.';
+  } catch (error) { $('player-filing-message').textContent = error.message; }
+  finally { pending = false; updatePlayerAccess(); }
+});
+$('player-directory-open').addEventListener('click', () => {
+  if (!pending && !creating) void playerDirectory?.open();
+});
+
+const spellCircle = entry => entry.details?.find(([label]) => label === 'Cercle indiqué')?.[1] ?? '';
+
+function renderGrimoire() {
+  if (!active) return;
+  const bookmarks = active.grimoire ?? [];
+  const terms = grimoireSearchText($('grimoire-search').value).split(/\s+/u).filter(Boolean);
+  const scope = $('grimoire-scope').value;
+  const entries = grimoireRows(bookmarks).filter(entry =>
+    (scope === 'catalogue' || Boolean(entry.bookmark && (scope !== 'session' || entry.bookmark.session))) &&
+    (!$('grimoire-domain').value || entry.domain === $('grimoire-domain').value) &&
+    (!$('grimoire-circle').value || spellCircle(entry) === $('grimoire-circle').value) &&
+    terms.every(term => grimoireSearchText([entry.id, entry.name, entry.description, entry.domainName, entry.categoryName].join(' ')).includes(term)))
+    .sort((a, b) => Number(Boolean(b.bookmark?.session)) - Number(Boolean(a.bookmark?.session)) || a.name.localeCompare(b.name, 'fr'));
+  $('grimoire-count').textContent = `${entries.length} référence${entries.length > 1 ? 's' : ''} · ${bookmarks.length} / ${PLAYER_GRIMOIRE_LIMIT} dans mon grimoire · ${bookmarks.filter(entry => entry.session).length} pour ma séance`;
+  const symbols = { lumiere: '✧', vent: '≋', eau: '≈', foudre: 'ϟ', terre: '◇', magie: '✦' };
+  $('grimoire-list').replaceChildren(...entries.slice(0, grimoireLimit).map(entry => {
+    const item = node('li', '');
+    item.className = 'grimoire-card';
+    const mark = node('span', symbols[entry.domain] ?? '◇');
+    mark.className = 'grimoire-symbol';
+    mark.setAttribute('aria-hidden', 'true');
+    const head = node('div', '');
+    const domain = node('p', entry.domainName ?? 'Référence conservée');
+    domain.className = 'eyebrow accent';
+    head.append(domain, node('h4', entry.name));
+    const heading = node('div', '');
+    heading.className = 'grimoire-card-heading';
+    heading.append(mark, head);
+    const meta = node('p', entry.domain ? `${entry.categoryName} · Cercle ${spellCircle(entry)} · Prototype` : 'Absente du catalogue courant');
+    meta.className = 'field-help';
+    const copy = node('p', entry.description);
+    copy.className = 'grimoire-card-copy';
+    const bottom = node('div', '');
+    bottom.className = 'grimoire-card-actions';
+    const status = node('span', entry.bookmark ? entry.bookmark.session ? '✦ Pour ma séance' : 'Dans mon grimoire' : 'À découvrir');
+    status.className = 'grimoire-saved';
+    const open = node('button', 'Consulter');
+    open.type = 'button';
+    open.className = 'secondary';
+    open.setAttribute('aria-label', `Consulter le sort ${entry.name}`);
+    open.addEventListener('click', () => openGrimoireEntry(entry.id));
+    bottom.append(status, open);
+    item.append(heading, meta, copy, bottom);
+    return item;
+  }));
+  if (!entries.length) {
+    const empty = node('li', scope === 'catalogue' ? 'Aucun sort ne correspond à ces filtres.' : 'Aucune référence ici. Consulte le catalogue pour composer ton grimoire, ou ajuste les filtres.');
+    empty.className = 'empty';
+    $('grimoire-list').append(empty);
+  }
+  $('grimoire-more').hidden = entries.length <= grimoireLimit;
+}
+
+function openGrimoireEntry(id) {
+  if (!active || pending) return;
+  const entry = playerSpell(id);
+  const bookmark = active.grimoire?.find(item => item.id === id);
+  if (!entry && !bookmark) return;
+  grimoireEdit = { record: active, id };
+  const changed = Boolean(entry && bookmark && entry.version !== bookmark.version);
+  $('grimoire-detail-title').textContent = entry?.name ?? bookmark.name;
+  $('grimoire-detail-status').textContent = entry ? 'Prototype · Démonstration non canonique' : 'Référence absente · Repères conservés';
+  $('grimoire-detail-description').textContent = entry?.description ?? 'Le catalogue courant ne contient plus cette référence. Tes notes restent consultables et modifiables.';
+  $('grimoire-detail-fields').replaceChildren(...(entry ? [['Domaine / affinité', entry.domainName], ...entry.details] : [['Identifiant conservé', bookmark.id]])
+    .flatMap(([label, value]) => [node('dt', label), node('dd', value)]));
+  $('grimoire-detail-version').textContent = changed ? `La référence a changé depuis l’ajout de « ${bookmark.name} ». L’aperçu montre le catalogue courant ; tes repères restent conservés.` : '';
+  $('grimoire-detail-version').hidden = !changed;
+  const link = $('grimoire-detail-source');
+  link.hidden = !entry;
+  if (entry) link.href = entry.href;
+  else link.removeAttribute('href');
+  $('grimoire-update-reference').hidden = !changed;
+  $('grimoire-adopt-version').checked = false;
+  $('grimoire-session').checked = bookmark?.session ?? false;
+  $('grimoire-notes').value = bookmark?.notes ?? '';
+  $('grimoire-remove').hidden = !bookmark;
+  const full = !bookmark && (active.grimoire?.length ?? 0) >= PLAYER_GRIMOIRE_LIMIT;
+  $('grimoire-save').disabled = full || isPlayerArchived(active);
+  $('grimoire-remove').disabled = isPlayerArchived(active);
+  $('grimoire-notes').readOnly = isPlayerArchived(active);
+  $('grimoire-session').disabled = $('grimoire-adopt-version').disabled = isPlayerArchived(active);
+  $('grimoire-save').textContent = bookmark ? 'Enregistrer mes repères' : 'Ajouter à mon grimoire';
+  $('grimoire-form').querySelector('[data-save-message]').textContent = full ? 'Le grimoire contient déjà 80 références. Retire un repère avant d’en ajouter un autre.' : '';
+  $('grimoire-dialog').showModal();
+}
+
+for (const [id, label] of PLAYER_MAGIC_DOMAINS) $('grimoire-domain').append(new Option(label, id));
+for (const circle of [...new Set(PLAYER_SPELLS.map(spellCircle))].sort((a, b) => Number(a) - Number(b))) {
+  $('grimoire-circle').append(new Option(`Cercle ${circle}`, circle));
+}
+for (const entry of PLAYER_MAGIC_REFERENCES) {
+  const link = node('a', entry.name);
+  link.href = entry.href;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  const row = node('li', '');
+  row.append(link, node('p', entry.description));
+  $('grimoire-references').append(row);
+}
+for (const id of ['grimoire-search', 'grimoire-domain', 'grimoire-circle', 'grimoire-scope']) $(id).addEventListener('input', () => {
+  grimoireLimit = 12;
+  renderGrimoire();
+});
+$('grimoire-more').addEventListener('click', () => { grimoireLimit += 12; renderGrimoire(); });
+$('grimoire-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  if (pending || !grimoireEdit) return;
+  const { record, id } = grimoireEdit;
+  const entry = playerSpell(id);
+  const previous = record.grimoire?.find(item => item.id === id);
+  if (!previous && !entry) return;
+  const reference = entry && (!previous || $('grimoire-adopt-version').checked) ? { id, name: entry.name, version: entry.version } : previous;
+  const next = { ...previous, ...reference, notes: $('grimoire-notes').value, session: $('grimoire-session').checked };
+  const grimoire = [...(record.grimoire ?? []).filter(item => item.id !== id), next];
+  $('grimoire-edit-fields').disabled = true;
+  try { await save({ ...record, grimoire }, $('grimoire-dialog'), $('player-grimoire-title')); }
+  finally { $('grimoire-edit-fields').disabled = false; }
+});
+$('grimoire-remove').addEventListener('click', async () => {
+  if (pending || !grimoireEdit || !window.confirm('Retirer cette référence et ses notes de ton grimoire ?')) return;
+  const { record, id } = grimoireEdit;
+  $('grimoire-edit-fields').disabled = true;
+  try { await save({ ...record, grimoire: record.grimoire.filter(item => item.id !== id) }, $('grimoire-dialog'), $('player-grimoire-title')); }
+  finally { $('grimoire-edit-fields').disabled = false; }
+});
+
 function report(error, target = $('player-error')) {
   target.textContent = error.message;
   target.hidden = false;
 }
 
-async function save(record, dialog, focusTarget = $('player-name'), compared) {
+async function save(record, dialog, focusTarget = $('player-name'), compared, fromDraft) {
   if (pending) return false;
+  if (record.id && isPlayerArchived(record)) {
+    report(new Error('Remets cette fiche en activité pour la modifier.'), dialog?.querySelector('[data-save-message]') ?? $('player-error'));
+    return false;
+  }
   pending = true;
   syncRollButton();
   $('player-error').hidden = true;
   $('player-save-status').textContent = 'Enregistrement…';
   try {
-    const saved = await store.save(record, compared);
+    const saved = await store.save(record, compared, fromDraft);
     records = [saved, ...records.filter(entry => entry.id !== saved.id)];
     render(saved);
     $('player-save-status').textContent = 'Sauvegarde locale confirmée';
@@ -413,7 +680,7 @@ async function save(record, dialog, focusTarget = $('player-name'), compared) {
     $('player-save-status').textContent = 'Enregistrement interrompu';
     report(error, dialog?.querySelector('[data-save-message]') ?? $('player-error'));
     return false;
-  } finally { pending = false; syncRollButton(); }
+  } finally { pending = false; updatePlayerAccess(); }
 }
 
 for (const step of ORIGIN_STEPS) {
@@ -541,46 +808,90 @@ function updateMode() {
   updateCreationPreview();
 }
 
-$('player-create').addEventListener('click', () => {
-  if (pending || !leaveNotes()) return;
+function resetCreationForm() {
+  creationId = `pj-${crypto.randomUUID()}`;
   $('player-create-form').reset();
   creationPortrait.reset();
   $('custom-masteries').replaceChildren();
+  for (const detail of $('player-create-form').querySelectorAll('details')) detail.open = false;
   $('custom-mastery-message').textContent = '';
   for (const step of ORIGIN_STEPS) $(`origin-${step.id}-help`).textContent = step.question;
   updateMode();
-  $('player-create-dialog').showModal();
+}
+const draftControls = () => [...$('player-create-form').querySelectorAll('input[id], select[id], textarea[id]')]
+  .filter(control => control.type !== 'file' && !control.closest('#custom-masteries'));
+function captureCreation() {
+  return { id: creationId, fields: Object.fromEntries(draftControls().map(control => [control.id, control.value])),
+    customMasteries: [...$('custom-masteries').querySelectorAll('[data-mastery]')].map(control => ({ name: control.dataset.mastery, rank: control.value })),
+    portrait: creationPortrait.value, expanded: [...$('player-create-form').querySelectorAll('details')].flatMap((detail, index) => detail.open ? [index] : []) };
+}
+function validateCreationSnapshot(snapshot) {
+  checkCreationDraft(snapshot);
+  const controls = draftControls();
+  if (Object.keys(snapshot.fields).length !== controls.length || controls.some(control => {
+    const value = snapshot.fields[control.id];
+    return typeof value !== 'string' || (control.maxLength >= 0 && value.length > control.maxLength) ||
+      (control.tagName === 'SELECT' && ![...control.options].some(option => option.value === value)) ||
+      (control.type === 'number' && value !== '' && !Number.isFinite(Number(value)));
+  }) || snapshot.expanded.some(index => index >= $('player-create-form').querySelectorAll('details').length)) {
+    throw new Error('Ce brouillon contient des champs ou choix que cette version ne peut pas reprendre. Le brouillon local est conservé.');
+  }
+  const names = new Set([...$('free-masteries').querySelectorAll('[data-mastery]')].map(control => normalizedMastery(masteryName(control.dataset.mastery))));
+  for (const entry of snapshot.customMasteries) {
+    if (entry.name !== entry.name.trim() || ['__proto__', 'constructor', 'prototype'].includes(entry.name) ||
+        names.has(normalizedMastery(entry.name)) || (entry.rank !== '' && !Number.isFinite(Number(entry.rank)))) {
+      throw new Error('Un domaine personnalisé de ce brouillon ne peut pas être repris sans modification.');
+    }
+    names.add(normalizedMastery(entry.name));
+  }
+}
+function restoreCreation(snapshot) {
+  validateCreationSnapshot(snapshot);
+  resetCreationForm();
+  creationId = snapshot.id;
+  for (const entry of snapshot.customMasteries) addCustomMastery(entry.name, entry.rank, false);
+  creationPortrait.reset(snapshot.portrait);
+  for (const control of draftControls()) control.value = snapshot.fields[control.id];
+  for (const [index, detail] of [...$('player-create-form').querySelectorAll('details')].entries()) detail.open = snapshot.expanded.includes(index);
+  for (const step of ORIGIN_STEPS) $(`origin-${step.id}-help`).textContent = step.options.find(option => option.id === $(`origin-${step.id}`).value)?.description ?? step.question;
+  updateMode();
+}
+$('player-create').addEventListener('click', async () => {
+  if (pending || creating || !creationDraft) return;
+  try { await creationDraft.open(); } catch (error) { report(error); }
 });
 $('new-player-mode').addEventListener('change', updateMode);
 $('player-create-form').addEventListener('input', () => { resetCreationReview(); updateCreationPreview(); });
-$('add-custom-mastery').addEventListener('click', () => {
-  const name = $('custom-mastery-name').value.trim();
-  const normalize = value => value.normalize('NFKD').replace(/\p{M}/gu, '').toLocaleLowerCase('fr');
+const normalizedMastery = value => value.normalize('NFKD').replace(/\p{M}/gu, '').toLocaleLowerCase('fr');
+function addCustomMastery(name, rank = '0', focus = true) {
   const controls = [...$('new-player-free').querySelectorAll('[data-mastery]')];
   if (!name || ['__proto__', 'constructor', 'prototype'].includes(name) ||
-      controls.some(control => normalize(masteryName(control.dataset.mastery)) === normalize(name)) ||
+      controls.some(control => normalizedMastery(masteryName(control.dataset.mastery)) === normalizedMastery(name)) ||
       $('custom-masteries').childElementCount >= 12) {
     $('custom-mastery-message').textContent = 'Choisis un nom distinct et jusqu’à douze domaines personnalisés.';
     return;
   }
   const control = masteryField($('custom-masteries'), `mastery-custom-${crypto.randomUUID()}`, name);
+  control.value = rank;
   const remove = node('button', 'Retirer');
   remove.type = 'button';
   remove.className = 'secondary';
   remove.setAttribute('aria-label', `Retirer le domaine ${name}`);
-  remove.addEventListener('click', () => { control.parentElement.remove(); resetCreationReview(); updateCreationPreview(); });
+  remove.addEventListener('click', () => { control.parentElement.remove(); resetCreationReview(); updateCreationPreview(); creationDraft?.changed(); });
   control.parentElement.append(remove);
   $('custom-mastery-name').value = '';
   $('custom-mastery-message').textContent = 'Domaine proposé à la table. Son rang utilise le budget commun.';
   resetCreationReview();
   updateCreationPreview();
-  control.focus();
-});
+  if (focus) control.focus();
+  creationDraft?.changed();
+}
+$('add-custom-mastery').addEventListener('click', () => addCustomMastery($('custom-mastery-name').value.trim()));
 $('player-create-form').addEventListener('submit', event => {
   event.preventDefault();
   if (pending) return;
   const fields = new FormData(event.currentTarget);
-  const identity = { id: `pj-${crypto.randomUUID()}`, name: fields.get('name').trim(),
+  const identity = { id: creationId, name: fields.get('name').trim(),
     backstory: fields.get('backstory').trim(), connections: fields.get('connections').trim(), goal: fields.get('goal').trim() };
   try {
     if (creationPortrait.loading) throw new Error('Le portrait est en cours de préparation.');
@@ -599,8 +910,17 @@ $('player-create-form').addEventListener('submit', event => {
     $('confirm-player-create').disabled = false;
   } catch (error) { report(error, $('player-create-result')); }
 });
-$('confirm-player-create').addEventListener('click', () => {
-  if (reviewed) void save({ sheet: reviewed, notes: '' }, $('player-create-dialog'));
+$('confirm-player-create').addEventListener('click', async () => {
+  if (!reviewed || creating || pending || !creationDraft) return;
+  const approved = reviewed;
+  creating = true;
+  $('player-create-form').inert = true;
+  try {
+    const fromDraft = await creationDraft.prepareCreation();
+    if (reviewed !== approved) throw new Error('La création a changé. Vérifie de nouveau la fiche.');
+    if (await save({ id: creationId, sheet: approved, notes: '' }, $('player-create-dialog'), $('player-name'), undefined, fromDraft)) creationDraft.consumed();
+  } catch (error) { report(error, $('player-create-result')); }
+  finally { creating = false; $('player-create-form').inert = false; }
 });
 
 $('player-import').addEventListener('click', () => {
@@ -647,11 +967,11 @@ $('player-file').addEventListener('change', async event => {
     const timestamp = typeof archive.created === 'string' ? Date.parse(archive.created) : NaN;
     const date = Number.isFinite(timestamp) ? ` du ${archiveDate.format(timestamp)}` : '';
     const count = items.length === 1 ? '1 fiche compatible' : `${items.length} fiches compatibles`;
-    $('player-import-preview').textContent = `${archive.format}${date} · ${count}. Chaque import crée une copie dans ton espace.`;
+    $('player-import-preview').textContent = `${archive.format}${date} · ${count}. Chaque import crée une copie dans ton espace.${items.some(isPlayerArchived) ? ' Les fiches archivées restent en consultation après import.' : ''}`;
     $('confirm-player-import').disabled = $('player-import-choice').disabled = false;
     if (archive.exchange) {
       incomingExchange = archive.exchange;
-      const matches = records.filter(record => record.sheet.id === incomingExchange.sheet.id);
+      const matches = records.filter(record => !isPlayerArchived(record) && record.sheet.id === incomingExchange.sheet.id);
       $('player-compare-choice').replaceChildren(new Option('Créer une fiche indépendante', ''), ...matches.map(record =>
         new Option(`${record.sheet.name} · ${archiveDate.format(record.updatedAt)} · copie ${record.id.slice(0, 8)}`, record.id)));
       $('player-compare-choice').value = matches.some(record => record.id === active?.id) ? active.id : matches[0]?.id ?? '';
@@ -696,16 +1016,20 @@ $('player-import-form').addEventListener('submit', event => {
   if (!record) return;
   if (incomingExchange) {
     if (!importReady || !$('player-exchange-accept').checked) return;
-    const next = { sheet: receivedSheet(incomingExchange, comparedRecord?.sheet), notes: comparedRecord?.notes ?? '', rolls: comparedRecord?.rolls ?? [] };
+    const next = { sheet: receivedSheet(incomingExchange, comparedRecord?.sheet), notes: comparedRecord?.notes ?? '', rolls: comparedRecord?.rolls ?? [],
+      grimoire: comparedRecord?.grimoire ?? [] };
     void save(next, $('player-import-dialog'), $('player-name'), comparedRecord);
   } else void save(record, $('player-import-dialog'));
 });
 
 for (const button of document.querySelectorAll('[data-close]')) button.addEventListener('click', () => {
-  if (!pending) button.closest('dialog').close();
+  if (pending || creating) return;
+  if (button.closest('dialog').id === 'player-create-dialog') void creationDraft?.close();
+  else button.closest('dialog').close();
 });
 for (const dialog of document.querySelectorAll('dialog')) dialog.addEventListener('cancel', event => {
-  if (pending) event.preventDefault();
+  if (pending || creating || dialog.id === 'player-create-dialog') event.preventDefault();
+  if (!pending && !creating && dialog.id === 'player-create-dialog') void creationDraft?.close();
 });
 
 $('player-selection').addEventListener('change', event => {
@@ -749,9 +1073,10 @@ $('player-item-form').addEventListener('submit', async event => {
   if (pending) return;
   const form = event.currentTarget;
   try {
-    const item = itemFromForm(form, { id: crypto.randomUUID(), templateId: '', value: '' });
+    const item = itemWithSource(itemFromForm(form, { id: crypto.randomUUID(), templateId: '', value: '' }), newItemSource);
     if (await save({ ...active, sheet: { ...active.sheet, inventory: [item, ...inventory(active.sheet)] } })) {
       form.reset();
+      newItemSource = undefined;
       inventoryLimit = 30;
       $('player-item-search').value = '';
       $('player-item-filter').value = 'all';
@@ -767,13 +1092,16 @@ for (const control of [$('player-item-search'), $('player-item-filter')]) contro
 $('player-items-more').addEventListener('click', () => { inventoryLimit += 30; renderInventory(); });
 $('player-ability-search').addEventListener('input', renderAbilities);
 
+$('player-item-edit-form').addEventListener('input', event => {
+  if (itemEdit && event.target.name) itemEdit.changedFields.add(event.target.name);
+});
 $('player-item-edit-form').addEventListener('submit', async event => {
   event.preventDefault();
   if (pending || !itemEdit) return;
   try {
     const { record, index } = itemEdit;
     const items = [...inventory(record.sheet)];
-    items[index] = itemFromForm(event.currentTarget, items[index]);
+    items[index] = itemWithSource(itemFromForm(event.currentTarget, items[index], itemEdit.changedFields), itemEdit.source);
     await save({ ...record, sheet: { ...record.sheet, inventory: items } }, $('player-item-dialog'), $('player-inventory-title'));
   } catch (error) { report(error, $('player-item-dialog').querySelector('[data-save-message]')); }
 });
@@ -785,6 +1113,7 @@ $('player-remove-item').addEventListener('click', async () => {
 });
 
 function showRoll(dice, text, kind, label) {
+  if (isPlayerArchived(active)) return;
   latestRoll = { id: crypto.randomUUID(), createdAt: new Date().toISOString(), kind, label, summary: text, dice };
   $('player-dice').replaceChildren(...dice.map(value => {
     const face = node('span', value);
@@ -837,8 +1166,37 @@ $('player-send').addEventListener('click', async () => {
 try {
   store = await openPlayerStore();
   records = await store.list();
-  render(records[0]);
-  $('player-create').disabled = $('player-import').disabled = false;
+  let preferred;
+  try { preferred = localStorage.getItem(preferredPlayerKey); } catch { /* Préférence facultative. */ }
+  render(records.find(record => record.id === preferred && !isPlayerArchived(record)) ?? records.find(record => !isPlayerArchived(record)) ?? records[0]);
+  playerDirectory = createPlayerDirectory({ getRecords: () => records, getActive: () => active,
+    refresh: async () => { records = await store.list(); },
+    select: async id => {
+      if (pending || creating || !leaveNotes()) return false;
+      const record = records.find(record => record.id === id);
+      if (!record) return false;
+      notes.value = record.notes;
+      render(record);
+      return true;
+    },
+  });
+  playerNotebookUI = createPlayerNotebookUI({ store, getRecords: () => records,
+    canOpen: () => !pending && !creating, beforeImport: leaveNotes,
+    setBusy: value => { pending = value; updatePlayerAccess(); }, download,
+    imported: result => {
+      records = result.records;
+      const record = result.created.find(record => !isPlayerArchived(record)) ?? result.created[0];
+      notes.value = record.notes;
+      render(record);
+      $('player-save-status').textContent = `${result.created.length} copie${result.created.length > 1 ? 's' : ''} ajoutée${result.created.length > 1 ? 's' : ''} au carnet`;
+    },
+  });
+  try {
+    creationDraft = await creationDraftController({ store, capture: captureCreation, restore: restoreCreation, reset: resetCreationForm,
+      validate: validateCreationSnapshot, isLoading: () => creationPortrait.loading, download, canOpen: () => !pending && !creating && leaveNotes() });
+  } catch (error) { report(error); }
+  $('player-create').disabled = !creationDraft;
+  $('player-import').disabled = false;
   $('player-save-status').textContent = 'Stockage joueur prêt';
   if (new URLSearchParams(location.search).get('creer') === '1') {
     $('player-create').click();

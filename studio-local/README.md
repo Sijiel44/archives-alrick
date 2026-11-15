@@ -24,7 +24,7 @@ Ouvrir **Espace joueur** depuis [l’accueil de découverte](http://127.0.0.1:43
 - Dans le formulaire, **Portrait du personnage** accepte un JPG, PNG ou WebP de 3 Mio maximum, réduit sur l’appareil selon le format historique du portrait. Un lien HTTPS direct peut également être utilisé. **Mon portrait** permet de le remplacer ou de le retirer après la création. La sauvegarde personnelle et la fiche M02 destinée au MJ conservent le portrait. Une image par lien reste chez son hébergeur.
 - En création libre, les compteurs affichent les 12 points de base, la dépense et le reste du budget du niveau. Chaque caractéristique ou maîtrise donne son coût, son bonus et le prix du prochain point. Les repères des niveaux 1, 5, 10, 15, 20 et 25 utilisent le moteur existant.
 - Les maîtrises sont regroupées par armes et défenses, magie et soins, savoirs et métiers. Un domaine personnalisé peut être proposé au MJ. Le mentor, l’école et l’apprentissage déclaré se renseignent dans **Histoire et liens**.
-- La fiche se parcourt dans **Fiche**, **Dés**, **Inventaire**, **Capacités**, **Notes** et **Sauvegarde**. Les flèches gauche et droite parcourent les onglets au clavier. Les liens directs vers un panneau restent utilisables. **Préparer une action** rejoint les dés.
+- La fiche se parcourt dans **Fiche**, **Dés**, **Inventaire**, **Capacités**, **Grimoire**, **Notes** et **Sauvegarde**. Les flèches gauche et droite parcourent les onglets au clavier. Les liens directs vers un panneau restent utilisables. **Préparer une action** rejoint les dés.
 - Dans **Inventaire**, rechercher un nom, une catégorie ou une description, puis filtrer les objets portés. **Détails** permet de corriger le nom, la quantité, la catégorie et la description, de marquer l’objet comme porté ou de le retirer après confirmation. Le marquage décrit l’équipement choisi. Les effets se règlent avec le MJ.
 - Dans **Dés**, annoncer éventuellement l’action, choisir les valeurs et lancer les 5d6. **Consigner ce jet** conserve le résultat et ses modificateurs. L’historique garde les 50 derniers jets consignés. Un enregistrement interrompu peut être réessayé avec le même résultat.
 - **Capacités** propose une recherche par nom, domaine ou description. Chaque fiche se déplie avec sa source, ses limites et l’indication de validation MJ. **Notes** conserve le carnet personnel.
@@ -33,7 +33,57 @@ Ouvrir **Espace joueur** depuis [l’accueil de découverte](http://127.0.0.1:43
 
 Chaque espace conserve ses propres enregistrements. Les fichiers se transmettent manuellement. Lorsqu’une fiche joueur a changé dans un autre onglet, copier le texte en cours avant de recharger sa version enregistrée.
 
-La sauvegarde personnelle v2 inclut les jets consignés. Les sauvegardes personnelles v1 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
+La sauvegarde personnelle v4 inclut les jets consignés, le grimoire de références et le rangement de la fiche. Les sauvegardes personnelles v1 à v3 et les exports M02 historiques restent importables. La mise à jour du stockage reprend les personnages du même profil. Si un ancien onglet bloque cette mise à jour, le fermer puis recharger l’espace joueur.
+
+### Attribuer une copie d’objet depuis un modèle MJ
+
+Créer une fiche **Objet** dans **Créations**, puis ouvrir sa fiche dans la **Bibliothèque** et choisir **Attribuer une copie à un PJ**. Relire les champs destinés au joueur, choisir le PJ et confirmer la relecture. **Attribuer et préparer l’échange** enregistre une copie indépendante et ouvre l’échange à relire avant téléchargement. Le modèle, ses notes et ses identifiants privés restent dans la campagne. Les versions du PJ permettent le rétablissement ; les PV effectifs et les scènes sont conservés. Voir [le parcours d’attribution](OBJETS-MJ.md).
+
+### Préparer mon équipement depuis le catalogue
+
+Dans **Inventaire → Objets du catalogue**, rechercher une référence publique, filtrer sa catégorie et consulter sa source épinglée. **Préparer une adaptation pour ma table** remplit le formulaire d’ajout ; modifier le nom, la quantité et la description avant **Ajouter l’objet**. Le remplacement d’une saisie en cours demande confirmation. Ces objets documentés appartiennent à l’univers : leur attribution et leurs effets se décident avec le MJ.
+
+Pour un objet déjà saisi, **Détails → Choisir une référence** prépare un lien, confirmé par **Enregistrer l’objet**, en conservant ses autres champs. **Consulter la référence** reste accessible dans la liste. Une source modifiée est signalée ; son actualisation est volontaire. Les références absentes ou futures restent conservées. Les archives peuvent consulter le catalogue et leurs sources.
+
+Le raccourci Markdown de chaque fiche est disponible dans son aperçu. La provenance reste personnelle, conservée dans la sauvegarde v4 et le carnet v1, et exclue des échanges au MJ. Le formulaire libre et les quantités existantes restent utilisables. Voir le [contrat des objets reliés](OBJETS-JOUEUR.md).
+
+### Retrouver et ranger mes personnages
+
+**Parcourir mes personnages** ouvre le répertoire illustré. Rechercher plusieurs mots d’un nom ou d’un métier, choisir **En activité**, **Archives** ou **Toutes les fiches**, puis trier par nom, niveau ou modification récente. Les accents ne changent pas la recherche. Les notes privées ne servent pas de résultats de recherche. Les longues listes s’affichent par groupes de vingt.
+
+**Voir les copies** retrouve les fiches qui partagent la même identité M02, y compris les anciennes versions archivées. Le repère de version d’échange et la date aident à les distinguer ; ils ne remplacent pas la comparaison de la fiche avec le MJ. La fiche ouverte est signalée. La dernière fiche en activité ouverte est retrouvée à la prochaine visite.
+
+**Archiver cette copie** conserve ses données et la retire du sélecteur habituel. Elle reste consultable dans le répertoire et exportable. Ses notes, jets, objets et sorts restent lisibles ; les modifications et les nouveaux jets nécessitent **Remettre cette fiche en activité**. Les valeurs affichées dans une archive sont celles enregistrées. Aucune fiche ni copie liée n’est supprimée automatiquement.
+
+La sauvegarde personnelle v4 conserve cet état d’archive. Restaurer ce fichier ajoute une copie qui garde son état, annoncé dans l’aperçu. Un échange joueur/MJ exclut le rangement privé ; son adoption crée une fiche en activité. Les archives ne sont pas proposées comme copies à comparer avant leur remise en activité. Voir le [contrat de rangement](RANGEMENT-JOUEUR.md).
+
+### Emporter plusieurs personnages
+
+**Sauvegarder mon carnet**, dans **Mes personnages**, propose les fiches enregistrées, archives comprises. Cocher les personnages à emporter, rechercher un nom ou un métier et filtrer les archives si nécessaire. **Cocher les résultats** inclut tous les résultats, même ceux hors écran ; les choix restent conservés lors d’un changement de filtre. Le carnet accepte jusqu’à 100 fiches et 20 Mio. Enregistrer les notes en cours avant l’export si elles doivent être incluses.
+
+Sur un autre appareil, **Restaurer un carnet** vérifie le fichier puis annonce les identités déjà présentes et les contenus identiques. Ces derniers sont décochés par défaut ; leur ajout volontaire reste possible. La confirmation ajoute les copies cochées ensemble et conserve toutes les fiches locales. Une interruption ne laisse aucun import partiel. Un changement depuis un autre onglet impose **Actualiser l’aperçu**.
+
+Le fichier contient les notes, portraits, objets, jets, grimoires et états d’archive. Il reste personnel ; transmettre une fiche au MJ via l’échange individuel. Les sauvegardes individuelles v1 à v4 et le brouillon de création conservent leurs parcours. Le brouillon est transporté séparément. Voir le [contrat du carnet](CARNET-JOUEUR.md).
+
+### Reprendre une création commencée
+
+Le créateur garde automatiquement les choix modifiés dans un **brouillon local**, même si le budget ou le parcours reste incomplet. Le portrait préparé, les champs vides, les domaines personnalisés et les rubriques dépliées suivent ce brouillon. Attendre **Brouillon enregistré dans ce navigateur** ou utiliser **Garder mon brouillon** avant de quitter. **Fermer** et Échap attendent l’enregistrement. Une fermeture forcée avant la confirmation peut perdre les dernières saisies.
+
+**Reprendre mon brouillon** retrouve le formulaire depuis **Mes personnages**. Le navigateur garde un seul brouillon de création à la fois, séparé des PJ enregistrés. **Recommencer** demande confirmation et retire ce brouillon. Après reprise, choisir **Vérifier la fiche**, puis **Enregistrer le personnage** : la création et le retrait du brouillon sont confirmés ensemble. Une erreur d’écriture conserve le brouillon et permet de réessayer.
+
+**Télécharger le brouillon** garde un fichier personnel, y compris les choix non encore enregistrés après un conflit. Sur un autre appareil, utiliser **Importer un brouillon**, lire l’aperçu et confirmer. S’il existe déjà un brouillon local, sa substitution nécessite un choix explicite ; le téléchargement préalable permet d’en garder une copie. L’import reprend une création à terminer et ne modifie aucun PJ enregistré.
+
+Le fichier `chroniques-entre-rives.brouillon-pj` v1 est distinct d’une sauvegarde de personnage ou d’un échange M02. Il conserve les champs du formulaire et le portrait préparé, jusqu’à 512 Kio. Il ne transporte pas les campagnes MJ. Les fichiers altérés, futurs ou contenant des champs inconnus sont refusés. Si deux onglets divergent, télécharger les choix affichés avant de relire le brouillon enregistré. Voir le [contrat des brouillons](BROUILLONS-PJ.md).
+
+### Composer mon grimoire
+
+Dans **Grimoire**, rechercher un sort et filtrer le domaine ou le Cercle indiqué. **Consulter** ouvre sa description, son coût de base, ses limites et sa source. Les six sorts actuels sont des démonstrations du catalogue commun, signalées comme prototypes non canoniques. Les références dépliables donnent accès aux documents sur les écoles, les Cercles et les pratiques.
+
+Choisir **Ajouter à mon grimoire** pour garder une référence avec ses notes personnelles. **Garder à portée de main pour ma séance** la retrouve dans la collection **Pour ma séance**. Ces repères ne valent ni apprentissage ni préparation mécanique d’un sort ; ils n’accordent aucun Cercle et ne changent pas le mana. Chaque personnage conserve son propre grimoire, limité à 80 références.
+
+Si le catalogue change, l’aperçu le signale : **Rattacher à la version affichée du catalogue** est un choix explicite. Une référence absente garde son nom et ses notes. **Retirer du grimoire** demande confirmation. Les notes sont conservées en cas d’échec d’enregistrement ; copier le brouillon avant de recharger après un conflit entre onglets.
+
+La sauvegarde personnelle v4 conserve ces repères, y compris les références absentes. Les échanges joueur/MJ et l’export M02 les excluent. L’adoption d’un échange reporte le grimoire personnel de la fiche comparée sur la nouvelle copie, sans modifier l’originale. Voir le [contrat du grimoire](GRIMOIRE-JOUEUR.md).
 
 ### Échanger une version avec le MJ
 
@@ -43,7 +93,15 @@ Le MJ peut ouvrir **Modifier** sur un PJ M02 ou sa fiche dans la bibliothèque, 
 
 Une divergence est signalée quand la base reçue ne correspond pas au profil local. Une version identique est reconnue. Le choix du fichier et la provenance se déplient pour laisser place aux changements. Une fiche comparée modifiée dans un autre onglet oblige à refaire la comparaison.
 
-Chaque adoption crée une copie. Les notes MJ et les liens de scène restent sur le participant précédent ; le MJ choisit la nouvelle copie dans la scène quand il souhaite l’utiliser. Les échanges restent manuels et l’expéditeur est déclaré dans le fichier. Voir le [contrat d’échange v1](ECHANGE-PJ.md) pour les champs transférés et les limites.
+Le mode **Créer un nouveau participant** conserve la fiche précédente avec ses notes MJ et ses liens de scène ; le MJ choisit la nouvelle copie dans la scène quand il souhaite l’utiliser. Les échanges restent manuels et l’expéditeur est déclaré dans le fichier. Voir le [contrat d’échange v1](ECHANGE-PJ.md) pour les champs transférés et les limites.
+
+### Actualiser le PJ déjà présent dans une campagne
+
+Dans **Importer une fiche PJ**, charger un échange versionné, puis comparer avec le bon PJ. Le choix **Créer un nouveau participant** reste proposé par défaut. Sélectionner **Actualiser le PJ comparé** pour garder le même participant dans toutes ses scènes. Relire les différences et l’effet annoncé, puis cocher la confirmation. Le nom, le profil et les ressources reçus deviennent actifs ; les notes MJ et les liens restent en place.
+
+Le bouton **Versions**, dans la liste des PJ ou leur fiche, donne accès aux états précédents. Choisir un état pour consulter son profil et ses PV au moment du changement. **Rétablir cette version**, après confirmation, enregistre une nouvelle décision. Les combats et les changements ultérieurs restent consultables. Les anciens impacts sont toujours vérifiés avec le profil utilisé à l’époque.
+
+La sauvegarde privée de campagne passe à la version 17 dès le premier changement de version. Elle conserve les états précédents ; aucune suppression automatique ne les réduit. Si la sauvegarde dépasse la limite existante de 4 Mio, le Studio refuse l’écriture et conserve les données enregistrées. Les sauvegardes antérieures restent importables. Le joueur continue de recevoir uniquement le profil partageable et garde sa sauvegarde personnelle v4.
 
 ## Préparer une soirée
 
@@ -56,6 +114,14 @@ Sur [l’accueil public](http://127.0.0.1:4380/accueil), le menu **Parcours** m�
 5. Fermer et rouvrir le navigateur. Reprendre la campagne depuis l’accueil et vérifier la scène courante.
 
 En cas de conflit entre deux onglets, le premier enregistrement validé est conservé. Garder ou copier le brouillon du second onglet avant de recharger l’état enregistré. Vérifier les changements puis les reporter depuis cet état.
+
+## Consulter les participants pendant la séance
+
+Dans **Jouer**, ouvrir **Répertoire de séance**, ou **Ouvrir la fiche** sur un participant. Rechercher un nom ou un métier, filtrer par **PJ**, **PNJ** ou **Créature**, puis choisir **Cette scène** ou **Toute la campagne**. Les créations descriptives PNJ et créatures apparaissent aussi dans la campagne ; les consulter ne les rattache pas à la scène et ne leur attribue pas de profil mécanique.
+
+Sur ordinateur, le répertoire reste à côté de la fiche. Sur téléphone, **Choisir une fiche** et **Lire la fiche** alternent les deux vues. **Fiche précédente** et **Fiche suivante** suivent les résultats filtrés. Au clavier, les flèches, Début et Fin déplacent le focus dans la liste, Entrée ouvre la fiche et Échap ferme le dialogue. **Retour à la scène** rend le focus au titre de la scène courante. Les filtres et le dernier choix restent disponibles tant que la campagne et la scène restent les mêmes dans cet onglet.
+
+La consultation conserve la campagne telle quelle. Les notes restent dans la régie MJ, et la projection joueur conserve sa sélection approuvée. Après une sauvegarde dans un autre onglet, **Actualiser les fiches** relit les données avant de permettre une nouvelle action. Les commandes de fiche réutilisent les outils existants : profil natif 5d6, préparation d’action, projection choisie et, pour les PJ, échange et historique de versions.
 
 ## Préparer dans la Fresque et improviser
 
@@ -214,7 +280,7 @@ Dans **Sauvegardes**, télécharger l’archive JSON et la déplacer dans un dos
 
 Si une entrée enregistrée dans ce profil est illisible, le Studio indique le nombre d’entrées concernées et les conserve sur place. Ouvrir chaque campagne encore lisible depuis **Mes campagnes** pour en télécharger une copie. Si le navigateur refuse l’accès à tout le stockage, le Studio affiche l’erreur générale. Le message de lecture partielle concerne les entrées du profil que le navigateur a pu lire.
 
-Pour vérifier la restauration, ouvrir le même Studio dans un autre profil de test, choisir le fichier, lire l’aperçu et confirmer. Une campagne de même identifiant bloque l’importation. Le Studio accepte les archives v1 à v16. Les embranchements et l’improvisation utilisent au minimum le format v2, les archives de séance le format v3, les repères le format v4, les repères copiés avec leur provenance le format v5, le journal d’actions simples le format v6, les profils mécaniques du Bestiaire le format v7, les oppositions M03 le format v8, les fiches PJ M02 le format v9 et les créations privées avec leurs liens le format v10. Le format v11 conserve les scènes issues d’une aventure et leurs fiches de préparation. Le format v12 ajoute le carnet d’ambiances de chaque scène. Le format v13 ajoute les couloirs, le format v14 les interludes, le format v15 les images par lien et le format v16 les aventures importées. Pour revenir à une version plus ancienne, conserver un export daté d’avant les nouvelles opérations et le restaurer dans un profil vierge. Le bouton **Restaurer** attend une sauvegarde du Studio. Importer les fiches historiques depuis **Préparer** pour les PJ ou **Bestiaire 5d6** pour le Bestiaire.
+Pour vérifier la restauration, ouvrir le même Studio dans un autre profil de test, choisir le fichier, lire l’aperçu et confirmer. Une campagne de même identifiant bloque l’importation. Le Studio accepte les archives v1 à v17. Les embranchements et l’improvisation utilisent au minimum le format v2, les archives de séance le format v3, les repères le format v4, les repères copiés avec leur provenance le format v5, le journal d’actions simples le format v6, les profils mécaniques du Bestiaire le format v7, les oppositions M03 le format v8, les fiches PJ M02 le format v9 et les créations privées avec leurs liens le format v10. Le format v11 conserve les scènes issues d’une aventure et leurs fiches de préparation. Le format v12 ajoute le carnet d’ambiances de chaque scène. Le format v13 ajoute les couloirs, le format v14 les interludes, le format v15 les images par lien et le format v16 les aventures importées et le format v17 les changements de version des PJ. Pour revenir à une version plus ancienne, conserver un export daté d’avant les nouvelles opérations et le restaurer dans un profil vierge. Le bouton **Restaurer** attend une sauvegarde du Studio. Importer les fiches historiques depuis **Préparer** pour les PJ ou **Bestiaire 5d6** pour le Bestiaire.
 
 ## Vérifier le pilote
 

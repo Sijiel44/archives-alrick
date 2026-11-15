@@ -1,0 +1,16 @@
+.creation-draft-card { margin-top: 1rem; padding: 1rem; border: 1px solid #a98b5b99; border-radius: .65rem; background: linear-gradient(130deg, #4e483b66, #182c33); }
+.creation-draft-card h3 { font: 1.15rem/1.4 Georgia, serif; margin: .5rem 0; overflow-wrap: anywhere; }
+.creation-draft-card button { width: 100%; min-height: 2.75rem; margin-top: .65rem; }
+.creation-draft-tools { margin: 1rem 0; padding: 1rem; border: 1px solid #a58a6388; border-radius: .6rem; background: #263b4266; }
+.creation-draft-tools p { line-height: 1.6; }
+.creation-draft-tools .actions { margin-top: .75rem; }
+.creation-draft-tools button, #creation-draft-import-open, #creation-draft-import-dialog button { min-height: 2.75rem; font-size: .8rem; }
+#creation-draft-status { color: #ead0a2; }
+#creation-draft-status[data-error] { color: #ffd2bf; }
+#creation-draft-import-dialog { width: min(38rem, calc(100% - 2rem)); }
+@media (max-width: 45rem) {
+  .creation-draft-tools { padding: .8rem; }
+  .creation-draft-tools .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .creation-draft-tools button { min-width: 0; padding: .5rem; }
+  .creation-draft-card { padding: .8rem; }
+}
