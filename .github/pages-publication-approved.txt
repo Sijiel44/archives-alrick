@@ -359,3 +359,8 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # La projection n’emporte que le texte choisi, l’image et le lien vidéo approuvés ; crédits et notes restent privés.
 # Guide de contribution ChatGPT/GitHub et feuille de route actualisés ; aucune nouvelle fiche canonique ni import automatique de sources.
 # Recettes locales, CI puis workflow Pages et trois parcours Studio sur l’URL publique avant l’annonce de publication.
+
+# Clôture de la recette vidéo — publication du correctif de vérification du portrait, 15 novembre 2026.
+# Le contrôle public a rencontré deux EncodingError sur le portrait historique ; vidéo et audio réussissent sur l’URL publique.
+# La recette attend désormais le chargement natif complet avant de vérifier decode(), dimensions et affichage ; diagnostic borné en cas d’échec.
+# Aucun code produit, profil, donnée, règle ou fichier média n’est modifié. Le marqueur relance le workflow de publication demandé pour clôturer ses contrôles publics.

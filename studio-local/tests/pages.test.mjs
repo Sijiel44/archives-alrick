@@ -5,6 +5,7 @@ import { test } from 'node:test';
 import { browserFixture } from './browser.mjs';
 import { waveResponse } from './audio-fixture.mjs';
 import { videoResponse } from './video-fixture.mjs';
+import { assertDecodedPortrait } from './portrait-assertions.mjs';
 
 async function servePages(t) {
   const root = new URL('../../public/', import.meta.url);
@@ -106,7 +107,7 @@ test('GitHub Pages relie les Archives et le Studio et isole le récepteur joueur
   await page.getByRole('button', { name: 'Vérifier la fiche' }).click();
   await page.locator('#confirm-player-create').click();
   await page.getByRole('heading', { name: 'PJ fictif Pages', exact: true }).waitFor();
-  assert.equal(await page.locator('#player-portrait').evaluate(async img => { await img.decode(); return img.naturalWidth <= 320; }), true);
+  await assertDecodedPortrait(page.locator('#player-portrait'));
   await page.locator('#player-filing-toggle').click();
   await page.locator('#player-filing-state').getByText(/Archive personnelle/).waitFor();
   await page.getByRole('tab', { name: 'Sauvegarde', exact: true }).click();

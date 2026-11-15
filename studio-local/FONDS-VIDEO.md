@@ -45,4 +45,6 @@ Les cinq scénarios de stockage et neuf d’interface vidéo sont inclus dans ce
 
 La qualification humaine en séance et sur appareil tactile réel n’a pas été effectuée. Elle reste prévue au lot **2 · Fiabilité**, avec le suivi des sauvegardes et la maintenance des trois alertes npm héritées, non corrigées dans ce lot vidéo.
 
+Le premier contrôle public, puis sa reprise, ont rencontré un `EncodingError` dans la recette historique du portrait joueur ; les parcours vidéo et audio ont réussi. Le correctif de recette attend le chargement natif complet avant de conserver la vérification `decode()` et les dimensions. Un échec restant fournit un diagnostic borné sans exposer le portrait. La cause initiale n’est pas déterminée ; son suivi reste inscrit au lot Fiabilité. Le code produit des portraits n’est pas modifié par ce correctif.
+
 Ce lot n’apporte ni vidéothèque distante, ni transfert des fichiers, ni synchronisation audio multijoueur. Le lot suivant reste **Fiabilité**, avec suivi des sauvegardes, maintenance des dépendances et essai en séance réelle. Le parcours d’enrichissement éditorial est préparé dans [Enrichir l’univers avec ChatGPT et GitHub](ENRICHIR-UNIVERS.md).

@@ -379,6 +379,8 @@ Les suites passent 59 tests sur Chrome et 59 sur Edge, ainsi que la recette hist
 
 Le lot courant est le [fond vidéo choisi](FONDS-VIDEO.md), qui suit la régie sonore publiée. Après sa recette et sa publication, le prochain lot est **2 · Fiabilité**. Chaque ligne correspond à un lot utilisable et vérifiable ; aucun calendrier ni achèvement n’est présumé. La préparation de l’enrichissement sourcé peut avancer en parallèle selon [son guide](ENRICHIR-UNIVERS.md), sans publier automatiquement de nouveau canon.
 
+Le lot Fiabilité reprend aussi le diagnostic du portrait joueur : deux contrôles publics ont signalé un `EncodingError` alors que les parcours vidéo et audio réussissaient. La recette attend désormais le chargement complet et conserve la vérification du décodage ; la cause initiale reste non déterminée et ne doit pas être déclarée corrigée sans preuve.
+
 | Ordre | Lot et rattachement | Livraison attendue | Preuve avant clôture |
 | --- | --- | --- | --- |
 | 1 · Implémenté et recetté localement | **Fonds vidéo choisis** · Régie, lot 8 | URL MP4/WebM directe, aperçu explicite, confirmation, remplacement et retrait dans la fenêtre joueur ; vidéo muette, image de remplacement et commande pause. | Publication autorisée et état du contrôle public dans le workflow Pages. Qualification humaine distincte au lot 2 ; conserver le récepteur opaque et le contenu sans scripts. |
