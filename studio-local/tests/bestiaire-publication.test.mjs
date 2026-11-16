@@ -54,10 +54,12 @@ test('Bestiaire publié : vingt-cinq créations, dont dix nouvelles espèces, et
     assert.match(text, /Provenance et limites/);
   }
   assert.match((await readFile(new URL('content/creatures/ESP-ER-021-fee-aulnes.md', root), 'utf8')), /consentement|consentir/);
-  assert.equal(pnj.entries.length, 3);
+  assert.equal(pnj.entries.length, 16, 'Le catalogue PNJ doit inclure les 13 références publiques');
+  const dragons = pnj.entries.filter(entry => /^DRG-0[123]$/.test(entry.id));
+  assert.equal(dragons.length, 3);
   const previousVersions = ['f614d23e2e203996cba32e1c8acf91dc7df8f180',
     '0d9962ccad89060542a869fa1aace8f729df4bf3', 'eada3d6f1a78af6e72cc9a1ed567f6c217e784cf'];
-  for (const dragon of pnj.entries) {
+  for (const dragon of dragons) {
     const entry = libraryReference(dragon.id);
     assert.equal(entry?.kind, 'npc', 'un dragon nommé n’est pas une espèce du bestiaire');
     assert.equal(entry?.shelf, 'pnj');
@@ -69,7 +71,7 @@ test('Bestiaire publié : vingt-cinq créations, dont dix nouvelles espèces, et
     const frontmatter = /^---\n([\s\S]*?)\n---/.exec(source);
     assert.equal(YAML.parse(frontmatter[1]).categorie, 'personnage');
     assert.equal(execFileSync('git', ['hash-object', dragon.path], { cwd: root, encoding: 'utf8' }).trim(), dragon.version);
-    const previous = previousVersions[pnj.entries.indexOf(dragon)];
+    const previous = previousVersions[dragons.indexOf(dragon)];
     assert.equal(creatureReference({ id: dragon.id, version: previous })?.version, previous, 'ancienne version de campagne conservée');
   }
   assert.equal(libraryReference('gardien-des-salines')?.version, 1, 'ancienne identité rompue');

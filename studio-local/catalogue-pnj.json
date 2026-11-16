@@ -1,30 +1,438 @@
 {
   "schema": "entre-rives.studio.npc-references.v1",
-  "decision": "Classement éditorial du créateur, 16 novembre 2026 : les dragons nommés relèvent des PNJ, pas du catalogue des espèces du Bestiaire. Préserver ID, version, fichier et historique des copies.",
+  "decision": "Catalogue public du Studio : les trois dragons documentés et les fiches de PNJ sans révélations des lots PNJ-001–006. Les références privées ou non listées restent exclues.",
   "entries": [
     {
-      "id": "DRG-01", "version": "45bff51fc793cf1407b95e83845cd27bb5e386b8",
+      "id": "DRG-01",
+      "version": "45bff51fc793cf1407b95e83845cd27bb5e386b8",
       "name": "Thessoryn — Le Cartographe des Marées Obliques",
       "description": "Dragon libre des côtes rocheuses, attaché aux routes et aux cartes changeantes.",
-      "kind": "npc", "shelf": "pnj", "group": "Dragons libres", "status": "lore",
-      "path": "content/creatures/dragons/thessoryn.md", "tags": "pnj dragon thessoryn cartographe mers libre canon non joue",
-      "links": [], "details": [["Nature", "Personnage draconique individuel, non lié à une rencontre jouée"]]
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Dragons libres",
+      "status": "lore",
+      "path": "content/creatures/dragons/thessoryn.md",
+      "tags": "pnj dragon thessoryn cartographe mers libre canon non joue",
+      "links": [],
+      "details": [
+        [
+          "Nature",
+          "Personnage draconique individuel, non lié à une rencontre jouée"
+        ]
+      ]
     },
     {
-      "id": "DRG-02", "version": "c239358ff5cacd189f6e8ab07bcb1f9c84965887",
+      "id": "DRG-02",
+      "version": "c239358ff5cacd189f6e8ab07bcb1f9c84965887",
       "name": "Velmora — La Patiente des Brumes Hautes",
       "description": "Dragonne libre et réservée des hautes brumes, protectrice sans souveraineté automatique.",
-      "kind": "npc", "shelf": "pnj", "group": "Dragons libres", "status": "lore",
-      "path": "content/creatures/dragons/velmora.md", "tags": "pnj dragonne velmora brume libre canon non joue",
-      "links": [], "details": [["Nature", "Personnage draconique individuel, indépendant"]]
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Dragons libres",
+      "status": "lore",
+      "path": "content/creatures/dragons/velmora.md",
+      "tags": "pnj dragonne velmora brume libre canon non joue",
+      "links": [],
+      "details": [
+        [
+          "Nature",
+          "Personnage draconique individuel, indépendant"
+        ]
+      ]
     },
     {
-      "id": "DRG-03", "version": "4de7cb93a520cd4649a286bb31bd379457378f40",
+      "id": "DRG-03",
+      "version": "4de7cb93a520cd4649a286bb31bd379457378f40",
       "name": "Orzeyl — Le Bâtisseur des Veines Profondes",
       "description": "Dragon libre des grottes et anciennes voies souterraines, bâtisseur de refuges.",
-      "kind": "npc", "shelf": "pnj", "group": "Dragons libres", "status": "lore",
-      "path": "content/creatures/dragons/orzeyl.md", "tags": "pnj dragon orzeyl galeries bâtisseur libre canon non joue",
-      "links": [], "details": [["Nature", "Personnage draconique individuel, sans scène jouée imposée"]]
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Dragons libres",
+      "status": "lore",
+      "path": "content/creatures/dragons/orzeyl.md",
+      "tags": "pnj dragon orzeyl galeries bâtisseur libre canon non joue",
+      "links": [],
+      "details": [
+        [
+          "Nature",
+          "Personnage draconique individuel, sans scène jouée imposée"
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB43-CESAR",
+      "version": "ae7785a14c729a6c34f3d8a9b6934bee04da0730",
+      "name": "César",
+      "description": "Un chat argenté qui peut parler, mais choisit toujours le moment de se faire entendre.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB43-CESAR.md",
+      "tags": "pnj personnage proches cesar archives proposition non jouée",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "S'installe sur le coussin le mieux placé, observe les invités et ne répond pas aux ordres comme à un emploi du temps."
+        ],
+        [
+          "Rencontre fictive",
+          "Un hôte croit qu'un salon est réservé aux dignitaires et n'ose pas y entrer."
+        ],
+        [
+          "Choix possible",
+          "Réinventer l'accueil, écouter ce que souhaite le visiteur ou laisser le chat tranquille."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB39-DALEN-MIR",
+      "version": "cce2b56c3403c6fd414402dfb6a3cfb21c0353c5",
+      "name": "Dalen Mir",
+      "description": "Un administrateur qui dessine des routes sur ses carnets même à table.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB39-DALEN-MIR.md",
+      "tags": "pnj personnage savoirs dalen archives proposition non jouée",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Pose une question sur les approvisionnements, note les réponses et accepte qu'un repas ne soit pas une séance de travail."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux villages réclament un entretien prioritaire de leur route d'accès."
+        ],
+        [
+          "Choix possible",
+          "Comparer les usages, écouter les habitants ou proposer un calendrier de travaux."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB43-DORSA-VAUN",
+      "version": "7b6c2098c675501f7bd7a6e4e5e2a099b3b0b773",
+      "name": "Dorsa Vaun",
+      "description": "Une ancienne responsable des fournitures qui observe les besoins avant d'accepter une place.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB43-DORSA-VAUN.md",
+      "tags": "pnj personnage metiers dorsa archives proposition non jouée",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Examine l'approvisionnement du manoir, questionne l'équipe sur la charge de travail et note ce qui lui reste à comprendre."
+        ],
+        [
+          "Rencontre fictive",
+          "Une réserve fonctionne grâce à des tâches informelles dont personne ne veut devenir l'unique responsable."
+        ],
+        [
+          "Choix possible",
+          "Documenter les besoins, consulter les Revenants ou définir une mission limitée sans embauche présumée."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB42-LYSANDRA-DAVARENNE",
+      "version": "54802ec9565b5f961d4da68be6ca00583dde61f8",
+      "name": "Lysandra d’Avarenne",
+      "description": "Une interlocutrice agricole qui attend des constats de terrain.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-LYSANDRA-DAVARENNE.md",
+      "tags": "pnj personnage metiers lysandra archives proposition non jouée",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Ramène les débats aux pertes, à l'eau et au travail de ceux qui cultivent."
+        ],
+        [
+          "Rencontre fictive",
+          "Des parcelles voisines ont souffert différemment d'une même période sèche."
+        ],
+        [
+          "Choix possible",
+          "Mesurer, écouter les exploitants ou proposer plusieurs essais locaux."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB38-MAEL-TORVENN",
+      "version": "7e32c6203bd79d0b8a8221a92787bdb5ce06539f",
+      "name": "Maël Torvenn",
+      "description": "La valeur d'un instrument se mesure aussi à la facilité de le réparer.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB38-MAEL-TORVENN.md",
+      "tags": "pnj personnage metiers mael archives proposition non jouée",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Observe les doigts du musicien avant d'ouvrir un étui ; il cherche le son et l'usage, pas un blason."
+        ],
+        [
+          "Rencontre fictive",
+          "Un instrument de scène au son admirable devient presque impossible à réparer pendant une tournée."
+        ],
+        [
+          "Choix possible",
+          "Modifier les pièces, former un réparateur local ou choisir une conception plus sobre."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB43-MIRELDA-CHENECLAIR",
+      "version": "5fb0fb25895184c870469b00c99a1fd89b250cde",
+      "name": "Mirelda Chêneclair",
+      "description": "Tonnelière de Valbrume, elle cherche la juste alliance entre bois, levure et audace.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB43-MIRELDA-CHENECLAIR.md",
+      "tags": "pnj personnage metiers mirelda archives proposition non jouée",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/mirelda-concept-v01.webp",
+        "alt": "Portrait conceptuel de Mirelda Chêneclair, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "En scène (proposition)",
+          "Tapote une douve, hume le tonnelet et recule franchement si la pression promet une nouvelle gerbe de mousse."
+        ],
+        [
+          "Rencontre fictive",
+          "Un essai de fermentation à la poire attire un acheteur avant d'avoir été stabilisé."
+        ],
+        [
+          "Choix possible",
+          "Faire patienter, vérifier le procédé ou refuser la commande sans renoncer à l'expérience."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB39-OREN-DAST",
+      "version": "24495860be51ec3175895e59fa58110c58b7fb3e",
+      "name": "Oren Dast",
+      "description": "Un responsable des finances qui sait que les chiffres sont des choix entre besoins réels.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB39-OREN-DAST.md",
+      "tags": "pnj personnage savoirs oren archives proposition non jouée",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Sort un carnet pour chiffrer une promesse, puis le referme quand Sariel réclame une soirée sans dossiers."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux communes présentent des projets de développement dont les bénéfices sont difficiles à comparer."
+        ],
+        [
+          "Choix possible",
+          "Demander des données locales, organiser une consultation ou réviser les deux projets."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB39-SARIEL-VARN",
+      "version": "ec8cb096713eaa26433cb3c7b8ecdb6810221b70",
+      "name": "Sariel Varn",
+      "description": "Représenter un Conseil, c'est parfois devoir dire non au souverain.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB39-SARIEL-VARN.md",
+      "tags": "pnj personnage savoirs sariel archives proposition non jouée",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/sariel-concept-v01.webp",
+        "alt": "Portrait conceptuel de Sariel Varn, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "En scène (proposition)",
+          "Sépare l'amitié de la charge, présente les objections et exige qu'une décision puisse être expliquée."
+        ],
+        [
+          "Rencontre fictive",
+          "Une proposition urgente reçoit le soutien d'une figure prestigieuse sans examen contradictoire."
+        ],
+        [
+          "Choix possible",
+          "Demander un avis du Conseil, rendre les critères publics ou différer la décision."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB39-SERAH-DENVAR",
+      "version": "797778a33d1d8b87466cadcb14e65ed7ac2ed905",
+      "name": "Serah Denvar",
+      "description": "Une capitaine des Hautes Marches qui demande à apprendre sans prétendre déjà savoir.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB39-SERAH-DENVAR.md",
+      "tags": "pnj personnage savoirs serah archives proposition non jouée",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Reformule un ordre ambigu en consignes vérifiables et s'assure que les nouvelles recrues l'ont compris."
+        ],
+        [
+          "Rencontre fictive",
+          "Un exercice de patrouille réussit sur le papier mais laisse les derniers marcheurs sans appui."
+        ],
+        [
+          "Choix possible",
+          "Réorganiser l'escorte, recueillir les objections ou reprendre l'exercice autrement."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB42-SIGRUN-VAREK",
+      "version": "e330b0ddba0bc774a24ba668a31c34a291fb2998",
+      "name": "Sigrun Varek",
+      "description": "Une interlocutrice commerciale qui distingue un passage dessiné d'un passage autorisé.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-SIGRUN-VAREK.md",
+      "tags": "pnj personnage savoirs sigrun_varek archives proposition non jouée",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Déroule un tracé hypothétique, repère les accès à vérifier et demande quels habitants seraient concernés."
+        ],
+        [
+          "Rencontre fictive",
+          "Un marchand veut annoncer le tunnel oriental alors que les reconnaissances ne sont pas faites."
+        ],
+        [
+          "Choix possible",
+          "Exiger l'étude du terrain, consulter les intéressés ou suspendre toute publicité trompeuse."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB31-SIVRA-BRASSEFEUILLE",
+      "version": "64a9e9e2a9f8870ae941c263e0bcff9f928e1910",
+      "name": "Sivra Brassefeuille",
+      "description": "Une brasseuse qui préfère les essais reproductibles aux promesses spectaculaires.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-SIVRA-BRASSEFEUILLE.md",
+      "tags": "pnj personnage metiers sivra archives proposition non jouée",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/sivra-concept-v01.webp",
+        "alt": "Portrait conceptuel de Sivra Brassefeuille, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "En scène (proposition)",
+          "Fait sentir un brassin, interroge l'origine des plantes et revendique le droit de refuser une commande."
+        ],
+        [
+          "Rencontre fictive",
+          "Une fermentation varie brusquement entre deux celliers de l'abbaye."
+        ],
+        [
+          "Choix possible",
+          "Comparer les conditions, consulter les artisans ou changer de recette."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB1-SOREN",
+      "version": "4d569f80381321500bc259ec2b4e1f9ee1cdc4f0",
+      "name": "Sören",
+      "description": "Un vieux marin qui découvre encore du nouveau dans les vestiges qu'il croyait connaître.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB1-SOREN.md",
+      "tags": "pnj personnage savoirs soren archives proposition non jouée",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Regarde les pierres avec la patience de quarante années de retours et accepte qu'une interprétation lui échappe."
+        ],
+        [
+          "Rencontre fictive",
+          "Un dessin de maçon ancien pourrait appartenir à plusieurs générations de bâtisseurs."
+        ],
+        [
+          "Choix possible",
+          "Demander l'avis d'artisans, conserver plusieurs lectures ou renoncer à divulguer le lieu."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB39-YSE-KORR",
+      "version": "4eaceafa6ce3e41df4107c9066b95325f8fce950",
+      "name": "Yse Korr",
+      "description": "Une commandante qui mesure la sécurité d'une route aux voyageurs qui peuvent l'emprunter.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB39-YSE-KORR.md",
+      "tags": "pnj personnage savoirs yse archives proposition non jouée",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Écoute les conducteurs de chariots, examine les haltes et détend une réunion tendue d'une remarque sèche."
+        ],
+        [
+          "Rencontre fictive",
+          "Une patrouille rassure un bourg mais inquiète les communautés vivant plus loin sur la route."
+        ],
+        [
+          "Choix possible",
+          "Repenser la présence militaire, écouter les deux parties ou tester des escortes volontaires."
+        ]
+      ]
     }
   ]
 }
