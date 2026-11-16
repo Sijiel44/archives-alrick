@@ -36,3 +36,11 @@ Ce dossier reste **non publié** pour le moment, conformément au périmètre du
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, entrée **RES-03** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.
+
+## En jeu — itinéraires et hospitalité (propositions non jouées)
+
+- **Un essieu, deux urgences :** une caravane doit choisir entre protéger une cargaison fragile et rejoindre un relais avant la nuit. Plusieurs répartitions des risques sont possibles.
+- **Le relais complet :** les places abritées manquent pour un groupe de voyageurs. Négocier, partager les ressources ou chercher une autre halte peut suffire.
+- **Une route mal connue :** un itinéraire dit « sûr » repose sur un témoignage ancien. Brakka peut demander une reconnaissance préalable sans imposer sa conclusion.
+
+**Interprétation proposée :** organiser les besoins avant d'ordonner le départ. Ce contenu n'établit aucune embauche d'Orin ni appartenance aux Revenants.

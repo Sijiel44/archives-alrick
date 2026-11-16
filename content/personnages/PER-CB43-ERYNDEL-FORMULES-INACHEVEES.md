@@ -34,3 +34,11 @@ Les activités proposées à partir de ces faits ne sont pas de nouvelles scène
 ## Sources documentaires
 
 *Compendium des personnages et des relations* v1.7, **REN-57** ; références du brouillon : CB43 P04298–04594; P06533–06921. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.
+
+## En jeu — la recherche sans réponse imposée (propositions non jouées)
+
+- **Le résultat trop parfait :** deux laboratoires obtiennent des résultats incompatibles. Les aventuriers peuvent contrôler les conditions, recueillir les notes ou proposer un essai contradictoire.
+- **Une formule sans fin :** un manuscrit comporte plusieurs étapes non démontrées. Les joueurs décident de publier les incertitudes, de chercher une preuve ou de laisser le texte ouvert.
+- **La commande pressante :** un mécène veut une conclusion avant l'enquête. Eryndel peut réclamer des conditions d'indépendance ; rien ne l'oblige à accepter une mission.
+
+**Limite mécanique :** ce portrait n'invente ni sort, ni formule opérationnelle, ni capacité 5d6.

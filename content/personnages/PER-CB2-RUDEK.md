@@ -34,3 +34,11 @@ Les autres pistes sont des propositions non jouées et ne doivent pas devenir de
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **SEC-20** ; renvois conservés : CB2 P00273–00290; P02693–02723. Ce code documentaire ne fixe ni allégeance, ni état de Rappelé, ni appartenance aux Revenants.
+
+## En jeu — la pierre et les gens (propositions non jouées)
+
+**À jouer :** Rudek ne laisse pas la grandeur d'un monument effacer les maisons qui se trouvent à son pied. Cette priorité est une interprétation proposée, pas un fait ajouté à sa biographie.
+
+- **La fissure sans coupable :** une pierre cède près d'un atelier. Les joueurs peuvent vérifier le sol, interroger les ouvriers ou mettre les lieux à l'abri avant de chercher une responsabilité.
+- **La pierre de famille :** une famille refuse qu'on enlève une ancienne pièce de maçonnerie. Entre sécurité et mémoire, plusieurs compromis sont possibles.
+- **L'apprenti qui doute :** un jeune tailleur de pierre remarque un défaut dans un devis. Le groupe choisit comment faire entendre son avis sans perdre la confiance des commanditaires.

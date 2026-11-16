@@ -34,3 +34,13 @@ Les autres pistes sont des propositions non jouées et ne doivent pas devenir de
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **SEC-21** ; renvois conservés : CB2 P00273–00290; P02693–02723. Ce code documentaire ne fixe ni allégeance, ni état de Rappelé, ni appartenance aux Revenants.
+
+## En jeu — une tension à écouter (propositions non jouées)
+
+**À jouer :** Sela commence par inspecter les attaches, puis invite à regarder ce qu'un ouvrage change pour ceux qui l'empruntent.
+
+- **La passerelle au vent :** une liaison suspendue se met à vibrer dangereusement. Les aventuriers peuvent sécuriser le passage, examiner le cordage ou aménager un détour temporaire.
+- **Le lot de fibres :** une commande nouvelle semble de meilleure qualité sans que sa provenance soit claire. Vérifier les essais, le fournisseur ou les usages évite d'accuser trop tôt.
+- **Le témoin écarté :** une personne connaît une défaillance ancienne, mais personne ne l'écoute. Les joueurs choisissent comment recueillir son récit et le recouper.
+
+Les propositions ne dévoilent pas les secrets des pierres du pont et ne prolongent pas d'office la garde.

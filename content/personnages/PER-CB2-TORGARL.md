@@ -36,3 +36,11 @@ Il soutient l’équipe de Dagrin en mobilisant des personnes compétentes des M
 
 - *Campagne Brut 2*, CB2 P00327–00380; P00543–00549; P00560–00643.
 
+## En jeu — une autorité qui consulte (propositions non jouées)
+
+- **Trois avis avant une décision :** des bâtisseurs, des riverains et des porteurs de marchandises donnent des diagnostics contradictoires. Les aventuriers peuvent rassembler les preuves avant qu'une décision soit prise.
+- **Des mains pour le chantier :** plusieurs ouvrages utiles demandent les mêmes ouvriers. La table peut arbitrer avec les habitants, réévaluer le calendrier ou choisir de ne lancer qu'un seul chantier.
+- **La promesse trop vaste :** une aide annoncée dépasse les moyens réellement disponibles. Il faut clarifier l'engagement sans prêter à Torgarl une décision historique non documentée.
+
+**Prudence :** ne pas extrapoler son titre, sa longévité ni les pouvoirs qu'il aurait à une autre époque. Le présent passage est un outil de campagne, non une correction de ses scènes.
+

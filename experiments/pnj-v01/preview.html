@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Le Cabinet des Rencontres — PNJ v0.1 · Entre-Rives</title>
+  <style>
+    :root {
+      font-family: Inter, "Segoe UI", system-ui, sans-serif;
+      --bg: #0b111b; --panel: #171d29; --panel-soft: #1c2531;
+      --ivory: #f5edda; --muted: #b8b7b2; --copper: #d9a76e;
+      --border: rgba(230, 195, 137, .18); --ink: #1b1613;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: radial-gradient(circle at 80% 3%, #203042 0, #0b111b 47%) fixed; color: var(--ivory); }
+    button, input, a { font: inherit; }
+    a { color: var(--copper); }
+    button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #f4c47d; outline-offset: 3px; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap: 20px; padding: 16px max(25px, calc((100vw - 1300px)/2)); border-bottom:1px solid var(--border); }
+    .brand { display:flex; align-items:center; gap: 12px; font: 600 15px Georgia, serif; letter-spacing:.08em; }
+    .brand-mark { color: var(--copper); border:1px solid var(--border); border-radius:50%; display:grid; place-items:center; height:38px; width:38px; font-size:23px; }
+    .tiny { color: #e9bb85; text-transform:uppercase; letter-spacing:.14em; font-size:11px; }
+    .tag-top { border:1px solid var(--border); border-radius:99px; color:var(--muted); padding:9px 14px; font-size:12px; }
+    .shell { max-width:1350px; margin:auto; padding: 26px 26px 90px; }
+    .hero { position:relative; min-height:410px; overflow:hidden; border-radius:20px; background: #172436 url("../../content/images/personnages/pnj-v01-fresque-concept.webp") center center /cover no-repeat; border:1px solid var(--border); display:flex; align-items:flex-end; box-shadow:0 20px 70px #0008; }
+    .hero::before {content:""; position:absolute; inset:0; background: linear-gradient(90deg, rgba(7,12,21,.94), rgba(7,12,21,.70) 32%, rgba(7,12,21,.03) 75%), linear-gradient(0deg,rgba(7,12,21,.6),transparent 70%); }
+    .hero-copy {position:relative; z-index:1; max-width:650px; padding:38px 42px;}
+    .eyebrow {color:#efc18c; font-size:12px; font-weight:800; letter-spacing:.2em; text-transform:uppercase;}
+    h1, h2, h3, .card-name {font-family:Georgia, "Times New Roman", serif; font-weight:500;}
+    h1 {font-size:clamp(42px,5.5vw,78px); line-height:.96; margin:17px 0 18px; letter-spacing:-.045em; text-wrap:balance;}
+    .hero-copy p {max-width:530px; line-height:1.55; font-size:16px; color:#e4e3e0; }
+    .hero-note { margin-top:25px; display:flex; align-items:center; gap:12px; color:#cfbca5; font-size:12px; }
+    .spark {font-size:21px; color:#e7b570;}
+    .summary {display:flex; align-items:center; justify-content:space-between; gap:24px; margin:34px 0 20px;}
+    h2 { font-size:clamp(26px,3vw,36px); margin:0; letter-spacing:-.025em; }
+    .subheading {margin:9px 0 0; color:var(--muted); line-height:1.5; max-width:760px;}
+    .counter {display:flex; align-items:baseline; gap:8px; color:var(--muted); white-space:nowrap;}
+    .counter strong { font: 400 40px Georgia,serif; color: var(--copper); }
+    .filters {display:flex; align-items:center; flex-wrap:wrap; gap:9px; margin:22px 0; }
+    .filter {background:#1c2734; border:1px solid var(--border); border-radius:99px; color:#d8d8d2; padding:10px 17px; cursor:pointer; font-size:13px; transition:background .15s ease,color .15s ease; }
+    .filter:hover, .filter[aria-pressed="true"] {background:#d8a86f; color:#19150e; border-color:#d8a86f; }
+    .search {margin-left:auto; display:flex; align-items:center; gap:10px; padding:0 14px; min-width:min(100%,280px); border:1px solid var(--border); background:#17202a; border-radius:11px; color:#e0b77f; }
+    .search input {color:var(--ivory); background:none; outline:0; border:0; padding:12px 0; width:100%; min-width:0; font-size:14px; }
+    .search:focus-within {outline:2px solid #d8a86f;outline-offset:2px;}
+    .grid {display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; }
+    .card {background:linear-gradient(150deg,#202a38,#121b27 85%); border:1px solid var(--border); border-radius:15px; overflow:hidden; text-align:left; padding:0; color:inherit; cursor:pointer; box-shadow:0 8px 25px #0004; transition:transform .17s, border-color .17s, box-shadow .17s; width:100%; display:flex; flex-direction:column; }
+    .card:hover {transform:translateY(-4px); border-color:#d1a56b99; box-shadow:0 15px 30px #0007;}
+    .portrait {position:relative; display:grid; place-items:center; height:206px; background:radial-gradient(circle at 60% 30%,#465366,#151d2a 65%); overflow:hidden;}
+    .portrait img {width:100%; height:100%; object-fit:cover; object-position:center 26%; display:block; transition:transform .22s;}
+    .card:hover .portrait img {transform:scale(1.04);}
+    .sigil {height:134px; width:134px; border:1px solid #d6b58555; border-radius:50%; display:grid; place-items:center; position:relative; transform:rotate(-10deg); background:radial-gradient(circle,#68788b22 0,transparent 70%); box-shadow:0 0 0 13px #d6b5850b,0 0 0 27px #d6b58508;}
+    .sigil::before, .sigil::after {position:absolute; content:""; width:155px; height:1px; background:#cca56d44; transform:rotate(43deg);}
+    .sigil::after {transform:rotate(-43deg);}
+    .sigil-symbol {font-size:55px; filter:grayscale(.25); transform:rotate(10deg); text-shadow:0 4px 25px #000; z-index:1;}
+    .portrait-label {position:absolute; right:12px; bottom:11px; padding:5px 9px; border:1px solid #ecd7b13b; border-radius:99px; background:#0a1420c9; color:#e7d9bd; font-size:10px; text-transform:uppercase; letter-spacing:.08em; }
+    .card-body {padding:17px 18px 20px; flex:1; display:flex; flex-direction:column; min-height:185px;}
+    .category {color:#d8ae76; text-transform:uppercase; font-size:10px; letter-spacing:.14em; font-weight:750; margin-bottom:9px; }
+    .card-name {font-size:25px; line-height:1.04; margin:0 0 10px; letter-spacing:-.02em;}
+    .card-desc {font-size:13px; line-height:1.55; color:#c9cccb; margin:0; flex:1; }
+    .card-footer {display:flex; justify-content:space-between; gap:10px; align-items:center; margin-top:15px; padding-top:14px; border-top:1px solid #ffffff15; color:#d5b88f; font-size:12px; }
+    .status {color:#adb4b7; font-size:11px;}
+    .muted {color:var(--muted)}
+    .empty {display:none; padding:44px 12px; text-align:center; border:1px dashed var(--border); border-radius:12px; color:var(--muted);}
+    footer {margin-top:32px; border-top:1px solid var(--border); padding-top:18px; font-size:12px; line-height:1.6; color:var(--muted);}
+    dialog {position:fixed; max-width:850px; width:calc(100vw - 36px); max-height:min(92vh,950px); margin:auto; background:#161f2b; color:var(--ivory); border:1px solid #d7ab7566; border-radius:18px; padding:0; overflow:auto; box-shadow:0 28px 100px #000b;}
+    dialog::backdrop {background:#030912d9; backdrop-filter:blur(6px);}
+    .close {position:absolute; right:19px; top:19px; z-index:5; border:1px solid #fff5; background:#101725cf; color:white; cursor:pointer; width:39px;height:39px;border-radius:50%; font-size:23px; }
+    .detail-layout {display:grid; grid-template-columns:290px 1fr; }
+    .detail-art {min-height:420px; background:linear-gradient(#233344,#131b25); position:relative; display:grid; place-items:center;}
+    .detail-art img {width:100%; height:100%; min-height:420px; object-fit:cover; position:absolute; inset:0;}
+    .detail-art .sigil {transform:scale(1.2) rotate(-10deg);}
+    .detail-copy {padding:45px 38px 34px;}
+    .detail-copy h2 {font-size:42px; line-height:1.08; margin:10px 0;}
+    .detail-copy p {line-height:1.55;}
+    .detail-copy h3 {font-size:21px; margin:22px 0 8px; color:#f3ddc1;}
+    .detail-copy .lead {font-size:16px;color:#e0d7cb;}
+    .rule {height:1px;background:var(--border);margin:20px 0;}
+    .note {border-left:3px solid #d9aa70; background:#243142; padding:12px 16px; font-size:13px; color:#d5dee0; line-height:1.5; border-radius:0 8px 8px 0;}
+    .buttons {display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;}
+    .action {border:1px solid #c7a57588; border-radius:9px; padding:11px 15px; background:#d8a86f; color:#1d1713; text-decoration:none; font-size:13px; font-weight:700; cursor:pointer;}
+    .action.secondary {background:transparent; color:#e9c79a;}
+    dl {display:grid; grid-template-columns:110px 1fr; gap:8px 10px; font-size:12px; color:#c9cccd;}
+    dt {color:#d3a86f;} dd {margin:0;overflow-wrap:anywhere;}
+    @media (max-width:1080px) {.grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+    @media (max-width:760px) {
+      .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+      .topbar {padding:14px 18px;} .tag-top{display:none;}
+      .shell {padding:16px 14px 60px;} .hero{min-height:360px;} .hero-copy{padding:26px;}
+      .summary{align-items:flex-start;} .counter strong{font-size:31px;}
+      .search{margin-left:0; width:100%;} .filters{gap:7px;}
+      .detail-layout{grid-template-columns:1fr;} .detail-art{min-height:225px;max-height:280px;}
+      .detail-art img{min-height:225px;} .detail-copy{padding:28px 23px;}
+      .detail-copy h2{font-size:34px;}
+    }
+    @media (max-width:470px) {
+      .grid{grid-template-columns:1fr 1fr;gap:9px;} .portrait{height:145px;}
+      .card-body{padding:13px;min-height:180px;} .card-name{font-size:19px;} .card-desc{font-size:12px;}
+      .card-footer{font-size:10px;} .status{display:none;}
+      .sigil{transform:scale(.75) rotate(-10deg);} .hero{min-height:340px;}
+      .hero-copy p{font-size:14px;}.hero-copy{padding:22px;}.hero-note{font-size:11px;}
+      .counter {display:none;}
+    }
+    @media (prefers-reduced-motion:reduce) { *, *::before, *::after {transition:none!important;scroll-behavior:auto!important;} }
+    @media print {
+      body{background:white;color:black;} .topbar,.hero,.summary,.filters,.grid,footer,.close{display:none!important;}
+      dialog[open]{position:static;width:auto;max-height:none;border:0;color:black;background:white;box-shadow:none;}
+      dialog::backdrop{display:none;} .detail-copy,.detail-copy h3,.lead,.note {color:black!important;}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark" aria-hidden="true">✥</div><span>LES CHRONIQUES D'ENTRE-RIVES<br><span class="tiny">Atelier des personnages</span></span></div>
+    <span class="tag-top">PNJ-001 · prototype local · pas de publication</span>
+  </header>
+  <main class="shell">
+    <section class="hero" aria-labelledby="main-title">
+      <div class="hero-copy">
+        <div class="eyebrow">Tome I — Personnages et sociétés</div>
+        <h1 id="main-title">Le Cabinet<br>des Rencontres</h1>
+        <p>Des compagnons, artisans, témoins et bâtisseurs. Trente visages issus des archives d'Alrick, à rencontrer sans avoir à rejouer son histoire.</p>
+        <div class="hero-note"><span class="spark">✦</span> Fresque et portraits conceptuels non canoniques · aucune fiche source remplacée</div>
+      </div>
+    </section>
+    <section aria-labelledby="browse-title">
+      <div class="summary">
+        <div><div class="eyebrow">Des histoires qui n'attendent pas le héros</div><h2 id="browse-title">La collection des PNJ</h2>
+          <p class="subheading">Chaque carte donne une manière de jouer le personnage et une proposition de rencontre. Les faits et les sources restent dans sa fiche documentaire d'origine.</p>
+        </div>
+        <div class="counter"><strong id="count">30</strong><span>fiches</span></div>
+      </div>
+      <div class="filters" aria-label="Filtres des personnages">
+        <button class="filter" type="button" data-group="tous" aria-pressed="true">Tous les personnages</button>
+        <button class="filter" type="button" data-group="compagnie" aria-pressed="false">La compagnie</button>
+        <button class="filter" type="button" data-group="proches" aria-pressed="false">Mentors & proches</button>
+        <button class="filter" type="button" data-group="metiers" aria-pressed="false">Métiers & territoires</button>
+        <button class="filter" type="button" data-group="savoirs" aria-pressed="false">Savoirs & gardiens</button>
+        <label class="search">⌕ <input id="search" type="search" autocomplete="off" placeholder="Rechercher un personnage…" aria-label="Rechercher un personnage" /></label>
+      </div>
+      <div class="grid" id="cards" aria-live="polite"></div>
+      <div class="empty" id="empty">Aucun personnage ne correspond à cette recherche.</div>
+    </section>
+    <footer>Prototype éditorial PNJ-001. Les scènes proposées ne sont pas des faits joués. Les secrets du MJ ne sont pas stockés ici. Aucun profil 5d6 ni capacité n'est attribué automatiquement. Les dossiers déjà marqués « spoilers » dans les Archives conservent leurs avertissements.</footer>
+  </main>
+  <dialog id="detail" aria-labelledby="detail-title">
+    <button type="button" class="close" id="close" aria-label="Fermer la fiche">×</button>
+    <div class="detail-layout">
+      <div id="detail-art" class="detail-art"></div>
+      <article class="detail-copy">
+        <div id="detail-category" class="eyebrow"></div>
+        <h2 id="detail-title"></h2>
+        <p class="lead" id="detail-lead"></p>
+        <div class="rule"></div>
+        <h3>Le faire vivre en scène</h3>
+        <p id="detail-scene"></p>
+        <div class="note"><strong>Proposition non jouée</strong><br><span id="detail-hook"></span></div>
+        <h3>Choix laissés aux joueurs</h3>
+        <p id="detail-choices"></p>
+        <h3>Traçabilité documentaire</h3>
+        <dl><dt>Référence</dt><dd id="detail-code"></dd><dt>Statut source</dt><dd id="detail-status"></dd><dt>Source primaire</dt><dd id="detail-source"></dd><dt>Illustration</dt><dd id="detail-illustration"></dd><dt>5d6</dt><dd>Pas de profil canonique attribué par cette sélection ; adaptations à versionner séparément.</dd></dl>
+        <p id="detail-warning" class="note" hidden></p>
+        <div class="buttons"><a class="action" id="detail-link" target="_blank" rel="noopener noreferrer">Ouvrir la fiche d'origine ↗</a><button type="button" class="action secondary" id="print">Imprimer cette fiche</button></div>
+      </article>
+    </div>
+  </dialog>
+  <script id="pnj-payload" type="application/json">[{"id":"bram","code":"REV-01","file":"REV-01.md","nom":"Bram Vieux-Fer","groupe":"compagnie","symbole":"🛡️","accroche":"Un vétéran qui pense au chemin du retour avant de parler de victoire.","enScene":"Inspecte les sangles, interroge les témoins de l'arrière-garde et ose objecter lorsqu'un plan oublie les blessés.","rencontre":"Une escorte refuse de repartir sans les derniers marcheurs : qui organisera le repli ?","choix":"Négocier une route plus sûre, partager les risques ou reporter le départ.","image":"../../content/images/personnages/bram-concept.webp","illustrationValidee":false,"statut":"faits_joues","ancre":"CB43","sources":"CB2 (Mérien et Lethrann) ; CB31-32 (commande Mara, capes) ; CB34 (entraînements des Revenants) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB39 P26390–26474 ; CB42 P18752–21841 ; CB43 (échanges à Aldhammar)","spoiler":true,"publicationSource":true},{"id":"ragna","code":"REV-02","file":"REV-02.md","nom":"Ragna Pierre-Sèche","groupe":"compagnie","symbole":"🪨","accroche":"Une observatrice des détails que la précipitation efface.","enScene":"Laisse finir les autres, mesure un silence et questionne les conclusions trop rapides.","rencontre":"Deux récits d'un même passage se contredisent ; il faut écouter avant d'accuser.","choix":"Recouper, protéger un témoin vulnérable ou agir avec des preuves encore imparfaites.","image":"../../content/images/personnages/ragna-concept.webp","illustrationValidee":false,"statut":"faits_joues","ancre":"CB43","sources":"CB2 (Mérien) ; CB31–34 (capes, entraînements) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB39 P01405–01993 (Lok) ; CB42 P18752–19902 (Pierre d’Écoute) ; CB43 (échanges à Aldhammar)","spoiler":true,"publicationSource":true},{"id":"kelm","code":"REV-03","file":"REV-03.md","nom":"Kelm Poing-Calme","groupe":"compagnie","symbole":"✊","accroche":"La force d'un homme se reconnaît aussi à ce qu'il refuse de briser.","enScene":"Se place à hauteur de son interlocuteur et cherche une issue qui n'humilie personne.","rencontre":"Un conflit au relais menace de devenir une démonstration de force inutile.","choix":"Calmer la foule, réparer un tort ou convaincre les deux parties de reculer.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB43","sources":"CB2 (origines, famille et route) ; CB31–34 (marteau et exercices) ; CB42 P18752–19902 (Marteau des Quatre États, apprentis) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral)","spoiler":true,"publicationSource":true},{"id":"vaera","code":"REV-04","file":"REV-04.md","nom":"Vaëra","groupe":"compagnie","symbole":"🌒","accroche":"Une éclaireuse dont la liberté compte autant que la finesse d'approche.","enScene":"Observe sorties et lignes de vue, puis pose une question qui révèle ce que chacun croyait évident.","rencontre":"Un message doit franchir un secteur surveillé sans mettre les habitants en danger.","choix":"Chercher un passage discret, inventer une diversion consentie ou différer l'envoi.","image":"../../content/images/personnages/vaera-portrait-intime.webp","illustrationValidee":false,"statut":"faits_joues","ancre":"CB43","sources":"CB2 (réseaux, confiance et origines) ; CB31–34 (capes, entraînements) ; CB37 P12846–13288 ; CB38 P21839–23395 ; CB39 P00078–01212, P02944–04569, P20311–20701, P28048–30346 ; CB41 P00904–07108 ; CB42 P08333–21050 ; CB43 P14802–15458, P17817–18456, P19363–21327, P22957–23573","spoiler":true,"publicationSource":true},{"id":"torven","code":"REV-05","file":"REV-05.md","nom":"Torven Cendreval","groupe":"compagnie","symbole":"⚕️","accroche":"Un soignant qui juge une victoire à ceux qu'elle laisse vivants.","enScene":"Interrompt les bravades pour demander de l'eau, du repos et des informations utiles aux soins.","rencontre":"Une expédition ne possède pas de quoi traiter tous ses blessés à la fois.","choix":"Réorganiser les moyens, demander de l'aide ou interrompre l'objectif initial.","image":"../../content/images/personnages/torven-portrait-medecin-proposition.webp","illustrationValidee":false,"statut":"faits_joues","ancre":"CB43","sources":"CB2 (Mérien et secours) ; CB31–34 (formation médicale et capes) ; CB34 (hôpital et Espace sur demande) ; JDR Brut Reprise du JDR, échanges 012–119 (Taagral) ; CB42 P18752–19902 ; CB43 (hôpital actif, distinct de l’infirmerie privée)","spoiler":true,"publicationSource":true},{"id":"heimdall","code":"REV-06","file":"REV-06.md","nom":"Heimdall","groupe":"compagnie","symbole":"🔭","accroche":"Veiller exige de choisir, pas de tout savoir.","enScene":"Distingue une observation certaine d'une inquiétude et refuse de promettre l'impossible.","rencontre":"Plusieurs signaux inhabituels réclament l'attention d'une petite équipe.","choix":"Prioriser des vérifications, déléguer ou reconnaître ses limites.","image":"../../content/images/personnages/heimdall-portrait.webp","illustrationValidee":true,"statut":"faits_joues","ancre":"CB43","sources":"CB2; CB32; CB38 P06750–07262 et P19467–19961; CB39 P02944–04569, P20311–20701 et P40542–41267; CB42 P18752–21050; CB43","spoiler":true,"publicationSource":true},{"id":"haldrek","code":"REV-07","file":"REV-07.md","nom":"Haldrek","groupe":"compagnie","symbole":"⚔️","accroche":"Le capitaine qui prépare autant la retraite que l'avance.","enScene":"Répartit les tâches, demande confirmation des consignes et surveille les réserves.","rencontre":"Un exercice collectif révèle une faille dans la chaîne de commandement.","choix":"Corriger l'organisation, écouter une recrue ou accepter un nouveau chef de manœuvre.","image":"../../content/images/personnages/haldrek-portrait-capitaine-proposition.webp","illustrationValidee":false,"statut":"faits_joues","ancre":"CB43","sources":"CB2 (préparation du Mérien) ; CB31–34 (doctrine, entraînements avec Orin, Tairin et Drakon, projet de Bordociel) ; continuité Taagral échanges 012–119 ; CB39 P02944–04569 ; CB42 P19455–21050 ; CB43 (Hroldan) ; orientations du créateur octobre 2026 (enfance, direction future et lien avec Orin)","spoiler":true,"publicationSource":true},{"id":"eamon","code":"REV-08","file":"REV-08.md","nom":"Eamon","groupe":"compagnie","symbole":"📜","accroche":"Un professeur pour qui une histoire transmise doit aussi pouvoir être discutée.","enScene":"Interroge la provenance d'un témoignage et laisse la place aux versions discordantes.","rencontre":"Un récit très populaire efface le nom d'un artisan qui y a contribué.","choix":"Restituer les sources, organiser une discussion ou admettre un doute.","image":"../../content/images/personnages/eamon-concept.webp","illustrationValidee":false,"statut":"faits_joues","ancre":"CB43","sources":"CB1–2 (apprentissage, récits et Skalor) ; CB31–34 (adhésion, ateliers, entraînement à l’épée) ; CB37 P00515–02025, P06702–07442 ; CB38 P19260–19466 ; CB41 P02040–02084 ; CB42 P18752–19902 ; CB43 P01075–01157 (Dorsa)","spoiler":true,"publicationSource":true},{"id":"torgarl","code":"PER-CB2-TORGARL","file":"PER-CB2-TORGARL.md","nom":"Torgarl","groupe":"proches","symbole":"🏛️","accroche":"Une autorité politique qui doit composer avec les métiers et les habitants.","enScene":"Écoute le diagnostic d'un spécialiste avant de promettre des moyens.","rencontre":"Des ressources sont disponibles pour un chantier, mais deux besoins sont urgents.","choix":"Prioriser, consulter la population ou réviser les objectifs.","image":null,"illustrationValidee":false,"statut":"a_verifier","ancre":"CB2","sources":"CB2 P00327–00380; P00543–00549; P00560–00643","spoiler":false,"publicationSource":false},{"id":"ylva","code":"PER-CB31-YLVA","file":"PER-CB31-YLVA.md","nom":"Ylva","groupe":"proches","symbole":"👣","accroche":"L'instructrice qui enseigne une discrétion possible, jamais l'invisibilité.","enScene":"Replace un apprenti dans son environnement et adapte l'exercice au poids de son équipement.","rencontre":"Un groupe veut apprendre à traverser une cour sans éveiller l'attention.","choix":"Observer, alléger le matériel ou renoncer à un parcours trop exposé.","image":null,"illustrationValidee":false,"statut":"a_verifier","ancre":"CB31","sources":"CB31 P12446–12610; P13844–13855","spoiler":false,"publicationSource":false},{"id":"elyan","code":"PER-CB43-ELYAN-CORBEAU-GRIS","file":"PER-CB43-ELYAN-CORBEAU-GRIS.md","nom":"Elyan Corbeau-Gris","groupe":"proches","symbole":"📖","accroche":"Un mentor dont les questions sont parfois plus utiles que les réponses.","enScene":"Écoute, sourit d'une certitude trop assurée et n'explique pas ce qu'il ignore.","rencontre":"Un texte ancien pourrait avoir deux lectures également plausibles.","choix":"Comparer les interprétations, demander une expérience ou suspendre le jugement.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB43","sources":"Compendium V03 FAM-08; CB43 P04348–04698, P05559–08839, P16643–16872, P22047–22278","spoiler":true,"publicationSource":true},{"id":"astrid","code":"PER-CB31-ASTRID","file":"PER-CB31-ASTRID.md","nom":"Astrid","groupe":"proches","symbole":"⚖️","accroche":"La responsable d'un fonds d'études doit choisir sans céder à toutes les sollicitations.","enScene":"Demande un budget, un besoin réel et des garanties d'autonomie aux porteurs de projets.","rencontre":"Deux ateliers sollicitent une même bourse pour des besoins différents.","choix":"Comparer les dossiers, proposer un calendrier ou demander un nouvel avis.","image":null,"illustrationValidee":false,"statut":"a_verifier","ancre":"CB31","sources":"CB31 P13280–13355","spoiler":false,"publicationSource":false},{"id":"freya","code":"PER-CB31-FREYA","file":"PER-CB31-FREYA.md","nom":"Freya","groupe":"proches","symbole":"🧵","accroche":"Une reine qui sait la valeur des souvenirs et des liens personnels.","enScene":"Pose une question sur les personnes derrière les titres et corrige doucement un souvenir inexact.","rencontre":"Deux familles rapportent différemment un même geste ancien.","choix":"Laisser chacun raconter, rechercher une trace ou reconnaître les mémoires distinctes.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB31","sources":"CB31 P12130–12188; P16302–16762","spoiler":true,"publicationSource":true},{"id":"alriana","code":"PER-CB31-ALRIANA","file":"PER-CB31-ALRIANA.md","nom":"Alriana","groupe":"proches","symbole":"🌺","accroche":"Une personne dont on connaît des gestes et des souvenirs, pas toute la biographie.","enScene":"Dans une campagne située à son époque, faire parler les objets et les témoins plutôt que figer son sort.","rencontre":"Un objet ancien comporte une histoire familiale incomplète.","choix":"Enquêter avec délicatesse, conserver plusieurs versions ou laisser le passé privé.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB31","sources":"CB31 P16405–16421; P16647–16659; P16722–16727; P16900–16914","spoiler":true,"publicationSource":true},{"id":"harald","code":"FAM-06","file":"FAM-06.md","nom":"Harald Forgecœur","groupe":"proches","symbole":"⛰️","accroche":"Une figure des Montagnes dont le passé militaire appelle une lecture sourcée.","enScene":"Parle du service concret avant la gloire et ne confond pas tous les vétérans de son époque.","rencontre":"Un ancien itinéraire militaire est invoqué pour régler un conflit actuel.","choix":"Vérifier les témoignages, consulter les habitants ou chercher un autre accord.","image":null,"illustrationValidee":false,"statut":"lore_valide","ancre":"CB42","sources":"CB42 P15333–17304; CB42 P20026–21257; CB42 P16231–21841","spoiler":true,"publicationSource":true},{"id":"mara","code":"PER-CB31-MARA-VIFACIER","file":"PER-CB31-MARA-VIFACIER.md","nom":"Mara Vifacier","groupe":"metiers","symbole":"🔨","accroche":"Une forgeronne qui adapte le métal aux corps plutôt qu'aux légendes.","enScene":"Mesure une articulation, inspecte une ancienne réparation et refuse une commande dangereuse.","rencontre":"Une armure de famille gêne dangereusement son nouveau porteur.","choix":"La modifier, la préserver hors d'usage ou concevoir un équipement distinct.","image":"../../content/images/personnages/mara-concept-v01.webp","illustrationValidee":false,"statut":"faits_joues","ancre":"CB31","sources":"CB31 P00682–01090; P02201–02400; CB32 P00927","spoiler":true,"publicationSource":true},{"id":"sivra","code":"PER-CB31-SIVRA-BRASSEFEUILLE","file":"PER-CB31-SIVRA-BRASSEFEUILLE.md","nom":"Sivra Brassefeuille","groupe":"metiers","symbole":"🍺","accroche":"Une brasseuse qui préfère les essais reproductibles aux promesses spectaculaires.","enScene":"Fait sentir un brassin, interroge l'origine des plantes et revendique le droit de refuser une commande.","rencontre":"Une fermentation varie brusquement entre deux celliers de l'abbaye.","choix":"Comparer les conditions, consulter les artisans ou changer de recette.","image":"../../content/images/personnages/sivra-concept-v01.webp","illustrationValidee":false,"statut":"lore_valide","ancre":"CB31","sources":"CB31 P12341–12444; confirmation du créateur, 2026-10-29","spoiler":false,"publicationSource":true},{"id":"lysandra","code":"PER-CB42-LYSANDRA-DAVARENNE","file":"PER-CB42-LYSANDRA-DAVARENNE.md","nom":"Lysandra d’Avarenne","groupe":"metiers","symbole":"🌾","accroche":"Une interlocutrice agricole qui attend des constats de terrain.","enScene":"Ramène les débats aux pertes, à l'eau et au travail de ceux qui cultivent.","rencontre":"Des parcelles voisines ont souffert différemment d'une même période sèche.","choix":"Mesurer, écouter les exploitants ou proposer plusieurs essais locaux.","image":null,"illustrationValidee":false,"statut":"projet_en_cours","ancre":"CB42","sources":"CB42 P02769; P02843; P07267–07294","spoiler":false,"publicationSource":true},{"id":"brakka","code":"RES-03","file":"PER-CB42-RES-03-BRAKKA-MAINFRANCHE.md","nom":"Brakka Mainfranche","groupe":"metiers","symbole":"🧳","accroche":"Une professionnelle des caravanes qui sait ce que coûte une route mal préparée.","enScene":"Contrôle les relais, les bagages et la sécurité des voyageurs sans promettre son embauche.","rencontre":"Une caravane doit répartir l'espace entre des voyageurs et des marchandises fragiles.","choix":"Repenser le chargement, négocier des étapes ou faire deux voyages.","image":null,"illustrationValidee":false,"statut":"lore_valide","ancre":"CB42","sources":"CB42 P10594–10597 ; confirmation canonique du créateur 2026-10-30","spoiler":true,"publicationSource":false},{"id":"dorrik","code":"RES-01","file":"PER-CB42-RES-01-DORRIK-VALECLEF.md","nom":"Dorrik Valeclef","groupe":"metiers","symbole":"🗝️","accroche":"Un maître d'hôtel du passé, dont la mort ne peut être effacée par la fiche.","enScene":"Pour un récit situé de son vivant seulement : observe un détail d'accueil qui peut sauver l'honneur d'un hôte.","rencontre":"Dans une aventure historique, un banquet doit accueillir des invités de traditions rivales.","choix":"Adapter le protocole, consulter les invités ou refuser une place insultante.","image":null,"illustrationValidee":false,"statut":"lore_valide","ancre":"CB42","sources":"CB42 P10566–10569; CB43 P00219 ; confirmation canonique du créateur 2026-10-30","spoiler":true,"publicationSource":false},{"id":"heloine","code":"PER-CB44-HELOINE-VALCIR","file":"PER-CB44-HELOINE-VALCIR.md","nom":"Héloïne Valcir","groupe":"metiers","symbole":"🥂","accroche":"Une organisatrice de réceptions dont le métier ne se réduit pas à servir.","enScene":"Repère une difficulté d'accueil avant qu'elle ne devienne un affront public.","rencontre":"Une réception rassemble des personnes aux usages incompatibles.","choix":"Réaménager les tables, négocier le protocole ou permettre un accueil séparé.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB44, CCCLXVII, message 123","sources":"Campagne_Brut_4.4(1).docx, CCCLXVII, message 123","spoiler":true,"publicationSource":true},{"id":"berrik","code":"PER-CB44-BERRIK-TROIS-TONNEAUX","file":"PER-CB44-BERRIK-TROIS-TONNEAUX.md","nom":"Berrik Trois-Tonneaux","groupe":"metiers","symbole":"🛢️","accroche":"Un spécialiste des caves qui parle d'abord des conditions de conservation.","enScene":"Touche les parois, vérifie l'air et différencie un défaut de stockage d'un défaut du produit.","rencontre":"Des bouteilles d'une réserve se dégradent sans cause immédiatement visible.","choix":"Auditer les caves, discuter avec les producteurs ou déplacer les lots.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB44, CCCLXVII, message 123","sources":"Campagne_Brut_4.4(1).docx, CCCLXVII, message 123","spoiler":true,"publicationSource":true},{"id":"selya","code":"PER-CB44-SELYA-VIGNEBRUME","file":"PER-CB44-SELYA-VIGNEBRUME.md","nom":"Selya Vignebrume","groupe":"metiers","symbole":"🍇","accroche":"Une interlocutrice entre collections, métiers et producteurs autonomes.","enScene":"Demande l'origine des lots, remercie le producteur et sépare une piste d'étude d'une promesse.","rencontre":"Le nom d'un petit producteur manque à une collection prestigieuse.","choix":"Rétablir la provenance, obtenir un accord ou suspendre l'exposition.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB44, CCCLXVII, message 123","sources":"Campagne_Brut_4.4(1).docx, CCCLXVII, message 123","spoiler":true,"publicationSource":true},{"id":"odran","code":"PER-CB44-ODRAN-VALCENDRE","file":"PER-CB44-ODRAN-VALCENDRE.md","nom":"Odran Valcendre","groupe":"metiers","symbole":"🌿","accroche":"Un maître des pressoirs qui protège son indépendance et connaît ses limites.","enScene":"Pose les cartes à plat et insiste sur une visite des sols avant tout engagement.","rencontre":"Un domaine souhaite copier une méthode venue d'un terroir différent.","choix":"Tester localement, consulter des cultivateurs ou renoncer à une généralisation.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB44, CCCX, messages 3–4","sources":"Campagne_Brut_4.4(1).docx, CCCX, messages 3–4","spoiler":true,"publicationSource":true},{"id":"maelin","code":"PER-CB2-MAELIN","file":"PER-CB2-MAELIN.md","nom":"Maelin","groupe":"savoirs","symbole":"🪵","accroche":"Une charpentière qui veut que les charges importantes soient partagées.","enScene":"Vérifie une poutre et rappelle qu'un serment ne doit pas isoler quatre personnes.","rencontre":"Une structure ancienne réclame réparation sans perturber son usage quotidien.","choix":"Renforcer, remplacer ou suspendre le passage pendant les travaux.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB2","sources":"CB2 P00273–00290; P02693–02723 ; Campagne brute regroupée Vol. 1, CB2 fonctions ; arbitrage du créateur 2026-10-30, question 3A","spoiler":true,"publicationSource":true},{"id":"rudek","code":"PER-CB2-RUDEK","file":"PER-CB2-RUDEK.md","nom":"Rudek","groupe":"savoirs","symbole":"🧱","accroche":"Un tailleur de pierre attentif au terrain autant qu'à sa famille.","enScene":"Parle de fondations et de charges réelles avant de discuter une théorie.","rencontre":"Un vieux mur menace des habitations et certains veulent préserver chaque pierre.","choix":"Étayer, démonter avec précaution ou évacuer d'abord les lieux.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB2","sources":"CB2 P00273–00290; P02693–02723 ; Campagne brute regroupée Vol. 1, CB2 fonctions ; arbitrage du créateur 2026-10-30, question 3A","spoiler":true,"publicationSource":true},{"id":"sela","code":"PER-CB2-SELA","file":"PER-CB2-SELA.md","nom":"Sela","groupe":"savoirs","symbole":"🪢","accroche":"Une cordière des cités fluviales qui connaît les tensions invisibles aux passants.","enScene":"Tend un câble-test et écoute ceux qui devront vivre avec l'ouvrage.","rencontre":"Une passerelle de corde devient dangereuse à l'approche des crues.","choix":"Démonter, déplacer les ancrages ou aménager un passage de secours.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB2","sources":"CB2 P00273–00290; P02693–02723 ; Campagne brute regroupée Vol. 1, CB2 fonctions ; arbitrage du créateur 2026-10-30, question 3A","spoiler":true,"publicationSource":true},{"id":"eren","code":"PER-CB2-SOREN","file":"PER-CB2-SOREN.md","nom":"Eren","groupe":"savoirs","symbole":"⚙️","accroche":"Le mécanicien du bois et des roues, nommé Eren malgré un ancien nom de fichier.","enScene":"Explique une transmission par un mécanisme concret sans déduire les secrets du pont.","rencontre":"Une roue de moulin fonctionne mal après une réparation pourtant soignée.","choix":"Observer l'usage, modifier une pièce ou réexaminer le dessin initial.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB2","sources":"CB2 P00273–00290; P02693–02723; confirmations du créateur, 2026-10-29 (nom) et 2026-10-30 (fonction)","spoiler":true,"publicationSource":true},{"id":"eryndel","code":"PER-CB43-ERYNDEL-FORMULES-INACHEVEES","file":"PER-CB43-ERYNDEL-FORMULES-INACHEVEES.md","nom":"Eryndel des Formules Inachevées","groupe":"savoirs","symbole":"✒️","accroche":"Un chercheur qui défend le droit aux résultats incomplets.","enScene":"Sépare ce qui a été observé de ce qu'une hypothèse prétend expliquer.","rencontre":"Une expérience difficile à reproduire suscite des promesses publiques.","choix":"Publier les limites, poursuivre l'essai ou refuser l'annonce prématurée.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB43","sources":"CB43 P04298–04594; P06533–06921","spoiler":true,"publicationSource":true},{"id":"bregan","code":"PER-CB44-BREGAN-BATISSEURS","file":"PER-CB44-BREGAN-BATISSEURS.md","nom":"Brégan","groupe":"savoirs","symbole":"🔥","accroche":"Une puissance des bâtisseurs, autonome même lorsqu'elle accepte une alliance.","enScene":"Demande l'avis des artisans avant de confondre une invitation avec une décision collective.","rencontre":"Deux communautés d'ouvriers souhaitent partager un atelier sans perdre leurs pratiques.","choix":"Définir un accord commun, organiser des échanges ou garder deux espaces.","image":null,"illustrationValidee":false,"statut":"faits_joues","ancre":"CB44 CCCLXIV–CCCLXVII ; messages 116–123","sources":"Campagne_Brut_4.4(1).docx ; chapitres CCCLXIV–CCCLXVII ; messages 116–123 ; dernière décision du créateur à distinguer des projets","spoiler":true,"publicationSource":true}]</script>
+  <script>
+    "use strict";
+    const data = JSON.parse(document.getElementById("pnj-payload").textContent);
+    const groups = {compagnie:"Compagnie des Revenants",proches:"Mentors & proches",metiers:"Métiers & territoires",savoirs:"Savoirs & gardiens"};
+    let activeGroup="tous", search="";
+    let returnFocus=null;
+    const cards=document.getElementById("cards"), modal=document.getElementById("detail");
+    const normalize=text=>(text||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+    const el=(name,cls,text)=>{const node=document.createElement(name);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;};
+    function artwork(record, className) {
+      const wrap=el("div",className);
+      if(record.image) {
+        const img=el("img");img.src=record.image;img.alt=`Illustration ${record.illustrationValidee?"de référence":"conceptuelle non canonique"} de ${record.nom}`;img.loading="lazy";wrap.append(img);
+      } else {
+        const frame=el("div","sigil");frame.setAttribute("aria-hidden","true");frame.append(el("span","sigil-symbol",record.symbole));wrap.append(frame);
+      }
+      if(className==="portrait")wrap.append(el("span","portrait-label",record.image?(record.illustrationValidee?"Référence validée":"Portrait conceptuel"):"Emblème provisoire"));
+      return wrap;
+    }
+    function openCard(record) {
+      returnFocus=document.activeElement;
+      const art=document.getElementById("detail-art");art.replaceChildren(...artwork(record,"detail-art-inner").childNodes);
+      const fields={"detail-category":groups[record.groupe],"detail-title":record.nom,"detail-lead":record.accroche,
+        "detail-scene":record.enScene,"detail-hook":record.rencontre,"detail-choices":record.choix,
+        "detail-code":record.code,"detail-status":record.statut,"detail-source":record.sources,
+        "detail-illustration":record.image?(record.illustrationValidee?"Portrait de référence déjà validé dans les Archives.":"Étude visuelle provisoire, apparence à approuver."):"Emblème graphique d'attente, aucun portrait canonique."};
+      for(const [id,value]of Object.entries(fields))document.getElementById(id).textContent=value;
+      const warning=document.getElementById("detail-warning");
+      warning.hidden=!(record.spoiler||!record.publicationSource);
+      warning.textContent=record.spoiler?"Attention : la fiche d'origine contient des révélations de campagne. Le lien ouvre un dépôt public, pas un coffre privé.":"Cette fiche d'origine n'est pas approuvée pour publication sur le site. Consultation de travail uniquement.";
+      const link=document.getElementById("detail-link");link.href=`https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/${encodeURIComponent(record.file)}`;
+      modal.showModal();document.getElementById("close").focus();
+    }
+    function draw(){
+      const filtered=data.filter(record=>(activeGroup==="tous"||record.groupe===activeGroup)&&normalize([record.nom,record.accroche,record.code,groups[record.groupe]].join(" ")).includes(search));
+      cards.replaceChildren();
+      for(const record of filtered){
+        const card=el("button","card");card.type="button";card.setAttribute("aria-label",`Consulter ${record.nom}`);
+        card.append(artwork(record,"portrait"));
+        const body=el("div","card-body");body.append(el("div","category",groups[record.groupe]),el("h3","card-name",record.nom),el("p","card-desc",record.accroche));
+        const foot=el("div","card-footer");foot.append(el("span","", "Découvrir la fiche ↗"),el("span","status",record.spoiler?"avec révélations":" "));body.append(foot);
+        card.append(body);card.addEventListener("click",()=>openCard(record));cards.append(card);
+      }
+      document.getElementById("count").textContent=filtered.length;
+      document.getElementById("empty").style.display=filtered.length?"none":"block";
+    }
+    document.querySelectorAll(".filter").forEach(button=>button.addEventListener("click",()=>{
+      activeGroup=button.dataset.group;document.querySelectorAll(".filter").forEach(b=>b.setAttribute("aria-pressed",String(b===button)));draw();
+    }));
+    document.getElementById("search").addEventListener("input",event=>{search=normalize(event.target.value.trim());draw();});
+    document.getElementById("close").addEventListener("click",()=>modal.close());
+    modal.addEventListener("click",event=>{if(event.target===modal)modal.close();});
+    modal.addEventListener("close",()=>{if(returnFocus?.isConnected)returnFocus.focus();});
+    document.getElementById("print").addEventListener("click",()=>window.print());
+    draw();
+  </script>
+</body>
+</html>
