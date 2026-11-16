@@ -23,6 +23,8 @@
 
 Le contrat de recette complet est dans [`ANT_DECH_007_CONTRAT_TECHNIQUE.md`](ANT_DECH_007_CONTRAT_TECHNIQUE.md). Le dépôt de référence est la [PR #134](https://github.com/Sijiel44/archives-alrick/pull/134). Sur son premier commit `9608878e26cd9dd08343116077b0c2e1a02e99d7`, la [CI #43867900319](https://github.com/Sijiel44/archives-alrick/actions/runs/43867900319) s'est terminée avec succès (build, liens, régressions et recette Chrome). Les enrichissements narratifs ultérieurs doivent être testés à nouveau ; leur résultat et le SHA final de fusion sont à consigner avant clôture.
 
+Lors de la recette du lot enrichi, une exécution a d'abord échoué au démarrage de Chrome, puis la reprise a franchi M04 mais révélé une course dans le **test** de copie PNJ : après création asynchrone de campagne, le test cliquait sur la bibliothèque avant que la navigation de confirmation soit terminée. La recette attend désormais explicitement la vue « Préparer » avant de changer d'onglet, dans les deux scénarios du lot. Ce correctif conserve le comportement applicatif existant et la protection des notes MJ.
+
 ## Vigilances restantes
 
 - L'état `Non Déchu` dans le catalogue n'est pas une caractéristique 5d6 et ne confère ni immunité aux pactes ni résistance magique.

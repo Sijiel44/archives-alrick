@@ -36,6 +36,9 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   await page.locator('#nav-home').click();
   await page.locator('#campaign-name').fill('Campagne témoin — Déchéance');
   await page.locator('#create-campaign-submit').click();
+  // L'enregistrement est asynchrone : attendre la navigation de confirmation.
+  // Sinon un navigate('prepare') tardif peut masquer la bibliothèque après le clic.
+  await page.locator('#view-prepare').waitFor({ state: 'visible' });
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await button.click();
@@ -72,6 +75,7 @@ test('Studio : compagnie marchande, membres non Déchus et copies isolées du jo
   await page.locator('#nav-home').click();
   await page.locator('#campaign-name').fill('Campagne marchande témoin');
   await page.locator('#create-campaign-submit').click();
+  await page.locator('#view-prepare').waitFor({ state: 'visible' });
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-group').selectOption('Maisons de négoce');
