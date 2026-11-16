@@ -25,6 +25,16 @@ Le **contrat d’Elwen est signé pendant CB43** pour l’organisation humaine, 
 
 **État des engagements :** contrat signé et périmètre fonctionnel établi ; pouvoirs de délégation détaillés à préciser.
 
+## En jeu — propositions non jouées (volet MJ)
+
+**Comportement et contradiction possibles.** Elwen sépare contrats, formation, service et repos. Son désir d'une organisation cohérente se heurte aux besoins humains qui ne rentrent pas dans un tableau. Il écoute les équipes avant de redessiner leurs responsabilités.
+
+**Rencontre adaptable.** Les services de la Maison et du Palais pensent tous deux assurer une même tâche, mais personne ne vérifie une autre installation importante. Les PJ peuvent auditer les besoins, faire dialoguer les responsables ou proposer une mission limitée.
+
+**Réplique fictive :** « Un poste nommé n'est pas un poste pourvu, et une équipe pourvue n'est pas une équipe disponible jour et nuit. »
+
+**Continuité.** Le contrat administratif est **signé en CB43**. Une ancienne mention d'**Elfe** est une incohérence d'écriture sur **le même Elwen** ; son espèce actuelle n'est pas déterminée. Il ne dirige pas le cabinet personnel de Nahla ni Orinor.
+
 ## Sources
 
 - *Campagne Brut 4.3*, CB43 P00205–00221, P00246–00249, P12107–12132 et P18613–18719 ; *Compendium V03*, SEC-66.

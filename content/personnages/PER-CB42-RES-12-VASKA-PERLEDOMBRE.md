@@ -33,6 +33,16 @@ L'intendance des approvisionnements du domaine d'Orin reste **un emploi envisag�
 
 Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
+## En jeu — propositions réservées au MJ, non jouées
+
+**Comportement suggéré.** Vaska parle en délais, volumes et itinéraires. Elle demande quelle communauté supportera le risque d'une promesse trop grande et n'accorde pas d'exclusivité sans négociation.
+
+**Amorce indépendante.** Des ateliers réclament un produit rare sur une route où les villages attendent du matériel ordinaire. Les PJ peuvent organiser une tournée commune, en payer le surcoût ou répartir autrement les livraisons.
+
+**Réplique fictive, non jouée :** « Une caisse livrée à temps vaut mieux que dix promises pour se faire aimer. »
+
+**Garde-fou.** Vaska ne commande ni les approvisionnements du Palais, ni ceux de Mirena ; toute embauche reste une nouvelle décision à jouer.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, entrée **RES-12** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.

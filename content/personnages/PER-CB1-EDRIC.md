@@ -36,6 +36,15 @@ etat_editorial: valide
 - Son titre de duc n’appartient pas à la période de CB1/CB2; l’année et les circonstances administratives précises de sa nomination restent à préciser.
 - Le texte source écrit parfois « Valebrume »; le créateur confirme **Valbrume** comme graphie canonique (29 octobre 2026). « Valbrumme » est aussi une variante, pas une autre cité.
 
+## À la table — propositions non jouées (volet MJ)
+
+- **Entrée en scène :** Edric fait d'abord préciser la taille d'une cargaison, les moyens de halage et les marins disponibles. Il écoute ensuite les réserves des ateliers sans transformer une discussion en ordre.
+- **Rencontre :** des inventeurs demandent la reprise d'un ancien projet de navigation, alors que les quais réclament d'autres investissements. Les personnages peuvent faire entendre les deux parties, réunir des relevés ou proposer une expérimentation limitée.
+- **Contradiction féconde :** l'homme de terrain connaît le prix d'une promesse ; sa responsabilité politique ultérieure le met pourtant au défi de décider avec des informations imparfaites.
+- **Chronologie :** l'employer comme *Edric Varen* avant l'obtention du titre ducal ; comme *Edric de Valbrume* seulement dans une période compatible avec CB3.7 et la suite. Ni titre ni mariage ne sont rétroactifs.
+
+Ces amorces sont indépendantes de la campagne fondatrice et **ne décrivent aucun épisode joué**.
+
 ## Sources
 
 - *Campagne Brut 1*, CB1 P02843–02888; P02965–03071.

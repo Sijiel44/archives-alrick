@@ -31,6 +31,15 @@ etat_editorial: en_cours
 - Ne pas publier la localisation de la cité : le voyageur choisit explicitement de ne pas la révéler.
 - Les inscriptions sont fragmentaires; leur interprétation doit rester une hypothèse.
 
+## À la table — propositions non jouées (volet MJ)
+
+- **Entrée en scène :** Sören décrit la forme des pierres et l'usure des courants, non l'adresse du site. Il se rappelle que des décennies d'observation n'ont pas suffi à tout voir.
+- **Rencontre :** un croquis d'empreinte ancienne circule chez des artisans, qui en donnent trois lectures différentes. Les personnages peuvent recueillir les avis, protéger la provenance ou accepter que l'enquête reste ouverte.
+- **Contradiction :** son expérience lui donne de l'assurance, mais sa découverte récente l'oblige à écouter des novices.
+- **Confidentialité du lieu :** aucune piste de cette fiche ne révèle où se situe la cité engloutie. **Sören le marin** est distinct d'**Eren**, gardien du pont dont le fichier porte historiquement `PER-CB2-SOREN`.
+
+Il s'agit d'une **proposition de rencontre**, sans validation des inscriptions ni nouvel épisode joué.
+
 ## Sources
 
 - *Campagne Brut 1*, CB1 P01781–01924.

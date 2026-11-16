@@ -33,6 +33,16 @@ L'éventualité de son Rappel et d'un travail maritime demeure **une idée**, sa
 
 Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
+## En jeu — propositions historiques non jouées (volet MJ)
+
+**Présence possible de son vivant uniquement.** Edran vérifie la flamme, les réserves et la possibilité de guider une embarcation vers un refuge. Sa vigilance peut être mise à l'épreuve par le besoin de dormir, de réparer et de transmettre le relais.
+
+**Rencontre historique.** Avant son décès, une tempête menace plusieurs bateaux tandis que la relève du phare tarde. Les PJ peuvent organiser un secours, prévenir les villages ou décider d'une fermeture temporaire du passage. Cette scène ne constitue **pas** une rencontre d'Edran dans l'époque actuelle.
+
+**Réplique fictive de son vivant :** « Le feu montre la côte ; il faut encore quelqu'un pour aller chercher ceux qui n'y arrivent pas. »
+
+**Continuité.** Edran est **décédé** au dernier état attesté. Aucun Rappel joué, aucun consentement au Rappel ni recrutement ; sa fiche est `publish:false`. Un journal ou témoignage ancien peut être utilisé comme accroche, sans inventer son contenu comme source canonique.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, entrée **RES-20** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.

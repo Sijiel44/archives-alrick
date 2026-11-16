@@ -31,6 +31,15 @@ La direction d’une ville, d’un grand chantier royal ou d’un programme d’
 
 Les activités proposées à partir de ces faits ne sont pas de nouvelles scènes jouées.
 
+## À la table — propositions non jouées (volet MJ)
+
+- **Entrée en scène :** Lethiel marque un rythme des doigts sur les parois, écoute sa résonance et en dessine les contraintes dans un carnet avant de proposer une solution.
+- **Rencontre :** une salle communautaire répercute mal les voix lors des représentations. Les personnages peuvent consulter les musiciens, modifier l'agencement ou mettre à l'essai des matériaux locaux.
+- **Relation :** Thaëron peut être invité pour un avis musical, mais sa présence n'est pas acquise et leur désaccord n'impose aucune issue.
+- **Limite :** cette proposition ne confère à Lethiel aucun poste de directrice de chantier officiel, contrat ni compétence magique.
+
+L'échange et la rénovation sont **fictifs et non joués**.
+
 ## Sources documentaires
 
 *Compendium des personnages et des relations* v1.7, **FAM-14** ; références du brouillon : CB31 P16662–16681. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.

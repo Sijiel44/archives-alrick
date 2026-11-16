@@ -35,3 +35,11 @@ L'acceptation de l'engagement est jouée. Le salaire exact, les effectifs de son
 ## Source
 
 *Campagne Brut 4.4*, **CCCLXVII, message 123** ; [[jdr-alrick/cb44-bilan-et-reprise|bilan CB44]]. Les évolutions futures dépendent des choix des personnages et des scènes réellement jouées.
+
+## En jeu — faire place à chacun (propositions non jouées)
+
+- **Deux traditions à table :** une réception réunit des personnes aux codes d'accueil différents. Héloïne peut demander leurs préférences avant de construire un programme.
+- **Le service invisible :** un événement dépend de travailleurs oubliés par le plan initial. Les joueurs peuvent réorganiser les tâches ou revoir l'ambition de la fête.
+- **L'invité de dernière minute :** une arrivée imprévue pose un problème de places, d'accès et de sécurité. L'accueil peut être négocié plutôt que spectaculaire.
+
+**Voix proposée :** elle remarque les personnes qui attendent sans savoir où aller. Cette attitude ne lui confère aucune autorité nouvelle sur la Maison.

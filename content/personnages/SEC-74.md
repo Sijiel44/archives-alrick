@@ -31,6 +31,16 @@ Aucun poste permanent auprès d’Orin n’est proposé ou accepté. Les prototy
 
 Les autres pistes sont des propositions non jouées et ne doivent pas devenir des réussites rétroactives.
 
+## En jeu — pistes proposées, non jouées (volet MJ)
+
+**Mise en scène.** Odris ferme la vanne d'une main patiente et demande à la personne la plus jeune de l'atelier de lui montrer comment la rouvrir. *« Une belle machine, c'est celle qu'on peut dépanner sans moi. »* Réplique fictive.
+
+- **La pièce étrangère :** une irrigation neuve dépend d'un composant rare. Déterminer les usages prioritaires, réparer avec les moyens locaux ou suspendre un déploiement trop rapide.
+- **Le chariot en dévers :** un dispositif adapté au terrain plat devient dangereux sur un chemin incliné. Relever les pentes, réduire les charges ou revenir au modèle antérieur.
+- **L'atelier sans magie :** un ouvrage enchanté fonctionne mal en cas de panne. Tester des commandes manuelles, former plusieurs réparateurs ou conserver deux systèmes de secours.
+
+**Âge et ressources.** Odris a environ 68 ans dans la fiche de référence à l'époque documentée : cela n'en fait ni un témoin de cinq siècles ni un fonctionnaire permanent d'Orin. Ses essais n'attestent aucun déploiement généralisé ; aucun bonus technique 5d6 ne s'acquiert sans prérequis validés.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **SEC-74** ; renvois conservés : CB42 P13877–15331. Ce code documentaire ne fixe ni allégeance, ni état de Rappelé, ni appartenance aux Revenants.

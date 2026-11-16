@@ -36,6 +36,16 @@ Margha occupe le rôle de **cuisinière de bord identifiée**. Si d’autres pas
 
 Ce poste ne confère ni appartenance aux **Revenants**, ni responsabilité du personnel de la **Maison divine**, ni fonction de cuisine au **Palais**.
 
+## En jeu — propositions réservées au MJ, non jouées
+
+**Comportement suggéré.** Margha surveille autant les réserves que les repas. Elle demande combien de jours durera la traversée et comment nourrir les personnes ayant des besoins différents.
+
+**Amorce indépendante.** Des vents contraires retardent un navire et menacent l'équilibre du garde-manger. Les PJ peuvent revoir les escales, consulter l'équipage ou organiser un rationnement équitable sous sa responsabilité de cuisine.
+
+**Réplique fictive, non jouée :** « La bonne traversée se prépare aussi dans les marmites. »
+
+**Garde-fou.** Son recrutement au yacht est confirmé ; aucune signature jouée, solde, voyage accompli ou nouvelle fonction au Palais n'en découlent. Elle reste distincte d'Ysanne et Aurélian.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, RES-16 ; *Campagne Brut 4.2* P10837–10840 ; *Campagne Brut 4.3* P12083–12090 et P16872–17051 ; **confirmation du créateur, 30 octobre 2026, question 2A**.

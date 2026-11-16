@@ -35,3 +35,11 @@ Son équipe est à structurer. Cette embauche n'établit pas que tous les profes
 ## Source
 
 *Campagne Brut 4.4*, **CCCLXVII, message 123** ; [[jdr-alrick/cb44-bilan-et-reprise|bilan CB44]]. Les évolutions futures dépendent des choix des personnages et des scènes réellement jouées.
+
+## En jeu — les réserves parlent (propositions non jouées)
+
+- **Des bouchons qui sèchent :** plusieurs lots se détériorent. Les aventuriers peuvent inspecter la température, les matériaux et les gestes de stockage avant de soupçonner une malveillance.
+- **Une cave partagée :** deux artisans demandent des conditions différentes pour leurs produits. Trouver un accord technique vaut mieux qu'imposer une seule norme.
+- **La première équipe :** les postes à créer sont encore ouverts. Imaginer un recrutement équitable relève d'une autre campagne, pas de l'embauche jouée en CB44.
+
+**Voix proposée :** Berrik décrit une cave par son air et ses parois avant de parler du prestige de ses bouteilles.

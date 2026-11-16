@@ -31,3 +31,13 @@ CB31 ne définit pas explicitement son statut actuel. Vérifier d’autres sourc
 
 - *Campagne Brut 3.1*, CB31 P16405–16421; P16647–16659; P16722–16727; P16900–16914.
 
+## En jeu — un souvenir, pas une biographie inventée
+
+**Usage proposé :** faire exister Alriana à travers les témoignages et les objets qui la concernent dans une enquête de mémoire familiale. Pour une scène où elle agirait elle-même, choisir d'abord une époque attestée ou déclarer une **variante non canonique**.
+
+- **Le tailleur oublié :** identifier l'artisan à l'origine d'un vêtement conservé depuis longtemps.
+- **Deux versions d'un cadeau :** comparer sans forcer deux souvenirs affectifs différents.
+- **La lettre sans date :** chercher ce que l'on sait réellement d'un message avant d'en déduire le destin de son auteur.
+
+Ne pas déduire son état de vie, sa disparition, ses pouvoirs ou son lieu de résidence de ces amorces.
+

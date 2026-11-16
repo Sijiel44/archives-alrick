@@ -19,6 +19,16 @@ Oren Dast accompagne Sariel Varn dans la délégation d’Orinor. Il est chargé
 
 La scène montre une délégation où la compétence professionnelle n’empêche pas les échanges personnels. Oren respecte les limites posées par Sariel lorsqu’elle demande de reporter les dossiers au lendemain.
 
+## En jeu — pistes proposées, non jouées (volet MJ)
+
+**Attitude à la table.** Oren commence par les ressources disponibles, mais gagne en finesse lorsqu'on lui présente les personnes derrière les colonnes. Il veut rendre un projet durable ; sa contradiction possible est de travailler même durant une pause que ses collègues souhaitaient préserver.
+
+**Rencontre modulable.** Deux villages soumettent des demandes de financement impossibles à départager avec les seuls chiffres disponibles. Les PJ peuvent mener des visites, vérifier les besoins ou suggérer un essai limité. Aucun résultat n'est présumé.
+
+**Réplique fictive, non jouée :** « Un bon compte doit encore laisser de la place à ce qu'on n'a pas mesuré. »
+
+**Continuité.** Sariel Varn demeure l'interlocutrice institutionnelle attestée ; Oren ne devient ni trésorier royal ni décideur unique par cette proposition.
+
 ## Sources
 
 - *Campagne Brut 3.9*, CB39 P00031; P00081–00142; P02026; P02614; P19945–19948.

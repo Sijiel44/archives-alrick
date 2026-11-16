@@ -36,6 +36,16 @@ L'espèce, l'histoire familiale et les engagements extérieurs de Beren ne sont 
 
 Sa connaissance des équipes et des faiblesses du bateau peut aider un MJ à représenter une préparation de traversée. Un éventuel désaccord technique ou une mission de recrutement serait **une scène proposée**, pas un souvenir de campagne.
 
+## Complément MJ — propositions non jouées
+
+**Comportement et relation possibles.** Beren connaît assez Thaléa pour lui rappeler les limites humaines d'un quart, sans contester pour autant son commandement. Il vérifie les réserves d'équipage avant un départ et accepte d'entendre les objections des jeunes marins.
+
+**Rencontre adaptable.** Les passagers exigent un départ précoce, alors que des réparations et des temps de repos ne sont pas terminés. Les PJ peuvent retarder le départ, réduire le voyage ou chercher une relève réellement disponible.
+
+**Réplique fictive :** « La mer ne nous accordera pas de sommeil parce que nous avons voulu plaire à nos invités. »
+
+**Continuité.** Le contrat de **second sous Thaléa est signé en CB43** ; il ne prouve pas que tous les autres postes sont remplis. Son espèce n'est pas fixée et son code RES n'est ni un Rappel ni une appartenance aux Revenants.
+
 ## Sources
 
 *Compendium V03 v1.7*, RES-26 ; *CB43* P10286–10295 et P11999–12020.

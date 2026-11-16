@@ -31,6 +31,15 @@ La **Soirée de la Couronne** reste un événement à venir dans le dernier éta
 
 Les prochains projets ou exercices restent à jouer et à sourcer.
 
+## À la table — propositions non jouées (volet MJ)
+
+- **Entrée en scène :** Thaëron répond à une question sérieuse par trois notes rapides, puis exige qu'on écoute la résonance avant de juger la mélodie.
+- **Rencontre :** deux petits ensembles veulent répéter dans une salle dont l'écho brouille les échanges. Les personnages peuvent négocier les horaires, inviter Lethiel à examiner l'espace ou réécrire la disposition musicale.
+- **Transmission :** une initiation par pratique et mentor n'est possible que si Thaëron accepte, que le MJ approuve et que MATH/INDEX fixent d'éventuels prérequis ; aucune aptitude de haut niveau n'est offerte par la rencontre.
+- **Limite temporelle :** la Soirée de la Couronne ne devient pas un événement passé par la seule existence de cette idée.
+
+Cette proposition reste **hors chronologie jouée**.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **FAM-15** ; documents CB cités précédemment : CB31 P16662–16681; P16743–16920. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.

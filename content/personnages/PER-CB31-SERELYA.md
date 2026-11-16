@@ -31,6 +31,15 @@ Elle n’est pas nommée ambassadrice, ministre ni porte-parole permanente d’u
 
 Les autres pistes sont des propositions non jouées et ne doivent pas devenir des réussites rétroactives.
 
+## À la table — propositions non jouées (volet MJ)
+
+- **Entrée en scène :** Serelya traverse un marché en saluant les marchands par leur métier, puis remarque les tables que personne ne consulte.
+- **Rencontre :** une fête de village a été organisée sans écouter les habitants d'un quartier voisin. Le groupe peut ouvrir des discussions, partager les préparatifs ou accepter deux célébrations différentes.
+- **Contradiction :** elle sait créer un lien sans protocole, mais ne veut pas que chaque invitation se transforme en mission diplomatique.
+- **Limite :** sa parenté documentée n'implique ni mandat officiel ni disponibilité automatique. Si elle refuse d'intervenir, la quête doit garder d'autres issues.
+
+Il s'agit d'une **amorce réutilisable non jouée**.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **FAM-13** ; renvois conservés : CB31 P16630–16659. Ce code documentaire ne fixe ni allégeance, ni état de Rappelé, ni appartenance aux Revenants.

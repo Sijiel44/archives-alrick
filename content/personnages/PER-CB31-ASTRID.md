@@ -24,3 +24,13 @@ Un conseil consultatif varié peut l’aider sans lui retirer sa responsabilité
 - *Campagne Brut 3.1*, CB31 P13280–13355.
 - [[PROJ-CB31-FONDS-ATELIERS|Fonds d’études et d’ateliers]].
 
+## En jeu — décisions et arbitrages (propositions non jouées)
+
+Astrid peut être un interlocuteur exigeant pour un groupe qui sollicite le fonds. Elle demande de décrire les bénéficiaires, le coût réel et les engagements de ceux qui déposent un dossier. Ce comportement est une **proposition d'interprétation** cohérente avec son autonomie, pas une nouvelle règle du fonds.
+
+- **Deux demandes, une bourse :** un atelier d'outillage et une école de savoir-faire réclament les mêmes ressources. Les aventuriers peuvent enquêter sur les besoins, négocier un partage ou reporter une demande.
+- **Une aide sous conditions :** un donateur exige de choisir personnellement les bénéficiaires. Le groupe peut proposer des garanties publiques, rechercher d'autres fonds ou refuser la condition.
+- **Une erreur de bonne foi :** un artisan a mal évalué son budget. Faut-il ajuster le projet, demander une seconde estimation ou accepter le risque en le documentant ?
+
+**Limite :** ni composition du conseil, ni somme, ni attribution de bourse supplémentaire ne sont canonisées ici.
+

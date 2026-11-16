@@ -36,3 +36,14 @@ Ce dossier reste **non publié** pour le moment, conformément au périmètre du
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, entrée **RES-01** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.
+
+## En jeu — scènes situées de son vivant (propositions non jouées)
+
+> [!warning] Verrou temporel
+> Dorrik est **décédé au dernier point de continuité**. Les idées suivantes ne lui attribuent pas de Rappel, de contrat ni de présence dans le présent de CB44. Elles conviennent à un retour en arrière, à un récit ancien ou à une variante de table expressément non canonique.
+
+- **Le banquet des usages :** des invités étrangers ont des règles d'accueil incompatibles. Le groupe peut consulter chacun, ajuster le protocole ou négocier une autre forme de rencontre.
+- **Une place d'honneur :** une erreur de préséance risque d'humilier une délégation. Chercher l'origine de la coutume ouvre plusieurs corrections possibles.
+- **Les cuisines débordées :** un événement imprévu bouleverse la logistique. Répartir les tâches et préserver la dignité du personnel prime sur la cérémonie.
+
+**Interprétation proposée :** Dorrik demande qui doit être accueilli avant de compter les sièges. Aucun privilège magique ou 5d6 n'est déduit de son métier.
