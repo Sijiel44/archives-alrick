@@ -91,7 +91,7 @@ test("Reprise depuis l’accueil sans transfert de données MJ dans la page de d
   const publicContent = await page.locator("body").textContent();
   assert.ok(!publicContent.includes(name) && !publicContent.includes(secret));
   assert.ok(!requests.some(path => path.startsWith("/moteur/") ||
-    ["/app.mjs", "/bibliotheque.mjs", "/catalogue-archives.json", "/catalogue-organisations.json", "/store.mjs", "/projection.mjs", "/protocole.mjs", "/atelier-bestiaire.mjs", "/opposition.mjs", "/pj-m02.mjs", "/creations.mjs"].includes(path)));
+    ["/app.mjs", "/bibliotheque.mjs", "/catalogue-archives.json", "/catalogue-organisations.json", "/catalogue-antagonistes.json", "/store.mjs", "/projection.mjs", "/protocole.mjs", "/atelier-bestiaire.mjs", "/opposition.mjs", "/pj-m02.mjs", "/creations.mjs"].includes(path)));
 
   await page.getByRole("link", { name: /Reprendre ma partie/ }).click();
   await page.locator("#current-scene-title").getByText("Le passage du soir", { exact: true }).waitFor();

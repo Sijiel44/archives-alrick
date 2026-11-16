@@ -3,6 +3,7 @@ import { BESTIARY_PROFILE_KEY, CREATIONS_KEY, FRESQUE_MARKERS_KEY, FRESQUE_REFER
 import { CREATION_STATES, CREATION_TYPES } from './creations.mjs';
 import catalogue from './catalogue-archives.json' with { type: 'json' };
 import organisations from './catalogue-organisations.json' with { type: 'json' };
+import antagonistes from './catalogue-antagonistes.json' with { type: 'json' };
 
 export const LIBRARY_CATEGORIES = Object.freeze({
   ...MARKER_KINDS, creature: 'Créature', character: 'Personnage joueur', object: 'Objet', spell: 'Sort', ritual: 'Rituel',
@@ -78,8 +79,23 @@ const organisationEntries = organisations.entries.map(entry => ({
   publicTemplate: { purpose: entry.purpose, members: entry.members, influence: entry.influence },
 }));
 
-const fixedEntries = [...demoBestiary, ...archiveEntries, ...organisationEntries, ...studioGallery];
-export const LIBRARY_ILLUSTRATIONS = [...archiveEntries.filter(entry => entry.art?.map), ...organisationEntries, ...studioGallery];
+// Canonical antagonists are documentary NPC references, not generated 5d6 profiles.
+// The level is a planning intent only, so do not expose it as a computed combat level.
+const antagonistEntries = antagonistes.entries.map(entry => ({
+  id: entry.id, version: entry.version, name: entry.name, description: entry.description,
+  kind: 'npc', shelf: 'factions', group: 'Personnages et lieurs', status: 'lore', origin: 'archives',
+  path: entry.path, tags: [...entry.tags, `niveau narratif ${entry.levelIntent}`, entry.corruptionStage].join(' '),
+  links: [...entry.relations, ...entry.factions],
+  href: `https://github.com/Sijiel44/archives-alrick/blob/main/${entry.path}`,
+  art: { src: new URL(`./images/personnages-dechus/${entry.image}`, import.meta.url).pathname, alt: entry.artAlt },
+  details: [['Niveau narratif (non chiffré)', String(entry.levelIntent)], ['Stade de Déchéance', entry.corruptionStage],
+    ['Rôle', entry.role], ['Activité actuelle', entry.currentRegion], ['Motivation', entry.motivation]],
+  publicTemplate: { role: entry.role, motivation: entry.motivation,
+    relations: [...entry.relations, ...entry.factions].join(', ') },
+}));
+
+const fixedEntries = [...demoBestiary, ...archiveEntries, ...organisationEntries, ...antagonistEntries, ...studioGallery];
+export const LIBRARY_ILLUSTRATIONS = [...archiveEntries.filter(entry => entry.art?.map), ...organisationEntries, ...antagonistEntries, ...studioGallery];
 const illustrationsBySource = new Map(LIBRARY_ILLUSTRATIONS.map(entry => [entry.art.src, entry]));
 
 export function libraryIllustration(entry) {
@@ -87,7 +103,7 @@ export function libraryIllustration(entry) {
 }
 
 const references = new Map(fixedEntries.map(entry => [entry.id.toLowerCase(), entry]));
-for (const entry of [...archiveEntries, ...organisationEntries]) {
+for (const entry of [...archiveEntries, ...organisationEntries, ...antagonistEntries]) {
   if (entry.path.startsWith('content/')) references.set(entry.path.slice(8, -3).toLowerCase(), entry);
 }
 

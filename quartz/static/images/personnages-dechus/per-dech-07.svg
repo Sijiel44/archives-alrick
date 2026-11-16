@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rûna, artisane naine aux tresses épaisses avec un anneau de forge" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#44392f"/><circle cx="200" cy="183" r="142" fill="none" stroke="#d0a467" stroke-width="3" opacity=".6"/><path d="M43 445Q59 335 149 308h103q90 26 107 137Z" fill="#66605d" stroke="#cba677" stroke-width="6"/>
+<ellipse cx="201" cy="217" rx="72" ry="86" fill="#c28f74"/><path d="M120 189Q127 93 200 86q84 10 78 104l-30-34-48-15-45 18Z" fill="#5c3627"/>
+<path d="M144 239q-17 55 16 109l-25 14-28-104m151-14q14 57-17 109l26 13 31-107" fill="#765139" stroke="#b88658" stroke-width="5"/><path d="M151 222h32m36 0h29" stroke="#493023" stroke-width="7" stroke-linecap="round"/>
+<path d="M174 274q25 11 49 0" stroke="#6d4037" stroke-width="5" fill="none"/><path d="M163 308q39 60 77 0l-8 58-32 29-31-29Z" fill="#6d4231"/>
+<circle cx="315" cy="363" r="48" fill="none" stroke="#d9a75b" stroke-width="14"/><path d="M273 326 357 403" stroke="#a85d3e" stroke-width="7"/>
+<text x="200" y="461" text-anchor="middle" fill="#eed6ac" font-family="serif" font-size="21" letter-spacing="3">RÛNA</text>
+</svg>

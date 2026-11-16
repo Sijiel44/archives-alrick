@@ -1,0 +1,110 @@
+{
+  "schema": "entre-rives/antagonistes-publics/1",
+  "visibility": "public",
+  "status": "lore_valide",
+  "rulesStatus": "narrative_levels_only",
+  "version": 1,
+  "source": "Développement direct du JDR avec le créateur, 15 novembre 2026 ; portraits antérieurs LAB-DECH-003 adaptés",
+  "entries": [
+    {
+      "id": "PER-DECH-01", "version": "fb05b1e2fa657b2bfe9b5b2dccfac620396b9d30",
+      "path": "content/personnages/PER-DECH-01.md", "image": "per-dech-01.svg",
+      "artAlt": "Ysilde, passeuse en capuche turquoise et rame cassée.",
+      "name": "Ysilde des Traversées", "levelIntent": 2, "corruptionStage": "Tentation",
+      "role": "Passeuse et guide des gués", "motivation": "Garantir le retour des voyageurs sans perdre son propre droit de partir.",
+      "relations": ["PER-DECH-02", "PER-DECH-05"], "factions": [],
+      "currentRegion": "Gués secondaires d'Entre-Rives", "description": "Jeune passeuse tentée par un pacte de traversée sûre, liée à un maître des masques.",
+      "tags": ["traversee", "jeune", "pacte", "navigation"]
+    },
+    {
+      "id": "PER-DECH-02", "version": "65ec00473a7cfede2107fbcf9cc4d2233a81b7b6",
+      "path": "content/personnages/PER-DECH-02.md", "image": "per-dech-02.svg",
+      "artAlt": "Séran, charpentier brun tenant un marteau et portant une cape de veille.",
+      "name": "Séran du Gué", "levelIntent": 3, "corruptionStage": "Tentation",
+      "role": "Charpentier et gardien de passage", "motivation": "Protéger les habitants sans les surveiller contre leur gré.",
+      "relations": ["PER-DECH-01"], "factions": [],
+      "currentRegion": "Gué des Trois-Roseaux, bassin d'Entre-Rives", "description": "Protecteur pactisé après une crue, maintenant tenu d'inscrire des départs.",
+      "tags": ["gue", "protecteur", "pacte", "rive"]
+    },
+    {
+      "id": "PER-DECH-03", "version": "163fe042fca5db31d076f39a50a0b15beeb28b42",
+      "path": "content/personnages/PER-DECH-03.md", "image": "per-dech-03.svg",
+      "artAlt": "Maëline, soigneuse avec carnet blanc et branche médicinale.",
+      "name": "Maëline des Cahiers Blancs", "levelIntent": 5, "corruptionStage": "Fêlure",
+      "role": "Guérisseuse et responsable de salle de soins", "motivation": "Maintenir les soins et reconnaître le droit des patients à la vérité.",
+      "relations": ["PER-DECH-06", "PER-DECH-08"], "factions": ["ORG-DECH-01"],
+      "currentRegion": "Maison du Cormier, route de Valbrume", "description": "Guérisseuse en Fêlure liée à un registre d'admission, encore capable de s'opposer à un ordre abusif.",
+      "tags": ["soins", "registre", "souvenir", "refuge"]
+    },
+    {
+      "id": "PER-DECH-04", "version": "5b0b878cf40cef919cd7e734a694f1f0cd1fb08e",
+      "path": "content/personnages/PER-DECH-04.md", "image": "per-dech-04.svg",
+      "artAlt": "James Veyrel, greffier aux lunettes d'argent et dossier scellé.",
+      "name": "James Veyrel", "levelIntent": 7, "corruptionStage": "Fêlure",
+      "role": "Greffier de tribunal", "motivation": "Éviter les injustices sans falsifier les preuves qui le dérangent.",
+      "relations": ["PER-DECH-06"], "factions": ["ORG-DECH-02"],
+      "currentRegion": "Tribunal des Saules, routes d'Entre-Rives", "description": "Greffier obsédé par la prévention, qui commence à retirer les pièces contraires à sa thèse.",
+      "tags": ["justice", "preuves", "greffier", "dossier"]
+    },
+    {
+      "id": "PER-DECH-05", "version": "1a4d0261de6cdec98452855f757497d014ff76b5",
+      "path": "content/personnages/PER-DECH-05.md", "image": "per-dech-05.svg",
+      "artAlt": "Kelmor, maître de scène au demi-masque ivoire et rubans pourpres.",
+      "name": "Kelmor des Masques", "levelIntent": 8, "corruptionStage": "Rupture",
+      "role": "Maître de troupe, Lieur", "motivation": "Obtenir l'adhésion parfaite à sa représentation sans accepter le refus.",
+      "relations": ["PER-DECH-01"], "factions": [],
+      "currentRegion": "Troupe itinérante des bourgs d'Entre-Rives", "description": "Lieur d'Esmor ayant provoqué une Chute liée au cours de ses représentations.",
+      "tags": ["spectacle", "theatre", "lieur", "rituel"]
+    },
+    {
+      "id": "PER-DECH-06", "version": "81695a07a193fc825f38d9cd3004f7ee49829c79",
+      "path": "content/personnages/PER-DECH-06.md", "image": "per-dech-06.svg",
+      "artAlt": "Dorsel, courtier en manteau ivoire avec un registre de dettes.",
+      "name": "Dorsel, courtier des promesses", "levelIntent": 10, "corruptionStage": "Rupture",
+      "role": "Courtier, Lieur", "motivation": "Prouver l'efficacité du secours en faisant de chaque livraison une dette.",
+      "relations": ["PER-DECH-03", "PER-DECH-04", "PER-DECH-08", "PER-DECH-10"], "factions": [],
+      "currentRegion": "Comptoirs mobiles de Valbrume", "description": "Secours matériel réel, contrats opaques et recrutement conscient de Chutes liées.",
+      "tags": ["commerce", "dette", "convoi", "lieur"]
+    },
+    {
+      "id": "PER-DECH-07", "version": "173b4d8192863c8e26e7de7f0fb5cb658248fb81",
+      "path": "content/personnages/PER-DECH-07.md", "image": "per-dech-07.svg",
+      "artAlt": "Rûna, artisane naine à longues tresses portant un anneau de forge.",
+      "name": "Rûna l'Anneleuse", "levelIntent": 12, "corruptionStage": "Rupture",
+      "role": "Forgeronne de serrures rituelles, Lieuse", "motivation": "Délier les captifs tout en refusant de détruire tous ses ouvrages.",
+      "relations": [], "factions": [],
+      "currentRegion": "Atelier mobile des contreforts de l'Aube", "description": "Artisane déchue liée à Mordhéan, capable de montrer comment rompre ses chaînes.",
+      "tags": ["forge", "entraves", "liberation", "naine"]
+    },
+    {
+      "id": "PER-DECH-08", "version": "a76e2d32e9a4720e4af29eb8d5e4cb39e99d293d",
+      "path": "content/personnages/PER-DECH-08.md", "image": "per-dech-08.svg",
+      "artAlt": "Lysane, intendante austère aux cheveux gris, registres et clés.",
+      "name": "Lysane des Reçus d'Hiver", "levelIntent": 15, "corruptionStage": "Déchéance",
+      "role": "Intendante de refuges, Lieuse", "motivation": "Garder un refuge ouvert en désobéissant à son propre réseau prédateur.",
+      "relations": ["PER-DECH-03", "PER-DECH-06", "PER-DECH-10", "ORG-DECH-01"], "factions": [],
+      "currentRegion": "Refuge des Trois-Toits, route de Valbrume", "description": "Intendante avancée aux branches de tribut distinctes, partagée entre secours et domination.",
+      "tags": ["refuge", "intendance", "tribut", "trahison"]
+    },
+    {
+      "id": "PER-DECH-09", "version": "c7770c18a75b098f1e3b6894a2852ce5ccfcb46f",
+      "path": "content/personnages/PER-DECH-09.md", "image": "per-dech-09.svg",
+      "artAlt": "Irveth, copiste aux tresses brunes, relique d'écaille et livre de noms.",
+      "name": "Irveth la Copiste de Silex", "levelIntent": 17, "corruptionStage": "Déchéance",
+      "role": "Généalogiste et Lieuse", "motivation": "Posséder les noms qu'elle a autrefois juré de restituer.",
+      "relations": ["PER-DECH-10", "ORG-DECH-05"], "factions": [],
+      "currentRegion": "Routes du Méridien", "description": "Lieuse de Seyrond dont les copies et reliquaires rendent sa mémoire dépendante d'autrui.",
+      "tags": ["archives", "noms", "genealogie", "dragons"]
+    },
+    {
+      "id": "PER-DECH-10", "version": "975eac8aea0c60dec243e255550b99aebbbf9719",
+      "path": "content/personnages/PER-DECH-10.md", "image": "per-dech-10.svg",
+      "artAlt": "Terval, intendant massif à barbe argent devant un banquet et des réserves.",
+      "name": "Terval, Maître de la Dernière Table", "levelIntent": 20, "corruptionStage": "Abîme",
+      "role": "Maître de greniers, lieutenant prédateur", "motivation": "Posséder toutes les réserves et survivre à la perte de ses branches.",
+      "relations": ["PER-DECH-06", "PER-DECH-08", "PER-DECH-09"], "factions": [],
+      "currentRegion": "Dépôt de la Dernière Table, transit du Méridien", "description": "Lieutenant d'Abîme à trois branches, non Seigneur, dont la vulnérabilité dépend du monopole.",
+      "tags": ["approvisionnement", "abime", "greniers", "tribut"]
+    }
+  ]
+}

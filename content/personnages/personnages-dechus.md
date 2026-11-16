@@ -1,0 +1,55 @@
+---
+publish: true
+title: "Visages de la Déchéance — dix antagonistes, niveaux 2 à 20"
+categorie: "personnage"
+canon_statut: "lore_valide"
+etat_editorial: valide
+ancre_documentaire: "Développement direct du JDR avec le créateur — 15 novembre 2026"
+source_brute: "ANT-DECH-005, réemploi partiel et adaptation des portraits LAB-DECH-003 ; nouveaux personnages et relations propres à l'univers partagé"
+visibilite: "publique"
+portee: "univers_partage"
+public_cible: [lecteurs, joueurs, mj]
+usage_en_jeu: [reference, rencontre, scenario]
+description: "Dix personnages déchus ou tentés de niveaux variés, avec pactes, histoires, relations, lieux d'activité, failles et désamorçages."
+tags: [decheance, antagonistes, personnages, niveaux, pactes, chroniques]
+---
+
+# Visages de la Déchéance
+
+Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont choisi un pacte peuvent être guérisseurs, artistes, greffiers, commerçants, archivistes ou artisans. Le bénéfice initial a souvent été **réel** ; le piège est de réclamer ensuite le droit de disposer de la vie d'autrui.
+
+**Dix biographies appartiennent désormais au monde partagé.** Leurs réussites et revers passés constituent le nouveau passé de ces personnes, sans attribuer de séance supplémentaire à l'Odyssée d'Orin ou à une campagne de joueurs. Leur situation est un **point de départ vivant** : chaque MJ peut déplacer un relais, nouer une alliance ou provoquer une défaite sans changer les autres tables.
+
+| Personnage | Niveau de référence¹ | État narratif | Branche / fonction | Faille à exploiter |
+| --- | ---: | --- | --- | --- |
+| [[PER-DECH-01|Ysilde des Traversées]] | **2** | Tentation | Passeuse liée à une troupe d'Esmor | Choix de quitter le ruban |
+| [[PER-DECH-02|Séran du Gué]] | **3** | Tentation | Veilleur et protecteur pactisé | Passage alternatif et listes rendues |
+| [[PER-DECH-03|Maëline des Cahiers Blancs]] | **5** | Fêlure | Soignante liée à la branche d'Halvéra | Relève des soins, registre clarifié |
+| [[PER-DECH-04|James Veyrel]] | **7** | Fêlure | Greffier influencé par Varnok | Copie des preuves, audience indépendante |
+| [[PER-DECH-05|Kelmor des Masques]] | **8** | Rupture | Lieur de la branche d'Esmor | Rituel de scène, témoignage authentique |
+| [[PER-DECH-06|Dorsel, courtier]] | **10** | Rupture | Lieur lié à Caldria | Comptes vérifiables, offre de secours concurrente |
+| [[PER-DECH-07|Rûna l'Anneleuse]] | **12** | Rupture | Lieuse liée à Mordhéan | Plans des serrures, témoins libérés |
+| [[PER-DECH-08|Lysane des Reçus d'Hiver]] | **15** | Déchéance | Intendante liée à Nérékhal | Patients relogés, branches déliées |
+| [[PER-DECH-09|Irveth la Copiste de Silex]] | **17** | Déchéance | Lieuse liée à Seyrond | Archives dupliquées et noms restitués |
+| [[PER-DECH-10|Terval, la Dernière Table]] | **20** | Abîme | Lieutenant de l'orbite de Caldria | Monopole brisé sans famine |
+
+¹ **Niveaux proposés pour calibrer les rencontres**, et non des profils calculés. Aucun bonus, PV, dégâts ou capacité 5d6 n'est accordé par cette page. **Le niveau 2–20 est distinct de l'Emprise et de la place dans la pyramide.** INDEX/MATH/PNJ devront établir les profils avant une opposition chiffrée.
+
+## Des rivalités qui peuvent devenir des aventures
+
+- **L'aide contre la dette :** Maëline veut soigner sans enfermer ; Dorsel veut obtenir l'exclusivité ; Lysane pourrait leur offrir des chariots pour évacuer des patients, tout en refusant de rendre tous les contrats.
+- **Le droit de traverser :** Séran surveille les départs ; Ysilde assure des passages ; Kelmor tient la faveur par laquelle Ysilde a commencé à tomber. Des voyageurs, des bateliers et des témoins ordinaires peuvent peser davantage qu'un duel.
+- **Les preuves opposées au récit :** James gomme une objection ; Kelmor exige une représentation unanime ; Irveth vend des noms. Une copie authentique, un témoin protégé ou un procès ouvert ont de la force contre ces trois modèles de prédation.
+- **La faim et l'approvisionnement :** Terval affaibli peut devenir plus dangereux tandis que des cuisines libres et des transporteurs concurrents donnent des alternatives. Les victimes ne doivent pas payer d'avance le prix de la victoire.
+- **Les chaînes :** Rûna sait quelles entraves elle a fabriquées. Un pacte rompu n'efface pas les crimes, mais ses connaissances peuvent permettre de libérer des captifs.
+
+## L'arc d'escalade sans scénario obligatoire
+
+1. **Friction :** le don a réellement aidé ; une clause ou un service est contesté. Les PJ peuvent partir, négocier, enquêter ou offrir une solution matérielle.
+2. **Bascule :** le pouvoir exige un choix de Déchéance et parfois une **Chute liée réellement transformée**. Clients, disciples ordinaires et captifs ne suffisent pas.
+3. **Rupture :** plusieurs réseaux s'affrontent. Une branche libérée affaiblit le maître mais peut laisser une institution vitale sans moyens.
+4. **Retombées :** protéger les familles et la preuve, puis laisser aux victimes le soin de décider d'éventuels pardons. Le retrait ou la trêve peuvent constituer des victoires.
+
+Les héros faibles peuvent empêcher une nouvelle Chute, restaurer des preuves ou assurer un passage ; ils n'ont pas besoin de combattre Terval pour compter. Les Déchus avancés souffrent de leurs dépendances réelles ; **une perte de branche n'enlève pas automatiquement des niveaux** et n'inflige aucun dommage sans contrat de règle validé.
+
+[[index|Personnages]] · [[groupes/organisations-decheance|Organisations et contre-pouvoirs]] · [[monde/decheance-canon|Loi de la Déchéance]]

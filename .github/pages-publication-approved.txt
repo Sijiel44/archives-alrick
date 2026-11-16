@@ -390,3 +390,10 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Dix médias de village sourcés ajoutés aux cent références existantes, sans fichier utilisateur ni contenu canonique.
 # npm test réussi ; 178 tests Chrome et 25 Edge réussis, dont les cinq parcours Pages assemblé.
 # CI avant fusion, puis workflow Pages et contrôle public ; séance humaine réelle toujours à réaliser.
+
+# ANT-DECH-005 — Portraits de Déchéance, antagonistes variés, 15 novembre 2026.
+# Le créateur confirme le développement direct du JDR comme canon et demande une suite d'antagonistes corrompus de niveaux variés 2–20 : biographies, pactes, événements, relations et dépendances.
+# Dix nouveaux personnages PER-DECH-01 à 10, une galerie publique, dix portraits SVG originaux et un catalogue de références sont ajoutés au Studio.
+# Les niveaux sont des intentions de rencontre et non des fiches 5d6 homologuées ; ne pas appliquer les chiffres du mini-système de Déchéance 2d6.
+# Notes MJ, tactiques cachées, véritables réseaux d'Ancrages et variantes de table restent hors du site public. Pas de faits joués pour les campagnes d'Orin.
+# Publication demandée après CI verte et recette navigateur, avec contrôle public des images, du rayon Studio et de l'absence de données privées.

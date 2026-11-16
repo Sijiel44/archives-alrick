@@ -64,3 +64,10 @@ Ces résultats ne constituent **pas** une attestation de recette navigateur ni d
 - **DG/QA :** consigner le commit, la PR, l'état de la CI, le workflow Pages et un contrôle HTTP des six pages/images avant clôture.
 
 **À revoir par :** STUDIO, ARCHIVES, PNJ, BEST, INDEX, MATH, LORE, AVE, QTE, QA. **À valider par DG/créateur :** recette navigateur et intégrité de la publication, éventuelles mécaniques ou biographies futures — **pas** la décision de canoniser les six organisations, déjà expressément donnée.
+
+## Clôture effective de la publication — 15 novembre 2026 (heure du créateur)
+
+- **PR #127 :** https://github.com/Sijiel44/archives-alrick/pull/127 — fusion `squash` autorisée par la demande du créateur ; SHA `6db27d2ab80fa61df259848c3027b3f5b18c1f77`.
+- **CI verte** au HEAD `14a75f425897e2710bba0cfc0a77fc2d87728e44` : https://github.com/Sijiel44/archives-alrick/actions/runs/43796762278 — npm test et recette Chrome du Studio réussis.
+- **Correctif trouvé par le premier run :** la politique CSP du serveur bloquait la nouvelle importation JSON. Ajout de `catalogue-organisations.json` à la seule liste de connexions du Studio MJ ; fenêtre joueur toujours `connect-src 'none'`. Le test de données vérifie désormais cette distinction.
+- **Contrôle HTTP Pages après fusion :** réponse **200** pour `https://sijiel44.github.io/archives-alrick/groupes/org-dech-01.html`, `.../static/images/organisations/org-dech-01.svg` et `.../studio/catalogue-organisations.json`. Les six pages ont passé le contrôle de liens local ; une recette visuelle humaine exhaustive reste facultative.

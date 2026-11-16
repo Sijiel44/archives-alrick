@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ysilde, jeune passeuse à capuche turquoise, tenant une rame cassée" viewBox="0 0 400 480">
+<defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#163943"/><stop offset="1" stop-color="#091f2f"/></linearGradient></defs>
+<rect width="400" height="480" rx="28" fill="url(#g)"/><circle cx="200" cy="185" r="141" fill="none" stroke="#c59a59" stroke-width="3" opacity=".55"/>
+<path d="M56 445Q82 319 174 307h57q93 13 113 138Z" fill="#137a78" stroke="#8fc6ba" stroke-width="4"/>
+<path d="M136 207q-2-109 64-119 68 9 67 119l-22 105-83 1Z" fill="#0a4d59"/><ellipse cx="200" cy="221" rx="66" ry="89" fill="#c88f6f"/>
+<path d="M129 188Q126 91 204 87q77 8 69 103l-28-42-38-10-49 19Z" fill="#153e49" stroke="#67c6c4" stroke-width="5"/>
+<path d="M166 218h21m28 0h20" stroke="#253b3a" stroke-width="5" stroke-linecap="round"/><path d="M182 262q18 10 35 0" stroke="#824938" stroke-width="4" fill="none"/>
+<path d="M318 91 80 391m45-47-35 52" stroke="#be8a49" stroke-width="11" stroke-linecap="round"/><path d="m90 398-26 29" stroke="#d8b57b" stroke-width="6"/><path d="M166 320 200 360l34-40" stroke="#e0b85f" stroke-width="5" fill="none"/>
+<text x="200" y="461" text-anchor="middle" fill="#f4dfae" font-family="serif" font-size="21" letter-spacing="3">YSILDE</text>
+</svg>
