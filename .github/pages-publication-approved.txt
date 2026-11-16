@@ -420,3 +420,8 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Publier les nouvelles fiches et illustrations ESP-ER-007 Huppe des vergers, ESP-ER-008 Brumel des haies et ESP-ER-009 Escargot des souches d'ambre ; raccord Studio et B-002 vérifié.
 # Canon dès création par décision du créateur, sans fait joué, statistique M03, recette alchimique ni adoption des 41 candidates B-003.1. Trois dragons DRG-01..03 restent des PNJ distincts.
 # Exécuter le build Pages et les recettes sur URL publique avant de déclarer la publication vérifiée.
+
+# BEST-ER-005 — Publication explicite du 16 novembre 2026, après fusion PR #136 et CI #43878174949 réussie.
+# Fiches et illustrations ESP-ER-010 Libellule de nacre, ESP-ER-011 Sanglier de silex et ESP-ER-012 Corneille aux trois voix, avec registre B-002 et références Studio protégées.
+# Canon à la création, aucun fait joué, recette alchimique, profil M03 ni adoption des 41 candidates B-003.1 ; dragons nommés toujours dans les PNJ.
+# Vérifier le déploiement Pages et les recettes publiques, ainsi que l'existence des trois images WebP.
