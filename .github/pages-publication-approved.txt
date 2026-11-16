@@ -415,3 +415,8 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # ANT-DECH-007 — 16 novembre 2026 : lot de la compagnie marchande demandé directement par le créateur, création et publication autorisées sous réserve de CI.
 # ORG-DECH-07 : Compagnie Dervaux et Kess (enseigne SVG, activité et limites économiques) ; PER-DECH-21 à 26 (six portraits peints WebP, variantes SVG, biographies, liens, niveaux 2–17, trois personnes non Déchues).
 # Seules les données publiques destinées au catalogue et au site sont dans Git ; toute identité de tribut cachée, lettre secrète, front ou twist MJ reste hors dépôt, Pages et projection joueur.
+
+# BEST-ER-004 — Publication explicite du 16 novembre 2026, après fusion PR #135 et CI #43873986387 réussie.
+# Publier les nouvelles fiches et illustrations ESP-ER-007 Huppe des vergers, ESP-ER-008 Brumel des haies et ESP-ER-009 Escargot des souches d'ambre ; raccord Studio et B-002 vérifié.
+# Canon dès création par décision du créateur, sans fait joué, statistique M03, recette alchimique ni adoption des 41 candidates B-003.1. Trois dragons DRG-01..03 restent des PNJ distincts.
+# Exécuter le build Pages et les recettes sur URL publique avant de déclarer la publication vérifiée.
