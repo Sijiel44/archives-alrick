@@ -64,6 +64,7 @@ export const studioAssets = new Map([
   ["/catalogue-archives.json", ["catalogue-archives.json", "application/json"]],
   ["/catalogue-organisations.json", ["catalogue-organisations.json", "application/json"]],
   ["/catalogue-bestiaire.json", ["catalogue-bestiaire.json", "application/json"]],
+  ["/catalogue-pnj.json", ["catalogue-pnj.json", "application/json"]],
   ["/catalogue-antagonistes.json", ["catalogue-antagonistes.json", "application/json"]],
   ["/store.mjs", ["store.mjs", "text/javascript"]],
   ["/projection.mjs", ["projection.mjs", "text/javascript"]],
@@ -120,7 +121,7 @@ export function startStudioServer(port = 4380) {
       "default-src 'none'",
       ...(player ? ["sandbox allow-scripts", `script-src http://127.0.0.1:${localPort}/joueur.js http://127.0.0.1:${localPort}/video-player.js`] :
         [discovery ? `script-src http://127.0.0.1:${localPort}/accueil.mjs` : "script-src 'self'"]),
-      discovery || player ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json${personal ? '' : ` http://127.0.0.1:${localPort}/catalogue-organisations.json http://127.0.0.1:${localPort}/catalogue-antagonistes.json http://127.0.0.1:${localPort}/catalogue-bestiaire.json http://127.0.0.1:${localPort}/catalogue-sons.json http://127.0.0.1:${localPort}/catalogue-videos.json`}`,
+      discovery || player ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json${personal ? '' : ` http://127.0.0.1:${localPort}/catalogue-organisations.json http://127.0.0.1:${localPort}/catalogue-antagonistes.json http://127.0.0.1:${localPort}/catalogue-bestiaire.json http://127.0.0.1:${localPort}/catalogue-pnj.json http://127.0.0.1:${localPort}/catalogue-sons.json http://127.0.0.1:${localPort}/catalogue-videos.json`}`,
       discovery || personal ? "style-src 'self'" : "style-src 'self' 'unsafe-inline'",
       player ? "img-src data:" : discovery ? "img-src 'self'" : personal ? "img-src 'self' data: blob: https:" : "img-src 'self' data: https:",
       discovery || personal ? "media-src 'none'" : player ? "media-src https:" : "media-src https: blob:",

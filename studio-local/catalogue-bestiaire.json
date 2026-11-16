@@ -109,30 +109,6 @@
       "links": ["heron-des-lanternes", "GEO-CB2-ENTRE-RIVES"],
       "details": [["Signe", "Brindilles lumineuses"], ["Limite", "Pas de sort ou de feu automatique"]],
       "art": { "src": "./media/heron-des-lanternes.webp", "alt": "Héron bleu ardoise avec une brindille lumineuse dans son bec, sur un pieu de rive." }
-    },
-    {
-      "id": "DRG-01", "version": "f614d23e2e203996cba32e1c8acf91dc7df8f180",
-      "name": "Thessoryn — Le Cartographe des Marées Obliques",
-      "description": "Dragon libre des côtes rocheuses, attaché aux routes et aux cartes changeantes.",
-      "kind": "creature", "shelf": "bestiaire", "group": "Dragons libres", "status": "lore",
-      "path": "content/creatures/dragons/thessoryn.md", "tags": "dragon thessoryn cartographe mers libre canon non joue",
-      "links": [], "details": [["Nature", "Dragon individuel, non lié à une rencontre jouée"]]
-    },
-    {
-      "id": "DRG-02", "version": "0d9962ccad89060542a869fa1aace8f729df4bf3",
-      "name": "Velmora — La Patiente des Brumes Hautes",
-      "description": "Dragonne libre et réservée des hautes brumes, protectrice sans souveraineté automatique.",
-      "kind": "creature", "shelf": "bestiaire", "group": "Dragons libres", "status": "lore",
-      "path": "content/creatures/dragons/velmora.md", "tags": "dragonne velmora brume libre canon non joue",
-      "links": [], "details": [["Nature", "Dragonne individuelle, indépendante"]]
-    },
-    {
-      "id": "DRG-03", "version": "eada3d6f1a78af6e72cc9a1ed567f6c217e784cf",
-      "name": "Orzeyl — Le Bâtisseur des Veines Profondes",
-      "description": "Dragon libre des grottes et anciennes voies souterraines, bâtisseur de refuges.",
-      "kind": "creature", "shelf": "bestiaire", "group": "Dragons libres", "status": "lore",
-      "path": "content/creatures/dragons/orzeyl.md", "tags": "dragon orzeyl galeries bâtisseur libre canon non joue",
-      "links": [], "details": [["Nature", "Dragon individuel, non joué"]]
     }
   ]
 }

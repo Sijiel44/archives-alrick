@@ -36,5 +36,5 @@ test('Studio : nouvelles fiches illustrées, copie indépendante et écran étro
   assert.equal(copy.source.id, bestiaire.entries[0].id);
   assert.equal(copy.source.version, bestiaire.entries[0].version);
   assert.notEqual(copy.id, copy.source.id);
-  assert.equal(copy.description, bestiaire.entries[0].description);
+  assert.ok(copy.description.includes('Habitat · Berges, gués et moulins'), 'copie des détails descriptifs attendue');
 });

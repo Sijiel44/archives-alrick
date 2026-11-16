@@ -2,7 +2,7 @@
 publish: true
 title: "Velmora — La Patiente des Brumes Hautes"
 code: "DRG-02"
-categorie: "creature"
+categorie: "personnage"
 canon_statut: "lore_valide"
 etat_editorial: valide
 ancre_documentaire: "Création d'univers originale, 30 octobre 2026 — dragons individuels"
@@ -13,10 +13,12 @@ portee: "univers_partage"
 public_cible: ["joueurs", "mj", "lecteurs"]
 usage_en_jeu: ["rencontre", "scenario", "reference"]
 description: "Velmora, dragon libre aux intérêts singuliers, vivant dans les hauts cols et vallées couvertes de brume."
-tags: [dragons, creature, individu, velmora, aventure]
+tags: [dragons, pnj, individu, velmora, aventure]
 ---
 
 # Velmora — La Patiente des Brumes Hautes
+
+*Classement éditorial (16 novembre 2026) : **PNJ draconique**, non espèce du Bestiaire. L'URL historique est conservée.*
 
 > [!info] Nouveau personnage d'univers, sans rencontre rétroactive
 > **Dragon individuel de création originale.** Son existence et sa personnalité sont ajoutées au répertoire des êtres de l'univers à la demande du créateur. **Aucun voyage, pacte, affrontement ou lien familial avec Orin n'est déclaré déjà joué.** Velmora n'est ni un Archétype cosmique ni un siège supplémentaire du Conseil.

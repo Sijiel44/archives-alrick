@@ -47,9 +47,9 @@ La présence de **créatures de Faille** est déjà mentionnée dans l'Atlas his
 
 Les futurs dossiers de travail distingueront **monstres hostiles**, **créatures asservies**, **êtres libres venus d'ailleurs** et **espèces encore inconnues**. Les propositions inspirées des mythes, les créatures de combat et les statistiques resteront hors canon jusqu'à validation.
 
-## Trois dragons individuels à rencontrer
+## Trois dragons individuels — à retrouver parmi les PNJ
 
-Des dragons libres possèdent désormais des **fiches distinctes des Archétypes** : leur existence s'ajoute à l'univers, mais **aucune rencontre dans la campagne fondatrice n'est inventée**.
+Des dragons libres possèdent des **fiches de personnages distinctes des Archétypes** : leur existence s'ajoute à l'univers, mais **aucune rencontre dans la campagne fondatrice n'est inventée**. Ils relèvent du [[personnages/index|répertoire des PNJ]] et du rayon PNJ du Studio, **pas du catalogue des espèces**. Les anciennes URL des fiches sont conservées.
 
 - [[creatures/dragons/thessoryn|Thessoryn]] — cartographe des marées et des routes changeantes ;
 - [[creatures/dragons/velmora|Velmora]] — dragonne réservée des hautes brumes, indépendante et protectrice ;

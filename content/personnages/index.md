@@ -16,6 +16,16 @@ Les habitants du monde possèdent des métiers, des convictions et leurs propres
 
 [[personnages-dechus|Dix portraits canoniques, niveaux de référence 2 à 20]] — pactes, parcours, rivalités, lieux d'activité et alternatives à la confrontation.
 
+## Dragons libres — des PNJ, pas des espèces de rencontre
+
+Les dragons nommés ont leur propre volonté, des projets et des relations possibles : ils sont présentés comme **personnages non joueurs**, même lorsque leur fiche historique se trouve sous l'ancien chemin `creatures/dragons/`.
+
+- [[creatures/dragons/thessoryn|Thessoryn]] — cartographe des marées et des routes mouvantes ;
+- [[creatures/dragons/velmora|Velmora]] — dragonne réservée des brumes hautes ;
+- [[creatures/dragons/orzeyl|Orzeyl]] — bâtisseur des galeries et des refuges.
+
+Ils appartiennent au rayon **PNJ et personnages** du Studio. Aucun de ces trois personnages n'est une espèce modèle ni une rencontre jouée imposée. Leurs codes `DRG-01` à `DRG-03` et les anciennes URL sont conservés.
+
 ## Des figures de la vie quotidienne
 
 - [[PER-CB31-SIVRA-BRASSEFEUILLE|Sivra Brassefeuille]] — une brasseuse et ses traditions à Entre-Rives.

@@ -4,6 +4,7 @@ import { CREATION_STATES, CREATION_TYPES } from './creations.mjs';
 import catalogue from './catalogue-archives.json' with { type: 'json' };
 import organisations from './catalogue-organisations.json' with { type: 'json' };
 import bestiaire from './catalogue-bestiaire.json' with { type: 'json' };
+import pnj from './catalogue-pnj.json' with { type: 'json' };
 import antagonistes from './catalogue-antagonistes.json' with { type: 'json' };
 
 export const LIBRARY_CATEGORIES = Object.freeze({
@@ -25,6 +26,7 @@ export const LIBRARY_STATUSES = Object.freeze({
 export const LIBRARY_SHELVES = Object.freeze({
   atlas: { name: 'Atlas', detail: 'Régions, cités, villages et plans', icon: 'M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z M9 3v15m6-12v15' },
   bestiaire: { name: 'Bestiaire', detail: 'Créatures, rencontres et profils 5d6', icon: 'M8 16c0-3 2-5 4-5s4 2 4 5c0 2-1 3-4 2s-4 0-4-2z M5 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm7-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm7 2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' },
+  pnj: { name: 'PNJ et personnages', detail: 'Figures indépendantes, dragons nommés et créations de MJ', icon: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M4 21v-2a8 8 0 0 1 16 0v2z' },
   objets: { name: 'Objets et équipements', detail: 'Armes, outils, œuvres et artefacts', icon: 'M4 8h16v12H4z M8 8V5h8v3m-4 5v3m-8-3h16' },
   sorts: { name: 'Sorts et rituels', detail: 'Grimoire, Cercles et magie de table', icon: 'M12 3v18M3 12h18M6 6l12 12M18 6 6 18 M12 8l4 4-4 4-4-4z' },
   actions: { name: 'Capacités et actions', detail: 'Protocoles, techniques et progression', icon: 'M13 2 4 14h7l-1 8 10-12h-7z' },
@@ -74,6 +76,16 @@ const publishedBestiaryEntries = bestiaire.entries.map(entry => ({
   ...entry, origin: 'archives',
   href: `https://github.com/Sijiel44/archives-alrick/blob/main/${entry.path}`,
 }));
+// Des dragons nommés sont des individus PNJ, non des espèces : URLs historiques conservées.
+const publishedNpcEntries = pnj.entries.map(entry => ({
+  ...entry, origin: 'archives',
+  href: `https://github.com/Sijiel44/archives-alrick/blob/main/${entry.path}`,
+}));
+const historicalDragonVersions = Object.freeze({
+  'DRG-01': 'f614d23e2e203996cba32e1c8acf91dc7df8f180',
+  'DRG-02': '0d9962ccad89060542a869fa1aace8f729df4bf3',
+  'DRG-03': 'eada3d6f1a78af6e72cc9a1ed567f6c217e784cf',
+});
 const publishedBestiaryImages = publishedBestiaryEntries.filter(entry => entry.id.startsWith('ESP-') && entry.art).map(entry => ({
   id: `image-${entry.id.toLowerCase()}`, name: `Illustration · ${entry.name}`, version: entry.version,
   description: entry.art.alt, symbol: '◇', links: [entry.id], art: entry.art,
@@ -107,7 +119,7 @@ const antagonistEntries = antagonistes.entries.map(entry => ({
     relations: [...entry.relations, ...entry.factions].join(', ') },
 }));
 
-const fixedEntries = [...demoBestiary, ...archiveEntries, ...publishedBestiaryEntries, ...organisationEntries,
+const fixedEntries = [...demoBestiary, ...archiveEntries, ...publishedBestiaryEntries, ...publishedNpcEntries, ...organisationEntries,
   ...antagonistEntries, ...studioGallery, ...publishedBestiaryImages];
 export const LIBRARY_ILLUSTRATIONS = [...archiveEntries.filter(entry => entry.art?.map),
   ...publishedBestiaryEntries.filter(entry => entry.art), ...organisationEntries,
@@ -119,7 +131,7 @@ export function libraryIllustration(entry) {
 }
 
 const references = new Map(fixedEntries.map(entry => [entry.id.toLowerCase(), entry]));
-for (const entry of [...archiveEntries, ...publishedBestiaryEntries, ...organisationEntries, ...antagonistEntries]) {
+for (const entry of [...archiveEntries, ...publishedBestiaryEntries, ...publishedNpcEntries, ...organisationEntries, ...antagonistEntries]) {
   if (entry.path.startsWith('content/')) references.set(entry.path.slice(8, -3).toLowerCase(), entry);
 }
 
@@ -130,7 +142,17 @@ export function libraryReference(key) {
 
 export function creatureReference(source) {
   const entry = libraryReference(source?.id);
-  return entry?.kind === 'creature' && entry.version === source?.version ? entry : undefined;
+  if (entry?.kind === 'creature' && entry.version === source?.version) return entry;
+  if (entry?.kind === 'npc' && /^DRG-0[123]$/.test(entry.id)) {
+    if (entry.version === source?.version) return entry;
+    // Compatibilité d'anciennes copies de campagne : conserver la révision source
+    // antérieure au reclassement PNJ, sans réécrire les données jouées.
+    if (historicalDragonVersions[entry.id] === source?.version) return {
+      ...entry, version: source.version,
+      href: `https://github.com/Sijiel44/archives-alrick/blob/2f8aff36b1f2223ff19ade5639af04b4ef14b2e7/${entry.path}`,
+    };
+  }
+  return undefined;
 }
 
 export function referenceSegments(text, resolve = libraryReference) {

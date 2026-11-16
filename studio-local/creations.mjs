@@ -4,7 +4,7 @@ const world = 'Atlas, peuples et objets';
 const rules = 'Magie et techniques';
 
 export const CREATION_TYPES = Object.freeze({
-  npc: { label: 'PNJ', shelf: 'bestiaire', group: 'Personnages non joueurs', area: story,
+  npc: { label: 'PNJ', shelf: 'pnj', group: 'Personnages non joueurs', area: story,
     detail: 'Rôle, motivation et liens.',
     fields: fields(['role', 'Rôle ou métier'], ['motivation', 'Motivation'], ['relations', 'Relations et alliés']) },
   creature: { label: 'Créature', shelf: 'bestiaire', group: 'Créatures du MJ', area: story,

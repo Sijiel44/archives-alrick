@@ -2,7 +2,7 @@
 publish: true
 title: "Thessoryn — Le Cartographe des Marées Obliques"
 code: "DRG-01"
-categorie: "creature"
+categorie: "personnage"
 canon_statut: "lore_valide"
 etat_editorial: valide
 ancre_documentaire: "Création d'univers originale, 30 octobre 2026 — dragons individuels"
@@ -13,10 +13,12 @@ portee: "univers_partage"
 public_cible: ["joueurs", "mj", "lecteurs"]
 usage_en_jeu: ["rencontre", "scenario", "reference"]
 description: "Thessoryn, dragon libre aux intérêts singuliers, vivant dans les côtes rocheuses et estuaires dont les cartes se contredisent."
-tags: [dragons, creature, individu, thessoryn, aventure]
+tags: [dragons, pnj, individu, thessoryn, aventure]
 ---
 
 # Thessoryn — Le Cartographe des Marées Obliques
+
+*Classement éditorial (16 novembre 2026) : **PNJ draconique**, non espèce du Bestiaire. L'URL historique est conservée.*
 
 > [!info] Nouveau personnage d'univers, sans rencontre rétroactive
 > **Dragon individuel de création originale.** Son existence et sa personnalité sont ajoutées au répertoire des êtres de l'univers à la demande du créateur. **Aucun voyage, pacte, affrontement ou lien familial avec Orin n'est déclaré déjà joué.** Thessoryn n'est ni un Archétype cosmique ni un siège supplémentaire du Conseil.
