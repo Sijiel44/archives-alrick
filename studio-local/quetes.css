@@ -1,0 +1,27 @@
+.quest-heading { max-width: 72ch; margin-bottom: 1.5rem; }
+.quest-filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1rem; margin: 1.5rem 0 .75rem; }
+.quest-filters label, .quest-dialog form > label { display: grid; gap: .45rem; }
+.quest-group { margin-block: 2rem; }
+.quest-group > h2 { padding-bottom: .75rem; border-bottom: 1px solid var(--line, #52616b); }
+.quest-group h2 button, .quest-card h3 button { font: inherit; text-align: left; border: 0; padding: 0; background: none; color: inherit; text-decoration: underline; text-decoration-color: #a99062; text-underline-offset: .25em; }
+.quest-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 1rem; }
+.quest-card { min-width: 0; padding: 1.25rem; border: 1px solid #50626c; border-left: 4px solid #a99062; border-radius: 14px; background: linear-gradient(135deg, #27363d, #1b272f); overflow-wrap: anywhere; }
+.quest-card[data-state=resolved] { border-left-color: #92bc9c; }
+.quest-card[data-state=abandoned] { border-left-color: #98a2b4; }
+.quest-card h3 { margin: .4rem 0 .85rem; }
+.quest-scenes, .quest-card .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.quest-scenes button { font-size: .85rem; }
+.quest-card details { margin-top: 1rem; padding-top: .75rem; border-top: 1px solid #50626c; }
+.quest-card li { margin: .75rem 0; white-space: pre-wrap; }
+.quest-empty { padding: 2rem; border: 1px dashed #80949c; border-radius: 14px; }
+.quest-dialog { width: min(48rem, calc(100% - 2rem)); }
+.quest-dialog form { display: grid; gap: 1rem; }
+.quest-dialog fieldset { min-width: 0; }
+.quest-dialog .check-label { display: flex; gap: .6rem; align-items: start; margin: .5rem 0; }
+.quest-dialog .check-label input { width: auto; }
+.quest-references { padding-left: 1.25rem; }
+.quest-references li { margin-block: .5rem; overflow-wrap: anywhere; }
+.quest-references button { margin-left: .5rem; font-size: .8rem; }
+.resource-usages li { margin-block: .75rem; }
+.resource-usages button { text-align: left; max-width: 100%; overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: no-preference) { .quest-card { transition: border-color .15s ease; } .quest-card:focus-within { border-color: #dfc386; } }

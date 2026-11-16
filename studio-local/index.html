@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="./medias.css">
   <link rel="stylesheet" href="./service-media.css">
   <script type="module" src="./app.mjs"></script>
+    <link rel="stylesheet" href="./quetes.css">
 </head>
 <body>
   <a class="skip" href="#workspace">Aller à l’espace de travail</a>
@@ -31,6 +32,7 @@
           <button id="nav-home" type="button" data-view="home" aria-current="page"><span aria-hidden="true">⌂</span> Accueil</button>
           <button id="nav-prepare" type="button" data-view="prepare" disabled><span aria-hidden="true">◇</span> Préparer</button>
           <button id="nav-play" type="button" data-view="play" disabled><span aria-hidden="true">▷</span> Jouer</button>
+          <button id="nav-quests" type="button" data-view="quests" disabled><span aria-hidden="true">⌁</span> Quêtes et indices</button>
           <button id="nav-interludes" type="button" data-view="interludes" disabled><span aria-hidden="true">◷</span> Interludes</button>
           <button id="nav-archive" type="button" data-view="archive" disabled><span aria-hidden="true">≡</span> Archiver</button>
         </div>
@@ -313,6 +315,7 @@
               <button id="quick-search" class="secondary" type="button">Rechercher</button>
               <button id="open-play-protocol" class="secondary" type="button" data-play-protocol>Protocole de jeu</button>
               <button id="quick-present" class="secondary" type="button" disabled>Présenter</button>
+              <button id="quick-quests" class="secondary" type="button" disabled>Quêtes de cette scène</button>
               <button id="quick-ambiances" class="secondary" type="button" disabled>Ambiances</button>
               <button id="quick-audio" class="secondary" type="button">Régie sonore</button>
               <button id="quick-video" class="secondary" type="button" disabled>Fond vidéo</button>
@@ -459,6 +462,7 @@
         </section>
       </section>
 
+      <section id="view-quests" aria-labelledby="quests-title" hidden></section>
       <section id="view-interludes" aria-labelledby="interludes-title" hidden>
         <header class="view-heading">
           <div>
@@ -1388,6 +1392,9 @@
       <p id="resource-provenance" class="muted" hidden></p>
       <a id="resource-source-link" target="_blank" rel="noopener noreferrer" hidden>Lire la source des Archives <span class="muted">(nouvel onglet)</span></a>
       <div id="resource-actions" class="actions"></div>
+      <section id="resource-usages" class="resource-usages" aria-labelledby="resource-usages-title" hidden>
+        <h3 id="resource-usages-title">Utilisé dans</h3><p id="resource-usages-context" class="muted"></p><ul id="resource-usages-list"></ul>
+      </section>
       <section id="resource-related" class="resource-related" aria-labelledby="resource-related-title" hidden>
         <h3 id="resource-related-title">Fiches liées</h3><ul id="resource-related-list"></ul>
       </section>

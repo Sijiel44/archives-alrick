@@ -1,3 +1,8 @@
+# STUDIO-QUETES — 16 novembre 2026 : poursuite et publication des lots autorisées par le créateur dans ce chat.
+# Suivi privé des quêtes, indices et objectifs, chemins de découverte multiples, décisions historisées, liens de retour et sauvegarde v21.
+# Publier les assets applicatifs après CI ; aucune campagne, note MJ, sauvegarde ni nouvelle règle 5d6 dans le lot.
+# Contrôler Pages et les six parcours publics avant de confirmer la livraison. Séance humaine MJ + deux PJ toujours non réalisée.
+
 Approbation explicite du créateur — 29 octobre 2026.
 
 Le créateur demande le remplacement de l’accueil GitHub Pages par le portail des Chroniques d’Entre-Rives. Le lot inclut le Studio statique, le guide de contribution et l’accès aux Archives existantes. Le périmètre éditorial des fiches reste celui défini ci-dessous. Les fichiers locaux du MJ sont exclus de l’assemblage Pages.

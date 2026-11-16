@@ -8,6 +8,10 @@ import organisations from "./catalogue-organisations.json" with { type: "json" }
 import antagonistes from "./catalogue-antagonistes.json" with { type: "json" };
 
 export const studioAssets = new Map([
+  ['/quetes.mjs', ['quetes.mjs', 'text/javascript']],
+  ['/quetes-ui.mjs', ['quetes-ui.mjs', 'text/javascript']],
+  ['/utilisations.mjs', ['utilisations.mjs', 'text/javascript']],
+  ['/quetes.css', ['quetes.css', 'text/css']],
   ["/", ["index.html", "text/html"]],
   ["/index.html", ["index.html", "text/html"]],
   ["/accueil", ["accueil.html", "text/html"]],

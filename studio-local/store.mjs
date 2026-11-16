@@ -2,6 +2,7 @@ import { ADVENTURE_SCENE_LIMIT, CREATION_STATES, CREATION_TYPES } from './creati
 import { AUDIO_KEY, audioLibrary, validAudioTrack, validAudioPlaylist, validateAudioLibrary } from './audio.mjs';
 import { VIDEO_KEY, validSceneVideo, validateSceneVideos } from './video.mjs';
 import { SCENE_IMAGES_KEY, validSceneImage, validateSceneImages } from './scene-images.mjs';
+import { QUESTS_KEY, QUEST_STEP_FIELDS, validQuestStep, validQuestDecision, validateQuestSteps, questState, unlinkQuestReference } from './quetes.mjs';
 
 const DATABASE = 'entre-rives.studio-local.v1';
 const FORMAT = 'chroniques-entre-rives.studio-local';
@@ -26,6 +27,7 @@ const PJ_UPDATE_BACKUP_VERSION = 17;
 const AUDIO_BACKUP_VERSION = 18;
 const VIDEO_BACKUP_VERSION = 19;
 const SCENE_IMAGE_BACKUP_VERSION = 20;
+const QUEST_BACKUP_VERSION = 21;
 const ADVENTURE_PACKAGE_FORMAT = 'chroniques-entre-rives.aventure';
 export const MAX_ADVENTURE_PACKAGE_BYTES = 512 * 1024;
 export const ADVENTURE_SOURCE_KEY = 'entreRivesAdventurePackageV16';
@@ -483,6 +485,8 @@ export const hitPointsAfterDamage = (current, damage) => Math.max(0, current - d
 const sceneFields = ['id', 'title', 'description', 'privateNotes', 'participantIds'];
 const markerFields = ['id', 'kind', 'title', 'description', 'sceneId'];
 const operations = {
+  'save-quest-step': { fields: QUEST_STEP_FIELDS, valid: validQuestStep, backupVersion: QUEST_BACKUP_VERSION },
+  'record-quest-decision': { fields: ['id', 'state', 'at', 'note'], valid: validQuestDecision, backupVersion: QUEST_BACKUP_VERSION },
   'save-scene-image': { fields: ['sceneId', 'url', 'alt', 'credit', 'mode'], valid: validSceneImage, backupVersion: SCENE_IMAGE_BACKUP_VERSION },
   'remove-scene-image': { fields: ['sceneId'], valid: value => isId(value.sceneId), backupVersion: SCENE_IMAGE_BACKUP_VERSION },
   'save-scene-video': { fields: ['sceneId', 'url', 'imageId', 'loop', 'dim', 'credit'], valid: validSceneVideo, backupVersion: VIDEO_BACKUP_VERSION },
@@ -704,6 +708,10 @@ function validateCampaign(campaign) {
   }
   if (Object.hasOwn(campaign, PLAY_ACTIONS_KEY) || campaign.characters.some(character => Object.hasOwn(character, PJ_UPDATES_KEY))) validatePlayActions(campaign, sceneIds);
   let creations;
+  if (Object.hasOwn(campaign, QUESTS_KEY)) {
+    try { validateQuestSteps(campaign); }
+    catch (error) { fail('invalid-data', error.message); }
+  }
   if (Object.hasOwn(campaign, CREATIONS_KEY)) {
     creations = validateCreations(campaign[CREATIONS_KEY], new Set([...participantIds, ...sceneIds,
       ...(campaign[FRESQUE_MARKERS_KEY] ?? []).map(marker => marker.id)]));
@@ -913,6 +921,7 @@ function backupVersionFor({ campaign, journal }) {
   if (Object.hasOwn(campaign, AUDIO_KEY)) version = AUDIO_BACKUP_VERSION;
   if (Object.hasOwn(campaign, VIDEO_KEY)) version = VIDEO_BACKUP_VERSION;
   if (Object.hasOwn(campaign, SCENE_IMAGES_KEY)) version = SCENE_IMAGE_BACKUP_VERSION;
+  if (Object.hasOwn(campaign, QUESTS_KEY)) version = QUEST_BACKUP_VERSION;
   return journal.reduce((minimum, event) => Math.max(minimum, operations[event.type].backupVersion ?? LEGACY_BACKUP_VERSION), version);
 }
 
@@ -991,6 +1000,22 @@ function applyCommand(previous, { id, operationId, type, data }, resolveOppositi
 
   const campaign = structuredClone(previous);
   switch (type) {
+    case 'save-quest-step': {
+      const steps = campaign[QUESTS_KEY] ??= [];
+      const existing = steps.find(step => step.id === data.id);
+      if (existing && existing.kind !== data.kind) fail('invalid-command', 'Le type d’un indice ou objectif enregistré est fixe.');
+      if (existing) Object.assign(existing, data);
+      else steps.push({ ...data, history: [] });
+      break;
+    }
+    case 'record-quest-decision': {
+      const step = campaign[QUESTS_KEY]?.find(step => step.id === data.id);
+      if (!step) fail('foreign-key', 'Cet indice ou objectif ne fait pas partie de la campagne.');
+      const from = questState(step);
+      if (from === data.state) fail('invalid-command', 'Choisissez un état différent de l’état courant.');
+      step.history.push({ id: operationId, at: data.at, from, to: data.state, note: data.note });
+      break;
+    }
     case 'save-scene-image': {
       if (!campaign.scenes.some(scene => scene.id === data.sceneId)) fail('foreign-key', 'Cette scène ne fait pas partie de la campagne.');
       const images = campaign[SCENE_IMAGES_KEY] ??= [];
@@ -1071,6 +1096,7 @@ function applyCommand(previous, { id, operationId, type, data }, resolveOppositi
       const index = images?.findIndex(image => image.id === data.id) ?? -1;
       if (index === -1) fail('foreign-key', 'Cette image ne fait pas partie de la campagne.');
       images.splice(index, 1);
+      unlinkQuestReference(campaign, data.id);
       if (!images.length) delete campaign[LINKED_IMAGES_KEY];
       break;
     }
@@ -1246,6 +1272,7 @@ function applyCommand(previous, { id, operationId, type, data }, resolveOppositi
       const index = markers?.findIndex(marker => marker.id === data.id) ?? -1;
       if (index === -1) fail('foreign-key', 'Ce repère ne fait pas partie de la campagne.');
       markers.splice(index, 1);
+      unlinkQuestReference(campaign, data.id);
       break;
     }
     case 'record-play-action':
@@ -1520,7 +1547,7 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     try { archive = JSON.parse(text); }
     catch { fail('invalid-backup', 'Ce fichier ne contient pas un document JSON valide.'); }
     if (archive?.format !== FORMAT) fail('invalid-backup', 'Ce fichier n’est pas une sauvegarde privée du Studio.');
-    if (!Number.isInteger(archive.version) || archive.version < LEGACY_BACKUP_VERSION || archive.version > SCENE_IMAGE_BACKUP_VERSION) {
+    if (!Number.isInteger(archive.version) || archive.version < LEGACY_BACKUP_VERSION || archive.version > QUEST_BACKUP_VERSION) {
       fail('backup-version', 'La version de cette sauvegarde n’est pas prise en charge.');
     }
     if (!exactKeys(archive, ['format', 'version', 'sha256', 'payload']) ||
@@ -1562,6 +1589,7 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
       audioPlaylists: campaign[AUDIO_KEY]?.playlists.length ?? 0,
       videos: campaign[VIDEO_KEY]?.length ?? 0,
       sceneImages: campaign[SCENE_IMAGES_KEY]?.length ?? 0,
+      questSteps: campaign[QUESTS_KEY]?.length ?? 0,
       creatures: campaign.creatures.length,
       scenes: campaign.scenes.length,
       ambiances: campaign.scenes.reduce((count, scene) => count + (scene[SCENE_AMBIANCES_KEY]?.length ?? 0), 0),
