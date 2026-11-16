@@ -469,3 +469,7 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # BEST-SITE-001 — Galerie publique accessible : autorisation expresse du créateur le 16 novembre 2026.
 # PR #146 fusionnée après CI #43891832978 réussie : 25 fiches illustrées sans porte MJ, lien direct depuis le portail, les Archives et l’Univers.
 # Dragons individuels au rayon PNJ ; propositions de jeu séparées du canon. Aucun chiffre 5d6 ni fichier de campagne privé publié.
+
+# BEST-ER-007 — Publication publique autorisée par le créateur, 16 novembre 2026.
+# PR #148 fusionnée sur main après CI #43901702800 réussie : 35 fiches canoniques illustrées (32 espèces et 3 individus), 10 nouvelles espèces ESP-ER-023 à 032.
+# Images WebP, index Studio, galerie, source B002 et contrôles de liens et de publication vérifiés. Dragons nommés toujours PNJ ; candidates B-003.1 non adoptées.
