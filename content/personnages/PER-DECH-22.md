@@ -32,6 +32,12 @@ Le jour où une barque fut retenue pour litige, un courtier proche de **Caldria*
 
 Maren franchit la **Rupture** lorsqu'il conduisit **une personne réellement transformée** à accepter à son tour une dépendance de Déchéance et maintint cette **Chute liée** sous son Emprise. Cette transformation est un acte distinct de l'emploi, du prêt et de la dette commerciale ; elle ne concerne ni tous les comptables ni tous les clients. Il en tire un Tribut fragile : perdre sa branche ne le prive pas automatiquement de toutes ses aptitudes.
 
+## Ce que racontent les deux registres
+
+Dans le livre ordinaire, Maren consigne les volumes, les dates, les intérêts négociés et les avances remboursées. Dans son autre livre, il note les promesses qu'il prétend ne plus pouvoir laisser s'éteindre. Ce second registre **n'est pas un instrument de contrainte universel** : seul un engagement lié à un rite effectivement accompli entre dans le champ de sa garantie surnaturelle. Maren a besoin de documents intègres, de témoins et de personnes déjà engagées ; il peut mentir sur la portée du rite, non la changer par sa seule volonté.
+
+Il finance encore des cargaisons à perte quand une récolte manque. Il a également refusé d'effacer la dernière créance d'un marin disparu, alors que l'équipage avait déjà livré la marchandise promise. **L'aide qu'il apporte est réelle ; sa manière de la transformer en dépendance l'est aussi.** Quand il a peur de perdre une relation, il propose une clause supplémentaire au lieu de demander pardon.
+
 ## Contradiction et entourage
 
 Maren se croit juste parce qu'il livre ce qu'il promet. Il a pourtant commencé à traiter le désaccord comme une rupture morale. Il admire **[[PER-DECH-21|Orianne]]** pour avoir fondé la maison, mais voudrait qu'elle cesse de pouvoir résilier ses accords ; **[[PER-DECH-06|Dorsel]]** lui offre des marchés s'il lui concède l'accès aux quittances ; **[[PER-DECH-10|Terval]]** propose une exclusivité sur certaines céréales, ce qui priverait d'autres négociants de transport. Ses aides peuvent refuser ses ordres sans devenir des Déchus.
@@ -39,6 +45,8 @@ Maren se croit juste parce qu'il livre ce qu'il promet. Il a pourtant commencé 
 ## Les choix devant lui
 
 Une cliente exhibe une première quittance alors que Maren en produit une seconde. Les PJ peuvent chercher l'original, entendre les signataires, désigner un arbitre choisi librement, financer une livraison sans clause ou protéger une personne menacée par le rite. Maren peut abandonner ses garanties surnaturelles, accepter des remboursements proportionnés et réparer ses abus ; la libération de sa **Chute liée** demeure nécessaire à un désengagement réel. S'il refuse, on peut combattre son monopole sans l'affronter physiquement.
+
+**Face à une perte de contrôle :** il commence par proposer un meilleur prix, puis exige l'exclusivité, enfin menace de retirer ses avances. Sa retraite est d'abord juridique et commerciale : il se retire derrière des intermédiaires plutôt que de risquer un affrontement. Une preuve de consentement absent affaiblit sa prétention, et la protection d'un subordonné peut rompre sa chaîne d'Emprise sans qu'un groupe doive le vaincre au combat.
 
 **En jeu chiffré :** aucun bonus à l'intimidation, sceau automatique ou annulation de dette n'est conféré par sa fiche. Profil et capacité éventuels : INDEX/MATH/PNJ.
 

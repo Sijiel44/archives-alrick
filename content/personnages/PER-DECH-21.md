@@ -32,6 +32,12 @@ Sa décision la plus célèbre fut d'envoyer des ferrures à des bâtisseurs plu
 
 Le revers survint lorsqu'une expédition de toile revint incomplète. Orianne ordonna un audit, puis interrompit l'enquête dès qu'elle menaça la solvabilité de l'entreprise. Elle se raconte qu'elle l'a fait pour protéger les salaires ; les familles des acheteurs n'ont jamais reçu toutes leurs explications.
 
+## Dans le bureau et sur le quai
+
+Orianne garde une grande carte de routes annotée au crayon bleu. Elle barre les passages devenus incertains mais laisse visibles les anciens trajets : elle dit que les erreurs coûtent moins cher lorsqu'on ne les efface pas. Pourtant, ses registres de responsabilité sont moins transparents. Aux heures de départ, elle se tient parmi les portefaix et sait appeler les anciens par leur prénom ; au conseil des associés, elle parle parfois de ces mêmes personnes comme de simples « postes de dépense ».
+
+Sa réussite récente est d'avoir maintenu le salaire de deux équipages pendant une interruption de navigation. Son échec plus discret est d'avoir demandé à **Eban Thoir**, réparateur indépendant, de différer une facture au moment où il devait payer ses propres ouvriers. Eban ne l'a pas oubliée. Elle veut offrir aux apprentis une véritable part de décision, mais recule chaque fois que leur vote risquerait de renverser un contrat lucratif.
+
 ## Contradiction et moyens
 
 Elle possède la majorité des contrats et le respect de plusieurs artisans. Sa meilleure arme est de **faire coopérer des gens qui se défient**. Elle peut aussi devenir dure : elle retarde des indemnités, impose des quotas de chargement et croit trop facilement que la compétence donne le droit de décider pour d'autres. **Elle n'est pas Déchue** ; ce constat ne la rend ni innocente ni impossible à vaincre socialement. Elle n'a aucun tribut ni pouvoir parasitaire.
@@ -46,5 +52,7 @@ Elle possède la majorité des contrats et le respect de plusieurs artisans. Sa 
 ## En jeu
 
 Elle demande aux PJ de retrouver une feuille de chargement perdue, puis découvre qu'elle pourrait la compromettre. Ils peuvent exiger un audit contradictoire, proposer un arbitrage, protéger les emplois avant de révéler les faits ou accepter une alliance de transport conditionnelle. Si elle perd son autorité, Orianne reste une négociante chevronnée ; elle peut ouvrir une nouvelle compagnie sans qu'aucune victoire des PJ soit annulée. Un duel n'est jamais le préalable à la résolution.
+
+**Si l'on négocie avec elle :** présenter une solution qui préserve à la fois les livraisons et les personnes rémunérées. Une accusation spectaculaire sans témoin la pousse à se raidir ; un compte précis, confirmé par un artisan indépendant, peut l'amener à reconnaître un tort. Elle consent à suspendre un contrat mais refuse d'abandonner du jour au lendemain toutes les routes dont dépend une communauté.
 
 [[groupes/ORG-DECH-07|La compagnie]] · [[PER-DECH-22|Maren Kess]] · [[PER-DECH-26|Gabin Rosset]]

@@ -32,6 +32,12 @@ Plus tard, elle accepta un **pacte de vérification de dépôt** : sur un regist
 
 Elle fit retenir sans preuve un portefaix dont le nom ne figurait pas sur une liste récente. La marchandise fut retrouvée, mais l'employé avait perdu sa journée et sa paie. Ce tort lui donne aujourd'hui honte, bien qu'elle continue à défendre la procédure.
 
+## Les habitudes qui la trahissent
+
+Siva reconnaît les chargements au bruit de leurs attaches. Elle sait distinguer une caisse mal calée d'un ballot simplement humide et prend toujours le temps d'expliquer un procédé à un apprenti. Autrefois, elle inscrivait au bas de chaque feuille le nom des personnes ayant rendu une livraison possible. Depuis ses premiers usages du pacte, elle préfère les signatures aux conversations : elle pense qu'une preuve vaut nécessairement mieux qu'une parole.
+
+Lors d'une pénurie récente, elle répartit une réserve de vivres entre deux équipes dont l'une était déjà rentrée sans salaire. Cette décision sauva les repas des familles et lui valut la gratitude du quai. Le lendemain, elle imposa de nouvelles vérifications si intrusives qu'**Irda Fannel** refusa de repartir avant un accord écrit. Siva voit cette protestation comme une menace contre la sécurité du dépôt ; Irda y voit une demande élémentaire de confiance.
+
 ## Réseau et tension
 
 - **[[PER-DECH-22|Maren Kess]]** lui a confié les doubles des quittances ; elle estime qu'il protège les équipes, mais redoute ses demandes de silence.
@@ -42,5 +48,7 @@ Elle fit retenir sans preuve un portefaix dont le nom ne figurait pas sur une li
 ## Dépendance et possibilités de sortie
 
 Siva est **vraiment affectée par un pacte** ; ses collègues ne le sont pas par contagion. Sa Fêlure ne lui donne ni commandement mental ni pouvoir sur tous les convois. Lorsqu'un reçu semble absent, les personnages peuvent demander une vérification à deux témoins, chercher le sac ou conduire l'employé injustement accusé devant un arbitre. Siva peut choisir de rendre son registre, perdre l'effet rituel et indemniser la personne lésée. Elle pourrait aussi s'enfermer dans le contrôle et devenir un rouage dangereux sans jamais former une seconde branche.
+
+**Scène de bascule :** un nouveau portefaix arrive avec un reçu incomplet tandis que la barque doit partir avant la baisse des eaux. Siva peut laisser vérifier la cargaison sous témoignage libre, immobiliser arbitrairement tout l'équipage ou demander aux PJ de trancher. Elle écoute une proposition concrète de contrôle partagé ; une humiliation publique accélère sa méfiance. La suite de son pacte demeure un choix, non une progression automatique.
 
 [[groupes/ORG-DECH-07|La compagnie]] · [[PER-DECH-24|Perrin]] · [[PER-DECH-26|Gabin]]

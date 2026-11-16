@@ -32,6 +32,12 @@ Un litige suivant la plaça dans une position moins enviable. Un client accusa l
 
 Elle a accepté **un premier usage** et en a payé le prix : depuis lors, elle doute un peu moins spontanément de ses propres conclusions, ce qui l'inquiète lorsqu'elle y réfléchit. Elle doit maintenant décider si elle renouvelle ce pacte ; **elle n'a pas provoqué de Chute liée** et n'est pas Lieuse. Sa Tentation demeure réversible. Accepter le cachet sous pression ne transforme pas les témoins en Déchus.
 
+## Une méthode qui lui appartient encore
+
+Mérine conserve dans sa trousse des échantillons de ficelle, une petite balance et des cartes de couleur destinées à comparer les marques des ballots. Ces outils ordinaires lui ont permis d'identifier une erreur de tissage que les sceaux de la compagnie n'avaient pas signalée. Elle éprouva ce jour-là une fierté plus profonde que lorsqu'elle utilisa le cachet surnaturel : personne ne pouvait attribuer son résultat à une faveur étrangère.
+
+Elle veut enseigner aux nouveaux vérificateurs à reconnaître les erreurs sans accuser leurs auteurs. Pourtant, lorsqu'un client puissant exige un nom avant la fin de l'enquête, elle est tentée de donner un verdict prématuré pour être enfin prise au sérieux. **Son conflit principal n'est pas de choisir entre le bien et le mal**, mais entre la recherche patiente d'une preuve et le soulagement dangereux d'une certitude offerte trop vite.
+
 ## Relations et hésitations
 
 - **[[PER-DECH-26|Gabin]]** lui apporte des copies non signées ; elle hésite à les écouter parce qu'il est encore novice.
@@ -42,5 +48,7 @@ Elle a accepté **un premier usage** et en a payé le prix : depuis lors, elle d
 ## Rencontres et choix
 
 Un sac manquant la met devant trois rapports incompatibles. Les PJ peuvent refaire la pesée, retrouver un témoin, accepter le doute, payer une compensation ou l'aider à refuser le sceau. Elle peut gagner en métier sans prendre le pouvoir promis ; si elle le prend, elle devra répondre de ses actes sans que la table présume sa condamnation définitive. Les effets du cachet restent narratifs jusqu'à validation de MAG/INDEX/MATH.
+
+**Choix à mettre en scène :** une seconde utilisation du cachet lui est offerte contre l'engagement de ne plus contester les garanties de Maren. Elle peut refuser et poursuivre l'enquête avec Gabin, accepter puis renoncer, ou demander aux PJ une preuve indépendante avant de décider. Son chemin de retour passe par l'abandon du pacte et par la réparation des torts qu'elle aurait causés, pas par une immunité magique soudaine.
 
 [[groupes/ORG-DECH-07|La compagnie]] · [[PER-DECH-26|Gabin]] · [[PER-DECH-06|Dorsel]]

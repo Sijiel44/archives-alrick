@@ -16,10 +16,12 @@
 3. **Illustrations :** six portraits originaux peints générés par ImageGen puis optimisés en WebP 800×1 066 ; enseigne SVG de la compagnie et six variantes SVG du portrait. Aucune illustration ne provient d'une banque tierce. Les alternatives textuelles restent lisibles sans média.
 4. **Studio :** catalogues publics v2 et v4, intégrité de version SHA pour chaque Markdown, groupe « Maisons de négoce » séparé, MIME `image/webp`, copie locale `npc` et `faction` existante sans migration des sauvegardes.
 5. **Secret MJ :** dossier de mission séparé hors dépôt. Le lien réel de Tribut, les substitutions d'originaux et les fronts d'inaction ne sont pas dans Pages ou les catalogues.
+6. **Enrichissement éditorial :** les six biographies incluent désormais des habitudes de vie, des réussites et des erreurs récentes, des dilemmes concrets, des possibilités de négociation et des issues de retrait. Ces éléments construisent l'univers partagé sans raconter une aventure qui aurait été jouée.
+7. **Réemploi libre en campagne :** les joueurs peuvent consulter les biographies publiques ; le MJ peut copier chaque référence dans son Studio, l'adapter et garder son historique de table indépendant du catalogue public. Lecture d'une page et savoir d'un personnage de joueur restent distincts.
 
 ## Contrôles et preuves
 
-Le contrat de recette complet est dans [`ANT_DECH_007_CONTRAT_TECHNIQUE.md`](ANT_DECH_007_CONTRAT_TECHNIQUE.md). Les résultats réels (`npm test`, intégrité SHA, recette Chrome en CI, Pages et SHA de fusion) sont consignés dans la conclusion de la PR et la passation finale ; **ne pas interpréter ce rapport rédigé avant CI comme une CI déjà réussie**.
+Le contrat de recette complet est dans [`ANT_DECH_007_CONTRAT_TECHNIQUE.md`](ANT_DECH_007_CONTRAT_TECHNIQUE.md). Le dépôt de référence est la [PR #134](https://github.com/Sijiel44/archives-alrick/pull/134). Sur son premier commit `9608878e26cd9dd08343116077b0c2e1a02e99d7`, la [CI #43867900319](https://github.com/Sijiel44/archives-alrick/actions/runs/43867900319) s'est terminée avec succès (build, liens, régressions et recette Chrome). Les enrichissements narratifs ultérieurs doivent être testés à nouveau ; leur résultat et le SHA final de fusion sont à consigner avant clôture.
 
 ## Vigilances restantes
 

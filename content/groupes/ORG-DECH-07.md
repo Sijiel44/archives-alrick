@@ -69,4 +69,10 @@ La compagnie se fournit auprès d'ateliers libres ; elle peut livrer [[ORG-DECH-
 
 Une alliance temporaire avec la maison peut être un excellent choix. Les personnages débutants peuvent agir sur un reçu, un trajet ou un témoin sans affronter un dirigeant expérimenté. Les aventuriers plus avancés peuvent peser sur les contrats et leurs conséquences régionales. **Nulle influence commerciale ne donne d'immunité, de contrôle mental ou de bonus 5d6 sans profil et capacité validés.**
 
+## Découvrir les personnes, adapter la compagnie
+
+Les biographies et les liens de cette page appartiennent à **l'univers public**. Un joueur curieux peut les lire et préparer des questions pour son personnage ; cela ne signifie pas que son aventurier connaît d'emblée les contrats internes, les pactes ou les anciennes querelles. Le MJ choisit comment ces informations deviennent accessibles en scène : réputation du marché, rencontre sur un quai, consultation d'archives ou confidence obtenue loyalement. Lire une fiche n'impose pas la manière de jouer une rencontre.
+
+Pour une campagne indépendante, le MJ peut créer une **variante locale** de Dervaux et Kess : remplacer une route par une autre, changer la direction d'un dépôt, faire de Perrin un allié durable, ou décider que Mérine renonce au cachet dès sa première apparition. Cette variante appartient au journal de cette table et **ne modifie pas rétroactivement** la fiche commune. Les niveaux affichés sont des points de repère, non des caractéristiques 5d6 imposées. Un groupe peut aussi écarter tout pacte et jouer la compagnie comme un conflit commercial purement humain.
+
 [[organisations-decheance|Organisations de Déchéance et contre-pouvoirs]] · [[personnages/personnages-dechus|Autres personnages liés à la Déchéance]] · [[monde/decheance-canon|Loi de la Déchéance]]
