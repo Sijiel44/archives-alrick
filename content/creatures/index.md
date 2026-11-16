@@ -10,6 +10,8 @@ usage_en_jeu: ["reference", "rencontre"]
 
 # Créatures et compagnons
 
+**[✤ Ouvrir le Bestiaire illustré public](../bestiaire)** — une galerie de toutes les espèces et créatures singulières déjà illustrées, avec recherche et accès direct à leur fiche complète. Aucune campagne ni connexion MJ n'est nécessaire.
+
 L'univers accueille des animaux ordinaires, des compagnons singuliers et des créatures liées à la magie. La présence d'un animal exceptionnel dans une campagne ne suffit pas à définir **toute son espèce**. Depuis la décision du créateur de novembre 2026, une créature nouvelle peut être **canonique dès sa création**, sans avoir été rencontrée en partie ; son statut de publication et son profil 5d6 sont décidés séparément.
 
 ## La faune illustrée d'Entre-Rives et Belle-Rive

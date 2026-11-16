@@ -29,3 +29,28 @@ function setupLibrary() {
   window.addCleanup(() => controller.abort())
 }
 document.addEventListener("nav", setupLibrary)
+
+function setupBestiary() {
+  const input = document.querySelector<HTMLInputElement>("#bestiary-search")
+  const type = document.querySelector<HTMLSelectElement>("#bestiary-type")
+  const count = document.querySelector<HTMLElement>("#bestiary-count")
+  const empty = document.querySelector<HTMLElement>("#bestiary-empty")
+  if (!input || !type || !count || !empty) return
+  const cards = Array.from(document.querySelectorAll<HTMLAnchorElement>(".bestiary-card"))
+  const normalize = (value: string) => value.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLocaleLowerCase("fr")
+  const update = () => {
+    const query = normalize(input.value.trim())
+    let visible = 0
+    for (const card of cards) {
+      card.hidden = (type.value !== "all" && card.dataset.type !== type.value) || !normalize(card.dataset.search ?? "").includes(query)
+      if (!card.hidden) visible++
+    }
+    count.textContent = `${visible} fiche${visible > 1 ? "s" : ""} illustrée${visible > 1 ? "s" : ""}`
+    empty.hidden = visible > 0
+  }
+  const controller = new AbortController()
+  input.addEventListener("input", update, { signal: controller.signal })
+  type.addEventListener("change", update, { signal: controller.signal })
+  window.addCleanup(() => controller.abort())
+}
+document.addEventListener("nav", setupBestiary)

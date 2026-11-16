@@ -1,5 +1,6 @@
 import type { QuartzComponent, QuartzComponentProps } from "./types"
 import { pathToRoot } from "../util/path"
+import bestiaryCatalog from "../../studio-local/catalogue-bestiaire.json"
 // @ts-ignore — Quartz bundles .inline.ts imports as browser script strings.
 import script from "./scripts/alrick.inline"
 
@@ -48,6 +49,7 @@ export const Navigation: QuartzComponent = (props) => {
     ["jouer", "/jouer/", "Jouer dans cet univers", "⚔"],
     ["mj-ia", "/mj-ia/", "MJ assisté par IA", "✧"],
     ["bibliotheque", "/bibliotheque", "Bibliothèque des fiches", "☷"],
+    ["bestiaire", "/bestiaire", "Bestiaire illustré", "✤"],
   ]
   return <nav class="archive-nav" aria-label="Parcours et bibliothèque des Archives">
     <span class="nav-caption">COMMENCER</span>
@@ -97,7 +99,7 @@ export const PageIntro: QuartzComponent = (props) => {
   if (fileData.slug === "index" || fileData.slug === "404") return null
   return <div class="archive-intro" id="archive-content" tabIndex={-1}>
     <a class="internal back-link" href={`${root(props)}/`}>← Retour à la bibliothèque</a>
-    <span class="eyebrow">{hasSpoilers ? "AVERTISSEMENT · SPOILERS" : "LES FEUILLETS DE L’ODYSSÉE"}</span>
+    <span class="eyebrow">{hasSpoilers ? "AVERTISSEMENT · SPOILERS" : fileData.slug === "bestiaire" ? "ENCYCLOPÉDIE PUBLIQUE · FAUNE ET CRÉATURES" : "LES FEUILLETS DE L’ODYSSÉE"}</span>
     <h1>{fm?.title}</h1>
     {fm?.code && (() => {
       const state = String(fm.etat_editorial ?? "en_chantier")
@@ -111,8 +113,58 @@ export const PageIntro: QuartzComponent = (props) => {
 export const Library: QuartzComponent = (props) => {
   const isHome = props.fileData.slug === "index"
   const isCatalog = props.fileData.slug === "bibliotheque"
-  if (!isHome && !isCatalog) return null
+  const isBestiary = props.fileData.slug === "bestiaire"
+  if (!isHome && !isCatalog && !isBestiary) return null
   const base = root(props)
+  if (isBestiary) {
+    const otherCreatures = props.allFiles.filter(file =>
+      file.slug?.startsWith("creatures/bestiaire-") && file.frontmatter?.publish === true &&
+      file.frontmatter?.spoilers !== true && !file.unlisted
+    ).sort((a,b) => String(a.frontmatter?.title).localeCompare(String(b.frontmatter?.title), "fr"))
+    return <div class="bestiary-page">
+      <section class="bestiary-introduction" aria-labelledby="bestiary-heading">
+        <div><span class="eyebrow">ENTRE-RIVES · BELLE-RIVE · AU-DELÀ</span>
+          <h2 id="bestiary-heading">Les habitants des terres vivantes</h2>
+          <p>Rencontrez les espèces du fleuve, des bois et des chemins, ainsi que des créatures singulières. Chaque fiche complète se lit librement : habitat, signes, comportements, pistes de quêtes, illustration et provenance.</p>
+          <p>Ces créations appartiennent à l’univers dès leur création, même si aucune partie ne les a mises en scène. Les valeurs de combat ne sont pas inventées.</p>
+        </div>
+        <img src={`${base}/studio/media/fee-aulnes.webp`} alt="Fée des aulnes, petite créature ailée auprès des arbres de la rive" width="900" height="600" decoding="async" />
+      </section>
+      <section class="bestiary-collection" aria-labelledby="bestiary-collection-title">
+        <div class="library-heading"><div><span class="eyebrow">ILLUSTRÉ · LIBREMENT CONSULTABLE</span><h2 id="bestiary-collection-title">Toutes les fiches de la collection</h2></div><span class="library-ornament" aria-hidden="true">— ✤ —</span></div>
+        <div class="bestiary-controls">
+          <label class="bestiary-filter-label">Parcourir
+            <select id="bestiary-type"><option value="all">Toutes les créatures</option><option value="species">Espèces canoniques</option><option value="individuals">Créatures singulières</option></select>
+          </label>
+          <label class="bestiary-search-label">Rechercher
+            <input id="bestiary-search" type="search" placeholder="Nom, habitat, indice, quête…" autoComplete="off" />
+          </label>
+        </div>
+        <p class="bestiary-count" id="bestiary-count" role="status" aria-live="polite">{bestiaryCatalog.entries.length} fiches illustrées</p>
+        <div class="bestiary-grid">{bestiaryCatalog.entries.map(entry => {
+          const species = entry.id.startsWith("ESP-")
+          const slug = entry.path.replace(/^content\//, "").replace(/\.md$/, "")
+          const imagePath = entry.art.src.replace(/^\.\/media\//, "")
+          return <a class="bestiary-card internal" key={entry.id} href={`${base}/${slug}`}
+            data-type={species ? "species" : "individuals"} data-search={`${entry.id} ${entry.name} ${entry.description} ${entry.tags} ${entry.group}`}>
+            <span class="bestiary-card-art"><img src={`${base}/studio/media/${imagePath}`} alt={entry.art.alt} width="900" height="600" loading="lazy" decoding="async" /></span>
+            <span class="bestiary-card-body"><span class="bestiary-card-kicker">{species ? "ESPÈCE CANONIQUE" : "CRÉATURE SINGULIÈRE"} · {entry.id}</span>
+              <strong>{entry.name}</strong><span class="bestiary-card-description">{entry.description}</span>
+              <span class="bestiary-card-action">Lire la fiche complète <span aria-hidden="true">↗</span></span></span>
+          </a>
+        })}</div>
+        <p class="bestiary-empty" id="bestiary-empty" hidden>Aucune créature ne correspond. Essayez un autre nom ou un autre milieu.</p>
+      </section>
+      <section class="bestiary-related" aria-labelledby="bestiary-related-title">
+        <span class="eyebrow">POUR ALLER PLUS LOIN</span><h2 id="bestiary-related-title">Autres dossiers publics</h2>
+        <p>Des propositions de rencontres peuvent aussi servir à préparer une aventure. Elles restent clairement distinctes des espèces canoniques.</p>
+        <div class="bestiary-related-grid">{otherCreatures.map(file => <a class="internal" href={`${base}/${file.slug}`} key={file.slug}>
+          <span>PROPOSITION DE JEU · NON CANONISÉE</span><strong>{String(file.frontmatter?.title)}</strong>
+          <small>Consulter le dossier →</small></a>)}</div>
+        <p>Pour les individus draconiques, consultez le <a class="internal" href={`${base}/personnages/`}>répertoire des PNJ</a> : les dragons nommés ne sont pas des espèces du catalogue.</p>
+      </section>
+    </div>
+  }
   if (isHome) return <div id="archive-content" tabIndex={-1}>
     <section class="archive-hero home-hero" aria-labelledby="alrick-home-title">
       <div class="hero-engraving" aria-hidden="true" />
@@ -123,6 +175,7 @@ export const Library: QuartzComponent = (props) => {
         <div class="hero-actions">
           <a class="archive-button internal" href={`${base}/jouer/`}>Commencer une aventure <span aria-hidden="true">→</span></a>
           <a class="internal text-button" href={`${base}/univers/`}>Explorer l’univers <span aria-hidden="true">→</span></a>
+          <a class="internal text-button" href={`${base}/bestiaire`}>Voir le Bestiaire illustré <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <span class="hero-caption">MONTAGNES DE L’AUBE<br /><small>Évocation graphique · hors canon</small></span>
@@ -136,6 +189,11 @@ export const Library: QuartzComponent = (props) => {
         <a class="home-path internal" href={`${base}/odyssee/`}><span class="home-path-icon" aria-hidden="true">☼</span><h3>Lire l’Odyssée d’Orin</h3><p>Suivre la campagne fondatrice, ses rencontres et ses conséquences.</p><span class="home-path-link">Découvrir le récit →</span></a>
         <a class="home-path internal" href={`${base}/mj-ia/`}><span class="home-path-icon" aria-hidden="true">✧</span><h3>Préparer un MJ avec IA</h3><p>Choisir les bonnes sources et garder la continuité de sa partie.</p><span class="home-path-link">Préparer sa séance →</span></a>
       </div>
+    </section>
+    <section class="home-bestiary-teaser" aria-labelledby="home-bestiary-title">
+      <div><span class="eyebrow">LE MONDE EST HABITÉ</span><h2 id="home-bestiary-title">Un bestiaire à feuilleter</h2><p>Des petits habitants des rives aux créatures extraordinaires : illustrations, écologie et idées de quêtes, accessibles à tous.</p>
+        <a class="archive-button internal" href={`${base}/bestiaire`}>Parcourir toutes les fiches <span aria-hidden="true">→</span></a></div>
+      <a class="internal" href={`${base}/bestiaire`} aria-label="Explorer le bestiaire illustré"><img src={`${base}/studio/media/loutre-anneaux-cuivre.webp`} alt="Loutre aux anneaux de cuivre près d’un moulin" loading="lazy" width="900" height="600" decoding="async" /></a>
     </section>
     <section class="home-quickstart" aria-labelledby="home-start-title">
       <div><span class="eyebrow">PRÊT À JOUER ?</span><h2 id="home-start-title">Créer un personnage en quelques étapes</h2>

@@ -18,7 +18,7 @@ function withPolicy(html, policy) {
 const basePolicy = "default-src 'none'; script-src 'self'; base-uri 'none'";
 const localPortal = (await readStudioAsset(studioAssets.get('/accueil'))).toString('utf8');
 const portal = withPolicy(localPortal.replace(/\b(href|src)="\/(?!\/)([^"#]*)(#[^"]*)?"/g, (_, attribute, route, hash = '') => {
-  const destination = route === 'accueil' ? './' : `./studio/${route}`;
+  const destination = route === 'accueil' ? './' : route === 'bestiaire' || route.startsWith('creatures/') ? `./${route}` : `./studio/${route}`;
   return `${attribute}="${destination}${hash}"`;
 }).replace('<a class="text-link" href="./studio/#bibliotheque">', '<a class="text-link" href="./archives.html">Consulter les Archives d’Alrick</a>\n        <a class="text-link" href="./studio/#bibliotheque">')
 .replace('<span>Édition pilote · Découverte</span>', `<a class="text-link" href="./archives.html">Les Archives d’Alrick</a>

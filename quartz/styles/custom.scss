@@ -209,6 +209,58 @@ body[data-slug="bibliotheque"] .library-controls{display:flex;gap:16px;align-ite
 .library-category-select{display:flex;flex-direction:column;font-size:12px;color:#bfcbd3;min-width:220px;gap:4px}
 .library-category-select select{min-height:43px;border-radius:6px;border:1px solid #5b7583;background:#162b38;color:#e9e3d7;padding:7px 11px;width:100%;font:inherit}
 body[data-slug="bibliotheque"] #library-count{font-size:13px;color:#d5bf96;margin:14px 0}
+
+/* Bestiaire public : toutes les références illustrées, indépendamment du Studio MJ. */
+.bestiary-page { margin: 0 auto 36px; max-width: 1350px; }
+.bestiary-introduction { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(250px, .8fr); align-items: stretch; gap: 24px; margin: 12px 0 35px; padding: 23px; background: linear-gradient(130deg, #233b48, #13242f); border: 1px solid #987a4d80; border-radius: 13px; }
+.bestiary-introduction > div { padding: 14px 8px; }
+body .page .bestiary-introduction h2 { font-size: clamp(27px, 3vw, 42px); line-height: 1.12; margin: 12px 0 16px; }
+.bestiary-introduction p { max-width: 65ch; font-size: 13px; line-height: 1.8; color: #c9d6d9; }
+.bestiary-introduction img { width: 100%; height: 100%; max-height: 270px; object-fit: cover; border-radius: 8px; }
+.bestiary-collection .library-heading { padding-bottom: 7px; }
+.bestiary-controls { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 20px 0 13px; }
+.bestiary-controls label { display: flex; flex-direction: column; gap: 5px; color: #d5c5a7; font-size: 12px; flex: 1 1 240px; }
+.bestiary-controls input, .bestiary-controls select { min-height: 44px; width: 100%; color: #f3eadb; border: 1px solid #637789; border-radius: 6px; background: #152937; padding: 9px 11px; }
+.bestiary-controls input::placeholder { color: #b4c3cc; }
+.bestiary-count { font-size: 13px; color: #ead19f; margin: 14px 0 18px; }
+.bestiary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
+a.bestiary-card.internal { display: flex; flex-direction: column; overflow: hidden; min-width: 0; color: #e9e9e3; text-decoration: none; border: 1px solid #48626d; border-radius: 11px; background: linear-gradient(160deg, #213542, #142530); transition: border-color .2s, transform .2s; }
+a.bestiary-card:hover, a.bestiary-card:focus-visible { border-color: #e5bb7d; transform: translateY(-3px); }
+.bestiary-card-art { display: block; overflow: hidden; background: #1b2930; }
+.bestiary-card-art img { display: block; margin: 0; width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; transition: transform .25s; }
+a.bestiary-card:hover img { transform: scale(1.035); }
+.bestiary-card-body { display: flex; flex-direction: column; gap: 10px; padding: 17px 18px 20px; flex: 1; }
+.bestiary-card-kicker { color: #e1b87c; font-size: 9px; letter-spacing: .09em; }
+.bestiary-card-body strong { font: 400 23px/1.18 Georgia, serif; color: #fff0d8; }
+.bestiary-card-description { color: #bdcbd2; font-size: 12px; line-height: 1.6; }
+.bestiary-card-action { display: flex; justify-content: space-between; gap: 8px; align-items: center; margin-top: auto; padding-top: 13px; border-top: 1px solid #53657380; color: #e6c590; font-size: 11px; }
+.bestiary-empty { padding: 22px; border: 1px dashed #7e8c94; text-align: center; }
+.bestiary-related { margin-top: 46px; padding-top: 25px; border-top: 1px solid #526270; }
+body .page .bestiary-related h2 { font-size: 29px; margin: 8px 0; }
+.bestiary-related > p { color: #bacbd3; font-size: 13px; max-width: 75ch; line-height: 1.7; }
+.bestiary-related-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 20px 0; }
+.bestiary-related-grid a.internal { display: flex; flex-direction: column; gap: 7px; padding: 15px 18px; background: #1c303d; border: 1px solid #476173; border-radius: 7px; color: #eddbbb; }
+.bestiary-related-grid a:hover { border-color: #e6c590; }
+.bestiary-related-grid span { font-size: 9px; letter-spacing: .08em; color: #aebdc7; }
+.bestiary-related-grid strong { font: 20px/1.2 Georgia, serif; }
+.bestiary-related-grid small { color: #e6c590; }
+body[data-slug="bestiaire"] .center > article { max-width: 100%; padding-top: 20px; margin: 18px auto; border-top: 1px solid #465a67; color: #aabac3; font-size: 13px; }
+.home-bestiary-teaser { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(230px, 1fr); gap: 25px; align-items: center; margin: 24px 0; border: 1px solid #806b4980; background: #1a2d38; border-radius: 10px; overflow: hidden; }
+.home-bestiary-teaser > div { padding: 25px 30px; }
+body .page .home-bestiary-teaser h2 { font-size: 29px; line-height: 1.2; margin: 9px 0; }
+.home-bestiary-teaser p { font-size: 13px; line-height: 1.7; color: #bfd0d5; }
+.home-bestiary-teaser .archive-button { margin-top: 16px; }
+.home-bestiary-teaser > a { display: block; align-self: stretch; }
+.home-bestiary-teaser img { width: 100%; height: 100%; max-height: 285px; object-fit: cover; }
+@media(max-width:1050px) { .bestiary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media(max-width:720px) {
+  .bestiary-introduction, .home-bestiary-teaser { grid-template-columns: 1fr; }
+  .bestiary-introduction img { max-height: 230px; }
+  .home-bestiary-teaser > a { max-height: 230px; }
+  .bestiary-related-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:520px) { .bestiary-grid { grid-template-columns: 1fr; } .bestiary-introduction { padding: 14px; } .home-bestiary-teaser > div { padding: 22px; } }
+@media(prefers-reduced-motion:reduce) { a.bestiary-card:hover, a.bestiary-card:hover img { transform: none; } }
 .nav-domains{margin-top:10px;padding-top:9px;border-top:1px solid #314451}
 .nav-domains summary{list-style:none;cursor:pointer;color:#d2d8db;font-size:12px;padding:10px 9px;border-radius:6px;border:1px solid #30414e;background:#162633}
 .nav-domains summary::-webkit-details-marker{display:none}

@@ -78,7 +78,7 @@ for (const file of sourceFiles.filter(f => f.endsWith('.md'))) {
 // Les tests de navigateur réels restent nécessaires pour les interactions et le stockage local.
 // L'accueil est un portail de choix ; le catalogue complet n'y figure plus.
 const portalHtml = await readFile(path.join(root, 'index.html'), 'utf8')
-for (const token of ['Les Chroniques', './studio/', './archives.html', './studio/espace-joueur.html', 'CONTRIBUTING.md']) {
+for (const token of ['Les Chroniques', './studio/', './archives.html', './studio/espace-joueur.html', 'CONTRIBUTING.md', './bestiaire', 'id="bestiaire"']) {
   assert(portalHtml.includes(token), `Le portail des Chroniques ne contient pas ${token}`)
 }
 const studioHtml = await readFile(path.join(root, 'studio', 'index.html'), 'utf8')
@@ -95,6 +95,32 @@ for(const token of ['id="library-search"', 'id="library-category"', 'class="arch
 }
 const publicCatalogCards = (catalogHtml.match(/class="archive-card internal"/g) ?? []).length
 assert(publicCatalogCards > 20, 'Le nouveau catalogue ne contient pas les fiches publiques attendues')
+
+// Une URL de fiche isolée ne suffit pas : le portail ET les Archives doivent afficher un accès
+// direct à une galerie réelle. Toutes les cartes illustrées ouvrent des pages publiques.
+const galleryHtml = await readFile(path.join(root, 'bestiaire.html'), 'utf8')
+const bestiaryReferences = JSON.parse(await readFile(path.resolve('studio-local/catalogue-bestiaire.json'), 'utf8')).entries
+assert(homepageHtml.includes('/bestiaire'), 'Accueil des Archives sans accès au bestiaire illustré')
+assert(!galleryHtml.includes('class="spoiler-disclosure"'), 'Le bestiaire public ne doit pas être derrière une porte MJ')
+for (const token of ['id="bestiary-search"', 'id="bestiary-type"', 'class="bestiary-grid"', 'id="bestiary-count"']) {
+  assert(galleryHtml.includes(token), `Galerie Bestiaire incomplète : ${token}`)
+}
+assert.equal((galleryHtml.match(/class="bestiary-card internal"/g) ?? []).length, bestiaryReferences.length,
+  'Certaines fiches illustrées ne sont pas visibles sur la galerie')
+for (const entry of bestiaryReferences) {
+  const slug = entry.path.replace(/^content\//, '').replace(/\.md$/, '')
+  const illustration = entry.art.src.replace(/^\.\/media\//, '')
+  const source = await readFile(path.resolve(entry.path), 'utf8')
+  const front = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  assert(front, `Frontmatter absent : ${entry.id}`)
+  const fm = YAML.parse(front[1])
+  assert(fm.publish === true && fm.spoilers !== true && fm.unlisted !== true, `Fiche privée ou non publiée dans la galerie : ${entry.id}`)
+  assert(galleryHtml.includes(`/${slug}`) && galleryHtml.includes(entry.name), `Accès direct absent dans la galerie : ${entry.id}`)
+  assert(galleryHtml.includes(`/studio/media/${illustration}`), `Illustration absente de la galerie : ${entry.id}`)
+  assert(await exists(path.join(root, 'studio', 'media', illustration)), `Image 404 dans le build : ${entry.id}`)
+  assert(await exists(path.join(root, `${slug}.html`)), `Fiche 404 dans le build : ${entry.id}`)
+}
+assert(!galleryHtml.includes('data-type="dragons"'), 'Les dragons individuels doivent rester dans les PNJ')
 
 const atelierFile = path.join(root, 'jouer', 'atelier-5d6.html')
 const atelierHtml = await readFile(atelierFile, 'utf8')
