@@ -3,11 +3,11 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "narrative_levels_only",
-  "version": 1,
-  "source": "Développement direct du JDR avec le créateur, 15 novembre 2026 ; portraits antérieurs LAB-DECH-003 adaptés",
+  "version": 3,
+  "source": "Développement direct du JDR avec le créateur, 15–16 novembre 2026 ; ANT-DECH-005 et approfondissements ANT-DECH-006, LAB-DECH-003 adapté",
   "entries": [
     {
-      "id": "PER-DECH-01", "version": "fb05b1e2fa657b2bfe9b5b2dccfac620396b9d30",
+      "id": "PER-DECH-01", "version": "eb33f9acc6e47c1a959d9f5852d139d649a7e739",
       "path": "content/personnages/PER-DECH-01.md", "image": "per-dech-01.svg",
       "artAlt": "Ysilde, passeuse en capuche turquoise et rame cassée.",
       "name": "Ysilde des Traversées", "levelIntent": 2, "corruptionStage": "Tentation",
@@ -17,7 +17,7 @@
       "tags": ["traversee", "jeune", "pacte", "navigation"]
     },
     {
-      "id": "PER-DECH-02", "version": "65ec00473a7cfede2107fbcf9cc4d2233a81b7b6",
+      "id": "PER-DECH-02", "version": "6a717fb3da6dbb1105962149976ed97ed2e4f47f",
       "path": "content/personnages/PER-DECH-02.md", "image": "per-dech-02.svg",
       "artAlt": "Séran, charpentier brun tenant un marteau et portant une cape de veille.",
       "name": "Séran du Gué", "levelIntent": 3, "corruptionStage": "Tentation",
@@ -27,7 +27,7 @@
       "tags": ["gue", "protecteur", "pacte", "rive"]
     },
     {
-      "id": "PER-DECH-03", "version": "163fe042fca5db31d076f39a50a0b15beeb28b42",
+      "id": "PER-DECH-03", "version": "50fcc555848768cb4d1587b277ec175972d82951",
       "path": "content/personnages/PER-DECH-03.md", "image": "per-dech-03.svg",
       "artAlt": "Maëline, soigneuse avec carnet blanc et branche médicinale.",
       "name": "Maëline des Cahiers Blancs", "levelIntent": 5, "corruptionStage": "Fêlure",
@@ -37,7 +37,7 @@
       "tags": ["soins", "registre", "souvenir", "refuge"]
     },
     {
-      "id": "PER-DECH-04", "version": "5b0b878cf40cef919cd7e734a694f1f0cd1fb08e",
+      "id": "PER-DECH-04", "version": "6e1710a14c67eb656a2043b3e0b480bb241e4f1b",
       "path": "content/personnages/PER-DECH-04.md", "image": "per-dech-04.svg",
       "artAlt": "James Veyrel, greffier aux lunettes d'argent et dossier scellé.",
       "name": "James Veyrel", "levelIntent": 7, "corruptionStage": "Fêlure",
@@ -47,7 +47,7 @@
       "tags": ["justice", "preuves", "greffier", "dossier"]
     },
     {
-      "id": "PER-DECH-05", "version": "1a4d0261de6cdec98452855f757497d014ff76b5",
+      "id": "PER-DECH-05", "version": "d591a1037dbfd3cd28656009aea579424cb6969e",
       "path": "content/personnages/PER-DECH-05.md", "image": "per-dech-05.svg",
       "artAlt": "Kelmor, maître de scène au demi-masque ivoire et rubans pourpres.",
       "name": "Kelmor des Masques", "levelIntent": 8, "corruptionStage": "Rupture",
@@ -57,7 +57,7 @@
       "tags": ["spectacle", "theatre", "lieur", "rituel"]
     },
     {
-      "id": "PER-DECH-06", "version": "81695a07a193fc825f38d9cd3004f7ee49829c79",
+      "id": "PER-DECH-06", "version": "3cf1f62f5ffa74e1697263aa9c4d83f94dcaed92",
       "path": "content/personnages/PER-DECH-06.md", "image": "per-dech-06.svg",
       "artAlt": "Dorsel, courtier en manteau ivoire avec un registre de dettes.",
       "name": "Dorsel, courtier des promesses", "levelIntent": 10, "corruptionStage": "Rupture",
@@ -67,7 +67,7 @@
       "tags": ["commerce", "dette", "convoi", "lieur"]
     },
     {
-      "id": "PER-DECH-07", "version": "173b4d8192863c8e26e7de7f0fb5cb658248fb81",
+      "id": "PER-DECH-07", "version": "95e4108304d2c121858473c07a2466d38d51dd7b",
       "path": "content/personnages/PER-DECH-07.md", "image": "per-dech-07.svg",
       "artAlt": "Rûna, artisane naine à longues tresses portant un anneau de forge.",
       "name": "Rûna l'Anneleuse", "levelIntent": 12, "corruptionStage": "Rupture",
@@ -77,7 +77,7 @@
       "tags": ["forge", "entraves", "liberation", "naine"]
     },
     {
-      "id": "PER-DECH-08", "version": "a76e2d32e9a4720e4af29eb8d5e4cb39e99d293d",
+      "id": "PER-DECH-08", "version": "789f199afca963e4422104912c181ba69e4bad78",
       "path": "content/personnages/PER-DECH-08.md", "image": "per-dech-08.svg",
       "artAlt": "Lysane, intendante austère aux cheveux gris, registres et clés.",
       "name": "Lysane des Reçus d'Hiver", "levelIntent": 15, "corruptionStage": "Déchéance",
@@ -87,7 +87,7 @@
       "tags": ["refuge", "intendance", "tribut", "trahison"]
     },
     {
-      "id": "PER-DECH-09", "version": "c7770c18a75b098f1e3b6894a2852ce5ccfcb46f",
+      "id": "PER-DECH-09", "version": "d4da0ed2f0d2ae71c976c341c4dd95efb08d73ae",
       "path": "content/personnages/PER-DECH-09.md", "image": "per-dech-09.svg",
       "artAlt": "Irveth, copiste aux tresses brunes, relique d'écaille et livre de noms.",
       "name": "Irveth la Copiste de Silex", "levelIntent": 17, "corruptionStage": "Déchéance",
@@ -97,7 +97,7 @@
       "tags": ["archives", "noms", "genealogie", "dragons"]
     },
     {
-      "id": "PER-DECH-10", "version": "975eac8aea0c60dec243e255550b99aebbbf9719",
+      "id": "PER-DECH-10", "version": "fa5ff9fa4ecedf8d6364bd8b776f54803afb4f37",
       "path": "content/personnages/PER-DECH-10.md", "image": "per-dech-10.svg",
       "artAlt": "Terval, intendant massif à barbe argent devant un banquet et des réserves.",
       "name": "Terval, Maître de la Dernière Table", "levelIntent": 20, "corruptionStage": "Abîme",
@@ -105,6 +105,106 @@
       "relations": ["PER-DECH-06", "PER-DECH-08", "PER-DECH-09"], "factions": [],
       "currentRegion": "Dépôt de la Dernière Table, transit du Méridien", "description": "Lieutenant d'Abîme à trois branches, non Seigneur, dont la vulnérabilité dépend du monopole.",
       "tags": ["approvisionnement", "abime", "greniers", "tribut"]
+    },
+    {
+      "id": "PER-DECH-11", "version": "d4d464bce8857606caf0afd371192188fa083295",
+      "path": "content/personnages/PER-DECH-11.md", "image": "per-dech-11.svg",
+      "artAlt": "Olyne, veilleuse en manteau sombre entourée de trois lanternes dorées.",
+      "name": "Olyne des Trois Lanternes", "levelIntent": 4, "corruptionStage": "Fêlure",
+      "role": "Veilleuse funéraire et fabricante de lanternes", "motivation": "Apaiser les vivants sans leur retirer le droit de garder leurs morts en mémoire.",
+      "relations": ["PER-DECH-05"], "factions": ["ORG-DECH-04"],
+      "currentRegion": "Relais de la route de Valbrume", "description": "Veilleuse liée aux rites d'Orvann, qui fait disparaître des souvenirs par de bonnes intentions devenues abusives.",
+      "tags": ["veille", "deuil", "lanterne", "souvenir"]
+    },
+    {
+      "id": "PER-DECH-12", "version": "ba28f76b39c60b86d87e95cc6b94585958dfed7c",
+      "path": "content/personnages/PER-DECH-12.md", "image": "per-dech-12.svg",
+      "artAlt": "Faël, jeune serrurier nain avec tablier de forge et clef brisée.",
+      "name": "Faël le Dénoueur", "levelIntent": 6, "corruptionStage": "Tentation",
+      "role": "Serrurier et coursier de chantier", "motivation": "Sauver des ouvriers et rester le maître de son savoir-faire.",
+      "relations": ["PER-DECH-07"], "factions": [],
+      "currentRegion": "Contreforts des Montagnes de l'Aube", "description": "Serrurier tenté par des clefs rituelles, entraîné vers la branche de Mordhéan mais pas encore lieur.",
+      "tags": ["serrure", "clef", "liberation", "nain"]
+    },
+    {
+      "id": "PER-DECH-13", "version": "1d52495e976955e08583bdc96f802e59b58a36b4",
+      "path": "content/personnages/PER-DECH-13.md", "image": "per-dech-13.svg",
+      "artAlt": "Rhéomar, horloger aux rouages et cadran de relais fêlé.",
+      "name": "Rhéomar des Intervalles", "levelIntent": 9, "corruptionStage": "Rupture",
+      "role": "Horloger de relais et Lieur", "motivation": "Sauver les récoltes sans réduire les travailleurs à des heures de production.",
+      "relations": ["PER-DECH-10"], "factions": [],
+      "currentRegion": "Ateliers de séchage du Méridien", "description": "Lieur de la branche d'Isméria ; le cadran local n'offre ni retour temporel ni contrôle de tous les ouvriers.",
+      "tags": ["horlogerie", "recoltes", "ismeria", "lieur"]
+    },
+    {
+      "id": "PER-DECH-14", "version": "3aad5a4615a2e2fa5ecbfefe5851b59cf5ffcf39",
+      "path": "content/personnages/PER-DECH-14.md", "image": "per-dech-14.svg",
+      "artAlt": "Varune, officière de pont, corde nouée et carnet de bord.",
+      "name": "Varune du Dernier Mot", "levelIntent": 11, "corruptionStage": "Rupture",
+      "role": "Médiatrice maritime et Lieuse", "motivation": "Conserver la parole donnée sans posséder les engagements des autres.",
+      "relations": ["PER-DECH-01", "PER-DECH-09", "PER-DECH-16"], "factions": [],
+      "currentRegion": "Embarcadères secondaires d'Entre-Rives", "description": "Lieuse de Vézraël qui transforme l'arbitrage des serments en droit de saisir la parole d'autrui.",
+      "tags": ["bateaux", "serment", "temoin", "lieuse"]
+    },
+    {
+      "id": "PER-DECH-15", "version": "ec5b1be134ffc94b981c0b07b8fd15620fef0a2a",
+      "path": "content/personnages/PER-DECH-15.md", "image": "per-dech-15.svg",
+      "artAlt": "Kareth, inspectrice pâle devant une cloche de verre et des dossiers.",
+      "name": "Kareth la Cloche de Verre", "levelIntent": 14, "corruptionStage": "Déchéance",
+      "role": "Inspectrice et Lieuse avancée", "motivation": "Empêcher les crimes sans soumettre à une sentence des personnes non coupables.",
+      "relations": ["PER-DECH-04"], "factions": ["ORG-DECH-02"],
+      "currentRegion": "Postes de contrôle entre Entre-Rives et Valbrume", "description": "Lieuse de Varnok à deux branches réelles, menaçant les libertés par des dossiers prédictifs illusoires.",
+      "tags": ["justice", "surveillance", "registres", "tribut"]
+    },
+    {
+      "id": "PER-DECH-16", "version": "10e20c3c75065cc44a98195793922425a962d491",
+      "path": "content/personnages/PER-DECH-16.md", "image": "per-dech-16.svg",
+      "artAlt": "Bastiane, officière cérémonielle en rouge sombre tenant deux rubans de serment.",
+      "name": "Bastiane des Noces Muettes", "levelIntent": 18, "corruptionStage": "Déchéance",
+      "role": "Médiatrice des engagements et Lieuse avancée", "motivation": "Garantir le consentement sans s'arroger le droit de le révoquer à la place d'autrui.",
+      "relations": ["PER-DECH-14", "PER-DECH-09"], "factions": [],
+      "currentRegion": "Relais du Méridien et d'Entre-Rives", "description": "Déchue avancée de Vézraël : deux branches de serments confisqués, dont une seconde génération de lieurs.",
+      "tags": ["consentement", "serment", "veille", "lieuse"]
+    },
+    {
+      "id": "PER-DECH-17", "version": "58c660e551319899b50fa090944df17b225d155e",
+      "path": "content/personnages/PER-DECH-17.md", "image": "per-dech-17.svg",
+      "artAlt": "Nielle, jeune magasinière coiffée de toile portant un sac de graines.",
+      "name": "Nielle des Grains Dormants", "levelIntent": 2, "corruptionStage": "Tentation",
+      "role": "Apprentie magasinière et contrôleuse de réserves", "motivation": "Préserver le grain sans livrer les noms des personnes qui en ont besoin.",
+      "relations": ["PER-DECH-10", "PER-DECH-06"], "factions": [],
+      "currentRegion": "Dépôts mineurs de la route du Méridien", "description": "Jeune magasinière tentée par un pacte matériel de conservation et la dénonciation des distributions libres.",
+      "tags": ["grains", "rations", "debutant", "tentation"]
+    },
+    {
+      "id": "PER-DECH-18", "version": "7970c80d0eaa0dbe8ad11e86204a0fde3e200b1c",
+      "path": "content/personnages/PER-DECH-18.md", "image": "per-dech-18.svg",
+      "artAlt": "Néris, portraitiste aux cheveux sombres, pinceau et miroir d'atelier fêlé.",
+      "name": "Néris des Miroirs Éteints", "levelIntent": 8, "corruptionStage": "Fêlure",
+      "role": "Portraitiste et scénographe", "motivation": "Rendre aux modèles leur dignité sans exiger le droit de posséder leurs images.",
+      "relations": ["PER-DECH-05", "PER-DECH-09"], "factions": [],
+      "currentRegion": "Ateliers d'images d'Entre-Rives", "description": "Artiste en Fêlure qui déforme des portraits préparés sans altérer physiquement les personnes.",
+      "tags": ["portrait", "art", "esmor", "miroir"]
+    },
+    {
+      "id": "PER-DECH-19", "version": "99c6ccfebf3745e9695630082ac30cb1be2f3101",
+      "path": "content/personnages/PER-DECH-19.md", "image": "per-dech-19.svg",
+      "artAlt": "Idrela, guérisseuse mûre avec couronne d'herbes pâles et bol de remède.",
+      "name": "Idrela des Herbes de Sel", "levelIntent": 13, "corruptionStage": "Rupture",
+      "role": "Guérisseuse et Lieuse", "motivation": "Garder les remèdes disponibles sans confisquer la liberté de sortie des malades.",
+      "relations": ["PER-DECH-03", "PER-DECH-08"], "factions": [],
+      "currentRegion": "Salle de soins sur la route de Valbrume", "description": "Lieuse de la branche d'Halvéra qui a transformé une préparatrice de remèdes sans en faire une détenue.",
+      "tags": ["remedes", "halvera", "soins", "lieuse"]
+    },
+    {
+      "id": "PER-DECH-20", "version": "31250aab4c848f4cdba4091e73f88e9849182da9",
+      "path": "content/personnages/PER-DECH-20.md", "image": "per-dech-20.svg",
+      "artAlt": "Hévar, archiviste au manteau de cendres tenant un feuillet calciné et un livre.",
+      "name": "Hévar des Archives Brûlées", "levelIntent": 19, "corruptionStage": "Déchéance",
+      "role": "Archiviste et Lieur avancé", "motivation": "Soulager le deuil sans anéantir les preuves de l'histoire d'autrui.",
+      "relations": ["PER-DECH-11", "PER-DECH-09"], "factions": [],
+      "currentRegion": "Dépôts de passage vers le Méridien", "description": "Lieur d'Orvann à deux branches, destructeur d'archives à qui les archivistes libres opposent des copies.",
+      "tags": ["archives", "feu", "deuil", "decheance"]
     }
   ]
 }

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bastiane, officière cérémonielle en rouge sombre, rubans de serment dans les mains" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#321d2e"/><circle cx="200" cy="193" r="143" fill="none" stroke="#dcaa77" stroke-width="4" opacity=".65"/>
+<path d="M39 443Q53 322 169 305h66q106 25 128 138Z" fill="#733e54" stroke="#d6a17c" stroke-width="5"/><path d="M157 316 200 364l42-48-18 110h-45Z" fill="#e2c7b5" stroke="#bc7881" stroke-width="4"/>
+<ellipse cx="200" cy="195" rx="67" ry="85" fill="#bd907f"/><path d="M132 176Q134 94 204 99q70 4 67 83l-39-37-25-22-48 30Z" fill="#31232c"/><path d="M147 167q-20 72-10 131m126-130q20 71 9 131" stroke="#2e2431" stroke-width="12" fill="none"/><path d="M153 211q16-7 34 0m27 0q16-7 33 0" stroke="#5b3d41" stroke-width="4" fill="none"/><path d="M175 258q24 10 48-2" stroke="#8a5157" stroke-width="4" fill="none"/>
+<path d="M45 345q62 40 97 10 18-13 48 4" fill="none" stroke="#f4b8a6" stroke-width="9" stroke-linecap="round"/><path d="M355 346q-58 38-97 8-21-13-47 5" fill="none" stroke="#e9bd8d" stroke-width="9" stroke-linecap="round"/><circle cx="200" cy="360" r="12" fill="#d4a770" stroke="#d6b6a2" stroke-width="4"/>
+<text x="200" y="462" text-anchor="middle" fill="#f6e1c4" font-family="serif" font-size="21" letter-spacing="2">BASTIANE</text>
+</svg>

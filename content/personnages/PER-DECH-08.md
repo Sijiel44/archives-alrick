@@ -36,4 +36,14 @@ Après un hiver de disette, Lysane signa un accord qui fit arriver des charrois 
 
 **Résolutions :** trêve humanitaire, ouverture des contrats, protection des personnes évacuées, rupture progressive des branches, procès ou fuite. La rédemption d'une Déchue avancée serait difficile et ne peut jamais garantir le pardon des victimes.
 
+## Deux branches, deux résistances
+
+Son réseau ne se résume pas aux hébergés. **Mélor des Portes**, intendant transformé par pacte, recrute à son tour des veilleurs devenus lieurs ; **Ysmera des Livres**, receveuse qui a choisi une Chute liée distincte, entretient la seconde branche par des avances de vivres. Les pensionnaires qui dorment derrière les portes restent des personnes accueillies ou retenues, **jamais des preuves de Chute liée par leur seule présence**. La séparation de ces branches diminuerait l'Emprise de Lysane, sans dissoudre les bâtiments ni nourrir les résidents.
+
+Lors de la Saison des Toits Gelés, elle a commandé une distribution d'urgence qui sauva un hameau. Plus tard, elle fit retenir des départs afin de conserver les effectifs des maisons. À une réunion récente, **Rime** démontra qu'une cuisine indépendante pouvait servir autant de repas ; Lysane lui répondit en réduisant son accès aux greniers avant de se raviser. Cette contradiction est publique et peut être exploitée sans exposer d'Ancrage secret.
+
+## Une crise jouable sans siège
+
+Des personnes souhaitent quitter le Refuge des Trois-Toits alors qu'une tempête approche. Les PJ peuvent sécuriser un abri de substitution, faire enregistrer les sorties par témoins, séparer les vivres des obligations et traiter avec Mélor ou Ysmera. Une attaque aveugle des réserves nuirait d'abord aux victimes. Lysane peut consentir une évacuation provisoire sans renoncer à son rang ; la rupture durable de ses branches requiert des engagements plus coûteux qu'une unique victoire sociale.
+
 [[personnages-dechus|Galerie des personnages déchus]] · [[groupes/ORG-DECH-01|Maisons du Seuil Ouvert — réseau distinct]]

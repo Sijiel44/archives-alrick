@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Faël, jeune serrurier nain au tablier de forge tenant une clef brisée" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#292e38"/><circle cx="200" cy="192" r="147" fill="none" stroke="#ca9362" stroke-width="3" opacity=".65"/>
+<path d="M52 443Q73 320 161 308h83q88 12 104 135Z" fill="#52635b" stroke="#d1a76c" stroke-width="5"/><path d="M157 344 137 443h131L242 344Z" fill="#765745" stroke="#c3ad8d" stroke-width="4"/>
+<ellipse cx="200" cy="198" rx="74" ry="85" fill="#ba8764"/><path d="M130 184Q132 108 204 109q69 1 68 74l-42-19-34-33-36 36Z" fill="#684536"/><path d="M145 243Q149 304 200 317q52-10 58-74l-24 13-32 10-32-11Z" fill="#784a34"/><path d="M156 213h33m22 0h33" stroke="#3b3434" stroke-width="4"/><path d="M172 286h56" stroke="#debb96" stroke-width="4"/>
+<circle cx="308" cy="365" r="22" fill="none" stroke="#dfbd69" stroke-width="9"/><path d="M310 384v47m0-16 20-7m-20-8-16-8" stroke="#dfbd69" stroke-width="10" fill="none"/><path d="m85 347 32 22-28 34" fill="none" stroke="#b5c3ad" stroke-width="7"/>
+<text x="200" y="461" text-anchor="middle" fill="#f5dfbe" font-family="serif" font-size="22" letter-spacing="3">FAËL</text>
+</svg>

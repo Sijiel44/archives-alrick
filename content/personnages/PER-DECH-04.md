@@ -36,4 +36,18 @@ James fut formé à distinguer une preuve d'un soupçon. Il empêcha un jugement
 
 **Résolution :** audience contradictoire, protection des témoins, retrait du sceau, suspension de mandat ou fuite pendant une enquête. James peut confesser une falsification sans obtenir l'impunité.
 
+## Le prix d'avoir raison
+
+James conserve une plume cassée : avec elle, avant le pacte, il avait rédigé l'argument qui sauva **Lerin des Saules**, accusé sur un faux témoignage. Plus tard, devenu greffier influent, il écarta une déposition d'**Avel l'Éleveur** parce qu'elle contredisait une procédure de prévention qu'il avait défendue. Avel ne fut pas condamné par magie : il perdit son marché et son honneur par des décisions administratives bien humaines. James a remporté un appel contre un faux registre, mais refusé d'enquêter sur la fausse signature de son propre bureau.
+
+**Eveline** connaît son ancienne rigueur et peut produire le registre original. **Hadrine la Veilleuse** (liée aux dossiers du gué de Séran) sollicite les noms de voyageurs ; James n'a aucune preuve qu'elle représente une juridiction légitime. **Dorsel** propose de financer le classement des pièces, au prix d'un accès privilégié aux dossiers. James désire leur argent tout en craignant leur mainmise : il se croit indépendant parce qu'il signe lui-même les décisions.
+
+## Trois scènes possibles
+
+1. **Contradictoire :** les PJ apportent un témoignage tardif ; James leur accorde une audience mais veut exclure un témoin « irrégulier ».
+2. **Coulisses :** Eveline les invite à comparer un registre d'origine avec la copie officielle ; protéger son poste évite qu'elle devienne une victime collatérale.
+3. **Choix :** James peut publier le rectificatif, demander une suspension ou couvrir son erreur. Il est possible de quitter le tribunal avec les preuves sans le vaincre en duel.
+
+Sa Fêlure ne lui donne aucune prescience. Il a besoin de documents existants, de signatures reconnues et de fonctionnaires disposés à l'écouter ; un sceau brisé n'efface pas les injustices déjà prononcées.
+
 [[personnages-dechus|Galerie des personnages déchus]] · [[groupes/ORG-DECH-02|Chambre des Préventions]]

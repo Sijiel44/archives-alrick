@@ -45,7 +45,7 @@ La Déchéance est un **mécanisme surnaturel de contre-ascension** qui exige, �
 
 Les [[groupes/organisations-decheance|six organisations et contre-pouvoirs autour de la Déchéance]] montrent aussi des conflits d'institutions : une maison peut soigner sans exiger la soumission, une caisse financer le secours sans posséder ses débiteurs, et une assemblée protéger les personnes qui souhaitent partir. Elles appartiennent au monde partagé ; leurs implantations et histoires de campagne ne sont pas préétablies.
 
-Les [[personnages/personnages-dechus|dix portraits de Déchus et de pactisés]] proposent des adversaires de niveaux indicatifs 2 à 20, avec leurs choix passés, leurs dépendances, leurs lieurs et leurs possibilités de repli. Ces niveaux ne sont pas des profils 5d6 validés.
+Les [[personnages/personnages-dechus|vingt portraits de Déchus et de pactisés]] proposent des adversaires de niveaux indicatifs 2 à 20, avec leurs choix passés, leurs dépendances, leurs lieurs et leurs possibilités de repli. Ces niveaux ne sont pas des profils 5d6 validés.
 
 ## Ce qui doit encore être créé
 

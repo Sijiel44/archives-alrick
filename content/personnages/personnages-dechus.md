@@ -1,6 +1,6 @@
 ---
 publish: true
-title: "Visages de la Déchéance — dix antagonistes, niveaux 2 à 20"
+title: "Visages de la Déchéance — vingt antagonistes, niveaux 2 à 20"
 categorie: "personnage"
 canon_statut: "lore_valide"
 etat_editorial: valide
@@ -10,7 +10,7 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: [lecteurs, joueurs, mj]
 usage_en_jeu: [reference, rencontre, scenario]
-description: "Dix personnages déchus ou tentés de niveaux variés, avec pactes, histoires, relations, lieux d'activité, failles et désamorçages."
+description: "Vingt personnages déchus ou tentés de niveaux variés, avec pactes, histoires, relations, lieux d'activité, failles et désamorçages."
 tags: [decheance, antagonistes, personnages, niveaux, pactes, chroniques]
 ---
 
@@ -18,7 +18,7 @@ tags: [decheance, antagonistes, personnages, niveaux, pactes, chroniques]
 
 Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont choisi un pacte peuvent être guérisseurs, artistes, greffiers, commerçants, archivistes ou artisans. Le bénéfice initial a souvent été **réel** ; le piège est de réclamer ensuite le droit de disposer de la vie d'autrui.
 
-**Dix biographies appartiennent désormais au monde partagé.** Leurs réussites et revers passés constituent le nouveau passé de ces personnes, sans attribuer de séance supplémentaire à l'Odyssée d'Orin ou à une campagne de joueurs. Leur situation est un **point de départ vivant** : chaque MJ peut déplacer un relais, nouer une alliance ou provoquer une défaite sans changer les autres tables.
+**Vingt biographies appartiennent désormais au monde partagé.** Les dix premières ont été étoffées avec des conflits supplémentaires, des subalternes nommés et des scènes de résolution ; dix nouveaux visages élargissent la progression. Leurs réussites et revers passés constituent le nouveau passé de ces personnes, sans attribuer de séance supplémentaire à l'Odyssée d'Orin ou à une campagne de joueurs. Leur situation est un **point de départ vivant** : chaque MJ peut déplacer un relais, nouer une alliance ou provoquer une défaite sans changer les autres tables.
 
 | Personnage | Niveau de référence¹ | État narratif | Branche / fonction | Faille à exploiter |
 | --- | ---: | --- | --- | --- |
@@ -32,6 +32,16 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 | [[PER-DECH-08|Lysane des Reçus d'Hiver]] | **15** | Déchéance | Intendante liée à Nérékhal | Patients relogés, branches déliées |
 | [[PER-DECH-09|Irveth la Copiste de Silex]] | **17** | Déchéance | Lieuse liée à Seyrond | Archives dupliquées et noms restitués |
 | [[PER-DECH-10|Terval, la Dernière Table]] | **20** | Abîme | Lieutenant de l'orbite de Caldria | Monopole brisé sans famine |
+| [[PER-DECH-11|Olyne des Trois Lanternes]] | **4** | Fêlure | Veilleuse tentée par Orvann | Veillée libre et souvenirs préservés |
+| [[PER-DECH-12|Faël le Dénoueur]] | **6** | Tentation | Serrurier lié à l'atelier de Rûna | Clefs ordinaires et trajets restitués |
+| [[PER-DECH-13|Rhéomar des Intervalles]] | **9** | Rupture | Lieur de la branche d'Isméria | Horaires vérifiés, contrat du disciple défait |
+| [[PER-DECH-14|Varune du Dernier Mot]] | **11** | Rupture | Lieuse de Vézraël aux embarcadères | Témoins et copies des serments |
+| [[PER-DECH-15|Kareth la Cloche de Verre]] | **14** | Déchéance | Lieuse de Varnok à deux branches | Audience libre et branches distinctes |
+| [[PER-DECH-16|Bastiane des Noces Muettes]] | **18** | Déchéance | Lieuse de Vézraël à deux branches | Consentement et archives restituées |
+| [[PER-DECH-17|Nielle des Grains Dormants]] | **2** | Tentation | Magasinière proche du réseau Terval | Réserve libre et registre rétabli |
+| [[PER-DECH-18|Néris des Miroirs Éteints]] | **8** | Fêlure | Portraitiste influencée par Esmor | Droits des modèles et originaux rendus |
+| [[PER-DECH-19|Idrela des Herbes de Sel]] | **13** | Rupture | Lieuse de la branche d'Halvéra | Soins libres et Chute liée dénouée |
+| [[PER-DECH-20|Hévar des Archives Brûlées]] | **19** | Déchéance | Lieur d'Orvann à deux branches | Copies préservées et témoins protégés |
 
 ¹ **Niveaux proposés pour calibrer les rencontres**, et non des profils calculés. Aucun bonus, PV, dégâts ou capacité 5d6 n'est accordé par cette page. **Le niveau 2–20 est distinct de l'Emprise et de la place dans la pyramide.** INDEX/MATH/PNJ devront établir les profils avant une opposition chiffrée.
 
@@ -42,6 +52,14 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 - **Les preuves opposées au récit :** James gomme une objection ; Kelmor exige une représentation unanime ; Irveth vend des noms. Une copie authentique, un témoin protégé ou un procès ouvert ont de la force contre ces trois modèles de prédation.
 - **La faim et l'approvisionnement :** Terval affaibli peut devenir plus dangereux tandis que des cuisines libres et des transporteurs concurrents donnent des alternatives. Les victimes ne doivent pas payer d'avance le prix de la victoire.
 - **Les chaînes :** Rûna sait quelles entraves elle a fabriquées. Un pacte rompu n'efface pas les crimes, mais ses connaissances peuvent permettre de libérer des captifs.
+- **Veillées et adieux :** Olyne apaise le deuil au prix des traces que des proches souhaitent garder. Kelmor lui propose un spectacle qui pourrait convertir une cérémonie de souvenir en adhésion forcée.
+- **Les heures volées au repos :** Rhéomar obtient un rendement réel avec un cadran local ; les ouvriers, son disciple Mésal et les villages sans rite proposent d'autres formes de travail. Terval voudrait posséder la récolte.
+- **Les serments confisqués :** Varune arbitre des équipages, Bastiane des cérémonies et Irveth des lignées. Leurs archives ont des valeurs incompatibles ; le refus d'une personne doit rester possible même lorsqu'une preuve ancienne existe.
+- **La prévention au pouvoir :** James peut être tenté d'imiter Kareth ; Eveline et les témoins gardent la possibilité d'arrêter l'engrenage par des copies et des audiences libres.
+- **La ration et son prix :** Nielle peut sauver le grain d'un village tout en transmettant ses listes à Terval ou Dorsel. Orenne propose une voie de distribution qui ne nécessite pas de pacte.
+- **Les visages et les copies :** Néris transforme les images, Irveth revendique les noms et Kelmor veut une représentation sans dissidence ; une preuve visuelle libre peut contrarier les trois.
+- **Le soin et la captivité :** Idrela, Maëline et Lysane veulent sauver des vies mais se disputent le droit de retenir les personnes. Les patients ne deviennent jamais tribut par leur présence.
+- **La mémoire en flammes :** Hévar souhaite brûler les archives des endeuillés, tandis qu'Irveth voudrait les posséder et qu'Olyne hésite encore à renoncer aux rites d'adieux.
 
 ## L'arc d'escalade sans scénario obligatoire
 

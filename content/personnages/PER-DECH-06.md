@@ -36,4 +36,14 @@ Dorsel commença comme comptable de convois. Il vit des villages recevoir leurs 
 
 **Résolutions :** audit des livraisons, libre choix des transporteurs, rupture d'une branche réelle, protection des créanciers et débiteurs, retrait d'un marché. Le neutraliser sans prévoir de convoi alternatif laisserait les malades sans remèdes.
 
+## La dette à hauteur d'homme
+
+**Célisse des Bottes**, ancienne apprentie courtière, a accepté un pacte réel après que Dorsel eut assuré le transport de son frère blessé ; elle constitue une Chute liée, et non le simple exemple d'une cliente. Elle veut désormais organiser ses propres contrats et pourrait renverser son maître. **Géraud le Charretier**, lui, n'a accepté que des paiements ordinaires : son emploi ne le rend ni corrompu ni lié au tribut. Dorsel utilise la réussite d'un convoi de secours pour effacer le souvenir d'un second convoi qu'il fit volontairement retarder.
+
+Avec **Maëline**, ses mots restent mesurés ; avec **Lysane**, il joue le rôle du repreneur bienveillant ; avec **Terval**, il menace de casser les prix. Ses ressources ont des limites matérielles : mulets, routes, réserves achetées, crédit des vendeurs et confiance des villages. Une preuve de falsification ou un réseau de livraisons libres peut ruiner davantage ses plans qu'une embuscade.
+
+## Scènes et issues
+
+Un village reçoit le remède mais découvre une clause d'exclusivité. Les PJ peuvent négocier un paiement comptant, comparer les bordereaux et escorter un autre fournisseur. Célisse peut souhaiter la fin de la dépendance tout en défendant les contrats qu'elle a signés ; sa sortie du pacte nécessite la rupture du lien réel et l'acceptation de ses responsabilités. Dorsel peut se retirer avec les cargaisons encore en sa possession : protéger les remèdes doit passer avant sa capture.
+
 [[personnages-dechus|Galerie des personnages déchus]] · [[groupes/ORG-DECH-03|Caisse des Veilles — organisme non assimilé à Dorsel]]

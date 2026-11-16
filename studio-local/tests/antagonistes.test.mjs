@@ -17,7 +17,7 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-origin').selectOption('archives');
-  await page.locator('#catalogue-count').getByText('16 fiches', { exact: true }).waitFor();
+  await page.locator('#catalogue-count').getByText(/^26 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   const cards = page.locator('#catalogue-list article');
   assert.equal(await cards.count() > 6, true);
   const button = page.getByRole('button', { name: 'Voir la fiche de James Veyrel' });
@@ -25,6 +25,10 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   const dialog = page.locator('#resource-dialog');
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-04\.md$/);
   assert.equal(await dialog.getByRole('button', { name: 'Créer un PNJ de campagne' }).isDisabled(), true);
+  await page.keyboard.press('Escape');
+  await page.locator('#catalogue-next').click();
+  await page.getByRole('button', { name: 'Voir la fiche de Kareth la Cloche de Verre' }).click();
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-15\.md$/);
   await page.keyboard.press('Escape');
   await page.locator('#nav-home').click();
   await page.locator('#campaign-name').fill('Campagne témoin — Déchéance');

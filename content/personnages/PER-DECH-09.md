@@ -36,4 +36,14 @@ Irveth travailla longtemps à restituer des noms oubliés après des déplacemen
 
 **Résolutions :** restitution des pièces, archives multiples, révélation de faux contrats, protection des témoins, rupture d'un lien de tribut, négociation portant sur un document précis. La connaissance perdue n'est pas automatiquement restaurée par un succès de jet.
 
+## Les noms qu'elle ne possède pas
+
+Irveth a autrefois retrouvé le nom d'une disparue grâce à un fragment de lettre, et la famille entière lui en est restée reconnaissante. Elle considère cette gratitude comme une dette sans fin. Deux de ses correspondants, **Orris le Dépositaire** et **Féline des Reliquaires**, ont librement accepté une transformation surnaturelle, puis ont établi des dépendances distinctes : ils constituent ses deux branches, **Orris étant lui-même lieur**. Les familles dont elle conserve les généalogies sont des personnes documentées ou exploitées, pas automatiquement des Déchues.
+
+**Dalia du Conservatoire** classe les copies sans faire payer la restitution d'un nom ; Irveth l'admire et la déteste pour cette simplicité. **Seyrond** lui réclame des reliques précises, jamais une mémoire omnisciente. **Terval** assure le transport d'une partie des colis et utilise le calendrier des convois comme moyen de pression. Irveth peut falsifier une citation dont elle contrôle l'original, mais n'efface pas les preuves gardées ailleurs.
+
+## L'épreuve des trois archives
+
+Une communauté apporte trois versions d'un arbre de parenté. Irveth exige la propriété exclusive du dossier pour l'examiner ; Dalia propose une lecture contradictoire, puis des copies distribuées. Les PJ peuvent authentifier les objets, protéger les porteurs et négocier le retour des reliques. Briser un lien avec Orris ou Féline peut priver Irveth de tribut, mais ne dispense pas de rendre les noms à leurs détenteurs légitimes. Un dragon concerné par un tel dossier reste maître de sa propre réaction : aucune allégeance draconique n'est décidée par ce portrait.
+
 [[personnages-dechus|Galerie des personnages déchus]] · [[groupes/ORG-DECH-05|Conservatoire des Noms]]

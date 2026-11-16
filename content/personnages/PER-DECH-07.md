@@ -36,4 +36,14 @@ Rûna réparait des entraves de travail puis des verrous pour protéger les ouvr
 
 **Résolutions :** désassembler les anneaux, libérer les captifs, assurer un travail de remplacement, obtenir un témoignage d'atelier, ou se retirer devant l'escorte. Les personnes asservies restent des victimes, même si elles résistent dangereusement aux PJ.
 
+## Sous le marteau
+
+Rûna a conçu un premier anneau pour retenir un geôlier pendant l'évacuation d'ouvriers ; elle en conserve le dessin comme preuve qu'un mécanisme peut sauver sans posséder. Lorsqu'elle comprit que ses clients demandaient désormais des serrures contre des innocents, elle cacha plusieurs jeux de clés auprès de **Miren**. Puis, craignant pour son atelier, elle accepta d'initier **Tovan le Souffleur** à une transformation surnaturelle véritable. Il demeure sa Chute liée, capable de ses propres choix ; les captifs qu'il surveille ne remplacent jamais ce lien et ne sont pas des recrues coupables.
+
+**Tovan** tient le registre des lots et rêve d'être reconnu comme maître. **Miren**, amie d'enfance, réclame des réparations publiques. **Darel**, convoyeur de chaînes non pactisé, connaît les itinéraires et peut témoigner sans être présumé complice de tous les rites. La dépendance de Rûna à Mordhéan passe par des commandes identifiables et des contreparties ; son talent de forgeronne ne lui donne aucun droit sur le métal présent dans tout un royaume.
+
+## Face aux PJ
+
+Un lot d'anneaux arrive dans une mine fermée : faut-il l'intercepter, identifier les destinataires ou obtenir une démonstration publique qui expose sa fonction ? Rûna peut accepter un marché visant à détruire les plans, mais se soucie réellement du devenir de Tovan. S'il quitte librement son pacte, elle perd son tribut ; il peut aussi devenir rival. **Retraite possible :** quitter le chantier en emportant les preuves, puis revenir avec des artisans capables de remplacer les serrures dangereuses.
+
 [[personnages-dechus|Galerie des personnages déchus]] · [[monde/decheance-canon|Tribut et Chutes liées]]

@@ -397,3 +397,10 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Les niveaux sont des intentions de rencontre et non des fiches 5d6 homologuées ; ne pas appliquer les chiffres du mini-système de Déchéance 2d6.
 # Notes MJ, tactiques cachées, véritables réseaux d'Ancrages et variantes de table restent hors du site public. Pas de faits joués pour les campagnes d'Orin.
 # Publication demandée après CI verte et recette navigateur, avec contrôle public des images, du rayon Studio et de l'absence de données privées.
+
+# ANT-DECH-006 — Enrichissement des personnages et nouvelles biographies — 15 novembre 2026.
+# Le créateur demande de poursuivre le développement direct du JDR : davantage de personnages, davantage d'histoires et de relations pour ceux déjà créés, intégration immédiate au canon d'univers et publication directe.
+# Publier six nouveaux portraits PER-DECH-11 à 16, six illustrations SVG originales, l'enrichissement documenté de PER-DECH-01 à 10 et les index du monde.
+# Catalogue MJ enrichi à seize références publiques et copies PNJ locales ; aucun profil de combat, aucun pacte secret, Ancrage caché ou note privée ne quitte la frontière du MJ.
+# Maintenir les scripts 5d6, sauvegardes et politiques de projection ; exiger tests Node, liens Quartz, Chrome, CI et contrôle public des pages et illustrations.
+# Extension du même lot demandée par le créateur le 16 novembre 2026 : quatre portraits supplémentaires PER-DECH-17 à 20 (Nielle, Néris, Idrela, Hévar), quatre SVG originaux et catalogue étendu à vingt personnages.
