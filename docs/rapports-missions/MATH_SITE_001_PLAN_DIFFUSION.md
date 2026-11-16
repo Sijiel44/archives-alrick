@@ -4,13 +4,14 @@
 
 ## Livrable de diffusion
 
-- Page Quartz : `content/jouer/systeme-5d6-unifie-reference.md` ; frontmatter `publish: false`, `canon_statut: proposition_non_jouee`, `etat_editorial: en_cours`.
-- Diagrammes originaux WebP : `content/images/regles/math-site-001-{jet,degats,divin}.webp` ; textes alternatifs intégrés à la page.
-- Sources des figures SVG **hors** répertoire `content/` (conformément au contrat éditorial) : `docs/rapports-missions/illustrations/math-site-001-{jet,degats,divin}.svg`.
+- Page Quartz principale : `content/jouer/systeme-5d6-unifie-reference.md` ; frontmatter `publish: false`, `canon_statut: proposition_non_jouee`, `etat_editorial: en_cours`.
+- Guide complémentaire de conception : `content/jouer/atelier-creation-5d6-guide-illustre.md` ; deux pages croisées, **toutes deux non publiées**. Personnage N5 au budget exact, Traqueur fictif, capacités, Étincelle, objets et trois scènes de test.
+- **Huit** diagrammes originaux WebP : `content/images/regles/math-site-001-{jet,degats,divin,ateliers,personnage,creature,etincelle,objet}.webp` ; textes alternatifs intégrés à chaque page.
+- Sources des figures SVG **hors** répertoire `content/` (conformément au contrat éditorial) : `docs/rapports-missions/illustrations/math-site-001-{jet,degats,divin,ateliers,personnage,creature,etincelle,objet}.svg`.
 - Régénération déterministe : `node scripts/render-math-site-001-illustrations.mjs` avec `sharp` déjà installé par le dépôt. Contrôle format WebP, largeur et taille de fichier.
-- Recette indépendante : `node scripts/test-math-site-001.mjs` (statut brouillon, trois liens images, dimensions/format/alt et garde-fous mécaniques).
+- Recette indépendante : `node scripts/test-math-site-001.mjs` (deux statuts brouillon, huit liens images, dimensions/format/alt, budget M01 N5, exemples de toucher/défense/dégâts, artisanat et mental).
 
-La page est conçue pour l'ardoise sombre/cuivre/or du nouveau site : une formule de jet visuelle, une cascade de réduction des dégâts, une frise de l'éveil divin. Les illustrations sont des **schémas mécaniques originaux** créés pour ce lot, sans iconographie de lore ni illustration extérieure sous droits. Le contenu est utilisable sur téléphone, tablette, ordinateur et en aide de jeu imprimée. Les textes alternatifs permettent une lecture sans images.
+Les pages sont conçues pour l'ardoise sombre/cuivre/or du nouveau site : formule de jet, cascade de dégâts, frise divine, budget de personnage, fiche de créature, chemins de création, intensités de feu et comparaison d'objets. Les illustrations sont des **schémas mécaniques originaux** créés pour ce lot, sans iconographie de lore ni illustration extérieure sous droits. Le contenu est utilisable sur téléphone, tablette, ordinateur et en aide de jeu imprimée. Les textes alternatifs permettent une lecture sans images.
 
 ## Décisions déjà exprimées par le créateur
 
@@ -41,10 +42,13 @@ La page est conçue pour l'ardoise sombre/cuivre/or du nouveau site : une formul
 - [ ] Contre-audits MAG, CAP, OBJETS, INDEX, Bestiaire, ARCHIVES (sauvegarde/idempotence) et DG.
 - [ ] Vérifier l'affichage mobile des figures, la taille des images, leur chargement et leur contraste en thème ardoise.
 - [ ] Test manuel lecture sans images + navigation clavier, texte alternatif pertinent, lisibilité des tableaux.
+- [ ] Vérifier avec M01/M02/M03 que Maëla N5 utilise exactement 24 points, que le Traqueur fictif N5 reste une instance sans code Bestiaire officiel et que la scène 5d6 reste faisable sur table.
+- [ ] Revoir avec MAG le rôle des trois intensités d'Étincelle : **aucun chiffre de coût ou dégât officiel repris du banc de démonstration**.
+- [ ] Vérifier avec OBJETS que les deux lames de l'exemple se distinguent par une propriété homologuée, pas par le texte descriptif.
 - [ ] Recette des boutons dans Studio : prévisualisation, engagement coût/jet, confirmation MJ, journal, double-clic, export/reprise.
 - [ ] Tests de combat sur table avec adversaire actif, coût des ressources, couverture N1/5/10/15/20/21/25, plusieurs rangs de maîtrise.
 - [ ] Approbation expresse de l'homologation mathématique et de la diffusion par DG et créateur.
-- [ ] **Après** cette approbation seulement : passer `publish: true`, créer un lien de navigation depuis `content/jouer/index.md`, vérifier le rendu Quartz, puis fusion/déploiement selon le circuit du site.
+- [ ] **Après** cette approbation seulement : passer `publish: true` pour **les deux pages**, créer les liens de navigation depuis `content/jouer/index.md`, vérifier le rendu Quartz, puis fusion/déploiement selon le circuit du site.
 
 ## Passations
 

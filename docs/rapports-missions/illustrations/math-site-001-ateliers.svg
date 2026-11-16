@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-label="Quatre portes de création, personnage, créature, sort et objet. Toutes fournissent des données et effets autorisés à la même résolution 5d6/M03, puis le MJ confirme leur application et leur sauvegarde.">
+  <rect width="1200" height="760" rx="22" fill="#111f2c"/>
+  <rect x="3" y="3" width="1194" height="754" rx="20" fill="none" stroke="#bd8b61" stroke-width="5"/>
+  <g font-family="DejaVu Sans,sans-serif">
+    <text x="64" y="89" font-size="42" font-weight="bold" fill="#f3e6ce">QUATRE CRÉATIONS. UN MÊME SYSTÈME.</text>
+    <text x="64" y="140" font-size="26" fill="#bacbd2">Une fiche décrit l'origine du pouvoir. Le calcul reste commun.</text>
+    <rect x="59" y="190" width="256" height="180" rx="18" fill="#213b48" stroke="#78c2bb" stroke-width="3"/>
+    <rect x="334" y="190" width="256" height="180" rx="18" fill="#253d3d" stroke="#afca96" stroke-width="3"/>
+    <rect x="609" y="190" width="256" height="180" rx="18" fill="#3e312d" stroke="#e6aa78" stroke-width="3"/>
+    <rect x="884" y="190" width="256" height="180" rx="18" fill="#3a3040" stroke="#c5a4da" stroke-width="3"/>
+    <text x="187" y="248" font-size="27" font-weight="bold" fill="#e5f3f2" text-anchor="middle">PERSONNAGE</text>
+    <text x="187" y="293" font-size="22" fill="#d5e4e5" text-anchor="middle">Carac. · maîtrise</text>
+    <text x="187" y="331" font-size="22" fill="#d5e4e5" text-anchor="middle">Niveau · choix</text>
+    <text x="462" y="248" font-size="27" font-weight="bold" fill="#e9f1de" text-anchor="middle">CRÉATURE</text>
+    <text x="462" y="293" font-size="22" fill="#d8e5d7" text-anchor="middle">Profil · variante</text>
+    <text x="462" y="331" font-size="22" fill="#d8e5d7" text-anchor="middle">Danger · PV</text>
+    <text x="737" y="248" font-size="27" font-weight="bold" fill="#ffe6cb" text-anchor="middle">SORT</text>
+    <text x="737" y="293" font-size="22" fill="#f7d9c2" text-anchor="middle">École · Cercle</text>
+    <text x="737" y="331" font-size="22" fill="#f7d9c2" text-anchor="middle">Intensité · coût</text>
+    <text x="1012" y="248" font-size="27" font-weight="bold" fill="#eadbf4" text-anchor="middle">OBJET</text>
+    <text x="1012" y="293" font-size="22" fill="#e4d9ef" text-anchor="middle">Matière · effet</text>
+    <text x="1012" y="331" font-size="22" fill="#e4d9ef" text-anchor="middle">Provenance</text>
+    <g stroke="#b7c4ce" stroke-width="3" fill="none">
+      <path d="M187 371 V412 H600 V443"/>
+      <path d="M462 371 V412"/>
+      <path d="M737 371 V412 H600"/>
+      <path d="M1012 371 V412 H600"/>
+    </g>
+    <path d="M589 434 L600 452 L611 434" fill="#b7c4ce"/>
+    <rect x="254" y="453" width="691" height="122" rx="18" fill="#22413e" stroke="#87d9c6" stroke-width="3"/>
+    <text x="599" y="505" text-anchor="middle" font-size="35" font-weight="bold" fill="#e7f6ef">5d6 + BONUS → M03</text>
+    <text x="599" y="547" text-anchor="middle" font-size="24" fill="#bfe6da">Seuil · touche · impact · protection</text>
+    <path d="M599 576 V611" stroke="#b7c4ce" stroke-width="3"/>
+    <path d="M588 606 L599 624 L610 606" fill="#b7c4ce"/>
+    <rect x="254" y="626" width="691" height="74" rx="16" fill="#3c332b" stroke="#d7ab79" stroke-width="3"/>
+    <text x="599" y="674" text-anchor="middle" font-size="26" fill="#f4e2c6">MJ : confirmer → appliquer une fois → sauvegarder</text>
+    <text x="600" y="743" text-anchor="middle" font-size="18" fill="#a3b4bb">Capacités et effets chiffrés : uniquement après homologation et vérification de provenance.</text>
+  </g>
+</svg>

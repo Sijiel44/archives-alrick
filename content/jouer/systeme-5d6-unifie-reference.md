@@ -30,6 +30,9 @@ tags: [jdr, 5d6, regles, combat, magie, progression, prototype]
 
 Le site devra proposer **« Lancer l'action »**, puis, si besoin, **« MJ : appliquer »**. Autour d'une vraie table, les cinq dés suffisent : les bonus fixes et les dégâts peuvent être inscrits sur la fiche.
 
+> [!tip] Tu veux créer plutôt que seulement lancer ?
+> Passe à l'[[jouer/atelier-creation-5d6-guide-illustre|atelier de création illustré]] : une fiche PJ N5 avec son budget exact, une créature opposée, un objet ordinaire ou enchanté, le sort Étincelle, trois scènes à jouer et des fiches pratiques pour les MJ.
+
 ## 1. Les cinq dés décident de l'action
 
 La formule de résolution actuellement portée par **M01–M03** est :
@@ -157,6 +160,7 @@ Le but n'est pas de supprimer les choix, mais de réserver le temps de jeu aux d
 
 ## Pour aller plus loin
 
+- **Création :** [[jouer/atelier-creation-5d6-guide-illustre|Créer un personnage, une créature, une capacité, un sort ou un objet]] — guide illustré complémentaire.
 - **MJ et référents techniques :** le contrat candidat complet figure dans `docs/rapports-missions/MATH_REF_001_REFERENCE_MATHEMATIQUE.md`, avec ses formules exactes et les protections M03.
 - **Équilibrage :** `docs/rapports-missions/MATH_REF_001_SIMULATIONS_RECETTE.md` expose les hypothèses, la méthode et les limites du banc reproductible.
 - **Sur table :** `docs/rapports-missions/MATH_REF_001_FICHE_5D6_TABLE.md` propose une aide de jeu technique.

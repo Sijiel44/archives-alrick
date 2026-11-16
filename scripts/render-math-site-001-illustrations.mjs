@@ -10,7 +10,7 @@ import assert from 'node:assert/strict'
 
 const target='content/images/regles'
 await mkdir(target,{recursive:true})
-const names=['jet','degats','divin']
+const names=['jet','degats','divin','ateliers','personnage','creature','etincelle','objet']
 for(const name of names){
   const from=`docs/rapports-missions/illustrations/math-site-001-${name}.svg`
   const output=`${target}/math-site-001-${name}.webp`
