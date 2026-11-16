@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Emblème de la Chambre des Préventions</title>
+  <desc id="desc">Une balance de justice dorée sous un œil de vigilance, sur un écu d'ardoise.</desc>
+  <defs>
+    <radialGradient id="ground"><stop stop-color="#30404b"/><stop offset="1" stop-color="#111925"/></radialGradient>
+    <linearGradient id="brass" x2="1" y2="1"><stop stop-color="#f7deaa"/><stop offset=".55" stop-color="#bc8746"/><stop offset="1" stop-color="#f2c985"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="54" fill="#0a1019"/>
+  <circle cx="256" cy="249" r="208" fill="url(#ground)" stroke="#7b725f" stroke-width="5"/>
+  <path d="M256 66 403 126 387 328Q347 411 256 460 165 411 125 328L109 126Z" fill="#192838" stroke="url(#brass)" stroke-width="12"/>
+  <path d="M184 166Q256 107 328 166Q256 221 184 166Z" fill="#324f59" stroke="url(#brass)" stroke-width="6"/>
+  <circle cx="256" cy="165" r="23" fill="#c6d3b4"/><circle cx="256" cy="165" r="11" fill="#182a37"/>
+  <path d="M256 226V359M187 246H325M256 221v14" stroke="url(#brass)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M205 250 174 319M205 250 236 319M307 250 276 319M307 250 338 319" stroke="#f6d9a0" stroke-width="5"/>
+  <path d="M152 320Q205 354 258 320M254 320Q307 354 360 320" fill="none" stroke="url(#brass)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M222 368H290M205 384H307" stroke="url(#brass)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M174 413 256 440 338 413" fill="none" stroke="#a79068" stroke-width="4"/>
+</svg>

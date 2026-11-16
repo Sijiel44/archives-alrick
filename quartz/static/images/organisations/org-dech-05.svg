@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Emblème du Conservatoire des Noms</title>
+  <desc id="desc">Un grand livre ouvert surmonté d'une étoile et entouré de marques de mémoire.</desc>
+  <defs>
+    <radialGradient id="ink"><stop stop-color="#344460"/><stop offset="1" stop-color="#11172b"/></radialGradient>
+    <linearGradient id="silver" x2="1" y2="1"><stop stop-color="#f1e9cf"/><stop offset=".55" stop-color="#8caab8"/><stop offset="1" stop-color="#d6b781"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="54" fill="#0b1120"/>
+  <circle cx="256" cy="249" r="205" fill="url(#ink)" stroke="#8997ab" stroke-width="5"/>
+  <path d="M256 66 403 127 386 330Q342 417 256 460 170 417 126 330L109 127Z" fill="#1a2541" stroke="url(#silver)" stroke-width="12"/>
+  <path d="M256 129 266 158 297 159 272 178 280 207 256 190 232 207 240 178 215 159 246 158Z" fill="#f6e5b4" stroke="#e2f1f4" stroke-width="3"/>
+  <path d="M256 252Q209 208 158 234V353Q214 334 256 376Q297 334 354 353V234Q303 208 256 252Z" fill="#d4d6c8" stroke="#e4c598" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M256 252V373" stroke="#7d6b68" stroke-width="7"/>
+  <path d="M182 267Q216 259 241 277M182 293Q217 284 240 302M182 321Q212 313 240 330M331 267Q297 259 271 277M331 293Q296 284 272 302M331 321Q299 313 272 330" stroke="#697c8b" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M171 390H341M194 404H318" stroke="#b0a995" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="177" cy="189" r="6" fill="#e2cb9c"/><circle cx="334" cy="189" r="6" fill="#e2cb9c"/>
+</svg>

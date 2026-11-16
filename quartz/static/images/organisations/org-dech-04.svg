@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Emblème du Chœur des Derniers Feux</title>
+  <desc id="desc">Une flamme chaleureuse encadrée de deux rameaux et de notes dorées sur un écu pourpre.</desc>
+  <defs>
+    <radialGradient id="wine"><stop stop-color="#6a3b4b"/><stop offset="1" stop-color="#1c1422"/></radialGradient>
+    <linearGradient id="gold" x2="1" y2="1"><stop stop-color="#fff0cc"/><stop offset=".5" stop-color="#c68f59"/><stop offset="1" stop-color="#e5c38b"/></linearGradient>
+    <linearGradient id="ember" x2=".3" y2="1"><stop stop-color="#fff3ba"/><stop offset=".4" stop-color="#efb05c"/><stop offset="1" stop-color="#aa5648"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="54" fill="#170e18"/>
+  <circle cx="256" cy="248" r="207" fill="url(#wine)" stroke="#a4765d" stroke-width="5"/>
+  <path d="M256 66 405 127 390 330Q345 416 256 462 167 416 122 330L107 127Z" fill="#311e2e" stroke="url(#gold)" stroke-width="12"/>
+  <path d="M257 357Q175 332 205 250Q220 292 251 270Q281 238 266 181Q339 232 317 304Q306 346 257 357Z" fill="url(#ember)" stroke="#ffe2a0" stroke-width="7"/>
+  <path d="M252 346Q229 315 262 277Q274 299 267 315Q280 308 285 292Q301 338 252 346Z" fill="#fff1be"/>
+  <path d="M189 368Q133 320 152 254M323 368Q379 320 360 254" fill="none" stroke="#d0a67d" stroke-width="7" stroke-linecap="round"/>
+  <path d="M161 275Q128 257 147 225Q180 236 161 275ZM170 302Q127 301 139 336Q178 344 170 302ZM350 275Q383 257 364 225Q331 236 350 275ZM341 302Q385 301 373 336Q334 344 341 302Z" fill="#b67b6c" stroke="#ead2a2" stroke-width="3"/>
+  <path d="M186 170V122M200 122V166Q200 179 187 179Q175 179 175 169Q175 156 188 156M326 170V122M340 122V166Q340 179 327 179Q315 179 315 169Q315 156 328 156" stroke="url(#gold)" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M198 399Q256 427 314 399" fill="none" stroke="#b88e74" stroke-width="5"/>
+</svg>
