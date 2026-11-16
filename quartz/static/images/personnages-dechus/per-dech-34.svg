@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" role="img" aria-label="Portrait symbolique de Teron Clarsac, greffier aux feuilles superposées">
+  <rect width="480" height="640" rx="22" fill="#33303d"/>
+  <circle cx="240" cy="207" r="116" fill="#b58b73"/>
+  <path d="M123 198Q108 71 241 86Q363 61 369 199L337 152Q260 112 167 166Z" fill="#25282a"/>
+  <path d="M72 640Q102 396 239 387Q394 399 413 640Z" fill="#4d344a"/>
+  <path d="M173 222h45m51 0h39" stroke="#302e30" stroke-width="8" stroke-linecap="round"/>
+  <path d="M204 295q36 13 68 0" fill="none" stroke="#685046" stroke-width="7" stroke-linecap="round"/>
+  <rect x="266" y="421" width="133" height="175" rx="6" transform="rotate(9 266 421)" fill="#d9c69a" stroke="#9a7656" stroke-width="5"/>
+  <path d="M291 456l81 12m-86 15l81 12m-86 15l72 11" stroke="#806956" stroke-width="5"/>
+  <path d="M167 424l20 109" stroke="#d9b68f" stroke-width="7" stroke-linecap="round"/>
+</svg>

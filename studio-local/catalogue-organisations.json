@@ -3,8 +3,8 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "descriptive_only",
-  "version": 3,
-  "source": "Validation du créateur en développement direct du JDR — 15 et 16 novembre 2026, ANT-DECH-004, 007 et 008",
+  "version": 4,
+  "source": "Validation du créateur en développement direct du JDR — 15 et 16 novembre 2026, ANT-DECH-004, 007, 008 et 009",
   "entries": [
     {
       "id": "ORG-DECH-01",
@@ -155,6 +155,21 @@
       "limits": "Mandats disputés, branches dissidentes, preuves partielles et responsabilités individuelles.",
       "relations": [],
       "tags": ["coalition", "premiere_ancre", "ancrage", "negociation", "couronne"]
+    },
+    {
+      "id": "ORG-DECH-10",
+      "version": "49672cc14701d16be7513721334e85c9d88af348",
+      "path": "content/groupes/ORG-DECH-10.md",
+      "image": "org-dech-10.svg",
+      "artAlt": "Une porte de refuge et un chemin libre vers une lanterne, sur une enseigne ardoise et cuivre.",
+      "name": "Office des Itinérants",
+      "description": "Réseau civil de relais et de dortoirs ; l'accueil généreux dérive parfois vers un contrôle abusif des voyageurs sans papiers.",
+      "purpose": "Abriter, nourrir et orienter les voyageurs et familles déplacées sans leur retirer le droit de partir.",
+      "members": "Directrice, greffier, éclaireuse, cuisinier, bénévoles et prestataires indépendants.",
+      "influence": "Deux maisons de passage et un dépôt mobile sur les voies secondaires d'Entre-Rives.",
+      "limits": "Accords locaux, réserves finies, droit au recours et personnel libre ; aucun ministère ou contrôle des frontières.",
+      "relations": ["ORG-DECH-01", "ORG-DECH-03", "ORG-DECH-06"],
+      "tags": ["institution", "accueil", "refuge", "itinerants", "droits", "relais"]
     }
   ]
 }

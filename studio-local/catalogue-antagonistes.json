@@ -3,8 +3,8 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "narrative_levels_only",
-  "version": 5,
-  "source": "Développement direct du JDR avec le créateur, 15–16 novembre 2026 ; ANT-DECH-005 à ANT-DECH-008, LAB-DECH-003 adapté",
+  "version": 6,
+  "source": "Développement direct du JDR avec le créateur, 15–16 novembre 2026 ; ANT-DECH-005 à ANT-DECH-009, LAB-DECH-003 adapté",
   "entries": [
     {
       "id": "PER-DECH-01", "version": "eb33f9acc6e47c1a959d9f5852d139d649a7e739",
@@ -325,6 +325,46 @@
       "relations": ["PER-DECH-30", "PER-DECH-31", "PER-DECH-29"], "factions": ["ORG-DECH-09"],
       "currentRegion": "Routes de correspondance d'Entre-Rives", "description": "Messager indépendant dont la loyauté peut être mise en échec par une preuve mal remise.",
       "tags": ["courrier", "transport", "non_dechu", "preuve"]
+    },
+    {
+      "id": "PER-DECH-33", "version": "5e179c96acc91e7fce08713ce4d2a521b93dbe15",
+      "path": "content/personnages/PER-DECH-33.md", "image": "per-dech-33.webp",
+      "artAlt": "Aldiane Réval, directrice au manteau vert tenant les clés d'un refuge et une feuille d'admission.",
+      "name": "Aldiane Réval", "levelIntent": 15, "corruptionStage": "Non Déchu",
+      "role": "Directrice du réseau de refuges, non pactisée", "motivation": "Maintenir l'accueil sans laisser la vérification devenir une condition humiliante.",
+      "relations": ["PER-DECH-34", "PER-DECH-35", "PER-DECH-36"], "factions": ["ORG-DECH-10"],
+      "currentRegion": "Refuges et voies secondaires d'Entre-Rives", "description": "Secouriste expérimentée qui a sauvé des voyageurs avant de durcir une règle d'admission qui exclut les plus fragiles.",
+      "tags": ["direction", "refuge", "non_dechu", "institution"]
+    },
+    {
+      "id": "PER-DECH-34", "version": "06129e16db16e5220eb35ac39691487e31dc5843",
+      "path": "content/personnages/PER-DECH-34.md", "image": "per-dech-34.webp",
+      "artAlt": "Teron Clarsac, greffier au manteau sombre examinant à la fenêtre des feuilles de registre.",
+      "name": "Teron Clarsac", "levelIntent": 11, "corruptionStage": "Fêlure",
+      "role": "Greffier des admissions, pactisé en Fêlure", "motivation": "Retrouver les personnes dispersées sans convertir chaque rature en preuve de culpabilité.",
+      "relations": ["PER-DECH-33", "PER-DECH-35", "PER-DECH-36", "PER-DECH-31"], "factions": ["ORG-DECH-10"],
+      "currentRegion": "Salle de registres de l'Office", "description": "La Ligne de veille révèle seulement des ratures sur une page préparée, sans identifier les auteurs ni lire leurs pensées.",
+      "tags": ["greffe", "felure", "pacte", "documents"]
+    },
+    {
+      "id": "PER-DECH-35", "version": "41c47a1c17bc3817131735c10a038cf05705d7f8",
+      "path": "content/personnages/PER-DECH-35.md", "image": "per-dech-35.webp",
+      "artAlt": "Mirel Coten, guide des arrivées au manteau de route bleu, boussole et sac de voyage.",
+      "name": "Mirel Coten", "levelIntent": 6, "corruptionStage": "Tentation",
+      "role": "Guide des routes, premier pacte limité", "motivation": "Conduire à l'abri sans divulguer la destination de tous les voyageurs.",
+      "relations": ["PER-DECH-33", "PER-DECH-34", "PER-DECH-36", "PER-DECH-28"], "factions": ["ORG-DECH-10"],
+      "currentRegion": "Chemins et cour des refuges d'Entre-Rives", "description": "Guide ayant essayé une balise rituelle sur un repère qu'elle avait posé, sans pouvoir traquer qui que ce soit.",
+      "tags": ["routes", "tentation", "guide", "secours"]
+    },
+    {
+      "id": "PER-DECH-36", "version": "e5a9b8f29951f70b3f852211b5289cc34c6a8bcf",
+      "path": "content/personnages/PER-DECH-36.md", "image": "per-dech-36.webp",
+      "artAlt": "Ossian Démer, jeune cuisinier souriant offrant une soupe et du pain dans un refuge.",
+      "name": "Ossian Démer", "levelIntent": 2, "corruptionStage": "Non Déchu",
+      "role": "Aide-cuisinier et témoin de secours, non pactisé", "motivation": "Nourrir sans exiger une identité, tout en tenant des comptes honnêtes.",
+      "relations": ["PER-DECH-33", "PER-DECH-34", "PER-DECH-35", "PER-DECH-29"], "factions": ["ORG-DECH-10"],
+      "currentRegion": "Cuisine commune des refuges d'Entre-Rives", "description": "Jeune témoin de refus d'admission qui peut proposer une solution simple sans appartenir à la Déchéance.",
+      "tags": ["cuisine", "temoin", "niveau2", "non_dechu"]
     }
   ]
 }

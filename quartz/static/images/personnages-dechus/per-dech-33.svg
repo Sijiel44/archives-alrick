@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" role="img" aria-label="Portrait symbolique d'Aldiane Réval, directrice de refuge au trousseau de clés">
+  <rect width="480" height="640" rx="22" fill="#243c41"/>
+  <circle cx="240" cy="210" r="119" fill="#ae927c"/>
+  <path d="M116 185Q138 62 252 80Q347 97 367 196L351 160Q303 109 245 122Q174 110 127 197Z" fill="#514c48"/>
+  <path d="M88 640Q89 393 240 386Q391 393 392 640Z" fill="#365047"/>
+  <path d="M147 414Q238 465 331 414" fill="none" stroke="#ece0bd" stroke-width="30"/>
+  <path d="M179 214h42m39 0h42" stroke="#363f3e" stroke-width="8" stroke-linecap="round"/>
+  <path d="M199 288q42 24 82 0" fill="none" stroke="#705e53" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="350" cy="499" r="32" fill="none" stroke="#ca995a" stroke-width="8"/>
+  <path d="M350 529v50m0-24h17m-17 13h-11" stroke="#ca995a" stroke-width="8" stroke-linecap="round"/>
+</svg>
