@@ -67,7 +67,7 @@ test('Atelier MJ, Atlas relié, repère de séance et restauration v10', { timeo
   await page.locator('#marker-dialog').waitFor({ state: 'hidden' });
 
   await page.locator('#nav-library').click();
-  await page.getByRole('link', { name: /Bestiaire/ }).click();
+  await page.getByRole('link', { name: /PNJ et personnages/ }).click();
   await page.locator('#catalogue-search').fill('garde ponts');
   await page.getByRole('button', { name: 'Voir la fiche de Sanna des Écluses' }).click();
   await resource.getByRole('link', { name: 'Ville des Écluses', exact: true }).waitFor();

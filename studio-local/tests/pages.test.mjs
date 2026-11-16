@@ -7,6 +7,7 @@ import { waveResponse } from './audio-fixture.mjs';
 import { videoResponse } from './video-fixture.mjs';
 import { assertDecodedPortrait } from './portrait-assertions.mjs';
 import { MEDIA_ENTRIES } from '../medias-catalogue.mjs';
+import { seedQuestCampaign, createClue } from './quetes-fixture.mjs';
 
 async function servePages(t) {
   const root = new URL('../../public/', import.meta.url);
@@ -32,6 +33,27 @@ async function servePages(t) {
   }));
   return `http://127.0.0.1:${server.address().port}${prefix}`;
 }
+
+test('GitHub Pages permet le suivi de quête v21 et la projection choisie sans notes privées', {
+  skip: !process.env.PUBLIC_BASE && process.env.STUDIO_PAGES_TEST !== '1', timeout: 45000,
+}, async t => {
+  const base = process.env.PUBLIC_BASE ? `${process.env.PUBLIC_BASE.replace(/\/$/, '')}/` : await servePages(t);
+  const f = await browserFixture(t), { page, context } = await f.open('pages-quetes', { viewport: { width: 390, height: 844 } });
+  await seedQuestCampaign(page, new URL('./studio/', base).href); const card = await createClue(page);
+  await card.getByRole('button', { name: /Consigner une décision pour/ }).click();
+  await page.locator('#quest-decision-state').selectOption('revealed'); await page.locator('#quest-decision-note').fill('CANARI_DECISION_PAGES');
+  await page.locator('#quest-decision-form button[type=submit]').click(); await page.locator('#quest-decision-dialog').waitFor({ state: 'hidden' });
+  await card.getByRole('button', { name: 'Préparer pour les joueurs', exact: true }).click();
+  await page.locator('#scene-share-fields').getByRole('checkbox', { name: 'Texte destiné aux joueurs', exact: true }).check();
+  const [popup] = await Promise.all([context.waitForEvent('page'), page.locator('#open-player-window').click()]);
+  const frame = popup.frameLocator('iframe[title="Présentation joueur"]').locator('#player-sheet iframe'); await frame.waitFor();
+  assert.match(await frame.getAttribute('srcdoc'), /Une corde bleue est prise/); assert.doesNotMatch(await frame.getAttribute('srcdoc'), /CANARI|creation-temoin/);
+  await page.locator('#stop-player-window').click(); await page.locator('#nav-backups').click();
+  const [download] = await Promise.all([page.waitForEvent('download'), page.locator('#export-backup').click()]);
+  const archive = JSON.parse(await readFile(await download.path())); assert.equal(archive.version, 21);
+  assert.equal(archive.payload.campaign.entreRivesQuestStepsV21[0].history.length, 1);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+});
 
 test('GitHub Pages expose les cent médias et suit une copie relue sans publier les données de campagne', {
   skip: !process.env.PUBLIC_BASE && process.env.STUDIO_PAGES_TEST !== '1', timeout: 45000,

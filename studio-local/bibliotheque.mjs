@@ -1,6 +1,7 @@
 import { BESTIARY_PROFILE_KEY, CREATIONS_KEY, FRESQUE_MARKERS_KEY, FRESQUE_REFERENCE_KEY, IMAGE_ORIGINS, LIBRARY_SOURCE_SCHEMAS,
   LINKED_IMAGES_KEY, MARKER_KINDS, PJ_SOURCE_KEY } from './store.mjs';
 import { CREATION_STATES, CREATION_TYPES } from './creations.mjs';
+import { questSteps, questState, QUEST_STATES } from './quetes.mjs';
 import catalogue from './catalogue-archives.json' with { type: 'json' };
 import organisations from './catalogue-organisations.json' with { type: 'json' };
 import bestiaire from './catalogue-bestiaire.json' with { type: 'json' };
@@ -10,7 +11,7 @@ import antagonistes from './catalogue-antagonistes.json' with { type: 'json' };
 export const LIBRARY_CATEGORIES = Object.freeze({
   ...MARKER_KINDS, creature: 'Créature', character: 'Personnage joueur', object: 'Objet', spell: 'Sort', ritual: 'Rituel',
   ability: 'Capacité', action: 'Action et règles', adventure: 'Aventure ou quête', guide: 'Guide', image: 'Image', lore: 'Lore',
-  npc: 'PNJ', encounter: 'Rencontre', quest: 'Quête', mission: 'Mission', faction: 'Faction',
+  npc: 'PNJ', encounter: 'Rencontre', quest: 'Quête', mission: 'Mission', faction: 'Faction', objective: 'Objectif',
 });
 export const LIBRARY_SOURCES = Object.freeze({
   archives: 'Archives d’Alrick',
@@ -160,7 +161,7 @@ export function creatureReference(source) {
 export function referenceSegments(text, resolve = libraryReference) {
   const parts = [];
   let offset = 0;
-  const pattern = /(?<!!)\[\[([\w./ -]{1,160})(?:\|([^\]\r\n]{1,200}))?\]\]|(?<!!)\[([^\]\r\n]{1,200})\]\((?:\/?#fiche\/)?([a-z\d][\w./-]{0,159})\)/gi;
+  const pattern = /(?<!!)\[\[([\w./: -]{1,160})(?:\|([^\]\r\n]{1,200}))?\]\]|(?<!!)\[([^\]\r\n]{1,200})\]\((?:\/?#fiche\/)?([a-z\d][\w./:-]{0,159})\)/gi;
   for (const match of text.matchAll(pattern)) {
     const entry = resolve(match[1] ?? match[4]);
     if (!entry) continue;
@@ -209,6 +210,13 @@ export function buildLibraryIndex(campaigns) {
     const context = { campaignId: campaign.id, campaignName: campaign.name, campaignRevision: campaign.revision };
     const scenes = new Map(campaign.scenes.map(scene => [scene.id, scene.title]));
     const creations = campaign[CREATIONS_KEY] ?? [];
+    for (const step of questSteps(campaign)) {
+      entries.push({ ...context, id: step.id, name: step.title, description: step.playerText,
+        kind: step.kind === 'clue' ? 'lead' : 'objective', origin: 'personal', status: 'local', shelf: 'aventures',
+        group: step.kind === 'clue' ? 'Indices suivis' : 'Objectifs suivis', questStep: true, record: step,
+        links: [step.questId, ...step.references.map(ref => ref.id)].filter(Boolean),
+        details: [['État du suivi', QUEST_STATES[step.kind][questState(step)]], ['Scènes possibles', step.sceneIds.map(id => scenes.get(id)).join(' · ')]] });
+    }
     const children = new Map();
     for (const { id, parentId } of creations) {
       if (!parentId) continue;

@@ -186,7 +186,7 @@ test("Fresque et cockpit en navigateur réel, clavier, improvisation et projecti
   assert.equal(await page.locator("#character-name").inputValue(), original.characters[0].name);
   await page.keyboard.press("Escape");
   await search.fill("renarde");
-  await results.getByRole("button", { name: "Ouvrir la fiche de Renarde de brume" }).click();
+  await results.getByRole("button", { name: "Ouvrir la fiche de Renarde de brume", exact: true }).click();
   assert.equal(await page.locator("#creature-name").inputValue(), original.creatures[0].name);
   await page.keyboard.press("Escape");
   await search.fill(original.characters[0].notes);

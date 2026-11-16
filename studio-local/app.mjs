@@ -20,12 +20,15 @@ import { videoForScene } from './video.mjs';
 import { createSceneVideoUI } from './video-ui.mjs';
 import { sceneImageIllustration } from './scene-images.mjs';
 import { createSceneImageUI } from './scene-images-ui.mjs';
+import { createQuestUI } from './quetes-ui.mjs';
+import { questSteps } from './quetes.mjs';
+import { resourceUsages } from './utilisations.mjs';
 import { createMediaCatalogueUI } from './medias-ui.mjs';
 import { BACKUP_HISTORY_KEY, readBackupHistory, recordBackupReceipt, backupCopyStatus } from './suivi-sauvegardes.mjs';
 import { clearProjection, createPlayerProjection, createProjection, loadPresentationImage, openPlayerWindow, playerSheetPresentation, scenePresentation, showPresentation } from './projection.mjs';
 
 const $ = (id) => document.getElementById(id);
-const campaignViews = ['prepare', 'play', 'interludes', 'archive'];
+const campaignViews = ['prepare', 'play', 'quests', 'interludes', 'archive'];
 const views = ['home', ...campaignViews, 'library', 'creations', 'workshop', 'universe', 'backups'];
 const sessionDateFormat = new Intl.DateTimeFormat('fr', { dateStyle: 'long', timeZone: 'UTC' });
 const actionDateFormat = new Intl.DateTimeFormat('fr', { dateStyle: 'medium', timeStyle: 'short' });
@@ -55,6 +58,10 @@ const sceneVideoUI = createSceneVideoUI({ getCampaign: () => campaign, canWrite:
   prepare: event => prepareSceneShare(event, undefined, { useVideo: true }) });
 const sceneImageUI = createSceneImageUI({ getCampaign: () => campaign, canWrite: () => Boolean(campaign && !busy),
   save: saveCommand, prepare: event => prepareSceneShare(event) });
+const questUI = createQuestUI({ getCampaign: () => campaign, entries: () => libraryEntries,
+  canWrite: () => Boolean(campaign && !busy && !campaignMayBeStale), save: saveCommand, navigate,
+  createQuest: () => openCreation('quest'), openScene: focusSceneCard,
+  openResource: id => { const entry = campaignEntry(id); if (entry) previewResource(entry); }, prepare: prepareQuestShare });
 createMediaCatalogueUI({ canChoose: kind => kind === 'audio' ? audioUI.canAdd() : Boolean(campaign && !busy && activeScene()),
   selectionHelp: () => !campaign ? 'Ouvrez une campagne pour préparer un média. Les aperçus et sources restent consultables.'
     : !audioUI.canAdd() && !busy ? 'La bibliothèque de campagne est limitée à 100 pistes. Libérez une place pour ajouter un son.'
@@ -570,6 +577,8 @@ function renderFresque() {
     }
     controls.append(edit, play, action('Illustrer', () => sceneImageUI.open(scene), 'secondary', `Illustrer ${scene.title}`), moves);
     card.append(controls);
+    const followed = questSteps(campaign).filter(step => step.sceneIds.includes(scene.id));
+    if (followed.length) card.append(action(`${followed.length} indice(s) ou objectif(s)`, () => questUI.open({ sceneId: scene.id }), 'secondary', `Suivi de ${scene.title}`));
     if (lanes.length) card.append(lanePicker(scene, lanes));
 
     const ambianceCount = scene[SCENE_AMBIANCES_KEY]?.length ?? 0;
@@ -660,6 +669,7 @@ function renderPlay() {
   $('open-session-roster').disabled = !scene;
   $('quick-notes').disabled = !scene;
   $('quick-present').disabled = !scene;
+  $('quick-quests').disabled = !scene;
   $('quick-ambiances').disabled = !scene;
   $('prepare-scene-share').disabled = !scene;
   $('open-play-action').disabled = !scene || !playRules;
@@ -965,7 +975,7 @@ function openSessionRoster(actorId) {
     $('resource-description').textContent = 'Ajoutez des PJ, PNJ ou créatures depuis Préparer ou Créations, ou ajustez les filtres.';
     $('resource-description').hidden = false;
     for (const id of ['resource-previous', 'resource-art', 'resource-image-link', 'resource-details', 'resource-creation-notes', 'resource-profile',
-      'resource-provenance', 'resource-source-link', 'resource-related', 'resource-markdown']) $(id).hidden = true;
+      'resource-provenance', 'resource-source-link', 'resource-related', 'resource-usages', 'resource-markdown']) $(id).hidden = true;
     $('resource-actions').replaceChildren();
     renderSessionRoster();
     $('resource-dialog').showModal();
@@ -1065,8 +1075,8 @@ function referenceLink(entry, label = entry.name) {
 
 function campaignReference(key, campaignId = campaign?.id) {
   const id = key?.trim().toLowerCase();
-  return libraryReference(key) ?? libraryEntries.find(entry => (entry.creation || (entry.kind === 'image' && entry.record)) &&
-    entry.campaignId === campaignId && entry.id === id);
+  return libraryReference(key) ?? libraryEntries.find(entry => entry.record &&
+    entry.campaignId === campaignId && entry.id.toLowerCase() === id);
 }
 
 function fillReferenceText(container, content, campaignId = campaign?.id) {
@@ -1146,7 +1156,7 @@ function previewResource(entry, remember = true) {
     return [node('dt', label), description];
   }));
   details.hidden = !entry.details?.length;
-  const privateNotes = entry.creation ? entry.record.notes : rosterIsActive() && entry.campaignId === campaign.id
+  const privateNotes = entry.creation || entry.questStep ? entry.record.notes : rosterIsActive() && entry.campaignId === campaign.id
     ? [entry.record?.notes, entry.record?.[BESTIARY_PROFILE_KEY]?.card.notes].filter(value => typeof value === 'string' && value).join('\n\n') : '';
   const notes = $('resource-creation-notes');
   notes.hidden = !privateNotes;
@@ -1206,8 +1216,14 @@ function previewResource(entry, remember = true) {
     if (entry.kind === 'image') {
       add('Modifier le lien de l’image', () => editLinkedImage(entry.record));
       add('Retirer l’image', () => removeLinkedImage(entry));
+    } else if (entry.questStep) {
+      add('Modifier le suivi', () => questUI.edit(entry.record));
+      add('Consigner une décision', () => questUI.decide(entry.record));
+      add('Voir le suivi de la quête', () => questUI.open({ questId: entry.record.questId ?? '' }));
+      if (entry.record.playerText.trim()) add('Préparer pour les joueurs', () => prepareQuestShare(entry.record));
     } else if (entry.creation) {
       add('Modifier la création', () => openCreation(entry.kind, entry.record));
+      if (['quest', 'mission', 'adventure'].includes(entry.kind)) add('Suivre les indices et objectifs', () => questUI.open({ questId: entry.id }));
       if (entry.kind === 'object') add('Attribuer une copie à un PJ', () => objectGrantUI.open(entry.id), !exchangeRules);
       add('Ajouter comme repère', () => editMarker(undefined, view === 'play' ? activeScene()?.id : null, undefined, entry));
       if (entry.kind === 'adventure') {
@@ -1250,7 +1266,8 @@ function previewResource(entry, remember = true) {
     item.append(referenceLink(target));
     return item;
   }));
-  $('resource-markdown').hidden = Boolean(entry.record && !entry.creation && entry.kind !== 'image');
+  renderResourceUsages(entry);
+  $('resource-markdown').hidden = false;
   $('resource-shortcut').value = $('resource-markdown').hidden ? '' : `[[${entry.id}]]`;
   $('resource-shortcut-status').textContent = '';
   renderSessionRoster();
@@ -1258,6 +1275,25 @@ function previewResource(entry, remember = true) {
   else $('resource-title').focus();
   dialog.scrollTop = 0;
   dialog.querySelector('.resource-body').scrollTop = 0;
+}
+
+function renderResourceUsages(entry) {
+  const owner = entry.campaignId ? campaigns.find(item => item.id === entry.campaignId) : campaign;
+  const usages = resourceUsages(owner, entry.id, text => referenceSegments(text, key => campaignReference(key, owner?.id)).flatMap(part => part.entry ? [part.entry.id] : []));
+  $('resource-usages').hidden = !owner;
+  $('resource-usages-context').textContent = owner ? `${owner.name} · ${usages.length} lien(s) de retour` : '';
+  $('resource-usages-list').replaceChildren(...usages.map(usage => {
+    const li = node('li');
+    li.append(action(`${usage.label} · ${usage.reasons.join(', ')}`, async () => {
+      if (busy) return;
+      $('resource-dialog').close();
+      if (campaign?.id !== owner.id) await openCampaign(owner.id);
+      if (campaign?.id !== owner.id) return;
+      if (usage.kind === 'scene') focusSceneCard(usage.id);
+      else { const target = campaignEntry(usage.id); if (target) previewResource(target); }
+    })); return li;
+  }));
+  if (owner && !usages.length) $('resource-usages-list').append(node('li', 'Aucune utilisation repérée dans cette campagne.', 'muted'));
 }
 
 function shelfIcon(path) {
@@ -1721,6 +1757,7 @@ function render() {
   audioUI.render();
   sceneVideoUI.render();
   sceneImageUI.render();
+  questUI.render();
   renderBackupTracking();
   renderInterludes();
   renderArchive();
@@ -3054,7 +3091,8 @@ function displayPreview() {
   const audio = preview.audioTracks || preview.audioPlaylists ? ` · ${preview.audioTracks} piste(s) audio · ${preview.audioPlaylists} playlist(s)` : '';
   const videos = preview.videos ? ` · ${preview.videos} fond(s) vidéo` : '';
   const sceneImages = preview.sceneImages ? ` · ${preview.sceneImages} image(s) de scène` : '';
-  $('backup-summary').textContent = `Révision ${preview.revision} · ${preview.characters} PJ${playerSheets}${playerUpdates} · ${preview.creatures} créature(s) · ${preview.scenes} scène(s)${ambiances} · ${preview.sessions} séance(s) archivée(s)${interludes} · ${preview.markers} repère(s)${actions}${oppositions}${profiles}${creations}${images}${audio}${videos}${sceneImages}`;
+  const quests = preview.questSteps ? ` · ${preview.questSteps} indice(s) ou objectif(s) suivi(s)` : '';
+  $('backup-summary').textContent = `Révision ${preview.revision} · ${preview.characters} PJ${playerSheets}${playerUpdates} · ${preview.creatures} créature(s) · ${preview.scenes} scène(s)${ambiances} · ${preview.sessions} séance(s) archivée(s)${interludes} · ${preview.markers} repère(s)${actions}${oppositions}${profiles}${creations}${images}${audio}${videos}${sceneImages}${quests}`;
   $('backup-conflict').hidden = !preview.conflict;
 }
 
@@ -3370,6 +3408,7 @@ $('quick-notes').addEventListener('click', () => {
   $('scene-private-notes').focus();
 });
 $('quick-present').addEventListener('click', prepareSceneShare);
+$('quick-quests').addEventListener('click', () => questUI.open({ sceneId: activeScene()?.id }));
 $('quick-ambiances').addEventListener('click', () => $('play-ambiances-title').focus());
 $('prepare-scene-share').addEventListener('click', prepareSceneShare);
 $('ambiance-copy-scene').addEventListener('click', () => {
@@ -3910,6 +3949,20 @@ function prepareSceneShare(event, ambiance, { useVideo = false } = {}) {
     videoConfig, useVideo,
     ambianceFields: ambiance && [ambiance.title && 'title', ambiance.description.trim() && 'description'].filter(Boolean),
   });
+}
+
+function prepareQuestShare(step, returnFocus) {
+  if (!campaign || busy || !step.playerText.trim()) return;
+  const description = step.playerText;
+  preparePresentation('scene', 'Texte choisi pour les joueurs', fields => scenePresentation(createProjection({ description },
+    { title: false, description: fields.has('description') })),
+    { returnFocus, ambianceFields: ['description'] });
+  $('player-share-title').textContent = 'Préparer pour les joueurs';
+  $('scene-share-text-label').textContent = 'Texte destiné aux joueurs';
+  $('player-share-image-field').hidden = true;
+  $('player-share-image').disabled = true;
+  for (const choice of $('scene-share-fields').querySelectorAll('input')) choice.checked = false;
+  renderPlayerPreview();
 }
 
 function prepareImageShare(entry) {
