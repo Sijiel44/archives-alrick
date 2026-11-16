@@ -4,11 +4,11 @@ import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 import { buildData } from "./build.mjs";
 
-test("66 identités uniques pointent sur des sources uniques et documentées", async () => {
+test("78 identités uniques pointent sur des sources uniques et documentées", async () => {
   const cards = await buildData();
-  assert.equal(cards.length, 66);
-  assert.equal(new Set(cards.map((x) => x.code)).size, 66);
-  assert.equal(new Set(cards.map((x) => x.file)).size, 66);
+  assert.equal(cards.length, 78);
+  assert.equal(new Set(cards.map((x) => x.code)).size, 78);
+  assert.equal(new Set(cards.map((x) => x.file)).size, 78);
   assert.equal(cards.find((x) => x.id === "eren")?.file, "PER-CB2-SOREN.md");
   assert.equal(cards.find((x) => x.id === "soren")?.file, "PER-CB1-SOREN.md");
   assert.equal(cards.find((x) => x.id === "soren")?.statut, "a_verifier");
@@ -39,7 +39,35 @@ test("lot 004 : identités, consentement, statut des fiches privées et illustra
   assert.ok(lot.slice(2).every((id) => byId[id].spoiler));
   assert.match(byId.naeline.image, /naeline-concept-v01\.webp$/);
   assert.equal(byId.naeline.illustrationValidee, false);
-  assert.equal(cards.filter((x) => x.image).length, 13);
+  assert.equal(cards.filter((x) => x.image).length, 14);
+});
+
+test("lot 005 : homonymes marins, morts non rappelés, emplois joués et images conceptuelles", async () => {
+  const cards = await buildData();
+  const byId = Object.fromEntries(cards.map((x) => [x.id, x]));
+  const lot = ["saelor", "silan", "orvak", "soren_malderive", "bromvar", "edran", "aurelian", "hroldan", "tavian", "elwen", "beren", "mara_ventrevent"];
+  assert.equal(lot.filter((id) => byId[id]).length, 12);
+  assert.deepEqual(["saelor", "soren_malderive", "edran"].map((id) => byId[id].publicationSource), [false, false, false]);
+  assert.deepEqual(["saelor", "soren_malderive"].map((id) => byId[id].statut), ["projet_en_cours", "projet_en_cours"]);
+  assert.equal(byId.edran.statut, "lore_valide");
+  assert.equal(byId.edran.code, "RES-20");
+  assert.equal(byId.hroldan.code, "SEC-75");
+  assert.equal(byId.elwen.code, "SEC-66");
+  assert.equal(byId.beren.code, "RES-26");
+  assert.equal(byId.mara_ventrevent.code, "RES-27");
+  assert.notEqual(byId.soren_malderive.code, byId.soren.code);
+  assert.notEqual(byId.soren_malderive.code, byId.eren.code);
+  assert.notEqual(byId.mara_ventrevent.code, byId.mara.code);
+  assert.ok(lot.every((id) => byId[id].spoiler));
+  assert.match(byId.mara_ventrevent.image, /mara-ventrevent-concept-v01\.webp$/);
+  assert.equal(byId.mara_ventrevent.illustrationValidee, false);
+  assert.equal(cards.filter((x) => x.image).length, 14);
+
+  const edranSource = await readFile(new URL("../../content/personnages/PER-CB42-RES-20-EDRAN-VEILLE-AU-FEU.md", import.meta.url), "utf8");
+  assert.match(edranSource, /Edran est \*\*décédé\*\*/i);
+  assert.match(edranSource, /aucun Rappel joué/i);
+  const elwenSource = await readFile(new URL("../../content/personnages/PER-CB43-ELWEN-SAUREL.md", import.meta.url), "utf8");
+  assert.match(elwenSource, /espèce actuelle n'est pas déterminée/i);
 });
 
 test("aucune mécanique fictive ni document privé dans les accroches", async () => {

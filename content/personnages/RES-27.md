@@ -38,6 +38,18 @@ Mara Ventrevent est **distincte de Mara Vifacier et de Mara Sombrelac**. La sour
 
 Un MJ peut la faire intervenir lors d'une vérification de sécurité, d'un quart difficile ou d'un apprentissage. Les détails nouveaux doivent être joués ou approuvés, pas rétroactivement attribués à CB43.
 
+## Complément MJ — propositions non jouées
+
+**Comportement et enseignement possibles.** Mara commence par le nœud qu'un élève peut réellement défaire et refaire, puis augmente la difficulté seulement quand les gestes sont sûrs. Elle surveille la fatigue des quarts et défend son équipage face aux demandes des passagers.
+
+**Rencontre adaptable.** Des visiteurs veulent assister à une manœuvre délicate depuis le pont de travail. Les PJ peuvent fermer une zone, transformer l'essai en démonstration à quai ou négocier un nouveau créneau. **Aucun apprentissage ne garantit automatiquement XP, capacité ou grade** : MATH/INDEX et le MJ décident des prérequis et du suivi.
+
+**Réplique fictive :** « Apprendre un geste, c'est aussi apprendre quand il faut arrêter. »
+
+**Illustration.** Le visuel local `mara-ventrevent-concept-v01.webp` représente une interprétation de son métier et de ses cheveux sombres attachés ; il ne fixe pas son âge, ses vêtements ni un événement joué. Validation créateur requise.
+
+**Continuité.** Son contrat de maîtresse d'équipage est **signé**, elle accepte une part de la formation de **Larek sous Thaléa**. **Mara Ventrevent ≠ Mara Vifacier ≠ Mara Sombrelac** ; ni Rappel ni adhésion aux Revenants par son code RES.
+
 ## Sources
 
 *Compendium V03 v1.7*, RES-27 ; *CB43* P10296, P12021–12041 et P12087–12090.

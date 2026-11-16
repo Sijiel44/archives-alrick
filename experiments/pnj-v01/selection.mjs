@@ -496,5 +496,90 @@ export const selection = [
     enScene: "Classe deux courriers urgents, fait préciser la personne habilitée à trancher et protège un temps de travail de l'équipe.",
     rencontre: "Trois interlocuteurs veulent obtenir une réponse du prince le même matin pour des urgences très différentes.",
     choix: "Traiter les dossiers délégués, demander des pièces ou réserver un seul arbitrage personnel."
+  },
+  {
+    id: "saelor", file: "PER-CB42-RES-04-SAELOR-FEUILLEDOR.md", groupe: "metiers", symbole: "🪷",
+    accroche: "Un professionnel de l'hospitalité elfique dont l'intérêt pour une visite ne vaut pas engagement.",
+    enScene: "Observe l'espace réservé aux invités, s'informe sur leurs langues et leurs usages, puis demande quel rôle on attend réellement de lui.",
+    rencontre: "Un accueil diplomatique risque d'effacer les coutumes d'un groupe moins nombreux.",
+    choix: "Réorganiser les places, demander l'avis des hôtes ou repousser la réception pour mieux préparer."
+  },
+  {
+    id: "silan", file: "PER-CB42-RES-09-SILAN-SEPT-PONTS.md", groupe: "savoirs", symbole: "✉️",
+    accroche: "Un secrétaire de voyage qui sait qu'une lettre bien transmise peut éviter un conflit inutile.",
+    enScene: "Vérifie les noms et les relais de courrier, reconnaît un visage familier et fait préciser le destinataire réel.",
+    rencontre: "Deux délégations attendent chacune une réponse à une lettre dont les copies diffèrent.",
+    choix: "Recouper les archives, entendre les messagers ou suspendre une décision pressée."
+  },
+  {
+    id: "orvak", file: "PER-CB42-RES-11-ORVAK-MAIN-DE-VELOURS.md", groupe: "metiers", symbole: "🍽️",
+    accroche: "Un ancien garde devenu maître de l'accueil, attentif à la dignité des invités et des équipes.",
+    enScene: "Contrôle les accès et le service sans brusquer les travailleurs, puis désamorce un affront de préséance.",
+    rencontre: "Deux invités réclament la même place d'honneur, tandis que le service manque de personnel.",
+    choix: "Inventer un protocole partagé, écouter le personnel ou changer la forme de la réception."
+  },
+  {
+    id: "soren_malderive", file: "PER-CB42-RES-17-SOREN-MALDERIVE.md", groupe: "savoirs", symbole: "🛳️",
+    accroche: "Un spécialiste de l'embarquement dont la disponibilité reste à confirmer.",
+    enScene: "Compare la liste des passagers aux cabines et manifeste son intérêt sans se présenter comme membre d'équipage recruté.",
+    rencontre: "Des voyageurs arrivent au quai avec des autorisations incompatibles et des bagages déjà chargés.",
+    choix: "Vérifier les pièces, revoir l'embarquement ou solliciter une décision de la capitaine."
+  },
+  {
+    id: "bromvar", file: "PER-CB42-RES-19-BROMVAR-VIEILLES-CLEFS.md", groupe: "proches", symbole: "🗝️",
+    accroche: "Un ancien concierge revenu à la vie, libre d'explorer avant de reprendre un métier.",
+    enScene: "S'attarde près d'une serrure usée pour écouter ce que le bâtiment raconte, puis refuse qu'on décide de son emploi à sa place.",
+    rencontre: "Un bâtiment ancien doit être rouvert, mais personne n'a demandé aux habitants quels espaces préserver.",
+    choix: "Organiser la visite avec leur accord, étudier les traces ou remettre l'ouverture à plus tard."
+  },
+  {
+    id: "edran", file: "PER-CB42-RES-20-EDRAN-VEILLE-AU-FEU.md", groupe: "savoirs", symbole: "🕯️",
+    accroche: "Le souvenir d'un gardien de phare décédé peut encore guider une enquête sur la sécurité côtière.",
+    enScene: "Dans une scène située de son vivant uniquement : inspecte la flamme, les provisions et le chemin de secours avant la marée.",
+    rencontre: "Une aventure historique révèle qu'une veille de phare repose sur une seule personne épuisée.",
+    choix: "Organiser une relève, demander l'aide du village ou différer une sortie en mer."
+  },
+  {
+    id: "aurelian", file: "PER-CB42-RES-21-AURELIAN-VIRE-SEL.md", groupe: "metiers", symbole: "🍲",
+    accroche: "Un chef voyageur Rappelé qui veut transmettre, apprendre et accueillir de nouveaux talents.",
+    enScene: "Fait goûter une préparation modeste avant d'écouter les traditions des apprentis sans les obliger à copier la sienne.",
+    rencontre: "Une fête de quartier rassemble des recettes concurrentes et des cuisines aux moyens inégaux.",
+    choix: "Monter un atelier partagé, adapter le menu ou laisser chaque communauté présenter sa table."
+  },
+  {
+    id: "hroldan", file: "PER-CB43-HROLDAN-TROIS-CLEFS.md", groupe: "savoirs", symbole: "🎒",
+    accroche: "Un ancien quartier-maître rappelé à la vie qui ne doit à personne son retour au travail.",
+    enScene: "Compte le matériel avec méthode, demande qui portera réellement les charges et garde du temps pour découvrir le présent.",
+    rencontre: "Une troupe prépare une longue marche avec des stocks suffisants sur le papier, mais inaccessibles aux derniers rangs.",
+    choix: "Répartir les vivres, raccourcir le trajet ou demander aux marcheurs leurs besoins."
+  },
+  {
+    id: "tavian", file: "PER-CB43-TAVIAN-RELSOR.md", groupe: "savoirs", symbole: "📨",
+    accroche: "Un envoyé itinérant qui collecte les besoins sans prétendre décider à la place des autorités.",
+    enScene: "Classe les témoignages par provenance, visite un quai et distingue les faits observés de ses impressions.",
+    rencontre: "Un bourg exige une promesse immédiate alors qu'une mission ne lui confie qu'une enquête préparatoire.",
+    choix: "Rédiger un constat, demander un mandat clair ou organiser une concertation locale."
+  },
+  {
+    id: "elwen", file: "PER-CB43-ELWEN-SAUREL.md", groupe: "savoirs", symbole: "🗂️",
+    accroche: "Un organisateur de la Maison qui distingue le travail de chaque équipe et protège leurs limites.",
+    enScene: "Reconstitue une chaîne de responsabilités et demande si les personnes recrutées disposent de repos et d'une formation réelle.",
+    rencontre: "Deux services pensent devoir accomplir la même tâche, tandis qu'une autre fonction reste vacante.",
+    choix: "Clarifier les mandats, consulter les équipes ou différer une ouverture trop ambitieuse."
+  },
+  {
+    id: "beren", file: "RES-26.md", groupe: "savoirs", symbole: "⚓",
+    accroche: "Un second de confiance qui sait rappeler à sa capitaine qu'un équipage doit aussi dormir.",
+    enScene: "Examine les quarts avec Thaléa, demande l'état des amarres et écoute une objection venue du pont.",
+    rencontre: "Un départ anticipé met les temps de repos et le contrôle du navire en concurrence.",
+    choix: "Retarder l'appareillage, redistribuer les quarts ou réduire les ambitions de la traversée."
+  },
+  {
+    id: "mara_ventrevent", file: "RES-27.md", groupe: "metiers", symbole: "🪢",
+    accroche: "Une maîtresse d'équipage qui enseigne la mer sans demander aux apprentis de risquer leur vie pour impressionner.",
+    enScene: "Resserre une amarre, vérifie qu'un jeune marin a compris la consigne et réclame une vraie relève après le quart.",
+    rencontre: "Un exercice de pont devient dangereux lorsque des passagers veulent assister de trop près à la manœuvre.",
+    choix: "Sécuriser le pont, reporter l'exercice ou organiser une démonstration à quai.",
+    image: "mara-ventrevent-concept-v01.webp"
   }
 ];

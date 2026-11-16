@@ -2,8 +2,8 @@
 publish: false
 spoilers: true
 unlisted: true
-title: "Le Cabinet des Rencontres — sélection de 66 personnages"
-description: "Sélection éditoriale de soixante-six personnages documentés, avec renvoi vers leur fiche unique et des usages de campagne proposés."
+title: "Le Cabinet des Rencontres — sélection de 78 personnages"
+description: "Sélection éditoriale de soixante-dix-huit personnages documentés, avec renvoi vers leur fiche unique et des usages de campagne proposés."
 canon_statut: "proposition_non_jouee"
 etat_editorial: "en_chantier"
 visibilite: "brouillon"
@@ -19,7 +19,7 @@ tags: [pnj, catalogue, rencontres, brouillon]
 
 *Fresque créée pour le prototype PNJ-001 : les silhouettes sont des archétypes de jeu, **pas** des portraits des personnages nommés ci-dessous. Cette sélection est un brouillon non publié.*
 
-Soixante-six noms qui existent déjà dans les Archives, autant de portes d'entrée pour une table. **Chaque nom renvoie à une seule fiche source** : le catalogue ne réécrit ni l'histoire, ni les liens familiaux, ni les appartenances. Les amorces proposées aux MJ demeurent non jouées. Les fiches à révélations restent à avertissement ; ce sommaire lui-même n'est pas proposé à la publication sans examen. Cinq fiches supplémentaires sont **non publiées** et ne doivent pas être offertes aux joueurs par défaut.
+Soixante-dix-huit noms déjà répertoriés dans les Archives, autant de portes d'entrée pour une table. **Chaque nom renvoie à une seule fiche source** : le catalogue ne réécrit ni l'histoire, ni les liens familiaux, ni les appartenances. Les amorces proposées aux MJ demeurent non jouées. Les fiches à révélations restent à avertissement ; ce sommaire lui-même n'est pas proposé à la publication sans examen. **Huit sources retenues dans les lots 004–005 sont non publiées** et ne doivent pas être offertes aux joueurs par défaut.
 
 ## La compagnie
 
@@ -48,6 +48,7 @@ Soixante-six noms qui existent déjà dans les Archives, autant de portes d'entr
 - [[PER-CB42-RES-08-EREN-VALOMBRE|Éren Valombre]] — vie retrouvée et libre choix de voyage ; distinct d'Eren gardien.
 - [[PER-CB42-RES-18-NAELINE-FENDRELUNE|Naëline Fendrelune]] — dessin et liberté après le Rappel, sans obligation d'emploi.
 - [[PER-CB43-NAHLA-SEREVIN|Nahla Serevin]] — coordination du cabinet personnel dans les limites de son contrat signé.
+- [[PER-CB42-RES-19-BROMVAR-VIEILLES-CLEFS|Bromvar des Vieilles Clefs]] — Rappelé libre de choisir son avenir ; aucun emploi de concierge imposé.
 
 ## Métiers et territoires
 
@@ -74,6 +75,10 @@ Soixante-six noms qui existent déjà dans les Archives, autant de portes d'entr
 - [[PER-CB42-RES-12-VASKA-PERLEDOMBRE|Vaska Perledombre]] — ravitaillement des petites communautés ; **fiche non publiée, aucun contrat**.
 - [[PER-CB42-RES-14-FARWEN-PIERRECLAIRE|Farwen Pierreclaire]] — entretien d'Aldhammar ; **fiche non publiée, aucun contrat**.
 - [[PER-CB42-RES-16-MARGHA-TROIS-MERS|Margha Trois-Mers]] — cuisine de bord ; recrutement confirmé, signature non mise en scène.
+- [[PER-CB42-RES-04-SAELOR-FEUILLEDOR|Saëlor Feuilledor]] — hospitalité elfique ; **visite envisagée, fiche non publiée**.
+- [[PER-CB42-RES-11-ORVAK-MAIN-DE-VELOURS|Orvak Main-de-Velours]] — protocole, réception et conditions de service du Palais.
+- [[PER-CB42-RES-21-AURELIAN-VIRE-SEL|Aurélian Vire-Sel]] — cuisine, transmission et découvertes après le Rappel.
+- [[RES-27|Mara Ventrevent]] — maîtresse d'équipage, apprentissage de Larek et sécurité des quarts ; distincte de Mara Vifacier.
 
 ## Savoirs et gardiens
 
@@ -98,10 +103,17 @@ Soixante-six noms qui existent déjà dans les Archives, autant de portes d'entr
 - [[PER-CB39-YSE-KORR|Yse Korr]] — coopération militaire et sécurité des routes.
 - [[PER-CB42-RES-13-NERYS-SILVENAINE|Nerys Silvenaine]] — entretien des enchantements ; **fiche non publiée, accès non prouvé**.
 - [[PER-CB42-RES-15-LURNE-BRISE-BOULON|Lurne Brise-Boulon]] — navigation astronomique et contrat de cartographe signé.
+- [[PER-CB42-RES-09-SILAN-SEPT-PONTS|Silan de Sept-Ponts]] — correspondance et langues commerciales ; engagement signé en CB43.
+- [[PER-CB42-RES-17-SOREN-MALDERIVE|Soren Malderive]] — passagers et cabines ; **aucune embauche signée, fiche non publiée**, distinct du marin Sören.
+- [[PER-CB42-RES-20-EDRAN-VEILLE-AU-FEU|Edran Veille-au-Feu]] — phare et secours ; **décédé, fiche non publiée**, scènes uniquement historiques.
+- [[PER-CB43-HROLDAN-TROIS-CLEFS|Hroldan Trois-Clefs]] — Rappelé libre, logistique sans poste accepté.
+- [[PER-CB43-TAVIAN-RELSOR|Tavian Relsor]] — missions d'enquête préparatoire, sans pouvoir de signature générale.
+- [[PER-CB43-ELWEN-SAUREL|Elwen Saurel]] — coordination de la Maison, contrat signé ; **un seul Elwen malgré la description ancienne contradictoire**.
+- [[RES-26|Beren Haubans-Gris]] — second engagé sous Thaléa, discipline et repos des équipages.
 
 ## Illustrations et variantes
 
-Les portraits déjà présents dans les Archives sont réutilisés avec leurs statuts propres. Les concepts supplémentaires de **Mara**, **Sivra**, **Sigrid**, **Mirelda**, **Sariel** et **Naëline** ne fixent pas leurs traits physiques ; les autres cartes sans portrait utilisent des emblèmes décoratifs provisoires. Aucune image du catalogue n'attribue un état de Rappelé, un grade, un âge non attesté, un lien familial ou une affiliation. Le portrait de Naëline montre une possibilité graphique de son intérêt pour le dessin, non une scène jouée ni une apparence attestée.
+Les portraits déjà présents dans les Archives sont réutilisés avec leurs statuts propres. Les concepts supplémentaires de **Mara Vifacier**, **Sivra**, **Sigrid**, **Mirelda**, **Sariel**, **Naëline** et désormais **Mara Ventrevent** ne fixent pas leurs traits physiques ; les autres cartes sans portrait utilisent des emblèmes décoratifs provisoires. Aucune image du catalogue n'attribue un état de Rappelé, un grade, un âge non attesté, un lien familial ou une affiliation. Le portrait de Naëline propose son intérêt pour le dessin ; celui de Mara Ventrevent interprète son travail de pont. Ni l'un ni l'autre ne représentent des scènes jouées.
 
 **Trois inspirations visuelles externes** sont proposées pour Durgan (une forge), Célianne (une planche botanique) et Thaléa (une marine). Elles proviennent de [Wikimedia Commons](https://commons.wikimedia.org/) avec auteurs, pages sources et mentions de licence conservés. Elles ne sont **ni** des portraits de ces personnes **ni** des documents du monde. Dans le prototype HTML, les images distantes sont **désactivées par défaut** : leur affichage est un choix du lecteur et peut transmettre une requête au site hébergeant l'image. Voir `docs/pnj/PNJ-003_SOURCES_VISUELLES.md`.
 
@@ -109,6 +121,6 @@ Chaque fiche peut servir plusieurs campagnes et, plus tard, plusieurs profils 5d
 
 ## Suivi éditorial
 
-- **Version de travail :** PNJ-001 à PNJ-004, 16 novembre 2026 ; sous revue, non publiée.
-- **Sources :** les soixante-six fiches liées, leurs `source_brute`, le [contrat éditorial](https://github.com/Sijiel44/archives-alrick/blob/main/CONTRAT_EDITORIAL.md) et le Compendium lorsqu'il est cité par chaque fiche.
+- **Version de travail :** PNJ-001 à PNJ-005, 16 novembre 2026 ; sous revue, non publiée.
+- **Sources :** les soixante-dix-huit fiches liées, leurs `source_brute`, le [contrat éditorial](https://github.com/Sijiel44/archives-alrick/blob/main/CONTRAT_EDITORIAL.md) et le Compendium lorsqu'il est cité par chaque fiche.
 - **Décisions ouvertes :** choix des portraits définitifs, ordre de publication, traitement des révélations, adaptations mécaniques INDEX/MATH et raccord de cette présentation au Studio MJ.

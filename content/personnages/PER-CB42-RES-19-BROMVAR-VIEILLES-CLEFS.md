@@ -31,6 +31,16 @@ Son statut de Rappelé ne le fait ni Revenant ni membre de la Maison divine. L�
 
 Les éventuelles nouvelles aventures sont à jouer ; elles ne font pas partie des faits déjà établis.
 
+## En jeu — propositions non jouées (volet MJ)
+
+**Comportement et désir possibles.** Bromvar remarque les ferrures et les traces d'usure, mais s'intéresse désormais à ce qu'il pourrait découvrir hors du métier de concierge. Il sait entretenir la mémoire d'une résidence sans vouloir y retourner immédiatement.
+
+**Rencontre adaptable.** Les habitants d'un bâtiment ancien hésitent à rouvrir une aile condamnée. Les PJ peuvent écouter les témoignages, chercher un artisan volontaire ou proposer à Bromvar une **simple visite**, qu'il peut accepter ou refuser.
+
+**Réplique fictive :** « Une clé ouvre une porte ; elle ne m'oblige pas à y passer. »
+
+**Continuité.** Son **Rappel** et sa rencontre sont attestés ; **ni contrat permanent, ni emploi d'intendant, ni adhésion aux Revenants** n'en découlent. Une durée de vie supplémentaire sur plusieurs siècles ne peut être inférée.
+
 ## Sources et adresse de classement
 
 *Compendium des personnages et des relations* v1.7, **RES-19**, et renvois de la fiche précédente : CB42 P10878–10881. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.

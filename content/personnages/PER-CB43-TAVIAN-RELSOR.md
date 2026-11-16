@@ -38,6 +38,16 @@ Tavian **ne signe pas de traité**, n'engage pas une dépense royale sans mandat
 
 Un MJ peut construire une enquête de terrain sur des besoins de villages ou sur des documents de port. Le résultat reste ouvert et ne peut être ajouté rétroactivement au rapport CB43.
 
+## Complément MJ — propositions non jouées
+
+**Comportement et contradiction possibles.** Tavian interroge les habitants, archive les réponses et distingue son intérêt personnel pour les voyages du mandat exact qui lui a été confié. Il peut préférer agir vite sur une difficulté visible, mais doit respecter l'autonomie des interlocuteurs locaux.
+
+**Rencontre adaptable.** Un port demande une décision financière immédiate alors que Tavian est venu seulement recueillir des données. Les PJ peuvent vérifier les besoins, mettre les parties en relation ou formuler une recommandation sans promettre un résultat.
+
+**Réplique fictive :** « Je peux porter vos arguments jusqu'au cabinet. Je ne peux pas signer ce que personne ne m'a donné le droit de signer. »
+
+**Continuité.** Mandat **signé et préparatoire** pour Orinor, sous Nahla ; **aucun rapport final de retour attesté**. La mission proposée ici n'est pas la mission déjà jouée et n'en fixe pas l'issue.
+
 ## Sources
 
 *Compendium V03 v1.7*, **RES-24** ; *Campagne Brut 4.3*, CB43 P02290–02305, P02492–02881 et P03450–04029. Code web historique conservé.
