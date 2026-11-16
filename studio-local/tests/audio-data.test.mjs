@@ -160,7 +160,7 @@ test('Les versions antérieures restent lisibles et les sauvegardes incohérente
       const current = await store.execute({ id: campaign.id, operationId: 'piste-v18', expectedRevision: campaign.revision, type: 'save-audio-track',
         data: { id: 'pluie', name: 'Pluie', url: 'https://audio.invalid/pluie.wav', credit: '' } });
       const archive = JSON.parse(await store.exportBackup(current.id));
-      const future = await failure({ ...archive, version: 20 }), downgrade = await failure({ ...archive, version: 17 });
+      const future = await failure({ ...archive, version: 999 }), downgrade = await failure({ ...archive, version: 17 });
       archive.payload.campaign[AUDIO_KEY].scenePlaylists.push({ sceneId: 'scene', playlistId: 'fantome' });
       archive.sha256 = await sha256(JSON.stringify(archive.payload));
       const invalidReference = await failure(archive);

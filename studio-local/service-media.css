@@ -1,0 +1,10 @@
+.service-media-dialog { width: min(52rem, calc(100% - 2rem)); }
+.service-media-dialog > * + * { margin-top: 1rem; }
+.service-media-dialog header { align-items: start; gap: 1rem; }
+.service-media-dialog header h2 { min-width: 0; }
+.service-media-dialog header button { flex: none; }
+.service-media-dialog .actions { flex-wrap: wrap; }
+.service-media-dialog input[type=file] { width: 100%; max-width: 100%; }
+#service-media-player iframe { display: block; width: 100%; height: clamp(220px, 48vw, 430px); min-height: 220px; border: 0; background: #0c151b; }
+#service-media-player audio { display: block; width: 100%; }
+.service-media-dialog a, #service-media-status { overflow-wrap: anywhere; }

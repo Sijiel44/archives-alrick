@@ -377,3 +377,9 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Recette du mouvement réduit : attendre la notification native entre deux changements d’émulation pour éviter leur regroupement par Chromium.
 # Les assertions de pause/retrait et d’absence de reprise automatique sont conservées ; aucun code produit ni contenu d’univers n’est modifié.
 # Relancer le workflow Pages demandé pour conserver une preuve complète de la version publiée, après CI du correctif.
+
+# Services multimédias et images de scène — continuation autorisée le 15 novembre 2026.
+# YouTube choisi, liens externes Spotify/Suno, audio local temporaire, images HTTPS et sauvegarde v20.
+# Dix médias de village sourcés ajoutés aux cent références existantes, sans fichier utilisateur ni contenu canonique.
+# npm test réussi ; 178 tests Chrome et 25 Edge réussis, dont les cinq parcours Pages assemblé.
+# CI avant fusion, puis workflow Pages et contrôle public ; séance humaine réelle toujours à réaliser.

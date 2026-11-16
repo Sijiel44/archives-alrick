@@ -477,3 +477,8 @@ dialog::backdrop { background: #0a0e12b8; }
   .scene-picker { max-width: none; }
   .profile-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+.scene-image-preview { display:block; max-width:100%; max-height:50vh; margin:1rem auto; border-radius:.5rem; }
+.scene-image-preview[data-mode=cover] { width:100%; height:24rem; object-fit:cover; }
+.scene-image-preview[data-mode=map] { max-height:none; width:100%; border-radius:0; }
+.scene-image-preview[hidden] { display:none; }

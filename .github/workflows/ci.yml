@@ -49,4 +49,6 @@ jobs:
           name: recette-m041-ci
           path: artifacts/m041/
           if-no-files-found: ignore
+      - name: Services choisis et images de scène
+        run: node --test --test-concurrency=2 studio-local/tests/service-media-data.test.mjs studio-local/tests/service-media.test.mjs studio-local/tests/services-integration.test.mjs studio-local/tests/scene-images.test.mjs
       # Aucun artefact Pages ni déploiement sur les branches et PR.

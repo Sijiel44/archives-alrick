@@ -43,7 +43,7 @@ test('GitHub Pages expose les cent médias et suit une copie relue sans publier 
   await page.locator('#campaign-name').fill('Copie fictive Pages');
   await page.locator('#create-campaign-submit').click();
   await page.locator('#nav-library').click(); await page.locator('#library-media').click();
-  await page.locator('#media-catalogue-summary').getByText(/50 sons et 50 vidéos/).waitFor();
+  await page.locator('#media-catalogue-summary').getByText(/\d+ sons et \d+ vidéos/).waitFor();
   await page.locator('#media-kind').selectOption('audio');
   const entry = MEDIA_ENTRIES.find(e => e.kind === 'audio');
   await page.locator('#media-search').fill(entry.name);
@@ -68,6 +68,45 @@ test('GitHub Pages expose les cent médias et suit une copie relue sans publier 
   const report = JSON.parse(text);
   assert.equal(report.readable, 1); assert.equal(report.unreadable, 0);
   assert.doesNotMatch(text, /Copie fictive Pages|upload.wikimedia|son-ruissellement/);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+});
+
+test('GitHub Pages propose YouTube à la demande et conserve les images de scène', {
+  skip: !process.env.PUBLIC_BASE && process.env.STUDIO_PAGES_TEST !== '1', timeout: 45000,
+}, async t => {
+  const base = process.env.PUBLIC_BASE ? `${process.env.PUBLIC_BASE.replace(/\/$/, '')}/` : await servePages(t);
+  const fixture = await browserFixture(t), { page, context } = await fixture.open('pages-services-images', { viewport: { width: 390, height: 844 } });
+  const requests = [];
+  await context.route('https://www.youtube-nocookie.com/**', async route => { requests.push(route.request()); await route.fulfill({ contentType: 'text/html', body: '<button>Lecteur de recette</button>' }); });
+  await page.goto(new URL('./studio/', base).href);
+  await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
+  await page.locator('#campaign-name').fill('Campagne Pages illustrée'); await page.locator('#create-campaign-submit').click();
+  await page.locator('#add-scene').click(); await page.locator('#scene-title').fill('Une place de village');
+  await page.locator('#scene-form button[type=submit]').click(); await page.locator('#scene-dialog').waitFor({ state: 'hidden' });
+  await page.locator('#nav-play').click();
+  await page.getByRole('button', { name: 'Ajouter un lien YouTube, Spotify ou Suno', exact: true }).click();
+  await page.locator('#audio-track-name').fill('Vidéo de préparation'); await page.locator('#audio-track-url').fill('https://youtu.be/M7lc1UVf-VE');
+  await page.locator('#audio-track-form button[type=submit]').click(); await page.locator('#audio-track-dialog').waitFor({ state: 'hidden' });
+  await page.locator('#audio-library-tools summary').click();
+  await page.getByRole('button', { name: 'Ouvrir le média Vidéo de préparation', exact: true }).click();
+  assert.equal(requests.length, 0);
+  await page.locator('#service-media-load').click();
+  await page.frameLocator('#service-media-player iframe').getByRole('button', { name: 'Lecteur de recette' }).waitFor();
+  assert.equal(new URL(requests[0].headers().referer).origin, new URL(base).origin);
+  assert.equal(new URL(requests[0].headers().referer).pathname, '/');
+  await page.locator('#service-media-close').click();
+  await page.locator('#service-media-player iframe').waitFor({ state: 'detached' });
+  await page.locator('#scene-image-edit').click();
+  await page.locator('#scene-image-url').fill('https://images.example.invalid/place.webp');
+  await page.locator('#scene-image-alt').fill('Maisons autour d’une fontaine');
+  await page.locator('#scene-image-mode').selectOption('cover');
+  await page.locator('#scene-image-form button[type=submit]').click();
+  await page.locator('#scene-image-dialog').waitFor({ state: 'hidden' });
+  await page.locator('#nav-backups').click();
+  const [download] = await Promise.all([page.waitForEvent('download'), page.locator('#export-backup').click()]);
+  const archive = JSON.parse(await readFile(await download.path(), 'utf8'));
+  assert.equal(archive.version, 20);
+  assert.equal(archive.payload.campaign.entreRivesSceneImagesV20[0].mode, 'cover');
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
 });
 

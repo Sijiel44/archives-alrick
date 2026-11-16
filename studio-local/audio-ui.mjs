@@ -1,4 +1,6 @@
 import { AUDIO_LIMITS, audioLibrary, validAudioUrl } from './audio.mjs';
+import { parseServiceMediaURL } from './service-media.mjs';
+import { createServiceMediaUI } from './service-media-ui.mjs';
 
 const $ = id => document.getElementById(id);
 const node = (tag, text, className) => {
@@ -28,6 +30,15 @@ export function createAudioUI({ getCampaign, canWrite, save, refresh, open }) {
   const playlistSnapshot = (playlist, collection) => ({ ...playlist,
     tracks: playlist.trackIds.map(id => collection.tracks.find(track => track.id === id)) });
   const say = text => { $('audio-status').textContent = text; };
+  const services = createServiceMediaUI({ host: $('audio-panel'), onStart: () => {
+    ++playToken; audio.pause(); phase = current() ? 'paused' : 'idle';
+    say('Régie en pause pendant la consultation du média.'); updatePlayer();
+  } });
+  const localFileButton = button('Lire un fichier audio', 'Lire un fichier audio local, par exemple obtenu via Suno', () => services.openLocal());
+  const serviceLinkButton = button('Ajouter un lien YouTube, Spotify ou Suno', 'Ajouter un lien YouTube, Spotify ou Suno', () => startForm('track'));
+  const serviceActions = node('div', undefined, 'actions'); serviceActions.append(serviceLinkButton, localFileButton);
+  $('audio-library-tools').before(serviceActions);
+  const serviceTrack = track => { try { return parseServiceMediaURL(track?.url); } catch { return { invalid: true }; } };
 
   function updateTime() {
     const duration = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 0;
@@ -56,6 +67,7 @@ export function createAudioUI({ getCampaign, canWrite, save, refresh, open }) {
     updateTime();
   }
   function releaseMedia() {
+    services.stop();
     ++playToken;
     audio.pause();
     audio.removeAttribute('src');
@@ -81,6 +93,12 @@ export function createAudioUI({ getCampaign, canWrite, save, refresh, open }) {
   async function play() {
     const track = current();
     if (!track || ['playing', 'loading', 'buffering'].includes(phase)) return;
+    const service = serviceTrack(track);
+    if (service) {
+      if (service.invalid) { say('Lien de service non reconnu. Modifiez la piste avec son lien de partage complet.'); return; }
+      services.open(track); say('Utilisez les commandes du média choisi ; retour et arrêt restent disponibles.'); return;
+    }
+    services.stop();
     const token = ++playToken;
     phase = 'loading'; say('Chargement de la piste…');
     if (audio.getAttribute('src') !== track.url) audio.src = track.url;
@@ -96,7 +114,7 @@ export function createAudioUI({ getCampaign, canWrite, save, refresh, open }) {
     if (index < 0 || index >= queue.length) return;
     releaseMedia(); position = index; phase = 'ready';
     say('Piste prête. Cliquez sur Lecture.'); updatePlayer();
-    if (resume) void play();
+    if (resume && !serviceTrack(current())) void play();
   }
   function advance(direction, auto = false) {
     if (!current()) return;
@@ -204,6 +222,10 @@ export function createAudioUI({ getCampaign, canWrite, save, refresh, open }) {
       : { id: attempt.id, name, trackIds: [...attempt.trackIds], loop: $('audio-playlist-loop').checked };
     if (!name) { formError(form, new Error('Donnez un nom à cet élément.')); return; }
     if (kind === 'track' && !validAudioUrl(data.url)) { formError(form, new Error('Utilisez un lien HTTPS direct de 2 048 caractères maximum, sans identifiant ni mot de passe.')); return; }
+    if (kind === 'track') {
+      try { const service = parseServiceMediaURL(data.url); if (service) data.url = service.url; }
+      catch (error) { formError(form, error); return; }
+    }
     working = true;
     try {
       await save(command(attempt, `save-audio-${kind}`, data), { form, onSaved: () => { $(`audio-${kind}-dialog`).close(); } });
@@ -239,6 +261,7 @@ export function createAudioUI({ getCampaign, canWrite, save, refresh, open }) {
     }
     $('quick-audio').disabled = !campaign;
     $('audio-track-add').disabled = !campaign || collection.tracks.length >= AUDIO_LIMITS.tracks;
+    serviceLinkButton.disabled = $('audio-track-add').disabled;
     $('audio-playlist-add').disabled = !campaign || collection.playlists.length >= AUDIO_LIMITS.playlists;
     $('audio-track-count').textContent = `· ${collection.tracks.length} / ${AUDIO_LIMITS.tracks}`;
     $('audio-tracks-empty').hidden = collection.tracks.length > 0;
@@ -247,6 +270,8 @@ export function createAudioUI({ getCampaign, canWrite, save, refresh, open }) {
       const item = node('li'), copy = node('div', undefined, 'audio-record-copy'), controls = node('div', undefined, 'actions');
       copy.append(node('h4', track.name), node('p', new URL(track.url).hostname, 'muted'));
       if (track.credit) copy.append(node('p', track.credit, 'muted'));
+      const service = serviceTrack(track);
+      if (service && !service.invalid) controls.append(button('Ouvrir le média', `Ouvrir le média ${track.name}`, () => services.open(track)));
       controls.append(button('Modifier', `Modifier la piste ${track.name}`, () => startForm('track', track), 'text-button'),
         button('Supprimer', `Supprimer la piste ${track.name}`, () => remove('track', track), 'text-button'));
       item.append(copy, controls); return item;
@@ -331,6 +356,7 @@ export function createAudioUI({ getCampaign, canWrite, save, refresh, open }) {
   window.addEventListener('pagehide', () => stop('Son arrêté en quittant cette page. Cliquez sur Lecture pour reprendre.'));
   return { render, stop, canAdd: () => Boolean(canWrite() && library().tracks.length < AUDIO_LIMITS.tracks),
     pause() {
+      services.stop();
       if (!audio.hasAttribute('src')) return;
       ++playToken; audio.pause(); phase = 'paused'; say('Régie en pause pendant l’écoute du catalogue.'); updatePlayer();
     },

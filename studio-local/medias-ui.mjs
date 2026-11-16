@@ -90,7 +90,8 @@ export function createMediaCatalogueUI({ canChoose, chooseAudio, chooseVideo, st
       catalogue = await load();
       if (!dialog.open) return;
       $('media-category').replaceChildren(new Option('Toutes les ambiances', ''), ...Object.entries(catalogue.MEDIA_CATEGORIES).map(([id, name]) => new Option(name, id)));
-      $('media-catalogue-summary').textContent = `50 sons et 50 vidéos · CC0 ou domaine public · Sources contrôlées le ${catalogue.MEDIA_CHECKED_AT.split('-').reverse().join('/')}.`;
+      const count = kind => catalogue.MEDIA_ENTRIES.filter(entry => entry.kind === kind).length;
+      $('media-catalogue-summary').textContent = `${count('audio')} sons et ${count('video')} vidéos · CC0 ou domaine public · Sources contrôlées le ${catalogue.MEDIA_CHECKED_AT.split('-').reverse().join('/')}.`;
       render();
     } catch { if (dialog.open) $('media-results-status').textContent = 'Le catalogue ne peut pas être chargé. Vos liens personnels restent utilisables dans les régies.'; }
   }

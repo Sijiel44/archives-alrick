@@ -15,7 +15,7 @@ export function validateMediaCatalogues(catalogues) {
   const ids = new Set(), urls = new Set(), sources = new Set();
   for (const [kind, catalogue] of Object.entries(catalogues)) {
     if (!['audio', 'video'].includes(kind) || catalogue.version !== 1 || !/^\d{4}-\d{2}-\d{2}$/.test(catalogue.checkedAt) ||
-        !Array.isArray(catalogue.entries) || catalogue.entries.length !== 50) throw new Error('Le catalogue média est incomplet.');
+        !Array.isArray(catalogue.entries) || catalogue.entries.length < 50 || catalogue.entries.length > 1000) throw new Error('Le catalogue média est incomplet.');
     for (const entry of catalogue.entries) {
       if (!/^[a-z0-9][a-z0-9-]{0,127}$/.test(entry.id) || entry.kind !== kind || !text(entry.name, 160) ||
           !Object.hasOwn(MEDIA_CATEGORIES, entry.category) || !text(entry.description, 1200) || !https(entry.url) ||

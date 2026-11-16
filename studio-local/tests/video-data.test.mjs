@@ -166,7 +166,7 @@ test('La v18 audio reste lisible et les vidéos imposent la v19 sans accepter le
       const audioPreview = await store.previewBackup(JSON.stringify(audio));
       await send('save-scene-video', { sceneId: 'scene', url: 'https://video.invalid/brume.webm', imageId: 'image-heron-des-lanternes', loop: true, dim: 45, credit: '' });
       const archive = JSON.parse(await store.exportBackup(campaign.id));
-      const future = await failure({ ...archive, version: 20 }), downgrade = await failure({ ...archive, version: 18 });
+      const future = await failure({ ...archive, version: 999 }), downgrade = await failure({ ...archive, version: 18 });
       archive.payload.campaign[VIDEO_KEY][0].sceneId = 'fantome';
       archive.sha256 = await sha256(JSON.stringify(archive.payload));
       const foreign = await failure(archive);
