@@ -32,6 +32,7 @@ export const LIBRARY_SHELVES = Object.freeze({
   sorts: { name: 'Sorts et rituels', detail: 'Grimoire, Cercles et magie de table', icon: 'M12 3v18M3 12h18M6 6l12 12M18 6 6 18 M12 8l4 4-4 4-4-4z' },
   actions: { name: 'Capacités et actions', detail: 'Protocoles, techniques et progression', icon: 'M13 2 4 14h7l-1 8 10-12h-7z' },
   aventures: { name: 'Aventures et quêtes', detail: 'Scénarios, missions et contrats', icon: 'M7 3h11v14H8a2 2 0 0 1 0-4h10M5 15V5l2-2m0 14v4h13v-4 M10 7h5m-5 3h5' },
+  antagonistes: { name: 'Antagonistes et rivaux', detail: 'Oppositions possibles, rivalités et chemins de rédemption', icon: 'M12 3 2 8l10 5 10-5-10-5v14m-6-5h12' },
   factions: { name: 'Organisations et factions', detail: 'Institutions du monde et modèles de campagne', icon: 'M4 21V8l8-5 8 5v13M8 21v-9h8v9M3 21h18M8 8h8' },
   imagerie: { name: 'Imagerie', detail: 'Plans, portraits et illustrations', icon: 'M3 5h18v14H3z M4 16l5-5 4 4 3-3 4 4 M16 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2z' },
   campagne: { name: 'Fiches de campagne', detail: 'PJ, repères et variantes de ce profil', icon: 'M6 3h13v14H6z M3 7v14h12 M9 7h7m-7 4h7' },
@@ -110,15 +111,17 @@ const organisationEntries = organisations.entries.map(entry => ({
 // The level is a planning intent only, so do not expose it as a computed combat level.
 const antagonistEntries = antagonistes.entries.map(entry => ({
   id: entry.id, version: entry.version, name: entry.name, description: entry.description,
-  kind: 'npc', shelf: 'factions', group: 'Personnages et lieurs', status: 'lore', origin: 'archives',
+  kind: 'npc', shelf: 'antagonistes', group: 'Figures et tensions', status: 'lore', origin: 'archives',
+  positionNarrative: entry.positionNarrative,
   path: entry.path, tags: [...entry.tags, `niveau narratif ${entry.levelIntent}`, entry.corruptionStage].join(' '),
   links: [...entry.relations, ...entry.factions],
   href: `https://github.com/Sijiel44/archives-alrick/blob/main/${entry.path}`,
   art: { src: new URL(`./images/personnages-dechus/${entry.image}`, import.meta.url).pathname, alt: entry.artAlt },
-  details: [['Niveau narratif (non chiffré)', String(entry.levelIntent)],
+  details: [['Position narrative suggérée (modifiable par MJ)', entry.positionNarrative],
+    ['Niveau narratif (non chiffré)', String(entry.levelIntent)],
     ['Situation face à la Déchéance', entry.corruptionStage],
     ['Rôle', entry.role], ['Activité actuelle', entry.currentRegion], ['Motivation', entry.motivation]],
-  publicTemplate: { role: entry.role, motivation: entry.motivation,
+  publicTemplate: { posture: entry.positionNarrative, role: entry.role, motivation: entry.motivation,
     relations: [...entry.relations, ...entry.factions].join(', ') },
 }));
 
@@ -227,6 +230,7 @@ export function buildLibraryIndex(campaigns) {
       const type = CREATION_TYPES[creation.kind];
       entries.push({ ...context, id: creation.id, name: creation.name, description: creation.description,
         kind: creation.kind, origin: 'personal', status: creation.state, shelf: type.shelf,
+        positionNarrative: creation.kind === 'npc' ? creation.details.posture : undefined,
         group: creation.details.scale ?? type.group, creation: true, record: creation,
         links: [creation.parentId, ...creation.links, ...(children.get(creation.id) ?? [])].filter(Boolean),
         details: type.fields.filter(({ key }) => creation.details[key]).map(({ key, label }) => [label, creation.details[key]]) });

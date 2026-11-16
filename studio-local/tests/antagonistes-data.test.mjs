@@ -24,6 +24,7 @@ test('Trente-six personnages des conflits de Déchéance : niveaux narratifs, Ch
     assert.equal(ids.has(character.id), false);
     ids.add(character.id);
     assert.ok(['Tentation', 'Fêlure', 'Rupture', 'Déchéance', 'Abîme', 'Non Déchu'].includes(character.corruptionStage));
+    assert.ok(['Opposition possible', 'Rivalité / ambiguïté'].includes(character.positionNarrative));
     const page = readFileSync(sourceFile(character.path), 'utf8');
     assert.match(page, new RegExp(`^code: "${character.id}"$`, 'm'));
     assert.match(page, /^publish: true$/m);
@@ -46,11 +47,13 @@ test('Trente-six personnages des conflits de Déchéance : niveaux narratifs, Ch
     }
     const reference = libraryReference(character.id);
     assert.equal(reference?.kind, 'npc');
-    assert.equal(reference?.shelf, 'factions');
+    assert.equal(reference?.shelf, 'antagonistes');
+    assert.equal(reference?.positionNarrative, character.positionNarrative);
     assert.equal(reference?.status, 'lore');
     assert.equal(reference?.version, character.version);
     assert.equal(reference?.level, undefined, 'Un niveau indicatif ne doit pas devenir un profil de combat');
     assert.equal(reference?.publicTemplate?.role, character.role);
+    assert.equal(reference?.publicTemplate?.posture, character.positionNarrative);
     assert.equal(libraryReference(character.path), reference);
     assert.ok(LIBRARY_ILLUSTRATIONS.includes(reference));
     assert.ok(entries.some(entry => entry.id === character.id));
@@ -89,4 +92,17 @@ test('Studio : JSON, portraits SVG et CSP limités au rayon MJ', async t => {
     assert.match(illustration.headers.get('content-type') ?? '', /image\/(?:svg\+xml|webp)/);
   }
   assert.equal((await fetch(`${origin}/images/personnages-dechus/dossier-secret.svg`)).status, 404);
+});
+
+
+test('Catégorie éditoriale : 36 fiches publiables, repères indépendants de la Déchéance', () => {
+  const page = readFileSync(sourceFile('content/personnages/antagonistes-et-rivaux.md'), 'utf8');
+  assert.match(page, /^publish: true$/m);
+  for (const character of catalogue.entries) assert.ok(page.includes(`./${character.id}.md`), `Lien manquant : ${character.id}`);
+  for (const marker of ['antag-role--opposition', 'antag-role--ambigu', 'antag-role--ally', 'antag-role--neutral']) {
+    assert.ok(page.includes(marker), `Légende manquante : ${marker}`);
+  }
+  const types = readFileSync(sourceFile('studio-local/creations.mjs'), 'utf8');
+  assert.match(types, /Position narrative dans cette campagne/);
+  assert.match(page, /La référence commune reste intacte/);
 });

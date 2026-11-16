@@ -5,8 +5,9 @@ const rules = 'Magie et techniques';
 
 export const CREATION_TYPES = Object.freeze({
   npc: { label: 'PNJ', shelf: 'pnj', group: 'Personnages non joueurs', area: story,
-    detail: 'Rôle, motivation et liens.',
-    fields: fields(['role', 'Rôle ou métier'], ['motivation', 'Motivation'], ['relations', 'Relations et alliés']) },
+    detail: 'Rôle, motivation, liens et position narrative évolutive.',
+    fields: fields(['posture', 'Position narrative dans cette campagne', ['Opposition possible', 'Rivalité / ambiguïté', 'Allié / rédemption', 'Neutre / indéterminé']],
+      ['role', 'Rôle ou métier'], ['motivation', 'Motivation'], ['relations', 'Relations et alliés']) },
   creature: { label: 'Créature', shelf: 'bestiaire', group: 'Créatures du MJ', area: story,
     detail: 'Habitat, comportement et particularités.',
     fields: fields(['habitat', 'Habitat'], ['behavior', 'Comportement'], ['traits', 'Traits et signes de danger']) },

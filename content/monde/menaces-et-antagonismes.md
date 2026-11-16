@@ -14,6 +14,8 @@ Un monde vivant n'a pas seulement besoin de rivaux politiques ou de dilemmes mor
 
 La *Bible du monde et des puissances* établit deux principes complémentaires : **aucun peuple intelligent n'est condamné au mal par sa naissance**, et **un antagoniste doit avoir une logique**. Cela ne signifie pas qu'il doive être pardonnable, négociable ou disposé à changer.
 
+[**Explorer la catégorie « Antagonistes et rivaux »**](../personnages/antagonistes-et-rivaux.md) — portraits, organisations et positions qui peuvent évoluer selon les choix des joueurs.
+
 ## Cinq façons de rencontrer le danger
 
 - **L'adversaire humain** — un chef de guerre, un seigneur, un marchand ou un juge commet des actes qui méritent qu'on lui résiste.
