@@ -1,6 +1,6 @@
 {
   "schema": "entre-rives.studio.bestiary-references.v1",
-  "decision": "Publication autorisée par le créateur le 16 novembre 2026 ; fiches nouvelles canoniques dès création ; ni faits joués ni profils M03 automatiques",
+  "decision": "Lots de dix demandés le 16 novembre 2026 ; espèces nouvelles canoniques dès création et publiées sur décision du créateur ; ni faits joués ni profils M03 automatiques",
   "entries": [
     {
       "id": "ESP-ER-001",
@@ -145,6 +145,106 @@
       "links": ["GEO-CB2-ENTRE-RIVES"],
       "details": [["Habitat", "Murs, vergers et lisières habités"], ["Indice", "Une voix imitée n'est pas un témoignage"], ["Quête", "Retrouver un objet sans détruire les nids"]],
       "art": { "src": "./media/corneille-trois-voix.webp", "alt": "Corneille noire à reflets bleus et trois bandes pâles sur la gorge, perchée près d'une clé." }
+    },
+    {
+      "id": "ESP-ER-013", "version": "27e99397b21ef1dda99532e378385877ade80bbf", "name": "Crabe des vases bleues",
+      "description": "Petit crabe d'eau douce à carapace bleu ardoise, dont les mues abandonnées intéressent les artisans sans alchimie validée.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-013-crabe-vases-bleues.md",
+      "tags": "entre-rives crabe eau douce vase mue pigment protection ressource canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Vases et bras lents"], ["Ressource", "Mues vides, sans recette approuvée"], ["Quête", "Concilier curage et refuge des crabes"]],
+      "art": { "src": "./media/crabe-vases-bleues.webp", "alt": "Petit crabe d'eau douce à carapace minérale bleue, pinces claires, sur la vase des roseaux." }
+    },
+    {
+      "id": "ESP-ER-014", "version": "b6cca3f47bf789e9cdbe08b5b98b3c40462e76ff", "name": "Chèvre des talus calcaires",
+      "description": "Caprin sauvage des terrasses pierreuses, à robe crème et deux cornes gris ardoise, agile mais vulnérable aux éboulements.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-014-chevre-talus-calcaires.md",
+      "tags": "entre-rives chevre calcaire talus elevage sauvetage laine canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Talus calcaires et murs secs"], ["Indice", "Traces de sabots dans la poudre blanche"], ["Quête", "Sauvetage sur une carrière instable"]],
+      "art": { "src": "./media/chevre-talus-calcaires.webp", "alt": "Chèvre sauvage crème à deux cornes d'ardoise sur une terrasse de calcaire." }
+    },
+    {
+      "id": "ESP-ER-015", "version": "ee1c8f9df8aad631ec73001e4f2d2fa393b76cfd", "name": "Anguille des vannages",
+      "description": "Grande anguille olive à flanc cuivré qui cherche le courant sous les roues de moulin et les grilles de vannages.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-015-anguille-vannages.md",
+      "tags": "entre-rives anguille moulin vannage migration eau capture vivante canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Biefs, canaux de dérivation et bras profonds"], ["Indice", "Traces sinueuses sous les mécanismes"], ["Quête", "Déplacer vivante avant un chantier"]],
+      "art": { "src": "./media/anguille-vannages.webp", "alt": "Grande anguille olive à reflet cuivré nageant dans un bief de moulin ancien." }
+    },
+    {
+      "id": "ESP-ER-016", "version": "b3cbc543c21abdf22a8e5a9701263339ccfa971a", "name": "Phalène de givre des fruitiers",
+      "description": "Papillon ivoire aux nervures bleues des matins froids ; sa présence ne déclenche pas les gelées.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-016-phalene-givre-fruitiers.md",
+      "tags": "entre-rives phalene gel verger conservation pollinisation canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Vieux vergers et haies froides"], ["Indice", "Ailes rappelant une vitre gelée"], ["Limite", "Ne cause pas le gel"]],
+      "art": { "src": "./media/phalene-givre-fruitiers.webp", "alt": "Grande phalène ivoire veinée de bleu sur un pommier couvert de givre léger." }
+    },
+    {
+      "id": "ESP-ER-017", "version": "42414881a9f4a0ebdfd37e5915aeafde5cab9c55", "name": "Martre au masque d'étain",
+      "description": "Petite martre rousse au masque argent naturel, curieuse des combles et parfois accusée de vols qu'elle n'a pas commis.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-017-martre-masque-etain.md",
+      "tags": "entre-rives martre grenier masquer argent cohabitation enquete canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Greniers et vergers proches des bois"], ["Indice", "Plumes, tissus déplacés, traces de griffes"], ["Quête", "Faire cesser les pièges aveugles"]],
+      "art": { "src": "./media/martre-masque-etain.webp", "alt": "Martre rousse au masque gris argent naturel sur un toit de tuiles anciennes." }
+    },
+    {
+      "id": "ESP-ER-018", "version": "0565077e29ffc04c1cf10a8796114a20c84c02cb", "name": "Vautre des marais",
+      "description": "Puissant carnivore semi-aquatique à pattes palmées, dangereux s'il est acculé mais protecteur de ses jeunes.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-018-vautre-marais.md",
+      "tags": "entre-rives marais predateur chasse defense conflit elevage protection canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Marais et roseaux"], ["Danger", "Défend son refuge et peut mordre"], ["Quête", "Retrouver un animal disparu sans battue aveugle"]],
+      "art": { "src": "./media/vautre-marais.webp", "alt": "Grand prédateur sombre et musclé aux pattes palmées, avançant dans un marais de roseaux." }
+    },
+    {
+      "id": "ESP-ER-019", "version": "817f21332c4338011769e386357a29d05f9e1b3b", "name": "Foreur des berges",
+      "description": "Grand ver ocre fouisseur des argiles humides ; ses galeries peuvent aggraver l'érosion de berges déjà fragiles.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-019-foreur-berges.md",
+      "tags": "entre-rives foreur ver berge erosion crue ingenierie etude canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Talus argileux et racines"], ["Danger", "Affaissement des berges, sans attaque directe"], ["Quête", "Diagnostiquer une passerelle fissurée"]],
+      "art": { "src": "./media/foreur-berges.webp", "alt": "Grand ver annelé ocre émergeant d'une berge argileuse aux racines apparentes." }
+    },
+    {
+      "id": "ESP-ER-020", "version": "44e59f11f3afa8ff24d874318d59f2aac02c739b", "name": "Luciole des pierres tendres",
+      "description": "Petit coléoptère ambre faiblement lumineux des calcaires humides, menacé par la collecte pour la décoration.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-020-luciole-pierres-tendres.md",
+      "tags": "entre-rives luciole calcaire lueur eau protection capture canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Pierres calcaires humides"], ["Lueur", "Naturelle, faible et intermittente"], ["Quête", "Libérer les lucioles d'un commerce vivant"]],
+      "art": { "src": "./media/luciole-pierres-tendres.webp", "alt": "Coléoptère ambre à petits points lumineux sur une roche calcaire moussue au soir." }
+    },
+    {
+      "id": "ESP-ER-021", "version": "386fd53f39ccb1784e0550d3ca5477bdea57f4b0", "name": "Fée des aulnes",
+      "description": "Petite personne féerique ailée et libre des aulnaies, issue du principe créateur des fées lié à Orin, sans pouvoir obligatoire.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Êtres féeriques des rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-021-fee-aulnes.md",
+      "tags": "entre-rives fee orin aulne parole autonomie consentement magie canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Nature", "Être conscient : peut parler, consentir et refuser"], ["Origine", "Fées créées par Orin, sans mandat divin spécifique"], ["Quête", "Négocier et protéger plutôt que capturer"]],
+      "art": { "src": "./media/fee-aulnes.webp", "alt": "Petite fée adulte en vêtement d'écorce, ailes translucides, sur la racine d'un aulne." }
+    },
+    {
+      "id": "ESP-ER-022", "version": "fed084ddd20d03162dd94f2c967d90bb84c8dc39", "name": "Cerf des sources profondes",
+      "description": "Grand cervidé rare gris cendre à ramure impressionnante, respecté près des sources anciennes sans divinité attestée.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-022-cerf-sources-profondes.md",
+      "tags": "entre-rives cerf sources ramure rarete protection mystere non divin canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Bois anciens et sources forestières"], ["Prudence", "La ramure peut blesser si l'animal est acculé"], ["Limite", "Ni oracle ni dieu attesté"]],
+      "art": { "src": "./media/cerf-sources-profondes.webp", "alt": "Grand cerf gris cendre aux deux bois ramifiés près d'un bassin de source moussue." }
     },
     {
       "id": "INDC-ER-001",

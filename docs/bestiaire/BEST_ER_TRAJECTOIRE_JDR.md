@@ -26,6 +26,23 @@ Le matériau d'une créature peut entrer dans un objet ou une **recherche alchim
 
 Les trois cas démontrent des ressorts de jeu différents, **sans recette approuvée, effet chiffré, rôle PNJ donné à toute une espèce ni événement joué**.
 
+## Application au lot de dix BEST-ER-006
+
+| Espèce et fonction | Situation de départ possible | Choix et limite documentaire |
+| --- | --- | --- |
+| `ESP-ER-013` Crabe des vases bleues — ressource douce | Mues convoitées pendant un curage | Collecter sans capturer, restaurer un habitat ; pigment et alchimie non validés |
+| `ESP-ER-014` Chèvre des talus calcaires — vie des coteaux | Jeune isolé sur une carrière instable | Sauver, détourner le pâturage, négocier avec carriers ; aucune escalade magique |
+| `ESP-ER-015` Anguille des vannages — travaux de moulin | Bief bloqué, poisson piégé | Diagnostiquer, déplacer vivant, sécuriser la roue ; pas de pouvoir de l'eau |
+| `ESP-ER-016` Phalène de givre des fruitiers — rumeurs | Gel attribué aux ailes des phalènes | Observer, protéger, démentir une fausse cause ; ne commande pas le froid |
+| `ESP-ER-017` Martre au masque d'étain — enquête rurale | Bruits et objets déplacés dans un grenier | Cohabiter ou piéger avec conséquences ; pas d'intention de vol présumée |
+| `ESP-ER-018` Vautre des marais — danger territorial | Prédateur approchant un enclos | Protéger le bétail, contourner, combattre si nécessaire, secourir sa portée ; aucun dommage fixé |
+| `ESP-ER-019` Foreur des berges — ingénierie | Passerelle fissurée et berges affaissées | Diagnostiquer, stabiliser, reloger ; ne fore pas la roche |
+| `ESP-ER-020` Luciole des pierres tendres — merveille fragile | Captures de lucioles pour des lanternes vivantes | Libérer, reproduire la beauté par artisanat ; pas de sort de lumière |
+| `ESP-ER-021` Fée des aulnes — dialogue conscient | Chantier menaçant un bosquet habité | Négocier, obtenir un consentement, protéger ; Orin origine générale des fées, pas mandat individuel |
+| `ESP-ER-022` Cerf des sources profondes — prestige rare | Chasse à la ramure et bois fragmenté | Trouver une mue, protéger les passages, refuser ; aucune ascension divine décrétée |
+
+**Décision de cadence** : le créateur demande désormais de développer **dix espèces par lot**. BEST-ER-006 respecte ce format, y compris images et identités versionnées. La faune commune, les dangers, les personnes féeriques et les futurs êtres divins restent des familles éditoriales distinctes : la diversité d'un lot ne crée aucun niveau 5d6 par implication.
+
 ## Échelons narratifs, non niveaux imposés
 
 | Famille éditoriale | Apport à une table | Règle de séparation |

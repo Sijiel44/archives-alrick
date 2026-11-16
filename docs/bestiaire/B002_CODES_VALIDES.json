@@ -119,7 +119,67 @@
       "source_documentaire": "Création originale BEST-ER-005 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le seul cadre géographique",
       "preuve_validation_createur": "Décision du créateur : les espèces sont canoniques dès création ; demande de poursuivre le développement du Bestiaire le 16 novembre 2026",
       "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-013", "nature": "espece", "fichier": "content/creatures/ESP-ER-013-crabe-vases-bleues.md",
+      "source_documentaire": "Création originale BEST-ER-006 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique",
+      "preuve_validation_createur": "Créateur, 16 novembre 2026 : poursuivre les espèces par lots de dix ; espèces canoniques dès création et publication des fiches sur le nouveau site",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-014", "nature": "espece", "fichier": "content/creatures/ESP-ER-014-chevre-talus-calcaires.md",
+      "source_documentaire": "Création originale BEST-ER-006 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique",
+      "preuve_validation_createur": "Créateur, 16 novembre 2026 : poursuivre les espèces par lots de dix ; espèces canoniques dès création et publication des fiches sur le nouveau site",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-015", "nature": "espece", "fichier": "content/creatures/ESP-ER-015-anguille-vannages.md",
+      "source_documentaire": "Création originale BEST-ER-006 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique",
+      "preuve_validation_createur": "Créateur, 16 novembre 2026 : poursuivre les espèces par lots de dix ; espèces canoniques dès création et publication des fiches sur le nouveau site",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-016", "nature": "espece", "fichier": "content/creatures/ESP-ER-016-phalene-givre-fruitiers.md",
+      "source_documentaire": "Création originale BEST-ER-006 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique",
+      "preuve_validation_createur": "Créateur, 16 novembre 2026 : poursuivre les espèces par lots de dix ; espèces canoniques dès création et publication des fiches sur le nouveau site",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-017", "nature": "espece", "fichier": "content/creatures/ESP-ER-017-martre-masque-etain.md",
+      "source_documentaire": "Création originale BEST-ER-006 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique",
+      "preuve_validation_createur": "Créateur, 16 novembre 2026 : poursuivre les espèces par lots de dix ; espèces canoniques dès création et publication des fiches sur le nouveau site",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-018", "nature": "espece", "fichier": "content/creatures/ESP-ER-018-vautre-marais.md",
+      "source_documentaire": "Création originale BEST-ER-006 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique",
+      "preuve_validation_createur": "Créateur, 16 novembre 2026 : poursuivre les espèces par lots de dix ; espèces canoniques dès création et publication des fiches sur le nouveau site",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-019", "nature": "espece", "fichier": "content/creatures/ESP-ER-019-foreur-berges.md",
+      "source_documentaire": "Création originale BEST-ER-006 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique",
+      "preuve_validation_createur": "Créateur, 16 novembre 2026 : poursuivre les espèces par lots de dix ; espèces canoniques dès création et publication des fiches sur le nouveau site",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-020", "nature": "espece", "fichier": "content/creatures/ESP-ER-020-luciole-pierres-tendres.md",
+      "source_documentaire": "Création originale BEST-ER-006 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique",
+      "preuve_validation_createur": "Créateur, 16 novembre 2026 : poursuivre les espèces par lots de dix ; espèces canoniques dès création et publication des fiches sur le nouveau site",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-021", "nature": "espece", "fichier": "content/creatures/ESP-ER-021-fee-aulnes.md",
+      "source_documentaire": "Création originale BEST-ER-006 ; intention du créateur sur les fées créées par Orin ; GEO-CB2-ENTRE-RIVES pour le cadre géographique",
+      "preuve_validation_createur": "Créateur, 16 novembre 2026 : poursuivre les espèces par lots de dix ; espèces canoniques dès création et publication des fiches sur le nouveau site",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-022", "nature": "espece", "fichier": "content/creatures/ESP-ER-022-cerf-sources-profondes.md",
+      "source_documentaire": "Création originale BEST-ER-006 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique",
+      "preuve_validation_createur": "Créateur, 16 novembre 2026 : poursuivre les espèces par lots de dix ; espèces canoniques dès création et publication des fiches sur le nouveau site",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
     }
   ],
-  "note": "Les quinze codes BEST-ER-002/003/004/005 (douze espèces et trois individus) sont attribués individuellement avec provenance et preuve créateur. Les autres codes restent soumis à validation explicite. Les 11 codes null du registre historique et les prototypes B-003.1 restent inchangés. IDs M03/M05 distincts."
+  "note": "Les vingt-cinq codes BEST-ER-002/003/004/005/006 (vingt-deux espèces et trois individus) sont attribués individuellement avec provenance et preuve créateur. Les autres codes restent soumis à validation explicite. Les 11 codes null du registre historique et les prototypes B-003.1 restent inchangés. IDs M03/M05 distincts."
 }
