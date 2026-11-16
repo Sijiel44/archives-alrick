@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="Un seul jet de 5d6 : 3, 3, 4, 4, 4 donnent 18, auxquels on ajoute 4 de caractéristique et 1 de maîtrise, soit 23 contre un seuil de 21 : réussite.">
+  <rect width="1200" height="700" rx="34" fill="#111d29"/>
+  <rect x="3" y="3" width="1194" height="694" rx="31" fill="none" stroke="#ba8255" stroke-width="5"/>
+  <text x="68" y="91" font-family="DejaVu Sans,sans-serif" font-size="57" font-weight="700" fill="#f5e5c2">UN SEUL JET POUR AGIR</text>
+  <text x="70" y="146" font-family="DejaVu Sans,sans-serif" font-size="29" fill="#b7c8ce">Cinq dés à six faces. Aucun second lancer pour les dégâts.</text>
+  <g font-family="DejaVu Sans,sans-serif" font-size="82" font-weight="700" text-anchor="middle" fill="#f7ebd5">
+    <rect x="77" y="206" width="170" height="170" rx="27" fill="#284455" stroke="#7ac5c0" stroke-width="6"/><text x="162" y="322">3</text>
+    <rect x="294" y="206" width="170" height="170" rx="27" fill="#284455" stroke="#7ac5c0" stroke-width="6"/><text x="379" y="322">3</text>
+    <rect x="511" y="206" width="170" height="170" rx="27" fill="#284455" stroke="#7ac5c0" stroke-width="6"/><text x="596" y="322">4</text>
+    <rect x="728" y="206" width="170" height="170" rx="27" fill="#284455" stroke="#7ac5c0" stroke-width="6"/><text x="813" y="322">4</text>
+    <rect x="945" y="206" width="170" height="170" rx="27" fill="#284455" stroke="#7ac5c0" stroke-width="6"/><text x="1030" y="322">4</text>
+  </g>
+  <text x="600" y="425" font-family="DejaVu Sans,sans-serif" font-size="31" text-anchor="middle" fill="#c9d6d8">Somme naturelle : 18</text>
+  <rect x="74" y="474" width="1052" height="156" rx="25" fill="#223342"/>
+  <g font-family="DejaVu Sans,sans-serif" text-anchor="middle" font-weight="700" font-size="55" fill="#f7e7c3">
+    <text x="195" y="548">18</text><text x="319" y="548">+</text><text x="438" y="548">4</text>
+    <text x="554" y="548">+</text><text x="674" y="548">1</text><text x="790" y="548">=</text>
+    <text x="924" y="548" fill="#88d2be">23</text>
+  </g>
+  <g font-family="DejaVu Sans,sans-serif" text-anchor="middle" font-size="22" fill="#b3c8ce">
+    <text x="195" y="592">5d6</text><text x="438" y="592">caractéristique</text><text x="674" y="592">maîtrise</text><text x="946" y="592" fill="#88d2be">seuil 21 dépassé</text>
+  </g>
+  <text x="600" y="672" font-family="DejaVu Sans,sans-serif" font-size="26" text-anchor="middle" fill="#efc88b">RÉUSSITE : on lit maintenant les dégâts fixes, sans relancer de dé.</text>
+</svg>
