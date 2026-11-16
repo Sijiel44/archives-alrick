@@ -2,8 +2,8 @@
 publish: false
 spoilers: true
 unlisted: true
-title: "Le Cabinet des Rencontres — sélection de 78 personnages"
-description: "Sélection éditoriale de soixante-dix-huit personnages documentés, avec renvoi vers leur fiche unique et des usages de campagne proposés."
+title: "Le Cabinet des Rencontres — sélection de 90 personnages"
+description: "Sélection éditoriale de quatre-vingt-dix personnages documentés, avec renvoi vers leur fiche unique et des usages de campagne proposés."
 canon_statut: "proposition_non_jouee"
 etat_editorial: "en_chantier"
 visibilite: "brouillon"
@@ -19,7 +19,7 @@ tags: [pnj, catalogue, rencontres, brouillon]
 
 *Fresque créée pour le prototype PNJ-001 : les silhouettes sont des archétypes de jeu, **pas** des portraits des personnages nommés ci-dessous. Cette sélection est un brouillon non publié.*
 
-Soixante-dix-huit noms déjà répertoriés dans les Archives, autant de portes d'entrée pour une table. **Chaque nom renvoie à une seule fiche source** : le catalogue ne réécrit ni l'histoire, ni les liens familiaux, ni les appartenances. Les amorces proposées aux MJ demeurent non jouées. Les fiches à révélations restent à avertissement ; ce sommaire lui-même n'est pas proposé à la publication sans examen. **Huit sources retenues dans les lots 004–005 sont non publiées** et ne doivent pas être offertes aux joueurs par défaut.
+Quatre-vingt-dix noms déjà répertoriés dans les Archives, autant de portes d'entrée pour une table. **Chaque nom renvoie à une seule fiche source** : le catalogue ne réécrit ni l'histoire, ni les liens familiaux, ni les appartenances. Les amorces proposées aux MJ demeurent non jouées. Les fiches à révélations restent à avertissement ; ce sommaire lui-même n'est pas proposé à la publication sans examen. **Huit sources retenues dans les lots 004–005 sont non publiées** et ne doivent pas être offertes aux joueurs par défaut.
 
 ## La compagnie
 
@@ -79,6 +79,14 @@ Soixante-dix-huit noms déjà répertoriés dans les Archives, autant de portes 
 - [[PER-CB42-RES-11-ORVAK-MAIN-DE-VELOURS|Orvak Main-de-Velours]] — protocole, réception et conditions de service du Palais.
 - [[PER-CB42-RES-21-AURELIAN-VIRE-SEL|Aurélian Vire-Sel]] — cuisine, transmission et découvertes après le Rappel.
 - [[RES-27|Mara Ventrevent]] — maîtresse d'équipage, apprentissage de Larek et sécurité des quarts ; distincte de Mara Vifacier.
+- [[SEC-70|Mara Belden]] — exploitante de Corvelis, essais sous réserve des moyens des familles ; distincte des autres Mara.
+- [[SEC-71|Hélène Varrec]] — faire comparer les terres sans conversion imposée.
+- [[SEC-72|Jorven Halrec]] — enquêter sur des pertes, sans accusation de vol présumée.
+- [[SEC-73|Hervald Trois-Sillons]] — 76 ans, les machines à l'épreuve des pentes ; **portrait conceptuel non validé**.
+- [[PER-CB43-DORSA-VAUN|Dorsa Vaun]] — observation logistique au manoir, **sans embauche définitive**.
+- [[SEC-65|Sigrun Pierreval]] — préparatifs d'Aldhammar, sans poste final ni travaux conclus.
+- [[SEC-64|Reginald]] — tavernier connu par un souvenir d'enfance, situation actuelle inconnue.
+- [[SEC-05|Garrik]] — hospitalité de la taverne, indépendant du service de la Maison.
 
 ## Savoirs et gardiens
 
@@ -110,10 +118,14 @@ Soixante-dix-huit noms déjà répertoriés dans les Archives, autant de portes 
 - [[PER-CB43-TAVIAN-RELSOR|Tavian Relsor]] — missions d'enquête préparatoire, sans pouvoir de signature générale.
 - [[PER-CB43-ELWEN-SAUREL|Elwen Saurel]] — coordination de la Maison, contrat signé ; **un seul Elwen malgré la description ancienne contradictoire**.
 - [[RES-26|Beren Haubans-Gris]] — second engagé sous Thaléa, discipline et repos des équipages.
+- [[SEC-69|Téodan Veyre]] — relevés économiques de Corvelis, sans mandat diplomatique.
+- [[SEC-54|Corin d'Avarenne]] — audience et diplomatie préparatoires, sans traité signé.
+- [[PER-CB42-SIGRUN-VAREK|Sigrun Varek]] — projet de passage oriental encore à étudier, distincte de Sigrun Pierreval.
+- [[SEC-29|Yrsa Veld]] — ports et commerce ; cousine déclarée de Maëron, distincte d'Ysara Velden.
 
 ## Illustrations et variantes
 
-Les portraits déjà présents dans les Archives sont réutilisés avec leurs statuts propres. Les concepts supplémentaires de **Mara Vifacier**, **Sivra**, **Sigrid**, **Mirelda**, **Sariel**, **Naëline** et désormais **Mara Ventrevent** ne fixent pas leurs traits physiques ; les autres cartes sans portrait utilisent des emblèmes décoratifs provisoires. Aucune image du catalogue n'attribue un état de Rappelé, un grade, un âge non attesté, un lien familial ou une affiliation. Le portrait de Naëline propose son intérêt pour le dessin ; celui de Mara Ventrevent interprète son travail de pont. Ni l'un ni l'autre ne représentent des scènes jouées.
+Les portraits déjà présents dans les Archives sont réutilisés avec leurs statuts propres. Les concepts supplémentaires de **Mara Vifacier**, **Sivra**, **Sigrid**, **Mirelda**, **Sariel**, **Naëline**, **Mara Ventrevent** et désormais **Hervald Trois-Sillons** ne fixent pas leurs traits physiques ; les autres cartes sans portrait utilisent des emblèmes décoratifs provisoires. Aucune image du catalogue n'attribue un état de Rappelé, un grade, un âge non attesté, un lien familial ou une affiliation. Le portrait de Naëline propose son intérêt pour le dessin ; ceux de Mara Ventrevent et d'Hervald interprètent leur activité professionnelle. Aucun ne représente une scène jouée.
 
 **Trois inspirations visuelles externes** sont proposées pour Durgan (une forge), Célianne (une planche botanique) et Thaléa (une marine). Elles proviennent de [Wikimedia Commons](https://commons.wikimedia.org/) avec auteurs, pages sources et mentions de licence conservés. Elles ne sont **ni** des portraits de ces personnes **ni** des documents du monde. Dans le prototype HTML, les images distantes sont **désactivées par défaut** : leur affichage est un choix du lecteur et peut transmettre une requête au site hébergeant l'image. Voir `docs/pnj/PNJ-003_SOURCES_VISUELLES.md`.
 
@@ -121,6 +133,6 @@ Chaque fiche peut servir plusieurs campagnes et, plus tard, plusieurs profils 5d
 
 ## Suivi éditorial
 
-- **Version de travail :** PNJ-001 à PNJ-005, 16 novembre 2026 ; sous revue, non publiée.
-- **Sources :** les soixante-dix-huit fiches liées, leurs `source_brute`, le [contrat éditorial](https://github.com/Sijiel44/archives-alrick/blob/main/CONTRAT_EDITORIAL.md) et le Compendium lorsqu'il est cité par chaque fiche.
+- **Version de travail :** PNJ-001 à PNJ-006, 16 novembre 2026 ; sous revue, non publiée.
+- **Sources :** les quatre-vingt-dix fiches liées, leurs `source_brute`, le [contrat éditorial](https://github.com/Sijiel44/archives-alrick/blob/main/CONTRAT_EDITORIAL.md) et le Compendium lorsqu'il est cité par chaque fiche.
 - **Décisions ouvertes :** choix des portraits définitifs, ordre de publication, traitement des révélations, adaptations mécaniques INDEX/MATH et raccord de cette présentation au Studio MJ.

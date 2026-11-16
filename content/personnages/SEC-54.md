@@ -24,6 +24,13 @@ unlisted: true
 
 Corin participe aux échanges et doit solliciter les interlocuteurs utiles pour une rencontre avec le souverain de Corvelis. Orin encourage un parcours qui puisse dépasser celui de sa tante. Aucune ambassade permanente ou signature souveraine ne naît de ce mandat préparatoire.
 
+## En jeu — pistes proposées, non jouées
+
+- **Comportement :** Corin vérifie la formulation d'une lettre d'audience et nomme clairement ce qu'il peut demander, sans promettre ce qu'il ne peut pas accorder.
+- **Tension :** l'ambition encouragée par Orin rencontre les limites d'un mandat encore préparatoire ; le récit ne confirme ni traité ni nomination d'ambassadeur.
+- **Rencontre MJ :** un intermédiaire exige une garantie avant la rencontre prévue à Corvelis. Obtenir une audience, présenter un dossier incomplet ou demander un mandat explicite sont trois voies possibles.
+- **Relations :** la « tante » évoquée est conservée comme telle ; sa correspondance nominative reste à confirmer dans les sources, sans déduction généalogique.
+
 ## Sources
 
 - *Compendium des personnages et des relations (V03), état après CB42*, CB42 P14946–15331.

@@ -31,6 +31,14 @@ Les résultats d’une récolte entière, l’adoption générale des machines e
 
 Les activités proposées à partir de ces faits ne sont pas de nouvelles scènes jouées.
 
+## En jeu — pistes proposées, non jouées
+
+- **Comportement :** Hervald, 76 ans, éprouve le sol entre ses doigts, montre la pente d'un geste et laisse les inventeurs pousser leur outil avant de leur donner son avis.
+- **Relation :** ses essais avec Odris et ses échanges avec Vaëra sont attestés ; un titre de mentor, une formation structurée ou une adoption générale des machines ne le sont pas.
+- **Rencontre MJ :** une roue d'assistance dévie sur un dévers. Les personnages peuvent revoir l'équilibre, interrompre la démonstration ou demander une réparation testable avant de reprendre.
+- **Évolution possible :** conseil ponctuel librement proposé dans une campagne, sans automatisme de formation ou de progression mécanique.
+- **Portrait :** `hervald-trois-sillons-concept-v01.webp` est une interprétation non canonique ; barbe blanche et âge sont documentés, mais tenue, coiffure, charrette et paysage ne le sont pas.
+
 ## Sources documentaires
 
 *Compendium des personnages et des relations* v1.7, **SEC-73** ; références du brouillon : CB42 P13877–15331. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.

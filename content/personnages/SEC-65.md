@@ -31,6 +31,14 @@ Le chantier achevé, un budget adopté, un effectif recruté et une direction d�
 
 Les prochains projets ou exercices restent à jouer et à sourcer.
 
+## En jeu — pistes proposées, non jouées
+
+- **Comportement :** Sigrun Pierreval commence par demander qui entretenait les lieux, ce qui manque vraiment et quels artisans souhaitent revenir.
+- **Relation :** ses souvenirs de Harald et du jeune Orin appartiennent à son histoire ; aucun emploi permanent à la Maison divine n'en découle.
+- **Rencontre MJ :** une salle d'Aldhammar pourrait rouvrir, mais l'état des installations et la disponibilité des équipes restent inconnus. Inventaire, consultation et ouverture progressive sont des issues possibles.
+- **Évolution possible :** coordination préparatoire selon les accords futurs, sans travaux accomplis ni budget fictif.
+- **Homonyme :** Sigrun Pierreval n'est pas Sigrun Varek, liée au passage commercial oriental.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **SEC-65** ; documents CB cités précédemment : CB42 P08699–08977. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.

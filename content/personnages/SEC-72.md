@@ -31,6 +31,13 @@ Les mesures prises, les coûts futurs, l’origine définitive de chaque perte e
 
 Les activités proposées à partir de ces faits ne sont pas de nouvelles scènes jouées.
 
+## En jeu — pistes proposées, non jouées
+
+- **Comportement :** Jorven suit les sacs entre moulin, réserve et charroi ; il veut comprendre l'écart avant que des soupçons se transforment en accusation publique.
+- **Contradiction fertile :** demander de l'aide peut sembler dévoiler la fragilité de son exploitation, alors qu'un diagnostic partagé éviterait de mauvaises décisions.
+- **Rencontre MJ :** un inventaire ne concorde pas avec les bordereaux de transport. Relevés, stockage et usure des machines doivent être examinés contradictoirement ; rien ne prouve un vol.
+- **Évolution possible :** diagnostic, maintien du doute ou changement d'organisation, selon la table. Aucun redressement chiffré ne s'ajoute au récit historique.
+
 ## Sources documentaires
 
 *Compendium des personnages et des relations* v1.7, **SEC-72** ; références du brouillon : CB42 P14110–15148. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.

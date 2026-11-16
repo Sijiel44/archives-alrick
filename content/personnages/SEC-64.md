@@ -32,6 +32,13 @@ Ni son âge actuel, ni la situation de sa taverne aujourd'hui, ni une nouvelle f
 
 Une enquête dans les lieux de l'enfance peut chercher des archives ou des témoins ; la rencontre de Reginald aujourd'hui serait un **nouvel événement à jouer**, pas une scène déjà accomplie.
 
+## En jeu — pistes proposées, non jouées
+
+- **Comportement historique seulement :** dans une scène explicitement située au temps des souvenirs, Reginald essuie un comptoir, surveille la salle et réagit aux maladresses d'adolescents.
+- **Rencontre MJ :** un récit de taverne ne concorde pas avec celui d'Orin ; les joueurs peuvent rechercher une source, comparer les souvenirs ou laisser l'incertitude intacte.
+- **Statut temporel :** une rencontre contemporaine avec Reginald exigerait d'abord d'établir qu'il est vivant, où se trouve la taverne et s'il souhaite recevoir. Rien de cela n'est attesté.
+- **Homonyme métier :** ce tavernier n'est pas Garrik ; aucune fusion de leurs établissements ou de leurs souvenirs.
+
 ## Source
 
 *Compendium V03 v1.7*, SEC-64 ; *Campagne Brut 4.2*, CB42 P00531–00819.

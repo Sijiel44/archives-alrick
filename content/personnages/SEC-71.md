@@ -31,6 +31,13 @@ Aucun transfert de propriété, contrat industriel, conversion imposée du domai
 
 Les activités proposées à partir de ces faits ne sont pas de nouvelles scènes jouées.
 
+## En jeu — pistes proposées, non jouées
+
+- **Comportement :** Hélène demande des comparaisons sur plusieurs sols, défend le savoir de ses équipes et conserve le droit de dire « cela ne convient pas ici ».
+- **Relation :** sa participation aux essais avec la responsable des cultures et un mécanicien est documentée ; aucune obligation de conversion ne découle de cette collaboration.
+- **Rencontre MJ :** une démonstration convaincante fonctionne dans un champ témoin et échoue sur une terre humide. Les personnages peuvent proposer une nouvelle mesure, recueillir les observations ou conserver deux techniques.
+- **Évolution possible :** actrice de la concertation locale selon la campagne, sans contrat ni titre ajouté aux faits joués.
+
 ## Sources documentaires
 
 *Compendium des personnages et des relations* v1.7, **SEC-71** ; références du brouillon : CB42 P13465–15148. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.

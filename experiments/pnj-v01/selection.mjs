@@ -581,5 +581,90 @@ export const selection = [
     rencontre: "Un exercice de pont devient dangereux lorsque des passagers veulent assister de trop près à la manœuvre.",
     choix: "Sécuriser le pont, reporter l'exercice ou organiser une démonstration à quai.",
     image: "mara-ventrevent-concept-v01.webp"
+  },
+  {
+    id: "teodan", file: "SEC-69.md", groupe: "savoirs", symbole: "📊",
+    accroche: "Un jeune analyste qui sait que les colonnes d'un registre ne remplacent pas la vie d'une exploitation.",
+    enScene: "Rapproche les carnets de rendement des observations de terrain et demande aux cultivateurs où ses mesures sont incomplètes.",
+    rencontre: "Deux fermes aux résultats similaires supportent des frais de transport très différents.",
+    choix: "Vérifier les relevés, entendre les exploitants ou proposer une nouvelle observation sans conclure d'avance."
+  },
+  {
+    id: "mara_belden", file: "SEC-70.md", groupe: "metiers", symbole: "🌾",
+    accroche: "Une agricultrice qui place les familles avant l'enthousiasme pour les machines nouvelles.",
+    enScene: "Demande combien de mains, de jours et de réserves un essai réclame, puis consulte ceux qui effectueront le travail.",
+    rencontre: "Une invention promet d'alléger une récolte, mais les ouvriers redoutent une panne en pleine saison.",
+    choix: "Convenir d'un essai limité, préparer une solution manuelle ou renoncer sans sanction."
+  },
+  {
+    id: "helene_varrec", file: "SEC-71.md", groupe: "metiers", symbole: "🌱",
+    accroche: "Une exploitante de Corvelis qui protège le droit de comparer sans imposer une seule façon de cultiver.",
+    enScene: "Décrit ses terres avec précision, écoute le mécanicien puis distingue ce qui fonctionne ici de ce qui conviendrait ailleurs.",
+    rencontre: "Une démonstration réussit sur une parcelle facile, tandis qu'un terrain voisin demeure incertain.",
+    choix: "Faire une seconde mesure, conserver plusieurs méthodes ou demander l'avis des travailleurs."
+  },
+  {
+    id: "jorven", file: "SEC-72.md", groupe: "metiers", symbole: "🏚️",
+    accroche: "Un exploitant confronté à des pertes qui ne prouvent ni fraude ni incapacité.",
+    enScene: "Suit la trace des sacs entre le moulin et la réserve, observe les retards et tient l'accusation à distance.",
+    rencontre: "Des quantités manquent à l'inventaire, mais les comptes et les lieux de stockage ne concordent pas.",
+    choix: "Reprendre l'inventaire, faire contrôler le matériel ou organiser un audit contradictoire."
+  },
+  {
+    id: "hervald", file: "SEC-73.md", groupe: "metiers", symbole: "🛞",
+    accroche: "À soixante-seize ans, un cultivateur sait qu'un chariot se juge sur la pente, pas dans l'atelier.",
+    enScene: "Prend une poignée de terre, scrute les racines et invite l'inventeur à pousser sa machine sur le passage difficile.",
+    rencontre: "Un dispositif aide sur sol plat, mais dévie dès que la piste s'incline.",
+    choix: "Modifier l'essai avec Odris, laisser l'outil de côté ou demander une correction avant tout usage.",
+    image: "hervald-trois-sillons-concept-v01.webp"
+  },
+  {
+    id: "corin_avarenne", file: "SEC-54.md", groupe: "proches", symbole: "🕊️",
+    accroche: "Un négociateur en devenir dont le courage consiste aussi à reconnaître les limites de son mandat.",
+    enScene: "Prépare une audience, identifie les personnes habilitées à répondre et refuse d'annoncer un accord non signé.",
+    rencontre: "Un messager réclame une promesse immédiate avant la rencontre avec l'autorité de Corvelis.",
+    choix: "Clarifier le mandat, obtenir une entrevue ou transmettre la demande sans s'engager au nom d'autrui."
+  },
+  {
+    id: "sigrun_varek", file: "PER-CB42-SIGRUN-VAREK.md", groupe: "savoirs", symbole: "🧱",
+    accroche: "Une interlocutrice commerciale qui distingue un passage dessiné d'un passage autorisé.",
+    enScene: "Déroule un tracé hypothétique, repère les accès à vérifier et demande quels habitants seraient concernés.",
+    rencontre: "Un marchand veut annoncer le tunnel oriental alors que les reconnaissances ne sont pas faites.",
+    choix: "Exiger l'étude du terrain, consulter les intéressés ou suspendre toute publicité trompeuse."
+  },
+  {
+    id: "dorsa", file: "PER-CB43-DORSA-VAUN.md", groupe: "metiers", symbole: "🧺",
+    accroche: "Une ancienne responsable des fournitures qui observe les besoins avant d'accepter une place.",
+    enScene: "Examine l'approvisionnement du manoir, questionne l'équipe sur la charge de travail et note ce qui lui reste à comprendre.",
+    rencontre: "Une réserve fonctionne grâce à des tâches informelles dont personne ne veut devenir l'unique responsable.",
+    choix: "Documenter les besoins, consulter les Revenants ou définir une mission limitée sans embauche présumée."
+  },
+  {
+    id: "sigrun_pierreval", file: "SEC-65.md", groupe: "metiers", symbole: "🏰",
+    accroche: "Une femme d'Aldhammar qui conserve la mémoire d'un palais sans en posséder d'office les clefs.",
+    enScene: "Interroge les anciens artisans, parcourt les réserves et note séparément souvenirs, dégradations et travaux possibles.",
+    rencontre: "Un vieux bâtiment pourrait rouvrir, mais ni le personnel ni son état réel n'ont été établis.",
+    choix: "Faire un inventaire, consulter les familles de métiers ou remettre l'ouverture à plus tard."
+  },
+  {
+    id: "reginald", file: "SEC-64.md", groupe: "metiers", symbole: "🍺",
+    accroche: "Le tavernier d'un souvenir d'enfance dont la vie présente demeure inconnue.",
+    enScene: "Uniquement dans un retour en arrière annoncé : essuie son comptoir et tente de préserver les règles de sa salle.",
+    rencontre: "Un témoin raconte les mêmes premières bières d'une façon très différente des souvenirs d'Orin.",
+    choix: "Recouper les témoignages, respecter les blancs du récit ou jouer une scène historique explicitement fictive."
+  },
+  {
+    id: "yrsa", file: "SEC-29.md", groupe: "savoirs", symbole: "⚓",
+    accroche: "Une personnalité du commerce et des ports dont les liens familiaux ne valent pas mandat politique.",
+    enScene: "Dans une scène nouvelle à son époque, fait préciser les itinéraires et les garanties avant de parler d'un investissement.",
+    rencontre: "Un projet portuaire invoque son nom et celui de son cousin Maëron sans les avoir consultés.",
+    choix: "Vérifier l'accord des intéressés, étudier les besoins ou refuser l'usage de leurs noms."
+  },
+  {
+    id: "garrik", file: "SEC-05.md", groupe: "metiers", symbole: "🍮",
+    accroche: "Un tavernier qui reçoit même les visiteurs prestigieux selon les règles de sa propre maison.",
+    enScene: "Relit une recette illustrée avec Maëlys, surveille sa salle et rappelle discrètement le service ordinaire.",
+    rencontre: "Des invités veulent transformer une soirée de taverne en réception officielle sans avoir demandé l'accord de l'hôte.",
+    choix: "Négocier le cadre, préserver le service ou proposer une fête distincte."
   }
 ];
