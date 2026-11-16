@@ -1,0 +1,30 @@
+{
+  "schema": "entre-rives.studio.npc-references.v1",
+  "decision": "Classement éditorial du créateur, 16 novembre 2026 : les dragons nommés relèvent des PNJ, pas du catalogue des espèces du Bestiaire. Préserver ID, version, fichier et historique des copies.",
+  "entries": [
+    {
+      "id": "DRG-01", "version": "45bff51fc793cf1407b95e83845cd27bb5e386b8",
+      "name": "Thessoryn — Le Cartographe des Marées Obliques",
+      "description": "Dragon libre des côtes rocheuses, attaché aux routes et aux cartes changeantes.",
+      "kind": "npc", "shelf": "pnj", "group": "Dragons libres", "status": "lore",
+      "path": "content/creatures/dragons/thessoryn.md", "tags": "pnj dragon thessoryn cartographe mers libre canon non joue",
+      "links": [], "details": [["Nature", "Personnage draconique individuel, non lié à une rencontre jouée"]]
+    },
+    {
+      "id": "DRG-02", "version": "c239358ff5cacd189f6e8ab07bcb1f9c84965887",
+      "name": "Velmora — La Patiente des Brumes Hautes",
+      "description": "Dragonne libre et réservée des hautes brumes, protectrice sans souveraineté automatique.",
+      "kind": "npc", "shelf": "pnj", "group": "Dragons libres", "status": "lore",
+      "path": "content/creatures/dragons/velmora.md", "tags": "pnj dragonne velmora brume libre canon non joue",
+      "links": [], "details": [["Nature", "Personnage draconique individuel, indépendant"]]
+    },
+    {
+      "id": "DRG-03", "version": "4de7cb93a520cd4649a286bb31bd379457378f40",
+      "name": "Orzeyl — Le Bâtisseur des Veines Profondes",
+      "description": "Dragon libre des grottes et anciennes voies souterraines, bâtisseur de refuges.",
+      "kind": "npc", "shelf": "pnj", "group": "Dragons libres", "status": "lore",
+      "path": "content/creatures/dragons/orzeyl.md", "tags": "pnj dragon orzeyl galeries bâtisseur libre canon non joue",
+      "links": [], "details": [["Nature", "Personnage draconique individuel, sans scène jouée imposée"]]
+    }
+  ]
+}

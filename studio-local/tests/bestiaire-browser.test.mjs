@@ -12,7 +12,7 @@ test('Studio : nouvelles fiches illustrées, copie indépendante et écran étro
   await page.locator('#create-campaign-submit').click();
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/bestiaire"]').click();
-  for (const entry of bestiaire.entries.slice(0, 3)) {
+  for (const entry of bestiaire.entries.slice(0, 6)) {
     await page.locator('#catalogue-search').fill(entry.name);
     const card = page.locator('#catalogue-list article').filter({ has: page.getByRole('heading', { name: entry.name, exact: true }) });
     await card.waitFor();
@@ -36,5 +36,5 @@ test('Studio : nouvelles fiches illustrées, copie indépendante et écran étro
   assert.equal(copy.source.id, bestiaire.entries[0].id);
   assert.equal(copy.source.version, bestiaire.entries[0].version);
   assert.notEqual(copy.id, copy.source.id);
-  assert.equal(copy.description, bestiaire.entries[0].description);
+  assert.ok(copy.description.includes('Habitat · Berges, gués et moulins'), 'copie des détails descriptifs attendue');
 });

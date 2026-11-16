@@ -1,5 +1,17 @@
 # Illustrations du pilote
 
+## BEST-ER-003 — Prairies humides, roseaux et gués
+
+Trois planches originales générées avec l'outil ImageGen intégré le 16 novembre 2026, puis encodées en WebP sans recadrage (qualité 84) pour le Studio et les fiches Quartz. Style demandé : **planche naturaliste fantastique peinte, lumière dorée voilée, matériaux crédibles, silhouette lisible et aucun texte**. L'environnement d'Entre-Rives (pont de pierre, moulin, prairies humides et aulnaies) est un décor de création, pas une preuve d'événement joué.
+
+| Visuel | Code documentaire | Sujet et description alternative |
+| --- | --- | --- |
+| [Buffle des aulnes](buffle-des-aulnes.webp) | `ESP-ER-004` | Bovin sauvage gris d'ardoise, cornes sombres striées, pré humide près d'aulnes et du vieux pont. |
+| [Tisseuse des roseaux](tisseuse-des-roseaux.webp) | `ESP-ER-005` | Araignée à huit longues pattes, soie ambrée et rosée entre les roseaux d'une vanne. |
+| [Tortue aux pierres moussues](tortue-pierres-moussues.webp) | `ESP-ER-006` | Tortue d'eau douce à carapace grise et brune couverte de mousse sur une pierre de gué. |
+
+Prompts de création : grand herbivore sauvage d'aulnaie à pelage gris et cornes claires striées ; araignée des roseaux aux huit pattes et toile de rosée ; tortue de rivière à carapace de galets moussue. Chaque scène est composée en paysage 3:2, sans personnage humain, texte, logo ni filigrane. L'illustration n'ajoute **aucune capacité mécanique** au canon.
+
 ## BEST-ER-002 — Trois nouvelles planches de faune, publiées sur demande du créateur
 
 Trois illustrations originales générées par ImageGen lors de la création de BEST-ER-001 (15 novembre 2026), converties sans recadrage en WebP 1 536 × 1 024 (qualité 88). Le créateur a demandé le 16 novembre 2026 leur publication avec des fiches de créatures. Elles sont réutilisées dans le Studio sans source externe ni génération de caractéristiques M03. Les titres, descriptions et alt se trouvent également dans `catalogue-bestiaire.json` et les fiches sous `content/creatures/`.

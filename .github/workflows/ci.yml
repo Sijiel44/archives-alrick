@@ -37,6 +37,9 @@ jobs:
           STUDIO_PAGES_TEST: '1'
           STUDIO_SCREENSHOT_DIR: artifacts/studio
         run: node --test --test-concurrency=2 studio-local/tests/audio-data.test.mjs studio-local/tests/audio.test.mjs studio-local/tests/video-data.test.mjs studio-local/tests/video.test.mjs studio-local/tests/medias-data.test.mjs studio-local/tests/medias.test.mjs studio-local/tests/fiabilite-data.test.mjs studio-local/tests/fiabilite.test.mjs studio-local/tests/organisations.test.mjs studio-local/tests/antagonistes.test.mjs studio-local/tests/pages.test.mjs
+      - name: Recette dédiée Bestiaire et copie indépendante
+        timeout-minutes: 2
+        run: node --test studio-local/tests/bestiaire-browser.test.mjs
       - name: Conserver les captures du Studio
         if: always()
         uses: actions/upload-artifact@v4

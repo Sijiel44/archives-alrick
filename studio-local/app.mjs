@@ -31,7 +31,7 @@ const sessionDateFormat = new Intl.DateTimeFormat('fr', { dateStyle: 'long', tim
 const actionDateFormat = new Intl.DateTimeFormat('fr', { dateStyle: 'medium', timeStyle: 'short' });
 const libraryPageSize = 24;
 const miniMapStep = 54;
-const shelfCreationKind = { atlas: 'place', bestiaire: 'creature', objets: 'object', sorts: 'spell', actions: 'ability', aventures: 'quest', factions: 'faction' };
+const shelfCreationKind = { atlas: 'place', bestiaire: 'creature', pnj: 'npc', objets: 'object', sorts: 'spell', actions: 'ability', aventures: 'quest', factions: 'faction' };
 let store;
 let campaign = null;
 let campaigns = [];
