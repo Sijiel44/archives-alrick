@@ -247,6 +247,86 @@
       "art": { "src": "./media/cerf-sources-profondes.webp", "alt": "Grand cerf gris cendre aux deux bois ramifiés près d'un bassin de source moussue." }
     },
     {
+      "id": "ESP-ER-023", "version": "08ff221d216e53332f9cdaeed02d2f8009f77454", "name": "Murin de la brume basse",
+      "description": "Petit mammifère planeur des haies humides, dont la sauvegarde exige de relier les boisements.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-023-murin-brume-basse.md", "tags": "entre-rives murin planeur haies brume protection observation non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"], "details": [["Habitat", "Haies et bois riverains"], ["Quête", "Sauver les corridors d'arbres"], ["Limite", "Plane mais ne vole pas"]],
+      "art": { "src": "./media/murin-brume-basse.webp", "alt": "Murin gris à membrane de vol plané sur une branche de noisetier." }
+    },
+    {
+      "id": "ESP-ER-024", "version": "01dd9c1906f486acc86f0a922a8116c6493a502e", "name": "Écrevisse des ferrières",
+      "description": "Crustacé des galets aux pinces rouille et bleu fer, dont les mues peuvent être collectées sans prélèvement vivant.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-024-ecrevisse-ferrieres.md", "tags": "entre-rives ecrevisse riviere forge mues artisanat conservation non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"], "details": [["Habitat", "Fonds de galets et ruisseaux"], ["Ressource", "Mues abandonnées"], ["Quête", "Sauver un bras de rivière"]],
+      "art": { "src": "./media/ecrevisse-ferrieres.webp", "alt": "Écrevisse rouge et bleue sous l'eau près d'une ancienne forge." }
+    },
+    {
+      "id": "ESP-ER-025", "version": "5a112a407968b548f9739f254836f60225e7facc", "name": "Mouton des chaumes bleus",
+      "description": "Ovin robuste à toison ardoise, utile aux villages et au maintien des prairies de coteaux.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-025-mouton-chaumes-bleus.md", "tags": "entre-rives mouton coteaux elevage laine agneau protection non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"], "details": [["Habitat", "Prairies de coteaux"], ["Ressource", "Laine rustique"], ["Quête", "Retrouver un agneau vivant"]],
+      "art": { "src": "./media/mouton-chaumes-bleus.webp", "alt": "Mouton à laine bleu ardoise dans une prairie pierreuse." }
+    },
+    {
+      "id": "ESP-ER-026", "version": "565bac7c522a0b7c4ae1b24ff3af2ba8a1fb7e4e", "name": "Abeille des fleurs de verre",
+      "description": "Pollinisatrice aux ailes irisées ; ses colonies vivantes comptent davantage qu'un miel prétendument magique.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-026-abeille-fleurs-verre.md", "tags": "entre-rives abeille fleurs pollinisation cire capture-vivante non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"], "details": [["Habitat", "Jardins et vergers"], ["Ressource", "Cire claire sans effet validé"], ["Quête", "Transférer une colonie vivante"]],
+      "art": { "src": "./media/abeille-fleurs-verre.webp", "alt": "Abeille aux ailes ambrées sur une fleur translucide." }
+    },
+    {
+      "id": "ESP-ER-027", "version": "ef1a40329171a3cb1209cbcd1d31a80a47d2b2b1", "name": "Grèbe à col d’orage",
+      "description": "Oiseau plongeur à col de plumes argentées, sensible à la tranquillité des étangs.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-027-grebe-col-orage.md", "tags": "entre-rives grebe etangs oiseaux plongee nid protection non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"], "details": [["Habitat", "Étangs et bras lents"], ["Indice", "Plongées et nids flottants"], ["Quête", "Protéger une roselière"]],
+      "art": { "src": "./media/grebe-col-orage.webp", "alt": "Grèbe gris noir à col argenté nageant parmi les roseaux." }
+    },
+    {
+      "id": "ESP-ER-028", "version": "d88d6b62ae9c418ccee108bcf4a4b4f5fe56def9", "name": "Chat des bruyères pâles",
+      "description": "Petit félin sauvage injustement accusé de disparaissances ; excellent point de départ d'enquête.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-028-chat-bruyeres-pales.md", "tags": "entre-rives chat lande bruyere enquete collets protection non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"], "details": [["Habitat", "Landes et talus"], ["Indice", "Traces de petits coussinets"], ["Quête", "Démêler une fausse accusation"]],
+      "art": { "src": "./media/chat-bruyeres-pales.webp", "alt": "Chat sauvage brun aux oreilles pâles couché dans les bruyères." }
+    },
+    {
+      "id": "ESP-ER-029", "version": "382df2fe838f71a69349137cf8a205ffbe7790fd", "name": "Porte-lanterne des tourbières",
+      "description": "Escargot lumineux de tourbière dont les prétendues lumières-guides suscitent des quêtes de protection.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-029-porte-lanterne-tourbieres.md", "tags": "entre-rives tourbiere escargot lueur capture-vivante protection non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"], "details": [["Habitat", "Sphaignes et tourbières"], ["Signe", "Lueur biologique ambrée"], ["Quête", "Empêcher le drainage"]],
+      "art": { "src": "./media/porte-lanterne-tourbieres.webp", "alt": "Escargot translucide à coquille luisante dans une tourbière." }
+    },
+    {
+      "id": "ESP-ER-030", "version": "85928a10ae8fd99d9f23cfac7677f12e16a1c208", "name": "Bélier de la dalle noire",
+      "description": "Bélier sauvage aux cornes puissantes, capable de provoquer une rencontre dangereuse mais évitable.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-030-belier-dalle-noire.md", "tags": "entre-rives belier carriere danger combat charge protection non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"], "details": [["Habitat", "Carrières et escarpements"], ["Danger", "Charge d'un adulte acculé"], ["Issue", "Dégager une voie de fuite"]],
+      "art": { "src": "./media/belier-dalle-noire.webp", "alt": "Grand bélier gris foncé à cornes striées sur une carrière sous l'orage." }
+    },
+    {
+      "id": "ESP-ER-031", "version": "d278b32bf4c4550eba554fbb90a11d7a2caebabb", "name": "Guêpe des chênes de rouille",
+      "description": "Guêpe bâtisseuse au nid de papier rare ; utile aux vergers mais dangereuse près de la colonie.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-031-guepe-chenes-rouille.md", "tags": "entre-rives guepe chenes nid papier artisanat danger protection non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"], "details": [["Habitat", "Chênaies"], ["Ressource", "Papier de nid déserté"], ["Quête", "Concilier marché et colonie"]],
+      "art": { "src": "./media/guepe-chenes-rouille.webp", "alt": "Guêpe rouille sur un nid de papier dans un vieux chêne." }
+    },
+    {
+      "id": "ESP-ER-032", "version": "5aeaf690259a7cccaced7962dd80862c835b1341", "name": "Lysandre des eaux lentes",
+      "description": "Amphibien à queue translucide que certaines légendes prennent à tort pour un dragon d'eau.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-032-lysandre-eaux-lentes.md", "tags": "entre-rives lysandre triton amphibien eau capture-vivante non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"], "details": [["Habitat", "Eaux lentes et racines"], ["Ressource", "Mue naturelle"], ["Quête", "Observation et remise en liberté"]],
+      "art": { "src": "./media/lysandre-eaux-lentes.webp", "alt": "Amphibien olive à col argenté, queue nageoire claire, sur une racine." }
+    },
+    {
       "id": "INDC-ER-001",
       "version": "fccbfbb75856f77937885789102bf9191f105733",
       "name": "Gardien des Salines — Le veilleur des gués",

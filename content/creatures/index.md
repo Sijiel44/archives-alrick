@@ -16,7 +16,7 @@ L'univers accueille des animaux ordinaires, des compagnons singuliers et des cr�
 
 ## La faune illustrée d'Entre-Rives et Belle-Rive
 
-Vingt-deux **espèces canoniques créées pour cette région** décrivent les milieux proches du vieux pont, des moulins, des saules, des prairies, des vergers, des haies et des sous-bois. Certaines sont de petites auxiliaires du monde vivant, d'autres peuvent devenir dangereuses ou offrir des pistes de quêtes ; elles ne constituent pas de nouvelles scènes de l'Odyssée. Le lot BEST-ER-006 poursuit désormais la création **par groupes de dix**.
+Trente-deux **espèces canoniques créées pour cette région** décrivent les milieux proches du vieux pont, des moulins, des saules, des prairies, des vergers, des haies et des sous-bois. Certaines sont de petites auxiliaires du monde vivant, d'autres peuvent devenir dangereuses ou offrir des pistes de quêtes ; elles ne constituent pas de nouvelles scènes de l'Odyssée. Le lot **BEST-ER-007** ajoute dix espèces illustrées, selon la cadence demandée.
 
 - [[creatures/ESP-ER-001-loutre-anneaux-cuivre|Loutre aux anneaux de cuivre]] — riveraine des gués et des vannages, curieuse et non hostile par nature.
 - [[creatures/ESP-ER-002-sonneur-des-saules|Sonneur des saules]] — amphibien des racines humides, dont le chant peut fournir un indice naturel.
@@ -40,11 +40,21 @@ Vingt-deux **espèces canoniques créées pour cette région** décrivent les mi
 - [[creatures/ESP-ER-020-luciole-pierres-tendres|Luciole des pierres tendres]] — petit coléoptère lumineux, à protéger de la collecte décorative.
 - [[creatures/ESP-ER-021-fee-aulnes|Fée des aulnes]] — être féerique conscient et parlant : son consentement et sa liberté priment sur toute capture.
 - [[creatures/ESP-ER-022-cerf-sources-profondes|Cerf des sources profondes]] — grand cervidé rare des bois anciens, respecté sans statut divin déclaré.
+- [[creatures/ESP-ER-023-murin-brume-basse|Murin de la brume basse]] — planeur nocturne des haies, à préserver des coupes fragmentant son habitat.
+- [[creatures/ESP-ER-024-ecrevisse-ferrieres|Écrevisse des ferrières]] — crustacé des ruisseaux pierreux, recherché pour ses mues abandonnées.
+- [[creatures/ESP-ER-025-mouton-chaumes-bleus|Mouton des chaumes bleus]] — ovin rustique dont la laine et l'élevage donnent matière à des quêtes villageoises.
+- [[creatures/ESP-ER-026-abeille-fleurs-verre|Abeille des fleurs de verre]] — pollinisatrice dont les colonies se transportent vivantes et avec soin.
+- [[creatures/ESP-ER-027-grebe-col-orage|Grèbe à col d'orage]] — plongeur des étangs, sensible aux troubles des roselières.
+- [[creatures/ESP-ER-028-chat-bruyeres-pales|Chat des bruyères pâles]] — félin de lande souvent accusé à tort de dégâts plus importants.
+- [[creatures/ESP-ER-029-porte-lanterne-tourbieres|Porte-lanterne des tourbières]] — escargot luminescent qu'un collectionneur voudrait capturer vivant.
+- [[creatures/ESP-ER-030-belier-dalle-noire|Bélier de la dalle noire]] — grand animal des carrières qui peut charger s'il est acculé.
+- [[creatures/ESP-ER-031-guepe-chenes-rouille|Guêpe des chênes de rouille]] — insecte bâtisseur de nids de papier, à respecter près de sa colonie.
+- [[creatures/ESP-ER-032-lysandre-eaux-lentes|Lysandre des eaux lentes]] — amphibien rayé d'argent, parfois pris à tort pour un petit dragon.
 
 Trois **créations illustrées auparavant présentes dans le Studio** reçoivent aussi une fiche documentaire individuelle : [[creatures/INDC-ER-001-gardien-des-salines|Gardien des Salines]], [[creatures/INDC-ER-002-renarde-de-brume|Renarde de brume]] et [[creatures/INDC-ER-003-heron-des-lanternes|Héron des lanternes]]. Leur identité individuelle ne prouve pas l'existence d'une espèce entière aux mêmes pouvoirs. Les illustrations originales sont réemployées avec leur provenance.
 
 > [!info] Canon, jeu et publication
-> Ces vingt-cinq créations (vingt-deux espèces et trois individus) appartiennent au lore par décision du créateur, sans scène jouée inventée ni statistiques 5d6 imposées. La Fée des aulnes est une personne féerique : un individu nommé et autonome relèvera également des PNJ. Les 41 candidates B-003.1 restent distinctes, sans adoption par ces lots.
+> Ces trente-cinq créations (trente-deux espèces et trois individus) appartiennent au lore par décision du créateur, sans scène jouée inventée ni statistiques 5d6 imposées. La Fée des aulnes est une personne féerique : un individu nommé et autonome relèvera également des PNJ. Les 41 candidates B-003.1 restent distinctes, sans adoption par ces lots.
 
 ## Un bestiaire encore en construction
 

@@ -9,13 +9,13 @@ import { buildLibraryIndex, creatureReference, inLibraryShelf, libraryReference 
 import { readStudioAsset, studioAssets } from '../serve.mjs';
 
 const root = new URL('../../', import.meta.url);
-const docs = [...Array.from({ length: 22 }, (_, index) => `ESP-ER-${String(index + 1).padStart(3, '0')}`),
+const docs = [...Array.from({ length: 32 }, (_, index) => `ESP-ER-${String(index + 1).padStart(3, '0')}`),
   'INDC-ER-001', 'INDC-ER-002', 'INDC-ER-003'];
 
-test('Bestiaire publié : vingt-cinq créations, dont dix nouvelles espèces, et trois dragons PNJ sans collision', async () => {
+test('Bestiaire publié : trente-cinq créations, dont trente-deux espèces, et trois dragons PNJ sans collision', async () => {
   assert.equal(bestiaire.schema, 'entre-rives.studio.bestiary-references.v1');
-  assert.equal(bestiaire.entries.length, 25);
-  assert.equal(new Set(bestiaire.entries.map(entry => entry.id)).size, 25);
+  assert.equal(bestiaire.entries.length, 35);
+  assert.equal(new Set(bestiaire.entries.map(entry => entry.id)).size, 35);
   const library = buildLibraryIndex([]);
   assert.equal(library.length, new Set(library.map(entry => entry.id)).size, 'IDs du catalogue global sans collision');
   for (const entry of bestiaire.entries) {
@@ -47,13 +47,21 @@ test('Bestiaire publié : vingt-cinq créations, dont dix nouvelles espèces, et
     }
   }
   for (const id of docs) assert.ok(libraryReference(id));
-  assert.equal(bestiaire.entries.filter(entry => entry.id.startsWith('ESP-ER-')).length, 22);
+  assert.equal(bestiaire.entries.filter(entry => entry.id.startsWith('ESP-ER-')).length, 32);
   for (const id of docs.filter(id => /^ESP-ER-0(1[3-9]|2[0-2])$/.test(id))) {
     const text = await readFile(new URL(libraryReference(id).path, root), 'utf8');
     assert.match(text, /Quêtes possibles/);
     assert.match(text, /Provenance et limites/);
   }
   assert.match((await readFile(new URL('content/creatures/ESP-ER-021-fee-aulnes.md', root), 'utf8')), /consentement|consentir/);
+  for (const id of docs.filter(id => /^ESP-ER-0(2[3-9]|3[0-2])$/.test(id))) {
+    const entry = libraryReference(id);
+    const text = await readFile(new URL(entry.path, root), 'utf8');
+    assert.match(text, /Trois quêtes possibles/);
+    assert.match(text, /Profil et provenance/);
+    const meta = YAML.parse(/^---\n([\s\S]*?)\n---/.exec(text)[1]);
+    assert.equal(meta.illustration, entry.art.src.replace(/^\.\/media\//, '/studio/media/'));
+  }
   assert.equal(pnj.entries.length, 16, 'Le catalogue PNJ doit inclure les 13 références publiques');
   const dragons = pnj.entries.filter(entry => /^DRG-0[123]$/.test(entry.id));
   assert.equal(dragons.length, 3);

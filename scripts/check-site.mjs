@@ -100,6 +100,7 @@ assert(publicCatalogCards > 20, 'Le nouveau catalogue ne contient pas les fiches
 // direct à une galerie réelle. Toutes les cartes illustrées ouvrent des pages publiques.
 const galleryHtml = await readFile(path.join(root, 'bestiaire.html'), 'utf8')
 const bestiaryReferences = JSON.parse(await readFile(path.resolve('studio-local/catalogue-bestiaire.json'), 'utf8')).entries
+assert.equal(new Set(bestiaryReferences.map(entry => entry.id)).size, bestiaryReferences.length, 'Code de créature en collision dans la galerie')
 assert(homepageHtml.includes('/bestiaire'), 'Accueil des Archives sans accès au bestiaire illustré')
 assert(!galleryHtml.includes('class="spoiler-disclosure"'), 'Le bestiaire public ne doit pas être derrière une porte MJ')
 for (const token of ['id="bestiary-search"', 'id="bestiary-type"', 'class="bestiary-grid"', 'id="bestiary-count"']) {
@@ -119,6 +120,27 @@ for (const entry of bestiaryReferences) {
   assert(galleryHtml.includes(`/studio/media/${illustration}`), `Illustration absente de la galerie : ${entry.id}`)
   assert(await exists(path.join(root, 'studio', 'media', illustration)), `Image 404 dans le build : ${entry.id}`)
   assert(await exists(path.join(root, `${slug}.html`)), `Fiche 404 dans le build : ${entry.id}`)
+}
+// La galerie ne peut plus oublier une fiche d'espèce nouvellement validée :
+// celles absentes de l'index du Studio sont découvertes automatiquement par Quartz.
+// Une image et une page réelle sont obligatoires pour toute entrée éligible.
+const canonicalCreatureFiles = sourceFiles.filter(file =>
+  /[/\\]creatures[/\\](?:ESP-|INDC-)[^/\\]*\.md$/.test(file))
+for (const file of canonicalCreatureFiles) {
+  const source = await readFile(file, 'utf8')
+  const front = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  assert(front, `Frontmatter absent dans ${file}`)
+  const fm = YAML.parse(front[1])
+  if (fm.publish !== true || fm.canon_statut !== 'lore_valide' || fm.etat_editorial !== 'valide' || fm.spoilers === true || fm.unlisted === true) continue
+  const relative = path.relative(path.resolve('content'), file).split(path.sep).join('/')
+  const slug = relative.replace(/\.md$/, '')
+  const indexed = bestiaryReferences.find(entry => entry.id === fm.code)
+  const illustration = fm.illustration ?? indexed?.art.src.replace(/^\.\/media\//, '/studio/media/')
+  assert(/^\/studio\/media\/[^/]+\.webp$/.test(illustration ?? ''), `Illustration obligatoire pour ${fm.code}`)
+  assert(galleryHtml.includes(`/${slug}`) && galleryHtml.includes(String(fm.title)), `Fiche canonique introuvable dans le bestiaire : ${fm.code}`)
+  assert(galleryHtml.includes(illustration), `Illustration absente de la galerie : ${fm.code}`)
+  assert(await exists(path.join(root, illustration.slice(1))), `Image 404 : ${fm.code}`)
+  assert(await exists(path.join(root, `${slug}.html`)), `Page 404 : ${fm.code}`)
 }
 assert(!galleryHtml.includes('data-type="dragons"'), 'Les dragons individuels doivent rester dans les PNJ')
 

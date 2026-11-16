@@ -117,6 +117,33 @@ export const Library: QuartzComponent = (props) => {
   if (!isHome && !isCatalog && !isBestiary) return null
   const base = root(props)
   if (isBestiary) {
+    // Une nouvelle fiche canonique, publique et illustrée est visible même avant son
+    // raccordement au catalogue des copies du Studio. Les entrées déjà indexées
+    // conservent leurs identifiants et versions : aucune fiche n'est dupliquée.
+    const indexed = new Set(bestiaryCatalog.entries.map(entry => entry.id))
+    const discovered = props.allFiles.filter(file => {
+      const fm = file.frontmatter
+      return file.slug?.startsWith("creatures/") && /^(ESP-|INDC-)/.test(String(fm?.code ?? "")) &&
+        fm?.publish === true && fm?.canon_statut === "lore_valide" &&
+        fm?.etat_editorial === "valide" && fm?.spoilers !== true &&
+        fm?.unlisted !== true && !file.unlisted &&
+        String(fm?.illustration ?? "").startsWith("/studio/media/") &&
+        !indexed.has(String(fm.code))
+    })
+    const cards = [
+      ...bestiaryCatalog.entries.map(entry => ({
+        id: entry.id, name: entry.name, description: entry.description, tags: entry.tags,
+        group: entry.group, slug: entry.path.replace(/^content\//, "").replace(/\.md$/, ""),
+        image: `/studio/media/${entry.art.src.replace(/^\.\/media\//, "")}`, alt: entry.art.alt,
+      })),
+      ...discovered.map(file => ({
+        id: String(file.frontmatter?.code), name: String(file.frontmatter?.title ?? ""),
+        description: String(file.frontmatter?.description ?? ""),
+        tags: String(file.frontmatter?.tags ?? ""), group: "Fiches canoniques",
+        slug: String(file.slug), image: String(file.frontmatter?.illustration),
+        alt: String(file.frontmatter?.illustration_alt ?? file.frontmatter?.title ?? ""),
+      })),
+    ]
     const otherCreatures = props.allFiles.filter(file =>
       file.slug?.startsWith("creatures/bestiaire-") && file.frontmatter?.publish === true &&
       file.frontmatter?.spoilers !== true && !file.unlisted
@@ -140,14 +167,12 @@ export const Library: QuartzComponent = (props) => {
             <input id="bestiary-search" type="search" placeholder="Nom, habitat, indice, quête…" autoComplete="off" />
           </label>
         </div>
-        <p class="bestiary-count" id="bestiary-count" role="status" aria-live="polite">{bestiaryCatalog.entries.length} fiches illustrées</p>
-        <div class="bestiary-grid">{bestiaryCatalog.entries.map(entry => {
+        <p class="bestiary-count" id="bestiary-count" role="status" aria-live="polite">{cards.length} fiches illustrées</p>
+        <div class="bestiary-grid">{cards.map(entry => {
           const species = entry.id.startsWith("ESP-")
-          const slug = entry.path.replace(/^content\//, "").replace(/\.md$/, "")
-          const imagePath = entry.art.src.replace(/^\.\/media\//, "")
-          return <a class="bestiary-card internal" key={entry.id} href={`${base}/${slug}`}
+          return <a class="bestiary-card internal" key={entry.id} href={`${base}/${entry.slug}`}
             data-type={species ? "species" : "individuals"} data-search={`${entry.id} ${entry.name} ${entry.description} ${entry.tags} ${entry.group}`}>
-            <span class="bestiary-card-art"><img src={`${base}/studio/media/${imagePath}`} alt={entry.art.alt} width="900" height="600" loading="lazy" decoding="async" /></span>
+            <span class="bestiary-card-art"><img src={`${base}${entry.image}`} alt={entry.alt} width="900" height="600" loading="lazy" decoding="async" /></span>
             <span class="bestiary-card-body"><span class="bestiary-card-kicker">{species ? "ESPÈCE CANONIQUE" : "CRÉATURE SINGULIÈRE"} · {entry.id}</span>
               <strong>{entry.name}</strong><span class="bestiary-card-description">{entry.description}</span>
               <span class="bestiary-card-action">Lire la fiche complète <span aria-hidden="true">↗</span></span></span>

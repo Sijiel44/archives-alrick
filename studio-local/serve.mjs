@@ -6,6 +6,7 @@ import { pathToFileURL } from "node:url";
 import catalogue from "./catalogue-archives.json" with { type: "json" };
 import organisations from "./catalogue-organisations.json" with { type: "json" };
 import antagonistes from "./catalogue-antagonistes.json" with { type: "json" };
+import bestiaire from "./catalogue-bestiaire.json" with { type: "json" };
 
 export const studioAssets = new Map([
   ['/quetes.mjs', ['quetes.mjs', 'text/javascript']],
@@ -106,6 +107,15 @@ export const studioAssets = new Map([
   ["/media/fee-aulnes.webp", ["media/fee-aulnes.webp", "image/webp"]],
   ["/media/cerf-sources-profondes.webp", ["media/cerf-sources-profondes.webp", "image/webp"]],
 ]);
+// Chaque nouvelle illustration inscrite au Bestiaire est servie dans le Studio
+// local et copiée automatiquement dans le build Pages. Aucune liste manuelle
+// d'images supplémentaires à maintenir lors des prochains lots.
+for (const entry of bestiaire.entries) {
+  if (!entry.art?.src) continue;
+  if (!/^\.\/media\/[a-z0-9-]+\.webp$/.test(entry.art.src)) throw new Error(`Illustration non sûre : ${entry.id}`);
+  const media = entry.art.src.replace(/^\.\//, '/');
+  studioAssets.set(media, [entry.art.src.replace(/^\.\//, ''), 'image/webp']);
+}
 for (const module of ["atelier5d6-bestiary", "atelier5d6-bestiary-workshop", "atelier5d6-combat-m03", "atelier5d6-m05-sheet-view", "atelier5d6-m02", "atelier5d6-origins"]) {
   studioAssets.set(`/moteur/${module}.js`, [`../quartz/components/scripts/${module}.ts`, "text/javascript"]);
 }
