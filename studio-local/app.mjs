@@ -34,7 +34,7 @@ const sessionDateFormat = new Intl.DateTimeFormat('fr', { dateStyle: 'long', tim
 const actionDateFormat = new Intl.DateTimeFormat('fr', { dateStyle: 'medium', timeStyle: 'short' });
 const libraryPageSize = 24;
 const miniMapStep = 54;
-const shelfCreationKind = { atlas: 'place', bestiaire: 'creature', pnj: 'npc', objets: 'object', sorts: 'spell', actions: 'ability', aventures: 'quest', factions: 'faction' };
+const shelfCreationKind = { atlas: 'place', bestiaire: 'creature', pnj: 'npc', objets: 'object', sorts: 'spell', actions: 'ability', aventures: 'quest', factions: 'faction', antagonistes: 'npc' };
 let store;
 let campaign = null;
 let campaigns = [];
@@ -1736,7 +1736,14 @@ function renderLibrary() {
     const count = copies.get(entry.id) ?? 0;
     const status = node('span', LIBRARY_STATUSES[entry.status], 'badge library-status');
     status.dataset.status = entry.status;
-    copy.append(status, node('p', entry.kind === 'creature' && !entry.record && campaign ? `${context} · ${count} copie(s) ici` : context, 'muted'), controls);
+    copy.append(status);
+    if (entry.positionNarrative) {
+      const posture = node('span', entry.positionNarrative, 'badge narrative-posture');
+      posture.dataset.position = entry.positionNarrative;
+      posture.title = 'Position narrative indicative, modifiable dans la fiche PNJ de campagne ; distincte de la Déchéance.';
+      copy.append(posture);
+    }
+    copy.append(node('p', entry.kind === 'creature' && !entry.record && campaign ? `${context} · ${count} copie(s) ici` : context, 'muted'), controls);
     card.append(copy);
     return card;
   }));

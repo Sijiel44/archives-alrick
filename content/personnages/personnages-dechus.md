@@ -16,6 +16,8 @@ tags: [decheance, antagonistes, personnages, niveaux, pactes, chroniques]
 
 # Visages de la Déchéance
 
+**[Explorer la catégorie « Antagonistes et rivaux »](./antagonistes-et-rivaux.md)** : les positions narratives suggérées y sont distinguées des étapes de Déchéance. Les MJ peuvent modifier la couleur sur leur copie de campagne.
+
 Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont choisi un pacte peuvent être guérisseurs, artistes, greffiers, commerçants, archivistes ou artisans. Le bénéfice initial a souvent été **réel** ; le piège est de réclamer ensuite le droit de disposer de la vie d'autrui.
 
 **Trente-six biographies appartiennent désormais au monde partagé.** Les vingt premières suivent des pactes et leurs conséquences ; douze autres éclairent les conflits de trois compagnies marchandes ; quatre autres montrent les dilemmes d'un office de refuge où tous ne sont pas pactisés. Leurs réussites et revers passés constituent le nouveau passé de ces personnes, sans attribuer de séance supplémentaire à l'Odyssée d'Orin ou à une campagne de joueurs. Leur situation est un **point de départ vivant** : chaque MJ peut déplacer un relais, nouer une alliance ou provoquer une défaite sans changer les autres tables.

@@ -16,9 +16,11 @@ Les habitants du monde possèdent des métiers, des convictions et leurs propres
 
 [[cabinet-des-rencontres-v01|Ouvrir le catalogue complet des personnages déjà documentés]] — mentors, compagnons, familles, artisans, voyageurs et figures historiques, tous accessibles à la lecture et adaptables à une nouvelle campagne. **Attention :** certaines fiches révèlent des épisodes de l'Odyssée d'Orin ; les statuts de vérification et les avertissements sont conservés.
 
-## Personnages antagonistes de la Déchéance
+## Antagonistes et rivaux — rôles évolutifs
 
-[[personnages-dechus|Trente-six personnages du monde partagé, niveaux de référence 2 à 20]] — pactes, parcours, rivalités, métiers, lieux d'activité et alternatives à la confrontation ; les trois maisons marchandes et l'Office des Itinérants comptent aussi des personnes non Déchues, dont les choix peuvent néanmoins en faire des adversaires.
+[[antagonistes-et-rivaux|Explorer la catégorie « Antagonistes et rivaux »]] — trente-six portraits, des repères colorés d'opposition ou d'ambivalence et des liens vers chaque fiche. Les couleurs sont **des suggestions narratives**, pas une condamnation morale : dans sa campagne, un MJ peut faire d'un rival un allié et modifier le repère.
+
+[[personnages-dechus|Dossier détaillé : visages des conflits de Déchéance]] — pactes, parcours, rivalités, métiers, lieux d'activité et alternatives à la confrontation ; les trois maisons marchandes et l'Office des Itinérants comptent aussi des personnes non Déchues.
 
 ## Dragons libres — des PNJ, pas des espèces de rencontre
 

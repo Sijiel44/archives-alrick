@@ -477,3 +477,7 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # BEST-ER-007 — Publication publique autorisée par le créateur, 16 novembre 2026.
 # PR #148 fusionnée sur main après CI #43901702800 réussie : 35 fiches canoniques illustrées (32 espèces et 3 individus), 10 nouvelles espèces ESP-ER-023 à 032.
 # Images WebP, index Studio, galerie, source B002 et contrôles de liens et de publication vérifiés. Dragons nommés toujours PNJ ; candidates B-003.1 non adoptées.
+
+# ANT-CATEG-001 — 16 novembre 2026 : publication explicite demandée par le créateur.
+# Répertoire public antagonistes/rivaux, repères non moralisants et couleur révisable dans les copies PNJ du Studio.
+# Conserver les 36 sources et portraits, la distinction Déchéance/posture et les sauvegardes privées MJ.
