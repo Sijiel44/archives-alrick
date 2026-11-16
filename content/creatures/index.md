@@ -14,7 +14,7 @@ L'univers accueille des animaux ordinaires, des compagnons singuliers et des cr�
 
 ## La faune illustrée d'Entre-Rives et Belle-Rive
 
-Neuf **espèces canoniques créées pour cette région** décrivent les milieux proches du vieux pont, des moulins, des saules, des prairies, des vergers, des haies et des sous-bois ; elles ne constituent pas de nouvelles scènes de l'Odyssée.
+Douze **espèces canoniques créées pour cette région** décrivent les milieux proches du vieux pont, des moulins, des saules, des prairies, des vergers, des haies et des sous-bois. Certaines sont de petites auxiliaires du monde vivant, d'autres peuvent devenir dangereuses ou offrir des pistes de quêtes ; elles ne constituent pas de nouvelles scènes de l'Odyssée.
 
 - [[creatures/ESP-ER-001-loutre-anneaux-cuivre|Loutre aux anneaux de cuivre]] — riveraine des gués et des vannages, curieuse et non hostile par nature.
 - [[creatures/ESP-ER-002-sonneur-des-saules|Sonneur des saules]] — amphibien des racines humides, dont le chant peut fournir un indice naturel.
@@ -25,11 +25,14 @@ Neuf **espèces canoniques créées pour cette région** décrivent les milieux 
 - [[creatures/ESP-ER-007-huppe-des-vergers|Huppe des vergers]] — oiseau à panache cuivré, insectivore des vieux arbres fruitiers.
 - [[creatures/ESP-ER-008-brumel-des-haies|Brumel des haies]] — petit fouisseur du roncier, aux vibrisses ramifiées et aux terriers discrets.
 - [[creatures/ESP-ER-009-escargot-souches-ambre|Escargot des souches d'ambre]] — décomposeur des sous-bois, à la coquille translucide couleur miel.
+- [[creatures/ESP-ER-010-libellule-de-nacre|Libellule de nacre]] — petite ressource d'observation et de collecte douce au-dessus des eaux claires.
+- [[creatures/ESP-ER-011-sanglier-de-silex|Sanglier de silex]] — animal massif des lisières, dangereux lorsqu'il est acculé ou qu'il défend sa harde.
+- [[creatures/ESP-ER-012-corneille-trois-voix|Corneille aux trois voix]] — corvidé imitateur de sons humains, source possible d'indices trompeurs et d'enquêtes.
 
 Trois **créations illustrées auparavant présentes dans le Studio** reçoivent aussi une fiche documentaire individuelle : [[creatures/INDC-ER-001-gardien-des-salines|Gardien des Salines]], [[creatures/INDC-ER-002-renarde-de-brume|Renarde de brume]] et [[creatures/INDC-ER-003-heron-des-lanternes|Héron des lanternes]]. Leur identité individuelle ne prouve pas l'existence d'une espèce entière aux mêmes pouvoirs. Les illustrations originales sont réemployées avec leur provenance.
 
 > [!info] Canon, jeu et publication
-> Ces douze créations (neuf espèces et trois individus) appartiennent au lore par décision du créateur, sans scène jouée inventée ni statistiques 5d6 imposées. Les 41 candidates B-003.1 restent distinctes, sans adoption par ces lots.
+> Ces quinze créations (douze espèces et trois individus) appartiennent au lore par décision du créateur, sans scène jouée inventée ni statistiques 5d6 imposées. Les 41 candidates B-003.1 restent distinctes, sans adoption par ces lots.
 
 ## Un bestiaire encore en construction
 
