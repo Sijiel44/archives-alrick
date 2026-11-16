@@ -12,7 +12,7 @@ test('Studio : nouvelles fiches illustrées, copie indépendante et écran étro
   await page.locator('#create-campaign-submit').click();
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/bestiaire"]').click();
-  for (const entry of bestiaire.entries.slice(0, 3)) {
+  for (const entry of bestiaire.entries.slice(0, 6)) {
     await page.locator('#catalogue-search').fill(entry.name);
     const card = page.locator('#catalogue-list article').filter({ has: page.getByRole('heading', { name: entry.name, exact: true }) });
     await card.waitFor();

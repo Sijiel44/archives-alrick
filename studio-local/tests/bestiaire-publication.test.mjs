@@ -8,12 +8,13 @@ import { buildLibraryIndex, creatureReference, libraryReference } from '../bibli
 import { readStudioAsset, studioAssets } from '../serve.mjs';
 
 const root = new URL('../../', import.meta.url);
-const docs = ['ESP-ER-001', 'ESP-ER-002', 'ESP-ER-003', 'INDC-ER-001', 'INDC-ER-002', 'INDC-ER-003'];
+const docs = ['ESP-ER-001', 'ESP-ER-002', 'ESP-ER-003', 'ESP-ER-004', 'ESP-ER-005', 'ESP-ER-006',
+  'INDC-ER-001', 'INDC-ER-002', 'INDC-ER-003'];
 
-test('Bestiaire publié : neuf sources sans collision, versions exactes et aucun secret MJ', async () => {
+test('Bestiaire publié : douze sources dont neuf créations sans collision, versions exactes et aucun secret MJ', async () => {
   assert.equal(bestiaire.schema, 'entre-rives.studio.bestiary-references.v1');
-  assert.equal(bestiaire.entries.length, 9);
-  assert.equal(new Set(bestiaire.entries.map(entry => entry.id)).size, 9);
+  assert.equal(bestiaire.entries.length, 12);
+  assert.equal(new Set(bestiaire.entries.map(entry => entry.id)).size, 12);
   const library = buildLibraryIndex([]);
   assert.equal(library.length, new Set(library.map(entry => entry.id)).size, 'IDs du catalogue global sans collision');
   for (const entry of bestiaire.entries) {

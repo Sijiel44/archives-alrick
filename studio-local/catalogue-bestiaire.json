@@ -39,6 +39,42 @@
       "art": { "src": "./media/phalene-des-celliers.webp", "alt": "Grande phalène aux ailes crème et cuivre sur une pierre de cave à fromages." }
     },
     {
+      "id": "ESP-ER-004",
+      "version": "d872de95d4d4e2c1b25486177e2c73308213db12",
+      "name": "Buffle des aulnes",
+      "description": "Grand herbivore des prés humides, reconnaissable à son pelage d'ardoise et à ses deux longues cornes striées.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-004-buffle-des-aulnes.md",
+      "tags": "entre-rives aulnaies prairie inondable herbivore troupeau buffle canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES", "GEO-021"],
+      "details": [["Habitat", "Aulnaies et prairies humides"], ["Indices", "Traces larges, poils gris sur les branches"], ["Prudence", "Ne pas bloquer un troupeau avec ses jeunes"]],
+      "art": { "src": "./media/buffle-des-aulnes.webp", "alt": "Buffle sauvage gris d'ardoise aux cornes striées, debout dans un pré humide bordé d'aulnes." }
+    },
+    {
+      "id": "ESP-ER-005",
+      "version": "83cd0de23a3c358a5fcd2c218aa9280cd4de2aa9",
+      "name": "Tisseuse des roseaux",
+      "description": "Grande araignée des roselières dont les toiles ambrées prennent la rosée à l'aube.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-005-tisseuse-des-roseaux.md",
+      "tags": "entre-rives roseaux araignee toile soie fosses vanne canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Roselières et fossés végétalisés"], ["Indices", "Fils ambrés et perles de rosée"], ["Limite", "Aucune entrave M03 automatique"]],
+      "art": { "src": "./media/tisseuse-des-roseaux.webp", "alt": "Araignée à huit longues pattes sur une toile de rosée entre les roseaux, près d'une vanne." }
+    },
+    {
+      "id": "ESP-ER-006",
+      "version": "c8d98f06bb883a74c1468c86e844660eb3838391",
+      "name": "Tortue aux pierres moussues",
+      "description": "Tortue d'eau douce à la carapace de galets gris et bruns, colonisée par des mousses vertes.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-006-tortue-pierres-moussues.md",
+      "tags": "entre-rives gue tortue galets carapace mousse eau douce canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES", "GEO-021"],
+      "details": [["Habitat", "Gués et bras calmes"], ["Indices", "Une pierre qui glisse dans l'eau"], ["Limite", "Pas de protection M03 chiffrée"]],
+      "art": { "src": "./media/tortue-pierres-moussues.webp", "alt": "Tortue d'eau douce aux plaques de carapace couvertes de mousses sur une pierre de gué." }
+    },
+    {
       "id": "INDC-ER-001",
       "version": "fccbfbb75856f77937885789102bf9191f105733",
       "name": "Gardien des Salines — Le veilleur des gués",

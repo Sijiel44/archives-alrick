@@ -81,6 +81,9 @@ export const studioAssets = new Map([
   ["/media/loutre-anneaux-cuivre.webp", ["media/loutre-anneaux-cuivre.webp", "image/webp"]],
   ["/media/sonneur-des-saules.webp", ["media/sonneur-des-saules.webp", "image/webp"]],
   ["/media/phalene-des-celliers.webp", ["media/phalene-des-celliers.webp", "image/webp"]],
+  ["/media/buffle-des-aulnes.webp", ["media/buffle-des-aulnes.webp", "image/webp"]],
+  ["/media/tisseuse-des-roseaux.webp", ["media/tisseuse-des-roseaux.webp", "image/webp"]],
+  ["/media/tortue-pierres-moussues.webp", ["media/tortue-pierres-moussues.webp", "image/webp"]],
 ]);
 for (const module of ["atelier5d6-bestiary", "atelier5d6-bestiary-workshop", "atelier5d6-combat-m03", "atelier5d6-m05-sheet-view", "atelier5d6-m02", "atelier5d6-origins"]) {
   studioAssets.set(`/moteur/${module}.js`, [`../quartz/components/scripts/${module}.ts`, "text/javascript"]);

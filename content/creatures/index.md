@@ -14,16 +14,19 @@ L'univers accueille des animaux ordinaires, des compagnons singuliers et des cr�
 
 ## La faune illustrée d'Entre-Rives et Belle-Rive
 
-Trois nouvelles **espèces canoniques** décrivent les milieux proches du vieux pont, des moulins, des saules et des caves d'affinage ; elles ne constituent pas de nouvelles scènes de l'Odyssée.
+Six **espèces canoniques créées pour cette région** décrivent les milieux proches du vieux pont, des moulins, des saules, des prairies et des caves d'affinage ; elles ne constituent pas de nouvelles scènes de l'Odyssée.
 
 - [[creatures/ESP-ER-001-loutre-anneaux-cuivre|Loutre aux anneaux de cuivre]] — riveraine des gués et des vannages, curieuse et non hostile par nature.
 - [[creatures/ESP-ER-002-sonneur-des-saules|Sonneur des saules]] — amphibien des racines humides, dont le chant peut fournir un indice naturel.
 - [[creatures/ESP-ER-003-phalene-des-celliers|Phalène des celliers]] — petite faune des caves, liée à l'humidité et à la vie de l'affinage.
+- [[creatures/ESP-ER-004-buffle-des-aulnes|Buffle des aulnes]] — grand herbivore des prés inondables, à observer sans couper le troupeau de ses refuges.
+- [[creatures/ESP-ER-005-tisseuse-des-roseaux|Tisseuse des roseaux]] — araignée des roselières, aux grandes toiles de soie ambrée.
+- [[creatures/ESP-ER-006-tortue-pierres-moussues|Tortue aux pierres moussues]] — tortue des gués et bras calmes, souvent prise pour un rocher vivant.
 
 Trois **créations illustrées auparavant présentes dans le Studio** reçoivent aussi une fiche documentaire individuelle : [[creatures/INDC-ER-001-gardien-des-salines|Gardien des Salines]], [[creatures/INDC-ER-002-renarde-de-brume|Renarde de brume]] et [[creatures/INDC-ER-003-heron-des-lanternes|Héron des lanternes]]. Leur identité individuelle ne prouve pas l'existence d'une espèce entière aux mêmes pouvoirs. Les illustrations originales sont réemployées avec leur provenance.
 
 > [!info] Canon, jeu et publication
-> Ces six créations appartiennent au lore par décision du créateur, sans scène jouée inventée ni statistiques 5d6 imposées. Les 41 candidates B-003.1 restent distinctes, sans adoption par ce lot.
+> Ces neuf créations appartiennent au lore par décision du créateur, sans scène jouée inventée ni statistiques 5d6 imposées. Les 41 candidates B-003.1 restent distinctes, sans adoption par ces lots.
 
 ## Un bestiaire encore en construction
 

@@ -65,7 +65,25 @@
       "source_documentaire": "Studio local DEMO_CREATURES heron-des-lanternes@1 et illustration PROVENANCE.md",
       "preuve_validation_createur": "Canonisation des créations à leur création demandée le 15 novembre 2026 ; publication des créations existantes demandée le 16 novembre 2026",
       "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-004", "nature": "espece", "fichier": "content/creatures/ESP-ER-004-buffle-des-aulnes.md",
+      "source_documentaire": "Création originale BEST-ER-003 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique uniquement",
+      "preuve_validation_createur": "Politique créateur du 15 novembre 2026 : créature canonique à la création ; demande explicite de poursuivre le prochain lot le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-005", "nature": "espece", "fichier": "content/creatures/ESP-ER-005-tisseuse-des-roseaux.md",
+      "source_documentaire": "Création originale BEST-ER-003 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique uniquement",
+      "preuve_validation_createur": "Politique créateur du 15 novembre 2026 : créature canonique à la création ; demande explicite de poursuivre le prochain lot le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-006", "nature": "espece", "fichier": "content/creatures/ESP-ER-006-tortue-pierres-moussues.md",
+      "source_documentaire": "Création originale BEST-ER-003 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique uniquement",
+      "preuve_validation_createur": "Politique créateur du 15 novembre 2026 : créature canonique à la création ; demande explicite de poursuivre le prochain lot le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
     }
   ],
-  "note": "Les six codes BEST-ER-002 sont attribués individuellement avec provenance et preuve créateur. Les autres codes restent soumis à validation explicite. Les 11 codes null du registre historique et les prototypes B-003.1 restent inchangés. IDs M03/M05 distincts."
+  "note": "Les neuf codes BEST-ER-002/003 sont attribués individuellement avec provenance et preuve créateur. Les autres codes restent soumis à validation explicite. Les 11 codes null du registre historique et les prototypes B-003.1 restent inchangés. IDs M03/M05 distincts."
 }
