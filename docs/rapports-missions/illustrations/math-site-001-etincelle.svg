@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="MAG-SORT-001 Étincelle, feu, Cercle I. Trois intentions : petite lumière sans dégâts, attaque contrôlée opposée M03, manifestation majeure accessible si autorisée. Les trois coûts restent à arbitrer. La maîtrise du feu ne fixe pas seule la puissance.">
+  <rect width="1200" height="720" rx="22" fill="#111f2c"/>
+  <rect x="3" y="3" width="1194" height="714" rx="20" fill="none" stroke="#bd8b61" stroke-width="5"/>
+  <g font-family="DejaVu Sans,sans-serif">
+    <text x="61" y="91" font-size="43" font-weight="bold" fill="#f3e6ce">ÉTINCELLE : UNE ÉCOLE, TROIS CHOIX.</text>
+    <text x="61" y="143" font-size="27" fill="#bed0d6">MAG-SORT-001 · FEU · CERCLE I · Maîtrise de l'école du feu.</text>
+    <rect x="54" y="190" width="341" height="401" rx="18" fill="#233b42" stroke="#8acbc1" stroke-width="3"/>
+    <rect x="429" y="190" width="341" height="401" rx="18" fill="#40352e" stroke="#d5a270" stroke-width="3"/>
+    <rect x="804" y="190" width="341" height="401" rx="18" fill="#3b3035" stroke="#edb18c" stroke-width="3"/>
+    <g fill="#f7bd78" stroke="#ffdfae" stroke-width="3">
+      <path d="M222 274 C218 321 194 325 200 365 C204 395 236 399 247 373 C256 350 237 333 239 309 C223 326 222 292 222 274Z"/>
+      <path d="M594 251 C554 294 562 316 555 338 C542 383 575 425 604 407 C640 383 641 352 618 323 C609 310 602 283 594 251Z"/>
+      <path d="M966 226 C945 266 933 276 932 298 C921 322 905 330 913 373 C924 428 977 435 1000 410 C1030 380 1010 338 996 316 C986 296 986 256 966 226Z"/>
+    </g>
+    <text x="225" y="466" text-anchor="middle" font-size="27" font-weight="bold" fill="#e5f3ec">LUMIÈRE</text>
+    <text x="599" y="466" text-anchor="middle" font-size="27" font-weight="bold" fill="#f5e2c5">ATTAQUE</text>
+    <text x="975" y="466" text-anchor="middle" font-size="27" font-weight="bold" fill="#fae0d2">MAJEURE</text>
+    <text x="225" y="506" text-anchor="middle" font-size="21" fill="#d7e5e1">0 PV automatique</text>
+    <text x="599" y="506" text-anchor="middle" font-size="21" fill="#efdfce">5d6 + M03</text>
+    <text x="975" y="506" text-anchor="middle" font-size="21" fill="#f4d9cd">Accès sous conditions</text>
+    <text x="225" y="558" text-anchor="middle" font-size="19" fill="#a9d1c8">Coût : à définir</text>
+    <text x="599" y="558" text-anchor="middle" font-size="19" fill="#f0c39d">Coût : à définir</text>
+    <text x="975" y="558" text-anchor="middle" font-size="19" fill="#f0b9aa">Coût : à définir</text>
+    <rect x="56" y="619" width="1089" height="62" rx="13" fill="#273b48"/>
+    <text x="601" y="658" text-anchor="middle" font-size="23" fill="#e7e9e8">Maîtrise = contrôle et possibilités ; puissance = effet permis + ressources.</text>
+  </g>
+</svg>

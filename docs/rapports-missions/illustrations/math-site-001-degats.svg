@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="770" viewBox="0 0 1200 770" role="img" aria-label="Exemple de dégâts divins au niveau 21 : impact majeur 34, moins 8 de protection, moins 2 d'absorption envisagée, résultat 24 points de vie perdus. Le calcul est un prototype en attente d'homologation.">
+  <rect width="1200" height="770" rx="34" fill="#111d29"/>
+  <rect x="3" y="3" width="1194" height="764" rx="31" fill="none" stroke="#ba8255" stroke-width="5"/>
+  <text x="72" y="94" font-family="DejaVu Sans,sans-serif" font-size="53" font-weight="700" fill="#f5e5c2">UNE TOUCHE. DES DÉGÂTS FIXES.</text>
+  <text x="72" y="149" font-family="DejaVu Sans,sans-serif" font-size="28" fill="#c0cdd1">Exemple fictif au niveau 21 · intensité majeure · résistance franchie</text>
+  <g font-family="DejaVu Sans,sans-serif">
+    <rect x="70" y="195" width="1060" height="118" rx="23" fill="#433628" stroke="#d7a469" stroke-width="3"/>
+    <text x="105" y="244" font-size="29" fill="#e5cc9e">IMPACT BRUT</text>
+    <text x="105" y="293" font-size="30" fill="#e6d4b4">Base + niveau + maîtrise, puis intensité</text>
+    <text x="1062" y="278" font-size="83" font-weight="700" text-anchor="end" fill="#fff0cd">34</text>
+    <rect x="70" y="333" width="1060" height="116" rx="23" fill="#213e4a" stroke="#74b3c6" stroke-width="3"/>
+    <text x="105" y="381" font-size="30" fill="#d7e8eb">− PROTECTION RESTANTE</text>
+    <text x="105" y="426" font-size="28" fill="#bad2d9">Armure et pénétration déjà prises en compte</text>
+    <text x="1062" y="416" font-size="78" font-weight="700" text-anchor="end" fill="#d6f0f5">−8</text>
+    <rect x="70" y="469" width="1060" height="116" rx="23" fill="#313b35" stroke="#9db992" stroke-width="3"/>
+    <text x="105" y="517" font-size="30" fill="#e1ead6">− ABSORPTION PROPOSÉE</text>
+    <text x="105" y="559" font-size="28" fill="#bacebd">Réduction défensive, meilleur effet uniquement</text>
+    <text x="1062" y="551" font-size="78" font-weight="700" text-anchor="end" fill="#e2efdc">−2</text>
+    <rect x="70" y="607" width="1060" height="101" rx="23" fill="#26544c" stroke="#8ad7b6" stroke-width="4"/>
+    <text x="105" y="673" font-size="41" font-weight="700" fill="#f0ffef">PV PERDUS</text>
+    <text x="1062" y="684" font-size="89" font-weight="700" text-anchor="end" fill="#d1ffdf">24</text>
+  </g>
+  <text x="600" y="747" font-family="DejaVu Sans,sans-serif" font-size="21" text-anchor="middle" fill="#f0c28d">Prototype mathématique : coefficient divin et absorption non encore publiés comme règles.</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="730" viewBox="0 0 1200 730" role="img" aria-label="Comparaison de deux épées fictives de même base 6 : lame gravée sans bonus, Maëla inflige 11 PV face à protection 1 ; lame enchantée avec impact plus 1 hypothétique autorisé infligerait 12 PV. Le coût des charges reste à arbitrer, aucun bonus narratif automatique.">
+  <rect width="1200" height="730" rx="22" fill="#111f2c"/>
+  <rect x="3" y="3" width="1194" height="724" rx="20" fill="none" stroke="#bd8b61" stroke-width="5"/>
+  <g font-family="DejaVu Sans,sans-serif">
+    <text x="60" y="93" font-size="43" font-weight="bold" fill="#f3e6ce">DEUX ÉPÉES. UNE DIFFÉRENCE CLAIRE.</text>
+    <text x="60" y="142" font-size="25" fill="#b7cad1">Une description n'est pas une propriété mécanique homologuée.</text>
+    <rect x="62" y="185" width="516" height="418" rx="18" fill="#233945" stroke="#8fc6bf" stroke-width="3"/>
+    <rect x="620" y="185" width="516" height="418" rx="18" fill="#41352f" stroke="#dfa776" stroke-width="3"/>
+    <g stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-width="12">
+      <path d="M319 251 V393" stroke="#c3ccd2"/>
+      <path d="M319 251 L303 286 M319 251 L335 286" stroke="#e5ecee" stroke-width="5"/>
+      <path d="M276 393 H362 M319 393 V437" stroke="#dca974"/>
+      <path d="M877 251 V393" stroke="#e8e3dc"/>
+      <path d="M877 251 L861 286 M877 251 L893 286" stroke="#ffdfac" stroke-width="5"/>
+      <path d="M834 393 H920 M877 393 V437" stroke="#f2b779"/>
+    </g>
+    <path d="M877 226 C854 274 852 285 854 328 C860 309 869 302 877 297 C888 315 894 335 902 345 C912 301 901 267 877 226" fill="none" stroke="#e3ab74" stroke-width="6"/>
+    <text x="320" y="489" text-anchor="middle" font-size="31" font-weight="bold" fill="#e6f0ea">LAME GRAVÉE</text>
+    <text x="320" y="526" text-anchor="middle" font-size="23" fill="#b6d8d1">Effet : aucun</text>
+    <text x="320" y="576" text-anchor="middle" font-size="31" font-weight="bold" fill="#91e0cb">12 − 1 = 11 PV</text>
+    <text x="877" y="489" text-anchor="middle" font-size="31" font-weight="bold" fill="#ffe8ce">LAME ENCHANTÉE</text>
+    <text x="877" y="526" text-anchor="middle" font-size="22" fill="#f1d4bb">Impact +1, si autorisé</text>
+    <text x="877" y="576" text-anchor="middle" font-size="31" font-weight="bold" fill="#ffce8c">(12 + 1) − 1 = 12 PV</text>
+    <text x="599" y="658" text-anchor="middle" font-size="24" fill="#e2e4e2">Base de l'arme : 6. Maîtrise et niveau appartiennent au porteur.</text>
+    <text x="599" y="696" text-anchor="middle" font-size="20" fill="#b5c5ca">Simulation non canonique ; propriété, charges et durée attendent l'arbitrage OBJETS.</text>
+  </g>
+</svg>

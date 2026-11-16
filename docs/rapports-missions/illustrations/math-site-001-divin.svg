@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="790" viewBox="0 0 1200 790" role="img" aria-label="Progression divine candidate : niveau 20 éveil divin, dégâts x1 ; niveau 21 nature divine affirmée, intensité courante x1,25 et majeure x1,50 ; niveau 25 accomplissement, courante x1,50 et majeure x2. Après 25, seuls les PNJ progressent en maîtrise, sans niveau 26.">
+  <rect width="1200" height="790" rx="34" fill="#111d29"/>
+  <rect x="3" y="3" width="1194" height="784" rx="31" fill="none" stroke="#ba8255" stroke-width="5"/>
+  <text x="68" y="88" font-family="DejaVu Sans,sans-serif" font-size="53" font-weight="700" fill="#f3e3c6">DU MORTEL À L'EXCEPTIONNEL</text>
+  <text x="68" y="138" font-family="DejaVu Sans,sans-serif" font-size="27" fill="#bacbd1">La puissance se débloque ; elle n'est jamais imposée à chaque action.</text>
+  <g font-family="DejaVu Sans,sans-serif">
+    <rect x="70" y="183" width="1060" height="145" rx="25" fill="#273842" stroke="#84afbf" stroke-width="3"/>
+    <text x="106" y="246" font-size="59" font-weight="700" fill="#f4e7ce">N20</text>
+    <text x="320" y="237" font-size="35" font-weight="700" fill="#dce9eb">ÉVEIL DIVIN</text>
+    <text x="320" y="283" font-size="26" fill="#afc8d0">Nouvelles possibilités, récit et maîtrise</text>
+    <text x="1084" y="276" font-size="63" font-weight="700" text-anchor="end" fill="#bfe0e5">×1</text>
+    <rect x="70" y="351" width="1060" height="145" rx="25" fill="#3c342e" stroke="#d1a46a" stroke-width="3"/>
+    <text x="106" y="413" font-size="59" font-weight="700" fill="#f4e7ce">N21</text>
+    <text x="320" y="404" font-size="35" font-weight="700" fill="#f6ddac">DIVIN AFFIRMÉ</text>
+    <text x="320" y="449" font-size="27" fill="#e8ceb0">Courant ×1,25   ·   Majeur ×1,50</text>
+    <text x="1084" y="441" font-size="54" font-weight="700" text-anchor="end" fill="#ffe0a7">×1,50</text>
+    <rect x="70" y="519" width="1060" height="145" rx="25" fill="#344237" stroke="#a4c79d" stroke-width="3"/>
+    <text x="106" y="582" font-size="59" font-weight="700" fill="#f4e7ce">N25</text>
+    <text x="320" y="573" font-size="34" font-weight="700" fill="#deefd6">ACCOMPLISSEMENT</text>
+    <text x="320" y="620" font-size="27" fill="#c3dac3">Courant ×1,50   ·   Majeur ×2,00</text>
+    <text x="1084" y="606" font-size="65" font-weight="700" text-anchor="end" fill="#e1ffe0">×2</text>
+  </g>
+  <text x="600" y="713" font-family="DejaVu Sans,sans-serif" font-size="28" text-anchor="middle" fill="#f0d3a3">N25+ : PNJ uniquement. Les maîtrises progressent, pas le niveau.</text>
+  <text x="600" y="760" font-family="DejaVu Sans,sans-serif" font-size="20" text-anchor="middle" fill="#c8bdab">Grille de conception approuvée pour les simulations · publication finale après recette.</text>
+</svg>

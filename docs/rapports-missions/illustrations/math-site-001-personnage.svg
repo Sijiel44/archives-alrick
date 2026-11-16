@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-label="Maëla, personnage fictif niveau 5. Budget M01 : 24 points exactement, dont 11 pour les caractéristiques, 10 pour deux maîtrises et 3 pour un emplacement d'aptitude. Attaque 5d6 plus 8, impact fixe 12.">
+  <rect width="1200" height="760" rx="22" fill="#111f2c"/>
+  <rect x="3" y="3" width="1194" height="754" rx="20" fill="none" stroke="#bd8b61" stroke-width="5"/>
+  <g font-family="DejaVu Sans,sans-serif">
+    <text x="64" y="93" font-weight="bold" font-size="43" fill="#f3e6ce">UN PJ. DES CHOIX. UN BUDGET.</text>
+    <text x="64" y="142" font-size="27" fill="#b6c9cf">Maëla, exploratrice fictive N5 — création M01 sans classe imposée.</text>
+    <rect x="62" y="183" width="472" height="398" rx="18" fill="#213849" stroke="#7ac9c4" stroke-width="3"/>
+    <text x="94" y="233" font-size="30" font-weight="bold" fill="#f3dfb3">CARACTÉRISTIQUES</text>
+    <text x="95" y="297" font-size="28" fill="#e7eef1">Physique</text>
+    <text x="466" y="297" text-anchor="end" font-size="40" fill="#9ce7db">8</text>
+    <line x1="93" y1="315" x2="503" y2="315" stroke="#4b6570"/>
+    <text x="95" y="362" font-size="28" fill="#e7eef1">Agilité</text>
+    <text x="466" y="362" text-anchor="end" font-size="40" fill="#9ce7db">6</text>
+    <line x1="93" y1="380" x2="503" y2="380" stroke="#4b6570"/>
+    <text x="95" y="427" font-size="28" fill="#e7eef1">Esprit</text>
+    <text x="466" y="427" text-anchor="end" font-size="40" fill="#9ce7db">4</text>
+    <line x1="93" y1="445" x2="503" y2="445" stroke="#4b6570"/>
+    <text x="95" y="494" font-size="28" fill="#e7eef1">Présence</text>
+    <text x="466" y="494" text-anchor="end" font-size="40" fill="#9ce7db">5</text>
+    <text x="95" y="551" font-size="22" fill="#a6bec8">Départ : 3 / 3 / 3 / 3</text>
+    <rect x="571" y="183" width="565" height="398" rx="18" fill="#1b2b39" stroke="#bd8b61" stroke-width="3"/>
+    <text x="602" y="233" font-weight="bold" font-size="30" fill="#f3dfb3">DÉPENSER LES 24 POINTS</text>
+    <text x="601" y="292" font-size="25" fill="#e8edf0">Caractéristiques</text>
+    <text x="1097" y="292" text-anchor="end" font-size="29" fill="#9ce7db">11</text>
+    <rect x="601" y="312" width="485" height="31" rx="10" fill="#2d414d"/>
+    <rect x="601" y="312" width="223" height="31" rx="10" fill="#7ac9c4"/>
+    <text x="601" y="398" font-size="25" fill="#e8edf0">Maîtrises (lames 7, vigilance 2)</text>
+    <text x="1097" y="398" text-anchor="end" font-size="29" fill="#efbe83">10</text>
+    <rect x="601" y="418" width="485" height="31" rx="10" fill="#2d414d"/>
+    <rect x="601" y="418" width="202" height="31" rx="10" fill="#dfaa72"/>
+    <text x="601" y="503" font-size="25" fill="#e8edf0">Emplacement d'aptitude</text>
+    <text x="1097" y="503" text-anchor="end" font-size="29" fill="#d0dcb2">3</text>
+    <rect x="601" y="524" width="485" height="31" rx="10" fill="#2d414d"/>
+    <rect x="601" y="524" width="61" height="31" rx="10" fill="#b9c895"/>
+    <rect x="62" y="610" width="1074" height="104" rx="16" fill="#284641" stroke="#88d1b3" stroke-width="3"/>
+    <text x="90" y="663" font-size="31" font-weight="bold" fill="#e6f5df">5d6 + 8</text>
+    <text x="340" y="663" font-size="28" fill="#e3ece5">pour toucher</text>
+    <text x="700" y="663" font-size="31" font-weight="bold" fill="#e6f5df">12 bruts</text>
+    <text x="914" y="663" font-size="26" fill="#e3ece5">par frappe</text>
+    <text x="600" y="743" text-anchor="middle" font-size="18" fill="#a7bcc4">Chiffres d'illustration M01/M03 ; l'aptitude non définie ne donne aucun bonus.</text>
+  </g>
+</svg>

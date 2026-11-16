@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-label="Traqueur des brumes, créature de démonstration N5. Agilité 6 et esquive 2 : défense 15 plus 4 plus 1 égale 20. Protection 1, 36 PV choisis pour la scène. Morsure sur naturel 17 : résultat 23, impact brut 9.">
+  <rect width="1200" height="760" rx="22" fill="#111f2c"/>
+  <rect x="3" y="3" width="1194" height="754" rx="20" fill="none" stroke="#bd8b61" stroke-width="5"/>
+  <g font-family="DejaVu Sans,sans-serif">
+    <text x="60" y="92" font-size="41" font-weight="bold" fill="#f3e6ce">UNE CRÉATURE. UN PROFIL DE JEU.</text>
+    <text x="60" y="139" font-size="26" fill="#b7c9ce">Traqueur des brumes — prédateur fictif, N5, variante de rencontre.</text>
+    <rect x="61" y="171" width="442" height="484" rx="17" fill="#223847" stroke="#84b9b4" stroke-width="3"/>
+    <g fill="#92c9bd">
+      <ellipse cx="281" cy="346" rx="110" ry="91" fill="#355e5b"/>
+      <ellipse cx="200" cy="242" rx="30" ry="38"/>
+      <ellipse cx="257" cy="218" rx="28" ry="42"/>
+      <ellipse cx="321" cy="218" rx="28" ry="42"/>
+      <ellipse cx="380" cy="242" rx="30" ry="38"/>
+    </g>
+    <text x="90" y="491" font-size="31" font-weight="bold" fill="#eef2e4">NIVEAU 5</text>
+    <text x="90" y="536" font-size="25" fill="#bfd1d5">Phys. 5 · Agi. 6</text>
+    <text x="90" y="576" font-size="25" fill="#bfd1d5">Esquive 2 · Morsure 3</text>
+    <text x="90" y="619" font-size="22" fill="#efc592">PV 36 : choix de scénario</text>
+    <rect x="544" y="171" width="590" height="212" rx="16" fill="#253746" stroke="#7ed0c6" stroke-width="3"/>
+    <text x="572" y="222" font-size="28" font-weight="bold" fill="#f0e4c9">DÉFENSE PHYSIQUE</text>
+    <text x="572" y="286" font-size="37" fill="#e4f0ef">15 + 4 + 1 = <tspan fill="#96e6d3" font-weight="bold">20</tspan></text>
+    <text x="572" y="331" font-size="24" fill="#bdcad0">Protection : 1 · après la touche</text>
+    <rect x="544" y="412" width="590" height="243" rx="16" fill="#3a2f2a" stroke="#dcad7a" stroke-width="3"/>
+    <text x="572" y="460" font-size="28" font-weight="bold" fill="#f0e4c9">ATTAQUE : MORSURE</text>
+    <text x="572" y="522" font-size="36" fill="#f1e9db">17 + 4 + 2 = <tspan font-weight="bold" fill="#ffd89c">23</tspan></text>
+    <text x="572" y="580" font-size="25" fill="#f3dec2">Impact : 4 + 3 + 2 = <tspan font-weight="bold">9</tspan> bruts</text>
+    <text x="572" y="619" font-size="21" fill="#e8cdae">Grade et PV ne sont pas le niveau.</text>
+    <text x="600" y="716" font-size="20" text-anchor="middle" fill="#bbcad0">Espèce, profil, individu et variante MJ restent séparés. Rien n'est canonisé par ce schéma.</text>
+  </g>
+</svg>
