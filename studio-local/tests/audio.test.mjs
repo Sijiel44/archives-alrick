@@ -108,6 +108,7 @@ test('La bibliothèque sonore se compose au clavier, se sauvegarde et se restaur
   assert.equal(await page.locator('#audio-loop').isChecked(), true);
   await page.locator('#audio-scene-playlist').selectOption({ label: 'La ronde des rives' });
   await page.locator('#audio-scene-save').click();
+  await page.locator('#audio-status').getByText('Suggestion de scène enregistrée. La lecture reste sous votre contrôle.', { exact: true }).waitFor();
   await page.locator('#nav-backups').click();
   const [file] = await Promise.all([page.waitForEvent('download'), page.locator('#export-backup').click()]);
   const buffer = await readFile(await file.path()), archive = JSON.parse(buffer);
