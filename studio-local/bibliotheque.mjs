@@ -3,6 +3,7 @@ import { BESTIARY_PROFILE_KEY, CREATIONS_KEY, FRESQUE_MARKERS_KEY, FRESQUE_REFER
 import { CREATION_STATES, CREATION_TYPES } from './creations.mjs';
 import catalogue from './catalogue-archives.json' with { type: 'json' };
 import organisations from './catalogue-organisations.json' with { type: 'json' };
+import bestiaire from './catalogue-bestiaire.json' with { type: 'json' };
 import antagonistes from './catalogue-antagonistes.json' with { type: 'json' };
 
 export const LIBRARY_CATEGORIES = Object.freeze({
@@ -67,6 +68,18 @@ const archiveEntries = catalogue.entries.map(entry => ({
     links: [...entry.links, 'image-lamproie-de-nacre'] } : {}),
 }));
 
+// Catalogue additif de références canoniques : pas d'altération des IDs de démonstration
+// ni des 7 propositions de rencontre déjà épinglées dans le catalogue historique.
+const publishedBestiaryEntries = bestiaire.entries.map(entry => ({
+  ...entry, origin: 'archives',
+  href: `https://github.com/Sijiel44/archives-alrick/blob/main/${entry.path}`,
+}));
+const publishedBestiaryImages = publishedBestiaryEntries.filter(entry => entry.id.startsWith('ESP-') && entry.art).map(entry => ({
+  id: `image-${entry.id.toLowerCase()}`, name: `Illustration · ${entry.name}`, version: entry.version,
+  description: entry.art.alt, symbol: '◇', links: [entry.id], art: entry.art,
+  kind: 'image', origin: 'archives', status: 'lore', shelf: 'imagerie', group: 'Faune d’Entre-Rives',
+}));
+
 // Additive public catalogue: the historical Archives snapshot remains pinned to its own revision.
 // No secret, pact, private role or game effect may enter the player-visible entries.
 const organisationEntries = organisations.entries.map(entry => ({
@@ -94,8 +107,11 @@ const antagonistEntries = antagonistes.entries.map(entry => ({
     relations: [...entry.relations, ...entry.factions].join(', ') },
 }));
 
-const fixedEntries = [...demoBestiary, ...archiveEntries, ...organisationEntries, ...antagonistEntries, ...studioGallery];
-export const LIBRARY_ILLUSTRATIONS = [...archiveEntries.filter(entry => entry.art?.map), ...organisationEntries, ...antagonistEntries, ...studioGallery];
+const fixedEntries = [...demoBestiary, ...archiveEntries, ...publishedBestiaryEntries, ...organisationEntries,
+  ...antagonistEntries, ...studioGallery, ...publishedBestiaryImages];
+export const LIBRARY_ILLUSTRATIONS = [...archiveEntries.filter(entry => entry.art?.map),
+  ...publishedBestiaryEntries.filter(entry => entry.art), ...organisationEntries,
+  ...antagonistEntries, ...studioGallery, ...publishedBestiaryImages];
 const illustrationsBySource = new Map(LIBRARY_ILLUSTRATIONS.map(entry => [entry.art.src, entry]));
 
 export function libraryIllustration(entry) {
@@ -103,7 +119,7 @@ export function libraryIllustration(entry) {
 }
 
 const references = new Map(fixedEntries.map(entry => [entry.id.toLowerCase(), entry]));
-for (const entry of [...archiveEntries, ...organisationEntries, ...antagonistEntries]) {
+for (const entry of [...archiveEntries, ...publishedBestiaryEntries, ...organisationEntries, ...antagonistEntries]) {
   if (entry.path.startsWith('content/')) references.set(entry.path.slice(8, -3).toLowerCase(), entry);
 }
 

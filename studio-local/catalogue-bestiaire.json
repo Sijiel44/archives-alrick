@@ -1,0 +1,102 @@
+{
+  "schema": "entre-rives.studio.bestiary-references.v1",
+  "decision": "Publication autorisée par le créateur le 16 novembre 2026 ; fiches nouvelles canoniques dès création ; ni faits joués ni profils M03 automatiques",
+  "entries": [
+    {
+      "id": "ESP-ER-001",
+      "version": "62fa43ea373addd46cae2fe3936150beeceec8a8",
+      "name": "Loutre aux anneaux de cuivre",
+      "description": "Riveraine curieuse à la queue cerclée de cuivre, familière des moulins et des gués d'Entre-Rives.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-001-loutre-anneaux-cuivre.md",
+      "tags": "entre-rives belle-rive loutre faune milieu rivière moulin canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES", "GEO-021"],
+      "details": [["Habitat", "Berges, gués et moulins"], ["Indices", "Coquilles ouvertes, glissades sur la vase"], ["Cohabitation", "Laisser un passage libre aux animaux"]],
+      "art": { "src": "./media/loutre-anneaux-cuivre.webp", "alt": "Loutre brune aux anneaux cuivrés sur la queue, sur une pierre près d'un moulin et d'un pont ancien." }
+    },
+    {
+      "id": "ESP-ER-002",
+      "version": "debc952b938734eb6887d42512ca13dcab7ee0c3",
+      "name": "Sonneur des saules",
+      "description": "Amphibien des racines humides au chant grave, sensible aux changements locaux du courant.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-002-sonneur-des-saules.md",
+      "tags": "entre-rives saules amphibien humide crue faune canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Saulaies et eaux calmes"], ["Indices", "Chant vibrant, empreintes palmées"], ["Limite", "Pas de divination des crues"]],
+      "art": { "src": "./media/sonneur-des-saules.webp", "alt": "Amphibien olive à gorge nacrée gonflée sur des racines de saule près d'une prairie inondée." }
+    },
+    {
+      "id": "ESP-ER-003",
+      "version": "3c4bf4ef9ed0701814faaa41a5bba61033553a1f",
+      "name": "Phalène des celliers",
+      "description": "Papillon crème et ambre des caves fraîches, indice possible d'humidité, sans malédiction ni poison.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-003-phalene-des-celliers.md",
+      "tags": "entre-rives belle-rive celliers caves affinage phalene faune canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES", "GEO-021"],
+      "details": [["Habitat", "Caves et celliers"], ["Indices", "Cocons et fines traces poudreuses"], ["Cohabitation", "Surveiller l'humidité et l'aération"]],
+      "art": { "src": "./media/phalene-des-celliers.webp", "alt": "Grande phalène aux ailes crème et cuivre sur une pierre de cave à fromages." }
+    },
+    {
+      "id": "INDC-ER-001",
+      "version": "fccbfbb75856f77937885789102bf9191f105733",
+      "name": "Gardien des Salines — Le veilleur des gués",
+      "description": "Individu de bois flotté et de sel, issu d'une création illustrée du Studio ; il attend un récit au gué.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Figures des rives", "status": "lore",
+      "path": "content/creatures/INDC-ER-001-gardien-des-salines.md",
+      "tags": "gardien salines gué bois flotté sel individu canon non joue",
+      "links": ["gardien-des-salines", "GEO-CB2-ENTRE-RIVES"],
+      "details": [["Nature", "Individu construit, pas une espèce"], ["Approche", "Raconter une traversée ou chercher un autre gué"]],
+      "art": { "src": "./media/gardien-des-salines.webp", "alt": "Gardien calme de bois flotté et de sel, au masque de bois devant un gué brumeux." }
+    },
+    {
+      "id": "INDC-ER-002",
+      "version": "267753fc26220acf19e551fdcbdd70495b5c04e5",
+      "name": "Renarde de brume — Les pas sans remous",
+      "description": "Individu roux-gris au bout de queue lumineux, création du Studio devenue référence d'univers.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Figures des rives", "status": "lore",
+      "path": "content/creatures/INDC-ER-002-renarde-de-brume.md",
+      "tags": "renarde brume gué individu canon non joue",
+      "links": ["renarde-de-brume", "GEO-CB2-ENTRE-RIVES"],
+      "details": [["Signe", "Bout de queue doucement lumineux"], ["Prudence", "Ne pas confondre lueur et passage sûr"]],
+      "art": { "src": "./media/renarde-de-brume.webp", "alt": "Renarde rousse et grise au bout de la queue lumineux dans l'eau brumeuse du crépuscule." }
+    },
+    {
+      "id": "INDC-ER-003",
+      "version": "9261dacf10153f013313de72d51f3f8c036fb066",
+      "name": "Héron des lanternes — Le porteur de brindilles",
+      "description": "Individu au plumage ardoise, portant des brindilles lumineuses vers des abris oubliés.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Figures des rives", "status": "lore",
+      "path": "content/creatures/INDC-ER-003-heron-des-lanternes.md",
+      "tags": "heron lanternes brindilles gué individu canon non joue",
+      "links": ["heron-des-lanternes", "GEO-CB2-ENTRE-RIVES"],
+      "details": [["Signe", "Brindilles lumineuses"], ["Limite", "Pas de sort ou de feu automatique"]],
+      "art": { "src": "./media/heron-des-lanternes.webp", "alt": "Héron bleu ardoise avec une brindille lumineuse dans son bec, sur un pieu de rive." }
+    },
+    {
+      "id": "DRG-01", "version": "f614d23e2e203996cba32e1c8acf91dc7df8f180",
+      "name": "Thessoryn — Le Cartographe des Marées Obliques",
+      "description": "Dragon libre des côtes rocheuses, attaché aux routes et aux cartes changeantes.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Dragons libres", "status": "lore",
+      "path": "content/creatures/dragons/thessoryn.md", "tags": "dragon thessoryn cartographe mers libre canon non joue",
+      "links": [], "details": [["Nature", "Dragon individuel, non lié à une rencontre jouée"]]
+    },
+    {
+      "id": "DRG-02", "version": "0d9962ccad89060542a869fa1aace8f729df4bf3",
+      "name": "Velmora — La Patiente des Brumes Hautes",
+      "description": "Dragonne libre et réservée des hautes brumes, protectrice sans souveraineté automatique.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Dragons libres", "status": "lore",
+      "path": "content/creatures/dragons/velmora.md", "tags": "dragonne velmora brume libre canon non joue",
+      "links": [], "details": [["Nature", "Dragonne individuelle, indépendante"]]
+    },
+    {
+      "id": "DRG-03", "version": "eada3d6f1a78af6e72cc9a1ed567f6c217e784cf",
+      "name": "Orzeyl — Le Bâtisseur des Veines Profondes",
+      "description": "Dragon libre des grottes et anciennes voies souterraines, bâtisseur de refuges.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Dragons libres", "status": "lore",
+      "path": "content/creatures/dragons/orzeyl.md", "tags": "dragon orzeyl galeries bâtisseur libre canon non joue",
+      "links": [], "details": [["Nature", "Dragon individuel, non joué"]]
+    }
+  ]
+}

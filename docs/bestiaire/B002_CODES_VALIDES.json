@@ -29,6 +29,43 @@
       "nature": "variante_creature"
     }
   ],
-  "attributions": [],
-  "note": "Les préfixes sont approuvés, mais aucune attribution nouvelle n'est autorisée automatiquement. Toute attribution exige un fichier, un code unique, une source, une preuve de validation du créateur et un statut documentaire indépendant. Les codes historiques et les 11 valeurs nulles restent inchangés. Les IDs de sauvegardes M03/M05 ne sont pas des codes documentaires."
+  "attributions": [
+    {
+      "code": "ESP-ER-001", "nature": "espece", "fichier": "content/creatures/ESP-ER-001-loutre-anneaux-cuivre.md",
+      "source_documentaire": "Création originale BEST-ER-001 du 15 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le seul cadre géographique",
+      "preuve_validation_createur": "Instruction du créateur 15 novembre 2026 : créatures canoniques dès leur création ; publication des fiches existantes demandée le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-002", "nature": "espece", "fichier": "content/creatures/ESP-ER-002-sonneur-des-saules.md",
+      "source_documentaire": "Création originale BEST-ER-001 du 15 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le seul cadre géographique",
+      "preuve_validation_createur": "Instruction du créateur 15 novembre 2026 : créatures canoniques dès leur création ; publication des fiches existantes demandée le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-003", "nature": "espece", "fichier": "content/creatures/ESP-ER-003-phalene-des-celliers.md",
+      "source_documentaire": "Création originale BEST-ER-001 du 15 novembre 2026 ; terroir Belle-Rive/Entre-Rives documenté dans GEO-CB2-ENTRE-RIVES",
+      "preuve_validation_createur": "Instruction du créateur 15 novembre 2026 : créatures canoniques dès leur création ; publication des fiches existantes demandée le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "INDC-ER-001", "nature": "individu_creature", "fichier": "content/creatures/INDC-ER-001-gardien-des-salines.md",
+      "source_documentaire": "Studio local DEMO_CREATURES gardien-des-salines@1 et illustration PROVENANCE.md",
+      "preuve_validation_createur": "Canonisation des créations à leur création demandée le 15 novembre 2026 ; publication des créations existantes demandée le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "INDC-ER-002", "nature": "individu_creature", "fichier": "content/creatures/INDC-ER-002-renarde-de-brume.md",
+      "source_documentaire": "Studio local DEMO_CREATURES renarde-de-brume@1 et illustration PROVENANCE.md",
+      "preuve_validation_createur": "Canonisation des créations à leur création demandée le 15 novembre 2026 ; publication des créations existantes demandée le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "INDC-ER-003", "nature": "individu_creature", "fichier": "content/creatures/INDC-ER-003-heron-des-lanternes.md",
+      "source_documentaire": "Studio local DEMO_CREATURES heron-des-lanternes@1 et illustration PROVENANCE.md",
+      "preuve_validation_createur": "Canonisation des créations à leur création demandée le 15 novembre 2026 ; publication des créations existantes demandée le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    }
+  ],
+  "note": "Les six codes BEST-ER-002 sont attribués individuellement avec provenance et preuve créateur. Les autres codes restent soumis à validation explicite. Les 11 codes null du registre historique et les prototypes B-003.1 restent inchangés. IDs M03/M05 distincts."
 }
