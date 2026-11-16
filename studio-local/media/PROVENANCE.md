@@ -12,6 +12,21 @@ Trois illustrations originales ImageGen du 16 novembre 2026, sans source externe
 
 **Prompts finaux** (outil ImageGen intégré, `illustration-story`) : libellule bleu nuit anatomiquement plausible aux quatre ailes irisées, sur saule de ruisseau clair avec mue ; sanglier massif à crinière noire de kératine semblable au silex, chemin boueux entre forêt et champs, sans pierre véritable ni armure ; corneille au plumage bleu noir et aux trois bandes pâles de gorge, bec entrouvert sur mur de verger avec clé perdue, sans parole écrite. Aucun humain, dragon, logo, texte ou effet chiffré.
 
+## ANT-DECH-008 — Six portraits de deux nouvelles maisons marchandes
+
+Six portraits **originaux** de personnages, générés avec ImageGen intégré le 16 novembre 2026, peints comme des portraits d'artbook de fantasy adulte (objets de métier, lumière de fenêtre ou de quai, palette ardoise/cuivre, aucun texte). Images WebP 800 × 1 066, qualité 85, sans image tierce ni hébergement externe, pour `PER-DECH-27` à `PER-DECH-32`. Leur version SVG de même code reste une variante graphique sobre. Aucun portrait ne donne accès à un pouvoir ni n'atteste d'une scène de campagne.
+
+| Personnage | Portrait | Composition originale |
+| --- | --- | --- |
+| Édèle Cessac | `per-dech-27.webp` | Bâtisseuse des rives, mèches grises, outil de mesure et plan de bac |
+| Jorien Varin | `per-dech-28.webp` | Négociant inquiet, corde inspectée et reçu de traversée sous la pluie |
+| Nima Sarrel | `per-dech-29.webp` | Représentante des quais, veste de travail, carnet de revendications |
+| Véridan Bellame | `per-dech-30.webp` | Marchand d'encre et de papier mûr, carnet devant une salle de copie |
+| Orla Juvan | `per-dech-31.webp` | Vérificatrice concentrée, document à filigrane éclairé par la fenêtre |
+| Ilian Kerme | `per-dech-32.webp` | Jeune coursier en voyage, sac de lettres et plis cachetés |
+
+Trois emblèmes vectoriels originaux complètent les portraits : `org-dech-08.svg` (bacs et cordages), `org-dech-09.svg` (plume et encre), `grp-anc-01.svg` (convergence de chemins vers un ancrage incomplet). Le dernier est **explicitement un symbole éditorial** et ne prétend pas être le blason historique de la Première Ancre. Tous restent accessibles à la bibliothèque mais ne sont jamais une preuve de composition officielle ou d'affiliation d'un personnage.
+
 ## BEST-ER-004 — Vergers, haies et sous-bois d'Entre-Rives
 
 Trois illustrations originales créées avec ImageGen intégré le 16 novembre 2026, encodées sans recadrage en WebP (qualité 84 ; 1122 × 1402). Planches verticales de bestiaire naturaliste, anatomies lisibles, textures peintes et couleurs de saison. Elles ont été créées pour le lore partagé, **pas comme des captures de scènes jouées** ; aucune valeur M03 n'est induite par leur apparence.

@@ -18,15 +18,18 @@ Un groupe est une communauté de choix, de responsabilités ou d'intérêts. **U
 
 ## Institutions et collectifs à distinguer
 
-- [[organisations-decheance|Six institutions et une compagnie marchande autour de la Déchéance]] : soins, justice, secours, cérémonies, mémoire, défense des libertés et négoce. Leurs membres ne sont pas automatiquement Déchus.
+- [[organisations-decheance|Six institutions et trois compagnies marchandes autour de la Déchéance]] : soins, justice, secours, cérémonies, mémoire, défense des libertés et négoce. Leurs membres ne sont pas automatiquement Déchus.
 - [[ORG-DECH-07|Compagnie Dervaux et Kess]] : marchands, convoyeurs et comptables aux intérêts divergents ; contrats utiles, exclusivités contestées et employés libres.
+- [[ORG-DECH-08|Maison Varin et Cessac]] : deux bacs, réparations des traversées et conflit entre sécurité et monopole.
+- [[ORG-DECH-09|Comptoir Bellame et Juvan]] : papier, copie et courrier, entre protection des preuves et contrôle abusif de l'information.
+- [[GRP-ANC-01|La Première Ancre]] : coalition d'intérêts divergents autour des Ancrages et de la Neuvième Couronne ; une branche ne représente pas le tout.
 - [[institutions/index|Les Conseils et institutions du Royaume]] : mandats de droit public, non compagnies privées.
 - [[maison/index|La Maison divine]] : communauté et lieux de vie, **distincte du Palais personnel d'Orin** et de sa compagnie.
 - [[monde/index|Les Grandes Puissances]] : dossiers de cosmologie et de relations divines, sans équivalence automatique entre Conseil, Maison et suite.
 
-## Dossiers à développer, non canonisés par ce seul index
+## Dossiers à développer
 
-- **La Première Ancre** : coalitions et liens à documenter avec prudence, sans inventer des membres ou des accords.
+- **Les mandats internes de la Première Ancre** : aucune liste exhaustive de membres ou d'accords n'est établie par sa fiche collective.
 - **Suites divines et compagnies alliées** : à décrire selon leurs choix, affiliations et sources propres.
 - **Conseil des Dix-Huit** : à migrer depuis la Bible du monde avant de présenter une liste publique exhaustive.
 

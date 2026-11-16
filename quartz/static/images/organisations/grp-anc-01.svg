@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Repère éditorial de plusieurs chemins vers un ancrage incomplet, pas un emblème officiel" viewBox="0 0 240 240">
+  <rect width="240" height="240" rx="30" fill="#282c3e"/>
+  <circle cx="120" cy="120" r="92" fill="none" stroke="#a9a6a1" stroke-width="3" stroke-dasharray="18 10"/>
+  <path d="M44 66 119 120 194 60M42 177 119 120 196 184" stroke="#a38d73" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M119 51V170M89 148Q112 183 142 145M88 155Q94 200 118 202 147 202 153 155" stroke="#e1c48d" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M106 49H132M105 70H133" stroke="#e1c48d" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="119" cy="121" r="10" fill="#d4e3db"/>
+</svg>

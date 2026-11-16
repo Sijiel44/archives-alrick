@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Portrait graphique de secours du personnage PER-DECH-30" viewBox="0 0 240 320">
+  <rect width="240" height="320" fill="#393748"/>
+  <circle cx="177" cy="63" r="67" fill="#f0e1bd" opacity=".10"/>
+  <path d="M24 320V260Q32 209 91 191L120 209 150 191Q206 211 215 260V320Z" fill="#586383"/>
+  <path d="M97 181 102 219 121 241 141 215 144 184" fill="#b28b70"/>
+  <ellipse cx="121" cy="124" rx="56" ry="73" fill="#b28b70"/>
+  <path d="M64 127Q52 52 117 46 179 44 179 124L168 99Q147 76 124 83 90 77 71 107Z" fill="#6c6563"/>
+  <path d="M88 130 108 128M137 128 156 130" fill="none" stroke="#27272b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M109 163Q123 169 136 162" fill="none" stroke="#6a4940" stroke-width="3" stroke-linecap="round"/>
+  <path d="M92 217 120 249 147 215" fill="none" stroke="#ecd4af" stroke-width="6"/>
+  <path d="M52 243L82 230L106 246" fill="none" stroke="#d9c29d" stroke-width="4" stroke-linecap="round"/>
+</svg>

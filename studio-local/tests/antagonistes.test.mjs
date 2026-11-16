@@ -17,7 +17,9 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-origin').selectOption('archives');
-  await page.locator('#catalogue-count').getByText(/^33 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^42 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-group').selectOption('Personnages et lieurs');
+  await page.locator('#catalogue-count').getByText(/^32 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   const cards = page.locator('#catalogue-list article');
   assert.equal(await cards.count() > 6, true);
   const button = page.getByRole('button', { name: 'Voir la fiche de James Veyrel' });
@@ -29,9 +31,12 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   await page.getByRole('button', { name: 'Voir la fiche de Kareth la Cloche de Verre' }).click();
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-15\.md$/);
   await page.keyboard.press('Escape');
-  await page.locator('#catalogue-next').click();
   await page.getByRole('button', { name: 'Voir la fiche de Hévar des Archives Brûlées' }).click();
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-20\.md$/);
+  await page.keyboard.press('Escape');
+  await page.locator('#catalogue-next').click();
+  await page.getByRole('button', { name: 'Voir la fiche de Orla Juvan' }).click();
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-31\.md$/);
   await page.keyboard.press('Escape');
   await page.locator('#nav-home').click();
   await page.locator('#campaign-name').fill('Campagne témoin — Déchéance');
@@ -65,7 +70,7 @@ test('Studio : compagnie marchande, membres non Déchus et copies isolées du jo
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-origin').selectOption('archives');
   await page.locator('#catalogue-group').selectOption('Maisons de négoce');
-  await page.locator('#catalogue-count').getByText('1 fiche', { exact: true }).waitFor();
+  await page.locator('#catalogue-count').getByText('3 fiches', { exact: true }).waitFor();
   await page.getByRole('button', { name: 'Voir la fiche de Compagnie Dervaux et Kess' }).click();
   const dialog = page.locator('#resource-dialog');
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/groupes\/ORG-DECH-07\.md$/);
@@ -91,7 +96,7 @@ test('Studio : compagnie marchande, membres non Déchus et copies isolées du jo
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-group').selectOption('Personnages et lieurs');
-  await page.locator('#catalogue-count').getByText(/^26 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^32 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.getByRole('button', { name: 'Voir la fiche de Maren Kess' }).click();
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-22\.md$/);
   await page.keyboard.press('Escape');
@@ -104,4 +109,45 @@ test('Studio : compagnie marchande, membres non Déchus et copies isolées du jo
   await page.locator('#creation-form button[type="submit"]').click();
   await page.locator('#creation-dialog').waitFor({ state: 'hidden' });
   assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_MJ_COMMIS/);
+});
+
+test('Studio : deux nouvelles compagnies, Première Ancre et branche locale indépendante', { timeout: 65000 }, async t => {
+  const fixture = await browserFixture(t);
+  const { page } = await fixture.open('nouvelles-maisons-premiere-ancre', { viewport: { width: 1280, height: 850 } });
+  await page.goto(fixture.url);
+  await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
+  await page.locator('#nav-library').click();
+  await page.locator('#library-shelves a[href="#rayon/factions"]').click();
+  await page.locator('#catalogue-origin').selectOption('archives');
+  await page.locator('#catalogue-group').selectOption('Maisons de négoce');
+  await page.locator('#catalogue-count').getByText('3 fiches', { exact: true }).waitFor();
+  const dialog = page.locator('#resource-dialog');
+  await page.getByRole('button', { name: 'Voir la fiche de Maison Varin et Cessac' }).click();
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/groupes\/ORG-DECH-08\.md$/);
+  await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: 'Voir la fiche de Comptoir Bellame et Juvan' }).click();
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/groupes\/ORG-DECH-09\.md$/);
+  await page.keyboard.press('Escape');
+  await page.locator('#catalogue-group').selectOption('Coalitions et Ancrages');
+  await page.locator('#catalogue-count').getByText('1 fiche', { exact: true }).waitFor();
+  await page.getByRole('button', { name: 'Voir la fiche de Première Ancre' }).click();
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/groupes\/GRP-ANC-01\.md$/);
+  assert.equal(await dialog.getByRole('button', { name: 'Créer une faction de campagne' }).isDisabled(), true);
+  await page.keyboard.press('Escape');
+
+  await page.locator('#nav-home').click();
+  await page.locator('#campaign-name').fill('Coalition fictive - essai local');
+  await page.locator('#create-campaign-submit').click();
+  await page.locator('#view-prepare').waitFor({ state: 'visible' });
+  await page.locator('#nav-library').click();
+  await page.locator('#library-shelves a[href="#rayon/factions"]').click();
+  await page.locator('#catalogue-group').selectOption('Coalitions et Ancrages');
+  await page.getByRole('button', { name: 'Voir la fiche de Première Ancre' }).click();
+  await dialog.getByRole('button', { name: 'Créer une faction de campagne' }).click();
+  assert.equal(await page.locator('#creation-kind').inputValue(), 'faction');
+  assert.match(await page.locator('#creation-detail-purpose').inputValue(), /Neuvième Couronne/);
+  await page.locator('#creation-form [name="notes"]').fill('CANARI_MJ_BRANCHE_ANCRE');
+  await page.locator('#creation-form button[type="submit"]').click();
+  await page.locator('#creation-dialog').waitFor({ state: 'hidden' });
+  assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_MJ_BRANCHE_ANCRE/);
 });

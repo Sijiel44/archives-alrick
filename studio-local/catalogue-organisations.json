@@ -3,8 +3,8 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "descriptive_only",
-  "version": 2,
-  "source": "Validation du créateur en développement direct du JDR — 15 et 16 novembre 2026, ANT-DECH-004 et ANT-DECH-007",
+  "version": 3,
+  "source": "Validation du créateur en développement direct du JDR — 15 et 16 novembre 2026, ANT-DECH-004, 007 et 008",
   "entries": [
     {
       "id": "ORG-DECH-01",
@@ -110,6 +110,51 @@
       "limits": "Deux barques, attelages loués, stocks finis, travailleurs libres, clients et transporteurs concurrents.",
       "relations": ["ORG-DECH-01", "ORG-DECH-03"],
       "tags": ["commerce", "compagnie_marchande", "negoce", "transport", "contrats"]
+    },
+    {
+      "id": "ORG-DECH-08",
+      "version": "c60ec385483eef2302a3ae0fc77204b17c7a7442",
+      "path": "content/groupes/ORG-DECH-08.md",
+      "image": "org-dech-08.svg",
+      "artAlt": "Planche d'un bac et cordages entourés de vagues bleues, marque de la maison Varin et Cessac.",
+      "name": "Maison Varin et Cessac",
+      "description": "Réparations de passages et batellerie ; risque de monopole au nom de la sécurité des rives.",
+      "purpose": "Réparer les bacs et assurer les traversées locales, y compris les secours lorsque la voie est dangereuse.",
+      "members": "Deux associés, représentants des porteurs, pilotes indépendants et artisans de réparation ; statuts libres.",
+      "influence": "Quelques dessertes secondaires d'Entre-Rives et des contrats vers Valbrume.",
+      "limits": "Deux bacs, un atelier, ressources et mandats finis ; recours à d'autres transporteurs possible.",
+      "relations": ["ORG-DECH-07"],
+      "tags": ["commerce", "compagnie_marchande", "reparation", "batellerie", "securite"]
+    },
+    {
+      "id": "ORG-DECH-09",
+      "version": "89ce19d1369501a486daac0c375edbf8753cfd6f",
+      "path": "content/groupes/ORG-DECH-09.md",
+      "image": "org-dech-09.svg",
+      "artAlt": "Feuille roulée, lignes de courrier et goutte d'encre sur un fond de couleur ardoise.",
+      "name": "Comptoir Bellame et Juvan",
+      "description": "Maison de papier, d'encre et de correspondance qui risque de confondre la traçabilité avec la vérité.",
+      "purpose": "Fournir papier, copies et transport de correspondances, sans autorité de justice ni archive universelle.",
+      "members": "Deux associés, coursiers, copistes et sous-traitants indépendants.",
+      "influence": "Comptoirs d'Entre-Rives et courses commerciales vers les routes de Valbrume.",
+      "limits": "Provenance discutable, deux réserves limitées et droit de témoignage hors de la maison.",
+      "relations": ["ORG-DECH-05"],
+      "tags": ["commerce", "compagnie_marchande", "encre", "archives", "correspondance"]
+    },
+    {
+      "id": "GRP-ANC-01",
+      "version": "e0896c622ad9cabd89f46cfd1422054de925ddb9",
+      "path": "content/groupes/GRP-ANC-01.md",
+      "image": "grp-anc-01.svg",
+      "artAlt": "Plusieurs chemins vers un ancrage incomplet : illustration éditoriale, non blason officiel.",
+      "name": "Première Ancre",
+      "description": "Coalition composite de lignées et Maisons déplacées aux intérêts parfois opposés ; le Régent sans Couronne ne dirige pas toute la coalition.",
+      "purpose": "Présence et reconnaissance au moment de la fixation de la Neuvième Couronne, selon des mandats divergents.",
+      "members": "Branches, lignées, petites Maisons divines et interlocuteurs distincts ; appartenance individuelle à vérifier.",
+      "influence": "Coalition composite ; aucune souveraineté territoriale ni commandement unique présumés.",
+      "limits": "Mandats disputés, branches dissidentes, preuves partielles et responsabilités individuelles.",
+      "relations": [],
+      "tags": ["coalition", "premiere_ancre", "ancrage", "negociation", "couronne"]
     }
   ]
 }

@@ -3,8 +3,8 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "narrative_levels_only",
-  "version": 4,
-  "source": "Développement direct du JDR avec le créateur, 15–16 novembre 2026 ; ANT-DECH-005, ANT-DECH-006 et compagnie marchande ANT-DECH-007, LAB-DECH-003 adapté",
+  "version": 5,
+  "source": "Développement direct du JDR avec le créateur, 15–16 novembre 2026 ; ANT-DECH-005 à ANT-DECH-008, LAB-DECH-003 adapté",
   "entries": [
     {
       "id": "PER-DECH-01", "version": "eb33f9acc6e47c1a959d9f5852d139d649a7e739",
@@ -265,6 +265,66 @@
       "relations": ["PER-DECH-21", "PER-DECH-23", "PER-DECH-25"], "factions": ["ORG-DECH-07"],
       "currentRegion": "Quais d'Entre-Rives", "description": "Un apprenti témoin dont les copies peuvent remettre en cause des contrats abusifs.",
       "tags": ["commis", "non_dechu", "temoin", "inventaire"]
+    },
+    {
+      "id": "PER-DECH-27", "version": "66bc1b2483f1e6be74e404352b6e016d44fc9daa",
+      "path": "content/personnages/PER-DECH-27.md", "image": "per-dech-27.webp",
+      "artAlt": "Édèle Cessac, ingénieure de rivière aux cheveux grisonnants, avec plans de bac et outil de mesure.",
+      "name": "Édèle Cessac", "levelIntent": 12, "corruptionStage": "Non Déchu",
+      "role": "Coassociée, responsable des traversées et réparations", "motivation": "Protéger les voyageurs sans transformer l'inspection en interdiction arbitraire.",
+      "relations": ["PER-DECH-28", "PER-DECH-29", "PER-DECH-24"], "factions": ["ORG-DECH-08"],
+      "currentRegion": "Dessertes secondaires d'Entre-Rives", "description": "Technicienne sévère et secouriste, non pactisée, qui doit admettre sa part de responsabilité dans un accident.",
+      "tags": ["batellerie", "travail", "non_dechu", "reparations"]
+    },
+    {
+      "id": "PER-DECH-28", "version": "da3f7a0d5670f396af9e46ad607daff128462b9d",
+      "path": "content/personnages/PER-DECH-28.md", "image": "per-dech-28.webp",
+      "artAlt": "Jorien Varin sous la pluie, manteau brun-rouge, cordage et reçu de traversée.",
+      "name": "Jorien Varin", "levelIntent": 8, "corruptionStage": "Tentation",
+      "role": "Coassocié chargé des achats et des contrats, premier pacte", "motivation": "Ne plus laisser un accident se produire tout en acceptant une vérité incertaine.",
+      "relations": ["PER-DECH-27", "PER-DECH-29"], "factions": ["ORG-DECH-08"],
+      "currentRegion": "Bacs et relais de la maison", "description": "Marchand utile et inquiet, tenté par un rite limité à un cordage physiquement inspecté.",
+      "tags": ["commerce", "tentation", "reparations", "pacte"]
+    },
+    {
+      "id": "PER-DECH-29", "version": "ff9f78418a03820c134dbfb349cc39aa16bcc05d",
+      "path": "content/personnages/PER-DECH-29.md", "image": "per-dech-29.webp",
+      "artAlt": "Nima Sarrel, porte-parole des quais avec veste verte, foulard bleu et carnet.",
+      "name": "Nima Sarrel", "levelIntent": 3, "corruptionStage": "Non Déchu",
+      "role": "Porteuse et représentante des équipes de quai", "motivation": "Obtenir du travail sûr sans priver les communautés d'un passage de secours.",
+      "relations": ["PER-DECH-27", "PER-DECH-28", "PER-DECH-26"], "factions": ["ORG-DECH-08"],
+      "currentRegion": "Quais et ateliers d'Entre-Rives", "description": "Représentante des travailleurs, courageuse mais capable de rendre une négociation injuste.",
+      "tags": ["quai", "travail", "non_dechu", "temoignage"]
+    },
+    {
+      "id": "PER-DECH-30", "version": "f442910789c1ee9babaded433ab7668e939daf58",
+      "path": "content/personnages/PER-DECH-30.md", "image": "per-dech-30.webp",
+      "artAlt": "Véridan Bellame, négociant mûr à la barbe grise tenant un carnet dans une salle de copie.",
+      "name": "Véridan Bellame", "levelIntent": 16, "corruptionStage": "Non Déchu",
+      "role": "Fondateur du comptoir de papier et correspondance", "motivation": "Préserver les écrits sans décider seul de qui peut connaître la vérité.",
+      "relations": ["PER-DECH-31", "PER-DECH-32"], "factions": ["ORG-DECH-09"],
+      "currentRegion": "Comptoir d'Entre-Rives", "description": "Bienfaiteur capable de censurer un témoignage par peur de la violence qu'il pourrait provoquer.",
+      "tags": ["archives", "commerce", "non_dechu", "documentation"]
+    },
+    {
+      "id": "PER-DECH-31", "version": "b6f86f8d963d83f4241d412d8de447edb4d2eea4",
+      "path": "content/personnages/PER-DECH-31.md", "image": "per-dech-31.webp",
+      "artAlt": "Orla Juvan, archiviste au long chignon tressé examinant un filigrane à la lumière.",
+      "name": "Orla Juvan", "levelIntent": 10, "corruptionStage": "Fêlure",
+      "role": "Associée et vérificatrice de copies ayant répété un pacte", "motivation": "Chercher une preuve honnête sans mépriser les témoins privés d'écriture.",
+      "relations": ["PER-DECH-30", "PER-DECH-32", "PER-DECH-04"], "factions": ["ORG-DECH-09"],
+      "currentRegion": "Salle d'authentification du comptoir", "description": "Pactisée en Fêlure sans Chute liée, pouvant réparer les torts et abandonner le filigrane.",
+      "tags": ["archives", "filigrane", "felure", "pacte"]
+    },
+    {
+      "id": "PER-DECH-32", "version": "1200acdb907ec451554f756ca2c8c9fed9021fb1",
+      "path": "content/personnages/PER-DECH-32.md", "image": "per-dech-32.webp",
+      "artAlt": "Ilian Kerme, jeune coursier roux au manteau de voyage et sac de lettres.",
+      "name": "Ilian Kerme", "levelIntent": 5, "corruptionStage": "Non Déchu",
+      "role": "Coursier du comptoir et témoin de remises", "motivation": "Transporter les messages sans devenir celui qui décide ce qu'ils disent.",
+      "relations": ["PER-DECH-30", "PER-DECH-31", "PER-DECH-29"], "factions": ["ORG-DECH-09"],
+      "currentRegion": "Routes de correspondance d'Entre-Rives", "description": "Messager indépendant dont la loyauté peut être mise en échec par une preuve mal remise.",
+      "tags": ["courrier", "transport", "non_dechu", "preuve"]
     }
   ]
 }
