@@ -222,5 +222,92 @@ export const selection = [
     enScene: "Demande l'avis des artisans avant de confondre une invitation avec une décision collective.",
     rencontre: "Deux communautés d'ouvriers souhaitent partager un atelier sans perdre leurs pratiques.",
     choix: "Définir un accord commun, organiser des échanges ou garder deux espaces."
+  },
+  {
+    id: "edric", file: "PER-CB1-EDRIC.md", groupe: "proches", symbole: "🦁",
+    accroche: "De logisticien des quais à duc de Valbrume : un même homme, à deux étapes de sa vie.",
+    enScene: "Dans une scène ancienne, examine les cales et les délais ; dans une scène tardive, distingue la décision ducale des engagements des marins.",
+    rencontre: "Un ancien projet de navigation refait surface, mais les artisans contestent le coût de sa relance.",
+    choix: "Réunir les métiers, reprendre les calculs ou renoncer à une promesse trop hâtive."
+  },
+  {
+    id: "sigrid", file: "PER-CB1-SIGRID.md", groupe: "savoirs", symbole: "🐦‍⬛",
+    accroche: "À Brumefer, elle sait que les noms survivent grâce aux mains qui entretiennent les pierres.",
+    enScene: "Attend que chacun lise l'inscription, puis demande qui connaît encore la vie derrière le nom.",
+    rencontre: "Un nom gravé au Champ des Noms demeure illisible, et deux familles se souviennent différemment.",
+    choix: "Confronter les témoignages avec douceur, préserver le doute ou organiser une restauration prudente.",
+    image: "sigrid-concept-v01.webp"
+  },
+  {
+    id: "soren", file: "PER-CB1-SOREN.md", groupe: "savoirs", symbole: "⚓",
+    accroche: "Un vieux marin qui découvre encore du nouveau dans les vestiges qu'il croyait connaître.",
+    enScene: "Regarde les pierres avec la patience de quarante années de retours et accepte qu'une interprétation lui échappe.",
+    rencontre: "Un dessin de maçon ancien pourrait appartenir à plusieurs générations de bâtisseurs.",
+    choix: "Demander l'avis d'artisans, conserver plusieurs lectures ou renoncer à divulguer le lieu.",
+  },
+  {
+    id: "dagrin", file: "PER-CB2-DAGRIN.md", groupe: "savoirs", symbole: "⛏️",
+    accroche: "Le géologue qui préfère un relevé honnête à une belle certitude.",
+    enScene: "Fait croiser les mesures des apprentis et des arpenteurs, puis note sans honte ce qui reste inexpliqué.",
+    rencontre: "De nouvelles vibrations inquiètent les ouvriers près d'un ouvrage ancien.",
+    choix: "Suspendre la zone, multiplier les relevés ou chercher un diagnostic indépendant."
+  },
+  {
+    id: "elyra", file: "PER-CB31-ELYRA.md", groupe: "metiers", symbole: "🪡",
+    accroche: "L'élégance, pour elle, commence par la liberté de bouger et de dire non.",
+    enScene: "Fait essayer un prototype en demandant au porteur ce qui tire, gêne ou lui semble juste.",
+    rencontre: "Une tenue de cérémonie paraît admirable, mais ceux qui la portent ne peuvent travailler avec.",
+    choix: "Adapter la coupe, négocier les usages ou concevoir deux vêtements plutôt qu'un."
+  },
+  {
+    id: "aerendir", file: "PER-CB31-AERENDIR.md", groupe: "metiers", symbole: "🌲",
+    accroche: "Un artisan voyageur qui préfère réparer un banc que collectionner les titres.",
+    enScene: "Prend le temps de toucher le bois, de regarder les gestes locaux et d'interroger ceux qui utiliseront l'objet.",
+    rencontre: "Un hameau demande une rénovation qui effacerait un aménagement apprécié de ses habitants.",
+    choix: "Réparer l'existant, imaginer un compromis ou laisser le village trancher."
+  },
+  {
+    id: "lethiel", file: "PER-CB31-LETHIEL.md", groupe: "metiers", symbole: "📐",
+    accroche: "Une architecte qui écoute un bâtiment avant de le dessiner.",
+    enScene: "Éprouve la résonance d'une pièce, griffonne ses contraintes et réclame l'avis des futurs usagers.",
+    rencontre: "Une salle nouvelle convient aux discours, mais étouffe les voix et les instruments.",
+    choix: "Revoir les matériaux, déplacer la scène ou modifier les attentes du commanditaire."
+  },
+  {
+    id: "thaeron", file: "PER-CB31-THAERON.md", groupe: "savoirs", symbole: "🎻",
+    accroche: "Un compositeur espiègle pour qui une salle répond autant qu'un instrument.",
+    enScene: "Lance un motif musical, guette ce que l'écho transforme et taquine sa sœur sans nier son expertise.",
+    rencontre: "Une répétition collective échoue parce que chaque groupe entend un tempo différent.",
+    choix: "Essayer une autre disposition, écouter le lieu ou laisser les musiciens réinventer la pièce."
+  },
+  {
+    id: "serelya", file: "PER-CB31-SERELYA.md", groupe: "proches", symbole: "💃",
+    accroche: "Elle connaît les villages en écoutant les marchés et les chansons, pas les seuls discours officiels.",
+    enScene: "S'arrête à chaque étal, fait rire une tablée puis remarque qui n'a pas été invité à parler.",
+    rencontre: "Une fête locale promet de rassembler deux quartiers, mais ses préparatifs n'impliquent qu'un seul.",
+    choix: "Écouter les oubliés, répartir les responsabilités ou redessiner la fête avec eux."
+  },
+  {
+    id: "dalen", file: "PER-CB39-DALEN-MIR.md", groupe: "savoirs", symbole: "🗺️",
+    accroche: "Un administrateur qui dessine des routes sur ses carnets même à table.",
+    enScene: "Pose une question sur les approvisionnements, note les réponses et accepte qu'un repas ne soit pas une séance de travail.",
+    rencontre: "Deux villages réclament un entretien prioritaire de leur route d'accès.",
+    choix: "Comparer les usages, écouter les habitants ou proposer un calendrier de travaux."
+  },
+  {
+    id: "sariel", file: "PER-CB39-SARIEL-VARN.md", groupe: "savoirs", symbole: "⚖️",
+    accroche: "Représenter un Conseil, c'est parfois devoir dire non au souverain.",
+    enScene: "Sépare l'amitié de la charge, présente les objections et exige qu'une décision puisse être expliquée.",
+    rencontre: "Une proposition urgente reçoit le soutien d'une figure prestigieuse sans examen contradictoire.",
+    choix: "Demander un avis du Conseil, rendre les critères publics ou différer la décision.",
+    image: "sariel-concept-v01.webp"
+  },
+  {
+    id: "mirelda", file: "PER-CB43-MIRELDA-CHENECLAIR.md", groupe: "metiers", symbole: "🍐",
+    accroche: "Tonnelière de Valbrume, elle cherche la juste alliance entre bois, levure et audace.",
+    enScene: "Tapote une douve, hume le tonnelet et recule franchement si la pression promet une nouvelle gerbe de mousse.",
+    rencontre: "Un essai de fermentation à la poire attire un acheteur avant d'avoir été stabilisé.",
+    choix: "Faire patienter, vérifier le procédé ou refuser la commande sans renoncer à l'expérience.",
+    image: "mirelda-concept-v01.webp"
   }
 ];

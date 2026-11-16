@@ -37,6 +37,15 @@ Le compte rendu détaillé se trouve dans [[MAG-106|Une blessure disparue, un so
 
 Orin lit et modifie l'architecture d'un dispositif enchanté grâce à son **Autorité sur la Magie**. Elyra formule l'analogie d'une couturière qui reconnaît les points d'une pièce et comprend comment les refaire. Cette comparaison aide à expliquer l'autorité d'Orin, **sans attribuer à Elyra les mêmes Autorités divines**. Sa spécialité demeure l'artisanat, la transmission et la conception adaptée.
 
+## À la table — propositions non jouées (volet MJ)
+
+- **Entrée en scène :** Elyra fait d'abord marcher, s'asseoir et travailler la personne qui essaie un vêtement. Elle demande ce que le porteur souhaite conserver et ce qu'il refuse.
+- **Rencontre :** une tenue de cérémonie admirée de tous gêne ceux qui doivent l'utiliser au quotidien. Les personnages peuvent négocier une coupe nouvelle, changer de tissu ou préserver l'ancienne tenue comme pièce de mémoire.
+- **Lien de mentorat :** elle peut expliquer un point, proposer une pratique surveillée ou organiser un atelier collectif ; disponibilité, prix éventuel et progression restent à définir par le MJ, sans pouvoir ni capacité automatique.
+- **Réserve :** les limites et le consentement d'Elyra ne sont jamais effacés pour faciliter une quête. Les scènes sensibles de sa chronologie restent dans leur volet documentaire à avertissement, et ne sont pas reprises comme intrigues publiques dans ce catalogue.
+
+Ces idées sont **non jouées** et ne fixent aucun engagement ultérieur d'Elyra.
+
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P01825–02483; P16308–16421.

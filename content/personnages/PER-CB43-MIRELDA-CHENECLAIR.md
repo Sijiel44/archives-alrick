@@ -29,3 +29,12 @@ Elle est une artisane passionnée par le bois, les tonneaux et les boissons ferm
 Mirelda visite les grandes caves avec Odran Valcendre, Ysanne et Aurélian. Orin évoque une **lettre de recommandation** vers les artisans, tavernes et surtout l'abbaye d'Entre-Rives ; elle souhaite apprendre, essayer les nouveaux procédés, éventuellement participer à des échanges ponctuels **sans abandonner son atelier à Valbrume**. Elle **n'est pas recrutée** à la Maison ni nommée responsable du brassage. Les projets de terres de production et d'expérimentation sur plusieurs années restent ouverts.
 
 Source : *Campagne Brut 4.4*, CCCX, messages 3–4. Voir [[jdr-alrick/cb44-bilan-et-reprise|état CB44]].
+
+## À la table — propositions non jouées (volet MJ)
+
+- **Entrée en scène :** Mirelda invite à humer son dernier brassin, tapote les douves d'un tonnelet et surveille la pression avant de promettre une dégustation.
+- **Rencontre :** un marchand veut acheter toute la production d'une boisson de poire encore instable. Les personnages peuvent tester une petite quantité, obtenir un délai ou aider l'artisane à négocier son indépendance.
+- **Contradiction :** elle veut partager ses expériences, mais son atelier à Valbrume reste le centre de son travail ; elle n'accepte pas un emploi par défaut.
+- **Apprentissage :** visite d'atelier, exercice de tonnellerie ou suivi d'une fermentation sont possibles avec l'accord du MJ. Les enseignements ne donnent ni XP ni capacité automatique ; MATH/INDEX gardent les prérequis mécaniques.
+
+Ces options ne lui accordent aucun poste, partenariat ou résultat futur : elles sont **non jouées**.

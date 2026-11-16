@@ -25,6 +25,9 @@ export async function buildData() {
     const [, meta] = markdown.split(/^---\s*$/m);
     if (!meta) throw new Error(`Métadonnées absentes : ${record.file}`);
     const code = field(meta, "code");
+    if (field(meta, "categorie") !== "personnage" && !record.file.startsWith("REV-") && record.file !== "FAM-06.md") {
+      throw new Error(`Catégorie non PNJ : ${record.file}`);
+    }
     const title = field(meta, "title").split(" — ")[0];
     if (!code || codes.has(code)) throw new Error(`Code manquant ou doublon : ${record.file} / ${code}`);
     codes.add(code);
@@ -59,7 +62,7 @@ export async function buildData() {
       publicationSource: field(meta, "publish") === "true",
     });
   }
-  if (cards.length !== 30) throw new Error(`30 portraits attendus, ${cards.length} obtenus`);
+  if (cards.length !== 42) throw new Error(`42 cartes attendues, ${cards.length} obtenues`);
   return cards;
 }
 

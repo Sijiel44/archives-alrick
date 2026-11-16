@@ -1,6 +1,6 @@
 # PNJ-001 — Le Cabinet des Rencontres (prototype v0.1)
 
-Ce prototype **local et non publié** présente une sélection de **30 personnages déjà identifiés** dans les Archives, sans créer trente biographies concurrentes. Il sert de direction visuelle pour le futur site / Studio MJ et ne change pas la démonstration P0.
+Ce prototype **local et non publié** présente une sélection de **42 personnages déjà identifiés** dans les Archives, en deux lots (30 + 12), sans créer de biographies concurrentes. Il sert de direction visuelle pour le futur site / Studio MJ et ne change pas la démonstration P0.
 
 ## Voir les fiches illustrées
 
@@ -26,22 +26,25 @@ Le visiteur peut filtrer par catégorie, rechercher un nom, ouvrir une carte, co
 - `build.mjs` relit les métadonnées de chaque fiche sous `content/personnages/` : nom, code, provenance, état documentaire et statut d'avertissement ne sont **pas recopiés à la main** dans la sélection.
 - `index.template.html` contient la présentation, la recherche et le volet de lecture.
 - `preview.html` est un **artefact généré**, régénérable et sans serveur de règles.
-- `test.mjs` vérifie les 30 identités uniques, leurs dossiers, leurs sources, les portraits disponibles et plusieurs garde-fous éditoriaux.
+- `test.mjs` vérifie les 42 identités uniques, leurs dossiers, leurs sources, les portraits disponibles et plusieurs garde-fous éditoriaux.
 
-Les pages Markdown sources existantes restent la référence. Les passages ajoutés dans une vingtaine de fiches sont des **amorces autonomes non jouées** ; leurs statuts de publication, codes et sources sont préservés.
+Les pages Markdown sources existantes restent la référence. Les passages ajoutés dans **33 fiches sources** sont des **amorces autonomes non jouées** ; leurs statuts de publication, codes et sources sont préservés.
 
 ## Visuels
 
 - **7 portraits hérités** (Bram, Ragna, Vaëra, Torven, Heimdall, Haldrek et Eamon) ; seul le fichier de Heimdall est indiqué comme portrait déjà approuvé dans cette sélection.
-- **2 portraits conceptuels neufs** (Sivra, Mara), explicitement non canoniques.
-- **21 emblèmes provisoires** pour les personnages dont la sélection ne dispose pas encore de portrait attribuable.
+- **5 portraits conceptuels neufs** (Sivra, Mara ; puis Sigrid, Mirelda, Sariel), explicitement non canoniques.
+- **30 emblèmes provisoires** pour les personnages dont la sélection ne dispose pas encore de portrait attribuable.
 - **1 fresque d'ambiance conceptuelle** pour l'accueil, sans correspondance nominative avec les personnages.
 
-Les trois nouveaux visuels WebP sont issus d'illustrations générées pour ce lot ; leur style, leur apparence physique et leur association éditoriale doivent être approuvés par le créateur avant publication. Ils respectent la limite de 3 Mio/fichier. Les formats SVG ne sont pas ajoutés au site.
+Les six nouveaux visuels WebP des deux lots sont des illustrations conceptuelles ; leur style, leur apparence physique et leur association éditoriale doivent être approuvés par le créateur avant publication. Ils respectent la limite de 3 Mio/fichier. Les formats SVG ne sont pas ajoutés au site.
 
 ## Gardes-fous
 
 - Le code `PER-CB2-SOREN` pointe vers **Eren gardien** ; ce n'est pas le marin Sören.
+- Le vrai **Sören marin** est documenté sous `PER-CB1-SOREN` ; la localisation de la cité engloutie demeure hors du catalogue.
+- **Edric Varen** et **Edric de Valbrume** sont une seule identité à deux époques ; la titulature et son mariage ne sont pas rétroactifs.
+- **Mirelda** reste indépendante de son atelier ; ni recrutement ni résultat de fermentation n'est attribué par les nouvelles amorces.
 - **Dorrik est décédé** au dernier point documentaire : les rencontres proposées pour lui sont situées de son vivant ou dans une variante annoncée.
 - **Revenant** (compagnie) et **Rappelé** (retour à la vie) ne sont jamais fusionnés.
 - Les personnages de CB44 ne reçoivent aucun emploi, contrat ou pouvoir supplémentaire.

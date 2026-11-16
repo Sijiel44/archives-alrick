@@ -44,7 +44,7 @@ npm test
 - `git -c core.whitespace=cr-at-eol diff --check` : **PASS** (une fiche historique utilise des fins de lignes CRLF préservées).
 - **Recette graphique Chrome : non exécutée**. Le Chromium présent dans l'environnement échoue à initialiser sa socket avec « Operation not permitted ». Les tests de structure et de syntaxe du JavaScript embarqué sont passés ; la vérification visuelle PC/mobile reste demandée à QA/STUDIO.
 
-**SHA et CI GitHub :** à compléter après commit et PR brouillon. Aucun résultat de CI distant n'est présumé.
+**Livraison initiale :** [PR brouillon #132](https://github.com/Sijiel44/archives-alrick/pull/132), SHA GitHub initial `065059dadfbe5f91164e011ff0af081808c3cb99`, CI « Vérifier les Archives » n° `43811155999` **réussie**. Une extension de 12 personnages est décrite séparément dans `PNJ-002_RAPPORT_TECHNIQUE.md` ; les décomptes ci-dessus restent le bilan historique du **premier lot**.
 
 ## Impacts pour les autres modules
 

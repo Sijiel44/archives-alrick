@@ -31,6 +31,15 @@ Son âge exact, un titre religieux ou municipal officiel et sa parenté avec les
 
 Les prochains projets ou exercices restent à jouer et à sourcer.
 
+## À la table — propositions non jouées (volet MJ)
+
+- **Entrée en scène :** Sigrid ralentit les visiteurs au Champ des Noms. Elle invite à prononcer les noms avec respect, puis laisse chacun expliquer ce qu'il sait réellement de la personne commémorée.
+- **Rencontre :** l'inscription d'une pierre est presque effacée ; deux témoins rapportent une même histoire en des termes incompatibles. Les personnages peuvent consigner les variantes, demander de l'aide aux habitants ou différer toute restauration.
+- **Dilemme :** faut-il graver une histoire incertaine, ou laisser visible une lacune honnête ? Sigrid n'impose pas seule la réponse : le village entretient également le lieu.
+- **Limite :** son pendentif aux corbeaux ne prouve aucun office religieux ni pouvoir particulier. Son âge exact et ses liens familiaux restent inconnus.
+
+Cette scène et ses conséquences sont **proposées, non jouées**.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **SEC-06** ; documents CB cités précédemment : CB1 P00139–00229; P00627–00726; CB31 P01827–01919. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.

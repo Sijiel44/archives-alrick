@@ -4,12 +4,16 @@ import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 import { buildData } from "./build.mjs";
 
-test("30 identités uniques pointent sur des sources uniques et documentées", async () => {
+test("42 identités uniques pointent sur des sources uniques et documentées", async () => {
   const cards = await buildData();
-  assert.equal(cards.length, 30);
-  assert.equal(new Set(cards.map((x) => x.code)).size, 30);
-  assert.equal(new Set(cards.map((x) => x.file)).size, 30);
+  assert.equal(cards.length, 42);
+  assert.equal(new Set(cards.map((x) => x.code)).size, 42);
+  assert.equal(new Set(cards.map((x) => x.file)).size, 42);
   assert.equal(cards.find((x) => x.id === "eren")?.file, "PER-CB2-SOREN.md");
+  assert.equal(cards.find((x) => x.id === "soren")?.file, "PER-CB1-SOREN.md");
+  assert.equal(cards.find((x) => x.id === "soren")?.statut, "a_verifier");
+  assert.equal(cards.find((x) => x.id === "edric")?.spoiler, true);
+  assert.equal(cards.find((x) => x.id === "mirelda")?.publicationSource, true);
   assert.equal(cards.find((x) => x.id === "dorrik")?.publicationSource, false);
   assert.equal(cards.find((x) => x.id === "alriana")?.spoiler, true);
   assert.equal(cards.find((x) => x.id === "heimdall")?.illustrationValidee, true);
