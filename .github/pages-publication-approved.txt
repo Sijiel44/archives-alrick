@@ -436,3 +436,14 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Office des Itinérants ORG-DECH-10 et PER-DECH-33..36, quatre biographies et portraits WebP originaux, variantes SVG et insigne éditorial : publier les références publiques dans Quartz et Studio.
 # L'Office rend un réel service d'accueil et n'est ni un ministère universel ni automatiquement Déchu. Aldiane et Ossian non Déchus ; Teron Fêlure ; Mirel Tentation, aucun passage à la Rupture sans véritable Chute liée.
 # Les relations éventuelles avec la Première Ancre sont des accroches de campagne, non des affiliations historiques. Aucun chiffre M03 ni secret local de MJ dans Git. Exiger CI et vérification des ressources avant de confirmer Pages.
+
+
+# Lot PNJ-001 à PNJ-006 — Feu vert de publication du créateur du 16 novembre 2026
+
+Le créateur a donné l'autorisation expresse de mettre en ligne les fiches PNJ après réussite des tests (« Que si les tests passent, tu peux, tu peux mettre en ligne »), en demandant de continuer ensuite les personnages déjà documentés avant toute invention. Cette autorisation porte sur la diffusion éditoriale sous les statuts et protections existants ; elle ne canonise ni les scénarios proposés, ni les portraits conceptuels, ni les mécanismes optionnels.
+
+Référence intégrée : PR #132 « Cabinet des Rencontres — 90 PNJ documentés et illustrés v0.1 », fusion squash 005313d302c050f8b35a04c7191b4a7b69807ecc ; CI #43882679427 réussie (contenu, typage, site, Studio et navigateur). Les 81 enrichissements des fiches sources ajoutent des usages de scène explicitement non joués. Les codes, provenances, relations et règles éditoriales préexistants restent inchangés.
+
+Diffusion limitée aux pages possédant déjà `publish:true` et à l'index descriptif public. Le catalogue MJ `content/personnages/cabinet-des-rencontres-v01.md` reste `publish:false`, `spoilers:true`, `unlisted:true`, tout comme les huit dossiers non publics des lots 004–005. Les fiches à révélations conservent un avertissement et une exclusion des index généraux.
+
+Aucune déclaration d'une relecture personnelle du créateur n'est inférée du succès technique ; cette note transcrit uniquement son autorisation explicite de publication conditionnée aux tests. Le test post-déploiement réel et l'arbitrage DG sur les illustrations officielles restent distincts.
