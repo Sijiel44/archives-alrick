@@ -1,5 +1,18 @@
 # Illustrations du pilote
 
+## BEST-ER-002 — Trois nouvelles planches de faune, publiées sur demande du créateur
+
+Trois illustrations originales générées par ImageGen lors de la création de BEST-ER-001 (15 novembre 2026), converties sans recadrage en WebP 1 536 × 1 024 (qualité 88). Le créateur a demandé le 16 novembre 2026 leur publication avec des fiches de créatures. Elles sont réutilisées dans le Studio sans source externe ni génération de caractéristiques M03. Les titres, descriptions et alt se trouvent également dans `catalogue-bestiaire.json` et les fiches sous `content/creatures/`.
+
+| Visuel original | Fiche publique | Description alternative |
+| --- | --- | --- |
+| [Loutre aux anneaux de cuivre](loutre-anneaux-cuivre.webp) | `ESP-ER-001` | Loutre brune aux anneaux cuivrés près d'un moulin et d'un pont ancien. |
+| [Sonneur des saules](sonneur-des-saules.webp) | `ESP-ER-002` | Amphibien olive à gorge nacrée gonflée sur les racines d'un saule. |
+| [Phalène des celliers](phalene-des-celliers.webp) | `ESP-ER-003` | Phalène crème et ambre sur une pierre de cave, près de meules de fromage. |
+
+Les illustrations plus anciennes du Gardien des Salines, de la Renarde de brume et du Héron des lanternes restent inchangées ; leurs références `DEMO_CREATURES@1` demeurent stables, et leurs **fiches documentaires distinctes** portent les codes `INDC-ER-001` à `003`.
+
+
 Les cinq images ont été générées avec l’outil ImageGen intégré, puis encodées en WebP pour le Studio local. Elles illustrent l’accueil, le bestiaire de démonstration et une proposition de jeu des Archives.
 
 ## Les rives dans la brume

@@ -1,5 +1,11 @@
 # Studio MJ local
 
+## Bestiaire illustré d'Entre-Rives — lot BEST-ER-002
+
+La bibliothèque du Studio propose désormais, en plus des démos et des sept anciennes créatures de rencontre, **six fiches documentaires canoniques** (trois nouvelles espèces des berges et celliers, trois créations illustrées du Studio réemployées comme individus) ainsi que **trois dragons indépendants** déjà publiés dans les Archives. Les cartes du rayon **Bestiaire** donnent accès aux illustrations, aux habitats, aux indices et à la source. Les nouveaux médias sont servis depuis `studio-local/media/` aussi bien en local que sur Pages.
+
+Une référence documentaire canoniquement adoptée ne signifie **ni une rencontre jouée ni un profil 5d6 créé**. « Copier dans la campagne » crée une instance privée et distincte ; les sauvegardes qui utilisent les anciens IDs de démonstration demeurent lisibles. Les 41 candidates B-003.1, les spoilers et les profils M03 non validés ne sont pas ajoutés à cette sélection publique. Le registre B-002 conserve les codes des six nouvelles fiches ; les pages Quartz restent séparées des données de campagne.
+
 Pilote local des Chroniques d’Entre-Rives pour préparer, jouer et archiver une séance. Les campagnes sont enregistrées dans le profil du navigateur à l’adresse ci-dessous. La bibliothèque mêle des fiches de démonstration, une sélection des Archives et des ressources privées du MJ.
 
 [Feuille de route et état des lots](FEUILLE-DE-ROUTE.md)

@@ -63,6 +63,7 @@ export const studioAssets = new Map([
   ["/creations.mjs", ["creations.mjs", "text/javascript"]],
   ["/catalogue-archives.json", ["catalogue-archives.json", "application/json"]],
   ["/catalogue-organisations.json", ["catalogue-organisations.json", "application/json"]],
+  ["/catalogue-bestiaire.json", ["catalogue-bestiaire.json", "application/json"]],
   ["/catalogue-antagonistes.json", ["catalogue-antagonistes.json", "application/json"]],
   ["/store.mjs", ["store.mjs", "text/javascript"]],
   ["/projection.mjs", ["projection.mjs", "text/javascript"]],
@@ -77,6 +78,9 @@ export const studioAssets = new Map([
   ["/media/renarde-de-brume.webp", ["media/renarde-de-brume.webp", "image/webp"]],
   ["/media/heron-des-lanternes.webp", ["media/heron-des-lanternes.webp", "image/webp"]],
   ["/media/lamproie-de-nacre.webp", ["media/lamproie-de-nacre.webp", "image/webp"]],
+  ["/media/loutre-anneaux-cuivre.webp", ["media/loutre-anneaux-cuivre.webp", "image/webp"]],
+  ["/media/sonneur-des-saules.webp", ["media/sonneur-des-saules.webp", "image/webp"]],
+  ["/media/phalene-des-celliers.webp", ["media/phalene-des-celliers.webp", "image/webp"]],
 ]);
 for (const module of ["atelier5d6-bestiary", "atelier5d6-bestiary-workshop", "atelier5d6-combat-m03", "atelier5d6-m05-sheet-view", "atelier5d6-m02", "atelier5d6-origins"]) {
   studioAssets.set(`/moteur/${module}.js`, [`../quartz/components/scripts/${module}.ts`, "text/javascript"]);
@@ -113,7 +117,7 @@ export function startStudioServer(port = 4380) {
       "default-src 'none'",
       ...(player ? ["sandbox allow-scripts", `script-src http://127.0.0.1:${localPort}/joueur.js http://127.0.0.1:${localPort}/video-player.js`] :
         [discovery ? `script-src http://127.0.0.1:${localPort}/accueil.mjs` : "script-src 'self'"]),
-      discovery || player ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json${personal ? '' : ` http://127.0.0.1:${localPort}/catalogue-organisations.json http://127.0.0.1:${localPort}/catalogue-antagonistes.json http://127.0.0.1:${localPort}/catalogue-sons.json http://127.0.0.1:${localPort}/catalogue-videos.json`}`,
+      discovery || player ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json${personal ? '' : ` http://127.0.0.1:${localPort}/catalogue-organisations.json http://127.0.0.1:${localPort}/catalogue-antagonistes.json http://127.0.0.1:${localPort}/catalogue-bestiaire.json http://127.0.0.1:${localPort}/catalogue-sons.json http://127.0.0.1:${localPort}/catalogue-videos.json`}`,
       discovery || personal ? "style-src 'self'" : "style-src 'self' 'unsafe-inline'",
       player ? "img-src data:" : discovery ? "img-src 'self'" : personal ? "img-src 'self' data: blob: https:" : "img-src 'self' data: https:",
       discovery || personal ? "media-src 'none'" : player ? "media-src https:" : "media-src https: blob:",
