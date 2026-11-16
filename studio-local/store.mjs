@@ -274,9 +274,14 @@ function validCreation(value) {
       !Array.isArray(value.links) || value.links.length > 12 || !value.links.every(isId) ||
       new Set(value.links).size !== value.links.length) return false;
   const { fields } = CREATION_TYPES[value.kind];
-  return exactKeys(value.details, fields.map(field => field.key)) && fields.every(({ key, choices }) =>
-    choices ? choices.includes(value.details[key]) || (value.kind !== 'place' && value.details[key] === '')
-      : isText(value.details[key]));
+  const keys = fields.map(field => field.key);
+  // Les copies PNJ v21 et antérieures n'ont pas le repère narratif : préserver leur restauration.
+  // Il est facultatif pour ces références historiques et devient éditable dès leur prochaine modification.
+  const legacyNpc = value.kind === 'npc' && isRecord(value.details) && !Object.hasOwn(value.details, 'posture');
+  return (exactKeys(value.details, keys) || (legacyNpc && exactKeys(value.details, keys.filter(key => key !== 'posture')))) &&
+    fields.every(({ key, choices }) => legacyNpc && key === 'posture' ? true
+      : choices ? choices.includes(value.details[key]) || (value.kind !== 'place' && value.details[key] === '')
+        : isText(value.details[key]));
 }
 
 function validateCreations(entries, reserved) {

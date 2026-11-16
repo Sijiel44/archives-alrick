@@ -95,6 +95,7 @@ test('Studio : compagnie marchande, membres non Déchus et copies isolées du jo
   assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_MJ_COMPAGNIE/);
 
   await page.locator('#nav-library').click();
+  await page.locator('#library-back').click();
   await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
   await page.locator('#catalogue-count').getByText(/^36 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.getByRole('button', { name: 'Voir la fiche de Maren Kess' }).click();
@@ -167,6 +168,7 @@ test('Studio : Office des Itinérants, quatre profils et notes locales non proje
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/groupes\/ORG-DECH-10\.md$/);
   assert.equal(await dialog.getByRole('button', { name: 'Créer une faction de campagne' }).isDisabled(), true);
   await page.keyboard.press('Escape');
+  await page.locator('#library-back').click();
   await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
   await page.locator('#catalogue-count').getByText(/^36 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.locator('#catalogue-next').click();
