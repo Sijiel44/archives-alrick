@@ -11,19 +11,19 @@ const root = fileURLToPath(new URL('../../', import.meta.url));
 const sourceFile = path => fileURLToPath(new URL(`../../${path}`, import.meta.url));
 const hash = path => execFileSync('git', ['hash-object', path], { cwd: root, encoding: 'utf8' }).trim();
 
-test('Vingt antagonistes du canon : niveaux narratifs, stades, Chutes et sources', () => {
+test('Vingt-six personnages des conflits de Déchéance : niveaux narratifs, Chutes et sources', () => {
   assert.equal(catalogue.schema, 'entre-rives/antagonistes-publics/1');
   assert.equal(catalogue.visibility, 'public');
   assert.equal(catalogue.rulesStatus, 'narrative_levels_only');
-  assert.equal(catalogue.entries.length, 20);
-  assert.deepEqual(catalogue.entries.map(entry => entry.levelIntent), [2, 3, 5, 7, 8, 10, 12, 15, 17, 20, 4, 6, 9, 11, 14, 18, 2, 8, 13, 19]);
+  assert.equal(catalogue.entries.length, 26);
+  assert.deepEqual(catalogue.entries.map(entry => entry.levelIntent), [2, 3, 5, 7, 8, 10, 12, 15, 17, 20, 4, 6, 9, 11, 14, 18, 2, 8, 13, 19, 17, 14, 6, 9, 4, 2]);
   const entries = buildLibraryIndex([]);
   const ids = new Set();
   for (const character of catalogue.entries) {
-    assert.match(character.id, /^PER-DECH-(?:0[1-9]|1[0-9]|20)$/);
+    assert.match(character.id, /^PER-DECH-(?:0[1-9]|1[0-9]|2[0-6])$/);
     assert.equal(ids.has(character.id), false);
     ids.add(character.id);
-    assert.ok(['Tentation', 'Fêlure', 'Rupture', 'Déchéance', 'Abîme'].includes(character.corruptionStage));
+    assert.ok(['Tentation', 'Fêlure', 'Rupture', 'Déchéance', 'Abîme', 'Non Déchu'].includes(character.corruptionStage));
     const page = readFileSync(sourceFile(character.path), 'utf8');
     assert.match(page, new RegExp(`^code: "${character.id}"$`, 'm'));
     assert.match(page, /^publish: true$/m);
@@ -33,9 +33,17 @@ test('Vingt antagonistes du canon : niveaux narratifs, stades, Chutes et sources
     if (['Rupture', 'Déchéance', 'Abîme'].includes(character.corruptionStage)) {
       assert.match(page, /Chute liée|Chutes liées|branches distinctes/, `${character.id} : seuil de Déchéance sans branche décrite`);
     }
-    const image = readFileSync(sourceFile(`quartz/static/images/personnages-dechus/${character.image}`), 'utf8');
-    assert.match(image, /^<svg[^>]*role="img"/);
-    assert.doesNotMatch(image, /<script|<foreignObject|\bon\w+\s*=|\bhref=/i);
+    const image = readFileSync(sourceFile(`quartz/static/images/personnages-dechus/${character.image}`));
+    if (character.image.endsWith('.webp')) {
+      assert.equal(image.toString('ascii', 0, 4), 'RIFF', `${character.id}: en-tête RIFF`);
+      assert.equal(image.toString('ascii', 8, 12), 'WEBP', `${character.id}: fichier WebP`);
+      const svg = readFileSync(sourceFile(`quartz/static/images/personnages-dechus/${character.id.toLowerCase()}.svg`), 'utf8');
+      assert.match(svg, /^<svg[^>]*role="img"/, `${character.id}: variante SVG originale`);
+      assert.doesNotMatch(svg, /<script|<foreignObject|\bon\w+\s*=|\bhref=/i);
+    } else {
+      assert.match(image.toString('utf8'), /^<svg[^>]*role="img"/);
+      assert.doesNotMatch(image.toString('utf8'), /<script|<foreignObject|\bon\w+\s*=|\bhref=/i);
+    }
     const reference = libraryReference(character.id);
     assert.equal(reference?.kind, 'npc');
     assert.equal(reference?.shelf, 'factions');
@@ -48,8 +56,10 @@ test('Vingt antagonistes du canon : niveaux narratifs, stades, Chutes et sources
     assert.ok(entries.some(entry => entry.id === character.id));
   }
   for (const entry of catalogue.entries) for (const related of [...entry.relations, ...entry.factions]) {
-    assert.ok(ids.has(related) || /^ORG-DECH-0[1-6]$/.test(related));
+    assert.ok(ids.has(related) || /^ORG-DECH-0[1-7]$/.test(related));
   }
+  assert.deepEqual(catalogue.entries.filter(entry => entry.corruptionStage === 'Non Déchu').map(entry => entry.id),
+    ['PER-DECH-21', 'PER-DECH-24', 'PER-DECH-26'], 'Les salariés non Déchus ne comptent pas comme Chutes liées');
 });
 
 test('Les profils publics ne transportent ni chiffres de combat ni secrets de campagne', () => {
@@ -70,13 +80,13 @@ test('Studio : JSON, portraits SVG et CSP limités au rayon MJ', async t => {
   assert.match(player.headers.get('content-security-policy') ?? '', /connect-src 'none'/);
   const response = await fetch(`${origin}/catalogue-antagonistes.json`);
   assert.equal(response.status, 200);
-  assert.equal((await response.json()).entries.length, 20);
+  assert.equal((await response.json()).entries.length, 26);
   for (const entry of catalogue.entries) {
     const target = `/images/personnages-dechus/${entry.image}`;
     assert.ok(studioAssets.has(target));
     const illustration = await fetch(`${origin}${target}`);
     assert.equal(illustration.status, 200);
-    assert.match(illustration.headers.get('content-type') ?? '', /image\/svg\+xml/);
+    assert.match(illustration.headers.get('content-type') ?? '', /image\/(?:svg\+xml|webp)/);
   }
   assert.equal((await fetch(`${origin}/images/personnages-dechus/dossier-secret.svg`)).status, 404);
 });

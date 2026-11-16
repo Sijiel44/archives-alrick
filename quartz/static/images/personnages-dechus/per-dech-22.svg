@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maren Kess, négociant brun au col noir et livre de comptes double" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#2d3337"/><circle cx="200" cy="187" r="139" fill="none" stroke="#bb8f65" stroke-width="4"/>
+<path d="M32 448q31-135 136-145h65q110 14 137 145Z" fill="#4e4950" stroke="#b59776" stroke-width="5"/><path d="M154 310l45 60 49-60-10 133h-79Z" fill="#d8c3ab"/>
+<ellipse cx="199" cy="194" rx="67" ry="83" fill="#ae816b"/><path d="M133 175q-7-89 68-91 73-4 69 94l-25-37-39-25-48 14Z" fill="#342e34"/><path d="M148 169q-13 55-3 91m113-95q11 48 0 98" fill="none" stroke="#342e34" stroke-width="12"/>
+<path d="M157 209q16-5 31 0m27 0q14-6 29 1" stroke="#5d4540" stroke-width="5" fill="none"/><path d="M178 251q22 4 43-4" stroke="#734c48" stroke-width="4"/>
+<path d="M85 362l98-26 21 113-98 14Z" fill="#6b5348" stroke="#dec498" stroke-width="6"/><path d="M112 380l48-12m-45 29 54-14m-47 30 52-12" stroke="#d9bd9a" stroke-width="4"/>
+<path d="M211 353l85-24 23 113-89 8Z" fill="#46393b" stroke="#d4a975" stroke-width="6"/><path d="M239 375l51-13m-46 30 48-13m-43 29 47-11" stroke="#c7a687" stroke-width="4"/>
+<text x="200" y="463" font-family="serif" font-size="24" text-anchor="middle" fill="#eddbc5" letter-spacing="2">MAREN</text>
+</svg>

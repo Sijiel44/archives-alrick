@@ -96,7 +96,8 @@ for (const entry of organisations.entries) {
   studioAssets.set(`/images/organisations/${entry.image}`, [`../quartz/static/images/organisations/${entry.image}`, "image/svg+xml"]);
 }
 for (const entry of antagonistes.entries) {
-  studioAssets.set(`/images/personnages-dechus/${entry.image}`, [`../quartz/static/images/personnages-dechus/${entry.image}`, "image/svg+xml"]);
+  studioAssets.set(`/images/personnages-dechus/${entry.image}`,
+    [`../quartz/static/images/personnages-dechus/${entry.image}`, entry.image.endsWith('.webp') ? "image/webp" : "image/svg+xml"]);
 }
 
 export async function readStudioAsset([filename, , version]) {

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 512 512">
+<title id="title">Enseigne de la Compagnie Dervaux et Kess</title>
+<desc id="desc">Deux ballots de négoce et une barque de rivière sous une traverse de cuivre, sur fond bleu nuit.</desc>
+<defs><linearGradient id="night" x2="1" y2="1"><stop stop-color="#344b54"/><stop offset="1" stop-color="#101b23"/></linearGradient><linearGradient id="metal" x2="1" y2="1"><stop stop-color="#f2dbb2"/><stop offset=".5" stop-color="#ac7644"/><stop offset="1" stop-color="#debb81"/></linearGradient></defs>
+<rect width="512" height="512" rx="56" fill="#131923"/><circle cx="256" cy="255" r="210" fill="url(#night)" stroke="#8a6b55" stroke-width="7"/>
+<path d="M95 144h322M125 128v33M387 128v33" stroke="url(#metal)" stroke-width="15" stroke-linecap="round"/>
+<path d="M121 304h270q-23 72-135 88-110-18-135-88Z" fill="#805c49" stroke="#e0bc83" stroke-width="11" stroke-linejoin="round"/>
+<path d="M150 305v-67h91v67zm117 0v-88h92v88" fill="#b29371" stroke="#e1c39a" stroke-width="8"/>
+<path d="M181 238v68m42-68v68m74-89v89m40-89v89" stroke="#725d51" stroke-width="6"/>
+<path d="M150 260h92m25-5h92" stroke="#f2d7ae" stroke-width="8"/>
+<path d="M256 144v64" stroke="#d8a56e" stroke-width="9"/><path d="M225 198h62" stroke="#e8bd80" stroke-width="11" stroke-linecap="round"/>
+<path d="M164 414q91 30 184 0" fill="none" stroke="#a9b4ac" stroke-width="5" opacity=".8"/>
+<text x="256" y="470" fill="#f3dfbd" font-size="21" font-family="serif" text-anchor="middle" letter-spacing="3">DERVAUX · KESS</text>
+</svg>

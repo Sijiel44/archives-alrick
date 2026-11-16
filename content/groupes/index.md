@@ -18,7 +18,8 @@ Un groupe est une communauté de choix, de responsabilités ou d'intérêts. **U
 
 ## Institutions et collectifs à distinguer
 
-- [[organisations-decheance|Six organisations et contre-pouvoirs autour de la Déchéance]] : soins, justice, secours, cérémonies, mémoire et défense des libertés. Ces institutions du monde partagé ne sont pas toutes Déchues ; leurs acteurs locaux dépendent de chaque campagne.
+- [[organisations-decheance|Six institutions et une compagnie marchande autour de la Déchéance]] : soins, justice, secours, cérémonies, mémoire, défense des libertés et négoce. Leurs membres ne sont pas automatiquement Déchus.
+- [[ORG-DECH-07|Compagnie Dervaux et Kess]] : marchands, convoyeurs et comptables aux intérêts divergents ; contrats utiles, exclusivités contestées et employés libres.
 - [[institutions/index|Les Conseils et institutions du Royaume]] : mandats de droit public, non compagnies privées.
 - [[maison/index|La Maison divine]] : communauté et lieux de vie, **distincte du Palais personnel d'Orin** et de sa compagnie.
 - [[monde/index|Les Grandes Puissances]] : dossiers de cosmologie et de relations divines, sans équivalence automatique entre Conseil, Maison et suite.

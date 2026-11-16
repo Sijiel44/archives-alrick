@@ -10,7 +10,7 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: ["lecteurs", "joueurs", "mj"]
 usage_en_jeu: ["reference", "rencontre", "scenario"]
-description: "Six organisations d'Entre-Rives : soins, justice, secours, mémoire, arts et contre-pouvoirs, avec leurs liens et leurs limites."
+description: "Six institutions et une compagnie de négoce autour de la Déchéance, avec leurs liens, activités réelles et limites."
 tags: [decheance, organisations, groupes, factions, secours, justice, memoire]
 ---
 
@@ -18,7 +18,7 @@ tags: [decheance, organisations, groupes, factions, secours, justice, memoire]
 
 La **Déchéance** peut détourner des institutions réellement utiles : soins, sécurité, protection des savoirs ou entraide. Elle ne se confond pourtant jamais avec ces activités ordinaires. Une personne travaillant pour une institution n'est pas Déchue du seul fait de sa fonction, de sa profession ou de ses croyances.
 
-Voici six organisations du monde partagé. Elles existent comme références d'univers ; **leurs implantations, directions locales et conflits avec des groupes de joueurs restent à déterminer dans chaque campagne**.
+Voici **six institutions de service et une compagnie marchande** du monde partagé. Elles existent comme références d'univers ; **leurs aventures avec les groupes de joueurs restent à déterminer dans chaque campagne**. La maison de négoce possède déjà ses associés, ses équipages et un passé économique propre ; ses résultats face aux joueurs n'ont pas été préécrits.
 
 | Organisation | Service qu'elle rend | Conflit qui peut la traverser |
 | --- | --- | --- |
@@ -28,6 +28,7 @@ Voici six organisations du monde partagé. Elles existent comme références d'u
 | [[ORG-DECH-04|Chœur des Derniers Feux]] | Veillées et mémoire collective | Réconfort ou renoncement imposé |
 | [[ORG-DECH-05|Conservatoire des Noms]] | Archives et généalogies | Sauvegarde ou appropriation |
 | [[ORG-DECH-06|Assemblée des Portes Libres]] | Protection civile et relève | Résistance ou fermeture précipitée |
+| [[ORG-DECH-07|Compagnie Dervaux et Kess]] | Transport, ferrures, toiles et denrées | Livraisons sûres ou exclusivité abusive |
 
 Ces institutions peuvent coopérer, rivaliser et se corriger mutuellement. Elles ne constituent **pas un empire uniforme des Déchus**. Dans une campagne, les lieux, responsables et pactes particuliers sont choisis puis enregistrés dans le journal de la table. Une victoire ou une trahison de campagne ne modifie pas automatiquement les autres campagnes.
 
@@ -50,4 +51,4 @@ Ce sont des **degrés de récit**, pas des niveaux 5d6 ni des bonus automatiques
 
 [[index|Groupes et alliances]] · [[monde/decheance-canon|La Déchéance]]
 
-[[personnages/personnages-dechus|Rencontrer les personnages déchus — niveaux de référence 2 à 20]]
+[[personnages/personnages-dechus|Rencontrer vingt-six personnages, déchus ou non — niveaux indicatifs 2 à 20]]

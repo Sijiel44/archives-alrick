@@ -1,6 +1,6 @@
 ---
 publish: true
-title: "Visages de la Déchéance — vingt antagonistes, niveaux 2 à 20"
+title: "Visages des conflits de Déchéance — vingt-six personnages, niveaux 2 à 20"
 categorie: "personnage"
 canon_statut: "lore_valide"
 etat_editorial: valide
@@ -10,7 +10,7 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: [lecteurs, joueurs, mj]
 usage_en_jeu: [reference, rencontre, scenario]
-description: "Vingt personnages déchus ou tentés de niveaux variés, avec pactes, histoires, relations, lieux d'activité, failles et désamorçages."
+description: "Vingt-six personnages liés aux conflits de Déchéance, dont six membres d'une compagnie marchande et trois salariés non Déchus."
 tags: [decheance, antagonistes, personnages, niveaux, pactes, chroniques]
 ---
 
@@ -18,7 +18,7 @@ tags: [decheance, antagonistes, personnages, niveaux, pactes, chroniques]
 
 Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont choisi un pacte peuvent être guérisseurs, artistes, greffiers, commerçants, archivistes ou artisans. Le bénéfice initial a souvent été **réel** ; le piège est de réclamer ensuite le droit de disposer de la vie d'autrui.
 
-**Vingt biographies appartiennent désormais au monde partagé.** Les dix premières ont été étoffées avec des conflits supplémentaires, des subalternes nommés et des scènes de résolution ; dix nouveaux visages élargissent la progression. Leurs réussites et revers passés constituent le nouveau passé de ces personnes, sans attribuer de séance supplémentaire à l'Odyssée d'Orin ou à une campagne de joueurs. Leur situation est un **point de départ vivant** : chaque MJ peut déplacer un relais, nouer une alliance ou provoquer une défaite sans changer les autres tables.
+**Vingt-six biographies appartiennent désormais au monde partagé.** Les vingt premières suivent des pactes et leurs conséquences ; six autres éclairent les conflits d'une compagnie marchande dont tous les employés ne sont pas corrompus. Leurs réussites et revers passés constituent le nouveau passé de ces personnes, sans attribuer de séance supplémentaire à l'Odyssée d'Orin ou à une campagne de joueurs. Leur situation est un **point de départ vivant** : chaque MJ peut déplacer un relais, nouer une alliance ou provoquer une défaite sans changer les autres tables.
 
 | Personnage | Niveau de référence¹ | État narratif | Branche / fonction | Faille à exploiter |
 | --- | ---: | --- | --- | --- |
@@ -42,6 +42,12 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 | [[PER-DECH-18|Néris des Miroirs Éteints]] | **8** | Fêlure | Portraitiste influencée par Esmor | Droits des modèles et originaux rendus |
 | [[PER-DECH-19|Idrela des Herbes de Sel]] | **13** | Rupture | Lieuse de la branche d'Halvéra | Soins libres et Chute liée dénouée |
 | [[PER-DECH-20|Hévar des Archives Brûlées]] | **19** | Déchéance | Lieur d'Orvann à deux branches | Copies préservées et témoins protégés |
+| [[PER-DECH-21|Orianne Dervaux]] | **17** | Non Déchue | Associée principale de la [[groupes/ORG-DECH-07|compagnie]] | Arbitrage des contrats et droit de retrait |
+| [[PER-DECH-22|Maren Kess]] | **14** | Rupture | Coassocié, Lieur de Caldria | Garanties bornées, Chute liée libérée |
+| [[PER-DECH-23|Siva Norel]] | **6** | Fêlure | Responsable des dépôts | Audit contradictoire et renoncement au registre |
+| [[PER-DECH-24|Perrin Havas]] | **9** | Non Déchu | Chef d'escorte | Neutralité des escortes, protection des employés |
+| [[PER-DECH-25|Mérine Solard]] | **4** | Tentation | Vérificatrice de cargaisons | Copies fiables plutôt que cachet rituel |
+| [[PER-DECH-26|Gabin Rosset]] | **2** | Non Déchu | Commis aux expéditions | Recevabilité des témoignages et protection |
 
 ¹ **Niveaux proposés pour calibrer les rencontres**, et non des profils calculés. Aucun bonus, PV, dégâts ou capacité 5d6 n'est accordé par cette page. **Le niveau 2–20 est distinct de l'Emprise et de la place dans la pyramide.** INDEX/MATH/PNJ devront établir les profils avant une opposition chiffrée.
 
@@ -60,6 +66,7 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 - **Les visages et les copies :** Néris transforme les images, Irveth revendique les noms et Kelmor veut une représentation sans dissidence ; une preuve visuelle libre peut contrarier les trois.
 - **Le soin et la captivité :** Idrela, Maëline et Lysane veulent sauver des vies mais se disputent le droit de retenir les personnes. Les patients ne deviennent jamais tribut par leur présence.
 - **La mémoire en flammes :** Hévar souhaite brûler les archives des endeuillés, tandis qu'Irveth voudrait les posséder et qu'Olyne hésite encore à renoncer aux rites d'adieux.
+- **Le commerce et ses clauses :** Orianne veut maintenir l'activité, Maren aspire à l'exclusivité, Siva transforme la vérification en soupçon ; Perrin refuse d'utiliser ses gardes comme police privée, Mérine recherche une preuve incontestable et Gabin conserve des copies. Les victimes d'un retard de livraison ont besoin de vivres, pas seulement d'un procès.
 
 ## L'arc d'escalade sans scénario obligatoire
 
@@ -68,6 +75,6 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 3. **Rupture :** plusieurs réseaux s'affrontent. Une branche libérée affaiblit le maître mais peut laisser une institution vitale sans moyens.
 4. **Retombées :** protéger les familles et la preuve, puis laisser aux victimes le soin de décider d'éventuels pardons. Le retrait ou la trêve peuvent constituer des victoires.
 
-Les héros faibles peuvent empêcher une nouvelle Chute, restaurer des preuves ou assurer un passage ; ils n'ont pas besoin de combattre Terval pour compter. Les Déchus avancés souffrent de leurs dépendances réelles ; **une perte de branche n'enlève pas automatiquement des niveaux** et n'inflige aucun dommage sans contrat de règle validé.
+Les héros faibles peuvent empêcher une nouvelle Chute, restaurer des preuves ou assurer un passage ; ils n'ont pas besoin de combattre Terval pour compter. Les Déchus avancés souffrent de leurs dépendances réelles ; **une perte de branche n'enlève pas automatiquement des niveaux** et n'inflige aucun dommage sans contrat de règle validé. Les trois employés non Déchus de la compagnie ont leurs propres responsabilités et choix : ils ne sont pas un tribut implicite.
 
 [[index|Personnages]] · [[groupes/organisations-decheance|Organisations et contre-pouvoirs]] · [[monde/decheance-canon|Loi de la Déchéance]]

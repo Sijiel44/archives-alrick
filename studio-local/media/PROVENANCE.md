@@ -12,6 +12,21 @@ Trois planches originales générées avec l'outil ImageGen intégré le 16 nove
 
 Prompts de création : grand herbivore sauvage d'aulnaie à pelage gris et cornes claires striées ; araignée des roseaux aux huit pattes et toile de rosée ; tortue de rivière à carapace de galets moussue. Chaque scène est composée en paysage 3:2, sans personnage humain, texte, logo ni filigrane. L'illustration n'ajoute **aucune capacité mécanique** au canon.
 
+## ANT-DECH-007 — Six portraits de la Compagnie Dervaux et Kess
+
+Six portraits de personnages **originaux** ont été générés avec l'outil ImageGen intégré le 16 novembre 2026, sur la base des biographies inédites de `PER-DECH-21` à `PER-DECH-26`. Ils sont publiés dans `quartz/static/images/personnages-dechus/per-dech-{21..26}.webp` en WebP **800 × 1 066**, qualité 85, sans texte ni logo ni lien vers un hébergeur d'images. Les versions SVG de même code restent des illustrations vectorielles alternatives ; elles ne sont pas utilisées comme portrait principal.
+
+| Personnage | Visuel principal | Note de composition |
+| --- | --- | --- |
+| Orianne Dervaux | `per-dech-21.webp` | Associée au manteau bleu, carnet et carte, arrière-plan de comptoir fluvial |
+| Maren Kess | `per-dech-22.webp` | Négociant sombre, deux livres de comptes et quai visible |
+| Siva Norel | `per-dech-23.webp` | Responsable de dépôt rousse en tenue de travail, tablette d'inventaire |
+| Perrin Havas | `per-dech-24.webp` | Chef d'escorte barbu, manteau vert et lance de voyage |
+| Mérine Solard | `per-dech-25.webp` | Vérificatrice à l'encre, sceau et papiers de chargement |
+| Gabin Rosset | `per-dech-26.webp` | Jeune commis avec reçus et plume, sans arme |
+
+**Direction visuelle commune :** peinture réaliste d'artbook de fantasy, lumière de fenêtre et de lanterne, ardoise, cuivre, textiles usés, scènes de négoce crédibles. Chaque prompt décrit le métier et les objets attestés de la fiche ; il exclut les textes, les logos, les marques, les pouvoirs non validés et les personnages supplémentaires. Les images ne documentent pas un événement joué et ne confèrent aucune caractéristique de combat.
+
 ## BEST-ER-002 — Trois nouvelles planches de faune, publiées sur demande du créateur
 
 Trois illustrations originales générées par ImageGen lors de la création de BEST-ER-001 (15 novembre 2026), converties sans recadrage en WebP 1 536 × 1 024 (qualité 88). Le créateur a demandé le 16 novembre 2026 leur publication avec des fiches de créatures. Elles sont réutilisées dans le Studio sans source externe ni génération de caractéristiques M03. Les titres, descriptions et alt se trouvent également dans `catalogue-bestiaire.json` et les fiches sous `content/creatures/`.

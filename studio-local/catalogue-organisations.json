@@ -3,8 +3,8 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "descriptive_only",
-  "version": 1,
-  "source": "Validation du créateur en développement direct du JDR — 15 novembre 2026",
+  "version": 2,
+  "source": "Validation du créateur en développement direct du JDR — 15 et 16 novembre 2026, ANT-DECH-004 et ANT-DECH-007",
   "entries": [
     {
       "id": "ORG-DECH-01",
@@ -95,6 +95,21 @@
       "limits": "Moyens limités, divergences internes, responsabilité envers les bénéficiaires.",
       "relations": ["ORG-DECH-01", "ORG-DECH-02", "ORG-DECH-03", "ORG-DECH-04", "ORG-DECH-05"],
       "tags": ["entraide", "liberte", "contre_pouvoir", "secours"]
+    },
+    {
+      "id": "ORG-DECH-07",
+      "version": "e7d94cc35766239d0a40be173dca450130b28db1",
+      "path": "content/groupes/ORG-DECH-07.md",
+      "image": "org-dech-07.svg",
+      "artAlt": "Deux ballots de négoce et une barque sous une traverse cuivrée, sur fond bleu nuit.",
+      "name": "Compagnie Dervaux et Kess",
+      "description": "Compagnie marchande de ferrures, toiles et denrées, traversée par un conflit sur les clauses d'exclusivité.",
+      "purpose": "Transporter les biens d'artisans, d'ateliers et de communautés le long de routes secondaires.",
+      "members": "Deux associés, équipages, convoyeurs, commis, ateliers partenaires et personnel libre de ses affiliations.",
+      "influence": "Quelques routes et dépôts d'Entre-Rives et de Valbrume, avec des missions vers les voies du Méridien.",
+      "limits": "Deux barques, attelages loués, stocks finis, travailleurs libres, clients et transporteurs concurrents.",
+      "relations": ["ORG-DECH-01", "ORG-DECH-03"],
+      "tags": ["commerce", "compagnie_marchande", "negoce", "transport", "contrats"]
     }
   ]
 }
