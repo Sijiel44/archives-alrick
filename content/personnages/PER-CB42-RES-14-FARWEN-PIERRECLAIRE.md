@@ -33,6 +33,16 @@ Le poste de gouvernante ou d'intendance à Aldhammar reste **non proposé en per
 
 Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
+## En jeu — propositions réservées au MJ, non jouées
+
+**Comportement suggéré.** Farwen regarde les marques d'humidité, les fibres et les usages de chaque pièce. Elle pourrait préférer une réparation patiente à une rénovation qui déloge les habitants.
+
+**Amorce indépendante.** Une ancienne maison d'Aldhammar doit être entretenue sans arrêter la vie des familles qui y résident. Les PJ peuvent préparer un calendrier par pièces, chercher des matériaux locaux ou consulter les artisans du voisinage.
+
+**Réplique fictive, non jouée :** « Réparer une demeure, c'est d'abord demander à ceux qui y vivent ce qui doit rester. »
+
+**Garde-fou.** Le poste de gouvernante n'a pas été proposé ni accepté. Farwen reste distincte de Sigrun Pierreval et Dagna Veine-de-Pierre.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, entrée **RES-14** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.

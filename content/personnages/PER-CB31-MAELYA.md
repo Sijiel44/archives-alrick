@@ -27,6 +27,16 @@ Elle tient des carnets de termes difficiles à traduire et prend le temps d’en
 
 Maëlya peut invoquer le lion **Édril** et la lionne **Maërys**, tout comme Édric. Chacun des deux animaux magiques peut protéger l’un ou l’autre en cas de danger. Voir la fiche [[creatures/CRE-CB39-LIONS-EDRIC-MAELYA|du lion et de la lionne]].
 
+## En jeu — pistes proposées, non jouées (volet MJ)
+
+**Mise en scène.** Maëlya écoute une locution de marin, la note, puis interroge le sens de deux mots qui semblent pourtant ordinaires. *« C'est traduit, oui. Mais est-ce que c'est ce qu'il voulait dire ? »* Cette phrase est une **création de mise en scène**, pas un dialogue attesté.
+
+- **Le mot qui divise :** une convention entre villages emploie un terme dont les sens divergent. Recueillir des exemples, consulter les deux communautés ou rédiger deux formulations acceptées.
+- **Une voix oubliée :** les mots d'un métier disparaissent des registres. Les personnages peuvent rencontrer des praticiens volontaires, préparer un lexique ouvert ou respecter un refus de transmission.
+- **Un récit sans propriétaire :** un marchand veut s'approprier les expressions d'une communauté. La table choisit entre négociation, attribution, retrait et recherche d'un accord.
+
+**Continuité.** Son mariage avec Édric appartient à CB3.9, pas aux rencontres plus anciennes. Ses créatures protectrices sont un fait de la source, mais leur présence ne constitue ni une intervention obligatoire ni un profil de combat octroyé aux joueurs. Sa curiosité n'autorise pas la divulgation de confidences.
+
 ## Sources
 
 - *Campagne Brut 3.1*, CB31 P16684–16706.

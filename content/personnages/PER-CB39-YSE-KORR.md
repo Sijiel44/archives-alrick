@@ -19,6 +19,16 @@ Yse Korr est commandante au sein de la délégation d’Orinor. Son portefeuille
 
 Les sources ne détaillent pas ici ses unités, ses campagnes ni son parcours antérieur.
 
+## En jeu — pistes proposées, non jouées (volet MJ)
+
+**Attitude à la table.** Yse pose une carte sur la table, demande où les marchands se sentent réellement menacés et accepte de reconnaître une erreur de patrouille. L'humour désamorce ses échanges sans effacer ses responsabilités.
+
+**Rencontre modulable.** Une escorte rassure le bourg central mais coupe des chemins empruntés par les bergers. Les PJ peuvent écouter les habitants, négocier un calendrier ou chercher une solution sans soldats permanents.
+
+**Réplique fictive, non jouée :** « Une route sûre seulement pour nos propres bottes n'est pas une route sûre. »
+
+**Continuité.** Ni ancien régiment, ni campagne militaire, ni victoire antérieure ne sont inventés. Sariel reste sa collègue de délégation.
+
 ## Sources
 
 - *Campagne Brut 3.9*, CB39 P00031; P00081–00142; P05289; P19948.

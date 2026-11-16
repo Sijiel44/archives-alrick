@@ -33,6 +33,16 @@ Elle ne possède **aucun contrat de maintenance du Palais**, et aucun accès aux
 
 Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
+## En jeu — propositions réservées au MJ, non jouées
+
+**Comportement suggéré.** Nerys fait décrire les usages quotidiens d'un dispositif enchanté avant de suggérer un changement. Elle considère un éclairage de secours ou un circuit manuel comme une mesure de prudence, pas comme un échec magique.
+
+**Amorce indépendante.** Dans une maison commune, la chaleur enchantée devient irrégulière. On peut enquêter avec les habitants, prévoir un repli ou solliciter un autre spécialiste. Aucun sort ni capacité 5d6 n'est attribué sans INDEX/MATH.
+
+**Réplique fictive, non jouée :** « La meilleure protection est celle dont les habitants savent aussi expliquer les limites. »
+
+**Garde-fou.** Cette Nerys est une elfe vivante de 214 ans, non la puissance du Dernier Phare. Ni accès au Palais, ni service sur cinq siècles ne sont supposés.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, entrée **RES-13** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.

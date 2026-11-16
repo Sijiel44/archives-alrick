@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Le Cabinet des Rencontres — PNJ v0.1 · Entre-Rives</title>
+  <style>
+    :root {
+      font-family: Inter, "Segoe UI", system-ui, sans-serif;
+      --bg: #0b111b; --panel: #171d29; --panel-soft: #1c2531;
+      --ivory: #f5edda; --muted: #b8b7b2; --copper: #d9a76e;
+      --border: rgba(230, 195, 137, .18); --ink: #1b1613;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: radial-gradient(circle at 80% 3%, #203042 0, #0b111b 47%) fixed; color: var(--ivory); }
+    button, input, a { font: inherit; }
+    a { color: var(--copper); }
+    button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #f4c47d; outline-offset: 3px; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap: 20px; padding: 16px max(25px, calc((100vw - 1300px)/2)); border-bottom:1px solid var(--border); }
+    .brand { display:flex; align-items:center; gap: 12px; font: 600 15px Georgia, serif; letter-spacing:.08em; }
+    .brand-mark { color: var(--copper); border:1px solid var(--border); border-radius:50%; display:grid; place-items:center; height:38px; width:38px; font-size:23px; }
+    .tiny { color: #e9bb85; text-transform:uppercase; letter-spacing:.14em; font-size:11px; }
+    .tag-top { border:1px solid var(--border); border-radius:99px; color:var(--muted); padding:9px 14px; font-size:12px; }
+    .shell { max-width:1350px; margin:auto; padding: 26px 26px 90px; }
+    .hero { position:relative; min-height:410px; overflow:hidden; border-radius:20px; background: #172436 url("../../content/images/personnages/pnj-v01-fresque-concept.webp") center center /cover no-repeat; border:1px solid var(--border); display:flex; align-items:flex-end; box-shadow:0 20px 70px #0008; }
+    .hero::before {content:""; position:absolute; inset:0; background: linear-gradient(90deg, rgba(7,12,21,.94), rgba(7,12,21,.70) 32%, rgba(7,12,21,.03) 75%), linear-gradient(0deg,rgba(7,12,21,.6),transparent 70%); }
+    .hero-copy {position:relative; z-index:1; max-width:650px; padding:38px 42px;}
+    .eyebrow {color:#efc18c; font-size:12px; font-weight:800; letter-spacing:.2em; text-transform:uppercase;}
+    h1, h2, h3, .card-name {font-family:Georgia, "Times New Roman", serif; font-weight:500;}
+    h1 {font-size:clamp(42px,5.5vw,78px); line-height:.96; margin:17px 0 18px; letter-spacing:-.045em; text-wrap:balance;}
+    .hero-copy p {max-width:530px; line-height:1.55; font-size:16px; color:#e4e3e0; }
+    .hero-note { margin-top:25px; display:flex; align-items:center; gap:12px; color:#cfbca5; font-size:12px; }
+    .spark {font-size:21px; color:#e7b570;}
+    .summary {display:flex; align-items:center; justify-content:space-between; gap:24px; margin:34px 0 20px;}
+    h2 { font-size:clamp(26px,3vw,36px); margin:0; letter-spacing:-.025em; }
+    .subheading {margin:9px 0 0; color:var(--muted); line-height:1.5; max-width:760px;}
+    .counter {display:flex; align-items:baseline; gap:8px; color:var(--muted); white-space:nowrap;}
+    .counter strong { font: 400 40px Georgia,serif; color: var(--copper); }
+    .filters {display:flex; align-items:center; flex-wrap:wrap; gap:9px; margin:22px 0; }
+    .filter {background:#1c2734; border:1px solid var(--border); border-radius:99px; color:#d8d8d2; padding:10px 17px; cursor:pointer; font-size:13px; transition:background .15s ease,color .15s ease; }
+    .filter:hover, .filter[aria-pressed="true"] {background:#d8a86f; color:#19150e; border-color:#d8a86f; }
+    .search {margin-left:auto; display:flex; align-items:center; gap:10px; padding:0 14px; min-width:min(100%,280px); border:1px solid var(--border); background:#17202a; border-radius:11px; color:#e0b77f; }
+    .search input {color:var(--ivory); background:none; outline:0; border:0; padding:12px 0; width:100%; min-width:0; font-size:14px; }
+    .search:focus-within {outline:2px solid #d8a86f;outline-offset:2px;}
+    .grid {display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; }
+    .card {background:linear-gradient(150deg,#202a38,#121b27 85%); border:1px solid var(--border); border-radius:15px; overflow:hidden; text-align:left; padding:0; color:inherit; cursor:pointer; box-shadow:0 8px 25px #0004; transition:transform .17s, border-color .17s, box-shadow .17s; width:100%; display:flex; flex-direction:column; }
+    .card:hover {transform:translateY(-4px); border-color:#d1a56b99; box-shadow:0 15px 30px #0007;}
+    .portrait {position:relative; display:grid; place-items:center; height:206px; background:radial-gradient(circle at 60% 30%,#465366,#151d2a 65%); overflow:hidden;}
+    .portrait img {width:100%; height:100%; object-fit:cover; object-position:center 26%; display:block; transition:transform .22s;}
+    .card:hover .portrait img {transform:scale(1.04);}
+    .sigil {height:134px; width:134px; border:1px solid #d6b58555; border-radius:50%; display:grid; place-items:center; position:relative; transform:rotate(-10deg); background:radial-gradient(circle,#68788b22 0,transparent 70%); box-shadow:0 0 0 13px #d6b5850b,0 0 0 27px #d6b58508;}
+    .sigil::before, .sigil::after {position:absolute; content:""; width:155px; height:1px; background:#cca56d44; transform:rotate(43deg);}
+    .sigil::after {transform:rotate(-43deg);}
+    .sigil-symbol {font-size:55px; filter:grayscale(.25); transform:rotate(10deg); text-shadow:0 4px 25px #000; z-index:1;}
+    .portrait-label {position:absolute; right:12px; bottom:11px; padding:5px 9px; border:1px solid #ecd7b13b; border-radius:99px; background:#0a1420c9; color:#e7d9bd; font-size:10px; text-transform:uppercase; letter-spacing:.08em; }
+    .card-body {padding:17px 18px 20px; flex:1; display:flex; flex-direction:column; min-height:185px;}
+    .category {color:#d8ae76; text-transform:uppercase; font-size:10px; letter-spacing:.14em; font-weight:750; margin-bottom:9px; }
+    .card-name {font-size:25px; line-height:1.04; margin:0 0 10px; letter-spacing:-.02em;}
+    .card-desc {font-size:13px; line-height:1.55; color:#c9cccb; margin:0; flex:1; }
+    .card-footer {display:flex; justify-content:space-between; gap:10px; align-items:center; margin-top:15px; padding-top:14px; border-top:1px solid #ffffff15; color:#d5b88f; font-size:12px; }
+    .status {color:#adb4b7; font-size:11px;}
+    .muted {color:var(--muted)}
+    .empty {display:none; padding:44px 12px; text-align:center; border:1px dashed var(--border); border-radius:12px; color:var(--muted);}
+    footer {margin-top:32px; border-top:1px solid var(--border); padding-top:18px; font-size:12px; line-height:1.6; color:var(--muted);}
+    dialog {position:fixed; max-width:850px; width:calc(100vw - 36px); max-height:min(92vh,950px); margin:auto; background:#161f2b; color:var(--ivory); border:1px solid #d7ab7566; border-radius:18px; padding:0; overflow:auto; box-shadow:0 28px 100px #000b;}
+    dialog::backdrop {background:#030912d9; backdrop-filter:blur(6px);}
+    .close {position:absolute; right:19px; top:19px; z-index:5; border:1px solid #fff5; background:#101725cf; color:white; cursor:pointer; width:39px;height:39px;border-radius:50%; font-size:23px; }
+    .detail-layout {display:grid; grid-template-columns:290px 1fr; }
+    .detail-art {min-height:420px; background:linear-gradient(#233344,#131b25); position:relative; display:grid; place-items:center;}
+    .detail-art img {width:100%; height:100%; min-height:420px; object-fit:cover; position:absolute; inset:0;}
+    .detail-art .sigil {transform:scale(1.2) rotate(-10deg);}
+    .detail-copy {padding:45px 38px 34px;}
+    .detail-copy h2 {font-size:42px; line-height:1.08; margin:10px 0;}
+    .detail-copy p {line-height:1.55;}
+    .detail-copy h3 {font-size:21px; margin:22px 0 8px; color:#f3ddc1;}
+    .detail-copy .lead {font-size:16px;color:#e0d7cb;}
+    .rule {height:1px;background:var(--border);margin:20px 0;}
+    .note {border-left:3px solid #d9aa70; background:#243142; padding:12px 16px; font-size:13px; color:#d5dee0; line-height:1.5; border-radius:0 8px 8px 0;}
+    .buttons {display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;}
+    .action {border:1px solid #c7a57588; border-radius:9px; padding:11px 15px; background:#d8a86f; color:#1d1713; text-decoration:none; font-size:13px; font-weight:700; cursor:pointer;}
+    .action.secondary {background:transparent; color:#e9c79a;}
+    dl {display:grid; grid-template-columns:110px 1fr; gap:8px 10px; font-size:12px; color:#c9cccd;}
+    dt {color:#d3a86f;} dd {margin:0;overflow-wrap:anywhere;}
+    @media (max-width:1080px) {.grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+    @media (max-width:760px) {
+      .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+      .topbar {padding:14px 18px;} .tag-top{display:none;}
+      .shell {padding:16px 14px 60px;} .hero{min-height:360px;} .hero-copy{padding:26px;}
+      .summary{align-items:flex-start;} .counter strong{font-size:31px;}
+      .search{margin-left:0; width:100%;} .filters{gap:7px;}
+      .detail-layout{grid-template-columns:1fr;} .detail-art{min-height:225px;max-height:280px;}
+      .detail-art img{min-height:225px;} .detail-copy{padding:28px 23px;}
+      .detail-copy h2{font-size:34px;}
+    }
+    @media (max-width:470px) {
+      .grid{grid-template-columns:1fr 1fr;gap:9px;} .portrait{height:145px;}
+      .card-body{padding:13px;min-height:180px;} .card-name{font-size:19px;} .card-desc{font-size:12px;}
+      .card-footer{font-size:10px;} .status{display:none;}
+      .sigil{transform:scale(.75) rotate(-10deg);} .hero{min-height:340px;}
+      .hero-copy p{font-size:14px;}.hero-copy{padding:22px;}.hero-note{font-size:11px;}
+      .counter {display:none;}
+    }
+    @media (prefers-reduced-motion:reduce) { *, *::before, *::after {transition:none!important;scroll-behavior:auto!important;} }
+    @media print {
+      body{background:white;color:black;} .topbar,.hero,.summary,.filters,.grid,footer,.close{display:none!important;}
+      dialog[open]{position:static;width:auto;max-height:none;border:0;color:black;background:white;box-shadow:none;}
+      dialog::backdrop{display:none;} .detail-copy,.detail-copy h3,.lead,.note {color:black!important;}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark" aria-hidden="true">✥</div><span>LES CHRONIQUES D'ENTRE-RIVES<br><span class="tiny">Atelier des personnages</span></span></div>
+    <span class="tag-top">PNJ-001 · prototype local · pas de publication</span>
+  </header>
+  <main class="shell">
+    <section class="hero" aria-labelledby="main-title">
+      <div class="hero-copy">
+        <div class="eyebrow">Tome I — Personnages et sociétés</div>
+        <h1 id="main-title">Le Cabinet<br>des Rencontres</h1>
+        <p>Des compagnons, artisans, témoins et bâtisseurs. Quatre-vingt-dix visages issus des archives d'Alrick, à rencontrer sans avoir à rejouer son histoire.</p>
+        <div class="hero-note"><span class="spark">✦</span> Portraits conceptuels et références d'ambiance non canoniques · aucune fiche source remplacée</div>
+      </div>
+    </section>
+    <section aria-labelledby="browse-title">
+      <div class="summary">
+        <div><div class="eyebrow">Des histoires qui n'attendent pas le héros</div><h2 id="browse-title">La collection des PNJ</h2>
+          <p class="subheading">Chaque carte donne une manière de jouer le personnage et une proposition de rencontre. Les faits et les sources restent dans sa fiche documentaire d'origine.</p>
+        </div>
+        <div class="counter"><strong id="count">90</strong><span>fiches</span></div>
+      </div>
+      <div class="filters" aria-label="Filtres des personnages">
+        <button class="filter" type="button" data-group="tous" aria-pressed="true">Tous les personnages</button>
+        <button class="filter" type="button" data-group="compagnie" aria-pressed="false">La compagnie</button>
+        <button class="filter" type="button" data-group="proches" aria-pressed="false">Mentors & proches</button>
+        <button class="filter" type="button" data-group="metiers" aria-pressed="false">Métiers & territoires</button>
+        <button class="filter" type="button" data-group="savoirs" aria-pressed="false">Savoirs & gardiens</button>
+        <button class="filter" type="button" id="external-toggle" aria-pressed="false" title="Les images externes ne sont téléchargées qu'après votre choix">Afficher 3 images externes</button>
+        <label class="search">⌕ <input id="search" type="search" autocomplete="off" placeholder="Rechercher un personnage…" aria-label="Rechercher un personnage" /></label>
+      </div>
+      <div class="grid" id="cards" aria-live="polite"></div>
+      <div class="empty" id="empty">Aucun personnage ne correspond à cette recherche.</div>
+    </section>
+    <footer>Prototype éditorial PNJ-001. Les scènes proposées ne sont pas des faits joués. Les secrets du MJ ne sont pas stockés ici. Aucun profil 5d6 ni capacité n'est attribué automatiquement. Les dossiers déjà marqués « spoilers » dans les Archives conservent leurs avertissements. Les images d'ambiance externes sont facultatives : leur activation entraîne une requête aux serveurs Wikimedia Commons.</footer>
+  </main>
+  <dialog id="detail" aria-labelledby="detail-title">
+    <button type="button" class="close" id="close" aria-label="Fermer la fiche">×</button>
+    <div class="detail-layout">
+      <div id="detail-art" class="detail-art"></div>
+      <article class="detail-copy">
+        <div id="detail-category" class="eyebrow"></div>
+        <h2 id="detail-title"></h2>
+        <p class="lead" id="detail-lead"></p>
+        <div class="rule"></div>
+        <h3>Le faire vivre en scène</h3>
+        <p id="detail-scene"></p>
+        <div class="note"><strong>Proposition non jouée</strong><br><span id="detail-hook"></span></div>
+        <h3>Choix laissés aux joueurs</h3>
+        <p id="detail-choices"></p>
+        <h3>Traçabilité documentaire</h3>
+        <dl><dt>Référence</dt><dd id="detail-code"></dd><dt>Statut source</dt><dd id="detail-status"></dd><dt>Source primaire</dt><dd id="detail-source"></dd><dt>Illustration</dt><dd id="detail-illustration"></dd><dt>5d6</dt><dd>Pas de profil canonique attribué par cette sélection ; adaptations à versionner séparément.</dd></dl>
+        <p id="detail-warning" class="note" hidden></p>
+        <div class="buttons"><a class="action" id="detail-link" target="_blank" rel="noopener noreferrer">Ouvrir la fiche d'origine ↗</a><a class="action secondary" id="detail-external" target="_blank" rel="noopener noreferrer" hidden>Source et licence de l'image ↗</a><button type="button" class="action secondary" id="print">Imprimer cette fiche</button></div>
+      </article>
+    </div>
+  </dialog>
+  <script id="pnj-payload" type="application/json">__PNJ_DATA__</script>
+  <script>
+    "use strict";
+    const data = JSON.parse(document.getElementById("pnj-payload").textContent);
+    const groups = {compagnie:"Compagnie des Revenants",proches:"Mentors & proches",metiers:"Métiers & territoires",savoirs:"Savoirs & gardiens"};
+    let activeGroup="tous", search="";
+    let allowExternalImages=false;
+    let returnFocus=null;
+    const cards=document.getElementById("cards"), modal=document.getElementById("detail");
+    const normalize=text=>(text||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+    const el=(name,cls,text)=>{const node=document.createElement(name);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;};
+    const sigil=record=>{const frame=el("div","sigil");frame.setAttribute("aria-hidden","true");frame.append(el("span","sigil-symbol",record.symbole));return frame;};
+    function artwork(record, className) {
+      const wrap=el("div",className);
+      if(record.image) {
+        const img=el("img");img.src=record.image;img.alt=`Illustration ${record.illustrationValidee?"de référence":"conceptuelle non canonique"} de ${record.nom}`;img.loading="lazy";wrap.append(img);
+      } else if(allowExternalImages && record.externe) {
+        const img=el("img");img.alt=record.externe.nature;img.referrerPolicy="no-referrer";img.loading="lazy";img.src=record.externe.url;
+        img.onerror=()=>{img.remove();wrap.prepend(sigil(record));};wrap.append(img);
+      } else {
+        wrap.append(sigil(record));
+      }
+      if(className==="portrait")wrap.append(el("span","portrait-label",record.image?(record.illustrationValidee?"Référence validée":"Portrait conceptuel"):(record.externe?(allowExternalImages?"Ambiance externe":"Image externe sur demande"):"Emblème provisoire")));
+      return wrap;
+    }
+    function openCard(record) {
+      returnFocus=document.activeElement;
+      const art=document.getElementById("detail-art");art.replaceChildren(...artwork(record,"detail-art-inner").childNodes);
+      const fields={"detail-category":groups[record.groupe],"detail-title":record.nom,"detail-lead":record.accroche,
+        "detail-scene":record.enScene,"detail-hook":record.rencontre,"detail-choices":record.choix,
+        "detail-code":record.code,"detail-status":record.statut,"detail-source":record.sources,
+        "detail-illustration":record.image?(record.illustrationValidee?"Portrait de référence déjà validé dans les Archives.":"Étude visuelle provisoire, apparence à approuver."):(record.externe?`${record.externe.nature}. ${record.externe.titre} — ${record.externe.credit}. ${record.externe.licence}. Images externes désactivées par défaut.`:"Emblème graphique d'attente, aucun portrait canonique.")};
+      for(const [id,value]of Object.entries(fields))document.getElementById(id).textContent=value;
+      const warning=document.getElementById("detail-warning");
+      warning.hidden=!(record.spoiler||!record.publicationSource);
+      warning.textContent=record.spoiler?"Attention : la fiche d'origine contient des révélations de campagne. Le lien ouvre un dépôt public, pas un coffre privé.":"Cette fiche d'origine n'est pas approuvée pour publication sur le site. Consultation de travail uniquement.";
+      const link=document.getElementById("detail-link");link.href=`https://github.com/Sijiel44/archives-alrick/blob/main/content/personnages/${encodeURIComponent(record.file)}`;
+      const inspiration=document.getElementById("detail-external");inspiration.hidden=!record.externe;
+      if(record.externe)inspiration.href=record.externe.source;else inspiration.removeAttribute("href");
+      modal.showModal();document.getElementById("close").focus();
+    }
+    function draw(){
+      const filtered=data.filter(record=>(activeGroup==="tous"||record.groupe===activeGroup)&&normalize([record.nom,record.accroche,record.code,groups[record.groupe]].join(" ")).includes(search));
+      cards.replaceChildren();
+      for(const record of filtered){
+        const card=el("button","card");card.type="button";card.setAttribute("aria-label",`Consulter ${record.nom}`);
+        card.append(artwork(record,"portrait"));
+        const body=el("div","card-body");body.append(el("div","category",groups[record.groupe]),el("h3","card-name",record.nom),el("p","card-desc",record.accroche));
+        const foot=el("div","card-footer");foot.append(el("span","", "Découvrir la fiche ↗"),el("span","status",record.spoiler?"avec révélations":" "));body.append(foot);
+        card.append(body);card.addEventListener("click",()=>openCard(record));cards.append(card);
+      }
+      document.getElementById("count").textContent=filtered.length;
+      document.getElementById("empty").style.display=filtered.length?"none":"block";
+    }
+    document.querySelectorAll(".filter[data-group]").forEach(button=>button.addEventListener("click",()=>{
+      activeGroup=button.dataset.group;document.querySelectorAll(".filter[data-group]").forEach(b=>b.setAttribute("aria-pressed",String(b===button)));draw();
+    }));
+    document.getElementById("external-toggle").addEventListener("click",event=>{
+      allowExternalImages=!allowExternalImages;
+      event.currentTarget.setAttribute("aria-pressed",String(allowExternalImages));
+      event.currentTarget.textContent=allowExternalImages?"Masquer les images externes":"Afficher 3 images externes";
+      draw();
+    });
+    document.getElementById("search").addEventListener("input",event=>{search=normalize(event.target.value.trim());draw();});
+    document.getElementById("close").addEventListener("click",()=>modal.close());
+    modal.addEventListener("click",event=>{if(event.target===modal)modal.close();});
+    modal.addEventListener("close",()=>{if(returnFocus?.isConnected)returnFocus.focus();});
+    document.getElementById("print").addEventListener("click",()=>window.print());
+    draw();
+  </script>
+</body>
+</html>

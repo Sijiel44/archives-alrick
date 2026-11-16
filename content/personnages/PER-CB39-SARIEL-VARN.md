@@ -19,6 +19,15 @@ Sariel Varn représente le Conseil d’Orinor auprès d’Orin à Valbrume. Elle
 
 Sariel affirme une limite institutionnelle importante : reconnaître Orin comme souverain ne signifie pas devoir lui donner raison. La délégation considère qu’il est sain de pouvoir le contredire et de devoir expliquer les décisions prises. Elle porte également une part de la responsabilité que le Conseil a confiée à Orin, même si celui-ci ne l’avait pas demandée.
 
+## À la table — propositions non jouées (volet MJ)
+
+- **Entrée en scène :** Sariel demande à chacun de séparer les faits, les obligations du Conseil et les préférences du souverain. Elle protège aussi le droit de se retirer d'une discussion officielle.
+- **Rencontre :** une décision urgente est soutenue par une figure éminente, alors qu'une communauté invoque des conséquences ignorées. Les personnages peuvent demander un avis contradictoire, organiser une audition ou suspendre la décision.
+- **Tension :** la loyauté au pouvoir et la responsabilité des institutions peuvent tirer dans des directions différentes, sans réduire Sariel à une opposante de principe.
+- **Limite :** son portrait visuel est une étude conceptuelle, non un témoignage de son apparence ; la scène n'engage aucune décision du Conseil d'Orinor.
+
+Tout ceci est une **proposition non jouée**.
+
 ## Sources
 
 - *Campagne Brut 3.9*, CB39 P00031; P00081–00142; P19945–19948.

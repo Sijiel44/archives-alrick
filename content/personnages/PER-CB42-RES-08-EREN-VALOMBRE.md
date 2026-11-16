@@ -31,6 +31,16 @@ Sa vie ne constitue pas une dette de service. Sa parenté, ses allégeances et s
 
 Les éventuelles nouvelles aventures sont à jouer ; elles ne font pas partie des faits déjà établis.
 
+## En jeu — propositions réservées au MJ, non jouées
+
+**Comportement suggéré.** Éren connaît le protocole mais ne répond pas à une offre comme si son ancienne fonction le définissait. Il peut interroger l'itinéraire, les conditions de repos et la possibilité de repartir librement.
+
+**Amorce indépendante.** Une communauté cherche un médiateur capable d'accueillir deux délégations. Éren pourrait en discuter, proposer un autre nom ou refuser. Sa réponse n'est jamais prédéterminée ; le Rappel ne crée aucune dette.
+
+**Réplique fictive, non jouée :** « J'ai eu une place auprès d'un prince. J'aimerais apprendre qui je suis loin de cette place. »
+
+**Garde-fou.** Il est un **Rappelé** revenu à la vie, pas automatiquement un **Revenant** de la compagnie d'Alrick. Ne pas le confondre avec Eren, le gardien des mécanismes du pont (`PER-CB2-SOREN`), ni avec Sören le marin (`PER-CB1-SOREN`).
+
 ## Sources et adresse de classement
 
 *Compendium des personnages et des relations* v1.7, **RES-08**, et renvois de la fiche précédente : CB42 P10666–10669; CB43 P02303. Le préfixe du code n'établit ni emploi, ni admission chez les Revenants, ni statut de Rappelé.

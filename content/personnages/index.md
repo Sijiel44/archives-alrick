@@ -30,6 +30,17 @@ Ils appartiennent au rayon **PNJ et personnages** du Studio. Aucun de ces trois 
 
 - [[PER-CB31-SIVRA-BRASSEFEUILLE|Sivra Brassefeuille]] — une brasseuse et ses traditions à Entre-Rives.
 
+### Métiers, récoltes et hospitalité — portraits documentés
+
+Quelques personnages déjà présents dans les Archives peuvent animer une partie sans que les joueurs aient à connaître la campagne fondatrice. Ces notices renvoient à des **fiches historiques avec avertissement de révélations** ; leurs nouvelles idées de rencontres sont proposées, non jouées.
+
+- **À Corvelis :** [[SEC-69|Téodan Veyre]] (mesures agricoles), [[SEC-70|Mara Belden]] (exploitation et essais), [[SEC-71|Hélène Varrec]] (comparaisons de cultures), [[SEC-72|Jorven Halrec]] (stockage et pertes), [[SEC-73|Hervald Trois-Sillons]] (outils et terrain).
+- **Lieux de vie et ressources :** [[SEC-65|Sigrun Pierreval]] (préparatifs d'Aldhammar), [[SEC-05|Garrik]] (taverne et hospitalité), [[PER-CB43-DORSA-VAUN|Dorsa Vaun]] (mission d'observation, sans embauche définitive).
+- **Échanges et routes :** [[SEC-29|Yrsa Veld]] (ports et commerce), [[SEC-54|Corin d'Avarenne]] (démarches diplomatiques), [[PER-CB42-SIGRUN-VAREK|Sigrun Varek]] (projet de passage oriental, pas un chantier lancé).
+- **Mémoire d'une autre époque :** [[SEC-64|Reginald]] (tavernier évoqué dans un souvenir, situation actuelle inconnue).
+
+Ces entrées ne valident ni les futurs contrats, ni les résultats des essais, ni les images conceptuelles. Les personnages portant le même prénom restent des individus distincts.
+
 ## Famille et relations — révélations de campagne
 
 Les liens de parenté et les retrouvailles peuvent divulguer l'histoire d'Orin. Les fiches personnelles concernées portent des avertissements :

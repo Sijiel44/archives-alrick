@@ -34,3 +34,13 @@ Les activités proposées à partir de ces faits ne sont pas de nouvelles scène
 ## Sources documentaires
 
 *Compendium des personnages et des relations* v1.7, **SEC-19** ; références du brouillon : CB2 P00273–00290; P02693–02723. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.
+
+## En jeu — charpente, liens et choix (propositions non jouées)
+
+**Voix suggérée :** Maelin veut savoir qui entretiendra l'ouvrage une fois les héros repartis ; elle ne se réduit pas à sa fonction de garde.
+
+- **Le tablier du pont :** un passage de bois vieillit plus vite que prévu. Identifier la cause, sécuriser les usages et décider d'une réparation qui laisse les habitants circuler.
+- **Un serment partagé :** un groupe propose de confier toute la maintenance à une seule personne. Les joueurs peuvent organiser une relève volontaire ou discuter une répartition du travail.
+- **Les planches de l'hiver :** les réserves de bois suffisent à deux travaux, pas trois. Comparer les risques et laisser les usagers participer au choix.
+
+Ces pistes n'établissent ni nouveau serment, ni nouveau mécanisme du vieux pont.

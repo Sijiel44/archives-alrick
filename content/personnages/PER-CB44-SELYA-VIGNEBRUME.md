@@ -35,3 +35,11 @@ Le recrutement est accepté, mais les futures études, le réseau des producteur
 ## Source
 
 *Campagne Brut 4.4*, **CCCLXVII, message 123** ; [[jdr-alrick/cb44-bilan-et-reprise|bilan CB44]]. Les évolutions futures dépendent des choix des personnages et des scènes réellement jouées.
+
+## En jeu — les producteurs ont un nom (propositions non jouées)
+
+- **Une étiquette effacée :** une bouteille prestigieuse a perdu sa provenance. Retrouver le producteur et vérifier l'histoire peuvent primer sur sa valeur.
+- **Le jeune domaine :** un petit cultivateur propose un produit prometteur sans réseau de diffusion. Les personnages peuvent préparer une rencontre ou étudier un contrat équilibré.
+- **Une réserve à partager :** chaque collectionneur veut la meilleure conservation possible. Selya peut aider à négocier l'usage du même lieu sans promettre un monopole.
+
+**Voix proposée :** elle demande « À qui devons-nous ce lot ? » avant de parler de rareté. Les recherches magiques futures restent à décider.

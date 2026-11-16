@@ -35,3 +35,11 @@ Aucun contrat général de directeur, d'intendant des caves ou de maître brasse
 ## Source
 
 *Campagne Brut 4.4*, **CCCX, messages 3–4** ; [[jdr-alrick/cb44-bilan-et-reprise|bilan CB44]]. Les évolutions futures dépendent des choix des personnages et des scènes réellement jouées.
+
+## En jeu — le terroir avant le titre (propositions non jouées)
+
+- **Le pressoir d'ailleurs :** un domaine veut adopter une méthode sans vérifier son sol. Les aventuriers peuvent mener des essais, discuter avec les habitants ou refuser l'investissement.
+- **Des cartes incomplètes :** des relevés agricoles ne disent rien d'une saison atypique. Il faut consulter les cultivateurs et déclarer ce qui reste inconnu.
+- **Un partenariat délicat :** une proposition lucrative réclame l'abandon d'un atelier indépendant. Les joueurs peuvent redessiner l'accord ou accepter un refus.
+
+**Voix proposée :** Odran revient aux récoltes concrètes ; ces pistes n'étendent pas le simple examen préparatoire d'Aurignac en contrat général.

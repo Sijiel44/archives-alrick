@@ -33,6 +33,16 @@ La fonction liée au soin des appartements et du linge reste **à discuter direc
 
 Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
+## En jeu — propositions réservées au MJ, non jouées
+
+**Comportement suggéré.** Liora voit aussitôt les trajets du linge, l'accès à l'eau et la fatigue de l'équipe. Son expérience d'aubergiste et de mère ne suffit pas à fixer ses opinions ni ses obligations familiales actuelles.
+
+**Amorce indépendante.** Une petite auberge reçoit plus d'hôtes qu'elle ne peut en loger après une coupure d'eau. Liora pourrait discuter avec les habitants d'un accueil collectif, d'horaires réalistes ou d'une fermeture temporaire.
+
+**Réplique fictive, non jouée :** « Le confort des invités ne doit pas épuiser celles et ceux qui font les lits. »
+
+**Garde-fou.** Ni entretien avec Orin, ni poste aux appartements, ni présence de ses trois enfants à une époque précise ne sont ajoutés.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, entrée **RES-10** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.

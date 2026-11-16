@@ -21,6 +21,16 @@ Aurélian est un Gnome, ancien chef itinérant mort depuis plus d’un siècle a
 
 En CB4.2, il accepte l’invitation d’Orin à rejoindre la Maison et souhaite former d’autres cuisiniers, accueillir de jeunes talents et voyager pour rapporter des saveurs. En CB4.3, il a accepté ses responsabilités culinaires au Palais divin.
 
+## En jeu — propositions non jouées (volet MJ)
+
+**Comportement et contradiction possibles.** Aurélian goûte les préparations avec curiosité et demande aux jeunes cuisiniers de parler de leurs traditions plutôt que de copier sa technique. Sa passion pour la découverte doit se concilier avec le fonctionnement quotidien des cuisines qu'il a acceptées.
+
+**Rencontre adaptable.** Un concours de cuisine veut départager les recettes de plusieurs quartiers. Les PJ peuvent proposer une table partagée, un atelier avec les apprentis ou un jury qui valorise la diversité plutôt qu'un seul vainqueur.
+
+**Réplique fictive :** « Il n'y a pas qu'une manière de nourrir une communauté. Montrez-moi la vôtre. »
+
+**Continuité.** Ancien chef **mort puis Rappelé** après plus d'un siècle, il accepte sa place culinaire au Palais en CB43. Il ne devient ni cuisinier de yacht à la place de Margha ni détenteur de pouvoirs 5d6 accordés automatiquement.
+
 ## Sources
 
 - *Campagne Brut 4.2*, CB42 P12182–12185; P12331–12339.

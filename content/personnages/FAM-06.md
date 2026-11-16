@@ -43,3 +43,11 @@ Harald pourrait plus tard rejoindre les Revenants avec lui. Il pourrait aussi cr
 
 - [[B42-02|Les Rappelés et la continuité des personnes]]
 - [[A42-02|Aldhammar]]
+
+## En jeu — le vétéran et le maître d'atelier (propositions non jouées)
+
+- **Une ancienne route :** des habitants invoquent la réputation de Harald pour réclamer une escorte. Plutôt que promettre sa présence, les aventuriers peuvent établir un plan de sécurité réaliste avec les responsables locaux.
+- **Un manuscrit de runes :** une annotation dans un traité de Skalore a plusieurs lectures possibles. Les joueurs peuvent consulter des spécialistes, vérifier les sources ou décider de ne pas expérimenter.
+- **Des compagnons de voyage :** croiser une troupe sur la route n'oblige pas Harald à devenir mentor, allié ou chef. Une conversation, un désaccord ou une aide ponctuelle restent possibles.
+
+**Limite 5d6 :** sa réputation exceptionnelle n'autorise pas à lui inventer un niveau, un profil complet ou des capacités non répertoriées dans INDEX. Le voyage et les choix futurs demeurent ouverts.

@@ -40,3 +40,11 @@ Le vieux marin Sören de CB1 est une personne distincte. Le mécanisme du pont e
 ## Les quatre fonctions, sans fusion des personnes
 
 [[PER-CB2-MAELIN|Maelin — Maintenir]] · [[PER-CB2-RUDEK|Rudek — Séparer]] · [[PER-CB2-SELA|Sela — Témoigner]] · **Eren — Transmettre**. L'attribution est canonique, mais **aucun nouveau rituel, remplacement des gardiens ni activation du pont** n'est créé par cette décision éditoriale.
+
+## En jeu — transmettre sans imposer (propositions non jouées)
+
+- **La roue désaccordée :** une roue ancienne refuse de tourner après remplacement d'une pièce. Les personnages peuvent observer le mécanisme, consulter les usagers ou revoir le montage.
+- **Les outils du père :** une méthode transmise oralement n'a jamais été dessinée. En construire un plan accessible, conserver l'oralité ou transmettre les deux est un choix de table.
+- **La relève volontaire :** un artisan veut apprendre sans être lié à une charge définitive. Eren peut aider à imaginer une transmission respectant cette liberté, sans créer une succession canonique.
+
+Le code de fichier historique `PER-CB2-SOREN` reste une référence technique. **Eren est le gardien ; le Sören marin de CB1 est une autre personne.**

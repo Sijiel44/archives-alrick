@@ -29,3 +29,11 @@ La scène ne précise pas toutes ses fonctions politiques ni l’étendue exacte
 
 - **Canon confirmé par le créateur :** Freya est la mère d’Alriana et la grand-mère d’Orin; le gilet de Harald a été offert par Alriana.
 - *Campagne Brut 3.1*, CB31 P12130–12188; P16302–16762.
+
+## En jeu — mémoires et relations (propositions non jouées)
+
+- **Le souvenir disputé :** deux témoins se souviennent différemment d'une rencontre. Les aventuriers peuvent écouter les deux, rechercher une trace ou accepter que le sens de l'événement reste personnel.
+- **La parole d'une reine :** une personne demande à Freya de trancher un conflit familial. Elle pourrait préférer que chacun puisse parler sans imposer sa version.
+- **Un objet de transmission :** un vêtement ancien rappelle un geste d'affection. Préserver son histoire peut compter plus que déterminer sa valeur marchande.
+
+Ces situations ne prouvent ni rencontre nouvelle avec Freya ni responsabilité politique supplémentaire. Ses choix doivent rester libres.

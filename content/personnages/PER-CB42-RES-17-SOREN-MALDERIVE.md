@@ -31,6 +31,16 @@ En CB43, il manifeste un **intérêt pour les passagers et les cabines**, avec d
 
 **En chantier, hors publication :** les profils et statuts définitifs devront être confirmés sans forcer une nouvelle décision en jeu.
 
+## En jeu — propositions non jouées (volet MJ)
+
+**Comportement possible.** Soren Malderive lit les listes d'embarquement comme des plans de sécurité : qui doit loger où, quelles charges vont à bord et qui a réellement délivré une autorisation. Son expérience n'implique pas qu'il soit disponible pour un nouvel équipage.
+
+**Rencontre adaptable.** Au quai, des familles découvrent que leurs billets et la liste de cabines ne concordent pas. Les PJ peuvent vérifier les documents, trouver un accueil temporaire ou demander un nouvel arbitrage de la capitaine. Soren peut être sollicité **si ses disponibilités et son consentement sont établis en jeu**.
+
+**Réplique fictive :** « Un nom oublié sur une liste est une personne qui attend sur le quai. »
+
+**Continuité.** Aucun contrat signé ; distinct de **Sören le marin de Valbrume** (`PER-CB1-SOREN`) et d'Eren gardien du pont (`PER-CB2-SOREN`). Dossier `publish:false`.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **RES-17** ; documents CB cités précédemment : CB42 P10850–10853. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.

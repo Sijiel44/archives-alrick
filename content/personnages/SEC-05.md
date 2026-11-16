@@ -24,6 +24,13 @@ unlisted: true
 
 Garrik garde son rôle d’hôte et ses règles de taverne. Il reçoit avec Maëlys la recette illustrée du dessert aux oiseaux lumineux. Ses convives divins restent des clients et invités ; ni le service de la Maison ni celui du Palais ne lui sont automatiquement transférés.
 
+## En jeu — pistes proposées, non jouées
+
+- **Comportement :** Garrik protège l'ambiance et les règles de sa taverne même si des convives prestigieux s'installent à sa table.
+- **Relation :** Maëlys lui remet avec lui une recette illustrée ; aucune fonction de cuisinier, d'intendant ou d'hôte officiel auprès de la Maison n'est implicite.
+- **Rencontre MJ :** des visiteurs souhaitent transformer un dessert singulier en démonstration publique. Garrik peut accepter un service limité, proposer une autre soirée ou garder sa cuisine tranquille.
+- **Précaution :** Garrik n'est pas Reginald, le tavernier connu par un souvenir d'enfance.
+
 ## Sources
 
 - *Compendium des personnages et des relations (V03), état après CB42*, CB42 P12843–13300.

@@ -35,3 +35,11 @@ Orin lui offre une île et propose un rapprochement plus étroit. **Brégan acce
 ## Sources
 
 *Campagne Brut 4.4*, **CCCLXIV–CCCLXVII ; messages 116–123** ; voir [[jdr-alrick/cb44-bilan-et-reprise|bilan et reprise CB44]] et [[jdr-alrick/cb44-journal-canon|journal du canon]]. Une scène jouée n'est pas une autorisation d'inventer la suite de ce personnage.
+
+## En jeu — bâtir avec, non à la place (propositions non jouées)
+
+- **Deux maisons d'artisans :** des communautés souhaitent partager outils et espaces tout en préservant leurs traditions. Le groupe peut négocier les usages, soutenir plusieurs ateliers ou reporter l'accord.
+- **Le chantier des apprentis :** une équipe veut apprendre un métier par la pratique. Un projet narratif peut être proposé au MJ, sans compétence ni XP automatique.
+- **Le don qui engage :** une œuvre généreusement offerte semble imposer une obligation à ses bénéficiaires. Brégan peut demander que chaque artisan confirme librement sa participation.
+
+Une alliance personnelle ne vaut pas absorption institutionnelle de sa Maison, et aucune intervention divine ni capacité de haut niveau n'est accordée par ces scénarios.

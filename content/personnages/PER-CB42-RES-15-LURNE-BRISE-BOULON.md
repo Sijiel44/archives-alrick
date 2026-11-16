@@ -31,6 +31,16 @@ La variante dictée « Brise-Lune » renvoie ici à **Lurne Brise-Boulon**. Son 
 
 Les activités proposées à partir de ces faits ne sont pas de nouvelles scènes jouées.
 
+## En jeu — propositions réservées au MJ, non jouées
+
+**Comportement suggéré.** Lurne compare sans se lasser les cartes, les instruments et le ciel. Il explique les incertitudes avec soin et défend son droit à des recherches personnelles, compatible avec le contrat déjà signé.
+
+**Amorce indépendante.** Un relevé côtier promet une route courte mais s'appuie sur une mesure discutée. Les PJ peuvent demander une seconde observation, choisir un détour ou consulter la capitaine. Rien ne détermine à l'avance le résultat d'une traversée.
+
+**Réplique fictive, non jouée :** « Si ma carte se tait là où je doute, ce n'est plus une bonne carte. »
+
+**Garde-fou.** L'engagement de navigateur-cartographe a bien été signé en CB43 ; « Brise-Lune » est une variation de transcription, pas une autre personne. Le secret nautique et la publication non confidentielle restent distincts.
+
 ## Sources documentaires
 
 *Compendium des personnages et des relations* v1.7, **RES-15** ; références du brouillon : CB42 P10823–10826. Le code de classement ne vaut ni contrat, ni appartenance divine, ni statut de Revenant ou de Rappelé.

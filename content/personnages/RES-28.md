@@ -36,6 +36,16 @@ La source ne donne ni âge exact, ni patronyme, ni rang professionnel supérieur
 
 Un futur entraînement peut lui donner une décision autonome et une difficulté de terrain ; il doit être clairement présenté comme **une scène à jouer**, et non comme un passage déjà joué.
 
+### Exercices et rencontres supplémentaires — propositions non jouées (MJ)
+
+**Mise en scène.** Larek parle avec entrain de l'Amiral, le chien de son récit, puis se concentre sur une boucle qu'il doit refaire les yeux ouverts. *« Une bonne histoire ne retient pas une amarre. »* Ce dialogue est inventé.
+
+- **Le nœud raté :** une amarre se détend au quai. Les personnages choisissent entre mettre les passagers à l'écart, appeler un marin confirmé ou recommencer lentement après sécurisation.
+- **L'histoire du trophée :** un nouveau venu conteste la valeur du Huitième Canard. Larek peut raconter son histoire, renoncer à convaincre ou inviter les autres à créer un nouveau concours.
+- **Le départ sans promotion :** on lui propose une traversée difficile trop tôt. Il peut demander davantage d'entraînement, solliciter Thaléa ou refuser sans être humilié.
+
+**Équité et limites.** L'apprentissage sous Mara Ventrevent reste une progression ouverte : aucune réussite, rang de marin, XP ou capacité 5d6 n'est décrétée. Le MJ prévoit une alternative pour les PJ absents d'une scène de formation, sans récompenser mécaniquement l'absence par une compétence gratuite.
+
 ## Sources
 
 *Compendium V03 v1.7*, RES-28 ; *CB43* P05215–05558, P10329–10400 et P12083–12090.
