@@ -1,5 +1,23 @@
 # Illustrations du pilote
 
+## BEST-ER-004 — Vergers, haies et sous-bois d'Entre-Rives
+
+Trois illustrations originales créées avec ImageGen intégré le 16 novembre 2026, encodées sans recadrage en WebP (qualité 84 ; 1122 × 1402). Planches verticales de bestiaire naturaliste, anatomies lisibles, textures peintes et couleurs de saison. Elles ont été créées pour le lore partagé, **pas comme des captures de scènes jouées** ; aucune valeur M03 n'est induite par leur apparence.
+
+| Illustration | Code d'espèce | Description alternative |
+| --- | --- | --- |
+| [Huppe des vergers](huppe-des-vergers.webp) | `ESP-ER-007` | Huppe aux plumes cuivrées, dos d'ardoise et ailes barrées, sur un pommier près d'un vieux muret. |
+| [Brumel des haies](brumel-des-haies.webp) | `ESP-ER-008` | Petit mammifère brun aux bandes d'ivoire et vibrisses ramifiées, devant un terrier de roncier. |
+| [Escargot des souches d'ambre](escargot-souches-ambre.webp) | `ESP-ER-009` | Escargot à coquille de miel translucide sur une souche humide couverte de mousse. |
+
+**Prompts finaux** (outil intégré, `illustration-story`) :
+
+- Huppe : oiseau insectivore aux plumes cuivrées en crête, dos bleu ardoise, poitrine crème, ailes noires et ivoire, sur un pommier ancien dans un verger entouré de murets, lumière d'aube dorée ; une seule anatomie aviaire, sans texte ni runes.
+- Brumel : petit mammifère fouisseur original et trapu, pelage brun rayé d'ivoire aux épaules, vibrisses en forme de fougères, quatre pattes fouisseuses et queue courte annelée, sous les ronces d'un talus humide ; sans brume magique ni inscription.
+- Escargot : gastéropode sur souche moussue, coquille spiralée translucide couleur miel aux veines sombres, deux longs tentacules oculaires et deux courts tactiles, lueur naturelle filtrée par le feuillage ; sans magie ni texte.
+
+Ces images sont des illustrations originales IA de l'univers, sans statut de preuve historique ou de validation mécanique.
+
 ## BEST-ER-003 — Prairies humides, roseaux et gués
 
 Trois planches originales générées avec l'outil ImageGen intégré le 16 novembre 2026, puis encodées en WebP sans recadrage (qualité 84) pour le Studio et les fiches Quartz. Style demandé : **planche naturaliste fantastique peinte, lumière dorée voilée, matériaux crédibles, silhouette lisible et aucun texte**. L'environnement d'Entre-Rives (pont de pierre, moulin, prairies humides et aulnaies) est un décor de création, pas une preuve d'événement joué.
