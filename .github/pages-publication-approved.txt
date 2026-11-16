@@ -1,3 +1,7 @@
+# PNJ-009 — 16 novembre 2026 : publication du catalogue complet autorisée par le créateur.
+# Après CI verte : 102 fiches documentées, trois dragons conservés (105 entrées), Cabinet accessible aux joueurs, portraits Kelm/Ylva/Sévrane.
+# Statuts historiques et avertissements conservés ; pas de notes privées, pas de canonisation des propositions.
+
 # STUDIO-QUETES — 16 novembre 2026 : poursuite et publication des lots autorisées par le créateur dans ce chat.
 # Suivi privé des quêtes, indices et objectifs, chemins de découverte multiples, décisions historisées, liens de retour et sauvegarde v21.
 # Publier les assets applicatifs après CI ; aucune campagne, note MJ, sauvegarde ni nouvelle règle 5d6 dans le lot.
