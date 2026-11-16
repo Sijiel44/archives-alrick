@@ -38,6 +38,16 @@ Nahla ne dirige pas par son seul titre **la Maison divine, le personnel domestiq
 
 Une scène de cabinet peut opposer deux priorités urgentes et montrer sa méthode d'arbitrage, mais une proposition de rendez-vous ne devient un événement joué que si la table l'accepte.
 
+## Complément MJ — propositions non jouées
+
+**Comportement suggéré.** Nahla distingue une demande urgente d'un dossier qui exige vraiment la décision du prince. Elle protège les compétences de Tavian, Sélène et Silan et explique qui peut répondre sans étendre son autorité hors du cabinet.
+
+**Amorce indépendante.** Trois communautés veulent une audience le même matin. Les PJ peuvent documenter les priorités, négocier une délégation ou organiser des rencontres séparées, sans décider de l'issue politique.
+
+**Réplique fictive, non jouée :** « Si tout remonte au prince, personne n'a vraiment reçu de responsabilité. »
+
+**Garde-fou.** Le contrat d'un mois d'essai réciproque rémunéré existe ; l'indication tardive « poste vacant » est incomplète. Aucune fonction à la Maison divine, au Palais, à Orinor ou dans le royaume n'est ajoutée.
+
 ## Sources
 
 *Compendium V03 v1.7*, **RES-22** ; *Campagne Brut 4.3*, CB43 P00253–00619, P02492–02881 et P12374–12383. Code web historique conservé pour ne pas casser les liens.

@@ -33,6 +33,16 @@ La responsabilité technique itinérante du yacht et des installations n'est **n
 
 Ce dossier reste **non publié** pour le moment, conformément au périmètre du chantier précédent : la validation de l'existence ne constitue pas une autorisation de révéler ses détails de recrutement. Le code `RES` est documentaire ; il ne signifie ni appartenance aux Revenants ni résurrection accomplie.
 
+## En jeu — propositions réservées au MJ, non jouées
+
+**Comportement suggéré.** Dagna examine d'abord la sécurité d'une pompe ou d'un treuil : qui peut l'arrêter, le réparer, le démonter ? Sa curiosité pour les Cercles ne lui confère aucune maîtrise magique chiffrée.
+
+**Amorce indépendante.** Un port hésite entre un levage enchanté et une machine entretenue par les ouvriers locaux. La communauté peut commander une étude, conserver une solution simple ou différer le chantier. Une discussion avec Dagna doit être jouée ; elle n'est pas l'ingénieure attitrée du yacht.
+
+**Réplique fictive, non jouée :** « Montrez-moi d'abord comment on descend la charge quand tout s'arrête. »
+
+**Garde-fou.** Dagna Roue-de-Cuivre et Dagna Veine-de-Pierre sont deux personnes distinctes. Existence attestée, relations et contrat non établis.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, entrée **RES-07** ; dossier de sélection CB42 ; **arbitrage du créateur du 30 octobre 2026 (réponse 1A)**.

@@ -31,6 +31,18 @@ Elle n’a pas de dette envers Orin. Le fait qu’elle ait autrefois accompagné
 
 Les autres pistes sont des propositions non jouées et ne doivent pas devenir des réussites rétroactives.
 
+## En jeu — propositions réservées au MJ, non jouées
+
+**Comportement suggéré.** Naëline observe les bâtiments et les visages avec son carnet. On peut lui proposer une commande ou des fournitures, mais son choix de dessiner — ou de ne pas le faire — ne dépend d'aucun ancien devoir.
+
+**Amorce indépendante.** Une famille noble souhaite immortaliser sa demeure et suppose qu'une ancienne dame de compagnie doit accepter. Les PJ peuvent négocier le respect de ses choix, trouver un autre artiste ou proposer une exposition à laquelle elle consentirait librement.
+
+**Réplique fictive, non jouée :** « Cette fois, j'aimerais choisir moi-même ce qui mérite d'être dessiné. »
+
+**Illustration.** `naeline-concept-v01.webp` est une interprétation graphique originale **non canonique** : aucun trait du visage, vêtement ni atelier représenté n'est attesté. Validation créateur requise avant attribution officielle.
+
+**Garde-fou.** Son Rappel est attesté ; il ne prouve ni appartenance aux Revenants, ni service actuel, ni dette personnelle.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **RES-18** ; renvois conservés : CB42 P10865–10868. Ce code documentaire ne fixe ni allégeance, ni état de Rappelé, ni appartenance aux Revenants.

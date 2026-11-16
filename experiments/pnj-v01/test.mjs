@@ -4,11 +4,11 @@ import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 import { buildData } from "./build.mjs";
 
-test("54 identités uniques pointent sur des sources uniques et documentées", async () => {
+test("66 identités uniques pointent sur des sources uniques et documentées", async () => {
   const cards = await buildData();
-  assert.equal(cards.length, 54);
-  assert.equal(new Set(cards.map((x) => x.code)).size, 54);
-  assert.equal(new Set(cards.map((x) => x.file)).size, 54);
+  assert.equal(cards.length, 66);
+  assert.equal(new Set(cards.map((x) => x.code)).size, 66);
+  assert.equal(new Set(cards.map((x) => x.file)).size, 66);
   assert.equal(cards.find((x) => x.id === "eren")?.file, "PER-CB2-SOREN.md");
   assert.equal(cards.find((x) => x.id === "soren")?.file, "PER-CB1-SOREN.md");
   assert.equal(cards.find((x) => x.id === "soren")?.statut, "a_verifier");
@@ -22,6 +22,24 @@ test("54 identités uniques pointent sur des sources uniques et documentées", a
   assert.equal(cards.find((x) => x.id === "alriana")?.spoiler, true);
   assert.equal(cards.find((x) => x.id === "heimdall")?.illustrationValidee, true);
   assert.ok(cards.every((x) => x.sources && x.ancre && x.statut));
+});
+
+test("lot 004 : identités, consentement, statut des fiches privées et illustration conceptuelle", async () => {
+  const cards = await buildData();
+  const byId = Object.fromEntries(cards.map((x) => [x.id, x]));
+  const lot = ["oren", "yse", "dagna_cuivre", "eren_valombre", "liora", "vaska", "nerys_silvenaine", "farwen", "lurne", "margha", "naeline", "nahla"];
+  assert.equal(lot.filter((id) => byId[id]).length, 12);
+  assert.equal(byId.eren_valombre.code, "RES-08");
+  assert.notEqual(byId.eren_valombre.code, byId.eren.code);
+  assert.equal(byId.nerys_silvenaine.code, "RES-13");
+  assert.equal(byId.lurne.code, "RES-15");
+  assert.equal(byId.margha.code, "RES-16");
+  assert.equal(byId.nahla.code, "PER-CB43-NAHLA-SEREVIN");
+  assert.deepEqual(["dagna_cuivre", "liora", "vaska", "nerys_silvenaine", "farwen"].map((id) => byId[id].publicationSource), [false, false, false, false, false]);
+  assert.ok(lot.slice(2).every((id) => byId[id].spoiler));
+  assert.match(byId.naeline.image, /naeline-concept-v01\.webp$/);
+  assert.equal(byId.naeline.illustrationValidee, false);
+  assert.equal(cards.filter((x) => x.image).length, 13);
 });
 
 test("aucune mécanique fictive ni document privé dans les accroches", async () => {

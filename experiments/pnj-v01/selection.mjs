@@ -411,5 +411,90 @@ export const selection = [
     enScene: "S'installe sur le coussin le mieux placé, observe les invités et ne répond pas aux ordres comme à un emploi du temps.",
     rencontre: "Un hôte croit qu'un salon est réservé aux dignitaires et n'ose pas y entrer.",
     choix: "Réinventer l'accueil, écouter ce que souhaite le visiteur ou laisser le chat tranquille."
+  },
+  {
+    id: "oren", file: "PER-CB39-OREN-DAST.md", groupe: "savoirs", symbole: "🧮",
+    accroche: "Un responsable des finances qui sait que les chiffres sont des choix entre besoins réels.",
+    enScene: "Sort un carnet pour chiffrer une promesse, puis le referme quand Sariel réclame une soirée sans dossiers.",
+    rencontre: "Deux communes présentent des projets de développement dont les bénéfices sont difficiles à comparer.",
+    choix: "Demander des données locales, organiser une consultation ou réviser les deux projets."
+  },
+  {
+    id: "yse", file: "PER-CB39-YSE-KORR.md", groupe: "savoirs", symbole: "🛤️",
+    accroche: "Une commandante qui mesure la sécurité d'une route aux voyageurs qui peuvent l'emprunter.",
+    enScene: "Écoute les conducteurs de chariots, examine les haltes et détend une réunion tendue d'une remarque sèche.",
+    rencontre: "Une patrouille rassure un bourg mais inquiète les communautés vivant plus loin sur la route.",
+    choix: "Repenser la présence militaire, écouter les deux parties ou tester des escortes volontaires."
+  },
+  {
+    id: "dagna_cuivre", file: "PER-CB42-RES-07-DAGNA-ROUE-CUIVRE.md", groupe: "metiers", symbole: "🔩",
+    accroche: "Une ingénieure naine pour qui un appareil doit se réparer même loin de son atelier.",
+    enScene: "Suit du doigt la course d'un câble et demande qui saura arrêter le treuil en cas d'incident.",
+    rencontre: "Un quai veut moderniser son système de levage, au risque de dépendre d'une pièce introuvable.",
+    choix: "Privilégier des matériaux courants, former des réparateurs ou différer l'installation."
+  },
+  {
+    id: "eren_valombre", file: "PER-CB42-RES-08-EREN-VALOMBRE.md", groupe: "proches", symbole: "🍃",
+    accroche: "Un voyageur revenu à la vie, libre de refuser la place qu'on avait imaginée pour lui.",
+    enScene: "Écoute une proposition avec courtoisie, puis demande si l'itinéraire prévoit aussi des jours pour lui.",
+    rencontre: "Une délégation compte d'avance sur ses compétences de protocole sans lui avoir demandé son accord.",
+    choix: "Présenter une invitation sans obligation, trouver un autre guide ou accepter son refus."
+  },
+  {
+    id: "liora", file: "PER-CB42-RES-10-LIORA-POMMEBRUNE.md", groupe: "metiers", symbole: "🧺",
+    accroche: "Une professionnelle de l'hospitalité qui sait qu'une maison fonctionne grâce à des heures de travail invisibles.",
+    enScene: "Inspecte les draps et les accès de service, puis pose la question des horaires avant celle du prestige.",
+    rencontre: "Des visiteurs arrivent pendant une panne d'eau dans une auberge déjà complète.",
+    choix: "Répartir l'accueil avec l'accord de chacun, réduire les services ou solliciter des voisins."
+  },
+  {
+    id: "vaska", file: "PER-CB42-RES-12-VASKA-PERLEDOMBRE.md", groupe: "metiers", symbole: "📦",
+    accroche: "Une négociante gobeline dont la réputation tient à la fiabilité des petites livraisons.",
+    enScene: "Compte les colis, vérifie les échéances et demande qui supportera réellement un retard.",
+    rencontre: "Un atelier éloigné réclame une matière rare, tandis que des villages manquent de fournitures ordinaires.",
+    choix: "Rééquilibrer la tournée, partager le transport ou refuser un marché désavantageux."
+  },
+  {
+    id: "nerys_silvenaine", file: "PER-CB42-RES-13-NERYS-SILVENAINE.md", groupe: "savoirs", symbole: "🕯️",
+    accroche: "Une spécialiste des enchantements domestiques qui exige de comprendre l'usage avant de modifier un ouvrage.",
+    enScene: "Fait décrire une panne par les habitants et inspecte l'installation sans revendiquer l'accès aux lieux interdits.",
+    rencontre: "Un système d'éclairage enchanté devient instable au moment d'un accueil collectif.",
+    choix: "Prévoir un éclairage de secours, faire diagnostiquer le réseau ou réduire la charge."
+  },
+  {
+    id: "farwen", file: "PER-CB42-RES-14-FARWEN-PIERRECLAIRE.md", groupe: "metiers", symbole: "🧶",
+    accroche: "Une artisane des demeures souterraines pour qui le confort se transmet par les gestes quotidiens.",
+    enScene: "Examine l'humidité d'un mur, les fibres d'une tenture et les habitudes de celles et ceux qui vivent là.",
+    rencontre: "Une maison ancienne doit rester habitée durant la réparation de ses chambres humides.",
+    choix: "Planifier par espaces, recueillir l'avis des résidents ou choisir une solution plus légère."
+  },
+  {
+    id: "lurne", file: "PER-CB42-RES-15-LURNE-BRISE-BOULON.md", groupe: "savoirs", symbole: "🧭",
+    accroche: "Un navigateur chercheur qui tient autant à la qualité des cartes qu'à sa liberté de publier ce qui peut l'être.",
+    enScene: "Compare l'horizon au relevé des étoiles et distingue observations partageables et informations confidentielles.",
+    rencontre: "Une carte de côte comporte une zone incertaine, mais les passagers veulent une réponse immédiate.",
+    choix: "Choisir la prudence, effectuer de nouveaux relevés ou partager l'incertitude avec le capitaine."
+  },
+  {
+    id: "margha", file: "PER-CB42-RES-16-MARGHA-TROIS-MERS.md", groupe: "metiers", symbole: "🥣",
+    accroche: "Une cuisinière de bord pour qui les réserves sont une question de sécurité commune.",
+    enScene: "Contrôle les vivres, les restrictions alimentaires et l'état des foyers avant de parler de menu.",
+    rencontre: "Une traversée s'allonge et l'équipage refuse que l'on réduise les repas de manière inégale.",
+    choix: "Consulter l'équipage, revoir les étapes ou modifier collectivement le rationnement."
+  },
+  {
+    id: "naeline", file: "PER-CB42-RES-18-NAELINE-FENDRELUNE.md", groupe: "proches", symbole: "✏️",
+    accroche: "Une dessinatrice en devenir dont la vie retrouvée lui appartient d'abord.",
+    enScene: "Observe une façade avec son carnet, écoute une suggestion puis choisit elle-même ce qu'elle dessine.",
+    rencontre: "Une maison noble lui commande un portrait en pensant que son ancienne fonction la rend disponible.",
+    choix: "Négocier librement le projet, refuser la commande ou proposer un autre regard sur les lieux.",
+    image: "naeline-concept-v01.webp"
+  },
+  {
+    id: "nahla", file: "PER-CB43-NAHLA-SEREVIN.md", groupe: "proches", symbole: "📚",
+    accroche: "Une cheffe de cabinet qui organise des décisions sans confondre délégation et pouvoir illimité.",
+    enScene: "Classe deux courriers urgents, fait préciser la personne habilitée à trancher et protège un temps de travail de l'équipe.",
+    rencontre: "Trois interlocuteurs veulent obtenir une réponse du prince le même matin pour des urgences très différentes.",
+    choix: "Traiter les dossiers délégués, demander des pièces ou réserver un seul arbitrage personnel."
   }
 ];

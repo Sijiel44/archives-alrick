@@ -1,6 +1,6 @@
 # PNJ-001 — Le Cabinet des Rencontres (prototype v0.1)
 
-Ce prototype **local et non publié** présente une sélection de **54 personnages déjà identifiés** dans les Archives, en trois lots (30 + 12 + 12), sans créer de biographies concurrentes. Il sert de direction visuelle pour le futur site / Studio MJ et ne change pas la démonstration P0.
+Ce prototype **local et non publié** présente une sélection de **66 personnages déjà identifiés** dans les Archives, en quatre lots (30 + 12 + 12 + 12), sans créer de biographies concurrentes. Il sert de direction visuelle pour le futur site / Studio MJ et ne change pas la démonstration P0.
 
 ## Voir les fiches illustrées
 
@@ -28,19 +28,19 @@ Le bouton **« Afficher 3 images externes »** charge, sur consentement, trois i
 - `build.mjs` relit les métadonnées de chaque fiche sous `content/personnages/` : nom, code, provenance, état documentaire et statut d'avertissement ne sont **pas recopiés à la main** dans la sélection.
 - `index.template.html` contient la présentation, la recherche et le volet de lecture.
 - `preview.html` est un **artefact généré**, régénérable et sans serveur de règles.
-- `test.mjs` vérifie les 54 identités uniques, leurs dossiers, leurs sources, les portraits disponibles, les licences des liens extérieurs et plusieurs garde-fous éditoriaux.
+- `test.mjs` vérifie les 66 identités uniques, leurs dossiers, leurs sources, les portraits disponibles, les licences des liens extérieurs et plusieurs garde-fous éditoriaux.
 
-Les pages Markdown sources existantes restent la référence. Les passages ajoutés dans **45 fiches sources** sont des **amorces autonomes non jouées** ; leurs statuts de publication, codes et sources sont préservés.
+Les pages Markdown sources existantes restent la référence. Les passages ajoutés dans **57 fiches sources** sont des **amorces autonomes non jouées** ; leurs statuts de publication, codes et sources sont préservés. Le lot 004 ajoute notamment **cinq fiches non publiables** (`publish:false`) dont la simple existence documentée n'autorise pas la mise en ligne.
 
 ## Visuels
 
 - **7 portraits hérités** (Bram, Ragna, Vaëra, Torven, Heimdall, Haldrek et Eamon) ; seul le fichier de Heimdall est indiqué comme portrait déjà approuvé dans cette sélection.
-- **5 portraits conceptuels neufs** (Sivra, Mara ; puis Sigrid, Mirelda, Sariel), explicitement non canoniques.
-- **42 emblèmes provisoires par défaut** pour les personnages dont la sélection ne dispose pas encore de portrait attribuable.
+- **6 portraits conceptuels neufs** (Sivra, Mara ; puis Sigrid, Mirelda, Sariel ; enfin Naëline), explicitement non canoniques.
+- **53 emblèmes provisoires par défaut** pour les personnages dont la sélection ne dispose pas encore de portrait attribuable.
 - **3 images externes d'ambiance facultatives** (forge, plantes médicinales, mer), affichées à la place de trois emblèmes *uniquement après le choix du lecteur*. Attribution et droits documentés dans `docs/pnj/PNJ-003_SOURCES_VISUELLES.md`.
 - **1 fresque d'ambiance conceptuelle** pour l'accueil, sans correspondance nominative avec les personnages.
 
-Les six nouveaux visuels WebP des deux lots sont des illustrations conceptuelles ; leur style, leur apparence physique et leur association éditoriale doivent être approuvés par le créateur avant publication. Ils respectent la limite de 3 Mio/fichier. Les formats SVG ne sont pas ajoutés au site.
+Les sept nouveaux visuels WebP des lots 002 à 004 (six portraits et une fresque d'accueil) sont des illustrations conceptuelles ; leur style, leur apparence physique et leur association éditoriale doivent être approuvés par le créateur avant publication. Ils respectent la limite de 3 Mio/fichier. Les formats SVG ne sont pas ajoutés au site.
 
 ### Réutiliser un lien externe
 
@@ -57,6 +57,9 @@ Le contrat éditorial autorise l'insertion d'images Markdown dans une fiche sous
 - **Maël Torvenn**, le luthier, n'est pas **Torven Cendreval**, le médecin.
 - **Dorrik est décédé** au dernier point documentaire : les rencontres proposées pour lui sont situées de son vivant ou dans une variante annoncée.
 - **Revenant** (compagnie) et **Rappelé** (retour à la vie) ne sont jamais fusionnés.
+- **Éren Valombre** (Rappelé, sans contrat), **Eren gardien** et **Sören marin** sont trois identités distinctes. **Naëline**, également Rappelée, reste libre de choisir son activité.
+- **Lurne** a signé son contrat de navigateur-cartographe en CB43 et **Margha** a été recrutée avec confirmation du créateur, mais ni signature fictive de Margha, ni voyage déjà effectué ne sont ajoutés. **Nahla** a bien signé une période d'essai rémunérée ; le tableau tardif « vacant » est incomplet.
+- L'existence de **Dagna Roue-de-Cuivre**, **Liora**, **Vaska**, **Nerys Silvenaine** et **Farwen** est validée, mais **aucune rencontre avec Orin, embauche ou diffusion publique** n'en découle. Nerys est distincte de la puissance du Dernier Phare.
 - Les personnages de CB44 ne reçoivent aucun emploi, contrat ou pouvoir supplémentaire.
 - Pas de chiffres, d'XP, de prérequis inventés ni de capacité 5d6 automatique. Les adaptations relèveront d'INDEX/MATH.
 - Les sources à spoilers restent marquées comme telles ; **ce prototype ne contient pas de véritables secrets MJ**.

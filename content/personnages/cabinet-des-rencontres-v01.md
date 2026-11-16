@@ -2,8 +2,8 @@
 publish: false
 spoilers: true
 unlisted: true
-title: "Le Cabinet des Rencontres — sélection de 54 personnages"
-description: "Sélection éditoriale de cinquante-quatre personnages documentés, avec renvoi vers leur fiche unique et des usages de campagne proposés."
+title: "Le Cabinet des Rencontres — sélection de 66 personnages"
+description: "Sélection éditoriale de soixante-six personnages documentés, avec renvoi vers leur fiche unique et des usages de campagne proposés."
 canon_statut: "proposition_non_jouee"
 etat_editorial: "en_chantier"
 visibilite: "brouillon"
@@ -19,7 +19,7 @@ tags: [pnj, catalogue, rencontres, brouillon]
 
 *Fresque créée pour le prototype PNJ-001 : les silhouettes sont des archétypes de jeu, **pas** des portraits des personnages nommés ci-dessous. Cette sélection est un brouillon non publié.*
 
-Cinquante-quatre noms qui existent déjà dans les Archives, autant de portes d'entrée pour une table. **Chaque nom renvoie à une seule fiche source** : le catalogue ne réécrit ni l'histoire, ni les liens familiaux, ni les appartenances. Les amorces proposées aux MJ demeurent non jouées. Les fiches à révélations restent à avertissement ; ce sommaire lui-même n'est pas proposé à la publication sans examen.
+Soixante-six noms qui existent déjà dans les Archives, autant de portes d'entrée pour une table. **Chaque nom renvoie à une seule fiche source** : le catalogue ne réécrit ni l'histoire, ni les liens familiaux, ni les appartenances. Les amorces proposées aux MJ demeurent non jouées. Les fiches à révélations restent à avertissement ; ce sommaire lui-même n'est pas proposé à la publication sans examen. Cinq fiches supplémentaires sont **non publiées** et ne doivent pas être offertes aux joueurs par défaut.
 
 ## La compagnie
 
@@ -45,6 +45,9 @@ Cinquante-quatre noms qui existent déjà dans les Archives, autant de portes d'
 - [[PER-CB31-SERELYA|Serelya]] — fêtes, marchés et écoute des communautés.
 - [[PER-CB31-MAELYA|Maëlya]] — mots, traductions et échanges entre communautés ; mariage situé dans sa période jouée.
 - [[PER-CB43-CESAR|César]] — chat parlant, hospitalité sans fonction imposée.
+- [[PER-CB42-RES-08-EREN-VALOMBRE|Éren Valombre]] — vie retrouvée et libre choix de voyage ; distinct d'Eren gardien.
+- [[PER-CB42-RES-18-NAELINE-FENDRELUNE|Naëline Fendrelune]] — dessin et liberté après le Rappel, sans obligation d'emploi.
+- [[PER-CB43-NAHLA-SEREVIN|Nahla Serevin]] — coordination du cabinet personnel dans les limites de son contrat signé.
 
 ## Métiers et territoires
 
@@ -66,6 +69,11 @@ Cinquante-quatre noms qui existent déjà dans les Archives, autant de portes d'
 - [[PER-CB42-RES-02-MIRENA-VALCOURT|Mirena Valcourt]] — intendance, autonomie des équipes et rythme de travail.
 - [[PER-CB42-RES-05-YSANNE-TROIS-FOURS|Ysanne des Trois-Fours]] — cuisine, mémoire et accueil des voyageurs.
 - [[SEC-68|Célianne]] — botanique choisie librement, sans contrat par parenté.
+- [[PER-CB42-RES-07-DAGNA-ROUE-CUIVRE|Dagna Roue-de-Cuivre]] — levage, pompes et sécurité ; **fiche non publiée, aucune embauche**.
+- [[PER-CB42-RES-10-LIORA-POMMEBRUNE|Liora Pommebrune]] — savoir-faire d'accueil ; **fiche non publiée, aucun contrat**.
+- [[PER-CB42-RES-12-VASKA-PERLEDOMBRE|Vaska Perledombre]] — ravitaillement des petites communautés ; **fiche non publiée, aucun contrat**.
+- [[PER-CB42-RES-14-FARWEN-PIERRECLAIRE|Farwen Pierreclaire]] — entretien d'Aldhammar ; **fiche non publiée, aucun contrat**.
+- [[PER-CB42-RES-16-MARGHA-TROIS-MERS|Margha Trois-Mers]] — cuisine de bord ; recrutement confirmé, signature non mise en scène.
 
 ## Savoirs et gardiens
 
@@ -86,10 +94,14 @@ Cinquante-quatre noms qui existent déjà dans les Archives, autant de portes d'
 - [[RES-28|Larek]] — apprenti marin et liberté de progresser à son rythme.
 - [[SEC-74|Odris Ferren]] — machines d'eau réparables sur place.
 - [[SEC-63|Tomas]] — apprentissage des Cercles sans maîtrise élevée automatique.
+- [[PER-CB39-OREN-DAST|Oren Dast]] — développement d'Orinor et arbitrage des moyens.
+- [[PER-CB39-YSE-KORR|Yse Korr]] — coopération militaire et sécurité des routes.
+- [[PER-CB42-RES-13-NERYS-SILVENAINE|Nerys Silvenaine]] — entretien des enchantements ; **fiche non publiée, accès non prouvé**.
+- [[PER-CB42-RES-15-LURNE-BRISE-BOULON|Lurne Brise-Boulon]] — navigation astronomique et contrat de cartographe signé.
 
 ## Illustrations et variantes
 
-Les portraits déjà présents dans les Archives sont réutilisés avec leurs statuts propres. Les concepts supplémentaires de **Mara**, **Sivra**, **Sigrid**, **Mirelda** et **Sariel** ne fixent pas leurs traits physiques ; les autres cartes sans portrait utilisent des emblèmes décoratifs provisoires. Aucune image du catalogue n'attribue un état de Rappelé, un grade, un âge non attesté, un lien familial ou une affiliation.
+Les portraits déjà présents dans les Archives sont réutilisés avec leurs statuts propres. Les concepts supplémentaires de **Mara**, **Sivra**, **Sigrid**, **Mirelda**, **Sariel** et **Naëline** ne fixent pas leurs traits physiques ; les autres cartes sans portrait utilisent des emblèmes décoratifs provisoires. Aucune image du catalogue n'attribue un état de Rappelé, un grade, un âge non attesté, un lien familial ou une affiliation. Le portrait de Naëline montre une possibilité graphique de son intérêt pour le dessin, non une scène jouée ni une apparence attestée.
 
 **Trois inspirations visuelles externes** sont proposées pour Durgan (une forge), Célianne (une planche botanique) et Thaléa (une marine). Elles proviennent de [Wikimedia Commons](https://commons.wikimedia.org/) avec auteurs, pages sources et mentions de licence conservés. Elles ne sont **ni** des portraits de ces personnes **ni** des documents du monde. Dans le prototype HTML, les images distantes sont **désactivées par défaut** : leur affichage est un choix du lecteur et peut transmettre une requête au site hébergeant l'image. Voir `docs/pnj/PNJ-003_SOURCES_VISUELLES.md`.
 
@@ -97,6 +109,6 @@ Chaque fiche peut servir plusieurs campagnes et, plus tard, plusieurs profils 5d
 
 ## Suivi éditorial
 
-- **Version de travail :** PNJ-001 à PNJ-003, 16 novembre 2026 ; sous revue, non publiée.
-- **Sources :** les cinquante-quatre fiches liées, leurs `source_brute`, le [contrat éditorial](https://github.com/Sijiel44/archives-alrick/blob/main/CONTRAT_EDITORIAL.md) et le Compendium lorsqu'il est cité par chaque fiche.
+- **Version de travail :** PNJ-001 à PNJ-004, 16 novembre 2026 ; sous revue, non publiée.
+- **Sources :** les soixante-six fiches liées, leurs `source_brute`, le [contrat éditorial](https://github.com/Sijiel44/archives-alrick/blob/main/CONTRAT_EDITORIAL.md) et le Compendium lorsqu'il est cité par chaque fiche.
 - **Décisions ouvertes :** choix des portraits définitifs, ordre de publication, traitement des révélations, adaptations mécaniques INDEX/MATH et raccord de cette présentation au Studio MJ.

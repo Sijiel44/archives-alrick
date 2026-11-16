@@ -75,7 +75,7 @@ export async function buildData() {
       publicationSource: field(meta, "publish") === "true",
     });
   }
-  if (cards.length !== 54) throw new Error(`54 cartes attendues, ${cards.length} obtenues`);
+  if (cards.length !== 66) throw new Error(`66 cartes attendues, ${cards.length} obtenues`);
   return cards;
 }
 
