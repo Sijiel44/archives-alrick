@@ -14,6 +14,25 @@ Quatre portraits originaux générés avec ImageGen intégré le 16 novembre 202
 Leur apparence ne prouve aucun fait joué, état de Déchéance non écrit ou statistique M03. Les quatre portraits sont présentables seulement par l'interface MJ qui choisit les médias projetés.
 
 
+## BEST-ER-006 — Dix êtres des rives, du limon aux sources
+
+**Dix illustrations originales**, produites le 16 novembre 2026 avec l'outil ImageGen intégré (mode `illustration-story`), puis converties en WebP à qualité 84, sans recadrage. Les originaux PNG restent dans l'atelier de création ; les WebP servent les fiches Quartz et les cartes du Studio. Style partagé : **peinture naturaliste fantastique verticale**, textures observables, palette ardoise/mousse/cuivre/ivoire, silhouettes lisibles, sans texte ni filigrane. Ces planches n'impliquent **ni rencontres de campagne, ni niveaux 5d6, ni potion approuvée, ni statut divin**.
+
+| Image | Espèce | Sujet du prompt original, description alternative |
+| --- | --- | --- |
+| [Crabe des vases bleues](crabe-vases-bleues.webp) | `ESP-ER-013` | Crabe d'eau douce à carapace minérale bleu turquoise et pinces ivoire, sur une vase à roseaux, avec une mue vide. |
+| [Chèvre des talus calcaires](chevre-talus-calcaires.webp) | `ESP-ER-014` | Chèvre sauvage crème et fumée à deux cornes d'ardoise, sur une terrasse calcaire aux herbes clairsemées. |
+| [Anguille des vannages](anguille-vannages.webp) | `ESP-ER-015` | Grande anguille d'eau douce olive au flanc cuivré, nageant sous un vieux vannage de moulin. |
+| [Phalène de givre des fruitiers](phalene-givre-fruitiers.webp) | `ESP-ER-016` | Lépidoptère ivoire à nervures bleues et ocelles d'ambre, sur un pommier légèrement gelé. |
+| [Martre au masque d'étain](martre-masque-etain.webp) | `ESP-ER-017` | Martre fauve au masque naturel gris argent sur des tuiles anciennes de village. |
+| [Vautre des marais](vautre-marais.webp) | `ESP-ER-018` | Prédateur fictif semi-aquatique sombre, corps long et musclé, mâchoire forte et pattes palmées parmi les roseaux. |
+| [Foreur des berges](foreur-berges.webp) | `ESP-ER-019` | Grand invertébré annelé à plaques d'argile ocre, sortant d'un talus de terre humide et de racines. |
+| [Luciole des pierres tendres](luciole-pierres-tendres.webp) | `ESP-ER-020` | Petit coléoptère ambré faiblement lumineux sur une roche calcaire couverte de mousse. |
+| [Fée des aulnes](fee-aulnes.webp) | `ESP-ER-021` | Petite personne féerique adulte, vêtue de feuilles, à ailes translucides, assise près d'un aulne et d'un ruisseau. |
+| [Cerf des sources profondes](cerf-sources-profondes.webp) | `ESP-ER-022` | Grand cerf gris cendre aux deux bois étendus, près d'une source dans une forêt ancienne. |
+
+**Prompts finaux (résumé fidèle, dix générations distinctes) :** chacun décrit précisément le sujet et son habitat de la troisième colonne, avec la formule visuelle commune « original portrait-oriented illustrated bestiary plate, sophisticated semi-realistic oil and gouache natural-history style; believable anatomy, slate, moss, copper and amber; no people, text, logos, frames, stats or watermarks ». Les contraintes spécifiques excluent la pierre réellement magique chez la chèvre, les membres sur l'anguille, les ailes chez le Vautre et la déification du cerf. Pour la Fée des aulnes : être conscient, dignité, tenue de feuilles, sans sort visuel automatique. Toutes les images sont des créations d'illustration, non des preuves de scène historique.
+
 ## BEST-ER-005 — Nacre, silex et voix des lisières
 
 Trois illustrations originales ImageGen du 16 novembre 2026, sans source externe, encodées en WebP (qualité 84, 1122 × 1402, aucun recadrage). Planches naturalistes fantastiques verticales, sans texte, filigrane ni événement joué. Leur présence sur une fiche **ne crée ni niveau M03, ni potion d'alchimie, ni témoignage historique**.

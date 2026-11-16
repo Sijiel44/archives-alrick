@@ -91,6 +91,16 @@ export const studioAssets = new Map([
   ["/media/libellule-de-nacre.webp", ["media/libellule-de-nacre.webp", "image/webp"]],
   ["/media/sanglier-de-silex.webp", ["media/sanglier-de-silex.webp", "image/webp"]],
   ["/media/corneille-trois-voix.webp", ["media/corneille-trois-voix.webp", "image/webp"]],
+  ["/media/crabe-vases-bleues.webp", ["media/crabe-vases-bleues.webp", "image/webp"]],
+  ["/media/chevre-talus-calcaires.webp", ["media/chevre-talus-calcaires.webp", "image/webp"]],
+  ["/media/anguille-vannages.webp", ["media/anguille-vannages.webp", "image/webp"]],
+  ["/media/phalene-givre-fruitiers.webp", ["media/phalene-givre-fruitiers.webp", "image/webp"]],
+  ["/media/martre-masque-etain.webp", ["media/martre-masque-etain.webp", "image/webp"]],
+  ["/media/vautre-marais.webp", ["media/vautre-marais.webp", "image/webp"]],
+  ["/media/foreur-berges.webp", ["media/foreur-berges.webp", "image/webp"]],
+  ["/media/luciole-pierres-tendres.webp", ["media/luciole-pierres-tendres.webp", "image/webp"]],
+  ["/media/fee-aulnes.webp", ["media/fee-aulnes.webp", "image/webp"]],
+  ["/media/cerf-sources-profondes.webp", ["media/cerf-sources-profondes.webp", "image/webp"]],
 ]);
 for (const module of ["atelier5d6-bestiary", "atelier5d6-bestiary-workshop", "atelier5d6-combat-m03", "atelier5d6-m05-sheet-view", "atelier5d6-m02", "atelier5d6-origins"]) {
   studioAssets.set(`/moteur/${module}.js`, [`../quartz/components/scripts/${module}.ts`, "text/javascript"]);
