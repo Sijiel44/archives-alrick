@@ -1,0 +1,94 @@
+{
+  "status": "FICTIF_POUR_TEST_HORS_CANON",
+  "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
+  "scenarios": [
+    {
+      "scenario": "attaque_commune_pj_creature",
+      "consumers": ["atelier-PJ", "atelier-Bestiaire"],
+      "sameInputsRequired": true,
+      "expected": "intent M03 identique si mêmes caractéristiques, maîtrise, niveau, cible et contexte ; liaison Bestiaire manuelle, aucun calcul INDEX",
+      "entry": {
+        "schema": "entre-rives.catalog.entry.v0.2-proposal", "id": "cap:lab:attaque-essai", "version": "0.2.0", "entryType": "technique", "definitionState": "experimental",
+        "name": "Attaque commune (banc de test fictif)",
+        "provenance": {"sourceSchema": "alrick.sheets.v3", "sourceId": "lab-attaque-1", "originKind": "illustrative", "sourceVersion": "v3", "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b"},
+        "conditions": [{"kind": "MJ-approval", "value": "required", "authority": "gm"}],
+        "action": {"kind": "attack", "implementation": "m03", "trigger": "attaque"},
+        "cost": {"mode": "native", "nativeReference": "M02 budget de création ; hors attaque"},
+        "duration": {"mode": "specified", "value": 1, "unit": "round"},
+        "effects": [{"mode": "numeric", "family": "combat.precision", "resolver": "M03", "parameters": {"kind": "precision", "magnitude": 1, "duration": 1, "trigger": "attaque"}, "authorization": {"status": "pending-native-validation", "validator": "validateM03AbilityEffect"}}],
+        "restrictions": ["validateM03AbilityEffect exige AbilityDefinition définie et approuvée", "non-cumul natif M03"],
+        "rulesProfileRef": {"id": "m03", "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b", "engine": "M03"},
+        "extensions": {"scenariosOnly": true}
+      }
+    },
+    {
+      "scenario": "sort",
+      "consumers": ["atelier-Grimoire", "Studio-MJ"],
+      "expected": "costs, eligibilite et résolution via Grimoire -> M01/M03 ; exemple demo-etincelle du dépôt, NON canonique",
+      "entry": {
+        "schema": "entre-rives.catalog.entry.v0.2-proposal", "id": "cap:demo:etincelle", "version": "0.2.0", "entryType": "spell", "definitionState": "experimental",
+        "name": "Étincelle contrôlée — projection de démonstration",
+        "provenance": {"sourceSchema": "alrick.grimoire.v1", "sourceId": "demo-etincelle", "originKind": "native", "sourceVersion": "1", "sourcePath": "quartz/components/scripts/atelier5d6-grimoire.ts", "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b"},
+        "conditions": [{"kind": "apprentissage-affinite-cercle", "value": "évalués dans eligibility()", "authority": "native"}],
+        "action": {"kind": "cast", "implementation": "grimoire"},
+        "cost": {"mode": "specified", "amounts": [{"resource": "mana", "value": 4, "unit": "mana"}]},
+        "duration": {"mode": "specified", "value": 0, "unit": "instant"},
+        "effects": [{"mode": "numeric", "family": "spell.damage", "resolver": "M03", "parameters": {"baseImpact": 3, "effect": "degats", "resistance": "magie"}, "authorization": {"status": "pending-native-validation", "validator": "eligibility + resolveSpellCast"}}],
+        "restrictions": ["pas de cercle accordé automatiquement", "sort demo non canonique"],
+        "rulesProfileRef": {"id": "grimoire-v1-m03", "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b", "engine": "GRIMOIRE"},
+        "extensions": {"nativeSpellStatus": "demo"}
+      }
+    },
+    {
+      "scenario": "rite",
+      "consumers": ["atelier-Rites", "Studio-MJ"],
+      "expected": "validation RitualDefinition, effets proposés seulement ; applicationPlan manuelle / serveur autoritaire si énergie collective",
+      "entry": {
+        "schema": "entre-rives.catalog.entry.v0.2-proposal", "id": "cap:lab:rite-essai", "version": "0.2.0", "entryType": "ritual", "definitionState": "experimental",
+        "name": "Rite de préparation (fictif)",
+        "provenance": {"sourceSchema": "alrick.ritual.v1", "sourceId": "lab-rite-001", "originKind": "illustrative", "sourceVersion": "essai-1", "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b"},
+        "conditions": [{"kind": "roles-et-contexte", "value": "contrôle RitualDefinition", "authority": "native"}],
+        "action": {"kind": "perform-ritual", "implementation": "ritual"},
+        "cost": {"mode": "unknown"}, "duration": {"mode": "native", "nativeReference": "durationTicks du RitualEffect"},
+        "effects": [
+          {"mode": "descriptive", "text": "Le groupe se prépare narrativement, sans bonus automatique."},
+          {"mode": "numeric", "family": "ritual.situation", "resolver": "RITUAL", "parameters": {"kind": "m01-situation", "magnitude": 1, "durationTicks": 1}, "authorization": {"status": "pending-native-validation", "validator": "validateRitualDefinition + MJ"}}
+        ],
+        "restrictions": ["au plus un bonus numérique +1 par rite selon code actuel", "effets proposés, pas appliqués"],
+        "rulesProfileRef": {"id": "ritual-v1-m01", "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b", "engine": "RITUAL"}
+      }
+    },
+    {
+      "scenario": "objet_stockage_non_chiffre",
+      "consumers": ["atelier-Objets", "Studio-MJ"],
+      "expected": "récit et provenance seulement, sans calcul de capacité de stockage, mana ou charges inventées",
+      "entry": {
+        "schema": "entre-rives.catalog.entry.v0.2-proposal", "id": "cap:lab:anneau-souvenirs", "version": "0.2.0", "entryType": "narrative", "definitionState": "experimental",
+        "name": "Anneau des souvenirs (fictif)",
+        "provenance": {"sourceSchema": "alrick.sheet.item.local", "sourceId": "lab-item-storage-1", "originKind": "illustrative", "sourceVersion": null, "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b"},
+        "action": {"kind": "describe", "implementation": "manual"},
+        "cost": {"mode": "not-applicable"}, "duration": {"mode": "unknown"},
+        "effects": [{"mode": "descriptive", "text": "Conserve des souvenirs selon la fiction approuvée par le MJ ; capacité non chiffrée."}],
+        "restrictions": ["aucun bonus", "aucune capacité quantitative déduite du récit"],
+        "extensions": {"inventoryCategory": "bijou", "quantityIsInventoryNotMechanicalPower": true}
+      }
+    },
+    {
+      "scenario": "bague_effet_chiffre",
+      "consumers": ["atelier-Objets", "atelier-PJ", "Studio-MJ"],
+      "expected": "demande un contrat natif OBJETS/MATH/COMBAT/MAG ; effet non appliqué avant homologation et autorisation MJ",
+      "entry": {
+        "schema": "entre-rives.catalog.entry.v0.2-proposal", "id": "cap:lab:bague-braise", "version": "0.2.0", "entryType": "item-effect", "definitionState": "experimental",
+        "name": "Bague des braises (fictive)",
+        "provenance": {"sourceSchema": "alrick.sheet.item.local", "sourceId": "lab-item-fire-1", "originKind": "illustrative", "sourceVersion": null, "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b"},
+        "conditions": [{"kind": "port-et-feu", "value": "non arbitré par MATH/OBJETS/MAG", "authority": "gm"}],
+        "action": {"kind": "activate-item", "implementation": "future"},
+        "cost": {"mode": "unknown"}, "duration": {"mode": "unknown"},
+        "effects": [{"mode": "numeric", "family": "combat.impact", "resolver": "M03", "parameters": {"kind": "impact", "magnitude": 1, "duration": 1, "trigger": "attaque"}, "authorization": {"status": "pending-native-validation", "validator": "OBJ-001 + MATH-001 + COMBAT/MAG (aucun validateur natif item)"}}],
+        "restrictions": ["aucune injection directe dans AuthorizedM03Effect", "pas d'empilement implicite", "pas de +1 feu accordé automatiquement"],
+        "rulesProfileRef": {"id": "m03", "sourceCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b", "engine": "M03"},
+        "extensions": {"itemAuthority": "pending"}
+      }
+    }
+  ]
+}

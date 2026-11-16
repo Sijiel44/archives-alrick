@@ -1,0 +1,358 @@
+TAP version 13
+# Subtest: F00 — les cinq fixtures d’origine conservent exactement leurs octets/SHA256
+ok 1 - F00 — les cinq fixtures d’origine conservent exactement leurs octets/SHA256
+  ---
+  duration_ms: 5.055698
+  type: 'test'
+  ...
+# Subtest: F01 — attaque PJ/créature lisible en metadata inerte, jamais utilisable
+ok 2 - F01 — attaque PJ/créature lisible en metadata inerte, jamais utilisable
+  ---
+  duration_ms: 3.241585
+  type: 'test'
+  ...
+# Subtest: F02 — sort démo lisible en metadata inerte, version native séparée
+ok 3 - F02 — sort démo lisible en metadata inerte, version native séparée
+  ---
+  duration_ms: 1.257228
+  type: 'test'
+  ...
+# Subtest: F03 — rite lisible mais aucun effet numérique appliqué
+ok 4 - F03 — rite lisible mais aucun effet numérique appliqué
+  ---
+  duration_ms: 0.888891
+  type: 'test'
+  ...
+# Subtest: F04 — anneau de stockage descriptif admissible sans chiffres
+ok 5 - F04 — anneau de stockage descriptif admissible sans chiffres
+  ---
+  duration_ms: 3.466529
+  type: 'test'
+  ...
+# Subtest: F05 — bague chiffrée bloquée même pour metadata inerte
+ok 6 - F05 — bague chiffrée bloquée même pour metadata inerte
+  ---
+  duration_ms: 1.238346
+  type: 'test'
+  ...
+# Subtest: C01 — une capacité descriptive peut être fabriquée/validée/prévisualisée
+ok 7 - C01 — une capacité descriptive peut être fabriquée/validée/prévisualisée
+  ---
+  duration_ms: 1.309946
+  type: 'test'
+  ...
+# Subtest: C02 — factory sort descriptive disponible pour ATELIERS
+ok 8 - C02 — factory sort descriptive disponible pour ATELIERS
+  ---
+  duration_ms: 0.394977
+  type: 'test'
+  ...
+# Subtest: C03 — factory objet descriptif disponible pour ATELIERS
+ok 9 - C03 — factory objet descriptif disponible pour ATELIERS
+  ---
+  duration_ms: 1.04146
+  type: 'test'
+  ...
+# Subtest: C04 — factory générique aptitude et namespace stabilisés à la création
+ok 10 - C04 — factory générique aptitude et namespace stabilisés à la création
+  ---
+  duration_ms: 0.85901
+  type: 'test'
+  ...
+# Subtest: C05 — création non mutante et champs inconnus source conservés au privé seulement
+ok 11 - C05 — création non mutante et champs inconnus source conservés au privé seulement
+  ---
+  duration_ms: 1.447617
+  type: 'test'
+  ...
+# Subtest: C06 — une version native ne doit pas devenir version INDEX
+ok 12 - C06 — une version native ne doit pas devenir version INDEX
+  ---
+  duration_ms: 0.61374
+  type: 'test'
+  ...
+# Subtest: C07 — source native non épinglée refusée pour création de ref
+ok 13 - C07 — source native non épinglée refusée pour création de ref
+  ---
+  duration_ms: 0.815006
+  type: 'test'
+  ...
+# Subtest: C08 — source illustrative ne devient jamais source native
+ok 14 - C08 — source illustrative ne devient jamais source native
+  ---
+  duration_ms: 1.295339
+  type: 'test'
+  ...
+# Subtest: V01 — mauvaise version du contrat rejetée
+ok 15 - V01 — mauvaise version du contrat rejetée
+  ---
+  duration_ms: 1.088836
+  type: 'test'
+  ...
+# Subtest: V02 — ID invalide rejeté
+ok 16 - V02 — ID invalide rejeté
+  ---
+  duration_ms: 2.289167
+  type: 'test'
+  ...
+# Subtest: V03 — catégorie inconnue rejetée
+ok 17 - V03 — catégorie inconnue rejetée
+  ---
+  duration_ms: 2.774476
+  type: 'test'
+  ...
+# Subtest: V04 — version semver avec zéro initial rejetée
+ok 18 - V04 — version semver avec zéro initial rejetée
+  ---
+  duration_ms: 0.734306
+  type: 'test'
+  ...
+# Subtest: V05 — version prerelease avec zéro initial rejetée
+ok 19 - V05 — version prerelease avec zéro initial rejetée
+  ---
+  duration_ms: 3.17006
+  type: 'test'
+  ...
+# Subtest: V06 — provenance sans sourceId rejetée
+ok 20 - V06 — provenance sans sourceId rejetée
+  ---
+  duration_ms: 1.036021
+  type: 'test'
+  ...
+# Subtest: V07 — provenance avec originKind inconnu rejetée
+ok 21 - V07 — provenance avec originKind inconnu rejetée
+  ---
+  duration_ms: 0.875715
+  type: 'test'
+  ...
+# Subtest: V08 — SHA Git invalide rejeté
+ok 22 - V08 — SHA Git invalide rejeté
+  ---
+  duration_ms: 0.749689
+  type: 'test'
+  ...
+# Subtest: V09 — SHA256 invalide rejeté
+ok 23 - V09 — SHA256 invalide rejeté
+  ---
+  duration_ms: 0.83555
+  type: 'test'
+  ...
+# Subtest: V10 — alias scope vide rejeté
+ok 24 - V10 — alias scope vide rejeté
+  ---
+  duration_ms: 0.964993
+  type: 'test'
+  ...
+# Subtest: V11 — aliases dupliqués rejetés
+ok 25 - V11 — aliases dupliqués rejetés
+  ---
+  duration_ms: 3.018371
+  type: 'test'
+  ...
+# Subtest: V12 — collision ID+version dans registre rejetée
+ok 26 - V12 — collision ID+version dans registre rejetée
+  ---
+  duration_ms: 3.456827
+  type: 'test'
+  ...
+# Subtest: V13 — changement catégorie ID stable rejeté
+ok 27 - V13 — changement catégorie ID stable rejeté
+  ---
+  duration_ms: 0.369858
+  type: 'test'
+  ...
+# Subtest: V14 — même ID en version suivante accepté (catégorie stable)
+ok 28 - V14 — même ID en version suivante accepté (catégorie stable)
+  ---
+  duration_ms: 0.439032
+  type: 'test'
+  ...
+# Subtest: V15 — collision alias deux identités refusée
+ok 29 - V15 — collision alias deux identités refusée
+  ---
+  duration_ms: 0.696926
+  type: 'test'
+  ...
+# Subtest: V16 — alias de même nom permis si scope différent
+ok 30 - V16 — alias de même nom permis si scope différent
+  ---
+  duration_ms: 0.560964
+  type: 'test'
+  ...
+# Subtest: N01 — magnitude M03 3 interdit y compris en metadata
+ok 31 - N01 — magnitude M03 3 interdit y compris en metadata
+  ---
+  duration_ms: 0.253799
+  type: 'test'
+  ...
+# Subtest: N02 — magnitude M03 2 est la borne supérieure admise en metadata
+ok 32 - N02 — magnitude M03 2 est la borne supérieure admise en metadata
+  ---
+  duration_ms: 0.349348
+  type: 'test'
+  ...
+# Subtest: N03 — magnitude M03 0 interdite
+ok 33 - N03 — magnitude M03 0 interdite
+  ---
+  duration_ms: 0.760403
+  type: 'test'
+  ...
+# Subtest: N04 — durée M03 4 interdite
+ok 34 - N04 — durée M03 4 interdite
+  ---
+  duration_ms: 0.370191
+  type: 'test'
+  ...
+# Subtest: N05 — trigger incompatible interdit
+ok 35 - N05 — trigger incompatible interdit
+  ---
+  duration_ms: 0.393241
+  type: 'test'
+  ...
+# Subtest: N06 — famille absorption interdite même si source validée
+ok 36 - N06 — famille absorption interdite même si source validée
+  ---
+  duration_ms: 0.448404
+  type: 'test'
+  ...
+# Subtest: N07 — sans opt-in metadata les effets numériques sont refusés
+ok 37 - N07 — sans opt-in metadata les effets numériques sont refusés
+  ---
+  duration_ms: 0.491935
+  type: 'test'
+  ...
+# Subtest: N08 — validateur source mensonger refusé
+ok 38 - N08 — validateur source mensonger refusé
+  ---
+  duration_ms: 0.335383
+  type: 'test'
+  ...
+# Subtest: N09 — numeric item jamais homologué y compris si metadata true
+ok 39 - N09 — numeric item jamais homologué y compris si metadata true
+  ---
+  duration_ms: 0.381981
+  type: 'test'
+  ...
+# Subtest: N10 — rite +2 interdit
+ok 40 - N10 — rite +2 interdit
+  ---
+  duration_ms: 0.305124
+  type: 'test'
+  ...
+# Subtest: A01 — not-applicable accompagné d’un montant est rejeté
+ok 41 - A01 — not-applicable accompagné d’un montant est rejeté
+  ---
+  duration_ms: 0.833897
+  type: 'test'
+  ...
+# Subtest: A02 — unknown accompagné d’un montant est rejeté
+ok 42 - A02 — unknown accompagné d’un montant est rejeté
+  ---
+  duration_ms: 0.917494
+  type: 'test'
+  ...
+# Subtest: A03 — montant négatif rejeté
+ok 43 - A03 — montant négatif rejeté
+  ---
+  duration_ms: 0.606579
+  type: 'test'
+  ...
+# Subtest: A04 — mode native doit porter une référence
+ok 44 - A04 — mode native doit porter une référence
+  ---
+  duration_ms: 1.969406
+  type: 'test'
+  ...
+# Subtest: A05 — une durée unknown ne peut cacher une valeur
+ok 45 - A05 — une durée unknown ne peut cacher une valeur
+  ---
+  duration_ms: 0.383081
+  type: 'test'
+  ...
+# Subtest: A06 — tentative approved:true dans unknown extensions rejetée
+ok 46 - A06 — tentative approved:true dans unknown extensions rejetée
+  ---
+  duration_ms: 10.769588
+  type: 'test'
+  ...
+# Subtest: A07 — tentative approvedByGM dans le registre rejetée
+ok 47 - A07 — tentative approvedByGM dans le registre rejetée
+  ---
+  duration_ms: 2.520454
+  type: 'test'
+  ...
+# Subtest: A08 — création descriptive refuse l’injection numérique
+ok 48 - A08 — création descriptive refuse l’injection numérique
+  ---
+  duration_ms: 0.243163
+  type: 'test'
+  ...
+# Subtest: A09 — création descriptive refuse une action mécanique
+ok 49 - A09 — création descriptive refuse une action mécanique
+  ---
+  duration_ms: 0.10491
+  type: 'test'
+  ...
+# Subtest: A10 — création descriptive refuse une approbation forgée
+ok 50 - A10 — création descriptive refuse une approbation forgée
+  ---
+  duration_ms: 0.08543
+  type: 'test'
+  ...
+# Subtest: A11 — clé prototype empoisonnée rejetée sans pollution
+ok 51 - A11 — clé prototype empoisonnée rejetée sans pollution
+  ---
+  duration_ms: 0.126141
+  type: 'test'
+  ...
+# Subtest: A12 — getter malveillant refusé sans exécution
+ok 52 - A12 — getter malveillant refusé sans exécution
+  ---
+  duration_ms: 0.110663
+  type: 'test'
+  ...
+# Subtest: A13 — clone privé rejette les cycles
+ok 53 - A13 — clone privé rejette les cycles
+  ---
+  duration_ms: 6.232916
+  type: 'test'
+  ...
+# Subtest: A14 — source privée archivée sans mutation et sans normalisation Spell
+ok 54 - A14 — source privée archivée sans mutation et sans normalisation Spell
+  ---
+  duration_ms: 4.112614
+  type: 'test'
+  ...
+# Subtest: A15 — snapshot privé refuse un objet non JSON
+ok 55 - A15 — snapshot privé refuse un objet non JSON
+  ---
+  duration_ms: 0.342954
+  type: 'test'
+  ...
+# Subtest: A16 — preview ne publie jamais l’enveloppe source ou les extensions
+ok 56 - A16 — preview ne publie jamais l’enveloppe source ou les extensions
+  ---
+  duration_ms: 0.246493
+  type: 'test'
+  ...
+# Subtest: A17 — une définition validated ne donne pas la permission d’exécuter
+ok 57 - A17 — une définition validated ne donne pas la permission d’exécuter
+  ---
+  duration_ms: 0.304416
+  type: 'test'
+  ...
+# Subtest: A18 — metadata authorized-in-source-only ne crée jamais approved:true
+ok 58 - A18 — metadata authorized-in-source-only ne crée jamais approved:true
+  ---
+  duration_ms: 16.431173
+  type: 'test'
+  ...
+1..58
+# tests 58
+# suites 0
+# pass 58
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 366.987783

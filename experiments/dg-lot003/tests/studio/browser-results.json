@@ -1,0 +1,8 @@
+{
+  "status": "BLOQUÉ_PAR_ENVIRONNEMENT",
+  "attempt": "Python Playwright Chromium, deux serveurs HTTP 127.0.0.1:4173/4174",
+  "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR",
+  "executedBrowserScenarios": 0,
+  "passedBrowserScenarios": 0,
+  "notes": "Aucun contournement tenté. La recette intégrée reste à exécuter sur l'environnement autorisé."
+}

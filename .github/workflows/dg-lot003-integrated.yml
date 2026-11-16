@@ -1,0 +1,142 @@
+name: DG-LOT-003 integrated prototype (no Pages)
+on:
+  push:
+    branches: [prototype/dg003-integrated]
+  pull_request:
+    paths:
+      - 'experiments/dg-lot003/**'
+      - 'experiments/dg-lot003/tests/e2e/**'
+      - '.github/workflows/dg-lot003-integrated.yml'
+permissions:
+  contents: read
+jobs:
+  prototype:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      SOURCE_INTEGRATION_HEAD: ${{ github.event_name == 'pull_request' && startsWith(github.head_ref, 'test/dg003-qa') && github.event.pull_request.base.sha || (github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha) }}
+      TESTED_HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      IS_QA_PR: ${{ github.event_name == 'pull_request' && startsWith(github.head_ref, 'test/dg003-qa') }}
+      DG003_INTEGRATION_HEAD: ${{ github.event_name == 'pull_request' && startsWith(github.head_ref, 'test/dg003-qa') && github.event.pull_request.base.sha || (github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha) }}
+      DG003_TESTED_HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      DG003_QA_CONTRACT: experiments/dg-lot003/tests/e2e/integration-contract.json
+    steps:
+      - name: Checkout exact source SHA (never PR virtual merge)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Print both SHA references and enforce exact checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "sourceIntegrationHead=$SOURCE_INTEGRATION_HEAD"
+          echo "testedHead=$TESTED_HEAD"
+          echo "githubEventSha=$GITHUB_SHA"
+          echo "checkoutHead=$(git rev-parse HEAD)"
+          test "$(git rev-parse HEAD)" = "$TESTED_HEAD"
+          node --version
+          npm --version
+          git status --short
+      - run: npm ci
+      - run: npm test
+      - run: node experiments/dg-lot003/tools/build.mjs
+      - run: node experiments/dg-lot003/tools/test-unit.mjs
+      - name: Locate and version installed official Chrome (avoid Ubuntu Snap launcher)
+        shell: bash
+        run: |
+          set -euo pipefail
+          browser=''
+          for candidate in google-chrome-stable google-chrome /opt/google/chrome/chrome /usr/bin/google-chrome-stable /usr/bin/google-chrome; do
+            if command -v "$candidate" >/dev/null 2>&1; then
+              browser="$(command -v "$candidate")"
+              break
+            fi
+          done
+          if [ -z "$browser" ]; then
+            echo 'NON EXÉCUTÉ : Chrome officiel absent du runner ; pas de lanceur Snap de secours.' >&2
+            exit 2
+          fi
+          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
+          echo "BROWSER_PATH=$browser"
+          "$browser" --version
+      - name: QA independent contract and E2E test (QA branch only)
+        if: ${{ env.IS_QA_PR == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          contract="$DG003_QA_CONTRACT"
+          script='experiments/dg-lot003/tests/e2e/dg003-e2e.test.mjs'
+          if [ ! -f "$contract" ] || [ ! -f "$script" ]; then
+            echo 'NON EXÉCUTÉ : contrat ou script QA absent sur le HEAD QA ; qualification interdite.' >&2
+            exit 3
+          fi
+          test "$DG003_INTEGRATION_HEAD" = "$SOURCE_INTEGRATION_HEAD"
+          test "$DG003_TESTED_HEAD" = "$TESTED_HEAD"
+          test "$(git rev-parse HEAD)" = "$DG003_TESTED_HEAD"
+          # QA requires ancestry of its source branch; this checkout is full-depth.
+          if ! git merge-base --is-ancestor "$DG003_INTEGRATION_HEAD" "$DG003_TESTED_HEAD"; then
+            echo 'NON EXÉCUTÉ : le HEAD QA ne descend pas du HEAD intégré déclaré.' >&2
+            exit 3
+          fi
+          node --input-type=module -e '
+            import {readFileSync} from "node:fs";
+            const text=readFileSync(process.argv[1],"utf8");
+            const obj=JSON.parse(text);
+            if(!obj || typeof obj!=="object" || Array.isArray(obj) || Object.keys(obj).length===0)
+              throw Error("QA contract invalid/empty");
+            if(/\b(TODO|TBD|PLACEHOLDER|FIXME|NON_EXECUTE|NON-EXÉCUTÉ)\b|<SHA>|<HEAD>/i.test(text))
+              throw Error("QA contract still contains placeholders");
+            console.log("QA_CONTRACT_PRESENT",process.argv[1]);
+            console.log("sourceIntegrationHead",process.env.DG003_INTEGRATION_HEAD);
+            console.log("testedHead",process.env.DG003_TESTED_HEAD);
+          ' "$contract"
+          serve_log="$RUNNER_TEMP/dg003-qa-serve.log"
+          node experiments/dg-lot003/tools/serve.mjs >"$serve_log" 2>&1 &
+          serve_pid=$!
+          cleanup() {
+            kill "$serve_pid" 2>/dev/null || true
+            wait "$serve_pid" 2>/dev/null || true
+          }
+          trap cleanup EXIT
+          trap 'exit 130' INT
+          trap 'exit 143' TERM
+          if ! node --input-type=module -e '
+            const origins=["http://127.0.0.1:4173/","http://127.0.0.1:4174/"];
+            let last="";
+            for(let attempt=0;attempt<60;attempt++){
+              try {
+                const responses=await Promise.all(origins.map(url=>fetch(url,{signal:AbortSignal.timeout(1000)})));
+                if(responses.every(response=>response.status===200)){
+                  console.log("QA_HTTP_READY",origins.join(" "));
+                  process.exit(0);
+                }
+                last=responses.map(x=>x.status).join(",");
+              } catch(error){ last=String(error.message??error); }
+              await new Promise(resolve=>setTimeout(resolve,200));
+            }
+            console.error("QA_HTTP_NOT_READY",last);
+            process.exit(1);
+          '; then
+            echo 'NON EXÉCUTÉ : serveurs QA inaccessibles ; journal borné :' >&2
+            tail -c 6000 "$serve_log" >&2 || true
+            exit 3
+          fi
+          node --test "$script"
+      - name: QA independent suite status (integrated branch)
+        if: ${{ env.IS_QA_PR != 'true' }}
+        run: echo 'NON EXÉCUTÉ — QA indépendante absente de cette branche intégrée ; seule la future PR QA exécute experiments/dg-lot003/tests/e2e.'
+      - name: Product browser test (served HTTP origins)
+        run: node experiments/dg-lot003/tools/test-browser.mjs
+      - name: Record tested source commit, also on failure
+        if: always()
+        shell: bash
+        run: |
+          echo "sourceIntegrationHead=$SOURCE_INTEGRATION_HEAD"
+          echo "testedHead=$TESTED_HEAD"
+          echo "checkoutHead=$(git rev-parse HEAD)"

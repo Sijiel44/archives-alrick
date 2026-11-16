@@ -1,0 +1,58 @@
+{
+  "schema": "cer.dg003.catalog.proofs.v0",
+  "baseCommit": "88f774f3d0d6d520d8d11443b72202b9caf4f94b",
+  "orgDocumentCommit": "b5c59854b802dc25617d9bcd7c576495199a41dd",
+  "prototypeBranch": "prototype/dg003-index-contract",
+  "runtimeExecuted": "node v22.16.0",
+  "testCommand": "node --test experiments/dg-lot003/tests/catalog/catalog.test.mjs",
+  "testsRun": 58,
+  "testsPassed": 58,
+  "testsFailed": 0,
+  "notExecuted": [
+    "Node 24 on repo clone",
+    "npm ci",
+    "npm test",
+    "native TS engine parity",
+    "browser integration",
+    "CI on integrated HEAD"
+  ],
+  "originalFiveFixturesSHA256": "7396a5eaade764dd048c243ee1765d12ab22a473e88a4ebad15b6c08a1480a89",
+  "files": [
+    {
+      "path": "experiments/dg-lot003/src/catalog/FICHE_DIRECTION_L003_CATALOG.md",
+      "bytes": 2357,
+      "sha256": "0110161552d52a249557d77fe200a6c91f556ed316ad095da25bd702fe44ceac",
+      "gitBlobSHA1": "fa30f3be0403dc0ddaa9979f87bd453272fa819a"
+    },
+    {
+      "path": "experiments/dg-lot003/src/catalog/README.md",
+      "bytes": 5713,
+      "sha256": "3586cacfca62c015937e3e2ac7656ba7090956796c5e23a537c6ce8d286c182f",
+      "gitBlobSHA1": "c27564cb5c1428e45505c4331430424fb776fa88"
+    },
+    {
+      "path": "experiments/dg-lot003/src/catalog/index.mjs",
+      "bytes": 24131,
+      "sha256": "fee87f6d939e1c8687c575fe0e3e4e2740ee7cb695d0dbb4bbd9e303831586ae",
+      "gitBlobSHA1": "6c35e0da2c56a51dea9bce37b9cdc60cd2c75de5"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/EXECUTION_L003_CATALOG.txt",
+      "bytes": 10592,
+      "sha256": "a08b2bbb53c78748af6f9d6785e42cd29473ca07cb6a08929ecfc90d2762b8ef",
+      "gitBlobSHA1": "5832c9346be9d25676119cfdc2cc239a024866f1"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/catalog.test.mjs",
+      "bytes": 16042,
+      "sha256": "81202aff5a0bf464662e2a1b600295713d6c526aa18860662dd82804712797ae",
+      "gitBlobSHA1": "39a0acacaae7be43872d0d430be48f9b52e6a7fb"
+    },
+    {
+      "path": "experiments/dg-lot003/tests/catalog/fixtures-v02-original.json",
+      "bytes": 7910,
+      "sha256": "7396a5eaade764dd048c243ee1765d12ab22a473e88a4ebad15b6c08a1480a89",
+      "gitBlobSHA1": "5b0a17e1d0c8049d406648621d4fefb1a78d97e9"
+    }
+  ]
+}
