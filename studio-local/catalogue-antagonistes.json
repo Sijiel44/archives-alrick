@@ -207,7 +207,7 @@
       "tags": ["archives", "feu", "deuil", "decheance"]
     },
     {
-      "id": "PER-DECH-21", "version": "f33e7e252f29ee76c5d670a2c2b6dd9484d623b5",
+      "id": "PER-DECH-21", "version": "8ef820c3ae3353ab89c70931536055a037040bc8",
       "path": "content/personnages/PER-DECH-21.md", "image": "per-dech-21.webp",
       "artAlt": "Orianne Dervaux, négociante expérimentée au manteau bleu et carnet de route.",
       "name": "Orianne Dervaux", "levelIntent": 17, "corruptionStage": "Non Déchu",
@@ -217,7 +217,7 @@
       "tags": ["commerce", "direction", "non_dechu", "negoce"]
     },
     {
-      "id": "PER-DECH-22", "version": "afe922f3b1c78b8d92b7cd5e2986304af26bca65",
+      "id": "PER-DECH-22", "version": "46a5230d35f1663178c838753a4b64529a4ad195",
       "path": "content/personnages/PER-DECH-22.md", "image": "per-dech-22.webp",
       "artAlt": "Maren Kess, négociant brun au col sombre et deux livres de comptes.",
       "name": "Maren Kess", "levelIntent": 14, "corruptionStage": "Rupture",
@@ -227,7 +227,7 @@
       "tags": ["commerce", "caldria", "rupture", "garanties", "lieur"]
     },
     {
-      "id": "PER-DECH-23", "version": "be58c4105cae2597951425c4117cdaf90897c1a5",
+      "id": "PER-DECH-23", "version": "e5cd51ef3b1b3bf4d829545fe6b8571df959e514",
       "path": "content/personnages/PER-DECH-23.md", "image": "per-dech-23.webp",
       "artAlt": "Siva Norel, responsable de dépôt rousse, tablier de travail et plaque de chargement.",
       "name": "Siva Norel", "levelIntent": 6, "corruptionStage": "Fêlure",
@@ -237,7 +237,7 @@
       "tags": ["quais", "inventaires", "felure", "logistique"]
     },
     {
-      "id": "PER-DECH-24", "version": "7fd8acd3d5052a7ad1f93c2708cc442f91a6c276",
+      "id": "PER-DECH-24", "version": "97be87a29667ea2b3fdd8056f7d021e8653d6081",
       "path": "content/personnages/PER-DECH-24.md", "image": "per-dech-24.webp",
       "artAlt": "Perrin Havas, convoyeur barbu au manteau vert et à la lance de route.",
       "name": "Perrin Havas", "levelIntent": 9, "corruptionStage": "Non Déchu",
@@ -247,7 +247,7 @@
       "tags": ["escorte", "convoyeur", "non_dechu", "gardes"]
     },
     {
-      "id": "PER-DECH-25", "version": "ddc4ce52b67878540bcf783dfd18a82675e4f866",
+      "id": "PER-DECH-25", "version": "66c88e886e59098db0455c96a4386cf41e119944",
       "path": "content/personnages/PER-DECH-25.md", "image": "per-dech-25.webp",
       "artAlt": "Mérine Solard, jeune vérificatrice avec sceau et feuille de chargement.",
       "name": "Mérine Solard", "levelIntent": 4, "corruptionStage": "Tentation",
@@ -257,7 +257,7 @@
       "tags": ["commerce", "preuve", "tentation", "sceau"]
     },
     {
-      "id": "PER-DECH-26", "version": "9bd3f56f671c5ac28b1e49a3f626cd67b728340e",
+      "id": "PER-DECH-26", "version": "3e2df6833b88ed8a0c31ecd2afb241230ec66eef",
       "path": "content/personnages/PER-DECH-26.md", "image": "per-dech-26.webp",
       "artAlt": "Gabin Rosset, jeune commis au gilet simple avec reçus et plume.",
       "name": "Gabin Rosset", "levelIntent": 2, "corruptionStage": "Non Déchu",
