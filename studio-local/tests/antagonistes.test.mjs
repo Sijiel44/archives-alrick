@@ -95,7 +95,6 @@ test('Studio : compagnie marchande, membres non Déchus et copies isolées du jo
   assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_MJ_COMPAGNIE/);
 
   await page.locator('#nav-library').click();
-  await page.locator('#library-back').click();
   await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
   await page.locator('#catalogue-count').getByText(/^36 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.getByRole('button', { name: 'Voir la fiche de Maren Kess' }).click();
