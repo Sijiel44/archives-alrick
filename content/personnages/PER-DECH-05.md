@@ -36,4 +36,14 @@ Kelmor savait monter des spectacles pour nourrir sa troupe et ouvrir les portes 
 
 **Résolutions :** démonter le décor rituel, protéger les spectateurs, conserver les pièces authentiques, convaincre sa troupe de partir ou négocier la sortie d'Ysilde. Une représentation peut être jouée sans pacte.
 
+## Distribution et loyautés
+
+La troupe de Kelmor comprend des comédiens payés, des techniciens libres et quelques initiés. **Perri**, machiniste, travaille pour nourrir ses proches et refuse les rites ; **Léren la Souffleuse**, en revanche, a accepté une transformation surnaturelle effective et demeure sa **Chute liée attestée**. Le pacte encore précoce d'**Ysilde** ne doit pas être présenté comme une preuve suffisante de sa croissance ni comme une faute morale équivalente à celle d'un lieur. Sans la continuité d'au moins une Chute liée, la Rupture de Kelmor ne peut être entretenue comme si les applaudissements formaient du tribut.
+
+Il a remporté un concours dramatique sans aucun sort et perdu une scène entière lorsque les habitants ont préféré lire le texte original. Son plus beau geste fut de payer les soins d'une chanteuse devenue muette ; il s'en sert aujourd'hui pour justifier ses engagements abusifs. Les personnes de la troupe sont libres de partir, même si Kelmor cherche à leur faire croire que l'œuvre mourra sans elles.
+
+## Rencontres de spectacle
+
+Le rideau s'ouvre sur une pièce qui raconte trop précisément un drame local. Les PJ peuvent recueillir les versions de trois spectateurs, confronter les accessoires et obtenir la feuille de distribution. **Sans préparation et consentement rituel,** le numéro reste un spectacle ordinaire, parfois troublant mais non tout-puissant. Perri peut aider à démonter les décors ; Léren peut négocier sa sortie, difficile et non automatique. Si le public s'enfuit, la troupe se replie au lieu de se transformer subitement en armée.
+
 [[personnages-dechus|Galerie des personnages déchus]] · [[groupes/ORG-DECH-04|Chœur des Derniers Feux — institution distincte]]

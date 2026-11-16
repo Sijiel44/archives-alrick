@@ -14,7 +14,7 @@ Les habitants du monde possèdent des métiers, des convictions et leurs propres
 
 ## Personnages antagonistes de la Déchéance
 
-[[personnages-dechus|Dix portraits canoniques, niveaux de référence 2 à 20]] — pactes, parcours, rivalités, lieux d'activité et alternatives à la confrontation.
+[[personnages-dechus|Vingt portraits canoniques, niveaux de référence 2 à 20]] — pactes, parcours, rivalités, lieux d'activité, subalternes et alternatives à la confrontation.
 
 ## Des figures de la vie quotidienne
 

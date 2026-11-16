@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kareth, inspectrice pâle devant une cloche de verre scellée et des dossiers" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#30283a"/><circle cx="200" cy="190" r="145" fill="none" stroke="#e3b778" stroke-width="3" opacity=".55"/>
+<path d="M40 444Q62 331 162 305h79q97 23 119 139Z" fill="#474257" stroke="#ae8293" stroke-width="5"/><ellipse cx="200" cy="194" rx="64" ry="83" fill="#b59182"/><path d="M132 174Q127 104 202 105q71 3 70 81l-40-32-62-14Z" fill="#d7d5d3"/><path d="M137 171q-18 53-8 104m135-103q17 58 8 102" stroke="#bfc2cb" stroke-width="14" fill="none"/><path d="M157 212h31m24 0h30" stroke="#57454b" stroke-width="4"/><path d="M175 260q22-3 48-1" stroke="#754b50" stroke-width="4" fill="none"/>
+<path d="M277 422h90m-80-6v-11q-18-20-6-45 8-16 35-17 30 0 38 20 7 22-8 40v13" stroke="#bcdce1" stroke-width="5" fill="#7aa3b0" fill-opacity=".28"/><path d="M315 344v42m-13-13 13 13 16-23" stroke="#dfbe8c" stroke-width="4" fill="none"/><rect x="45" y="347" width="82" height="80" fill="#dbcba9" stroke="#896970" stroke-width="5"/>
+<text x="200" y="461" text-anchor="middle" fill="#f2dbc3" font-family="serif" font-size="21" letter-spacing="2">KARETH</text>
+</svg>

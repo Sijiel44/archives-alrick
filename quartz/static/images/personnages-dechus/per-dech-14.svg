@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Varune, officière des serments nautiques tenant une corde nouée et un carnet de bord" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#182c3b"/><circle cx="200" cy="188" r="143" fill="none" stroke="#a7c4c2" stroke-width="3" opacity=".65"/><path d="M38 442Q55 322 163 305h77q108 23 122 137Z" fill="#456576" stroke="#bdac85" stroke-width="5"/>
+<ellipse cx="201" cy="201" rx="65" ry="87" fill="#bd9178"/><path d="M136 169Q145 90 206 102q58 0 66 70l-28-29-35-22-41 26Z" fill="#353e4b"/><path d="M145 174q-15 72-3 108m115-112q16 60 2 105" stroke="#353e4b" stroke-width="16" fill="none"/><path d="M157 215h30m27 0h30" stroke="#3d3c41" stroke-width="4"/><path d="M174 259q25 11 48-2" stroke="#734e48" fill="none" stroke-width="4"/>
+<path d="M45 350q60-41 113 17t-10 50 13-18 1-17 23-23" stroke="#d9bb78" stroke-width="9" fill="none" stroke-linecap="round"/><rect x="258" y="337" width="86" height="91" rx="4" fill="#d6c6a4" stroke="#9ba6ac" stroke-width="5"/><path d="M273 367h58m-58 18h50m-50 17h60" stroke="#63788b" stroke-width="4"/>
+<text x="200" y="461" text-anchor="middle" fill="#efe1c3" font-family="serif" font-size="21" letter-spacing="2">VARUNE</text>
+</svg>

@@ -36,4 +36,14 @@ Terval administrait jadis des greniers pour protéger des villages isolés. Lors
 
 **Issues :** redistribuer avant de démanteler, couper les trois branches, garantir les approvisionnements concurrents, négocier une trêve surveillée ou évacuer les dépôts. Son retour à l'Abîme serait exceptionnel ; aucune promesse de pardon ou de guérison n'est donnée.
 
+## Les chaînes derrière la table
+
+Terval n'a pas obtenu l'Abîme en nourrissant simplement des foules. Trois réseaux **réellement transformés** alimentent son tribut : **Marvek le Préposé**, lieur des marchés d'aval ; **Séliane des Entrepôts**, pactisée chargée des contrats de réserve ; **Arden le Mesureur**, lieur qui a entraîné à son tour **Béren des Caisses** dans une Chute liée de seconde génération. Les portefaix, cuisiniers, familles ravitaillées et otages économiques ne comptent pas comme Déchus par leur simple condition. Les branches peuvent rivaliser et se défaire sans que les provisions disparaissent soudain.
+
+Son succès véritable est d'avoir empêché des morts par famine lors de la Saison des Granges Vides. Sa plus grave décision fut de faire fermer une cuisine concurrente au moment même où elle nourrissait les pauvres. La **Révolte des Gamelles** ne le vainquit pas sur un champ de bataille : des habitants distribuèrent des repas sans son sceau ; il conserva ses gardes mais perdit le monopole de la reconnaissance. Depuis, il ne prononce plus le mot « gratuit ».
+
+## Scènes de haute intensité, sorties accessibles
+
+Les PJ de bas niveau peuvent escorter un cuisinier indépendant, récupérer un reçu ou protéger un pont de ravitaillement, sans jamais l'affronter directement. Un groupe expérimenté peut négocier contre l'une des branches, sauver les stocks d'une saisie ou organiser trois défections coordonnées. Les personnes qui dépendent de la nourriture distribuée ont droit à une solution matérielle avant la destruction de son système. **Terval ne crée pas de vivres, n'est pas invincible et ne perd pas instantanément ses forces de niveau 20** quand une branche est rompue ; l'effet précis sur les capacités relève de MATH/INDEX.
+
 [[personnages-dechus|Galerie des personnages déchus]] · [[monde/decheance-canon|Pyramide et Abîme]]

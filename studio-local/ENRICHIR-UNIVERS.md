@@ -49,6 +49,8 @@ La bibliothèque distingue déjà Atlas, Bestiaire, Objets et équipements, Sort
 
 Le lot ANT-DECH-005 ajoute **dix personnages de la Déchéance** au même rayon au moyen d'un autre catalogue public, `catalogue-antagonistes.json`. Le niveau affiché est une intention narrative (2 à 20), distincte de l'Emprise et **non utilisable comme profil M03**. L'action « Créer un PNJ de campagne » utilise le type de création `npc` déjà présent, copie les champs descriptifs publics et conserve un lien vers le code source. Les notes secrètes éventuelles sont écrites uniquement dans l'instance locale du MJ.
 
+ANT-DECH-006 approfondit ces dix fiches et porte le catalogue à **vingt personnages**, sans changer le contrat de création ni la projection joueur. Les relations et subalternes cités servent à créer des scènes et des instances locales ; le catalogue ne transporte toujours ni secret MJ ni capacité chiffrée. Les nouvelles illustrations restent des SVG originaux explicitement listés par le serveur local.
+
 ## Pourquoi une nouvelle fiche n’apparaît-elle pas aussitôt dans la bibliothèque ?
 
 Les pages Quartz et le catalogue embarqué du Studio ont des chemins de mise à jour distincts. Le script [build-catalogue.mjs](build-catalogue.mjs) sélectionne actuellement **92 références** dans la révision épinglée `88f774f3d0d6d520d8d11443b72202b9caf4f94b`. Pour le lot ANT-DECH-004, les six organisations sont ajoutées par un catalogue public distinct dont chaque version est le SHA Git de la fiche Markdown. Cette sélection protège la provenance des fiches et évite une importation implicite de contenus privés ou non approuvés.

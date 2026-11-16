@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Néris, portraitiste au pinceau devant un miroir d'atelier brisé" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#292942"/><circle cx="200" cy="189" r="146" fill="none" stroke="#b9a1d9" stroke-width="3" opacity=".6"/>
+<path d="M39 444Q58 319 164 308h71q107 16 124 136Z" fill="#584d78" stroke="#d7b09f" stroke-width="5"/><ellipse cx="199" cy="202" rx="65" ry="83" fill="#b88b78"/><path d="M133 178Q129 94 200 101q72 5 67 80l-24-32-39-16-50 27Z" fill="#382e43"/><path d="M142 168q-17 62-4 130m121-131q22 70 8 131" fill="none" stroke="#3d3248" stroke-width="13"/><path d="M157 212h31m26 0h31" stroke="#4b3d46" stroke-width="4"/><path d="M176 260q22 9 48 1" stroke="#7b4d52" stroke-width="4" fill="none"/>
+<path d="M284 341h71v87h-71Z" fill="#b8c8d4" fill-opacity=".5" stroke="#c5a66f" stroke-width="7"/><path d="m296 351 20 34-10 16 26 17" stroke="#f4f1ed" stroke-width="4" fill="none"/><path d="M65 416 119 344" stroke="#d2b885" stroke-width="8"/><path d="m111 341 19-14-5 23" fill="#d3a8b9"/>
+<text x="200" y="462" text-anchor="middle" fill="#f3ddc8" font-family="serif" font-size="22" letter-spacing="3">NÉRIS</text>
+</svg>

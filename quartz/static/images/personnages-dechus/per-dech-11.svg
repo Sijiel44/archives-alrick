@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Olyne, veilleuse en manteau d'indigo entre trois lanternes dorées" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#1b2637"/><circle cx="200" cy="194" r="143" fill="none" stroke="#7b95a7" stroke-width="3" opacity=".55"/>
+<path d="M50 442Q68 324 165 305h72q100 28 113 137Z" fill="#263d57" stroke="#91a7a1" stroke-width="5"/><path d="M139 331 200 389l64-58" fill="none" stroke="#d5b17d" stroke-width="6"/>
+<ellipse cx="202" cy="203" rx="65" ry="86" fill="#a97967"/><path d="M133 181Q126 88 203 99q77 7 65 93l-23-30-39-16-41 15-32 36Z" fill="#353c50"/><path d="M154 209q17-8 32 0m28 0q17-8 32 0" stroke="#442f32" fill="none" stroke-width="4"/><path d="M178 265q23 7 43-4" stroke="#683e3d" fill="none" stroke-width="4"/>
+<g fill="#e9c77c" stroke="#af8446" stroke-width="4"><rect x="44" y="274" width="44" height="75" rx="7"/><rect x="313" y="274" width="44" height="75" rx="7"/><rect x="176" y="345" width="47" height="56" rx="7"/></g><g fill="#fff4bd"><path d="M66 289q17 22 0 38-15-16 0-38Zm269 0q17 22 0 38-15-16 0-38Zm-135 69q17 22 0 31-15-15 0-31Z"/></g>
+<text x="200" y="460" text-anchor="middle" fill="#f2e0b8" font-family="serif" font-size="22" letter-spacing="2">OLYNE</text>
+</svg>

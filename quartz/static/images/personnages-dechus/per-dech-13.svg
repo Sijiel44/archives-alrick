@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rhéomar, horloger de relais devant un cadran fêlé entouré de roues dentées" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#26273c"/><circle cx="200" cy="190" r="143" fill="none" stroke="#c7a168" stroke-width="4" opacity=".65"/><path d="M200 42v42m0 209v43M52 190h43m210 0h43" stroke="#bda16a" stroke-width="6"/>
+<path d="M44 444Q65 325 163 305h76q98 24 114 139Z" fill="#5b5667" stroke="#a49aaa" stroke-width="5"/><ellipse cx="199" cy="198" rx="62" ry="83" fill="#b88c72"/>
+<path d="M135 180Q141 103 202 111q67 0 68 73l-31-29-34-19-45 23Z" fill="#49443d"/><path d="M155 210q15-7 32 1m25 0q15-8 32 0" stroke="#4a3a39" stroke-width="5" fill="none"/><path d="M174 260q22 9 48 0" stroke="#6b4b43" fill="none" stroke-width="4"/>
+<circle cx="299" cy="367" r="54" fill="#484c69" stroke="#d2ae75" stroke-width="8"/><path d="M299 333v37l-28 15m26-18 17-13" stroke="#e8d3a0" stroke-width="6"/><path d="m286 316 16 35-12 29 15 27" fill="none" stroke="#ba574f" stroke-width="4"/>
+<text x="200" y="462" text-anchor="middle" fill="#f3e0b8" font-family="serif" font-size="21" letter-spacing="2">RHÉOMAR</text>
+</svg>

@@ -36,4 +36,16 @@ Séran bâtit des pontons avant de monter la garde. Une crue emporta la route qu
 
 **Issues :** travaux communs, témoins indépendants, restitution des listes, rupture accompagnée du serment, ou repli avant une montée des eaux. Sa culpabilité concerne les listes livrées, pas la souffrance qui l'a rendu vulnérable.
 
+## La rive derrière le guet
+
+Séran a conservé dans sa cabane un morceau de l'ancien tablier du pont. Il montre volontiers aux apprentis comment reconnaître un bois pourri, mais cache les deux carnets de départ transmis à la visiteuse masquée. Une fois, il s'est opposé à un convoyeur qui voulait faire payer le passage aux familles déplacées ; une autre fois, il a faussement signalé comme « absent » un voisin qui avait refusé de s'inscrire. Cette faute nourrit désormais la méfiance du village, sans faire de tout le conseil local une organisation déchue.
+
+**Tissel**, jeune charpentière non pactisée, a terminé les réparations que Séran disait impossibles sans rite. **Ysilde** peut confirmer que la navigation libre reste possible. **Hadrine la Veilleuse**, arrivée avec le sceau de la visiteuse, recueille les listes : elle est une agente de la branche de Varnok, mais nul n'a prouvé qu'elle soit elle-même transformée. Séran ne la connaît que par ce nom de service.
+
+## Quand les aventuriers arrivent
+
+Il peut les accueillir à la scie et au marteau, leur refuser un passage avant une crue, ou venir réclamer le remboursement d'une faveur. Les indices sont physiques — pieux fendus, copies d'avis, observations des bateliers — et ne nécessitent pas de lire les pensées. **Désarmer le conflit :** fournir un second poste de guet, consigner publiquement les passages sans les noms, puis rendre la borne inutile. Une retraite par les hauteurs demeure une solution valable.
+
+**Trajectoire :** Séran peut redevenir un gardien choisi par ses voisins ; il peut aussi glisser vers la Fêlure s'il traite chaque départ libre comme une trahison. Ni le métier de garde ni la pauvreté ne constituent en soi une corruption.
+
 [[personnages-dechus|Galerie des personnages déchus]] · [[monde/decheance-canon|Loi de la Déchéance]]

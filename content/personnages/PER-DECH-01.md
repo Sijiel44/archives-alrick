@@ -36,4 +36,18 @@ Ysilde a grandi à franchir les eaux rapides lorsque les routes devenaient impra
 
 **Réponse au conflit :** négocier la restitution du ruban, escorter les voyageurs sans rite ou organiser une relève. Elle peut devenir témoin, adversaire paniquée ou alliée précaire. Aucune dépendance ne lui impose mécaniquement de trahir des PJ.
 
+## La vie qui se poursuit
+
+Ysilde entretient deux embarcations : *L'Alose*, dont elle vit, et *L'Échouée*, qu'elle rafistole pour que d'autres puissent travailler sans elle. Ses plus grands succès ne sont pas surnaturels : elle a appris à lire les variations du courant, réparé une coque avec les matériaux d'une grange ruinée et organisé un passage gratuit pendant trois journées de pluie. L'échec qu'elle ne raconte presque jamais est celui de **Nerin le Peintre**, retenu après une traversée ; elle a confondu son silence avec une clause de discrétion acceptable.
+
+**Mara des Brisants** lui prête des outils sans réclamer de serment. **Séran** lui enseigne la charpente mais lui reproche de traverser hors des rondes ; à son tour, Ysilde l'accuse de dresser des listes. **Kelmor** lui adresse des invitations sous forme de billets de spectacle. Elle garde les trois dans une boîte : une dette, une amitié, une menace, qu'elle ne sait plus toujours distinguer.
+
+## À la table
+
+- **Rencontre ordinaire :** elle demande de l'aide pour faire traverser une guérisseuse avant que la brume ne couvre les balises.
+- **Pression :** une invitation de Kelmor arrive en même temps qu'un avis de crue ; Ysilde hésite entre sa présence promise et le risque réel pour les voyageurs.
+- **Choix offert aux PJ :** faire le voyage par les moyens ordinaires, financer la deuxième barque, assister comme témoins à une renégociation ou quitter le gué. La perdre de vue ne transforme pas immédiatement les voyageurs en victimes.
+
+**Évolution possible :** si elle rompt le pacte, elle perd le raccourci surnaturel, pas son métier. Si elle accepte de livrer d'autres noms, sa Tentation peut s'aggraver ; aucun passage de stade n'est automatique.
+
 [[personnages-dechus|Galerie des personnages déchus]] · [[monde/decheance-canon|Loi de la Déchéance]]
