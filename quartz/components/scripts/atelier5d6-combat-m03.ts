@@ -130,3 +130,96 @@ export function resolveCombatM03(a:CombatM03Input):CombatM03Result{
     grossDamage,protection,penetrated,absorbed,damage,effectProposed:success&&a.mode==="mental",
     reaction:contact||criticalFailure?"aucune":gap>=5?"riposte_possible":"defense"}
 }
+
+
+/**
+ * MATH-REF-002A — Extension expérimentale, opt-in, du résolveur M03.
+ *
+ * Cette projection réutilise resolveCombatM03 pour le jet, l'opposition et
+ * l'impact initial. Les consommateurs historiques continuent d'appeler
+ * resolveCombatM03 sans aucune modification de leur contrat ni de leurs PV.
+ *
+ * La provenance et les habilitations doivent être vérifiées par INDEX/MJ
+ * AVANT de construire M03AuthorizedIntensity et les AuthorizedM03Effect.
+ * Un approved:true reçu d'un import non fiable n'est pas une autorisation.
+ */
+export type M03AuthorizedIntensity={
+  tier:"mineure"|"courante"|"majeure"
+  approved:true
+  definitionId:string
+  version:number
+}
+export type M03UnifiedInput=CombatM03Input & {
+  /** Autorisation de définition vérifiée hors M03 ; jamais déduite du texte. */
+  intensity?:M03AuthorizedIntensity|null
+  /** Activation réservée à la voie expérimentale, sans effet sur le legacy. */
+  applySpecialAbsorption?:boolean
+  /** Sur naturel 27–30 ET touche réussie, choix non automatique. */
+  heroicChoice?:"impact"|"tactique"|null
+}
+export type M03UnifiedResult=CombatM03Result & {
+  /** Coefficient offensif divin appliqué après l'impact M03, avant armure. */
+  intensityMultiplier:number
+  /** Absorption additionnelle post-protection ; ne change pas penetrated. */
+  specialAbsorption:number
+  /** Le bénéfice tactique reste une proposition à valider/appliquer côté MJ. */
+  heroicBenefit:"impact"|"tactique"|null
+}
+
+/** Règle divine offensive seulement. Aucun bonus divin universel automatique. */
+export function divineOffensiveMultiplierM03(
+  level:number,tier:"mineure"|"courante"|"majeure",
+):number{
+  const l=levels(level)
+  if(!["mineure","courante","majeure"].includes(tier))throw new RangeError("Intensité inconnue")
+  if(tier==="mineure"||l<=20)return 1
+  const current=[1.25,1.30,1.35,1.40,1.50] as const
+  const major=[1.50,1.60,1.70,1.80,2.00] as const
+  return tier==="courante"?current[l-21]:major[l-21]
+}
+
+/**
+ * Un moteur M03, une seule résolution 5d6, aucun second jet.
+ * Appliquer ensuite confirmation MJ, ressources et sauvegarde dans le Studio,
+ * jamais dans cette fonction pure.
+ */
+export function resolveUnifiedCombatM03(a:M03UnifiedInput):M03UnifiedResult{
+  // La validation est réalisée même si l'action échoue, pour rendre les
+  // incohérences d'adaptateur reproductibles en recette.
+  const intensity=a.intensity??null
+  if(intensity){
+    if(intensity.approved!==true||typeof intensity.definitionId!=="string"||
+      !intensity.definitionId.trim())throw new RangeError("Intensité sans autorisation de définition")
+    safe(intensity.version,1,Number.MAX_SAFE_INTEGER,"Version d'intensité")
+    if(!["mineure","courante","majeure"].includes(intensity.tier))
+      throw new RangeError("Intensité inconnue")
+  }
+  if(a.heroicChoice!=null&&!["impact","tactique"].includes(a.heroicChoice))
+    throw new RangeError("Choix héroïque inconnu")
+  const base=resolveCombatM03(a)
+  // L'échec, l'impossibilité et le mental n'occasionnent aucun PV.
+  if(!base.success||a.mode==="mental")return {
+    ...base,intensityMultiplier:1,specialAbsorption:0,heroicBenefit:null,
+  }
+  const k=intensity?divineOffensiveMultiplierM03(a.level,intensity.tier):1
+  // Le moteur M03 a déjà compté l'affinité dans grossDamage : on la
+  // retranche avant le multiplicateur puis on la réintègre UNE fois après.
+  const affinity=a.mode==="magie"?(a.affinityBonus??0):0
+  const impactBeforeMultiplier=base.grossDamage-affinity
+  let grossDamage=Math.floor(impactBeforeMultiplier*k)+affinity
+  const heroic=base.natural>=27?(a.heroicChoice??null):null
+  if(heroic==="impact"){
+    // Maximum d'une seule source d'impact 2. Supplément APRÈS k :
+    // pas de multiplication/divinisation automatique du critique.
+    const alreadyBestImpact=effectSum(a.effects??[],"impact","attaque")
+    grossDamage+=Math.max(0,2-alreadyBestImpact)
+  }
+  // La pénétration concerne seulement la protection (jamais l'absorption).
+  const armorAbsorbed=Math.min(grossDamage,Math.max(0,base.protection-base.penetrated))
+  const specialAbsorption=a.applySpecialAbsorption===true?
+    Math.min(grossDamage-armorAbsorbed,
+      effectSum(a.effects??[],"absorption","defense")):0
+  return {...base,grossDamage,absorbed:armorAbsorbed,
+    damage:Math.max(0,grossDamage-armorAbsorbed-specialAbsorption),
+    intensityMultiplier:k,specialAbsorption,heroicBenefit:heroic}
+}
