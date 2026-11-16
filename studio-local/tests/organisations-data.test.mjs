@@ -64,6 +64,10 @@ test('Serveur local : JSON public, six emblèmes intègres et pas de chemin arbi
   const server = await startStudioServer(0);
   t.after(() => new Promise(resolve => server.close(resolve)));
   const origin = `http://127.0.0.1:${server.address().port}`;
+  const studioPage = await fetch(origin);
+  assert.match(studioPage.headers.get('content-security-policy') ?? '', /connect-src[^;]+\/catalogue-organisations\.json/);
+  const playerPage = await fetch(`${origin}/joueur`);
+  assert.match(playerPage.headers.get('content-security-policy') ?? '', /connect-src 'none'/);
   const json = await fetch(`${origin}/catalogue-organisations.json`);
   assert.equal(json.status, 200);
   assert.deepEqual((await json.json()).entries.map(({ id }) => id), catalogue.entries.map(({ id }) => id));
