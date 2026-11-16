@@ -5,7 +5,15 @@ import { browserFixture } from './browser.mjs';
 test('Studio : six organisations canoniques, emblèmes et copie modifiable sans secret MJ', { timeout: 65000 }, async t => {
   const fixture = await browserFixture(t);
   const { page } = await fixture.open('organisations-archives', { viewport: { width: 1280, height: 850 } });
+  const scriptErrors = [];
+  page.on('pageerror', error => scriptErrors.push(`JS: ${error.message}`));
+  page.on('console', message => { if (message.type() === 'error') scriptErrors.push(`console: ${message.text()}`); });
   await page.goto(fixture.url);
+  try {
+    await page.locator('#save-status').getByText('Stockage local prêt').waitFor({ timeout: 5000 });
+  } catch {
+    throw new Error(`Échec d'initialisation Studio : ${(await page.locator('#save-status').textContent())?.trim()} ; ${scriptErrors.join(' | ').slice(0, 2000)}`);
+  }
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-origin').selectOption('archives');
