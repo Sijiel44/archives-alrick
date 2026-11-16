@@ -21,6 +21,7 @@
         <span>Les Chroniques <strong>d’Entre-Rives</strong></span>
       </a>
       <div class="masthead-actions">
+        <a class="bestiary-entry" href="/bestiaire">Bestiaire <span aria-hidden="true">✤</span></a>
         <button class="menu-toggle" type="button" popovertarget="parcours-menu">Parcours <span aria-hidden="true">⌄</span></button>
         <a class="studio-entry" href="/">Studio MJ <span aria-hidden="true">↗</span></a>
       </div>
@@ -31,6 +32,10 @@
         <button type="button" popovertarget="parcours-menu" popovertargetaction="hide" autofocus>Fermer</button>
       </div>
       <nav aria-label="Parcours de découverte" class="menu-grid">
+        <a href="/bestiaire">
+          <img src="/media/fee-aulnes.webp" alt="" width="900" height="600" loading="lazy" decoding="async">
+          <span><strong>Bestiaire illustré</strong><small>Toutes les fiches publiques</small></span>
+        </a>
         <a href="#univers">
           <img src="/media/renarde-de-brume.webp" alt="" width="900" height="600" loading="lazy" decoding="async">
           <span><strong>Univers</strong><small>Découvrir les rives</small></span>
@@ -58,6 +63,7 @@
           <p class="cover-intro">Traversez le fleuve, rassemblez votre table et racontez la suite ensemble.</p>
           <div class="actions">
             <a class="button primary" href="/#reprendre">Reprendre ma partie <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="/bestiaire">Voir le bestiaire illustré <span aria-hidden="true">✤</span></a>
             <a class="button secondary" href="#univers">Explorer les rives <span aria-hidden="true">↓</span></a>
             <a class="button secondary" href="/espace-joueur.html">Espace joueur <span aria-hidden="true">↗</span></a>
           </div>
@@ -74,7 +80,7 @@
         <p class="eyebrow"><span>01</span> · L’univers</p>
         <h2 id="titre-univers">Une nuit au gué</h2>
         <p>À la tombée du jour, les lanternes du pont se reflètent dans le courant. Une silhouette attend au passage. Plus loin, dans la brume, une lumière file d’une rive à l’autre.</p>
-        <a class="text-link" href="/#bibliotheque">Ouvrir le bestiaire de démonstration <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="/bestiaire">Consulter toutes les fiches du bestiaire <span aria-hidden="true">↗</span></a>
       </div>
       <figure class="discovery-figure">
         <img src="/media/renarde-de-brume.webp" width="900" height="600" loading="lazy" decoding="async"
@@ -105,6 +111,33 @@
             <p>Les Archives distinguent les passages établis des Failles imprévisibles. Ce que les habitants savent d’une traversée dépend du lieu, de leur expérience et de ce qu’ils ont entendu.</p>
             <a class="text-link" href="#joueurs">Préparer un personnage pour ces rives</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="bestiaire" class="bestiary-showcase" aria-labelledby="titre-bestiaire">
+      <div class="shell">
+        <div class="bestiary-showcase-heading">
+          <div>
+            <p class="eyebrow">Les habitants des rives</p>
+            <h2 id="titre-bestiaire">Ouvrez le grand livre des créatures</h2>
+            <p>Des animaux des moulins aux créatures féeriques : descriptions, habitats, illustrations et idées de quêtes. Les fiches sont publiques, même si aucune partie n’a encore croisé ces êtres.</p>
+          </div>
+          <a class="button primary" href="/bestiaire">Explorer le Bestiaire complet <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="bestiary-showcase-grid">
+          <a href="/creatures/ESP-ER-001-loutre-anneaux-cuivre">
+            <img src="/media/loutre-anneaux-cuivre.webp" alt="Loutre au pelage brun et aux anneaux de cuivre près d'un moulin" width="900" height="600" loading="lazy" decoding="async">
+            <span><small>ESPÈCE · RIVIÈRES</small><strong>Loutre aux anneaux de cuivre</strong><em>Découvrir sa fiche ↗</em></span>
+          </a>
+          <a href="/creatures/ESP-ER-011-sanglier-de-silex">
+            <img src="/media/sanglier-de-silex.webp" alt="Grand sanglier gris aux défenses claires sur un sentier de sous-bois" width="900" height="600" loading="lazy" decoding="async">
+            <span><small>ESPÈCE · LISIÈRES</small><strong>Sanglier de silex</strong><em>Découvrir sa fiche ↗</em></span>
+          </a>
+          <a href="/creatures/ESP-ER-021-fee-aulnes">
+            <img src="/media/fee-aulnes.webp" alt="Fée des aulnes, petite créature ailée entre des branches" width="900" height="600" loading="lazy" decoding="async">
+            <span><small>ESPÈCE · FÉERIE</small><strong>Fée des aulnes</strong><em>Découvrir sa fiche ↗</em></span>
+          </a>
         </div>
       </div>
     </section>
