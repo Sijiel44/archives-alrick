@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Maëline, guérisseuse au fil de lin portant un cahier blanc" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#214438"/><circle cx="200" cy="183" r="142" fill="none" stroke="#d4bd83" stroke-width="3" opacity=".6"/><path d="M48 448Q71 316 177 306h54q103 16 118 142Z" fill="#c9d2b6" stroke="#e7dca9" stroke-width="5"/>
+<path d="M122 252Q105 85 202 81q95 2 75 176l-37 66h-76Z" fill="#3d2e2b"/><ellipse cx="198" cy="218" rx="66" ry="87" fill="#dca78c"/>
+<path d="M130 190q-11-97 73-103 75 9 68 107l-31-49-44-16-38 29Z" fill="#4f3b2d"/><circle cx="270" cy="129" r="16" fill="#d6bf86"/><path d="M164 218h22m32 0h21" stroke="#554637" stroke-width="5" stroke-linecap="round"/><path d="M183 260q18 9 36 0" stroke="#915c50" stroke-width="4" fill="none"/>
+<rect x="61" y="324" width="91" height="109" rx="5" transform="rotate(-11 106 378)" fill="#f4e9c9" stroke="#b9975b" stroke-width="5"/><path d="M87 352h50m-46 18h43m-41 18h36" stroke="#b6a37b" stroke-width="4"/>
+<path d="M263 383q22-47 40-55m-24 35 35 19m-31-31 23-33" stroke="#89ae6e" stroke-width="6" stroke-linecap="round"/><path d="M171 320 200 355l30-35" stroke="#a88751" stroke-width="4" fill="none"/>
+<text x="200" y="461" text-anchor="middle" fill="#f2e2b8" font-family="serif" font-size="21" letter-spacing="3">MAËLINE</text>
+</svg>

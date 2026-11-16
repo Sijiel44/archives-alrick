@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Séran, charpentier brun en cape de veille et marteau" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#213747"/><circle cx="200" cy="182" r="142" fill="none" stroke="#af945c" stroke-width="3" opacity=".7"/><path d="M54 447Q70 321 164 305h73q93 20 110 142Z" fill="#536b73" stroke="#b4babc" stroke-width="4"/>
+<path d="M110 388Q85 192 125 140q24-58 79-61 69 7 86 86l-19 218" fill="#293e4c" stroke="#809ba2" stroke-width="5"/>
+<ellipse cx="202" cy="220" rx="67" ry="85" fill="#b78b72"/><path d="M130 193q-3-96 73-101 75 5 73 101l-24-43-63-12-34 31Z" fill="#30261e"/><path d="M152 274q49 66 97-4l-7 46-40 31-40-31Z" fill="#4b3023"/>
+<path d="M161 217h26m29 0h24" stroke="#372f29" stroke-width="5" stroke-linecap="round"/><path d="M178 257q23 12 48 0" stroke="#733e33" stroke-width="4" fill="none"/>
+<path d="M310 134v245" stroke="#a16c41" stroke-width="14" stroke-linecap="round"/><path d="M268 129h86v34h-86z" fill="#8d9d9e" stroke="#cfb887" stroke-width="4"/><path d="M104 354l56 26" stroke="#d3a366" stroke-width="5"/>
+<text x="200" y="461" text-anchor="middle" fill="#e9d6a5" font-family="serif" font-size="21" letter-spacing="3">SÉRAN</text>
+</svg>

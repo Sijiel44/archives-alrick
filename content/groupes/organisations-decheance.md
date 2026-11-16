@@ -49,3 +49,5 @@ Une organisation n'est pas une rencontre de combat ambulante. Sa tension peut se
 Ce sont des **degrés de récit**, pas des niveaux 5d6 ni des bonus automatiques. Les scènes peuvent être sociales, juridiques, logistiques, exploratoires ou martiales selon les choix de la table. Une faction affaiblie conserve parfois une mission vitale ; la remplacer demande un plan.
 
 [[index|Groupes et alliances]] · [[monde/decheance-canon|La Déchéance]]
+
+[[personnages/personnages-dechus|Rencontrer les personnages déchus — niveaux de référence 2 à 20]]

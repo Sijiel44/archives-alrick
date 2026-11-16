@@ -1195,6 +1195,9 @@ function previewResource(entry, remember = true) {
   if (entry.kind === 'faction' && entry.origin === 'archives') {
     add('Créer une faction de campagne', () => prefillFaction(entry), !campaign);
   }
+  if (entry.kind === 'npc' && entry.origin === 'archives' && entry.publicTemplate) {
+    add('Créer un PNJ de campagne', () => prefillNpc(entry), !campaign);
+  }
   if (markerCopyProvenance(entry)) {
     add(entry.origin === 'archives' ? 'Créer une variante' : 'Copier comme repère',
       () => editMarker(undefined, view === 'play' ? activeScene()?.id : null, entry), !campaign);
@@ -1332,6 +1335,20 @@ function prefillFaction(entry) {
     if (field) field.value = value.slice(0, 2000);
   }
   // A link back to the canonical source is preserved in the local copy.
+  draft.creationLinks = [entry.id];
+  renderCreationLinks();
+}
+
+function prefillNpc(entry) {
+  if (!campaign || busy || entry.kind !== 'npc' || !entry.publicTemplate) return;
+  openCreation('npc');
+  const form = $('creation-form');
+  form.elements.name.value = entry.name.slice(0, 100);
+  form.elements.description.value = entry.description.slice(0, 1500);
+  for (const [key, value] of Object.entries(entry.publicTemplate)) {
+    const field = form.elements[`detail-${key}`];
+    if (field) field.value = value.slice(0, 2000);
+  }
   draft.creationLinks = [entry.id];
   renderCreationLinks();
 }

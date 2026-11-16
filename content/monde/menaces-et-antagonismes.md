@@ -45,6 +45,8 @@ La Déchéance est un **mécanisme surnaturel de contre-ascension** qui exige, �
 
 Les [[groupes/organisations-decheance|six organisations et contre-pouvoirs autour de la Déchéance]] montrent aussi des conflits d'institutions : une maison peut soigner sans exiger la soumission, une caisse financer le secours sans posséder ses débiteurs, et une assemblée protéger les personnes qui souhaitent partir. Elles appartiennent au monde partagé ; leurs implantations et histoires de campagne ne sont pas préétablies.
 
+Les [[personnages/personnages-dechus|dix portraits de Déchus et de pactisés]] proposent des adversaires de niveaux indicatifs 2 à 20, avec leurs choix passés, leurs dépendances, leurs lieurs et leurs possibilités de repli. Ces niveaux ne sont pas des profils 5d6 validés.
+
 ## Ce qui doit encore être créé
 
 Les archives possèdent les règles de cohérence, des tensions entre courants divins et des récits de dangers anciens. Le premier **répertoire de Déchus** est validé ; une démonologie plus large, d'autres lignées d'antagonistes et un **bestiaire jouable** complet restent à développer. L'existence d'un antagoniste de la galerie validée ne signifie pas qu'un personnage de la campagne fondatrice l'a rencontré ; les scénarios restent des propositions non jouées.

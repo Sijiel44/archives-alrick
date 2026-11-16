@@ -5,6 +5,7 @@ import { stripTypeScriptTypes } from "node:module";
 import { pathToFileURL } from "node:url";
 import catalogue from "./catalogue-archives.json" with { type: "json" };
 import organisations from "./catalogue-organisations.json" with { type: "json" };
+import antagonistes from "./catalogue-antagonistes.json" with { type: "json" };
 
 export const studioAssets = new Map([
   ["/", ["index.html", "text/html"]],
@@ -62,6 +63,7 @@ export const studioAssets = new Map([
   ["/creations.mjs", ["creations.mjs", "text/javascript"]],
   ["/catalogue-archives.json", ["catalogue-archives.json", "application/json"]],
   ["/catalogue-organisations.json", ["catalogue-organisations.json", "application/json"]],
+  ["/catalogue-antagonistes.json", ["catalogue-antagonistes.json", "application/json"]],
   ["/store.mjs", ["store.mjs", "text/javascript"]],
   ["/projection.mjs", ["projection.mjs", "text/javascript"]],
   ["/protocole.mjs", ["protocole.mjs", "text/javascript"]],
@@ -84,6 +86,9 @@ for (const entry of catalogue.entries) {
 }
 for (const entry of organisations.entries) {
   studioAssets.set(`/images/organisations/${entry.image}`, [`../quartz/static/images/organisations/${entry.image}`, "image/svg+xml"]);
+}
+for (const entry of antagonistes.entries) {
+  studioAssets.set(`/images/personnages-dechus/${entry.image}`, [`../quartz/static/images/personnages-dechus/${entry.image}`, "image/svg+xml"]);
 }
 
 export async function readStudioAsset([filename, , version]) {
@@ -108,7 +113,7 @@ export function startStudioServer(port = 4380) {
       "default-src 'none'",
       ...(player ? ["sandbox allow-scripts", `script-src http://127.0.0.1:${localPort}/joueur.js http://127.0.0.1:${localPort}/video-player.js`] :
         [discovery ? `script-src http://127.0.0.1:${localPort}/accueil.mjs` : "script-src 'self'"]),
-      discovery || player ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json${personal ? '' : ` http://127.0.0.1:${localPort}/catalogue-organisations.json http://127.0.0.1:${localPort}/catalogue-sons.json http://127.0.0.1:${localPort}/catalogue-videos.json`}`,
+      discovery || player ? "connect-src 'none'" : `connect-src http://127.0.0.1:${localPort}/catalogue-archives.json${personal ? '' : ` http://127.0.0.1:${localPort}/catalogue-organisations.json http://127.0.0.1:${localPort}/catalogue-antagonistes.json http://127.0.0.1:${localPort}/catalogue-sons.json http://127.0.0.1:${localPort}/catalogue-videos.json`}`,
       discovery || personal ? "style-src 'self'" : "style-src 'self' 'unsafe-inline'",
       player ? "img-src data:" : discovery ? "img-src 'self'" : personal ? "img-src 'self' data: blob: https:" : "img-src 'self' data: https:",
       discovery || personal ? "media-src 'none'" : player ? "media-src https:" : "media-src https: blob:",

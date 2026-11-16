@@ -12,6 +12,10 @@ usage_en_jeu: ["reference", "rencontre"]
 
 Les habitants du monde possèdent des métiers, des convictions et leurs propres projets. Un PNJ n'est pas un simple admirateur du héros et n'a pas à connaître toutes les décisions prises dans l'Odyssée d'Orin.
 
+## Personnages antagonistes de la Déchéance
+
+[[personnages-dechus|Dix portraits canoniques, niveaux de référence 2 à 20]] — pactes, parcours, rivalités, lieux d'activité et alternatives à la confrontation.
+
 ## Des figures de la vie quotidienne
 
 - [[PER-CB31-SIVRA-BRASSEFEUILLE|Sivra Brassefeuille]] — une brasseuse et ses traditions à Entre-Rives.

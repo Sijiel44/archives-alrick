@@ -17,6 +17,9 @@ test('Studio : six organisations canoniques, emblèmes et copie modifiable sans 
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-origin').selectOption('archives');
+  // The factions shelf also contains the Déchéance NPC portraits. Restrict this
+  // historical regression test to organisations rather than the whole shelf.
+  await page.locator('#catalogue-group').selectOption('Institutions et contre-pouvoirs');
   await page.locator('#catalogue-count').getByText('6 fiches', { exact: true }).waitFor();
   const cards = page.locator('#catalogue-list article');
   assert.equal(await cards.count(), 6);

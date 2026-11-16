@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kelmor, homme de théâtre au demi-masque pourpre et aux rubans de scène" viewBox="0 0 400 480">
+<rect width="400" height="480" rx="28" fill="#40263e"/><circle cx="200" cy="183" r="142" fill="none" stroke="#d4a55b" stroke-width="3" opacity=".6"/><path d="M47 446Q78 317 173 307h58q90 13 120 139Z" fill="#6e3059" stroke="#e9a87b" stroke-width="5"/>
+<path d="M110 159q10-82 92-85 82 8 93 87l-25 34h-141Z" fill="#2b1832"/><ellipse cx="198" cy="221" rx="65" ry="89" fill="#c68e79"/>
+<path d="M131 182Q127 94 200 98q73 4 72 88l-32-32-65-11Z" fill="#3a1d38"/><path d="M137 195Q164 170 202 183v98q-39 19-63-20Z" fill="#e9d5bf" stroke="#c69a66" stroke-width="4"/>
+<path d="M156 217q19-10 34 0m27 0h22" stroke="#41243c" stroke-width="5" fill="none"/><path d="M182 267q18 8 36-2" stroke="#7c3c48" stroke-width="4" fill="none"/>
+<path d="M115 314q-45-7-63-35m59 39-45 15m221-19 52-48m-46 53 48 26" stroke="#d2a260" stroke-width="8" stroke-linecap="round"/><circle cx="200" cy="366" r="18" fill="#dfb872"/>
+<text x="200" y="461" text-anchor="middle" fill="#f6dfbd" font-family="serif" font-size="21" letter-spacing="3">KELMOR</text>
+</svg>

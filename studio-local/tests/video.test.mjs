@@ -227,7 +227,7 @@ test('Un remplacement annulé ou une vidéo indisponible conserve la présentati
   await prepareVideo(page, { title: true, text: false });
   await page.locator('#open-player-window').click();
   await nativePlaying(player.locator('#player-sheet .video-background'));
-  await player.frameLocator('#player-sheet iframe').getByRole('heading', { name: 'Aube du gué', exact: true }).waitFor();
+  await player.frameLocator('#player-sheet iframe:not([hidden])').getByRole('heading', { name: 'Aube du gué', exact: true }).waitFor();
 });
 
 test('Le refus de lecture garde l’image de remplacement et permet une reprise explicite', { timeout: 55000 }, async t => {

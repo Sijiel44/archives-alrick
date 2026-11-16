@@ -32,3 +32,5 @@
 4. Transmettre les pistes d'interopérabilité et les demandes de PNJ/portrait aux référents concernés, sans envoi automatique.
 
 **À revoir par :** STUDIO, QA, LORE, INDEX, MATH, PNJ, BEST, AVE, QTE. **À valider par DG/créateur :** preuve CI/Pages et futures capacités ou illustrations de personnages ; adoption canonique des six références déjà accordée.
+
+**Clôture constatée :** PR #127 fusionnée sous SHA `6db27d2ab80fa61df259848c3027b3f5b18c1f77` ; CI #43796762278 réussie après correctif CSP ; les URL de la fiche, de son SVG et du catalogue Studio répondent HTTP 200 sur Pages. La revue des profils mécaniques reste distincte.
