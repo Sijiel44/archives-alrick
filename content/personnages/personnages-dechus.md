@@ -22,42 +22,42 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 
 | Personnage | Niveau de référence¹ | État narratif | Branche / fonction | Faille à exploiter |
 | --- | ---: | --- | --- | --- |
-| [[PER-DECH-01|Ysilde des Traversées]] | **2** | Tentation | Passeuse liée à une troupe d'Esmor | Choix de quitter le ruban |
-| [[PER-DECH-02|Séran du Gué]] | **3** | Tentation | Veilleur et protecteur pactisé | Passage alternatif et listes rendues |
-| [[PER-DECH-03|Maëline des Cahiers Blancs]] | **5** | Fêlure | Soignante liée à la branche d'Halvéra | Relève des soins, registre clarifié |
-| [[PER-DECH-04|James Veyrel]] | **7** | Fêlure | Greffier influencé par Varnok | Copie des preuves, audience indépendante |
-| [[PER-DECH-05|Kelmor des Masques]] | **8** | Rupture | Lieur de la branche d'Esmor | Rituel de scène, témoignage authentique |
-| [[PER-DECH-06|Dorsel, courtier]] | **10** | Rupture | Lieur lié à Caldria | Comptes vérifiables, offre de secours concurrente |
-| [[PER-DECH-07|Rûna l'Anneleuse]] | **12** | Rupture | Lieuse liée à Mordhéan | Plans des serrures, témoins libérés |
-| [[PER-DECH-08|Lysane des Reçus d'Hiver]] | **15** | Déchéance | Intendante liée à Nérékhal | Patients relogés, branches déliées |
-| [[PER-DECH-09|Irveth la Copiste de Silex]] | **17** | Déchéance | Lieuse liée à Seyrond | Archives dupliquées et noms restitués |
-| [[PER-DECH-10|Terval, la Dernière Table]] | **20** | Abîme | Lieutenant de l'orbite de Caldria | Monopole brisé sans famine |
-| [[PER-DECH-11|Olyne des Trois Lanternes]] | **4** | Fêlure | Veilleuse tentée par Orvann | Veillée libre et souvenirs préservés |
-| [[PER-DECH-12|Faël le Dénoueur]] | **6** | Tentation | Serrurier lié à l'atelier de Rûna | Clefs ordinaires et trajets restitués |
-| [[PER-DECH-13|Rhéomar des Intervalles]] | **9** | Rupture | Lieur de la branche d'Isméria | Horaires vérifiés, contrat du disciple défait |
-| [[PER-DECH-14|Varune du Dernier Mot]] | **11** | Rupture | Lieuse de Vézraël aux embarcadères | Témoins et copies des serments |
-| [[PER-DECH-15|Kareth la Cloche de Verre]] | **14** | Déchéance | Lieuse de Varnok à deux branches | Audience libre et branches distinctes |
-| [[PER-DECH-16|Bastiane des Noces Muettes]] | **18** | Déchéance | Lieuse de Vézraël à deux branches | Consentement et archives restituées |
-| [[PER-DECH-17|Nielle des Grains Dormants]] | **2** | Tentation | Magasinière proche du réseau Terval | Réserve libre et registre rétabli |
-| [[PER-DECH-18|Néris des Miroirs Éteints]] | **8** | Fêlure | Portraitiste influencée par Esmor | Droits des modèles et originaux rendus |
-| [[PER-DECH-19|Idrela des Herbes de Sel]] | **13** | Rupture | Lieuse de la branche d'Halvéra | Soins libres et Chute liée dénouée |
-| [[PER-DECH-20|Hévar des Archives Brûlées]] | **19** | Déchéance | Lieur d'Orvann à deux branches | Copies préservées et témoins protégés |
-| [[PER-DECH-21|Orianne Dervaux]] | **17** | Non Déchue | Associée principale de la [[groupes/ORG-DECH-07|compagnie]] | Arbitrage des contrats et droit de retrait |
-| [[PER-DECH-22|Maren Kess]] | **14** | Rupture | Coassocié, Lieur de Caldria | Garanties bornées, Chute liée libérée |
-| [[PER-DECH-23|Siva Norel]] | **6** | Fêlure | Responsable des dépôts | Audit contradictoire et renoncement au registre |
-| [[PER-DECH-24|Perrin Havas]] | **9** | Non Déchu | Chef d'escorte | Neutralité des escortes, protection des employés |
-| [[PER-DECH-25|Mérine Solard]] | **4** | Tentation | Vérificatrice de cargaisons | Copies fiables plutôt que cachet rituel |
-| [[PER-DECH-26|Gabin Rosset]] | **2** | Non Déchu | Commis aux expéditions | Recevabilité des témoignages et protection |
-| [[PER-DECH-27|Édèle Cessac]] | **12** | Non Déchue | Coassociée de la [[groupes/ORG-DECH-08|Maison Varin et Cessac]] | Inspection responsable et réparation d'un ancien accident |
-| [[PER-DECH-28|Jorien Varin]] | **8** | Tentation | Marchand des bacs, premier pacte de cordage | Renoncement au Nœud de Relevé, sécurité sans monopole |
-| [[PER-DECH-29|Nima Sarrel]] | **3** | Non Déchue | Porte-parole des équipes de quai | Grève juste et sauvegarde des traversées de secours |
-| [[PER-DECH-30|Véridan Bellame]] | **16** | Non Déchu | Fondateur du [[groupes/ORG-DECH-09|Comptoir Bellame et Juvan]] | Libération des copies retenues, droit aux preuves |
-| [[PER-DECH-31|Orla Juvan]] | **10** | Fêlure | Associée et vérificatrice au Filigrane de Reprise | Arrêt du pacte, restitution et débat contradictoire |
-| [[PER-DECH-32|Ilian Kerme]] | **5** | Non Déchu | Coursier et témoin d'une remise litigieuse | Témoignage fiable sans surveillance permanente |
-| [[PER-DECH-33|Aldiane Réval]] | **15** | Non Déchue | Direction de l'[[groupes/ORG-DECH-10|Office des Itinérants]] | Réformer l'admission, réparer les refus, accepter le recours |
-| [[PER-DECH-34|Teron Clarsac]] | **11** | Fêlure | Greffier des haltes et pactisé de la Ligne de veille | Renoncer à juger une personne sur une rature |
-| [[PER-DECH-35|Mirel Coten]] | **6** | Tentation | Guide de route et premier rite sur une balise | Rompre le pacte, garder confidentiels les itinéraires |
-| [[PER-DECH-36|Ossian Démer]] | **2** | Non Déchu | Cuisinier et témoin des refus d'accueil | Servir sans exiger de preuve et tenir des comptes loyaux |
+| [Ysilde des Traversées](./PER-DECH-01.md) | **2** | Tentation | Passeuse liée à une troupe d'Esmor | Choix de quitter le ruban |
+| [Séran du Gué](./PER-DECH-02.md) | **3** | Tentation | Veilleur et protecteur pactisé | Passage alternatif et listes rendues |
+| [Maëline des Cahiers Blancs](./PER-DECH-03.md) | **5** | Fêlure | Soignante liée à la branche d'Halvéra | Relève des soins, registre clarifié |
+| [James Veyrel](./PER-DECH-04.md) | **7** | Fêlure | Greffier influencé par Varnok | Copie des preuves, audience indépendante |
+| [Kelmor des Masques](./PER-DECH-05.md) | **8** | Rupture | Lieur de la branche d'Esmor | Rituel de scène, témoignage authentique |
+| [Dorsel, courtier](./PER-DECH-06.md) | **10** | Rupture | Lieur lié à Caldria | Comptes vérifiables, offre de secours concurrente |
+| [Rûna l'Anneleuse](./PER-DECH-07.md) | **12** | Rupture | Lieuse liée à Mordhéan | Plans des serrures, témoins libérés |
+| [Lysane des Reçus d'Hiver](./PER-DECH-08.md) | **15** | Déchéance | Intendante liée à Nérékhal | Patients relogés, branches déliées |
+| [Irveth la Copiste de Silex](./PER-DECH-09.md) | **17** | Déchéance | Lieuse liée à Seyrond | Archives dupliquées et noms restitués |
+| [Terval, la Dernière Table](./PER-DECH-10.md) | **20** | Abîme | Lieutenant de l'orbite de Caldria | Monopole brisé sans famine |
+| [Olyne des Trois Lanternes](./PER-DECH-11.md) | **4** | Fêlure | Veilleuse tentée par Orvann | Veillée libre et souvenirs préservés |
+| [Faël le Dénoueur](./PER-DECH-12.md) | **6** | Tentation | Serrurier lié à l'atelier de Rûna | Clefs ordinaires et trajets restitués |
+| [Rhéomar des Intervalles](./PER-DECH-13.md) | **9** | Rupture | Lieur de la branche d'Isméria | Horaires vérifiés, contrat du disciple défait |
+| [Varune du Dernier Mot](./PER-DECH-14.md) | **11** | Rupture | Lieuse de Vézraël aux embarcadères | Témoins et copies des serments |
+| [Kareth la Cloche de Verre](./PER-DECH-15.md) | **14** | Déchéance | Lieuse de Varnok à deux branches | Audience libre et branches distinctes |
+| [Bastiane des Noces Muettes](./PER-DECH-16.md) | **18** | Déchéance | Lieuse de Vézraël à deux branches | Consentement et archives restituées |
+| [Nielle des Grains Dormants](./PER-DECH-17.md) | **2** | Tentation | Magasinière proche du réseau Terval | Réserve libre et registre rétabli |
+| [Néris des Miroirs Éteints](./PER-DECH-18.md) | **8** | Fêlure | Portraitiste influencée par Esmor | Droits des modèles et originaux rendus |
+| [Idrela des Herbes de Sel](./PER-DECH-19.md) | **13** | Rupture | Lieuse de la branche d'Halvéra | Soins libres et Chute liée dénouée |
+| [Hévar des Archives Brûlées](./PER-DECH-20.md) | **19** | Déchéance | Lieur d'Orvann à deux branches | Copies préservées et témoins protégés |
+| [Orianne Dervaux](./PER-DECH-21.md) | **17** | Non Déchue | Associée principale de la [compagnie](../groupes/ORG-DECH-07.md) | Arbitrage des contrats et droit de retrait |
+| [Maren Kess](./PER-DECH-22.md) | **14** | Rupture | Coassocié, Lieur de Caldria | Garanties bornées, Chute liée libérée |
+| [Siva Norel](./PER-DECH-23.md) | **6** | Fêlure | Responsable des dépôts | Audit contradictoire et renoncement au registre |
+| [Perrin Havas](./PER-DECH-24.md) | **9** | Non Déchu | Chef d'escorte | Neutralité des escortes, protection des employés |
+| [Mérine Solard](./PER-DECH-25.md) | **4** | Tentation | Vérificatrice de cargaisons | Copies fiables plutôt que cachet rituel |
+| [Gabin Rosset](./PER-DECH-26.md) | **2** | Non Déchu | Commis aux expéditions | Recevabilité des témoignages et protection |
+| [Édèle Cessac](./PER-DECH-27.md) | **12** | Non Déchue | Coassociée de la [Maison Varin et Cessac](../groupes/ORG-DECH-08.md) | Inspection responsable et réparation d'un ancien accident |
+| [Jorien Varin](./PER-DECH-28.md) | **8** | Tentation | Marchand des bacs, premier pacte de cordage | Renoncement au Nœud de Relevé, sécurité sans monopole |
+| [Nima Sarrel](./PER-DECH-29.md) | **3** | Non Déchue | Porte-parole des équipes de quai | Grève juste et sauvegarde des traversées de secours |
+| [Véridan Bellame](./PER-DECH-30.md) | **16** | Non Déchu | Fondateur du [Comptoir Bellame et Juvan](../groupes/ORG-DECH-09.md) | Libération des copies retenues, droit aux preuves |
+| [Orla Juvan](./PER-DECH-31.md) | **10** | Fêlure | Associée et vérificatrice au Filigrane de Reprise | Arrêt du pacte, restitution et débat contradictoire |
+| [Ilian Kerme](./PER-DECH-32.md) | **5** | Non Déchu | Coursier et témoin d'une remise litigieuse | Témoignage fiable sans surveillance permanente |
+| [Aldiane Réval](./PER-DECH-33.md) | **15** | Non Déchue | Direction de l'[Office des Itinérants](../groupes/ORG-DECH-10.md) | Réformer l'admission, réparer les refus, accepter le recours |
+| [Teron Clarsac](./PER-DECH-34.md) | **11** | Fêlure | Greffier des haltes et pactisé de la Ligne de veille | Renoncer à juger une personne sur une rature |
+| [Mirel Coten](./PER-DECH-35.md) | **6** | Tentation | Guide de route et premier rite sur une balise | Rompre le pacte, garder confidentiels les itinéraires |
+| [Ossian Démer](./PER-DECH-36.md) | **2** | Non Déchu | Cuisinier et témoin des refus d'accueil | Servir sans exiger de preuve et tenir des comptes loyaux |
 
 ¹ **Niveaux proposés pour calibrer les rencontres**, et non des profils calculés. Aucun bonus, PV, dégâts ou capacité 5d6 n'est accordé par cette page. **Le niveau 2–20 est distinct de l'Emprise et de la place dans la pyramide.** INDEX/MATH/PNJ devront établir les profils avant une opposition chiffrée.
 

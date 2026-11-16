@@ -53,8 +53,8 @@ Aujourd'hui, Aldiane demande un protocole d'admission vérifiable ; Teron voudra
 | Deux salles et réserves | Abriter et nourrir pendant une crise locale | Capacité finie, moyens matériels, accords communautaires révocables |
 | Registre des passages | Retrouver familles et créanciers consentants | Identités déclarées, erreurs de copie, droit de contestation et de sortie |
 | Guides et chariots prêtés | Accès aux routes secondaires | Personnel libre, mauvais temps, voies alternatives |
-| [[ORG-DECH-01|Maisons du Seuil Ouvert]] | Orientation vers des soins, en cas d'accord ponctuel | Aucun pouvoir de détention ou transfert médical automatique |
-| [[ORG-DECH-03|Caisse des Veilles]] et [[ORG-DECH-06|Portes Libres]] | Financement ou contre-audit envisageables | Une rencontre ou une convention future n'est pas une affiliation déjà établie |
+| [Maisons du Seuil Ouvert](./ORG-DECH-01.md) | Orientation vers des soins, en cas d'accord ponctuel | Aucun pouvoir de détention ou transfert médical automatique |
+| [Caisse des Veilles](./ORG-DECH-03.md) et [Portes Libres](./ORG-DECH-06.md) | Financement ou contre-audit envisageables | Une rencontre ou une convention future n'est pas une affiliation déjà établie |
 
 Les demandes de refuge de membres de la [[GRP-ANC-01|Première Ancre]] sont **une rencontre possible en aventure**, pas un accord historique ni la preuve que l'Office est une branche de la coalition. Aucun des agents de l'Office ne peut créer de Tribut en embauchant, hébergeant ou fichant quelqu'un.
 

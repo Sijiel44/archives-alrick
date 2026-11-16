@@ -436,3 +436,6 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Office des Itinérants ORG-DECH-10 et PER-DECH-33..36, quatre biographies et portraits WebP originaux, variantes SVG et insigne éditorial : publier les références publiques dans Quartz et Studio.
 # L'Office rend un réel service d'accueil et n'est ni un ministère universel ni automatiquement Déchu. Aldiane et Ossian non Déchus ; Teron Fêlure ; Mirel Tentation, aucun passage à la Rupture sans véritable Chute liée.
 # Les relations éventuelles avec la Première Ancre sont des accroches de campagne, non des affiliations historiques. Aucun chiffre M03 ni secret local de MJ dans Git. Exiger CI et vérification des ressources avant de confirmer Pages.
+
+# ANT-DECH-009.1 — La même autorisation publique couvre la réparation des 48 liens des tableaux du lot de Déchéance, le 16 novembre 2026.
+# Re-publier les index d'organisations et de personnages ainsi que les liens de l'Office ; seuls les liens de navigation changent, aucun statut, pacte, personnage, pouvoir ni secret MJ.
