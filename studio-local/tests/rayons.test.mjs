@@ -20,7 +20,7 @@ test('Accueil par rayons, villages, Bestiaire et plans reliés depuis les fiches
   await shelves.getByRole('link', { name: /Atlas/ }).waitFor();
   assert.deepEqual(await shelves.locator('strong').allTextContents(), [
     'Atlas', 'Bestiaire', 'Objets et équipements', 'Sorts et rituels', 'Capacités et actions',
-    'Aventures et quêtes', 'Imagerie', 'Fiches de campagne',
+    'Aventures et quêtes', 'Organisations et factions', 'Imagerie', 'Fiches de campagne',
   ]);
   assert.equal(await page.locator('#library-results').isVisible(), false);
   for (const width of [1280, 768, 390, 320]) {

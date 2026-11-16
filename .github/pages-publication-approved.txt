@@ -378,6 +378,13 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Les assertions de pause/retrait et d’absence de reprise automatique sont conservées ; aucun code produit ni contenu d’univers n’est modifié.
 # Relancer le workflow Pages demandé pour conserver une preuve complète de la version publiée, après CI du correctif.
 
+# ANT-DECH-004 — Organisations de la Déchéance et contre-pouvoirs — 15 novembre 2026.
+# Le créateur a expressément demandé de traiter le contenu développé directement pour le JDR comme canonique et de publier les fiches d'organisations sur le site.
+# Publication autorisée : six nouvelles pages ORG-DECH-01 à ORG-DECH-06, leur index et leurs six emblèmes SVG originaux ; liens depuis l'univers et le catalogue du Studio MJ.
+# Le Studio reçoit un rayon « Organisations et factions » alimenté par des références publiques versionnées et une copie de travail locale par action explicite.
+# Aucune scène jouée, note MJ, pacte secret, sauvegarde privée ni capacité chiffrée inventée ne devient publique ou canonique par ce lot.
+# Exiger contrôle de contenu, liens, construction, tests Studio, CI puis vérification des pages et images sur GitHub Pages après fusion.
+
 # Services multimédias et images de scène — continuation autorisée le 15 novembre 2026.
 # YouTube choisi, liens externes Spotify/Suno, audio local temporaire, images HTTPS et sauvegarde v20.
 # Dix médias de village sourcés ajoutés aux cent références existantes, sans fichier utilisateur ni contenu canonique.

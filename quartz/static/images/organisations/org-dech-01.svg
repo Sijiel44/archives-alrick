@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Emblème des Maisons du Seuil Ouvert</title>
+  <desc id="desc">Un écu de nuit portant une porte dorée ouverte autour d'une feuille verte.</desc>
+  <defs>
+    <radialGradient id="night"><stop stop-color="#263f57"/><stop offset="1" stop-color="#0e1928"/></radialGradient>
+    <linearGradient id="gold" x2="1" y2="1"><stop stop-color="#fff0bd"/><stop offset=".5" stop-color="#c68d48"/><stop offset="1" stop-color="#eed098"/></linearGradient>
+    <linearGradient id="leaf" x2="1" y2="1"><stop stop-color="#aee7b5"/><stop offset="1" stop-color="#327e70"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="54" fill="#090f19"/>
+  <circle cx="256" cy="245" r="209" fill="url(#night)" stroke="#85694e" stroke-width="4"/>
+  <path d="M256 65 407 126 393 328Q355 416 256 462 157 416 119 328L105 126Z" fill="#152638" stroke="url(#gold)" stroke-width="12"/>
+  <path d="M164 330V180Q164 145 201 145H298Q335 145 335 180V330" fill="none" stroke="url(#gold)" stroke-width="20" stroke-linecap="round"/>
+  <path d="M230 162 325 180V330L230 357Z" fill="#7b5138" stroke="#f2cd8b" stroke-width="7"/>
+  <circle cx="295" cy="265" r="7" fill="#fff0bd"/>
+  <path d="M193 334Q205 285 255 260Q283 284 264 317Q245 344 193 334Z" fill="url(#leaf)" stroke="#b7efcb" stroke-width="4"/>
+  <path d="M194 335Q228 312 259 272" stroke="#d5f9d7" stroke-width="5" fill="none"/>
+  <path d="M145 386Q256 432 367 386" stroke="#bb9867" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <circle cx="256" cy="100" r="8" fill="#ebcb8a"/>
+</svg>
