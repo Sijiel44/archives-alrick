@@ -39,3 +39,11 @@ La projection d’une image distante nécessite un hébergeur autorisant CORS. L
 41 PR ouvertes examinées. La PR 127 Organisations touche aussi `app.mjs`, `serve.mjs` et la CI ; ses changements fonctionnels portent sur d’autres zones. La nouvelle étape de CI est distincte pour conserver sa recette Organisations. Le marqueur de publication devra garder les entrées des deux lots lors d’un rapprochement. Les autres recouvrements concernent surtout les dépendances et la CI (35, 54, 64, 66, 73, 76). Aucun contenu de ces PR n’est fusionné par ce lot.
 
 Le créateur a autorisé la publication des lots terminés et vérifiés dans ce chat. La PR de ce lot conserve les résultats de CI, le déploiement Pages et le contrôle de l’URL publique. Les preuves locales ci-dessus ne valent pas homologation en séance.
+
+### Actualisation après la publication des Organisations
+
+La PR 127 a été fusionnée sur `main` pendant ce travail. Le commit de rapprochement `eafa90c` conserve ses fiches, son rayon, ses recettes et les deux entrées du marqueur Pages. Aucun conflit fonctionnel dans `app.mjs`, `serve.mjs` ou la CI. Après rapprochement : **`npm test` réussi et 182/182 tests Chrome**. Les deux exécutions CI de ce commit réussissent.
+
+Le premier contrôle PR `43796889648` est resté bloqué après les deux premiers parcours Pages et a été annulé lors de l’actualisation. Son journal ne permet pas d’établir la cause précise. La CI borne désormais les recettes navigateur à cinq minutes et le travail complet à quinze minutes. Le serveur de recette Pages ferme explicitement ses connexions à la fin du test pour ne pas retenir le nettoyage ni masquer une erreur.
+
+Une première passe Edge après rapprochement a révélé que la recette ouvrait la bibliothèque avant la confirmation de création de campagne. Elle attend maintenant l’arrivée dans **Préparer** avant de naviguer. Après cette correction du test : **29/29 contrôles Edge**, Organisations comprises, et **5/5 parcours Pages Chrome**. Les assertions de sauvegarde, décodage du portrait et confidentialité sont conservées ; ce correctif ne modifie pas le produit.

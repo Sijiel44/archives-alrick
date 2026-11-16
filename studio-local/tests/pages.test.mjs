@@ -24,7 +24,12 @@ async function servePages(t) {
     } catch { response.writeHead(404).end(); }
   });
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-  t.after(() => new Promise(resolve => server.close(resolve)));
+  t.after(() => new Promise(resolve => {
+    server.close(resolve);
+    // Le navigateur est fermé par un autre hook : une requête active ne doit
+    // pas retenir la fin du test ni masquer son éventuelle erreur.
+    server.closeAllConnections();
+  }));
   return `http://127.0.0.1:${server.address().port}${prefix}`;
 }
 
@@ -42,6 +47,7 @@ test('GitHub Pages expose les cent médias et suit une copie relue sans publier 
   await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
   await page.locator('#campaign-name').fill('Copie fictive Pages');
   await page.locator('#create-campaign-submit').click();
+  await page.locator('#nav-prepare[aria-current="page"]').waitFor();
   await page.locator('#nav-library').click(); await page.locator('#library-media').click();
   await page.locator('#media-catalogue-summary').getByText(/\d+ sons et \d+ vidéos/).waitFor();
   await page.locator('#media-kind').selectOption('audio');
