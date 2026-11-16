@@ -372,3 +372,8 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Corrections ciblées des trois alertes npm ; aucune donnée de campagne, sauvegarde, note MJ, média utilisateur ou nouvelle fiche canonique publiée.
 # Recettes locales et CI avant fusion ; workflow Pages et quatre parcours Studio publics avant l’annonce de publication.
 # La séance humaine réelle n’a pas été réalisée : le protocole est fourni, le lot Fiabilité reste partiellement qualifié.
+
+# Clôture des contrôles multimédias — 15 novembre 2026.
+# Recette du mouvement réduit : attendre la notification native entre deux changements d’émulation pour éviter leur regroupement par Chromium.
+# Les assertions de pause/retrait et d’absence de reprise automatique sont conservées ; aucun code produit ni contenu d’univers n’est modifié.
+# Relancer le workflow Pages demandé pour conserver une preuve complète de la version publiée, après CI du correctif.

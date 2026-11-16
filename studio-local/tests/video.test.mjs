@@ -178,7 +178,12 @@ test('Le mouvement réduit ne contacte aucun hébergeur vidéo avant une activat
   await player.getByRole('button', { name: 'Activer le mouvement', exact: true }).click();
   await nativePlaying(video);
   assert.ok(requests.length > 0);
+  await player.evaluate(() => {
+    window.videoMotionObserved = [];
+    matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', event => window.videoMotionObserved.push(event.matches));
+  });
   await player.emulateMedia({ reducedMotion: 'no-preference' });
+  await player.waitForFunction(() => window.videoMotionObserved.includes(false));
   await player.emulateMedia({ reducedMotion: 'reduce' });
   await player.waitForFunction(() => { const video = document.querySelector('.video-background'); return video.paused && !video.getAttribute('src'); });
   await player.getByRole('button', { name: 'Activer le mouvement', exact: true }).waitFor();
