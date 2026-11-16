@@ -17,9 +17,9 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-origin').selectOption('archives');
-  await page.locator('#catalogue-count').getByText(/^42 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^47 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.locator('#catalogue-group').selectOption('Personnages et lieurs');
-  await page.locator('#catalogue-count').getByText(/^32 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^36 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   const cards = page.locator('#catalogue-list article');
   assert.equal(await cards.count() > 6, true);
   const button = page.getByRole('button', { name: 'Voir la fiche de James Veyrel' });
@@ -96,7 +96,7 @@ test('Studio : compagnie marchande, membres non Déchus et copies isolées du jo
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-group').selectOption('Personnages et lieurs');
-  await page.locator('#catalogue-count').getByText(/^32 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^36 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.getByRole('button', { name: 'Voir la fiche de Maren Kess' }).click();
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-22\.md$/);
   await page.keyboard.press('Escape');
@@ -150,4 +150,43 @@ test('Studio : deux nouvelles compagnies, Première Ancre et branche locale ind�
   await page.locator('#creation-form button[type="submit"]').click();
   await page.locator('#creation-dialog').waitFor({ state: 'hidden' });
   assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_MJ_BRANCHE_ANCRE/);
+});
+
+test('Studio : Office des Itinérants, quatre profils et notes locales non projetées', { timeout: 65000 }, async t => {
+  const fixture = await browserFixture(t);
+  const { page } = await fixture.open('office-itinerants-arc', { viewport: { width: 1280, height: 850 } });
+  await page.goto(fixture.url);
+  await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
+  await page.locator('#nav-library').click();
+  await page.locator('#library-shelves a[href="#rayon/factions"]').click();
+  await page.locator('#catalogue-origin').selectOption('archives');
+  await page.locator('#catalogue-group').selectOption('Institutions et contre-pouvoirs');
+  await page.locator('#catalogue-count').getByText('7 fiches', { exact: true }).waitFor();
+  await page.getByRole('button', { name: 'Voir la fiche de Office des Itinérants' }).click();
+  const dialog = page.locator('#resource-dialog');
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/groupes\/ORG-DECH-10\.md$/);
+  assert.equal(await dialog.getByRole('button', { name: 'Créer une faction de campagne' }).isDisabled(), true);
+  await page.keyboard.press('Escape');
+  await page.locator('#catalogue-group').selectOption('Personnages et lieurs');
+  await page.locator('#catalogue-count').getByText(/^36 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-next').click();
+  for (const [name, code] of [['Aldiane Réval', '33'], ['Teron Clarsac', '34'], ['Mirel Coten', '35'], ['Ossian Démer', '36']]) {
+    await page.getByRole('button', { name: `Voir la fiche de ${name}` }).click();
+    assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), new RegExp(`PER-DECH-${code}\\.md$`));
+    await page.keyboard.press('Escape');
+  }
+  await page.locator('#nav-home').click();
+  await page.locator('#campaign-name').fill('Refuge de campagne - étude');
+  await page.locator('#create-campaign-submit').click();
+  await page.locator('#view-prepare').waitFor({ state: 'visible' });
+  await page.locator('#nav-library').click();
+  await page.locator('#library-shelves a[href="#rayon/factions"]').click();
+  await page.locator('#catalogue-group').selectOption('Institutions et contre-pouvoirs');
+  await page.getByRole('button', { name: 'Voir la fiche de Office des Itinérants' }).click();
+  await dialog.getByRole('button', { name: 'Créer une faction de campagne' }).click();
+  assert.equal(await page.locator('#creation-kind').inputValue(), 'faction');
+  await page.locator('#creation-form [name="notes"]').fill('CANARI_MJ_REFUGE');
+  await page.locator('#creation-form button[type="submit"]').click();
+  await page.locator('#creation-dialog').waitFor({ state: 'hidden' });
+  assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_MJ_REFUGE/);
 });

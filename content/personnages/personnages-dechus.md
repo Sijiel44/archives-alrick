@@ -1,6 +1,6 @@
 ---
 publish: true
-title: "Visages des conflits de Déchéance — trente-deux personnages, niveaux 2 à 20"
+title: "Visages des conflits de Déchéance — trente-six personnages, niveaux 2 à 20"
 categorie: "personnage"
 canon_statut: "lore_valide"
 etat_editorial: valide
@@ -10,7 +10,7 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: [lecteurs, joueurs, mj]
 usage_en_jeu: [reference, rencontre, scenario]
-description: "Trente-deux personnages liés aux conflits de Déchéance, répartis notamment dans trois maisons marchandes, avec des membres non Déchus."
+description: "Trente-six personnages liés aux conflits de Déchéance, dont des commerçants et des secouristes capables de devenir adversaires sans être Déchus."
 tags: [decheance, antagonistes, personnages, niveaux, pactes, chroniques]
 ---
 
@@ -18,7 +18,7 @@ tags: [decheance, antagonistes, personnages, niveaux, pactes, chroniques]
 
 Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont choisi un pacte peuvent être guérisseurs, artistes, greffiers, commerçants, archivistes ou artisans. Le bénéfice initial a souvent été **réel** ; le piège est de réclamer ensuite le droit de disposer de la vie d'autrui.
 
-**Trente-deux biographies appartiennent désormais au monde partagé.** Les vingt premières suivent des pactes et leurs conséquences ; douze autres éclairent les conflits de trois compagnies marchandes dont plusieurs membres ne sont pas corrompus. Leurs réussites et revers passés constituent le nouveau passé de ces personnes, sans attribuer de séance supplémentaire à l'Odyssée d'Orin ou à une campagne de joueurs. Leur situation est un **point de départ vivant** : chaque MJ peut déplacer un relais, nouer une alliance ou provoquer une défaite sans changer les autres tables.
+**Trente-six biographies appartiennent désormais au monde partagé.** Les vingt premières suivent des pactes et leurs conséquences ; douze autres éclairent les conflits de trois compagnies marchandes ; quatre autres montrent les dilemmes d'un office de refuge où tous ne sont pas pactisés. Leurs réussites et revers passés constituent le nouveau passé de ces personnes, sans attribuer de séance supplémentaire à l'Odyssée d'Orin ou à une campagne de joueurs. Leur situation est un **point de départ vivant** : chaque MJ peut déplacer un relais, nouer une alliance ou provoquer une défaite sans changer les autres tables.
 
 | Personnage | Niveau de référence¹ | État narratif | Branche / fonction | Faille à exploiter |
 | --- | ---: | --- | --- | --- |
@@ -54,6 +54,10 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 | [[PER-DECH-30|Véridan Bellame]] | **16** | Non Déchu | Fondateur du [[groupes/ORG-DECH-09|Comptoir Bellame et Juvan]] | Libération des copies retenues, droit aux preuves |
 | [[PER-DECH-31|Orla Juvan]] | **10** | Fêlure | Associée et vérificatrice au Filigrane de Reprise | Arrêt du pacte, restitution et débat contradictoire |
 | [[PER-DECH-32|Ilian Kerme]] | **5** | Non Déchu | Coursier et témoin d'une remise litigieuse | Témoignage fiable sans surveillance permanente |
+| [[PER-DECH-33|Aldiane Réval]] | **15** | Non Déchue | Direction de l'[[groupes/ORG-DECH-10|Office des Itinérants]] | Réformer l'admission, réparer les refus, accepter le recours |
+| [[PER-DECH-34|Teron Clarsac]] | **11** | Fêlure | Greffier des haltes et pactisé de la Ligne de veille | Renoncer à juger une personne sur une rature |
+| [[PER-DECH-35|Mirel Coten]] | **6** | Tentation | Guide de route et premier rite sur une balise | Rompre le pacte, garder confidentiels les itinéraires |
+| [[PER-DECH-36|Ossian Démer]] | **2** | Non Déchu | Cuisinier et témoin des refus d'accueil | Servir sans exiger de preuve et tenir des comptes loyaux |
 
 ¹ **Niveaux proposés pour calibrer les rencontres**, et non des profils calculés. Aucun bonus, PV, dégâts ou capacité 5d6 n'est accordé par cette page. **Le niveau 2–20 est distinct de l'Emprise et de la place dans la pyramide.** INDEX/MATH/PNJ devront établir les profils avant une opposition chiffrée.
 
@@ -76,6 +80,7 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 - **Les bacs sous tension :** Édèle exige des réparations après un accident qu'elle n'a pas su éviter ; Jorien consulte son pacte sur les cordages et veut l'exclusivité ; Nima défend les équipes mais doit préserver le passage des soins. Les PJ peuvent inspecter, remplacer, escorter ou négocier un calendrier accessible.
 - **Les papiers conservés :** Véridan retient une copie pour prévenir une émeute, Orla surestime son Filigrane de Reprise et Ilian conserve le témoignage d'une livraison contestée. L'enquête peut faire restituer des actes, délier Orla, provoquer la fermeture temporaire ou transformer le comptoir en atelier de preuves libres.
 - **La Première Ancre :** la [[groupes/GRP-ANC-01|coalition composite]] pourrait demander la copie d'un mandat ou des outils pour un seuil ; une commande n'établit pas l'appartenance d'une maison marchande. Les branches et les faits restent à vérifier séparément.
+- **Le lit refusé :** Aldiane a déjà ouvert des portes à des familles abandonnées, puis instauré un contrôle excessif. Teron veut une preuve écrite de tout, Mirel connaît des chemins mais refuse de vendre les itinéraires, et Ossian nourrit ceux qui ont été écartés. Les PJ peuvent négocier un secours, prouver une erreur, défendre le droit au départ ou établir un refuge concurrent.
 
 ## L'arc d'escalade sans scénario obligatoire
 
@@ -84,6 +89,6 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 3. **Rupture :** plusieurs réseaux s'affrontent. Une branche libérée affaiblit le maître mais peut laisser une institution vitale sans moyens.
 4. **Retombées :** protéger les familles et la preuve, puis laisser aux victimes le soin de décider d'éventuels pardons. Le retrait ou la trêve peuvent constituer des victoires.
 
-Les héros faibles peuvent empêcher une nouvelle Chute, restaurer des preuves ou assurer un passage ; ils n'ont pas besoin de combattre Terval pour compter. Les Déchus avancés souffrent de leurs dépendances réelles ; **une perte de branche n'enlève pas automatiquement des niveaux** et n'inflige aucun dommage sans contrat de règle validé. Les sept personnes **non Déchues** des trois compagnies ont leurs propres responsabilités et choix : elles ne sont pas un tribut implicite et peuvent devenir rivales sans passer par un pacte.
+Les héros faibles peuvent empêcher une nouvelle Chute, restaurer des preuves ou assurer un passage ; ils n'ont pas besoin de combattre Terval pour compter. Les Déchus avancés souffrent de leurs dépendances réelles ; **une perte de branche n'enlève pas automatiquement des niveaux** et n'inflige aucun dommage sans contrat de règle validé. Les neuf personnes **non Déchues** des compagnies et de l'Office ont leurs propres responsabilités et choix : elles ne sont pas un tribut implicite et peuvent devenir rivales sans passer par un pacte.
 
 [[index|Personnages]] · [[groupes/organisations-decheance|Organisations et contre-pouvoirs]] · [[monde/decheance-canon|Loi de la Déchéance]]

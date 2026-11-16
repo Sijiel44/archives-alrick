@@ -10,7 +10,7 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: ["lecteurs", "joueurs", "mj"]
 usage_en_jeu: ["reference", "rencontre", "scenario"]
-description: "Six institutions, trois maisons de négoce et la Première Ancre, avec leurs liens, activités réelles et limites."
+description: "Sept institutions, trois maisons de négoce et la Première Ancre, avec leurs liens, activités réelles et limites."
 tags: [decheance, organisations, groupes, factions, secours, justice, memoire]
 ---
 
@@ -18,7 +18,7 @@ tags: [decheance, organisations, groupes, factions, secours, justice, memoire]
 
 La **Déchéance** peut détourner des institutions réellement utiles : soins, sécurité, protection des savoirs ou entraide. Elle ne se confond pourtant jamais avec ces activités ordinaires. Une personne travaillant pour une institution n'est pas Déchue du seul fait de sa fonction, de sa profession ou de ses croyances.
 
-Voici **six institutions de service et trois compagnies marchandes** du monde partagé. Elles existent comme références d'univers ; **leurs aventures avec les groupes de joueurs restent à déterminer dans chaque campagne**. Chaque maison de négoce possède ses ressources, son passé économique et ses contradictions ; aucune victoire face aux joueurs n'est préécrite.
+Voici **sept institutions de service et trois compagnies marchandes** du monde partagé. Elles existent comme références d'univers ; **leurs aventures avec les groupes de joueurs restent à déterminer dans chaque campagne**. Chaque maison de négoce possède ses ressources, son passé économique et ses contradictions ; aucune victoire face aux joueurs n'est préécrite.
 
 | Organisation | Service qu'elle rend | Conflit qui peut la traverser |
 | --- | --- | --- |
@@ -31,8 +31,9 @@ Voici **six institutions de service et trois compagnies marchandes** du monde pa
 | [[ORG-DECH-07|Compagnie Dervaux et Kess]] | Transport, ferrures, toiles et denrées | Livraisons sûres ou exclusivité abusive |
 | [[ORG-DECH-08|Maison Varin et Cessac]] | Bacs, traversées et réparations de passage | Sécurité ou monopole des rives |
 | [[ORG-DECH-09|Comptoir Bellame et Juvan]] | Papier, encre, copies et correspondance | Conservation des preuves ou contrôle de la vérité |
+| [[ORG-DECH-10|Office des Itinérants]] | Relais, dortoirs et repas pour voyageurs sans attaches | Accueil ou sélection abusive des réfugiés sans papiers |
 
-La [[GRP-ANC-01|Première Ancre]] s'inscrit dans un autre registre : **coalition plurielle de Maisons et de lignées déplacées**, elle ne constitue pas une dixième institution de commerce ni une organisation entièrement Déchue. Le Régent sans Couronne commande une branche, non la totalité de la coalition.
+La [[GRP-ANC-01|Première Ancre]] s'inscrit dans un autre registre : **coalition plurielle de Maisons et de lignées déplacées**, elle ne constitue pas une maison de commerce ni une organisation entièrement Déchue. Le Régent sans Couronne commande une branche, non la totalité de la coalition.
 
 Ces institutions peuvent coopérer, rivaliser et se corriger mutuellement. Elles ne constituent **pas un empire uniforme des Déchus**. Dans une campagne, les lieux, responsables et pactes particuliers sont choisis puis enregistrés dans le journal de la table. Une victoire ou une trahison de campagne ne modifie pas automatiquement les autres campagnes.
 
@@ -55,4 +56,4 @@ Ce sont des **degrés de récit**, pas des niveaux 5d6 ni des bonus automatiques
 
 [[index|Groupes et alliances]] · [[monde/decheance-canon|La Déchéance]]
 
-[[personnages/personnages-dechus|Rencontrer trente-deux personnages, déchus ou non — niveaux indicatifs 2 à 20]]
+[[personnages/personnages-dechus|Rencontrer trente-six personnages, déchus ou non — niveaux indicatifs 2 à 20]]

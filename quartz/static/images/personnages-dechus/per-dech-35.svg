@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" role="img" aria-label="Portrait symbolique de Mirel Coten, guide des routes avec boussole">
+  <rect width="480" height="640" rx="22" fill="#283946"/>
+  <circle cx="241" cy="208" r="116" fill="#b9886e"/>
+  <path d="M129 193Q116 84 220 90Q342 57 363 187Q356 120 321 137Q277 88 247 130Q168 110 129 193Z" fill="#3c312d"/>
+  <path d="M89 640Q102 379 238 383Q385 390 405 640Z" fill="#405869"/>
+  <path d="M184 219h39m49 0h35" stroke="#302d2c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M214 299q31 13 60-3" fill="none" stroke="#795145" stroke-width="7" stroke-linecap="round"/>
+  <path d="M166 440l130 176" stroke="#a77756" stroke-width="17"/>
+  <circle cx="346" cy="511" r="40" fill="#d0ad70" stroke="#5f4a3b" stroke-width="6"/>
+  <path d="M346 477l11 37-11 29-11-29Z" fill="#516b78" stroke="#c9d7ce" stroke-width="3"/>
+</svg>

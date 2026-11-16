@@ -431,3 +431,8 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Première Ancre = coalition composite, Régent sans Couronne chef d'une branche seulement ; ni tous les vingt-trois groupes du Nord, ni toutes les anomalies, ni toute Déchéance ne lui sont imputables.
 # Les listes de nouvelles institutions non encore choisies restent propositions de mission, pas du canon ni des pages d'univers. Niveaux PNJ narratifs, sans profil 5d6 validé ; notes privées MJ hors du dépôt.
 # Préserver la copie locale homebrew, l'isolement joueur et les anciennes sauvegardes ; CI intégrale et contrôle public requis avant confirmation du déploiement.
+
+# ANT-DECH-009 — Autorisation de poursuite directe du créateur, 16 novembre 2026 : approfondir une organisation antagoniste supplémentaire du programme.
+# Office des Itinérants ORG-DECH-10 et PER-DECH-33..36, quatre biographies et portraits WebP originaux, variantes SVG et insigne éditorial : publier les références publiques dans Quartz et Studio.
+# L'Office rend un réel service d'accueil et n'est ni un ministère universel ni automatiquement Déchu. Aldiane et Ossian non Déchus ; Teron Fêlure ; Mirel Tentation, aucun passage à la Rupture sans véritable Chute liée.
+# Les relations éventuelles avec la Première Ancre sont des accroches de campagne, non des affiliations historiques. Aucun chiffre M03 ni secret local de MJ dans Git. Exiger CI et vérification des ressources avant de confirmer Pages.

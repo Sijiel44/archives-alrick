@@ -1,5 +1,19 @@
 # Illustrations du pilote
 
+## ANT-DECH-009 — Quatre visages de l'Office des Itinérants
+
+Quatre portraits originaux générés avec ImageGen intégré le 16 novembre 2026, à partir des fiches inédites `PER-DECH-33` à `PER-DECH-36`. Style : peinture d'artbook de fantasy réaliste, humains reconnaissables, textiles et objets de métier, palette ardoise et cuivre, sans texte ni effet magique inventé. Conversion WebP **800 × 1 066**, qualité 85 ; source image originale conservée hors dépôt de publication. Aucune banque d'images tierce ni licence externe. Les SVG homonymes sont des variantes vectorielles alternatives, et `org-dech-10.svg` est un insigne éditorial original, non une armoirie de souveraineté.
+
+| Personnage | Image principale | Composition |
+| --- | --- | --- |
+| Aldiane Réval | `per-dech-33.webp` | Directrice portant des clés et des notes de refuge devant les couchettes |
+| Teron Clarsac | `per-dech-34.webp` | Greffier aux doigts tachés d'encre examinant deux pages à la fenêtre |
+| Mirel Coten | `per-dech-35.webp` | Guide aux cheveux bouclés tenant une boussole dans la cour des arrivées |
+| Ossian Démer | `per-dech-36.webp` | Jeune cuisinier offrant une soupe et une miche dans la cuisine commune |
+
+Leur apparence ne prouve aucun fait joué, état de Déchéance non écrit ou statistique M03. Les quatre portraits sont présentables seulement par l'interface MJ qui choisit les médias projetés.
+
+
 ## BEST-ER-005 — Nacre, silex et voix des lisières
 
 Trois illustrations originales ImageGen du 16 novembre 2026, sans source externe, encodées en WebP (qualité 84, 1122 × 1402, aucun recadrage). Planches naturalistes fantastiques verticales, sans texte, filigrane ni événement joué. Leur présence sur une fiche **ne crée ni niveau M03, ni potion d'alchimie, ni témoignage historique**.

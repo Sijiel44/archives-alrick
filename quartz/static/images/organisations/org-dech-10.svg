@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Enseigne de l'Office des Itinérants : porte libre et chemin vers une lanterne">
+  <defs><linearGradient id="a" x2="1" y2="1"><stop stop-color="#203747"/><stop offset="1" stop-color="#11202d"/></linearGradient></defs>
+  <rect x="4" y="4" width="412" height="272" rx="24" fill="url(#a)" stroke="#b78050" stroke-width="7"/>
+  <path d="M108 239V86Q108 52 142 52H278Q312 52 312 86V239" fill="none" stroke="#d7b580" stroke-width="12" stroke-linecap="round"/>
+  <path d="M152 238V96H270V238" fill="#132a36" stroke="#8ca3a5" stroke-width="5"/>
+  <path d="M167 238Q194 193 254 164" fill="none" stroke="#dfb17b" stroke-width="10" stroke-linecap="round"/>
+  <path d="M254 164l-8-15m8 15l17-4" fill="none" stroke="#dfb17b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M210 86v29m-18-15h36" stroke="#f3d7a4" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="210" cy="99" r="30" fill="none" stroke="#c89a63" stroke-width="4"/>
+  <path d="M88 245H332" stroke="#b78050" stroke-width="8" stroke-linecap="round"/>
+</svg>

@@ -18,10 +18,11 @@ Un groupe est une communauté de choix, de responsabilités ou d'intérêts. **U
 
 ## Institutions et collectifs à distinguer
 
-- [[organisations-decheance|Six institutions et trois compagnies marchandes autour de la Déchéance]] : soins, justice, secours, cérémonies, mémoire, défense des libertés et négoce. Leurs membres ne sont pas automatiquement Déchus.
+- [[organisations-decheance|Sept institutions et trois compagnies marchandes autour de la Déchéance]] : soins, justice, secours, cérémonies, mémoire, défense des libertés, accueil des voyageurs et négoce. Leurs membres ne sont pas automatiquement Déchus.
 - [[ORG-DECH-07|Compagnie Dervaux et Kess]] : marchands, convoyeurs et comptables aux intérêts divergents ; contrats utiles, exclusivités contestées et employés libres.
 - [[ORG-DECH-08|Maison Varin et Cessac]] : deux bacs, réparations des traversées et conflit entre sécurité et monopole.
 - [[ORG-DECH-09|Comptoir Bellame et Juvan]] : papier, copie et courrier, entre protection des preuves et contrôle abusif de l'information.
+- [[ORG-DECH-10|Office des Itinérants]] : relais de refuge pour familles déplacées, entre protection sans papiers et admission discriminatoire.
 - [[GRP-ANC-01|La Première Ancre]] : coalition d'intérêts divergents autour des Ancrages et de la Neuvième Couronne ; une branche ne représente pas le tout.
 - [[institutions/index|Les Conseils et institutions du Royaume]] : mandats de droit public, non compagnies privées.
 - [[maison/index|La Maison divine]] : communauté et lieux de vie, **distincte du Palais personnel d'Orin** et de sa compagnie.
