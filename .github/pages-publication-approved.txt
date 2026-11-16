@@ -439,3 +439,9 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 
 # ANT-DECH-009.1 — La même autorisation publique couvre la réparation des 48 liens des tableaux du lot de Déchéance, le 16 novembre 2026.
 # Re-publier les index d'organisations et de personnages ainsi que les liens de l'Office ; seuls les liens de navigation changent, aucun statut, pacte, personnage, pouvoir ni secret MJ.
+
+# BEST-ER-006 — Publication autorisée par le créateur le 16 novembre 2026, après fusion PR #140 et CI #43884225698 réussie.
+# Dix espèces originales illustrées ESP-ER-013 à 022 et leurs dix WebP ; fiches univers canoniques à création, catalogue Studio de 22 espèces et 3 individus.
+# Fée des aulnes : personne consciente libre, aucun mandat divin individuel ; Vautre des marais : danger sans chiffres ; Cerf des sources profondes : aucun statut divin supposé.
+# Aucun profil 5d6, recette alchimique, scène jouée, secret MJ ou candidate B-003.1 adopté ; dragons DRG-01..03 restent PNJ.
+# Contrôler build et recettes publiques de Pages, puis les dix pages et images accessibles avant annonce du déploiement.
