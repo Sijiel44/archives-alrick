@@ -411,3 +411,7 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Les trois dragons nommés DRG-01 à 03 sont des PNJ autonomes, dans un rayon distinct, avec leurs anciennes URL et versions de campagnes préservées. Ils ne sont pas des espèces de rencontre.
 # Aucun chiffre 5d6 inventé, aucune scène jouée rétroactive, aucun secret privé ; B-003.1 non adopté. CI vérification du lot #43863958772 réussie, y compris Chrome et copie indépendante.
 # Déploiement Pages explicite demandé pour le lot fusionné ; vérifier ensuite build, smoke public et images de chaque fiche.
+
+# ANT-DECH-007 — 16 novembre 2026 : lot de la compagnie marchande demandé directement par le créateur, création et publication autorisées sous réserve de CI.
+# ORG-DECH-07 : Compagnie Dervaux et Kess (enseigne SVG, activité et limites économiques) ; PER-DECH-21 à 26 (six portraits peints WebP, variantes SVG, biographies, liens, niveaux 2–17, trois personnes non Déchues).
+# Seules les données publiques destinées au catalogue et au site sont dans Git ; toute identité de tribut cachée, lettre secrète, front ou twist MJ reste hors dépôt, Pages et projection joueur.

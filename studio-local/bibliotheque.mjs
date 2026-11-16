@@ -96,7 +96,8 @@ const publishedBestiaryImages = publishedBestiaryEntries.filter(entry => entry.i
 // No secret, pact, private role or game effect may enter the player-visible entries.
 const organisationEntries = organisations.entries.map(entry => ({
   id: entry.id, version: entry.version, name: entry.name, description: entry.description,
-  kind: 'faction', shelf: 'factions', group: 'Institutions et contre-pouvoirs',
+  kind: 'faction', shelf: 'factions',
+  group: entry.tags.includes('compagnie_marchande') ? 'Maisons de négoce' : 'Institutions et contre-pouvoirs',
   status: 'lore', origin: 'archives', path: entry.path, tags: entry.tags.join(' '), links: entry.relations,
   href: `https://github.com/Sijiel44/archives-alrick/blob/main/${entry.path}`,
   art: { src: new URL(`./images/organisations/${entry.image}`, import.meta.url).pathname, alt: entry.artAlt },
@@ -113,7 +114,8 @@ const antagonistEntries = antagonistes.entries.map(entry => ({
   links: [...entry.relations, ...entry.factions],
   href: `https://github.com/Sijiel44/archives-alrick/blob/main/${entry.path}`,
   art: { src: new URL(`./images/personnages-dechus/${entry.image}`, import.meta.url).pathname, alt: entry.artAlt },
-  details: [['Niveau narratif (non chiffré)', String(entry.levelIntent)], ['Stade de Déchéance', entry.corruptionStage],
+  details: [['Niveau narratif (non chiffré)', String(entry.levelIntent)],
+    ['Situation face à la Déchéance', entry.corruptionStage],
     ['Rôle', entry.role], ['Activité actuelle', entry.currentRegion], ['Motivation', entry.motivation]],
   publicTemplate: { role: entry.role, motivation: entry.motivation,
     relations: [...entry.relations, ...entry.factions].join(', ') },

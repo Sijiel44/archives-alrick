@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Orianne Dervaux, négociante mûre au carnet de route et manteau bleu" viewBox="0 0 400 480">
+<defs><linearGradient id="bg" x2=".8" y2="1"><stop stop-color="#3d5260"/><stop offset="1" stop-color="#1b222e"/></linearGradient></defs>
+<rect width="400" height="480" rx="28" fill="url(#bg)"/><circle cx="200" cy="190" r="140" fill="none" stroke="#bb9b79" stroke-width="4" opacity=".8"/>
+<path d="M25 450q25-128 138-146h75q120 17 137 146Z" fill="#344f65" stroke="#bd9a69" stroke-width="5"/><path d="M142 315l58 61 55-63-16 134h-82Z" fill="#ede0cc"/>
+<ellipse cx="197" cy="193" rx="67" ry="83" fill="#c59a7e"/><path d="M128 169q0-83 72-85 78 0 72 92l-26-32-24-14-46-11-35 43Z" fill="#5b4d48"/><path d="M131 169q-18 68 5 114m131-111q16 70-8 115" stroke="#5b4d48" stroke-width="12" fill="none"/>
+<path d="M157 210q15-11 31-4m25 0q17-7 30 5" stroke="#704c41" stroke-width="5" fill="none"/><path d="M174 255q26 10 48-2" stroke="#945a50" stroke-width="4" fill="none"/>
+<path d="M73 374l90-24 38 78-92 27Z" fill="#d0ba8e" stroke="#ede1bf" stroke-width="5"/><path d="M105 380l40-12m-32 25 38-11m-32 24 40-12" stroke="#746d5b" stroke-width="4"/>
+<path d="M251 373q41-36 92-14" fill="none" stroke="#d4ab85" stroke-width="15" stroke-linecap="round"/>
+<text x="200" y="464" font-family="serif" font-size="23" text-anchor="middle" fill="#f3dfc3" letter-spacing="2">ORIANNE</text>
+</svg>

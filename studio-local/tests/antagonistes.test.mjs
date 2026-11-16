@@ -17,7 +17,7 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-origin').selectOption('archives');
-  await page.locator('#catalogue-count').getByText(/^26 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^33 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   const cards = page.locator('#catalogue-list article');
   assert.equal(await cards.count() > 6, true);
   const button = page.getByRole('button', { name: 'Voir la fiche de James Veyrel' });
@@ -51,4 +51,53 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   await page.locator('#catalogue-list').getByRole('button', { name: 'Voir la fiche de James Veyrel' }).click();
   assert.match(await dialog.locator('#resource-creation-notes-text').textContent(), /CANARI_NOTE_MJ_PERSONNAGE/);
   assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_NOTE_MJ_PERSONNAGE/);
+});
+
+test('Studio : compagnie marchande, membres non Déchus et copies isolées du joueur', { timeout: 65000 }, async t => {
+  const fixture = await browserFixture(t);
+  const { page } = await fixture.open('compagnie-dervaux-kess', { viewport: { width: 1280, height: 850 } });
+  await page.goto(fixture.url);
+  await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
+  await page.locator('#nav-library').click();
+  await page.locator('#library-shelves a[href="#rayon/factions"]').click();
+  await page.locator('#catalogue-origin').selectOption('archives');
+  await page.locator('#catalogue-group').selectOption('Maisons de négoce');
+  await page.locator('#catalogue-count').getByText('1 fiche', { exact: true }).waitFor();
+  await page.getByRole('button', { name: 'Voir la fiche de Compagnie Dervaux et Kess' }).click();
+  const dialog = page.locator('#resource-dialog');
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/groupes\/ORG-DECH-07\.md$/);
+  assert.equal(await dialog.getByRole('button', { name: 'Créer une faction de campagne' }).isDisabled(), true);
+  await page.keyboard.press('Escape');
+
+  await page.locator('#nav-home').click();
+  await page.locator('#campaign-name').fill('Campagne marchande témoin');
+  await page.locator('#create-campaign-submit').click();
+  await page.locator('#nav-library').click();
+  await page.locator('#library-shelves a[href="#rayon/factions"]').click();
+  await page.locator('#catalogue-group').selectOption('Maisons de négoce');
+  await page.getByRole('button', { name: 'Voir la fiche de Compagnie Dervaux et Kess' }).click();
+  await dialog.getByRole('button', { name: 'Créer une faction de campagne' }).click();
+  assert.equal(await page.locator('#creation-kind').inputValue(), 'faction');
+  assert.match(await page.locator('#creation-detail-purpose').inputValue(), /Transporter les biens/);
+  await page.locator('#creation-form [name="notes"]').fill('CANARI_MJ_COMPAGNIE');
+  await page.locator('#creation-form button[type="submit"]').click();
+  await page.locator('#creation-dialog').waitFor({ state: 'hidden' });
+  assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_MJ_COMPAGNIE/);
+
+  await page.locator('#nav-library').click();
+  await page.locator('#library-shelves a[href="#rayon/factions"]').click();
+  await page.locator('#catalogue-group').selectOption('Personnages et lieurs');
+  await page.locator('#catalogue-count').getByText(/^26 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.getByRole('button', { name: 'Voir la fiche de Maren Kess' }).click();
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-22\.md$/);
+  await page.keyboard.press('Escape');
+  await page.locator('#catalogue-next').click();
+  await page.getByRole('button', { name: 'Voir la fiche de Gabin Rosset' }).click();
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-26\.md$/);
+  await dialog.getByRole('button', { name: 'Créer un PNJ de campagne' }).click();
+  assert.equal(await page.locator('#creation-name').inputValue(), 'Gabin Rosset');
+  await page.locator('#creation-form [name="notes"]').fill('CANARI_MJ_COMMIS');
+  await page.locator('#creation-form button[type="submit"]').click();
+  await page.locator('#creation-dialog').waitFor({ state: 'hidden' });
+  assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_MJ_COMMIS/);
 });

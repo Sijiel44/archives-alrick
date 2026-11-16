@@ -3,8 +3,8 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "narrative_levels_only",
-  "version": 3,
-  "source": "Développement direct du JDR avec le créateur, 15–16 novembre 2026 ; ANT-DECH-005 et approfondissements ANT-DECH-006, LAB-DECH-003 adapté",
+  "version": 4,
+  "source": "Développement direct du JDR avec le créateur, 15–16 novembre 2026 ; ANT-DECH-005, ANT-DECH-006 et compagnie marchande ANT-DECH-007, LAB-DECH-003 adapté",
   "entries": [
     {
       "id": "PER-DECH-01", "version": "eb33f9acc6e47c1a959d9f5852d139d649a7e739",
@@ -205,6 +205,66 @@
       "relations": ["PER-DECH-11", "PER-DECH-09"], "factions": [],
       "currentRegion": "Dépôts de passage vers le Méridien", "description": "Lieur d'Orvann à deux branches, destructeur d'archives à qui les archivistes libres opposent des copies.",
       "tags": ["archives", "feu", "deuil", "decheance"]
+    },
+    {
+      "id": "PER-DECH-21", "version": "f33e7e252f29ee76c5d670a2c2b6dd9484d623b5",
+      "path": "content/personnages/PER-DECH-21.md", "image": "per-dech-21.webp",
+      "artAlt": "Orianne Dervaux, négociante expérimentée au manteau bleu et carnet de route.",
+      "name": "Orianne Dervaux", "levelIntent": 17, "corruptionStage": "Non Déchu",
+      "role": "Associée principale et négociante non Déchue", "motivation": "Maintenir les transports tout en acceptant un audit des contrats et des salaires.",
+      "relations": ["PER-DECH-22", "PER-DECH-24", "PER-DECH-26"], "factions": ["ORG-DECH-07"],
+      "currentRegion": "Comptoirs d'Entre-Rives", "description": "Dirigeante compétente qui n'a conclu aucun pacte et dont les décisions commerciales peuvent néanmoins blesser.",
+      "tags": ["commerce", "direction", "non_dechu", "negoce"]
+    },
+    {
+      "id": "PER-DECH-22", "version": "afe922f3b1c78b8d92b7cd5e2986304af26bca65",
+      "path": "content/personnages/PER-DECH-22.md", "image": "per-dech-22.webp",
+      "artAlt": "Maren Kess, négociant brun au col sombre et deux livres de comptes.",
+      "name": "Maren Kess", "levelIntent": 14, "corruptionStage": "Rupture",
+      "role": "Coassocié, responsable des avances et Lieur", "motivation": "Sécuriser les livraisons sans imposer des engagements impossibles à défaire.",
+      "relations": ["PER-DECH-21", "PER-DECH-06", "PER-DECH-10"], "factions": ["ORG-DECH-07"],
+      "currentRegion": "Relais d'Entre-Rives et de Valbrume", "description": "Lieur lié à Caldria, dont la Rupture exige une Chute liée réelle distincte des dettes ordinaires.",
+      "tags": ["commerce", "caldria", "rupture", "garanties", "lieur"]
+    },
+    {
+      "id": "PER-DECH-23", "version": "be58c4105cae2597951425c4117cdaf90897c1a5",
+      "path": "content/personnages/PER-DECH-23.md", "image": "per-dech-23.webp",
+      "artAlt": "Siva Norel, responsable de dépôt rousse, tablier de travail et plaque de chargement.",
+      "name": "Siva Norel", "levelIntent": 6, "corruptionStage": "Fêlure",
+      "role": "Responsable des dépôts, pactisée en Fêlure", "motivation": "Garantir l'inventaire sans soupçonner systématiquement ses employés.",
+      "relations": ["PER-DECH-22", "PER-DECH-24", "PER-DECH-26"], "factions": ["ORG-DECH-07"],
+      "currentRegion": "Dépôt de transit d'Entre-Rives", "description": "Une intendante affectée par un registre rituel limité aux marchandises attestées.",
+      "tags": ["quais", "inventaires", "felure", "logistique"]
+    },
+    {
+      "id": "PER-DECH-24", "version": "7fd8acd3d5052a7ad1f93c2708cc442f91a6c276",
+      "path": "content/personnages/PER-DECH-24.md", "image": "per-dech-24.webp",
+      "artAlt": "Perrin Havas, convoyeur barbu au manteau vert et à la lance de route.",
+      "name": "Perrin Havas", "levelIntent": 9, "corruptionStage": "Non Déchu",
+      "role": "Chef d'escorte non Déchu", "motivation": "Protéger les convoyeurs sans transformer son emploi en pouvoir de police.",
+      "relations": ["PER-DECH-21", "PER-DECH-22", "PER-DECH-23"], "factions": ["ORG-DECH-07"],
+      "currentRegion": "Routes secondaires d'Entre-Rives", "description": "Chef d'escorte loyal, capable de refuser un ordre abusif et de battre en retraite.",
+      "tags": ["escorte", "convoyeur", "non_dechu", "gardes"]
+    },
+    {
+      "id": "PER-DECH-25", "version": "ddc4ce52b67878540bcf783dfd18a82675e4f866",
+      "path": "content/personnages/PER-DECH-25.md", "image": "per-dech-25.webp",
+      "artAlt": "Mérine Solard, jeune vérificatrice avec sceau et feuille de chargement.",
+      "name": "Mérine Solard", "levelIntent": 4, "corruptionStage": "Tentation",
+      "role": "Vérificatrice de cargaison au premier pacte", "motivation": "Établir une preuve honnête sans devenir incapable d'écouter une contradiction.",
+      "relations": ["PER-DECH-26", "PER-DECH-23", "PER-DECH-06"], "factions": ["ORG-DECH-07"],
+      "currentRegion": "Dépôts de la compagnie", "description": "Jeune contrôleuse qui a essayé une fois un cachet limité aux colis préparés.",
+      "tags": ["commerce", "preuve", "tentation", "sceau"]
+    },
+    {
+      "id": "PER-DECH-26", "version": "9bd3f56f671c5ac28b1e49a3f626cd67b728340e",
+      "path": "content/personnages/PER-DECH-26.md", "image": "per-dech-26.webp",
+      "artAlt": "Gabin Rosset, jeune commis au gilet simple avec reçus et plume.",
+      "name": "Gabin Rosset", "levelIntent": 2, "corruptionStage": "Non Déchu",
+      "role": "Commis d'expédition non Déchu", "motivation": "Conserver les preuves sans exposer inutilement ses collègues.",
+      "relations": ["PER-DECH-21", "PER-DECH-23", "PER-DECH-25"], "factions": ["ORG-DECH-07"],
+      "currentRegion": "Quais d'Entre-Rives", "description": "Un apprenti témoin dont les copies peuvent remettre en cause des contrats abusifs.",
+      "tags": ["commis", "non_dechu", "temoin", "inventaire"]
     }
   ]
 }
