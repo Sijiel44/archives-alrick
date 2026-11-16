@@ -18,6 +18,10 @@ etat_editorial: en_cours
 
 # Kelm Poing-Calme
 
+![Portrait proposé de Kelm Poing-Calme, un demi-orc au relais des Hautes-Pâtures](../images/personnages/kelm-poing-calme-portrait-concept-v01.webp)
+
+*Illustration originale de travail, novembre 2026 : interprétation artistique non canonisée de son apparence, à distinguer des événements documentés.*
+
 ## Mise à jour de continuité — CB42
 
 > **État établi dans le registre :** ; Kelm reçoit le Marteau des Quatre États, qui fait varier masse effective et transmission d’effort avec sécurités de transition. La transmission discutée porte sur la force contrôlée ; aucun quota d’apprentis n’est fixé.
@@ -259,7 +263,7 @@ Le MJ peut faire de ce pont le début d'une véritable mission, ou simplement la
 **Ouvert :** noms et relations précises avec chaque membre de sa famille ; **localisation cartographique** du [[GEO-HAUTES-PATURES|Relais des Hautes-Pâtures]], dont le **nom est approuvé** ; écoles tactiques qu'il souhaite transmettre ; premiers élèves réellement recrutés ; portrait individuel validé. Les quatre propositions de missions figurant ci-dessus ne sont pas des épisodes de la campagne déjà joués.
 
 > [!warning] Portrait encore à valider
-> Les premiers essais d'illustration collective ont donné à Kelm des traits trop humains et négligé son origine demi-orque. **Aucun de ces essais n'est utilisé comme portrait officiel.** Sa fiche conserve donc l'emplacement réservé à une illustration individuelle fidèle.
+> Les premiers essais collectifs donnaient à Kelm des traits trop humains et négligeaient son origine demi-orque. Le portrait individuel présenté plus haut tente d'y répondre ; **il reste une proposition d'illustration et non une apparence canonique validée**.
 
 ## Sources principales
 

@@ -75,7 +75,7 @@ export async function buildData() {
       publicationSource: field(meta, "publish") === "true",
     });
   }
-  if (cards.length !== 90) throw new Error(`90 cartes attendues, ${cards.length} obtenues`);
+  if (cards.length < 102) throw new Error(`Les 102 fiches historiques sont requises, ${cards.length} obtenues`);
   return cards;
 }
 

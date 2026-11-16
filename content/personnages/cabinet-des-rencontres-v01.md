@@ -1,25 +1,25 @@
 ---
-publish: false
+publish: true
 spoilers: true
 unlisted: true
-title: "Le Cabinet des Rencontres — sélection de 90 personnages"
-description: "Sélection éditoriale de quatre-vingt-dix personnages documentés, avec renvoi vers leur fiche unique et des usages de campagne proposés."
+title: "Le Cabinet des Rencontres — sélection de 102 personnages"
+description: "Sélection éditoriale de cent deux personnages documentés, avec renvoi vers leur fiche unique et des usages de campagne proposés."
 canon_statut: "proposition_non_jouee"
 etat_editorial: "en_chantier"
-visibilite: "brouillon"
+visibilite: "publique_avec_avertissement"
 portee: "mixte"
-public_cible: ["mj"]
+public_cible: ["lecteurs", "joueurs", "mj"]
 usage_en_jeu: ["reference", "rencontre"]
-tags: [pnj, catalogue, rencontres, brouillon]
+tags: [pnj, catalogue, rencontres, personnages]
 ---
 
 # Le Cabinet des Rencontres
 
 ![Fresque d'archétypes d'Entre-Rives, illustration d'ambiance conceptuelle, sans identification canonique des silhouettes.](../images/personnages/pnj-v01-fresque-concept.webp)
 
-*Fresque créée pour le prototype PNJ-001 : les silhouettes sont des archétypes de jeu, **pas** des portraits des personnages nommés ci-dessous. Cette sélection est un brouillon non publié.*
+*Fresque créée pour le prototype PNJ-001 : les silhouettes sont des archétypes de jeu, **pas** des portraits canoniques des personnages nommés ci-dessous.*
 
-Quatre-vingt-dix noms déjà répertoriés dans les Archives, autant de portes d'entrée pour une table. **Chaque nom renvoie à une seule fiche source** : le catalogue ne réécrit ni l'histoire, ni les liens familiaux, ni les appartenances. Les amorces proposées aux MJ demeurent non jouées. Les fiches à révélations restent à avertissement ; ce sommaire lui-même n'est pas proposé à la publication sans examen. **Huit sources retenues dans les lots 004–005 sont non publiées** et ne doivent pas être offertes aux joueurs par défaut.
+Cent deux noms déjà répertoriés dans les Archives, autant de portes d'entrée pour une table. **Chaque nom renvoie à une seule fiche source** : le catalogue ne réécrit ni l'histoire, ni les liens familiaux, ni les appartenances. Chaque lecteur peut parcourir cette sélection ; chaque MJ peut adapter librement les rencontres. Certaines fiches révèlent des événements de l'Odyssée d'Orin : leurs avertissements documentaires sont maintenus. Les amorces de rencontres sont des propositions, non des événements historiques ajoutés.
 
 ## La compagnie
 
@@ -41,6 +41,10 @@ Quatre-vingt-dix noms déjà répertoriés dans les Archives, autant de portes d
 - [[PER-CB31-FREYA|Freya]] — mémoire et liens personnels.
 - [[PER-CB31-ALRIANA|Alriana]] — récits et traces d'une vie, sans en inventer la fin.
 - [[FAM-06|Harald Forgecœur]] — le service, les armes et les runes.
+- [[FAM-04|Borin Forgecœur]] — grand-père paternel et lecteur attentif ; **décédé, non Rappelé**.
+- [[SEC-61|Corven]] — histoires d'enfance, souvenirs situés et témoignages distincts.
+- [[REV-13|Harald le lion]] — identité autonome, **distincte d'Harald Forgecœur** et des figurations de lions.
+- [[REV-14|Halstor]] — métamorphose attestée à la cérémonie, non universelle.
 - [[PER-CB1-EDRIC|Edric Varen / Edric de Valbrume]] — navigation et logistique, puis fonction ducale selon l'époque.
 - [[PER-CB31-SERELYA|Serelya]] — fêtes, marchés et écoute des communautés.
 - [[PER-CB31-MAELYA|Maëlya]] — mots, traductions et échanges entre communautés ; mariage situé dans sa période jouée.
@@ -70,12 +74,12 @@ Quatre-vingt-dix noms déjà répertoriés dans les Archives, autant de portes d
 - [[PER-CB42-RES-02-MIRENA-VALCOURT|Mirena Valcourt]] — intendance, autonomie des équipes et rythme de travail.
 - [[PER-CB42-RES-05-YSANNE-TROIS-FOURS|Ysanne des Trois-Fours]] — cuisine, mémoire et accueil des voyageurs.
 - [[SEC-68|Célianne]] — botanique choisie librement, sans contrat par parenté.
-- [[PER-CB42-RES-07-DAGNA-ROUE-CUIVRE|Dagna Roue-de-Cuivre]] — levage, pompes et sécurité ; **fiche non publiée, aucune embauche**.
-- [[PER-CB42-RES-10-LIORA-POMMEBRUNE|Liora Pommebrune]] — savoir-faire d'accueil ; **fiche non publiée, aucun contrat**.
-- [[PER-CB42-RES-12-VASKA-PERLEDOMBRE|Vaska Perledombre]] — ravitaillement des petites communautés ; **fiche non publiée, aucun contrat**.
-- [[PER-CB42-RES-14-FARWEN-PIERRECLAIRE|Farwen Pierreclaire]] — entretien d'Aldhammar ; **fiche non publiée, aucun contrat**.
+- [[PER-CB42-RES-07-DAGNA-ROUE-CUIVRE|Dagna Roue-de-Cuivre]] — levage, pompes et sécurité ; **aucune embauche**.
+- [[PER-CB42-RES-10-LIORA-POMMEBRUNE|Liora Pommebrune]] — savoir-faire d'accueil ; **aucun contrat**.
+- [[PER-CB42-RES-12-VASKA-PERLEDOMBRE|Vaska Perledombre]] — ravitaillement des petites communautés ; **aucun contrat**.
+- [[PER-CB42-RES-14-FARWEN-PIERRECLAIRE|Farwen Pierreclaire]] — entretien d'Aldhammar ; **aucun contrat**.
 - [[PER-CB42-RES-16-MARGHA-TROIS-MERS|Margha Trois-Mers]] — cuisine de bord ; recrutement confirmé, signature non mise en scène.
-- [[PER-CB42-RES-04-SAELOR-FEUILLEDOR|Saëlor Feuilledor]] — hospitalité elfique ; **visite envisagée, fiche non publiée**.
+- [[PER-CB42-RES-04-SAELOR-FEUILLEDOR|Saëlor Feuilledor]] — hospitalité elfique ; **visite envisagée, non confirmée**.
 - [[PER-CB42-RES-11-ORVAK-MAIN-DE-VELOURS|Orvak Main-de-Velours]] — protocole, réception et conditions de service du Palais.
 - [[PER-CB42-RES-21-AURELIAN-VIRE-SEL|Aurélian Vire-Sel]] — cuisine, transmission et découvertes après le Rappel.
 - [[RES-27|Mara Ventrevent]] — maîtresse d'équipage, apprentissage de Larek et sécurité des quarts ; distincte de Mara Vifacier.
@@ -87,10 +91,18 @@ Quatre-vingt-dix noms déjà répertoriés dans les Archives, autant de portes d
 - [[SEC-65|Sigrun Pierreval]] — préparatifs d'Aldhammar, sans poste final ni travaux conclus.
 - [[SEC-64|Reginald]] — tavernier connu par un souvenir d'enfance, situation actuelle inconnue.
 - [[SEC-05|Garrik]] — hospitalité de la taverne, indépendant du service de la Maison.
+- [[IMP-17|Maëlys]] — recette illustrée et réjouissances sans programme de fêtes imposé.
 
 ## Savoirs et gardiens
 
 - [[PER-CB2-MAELIN|Maelin]] — maintenir sans porter seule la charge.
+- [[SEC-07|Le général Dac]] — chaîne de commandement à Taagral ; rang de jeunesse non rétroactif.
+- [[IMP-12|Tairin]] — conseiller libre, contradiction et moyens d'être entendu.
+- [[IMP-15|Amelia]] — six Cercles autonomes, septième brièvement guidé, niveaux supérieurs non acquis.
+- [[REV-09|Névane Carte-Claire]] — première Revenante d'honneur, cartographe de Skalor, couple attesté avec Eamon.
+- [[REV-12|Lévara Brindesève]] — étude des sols et des serres, sans adhésion automatique aux Revenants.
+- [[REN-63|Sévrane]] — lumière des foyers désertés et premières nuits des nouveaux habitants.
+- [[REN-64|Vardhena]] — protection des civils, replis et évacuations ; exercice encore proposé.
 - [[PER-CB2-RUDEK|Rudek]] — la pierre et ses fondations.
 - [[PER-CB2-SELA|Sela]] — cordages, tensions et témoignages.
 - [[PER-CB2-SOREN|Eren]] — transmettre ; **le code ancien conserve « SOREN »**, mais ce n'est pas le marin Sören.
@@ -109,11 +121,11 @@ Quatre-vingt-dix noms déjà répertoriés dans les Archives, autant de portes d
 - [[SEC-63|Tomas]] — apprentissage des Cercles sans maîtrise élevée automatique.
 - [[PER-CB39-OREN-DAST|Oren Dast]] — développement d'Orinor et arbitrage des moyens.
 - [[PER-CB39-YSE-KORR|Yse Korr]] — coopération militaire et sécurité des routes.
-- [[PER-CB42-RES-13-NERYS-SILVENAINE|Nerys Silvenaine]] — entretien des enchantements ; **fiche non publiée, accès non prouvé**.
+- [[PER-CB42-RES-13-NERYS-SILVENAINE|Nerys Silvenaine]] — entretien des enchantements ; **accès non prouvé**.
 - [[PER-CB42-RES-15-LURNE-BRISE-BOULON|Lurne Brise-Boulon]] — navigation astronomique et contrat de cartographe signé.
 - [[PER-CB42-RES-09-SILAN-SEPT-PONTS|Silan de Sept-Ponts]] — correspondance et langues commerciales ; engagement signé en CB43.
-- [[PER-CB42-RES-17-SOREN-MALDERIVE|Soren Malderive]] — passagers et cabines ; **aucune embauche signée, fiche non publiée**, distinct du marin Sören.
-- [[PER-CB42-RES-20-EDRAN-VEILLE-AU-FEU|Edran Veille-au-Feu]] — phare et secours ; **décédé, fiche non publiée**, scènes uniquement historiques.
+- [[PER-CB42-RES-17-SOREN-MALDERIVE|Soren Malderive]] — passagers et cabines ; **aucune embauche signée**, distinct du marin Sören.
+- [[PER-CB42-RES-20-EDRAN-VEILLE-AU-FEU|Edran Veille-au-Feu]] — phare et secours ; **décédé**, scènes uniquement historiques.
 - [[PER-CB43-HROLDAN-TROIS-CLEFS|Hroldan Trois-Clefs]] — Rappelé libre, logistique sans poste accepté.
 - [[PER-CB43-TAVIAN-RELSOR|Tavian Relsor]] — missions d'enquête préparatoire, sans pouvoir de signature générale.
 - [[PER-CB43-ELWEN-SAUREL|Elwen Saurel]] — coordination de la Maison, contrat signé ; **un seul Elwen malgré la description ancienne contradictoire**.
@@ -125,7 +137,7 @@ Quatre-vingt-dix noms déjà répertoriés dans les Archives, autant de portes d
 
 ## Illustrations et variantes
 
-Les portraits déjà présents dans les Archives sont réutilisés avec leurs statuts propres. Les concepts supplémentaires de **Mara Vifacier**, **Sivra**, **Sigrid**, **Mirelda**, **Sariel**, **Naëline**, **Mara Ventrevent** et désormais **Hervald Trois-Sillons** ne fixent pas leurs traits physiques ; les autres cartes sans portrait utilisent des emblèmes décoratifs provisoires. Aucune image du catalogue n'attribue un état de Rappelé, un grade, un âge non attesté, un lien familial ou une affiliation. Le portrait de Naëline propose son intérêt pour le dessin ; ceux de Mara Ventrevent et d'Hervald interprètent leur activité professionnelle. Aucun ne représente une scène jouée.
+Les portraits déjà présents dans les Archives sont réutilisés avec leurs statuts propres. Les concepts supplémentaires de **Mara Vifacier**, **Sivra**, **Sigrid**, **Mirelda**, **Sariel**, **Naëline**, **Mara Ventrevent**, **Hervald Trois-Sillons** et désormais **Sévrane** ne fixent pas leurs traits physiques ; les autres cartes sans portrait utilisent des emblèmes décoratifs provisoires. Aucune image du catalogue n'attribue un état de Rappelé, un grade, un âge non attesté, un lien familial ou une affiliation. Le portrait de Sévrane retient sa tresse, ses vêtements sombres et sa lampe ; son visage et son décor restent conceptuels. Aucun des portraits nouveaux ne représente une scène jouée.
 
 **Trois inspirations visuelles externes** sont proposées pour Durgan (une forge), Célianne (une planche botanique) et Thaléa (une marine). Elles proviennent de [Wikimedia Commons](https://commons.wikimedia.org/) avec auteurs, pages sources et mentions de licence conservés. Elles ne sont **ni** des portraits de ces personnes **ni** des documents du monde. Dans le prototype HTML, les images distantes sont **désactivées par défaut** : leur affichage est un choix du lecteur et peut transmettre une requête au site hébergeant l'image. Voir `docs/pnj/PNJ-003_SOURCES_VISUELLES.md`.
 
@@ -133,6 +145,6 @@ Chaque fiche peut servir plusieurs campagnes et, plus tard, plusieurs profils 5d
 
 ## Suivi éditorial
 
-- **Version de travail :** PNJ-001 à PNJ-006, 16 novembre 2026 ; sous revue, non publiée.
-- **Sources :** les quatre-vingt-dix fiches liées, leurs `source_brute`, le [contrat éditorial](https://github.com/Sijiel44/archives-alrick/blob/main/CONTRAT_EDITORIAL.md) et le Compendium lorsqu'il est cité par chaque fiche.
+- **Version de travail :** PNJ-001 à PNJ-007, 16 novembre 2026. Le catalogue est proposé pour la publication générale, sans créer de fait joué ou de canon supplémentaire ; la septième sélection exige sa propre recette de publication.
+- **Sources :** les cent deux fiches liées, leurs `source_brute`, le [contrat éditorial](https://github.com/Sijiel44/archives-alrick/blob/main/CONTRAT_EDITORIAL.md) et le Compendium lorsqu'il est cité par chaque fiche.
 - **Décisions ouvertes :** choix des portraits définitifs, ordre de publication, traitement des révélations, adaptations mécaniques INDEX/MATH et raccord de cette présentation au Studio MJ.

@@ -34,6 +34,16 @@ Son rôle exact dans l'ancienne succession dynastique demande une réconciliatio
 
 Un MJ peut mobiliser des annotations, livres et récits que des proches connaissent réellement. Faire apparaître Borin physiquement ou lui donner une nouvelle autorité exige un **événement ultérieur explicite**, pas une extrapolation des archives.
 
+## Relations et traces — complément recoupé
+
+- **Famille attestée :** Borin est le grand-père paternel d'Orin et l'époux d'Astrid. Ses liens doivent être replacés dans leur époque ; la succession dynastique précise reste à réconcilier.
+- **Transmission attestée :** son goût des livres, des annotations et des débats permet de raconter ce que ses proches ont conservé sans supposer qu'il aurait participé aux événements après sa mort.
+- **Limite absolue de continuité :** **décédé, non Rappelé en CB43**. La scène qui semblait le montrer vivant a été annulée dans les sources ; ni survivant caché, ni résurrection, ni apparition actuelle ne peuvent en être déduits.
+
+## En jeu — propositions non jouées
+
+**Comportement historique :** dans une scène annoncée de son vivant, Borin laisse une question ouverte dans la marge d'un ouvrage plutôt que de dicter la réponse. **Rencontre MJ :** deux copies annotées d'une carte ancienne contiennent des hypothèses différentes. Interroger la famille, comparer les étapes de travail ou respecter un souvenir intime sont des choix possibles. **Présent de campagne :** uniquement ses livres et les témoignages tant qu'aucune décision explicite ultérieure ne change son statut.
+
 ## Sources
 
 *Compendium V03 v1.7*, FAM-04 ; *Campagne Brut 4.3*, CB43 P01805–01810. Les descriptions conservées comme propositions d'ambiance ne valent pas faits joués.

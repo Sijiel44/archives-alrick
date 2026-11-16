@@ -24,6 +24,14 @@ unlisted: true
 
 Harald le lion garde sa conscience et son identité propres. Le bref contact du père d’Orin à travers lui est suivi de la création d’un réceptacle distinct, puis du rappel de Harald Forgecœur. Le lion participe à la cérémonie et reprend sa forme humanoïde. Ne pas fusionner le lion, le père et les lions de bijou.
 
+## Compléments de continuité — trois identités à séparer
+
+Le lion **Harald** conserve sa conscience et ne doit pas être remplacé par le père d'Orin dans les récits. Le contact éphémère avec **Harald Forgecœur** est suivi de la création d'un **réceptacle distinct** puis du Rappel de ce dernier. Les lions représentés sur les bijoux et dans les manifestations de la cérémonie ne sont pas non plus cet individu. Les transformations du lion sont situées dans le contexte des scènes documentées, sans en déduire une règle générale des métamorphoses. Voir [[FAM-06|Harald Forgecœur]] et [[REV-14|Halstor]] pour les personnes distinctes.
+
+## En jeu — propositions non jouées
+
+**Comportement :** dans une scène à sa période attestée, le lion réagit en tant que sujet libre, non comme un porte-parole permanent d'Harald Forgecœur. **Rencontre MJ :** une représentation de lion est prise pour une preuve de présence du père d'Orin. Distinguer témoignage, cérémonie et objet évite une fausse identification. **Évolution possible :** à soumettre au MJ si une autre époque est jouée ; aucune immortalité ou faculté universelle ajoutée.
+
 ## Sources
 
 - *Compendium des personnages et des relations (V03), état après CB42*, CB42 P16006–21050.

@@ -12,6 +12,10 @@ usage_en_jeu: ["reference", "rencontre"]
 
 Les habitants du monde possèdent des métiers, des convictions et leurs propres projets. Un PNJ n'est pas un simple admirateur du héros et n'a pas à connaître toutes les décisions prises dans l'Odyssée d'Orin.
 
+## Explorer le Cabinet des Rencontres — 102 personnages documentés
+
+[[cabinet-des-rencontres-v01|Ouvrir le catalogue complet des personnages déjà documentés]] — mentors, compagnons, familles, artisans, voyageurs et figures historiques, tous accessibles à la lecture et adaptables à une nouvelle campagne. **Attention :** certaines fiches révèlent des épisodes de l'Odyssée d'Orin ; les statuts de vérification et les avertissements sont conservés.
+
 ## Personnages antagonistes de la Déchéance
 
 [[personnages-dechus|Trente-six personnages du monde partagé, niveaux de référence 2 à 20]] — pactes, parcours, rivalités, métiers, lieux d'activité et alternatives à la confrontation ; les trois maisons marchandes et l'Office des Itinérants comptent aussi des personnes non Déchues, dont les choix peuvent néanmoins en faire des adversaires.

@@ -25,7 +25,8 @@ export const selection = [
     accroche: "La force d'un homme se reconnaît aussi à ce qu'il refuse de briser.",
     enScene: "Se place à hauteur de son interlocuteur et cherche une issue qui n'humilie personne.",
     rencontre: "Un conflit au relais menace de devenir une démonstration de force inutile.",
-    choix: "Calmer la foule, réparer un tort ou convaincre les deux parties de reculer."
+    choix: "Calmer la foule, réparer un tort ou convaincre les deux parties de reculer.",
+    image: "kelm-poing-calme-portrait-concept-v01.webp"
   },
   {
     id: "vaera", file: "REV-04.md", groupe: "compagnie", symbole: "🌒",
@@ -79,7 +80,8 @@ export const selection = [
     accroche: "L'instructrice qui enseigne une discrétion possible, jamais l'invisibilité.",
     enScene: "Replace un apprenti dans son environnement et adapte l'exercice au poids de son équipement.",
     rencontre: "Un groupe veut apprendre à traverser une cour sans éveiller l'attention.",
-    choix: "Observer, alléger le matériel ou renoncer à un parcours trop exposé."
+    choix: "Observer, alléger le matériel ou renoncer à un parcours trop exposé.",
+    image: "ylva-portrait-concept-v01.webp"
   },
   {
     id: "elyan", file: "PER-CB43-ELYAN-CORBEAU-GRIS.md", groupe: "proches", symbole: "📖",
@@ -666,5 +668,90 @@ export const selection = [
     enScene: "Relit une recette illustrée avec Maëlys, surveille sa salle et rappelle discrètement le service ordinaire.",
     rencontre: "Des invités veulent transformer une soirée de taverne en réception officielle sans avoir demandé l'accord de l'hôte.",
     choix: "Négocier le cadre, préserver le service ou proposer une fête distincte."
+  },
+  {
+    id: "borin", file: "FAM-04.md", groupe: "proches", symbole: "📚",
+    accroche: "Les annotations d'un aïeul disparu peuvent encore enseigner sans prétendre le faire revenir.",
+    enScene: "Dans un souvenir situé de son vivant, Borin discute d'un livre ou d'une carte avec patience ; à l'époque actuelle, seules ses traces et les témoins parlent.",
+    rencontre: "Deux exemplaires annotés d'un même ouvrage conservent des interprétations différentes d'un vieux projet familial.",
+    choix: "Comparer les notes, écouter les proches ou laisser une question intime sans réponse."
+  },
+  {
+    id: "corven", file: "SEC-61.md", groupe: "proches", symbole: "🍂",
+    accroche: "Un compagnon de jeunesse qui raconte les maladresses avec plus de précision que de nostalgie confortable.",
+    enScene: "Rappelle l'anecdote de la clef d'armes de Dac et des premières bières chez Reginald, sans prétendre que toutes les versions concordent.",
+    rencontre: "Une vieille histoire d'adolescents est reprise comme une preuve contre une famille d'aujourd'hui.",
+    choix: "Distinguer témoignage et rumeur, entendre d'autres souvenirs ou protéger les personnes encore concernées."
+  },
+  {
+    id: "dac", file: "SEC-07.md", groupe: "savoirs", symbole: "⚔️",
+    accroche: "Un maître d'armes devenu général dont le rang doit être replacé à la bonne époque.",
+    enScene: "Dans son rôle militaire attesté, distingue la protection des troupes de l'affichage du commandement ; dans une scène d'enfance, il n'est pas déjà général.",
+    rencontre: "Un plan de manœuvre oublie la relève des blessés et la responsabilité réelle de chaque officier.",
+    choix: "Clarifier la chaîne de commandement, revoir le repli ou demander un exercice préparatoire."
+  },
+  {
+    id: "tairin", file: "IMP-12.md", groupe: "savoirs", symbole: "🧭",
+    accroche: "Un conseiller qui estime qu'une contradiction sincère exige un cadre où elle puisse être entendue.",
+    enScene: "Aide à préparer une audience, demande qui peut réellement objecter et refuse de confondre conseil et contrôle du Palais.",
+    rencontre: "Une réunion proclame le droit de désaccord, mais n'offre aucun moyen sûr de le faire valoir.",
+    choix: "Changer les règles de parole, demander une médiation ou reporter la décision."
+  },
+  {
+    id: "amelia", file: "IMP-15.md", groupe: "savoirs", symbole: "◌",
+    accroche: "Une apprenante des Cercles qui protège son temps pour chercher, vivre et choisir ses engagements.",
+    enScene: "Explique calmement la différence entre les six Cercles autonomes et un essai supérieur bref sous guidage, puis refuse un secrétariat permanent.",
+    rencontre: "Une institution réclame une nouvelle démonstration à une personne déjà prise par l'accueil et les études.",
+    choix: "Organiser un relais consenti, limiter l'essai ou préserver un temps de repos."
+  },
+  {
+    id: "maelys", file: "IMP-17.md", groupe: "metiers", symbole: "🍧",
+    accroche: "La joie d'une recette partagée ne transforme pas une taverne en établissement officiel.",
+    enScene: "Avec Garrik, feuillette une recette illustrée et distingue un plaisir inventif d'une fête déjà promise à tout le royaume.",
+    rencontre: "Une recette lumineuse enthousiasme des visiteurs qui réclament d'en faire un spectacle obligatoire.",
+    choix: "Proposer une soirée volontaire, adapter la présentation ou garder la préparation pour les habitués."
+  },
+  {
+    id: "nevane", file: "REV-09.md", groupe: "compagnie", symbole: "🗺️",
+    accroche: "La première Revenante d'honneur préfère tenir un registre juste à recevoir un ordre de plus.",
+    enScene: "Classe les relevés de cartographie de Skalor, distingue une mission notée d'une obligation et confronte ses conclusions à celles d'Eamon.",
+    rencontre: "Un coffret préparé en son honneur est pris par erreur pour un ordre de rejoindre une expédition.",
+    choix: "Clarifier l'intention du présent, respecter son autonomie ou solliciter un avis sans mission imposée."
+  },
+  {
+    id: "levara", file: "REV-12.md", groupe: "savoirs", symbole: "🌿",
+    accroche: "Une observatrice du vivant qui n'assimile pas la réussite d'une machine au bien-être d'un sol.",
+    enScene: "Étudie plantes, humidité et usages locaux, puis demande une gouvernance scientifique indépendante pour les travaux à venir.",
+    rencontre: "Une serre expérimentale risque d'être ouverte au public avant que ses conditions écologiques soient comprises.",
+    choix: "Documenter les risques, consulter les communautés ou remettre l'ouverture à une saison ultérieure."
+  },
+  {
+    id: "harald_lion", file: "REV-13.md", groupe: "proches", symbole: "🦁",
+    accroche: "Un lion doté de sa propre conscience, distinct de l'homme dont il fut brièvement le relais.",
+    enScene: "Conserve sa réaction et ses préférences propres ; toute scène de métamorphose exige le contexte de l'époque où elle est attestée.",
+    rencontre: "Un témoin confond le lion, Harald Forgecœur et des lions figurés sur des bijoux.",
+    choix: "Corriger l'identité, rechercher la scène précise ou laisser une légende locale comme telle."
+  },
+  {
+    id: "halstor", file: "REV-14.md", groupe: "proches", symbole: "🪶",
+    accroche: "Une personne changeante dont la métamorphose n'est pas une propriété universelle des compagnons.",
+    enScene: "Dans une scène située à la cérémonie attestée, reprend sa forme humanoïde sans prêter ce don à tous les êtres présents.",
+    rencontre: "Un récit populaire attribue à tous les animaux de la cour un pouvoir que seul Halstor a montré.",
+    choix: "Recueillir des témoins, séparer les phénomènes ou corriger la rumeur avec douceur."
+  },
+  {
+    id: "sevrane", file: "REN-63.md", groupe: "savoirs", symbole: "🏮",
+    accroche: "La veilleuse des lieux abandonnés s'intéresse aussi à la première nuit d'une maison retrouvée.",
+    enScene: "Porte sa lampe et observe les seuils délaissés ; accueille un nouveau venu sans prétendre devenir la maîtresse des lieux.",
+    rencontre: "Une ancienne demeure doit accueillir une famille, mais plusieurs souvenirs rendent son seuil difficile à franchir.",
+    choix: "Écouter les habitants, préserver un lieu de mémoire ou organiser un accueil librement choisi.",
+    image: "sevrane-concept-v01.webp"
+  },
+  {
+    id: "vardhena", file: "REN-64.md", groupe: "savoirs", symbole: "🛡️",
+    accroche: "La protectrice des derniers replis refuse de confondre courage et sacrifice inutile.",
+    enScene: "Questionne l'évacuation des civils et des blessés avant de valider un plan de défense, sans revendiquer de commandement permanent.",
+    rencontre: "Une fortification ne possède qu'une sortie praticable pour les blessés.",
+    choix: "Organiser un exercice, revoir les passages ou protéger d'abord les non-combattants."
   }
 ];

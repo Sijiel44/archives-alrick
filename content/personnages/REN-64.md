@@ -31,6 +31,16 @@ Vardhena **n’accepte aucun commandement permanent ni appartenance à la Maison
 
 Les prochains projets ou exercices restent à jouer et à sourcer.
 
+## Compléments recoupés — protéger le repli
+
+La [[monde/B42-03|synthèse de CB42]] souligne que Vardhena **refuse les sacrifices sans utilité** accomplis au nom d'une défense héroïque. Les accueils décrits dans [[maison/O42-09|les dossiers de la Maison]] envisagent avec elle un **atelier sur la protection et le retrait** sans en faire une cheffe de garde. En CB43, un **exercice d'évacuation des blessés est proposé**, non achevé par cette seule proposition.
+
+## En jeu — propositions non jouées
+
+**Comportement :** elle mesure le temps nécessaire pour évacuer les blessés, fait préciser les issues et interroge les conséquences sur les civils avant de louer la bravoure d'une défense. **Rencontre MJ :** une enceinte possède de bons remparts, mais un seul passage sûr pour les non-combattants. Les personnages peuvent aménager une seconde sortie, organiser un exercice volontaire ou différer une cérémonie trop risquée.
+
+**Évolution possible :** mentorat de courte durée, si elle et le MJ l'acceptent ; aucune maîtrise martiale ni capacité de haut niveau attribuée automatiquement.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **REN-64** ; documents CB cités précédemment : CB42 P08129–08468. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.

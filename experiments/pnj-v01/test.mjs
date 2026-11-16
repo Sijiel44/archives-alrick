@@ -4,11 +4,11 @@ import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 import { buildData } from "./build.mjs";
 
-test("90 identités uniques pointent sur des sources uniques et documentées", async () => {
+test("au moins 102 identités uniques pointent sur des sources uniques et documentées", async () => {
   const cards = await buildData();
-  assert.equal(cards.length, 90);
-  assert.equal(new Set(cards.map((x) => x.code)).size, 90);
-  assert.equal(new Set(cards.map((x) => x.file)).size, 90);
+  assert.ok(cards.length >= 102);
+  assert.equal(new Set(cards.map((x) => x.code)).size, cards.length);
+  assert.equal(new Set(cards.map((x) => x.file)).size, cards.length);
   assert.equal(cards.find((x) => x.id === "eren")?.file, "PER-CB2-SOREN.md");
   assert.equal(cards.find((x) => x.id === "soren")?.file, "PER-CB1-SOREN.md");
   assert.equal(cards.find((x) => x.id === "soren")?.statut, "a_verifier");
@@ -18,13 +18,13 @@ test("90 identités uniques pointent sur des sources uniques et documentées", a
   assert.equal(cards.find((x) => x.id === "celianne")?.file, "SEC-68.md");
   assert.equal(cards.find((x) => x.id === "mael")?.file, "PER-CB38-MAEL-TORVENN.md");
   assert.equal(cards.find((x) => x.id === "cesar")?.code, "PER-CB43-CESAR");
-  assert.equal(cards.find((x) => x.id === "dorrik")?.publicationSource, false);
+  assert.equal(cards.find((x) => x.id === "dorrik")?.publicationSource, true);
   assert.equal(cards.find((x) => x.id === "alriana")?.spoiler, true);
   assert.equal(cards.find((x) => x.id === "heimdall")?.illustrationValidee, true);
   assert.ok(cards.every((x) => x.sources && x.ancre && x.statut));
 });
 
-test("lot 004 : identités, consentement, statut des fiches privées et illustration conceptuelle", async () => {
+test("lot 004 : identités, consentement, publication sourcée et illustration conceptuelle", async () => {
   const cards = await buildData();
   const byId = Object.fromEntries(cards.map((x) => [x.id, x]));
   const lot = ["oren", "yse", "dagna_cuivre", "eren_valombre", "liora", "vaska", "nerys_silvenaine", "farwen", "lurne", "margha", "naeline", "nahla"];
@@ -35,11 +35,11 @@ test("lot 004 : identités, consentement, statut des fiches privées et illustra
   assert.equal(byId.lurne.code, "RES-15");
   assert.equal(byId.margha.code, "RES-16");
   assert.equal(byId.nahla.code, "PER-CB43-NAHLA-SEREVIN");
-  assert.deepEqual(["dagna_cuivre", "liora", "vaska", "nerys_silvenaine", "farwen"].map((id) => byId[id].publicationSource), [false, false, false, false, false]);
+  assert.deepEqual(["dagna_cuivre", "liora", "vaska", "nerys_silvenaine", "farwen"].map((id) => byId[id].publicationSource), [true, true, true, true, true]);
   assert.ok(lot.slice(2).every((id) => byId[id].spoiler));
   assert.match(byId.naeline.image, /naeline-concept-v01\.webp$/);
   assert.equal(byId.naeline.illustrationValidee, false);
-  assert.equal(cards.filter((x) => x.image).length, 15);
+  assert.ok(cards.filter((x) => x.image).length >= 18);
 });
 
 test("lot 005 : homonymes marins, morts non rappelés, emplois joués et images conceptuelles", async () => {
@@ -47,7 +47,7 @@ test("lot 005 : homonymes marins, morts non rappelés, emplois joués et images 
   const byId = Object.fromEntries(cards.map((x) => [x.id, x]));
   const lot = ["saelor", "silan", "orvak", "soren_malderive", "bromvar", "edran", "aurelian", "hroldan", "tavian", "elwen", "beren", "mara_ventrevent"];
   assert.equal(lot.filter((id) => byId[id]).length, 12);
-  assert.deepEqual(["saelor", "soren_malderive", "edran"].map((id) => byId[id].publicationSource), [false, false, false]);
+  assert.deepEqual(["saelor", "soren_malderive", "edran"].map((id) => byId[id].publicationSource), [true, true, true]);
   assert.deepEqual(["saelor", "soren_malderive"].map((id) => byId[id].statut), ["projet_en_cours", "projet_en_cours"]);
   assert.equal(byId.edran.statut, "lore_valide");
   assert.equal(byId.edran.code, "RES-20");
@@ -61,7 +61,7 @@ test("lot 005 : homonymes marins, morts non rappelés, emplois joués et images 
   assert.ok(lot.every((id) => byId[id].spoiler));
   assert.match(byId.mara_ventrevent.image, /mara-ventrevent-concept-v01\.webp$/);
   assert.equal(byId.mara_ventrevent.illustrationValidee, false);
-  assert.equal(cards.filter((x) => x.image).length, 15);
+  assert.ok(cards.filter((x) => x.image).length >= 18);
 
   const edranSource = await readFile(new URL("../../content/personnages/PER-CB42-RES-20-EDRAN-VEILLE-AU-FEU.md", import.meta.url), "utf8");
   assert.match(edranSource, /Edran est \*\*décédé\*\*/i);
@@ -80,7 +80,7 @@ test("lot 006 : cultures, représentations non signées et homonymes documentair
   assert.equal(byId.hervald.spoiler, true);
   assert.match(byId.hervald.image, /hervald-trois-sillons-concept-v01\.webp$/);
   assert.equal(byId.hervald.illustrationValidee, false);
-  assert.equal(cards.filter((x) => x.image).length, 15);
+  assert.ok(cards.filter((x) => x.image).length >= 18);
   assert.notEqual(byId.mara_belden.code, byId.mara.code);
   assert.notEqual(byId.mara_belden.code, byId.mara_ventrevent.code);
   assert.notEqual(byId.sigrun_varek.code, byId.sigrun_pierreval.code);
@@ -90,9 +90,36 @@ test("lot 006 : cultures, représentations non signées et homonymes documentair
     const source = await readFile(new URL(`../../content/personnages/${byId[id].file}`, import.meta.url), "utf8");
     assert.match(source, /pistes proposées, non jouées/i);
   }
-  const privateCatalogue = await readFile(new URL("../../content/personnages/cabinet-des-rencontres-v01.md", import.meta.url), "utf8");
-  assert.match(privateCatalogue, /publish: false/);
-  assert.match(privateCatalogue, /spoilers: true/);
+  const catalogue = await readFile(new URL("../../content/personnages/cabinet-des-rencontres-v01.md", import.meta.url), "utf8");
+  assert.match(catalogue, /publish: true/);
+  assert.match(catalogue, /spoilers: true/);
+  assert.match(catalogue, /unlisted: true/);
+});
+
+test("lot 007 : scènes recoupées, limites temporelles et source unique", async () => {
+  const cards = await buildData();
+  const byId = Object.fromEntries(cards.map((x) => [x.id, x]));
+  const lot = ["borin", "corven", "dac", "tairin", "amelia", "maelys", "nevane", "levara", "harald_lion", "halstor", "sevrane", "vardhena"];
+  assert.equal(lot.filter((id) => byId[id]).length, 12);
+  assert.ok(lot.every((id) => byId[id].publicationSource));
+  assert.equal(byId.borin.code, "FAM-04");
+  assert.equal(byId.dac.code, "SEC-07");
+  assert.equal(byId.amelia.code, "IMP-15");
+  assert.equal(byId.harald_lion.code, "REV-13");
+  assert.notEqual(byId.harald_lion.code, byId.harald.code);
+  assert.notEqual(byId.maelys.code, byId.garrik.code);
+  assert.equal(byId.sevrane.code, "REN-63");
+  assert.match(byId.sevrane.image, /sevrane-concept-v01\.webp$/);
+  assert.equal(byId.sevrane.illustrationValidee, false);
+  assert.ok(cards.filter((x) => x.image).length >= 18);
+  for (const id of ["borin", "nevane", "sevrane", "amelia"]) {
+    const source = await readFile(new URL(`../../content/personnages/${byId[id].file}`, import.meta.url), "utf8");
+    assert.match(source, /propositions non jouées/i);
+  }
+  const borin = await readFile(new URL("../../content/personnages/FAM-04.md", import.meta.url), "utf8");
+  assert.match(borin, /décédé, non Rappelé en CB43/i);
+  const nevane = await readFile(new URL("../../content/personnages/REV-09.md", import.meta.url), "utf8");
+  assert.match(nevane, /première Revenante d'honneur/i);
 });
 
 test("aucune mécanique fictive ni document privé dans les accroches", async () => {

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Dagna Roue-de-Cuivre — Ingénierie et systèmes de levage"
 code: "RES-07"
@@ -8,7 +8,7 @@ canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10652–10655 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Dagna est une Naine issue d'une famille d'artisans, ayant travaillé sur les pompes, systèmes de levage et équipements portuaires, et intéressée par l'étude des Cercles."
 tags: [dagna, roue-de-cuivre, ingenierie, artisanat, cercles-magiques, cb42]
 etat_editorial: en_cours

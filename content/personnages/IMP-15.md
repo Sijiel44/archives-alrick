@@ -28,6 +28,16 @@ Personne libre et accueil choisi avec apprentissage en cours ; Amelia forme six 
 
 Amelia forme six Cercles stables seule. Après guidage, le septième tient quelques secondes ; le huitième reste à étudier et le neuvième n’est pas acquis. Elle conduit des accueils et entretiens, puis obtient une répartition du travail qui protège recherches, voyages et vie personnelle. Elle ne devient pas gouvernante du Palais et refuse le rôle de bureau permanent de toutes les institutions.
 
+## Compléments recoupés — pouvoir appris et temps choisi
+
+- **Pratique attestée :** Amelia maintient **six Cercles de manière autonome**. Après guidage, le septième tient brièvement ; le huitième reste à étudier et **le neuvième n'est pas acquis**. Ces observations ne sont pas une échelle mécanique 5d6 ni une capacité accordée à tout apprenti.
+- **Travail :** elle participe réellement aux accueils et entretiens, puis obtient une répartition qui lui laisse de la place pour la recherche, les voyages et la vie personnelle. Elle n'accepte pas d'être le guichet permanent de toute la Maison ni la gouvernante du Palais.
+- **Relations institutionnelles :** [[maison/O42-09|le dossier des accueils]] distingue les invités comme Sévrane et Vardhena du personnel ; leur bonne volonté ne crée pas un lien hiérarchique avec Amelia.
+
+## En jeu — propositions non jouées
+
+**Comportement :** Amelia décrit avec précision les limites d'un essai réussi et demande du repos avant de réessayer. **Rencontre MJ :** plusieurs hôtes réclament des démonstrations ou de l'aide le même jour ; les personnages peuvent répartir les tâches, diminuer le programme ou protéger une journée de recherche. **Apprentissage :** pratique et mentor éventuels soumis au MJ, à INDEX/MATH pour XP et prérequis, sans acquisition d'un huitième ou neuvième Cercle par simple scène.
+
 ## Sources
 
 - *Compendium des personnages et des relations (V03), état après CB42*, CB42 P08473–18750.

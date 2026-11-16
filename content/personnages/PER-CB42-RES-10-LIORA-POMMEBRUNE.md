@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Liora Pommebrune — Hospitalité et appartements"
 code: "RES-10"
@@ -8,7 +8,7 @@ canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10752–10755 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Liora est une femme vivante du Petit Peuple de 47 ans, issue d'aubergistes, ayant élevé trois enfants et travaillé dans de grandes maisons."
 tags: [liora, pommebrune, hospitalite, intendance, cb42]
 etat_editorial: en_cours

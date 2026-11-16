@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Ylva — instructrice de discrétion"
 code: "PER-CB31-YLVA"
 categorie: "personnage"
@@ -7,13 +7,17 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB31"
 source_brute: "CB31 P12446–12610; P13844–13855"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique"
 description: "Ylva entraîne Orin à la discrétion et à l’infiltration réaliste en tenant compte de son armure et de son tempérament."
 tags: [ylva, entrainement, discretion, orin, cb31, brouillon]
 etat_editorial: en_chantier
 ---
 
 # Ylva
+
+![Portrait conceptuel de Ylva, instructrice attentive dans une cour de formation](../images/personnages/ylva-portrait-concept-v01.webp)
+
+*Illustration originale proposée en novembre 2026. L'apparence, le vêtement et le décor représentés ne sont pas des détails biographiques attestés.*
 
 Ylva accepte d’entraîner Orin à la discrétion. L’objectif est de mieux se déplacer et de sortir des lignes de vue, non de devenir invisible. L’exercice tient compte de son armure, de son gabarit et de son caractère.
 
