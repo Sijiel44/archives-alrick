@@ -32,6 +32,8 @@ Les listes complètes des fichiers des 39 PR ouvertes ont été examinées, y co
 
 La branche dédiée passe par une PR, puis par les workflows CI et Pages dans le cadre de l’autorisation de publication donnée par le créateur. Le [workflow Pages](https://github.com/Sijiel44/archives-alrick/actions/workflows/pages.yml) fournit la construction, le déploiement et les essais sur l’URL publique pour chaque version. Ce document rapporte les contrôles locaux ; la PR porte les liens vers les résultats distants après leur exécution.
 
+Le premier passage CI a révélé une transition dépendante de la livraison asynchrone de l’événement de fermeture du catalogue : le nouveau formulaire pouvait déjà être ouvert avant la libération du lecteur. La sélection arrête désormais l’aperçu directement avant de fermer le catalogue et de préparer le formulaire. La recette continue à exiger l’absence du lecteur lors de cette ouverture ; cette assertion n’est pas assouplie.
+
 ## Qualification restante
 
 **Séance humaine NON RÉALISÉE.** Le [protocole MJ et deux PJ](SEANCE-REELLE-FIABILITE.md) prévoit 10 à 20 minutes, un téléphone physique, la confidentialité de la projection, les interruptions et la restauration dans un profil distinct. Les tests, la publication et l’homologation en partie sont des états distincts ; le lot Fiabilité reste ouvert pour cet essai. Les 100 médias n’ont pas tous été écoutés ou visionnés intégralement. Le diagnostic initial du portrait `EncodingError` reste non déterminé ; la recette actuelle attend le chargement complet et vérifie le décodage.

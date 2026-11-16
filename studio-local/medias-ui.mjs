@@ -70,7 +70,7 @@ export function createMediaCatalogueUI({ canChoose, chooseAudio, chooseVideo, st
       controls.append(button(previewLabel, () => void play(entry), `${previewLabel} ${entry.name}`));
       const choose = button(chooseLabel, () => {
         if (!canChoose(entry.kind)) return;
-        const credit = catalogue.mediaCredit(entry); dialog.close();
+        const credit = catalogue.mediaCredit(entry); stopPreview(); dialog.close();
         queueMicrotask(() => (entry.kind === 'audio' ? chooseAudio : chooseVideo)({ ...entry, credit }));
       }, `${chooseLabel} ${entry.name}`);
       choose.disabled = !canChoose(entry.kind); controls.append(choose);
