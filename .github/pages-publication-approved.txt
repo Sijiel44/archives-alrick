@@ -364,3 +364,11 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Le contrôle public a rencontré deux EncodingError sur le portrait historique ; vidéo et audio réussissent sur l’URL publique.
 # La recette attend désormais le chargement natif complet avant de vérifier decode(), dimensions et affichage ; diagnostic borné en cas d’échec.
 # Aucun code produit, profil, donnée, règle ou fichier média n’est modifié. Le marqueur relance le workflow de publication demandé pour clôturer ses contrôles publics.
+
+# Catalogue de cent médias et fiabilité technique — continuation autorisée le 15 novembre 2026.
+# Demande du créateur : ajouter environ cinquante vidéos et cinquante sons réutilisables, puis développer le lot suivant.
+# L’autorisation de publier les lots terminés et vérifiés, donnée dans le même chat, reste applicable.
+# Portée : deux catalogues publics de liens, auteurs et licences ; aperçu volontaire, copie dans les régies ; suivi local des sauvegardes et diagnostic expurgé.
+# Corrections ciblées des trois alertes npm ; aucune donnée de campagne, sauvegarde, note MJ, média utilisateur ou nouvelle fiche canonique publiée.
+# Recettes locales et CI avant fusion ; workflow Pages et quatre parcours Studio publics avant l’annonce de publication.
+# La séance humaine réelle n’a pas été réalisée : le protocole est fourni, le lot Fiabilité reste partiellement qualifié.

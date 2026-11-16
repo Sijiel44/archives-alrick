@@ -6,6 +6,7 @@ import { browserFixture } from './browser.mjs';
 import { waveResponse } from './audio-fixture.mjs';
 import { videoResponse } from './video-fixture.mjs';
 import { assertDecodedPortrait } from './portrait-assertions.mjs';
+import { MEDIA_ENTRIES } from '../medias-catalogue.mjs';
 
 async function servePages(t) {
   const root = new URL('../../public/', import.meta.url);
@@ -26,6 +27,49 @@ async function servePages(t) {
   t.after(() => new Promise(resolve => server.close(resolve)));
   return `http://127.0.0.1:${server.address().port}${prefix}`;
 }
+
+test('GitHub Pages expose les cent médias et suit une copie relue sans publier les données de campagne', {
+  skip: !process.env.PUBLIC_BASE && process.env.STUDIO_PAGES_TEST !== '1', timeout: 45000,
+}, async t => {
+  const base = process.env.PUBLIC_BASE ? `${process.env.PUBLIC_BASE.replace(/\/$/, '')}/` : await servePages(t);
+  const fixture = await browserFixture(t);
+  const { page, context } = await fixture.open('pages-medias-copies', { viewport: { width: 390, height: 844 } });
+  const requests = [];
+  await context.route('https://upload.wikimedia.org/**', async route => {
+    requests.push(route.request()); await route.fulfill(waveResponse(route));
+  });
+  await page.goto(new URL('./studio/', base).href);
+  await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
+  await page.locator('#campaign-name').fill('Copie fictive Pages');
+  await page.locator('#create-campaign-submit').click();
+  await page.locator('#nav-library').click(); await page.locator('#library-media').click();
+  await page.locator('#media-catalogue-summary').getByText(/50 sons et 50 vidéos/).waitFor();
+  await page.locator('#media-kind').selectOption('audio');
+  const entry = MEDIA_ENTRIES.find(e => e.kind === 'audio');
+  await page.locator('#media-search').fill(entry.name);
+  assert.equal(requests.length, 0);
+  await page.getByRole('button', { name: `Écouter ${entry.name}`, exact: true }).click();
+  await page.waitForFunction(() => { const a = document.querySelector('#media-preview-player audio'); return a && !a.paused && a.currentTime > 0; });
+  assert.equal(requests[0].headers().referer, undefined);
+  await page.getByRole('button', { name: `Préparer la piste ${entry.name}`, exact: true }).click();
+  await page.locator('#audio-track-dialog').waitFor();
+  assert.equal(await page.locator('#audio-track-url').inputValue(), entry.url);
+  await page.locator('#audio-track-form button[type=submit]').click();
+  await page.locator('#audio-track-dialog').waitFor({ state: 'hidden' });
+  await page.locator('#nav-backups').click();
+  const [copy] = await Promise.all([page.waitForEvent('download'), page.locator('#export-backup').click()]);
+  const buffer = await readFile(await copy.path());
+  await page.locator('#backup-copy-state[data-state="unverified"]').waitFor();
+  await page.locator('#backup-file').setInputFiles({ name: 'copie-pages.json', mimeType: 'application/json', buffer });
+  await page.locator('#backup-copy-state[data-state="current"]').waitFor();
+  assert.equal(JSON.parse(buffer.toString()).payload.campaign.entreRivesMediaV18.tracks[0].url, entry.url);
+  const [diagnostic] = await Promise.all([page.waitForEvent('download'), page.locator('#download-diagnostic').click()]);
+  const text = await readFile(await diagnostic.path(), 'utf8');
+  const report = JSON.parse(text);
+  assert.equal(report.readable, 1); assert.equal(report.unreadable, 0);
+  assert.doesNotMatch(text, /Copie fictive Pages|upload.wikimedia|son-ruissellement/);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+});
 
 test('GitHub Pages relie les Archives et le Studio et isole le récepteur joueur', {
   skip: !process.env.PUBLIC_BASE && process.env.STUDIO_PAGES_TEST !== '1', timeout: 45000,

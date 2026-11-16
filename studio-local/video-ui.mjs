@@ -77,5 +77,12 @@ export function createSceneVideoUI({ getCampaign, canWrite, images, save, refres
     attempt = undefined;
     queueMicrotask(() => (returnFocus?.isConnected && returnFocus.getClientRects().length ? returnFocus : $('nav-play')).focus());
   });
-  return { render };
+  return { render,
+    prefill(entry) {
+      if (!canWrite() || !scene()) return;
+      edit();
+      $('scene-video-url').value = entry.url;
+      $('scene-video-credit').value = entry.credit;
+    },
+  };
 }

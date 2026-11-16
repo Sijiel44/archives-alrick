@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./regie-participants.css">
   <link rel="stylesheet" href="./audio.css">
   <link rel="stylesheet" href="./video-player.css">
+  <link rel="stylesheet" href="./medias.css">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body>
@@ -388,7 +389,7 @@
               <p class="eyebrow accent">Scène courante · Privé MJ</p>
               <h2 id="video-scene-title" tabindex="-1">Fond vidéo choisi</h2>
               <p id="scene-video-summary" class="muted">Préparez un mouvement discret pour la fenêtre joueur.</p>
-              <div class="actions"><button id="scene-video-edit" class="secondary" type="button">Configurer le fond vidéo</button><button id="scene-video-prepare" class="secondary" type="button" hidden>Préparer ce fond</button><button id="scene-video-remove" class="text-button" type="button" hidden>Supprimer le réglage</button></div>
+              <div class="actions"><button id="scene-video-edit" class="secondary" type="button">Configurer le fond vidéo</button><button id="video-catalogue-open" class="secondary" type="button">Choisir une vidéo libre</button><button id="scene-video-prepare" class="secondary" type="button" hidden>Préparer ce fond</button><button id="scene-video-remove" class="text-button" type="button" hidden>Supprimer le réglage</button></div>
               <p class="muted">La vidéo reste muette. L’enregistrement ne charge rien et ne diffuse rien.</p>
             </section>
           </div>
@@ -443,7 +444,7 @@
           </div>
           <details id="audio-library-tools" class="audio-library">
             <summary>Bibliothèque de pistes <span id="audio-track-count"></span></summary>
-            <div class="panel-heading"><p class="muted">Un lien direct HTTPS vers un fichier audio. Les pages Spotify et YouTube ne sont pas des fichiers audio.</p><button id="audio-track-add" class="secondary" type="button">Ajouter une piste</button></div>
+            <div class="panel-heading"><p class="muted">Un lien direct HTTPS vers un fichier audio. Les pages Spotify et YouTube ne sont pas des fichiers audio.</p><div class="actions"><button id="audio-catalogue-open" class="secondary" type="button">Choisir un son libre</button><button id="audio-track-add" class="secondary" type="button">Ajouter une piste</button></div></div>
             <p id="audio-tracks-empty" class="muted">Ajoutez une première piste pour composer vos playlists.</p>
             <ul id="audio-tracks" class="audio-list"></ul>
             <p class="muted">Les sauvegardes conservent les liens et les crédits. Les fichiers restent chez leur hébergeur et sont chargés à votre demande.</p>
@@ -476,6 +477,7 @@
             <p class="muted">Consignez ce qui s’est passé et préparez la reprise.</p></div>
           <button id="add-session" type="button">Archiver une séance</button>
         </header>
+        <div id="archive-copy-reminder" class="notice" hidden><p id="archive-copy-message"></p><p class="muted">Enregistrez votre bilan de séance, puis renouvelez la copie externe de la campagne.</p><button type="button" class="secondary" data-view="backups">Passer aux sauvegardes</button></div>
         <div class="dashboard-grid">
           <article class="panel" aria-labelledby="archive-history-title">
             <h2 id="archive-history-title">Séances archivées</h2>
@@ -531,6 +533,7 @@
           </div>
           <div class="actions">
             <button id="library-universe" class="secondary" type="button" data-view="universe">Explorer l’univers</button>
+            <button id="library-media" class="secondary" type="button">Sons et vidéos libres</button>
             <button id="library-add-creation" type="button" data-view="creations">Atelier de création</button>
             <button id="library-add-image" type="button" hidden>Ajouter une image par lien</button>
             <button id="library-import-adventure" class="secondary" type="button" hidden disabled>Importer une aventure</button>
@@ -670,6 +673,7 @@
             <p id="export-context" class="muted"></p>
             <p>Le fichier JSON inclut les notes privées et les fiches de la campagne. Conservez-le dans un emplacement réservé au MJ.</p>
             <button id="export-backup" type="button" disabled>Exporter la campagne</button>
+            <div class="backup-copy-tracking"><p id="backup-copy-state" class="notice" role="status" aria-live="polite"></p><dl><dt>Dernier téléchargement lancé</dt><dd id="backup-last-download"></dd><dt>Dernier fichier relu et vérifié</dt><dd id="backup-last-verified"></dd></dl><p class="muted">Ce suivi appartient à ce navigateur. Relisez le fichier téléchargé avec le sélecteur ci-contre pour en vérifier l’empreinte.</p></div>
           </article>
           <article class="panel">
             <p class="eyebrow accent">Import · Aperçu</p>
@@ -679,10 +683,12 @@
             <div id="backup-preview" class="notice" hidden>
               <h3 id="backup-name"></h3>
               <p id="backup-summary"></p>
+              <p id="backup-file-check-status" class="muted" role="status"></p>
               <p id="backup-conflict" hidden>Cette campagne existe déjà dans ce profil. Pour vérifier la restauration, ouvrez le Studio dans un autre profil de navigateur.</p>
               <button id="restore-backup" type="button" disabled>Confirmer la restauration</button>
             </div>
           </article>
+          <article class="panel"><p class="eyebrow accent">Diagnostic volontaire</p><h2>Examiner le stockage</h2><p class="muted">Téléchargez un rapport technique avec les nombres d’entrées lisibles et illisibles, leurs codes d’erreur et des identifiants hachés. Le contenu des campagnes reste hors du rapport.</p><button id="download-diagnostic" class="secondary" type="button" disabled>Exporter un diagnostic du stockage</button><p class="muted">Le fichier se partage à votre initiative. Les campagnes restent en place.</p></article>
         </div>
       </section>
 
@@ -1168,6 +1174,17 @@
     </form>
   </dialog>
 
+  <dialog id="media-catalogue-dialog" aria-labelledby="media-catalogue-title">
+    <header class="panel-heading"><div><p class="eyebrow accent">Ambiances pour la table</p><h2 id="media-catalogue-title" tabindex="-1" autofocus>Sons et vidéos libres</h2></div><button id="media-catalogue-close" class="secondary" type="button">Fermer</button></header>
+    <p id="media-catalogue-summary" class="muted">Une sélection pour vos scènes et playlists, avec sa provenance.</p>
+    <div class="media-filters"><div><label for="media-search">Chercher une ambiance</label><input id="media-search" type="search" placeholder="Pluie, forêt, feu, marché…"></div><div><label for="media-kind">Type</label><select id="media-kind"><option value="all">Sons et vidéos</option><option value="audio">Sons</option><option value="video">Vidéos</option></select></div><div><label for="media-category">Ambiance</label><select id="media-category"><option value="">Toutes les ambiances</option></select></div></div>
+    <p id="media-use-help" class="muted"></p>
+    <p class="muted media-hint">Les fichiers restent chez leur hébergeur. Un aperçu les charge à votre demande. Écouter un son met la régie sonore en pause.</p>
+    <section id="media-preview" class="media-preview" aria-labelledby="media-preview-title" hidden><div class="panel-heading"><h3 id="media-preview-title"></h3><button id="media-preview-stop" class="secondary" type="button">Arrêter l’aperçu</button></div><div id="media-preview-player"></div><p id="media-preview-status" class="muted" role="status"></p></section>
+    <p id="media-results-status" class="muted" role="status" aria-live="polite"></p>
+    <ul id="media-results" class="media-results"></ul>
+    <button id="media-more" class="secondary" type="button" hidden>Afficher 12 médias de plus</button>
+  </dialog>
   <dialog id="scene-video-dialog" aria-labelledby="scene-video-heading">
     <form id="scene-video-form">
       <p class="eyebrow accent">Projection de scène · Privé MJ</p><h2 id="scene-video-heading">Configurer le fond vidéo</h2>
