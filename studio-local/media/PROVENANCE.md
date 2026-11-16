@@ -1,5 +1,17 @@
 # Illustrations du pilote
 
+## BEST-ER-005 — Nacre, silex et voix des lisières
+
+Trois illustrations originales ImageGen du 16 novembre 2026, sans source externe, encodées en WebP (qualité 84, 1122 × 1402, aucun recadrage). Planches naturalistes fantastiques verticales, sans texte, filigrane ni événement joué. Leur présence sur une fiche **ne crée ni niveau M03, ni potion d'alchimie, ni témoignage historique**.
+
+| Illustration | Code d'espèce | Description alternative |
+| --- | --- | --- |
+| [Libellule de nacre](libellule-de-nacre.webp) | `ESP-ER-010` | Libellule bleu nuit à quatre ailes nacrées sur une branche près d'un ruisseau, une exuvie accrochée à une tige. |
+| [Sanglier de silex](sanglier-de-silex.webp) | `ESP-ER-011` | Grand sanglier gris sombre, défenses d'ivoire et crinière noire de soies pointues, sur un chemin boueux près de cultures. |
+| [Corneille aux trois voix](corneille-trois-voix.webp) | `ESP-ER-012` | Corneille noire aux reflets bleus et trois bandes de gorge argentées, sur un mur près d'une clé. |
+
+**Prompts finaux** (outil ImageGen intégré, `illustration-story`) : libellule bleu nuit anatomiquement plausible aux quatre ailes irisées, sur saule de ruisseau clair avec mue ; sanglier massif à crinière noire de kératine semblable au silex, chemin boueux entre forêt et champs, sans pierre véritable ni armure ; corneille au plumage bleu noir et aux trois bandes pâles de gorge, bec entrouvert sur mur de verger avec clé perdue, sans parole écrite. Aucun humain, dragon, logo, texte ou effet chiffré.
+
 ## BEST-ER-004 — Vergers, haies et sous-bois d'Entre-Rives
 
 Trois illustrations originales créées avec ImageGen intégré le 16 novembre 2026, encodées sans recadrage en WebP (qualité 84 ; 1122 × 1402). Planches verticales de bestiaire naturaliste, anatomies lisibles, textures peintes et couleurs de saison. Elles ont été créées pour le lore partagé, **pas comme des captures de scènes jouées** ; aucune valeur M03 n'est induite par leur apparence.

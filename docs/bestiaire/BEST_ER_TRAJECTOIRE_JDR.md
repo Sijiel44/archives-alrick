@@ -16,6 +16,16 @@ Après le portrait, l'habitat et la place écologique, chaque espèce peut propo
 
 Le matériau d'une créature peut entrer dans un objet ou une **recherche alchimique fictive** ; une recette ou un effet chiffré n'existe qu'après définition et validation dans l'Index/Ateliers/MATH. L'absence de recette n'enlève rien à la valeur scénaristique.
 
+## Application au lot BEST-ER-005
+
+| Espèce canonique | Ressort de quête | Choix possibles sans scène imposée |
+| --- | --- | --- |
+| `ESP-ER-010` Libellule de nacre | Mues recueillies, étude d'un ruisseau menacé, rumeurs d'alchimie | Observer, préserver le bras d'eau, collecter sans tuer, dénoncer ou servir un trafic |
+| `ESP-ER-011` Sanglier de silex | Animal territorial réellement dangereux aux abords des champs | Ouvrir une fuite, soigner, chasser avec conséquences ou préparer un combat M03 validé |
+| `ESP-ER-012` Corneille aux trois voix | Voix imitée, clé disparue, témoignage trompeur | Enquêter, protéger les nids, vérifier les sons, éviter une accusation injuste |
+
+Les trois cas démontrent des ressorts de jeu différents, **sans recette approuvée, effet chiffré, rôle PNJ donné à toute une espèce ni événement joué**.
+
 ## Échelons narratifs, non niveaux imposés
 
 | Famille éditoriale | Apport à une table | Règle de séparation |

@@ -111,6 +111,42 @@
       "art": { "src": "./media/escargot-souches-ambre.webp", "alt": "Escargot à coquille spiralée translucide couleur miel sur une souche forestière moussue." }
     },
     {
+      "id": "ESP-ER-010",
+      "version": "24d5842b7eb4d527629915915dd8f9d9fb11bcfe",
+      "name": "Libellule de nacre",
+      "description": "Libellule bleu nuit à ailes irisées, liée aux eaux claires ; ses mues abandonnées intéressent les artisans sans recette magique imposée.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-010-libellule-de-nacre.md",
+      "tags": "entre-rives merien ruisseau libellule nacre mue alchimie protection canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES", "GEO-021"],
+      "details": [["Habitat", "Ruisseaux clairs et bras secondaires"], ["Ressource", "Exuvies nacrées abandonnées ; recette non validée"], ["Quête", "Préserver un débit ou observer une émergence"]],
+      "art": { "src": "./media/libellule-de-nacre.webp", "alt": "Libellule bleu nuit à quatre ailes iridescentes sur une branche de ruisseau, près d'une ancienne mue." }
+    },
+    {
+      "id": "ESP-ER-011",
+      "version": "8b0d516f42c77ec5f8167e111c6f300a0ae9636b",
+      "name": "Sanglier de silex",
+      "description": "Sanglier gris sombre très puissant, dont la crinière de soies évoque le silex ; une rencontre acculée peut devenir dangereuse.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-011-sanglier-de-silex.md",
+      "tags": "entre-rives sous-bois lisiere sanglier danger charge defense chasse protection canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Lisières, sous-bois et champs"], ["Danger", "Charge défensive si acculé ou avec des jeunes"], ["Issue", "Ouvrir la fuite ou contenir sans massacrer"]],
+      "art": { "src": "./media/sanglier-de-silex.webp", "alt": "Grand sanglier gris noir aux défenses d'ivoire et à la crinière de soies rigides sur un chemin boueux." }
+    },
+    {
+      "id": "ESP-ER-012",
+      "version": "58198e6ebe19bee8f7c209759fad81f11ffe948c",
+      "name": "Corneille aux trois voix",
+      "description": "Corneille noire à gorge argentée, habile imitatrice de sons et de courts fragments humains sans langage raisonné attesté.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-012-corneille-trois-voix.md",
+      "tags": "entre-rives corneille imitation voix enquete cle indice intelligences animaliere canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Murs, vergers et lisières habités"], ["Indice", "Une voix imitée n'est pas un témoignage"], ["Quête", "Retrouver un objet sans détruire les nids"]],
+      "art": { "src": "./media/corneille-trois-voix.webp", "alt": "Corneille noire à reflets bleus et trois bandes pâles sur la gorge, perchée près d'une clé." }
+    },
+    {
       "id": "INDC-ER-001",
       "version": "fccbfbb75856f77937885789102bf9191f105733",
       "name": "Gardien des Salines — Le veilleur des gués",
