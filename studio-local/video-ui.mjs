@@ -26,8 +26,9 @@ export function createSceneVideoUI({ getCampaign, canWrite, images, save, refres
     $('scene-video-loop').checked = config?.loop ?? true;
     $('scene-video-dim').value = config?.dim ?? 45;
     $('scene-video-dim-value').value = `${$('scene-video-dim').value} %`;
-    $('scene-video-image').replaceChildren(new Option('Choisir une image…', ''), ...images.map(image => new Option(image.name, image.id)));
-    if (config?.imageId && !images.some(image => image.id === config.imageId)) {
+    const availableImages = typeof images === 'function' ? images() : images;
+    $('scene-video-image').replaceChildren(new Option('Choisir une image…', ''), ...availableImages.map(image => new Option(image.name, image.id)));
+    if (config?.imageId && !availableImages.some(image => image.id === config.imageId)) {
       $('scene-video-image').append(new Option('Image indisponible dans le catalogue', config.imageId));
     }
     $('scene-video-image').value = config?.imageId || '';
@@ -52,7 +53,7 @@ export function createSceneVideoUI({ getCampaign, canWrite, images, save, refres
     const data = { sceneId: attempt.sceneId, url: $('scene-video-url').value.trim(), imageId: $('scene-video-image').value,
       loop: $('scene-video-loop').checked, dim: Number($('scene-video-dim').value), credit: $('scene-video-credit').value.trim() };
     if (!validVideoUrl(data.url)) { error('Utilisez un lien HTTPS direct de 2 048 caractères maximum, sans identifiant ni mot de passe.'); return; }
-    if (!images.some(image => image.id === data.imageId)) { error('Choisissez une image de remplacement disponible dans le catalogue.'); return; }
+    if (!(typeof images === 'function' ? images() : images).some(image => image.id === data.imageId)) { error('Choisissez une image de remplacement disponible dans le catalogue.'); return; }
     working = true;
     try { await save(command(attempt, 'save-scene-video', data), { form, onSaved: () => dialog.close() }); }
     finally { working = false; }

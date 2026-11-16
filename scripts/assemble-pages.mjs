@@ -34,7 +34,7 @@ for (const [route, asset] of studioAssets) {
   if (route === '/index.html') {
     content = withPolicy(content.toString('utf8').replace('<html lang="fr">', '<html lang="fr" data-pages-studio>')
       .replace('href="/accueil"', 'href="../"'),
-    `${basePolicy}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; media-src https:; connect-src 'self'; frame-src 'self'; form-action 'none'`);
+    `${basePolicy}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; media-src https: blob:; connect-src 'self'; frame-src 'self' https://www.youtube-nocookie.com; form-action 'none'`);
   } else if (route === '/joueur') {
     content = withPolicy(content.toString('utf8').replace('src="/joueur.js"', 'src="./joueur.js"').replace('src="/video-player.js"', 'src="./video-player.js"'),
       `${basePolicy}; style-src 'self' 'unsafe-inline'; img-src data:; media-src https:; frame-src 'self' about:; form-action 'none'`);

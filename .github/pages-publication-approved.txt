@@ -384,3 +384,9 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Le Studio reçoit un rayon « Organisations et factions » alimenté par des références publiques versionnées et une copie de travail locale par action explicite.
 # Aucune scène jouée, note MJ, pacte secret, sauvegarde privée ni capacité chiffrée inventée ne devient publique ou canonique par ce lot.
 # Exiger contrôle de contenu, liens, construction, tests Studio, CI puis vérification des pages et images sur GitHub Pages après fusion.
+
+# Services multimédias et images de scène — continuation autorisée le 15 novembre 2026.
+# YouTube choisi, liens externes Spotify/Suno, audio local temporaire, images HTTPS et sauvegarde v20.
+# Dix médias de village sourcés ajoutés aux cent références existantes, sans fichier utilisateur ni contenu canonique.
+# npm test réussi ; 178 tests Chrome et 25 Edge réussis, dont les cinq parcours Pages assemblé.
+# CI avant fusion, puis workflow Pages et contrôle public ; séance humaine réelle toujours à réaliser.

@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="./audio.css">
   <link rel="stylesheet" href="./video-player.css">
   <link rel="stylesheet" href="./medias.css">
+  <link rel="stylesheet" href="./service-media.css">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body>
@@ -385,6 +386,12 @@
               <p class="muted">Retrouvez vos textes et images préparés pour cette scène.</p>
               <div id="play-ambiances"></div>
             </section>
+            <section class="panel" aria-labelledby="scene-image-title">
+              <p class="eyebrow accent">Image de la scène · Privé MJ</p><h2 id="scene-image-title">Illustrer la scène</h2>
+              <p id="scene-image-summary" class="muted"></p>
+              <div class="actions"><button id="scene-image-edit" type="button" class="secondary">Ajouter ou modifier l’image</button><button id="scene-image-present" type="button" hidden>Préparer cette image</button></div>
+              <p class="muted">Image entière, panorama recadré ou carte : collez un lien HTTPS, puis relisez la projection avant de la montrer.</p>
+            </section>
             <section id="video-scene-panel" class="panel" aria-labelledby="video-scene-title">
               <p class="eyebrow accent">Scène courante · Privé MJ</p>
               <h2 id="video-scene-title" tabindex="-1">Fond vidéo choisi</h2>
@@ -444,7 +451,7 @@
           </div>
           <details id="audio-library-tools" class="audio-library">
             <summary>Bibliothèque de pistes <span id="audio-track-count"></span></summary>
-            <div class="panel-heading"><p class="muted">Un lien direct HTTPS vers un fichier audio. Les pages Spotify et YouTube ne sont pas des fichiers audio.</p><div class="actions"><button id="audio-catalogue-open" class="secondary" type="button">Choisir un son libre</button><button id="audio-track-add" class="secondary" type="button">Ajouter une piste</button></div></div>
+            <div class="panel-heading"><p class="muted">Lien audio HTTPS, vidéo YouTube, playlist Spotify ou morceau Suno. Les lecteurs de service et fichiers locaux ont leurs propres commandes.</p><div class="actions"><button id="audio-catalogue-open" class="secondary" type="button">Choisir un son libre</button><button id="audio-track-add" class="secondary" type="button">Ajouter une piste</button></div></div>
             <p id="audio-tracks-empty" class="muted">Ajoutez une première piste pour composer vos playlists.</p>
             <ul id="audio-tracks" class="audio-list"></ul>
             <p class="muted">Les sauvegardes conservent les liens et les crédits. Les fichiers restent chez leur hébergeur et sont chargés à votre demande.</p>
@@ -1205,7 +1212,7 @@
       <p class="eyebrow accent">Régie sonore · Privé MJ</p><h2 id="audio-track-heading">Ajouter une piste</h2>
       <label for="audio-track-name">Nom de la piste</label><input id="audio-track-name" required maxlength="160" autofocus>
       <label for="audio-track-url">Lien direct du fichier audio</label><input id="audio-track-url" type="url" required maxlength="2048" placeholder="https://…/ambiance.mp3" aria-describedby="audio-track-help">
-      <p id="audio-track-help" class="muted">HTTPS, sans identifiant ni mot de passe. MP3, Ogg ou WAV selon votre navigateur. Aucun fichier n’est chargé avant Lecture.</p>
+      <p id="audio-track-help" class="muted">Lien HTTPS direct ou lien YouTube, Spotify ou Suno, sans identifiant ni mot de passe. MP3, Ogg ou WAV selon votre navigateur. La lecture demande une activation.</p>
       <label for="audio-track-credit">Crédit ou provenance · facultatif</label><textarea id="audio-track-credit" rows="2" maxlength="600"></textarea>
       <p class="muted">Utilisez des fichiers dont vous avez l’autorisation d’usage. Le lien et le crédit seront conservés dans votre sauvegarde privée.</p>
       <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p><button type="button" class="secondary reload-draft" hidden>Abandonner ce brouillon et actualiser</button></div>
@@ -1303,6 +1310,19 @@
     </form>
   </dialog>
 
+  <dialog id="scene-image-dialog" aria-labelledby="scene-image-heading">
+    <form id="scene-image-form">
+      <p class="eyebrow accent">Scène illustrée · Privé MJ</p><h2 id="scene-image-heading">Image par lien</h2><p id="scene-image-context" class="muted"></p>
+      <label for="scene-image-url">Lien direct HTTPS de l’image</label><input id="scene-image-url" type="url" required maxlength="2048" placeholder="https://…/village.webp">
+      <label for="scene-image-alt">Description courte à montrer</label><input id="scene-image-alt" required maxlength="300" placeholder="Une place de village autour du puits">
+      <label for="scene-image-mode">Affichage de l’image</label><select id="scene-image-mode"><option value="contain">Image entière</option><option value="cover">Panorama recadré</option><option value="map">Carte détaillée</option></select>
+      <label for="scene-image-credit">Crédit ou provenance · privé MJ</label><textarea id="scene-image-credit" maxlength="600" rows="2"></textarea>
+      <p class="muted">Le lien doit ouvrir directement une image. L’aperçu contacte son hébergeur à votre demande. Pour la projection, celui-ci doit autoriser le partage de l’image (CORS) ; le Studio transmet ensuite une copie de l’image aux joueurs.</p>
+      <button id="scene-image-preview-button" type="button" class="secondary">Voir l’aperçu privé</button><p id="scene-image-preview-status" role="status" class="muted"></p><img id="scene-image-preview" class="scene-image-preview" hidden alt="">
+      <div class="form-feedback" hidden><p class="form-error notice error" role="alert"></p></div>
+      <div class="actions"><button type="submit">Enregistrer l’image de scène</button><button id="scene-image-close" type="button" class="secondary">Fermer</button><button id="scene-image-remove" type="button" class="text-button" hidden>Retirer l’image de scène</button></div>
+    </form>
+  </dialog>
   <dialog id="linked-image-dialog" aria-labelledby="linked-image-heading">
     <form id="linked-image-form">
       <p class="eyebrow accent">Imagerie · Campagne</p>

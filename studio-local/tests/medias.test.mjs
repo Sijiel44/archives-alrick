@@ -36,7 +36,7 @@ test('Le catalogue se consulte et filtre sans charger les médias, avec sources,
   const f = await browserFixture(t), { page, context } = await f.open('media-navigation', { viewport: { width: 1440, height: 950 } });
   const requested = await routes(context);
   await page.goto(f.url); await page.locator('#nav-library').click(); await page.locator('#library-media').press('Enter');
-  await page.locator('#media-catalogue-summary').getByText(/50 sons et 50 vidéos/).waitFor();
+  await page.locator('#media-catalogue-summary').getByText(/\d+ sons et \d+ vidéos/).waitFor();
   assert.equal(await page.locator('#media-results > li').count(), 12);
   assert.equal(await page.locator('#media-results button[aria-label^="Préparer"]:enabled').count(), 0);
   await page.locator('#media-kind').selectOption('video'); await page.locator('#media-category').selectOption('eau');

@@ -1,4 +1,5 @@
 import { PLAY_STATS } from "./store.mjs";
+import { validAudioUrl } from './audio.mjs';
 import './video-player.js';
 
 const videoPreviews = new WeakMap();
@@ -82,14 +83,22 @@ export function showPresentation(container, { label, html, video }) {
 export async function loadPresentationImage(art) {
   const url = new URL(art.src, location.href);
   const mediaPath = new URL('./media/', import.meta.url).pathname;
-  if (url.origin !== location.origin || url.search || url.hash ||
+  if (!art.remote && (url.origin !== location.origin || url.search || url.hash ||
       !url.pathname.startsWith(mediaPath) ||
-      !/^(?:[a-z0-9-]+\.webp|atlas\/[a-z0-9-]+\.svg)$/.test(url.pathname.slice(mediaPath.length))) {
+      !/^(?:[a-z0-9-]+\.webp|atlas\/[a-z0-9-]+\.svg)$/.test(url.pathname.slice(mediaPath.length)))) {
     throw new Error("Cette image ne fait pas partie des médias locaux.");
   }
+  if (art.remote && !validAudioUrl(art.src)) throw new Error('Utilisez un lien HTTPS direct pour cette image.');
   const image = new Image();
+  if (art.remote) { image.crossOrigin = 'anonymous'; image.referrerPolicy = 'no-referrer'; }
   image.src = url.href;
-  await image.decode();
+  let timer;
+  try {
+    await Promise.race([image.decode(), new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Image trop lente à charger.')), 12000); })]);
+  } catch {
+    image.src = '';
+    throw new Error(art.remote ? 'La projection demande un hébergeur autorisant le partage d’images (CORS). Vérifiez le lien ou utilisez une image du catalogue.' : 'Impossible de préparer cette image.');
+  } finally { clearTimeout(timer); }
   const scale = Math.min(1, 2048 / Math.max(image.naturalWidth, image.naturalHeight));
   const canvas = document.createElement("canvas");
   canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
@@ -97,7 +106,7 @@ export async function loadPresentationImage(art) {
   canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
   const src = canvas.toDataURL("image/png");
   if (src.length > 8 * 1024 * 1024) throw new Error("L’image est trop volumineuse pour la projection.");
-  return { src, alt: art.alt, map: Boolean(art.map) };
+  return { src, alt: art.alt, map: Boolean(art.map), mode: ['contain', 'cover', 'map'].includes(art.mode) ? art.mode : art.map ? 'map' : 'contain' };
 }
 
 export function scenePresentation(projection, image, label = "Scène de jeu", videoConfig) {
@@ -109,7 +118,7 @@ export function scenePresentation(projection, image, label = "Scène de jeu", vi
     if (!globalThis.EntreRivesVideo.valid(video)) throw new Error('Préparez une vidéo HTTPS et son image de remplacement avant de la présenter.');
   }
   const illustration = !video && image && /^data:image\/png;base64,[A-Za-z0-9+/]+={0,2}$/.test(image.src)
-    ? `<figure${image.map ? ' class="map"' : ''}><img src="${image.src}" alt="${escapeText(image.alt).replaceAll('"', '&quot;')}"></figure>` : "";
+    ? `<figure class="${image.map ? 'map' : image.mode === 'cover' ? 'cover' : 'contain'}"><img src="${image.src}" alt="${escapeText(image.alt).replaceAll('"', '&quot;')}"></figure>` : "";
   const presentation = { label, html: projectionDocument(title + description + illustration, `
     body { min-height: 100vh; box-sizing: border-box; padding: clamp(1rem, 5vw, 4rem);
       background: radial-gradient(ellipse at top, #27343b, #171d24 45rem) no-repeat; }
@@ -120,6 +129,8 @@ export function scenePresentation(projection, image, label = "Scène de jeu", vi
     figure:first-child { margin-top: 0; }
     figure img { display: block; width: auto; max-width: 100%; max-height: 78vh; margin-inline: auto; border-radius: .45rem; }
     figure.map img { border-radius: 0; }
+    figure.cover img { width: 100%; height: min(60vh, 32rem); object-fit: cover; }
+    figure.map img { width: 100%; max-height: none; }
     main:has(figure.map) { max-width: 78rem; }
     ${video ? `:root, body { background: transparent; }
     body { padding-bottom: 11rem; }

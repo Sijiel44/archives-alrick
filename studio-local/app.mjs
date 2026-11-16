@@ -18,6 +18,8 @@ import { createObjectGrantUI } from './objets-mj-ui.mjs';
 import { createAudioUI } from './audio-ui.mjs';
 import { videoForScene } from './video.mjs';
 import { createSceneVideoUI } from './video-ui.mjs';
+import { sceneImageIllustration } from './scene-images.mjs';
+import { createSceneImageUI } from './scene-images-ui.mjs';
 import { createMediaCatalogueUI } from './medias-ui.mjs';
 import { BACKUP_HISTORY_KEY, readBackupHistory, recordBackupReceipt, backupCopyStatus } from './suivi-sauvegardes.mjs';
 import { clearProjection, createPlayerProjection, createProjection, loadPresentationImage, openPlayerWindow, playerSheetPresentation, scenePresentation, showPresentation } from './projection.mjs';
@@ -49,8 +51,10 @@ const objectGrantUI = createObjectGrantUI({ getCampaign: () => campaign, canOpen
 const audioUI = createAudioUI({ getCampaign: () => campaign, canWrite: () => Boolean(campaign && !busy),
   save: saveCommand, refresh: refreshCampaign, open: () => { navigate('play'); $('audio-title').focus(); } });
 const sceneVideoUI = createSceneVideoUI({ getCampaign: () => campaign, canWrite: () => Boolean(campaign && !busy),
-  images: LIBRARY_ILLUSTRATIONS, save: saveCommand, refresh: refreshCampaign,
+  images: () => presentationIllustrations(), save: saveCommand, refresh: refreshCampaign,
   prepare: event => prepareSceneShare(event, undefined, { useVideo: true }) });
+const sceneImageUI = createSceneImageUI({ getCampaign: () => campaign, canWrite: () => Boolean(campaign && !busy),
+  save: saveCommand, prepare: event => prepareSceneShare(event) });
 createMediaCatalogueUI({ canChoose: kind => kind === 'audio' ? audioUI.canAdd() : Boolean(campaign && !busy && activeScene()),
   selectionHelp: () => !campaign ? 'Ouvrez une campagne pour préparer un média. Les aperçus et sources restent consultables.'
     : !audioUI.canAdd() && !busy ? 'La bibliothèque de campagne est limitée à 100 pistes. Libérez une place pour ajouter un son.'
@@ -564,7 +568,7 @@ function renderFresque() {
       button.disabled = edge || Boolean(laneFilter);
       moves.append(button);
     }
-    controls.append(edit, play, moves);
+    controls.append(edit, play, action('Illustrer', () => sceneImageUI.open(scene), 'secondary', `Illustrer ${scene.title}`), moves);
     card.append(controls);
     if (lanes.length) card.append(lanePicker(scene, lanes));
 
@@ -1699,6 +1703,7 @@ function render() {
   renderPlay();
   audioUI.render();
   sceneVideoUI.render();
+  sceneImageUI.render();
   renderBackupTracking();
   renderInterludes();
   renderArchive();
@@ -3031,7 +3036,8 @@ function displayPreview() {
   const images = preview.images ? ` · ${preview.images} image(s) par lien` : '';
   const audio = preview.audioTracks || preview.audioPlaylists ? ` · ${preview.audioTracks} piste(s) audio · ${preview.audioPlaylists} playlist(s)` : '';
   const videos = preview.videos ? ` · ${preview.videos} fond(s) vidéo` : '';
-  $('backup-summary').textContent = `Révision ${preview.revision} · ${preview.characters} PJ${playerSheets}${playerUpdates} · ${preview.creatures} créature(s) · ${preview.scenes} scène(s)${ambiances} · ${preview.sessions} séance(s) archivée(s)${interludes} · ${preview.markers} repère(s)${actions}${oppositions}${profiles}${creations}${images}${audio}${videos}`;
+  const sceneImages = preview.sceneImages ? ` · ${preview.sceneImages} image(s) de scène` : '';
+  $('backup-summary').textContent = `Révision ${preview.revision} · ${preview.characters} PJ${playerSheets}${playerUpdates} · ${preview.creatures} créature(s) · ${preview.scenes} scène(s)${ambiances} · ${preview.sessions} séance(s) archivée(s)${interludes} · ${preview.markers} repère(s)${actions}${oppositions}${profiles}${creations}${images}${audio}${videos}${sceneImages}`;
   $('backup-conflict').hidden = !preview.conflict;
 }
 
@@ -3775,8 +3781,8 @@ async function choosePresentationImage() {
   if (!entry) return;
   try {
     choice.image = await loadPresentationImage(entry.art);
-  } catch {
-    choice.error = 'Impossible de préparer cette image.';
+  } catch (error) {
+    choice.error = error.message || 'Impossible de préparer cette image.';
   } finally {
     choice.pending = false;
     if (playerShare === prepared && prepared.imageChoice === choice) renderPlayerPreview();
@@ -3805,7 +3811,7 @@ function populateIllustrations(select, images, related, initialImageId) {
 
 function configurePresentationImages(prepared, related, initialImage, initialImageId) {
   const select = $('player-share-image');
-  const images = prepared.kind === 'scene' ? LIBRARY_ILLUSTRATIONS : initialImage ? [initialImage] : [];
+  const images = prepared.kind === 'scene' ? presentationIllustrations() : initialImage ? [initialImage] : [];
   prepared.illustrations = new Map(images.map(entry => [entry.id, entry]));
   populateIllustrations(select, images, related, initialImageId ?? initialImage?.id);
   select.disabled = $('player-share-image-field').hidden = !images.length;
@@ -3869,6 +3875,11 @@ function sceneIllustrations(scene) {
     .map(libraryIllustration).filter(Boolean);
 }
 
+function presentationIllustrations() {
+  const image = sceneImageIllustration(campaign, activeScene());
+  return image ? [image, ...LIBRARY_ILLUSTRATIONS] : LIBRARY_ILLUSTRATIONS;
+}
+
 function prepareSceneShare(event, ambiance, { useVideo = false } = {}) {
   const scene = activeScene();
   if (!scene || view !== 'play' || busy) return;
@@ -3878,7 +3889,7 @@ function prepareSceneShare(event, ambiance, { useVideo = false } = {}) {
   }), image, 'Scène de jeu', video);
   preparePresentation('scene', ambiance ? `Ambiance · ${ambiance.name}` : `Scène · ${scene.title}`, build, {
     returnFocus: event.currentTarget, related: sceneIllustrations(scene),
-    initialImageId: useVideo && videoConfig ? videoConfig.imageId : ambiance?.imageId,
+    initialImageId: useVideo && videoConfig ? videoConfig.imageId : ambiance?.imageId ?? sceneImageIllustration(campaign, scene)?.id,
     videoConfig, useVideo,
     ambianceFields: ambiance && [ambiance.title && 'title', ambiance.description.trim() && 'description'].filter(Boolean),
   });

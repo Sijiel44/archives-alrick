@@ -5,13 +5,13 @@ import sounds from '../catalogue-sons.json' with { type: 'json' };
 import videos from '../catalogue-videos.json' with { type: 'json' };
 import { MEDIA_ENTRIES, MEDIA_CATEGORIES, filterMedia, mediaCredit, validateMediaCatalogues } from '../medias-catalogue.mjs';
 
-test('Le fonds commun contient cinquante sources distinctes par type avec leurs preuves de licence', () => {
+test('Le fonds commun conserve au moins cinquante sources distinctes par type avec leurs preuves de licence', () => {
   assert.equal(validateMediaCatalogues({ audio: sounds, video: videos }), true);
-  assert.equal(MEDIA_ENTRIES.length, 100);
+  assert.equal(MEDIA_ENTRIES.length, sounds.entries.length + videos.entries.length);
   for (const kind of ['audio', 'video']) {
     const entries = MEDIA_ENTRIES.filter(entry => entry.kind === kind);
     const ledger = readFileSync(new URL(kind === 'audio' ? '../MEDIAS-SONS-SOURCES.md' : '../MEDIAS-VIDEOS-SOURCES.md', import.meta.url), 'utf8');
-    assert.equal(entries.length, 50);
+    assert.ok(entries.length >= 50);
     assert.ok(new Set(entries.map(entry => entry.category)).size >= 6);
     for (const entry of entries) {
       assert.match(entry.url, /^https:\/\/upload\.wikimedia\.org\//);

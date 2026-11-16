@@ -1,10 +1,10 @@
 # Catalogue de vidéos d’ambiance — sources et vérifications
 
-Sélection préparée le **15 novembre 2026** pour le Studio MJ : **50 vidéos distinctes**, toutes annoncées sous **CC0 1.0** sur leur fiche Wikimedia Commons. Ce catalogue fournit des liens ; aucun fichier vidéo n’est copié dans le dépôt.
+Sélection préparée le **15 novembre 2026** pour le Studio MJ : **55 vidéos distinctes**, toutes annoncées sous **CC0 1.0** sur leur fiche Wikimedia Commons. Ce catalogue fournit des liens ; aucun fichier vidéo n’est copié dans le dépôt.
 
 ## Périmètre et choix
 
-Les titres et descriptions en français proposent un usage d’ambiance pour une séance. Les prises de vues représentent des lieux réels ; elles ne définissent aucun lieu canonique d’Entre-Rives. La sélection comprend des eaux, des sous-bois, des saisons, des reliefs, des grottes, des flammes et quelques vues du ciel.
+Les titres et descriptions en français proposent un usage d’ambiance pour une séance. Les prises de vues représentent des lieux réels ; elles ne définissent aucun lieu canonique d’Entre-Rives. La sélection comprend des eaux, des sous-bois, des saisons, des reliefs, des grottes, des flammes, quelques vues du ciel et des scènes de village et d’artisanat.
 
 | Catégorie | Nombre |
 | --- | ---: |
@@ -12,18 +12,18 @@ Les titres et descriptions en français proposent un usage d’ambiance pour une
 | Forêts et vie sauvage | 7 |
 | Météo et saisons | 9 |
 | Paysages | 10 |
-| Lieux et abris | 4 |
+| Lieux et abris | 9 |
 | Feux et lumière | 3 |
 | Ciel et astres | 3 |
-| **Total** | **50** |
+| **Total** | **55** |
 
-Les prises distinctes et leurs identifiants Commons sont conservés ; les déclinaisons du même fichier en plusieurs définitions ne comptent pas comme plusieurs vidéos. Une seule variante de chaque série de bougies et de rivière brumeuse a été retenue. Le tri des métadonnées et vignettes a écarté notamment les vues centrées sur des véhicules ou des rues modernes, les scènes politiques, les jeux vidéo, les personnes mises en avant, les imports dont la licence est encore à contrôler et les clips accompagnés d’une musique ambiguë.
+Les prises distinctes et leurs identifiants Commons sont conservés ; les déclinaisons du même fichier en plusieurs définitions ne comptent pas comme plusieurs vidéos. Une seule variante de chaque série de bougies et de rivière brumeuse a été retenue. Le tri initial des métadonnées et vignettes a écarté notamment les vues centrées sur des véhicules ou des rues modernes, les scènes politiques, les jeux vidéo, les personnes mises en avant, les imports dont la licence est encore à contrôler et les clips accompagnés d’une musique ambiguë.
 
 ## Licence et provenance
 
 Chaque entrée conserve le titre original, l’auteur déclaré, la fiche du fichier avec sa révision, la déclaration de licence et un lien vers [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). La licence a été contrôlée **sur le fichier**, à partir de `LicenseShortName=CC0` et `License=cc0` de l’API Commons ; la licence générale des métadonnées du site n’a pas servi de preuve.
 
-48 fichiers sont présentés comme des œuvres personnelles par leur déposant. Pour les deux imports Vimeo (tronc moussu et aurore norvégienne), la fiche Commons comporte une revue de licence par YouTubeReviewBot ; les imports portant encore `License review needed` sont exclus. Cette revue est la preuve déclarée par Commons, sans vérification indépendante actuelle du compte Vimeo de l’auteur.
+53 fichiers sont présentés comme des œuvres personnelles par leur déposant. Pour les deux imports Vimeo (tronc moussu et aurore norvégienne), la fiche Commons comporte une revue de licence par YouTubeReviewBot ; les imports portant encore `License review needed` sont exclus. Cette revue est la preuve déclarée par Commons, sans vérification indépendante actuelle du compte Vimeo de l’auteur.
 
 Les sections Licence de [Mossy Tree CC0](https://commons.wikimedia.org/w/index.php?title=File:Mossy_Tree_CC0.webm&oldid=1054354981) et de [Time-lapse of Aurora Borealis in Norway](https://commons.wikimedia.org/w/index.php?title=File:Time-lapse_of_Aurora_Borealis_in_Norway.webm&oldid=1179449500) précisent que le robot a constaté cette licence sur Vimeo les **10 et 9 décembre 2019**, respectivement. Les liens d’origine sont [Mossy Tree](https://vimeo.com/170258813) et [Norway — Aurora](https://vimeo.com/87530264). Leurs pages actuelles n’étaient pas accessibles à l’outil de recherche lors du contrôle ; la preuve retenue est donc la revue historique de Commons. Les deux fiches rappellent que le robot vérifie la licence, sans garantir les droits sur d’éventuels éléments tiers.
 
@@ -31,17 +31,17 @@ CC0 autorise notamment copie, adaptation et utilisation commerciale sans attribu
 
 ## Transport et limites
 
-Les liens directs HTTPS proviennent des dérivés annoncés par `videoinfo.derivatives`, sans construction manuelle des chemins : **49 WebM VP9 en 480p et une bougie en 240p**. La disponibilité d’un dérivé au moment du contrôle ne garantit pas son maintien par l’hébergeur. La sélection reste utilisable sans compte ni clé d’API ; un accès réseau aux serveurs Wikimedia est nécessaire pour la lecture.
+Les liens directs HTTPS proviennent des dérivés annoncés par `videoinfo.derivatives`, sans construction manuelle des chemins : **54 WebM VP9 en 480p et une bougie en 240p**. La disponibilité d’un dérivé au moment du contrôle ne garantit pas son maintien par l’hébergeur. La sélection reste utilisable sans compte ni clé d’API ; un accès réseau aux serveurs Wikimedia est nécessaire pour la lecture.
 
-Le tri visuel porte sur les **vignettes de chacun des 50 fichiers retenus**, avec consultation des descriptions. Il ne remplace pas un visionnage intégral de chaque vidéo : cadrage, mouvements, coupes et éléments apparaissant plus tard doivent être appréciés dans l’aperçu avant une séance. Les clips verticaux (cascade Huascarán, grottes et foyer extérieur), le carré lunaire et les séquences brèves sont signalés par leur description ou leur durée. Le refuge, le phare et le foyer peuvent laisser voir des éléments contemporains.
+Le tri visuel porte sur les **vignettes de chacun des 55 fichiers retenus**, avec consultation des descriptions. Il ne remplace pas un visionnage intégral de chaque vidéo : cadrage, mouvements, coupes et éléments apparaissant plus tard doivent être appréciés dans l’aperçu avant une séance. Les clips verticaux (cascade Huascarán, grottes, foyer extérieur, forgeron, scierie et potier), le carré lunaire et les séquences brèves sont signalés par leur description ou leur durée. Le refuge, le phare et le foyer peuvent laisser voir des éléments contemporains.
 
 La présence ou les droits de toutes les pistes sonores originales n’ont pas été contrôlés par écoute intégrale. Les vidéos sont destinées à des **fonds muets** ; utiliser le catalogue audio séparé pour la bande sonore. Le Studio doit conserver une sélection explicite avant chargement et diffusion, ainsi que pause, retrait et image de remplacement. La simple ouverture du catalogue ne doit pas charger les médias distants.
 
 ## Contrôle de disponibilité
 
-**50/50 URL directes vérifiées par HEAD : HTTP 200, `video/webm`**, le 15 novembre 2026. Les requêtes ont suivi celles du catalogue audio, à douze secondes minimum entre appels, en respectant les limitations du serveur. Le contrôle interrompu après 44 résultats a repris uniquement les six liens restants. Aucun téléchargement complet ni visionnage intégral des vidéos n’est revendiqué.
+Sélection initiale : **50/50 URL directes vérifiées par HEAD : HTTP 200, `video/webm`**, le 15 novembre 2026. Les requêtes ont suivi celles du catalogue audio, à douze secondes minimum entre appels, en respectant les limitations du serveur. Le contrôle interrompu après 44 résultats a repris uniquement les six liens restants. Aucun téléchargement complet ni visionnage intégral des vidéos n’est revendiqué.
 
-## Registre des 50 fichiers
+## Registre initial des 50 fichiers
 
 Toutes les lignes ci-dessous ont la licence **CC0 1.0**. La fiche liée est figée sur la révision examinée ; la preuve précise figure également dans `licenseNote` du JSON.
 
@@ -98,9 +98,9 @@ Toutes les lignes ci-dessous ont la licence **CC0 1.0**. La fiche liée est fig�
 | video-176933625 | Croissant de lune | Ciel et astres | Bautsch | 4 | [Bedeckung.18.10.2025.HIP54886.8m.webm](https://commons.wikimedia.org/wiki/File:Bedeckung.18.10.2025.HIP54886.8m.webm?oldid=1132155078) |
 | video-69881016 | Aurore au-dessus du fjord | Ciel et astres | Christer Olsen | 48.214 | [Time-lapse of Aurora Borealis in Norway.webm](https://commons.wikimedia.org/wiki/File:Time-lapse_of_Aurora_Borealis_in_Norway.webm?oldid=1179449500) |
 
-## Résultats HTTP individuels
+## Résultats HTTP individuels de la sélection initiale
 
-Empreinte SHA-256 du catalogue contrôlé : `338375ad18cd81e7c408e98e090e38f49aea763e4875dfe01d1fa9422293ba3d`. Les résultats portent sur les URL exactes conservées dans ce JSON.
+Empreinte SHA-256 du catalogue initial de 50 entrées contrôlé : `338375ad18cd81e7c408e98e090e38f49aea763e4875dfe01d1fa9422293ba3d`. Les résultats portent sur les URL exactes conservées dans ce JSON.
 
 | Identifiant | HTTP | Type déclaré | Contrôle UTC |
 | --- | --- | --- | --- |
@@ -154,3 +154,21 @@ Empreinte SHA-256 du catalogue contrôlé : `338375ad18cd81e7c408e98e090e38f49ae
 | video-165437470 | 200 | video/webm | 2026-11-16T00:38:35.183Z |
 | video-176933625 | 200 | video/webm | 2026-11-16T00:38:47.193Z |
 | video-69881016 | 200 | video/webm | 2026-11-16T00:38:59.208Z |
+
+## Complément « Vie de village » — 15 novembre 2026
+
+Cinq vidéos distinctes sous CC0 complètent la catégorie Lieux et abris : forgeron, scierie traditionnelle, survol d’un village, potier et roue à eau. Les cinq révisions consultées présentent une œuvre personnelle (own) et une dédicace self|cc-zero, confirmées par les métadonnées LicenseShortName=CC0 et License=cc0. Les URL proviennent des dérivés WebM VP9 480p fournis par l’API Commons. Aucun identifiant ni lien existant n’a été remplacé.
+
+Ces cinq vignettes ont été examinées. Ce sont des prises contemporaines : vêtements et équipements modernes peuvent apparaître chez les artisans ; routes et aménagements sont visibles à Leschères. Elles illustrent des gestes et des ambiances, sans constituer une reconstitution médiévale ni une représentation canonique. Les clips du forgeron, de la scierie et du potier sont verticaux. Leur visionnage intégral et l’écoute de leurs éventuelles pistes originales n’ont pas été réalisés ; la diffusion reste muette et doit être précédée d’un aperçu.
+
+Les cinq nouvelles URL ont répondu **HTTP 200, video/webm**, par HEAD, à douze secondes minimum entre appels. Les heures du registre sont en UTC ; le contrôle local a eu lieu le 15 novembre. Aucun fichier vidéo complet n’a été téléchargé.
+
+| Identifiant | Nom dans le Studio | Auteur déclaré | Licence | Preuve consultée | Contrôle HTTP UTC |
+| --- | --- | --- | --- | --- | --- |
+| `video-171156554` | Le forgeron façonne des charnières | Sir Amugi | CC0-1.0 | [Fiche et preuve, révision 1063894176](https://commons.wikimedia.org/w/index.php?title=File%3AA%20Dagbani%20blacksmith%20mould%20door%20hinges.webm&oldid=1063894176) | 200 · video/webm · 2026-11-16T02:52:24.926Z |
+| `video-149415665` | La scierie du moulin | Mayhooom | CC0-1.0 | [Fiche et preuve, révision 1238009813](https://commons.wikimedia.org/w/index.php?title=File%3AHoutzaag%20van%20Molen%20de%20Ster.webm&oldid=1238009813) | 200 · video/webm · 2026-11-16T02:52:36.939Z |
+| `video-71284715` | Les toits du village | Benoît Prieur | CC0-1.0 | [Fiche et preuve, révision 1033172110](https://commons.wikimedia.org/w/index.php?title=File%3ARapide%20survol%20du%20village%20de%20Lesch%C3%A8res%2C%20Jura%2C%20France.webm&oldid=1033172110) | 200 · video/webm · 2026-11-16T02:52:48.962Z |
+| `video-163670539` | Le potier façonne une cruche | Lili Arsova | CC0-1.0 | [Fiche et preuve, révision 1021675902](https://commons.wikimedia.org/w/index.php?title=File%3A%D0%93%D1%80%D0%BD%D1%87%D0%B0%D1%80%D1%81%D0%BA%D0%BE%20%D0%BA%D0%BE%D0%BB%D1%86%D0%B5.webm&oldid=1021675902) | 200 · video/webm · 2026-11-16T02:53:00.975Z |
+| `video-195178263` | La roue à eau du vieux moulin | Bojan Marušič | CC0-1.0 | [Fiche et preuve, révision 1295880445](https://commons.wikimedia.org/w/index.php?title=File%3AStar%20maln.webm&oldid=1295880445) | 200 · video/webm · 2026-11-16T02:53:12.976Z |
+
+Empreinte SHA-256 du catalogue enrichi de 55 vidéos : `826696c4be903e5a2f8bc1e6c3bcca9e67961a517bb878ed853343a99bd1ea13`.

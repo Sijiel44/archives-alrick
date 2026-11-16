@@ -2,7 +2,7 @@
 
 État consulté le **15 novembre 2026**. Catalogue : [catalogue-sons.json](catalogue-sons.json), version 1.
 
-**50 enregistrements distincts**, répartis en sept catégories : **18 sous CC0 1.0 et 32 explicitement placés dans le domaine public par leur auteur**. La sélection privilégie les ambiances et les bruitages utiles à une séance ; aucune variante d’un même enregistrement n’a été comptée séparément. Une collection de bruits dans une même piste compte pour une seule entrée.
+**55 enregistrements distincts**, répartis en sept catégories : **20 sous CC0 1.0 et 35 explicitement placés dans le domaine public par leur auteur**. La sélection privilégie les ambiances et les bruitages utiles à une séance ; aucune variante d’un même enregistrement n’a été comptée séparément. Une collection de bruits dans une même piste compte pour une seule entrée.
 
 | Catégorie | Identifiant | Nombre |
 | --- | --- | ---: |
@@ -10,16 +10,16 @@
 | Forêts et nature | `foret` | 4 |
 | Météo | `meteo` | 4 |
 | Feu | `feu` | 3 |
-| Faune | `faune` | 8 |
-| Lieux et ambiances | `lieux` | 8 |
-| Gestes et accessoires | `gestes` | 15 |
+| Faune | `faune` | 10 |
+| Lieux et ambiances | `lieux` | 9 |
+| Gestes et accessoires | `gestes` | 17 |
 
 ## Provenance et droits
 
 Chaque entrée conserve son titre original, l’auteur donné par la fiche, le lien source, la licence, une note de preuve et la durée fournie par Wikimedia Commons. Les liens permanents du registre ci-dessous désignent les révisions effectivement consultées. Les titres et descriptions en français sont des indications d’usage ; ces ambiances ne constituent aucun ajout au canon de l’univers.
 
 - **CC0-1.0** : la section de licence de la fiche et les métadonnées de l’enregistrement désignent [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Le pied de page général de Commons, qui concerne les métadonnées, n’a pas été utilisé comme preuve de licence du son.
-- **Public-Domain** : les 32 fiches retenues conservent les modèles [PD-pdsounds.org](https://commons.wikimedia.org/wiki/Template:PD-pdsounds.org) et [PD-author](https://commons.wikimedia.org/wiki/Template:PD-author). Ils décrivent l’abandon du son au domaine public par son auteur. Le champ `licenseUrl` renvoie à cette déclaration dans la révision consultée, et non à une licence CC0 attribuée par déduction. La note de chaque entrée conserve aussi le numéro de notice PDSounds.
+- **Public-Domain** : les 35 fiches retenues conservent les modèles [PD-pdsounds.org](https://commons.wikimedia.org/wiki/Template:PD-pdsounds.org) et [PD-author](https://commons.wikimedia.org/wiki/Template:PD-author). Ils décrivent l’abandon du son au domaine public par son auteur. Le champ `licenseUrl` renvoie à cette déclaration dans la révision consultée, et non à une licence CC0 attribuée par déduction. La note de chaque entrée conserve aussi le numéro de notice PDSounds.
 
 Les noms d’auteurs et les sources sont conservés pour la traçabilité, même lorsque la dédicace n’exige pas de crédit. Ces sons restent réutilisables par d’autres ; ils ne deviennent pas des créations exclusives des Chroniques d’Entre-Rives.
 
@@ -29,13 +29,13 @@ Les résultats de prononciation, les lectures d’articles, les podcasts, les pi
 
 Les URL sont les **dérivés MP3 directs HTTPS fournis par l’API Commons**, sans compte, lecteur tiers, page intermédiaire ni paramètres de suivi. Ce choix évite de diffuser les volumineux originaux WAV/FLAC et conserve un format courant dans les navigateurs. Aucun fichier audio binaire n’est ajouté au dépôt.
 
-Les 50 URL ont répondu **HTTP 200** avec le type **audio/mpeg** lors d’un contrôle HEAD. Le registre précise le résultat et l’heure UTC de chaque contrôle. Des réponses temporaires 429 ont imposé un ralentissement ; les demandes ont été espacées et le délai Retry-After respecté avant reprise.
+Les 50 URL de la sélection initiale ont répondu **HTTP 200** avec le type **audio/mpeg** lors d’un contrôle HEAD. Le registre précise le résultat et l’heure UTC de chaque contrôle. Des réponses temporaires 429 ont imposé un ralentissement ; les demandes ont été espacées et le délai Retry-After respecté avant reprise.
 
-La sélection repose sur les descriptions, auteurs et licences des fiches, avec contrôle de leurs métadonnées et révisions. **Les 50 pistes n’ont pas fait l’objet d’une écoute intégrale ni d’une homologation en séance.** Une réponse HEAD vérifie l’accès au fichier et son type annoncé ; elle ne valide pas la qualité acoustique, le décodage complet ou le confort du volume. Des prises de son comportent des voix, du vent sur le microphone, une réverbération ou des bruits de fond : les descriptions signalent les particularités connues, sans promettre des boucles parfaites ou des niveaux uniformes.
+La sélection repose sur les descriptions, auteurs et licences des fiches, avec contrôle de leurs métadonnées et révisions. **Les 55 pistes n’ont pas fait l’objet d’une écoute intégrale ni d’une homologation en séance.** Une réponse HEAD vérifie l’accès au fichier et son type annoncé ; elle ne valide pas la qualité acoustique, le décodage complet ou le confort du volume. Des prises de son comportent des voix, du vent sur le microphone, une réverbération ou des bruits de fond : les descriptions signalent les particularités connues, sans promettre des boucles parfaites ou des niveaux uniformes.
 
 Pour l’intégration : charger le catalogue JSON à l’ouverture, puis ne charger le média externe qu’à la demande explicite d’aperçu ou d’ajout. Garder lecture, pause et retrait accessibles, sans lecture automatique du catalogue. Les liens dépendent de la disponibilité de Commons et d’une connexion ; les déclarations de licence et les liens devront être revérifiés en cas de remplacement ou de retrait d’un fichier.
 
-## Registre des 50 fichiers
+## Registre initial des 50 fichiers
 
 Les preuves CC0 sont dans la section Licence de la révision liée ; les preuves du domaine public sont dans les sections Permission et Licence. La durée, l’URL de lecture et la note précise figurent dans le JSON pour chaque identifiant.
 
@@ -91,3 +91,19 @@ Les preuves CC0 sont dans la section Licence de la révision liée ; les preuves
 | `son-ecriture-encre` | Écriture à l’encre | stephan | Public-Domain | [Fiche et preuve, révision 1167909615](https://commons.wikimedia.org/w/index.php?title=File%3AWriting_with_inkpen.ogg&oldid=1167909615) | 200 · audio/mpeg · 2026-11-15T22:48:32Z |
 | `son-loquet-rouille` | Loquet métallique rouillé | stephan | Public-Domain | [Fiche et preuve, révision 722700178](https://commons.wikimedia.org/w/index.php?title=File%3ARusty_metal_door_clasp.ogg&oldid=722700178) | 200 · audio/mpeg · 2026-11-15T22:48:44Z |
 | `son-cordons-cuir` | Cordons et équipement | stephan | Public-Domain | [Fiche et preuve, révision 722716994](https://commons.wikimedia.org/w/index.php?title=File%3ALace_cord_rope.ogg&oldid=722716994) | 200 · audio/mpeg · 2026-11-15T22:48:56Z |
+
+## Complément « Vie de village » — 15 novembre 2026
+
+Cinq prises distinctes complètent les entrées existantes : cloche de midi, cheval, coq, impacts sur du bois et sciage simulé sur carton. Les deux premières sont sous CC0 ; les trois dernières conservent les déclarations PD-pdsounds.org et PD-author (notices 539, 260 et 426). Aucun identifiant ni lien existant n’a été remplacé.
+
+Les cinq nouvelles URL ont répondu **HTTP 200, audio/mpeg**, par HEAD, avec douze secondes minimum entre appels. Le registre emploie l’heure UTC, qui peut être au 16 novembre alors que la vérification locale est encore au 15 novembre. Le contrôle porte uniquement sur l’accès HTTP et le type annoncé : ces pistes n’ont pas fait l’objet d’une écoute complète. Le bruitage de cheval est décrit sans supposer une allure particulière ; le bruitage de sciage provient d’un rouleau de carton, pas d’une scierie réelle.
+
+| Identifiant | Nom dans le Studio | Auteur déclaré | Licence | Preuve consultée | Contrôle HTTP UTC |
+| --- | --- | --- | --- | --- | --- |
+| `son-cloche-midi-dardine` | La cloche de midi au village | Cirolini P | CC0-1.0 | [Fiche et preuve, révision 846804469](https://commons.wikimedia.org/w/index.php?title=File%3ACampane%20Dardine%20-%20Angelus%20Mezzogiorno.wav&oldid=846804469) | 200 · audio/mpeg · 2026-11-16T02:53:24.984Z |
+| `son-cheval-village` | Cheval · bruitage pour les écuries | Zagzav12 | CC0-1.0 | [Fiche et preuve, révision 1298273089](https://commons.wikimedia.org/w/index.php?title=File%3AHorse%20sound%20effect.wav&oldid=1298273089) | 200 · audio/mpeg · 2026-11-16T02:53:36.989Z |
+| `son-coq-basse-cour` | Le coq et la basse-cour | alys | Public-Domain | [Fiche et preuve, révision 876230988](https://commons.wikimedia.org/w/index.php?title=File%3AMedium%20rooster%20crowing.ogg&oldid=876230988) | 200 · audio/mpeg · 2026-11-16T02:53:48.991Z |
+| `son-coups-poteau-bois` | Coups sur un poteau de bois | stephan | Public-Domain | [Fiche et preuve, révision 1300932065](https://commons.wikimedia.org/w/index.php?title=File%3AHitting%20wooden%20pole.ogg&oldid=1300932065) | 200 · audio/mpeg · 2026-11-16T02:54:00.992Z |
+| `son-sciage-carton` | Sciage d’atelier · bruitage sur carton | qubodup | Public-Domain | [Fiche et preuve, révision 722699377](https://commons.wikimedia.org/w/index.php?title=File%3ASawing%20an%20empty%20toilet%20paper%20roll.ogg&oldid=722699377) | 200 · audio/mpeg · 2026-11-16T02:54:13.002Z |
+
+Empreinte SHA-256 du catalogue enrichi de 55 sons : `0aeeb4e10d4c3aab3c37bd2d62a04bd005c06ecb3a81e76906a3bedab90343bc`.
