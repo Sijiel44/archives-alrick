@@ -97,7 +97,7 @@ const publishedBestiaryImages = publishedBestiaryEntries.filter(entry => entry.i
 const organisationEntries = organisations.entries.map(entry => ({
   id: entry.id, version: entry.version, name: entry.name, description: entry.description,
   kind: 'faction', shelf: 'factions',
-  group: entry.tags.includes('compagnie_marchande') ? 'Maisons de négoce' : 'Institutions et contre-pouvoirs',
+  group: entry.id === 'GRP-ANC-01' ? 'Coalitions et Ancrages' : entry.tags.includes('compagnie_marchande') ? 'Maisons de négoce' : 'Institutions et contre-pouvoirs',
   status: 'lore', origin: 'archives', path: entry.path, tags: entry.tags.join(' '), links: entry.relations,
   href: `https://github.com/Sijiel44/archives-alrick/blob/main/${entry.path}`,
   art: { src: new URL(`./images/organisations/${entry.image}`, import.meta.url).pathname, alt: entry.artAlt },

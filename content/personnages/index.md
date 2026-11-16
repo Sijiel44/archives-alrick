@@ -14,7 +14,7 @@ Les habitants du monde possèdent des métiers, des convictions et leurs propres
 
 ## Personnages antagonistes de la Déchéance
 
-[[personnages-dechus|Vingt-six personnages canoniques, niveaux de référence 2 à 20]] — pactes, parcours, rivalités, métiers, lieux d'activité et alternatives à la confrontation ; trois membres de la nouvelle compagnie marchande ne sont pas Déchus.
+[[personnages-dechus|Trente-deux personnages du monde partagé, niveaux de référence 2 à 20]] — pactes, parcours, rivalités, métiers, lieux d'activité et alternatives à la confrontation ; les trois maisons marchandes comptent aussi des personnes non Déchues, dont les choix peuvent néanmoins en faire des adversaires.
 
 ## Dragons libres — des PNJ, pas des espèces de rencontre
 

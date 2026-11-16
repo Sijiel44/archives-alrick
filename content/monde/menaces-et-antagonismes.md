@@ -43,9 +43,9 @@ La Déchéance est un **mécanisme surnaturel de contre-ascension** qui exige, �
 
 [[monde/decheance-canon|Comprendre la Déchéance]] · [[monde/dechus-hierarchie|Découvrir les figures majeures — avertissement MJ]] · [[jouer/decheance-systeme|Module de jeu]]
 
-Les [[groupes/organisations-decheance|six institutions et la compagnie marchande autour de la Déchéance]] montrent aussi des conflits d'organisations : une maison peut soigner sans exiger la soumission, une caisse financer le secours sans posséder ses débiteurs, et une entreprise transporter des vivres sans accaparer les quais. Elles appartiennent au monde partagé ; aucune victoire de campagne n'y est préécrite.
+Les [[groupes/organisations-decheance|six institutions et trois compagnies marchandes autour de la Déchéance]] montrent aussi des conflits d'organisations : une maison peut soigner sans exiger la soumission, une caisse financer le secours sans posséder ses débiteurs, et une entreprise transporter des vivres sans accaparer les quais. La [[groupes/GRP-ANC-01|Première Ancre]] est une coalition composite de déplacés, de lignées et de Maisons, non un ennemi unique ni un réseau automatiquement Déchu. Ces groupes appartiennent au monde partagé ; aucune victoire de campagne n'y est préécrite.
 
-Les [[personnages/personnages-dechus|vingt-six portraits de personnages liés aux conflits de Déchéance]] proposent des adversaires, des alliés et des témoins de niveaux indicatifs 2 à 20, y compris des personnes **non déchues**. Ces niveaux ne sont pas des profils 5d6 validés.
+Les [[personnages/personnages-dechus|trente-deux portraits de personnages liés aux conflits de Déchéance]] proposent des adversaires, des alliés et des témoins de niveaux indicatifs 2 à 20, y compris des personnes **non déchues**. Ces niveaux ne sont pas des profils 5d6 validés.
 
 ## Ce qui doit encore être créé
 

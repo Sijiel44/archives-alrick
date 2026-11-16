@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deux cordages entourant une planche de bac, marque de la Maison Varin et Cessac" viewBox="0 0 240 240">
+  <rect width="240" height="240" rx="30" fill="#20364a"/>
+  <circle cx="120" cy="120" r="94" fill="#e8dcb9" opacity=".12"/>
+  <path d="M30 158Q78 144 120 159T210 158M30 176Q78 162 120 177T210 176" fill="none" stroke="#8caeb8" stroke-width="7" stroke-linecap="round"/>
+  <path d="M57 120 180 96 189 119 66 145Z" fill="#c18d52" stroke="#eed3a2" stroke-width="4"/>
+  <path d="M74 61C47 65 37 108 73 123C92 134 100 151 91 171M168 58C198 71 201 105 170 121C150 133 143 155 153 177" fill="none" stroke="#e9c78d" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="120" cy="115" r="7" fill="#f1e2c1"/>
+</svg>

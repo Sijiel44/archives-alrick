@@ -425,3 +425,9 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Fiches et illustrations ESP-ER-010 Libellule de nacre, ESP-ER-011 Sanglier de silex et ESP-ER-012 Corneille aux trois voix, avec registre B-002 et références Studio protégées.
 # Canon à la création, aucun fait joué, recette alchimique, profil M03 ni adoption des 41 candidates B-003.1 ; dragons nommés toujours dans les PNJ.
 # Vérifier le déploiement Pages et les recettes publiques, ainsi que l'existence des trois images WebP.
+
+# ANT-DECH-008 — Publication demandée par le créateur, 16 novembre 2026 : deux compagnies supplémentaires, Première Ancre et embranchements réparateurs.
+# Publier ORG-DECH-08 (Varin et Cessac), ORG-DECH-09 (Bellame et Juvan), GRP-ANC-01 (Première Ancre) et PER-DECH-27..32 : portraits WebP et alternatives SVG originaux, biographies et index publics.
+# Première Ancre = coalition composite, Régent sans Couronne chef d'une branche seulement ; ni tous les vingt-trois groupes du Nord, ni toutes les anomalies, ni toute Déchéance ne lui sont imputables.
+# Les listes de nouvelles institutions non encore choisies restent propositions de mission, pas du canon ni des pages d'univers. Niveaux PNJ narratifs, sans profil 5d6 validé ; notes privées MJ hors du dépôt.
+# Préserver la copie locale homebrew, l'isolement joueur et les anciennes sauvegardes ; CI intégrale et contrôle public requis avant confirmation du déploiement.

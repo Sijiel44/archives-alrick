@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Feuille roulée et chemins de courrier, marque du Comptoir Bellame et Juvan" viewBox="0 0 240 240">
+  <rect width="240" height="240" rx="30" fill="#2f3045"/>
+  <circle cx="120" cy="120" r="94" fill="#efe7d4" opacity=".09"/>
+  <path d="M46 175C84 138 106 166 129 126S173 94 201 64" fill="none" stroke="#9fb9a3" stroke-width="5" stroke-dasharray="8 10"/>
+  <path d="M60 83Q93 64 130 80L177 69 161 155Q122 139 80 160Z" fill="#ecdab4" stroke="#ad8652" stroke-width="5"/>
+  <path d="M86 105Q120 92 151 107M84 123Q120 112 148 124M89 141Q116 133 138 141" stroke="#6b5260" stroke-width="4" fill="none"/>
+  <path d="M181 151C162 169 178 190 190 185S203 168 181 151Z" fill="#c6a0a2"/>
+</svg>
