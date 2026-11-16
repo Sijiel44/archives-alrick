@@ -38,6 +38,20 @@ La capitaine conserve la responsabilité nautique du navire, même en présence 
 
 Une scène de préparation peut explorer l'autonomie de la capitaine face à des exigences contradictoires ; toute nouvelle tempête ou destination serait une aventure proposée.
 
+### Trois pistes indépendantes (propositions MJ, non jouées)
+
+**Mise en scène.** Thaléa observe les voiles avant d'écouter la demande d'un passager pressé. *« Ce pont est sous ma responsabilité ; les courants ne connaissent pas vos titres. »* Réplique inventée, sans source dialoguée.
+
+- **Partir ou attendre :** un courant incertain menace un départ diplomatique. Examiner les relevés, demander plusieurs avis ou ajourner sans désigner de coupable.
+- **L'équipage à l'essai :** un marin expérimenté et une nouvelle recrue proposent deux manœuvres. Organiser une démonstration sûre, solliciter Mara Ventrevent ou renoncer à l'essai en mer.
+- **Ordre contradictoire :** un invité puissant propose d'user d'une aide exceptionnelle pour hâter le navire. La capitaine peut refuser, négocier une route ou n'accepter qu'un essai limité.
+
+**Chronologie et mécanique.** Thaléa signe le commandement après les scènes attestées de CB43. Le premier Cercle observé ne prouve pas de maîtrise supérieure ; aucun personnage ne reçoit une formation ou une capacité par simple proximité.
+
+## Inspiration visuelle extérieure — non canonique
+
+[**Seascape with waves and sailing ship**, Christian Mølsted, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Christian_M%C3%B8lsted_-_Seascape_with_waves_and_sailing_ship.jpg) : peinture du domaine public, utilisée comme **ambiance marine**. Elle ne documente ni le yacht, ni son équipage, ni les traits de Thaléa.
+
 ## Sources
 
 *Compendium V03 v1.7*, **RES-06** ; *Campagne Brut 4.2* P10638–10641 ; *CB43* P03450–04029, P11975–12094 et P18613–18648.

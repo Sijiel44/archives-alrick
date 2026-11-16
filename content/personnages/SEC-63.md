@@ -31,6 +31,16 @@ Ses premiers Cercles autonomes, son âge, sa famille et la progression future de
 
 Les prochains projets ou exercices restent à jouer et à sourcer.
 
+## En jeu — pistes proposées, non jouées (volet MJ)
+
+**Mise en scène.** Tomas choisit un siège qui lui permet de rester stable. Il tente un cercle familier, s'interrompt, puis explique honnêtement ce qui lui manque. *« Je l'ai senti une fois ; je dois encore apprendre à le tenir. »* Phrase inventée pour la table.
+
+- **L'essai devant témoins :** une démonstration publique pousse les apprentis à feindre une maîtrise qu'ils n'ont pas. Les personnages peuvent interrompre, protéger l'essai ou présenter le travail réel.
+- **Le geste répété :** un exercice collectif propose trois manières de percevoir un cercle simple. Pratiquer, comparer les ressentis et demander l'avis du mentor sans imposer une réponse unique.
+- **Le siège déplacé :** l'espace d'étude a été réaménagé sans consulter ceux qui l'utilisent. Écouter les besoins, essayer une autre disposition ou restaurer un poste adapté.
+
+**Verrou mécanique.** En CB42, les Cercles élevés ne sont formés qu'**avec une aide exceptionnelle** et s'effondrent ensuite. Tomas n'a **pas** reçu une maîtrise autonome du huitième Cercle. Toute acquisition de capacité exige pratique, mentor disponible, XP/prérequis arbitrés par MATH/INDEX et validation MJ ; aucun progrès automatique de groupe.
+
 ## Sources
 
 *Compendium des personnages et des relations* v1.7, **SEC-63** ; documents CB cités précédemment : CB42 P03135–03525. Les codes REN et RES sont des adresses documentaires, non une preuve d’adhésion à une Maison ou à la compagnie des Revenants.

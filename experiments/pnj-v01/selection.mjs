@@ -309,5 +309,107 @@ export const selection = [
     rencontre: "Un essai de fermentation à la poire attire un acheteur avant d'avoir été stabilisé.",
     choix: "Faire patienter, vérifier le procédé ou refuser la commande sans renoncer à l'expérience.",
     image: "mirelda-concept-v01.webp"
+  },
+  {
+    id: "durgan", file: "PER-CB31-DURGAN.md", groupe: "metiers", symbole: "⚒️",
+    accroche: "Un maître forgeron qui ne confond jamais puissance de l'outil et justesse du geste.",
+    enScene: "Dépose un marteau ordinaire devant l'apprenti et attend de voir sa prise avant de parler d'acier rare.",
+    rencontre: "Une commande prestigieuse imposerait une arme difficile à entretenir par son futur porteur.",
+    choix: "Refaire les essais d'équilibre, adapter la commande ou refuser une fabrication trop risquée.",
+    externe: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/b/b6/The_Blacksmith%27s_Forge_by_Alfred_Provis_-_Alfred_Provis_-_ABDAG004355.jpg",
+      source: "https://commons.wikimedia.org/wiki/File:The_Blacksmith%27s_Forge_by_Alfred_Provis_-_Alfred_Provis_-_ABDAG004355.jpg",
+      titre: "The Blacksmith's Forge", credit: "Alfred Provis · Aberdeen Art Gallery",
+      licence: "Domaine public ; reproduction CC0", nature: "Ambiance de forge, pas un portrait de Durgan"
+    }
+  },
+  {
+    id: "maelya", file: "PER-CB31-MAELYA.md", groupe: "proches", symbole: "📓",
+    accroche: "Une voyageuse qui entend la différence entre un mot traduit et une histoire comprise.",
+    enScene: "Répète une expression de pêcheur à mi-voix et demande dans quelles circonstances elle est employée.",
+    rencontre: "Un accord commercial achoppe sur un mot que chaque village comprend autrement.",
+    choix: "Écouter les locuteurs, réécrire l'accord ou conserver plusieurs traductions avec leurs nuances."
+  },
+  {
+    id: "mael", file: "PER-CB38-MAEL-TORVENN.md", groupe: "metiers", symbole: "🎼",
+    accroche: "La valeur d'un instrument se mesure aussi à la facilité de le réparer.",
+    enScene: "Observe les doigts du musicien avant d'ouvrir un étui ; il cherche le son et l'usage, pas un blason.",
+    rencontre: "Un instrument de scène au son admirable devient presque impossible à réparer pendant une tournée.",
+    choix: "Modifier les pièces, former un réparateur local ou choisir une conception plus sobre."
+  },
+  {
+    id: "serah", file: "PER-CB39-SERAH-DENVAR.md", groupe: "savoirs", symbole: "🏹",
+    accroche: "Une capitaine des Hautes Marches qui demande à apprendre sans prétendre déjà savoir.",
+    enScene: "Reformule un ordre ambigu en consignes vérifiables et s'assure que les nouvelles recrues l'ont compris.",
+    rencontre: "Un exercice de patrouille réussit sur le papier mais laisse les derniers marcheurs sans appui.",
+    choix: "Réorganiser l'escorte, recueillir les objections ou reprendre l'exercice autrement."
+  },
+  {
+    id: "mirena", file: "PER-CB42-RES-02-MIRENA-VALCOURT.md", groupe: "metiers", symbole: "🕯️",
+    accroche: "Une intendante qui sait qu'une maison accueillante commence par des équipes respectées.",
+    enScene: "Vérifie les tours de service et refuse qu'une fête se prépare en épuisant ceux qui la rendent possible.",
+    rencontre: "Une réception imprévue doublerait la charge de l'équipe de nuit.",
+    choix: "Réduire le programme, recruter une aide ponctuelle volontaire ou reporter l'événement."
+  },
+  {
+    id: "ysanne", file: "PER-CB42-RES-05-YSANNE-TROIS-FOURS.md", groupe: "metiers", symbole: "🥘",
+    accroche: "Une cuisinière qui n'oublie ni les travailleurs de passage ni la dignité d'un repas simple.",
+    enScene: "Goûte la soupe avant de saluer un dignitaire et demande qui doit encore être nourri.",
+    rencontre: "Une cuisine doit accueillir des invités nombreux avec des réserves modestes et des habitudes opposées.",
+    choix: "Adapter le menu, consulter les convives ou répartir les préparations en ateliers."
+  },
+  {
+    id: "thalea", file: "PER-CB42-RES-06-THALEA-BRISE-ECUME.md", groupe: "savoirs", symbole: "⛵",
+    accroche: "Une capitaine de mer qui reste responsable du navire, même avec de grands pouvoirs à bord.",
+    enScene: "Écoute les prévisions des marins, assigne les postes et n'accepte une manœuvre que si l'équipage peut la suivre.",
+    rencontre: "Un passager important presse la capitaine de partir malgré un avertissement sur les courants.",
+    choix: "Différer le départ, proposer une route plus sûre ou refuser l'instruction.",
+    externe: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Christian_M%C3%B8lsted_-_Seascape_with_waves_and_sailing_ship.jpg/960px-Christian_M%C3%B8lsted_-_Seascape_with_waves_and_sailing_ship.jpg",
+      source: "https://commons.wikimedia.org/wiki/File:Christian_M%C3%B8lsted_-_Seascape_with_waves_and_sailing_ship.jpg",
+      titre: "Seascape with waves and sailing ship", credit: "Christian Mølsted",
+      licence: "Domaine public", nature: "Paysage marin d'ambiance, pas un portrait de Thaléa"
+    }
+  },
+  {
+    id: "larek", file: "RES-28.md", groupe: "savoirs", symbole: "🪢",
+    accroche: "Un apprenti marin dont la meilleure histoire ne le dispense pas d'apprendre les nœuds.",
+    enScene: "Parle avec chaleur d'un chien appelé l'Amiral, puis se reprend pour vérifier une manœuvre avant de la tenter.",
+    rencontre: "Pendant un apprentissage, une amarre se défait au moment où le pont devient glissant.",
+    choix: "Sécuriser d'abord les gens, appeler l'instructrice ou répéter le geste à quai."
+  },
+  {
+    id: "celianne", file: "SEC-68.md", groupe: "metiers", symbole: "🌱",
+    accroche: "Une botaniste libre de choisir ses recherches, sans que les titres de sa mère ne l'engagent.",
+    enScene: "Compare deux feuilles presque identiques et demande d'où elles viennent avant de parler de leurs usages.",
+    rencontre: "Une herbe réputée médicinale pousse dans deux sols différents et donne des résultats incertains.",
+    choix: "Observer sans prélever, obtenir un accord local ou comparer les observations avant toute conclusion.",
+    externe: {
+      url: "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Plantes_m%C3%A9dicinales_planche_2_-_Medicinal_plants%2C_medical_herbs%2C_botanical_illustrations%2C_plate_2_-_Public_domain_illustration_from_Larousse_du_XX%C3%A8me_si%C3%A8cle_1932.jpg/500px-thumbnail.jpg",
+      source: "https://commons.wikimedia.org/wiki/File:Plantes_m%C3%A9dicinales_planche_2_-_Medicinal_plants%2C_medical_herbs%2C_botanical_illustrations%2C_plate_2_-_Public_domain_illustration_from_Larousse_du_XX%C3%A8me_si%C3%A8cle_1932.jpg",
+      titre: "Plantes médicinales, planche 2", credit: "Larousse du XXe siècle · EN NOIR & BLANC",
+      licence: "CC0 1.0 (fichier Commons)", nature: "Planche botanique d'ambiance, pas un document de Célianne"
+    }
+  },
+  {
+    id: "odris", file: "SEC-74.md", groupe: "savoirs", symbole: "⚙️",
+    accroche: "Un ancien des machines d'eau qui ne signe aucun plan impossible à réparer au village.",
+    enScene: "Tourne la vanne à la main, laisse l'apprenti essayer et demande ce qui se passera si l'enchantement cesse.",
+    rencontre: "Un système d'irrigation neuf rend une exploitation dépendante d'une pièce introuvable.",
+    choix: "Fabriquer une alternative locale, revenir à un montage ancien ou suspendre les travaux."
+  },
+  {
+    id: "tomas", file: "SEC-63.md", groupe: "savoirs", symbole: "⭕",
+    accroche: "Un apprenti qui connaît la différence entre réussir guidé et tenir seul.",
+    enScene: "Ajuste son siège, respire, puis décrit honnêtement ce qui demeure stable lorsqu'on retire l'aide.",
+    rencontre: "Une démonstration d'atelier pousse les apprentis à masquer leurs difficultés devant des visiteurs.",
+    choix: "Montrer les étapes réelles, interrompre l'essai ou demander une séance plus sûre."
+  },
+  {
+    id: "cesar", file: "PER-CB43-CESAR.md", groupe: "proches", symbole: "🐈",
+    accroche: "Un chat argenté qui peut parler, mais choisit toujours le moment de se faire entendre.",
+    enScene: "S'installe sur le coussin le mieux placé, observe les invités et ne répond pas aux ordres comme à un emploi du temps.",
+    rencontre: "Un hôte croit qu'un salon est réservé aux dignitaires et n'ose pas y entrer.",
+    choix: "Réinventer l'accueil, écouter ce que souhaite le visiteur ou laisser le chat tranquille."
   }
 ];

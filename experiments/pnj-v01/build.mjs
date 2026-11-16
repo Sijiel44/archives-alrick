@@ -42,6 +42,18 @@ export async function buildData() {
       const info = await stat(path.join(repository, "content/images/personnages", record.image));
       if (info.size > 3 * 1024 * 1024) throw new Error(`Illustration >3 Mio : ${record.image}`);
     }
+    if (record.externe) {
+      const { url, source, titre, credit, licence, nature } = record.externe;
+      if ([url, source, titre, credit, licence, nature].some((value) => typeof value !== "string" || !value.trim())) {
+        throw new Error(`Crédits d'image externe incomplets : ${record.id}`);
+      }
+      const media = new URL(url), origine = new URL(source);
+      if (media.protocol !== "https:" || !["upload.wikimedia.org", "thumb.wikimedia.org"].includes(media.hostname)
+        || origine.protocol !== "https:" || origine.hostname !== "commons.wikimedia.org"
+        || !origine.pathname.startsWith("/wiki/File:") || !/\.(?:png|jpg|jpeg|webp)$/i.test(media.pathname)) {
+        throw new Error(`Image externe hors liste de confiance : ${record.id}`);
+      }
+    }
     cards.push({
       id: record.id,
       code,
@@ -54,6 +66,7 @@ export async function buildData() {
       rencontre: record.rencontre,
       choix: record.choix,
       image,
+      externe: record.externe || null,
       illustrationValidee: Boolean(record.illustrationValidee),
       statut: field(meta, "canon_statut"),
       ancre: field(meta, "ancre_documentaire"),
@@ -62,7 +75,7 @@ export async function buildData() {
       publicationSource: field(meta, "publish") === "true",
     });
   }
-  if (cards.length !== 42) throw new Error(`42 cartes attendues, ${cards.length} obtenues`);
+  if (cards.length !== 54) throw new Error(`54 cartes attendues, ${cards.length} obtenues`);
   return cards;
 }
 
@@ -73,5 +86,5 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const output = template.replace("__PNJ_DATA__", payload);
   if (output === template) throw new Error("Emplacement des données non trouvé");
   await writeFile(path.join(here, "preview.html"), output, "utf8");
-  process.stdout.write(`PNJ-001 : ${cards.length} cartes, ${cards.filter((c) => c.image).length} portraits, aperçu régénéré.\n`);
+  process.stdout.write(`PNJ-001 : ${cards.length} cartes, ${cards.filter((c) => c.image).length} portraits, ${cards.filter((c) => c.externe).length} inspirations externes, aperçu régénéré.\n`);
 }
