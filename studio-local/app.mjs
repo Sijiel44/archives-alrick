@@ -18,6 +18,8 @@ import { createObjectGrantUI } from './objets-mj-ui.mjs';
 import { createAudioUI } from './audio-ui.mjs';
 import { videoForScene } from './video.mjs';
 import { createSceneVideoUI } from './video-ui.mjs';
+import { createMediaCatalogueUI } from './medias-ui.mjs';
+import { BACKUP_HISTORY_KEY, readBackupHistory, recordBackupReceipt, backupCopyStatus } from './suivi-sauvegardes.mjs';
 import { clearProjection, createPlayerProjection, createProjection, loadPresentationImage, openPlayerWindow, playerSheetPresentation, scenePresentation, showPresentation } from './projection.mjs';
 
 const $ = (id) => document.getElementById(id);
@@ -49,6 +51,12 @@ const audioUI = createAudioUI({ getCampaign: () => campaign, canWrite: () => Boo
 const sceneVideoUI = createSceneVideoUI({ getCampaign: () => campaign, canWrite: () => Boolean(campaign && !busy),
   images: LIBRARY_ILLUSTRATIONS, save: saveCommand, refresh: refreshCampaign,
   prepare: event => prepareSceneShare(event, undefined, { useVideo: true }) });
+createMediaCatalogueUI({ canChoose: kind => kind === 'audio' ? audioUI.canAdd() : Boolean(campaign && !busy && activeScene()),
+  selectionHelp: () => !campaign ? 'Ouvrez une campagne pour préparer un média. Les aperçus et sources restent consultables.'
+    : !audioUI.canAdd() && !busy ? 'La bibliothèque de campagne est limitée à 100 pistes. Libérez une place pour ajouter un son.'
+      : !activeScene() ? 'Vous pouvez préparer des sons. Ajoutez une scène pour lui associer une vidéo.'
+        : 'Préparer ouvre un formulaire à relire. La campagne change seulement après son enregistrement.',
+  chooseAudio: entry => audioUI.prefill(entry), chooseVideo: entry => sceneVideoUI.prefill(entry), stopAudio: () => audioUI.pause() });
 let draft;
 let createDraft;
 let quickDraft;
@@ -1673,6 +1681,7 @@ function render() {
   renderPlay();
   audioUI.render();
   sceneVideoUI.render();
+  renderBackupTracking();
   renderInterludes();
   renderArchive();
 }
@@ -2947,12 +2956,45 @@ async function exportBackup() {
     const backup = await store.exportBackup(campaign.id);
     const name = normalize(campaign.name).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 55);
     downloadFile(backup, 'application/json', `entre-rives-${name || 'campagne'}.json`);
-    setStatus('Téléchargement de la sauvegarde lancé', 'saved');
+    const tracked = await rememberBackup(JSON.parse(backup), 'download');
+    setStatus(tracked ? 'Téléchargement lancé · relisez le fichier pour vérifier votre copie' : 'Téléchargement lancé · le suivi local n’a pas été actualisé', 'saved');
   } catch (error) {
     showError(error);
   } finally {
     busy = false;
   }
+}
+
+function renderBackupTracking() {
+  const status = backupCopyStatus(campaign, readBackupHistory());
+  const stale = Boolean(campaign && campaignMayBeStale);
+  $('backup-copy-state').textContent = stale ? 'La campagne affichée a changé dans un autre onglet. Actualisez-la avant de comparer vos copies.' : status.message;
+  $('backup-copy-state').dataset.state = stale ? 'outdated' : status.state;
+  const label = receipt => receipt ? `${actionDateFormat.format(new Date(receipt.at))} · révision ${receipt.revision}` : 'Aucune trace dans ce navigateur';
+  $('backup-last-download').textContent = label(status.download);
+  $('backup-last-verified').textContent = label(status.verified);
+  $('archive-copy-reminder').hidden = !campaign || (!stale && status.state === 'current');
+  $('archive-copy-message').textContent = stale ? 'Actualisez la campagne puis renouvelez sa copie externe.' : status.message;
+  $('download-diagnostic').disabled = !store;
+}
+
+async function rememberBackup(archive, kind, canRecord = () => true) {
+  const write = () => canRecord() && recordBackupReceipt(archive, kind, new Date().toISOString());
+  try {
+    return navigator.locks ? await navigator.locks.request(BACKUP_HISTORY_KEY, write) : write();
+  } catch { return false; }
+  finally { renderBackupTracking(); }
+}
+
+async function exportStorageDiagnostic() {
+  if (!store || busy) return;
+  busy = true; $('download-diagnostic').disabled = true; clearError();
+  try {
+    const report = await store.diagnoseInventory();
+    downloadFile(JSON.stringify(report, null, 2), 'application/json', 'entre-rives-diagnostic-stockage.json');
+    setStatus(`Diagnostic téléchargé · ${report.readable} campagne(s) lisible(s), ${report.unreadable} entrée(s) à examiner`, 'saved');
+  } catch (error) { showError(error); }
+  finally { busy = false; renderBackupTracking(); }
 }
 
 function displayPreview() {
@@ -2978,6 +3020,7 @@ function displayPreview() {
 async function inspectFile() {
   const request = ++previewRequest;
   preview = undefined;
+  $('backup-file-check-status').textContent = '';
   displayPreview();
   clearError();
   const file = $('backup-file').files[0];
@@ -2985,15 +3028,33 @@ async function inspectFile() {
   setStatus('Vérification du fichier…');
   try {
     if (file.size > 4 * 1024 * 1024) throw new Error('Ce fichier dépasse la taille maximale du pilote (4 Mio).');
-    const inspected = await store.previewBackup(await file.text());
+    const text = await file.text();
+    const inspected = await store.previewBackup(text);
+    if (request !== previewRequest) return;
+    const archive = JSON.parse(text);
+    let current, incomparable = false;
+    try {
+      const existing = await store.get(inspected.id);
+      current = existing ? JSON.parse(await store.exportBackup(inspected.id)) : undefined;
+    } catch (error) { if (error.code === 'storage') throw error; incomparable = true; }
+    if (request !== previewRequest) return;
+    const divergent = current && current.payload.campaign.revision === inspected.revision && current.sha256 !== archive.sha256;
+    const tracked = divergent || incomparable ? false : await rememberBackup(archive, 'verified', () => request === previewRequest);
     if (request !== previewRequest) return;
     preview = inspected;
     displayPreview();
+    $('backup-file-check-status').textContent = incomparable
+      ? 'Le fichier est valide. La campagne déjà présente est illisible : sa comparaison n’est pas disponible. Conservez les fichiers et examinez le diagnostic avant toute restauration.'
+      : divergent
+      ? 'Le fichier est valide mais son contenu diffère de la campagne enregistrée à la même révision. Cette lecture ne valide pas une copie de l’état courant.'
+      : tracked ? 'Fichier relu et empreinte vérifiée. Cette lecture figure dans le suivi des copies.' : 'Fichier valide. Le suivi local conserve son état précédent ou reste indisponible.';
     setStatus(preview.conflict ? 'Campagne déjà présente dans ce profil' : 'Aperçu prêt · confirmez pour restaurer');
   } catch (error) {
     if (request === previewRequest) showError(error);
   }
 }
+$('download-diagnostic').addEventListener('click', exportStorageDiagnostic);
+window.addEventListener('storage', event => { if (event.key === BACKUP_HISTORY_KEY || event.key === null) renderBackupTracking(); });
 
 async function restoreBackup() {
   if (!preview || preview.conflict || busy) return;
@@ -4033,6 +4094,7 @@ async function init() {
       notifications.addEventListener('message', (event) => {
         if (event.data !== 'saved') return;
         campaignMayBeStale = Boolean(campaign);
+        renderBackupTracking();
         if (sessionRoster) sessionRoster.stale = true;
         if (rosterIsActive() && $('resource-dialog').open) renderSessionRoster();
         revokeProjection();

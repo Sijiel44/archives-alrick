@@ -1406,6 +1406,40 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     return readCampaignInventory(true);
   }
 
+  async function diagnoseInventory() {
+    const inventory = await transact('readonly', (store, read, result) => {
+      let checked = 0, readable = 0, unreadable = 0;
+      const rejected = [];
+      read(store.openCursor(), cursor => {
+        if (!cursor) { result({ checked, readable, unreadable, rejected }); return; }
+        checked++;
+        try { readPayload(cursor.value, cursor.primaryKey); readable++; }
+        catch (error) {
+          unreadable++;
+          if (rejected.length < 100) rejected.push({ key: cursor.primaryKey,
+            reason: error instanceof StudioError && /^[a-z][a-z0-9-]{0,39}$/.test(error.code) ? error.code : 'invalid-data' });
+        }
+        cursor.continue();
+      });
+    });
+    // Le hachage asynchrone commence après la fin de la transaction IndexedDB.
+    const keyValue = key => {
+      if (Array.isArray(key)) return ['array', key.map(keyValue)];
+      if (key instanceof Date) return ['date', key.toISOString()];
+      if (typeof key === 'number') return ['number', String(key)];
+      if (key instanceof ArrayBuffer || ArrayBuffer.isView(key)) {
+        const bytes = key instanceof ArrayBuffer ? new Uint8Array(key) : new Uint8Array(key.buffer, key.byteOffset, key.byteLength);
+        return ['binary', Array.from(bytes)];
+      }
+      return [typeof key, key];
+    };
+    const entries = await Promise.all(inventory.rejected.map(async value => ({
+      record: `sha256:${await sha256(JSON.stringify(keyValue(value.key)))}`, reason: value.reason,
+    })));
+    return { format: 'chroniques-entre-rives.diagnostic-stockage', version: 1, at: new Date().toISOString(),
+      checked: inventory.checked, readable: inventory.readable, unreadable: inventory.unreadable, entries };
+  }
+
   async function get(id) {
     return (await snapshot(id))?.campaign ?? null;
   }
@@ -1536,5 +1570,5 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     return restored;
   }
 
-  return Object.freeze({ list, listRecoverable, get, execute, exportBackup, previewBackup, restoreBackup, close });
+  return Object.freeze({ list, listRecoverable, diagnoseInventory, get, execute, exportBackup, previewBackup, restoreBackup, close });
 }

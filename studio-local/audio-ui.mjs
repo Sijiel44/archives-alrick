@@ -329,5 +329,17 @@ export function createAudioUI({ getCampaign, canWrite, save, refresh, open }) {
   });
   for (const event of ['timeupdate', 'durationchange', 'loadedmetadata', 'emptied']) audio.addEventListener(event, updateTime);
   window.addEventListener('pagehide', () => stop('Son arrêté en quittant cette page. Cliquez sur Lecture pour reprendre.'));
-  return { render, stop };
+  return { render, stop, canAdd: () => Boolean(canWrite() && library().tracks.length < AUDIO_LIMITS.tracks),
+    pause() {
+      if (!audio.hasAttribute('src')) return;
+      ++playToken; audio.pause(); phase = 'paused'; say('Régie en pause pendant l’écoute du catalogue.'); updatePlayer();
+    },
+    prefill(entry) {
+      if (!canWrite() || library().tracks.length >= AUDIO_LIMITS.tracks) return;
+      startForm('track');
+      $('audio-track-name').value = entry.name;
+      $('audio-track-url').value = entry.url;
+      $('audio-track-credit').value = entry.credit;
+    },
+  };
 }

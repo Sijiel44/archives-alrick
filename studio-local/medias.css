@@ -1,0 +1,28 @@
+#media-catalogue-dialog { width: min(68rem, calc(100% - 2rem)); }
+#media-catalogue-dialog > * + * { margin-top: .85rem; }
+#media-catalogue-dialog > header { align-items: start; }
+.media-filters { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr); gap: .7rem; }
+.media-filters > div { min-width: 0; }
+.media-filters input, .media-filters select { width: 100%; }
+.media-hint, #media-use-help { font-size: .86rem; }
+.media-results { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.media-card { min-width: 0; border: 1px solid #617376; border-radius: .6rem; overflow: hidden; background: #1c2930; }
+.media-card-banner { display: flex; justify-content: space-between; align-items: end; min-height: 5rem; padding: .75rem; color: #e7c798; background: radial-gradient(ellipse at 20% 100%, #536d64, #24393b 60%); }
+.media-card-banner > span:first-child { font: 2.3rem Georgia, serif; }
+.media-card-banner > span:last-child { font-size: .75rem; letter-spacing: .06em; }
+.media-category-eau, .media-category-meteo { background: radial-gradient(ellipse at 20% 100%, #416a7c, #263d4e 60%); }
+.media-category-feu, .media-category-gestes { background: radial-gradient(ellipse at 20% 100%, #77523b, #3b302f 60%); }
+.media-category-astral { background: radial-gradient(ellipse at 20% 100%, #5d5378, #282d47 60%); }
+.media-card-copy { padding: .9rem; }
+.media-card h3 { margin-block: .35rem .65rem; }
+.media-card-copy > p:not(.eyebrow) { font-size: .9rem; }
+.media-card .actions { gap: .4rem; }
+.media-card button { padding-inline: .65rem; font-size: .85rem; }
+.media-card details { border-top: 1px solid var(--line); padding-top: .6rem; font-size: .8rem; overflow-wrap: anywhere; }
+.media-card summary { color: #d9bd91; }
+.media-card details > p { margin-block: .4rem; }
+.media-preview { padding: .85rem; border: 1px solid var(--control-line); border-radius: .5rem; background: #142128; }
+.media-preview audio { width: 100%; }
+.media-preview video { display: block; width: 100%; max-height: 40vh; margin-block: .6rem; background: #0b1318; }
+@media (max-width: 950px) { .media-results { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .media-filters, .media-results { grid-template-columns: minmax(0, 1fr); } .media-card-banner { min-height: 4rem; } }
