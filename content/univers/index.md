@@ -40,6 +40,7 @@ L'univers d'Alrick n'est pas seulement le décor de l'Odyssée d'Orin. Ses régi
 - [[projets/index|Projets et fondations]] — infrastructures, recherches et travaux en cours.
 - [[creatures/index|Créatures et compagnons]] — individus particuliers et futur bestiaire.
 - [[monde/decheance-canon|Déchéance et pyramide des Chutes]] — nouveau lore de contre-ascension, avec jeu possible chez les Déchus.
+- [[groupes/organisations-decheance|Organisations autour de la Déchéance]] — six institutions de soins, justice, secours, arts, mémoire et protection des libertés.
 - [[monde/menaces-et-antagonismes|Menaces et antagonistes]] — factions, dieux hostiles, monstres et dangers, sans introduire de nouveaux personnages comme canon.
 
 ## IV. Choisir une autre lecture

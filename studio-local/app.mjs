@@ -29,7 +29,7 @@ const sessionDateFormat = new Intl.DateTimeFormat('fr', { dateStyle: 'long', tim
 const actionDateFormat = new Intl.DateTimeFormat('fr', { dateStyle: 'medium', timeStyle: 'short' });
 const libraryPageSize = 24;
 const miniMapStep = 54;
-const shelfCreationKind = { atlas: 'place', bestiaire: 'creature', objets: 'object', sorts: 'spell', actions: 'ability', aventures: 'quest' };
+const shelfCreationKind = { atlas: 'place', bestiaire: 'creature', objets: 'object', sorts: 'spell', actions: 'ability', aventures: 'quest', factions: 'faction' };
 let store;
 let campaign = null;
 let campaigns = [];
@@ -1188,6 +1188,9 @@ function previewResource(entry, remember = true) {
   const illustration = libraryIllustration(entry);
   if (illustration) add('Préparer la projection de l’image', () => prepareImageShare(illustration));
   if (entry.kind === 'creature' && !entry.record) add('Copier dans la campagne', () => copyCreature(entry), !campaign);
+  if (entry.kind === 'faction' && entry.origin === 'archives') {
+    add('Créer une faction de campagne', () => prefillFaction(entry), !campaign);
+  }
   if (markerCopyProvenance(entry)) {
     add(entry.origin === 'archives' ? 'Créer une variante' : 'Copier comme repère',
       () => editMarker(undefined, view === 'play' ? activeScene()?.id : null, entry), !campaign);
@@ -1312,6 +1315,21 @@ function prefillWorkshop(entry) {
   form.elements.kind.value = entry.kind === 'npc' ? 'pnj' : 'creature';
   form.dispatchEvent(new Event('input', { bubbles: true }));
   form.elements.name.focus();
+}
+
+function prefillFaction(entry) {
+  if (!campaign || busy || entry.kind !== 'faction' || !entry.publicTemplate) return;
+  openCreation('faction');
+  const form = $('creation-form');
+  form.elements.name.value = entry.name.slice(0, 100);
+  form.elements.description.value = entry.description.slice(0, 1500);
+  for (const [key, value] of Object.entries(entry.publicTemplate)) {
+    const field = form.elements[`detail-${key}`];
+    if (field) field.value = value.slice(0, 2000);
+  }
+  // A link back to the canonical source is preserved in the local copy.
+  draft.creationLinks = [entry.id];
+  renderCreationLinks();
 }
 
 function renderUniverse() {

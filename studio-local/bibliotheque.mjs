@@ -2,6 +2,7 @@ import { BESTIARY_PROFILE_KEY, CREATIONS_KEY, FRESQUE_MARKERS_KEY, FRESQUE_REFER
   LINKED_IMAGES_KEY, MARKER_KINDS, PJ_SOURCE_KEY } from './store.mjs';
 import { CREATION_STATES, CREATION_TYPES } from './creations.mjs';
 import catalogue from './catalogue-archives.json' with { type: 'json' };
+import organisations from './catalogue-organisations.json' with { type: 'json' };
 
 export const LIBRARY_CATEGORIES = Object.freeze({
   ...MARKER_KINDS, creature: 'Créature', character: 'Personnage joueur', object: 'Objet', spell: 'Sort', ritual: 'Rituel',
@@ -26,6 +27,7 @@ export const LIBRARY_SHELVES = Object.freeze({
   sorts: { name: 'Sorts et rituels', detail: 'Grimoire, Cercles et magie de table', icon: 'M12 3v18M3 12h18M6 6l12 12M18 6 6 18 M12 8l4 4-4 4-4-4z' },
   actions: { name: 'Capacités et actions', detail: 'Protocoles, techniques et progression', icon: 'M13 2 4 14h7l-1 8 10-12h-7z' },
   aventures: { name: 'Aventures et quêtes', detail: 'Scénarios, missions et contrats', icon: 'M7 3h11v14H8a2 2 0 0 1 0-4h10M5 15V5l2-2m0 14v4h13v-4 M10 7h5m-5 3h5' },
+  factions: { name: 'Organisations et factions', detail: 'Institutions du monde et modèles de campagne', icon: 'M4 21V8l8-5 8 5v13M8 21v-9h8v9M3 21h18M8 8h8' },
   imagerie: { name: 'Imagerie', detail: 'Plans, portraits et illustrations', icon: 'M3 5h18v14H3z M4 16l5-5 4 4 3-3 4 4 M16 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2z' },
   campagne: { name: 'Fiches de campagne', detail: 'PJ, repères et variantes de ce profil', icon: 'M6 3h13v14H6z M3 7v14h12 M9 7h7m-7 4h7' },
 });
@@ -64,8 +66,20 @@ const archiveEntries = catalogue.entries.map(entry => ({
     links: [...entry.links, 'image-lamproie-de-nacre'] } : {}),
 }));
 
-const fixedEntries = [...demoBestiary, ...archiveEntries, ...studioGallery];
-export const LIBRARY_ILLUSTRATIONS = [...archiveEntries.filter(entry => entry.art?.map), ...studioGallery];
+// Additive public catalogue: the historical Archives snapshot remains pinned to its own revision.
+// No secret, pact, private role or game effect may enter the player-visible entries.
+const organisationEntries = organisations.entries.map(entry => ({
+  id: entry.id, version: entry.version, name: entry.name, description: entry.description,
+  kind: 'faction', shelf: 'factions', group: 'Institutions et contre-pouvoirs',
+  status: 'lore', origin: 'archives', path: entry.path, tags: entry.tags.join(' '), links: entry.relations,
+  href: `https://github.com/Sijiel44/archives-alrick/blob/main/${entry.path}`,
+  art: { src: new URL(`./images/organisations/${entry.image}`, import.meta.url).pathname, alt: entry.artAlt },
+  details: [['Objectif public', entry.purpose], ['Membres', entry.members], ['Rayonnement', entry.influence], ['Limites', entry.limits]],
+  publicTemplate: { purpose: entry.purpose, members: entry.members, influence: entry.influence },
+}));
+
+const fixedEntries = [...demoBestiary, ...archiveEntries, ...organisationEntries, ...studioGallery];
+export const LIBRARY_ILLUSTRATIONS = [...archiveEntries.filter(entry => entry.art?.map), ...organisationEntries, ...studioGallery];
 const illustrationsBySource = new Map(LIBRARY_ILLUSTRATIONS.map(entry => [entry.art.src, entry]));
 
 export function libraryIllustration(entry) {
@@ -73,7 +87,7 @@ export function libraryIllustration(entry) {
 }
 
 const references = new Map(fixedEntries.map(entry => [entry.id.toLowerCase(), entry]));
-for (const entry of archiveEntries) {
+for (const entry of [...archiveEntries, ...organisationEntries]) {
   if (entry.path.startsWith('content/')) references.set(entry.path.slice(8, -3).toLowerCase(), entry);
 }
 

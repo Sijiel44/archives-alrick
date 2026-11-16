@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Emblème de la Caisse des Veilles</title>
+  <desc id="desc">Un coffre de secours ouvert et un épi de blé sur un écu vert d'ombre.</desc>
+  <defs>
+    <radialGradient id="forest"><stop stop-color="#32493d"/><stop offset="1" stop-color="#10241f"/></radialGradient>
+    <linearGradient id="copper" x2="1" y2="1"><stop stop-color="#f1dbac"/><stop offset=".6" stop-color="#a97949"/><stop offset="1" stop-color="#e4b77a"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="54" fill="#0c1616"/>
+  <circle cx="256" cy="245" r="205" fill="url(#forest)" stroke="#8c784e" stroke-width="5"/>
+  <path d="M256 66 402 129 387 331Q340 412 256 461 172 412 125 331L110 129Z" fill="#182c29" stroke="url(#copper)" stroke-width="12"/>
+  <path d="M160 245 196 194H315L352 245" fill="#70513c" stroke="url(#copper)" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M169 246H343V348Q256 380 169 348Z" fill="#694836" stroke="url(#copper)" stroke-width="11"/>
+  <path d="M168 284H344M256 246V356" stroke="#d4a66d" stroke-width="9"/>
+  <rect x="244" y="281" width="24" height="26" rx="4" fill="#e8c18a"/><circle cx="256" cy="292" r="4" fill="#392c27"/>
+  <path d="M256 199V111" stroke="#f1d7a3" stroke-width="6" stroke-linecap="round"/>
+  <path d="M255 138Q218 114 213 93Q247 99 255 138ZM255 165Q296 140 301 115Q266 121 255 165ZM255 189Q221 170 207 149Q241 150 255 189Z" fill="#e2bd71" stroke="#f3dea4" stroke-width="3"/>
+  <path d="M180 392Q256 427 332 392" fill="none" stroke="#b89b64" stroke-width="5" stroke-linecap="round"/>
+</svg>
