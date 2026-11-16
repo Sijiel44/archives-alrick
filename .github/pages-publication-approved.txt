@@ -445,3 +445,12 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Fée des aulnes : personne consciente libre, aucun mandat divin individuel ; Vautre des marais : danger sans chiffres ; Cerf des sources profondes : aucun statut divin supposé.
 # Aucun profil 5d6, recette alchimique, scène jouée, secret MJ ou candidate B-003.1 adopté ; dragons DRG-01..03 restent PNJ.
 # Contrôler build et recettes publiques de Pages, puis les dix pages et images accessibles avant annonce du déploiement.
+
+
+# PNJ-001 à PNJ-006 — Autorisation conditionnelle du créateur le 16 novembre 2026
+# Décision : « Que si les tests passent, tu peux [...] mettre en ligne », puis poursuivre les PNJ attestés avant d'en inventer. 
+# PR #132 fusionnée (005313d302c050f8b35a04c7191b4a7b69807ecc). CI du lot #43882679427 : succès (site, contenus, Studio, tests Chrome).
+# 90 personnages documentés ; 81 fiches sources enrichies de scènes explicitement non jouées ; 15 portraits locaux dont huit concepts non canoniques.
+# Seuls les fichiers `publish:true` sont exposés. Le Cabinet MJ et les huit dossiers `publish:false` restent exclus ; spoilers et indexations limités aux protections existantes.
+# Cette note consigne le feu vert de publication conditionné aux tests, sans affirmer une relecture personnelle du créateur ni canoniser les portraits ou les aventures proposées.
+# Contrôler ensuite l'intégralité du workflow Pages et sa recette sur l'URL publique.
