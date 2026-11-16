@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Farwen Pierreclaire — Savoirs domestiques d’Aldhammar"
 code: "RES-14"
@@ -8,7 +8,7 @@ canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10807–10810 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Farwen est une Naine vivante de 168 ans issue d'une famille d'artisans de l'ancienne capitale ; elle connaît l'entretien des demeures souterraines, le bois et les textiles."
 tags: [farwen, pierreclaire, aldhammar, intendance, nains, cb42]
 etat_editorial: en_cours

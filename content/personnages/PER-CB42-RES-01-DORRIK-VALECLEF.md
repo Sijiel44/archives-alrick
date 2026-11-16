@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Dorrik Valeclef — Ancien maître d’hôtel (décédé)"
 code: "RES-01"
@@ -8,7 +8,7 @@ canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10566–10569; CB43 P00219 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Dorrik est un Nain **décédé**, ancien maître d'hôtel et spécialiste du protocole, de la table et de l'hospitalité princière ; son service ancien est accepté comme élément de sa biographie."
 tags: [dorrik, valeclef, hospitalite, protocole, maison-divine, cb42]
 etat_editorial: en_cours

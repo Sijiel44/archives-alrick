@@ -1,6 +1,6 @@
 {
   "schema": "entre-rives.studio.npc-references.v1",
-  "decision": "Catalogue public du Studio : les trois dragons documentés et les fiches de PNJ sans révélations des lots PNJ-001–006. Les références privées ou non listées restent exclues.",
+  "decision": "Décision du créateur, 16 novembre 2026 : catalogue accessible à tous, 102 fiches documentées et trois dragons. Les scènes de rencontre sont adaptables et les révélations historiquement sourcées restent averties.",
   "entries": [
     {
       "id": "DRG-01",
@@ -60,6 +60,421 @@
       ]
     },
     {
+      "id": "PER-CB31-AERENDIR",
+      "version": "129eb2c8883fadfb4711279f6fdac59e6c24df78",
+      "name": "Aerendir",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un artisan voyageur qui préfère réparer un banc que collectionner les titres.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-AERENDIR.md",
+      "tags": "pnj personnage metiers aerendir archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Prend le temps de toucher le bois, de regarder les gestes locaux et d'interroger ceux qui utiliseront l'objet."
+        ],
+        [
+          "Rencontre fictive",
+          "Un hameau demande une rénovation qui effacerait un aménagement apprécié de ses habitants."
+        ],
+        [
+          "Choix possible",
+          "Réparer l'existant, imaginer un compromis ou laisser le village trancher."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB31-ALRIANA",
+      "version": "fbef29ad6971240b652044432533c564f54e084d",
+      "name": "Alriana",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une personne dont on connaît des gestes et des souvenirs, pas toute la biographie.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-ALRIANA.md",
+      "tags": "pnj personnage proches alriana archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Dans une campagne située à son époque, faire parler les objets et les témoins plutôt que figer son sort."
+        ],
+        [
+          "Rencontre fictive",
+          "Un objet ancien comporte une histoire familiale incomplète."
+        ],
+        [
+          "Choix possible",
+          "Enquêter avec délicatesse, conserver plusieurs versions ou laisser le passé privé."
+        ]
+      ]
+    },
+    {
+      "id": "IMP-15",
+      "version": "c764abba26a236b7bf6ae24cc9cafa055b7b0827",
+      "name": "Amelia",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une apprenante des Cercles qui protège son temps pour chercher, vivre et choisir ses engagements.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/IMP-15.md",
+      "tags": "pnj personnage savoirs amelia archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Explique calmement la différence entre les six Cercles autonomes et un essai supérieur bref sous guidage, puis refuse un secrétariat permanent."
+        ],
+        [
+          "Rencontre fictive",
+          "Une institution réclame une nouvelle démonstration à une personne déjà prise par l'accueil et les études."
+        ],
+        [
+          "Choix possible",
+          "Organiser un relais consenti, limiter l'essai ou préserver un temps de repos."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB31-ASTRID",
+      "version": "644acee87bdfb3e6b34d7b56266c96fa12274142",
+      "name": "Astrid",
+      "description": "La responsable d'un fonds d'études doit choisir sans céder à toutes les sollicitations.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-ASTRID.md",
+      "tags": "pnj personnage proches astrid archives public",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Demande un budget, un besoin réel et des garanties d'autonomie aux porteurs de projets."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux ateliers sollicitent une même bourse pour des besoins différents."
+        ],
+        [
+          "Choix possible",
+          "Comparer les dossiers, proposer un calendrier ou demander un nouvel avis."
+        ]
+      ]
+    },
+    {
+      "id": "RES-21",
+      "version": "586a2e826ad31cf781ce8113436589e0cb8414de",
+      "name": "Aurélian Vire-Sel",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un chef voyageur Rappelé qui veut transmettre, apprendre et accueillir de nouveaux talents.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-21-AURELIAN-VIRE-SEL.md",
+      "tags": "pnj personnage metiers aurelian archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Fait goûter une préparation modeste avant d'écouter les traditions des apprentis sans les obliger à copier la sienne."
+        ],
+        [
+          "Rencontre fictive",
+          "Une fête de quartier rassemble des recettes concurrentes et des cuisines aux moyens inégaux."
+        ],
+        [
+          "Choix possible",
+          "Monter un atelier partagé, adapter le menu ou laisser chaque communauté présenter sa table."
+        ]
+      ]
+    },
+    {
+      "id": "RES-26",
+      "version": "3b7e8e0b74465c5d958cc5517781a96e4d77a1da",
+      "name": "Beren Haubans-Gris",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un second de confiance qui sait rappeler à sa capitaine qu'un équipage doit aussi dormir.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/RES-26.md",
+      "tags": "pnj personnage savoirs beren archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Examine les quarts avec Thaléa, demande l'état des amarres et écoute une objection venue du pont."
+        ],
+        [
+          "Rencontre fictive",
+          "Un départ anticipé met les temps de repos et le contrôle du navire en concurrence."
+        ],
+        [
+          "Choix possible",
+          "Retarder l'appareillage, redistribuer les quarts ou réduire les ambitions de la traversée."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB44-BERRIK-TROIS-TONNEAUX",
+      "version": "e95bd01a77fd53685c260df051a373aa5949c98e",
+      "name": "Berrik Trois-Tonneaux",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un spécialiste des caves qui parle d'abord des conditions de conservation.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB44-BERRIK-TROIS-TONNEAUX.md",
+      "tags": "pnj personnage metiers berrik archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Touche les parois, vérifie l'air et différencie un défaut de stockage d'un défaut du produit."
+        ],
+        [
+          "Rencontre fictive",
+          "Des bouteilles d'une réserve se dégradent sans cause immédiatement visible."
+        ],
+        [
+          "Choix possible",
+          "Auditer les caves, discuter avec les producteurs ou déplacer les lots."
+        ]
+      ]
+    },
+    {
+      "id": "FAM-04",
+      "version": "30e8be171f4cfde3849d5758480b77ebedd3f673",
+      "name": "Borin Forgecœur",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Les annotations d'un aïeul disparu peuvent encore enseigner sans prétendre le faire revenir.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/FAM-04.md",
+      "tags": "pnj personnage proches borin archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Dans un souvenir situé de son vivant, Borin discute d'un livre ou d'une carte avec patience ; à l'époque actuelle, seules ses traces et les témoins parlent."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux exemplaires annotés d'un même ouvrage conservent des interprétations différentes d'un vieux projet familial."
+        ],
+        [
+          "Choix possible",
+          "Comparer les notes, écouter les proches ou laisser une question intime sans réponse."
+        ]
+      ]
+    },
+    {
+      "id": "RES-03",
+      "version": "fcccdea86f85b0547c1672bd4507c9c17efbd446",
+      "name": "Brakka Mainfranche",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une professionnelle des caravanes qui sait ce que coûte une route mal préparée.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-03-BRAKKA-MAINFRANCHE.md",
+      "tags": "pnj personnage metiers brakka archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Contrôle les relais, les bagages et la sécurité des voyageurs sans promettre son embauche."
+        ],
+        [
+          "Rencontre fictive",
+          "Une caravane doit répartir l'espace entre des voyageurs et des marchandises fragiles."
+        ],
+        [
+          "Choix possible",
+          "Repenser le chargement, négocier des étapes ou faire deux voyages."
+        ]
+      ]
+    },
+    {
+      "id": "REV-01",
+      "version": "b20398e8700205bed4ac68256c0cb734f383e839",
+      "name": "Bram Vieux-Fer",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un vétéran qui pense au chemin du retour avant de parler de victoire.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REV-01.md",
+      "tags": "pnj personnage compagnie bram archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/bram-concept.webp",
+        "alt": "Portrait conceptuel de Bram Vieux-Fer, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Inspecte les sangles, interroge les témoins de l'arrière-garde et ose objecter lorsqu'un plan oublie les blessés."
+        ],
+        [
+          "Rencontre fictive",
+          "Une escorte refuse de repartir sans les derniers marcheurs : qui organisera le repli ?"
+        ],
+        [
+          "Choix possible",
+          "Négocier une route plus sûre, partager les risques ou reporter le départ."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB44-BREGAN-BATISSEURS",
+      "version": "bd2fd421450c0caa8cf450cbf3a8909caa1a8fbd",
+      "name": "Brégan",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une puissance des bâtisseurs, autonome même lorsqu'elle accepte une alliance.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB44-BREGAN-BATISSEURS.md",
+      "tags": "pnj personnage savoirs bregan archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Demande l'avis des artisans avant de confondre une invitation avec une décision collective."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux communautés d'ouvriers souhaitent partager un atelier sans perdre leurs pratiques."
+        ],
+        [
+          "Choix possible",
+          "Définir un accord commun, organiser des échanges ou garder deux espaces."
+        ]
+      ]
+    },
+    {
+      "id": "RES-19",
+      "version": "b8d8001e972acca56667c69988dbd64c50fe91fc",
+      "name": "Bromvar des Vieilles Clefs",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un ancien concierge revenu à la vie, libre d'explorer avant de reprendre un métier.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-19-BROMVAR-VIEILLES-CLEFS.md",
+      "tags": "pnj personnage proches bromvar archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "S'attarde près d'une serrure usée pour écouter ce que le bâtiment raconte, puis refuse qu'on décide de son emploi à sa place."
+        ],
+        [
+          "Rencontre fictive",
+          "Un bâtiment ancien doit être rouvert, mais personne n'a demandé aux habitants quels espaces préserver."
+        ],
+        [
+          "Choix possible",
+          "Organiser la visite avec leur accord, étudier les traces ou remettre l'ouverture à plus tard."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-68",
+      "version": "21f28f88a6b794b0135ebc2bd83c8313a1384dab",
+      "name": "Célianne",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une botaniste libre de choisir ses recherches, sans que les titres de sa mère ne l'engagent.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/SEC-68.md",
+      "tags": "pnj personnage metiers celianne archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Plantes_m%C3%A9dicinales_planche_2_-_Medicinal_plants%2C_medical_herbs%2C_botanical_illustrations%2C_plate_2_-_Public_domain_illustration_from_Larousse_du_XX%C3%A8me_si%C3%A8cle_1932.jpg/500px-thumbnail.jpg",
+        "alt": "Inspiration visuelle externe : Plantes médicinales, planche 2. Ce n’est pas un portrait de Célianne."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Compare deux feuilles presque identiques et demande d'où elles viennent avant de parler de leurs usages."
+        ],
+        [
+          "Rencontre fictive",
+          "Une herbe réputée médicinale pousse dans deux sols différents et donne des résultats incertains."
+        ],
+        [
+          "Choix possible",
+          "Observer sans prélever, obtenir un accord local ou comparer les observations avant toute conclusion."
+        ],
+        [
+          "Inspiration externe",
+          "Larousse du XXe siècle · EN NOIR & BLANC · CC0 1.0 (fichier Commons) · https://commons.wikimedia.org/wiki/File:Plantes_m%C3%A9dicinales_planche_2_-_Medicinal_plants%2C_medical_herbs%2C_botanical_illustrations%2C_plate_2_-_Public_domain_illustration_from_Larousse_du_XX%C3%A8me_si%C3%A8cle_1932.jpg"
+        ]
+      ]
+    },
+    {
       "id": "PER-CB43-CESAR",
       "version": "ae7785a14c729a6c34f3d8a9b6934bee04da0730",
       "name": "César",
@@ -69,7 +484,7 @@
       "group": "Relations et compagnons",
       "status": "reference",
       "path": "content/personnages/PER-CB43-CESAR.md",
-      "tags": "pnj personnage proches cesar archives proposition non jouée",
+      "tags": "pnj personnage proches cesar archives public",
       "links": [],
       "details": [
         [
@@ -87,6 +502,130 @@
       ]
     },
     {
+      "id": "SEC-54",
+      "version": "05d28de6e73b9e05f82e32b6aec51e6d552896c5",
+      "name": "Corin d Avarenne",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un négociateur en devenir dont le courage consiste aussi à reconnaître les limites de son mandat.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/SEC-54.md",
+      "tags": "pnj personnage proches corin_avarenne archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Prépare une audience, identifie les personnes habilitées à répondre et refuse d'annoncer un accord non signé."
+        ],
+        [
+          "Rencontre fictive",
+          "Un messager réclame une promesse immédiate avant la rencontre avec l'autorité de Corvelis."
+        ],
+        [
+          "Choix possible",
+          "Clarifier le mandat, obtenir une entrevue ou transmettre la demande sans s'engager au nom d'autrui."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-61",
+      "version": "cfee669f2531bdd381243d7f2508ceeebc55c4c7",
+      "name": "Corven",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un compagnon de jeunesse qui raconte les maladresses avec plus de précision que de nostalgie confortable.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/SEC-61.md",
+      "tags": "pnj personnage proches corven archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Rappelle l'anecdote de la clef d'armes de Dac et des premières bières chez Reginald, sans prétendre que toutes les versions concordent."
+        ],
+        [
+          "Rencontre fictive",
+          "Une vieille histoire d'adolescents est reprise comme une preuve contre une famille d'aujourd'hui."
+        ],
+        [
+          "Choix possible",
+          "Distinguer témoignage et rumeur, entendre d'autres souvenirs ou protéger les personnes encore concernées."
+        ]
+      ]
+    },
+    {
+      "id": "RES-07",
+      "version": "5d7efa8718c0e1696405e1d593a34827129c7947",
+      "name": "Dagna Roue-de-Cuivre",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une ingénieure naine pour qui un appareil doit se réparer même loin de son atelier.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-07-DAGNA-ROUE-CUIVRE.md",
+      "tags": "pnj personnage metiers dagna_cuivre archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Suit du doigt la course d'un câble et demande qui saura arrêter le treuil en cas d'incident."
+        ],
+        [
+          "Rencontre fictive",
+          "Un quai veut moderniser son système de levage, au risque de dépendre d'une pièce introuvable."
+        ],
+        [
+          "Choix possible",
+          "Privilégier des matériaux courants, former des réparateurs ou différer l'installation."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB2-DAGRIN",
+      "version": "f2eb2b0de89b8468c5021580d9ca183fc1a9f192",
+      "name": "Dagrin Veine-Sombre",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Le géologue qui préfère un relevé honnête à une belle certitude.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB2-DAGRIN.md",
+      "tags": "pnj personnage savoirs dagrin archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Fait croiser les mesures des apprentis et des arpenteurs, puis note sans honte ce qui reste inexpliqué."
+        ],
+        [
+          "Rencontre fictive",
+          "De nouvelles vibrations inquiètent les ouvriers près d'un ouvrage ancien."
+        ],
+        [
+          "Choix possible",
+          "Suspendre la zone, multiplier les relevés ou chercher un diagnostic indépendant."
+        ]
+      ]
+    },
+    {
       "id": "PER-CB39-DALEN-MIR",
       "version": "cce2b56c3403c6fd414402dfb6a3cfb21c0353c5",
       "name": "Dalen Mir",
@@ -96,7 +635,7 @@
       "group": "Figures documentées",
       "status": "reference",
       "path": "content/personnages/PER-CB39-DALEN-MIR.md",
-      "tags": "pnj personnage savoirs dalen archives proposition non jouée",
+      "tags": "pnj personnage savoirs dalen archives public",
       "links": [],
       "details": [
         [
@@ -114,6 +653,37 @@
       ]
     },
     {
+      "id": "RES-01",
+      "version": "c2fde59af280b6132d424ed740d8676d40ef5d75",
+      "name": "Dorrik Valeclef",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un maître d'hôtel du passé, dont la mort ne peut être effacée par la fiche.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-01-DORRIK-VALECLEF.md",
+      "tags": "pnj personnage metiers dorrik archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Pour un récit situé de son vivant seulement : observe un détail d'accueil qui peut sauver l'honneur d'un hôte."
+        ],
+        [
+          "Rencontre fictive",
+          "Dans une aventure historique, un banquet doit accueillir des invités de traditions rivales."
+        ],
+        [
+          "Choix possible",
+          "Adapter le protocole, consulter les invités ou refuser une place insultante."
+        ]
+      ]
+    },
+    {
       "id": "PER-CB43-DORSA-VAUN",
       "version": "7b6c2098c675501f7bd7a6e4e5e2a099b3b0b773",
       "name": "Dorsa Vaun",
@@ -123,7 +693,7 @@
       "group": "Artisans et vie quotidienne",
       "status": "reference",
       "path": "content/personnages/PER-CB43-DORSA-VAUN.md",
-      "tags": "pnj personnage metiers dorsa archives proposition non jouée",
+      "tags": "pnj personnage metiers dorsa archives public",
       "links": [],
       "details": [
         [
@@ -141,6 +711,984 @@
       ]
     },
     {
+      "id": "PER-CB31-DURGAN",
+      "version": "6c893c6ff0528bd983259ee9f9b4d7d1aa4197e2",
+      "name": "Durgan Main-d’Acier",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un maître forgeron qui ne confond jamais puissance de l'outil et justesse du geste.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-DURGAN.md",
+      "tags": "pnj personnage metiers durgan archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/b/b6/The_Blacksmith%27s_Forge_by_Alfred_Provis_-_Alfred_Provis_-_ABDAG004355.jpg",
+        "alt": "Inspiration visuelle externe : The Blacksmith's Forge. Ce n’est pas un portrait de Durgan Main-d’Acier."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Dépose un marteau ordinaire devant l'apprenti et attend de voir sa prise avant de parler d'acier rare."
+        ],
+        [
+          "Rencontre fictive",
+          "Une commande prestigieuse imposerait une arme difficile à entretenir par son futur porteur."
+        ],
+        [
+          "Choix possible",
+          "Refaire les essais d'équilibre, adapter la commande ou refuser une fabrication trop risquée."
+        ],
+        [
+          "Inspiration externe",
+          "Alfred Provis · Aberdeen Art Gallery · Domaine public ; reproduction CC0 · https://commons.wikimedia.org/wiki/File:The_Blacksmith%27s_Forge_by_Alfred_Provis_-_Alfred_Provis_-_ABDAG004355.jpg"
+        ]
+      ]
+    },
+    {
+      "id": "REV-08",
+      "version": "61f458f4a2797914bcf42251f151fef15742884f",
+      "name": "Eamon",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un professeur pour qui une histoire transmise doit aussi pouvoir être discutée.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REV-08.md",
+      "tags": "pnj personnage compagnie eamon archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/eamon-concept.webp",
+        "alt": "Portrait conceptuel de Eamon, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Interroge la provenance d'un témoignage et laisse la place aux versions discordantes."
+        ],
+        [
+          "Rencontre fictive",
+          "Un récit très populaire efface le nom d'un artisan qui y a contribué."
+        ],
+        [
+          "Choix possible",
+          "Restituer les sources, organiser une discussion ou admettre un doute."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "RES-20",
+      "version": "b4f312f19e4fb689f718ee2554aac5fef1215ddf",
+      "name": "Edran Veille-au-Feu",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Le souvenir d'un gardien de phare décédé peut encore guider une enquête sur la sécurité côtière.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-20-EDRAN-VEILLE-AU-FEU.md",
+      "tags": "pnj personnage savoirs edran archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Dans une scène située de son vivant uniquement : inspecte la flamme, les provisions et le chemin de secours avant la marée."
+        ],
+        [
+          "Rencontre fictive",
+          "Une aventure historique révèle qu'une veille de phare repose sur une seule personne épuisée."
+        ],
+        [
+          "Choix possible",
+          "Organiser une relève, demander l'aide du village ou différer une sortie en mer."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB1-EDRIC",
+      "version": "4353cebac3bb30d1e07b9f12f9cff43932137ce1",
+      "name": "Edric de Valbrume",
+      "description": "⚠ Révélations sur l’histoire d’Orin. De logisticien des quais à duc de Valbrume : un même homme, à deux étapes de sa vie.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB1-EDRIC.md",
+      "tags": "pnj personnage proches edric archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Dans une scène ancienne, examine les cales et les délais ; dans une scène tardive, distingue la décision ducale des engagements des marins."
+        ],
+        [
+          "Rencontre fictive",
+          "Un ancien projet de navigation refait surface, mais les artisans contestent le coût de sa relance."
+        ],
+        [
+          "Choix possible",
+          "Réunir les métiers, reprendre les calculs ou renoncer à une promesse trop hâtive."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-66",
+      "version": "4f68eb6097e6ad9306662b7b2742ee6de89c2dd4",
+      "name": "Elwen Saurel",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un organisateur de la Maison qui distingue le travail de chaque équipe et protège leurs limites.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB43-ELWEN-SAUREL.md",
+      "tags": "pnj personnage savoirs elwen archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Reconstitue une chaîne de responsabilités et demande si les personnes recrutées disposent de repos et d'une formation réelle."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux services pensent devoir accomplir la même tâche, tandis qu'une autre fonction reste vacante."
+        ],
+        [
+          "Choix possible",
+          "Clarifier les mandats, consulter les équipes ou différer une ouverture trop ambitieuse."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB43-ELYAN-CORBEAU-GRIS",
+      "version": "6da458461b456a851e80c826fcc28d49ed5b0def",
+      "name": "Elyan Corbeau-Gris",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un mentor dont les questions sont parfois plus utiles que les réponses.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB43-ELYAN-CORBEAU-GRIS.md",
+      "tags": "pnj personnage proches elyan archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Écoute, sourit d'une certitude trop assurée et n'explique pas ce qu'il ignore."
+        ],
+        [
+          "Rencontre fictive",
+          "Un texte ancien pourrait avoir deux lectures également plausibles."
+        ],
+        [
+          "Choix possible",
+          "Comparer les interprétations, demander une expérience ou suspendre le jugement."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB31-ELYRA",
+      "version": "ce30e3e49717289526a14847f9ea629f2d078f5d",
+      "name": "Elyra",
+      "description": "⚠ Révélations sur l’histoire d’Orin. L'élégance, pour elle, commence par la liberté de bouger et de dire non.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-ELYRA.md",
+      "tags": "pnj personnage metiers elyra archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Fait essayer un prototype en demandant au porteur ce qui tire, gêne ou lui semble juste."
+        ],
+        [
+          "Rencontre fictive",
+          "Une tenue de cérémonie paraît admirable, mais ceux qui la portent ne peuvent travailler avec."
+        ],
+        [
+          "Choix possible",
+          "Adapter la coupe, négocier les usages ou concevoir deux vêtements plutôt qu'un."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB2-SOREN",
+      "version": "5ea6a028b6eb8a00f9649334eb46a79a18dff995",
+      "name": "Eren",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Le mécanicien du bois et des roues, nommé Eren malgré un ancien nom de fichier.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB2-SOREN.md",
+      "tags": "pnj personnage savoirs eren archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Explique une transmission par un mécanisme concret sans déduire les secrets du pont."
+        ],
+        [
+          "Rencontre fictive",
+          "Une roue de moulin fonctionne mal après une réparation pourtant soignée."
+        ],
+        [
+          "Choix possible",
+          "Observer l'usage, modifier une pièce ou réexaminer le dessin initial."
+        ]
+      ]
+    },
+    {
+      "id": "RES-08",
+      "version": "9bbe6191b7570f2cc3e83b541518a7c2844aca7b",
+      "name": "Éren Valombre",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un voyageur revenu à la vie, libre de refuser la place qu'on avait imaginée pour lui.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-08-EREN-VALOMBRE.md",
+      "tags": "pnj personnage proches eren_valombre archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Écoute une proposition avec courtoisie, puis demande si l'itinéraire prévoit aussi des jours pour lui."
+        ],
+        [
+          "Rencontre fictive",
+          "Une délégation compte d'avance sur ses compétences de protocole sans lui avoir demandé son accord."
+        ],
+        [
+          "Choix possible",
+          "Présenter une invitation sans obligation, trouver un autre guide ou accepter son refus."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB43-ERYNDEL-FORMULES-INACHEVEES",
+      "version": "87394bca95913e8de81b4b24c0034513e49b6fcc",
+      "name": "Eryndel des Formules Inachevées",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un chercheur qui défend le droit aux résultats incomplets.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB43-ERYNDEL-FORMULES-INACHEVEES.md",
+      "tags": "pnj personnage savoirs eryndel archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Sépare ce qui a été observé de ce qu'une hypothèse prétend expliquer."
+        ],
+        [
+          "Rencontre fictive",
+          "Une expérience difficile à reproduire suscite des promesses publiques."
+        ],
+        [
+          "Choix possible",
+          "Publier les limites, poursuivre l'essai ou refuser l'annonce prématurée."
+        ]
+      ]
+    },
+    {
+      "id": "RES-14",
+      "version": "a90953ba659287785f8a1a03876d4ce7264b0e21",
+      "name": "Farwen Pierreclaire",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une artisane des demeures souterraines pour qui le confort se transmet par les gestes quotidiens.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-14-FARWEN-PIERRECLAIRE.md",
+      "tags": "pnj personnage metiers farwen archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Examine l'humidité d'un mur, les fibres d'une tenture et les habitudes de celles et ceux qui vivent là."
+        ],
+        [
+          "Rencontre fictive",
+          "Une maison ancienne doit rester habitée durant la réparation de ses chambres humides."
+        ],
+        [
+          "Choix possible",
+          "Planifier par espaces, recueillir l'avis des résidents ou choisir une solution plus légère."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB31-FREYA",
+      "version": "25adb65e1c58ea8a604d2710dd240521667e7d6d",
+      "name": "Freya",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une reine qui sait la valeur des souvenirs et des liens personnels.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-FREYA.md",
+      "tags": "pnj personnage proches freya archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Pose une question sur les personnes derrière les titres et corrige doucement un souvenir inexact."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux familles rapportent différemment un même geste ancien."
+        ],
+        [
+          "Choix possible",
+          "Laisser chacun raconter, rechercher une trace ou reconnaître les mémoires distinctes."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-05",
+      "version": "73f8be6c24ab88dab5d7cba2294400582456c7a7",
+      "name": "Garrik",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un tavernier qui reçoit même les visiteurs prestigieux selon les règles de sa propre maison.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/SEC-05.md",
+      "tags": "pnj personnage metiers garrik archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Relit une recette illustrée avec Maëlys, surveille sa salle et rappelle discrètement le service ordinaire."
+        ],
+        [
+          "Rencontre fictive",
+          "Des invités veulent transformer une soirée de taverne en réception officielle sans avoir demandé l'accord de l'hôte."
+        ],
+        [
+          "Choix possible",
+          "Négocier le cadre, préserver le service ou proposer une fête distincte."
+        ]
+      ]
+    },
+    {
+      "id": "REV-07",
+      "version": "6bfadee5087a75d190acd7a529edcda21137e298",
+      "name": "Haldrek",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Le capitaine qui prépare autant la retraite que l'avance.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REV-07.md",
+      "tags": "pnj personnage compagnie haldrek archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/haldrek-portrait-capitaine-proposition.webp",
+        "alt": "Portrait conceptuel de Haldrek, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Répartit les tâches, demande confirmation des consignes et surveille les réserves."
+        ],
+        [
+          "Rencontre fictive",
+          "Un exercice collectif révèle une faille dans la chaîne de commandement."
+        ],
+        [
+          "Choix possible",
+          "Corriger l'organisation, écouter une recrue ou accepter un nouveau chef de manœuvre."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "REV-14",
+      "version": "a0e9246edbc9fce5c9bc58290a4cb13e9aa31747",
+      "name": "Halstor",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une personne changeante dont la métamorphose n'est pas une propriété universelle des compagnons.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/REV-14.md",
+      "tags": "pnj personnage proches halstor archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Dans une scène située à la cérémonie attestée, reprend sa forme humanoïde sans prêter ce don à tous les êtres présents."
+        ],
+        [
+          "Rencontre fictive",
+          "Un récit populaire attribue à tous les animaux de la cour un pouvoir que seul Halstor a montré."
+        ],
+        [
+          "Choix possible",
+          "Recueillir des témoins, séparer les phénomènes ou corriger la rumeur avec douceur."
+        ]
+      ]
+    },
+    {
+      "id": "FAM-06",
+      "version": "abf3b6144fd066e06cc64c16a401bb9630d67a97",
+      "name": "Harald Forgecœur",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une figure des Montagnes dont le passé militaire appelle une lecture sourcée.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/FAM-06.md",
+      "tags": "pnj personnage proches harald archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Parle du service concret avant la gloire et ne confond pas tous les vétérans de son époque."
+        ],
+        [
+          "Rencontre fictive",
+          "Un ancien itinéraire militaire est invoqué pour régler un conflit actuel."
+        ],
+        [
+          "Choix possible",
+          "Vérifier les témoignages, consulter les habitants ou chercher un autre accord."
+        ]
+      ]
+    },
+    {
+      "id": "REV-13",
+      "version": "3b881f9b9078210dc911ea6206ea5b7d823279ba",
+      "name": "Harald le lion",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un lion doté de sa propre conscience, distinct de l'homme dont il fut brièvement le relais.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/REV-13.md",
+      "tags": "pnj personnage proches harald_lion archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Conserve sa réaction et ses préférences propres ; toute scène de métamorphose exige le contexte de l'époque où elle est attestée."
+        ],
+        [
+          "Rencontre fictive",
+          "Un témoin confond le lion, Harald Forgecœur et des lions figurés sur des bijoux."
+        ],
+        [
+          "Choix possible",
+          "Corriger l'identité, rechercher la scène précise ou laisser une légende locale comme telle."
+        ]
+      ]
+    },
+    {
+      "id": "REV-06",
+      "version": "e88424ea6408a30cda48354f11c54e57de40d00c",
+      "name": "Heimdall",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Veiller exige de choisir, pas de tout savoir.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REV-06.md",
+      "tags": "pnj personnage compagnie heimdall archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/heimdall-portrait.webp",
+        "alt": "Portrait conceptuel de Heimdall, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Distingue une observation certaine d'une inquiétude et refuse de promettre l'impossible."
+        ],
+        [
+          "Rencontre fictive",
+          "Plusieurs signaux inhabituels réclament l'attention d'une petite équipe."
+        ],
+        [
+          "Choix possible",
+          "Prioriser des vérifications, déléguer ou reconnaître ses limites."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-71",
+      "version": "604baa9bbfdc5e6f9d9e334320966a0cb80873bd",
+      "name": "Hélène Varrec",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une exploitante de Corvelis qui protège le droit de comparer sans imposer une seule façon de cultiver.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/SEC-71.md",
+      "tags": "pnj personnage metiers helene_varrec archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Décrit ses terres avec précision, écoute le mécanicien puis distingue ce qui fonctionne ici de ce qui conviendrait ailleurs."
+        ],
+        [
+          "Rencontre fictive",
+          "Une démonstration réussit sur une parcelle facile, tandis qu'un terrain voisin demeure incertain."
+        ],
+        [
+          "Choix possible",
+          "Faire une seconde mesure, conserver plusieurs méthodes ou demander l'avis des travailleurs."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB44-HELOINE-VALCIR",
+      "version": "dc7a111bcd8b6d91f781a687cd13fd97e486f848",
+      "name": "Héloïne Valcir",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une organisatrice de réceptions dont le métier ne se réduit pas à servir.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB44-HELOINE-VALCIR.md",
+      "tags": "pnj personnage metiers heloine archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Repère une difficulté d'accueil avant qu'elle ne devienne un affront public."
+        ],
+        [
+          "Rencontre fictive",
+          "Une réception rassemble des personnes aux usages incompatibles."
+        ],
+        [
+          "Choix possible",
+          "Réaménager les tables, négocier le protocole ou permettre un accueil séparé."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-73",
+      "version": "d78c2bc7c8776ad1e8109082f71f28a6597a7fcc",
+      "name": "Hervald Trois-Sillons",
+      "description": "⚠ Révélations sur l’histoire d’Orin. À soixante-seize ans, un cultivateur sait qu'un chariot se juge sur la pente, pas dans l'atelier.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/SEC-73.md",
+      "tags": "pnj personnage metiers hervald archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/hervald-trois-sillons-concept-v01.webp",
+        "alt": "Portrait conceptuel de Hervald Trois-Sillons, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Prend une poignée de terre, scrute les racines et invite l'inventeur à pousser sa machine sur le passage difficile."
+        ],
+        [
+          "Rencontre fictive",
+          "Un dispositif aide sur sol plat, mais dévie dès que la piste s'incline."
+        ],
+        [
+          "Choix possible",
+          "Modifier l'essai avec Odris, laisser l'outil de côté ou demander une correction avant tout usage."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-75",
+      "version": "1a08dbfe5a8fc1ee8a7f32b6a7d43b29ad03a999",
+      "name": "Hroldan Trois-Clefs",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un ancien quartier-maître rappelé à la vie qui ne doit à personne son retour au travail.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB43-HROLDAN-TROIS-CLEFS.md",
+      "tags": "pnj personnage savoirs hroldan archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Compte le matériel avec méthode, demande qui portera réellement les charges et garde du temps pour découvrir le présent."
+        ],
+        [
+          "Rencontre fictive",
+          "Une troupe prépare une longue marche avec des stocks suffisants sur le papier, mais inaccessibles aux derniers rangs."
+        ],
+        [
+          "Choix possible",
+          "Répartir les vivres, raccourcir le trajet ou demander aux marcheurs leurs besoins."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-72",
+      "version": "5674ce6d391fe55ebeffb29808726af6a8f6e871",
+      "name": "Jorven Halrec",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un exploitant confronté à des pertes qui ne prouvent ni fraude ni incapacité.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/SEC-72.md",
+      "tags": "pnj personnage metiers jorven archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Suit la trace des sacs entre le moulin et la réserve, observe les retards et tient l'accusation à distance."
+        ],
+        [
+          "Rencontre fictive",
+          "Des quantités manquent à l'inventaire, mais les comptes et les lieux de stockage ne concordent pas."
+        ],
+        [
+          "Choix possible",
+          "Reprendre l'inventaire, faire contrôler le matériel ou organiser un audit contradictoire."
+        ]
+      ]
+    },
+    {
+      "id": "REV-03",
+      "version": "d67a329fc4727ae9138ec33502676528f5a88892",
+      "name": "Kelm Poing-Calme",
+      "description": "⚠ Révélations sur l’histoire d’Orin. La force d'un homme se reconnaît aussi à ce qu'il refuse de briser.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REV-03.md",
+      "tags": "pnj personnage compagnie kelm archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/kelm-poing-calme-portrait-concept-v01.webp",
+        "alt": "Portrait conceptuel de Kelm Poing-Calme, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Se place à hauteur de son interlocuteur et cherche une issue qui n'humilie personne."
+        ],
+        [
+          "Rencontre fictive",
+          "Un conflit au relais menace de devenir une démonstration de force inutile."
+        ],
+        [
+          "Choix possible",
+          "Calmer la foule, réparer un tort ou convaincre les deux parties de reculer."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "RES-28",
+      "version": "2c8cb4462a4426560bb7884055e7633cf8fb145b",
+      "name": "Larek",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un apprenti marin dont la meilleure histoire ne le dispense pas d'apprendre les nœuds.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/RES-28.md",
+      "tags": "pnj personnage savoirs larek archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Parle avec chaleur d'un chien appelé l'Amiral, puis se reprend pour vérifier une manœuvre avant de la tenter."
+        ],
+        [
+          "Rencontre fictive",
+          "Pendant un apprentissage, une amarre se défait au moment où le pont devient glissant."
+        ],
+        [
+          "Choix possible",
+          "Sécuriser d'abord les gens, appeler l'instructrice ou répéter le geste à quai."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-07",
+      "version": "99ed9851c891c557a4364ad3bd37385cb7507f0f",
+      "name": "Le général Dac",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un maître d'armes devenu général dont le rang doit être replacé à la bonne époque.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/SEC-07.md",
+      "tags": "pnj personnage savoirs dac archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Dans son rôle militaire attesté, distingue la protection des troupes de l'affichage du commandement ; dans une scène d'enfance, il n'est pas déjà général."
+        ],
+        [
+          "Rencontre fictive",
+          "Un plan de manœuvre oublie la relève des blessés et la responsabilité réelle de chaque officier."
+        ],
+        [
+          "Choix possible",
+          "Clarifier la chaîne de commandement, revoir le repli ou demander un exercice préparatoire."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB31-LETHIEL",
+      "version": "b2b9b75c4317a47fc05b74e8df6a0613957bb8c5",
+      "name": "Lethiel",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une architecte qui écoute un bâtiment avant de le dessiner.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-LETHIEL.md",
+      "tags": "pnj personnage metiers lethiel archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Éprouve la résonance d'une pièce, griffonne ses contraintes et réclame l'avis des futurs usagers."
+        ],
+        [
+          "Rencontre fictive",
+          "Une salle nouvelle convient aux discours, mais étouffe les voix et les instruments."
+        ],
+        [
+          "Choix possible",
+          "Revoir les matériaux, déplacer la scène ou modifier les attentes du commanditaire."
+        ]
+      ]
+    },
+    {
+      "id": "REV-12",
+      "version": "8ad6c0f041c4e1e4f62a4be3cf2618839e4b9c9e",
+      "name": "Lévara Brindesève",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une observatrice du vivant qui n'assimile pas la réussite d'une machine au bien-être d'un sol.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REV-12.md",
+      "tags": "pnj personnage savoirs levara archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Étudie plantes, humidité et usages locaux, puis demande une gouvernance scientifique indépendante pour les travaux à venir."
+        ],
+        [
+          "Rencontre fictive",
+          "Une serre expérimentale risque d'être ouverte au public avant que ses conditions écologiques soient comprises."
+        ],
+        [
+          "Choix possible",
+          "Documenter les risques, consulter les communautés ou remettre l'ouverture à une saison ultérieure."
+        ]
+      ]
+    },
+    {
+      "id": "RES-10",
+      "version": "9b2fedf8095212ea18eaa0a5ae0a6b9c13ada27c",
+      "name": "Liora Pommebrune",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une professionnelle de l'hospitalité qui sait qu'une maison fonctionne grâce à des heures de travail invisibles.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-10-LIORA-POMMEBRUNE.md",
+      "tags": "pnj personnage metiers liora archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Inspecte les draps et les accès de service, puis pose la question des horaires avant celle du prestige."
+        ],
+        [
+          "Rencontre fictive",
+          "Des visiteurs arrivent pendant une panne d'eau dans une auberge déjà complète."
+        ],
+        [
+          "Choix possible",
+          "Répartir l'accueil avec l'accord de chacun, réduire les services ou solliciter des voisins."
+        ]
+      ]
+    },
+    {
+      "id": "RES-15",
+      "version": "ca920723d1d1d31519499771a56a8cc7cb9bb4a7",
+      "name": "Lurne Brise-Boulon",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un navigateur chercheur qui tient autant à la qualité des cartes qu'à sa liberté de publier ce qui peut l'être.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-15-LURNE-BRISE-BOULON.md",
+      "tags": "pnj personnage savoirs lurne archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Compare l'horizon au relevé des étoiles et distingue observations partageables et informations confidentielles."
+        ],
+        [
+          "Rencontre fictive",
+          "Une carte de côte comporte une zone incertaine, mais les passagers veulent une réponse immédiate."
+        ],
+        [
+          "Choix possible",
+          "Choisir la prudence, effectuer de nouveaux relevés ou partager l'incertitude avec le capitaine."
+        ]
+      ]
+    },
+    {
       "id": "PER-CB42-LYSANDRA-DAVARENNE",
       "version": "54802ec9565b5f961d4da68be6ca00583dde61f8",
       "name": "Lysandra d’Avarenne",
@@ -150,7 +1698,7 @@
       "group": "Artisans et vie quotidienne",
       "status": "reference",
       "path": "content/personnages/PER-CB42-LYSANDRA-DAVARENNE.md",
-      "tags": "pnj personnage metiers lysandra archives proposition non jouée",
+      "tags": "pnj personnage metiers lysandra archives public",
       "links": [],
       "details": [
         [
@@ -177,7 +1725,7 @@
       "group": "Artisans et vie quotidienne",
       "status": "reference",
       "path": "content/personnages/PER-CB38-MAEL-TORVENN.md",
-      "tags": "pnj personnage metiers mael archives proposition non jouée",
+      "tags": "pnj personnage metiers mael archives public",
       "links": [],
       "details": [
         [
@@ -195,6 +1743,239 @@
       ]
     },
     {
+      "id": "PER-CB2-MAELIN",
+      "version": "4c5566855e509d1a38c92a7de24392f8f2bc268a",
+      "name": "Maelin",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une charpentière qui veut que les charges importantes soient partagées.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB2-MAELIN.md",
+      "tags": "pnj personnage savoirs maelin archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Vérifie une poutre et rappelle qu'un serment ne doit pas isoler quatre personnes."
+        ],
+        [
+          "Rencontre fictive",
+          "Une structure ancienne réclame réparation sans perturber son usage quotidien."
+        ],
+        [
+          "Choix possible",
+          "Renforcer, remplacer ou suspendre le passage pendant les travaux."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB31-MAELYA",
+      "version": "93772aa873b3b5ecbeab841d212f0069080910a1",
+      "name": "Maëlya",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une voyageuse qui entend la différence entre un mot traduit et une histoire comprise.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-MAELYA.md",
+      "tags": "pnj personnage proches maelya archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Répète une expression de pêcheur à mi-voix et demande dans quelles circonstances elle est employée."
+        ],
+        [
+          "Rencontre fictive",
+          "Un accord commercial achoppe sur un mot que chaque village comprend autrement."
+        ],
+        [
+          "Choix possible",
+          "Écouter les locuteurs, réécrire l'accord ou conserver plusieurs traductions avec leurs nuances."
+        ]
+      ]
+    },
+    {
+      "id": "IMP-17",
+      "version": "1d63688f2bd8813b6243dcc6e0d5116fa18708e9",
+      "name": "Maëlys",
+      "description": "⚠ Révélations sur l’histoire d’Orin. La joie d'une recette partagée ne transforme pas une taverne en établissement officiel.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/IMP-17.md",
+      "tags": "pnj personnage metiers maelys archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Avec Garrik, feuillette une recette illustrée et distingue un plaisir inventif d'une fête déjà promise à tout le royaume."
+        ],
+        [
+          "Rencontre fictive",
+          "Une recette lumineuse enthousiasme des visiteurs qui réclament d'en faire un spectacle obligatoire."
+        ],
+        [
+          "Choix possible",
+          "Proposer une soirée volontaire, adapter la présentation ou garder la préparation pour les habitués."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-70",
+      "version": "ffb8578cc5075dc46bdfef5c20c53f62210fc11d",
+      "name": "Mara Belden",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une agricultrice qui place les familles avant l'enthousiasme pour les machines nouvelles.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/SEC-70.md",
+      "tags": "pnj personnage metiers mara_belden archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Demande combien de mains, de jours et de réserves un essai réclame, puis consulte ceux qui effectueront le travail."
+        ],
+        [
+          "Rencontre fictive",
+          "Une invention promet d'alléger une récolte, mais les ouvriers redoutent une panne en pleine saison."
+        ],
+        [
+          "Choix possible",
+          "Convenir d'un essai limité, préparer une solution manuelle ou renoncer sans sanction."
+        ]
+      ]
+    },
+    {
+      "id": "RES-27",
+      "version": "1536fb754098fe276fa36240b175ee8504a4cbcf",
+      "name": "Mara Ventrevent",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une maîtresse d'équipage qui enseigne la mer sans demander aux apprentis de risquer leur vie pour impressionner.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/RES-27.md",
+      "tags": "pnj personnage metiers mara_ventrevent archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/mara-ventrevent-concept-v01.webp",
+        "alt": "Portrait conceptuel de Mara Ventrevent, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Resserre une amarre, vérifie qu'un jeune marin a compris la consigne et réclame une vraie relève après le quart."
+        ],
+        [
+          "Rencontre fictive",
+          "Un exercice de pont devient dangereux lorsque des passagers veulent assister de trop près à la manœuvre."
+        ],
+        [
+          "Choix possible",
+          "Sécuriser le pont, reporter l'exercice ou organiser une démonstration à quai."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB31-MARA-VIFACIER",
+      "version": "9bd0e07a2eeb945764c099bef11810439a967867",
+      "name": "Mara Vifacier",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une forgeronne qui adapte le métal aux corps plutôt qu'aux légendes.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-MARA-VIFACIER.md",
+      "tags": "pnj personnage metiers mara archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/mara-concept-v01.webp",
+        "alt": "Portrait conceptuel de Mara Vifacier, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Mesure une articulation, inspecte une ancienne réparation et refuse une commande dangereuse."
+        ],
+        [
+          "Rencontre fictive",
+          "Une armure de famille gêne dangereusement son nouveau porteur."
+        ],
+        [
+          "Choix possible",
+          "La modifier, la préserver hors d'usage ou concevoir un équipement distinct."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "RES-16",
+      "version": "276ae8f2ea9c9b1770b9b85a7ea94d517c49a868",
+      "name": "Margha Trois-Mers",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une cuisinière de bord pour qui les réserves sont une question de sécurité commune.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-16-MARGHA-TROIS-MERS.md",
+      "tags": "pnj personnage metiers margha archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Contrôle les vivres, les restrictions alimentaires et l'état des foyers avant de parler de menu."
+        ],
+        [
+          "Rencontre fictive",
+          "Une traversée s'allonge et l'équipage refuse que l'on réduise les repas de manière inégale."
+        ],
+        [
+          "Choix possible",
+          "Consulter l'équipage, revoir les étapes ou modifier collectivement le rationnement."
+        ]
+      ]
+    },
+    {
       "id": "PER-CB43-MIRELDA-CHENECLAIR",
       "version": "5fb0fb25895184c870469b00c99a1fd89b250cde",
       "name": "Mirelda Chêneclair",
@@ -204,7 +1985,7 @@
       "group": "Artisans et vie quotidienne",
       "status": "reference",
       "path": "content/personnages/PER-CB43-MIRELDA-CHENECLAIR.md",
-      "tags": "pnj personnage metiers mirelda archives proposition non jouée",
+      "tags": "pnj personnage metiers mirelda archives public",
       "links": [],
       "art": {
         "src": "https://sijiel44.github.io/archives-alrick/images/personnages/mirelda-concept-v01.webp",
@@ -230,6 +2011,231 @@
       ]
     },
     {
+      "id": "RES-02",
+      "version": "7ff094c6dd4310c57f7eb93128b759b9a8c3c1cf",
+      "name": "Mirena Valcourt",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une intendante qui sait qu'une maison accueillante commence par des équipes respectées.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-02-MIRENA-VALCOURT.md",
+      "tags": "pnj personnage metiers mirena archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Vérifie les tours de service et refuse qu'une fête se prépare en épuisant ceux qui la rendent possible."
+        ],
+        [
+          "Rencontre fictive",
+          "Une réception imprévue doublerait la charge de l'équipe de nuit."
+        ],
+        [
+          "Choix possible",
+          "Réduire le programme, recruter une aide ponctuelle volontaire ou reporter l'événement."
+        ]
+      ]
+    },
+    {
+      "id": "RES-18",
+      "version": "f5038d8858aab9f53d638553f52aaaf7d7b34d0d",
+      "name": "Naëline Fendrelune",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une dessinatrice en devenir dont la vie retrouvée lui appartient d'abord.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-18-NAELINE-FENDRELUNE.md",
+      "tags": "pnj personnage proches naeline archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/naeline-concept-v01.webp",
+        "alt": "Portrait conceptuel de Naëline Fendrelune, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Observe une façade avec son carnet, écoute une suggestion puis choisit elle-même ce qu'elle dessine."
+        ],
+        [
+          "Rencontre fictive",
+          "Une maison noble lui commande un portrait en pensant que son ancienne fonction la rend disponible."
+        ],
+        [
+          "Choix possible",
+          "Négocier librement le projet, refuser la commande ou proposer un autre regard sur les lieux."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB43-NAHLA-SEREVIN",
+      "version": "dcf9b12535f78a2f664ec7fdd64f35b028df9f2c",
+      "name": "Nahla Serevin",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une cheffe de cabinet qui organise des décisions sans confondre délégation et pouvoir illimité.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB43-NAHLA-SEREVIN.md",
+      "tags": "pnj personnage proches nahla archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Classe deux courriers urgents, fait préciser la personne habilitée à trancher et protège un temps de travail de l'équipe."
+        ],
+        [
+          "Rencontre fictive",
+          "Trois interlocuteurs veulent obtenir une réponse du prince le même matin pour des urgences très différentes."
+        ],
+        [
+          "Choix possible",
+          "Traiter les dossiers délégués, demander des pièces ou réserver un seul arbitrage personnel."
+        ]
+      ]
+    },
+    {
+      "id": "RES-13",
+      "version": "b9353699416d20f6b965f87611246904e92da3de",
+      "name": "Nerys Silvenaine",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une spécialiste des enchantements domestiques qui exige de comprendre l'usage avant de modifier un ouvrage.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-13-NERYS-SILVENAINE.md",
+      "tags": "pnj personnage savoirs nerys_silvenaine archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Fait décrire une panne par les habitants et inspecte l'installation sans revendiquer l'accès aux lieux interdits."
+        ],
+        [
+          "Rencontre fictive",
+          "Un système d'éclairage enchanté devient instable au moment d'un accueil collectif."
+        ],
+        [
+          "Choix possible",
+          "Prévoir un éclairage de secours, faire diagnostiquer le réseau ou réduire la charge."
+        ]
+      ]
+    },
+    {
+      "id": "REV-09",
+      "version": "17baa77f9a3b9dac167c1a3370bb259a25bcb8de",
+      "name": "Névane Carte-Claire",
+      "description": "⚠ Révélations sur l’histoire d’Orin. La première Revenante d'honneur préfère tenir un registre juste à recevoir un ordre de plus.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REV-09.md",
+      "tags": "pnj personnage compagnie nevane archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Classe les relevés de cartographie de Skalor, distingue une mission notée d'une obligation et confronte ses conclusions à celles d'Eamon."
+        ],
+        [
+          "Rencontre fictive",
+          "Un coffret préparé en son honneur est pris par erreur pour un ordre de rejoindre une expédition."
+        ],
+        [
+          "Choix possible",
+          "Clarifier l'intention du présent, respecter son autonomie ou solliciter un avis sans mission imposée."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB44-ODRAN-VALCENDRE",
+      "version": "15aba7d954c451e41a8a1cbe118cb5a21ad35481",
+      "name": "Odran Valcendre",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un maître des pressoirs qui protège son indépendance et connaît ses limites.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB44-ODRAN-VALCENDRE.md",
+      "tags": "pnj personnage metiers odran archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Pose les cartes à plat et insiste sur une visite des sols avant tout engagement."
+        ],
+        [
+          "Rencontre fictive",
+          "Un domaine souhaite copier une méthode venue d'un terroir différent."
+        ],
+        [
+          "Choix possible",
+          "Tester localement, consulter des cultivateurs ou renoncer à une généralisation."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-74",
+      "version": "9ad73cfb7d6d9653835b0597df5afb2abd05b365",
+      "name": "Odris Ferren",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un ancien des machines d'eau qui ne signe aucun plan impossible à réparer au village.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/SEC-74.md",
+      "tags": "pnj personnage savoirs odris archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Tourne la vanne à la main, laisse l'apprenti essayer et demande ce qui se passera si l'enchantement cesse."
+        ],
+        [
+          "Rencontre fictive",
+          "Un système d'irrigation neuf rend une exploitation dépendante d'une pièce introuvable."
+        ],
+        [
+          "Choix possible",
+          "Fabriquer une alternative locale, revenir à un montage ancien ou suspendre les travaux."
+        ]
+      ]
+    },
+    {
       "id": "PER-CB39-OREN-DAST",
       "version": "24495860be51ec3175895e59fa58110c58b7fb3e",
       "name": "Oren Dast",
@@ -239,7 +2245,7 @@
       "group": "Figures documentées",
       "status": "reference",
       "path": "content/personnages/PER-CB39-OREN-DAST.md",
-      "tags": "pnj personnage savoirs oren archives proposition non jouée",
+      "tags": "pnj personnage savoirs oren archives public",
       "links": [],
       "details": [
         [
@@ -257,6 +2263,169 @@
       ]
     },
     {
+      "id": "RES-11",
+      "version": "06cd20c20dd5096fa88558e238699e40d191922c",
+      "name": "Orvak Main-de-Velours",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un ancien garde devenu maître de l'accueil, attentif à la dignité des invités et des équipes.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-11-ORVAK-MAIN-DE-VELOURS.md",
+      "tags": "pnj personnage metiers orvak archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Contrôle les accès et le service sans brusquer les travailleurs, puis désamorce un affront de préséance."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux invités réclament la même place d'honneur, tandis que le service manque de personnel."
+        ],
+        [
+          "Choix possible",
+          "Inventer un protocole partagé, écouter le personnel ou changer la forme de la réception."
+        ]
+      ]
+    },
+    {
+      "id": "REV-02",
+      "version": "0996521b609f13201f98692b113dd5ca852da397",
+      "name": "Ragna Pierre-Sèche",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une observatrice des détails que la précipitation efface.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REV-02.md",
+      "tags": "pnj personnage compagnie ragna archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/ragna-concept.webp",
+        "alt": "Portrait conceptuel de Ragna Pierre-Sèche, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Laisse finir les autres, mesure un silence et questionne les conclusions trop rapides."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux récits d'un même passage se contredisent ; il faut écouter avant d'accuser."
+        ],
+        [
+          "Choix possible",
+          "Recouper, protéger un témoin vulnérable ou agir avec des preuves encore imparfaites."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-64",
+      "version": "5a6ebee70f0f0d63311f07f7a1df0a6aeb477a4b",
+      "name": "Reginald",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Le tavernier d'un souvenir d'enfance dont la vie présente demeure inconnue.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/SEC-64.md",
+      "tags": "pnj personnage metiers reginald archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Uniquement dans un retour en arrière annoncé : essuie son comptoir et tente de préserver les règles de sa salle."
+        ],
+        [
+          "Rencontre fictive",
+          "Un témoin raconte les mêmes premières bières d'une façon très différente des souvenirs d'Orin."
+        ],
+        [
+          "Choix possible",
+          "Recouper les témoignages, respecter les blancs du récit ou jouer une scène historique explicitement fictive."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB2-RUDEK",
+      "version": "5a82c9e2c959e5d500ecb70b7609ed701684765a",
+      "name": "Rudek",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un tailleur de pierre attentif au terrain autant qu'à sa famille.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB2-RUDEK.md",
+      "tags": "pnj personnage savoirs rudek archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Parle de fondations et de charges réelles avant de discuter une théorie."
+        ],
+        [
+          "Rencontre fictive",
+          "Un vieux mur menace des habitations et certains veulent préserver chaque pierre."
+        ],
+        [
+          "Choix possible",
+          "Étayer, démonter avec précaution ou évacuer d'abord les lieux."
+        ]
+      ]
+    },
+    {
+      "id": "RES-04",
+      "version": "cf41cdd89c29c7a63d60fbef1ca22531948c244b",
+      "name": "Saëlor Feuilledor",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un professionnel de l'hospitalité elfique dont l'intérêt pour une visite ne vaut pas engagement.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-04-SAELOR-FEUILLEDOR.md",
+      "tags": "pnj personnage metiers saelor archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Observe l'espace réservé aux invités, s'informe sur leurs langues et leurs usages, puis demande quel rôle on attend réellement de lui."
+        ],
+        [
+          "Rencontre fictive",
+          "Un accueil diplomatique risque d'effacer les coutumes d'un groupe moins nombreux."
+        ],
+        [
+          "Choix possible",
+          "Réorganiser les places, demander l'avis des hôtes ou repousser la réception pour mieux préparer."
+        ]
+      ]
+    },
+    {
       "id": "PER-CB39-SARIEL-VARN",
       "version": "ec8cb096713eaa26433cb3c7b8ecdb6810221b70",
       "name": "Sariel Varn",
@@ -266,7 +2435,7 @@
       "group": "Figures documentées",
       "status": "reference",
       "path": "content/personnages/PER-CB39-SARIEL-VARN.md",
-      "tags": "pnj personnage savoirs sariel archives proposition non jouée",
+      "tags": "pnj personnage savoirs sariel archives public",
       "links": [],
       "art": {
         "src": "https://sijiel44.github.io/archives-alrick/images/personnages/sariel-concept-v01.webp",
@@ -292,6 +2461,68 @@
       ]
     },
     {
+      "id": "PER-CB2-SELA",
+      "version": "5edf9c980aaa087898c8eda2fcfbfb9f29580ec1",
+      "name": "Sela",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une cordière des cités fluviales qui connaît les tensions invisibles aux passants.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB2-SELA.md",
+      "tags": "pnj personnage savoirs sela archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Tend un câble-test et écoute ceux qui devront vivre avec l'ouvrage."
+        ],
+        [
+          "Rencontre fictive",
+          "Une passerelle de corde devient dangereuse à l'approche des crues."
+        ],
+        [
+          "Choix possible",
+          "Démonter, déplacer les ancrages ou aménager un passage de secours."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB44-SELYA-VIGNEBRUME",
+      "version": "1a80a94a7aa8dfcf907824f34f6bdaae45c25811",
+      "name": "Selya Vignebrume",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une interlocutrice entre collections, métiers et producteurs autonomes.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB44-SELYA-VIGNEBRUME.md",
+      "tags": "pnj personnage metiers selya archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Demande l'origine des lots, remercie le producteur et sépare une piste d'étude d'une promesse."
+        ],
+        [
+          "Rencontre fictive",
+          "Le nom d'un petit producteur manque à une collection prestigieuse."
+        ],
+        [
+          "Choix possible",
+          "Rétablir la provenance, obtenir un accord ou suspendre l'exposition."
+        ]
+      ]
+    },
+    {
       "id": "PER-CB39-SERAH-DENVAR",
       "version": "797778a33d1d8b87466cadcb14e65ed7ac2ed905",
       "name": "Serah Denvar",
@@ -301,7 +2532,7 @@
       "group": "Figures documentées",
       "status": "reference",
       "path": "content/personnages/PER-CB39-SERAH-DENVAR.md",
-      "tags": "pnj personnage savoirs serah archives proposition non jouée",
+      "tags": "pnj personnage savoirs serah archives public",
       "links": [],
       "details": [
         [
@@ -319,6 +2550,146 @@
       ]
     },
     {
+      "id": "PER-CB31-SERELYA",
+      "version": "dcbd54b577b2e1e7eed18d22fe4d984e90ffd667",
+      "name": "Serelya",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Elle connaît les villages en écoutant les marchés et les chansons, pas les seuls discours officiels.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-SERELYA.md",
+      "tags": "pnj personnage proches serelya archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "S'arrête à chaque étal, fait rire une tablée puis remarque qui n'a pas été invité à parler."
+        ],
+        [
+          "Rencontre fictive",
+          "Une fête locale promet de rassembler deux quartiers, mais ses préparatifs n'impliquent qu'un seul."
+        ],
+        [
+          "Choix possible",
+          "Écouter les oubliés, répartir les responsabilités ou redessiner la fête avec eux."
+        ]
+      ]
+    },
+    {
+      "id": "REN-63",
+      "version": "d94f66a23d64fdf56773a8a4592565fd083f3e8b",
+      "name": "Sévrane",
+      "description": "⚠ Révélations sur l’histoire d’Orin. La veilleuse des lieux abandonnés s'intéresse aussi à la première nuit d'une maison retrouvée.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REN-63.md",
+      "tags": "pnj personnage savoirs sevrane archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/sevrane-concept-v01.webp",
+        "alt": "Portrait conceptuel de Sévrane, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Porte sa lampe et observe les seuils délaissés ; accueille un nouveau venu sans prétendre devenir la maîtresse des lieux."
+        ],
+        [
+          "Rencontre fictive",
+          "Une ancienne demeure doit accueillir une famille, mais plusieurs souvenirs rendent son seuil difficile à franchir."
+        ],
+        [
+          "Choix possible",
+          "Écouter les habitants, préserver un lieu de mémoire ou organiser un accueil librement choisi."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB1-SIGRID",
+      "version": "2f004d98aa047da04168fa3aec614d7a785d355a",
+      "name": "Sigrid",
+      "description": "⚠ Révélations sur l’histoire d’Orin. À Brumefer, elle sait que les noms survivent grâce aux mains qui entretiennent les pierres.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB1-SIGRID.md",
+      "tags": "pnj personnage savoirs sigrid archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/sigrid-concept-v01.webp",
+        "alt": "Portrait conceptuel de Sigrid, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Attend que chacun lise l'inscription, puis demande qui connaît encore la vie derrière le nom."
+        ],
+        [
+          "Rencontre fictive",
+          "Un nom gravé au Champ des Noms demeure illisible, et deux familles se souviennent différemment."
+        ],
+        [
+          "Choix possible",
+          "Confronter les témoignages avec douceur, préserver le doute ou organiser une restauration prudente."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-65",
+      "version": "d90783f4d6f822015c302af248d5f5b84e6aedef",
+      "name": "Sigrun Pierreval",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une femme d'Aldhammar qui conserve la mémoire d'un palais sans en posséder d'office les clefs.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/SEC-65.md",
+      "tags": "pnj personnage metiers sigrun_pierreval archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Interroge les anciens artisans, parcourt les réserves et note séparément souvenirs, dégradations et travaux possibles."
+        ],
+        [
+          "Rencontre fictive",
+          "Un vieux bâtiment pourrait rouvrir, mais ni le personnel ni son état réel n'ont été établis."
+        ],
+        [
+          "Choix possible",
+          "Faire un inventaire, consulter les familles de métiers ou remettre l'ouverture à plus tard."
+        ]
+      ]
+    },
+    {
       "id": "PER-CB42-SIGRUN-VAREK",
       "version": "e330b0ddba0bc774a24ba668a31c34a291fb2998",
       "name": "Sigrun Varek",
@@ -328,7 +2699,7 @@
       "group": "Figures documentées",
       "status": "reference",
       "path": "content/personnages/PER-CB42-SIGRUN-VAREK.md",
-      "tags": "pnj personnage savoirs sigrun_varek archives proposition non jouée",
+      "tags": "pnj personnage savoirs sigrun_varek archives public",
       "links": [],
       "details": [
         [
@@ -346,6 +2717,37 @@
       ]
     },
     {
+      "id": "RES-09",
+      "version": "89615c44255d3a179049c161cdd3989110df2203",
+      "name": "Silan de Sept-Ponts",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un secrétaire de voyage qui sait qu'une lettre bien transmise peut éviter un conflit inutile.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-09-SILAN-SEPT-PONTS.md",
+      "tags": "pnj personnage savoirs silan archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Vérifie les noms et les relais de courrier, reconnaît un visage familier et fait préciser le destinataire réel."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux délégations attendent chacune une réponse à une lettre dont les copies diffèrent."
+        ],
+        [
+          "Choix possible",
+          "Recouper les archives, entendre les messagers ou suspendre une décision pressée."
+        ]
+      ]
+    },
+    {
       "id": "PER-CB31-SIVRA-BRASSEFEUILLE",
       "version": "64a9e9e2a9f8870ae941c263e0bcff9f928e1910",
       "name": "Sivra Brassefeuille",
@@ -355,7 +2757,7 @@
       "group": "Artisans et vie quotidienne",
       "status": "reference",
       "path": "content/personnages/PER-CB31-SIVRA-BRASSEFEUILLE.md",
-      "tags": "pnj personnage metiers sivra archives proposition non jouée",
+      "tags": "pnj personnage metiers sivra archives public",
       "links": [],
       "art": {
         "src": "https://sijiel44.github.io/archives-alrick/images/personnages/sivra-concept-v01.webp",
@@ -390,7 +2792,7 @@
       "group": "Figures documentées",
       "status": "reference",
       "path": "content/personnages/PER-CB1-SOREN.md",
-      "tags": "pnj personnage savoirs soren archives proposition non jouée",
+      "tags": "pnj personnage savoirs soren archives public",
       "links": [],
       "details": [
         [
@@ -408,6 +2810,495 @@
       ]
     },
     {
+      "id": "RES-17",
+      "version": "a4694a688a30b3ce8afa29b2a49e3bf0d2ccbfb0",
+      "name": "Soren Malderive",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un spécialiste de l'embarquement dont la disponibilité reste à confirmer.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-17-SOREN-MALDERIVE.md",
+      "tags": "pnj personnage savoirs soren_malderive archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Compare la liste des passagers aux cabines et manifeste son intérêt sans se présenter comme membre d'équipage recruté."
+        ],
+        [
+          "Rencontre fictive",
+          "Des voyageurs arrivent au quai avec des autorisations incompatibles et des bagages déjà chargés."
+        ],
+        [
+          "Choix possible",
+          "Vérifier les pièces, revoir l'embarquement ou solliciter une décision de la capitaine."
+        ]
+      ]
+    },
+    {
+      "id": "IMP-12",
+      "version": "104e31e4ec844fd04bd93a04995b57307133d76a",
+      "name": "Tairin",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un conseiller qui estime qu'une contradiction sincère exige un cadre où elle puisse être entendue.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/IMP-12.md",
+      "tags": "pnj personnage savoirs tairin archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Aide à préparer une audience, demande qui peut réellement objecter et refuse de confondre conseil et contrôle du Palais."
+        ],
+        [
+          "Rencontre fictive",
+          "Une réunion proclame le droit de désaccord, mais n'offre aucun moyen sûr de le faire valoir."
+        ],
+        [
+          "Choix possible",
+          "Changer les règles de parole, demander une médiation ou reporter la décision."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB43-TAVIAN-RELSOR",
+      "version": "b3d3359d87d87d01e060f57fb6a5135aa08e78f3",
+      "name": "Tavian Relsor",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un envoyé itinérant qui collecte les besoins sans prétendre décider à la place des autorités.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB43-TAVIAN-RELSOR.md",
+      "tags": "pnj personnage savoirs tavian archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Classe les témoignages par provenance, visite un quai et distingue les faits observés de ses impressions."
+        ],
+        [
+          "Rencontre fictive",
+          "Un bourg exige une promesse immédiate alors qu'une mission ne lui confie qu'une enquête préparatoire."
+        ],
+        [
+          "Choix possible",
+          "Rédiger un constat, demander un mandat clair ou organiser une concertation locale."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-69",
+      "version": "a1a6d25cd1ff04d467f6e45ce3cb24d46226dc5b",
+      "name": "Téodan Veyre",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un jeune analyste qui sait que les colonnes d'un registre ne remplacent pas la vie d'une exploitation.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/SEC-69.md",
+      "tags": "pnj personnage savoirs teodan archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Rapproche les carnets de rendement des observations de terrain et demande aux cultivateurs où ses mesures sont incomplètes."
+        ],
+        [
+          "Rencontre fictive",
+          "Deux fermes aux résultats similaires supportent des frais de transport très différents."
+        ],
+        [
+          "Choix possible",
+          "Vérifier les relevés, entendre les exploitants ou proposer une nouvelle observation sans conclure d'avance."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB31-THAERON",
+      "version": "f55d1f3b39eafd8833a2c148ad124379721d7074",
+      "name": "Thaëron",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un compositeur espiègle pour qui une salle répond autant qu'un instrument.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-THAERON.md",
+      "tags": "pnj personnage savoirs thaeron archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Lance un motif musical, guette ce que l'écho transforme et taquine sa sœur sans nier son expertise."
+        ],
+        [
+          "Rencontre fictive",
+          "Une répétition collective échoue parce que chaque groupe entend un tempo différent."
+        ],
+        [
+          "Choix possible",
+          "Essayer une autre disposition, écouter le lieu ou laisser les musiciens réinventer la pièce."
+        ]
+      ]
+    },
+    {
+      "id": "RES-06",
+      "version": "eb30ae56a1d235de6a49edf5c0b37945bc883651",
+      "name": "Thaléa Brise-Écume",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une capitaine de mer qui reste responsable du navire, même avec de grands pouvoirs à bord.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-06-THALEA-BRISE-ECUME.md",
+      "tags": "pnj personnage savoirs thalea archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Christian_M%C3%B8lsted_-_Seascape_with_waves_and_sailing_ship.jpg/960px-Christian_M%C3%B8lsted_-_Seascape_with_waves_and_sailing_ship.jpg",
+        "alt": "Inspiration visuelle externe : Seascape with waves and sailing ship. Ce n’est pas un portrait de Thaléa Brise-Écume."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Écoute les prévisions des marins, assigne les postes et n'accepte une manœuvre que si l'équipage peut la suivre."
+        ],
+        [
+          "Rencontre fictive",
+          "Un passager important presse la capitaine de partir malgré un avertissement sur les courants."
+        ],
+        [
+          "Choix possible",
+          "Différer le départ, proposer une route plus sûre ou refuser l'instruction."
+        ],
+        [
+          "Inspiration externe",
+          "Christian Mølsted · Domaine public · https://commons.wikimedia.org/wiki/File:Christian_M%C3%B8lsted_-_Seascape_with_waves_and_sailing_ship.jpg"
+        ]
+      ]
+    },
+    {
+      "id": "SEC-63",
+      "version": "a576cdfec1072514d771aa2ce7793ff6a5828040",
+      "name": "Tomas",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un apprenti qui connaît la différence entre réussir guidé et tenir seul.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/SEC-63.md",
+      "tags": "pnj personnage savoirs tomas archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Ajuste son siège, respire, puis décrit honnêtement ce qui demeure stable lorsqu'on retire l'aide."
+        ],
+        [
+          "Rencontre fictive",
+          "Une démonstration d'atelier pousse les apprentis à masquer leurs difficultés devant des visiteurs."
+        ],
+        [
+          "Choix possible",
+          "Montrer les étapes réelles, interrompre l'essai ou demander une séance plus sûre."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB2-TORGARL",
+      "version": "e8f092e3190e3729de4fd3fbc66ad95eafdeb07c",
+      "name": "Torgarl",
+      "description": "Une autorité politique qui doit composer avec les métiers et les habitants.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB2-TORGARL.md",
+      "tags": "pnj personnage proches torgarl archives public",
+      "links": [],
+      "details": [
+        [
+          "En scène (proposition)",
+          "Écoute le diagnostic d'un spécialiste avant de promettre des moyens."
+        ],
+        [
+          "Rencontre fictive",
+          "Des ressources sont disponibles pour un chantier, mais deux besoins sont urgents."
+        ],
+        [
+          "Choix possible",
+          "Prioriser, consulter la population ou réviser les objectifs."
+        ]
+      ]
+    },
+    {
+      "id": "REV-05",
+      "version": "008564a86e5ebf4d58c3359191e18efd8af005aa",
+      "name": "Torven Cendreval",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Un soignant qui juge une victoire à ceux qu'elle laisse vivants.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REV-05.md",
+      "tags": "pnj personnage compagnie torven archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/torven-portrait-medecin-proposition.webp",
+        "alt": "Portrait conceptuel de Torven Cendreval, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Interrompt les bravades pour demander de l'eau, du repos et des informations utiles aux soins."
+        ],
+        [
+          "Rencontre fictive",
+          "Une expédition ne possède pas de quoi traiter tous ses blessés à la fois."
+        ],
+        [
+          "Choix possible",
+          "Réorganiser les moyens, demander de l'aide ou interrompre l'objectif initial."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "REV-04",
+      "version": "33968d5d3111de1374025b226c1c60ae5ef0aedf",
+      "name": "Vaëra",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une éclaireuse dont la liberté compte autant que la finesse d'approche.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REV-04.md",
+      "tags": "pnj personnage compagnie vaera archives avertissement revelations",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/vaera-portrait-intime.webp",
+        "alt": "Portrait conceptuel de Vaëra, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Observe sorties et lignes de vue, puis pose une question qui révèle ce que chacun croyait évident."
+        ],
+        [
+          "Rencontre fictive",
+          "Un message doit franchir un secteur surveillé sans mettre les habitants en danger."
+        ],
+        [
+          "Choix possible",
+          "Chercher un passage discret, inventer une diversion consentie ou différer l'envoi."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "REN-64",
+      "version": "905caa34ae90ae70039111ac0011cdb52517ac5a",
+      "name": "Vardhena",
+      "description": "⚠ Révélations sur l’histoire d’Orin. La protectrice des derniers replis refuse de confondre courage et sacrifice inutile.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/REN-64.md",
+      "tags": "pnj personnage savoirs vardhena archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Questionne l'évacuation des civils et des blessés avant de valider un plan de défense, sans revendiquer de commandement permanent."
+        ],
+        [
+          "Rencontre fictive",
+          "Une fortification ne possède qu'une sortie praticable pour les blessés."
+        ],
+        [
+          "Choix possible",
+          "Organiser un exercice, revoir les passages ou protéger d'abord les non-combattants."
+        ]
+      ]
+    },
+    {
+      "id": "RES-12",
+      "version": "86b2e3736a01bf910542a56016fd4c8900ae4cc7",
+      "name": "Vaska Perledombre",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une négociante gobeline dont la réputation tient à la fiabilité des petites livraisons.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-12-VASKA-PERLEDOMBRE.md",
+      "tags": "pnj personnage metiers vaska archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Compte les colis, vérifie les échéances et demande qui supportera réellement un retard."
+        ],
+        [
+          "Rencontre fictive",
+          "Un atelier éloigné réclame une matière rare, tandis que des villages manquent de fournitures ordinaires."
+        ],
+        [
+          "Choix possible",
+          "Rééquilibrer la tournée, partager le transport ou refuser un marché désavantageux."
+        ]
+      ]
+    },
+    {
+      "id": "PER-CB31-YLVA",
+      "version": "5fa29090e0b7a37126940c6ab145585106438700",
+      "name": "Ylva",
+      "description": "L'instructrice qui enseigne une discrétion possible, jamais l'invisibilité.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Relations et compagnons",
+      "status": "reference",
+      "path": "content/personnages/PER-CB31-YLVA.md",
+      "tags": "pnj personnage proches ylva archives public",
+      "links": [],
+      "art": {
+        "src": "https://sijiel44.github.io/archives-alrick/images/personnages/ylva-portrait-concept-v01.webp",
+        "alt": "Portrait conceptuel de Ylva, interprétation graphique non canonique."
+      },
+      "details": [
+        [
+          "En scène (proposition)",
+          "Replace un apprenti dans son environnement et adapte l'exercice au poids de son équipement."
+        ],
+        [
+          "Rencontre fictive",
+          "Un groupe veut apprendre à traverser une cour sans éveiller l'attention."
+        ],
+        [
+          "Choix possible",
+          "Observer, alléger le matériel ou renoncer à un parcours trop exposé."
+        ],
+        [
+          "Illustration",
+          "Proposition graphique non canonisée ; apparence libre à adapter par le MJ."
+        ]
+      ]
+    },
+    {
+      "id": "SEC-29",
+      "version": "530c1c29e0f20ccf55289a95ecc9a9a910001578",
+      "name": "Yrsa Veld",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une personnalité du commerce et des ports dont les liens familiaux ne valent pas mandat politique.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Figures documentées",
+      "status": "reference",
+      "path": "content/personnages/SEC-29.md",
+      "tags": "pnj personnage savoirs yrsa archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Dans une scène nouvelle à son époque, fait préciser les itinéraires et les garanties avant de parler d'un investissement."
+        ],
+        [
+          "Rencontre fictive",
+          "Un projet portuaire invoque son nom et celui de son cousin Maëron sans les avoir consultés."
+        ],
+        [
+          "Choix possible",
+          "Vérifier l'accord des intéressés, étudier les besoins ou refuser l'usage de leurs noms."
+        ]
+      ]
+    },
+    {
+      "id": "RES-05",
+      "version": "321a5ced43f7663b1140649d909798c8b066922b",
+      "name": "Ysanne des Trois-Fours",
+      "description": "⚠ Révélations sur l’histoire d’Orin. Une cuisinière qui n'oublie ni les travailleurs de passage ni la dignité d'un repas simple.",
+      "kind": "npc",
+      "shelf": "pnj",
+      "group": "Artisans et vie quotidienne",
+      "status": "reference",
+      "path": "content/personnages/PER-CB42-RES-05-YSANNE-TROIS-FOURS.md",
+      "tags": "pnj personnage metiers ysanne archives avertissement revelations",
+      "links": [],
+      "details": [
+        [
+          "Révélations",
+          "Cette référence peut dévoiler des événements de l’Odyssée. La lecture est volontaire."
+        ],
+        [
+          "En scène (proposition)",
+          "Goûte la soupe avant de saluer un dignitaire et demande qui doit encore être nourri."
+        ],
+        [
+          "Rencontre fictive",
+          "Une cuisine doit accueillir des invités nombreux avec des réserves modestes et des habitudes opposées."
+        ],
+        [
+          "Choix possible",
+          "Adapter le menu, consulter les convives ou répartir les préparations en ateliers."
+        ]
+      ]
+    },
+    {
       "id": "PER-CB39-YSE-KORR",
       "version": "4eaceafa6ce3e41df4107c9066b95325f8fce950",
       "name": "Yse Korr",
@@ -417,7 +3308,7 @@
       "group": "Figures documentées",
       "status": "reference",
       "path": "content/personnages/PER-CB39-YSE-KORR.md",
-      "tags": "pnj personnage savoirs yse archives proposition non jouée",
+      "tags": "pnj personnage savoirs yse archives public",
       "links": [],
       "details": [
         [

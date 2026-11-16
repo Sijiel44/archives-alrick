@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 title: "Torgarl — partenaire de fondation"
 code: "PER-CB2-TORGARL"
 categorie: "personnage"
@@ -7,7 +7,7 @@ canon_statut: "a_verifier"
 ancre_documentaire: "CB2"
 source_brute: "CB2 P00327–00380; P00543–00549; P00560–00643"
 derniere_revision_documentaire: "2026-10-29"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique"
 description: "Torgarl apporte son autorité politique et son expérience aux projets d’Entre-Rives, en partageant les décisions avec Orin et les spécialistes."
 tags: [torgarl, personnage, entre-rives, cb2, brouillon]
 etat_editorial: en_chantier

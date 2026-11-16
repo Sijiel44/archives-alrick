@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Saëlor Feuilledor — Hospitalité elfique, visite acceptée"
 code: "RES-04"
@@ -8,7 +8,7 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10609–10612"
 derniere_revision_documentaire: "2026-10-30"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Saëlor est un Elfe ayant servi dans des maisons elfes où l’accueil s’appuie sur les langues, les usages de table et la création d’espaces adaptés aux invités."
 tags: [saelor, feuilledor, hospitalite, elfes, cb42]
 etat_editorial: en_cours

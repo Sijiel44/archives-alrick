@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Edran Veille-au-Feu — Gardien de phare (décédé)"
 code: "RES-20"
@@ -8,7 +8,7 @@ canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10891–10894 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Edran est un Humain **décédé** dont le parcours inclut l'entretien d'un phare isolé, la veille et le secours aux naufragés."
 tags: [edran, veille-au-feu, phare, sauvetage, mer, rappel, cb42]
 etat_editorial: en_cours

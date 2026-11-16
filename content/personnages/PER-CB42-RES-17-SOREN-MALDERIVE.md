@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Soren Malderive — Accueil des passagers à confirmer"
 code: "RES-17"
@@ -8,7 +8,7 @@ canon_statut: "projet_en_cours"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10850–10853"
 derniere_revision_documentaire: "2026-10-30"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Soren Malderive est décrit comme un Humain de 38 ans qui a travaillé dans la gestion des passagers, cabines, cargaisons et autorisations d’embarquement sur des bâtim"
 tags: [soren, malderive, navigation, logistique, yacht, cb42]
 etat_editorial: en_cours

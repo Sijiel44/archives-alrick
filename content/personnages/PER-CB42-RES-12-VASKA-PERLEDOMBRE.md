@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Vaska Perledombre — Négociante et approvisionnements"
 code: "RES-12"
@@ -8,7 +8,7 @@ canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10781–10784 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Vaska est une Gobeline vivante de 84 ans, négociante expérimentée dans le ravitaillement des caravanes, ateliers et petites communautés."
 tags: [vaska, perledombre, approvisionnement, logistique, cb42]
 etat_editorial: en_cours

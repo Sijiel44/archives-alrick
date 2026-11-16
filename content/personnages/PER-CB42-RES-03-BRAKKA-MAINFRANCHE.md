@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Brakka Mainfranche — Caravanes et accueil itinérant"
 code: "RES-03"
@@ -8,7 +8,7 @@ canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10594–10597 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Brakka est une Demi-orque vivante, ancienne employée d'une compagnie de caravanes, habituée à organiser bagages, hébergements et protection de convois."
 tags: [brakka, mainfranche, caravanes, voyages, cb42]
 etat_editorial: en_cours

@@ -62,7 +62,7 @@ test('Bestiaire publié : trente-cinq créations, dont trente-deux espèces, et 
     const meta = YAML.parse(/^---\n([\s\S]*?)\n---/.exec(text)[1]);
     assert.equal(meta.illustration, entry.art.src.replace(/^\.\/media\//, '/studio/media/'));
   }
-  assert.equal(pnj.entries.length, 16, 'Le catalogue PNJ doit inclure les 13 références publiques');
+  assert.ok(pnj.entries.length >= 105, 'Le catalogue PNJ doit conserver les 102 références documentées et les trois dragons');
   const dragons = pnj.entries.filter(entry => /^DRG-0[123]$/.test(entry.id));
   assert.equal(dragons.length, 3);
   const previousVersions = ['f614d23e2e203996cba32e1c8acf91dc7df8f180',

@@ -1,5 +1,5 @@
 ---
-publish: false
+publish: true
 spoilers: true
 title: "Nerys Silvenaine — Entretien des ouvrages enchantés"
 code: "RES-13"
@@ -8,7 +8,7 @@ canon_statut: "lore_valide"
 ancre_documentaire: "CB42"
 source_brute: "CB42 P10794–10797 ; confirmation canonique du créateur 2026-10-30"
 derniere_revision_documentaire: "2026-10-30"
-visibilite: "a_relire_avant_publication"
+visibilite: "publique_avec_avertissement"
 description: "Nerys Silvenaine est une Elfe vivante de 214 ans formée aux enchantements domestiques et à l'architecture magique (chauffage, éclairage, protections et entretien)."
 tags: [nerys, silvenaine, magie, maintenance, architecture-magique, cb42]
 etat_editorial: en_cours
