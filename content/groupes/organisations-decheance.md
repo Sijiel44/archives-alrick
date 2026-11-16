@@ -22,16 +22,16 @@ Voici **sept institutions de service et trois compagnies marchandes** du monde p
 
 | Organisation | Service qu'elle rend | Conflit qui peut la traverser |
 | --- | --- | --- |
-| [[ORG-DECH-01|Maisons du Seuil Ouvert]] | Soins et hébergement | Protection ou enfermement |
-| [[ORG-DECH-02|Chambre des Préventions]] | Alerte et médiation | Prévention ou pré-condamnation |
-| [[ORG-DECH-03|Caisse des Veilles]] | Secours financier et ravitaillement | Aide ou dette perpétuelle |
-| [[ORG-DECH-04|Chœur des Derniers Feux]] | Veillées et mémoire collective | Réconfort ou renoncement imposé |
-| [[ORG-DECH-05|Conservatoire des Noms]] | Archives et généalogies | Sauvegarde ou appropriation |
-| [[ORG-DECH-06|Assemblée des Portes Libres]] | Protection civile et relève | Résistance ou fermeture précipitée |
-| [[ORG-DECH-07|Compagnie Dervaux et Kess]] | Transport, ferrures, toiles et denrées | Livraisons sûres ou exclusivité abusive |
-| [[ORG-DECH-08|Maison Varin et Cessac]] | Bacs, traversées et réparations de passage | Sécurité ou monopole des rives |
-| [[ORG-DECH-09|Comptoir Bellame et Juvan]] | Papier, encre, copies et correspondance | Conservation des preuves ou contrôle de la vérité |
-| [[ORG-DECH-10|Office des Itinérants]] | Relais, dortoirs et repas pour voyageurs sans attaches | Accueil ou sélection abusive des réfugiés sans papiers |
+| [Maisons du Seuil Ouvert](./ORG-DECH-01.md) | Soins et hébergement | Protection ou enfermement |
+| [Chambre des Préventions](./ORG-DECH-02.md) | Alerte et médiation | Prévention ou pré-condamnation |
+| [Caisse des Veilles](./ORG-DECH-03.md) | Secours financier et ravitaillement | Aide ou dette perpétuelle |
+| [Chœur des Derniers Feux](./ORG-DECH-04.md) | Veillées et mémoire collective | Réconfort ou renoncement imposé |
+| [Conservatoire des Noms](./ORG-DECH-05.md) | Archives et généalogies | Sauvegarde ou appropriation |
+| [Assemblée des Portes Libres](./ORG-DECH-06.md) | Protection civile et relève | Résistance ou fermeture précipitée |
+| [Compagnie Dervaux et Kess](./ORG-DECH-07.md) | Transport, ferrures, toiles et denrées | Livraisons sûres ou exclusivité abusive |
+| [Maison Varin et Cessac](./ORG-DECH-08.md) | Bacs, traversées et réparations de passage | Sécurité ou monopole des rives |
+| [Comptoir Bellame et Juvan](./ORG-DECH-09.md) | Papier, encre, copies et correspondance | Conservation des preuves ou contrôle de la vérité |
+| [Office des Itinérants](./ORG-DECH-10.md) | Relais, dortoirs et repas pour voyageurs sans attaches | Accueil ou sélection abusive des réfugiés sans papiers |
 
 La [[GRP-ANC-01|Première Ancre]] s'inscrit dans un autre registre : **coalition plurielle de Maisons et de lignées déplacées**, elle ne constitue pas une maison de commerce ni une organisation entièrement Déchue. Le Régent sans Couronne commande une branche, non la totalité de la coalition.
 
