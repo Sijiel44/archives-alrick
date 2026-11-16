@@ -465,3 +465,7 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # Rayon Studio : 3 dragons documentés conservés + 13 PNJ issus de PNJ-001–006 sans spoiler = 16 références. Trois portraits conceptuels existants sont liés par HTTPS, sans canonisation d'apparence.
 # Inventaire corrigé des 90 références PNJ-001–006 : 13 sources publish:false, 64 pages publish:true mais unlisted:true et spoilers:true, 13 fiches publiques sans révélations ; seules ces dernières entrent dans le JSON public du Studio.
 # Aucun dossier à révélations, fait joué supplémentaire ni mécanique 5d6 inventée n'est indexé. Vérifier le déploiement Pages et le nombre affiché avant annonce.
+
+# BEST-SITE-001 — Galerie publique accessible : autorisation expresse du créateur le 16 novembre 2026.
+# PR #146 fusionnée après CI #43891832978 réussie : 25 fiches illustrées sans porte MJ, lien direct depuis le portail, les Archives et l’Univers.
+# Dragons individuels au rayon PNJ ; propositions de jeu séparées du canon. Aucun chiffre 5d6 ni fichier de campagne privé publié.
