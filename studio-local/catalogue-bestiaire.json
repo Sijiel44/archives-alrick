@@ -75,6 +75,42 @@
       "art": { "src": "./media/tortue-pierres-moussues.webp", "alt": "Tortue d'eau douce aux plaques de carapace couvertes de mousses sur une pierre de gué." }
     },
     {
+      "id": "ESP-ER-007",
+      "version": "211f38647bc337b1ad83485d8a6ff82b8b0fc0ef",
+      "name": "Huppe des vergers",
+      "description": "Oiseau insectivore au panache cuivré et aux ailes barrées, familier des vergers anciens d'Entre-Rives.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-007-huppe-des-vergers.md",
+      "tags": "entre-rives vergers pommiers oiseaux insectes huppe cuivre canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Vieux vergers, murets et haies"], ["Indices", "Plumes cuivrées, appels creux à l'aube"], ["Cohabitation", "Conserver les arbres creux utiles aux nids"]],
+      "art": { "src": "./media/huppe-des-vergers.webp", "alt": "Huppe à grand panache cuivré et ailes barrées sur une branche de pommier ancien." }
+    },
+    {
+      "id": "ESP-ER-008",
+      "version": "c4ac5cde96d6d903a2fd47d0614aa3a097d7e710",
+      "name": "Brumel des haies",
+      "description": "Petit fouisseur des ronciers, brun à bandes d'ivoire, aux vibrisses ramifiées comme des fougères.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-008-brumel-des-haies.md",
+      "tags": "entre-rives talus haies ronces noisetiers fouisseur mammifere canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Haies anciennes et talus drainés"], ["Indices", "Petites traces à doigts et entrées sous racines"], ["Limite", "Ne creuse ni pierre ni fondations"]],
+      "art": { "src": "./media/brumel-des-haies.webp", "alt": "Petit Brumel brun rayé d'ivoire aux vibrisses de fougère devant un terrier de roncier." }
+    },
+    {
+      "id": "ESP-ER-009",
+      "version": "bb7efcd12e5b75d67877d216c20ec5119cc6ded4",
+      "name": "Escargot des souches d'ambre",
+      "description": "Gastéropode des sous-bois humides, dont la coquille spiralée translucide rappelle le miel et l'ambre.",
+      "kind": "creature", "shelf": "bestiaire", "group": "Faune d'Entre-Rives", "status": "lore",
+      "path": "content/creatures/ESP-ER-009-escargot-souches-ambre.md",
+      "tags": "entre-rives sous-bois souches humides escargot ambre decomposition canon non joue",
+      "links": ["GEO-CB2-ENTRE-RIVES"],
+      "details": [["Habitat", "Souches de sous-bois humides"], ["Indices", "Traînée argentée et écorce finement raclée"], ["Limite", "Coquille sans pouvoir alchimique"]],
+      "art": { "src": "./media/escargot-souches-ambre.webp", "alt": "Escargot à coquille spiralée translucide couleur miel sur une souche forestière moussue." }
+    },
+    {
       "id": "INDC-ER-001",
       "version": "fccbfbb75856f77937885789102bf9191f105733",
       "name": "Gardien des Salines — Le veilleur des gués",

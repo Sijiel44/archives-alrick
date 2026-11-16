@@ -83,7 +83,25 @@
       "source_documentaire": "Création originale BEST-ER-003 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES pour le cadre géographique uniquement",
       "preuve_validation_createur": "Politique créateur du 15 novembre 2026 : créature canonique à la création ; demande explicite de poursuivre le prochain lot le 16 novembre 2026",
       "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-007", "nature": "espece", "fichier": "content/creatures/ESP-ER-007-huppe-des-vergers.md",
+      "source_documentaire": "Création originale BEST-ER-004 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES comme cadre géographique uniquement",
+      "preuve_validation_createur": "Directive du créateur : canonisation des créatures à leur création ; poursuite du prochain lot demandée le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-008", "nature": "espece", "fichier": "content/creatures/ESP-ER-008-brumel-des-haies.md",
+      "source_documentaire": "Création originale BEST-ER-004 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES comme cadre géographique uniquement",
+      "preuve_validation_createur": "Directive du créateur : canonisation des créatures à leur création ; poursuite du prochain lot demandée le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
+    },
+    {
+      "code": "ESP-ER-009", "nature": "espece", "fichier": "content/creatures/ESP-ER-009-escargot-souches-ambre.md",
+      "source_documentaire": "Création originale BEST-ER-004 du 16 novembre 2026 ; GEO-CB2-ENTRE-RIVES comme cadre géographique uniquement",
+      "preuve_validation_createur": "Directive du créateur : canonisation des créatures à leur création ; poursuite du prochain lot demandée le 16 novembre 2026",
+      "canon_statut": "lore_valide", "etat_editorial": "valide"
     }
   ],
-  "note": "Les neuf codes BEST-ER-002/003 sont attribués individuellement avec provenance et preuve créateur. Les autres codes restent soumis à validation explicite. Les 11 codes null du registre historique et les prototypes B-003.1 restent inchangés. IDs M03/M05 distincts."
+  "note": "Les douze codes BEST-ER-002/003/004 (neuf espèces et trois individus) sont attribués individuellement avec provenance et preuve créateur. Les autres codes restent soumis à validation explicite. Les 11 codes null du registre historique et les prototypes B-003.1 restent inchangés. IDs M03/M05 distincts."
 }
