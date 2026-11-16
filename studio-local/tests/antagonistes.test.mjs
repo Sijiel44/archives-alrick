@@ -26,9 +26,12 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-04\.md$/);
   assert.equal(await dialog.getByRole('button', { name: 'Créer un PNJ de campagne' }).isDisabled(), true);
   await page.keyboard.press('Escape');
-  await page.locator('#catalogue-next').click();
   await page.getByRole('button', { name: 'Voir la fiche de Kareth la Cloche de Verre' }).click();
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-15\.md$/);
+  await page.keyboard.press('Escape');
+  await page.locator('#catalogue-next').click();
+  await page.getByRole('button', { name: 'Voir la fiche de Hévar des Archives Brûlées' }).click();
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-20\.md$/);
   await page.keyboard.press('Escape');
   await page.locator('#nav-home').click();
   await page.locator('#campaign-name').fill('Campagne témoin — Déchéance');
