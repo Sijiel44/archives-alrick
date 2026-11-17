@@ -106,7 +106,7 @@ export const studioAssets = new Map([
   ["/media/fee-aulnes.webp", ["media/fee-aulnes.webp", "image/webp"]],
   ["/media/cerf-sources-profondes.webp", ["media/cerf-sources-profondes.webp", "image/webp"]],
 ]);
-for (const module of ["atelier5d6-bestiary", "atelier5d6-bestiary-workshop", "atelier5d6-combat-m03", "atelier5d6-m05-sheet-view", "atelier5d6-m02", "atelier5d6-origins"]) {
+for (const module of ["atelier5d6-bestiary", "atelier5d6-bestiary-workshop", "atelier5d6-combat-m03", "atelier5d6-index-effects", "atelier5d6-m05-sheet-view", "atelier5d6-m02", "atelier5d6-origins"]) {
   studioAssets.set(`/moteur/${module}.js`, [`../quartz/components/scripts/${module}.ts`, "text/javascript"]);
 }
 for (const entry of catalogue.entries) {
