@@ -29,6 +29,7 @@
     "test:indexeff002": "node scripts/test-index-eff-002.mjs",
     "test:studiocreate004": "node scripts/test-studio-index-preview.mjs",
     "test:studiocreate004c": "node scripts/test-studio-index-transaction.mjs",
+    "test:archiveseff003": "node --test studio-local/tests/index-effects-transaction.test.mjs",
     "test:m05": "node scripts/test-5d6-m05.mjs",
     "test:b0011": "node scripts/test-b0011-compat.mjs",
     "test:m04:browser": "node scripts/test-5d6-m04-browser.mjs",
