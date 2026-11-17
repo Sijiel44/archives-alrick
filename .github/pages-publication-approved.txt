@@ -481,3 +481,9 @@ Le tableau des liens, des points ouverts et des sources est dans content/suivi-e
 # ANT-CATEG-001 — 16 novembre 2026 : publication explicite demandée par le créateur.
 # Répertoire public antagonistes/rivaux, repères non moralisants et couleur révisable dans les copies PNJ du Studio.
 # Conserver les 36 sources et portraits, la distinction Déchéance/posture et les sauvegardes privées MJ.
+
+# ANT-DECH-012 — 17 novembre 2026 : publication du lot expressément demandée par le créateur.
+# Trois biographies de Déchus pleinement hostiles PER-DECH-44 à 46 et leurs trois portraits WebP, plus leurs entrées et repères ajustables dans le Studio.
+# Décision de continuité du même jour : Istel Rémor est réemployé comme nécromancien rencontré par Alrick au début de l'Odyssée ; les faits exacts de la scène restent à rapprocher des archives CB01.
+# Aucune résurrection, scène jouée additionnelle ou ascension de Déchéance rétroactive n'est inventée ; pas de données privées MJ, et aucune modification des règles 5d6.
+# Exiger la CI complète, puis le déploiement Pages et ses recettes Chrome réelles avant l'annonce de mise en ligne.
