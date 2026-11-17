@@ -3,8 +3,8 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "narrative_levels_only",
-  "version": 9,
-  "source": "Développement direct du JDR avec le créateur, 15–17 novembre 2026 ; ANT-DECH-005 à ANT-DECH-011, LAB-DECH-003 adapté",
+  "version": 10,
+  "source": "Développement direct du JDR avec le créateur, 15–17 novembre 2026 ; ANT-DECH-005 à ANT-DECH-012, LAB-DECH-003 adapté",
   "entries": [
     {
       "id": "PER-DECH-01", "positionNarrative": "Rivalité / ambiguïté", "version": "eb33f9acc6e47c1a959d9f5852d139d649a7e739",
@@ -435,6 +435,36 @@
       "relations": ["PER-DECH-42", "PER-DECH-37"], "factions": [],
       "currentRegion": "Cour des Compagnons, ateliers itinérants", "description": "Bienfaitrice Déchue dont le tribut provient de deux Lieurs véritables, Bérélan et Isma, et non des élèves ordinaires.",
       "tags": ["decheance", "apprentissage", "branches", "institution"]
+    },
+    {
+      "id": "PER-DECH-44", "positionNarrative": "Opposition possible", "version": "603125468a0b2db090b7decaee9cfc6cb9b7579a",
+      "path": "content/personnages/PER-DECH-44.md", "image": "per-dech-44.webp",
+      "artAlt": "Védran Ossal, traqueur aux cicatrices et aux battants de fer, sonnant une cloche inquiétante dans un péage abandonné.",
+      "name": "Védran Ossal", "levelIntent": 9, "corruptionStage": "Rupture",
+      "role": "Traqueur de péage et Lieur violent", "motivation": "Forcer les voyageurs à reconnaître son pouvoir, même lorsqu'ils ont déjà payé.",
+      "relations": ["PER-DECH-45", "PER-DECH-46"], "factions": [],
+      "currentRegion": "Péages et passages isolés d'Entre-Rives", "description": "Lieur de Léda Perne, Védran recherche la terreur pour elle-même et dépend de la branche de Mavrine.",
+      "tags": ["rupture", "traque", "cloches", "lieur"]
+    },
+    {
+      "id": "PER-DECH-45", "positionNarrative": "Opposition possible", "version": "73babfa9d0f684df83a90f40ca10fcedab7c2e90",
+      "path": "content/personnages/PER-DECH-45.md", "image": "per-dech-45.webp",
+      "artAlt": "Mavrine Selcor, gardienne impitoyable en cuirasse sombre devant une grille d'écluse sous la pluie.",
+      "name": "Mavrine Selcor", "levelIntent": 15, "corruptionStage": "Déchéance",
+      "role": "Gardienne prédatrice de sas, maîtresse de deux Lieurs", "motivation": "Retenir les autres pour exercer sur eux le pouvoir d'ouvrir ou de fermer toute issue.",
+      "relations": ["PER-DECH-44", "PER-DECH-46"], "factions": [],
+      "currentRegion": "Sas d'eau et passages des routes méridionales", "description": "Déchue dominatrice et délibérément cruelle dont le tribut dépend de Védran et Isen, deux Lieurs distincts.",
+      "tags": ["decheance", "seuil", "branches", "domination"]
+    },
+    {
+      "id": "PER-DECH-46", "positionNarrative": "Opposition possible", "version": "dc507321ac42bc16db9e1322ea7f318f4b225ea8",
+      "path": "content/personnages/PER-DECH-46.md", "image": "per-dech-46.webp",
+      "artAlt": "Istel Rémor, nécromancien émacié en robe funéraire, coupe de sel et mausolée noyé, face à un corps enveloppé.",
+      "name": "Istel Rémor", "levelIntent": 20, "corruptionStage": "Abîme",
+      "role": "Nécromancien inédit et maître d'une pyramide de tribut", "motivation": "Déposséder les morts de leur repos et les vivants du droit de leur dire adieu.",
+      "relations": ["PER-DECH-45", "PER-DECH-44"], "factions": [],
+      "currentRegion": "Dépôts funéraires abandonnés du Méridien", "description": "Pacte d'animation brève sans retour à la vie ; son Abîme repose sur Mavrine et Edrive et leurs branches transformées.",
+      "tags": ["abime", "necromancie", "pyramide", "pacte"]
     }
   ]
 }
