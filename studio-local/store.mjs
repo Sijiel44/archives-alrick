@@ -28,6 +28,7 @@ const AUDIO_BACKUP_VERSION = 18;
 const VIDEO_BACKUP_VERSION = 19;
 const SCENE_IMAGE_BACKUP_VERSION = 20;
 const QUEST_BACKUP_VERSION = 21;
+const INDEXED_BACKUP_VERSION = 22;
 const ADVENTURE_PACKAGE_FORMAT = 'chroniques-entre-rives.aventure';
 export const MAX_ADVENTURE_PACKAGE_BYTES = 512 * 1024;
 export const ADVENTURE_SOURCE_KEY = 'entreRivesAdventurePackageV16';
@@ -45,6 +46,9 @@ export const SESSION_ARCHIVES_KEY = 'entreRivesSessionArchivesV3';
 export const FRESQUE_MARKERS_KEY = 'entreRivesFresqueMarkersV4';
 export const FRESQUE_REFERENCE_KEY = 'entreRivesFresqueReferenceV5';
 export const PLAY_ACTIONS_KEY = 'entreRivesPlayActionsV6';
+/** Provisions explicites de campagne ; ni coûts ni réserves canoniques implicites. */
+export const INDEX_RESOURCES_KEY = 'entreRivesEffectResourcesV22';
+export const INDEXED_OPPOSITION_KEY = 'entreRivesIndexedOppositionV22';
 export const BESTIARY_PROFILE_KEY = 'entreRivesBestiaryProfileV7';
 export const PJ_SOURCE_KEY = 'entreRivesPJSourceV9';
 export const PJ_UPDATES_KEY = 'entreRivesPJUpdatesV17';
@@ -438,11 +442,43 @@ function validPlayAction(value) {
   if (value.mode === 'check') return validPlayRoll(value.roll) && value.roll.ruleset === 'm01';
   if (value.mode === 'opposition') {
     const { combat } = value;
-    return validOppositionRoll(value.roll) && isRecord(combat) && isTitle(combat.targetName) &&
+    return validOppositionRoll(value.roll) &&
+      (!Object.hasOwn(value, INDEXED_OPPOSITION_KEY) || validIndexedStoredAction(value)) &&
+      isRecord(combat) && isTitle(combat.targetName) &&
       integerBetween(combat.damage, 0, 999999) && integerBetween(combat.hpBefore, 0, 999999) &&
       integerBetween(combat.hpAfter, 0, combat.hpBefore);
   }
   return ['certain', 'blocked'].includes(value.mode) && value.roll === null;
+}
+
+function validIndexedStoredAction(value) {
+  const item = value[INDEXED_OPPOSITION_KEY];
+  const roll = value.roll;
+  const a = item?.action;
+  return isRecord(item) && item.schema === 'entre-rives.indexed-attempt.v1' &&
+    item.status === 'prepared-not-committed' && isId(item.operationId) &&
+    isId(item.campaignId) && isId(item.sceneId) && isId(item.actorId) &&
+    isId(item.defenderId) && integerBetween(item.expectedRevision, 1, 1000000) &&
+    item.confirmedByGM === true && validTimestamp(item.confirmedAt) &&
+    isRecord(a) && a.feasible === true && a.mode === roll.impactMode &&
+    a.rawStat === roll.rawStat && a.masteryRank === roll.masteryRank &&
+    a.situation === roll.situation && a.level === roll.level &&
+    a.difficulty === roll.threshold && a.baseDamage === roll.baseDamage &&
+    a.penetration === roll.penetration && a.natural === roll.dice.reduce((s,n)=>s+n,0) &&
+    item.defenderId === roll.targetId && item.sceneId === value.sceneId &&
+    value.recordedAt === item.confirmedAt &&
+    JSON.stringify(item.dice) === JSON.stringify(roll.dice) &&
+    Array.isArray(item.references) && isRecord(item.proof) && isRecord(item.result) &&
+    isRecord(item.cost) && item.cost.approvedByGM === true &&
+    typeof item.applyDamage === 'boolean';
+}
+
+function validIndexResource(entry) {
+  return exactKeys(entry, ['id','holderId','kind','initial','current','version']) &&
+    isId(entry.id) && isId(entry.holderId) && ['mana','charge'].includes(entry.kind) &&
+    integerBetween(entry.initial, 0, 1000000) &&
+    integerBetween(entry.current, 0, entry.initial) &&
+    integerBetween(entry.version, 1, 1000000);
 }
 
 export function currentHitPoints(campaign, creature) {
@@ -619,6 +655,19 @@ const operations = {
       validOppositionRoll(value.roll) && typeof value.applyDamage === 'boolean',
     backupVersion: OPPOSITION_BACKUP_VERSION,
   },
+  'register-index-resource': {
+    fields: ['id', 'holderId', 'kind', 'initial'],
+    valid: value => isId(value.id) && isId(value.holderId) &&
+      ['mana','charge'].includes(value.kind) && integerBetween(value.initial, 0, 1000000),
+    backupVersion: INDEXED_BACKUP_VERSION,
+  },
+  'record-indexed-opposition': {
+    fields: [...playActionFields, INDEXED_OPPOSITION_KEY],
+    valid: value => value.mode === 'opposition' && validActionFields(value) &&
+      exactKeys(value.roll, oppositionRollFields) && validOppositionRoll(value.roll) &&
+      validIndexedStoredAction(value),
+    backupVersion: INDEXED_BACKUP_VERSION,
+  },
 };
 
 function validateCommand(command) {
@@ -653,6 +702,15 @@ function validateCampaign(campaign) {
   for (const item of [...campaign.characters, ...campaign.creatures]) {
     if (participantIds.has(item.id)) fail('foreign-key', 'Deux participants ont le même identifiant.');
     participantIds.add(item.id);
+  }
+  if (Object.hasOwn(campaign, INDEX_RESOURCES_KEY)) {
+    const resources=campaign[INDEX_RESOURCES_KEY];
+    if (!Array.isArray(resources) || resources.length>MAX_ITEMS ||
+        !resources.every(validIndexResource) ||
+        new Set(resources.map(resource=>resource.id)).size!==resources.length ||
+        resources.some(resource=>!participantIds.has(resource.holderId))) {
+      fail('invalid-data','Le registre des ressources INDEX est incohérent.');
+    }
   }
   for (const character of campaign.characters) {
     if (Object.hasOwn(character, BESTIARY_PROFILE_KEY) || (Object.hasOwn(character, PJ_SOURCE_KEY) &&
@@ -706,7 +764,8 @@ function validateCampaign(campaign) {
   if (Object.hasOwn(campaign, FRESQUE_MARKERS_KEY)) {
     validateFresqueMarkers(campaign[FRESQUE_MARKERS_KEY], sceneIds);
   }
-  if (Object.hasOwn(campaign, PLAY_ACTIONS_KEY) || campaign.characters.some(character => Object.hasOwn(character, PJ_UPDATES_KEY))) validatePlayActions(campaign, sceneIds);
+  if (Object.hasOwn(campaign, PLAY_ACTIONS_KEY) || Object.hasOwn(campaign, INDEX_RESOURCES_KEY) ||
+      campaign.characters.some(character => Object.hasOwn(character, PJ_UPDATES_KEY))) validatePlayActions(campaign, sceneIds);
   let creations;
   if (Object.hasOwn(campaign, QUESTS_KEY)) {
     try { validateQuestSteps(campaign); }
@@ -753,6 +812,7 @@ function validatePlayActions(campaign, sceneIds) {
   const hitPoints = new Map([...campaign.characters, ...campaign.creatures].map(actor => [actor.id,
     actor[PJ_UPDATES_KEY]?.[0]?.before.source.pv ?? initialHitPoints(actor)]));
   const changes = new Map();
+  const resourceUsage=new Map();
   for (const actor of campaign.characters) {
     const updates = actor[PJ_UPDATES_KEY] ?? [];
     for (const [index, update] of updates.entries()) {
@@ -772,6 +832,27 @@ function validatePlayActions(campaign, sceneIds) {
     if (!sceneIds.has(action.sceneId)) fail('foreign-key', 'La scène de cette action doit appartenir à la campagne.');
     if (ids.has(action.id)) fail('conflict', 'Deux actions du journal ont le même identifiant.');
     ids.add(action.id);
+    if (Object.hasOwn(action, INDEXED_OPPOSITION_KEY)) {
+      const indexed=action[INDEXED_OPPOSITION_KEY],cost=indexed.cost;
+      if (indexed.campaignId!==campaign.id ||
+          !campaign.scenes.find(scene=>scene.id===action.sceneId)?.participantIds.includes(indexed.actorId)) {
+        fail('foreign-key','La tentative INDEX doit appartenir à son acteur et à sa scène.');
+      }
+      if (cost.kind!=='none') {
+        const source=campaign[INDEX_RESOURCES_KEY]?.find(entry=>entry.id===cost.sourceId);
+        if (!source || source.holderId!==indexed.actorId || source.kind!==cost.kind) {
+          fail('foreign-key','La ressource INDEX doit appartenir à cet acteur.');
+        }
+        const previous=resourceUsage.get(source.id)??{consumed:0,events:0};
+        if (cost.availableBefore!==source.initial-previous.consumed ||
+            cost.version!==1+previous.events || !integerBetween(cost.amount,1,1000000)) {
+          fail('invalid-data','Le journal des dépenses INDEX est incohérent.');
+        }
+        resourceUsage.set(source.id,{consumed:previous.consumed+cost.amount,events:previous.events+1});
+      } else if (cost.sourceId!==null || cost.amount!==0 || cost.version!==null || cost.availableBefore!==null) {
+        fail('invalid-data','Une tentative sans coût ne doit pas débiter de réserve.');
+      }
+    }
     if (action.mode !== 'opposition') continue;
     const { targetId } = action.roll;
     const hp = hitPoints.get(targetId);
@@ -781,6 +862,13 @@ function validatePlayActions(campaign, sceneIds) {
       fail('invalid-data', 'La suite des PV dans le journal des oppositions est incohérente.');
     }
     hitPoints.set(targetId, hpAfter);
+  }
+  for (const source of campaign[INDEX_RESOURCES_KEY]??[]) {
+    const usage=resourceUsage.get(source.id)??{consumed:0,events:0};
+    if (source.initial-usage.consumed!==source.current ||
+        source.version!==1+usage.events) {
+      fail('invalid-data','Les ressources disponibles divergent du journal INDEX.');
+    }
   }
 }
 
@@ -874,7 +962,12 @@ function validatePayload(payload) {
     operationIds.add(event.operationId);
   }
   const oppositions = campaign[PLAY_ACTIONS_KEY]?.filter(action => action.mode === 'opposition').length ?? 0;
-  if (journal.filter(event => event.type === 'record-opposition').length !== oppositions) {
+  const indexedActions=campaign[PLAY_ACTIONS_KEY]?.filter(action=>Object.hasOwn(action,INDEXED_OPPOSITION_KEY))??[];
+  if (journal.filter(event => event.type === 'record-opposition').length !== oppositions-indexedActions.length ||
+      journal.filter(event => event.type === 'record-indexed-opposition').length!==indexedActions.length ||
+      journal.filter(event => event.type === 'register-index-resource').length!==(campaign[INDEX_RESOURCES_KEY]?.length??0) ||
+      indexedActions.some(action=>!journal.some(event=>event.operationId===action[INDEXED_OPPOSITION_KEY].operationId &&
+        event.type==='record-indexed-opposition'))) {
     fail('invalid-journal', 'Les oppositions et leurs opérations de sauvegarde ne correspondent pas.');
   }
   const updates = campaign.characters.flatMap(character => character[PJ_UPDATES_KEY] ?? []);
@@ -922,6 +1015,10 @@ function backupVersionFor({ campaign, journal }) {
   if (Object.hasOwn(campaign, VIDEO_KEY)) version = VIDEO_BACKUP_VERSION;
   if (Object.hasOwn(campaign, SCENE_IMAGES_KEY)) version = SCENE_IMAGE_BACKUP_VERSION;
   if (Object.hasOwn(campaign, QUESTS_KEY)) version = QUEST_BACKUP_VERSION;
+  if (Object.hasOwn(campaign, INDEX_RESOURCES_KEY) ||
+      campaign[PLAY_ACTIONS_KEY]?.some(action=>Object.hasOwn(action,INDEXED_OPPOSITION_KEY))) {
+    version=INDEXED_BACKUP_VERSION;
+  }
   return journal.reduce((minimum, event) => Math.max(minimum, operations[event.type].backupVersion ?? LEGACY_BACKUP_VERSION), version);
 }
 
@@ -964,6 +1061,51 @@ function recordOpposition(campaign, data, resolveOpposition) {
   return { ...action, combat: { targetName: target.name, damage, hpBefore, hpAfter } };
 }
 
+function recordIndexedOpposition(campaign, data, runtime) {
+  if (!runtime?.toDefense || !runtime?.verifyArchived) {
+    fail('rules-unavailable','Le moteur INDEX/M03 est nécessaire à cet engagement.');
+  }
+  const prepared=data[INDEXED_OPPOSITION_KEY];
+  const scene=campaign.scenes.find(scene=>scene.id===data.sceneId);
+  const actor=[...campaign.characters,...campaign.creatures].find(item=>item.id===prepared.actorId);
+  const target=[...campaign.characters,...campaign.creatures].find(item=>item.id===prepared.defenderId);
+  if (!scene || !actor || !target || data.actor!==actor.name ||
+      !scene.participantIds.includes(actor.id) || !scene.participantIds.includes(target.id)) {
+    fail('foreign-key','L’acteur et la cible doivent participer à la scène courante.');
+  }
+  if (prepared.operationId!==runtime.operationId || prepared.expectedRevision!==campaign.revision ||
+      prepared.campaignId!==campaign.id || data.sceneId!==campaign.activeSceneId) {
+    fail('conflict','Le justificatif INDEX n’est pas issu de cette version de campagne.');
+  }
+  const card=combatProfile(target);
+  if (!card || JSON.stringify(orderedJSON(runtime.toDefense(card)))!==
+      JSON.stringify(orderedJSON(prepared.action.defender))) {
+    fail('conflict','La protection de la cible a changé depuis la prévisualisation.');
+  }
+  let replay;
+  try { replay=runtime.verifyArchived(prepared).replay; }
+  catch { fail('invalid-data','Le calcul INDEX/M03 ne correspond pas à son justificatif.'); }
+  const hpBefore=currentHitPoints(campaign,target);
+  if (prepared.applyDamage && (!replay.damage || !hpBefore)) {
+    fail('invalid-command','Aucun dégât PV ne peut être appliqué à cette cible.');
+  }
+  const cost=prepared.cost;
+  if (cost.kind!=='none') {
+    const ledger=campaign[INDEX_RESOURCES_KEY]?.find(row=>row.id===cost.sourceId);
+    if (!ledger || ledger.holderId!==actor.id || ledger.kind!==cost.kind) {
+      fail('foreign-key','La réserve choisie n’appartient pas à cet acteur.');
+    }
+    if (ledger.version!==cost.version || ledger.current!==cost.availableBefore ||
+        ledger.current<cost.amount) {
+      fail('conflict','La réserve a changé ou ne suffit plus : revérifiez son coût.');
+    }
+    ledger.current-=cost.amount;
+    ledger.version+=1;
+  }
+  const hpAfter=prepared.applyDamage?hitPointsAfterDamage(hpBefore,replay.damage):hpBefore;
+  return {...data,combat:{targetName:target.name,damage:replay.damage,hpBefore,hpAfter}};
+}
+
 function planAdventure(campaign, { adventureId, chain, scenes }) {
   const adventure = campaign[CREATIONS_KEY]?.find(entry => entry.id === adventureId && entry.kind === 'adventure');
   if (!adventure) fail('foreign-key', 'Choisissez une aventure de cette campagne.');
@@ -993,13 +1135,27 @@ function importAdventure(campaign, { source, adventureId, creations, scenes, lin
   if (links.length) (campaign[FRESQUE_LINKS_KEY] ??= []).push(...links);
 }
 
-function applyCommand(previous, { id, operationId, type, data }, resolveOpposition) {
+function applyCommand(previous, { id, operationId, type, data }, resolveOpposition, indexedRuntime) {
   if (type === 'create') {
     return { id, revision: 1, ...data, characters: [], creatures: [], scenes: [], activeSceneId: null };
   }
 
   const campaign = structuredClone(previous);
   switch (type) {
+    case 'register-index-resource': {
+      const holder=[...campaign.characters,...campaign.creatures].find(actor=>actor.id===data.holderId);
+      if (!holder) fail('foreign-key','Le détenteur de cette ressource n’appartient pas à la campagne.');
+      const resources=campaign[INDEX_RESOURCES_KEY]??=[];
+      if (resources.some(row=>row.id===data.id)) fail('conflict','Cette réserve existe déjà.');
+      resources.push({...data,current:data.initial,version:1});
+      break;
+    }
+    case 'record-indexed-opposition': {
+      const actions=campaign[PLAY_ACTIONS_KEY]??=[];
+      if (actions.some(action=>action.id===data.id)) fail('conflict','Cette action figure déjà dans le journal.');
+      actions.push(recordIndexedOpposition(campaign,data,{...indexedRuntime,operationId}));
+      break;
+    }
     case 'save-quest-step': {
       const steps = campaign[QUESTS_KEY] ??= [];
       const existing = steps.find(step => step.id === data.id);
@@ -1314,6 +1470,7 @@ function commandSignature({ id, type, data, expectedRevision }) {
     }
     if (type === 'record-play-action' && key === 'roll' && data.roll) return rollFields.map(field => data.roll[field]);
     if (type === 'record-opposition' && key === 'roll') return oppositionRollFields.map(field => data.roll[field]);
+    if (type === 'record-indexed-opposition' && key === INDEXED_OPPOSITION_KEY) return orderedJSON(data[key]);
     return data[key];
   });
   return sha256(JSON.stringify([id, expectedRevision, type, values]));
@@ -1370,6 +1527,7 @@ function openDatabase(name) {
 export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
   const db = await openDatabase(name);
   const approvedPreviews = new WeakMap();
+  const locallyAuthorizedCommands = new WeakSet();
   let closed = false;
   const close = () => {
     closed = true;
@@ -1494,9 +1652,16 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
 
   async function execute(command) {
     validateCommand(command);
+    if (command.type==='record-indexed-opposition' && !locallyAuthorizedCommands.has(command)) {
+      fail('approval-required','Confirmez cette tentative INDEX dans la session locale du MJ.');
+    }
     const input = structuredClone(command);
     const { id, operationId, expectedRevision, type } = input;
     const rules = type === 'record-opposition' ? await loadOppositionRules() : undefined;
+    const indexedRuntime = type==='record-indexed-opposition' ? {
+      verifyArchived:(await import('./index-action-transaction.mjs')).verifyArchivedIndexedAttempt,
+      toDefense:(await import('./moteur/atelier5d6-bestiary-workshop.js')).toDefense,
+    }:undefined;
     if (['attach-pj-source', 'update-pj-source'].includes(type)) await checkPJBuilds([input.data.source]);
     if (type === 'restore-pj-source') {
       const previous = await snapshot(id);
@@ -1517,7 +1682,7 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
         if ((previous?.campaign.revision ?? 0) !== expectedRevision) {
           fail('conflict', 'La campagne a changé. Rechargez sa version enregistrée avant de réessayer.');
         }
-        const next = applyCommand(previous?.campaign, input, rules?.resolveOpposition);
+        const next = applyCommand(previous?.campaign, input, rules?.resolveOpposition, indexedRuntime);
         const journal = [...(previous?.journal ?? []), { operationId, revision: next.revision, type, signature }];
         const payload = { campaign: next, journal };
         validatePayload(payload);
@@ -1530,6 +1695,36 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     });
     if (wrote) injectFailure?.('after-commit', structuredClone(input));
     return campaign;
+  }
+
+  /** Seule cette porte accepte une préparation vivante émise après confirmation MJ. */
+  async function executeIndexed(prepared, metadata) {
+    const { requireLocalPreparedIndexedAttempt } = await import('./index-action-transaction.mjs');
+    const approved=requireLocalPreparedIndexedAttempt(prepared);
+    checkJSON(metadata);
+    if (!exactKeys(metadata,['id','actor','stat','source','intent','stakes','consequence']) ||
+        !isId(metadata.id) || !isText(metadata.actor) ||
+        !Object.hasOwn(PLAY_STATS,metadata.stat) ||
+        !['studio','table'].includes(metadata.source) ||
+        !isTitle(metadata.intent) || !isText(metadata.stakes) || !metadata.stakes.trim() ||
+        !isText(metadata.consequence) || !metadata.consequence.trim() ||
+        !isId(approved.defenderId)) {
+      fail('invalid-command','Le contexte MJ de cette tentative INDEX est incomplet.');
+    }
+    const a=approved.action;
+    const roll={ruleset:'m03',source:metadata.source,stat:metadata.stat,
+      rawStat:a.rawStat,masteryRank:a.masteryRank,situation:a.situation,
+      threshold:a.difficulty,dice:[...approved.dice],targetId:approved.defenderId,
+      impactMode:a.mode,level:a.level,baseDamage:a.baseDamage,penetration:a.penetration};
+    const data={id:metadata.id,sceneId:approved.sceneId,actor:metadata.actor,
+      intent:metadata.intent,stakes:metadata.stakes,consequence:metadata.consequence,
+      recordedAt:approved.confirmedAt,mode:'opposition',roll,
+      [INDEXED_OPPOSITION_KEY]:approved};
+    const command={id:approved.campaignId,operationId:approved.operationId,
+      expectedRevision:approved.expectedRevision,type:'record-indexed-opposition',data};
+    locallyAuthorizedCommands.add(command);
+    try { return await execute(command); }
+    finally { locallyAuthorizedCommands.delete(command); }
   }
 
   async function exportBackup(id) {
@@ -1547,7 +1742,7 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     try { archive = JSON.parse(text); }
     catch { fail('invalid-backup', 'Ce fichier ne contient pas un document JSON valide.'); }
     if (archive?.format !== FORMAT) fail('invalid-backup', 'Ce fichier n’est pas une sauvegarde privée du Studio.');
-    if (!Number.isInteger(archive.version) || archive.version < LEGACY_BACKUP_VERSION || archive.version > QUEST_BACKUP_VERSION) {
+    if (!Number.isInteger(archive.version) || archive.version < LEGACY_BACKUP_VERSION || archive.version > INDEXED_BACKUP_VERSION) {
       fail('backup-version', 'La version de cette sauvegarde n’est pas prise en charge.');
     }
     if (!exactKeys(archive, ['format', 'version', 'sha256', 'payload']) ||
@@ -1567,9 +1762,24 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     const oppositions = campaign[PLAY_ACTIONS_KEY]?.filter(action => action.mode === 'opposition') ?? [];
     if (oppositions.length) {
       const { resolveOpposition } = await loadOppositionRules();
+      const indexed=await import('./index-action-transaction.mjs');
+      const {toDefense}=await import('./moteur/atelier5d6-bestiary-workshop.js');
       const actors = new Map([...campaign.characters, ...campaign.creatures].map(actor => [actor.id, actor]));
-      if ((campaign[PLAY_ACTIONS_KEY] ?? []).some((action, index) => action.mode === 'opposition' &&
-          resolveOpposition(action.roll, profileAtAction(actors.get(action.roll.targetId), index)).damage !== action.combat.damage)) {
+      if ((campaign[PLAY_ACTIONS_KEY] ?? []).some((action, index) => {
+        if (action.mode!=='opposition') return false;
+        const card=profileAtAction(actors.get(action.roll.targetId),index);
+        if (!card) return true;
+        if (!Object.hasOwn(action,INDEXED_OPPOSITION_KEY)) {
+          return resolveOpposition(action.roll,card).damage!==action.combat.damage;
+        }
+        try {
+          const record=action[INDEXED_OPPOSITION_KEY];
+          const replay=indexed.verifyArchivedIndexedAttempt(record).replay;
+          return replay.damage!==action.combat.damage ||
+            JSON.stringify(orderedJSON(toDefense(card)))!==
+              JSON.stringify(orderedJSON(record.action.defender));
+        } catch { return true; }
+      })) {
         fail('invalid-data', 'Un impact enregistré ne correspond pas au moteur M03.');
       }
     }
@@ -1620,5 +1830,6 @@ export async function openStudioStore({ name = DATABASE, injectFailure } = {}) {
     return restored;
   }
 
-  return Object.freeze({ list, listRecoverable, diagnoseInventory, get, execute, exportBackup, previewBackup, restoreBackup, close });
+  return Object.freeze({ list, listRecoverable, diagnoseInventory, get, execute, executeIndexed,
+    exportBackup, previewBackup, restoreBackup, close });
 }

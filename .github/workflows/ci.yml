@@ -40,6 +40,9 @@ jobs:
       - name: Recette dédiée Bestiaire et copie indépendante
         timeout-minutes: 2
         run: node --test studio-local/tests/bestiaire-browser.test.mjs
+      - name: ARCHIVES-EFF-003 — transaction INDEX réelle, deux onglets et restauration
+        timeout-minutes: 3
+        run: node --test studio-local/tests/index-effects-transaction.test.mjs
       - name: Conserver les captures du Studio
         if: always()
         uses: actions/upload-artifact@v4

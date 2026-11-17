@@ -12,6 +12,8 @@ import { requireLocalIndexedJournalPreview } from './opposition.mjs';
 const validId = value => typeof value === 'string' &&
   /^[A-Za-z0-9][A-Za-z0-9:_-]{0,127}$/.test(value);
 const integer = (value, min, max) => Number.isSafeInteger(value) && value >= min && value <= max;
+// Un JSON archivé se rejoue, mais ne peut jamais être engagé comme nouveau jet.
+const localPreparedAttempts = new WeakSet();
 const validTimestamp = value => typeof value === 'string' &&
   /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) &&
   Number.isFinite(new Date(value).getTime()) &&
@@ -77,7 +79,17 @@ export function prepareIndexedAttempt(preview, details) {
     result: recordedResult(issued.result),
     cost: { ...cost, approvedByGM: true }, applyDamage: details.applyDamage,
   };
-  return freezeTree(prepared);
+  freezeTree(prepared);
+  localPreparedAttempts.add(prepared);
+  return prepared;
+}
+
+/** Le commit exige la même instance de préparation que celle confirmée par le MJ. */
+export function requireLocalPreparedIndexedAttempt(prepared) {
+  if (!prepared || typeof prepared !== 'object' || !localPreparedAttempts.has(prepared)) {
+    throw new Error('Tentative INDEX locale confirmée exigée ; un JSON importé ne suffit pas');
+  }
+  return prepared;
 }
 
 /**
