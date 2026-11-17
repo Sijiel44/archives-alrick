@@ -36,6 +36,14 @@ export type IndexResolveResponse={
   result:M03UnifiedResult
   used:IndexEffectReference[]
   blocked:IndexEffectReference[]
+  /** Justificatif historique de calcul : jamais une permission future. */
+  proof:IndexM03ResolutionProof
+}
+export type IndexM03ResolutionProof={
+  version:1
+  effects:readonly AuthorizedM03Effect[]
+  intensity:Readonly<M03AuthorizedIntensity>|null
+  heroicChoice:"impact"|"tactique"|null
 }
 
 const types=["ability","spell","object","ritual","creature","ordinary"] as const
@@ -58,6 +66,43 @@ export function indexReferenceM03(raw:unknown):IndexEffectReference{
 }
 const key=(ref:IndexEffectReference)=>ref.type+":"+ref.id+"@"+ref.revision
 const ownerKey=(holder:string,ref:IndexEffectReference)=>holder+"|"+key(ref)
+const validProofEffect=(raw:unknown):raw is AuthorizedM03Effect=>{
+  if(!isObject(raw)||Object.keys(raw).sort().join(",")!==
+    "abilityId,approved,duration,kind,magnitude,trigger"||raw.approved!==true||
+    typeof raw.abilityId!=="string"||
+    !/^(ability|spell|object|ritual|creature|ordinary):[A-Za-z0-9][A-Za-z0-9:_-]{0,127}@[1-9][0-9]{0,5}$/.test(raw.abilityId)||
+    !kinds.includes(raw.kind as M03EffectKind)||
+    !["attaque","defense"].includes(raw.trigger as string)||
+    !Number.isSafeInteger(raw.magnitude)||Number(raw.magnitude)<1||
+    Number(raw.magnitude)>2||!Number.isSafeInteger(raw.duration)||
+    Number(raw.duration)<1||Number(raw.duration)>3)return false
+  return (["defense","absorption"].includes(raw.kind as string)===
+    (raw.trigger==="defense"))
+}
+/** Rejoue un évènement passé ; NE confère jamais le droit d'utiliser un effet. */
+export function replayIndexM03Proof(action:CombatM03Input,raw:unknown):M03UnifiedResult{
+  if(!isObject(raw)||Object.keys(raw).sort().join(",")!==
+    "effects,heroicChoice,intensity,version"||raw.version!==1||
+    !Array.isArray(raw.effects)||raw.effects.length>50||
+    !raw.effects.every(validProofEffect)||
+    !(raw.heroicChoice===null||raw.heroicChoice==="impact"||raw.heroicChoice==="tactique"))
+    throw new Error("Justificatif historique M03 invalide")
+  const intensity=raw.intensity
+  if(intensity!==null&&(!isObject(intensity)||
+    Object.keys(intensity).sort().join(",")!=="approved,definitionId,tier,version"||
+    intensity.approved!==true||
+    typeof intensity.definitionId!=="string"||
+    !/^(ability|spell|object|ritual|creature|ordinary):[A-Za-z0-9][A-Za-z0-9:_-]{0,127}@[1-9][0-9]{0,5}$/.test(intensity.definitionId)||
+    !Number.isSafeInteger(intensity.version)||Number(intensity.version)<1||
+    Number(intensity.version)>1000000||
+    !["mineure","courante","majeure"].includes(intensity.tier as string)))
+    throw new Error("Justificatif d'intensité invalide")
+  const effects=raw.effects.map(e=>({...e})) as AuthorizedM03Effect[]
+  const validatedIntensity=intensity as M03AuthorizedIntensity|null
+  return resolveUnifiedCombatM03({...action,effects,intensity:validatedIntensity,
+    applySpecialAbsorption:effects.some(e=>e.kind==="absorption"),
+    heroicChoice:raw.heroicChoice})
+}
 const checkedDefinition=(raw:unknown):IndexEffectDefinition=>{
   if(!isObject(raw))throw new Error("Définition absente")
   const ref=indexReferenceM03(raw.reference)
@@ -139,7 +184,11 @@ export function createIndexM03Session(){
     const result=resolveUnifiedCombatM03({...request.action,effects,
       intensity,applySpecialAbsorption:effects.some(e=>e.kind==="absorption"),
       heroicChoice:request.heroicChoice??null})
-    return {result,used,blocked}
+    const proof:IndexM03ResolutionProof=Object.freeze({version:1,
+      effects:Object.freeze(effects.map(e=>Object.freeze({...e}))),
+      intensity:intensity?Object.freeze({...intensity}):null,
+      heroicChoice:request.heroicChoice??null})
+    return {result,used,blocked,proof}
   }
   return Object.freeze({
     importDefinition:imported,

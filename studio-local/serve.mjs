@@ -74,6 +74,7 @@ export const studioAssets = new Map([
   ["/projection.mjs", ["projection.mjs", "text/javascript"]],
   ["/protocole.mjs", ["protocole.mjs", "text/javascript"]],
   ["/opposition.mjs", ["opposition.mjs", "text/javascript"]],
+  ["/index-action-transaction.mjs", ["index-action-transaction.mjs", "text/javascript"]],
   ["/pj-m02.mjs", ["pj-m02.mjs", "text/javascript"]],
   ["/atelier-bestiaire.mjs", ["atelier-bestiaire.mjs", "text/javascript"]],
   ["/moteur/atelier5d6-progression.js", ["../quartz/components/scripts/atelier5d6-progression.ts", "text/javascript"]],
