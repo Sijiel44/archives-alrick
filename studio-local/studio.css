@@ -45,8 +45,10 @@ h3 { font-size: 1.08rem; }
 .nav { display: grid; gap: 1rem; }
 .nav-group { display: grid; gap: .22rem; }
 .nav-group + .nav-group { border-top: 1px solid var(--line); padding-top: .8rem; }
-.nav button { display: flex; align-items: center; gap: .65rem; justify-content: flex-start; background: transparent; border-color: transparent; color: var(--muted); }
-.nav button > span { color: var(--copper); font-size: 1.16rem; min-width: 1.3rem; text-align: center; }
+.nav button,.nav .nav-reference { display: flex; align-items: center; gap: .65rem; justify-content: flex-start; background: transparent; border-color: transparent; color: var(--muted); }
+.nav .nav-reference { text-decoration:none; padding:.5rem .75rem; border:1px solid transparent; border-radius:.45rem; }
+.nav button > span,.nav .nav-reference > span { color: var(--copper); font-size: 1.16rem; min-width: 1.3rem; text-align: center; }
+.nav .nav-reference:hover,.nav .nav-reference:focus-visible { color: var(--ink); background: var(--surface); border-color: var(--line); }
 .nav button:hover:not(:disabled), .nav button[aria-current="page"] { color: var(--ink); background: var(--surface); border-color: var(--line); }
 .nav button[aria-current="page"] { box-shadow: inset 3px 0 var(--copper); background: #334049; }
 .nav button:disabled { border-color: transparent; background: transparent; color: #a0aab1; }
@@ -458,8 +460,8 @@ dialog::backdrop { background: #0a0e12b8; }
   .wordmark { width: max-content; }
   .nav { display: flex; flex-wrap: wrap; gap: .25rem; }
   .nav-group, .nav-group + .nav-group { display: contents; }
-  .nav button { gap: .2rem; padding-inline: .47rem; font-size: .88rem; }
-  .nav button > span { display: none; }
+  .nav button,.nav .nav-reference { gap: .2rem; padding-inline: .47rem; font-size: .88rem; }
+  .nav button > span,.nav .nav-reference > span { display: none; }
   .topbar { min-height: 3rem; margin-bottom: 1rem; }
   .workshop-grid, #play-content { grid-template-columns: minmax(0, 1fr); }
 }

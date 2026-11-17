@@ -42,6 +42,8 @@ Les descriptions des **rubriques** sont des guides de lecture, pas des règles n
 
 ## Système général en cours de test : 5d6 / Base 12
 
+- **[[jouer/systeme-5d6-unifie-reference|Mathématiques 5d6 — guide unifié illustré]]** — jet unique, opposition, dégâts M03, défense, protection, mental, Étincelle et limites des extensions expérimentales. **Publication pilote, non canonisée.**
+- **[[jouer/atelier-creation-5d6-guide-illustre|Créer avec les mathématiques 5d6]]** — personnages, PNJ, créatures, sorts, capacités et objets ; exemples chiffrés et création de variantes pour le MJ.
 - [[jouer/systeme-5d6-base12|Lire les règles 5d6 / Base 12]] — quatre caractéristiques, douze points de création, six difficultés, critiques et réserves en multiples de trois.
 - [[jouer/progression-voies-incidents|Progression libre, bénédictions, objets et incidents d12]] — **en expérimentation**, sans classes fermées ni équipements +1.
 - [[jouer/architecture-tables-multijoueur|Tables multijoueurs : plan de réalisation]] — pseudonymes, sessions, invitations, autorisations MJ et événements en direct, **non encore déployés**.
@@ -75,7 +77,7 @@ Un mini-système optionnel déjà disponible permet de jouer des Déchus ou leur
 
 ## Règles et calculs
 
-Les documents de campagne comportent déjà des usages de jets de dés, de magie, de mana et de Cercles. ****Le 5d6 / Base 12 est en test ; aucun système universel n’est encore officialisé ni appliqué rétroactivement.**n n'est pas encore formalisé ici.** Il sera extrait et validé séparément, plutôt que fabriqué comme s'il était déjà canonique.
+Les documents de campagne comportent déjà des usages de jets de dés, de magie, de mana et de Cercles. Le **guide illustré 5d6** rend accessibles les contrats existants M01–M03 et les propositions à l'étude, en les distinguant visiblement. **La formule des dégâts en production reste celle de M03 : l'absorption distincte et les extensions divines ne sont pas homologuées.** Aucune simulation ne s'applique rétroactivement aux scènes jouées.
 
 ## Poursuivre
 

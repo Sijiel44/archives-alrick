@@ -1202,6 +1202,9 @@ function previewResource(entry, remember = true) {
   const illustration = libraryIllustration(entry);
   if (illustration) add('Préparer la projection de l’image', () => prepareImageShare(illustration));
   if (entry.kind === 'creature' && !entry.record) add('Copier dans la campagne', () => copyCreature(entry), !campaign);
+  if (bestiaryRules && ['npc', 'creature'].includes(entry.kind) && !entry.record) {
+    add('Préparer un profil 5d6 (variante MJ)', () => prefillWorkshop(entry));
+  }
   if (entry.kind === 'faction' && entry.origin === 'archives') {
     add('Créer une faction de campagne', () => prefillFaction(entry), !campaign);
   }
@@ -1356,8 +1359,20 @@ function prefillWorkshop(entry) {
   form.elements.name.value = entry.name.slice(0, 100);
   form.elements.description.value = entry.description.slice(0, 1500);
   form.elements.kind.value = entry.kind === 'npc' ? 'pnj' : 'creature';
+  // Le niveau d'un catalogue est indicatif : le MJ peut toujours l'ajuster.
+  const suggestedLevel = Number(entry.level ?? entry.record?.level);
+  form.elements.level.value = Number.isInteger(suggestedLevel) && suggestedLevel >= 1 && suggestedLevel <= 25 ? String(suggestedLevel) : '1';
   form.dispatchEvent(new Event('input', { bubbles: true }));
   form.elements.name.focus();
+}
+
+function renderWorkshopPresetCode() {
+  const form = $('workshop-create');
+  const level = Number(form.elements.level.value);
+  const safeLevel = Number.isInteger(level) && level >= 1 && level <= 25 ? String(level).padStart(2, '0') : '??';
+  const archetype = form.elements.archetype.value.toUpperCase();
+  const role = form.elements.role.value.toUpperCase();
+  $('workshop-profile-code').textContent = `N${safeLevel}-${archetype}-${role}`;
 }
 
 function prefillFaction(entry) {
@@ -3508,11 +3523,13 @@ $('library-layout-list').addEventListener('click', () => setLibraryLayout('list'
 $('workshop-mode-create').addEventListener('click', () => setWorkshopMode(false));
 $('workshop-mode-import').addEventListener('click', () => setWorkshopMode(true));
 $('workshop-create').addEventListener('input', () => {
+  renderWorkshopPresetCode();
   if (busy) return;
   workshopDraft = undefined;
   showWorkshopError();
   renderWorkshop();
 });
+renderWorkshopPresetCode();
 $('workshop-create').addEventListener('submit', event => {
   event.preventDefault();
   if (!bestiaryRules || busy) return;

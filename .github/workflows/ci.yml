@@ -40,6 +40,9 @@ jobs:
       - name: Recette dédiée Bestiaire et copie indépendante
         timeout-minutes: 2
         run: node --test studio-local/tests/bestiaire-browser.test.mjs
+      - name: Mathématiques illustrées : liens, profils et recette mobile
+        timeout-minutes: 2
+        run: node --test studio-local/tests/mathematiques-publication.test.mjs studio-local/tests/mathematiques-browser.test.mjs
       - name: Conserver les captures du Studio
         if: always()
         uses: actions/upload-artifact@v4
