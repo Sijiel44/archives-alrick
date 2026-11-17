@@ -93,7 +93,7 @@ for (const [route, asset] of studioAssets) {
   await mkdir(path.dirname(filename), { recursive: true }); await writeFile(filename, bytes);
 }
 for (const filename of ['fiches.html', 'fiches.mjs', 'fiches.css']) await copyFile(`publication/${filename}`, path.join(output, filename));
-await copyFile('publication/article-renderer.mjs', path.join(destination, 'article-renderer.mjs'));
+await copyFile('publication/article-renderer.mjs', path.join(output, 'article-renderer.mjs'));
 for (const entry of readable.values()) {
   if (/^\/(studio\/media|images)\//.test(entry.image ?? '')) {
     assert(!entry.image.includes('..'), 'Image hors périmètre');

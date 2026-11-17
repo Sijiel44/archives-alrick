@@ -1,4 +1,4 @@
-import { renderPublicArticle } from '../article-renderer.mjs';
+import { renderPublicArticle } from './article-renderer.mjs';
 const $ = id => document.getElementById(id);
 const labels = { bestiaire: 'Bestiaire', pnj: 'Personnages', atlas: 'Atlas et lieux', univers: 'Univers', regles: 'Jouer et règles',
   magie: 'Magie', sorts: 'Sorts', capacites: 'Capacités', objets: 'Objets', factions: 'Factions', aventures: 'Aventures', imagerie: 'Imagerie', protocole: 'Protocole de jeu' };

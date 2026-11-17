@@ -42,6 +42,7 @@ test('Ancienne origine : récupérer puis restaurer la campagne sur les Chroniqu
   assert.deepEqual(source, before, 'Aucun effacement ni changement dans la campagne originale');
   const target = await serve(t, '.publication/chroniques');
   await page.goto(`${target}/studio/#sauvegardes`);
+  await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
   await page.locator('#backup-file').setInputFiles({ name: 'campagne.json', mimeType: 'application/json', buffer });
   await page.locator('#backup-preview').waitFor();
   await page.locator('#restore-backup').click();
@@ -66,9 +67,10 @@ test('Fiches internes et Studio : bureau, mobile, liens sans GitHub ni Archives'
     await page.locator('#reader:not([hidden])').waitFor();
     assert.match(await page.locator('#code').textContent(), /ESP-ER-001/);
     assert(await page.locator('#body').textContent());
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
     await mkdir('artifacts/separation', { recursive: true });
     await page.screenshot({ path: `artifacts/separation/fiche-${width}.png`, fullPage: true });
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true,
+      JSON.stringify(await page.evaluate(() => [...document.querySelectorAll('body *')].filter(e => e.getBoundingClientRect().right > innerWidth + 1).map(e => e.tagName + '.' + e.className).slice(0, 10))));
   }
   await page.goto(`${target}/studio/`);
   await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
@@ -76,5 +78,29 @@ test('Fiches internes et Studio : bureau, mobile, liens sans GitHub ni Archives'
   await page.goto(`${target}/studio/espace-joueur.html`);
   await page.locator('#player-save-status').waitFor();
   assert.equal(await page.locator('a[href*="github.com"],a[href*="sijiel44.github.io"]').count(), 0);
+  assert.deepEqual(errors, []);
+});
+
+test('Portail Sites actuel et accueil des Archives : parcours et rendus distincts', { skip: !process.env.SITES_CHECKOUT, timeout: 45000 }, async t => {
+  const f = await browserFixture(t), { page } = await f.open('portails');
+  const base = await serve(t, path.join(process.env.SITES_CHECKOUT, 'dist'));
+  const archives = await serve(t, 'public-archives');
+  const errors = []; page.on('pageerror', error => errors.push(error.message));
+  for (const width of [1365, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(base);
+    await page.locator('#save-status').getByText('Univers et ressources').waitFor();
+    assert.equal(await page.locator('a[href*="github.com"],a[href*="sijiel44.github.io"]').count(), 0);
+    await page.screenshot({ path: `artifacts/separation/chroniques-${width}.png` });
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+    await page.locator('#path-prepare').click();
+    await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
+    await page.goto(base); await page.locator('#nav-player').click();
+    await page.waitForURL('**/studio/espace-joueur.html');
+    await page.goto(archives);
+    await page.locator('#alrick-home-title').waitFor();
+    await page.screenshot({ path: `artifacts/separation/orin-${width}.png` });
+    assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+  }
   assert.deepEqual(errors, []);
 });

@@ -14,7 +14,7 @@ Le créateur autorise la publication des travaux d’univers dans ce cadre. Un �
 - Les sommaires de campagne sont reconstruits, les liens vers les fiches exclues deviennent du texte ; recherche, sitemap et liens locaux sont contrôlés. Les révélations gardent leur avertissement et restent hors index.
 - `npm run build:integration` génère l’ancien assemblage dans **public/** uniquement pour les tests de compatibilité. **Ne jamais publier ce répertoire.**
 - `node scripts/export-studio-sites.mjs <checkout-Sites/dist>` apporte les assets publics autorisés du Studio et les références lisibles sur place. L’export est additif : il ne remplace pas le parcours d’univers existant. Relire le diff du Site avant chaque nouvelle synchronisation pour préserver ses évolutions propres.
-- Le Site conserve ses 158 fiches de lecture v14 et ajoute un accès aux références du catalogue commun. Les fiches de campagne sensibles ne sont pas copiées : seules les adaptations publiques du catalogue sont proposées. Aucun renvoi de lecture ne doit conduire vers GitHub ou les Archives.
+- Le Site conserve ses 211 fiches de lecture v22 (95 articles complets vérifiés) et ajoute un accès aux 357 références du catalogue commun. L’export du Studio ne copie pas les fiches de campagne sensibles : seules les adaptations publiques du catalogue sont proposées. Aucun renvoi de lecture ne doit conduire vers GitHub ou les Archives.
 
 ## Sauvegardes et continuité technique
 
@@ -38,3 +38,5 @@ GitHub Pages et Sites ont des origines distinctes : leurs données ne peuvent pa
 6. Jeu distant : étude d’authentification, permissions et reconnexion avant développement. Le site actuel ne synchronise pas des parties entre appareils.
 
 Tests automatisés réussis et publication ne valent pas homologation en séance.
+
+Recette du 17 novembre : périmètre 2/2 ; construction des Archives et 31 676 liens contrôlés ; Chrome 3/3 sur la récupération/restauration avec notes privées, le lecteur interne et les deux portails à 1365 et 390 pixels. Captures relues. Le débordement des codes documentaires sur mobile a été corrigé. Aucune donnée réelle utilisée.

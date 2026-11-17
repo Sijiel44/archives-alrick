@@ -2,6 +2,7 @@ node_modules/
 public/
 public-archives/
 .publication/
+artifacts/separation/
 .quartz/
 .quartz-cache/
 quartz/.quartz-cache/
