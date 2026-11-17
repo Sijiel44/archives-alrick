@@ -5,6 +5,13 @@ const resistanceFor = mode => mode === 'melee' || mode === 'tir' ? 'physique' : 
 const resistanceLabels = { physique: 'physique', magie: 'magique', mental: 'mentale' };
 // Un export JSON d'aperçu n'est jamais une preuve de validation MJ.
 const localIndexPreviews = new WeakSet();
+function freezeSnapshot(value) {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    for (const entry of Object.values(value)) freezeSnapshot(entry);
+    Object.freeze(value);
+  }
+  return value;
+}
 
 export function describeDefense(mode, card) {
   const defender = toDefense(card);
@@ -82,8 +89,12 @@ export function previewIndexedOpposition(roll, card, indexSession, selections = 
       ? 'versioned-journal-required' : 'legacy-compatible';
   const issued = Object.freeze({ status: 'preview', journalGate,
     result: Object.freeze({ ...preview.result }),
-    used: Object.freeze([...preview.used]),
-    blocked: Object.freeze([...preview.blocked]) });
+    used: Object.freeze(preview.used.map(ref => Object.freeze({ ...ref }))),
+    blocked: Object.freeze(preview.blocked.map(ref => Object.freeze({ ...ref }))),
+    proof: preview.proof,
+    actionSnapshot: freezeSnapshot(structuredClone(action)),
+    diceSnapshot: Object.freeze([...dice]),
+    holders: Object.freeze({ attackerId, defenderId }) });
   localIndexPreviews.add(issued);
   return issued;
 }
@@ -101,4 +112,15 @@ export function requireLocalLegacyJournalPreview(preview) {
     throw new Error('Cette action ne peut pas utiliser le journal M03 historique');
   }
   return preview.result;
+}
+
+/** Accès strict au justificatif d'un aperçu enrichi, sans valeur de commit. */
+export function requireLocalIndexedJournalPreview(preview) {
+  if (!preview || typeof preview !== 'object' || !localIndexPreviews.has(preview)) {
+    throw new Error('Aperçu INDEX local exigé ; un JSON importé ne suffit pas');
+  }
+  if (preview.journalGate !== 'versioned-journal-required' || preview.blocked.length) {
+    throw new Error('Une référence INDEX non homologuée ou une action bloquée interdit la tentative');
+  }
+  return preview;
 }
