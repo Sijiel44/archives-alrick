@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import {build} from 'esbuild'
+import {studioAssets,readStudioAsset} from '../studio-local/serve.mjs'
 
 async function load(file){
   const out=await build({entryPoints:[file],bundle:true,platform:'node',
@@ -116,5 +117,11 @@ assert.throws(()=>index.importDefinition(effect(ref('spell','BAD-SPELL'),
   'arbitrary',1,'attaque')))
 assert.throws(()=>index.resolve({action:attack,attackerId:'npc-a',
   attackRefs:Array.from({length:51},()=>impact)}))
+const indexAsset=studioAssets.get('/moteur/atelier5d6-index-effects.js')
+assert(indexAsset,'La passerelle INDEX doit être disponible dans le Studio')
+const browserModule=(await readStudioAsset(indexAsset)).toString()
+assert(browserModule.includes('createIndexM03Session'))
+assert(browserModule.includes('atelier5d6-combat-m03.js'),
+  'Les imports relatifs sont raccordés au moteur M03 navigateur')
 console.log('INDEX-EFF-002 : import non fiable, validation locale/owner/version, '+
   'objet descriptif, absorption, intensité divine, M03/mental et révocation : PASS')
