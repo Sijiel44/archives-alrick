@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { browserFixture } from './browser.mjs';
 
-test('Studio : sept institutions civiles canoniques, emblèmes et copie modifiable sans secret MJ', { timeout: 65000 }, async t => {
+test('Studio : huit institutions civiles canoniques, emblèmes et copie modifiable sans secret MJ', { timeout: 65000 }, async t => {
   const fixture = await browserFixture(t);
   const { page } = await fixture.open('organisations-archives', { viewport: { width: 1280, height: 850 } });
   const scriptErrors = [];
@@ -20,10 +20,10 @@ test('Studio : sept institutions civiles canoniques, emblèmes et copie modifiab
   // The factions shelf also contains the Déchéance NPC portraits. Restrict this
   // historical regression test to organisations rather than the whole shelf.
   await page.locator('#catalogue-group').selectOption('Institutions et contre-pouvoirs');
-  await page.locator('#catalogue-count').getByText('7 fiches', { exact: true }).waitFor();
+  await page.locator('#catalogue-count').getByText('8 fiches', { exact: true }).waitFor();
   const cards = page.locator('#catalogue-list article');
-  assert.equal(await cards.count(), 7);
-  assert.equal(await cards.locator('img').count(), 7);
+  assert.equal(await cards.count(), 8);
+  assert.equal(await cards.locator('img').count(), 8);
   assert.equal(await cards.locator('img').first().evaluate(img => img.decode().then(() => img.naturalWidth > 0)), true);
 
   await cards.getByRole('button', { name: 'Voir la fiche de Maisons du Seuil Ouvert' }).click();
