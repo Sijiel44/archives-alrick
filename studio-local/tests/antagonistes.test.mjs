@@ -216,7 +216,6 @@ test('Studio : Table des Arpents, quatre nouveaux portraits et rédemption réve
     assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), new RegExp(`PER-DECH-${code}\\.md$`));
     await page.keyboard.press('Escape');
   }
-  await page.locator('#catalogue-next').click();
   for (const [name, code] of [['Cyrda Loven', '41'], ['Bérélan Voche', '42'], ['Solvane Dercé', '43']]) {
     await page.getByRole('button', { name: `Voir la fiche de ${name}` }).click();
     assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), new RegExp(`PER-DECH-${code}\\.md$`));
