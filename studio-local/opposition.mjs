@@ -48,6 +48,12 @@ export function previewIndexedOpposition(roll, card, indexSession, selections = 
       !roll.dice.every(die => Number.isSafeInteger(die) && die >= 1 && die <= 6)) {
     throw new RangeError('Le jet de table exige exactement cinq dés à six faces');
   }
+  if (!['melee', 'tir', 'magie', 'mental'].includes(roll.impactMode)) {
+    throw new RangeError('Mode d’opposition inconnu');
+  }
+  if (roll.feasible !== undefined && typeof roll.feasible !== 'boolean') {
+    throw new TypeError('Faisabilité MJ doit être un booléen');
+  }
   const { dice, rawStat, masteryRank, situation, level, threshold,
     impactMode, baseDamage, penetration } = roll;
   const { attackerId, defenderId = null, attackRefs = [], defenseRefs = [],
