@@ -101,7 +101,7 @@ const divine=index.resolve({action:attack,attackerId:'npc-a',
   intensityRef:flame,intensityTier:'majeure'})
 assert.equal(divine.result.intensityMultiplier,2)
 assert.equal(divine.result.grossDamage,baseline.grossDamage*2,
-  'Multiplicateur seulement après habilitation de l'effet')
+  'Multiplicateur seulement après habilitation de cet effet')
 const minor=index.resolve({action:attack,attackerId:'npc-a',
   intensityRef:flame,intensityTier:'mineure'})
 assert.equal(minor.result.intensityMultiplier,1)
