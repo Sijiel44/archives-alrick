@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-label="Marque graphique originale de la Table des Arpents : deux bornes reliées par une ligne de mesure, sur les rives d'un cours d'eau">
+  <rect width="600" height="360" rx="34" fill="#202d38"/>
+  <path d="M0 241Q139 194 263 248T600 221V360H0Z" fill="#304957"/>
+  <path d="M0 284Q134 240 257 287T600 274" fill="none" stroke="#7db0b3" stroke-width="14" opacity=".7"/>
+  <path d="M122 236v-112l47-20 49 20v123zM382 250V124l48-20 48 20v112z" fill="#9a907b" stroke="#d0b78a" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M171 148Q302 189 429 147" fill="none" stroke="#e0bb7b" stroke-width="8" stroke-dasharray="14 10" stroke-linecap="round"/>
+  <path d="M301 184v72" stroke="#e0bb7b" stroke-width="6"/>
+  <circle cx="301" cy="184" r="13" fill="#e0bb7b"/>
+  <circle cx="171" cy="148" r="9" fill="#e0bb7b"/>
+  <circle cx="429" cy="147" r="9" fill="#e0bb7b"/>
+</svg>

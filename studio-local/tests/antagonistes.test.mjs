@@ -17,7 +17,7 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
   await page.locator('#catalogue-origin').selectOption('archives');
-  await page.locator('#catalogue-count').getByText(/^36 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^40 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   const cards = page.locator('#catalogue-list article');
   assert.equal(await cards.count() > 6, true);
   const button = page.getByRole('button', { name: 'Voir la fiche de James Veyrel' });
@@ -96,7 +96,7 @@ test('Studio : compagnie marchande, membres non Déchus et copies isolées du jo
 
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
-  await page.locator('#catalogue-count').getByText(/^36 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^40 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.getByRole('button', { name: 'Voir la fiche de Maren Kess' }).click();
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-22\.md$/);
   await page.keyboard.press('Escape');
@@ -161,7 +161,7 @@ test('Studio : Office des Itinérants, quatre profils et notes locales non proje
   await page.locator('#library-shelves a[href="#rayon/factions"]').click();
   await page.locator('#catalogue-origin').selectOption('archives');
   await page.locator('#catalogue-group').selectOption('Institutions et contre-pouvoirs');
-  await page.locator('#catalogue-count').getByText('7 fiches', { exact: true }).waitFor();
+  await page.locator('#catalogue-count').getByText('8 fiches', { exact: true }).waitFor();
   await page.getByRole('button', { name: 'Voir la fiche de Office des Itinérants' }).click();
   const dialog = page.locator('#resource-dialog');
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/groupes\/ORG-DECH-10\.md$/);
@@ -169,7 +169,7 @@ test('Studio : Office des Itinérants, quatre profils et notes locales non proje
   await page.keyboard.press('Escape');
   await page.locator('#library-back').click();
   await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
-  await page.locator('#catalogue-count').getByText(/^36 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^40 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.locator('#catalogue-next').click();
   for (const [name, code] of [['Aldiane Réval', '33'], ['Teron Clarsac', '34'], ['Mirel Coten', '35'], ['Ossian Démer', '36']]) {
     await page.getByRole('button', { name: `Voir la fiche de ${name}` }).click();
@@ -190,4 +190,49 @@ test('Studio : Office des Itinérants, quatre profils et notes locales non proje
   await page.locator('#creation-form button[type="submit"]').click();
   await page.locator('#creation-dialog').waitFor({ state: 'hidden' });
   assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_MJ_REFUGE/);
+});
+
+test('Studio : Table des Arpents, quatre nouveaux portraits et rédemption réversible en copie MJ', { timeout: 65000 }, async t => {
+  const fixture = await browserFixture(t);
+  const { page } = await fixture.open('table-des-arpents', { viewport: { width: 1280, height: 850 } });
+  await page.goto(fixture.url);
+  await page.locator('#save-status').getByText('Stockage local prêt').waitFor();
+  await page.locator('#nav-library').click();
+  await page.locator('#library-shelves a[href="#rayon/factions"]').click();
+  await page.locator('#catalogue-origin').selectOption('archives');
+  await page.locator('#catalogue-group').selectOption('Institutions et contre-pouvoirs');
+  await page.locator('#catalogue-count').getByText('8 fiches', { exact: true }).waitFor();
+  const dialog = page.locator('#resource-dialog');
+  await page.getByRole('button', { name: 'Voir la fiche de Table des Arpents' }).click();
+  assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/groupes\/ORG-DECH-11\.md$/);
+  await page.keyboard.press('Escape');
+
+  await page.locator('#library-back').click();
+  await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
+  await page.locator('#catalogue-count').getByText(/^40 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-next').click();
+  for (const [name, code] of [['Séliane Mordin', '37'], ['Tarek Osme', '38'], ['Nolène Vassil', '39'], ['Erian Tolne', '40']]) {
+    await page.getByRole('button', { name: `Voir la fiche de ${name}` }).click();
+    assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), new RegExp(`PER-DECH-${code}\\.md$`));
+    await page.keyboard.press('Escape');
+  }
+
+  await page.locator('#nav-home').click();
+  await page.locator('#campaign-name').fill('Rives soulevées - table fictive');
+  await page.locator('#create-campaign-submit').click();
+  await page.locator('#view-prepare').waitFor({ state: 'visible' });
+  await page.locator('#nav-library').click();
+  await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
+  await page.locator('#catalogue-next').click();
+  await page.getByRole('button', { name: 'Voir la fiche de Tarek Osme' }).click();
+  await dialog.getByRole('button', { name: 'Créer un PNJ de campagne' }).click();
+  assert.equal(await page.locator('#creation-detail-posture').inputValue(), 'Opposition possible');
+  await page.locator('#creation-detail-posture').selectOption('Allié / rédemption');
+  await page.locator('#creation-form [name="notes"]').fill('CANARI_MJ_DIGUE_BRANCHE');
+  await page.locator('#creation-form button[type="submit"]').click();
+  await page.locator('#creation-dialog').waitFor({ state: 'hidden' });
+  await page.locator('#nav-library').click();
+  await page.locator('#library-shelves a[href="#rayon/campagne"]').click();
+  assert.equal(await page.locator('#catalogue-list .narrative-posture[data-position="Allié / rédemption"]').count(), 1);
+  assert.doesNotMatch(await page.locator('#projection').innerHTML(), /CANARI_MJ_DIGUE_BRANCHE/);
 });

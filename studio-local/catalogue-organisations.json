@@ -3,8 +3,8 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "descriptive_only",
-  "version": 4,
-  "source": "Validation du créateur en développement direct du JDR — 15 et 16 novembre 2026, ANT-DECH-004, 007, 008 et 009",
+  "version": 5,
+  "source": "Validation du créateur en développement direct du JDR — 15 au 17 novembre 2026, ANT-DECH-004, 007, 008, 009 et 010",
   "entries": [
     {
       "id": "ORG-DECH-01",
@@ -170,6 +170,21 @@
       "limits": "Accords locaux, réserves finies, droit au recours et personnel libre ; aucun ministère ou contrôle des frontières.",
       "relations": ["ORG-DECH-01", "ORG-DECH-03", "ORG-DECH-06"],
       "tags": ["institution", "accueil", "refuge", "itinerants", "droits", "relais"]
+    },
+    {
+      "id": "ORG-DECH-11",
+      "version": "0f110146dd950bd7dfb462c6dea0ee9ea2f4eeec",
+      "path": "content/groupes/ORG-DECH-11.md",
+      "image": "org-dech-11.svg",
+      "artAlt": "Deux bornes traversées par une ligne de mesure, sur des rives bleues, marque éditoriale de la Table des Arpents.",
+      "name": "Table des Arpents",
+      "description": "Corps d'arpenteurs reconstruisant des digues et recalculant les limites de berges ; ses tracés peuvent protéger ou déposséder.",
+      "purpose": "Mesurer les terrains, vérifier les passages et organiser des ouvrages de protection civile.",
+      "members": "Direction, chefs de digues, releveuses, apprentis, ouvriers indépendants ; seule une branche précise est déchue.",
+      "influence": "Chantiers mobiles des bassins d'Entre-Rives et contrats ponctuels vers Valbrume.",
+      "limits": "Financements et équipes bornés ; plans contradictoires, recours des habitants et moyens ordinaires de réparation.",
+      "relations": ["ORG-DECH-03", "ORG-DECH-08", "GRP-ANC-01"],
+      "tags": ["institution", "arpentage", "digue", "reconstruction", "conflits", "decheance"]
     }
   ]
 }

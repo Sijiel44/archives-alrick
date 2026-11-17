@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" role="img" aria-label="Portrait symbolique de Nolène Vassil, jeune arpenteuse sous capuche avec boussole">
+  <rect width="480" height="640" rx="20" fill="#475b59"/>
+  <path d="M95 295Q80 61 239 59Q400 61 385 295" fill="#293f3a"/>
+  <ellipse cx="239" cy="210" rx="101" ry="124" fill="#b88b68"/>
+  <path d="M141 180Q158 94 235 105Q325 89 342 177" stroke="#743f2a" stroke-width="29" fill="none"/>
+  <path d="M70 640Q97 397 239 377Q389 393 411 640" fill="#343c50"/>
+  <path d="M180 222h31m58 0h34m-112 74q42 18 88 0" stroke="#4e3429" fill="none" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="314" cy="510" r="65" fill="#a97c48" stroke="#d7b576" stroke-width="8"/>
+  <path d="M315 468l18 46-18 23-18-23Z" fill="#9bd0c1"/>
+</svg>
