@@ -114,6 +114,181 @@ export function validateBestiaryCard(raw:unknown):BestiaryCard{
   }
   return out
 }
+
+/**
+ * MATH-CREATE-003 — Déclinaison non destructive au niveau choisi.
+ * Le modèle M04 reste la source des valeurs de référence : on reporte seulement
+ * les écarts propres à la fiche, sans importer de bonus d'un texte libre.
+ * Les approbations numériques antérieures ne deviennent pas des autorisations
+ * sur une nouvelle variante : le MJ devra les revoir explicitement.
+ */
+export function createBestiaryLevelVariant(raw:unknown,targetLevel:number):BestiaryCard{
+  if(!Number.isSafeInteger(targetLevel)||targetLevel<1||targetLevel>25)
+    throw new RangeError("Le niveau cible doit être un entier de 1 à 25")
+  const source=validateBestiaryCard(raw)
+  const previous=createBestiaryCard(source.level,source.archetype,source.kind,source.role)
+  const target=createBestiaryCard(targetLevel,source.archetype,source.kind,source.role)
+  const variant=validateBestiaryCard({...source,id:target.id,level:targetLevel,
+    status:"brouillon",abilities:source.abilities.map(ability=>({...ability,approvedByGM:false}))})
+  if(Array.isArray(source.catalogLinks))
+    variant.catalogLinks=source.catalogLinks.map(link=>
+      link&&typeof link==="object"?{...link,approvedByGM:false}:link)
+  for(const key of ["physique","agilite","esprit","presence"] as const){
+    const specialty=source.stats[key]-previous.stats[key]
+    variant.stats[key]=Math.max(1,Math.min(9999,target.stats[key]+specialty))
+  }
+  for(const [name,rank] of Object.entries(source.masteries)){
+    const m02=source.sourceM02 as {trainedMasteries?:unknown}|undefined
+    if(Array.isArray(m02?.trainedMasteries)&&
+      !m02.trainedMasteries.includes(name)){
+      // Une maîtrise absente d'un import PJ ne doit pas apparaître au
+      // changement de niveau par simple effet du profil de base PNJ.
+      variant.masteries[name]=rank
+      continue
+    }
+    const baseline=previous.masteries[name]
+    if(baseline===undefined){
+      // École du feu, savoir rare, maîtrise propre : pas de hausse implicite.
+      variant.masteries[name]=rank
+    }else{
+      variant.masteries[name]=Math.max(0,Math.min(9999,
+        (target.masteries[name]??0)+(rank-baseline)))
+    }
+  }
+  // PV et mana ne sont pas un budget PJ ; les écarts narratifs de la fiche
+  // sont maintenus dans les limites des cartes M04 existantes.
+  variant.pvMax=Math.max(1,Math.min(999999,
+    target.pvMax+(source.pvMax-previous.pvMax)))
+  variant.manaMax=Math.max(0,Math.min(999999,
+    target.manaMax+(source.manaMax-previous.manaMax)))
+  variant.variantOrigin={sourceId:source.id,sourceLevel:source.level,
+    targetLevel,sourceRuleset:source.ruleset,sourceSchema:source.schema,
+    sourceStatus:source.status,method:"m04-specialty-deltas-v1"}
+  variant.visibility="mj"
+  return validateBestiaryCard(variant)
+}
+
+/**
+ * Import contrôlé d'une fiche PJ M02 en PNJ M03 local. C'est une copie de jeu
+ * pour le MJ, jamais une conversion du budget PJ ni une réécriture de sa source.
+ * Une vérification globale validPJSource doit aussi avoir lieu dans Studio.
+ */
+export function createNPCFromM02Source(raw:unknown,targetLevel?:number):BestiaryCard{
+  if(!raw||typeof raw!=="object"||Array.isArray(raw))throw Error("Source PJ absente")
+  const x=raw as Record<string,unknown>
+  if(x.ruleset!=="m02"||x.kind!=="pj"||typeof x.id!=="string"||
+    !/^[A-Za-z0-9][A-Za-z0-9:_-]{0,127}$/.test(x.id)||
+    typeof x.name!=="string"||!x.name.trim()||
+    !Number.isSafeInteger(x.level)||Number(x.level)<1||Number(x.level)>25)
+    throw Error("La source doit être une fiche PJ M02 valide")
+  const level=Number(x.level)
+  const statSource=x.stats as Record<string,unknown>|undefined
+  const masterySource=x.masteries as Record<string,unknown>|undefined
+  const development=x.development as Record<string,unknown>|undefined
+  if(!statSource||typeof statSource!=="object"||
+    !masterySource||typeof masterySource!=="object"||
+    Object.keys(masterySource).length>60||
+    !development||!Array.isArray(development.abilities)||
+    development.abilities.length>25)
+    throw Error("Statistiques, maîtrises ou capacités PJ incompatibles")
+  const np=createBestiaryCard(level,"faune","pnj","offensif")
+  np.name=x.name.slice(0,100)
+  np.profession=typeof x.profession==="string"?x.profession.slice(0,150):""
+  for(const key of ["physique","agilite","esprit","presence"] as const){
+    const n=statSource[key]
+    if(!Number.isSafeInteger(n)||Number(n)<1||Number(n)>9999)
+      throw Error("Caractéristique PJ invalide : "+key)
+    np.stats[key]=Number(n)
+  }
+  // Le validateur Bestiaire remplit ses familles génériques manquantes
+  // avec les valeurs du profil de référence. Une importation PJ ne doit
+  // donc jamais obtenir ces rangs par accident : initialiser à zéro.
+  np.masteries=Object.fromEntries(
+    Object.keys(np.masteries).map(name=>[name,0]))
+  for(const [name,rank] of Object.entries(masterySource)){
+    if(!name||name.length>90||["__proto__","constructor","prototype"].includes(name)||
+      !Number.isSafeInteger(rank)||Number(rank)<0||Number(rank)>9999)
+      throw Error("Maîtrise PJ incompatible")
+    np.masteries[name]=Number(rank)
+  }
+  for(const prop of ["pvMax","manaMax"] as const){
+    const n=x[prop]
+    if(!Number.isSafeInteger(n)||Number(n)<(prop==="pvMax"?1:0)||Number(n)>999999)
+      throw Error("Ressource PJ incompatible : "+prop)
+    np[prop]=Number(n)
+  }
+  for(const prop of ["resistanceBonus","protection","equipmentGrades"] as const){
+    const values=x[prop] as Record<string,unknown>|undefined
+    if(!values||typeof values!=="object")throw Error("Défenses PJ manquantes")
+    const upper=prop==="equipmentGrades"?5:prop==="resistanceBonus"?8:60
+    for(const kind of ["physique","magie","mental"] as const){
+      const n=values[kind]
+      if(!Number.isSafeInteger(n)||Number(n)<0||Number(n)>upper)
+        throw Error("Défense PJ invalide : "+kind)
+      np[prop][kind]=Number(n)
+    }
+  }
+  np.abilities=development.abilities.map((rawAbility:unknown)=>{
+    const a=rawAbility as Record<string,unknown>
+    if(!a||typeof a!=="object"||typeof a.name!=="string"||
+      typeof a.id!=="string")throw Error("Capacité PJ illisible")
+    return {name:a.name.slice(0,100),
+      description:typeof a.description==="string"?a.description.slice(0,1000):"",
+      limitations:typeof a.limitations==="string"?a.limitations.slice(0,500):"",
+      approvedByGM:false,sourceAbilityId:a.id}
+  })
+  np.sourceM02={sourceId:x.id,sourceLevel:level,sourceRuleset:"m02",
+    sourceTitle:typeof x.sourceTitle==="string"?x.sourceTitle.slice(0,150):"",
+    trainedMasteries:Object.keys(masterySource)}
+  // Ne pas recopier automatiquement notes personnelles, secrets ou inventaire :
+  // ce sont des données de la fiche propriétaire à référencer côté Studio.
+  np.visibility="mj"
+  return targetLevel===undefined?validateBestiaryCard(np):
+    createBestiaryLevelVariant(np,targetLevel)
+}
+
+export type BestiaryCatalogReference={
+  type:"ability"|"spell"|"object"|"ritual"
+  id:string
+  revision:number
+  provenance:string
+  approvedByGM:false
+}
+
+/**
+ * Ajouter une référence de catalogue à une fiche de travail MJ.
+ * Le lien n'est pas une instance d'effet : aucune charge, coût, maîtrise,
+ * autorisation de lancer ou propriété enchantée n'est inventé ici.
+ */
+export function addBestiaryCatalogReference(
+  raw:unknown,reference:unknown,
+):BestiaryCard{
+  const card=validateBestiaryCard(raw)
+  if(!reference||typeof reference!=="object"||Array.isArray(reference))
+    throw Error("Référence de catalogue absente")
+  const r=reference as Record<string,unknown>
+  if(!["ability","spell","object","ritual"].includes(r.type as string)||
+    typeof r.id!=="string"||
+    !/^[A-Za-z0-9][A-Za-z0-9:_-]{0,127}$/.test(r.id)||
+    !Number.isSafeInteger(r.revision)||Number(r.revision)<1||
+    typeof r.provenance!=="string"||!r.provenance.trim()||
+    r.provenance.length>200)
+    throw Error("Identité, révision ou provenance de référence invalide")
+  const links=card.catalogLinks===undefined?[]:card.catalogLinks
+  if(!Array.isArray(links)||links.length>40)throw Error("Registre de liens invalide")
+  const retained=links.filter(link=>{
+    if(!link||typeof link!=="object")throw Error("Ancien lien illisible")
+    return !(link.type===r.type&&link.id===r.id)
+  }).map(link=>({...link,approvedByGM:false}))
+  if(retained.length>=40)throw Error("Trop de références associées")
+  const draft:BestiaryCatalogReference={
+    type:r.type as BestiaryCatalogReference["type"],
+    id:r.id,revision:Number(r.revision),provenance:r.provenance,
+    approvedByGM:false,
+  }
+  return validateBestiaryCard({...card,status:"brouillon",visibility:"mj",
+    catalogLinks:[...retained,draft]})
+}
 /** Contrat distinct M03 : une créature n'est pas soumise au budget d'un PJ M02. */
 export function exportBestiaryForAtelier(card:BestiaryCard){
   const c=validateBestiaryCard(card)
