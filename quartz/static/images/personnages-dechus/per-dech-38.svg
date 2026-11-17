@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" role="img" aria-label="Portrait symbolique de Tarek Osme, nain à barbe noire mesurant une corde aux reflets violets">
+  <rect width="480" height="640" rx="20" fill="#443e3b"/>
+  <circle cx="240" cy="209" r="107" fill="#936a50"/>
+  <path d="M128 172Q149 81 239 85Q330 75 352 174" fill="none" stroke="#272423" stroke-width="36"/>
+  <path d="M172 247Q239 410 310 247Q311 362 240 411Q174 350 172 247" fill="#2c2724"/>
+  <path d="M75 640Q86 383 240 386Q401 386 410 640" fill="#454238"/>
+  <path d="M118 504Q224 443 379 506" fill="none" stroke="#b49b74" stroke-width="14"/>
+  <path d="M119 504Q224 443 379 506" fill="none" stroke="#b29adf" stroke-width="5" stroke-dasharray="6 20"/>
+  <path d="M175 220h40m52 0h40" stroke="#302825" stroke-width="7" stroke-linecap="round"/>
+</svg>

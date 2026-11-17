@@ -8,7 +8,7 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: [lecteurs, joueurs, mj]
 usage_en_jeu: [reference, rencontre, scenario]
-description: "Catégorie publique des trente-six figures d'opposition et de rivalité, avec rôles narratifs suggérés et évolutifs."
+description: "Catégorie publique des quarante figures d'opposition et de rivalité, avec rôles narratifs suggérés et évolutifs."
 tags: [personnages, antagonistes, rivaux, decheance, redemption, campagnes]
 ---
 
@@ -67,6 +67,10 @@ Une opposition n'est **pas une identité morale définitive**. On peut lutter co
 | [Teron Clarsac](./PER-DECH-34.md) | 11 | Fêlure | <span class="antag-role antag-role--ambigu">Rivalité / ambiguïté</span> | Salle de registres de l'Office |
 | [Mirel Coten](./PER-DECH-35.md) | 6 | Tentation | <span class="antag-role antag-role--ambigu">Rivalité / ambiguïté</span> | Chemins et cour des refuges d'Entre-Rives |
 | [Ossian Démer](./PER-DECH-36.md) | 2 | Non Déchu | <span class="antag-role antag-role--ambigu">Rivalité / ambiguïté</span> | Cuisine commune des refuges d'Entre-Rives |
+| [Séliane Mordin](./PER-DECH-37.md) | 17 | Non Déchu | <span class="antag-role antag-role--ambigu">Rivalité / ambiguïté</span> | Table des Arpents, bassin d'Entre-Rives |
+| [Tarek Osme](./PER-DECH-38.md) | 12 | Rupture | <span class="antag-role antag-role--opposition">Opposition possible</span> | Digues et ouvrages de la Table des Arpents |
+| [Nolène Vassil](./PER-DECH-39.md) | 6 | Fêlure | <span class="antag-role antag-role--ambigu">Rivalité / ambiguïté</span> | Relevés des berges et sols humides d'Entre-Rives |
+| [Erian Tolne](./PER-DECH-40.md) | 2 | Non Déchu | <span class="antag-role antag-role--ambigu">Rivalité / ambiguïté</span> | Chantiers et villages d'Entre-Rives |
 
 ¹ **Niveau narratif de référence** (2 à 20), non un profil de combat 5d6 chiffré. Le niveau et la position narrative ne se déduisent pas de l'étape de Déchéance.
 
@@ -77,4 +81,4 @@ Une opposition n'est **pas une identité morale définitive**. On peut lutter co
 3. Dans la création locale, sélectionnez sa position : opposition possible, rivalité / ambiguïté, allié / rédemption ou neutre / indéterminé. **Modifier la création** permet de la changer après une trêve, une trahison, une aide ou une réparation.
 4. Les personnages, intrigues, organisations et dénouements peuvent évoluer dans chaque campagne sans réécrire les autres tables ni afficher les notes privées aux joueurs.
 
-Pour comprendre les pactes et les autres issues, consultez les [trente-six biographies détaillées](./personnages-dechus.md) et les [organisations associées](../groupes/organisations-decheance.md).
+Pour comprendre les pactes et les autres issues, consultez les [quarante biographies détaillées](./personnages-dechus.md) et les [organisations associées](../groupes/organisations-decheance.md).

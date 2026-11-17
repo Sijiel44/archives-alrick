@@ -3,8 +3,8 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "narrative_levels_only",
-  "version": 7,
-  "source": "Développement direct du JDR avec le créateur, 15–16 novembre 2026 ; ANT-DECH-005 à ANT-DECH-009, LAB-DECH-003 adapté",
+  "version": 8,
+  "source": "Développement direct du JDR avec le créateur, 15–17 novembre 2026 ; ANT-DECH-005 à ANT-DECH-010, LAB-DECH-003 adapté",
   "entries": [
     {
       "id": "PER-DECH-01", "positionNarrative": "Rivalité / ambiguïté", "version": "eb33f9acc6e47c1a959d9f5852d139d649a7e739",
@@ -365,6 +365,46 @@
       "relations": ["PER-DECH-33", "PER-DECH-34", "PER-DECH-35", "PER-DECH-29"], "factions": ["ORG-DECH-10"],
       "currentRegion": "Cuisine commune des refuges d'Entre-Rives", "description": "Jeune témoin de refus d'admission qui peut proposer une solution simple sans appartenir à la Déchéance.",
       "tags": ["cuisine", "temoin", "niveau2", "non_dechu"]
+    },
+    {
+      "id": "PER-DECH-37", "positionNarrative": "Rivalité / ambiguïté", "version": "43ec5df37415820f3aef539774ff80f35f02a0ed",
+      "path": "content/personnages/PER-DECH-37.md", "image": "per-dech-37.webp",
+      "artAlt": "Séliane Mordin, directrice expérimentée en manteau ardoise et cartes d'arpentage sur une digue.",
+      "name": "Séliane Mordin", "levelIntent": 17, "corruptionStage": "Non Déchu",
+      "role": "Directrice de la Table des Arpents, non pactisée", "motivation": "Assurer des berges sûres sans exclure les familles qu'une carte oublie.",
+      "relations": ["PER-DECH-38", "PER-DECH-39", "PER-DECH-40"], "factions": ["ORG-DECH-11"],
+      "currentRegion": "Table des Arpents, bassin d'Entre-Rives", "description": "Dirigeante d'expérience qui a sauvé un pont en laissant d'autres maisons hors de la digue, sans être Déchue.",
+      "tags": ["direction", "arpentage", "non_dechu", "arbitrage"]
+    },
+    {
+      "id": "PER-DECH-38", "positionNarrative": "Opposition possible", "version": "12b6c879f1c8f2ce567a9cfd69f2216ffc58711d",
+      "path": "content/personnages/PER-DECH-38.md", "image": "per-dech-38.webp",
+      "artAlt": "Tarek Osme, contremaître nain sombre tenant une corde de mesure aux lueurs violettes.",
+      "name": "Tarek Osme", "levelIntent": 12, "corruptionStage": "Rupture",
+      "role": "Chef des digues et Lieur au Pacte de l'Assise", "motivation": "Empêcher le moindre ouvrage de céder sans faire payer davantage de personnes.",
+      "relations": ["PER-DECH-37", "PER-DECH-39", "PER-DECH-40"], "factions": ["ORG-DECH-11"],
+      "currentRegion": "Digues de la Table des Arpents", "description": "Lieur en Rupture dont la Chute liée effective de Cyrda Loven soutient un rite de maçonnerie local et limité.",
+      "tags": ["digue", "nain", "rupture", "lieur", "tribut"]
+    },
+    {
+      "id": "PER-DECH-39", "positionNarrative": "Rivalité / ambiguïté", "version": "d1042ba0b6136b3d1b4535a748e0c358b096ec6d",
+      "path": "content/personnages/PER-DECH-39.md", "image": "per-dech-39.webp",
+      "artAlt": "Nolène Vassil, releveuse rousse au compas de cuivre dans les marais.",
+      "name": "Nolène Vassil", "levelIntent": 6, "corruptionStage": "Fêlure",
+      "role": "Releveuse des berges pactisée en Fêlure", "motivation": "Lire le terrain sans traiter un tracé surnaturel comme une vérité absolue.",
+      "relations": ["PER-DECH-37", "PER-DECH-38", "PER-DECH-40"], "factions": ["ORG-DECH-11"],
+      "currentRegion": "Relevés des berges d'Entre-Rives", "description": "Une mesure juste et une accusation fausse ; l'Aiguille de retour ne révèle qu'une ancienne marque sur un relevé préparé.",
+      "tags": ["arpentage", "felure", "compas", "reparation"]
+    },
+    {
+      "id": "PER-DECH-40", "positionNarrative": "Rivalité / ambiguïté", "version": "a30be0953c03a40dd8e9d3331fa44fbfc629ac9d",
+      "path": "content/personnages/PER-DECH-40.md", "image": "per-dech-40.webp",
+      "artAlt": "Erian Tolne, jeune apprenti en tunique de toile portant un carnet de relevés et ses jalons.",
+      "name": "Erian Tolne", "levelIntent": 2, "corruptionStage": "Non Déchu",
+      "role": "Apprenti arpenteur, témoin sans pacte", "motivation": "Rendre les plans vérifiables et les familles entendues sans trahir ses mentors.",
+      "relations": ["PER-DECH-37", "PER-DECH-38", "PER-DECH-39"], "factions": ["ORG-DECH-11"],
+      "currentRegion": "Chantiers d'Entre-Rives", "description": "Porteur d'une copie de relevé importante, utilisable dans des aventures de niveau 2 sans affrontement imposé.",
+      "tags": ["apprenti", "non_dechu", "niveau2", "temoin"]
     }
   ]
 }

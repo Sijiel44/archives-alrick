@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" role="img" aria-label="Portrait symbolique d'Erian Tolne, jeune apprenti à carnet de levés">
+  <rect width="480" height="640" rx="20" fill="#5e5b50"/>
+  <circle cx="241" cy="209" r="108" fill="#a56f48"/>
+  <path d="M135 168Q122 73 238 91Q349 73 347 170" stroke="#29251f" stroke-width="32" fill="none" stroke-linecap="round"/>
+  <path d="M74 640Q88 396 239 391Q405 395 413 640" fill="#a58d70"/>
+  <path d="M136 442q104 64 209 0" fill="none" stroke="#27374b" stroke-width="38"/>
+  <path d="M171 217h35m66 0h34m-114 77q48 29 96 0" fill="none" stroke="#513b2b" stroke-width="7" stroke-linecap="round"/>
+  <path d="M307 474l129 12-11 148-127-15Z" fill="#e4cfac" stroke="#886d4b" stroke-width="6"/>
+  <path d="M321 518q30-30 86 5m-89 46q50 27 90-2" fill="none" stroke="#8c8870" stroke-width="5"/>
+</svg>
