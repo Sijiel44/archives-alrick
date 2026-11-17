@@ -41,6 +41,7 @@
           <button id="nav-library" type="button" data-view="library"><span aria-hidden="true">▤</span> Bibliothèque</button>
           <button id="nav-creations" type="button" data-view="creations"><span aria-hidden="true">✧</span> Créations</button>
           <button id="nav-workshop" type="button" data-view="workshop"><span aria-hidden="true">✦</span> Bestiaire 5d6</button>
+          <a class="nav-reference" href="./mathematiques.html"><span aria-hidden="true">∑</span> Mathématiques</a>
           <button id="nav-universe" type="button" data-view="universe"><span aria-hidden="true">✧</span> Univers</button>
         </div>
         <div class="nav-group" role="group" aria-label="Conservation">
@@ -287,6 +288,7 @@
           </article>
           <article class="panel">
             <div class="panel-heading"><h2>Créatures et PNJ</h2><div class="actions"><button type="button" class="secondary" data-library-shelf="bestiaire">Ouvrir le Bestiaire</button><button type="button" class="secondary" data-view="workshop">Créer un profil 5d6</button></div></div>
+            <p class="muted">Préparation : choisir une fiche dans la bibliothèque, puis son niveau, son archétype et son rôle dans l’Atelier. <a href="./mathematiques.html#profils">Comprendre les profils 5d6</a>.</p>
             <p id="creatures-empty" class="empty">Les copies du catalogue rejoignent cette campagne.</p>
             <ul id="creature-list" class="record-list"></ul>
           </article>
@@ -308,6 +310,7 @@
               <button id="improvise-scene" class="secondary" type="button">Improviser une scène</button>
             </div>
             <p id="play-opposition-hint" class="muted action-hint" hidden></p>
+            <p class="muted action-hint"><a href="./mathematiques.html#resolution">Rappel des 5d6, dégâts et protections</a> · La validation du MJ précède la dépense et l’application.</p>
           </div>
           <div class="session-action-group" role="group" aria-label="Références et diffusion">
             <p class="eyebrow">Régie et références</p>
@@ -605,10 +608,11 @@
         <div id="creations-directory"></div>
       </section>
 
+      <span id="atelier" hidden></span>
       <section id="view-workshop" aria-labelledby="workshop-title" hidden>
         <header class="view-heading workshop-heading">
           <div><p class="eyebrow accent">Atelier · Profils 5d6</p><h1 id="workshop-title" tabindex="-1">Atelier du Bestiaire</h1>
-            <p class="muted">Composez une créature ou un PNJ, vérifiez sa fiche et ajoutez-la à votre campagne.</p></div>
+            <p class="muted">Composez une créature ou un PNJ, vérifiez sa fiche et ajoutez une copie chiffrée à votre campagne. Le niveau, l’archétype et le rôle personnalisent le profil sans modifier la fiche de référence. <a href="./mathematiques.html#profils">Guide mathématique illustré</a>.</p></div>
           <button type="button" class="secondary" data-library-shelf="bestiaire">Parcourir le Bestiaire</button>
         </header>
         <div class="workshop-grid">
@@ -630,6 +634,7 @@
                 <div><label for="workshop-archetype">Archétype</label><select id="workshop-archetype" name="archetype"><option value="faune">Faune</option><option value="predateur">Prédateur</option><option value="gardien">Gardien</option><option value="mystique">Mystique</option><option value="colosse">Colosse</option></select></div>
                 <div><label for="workshop-role">Rôle</label><select id="workshop-role" name="role"><option value="offensif">Offensif</option><option value="defensif">Défensif</option><option value="soutien">Soutien</option></select></div>
               </div>
+              <p class="muted">Réglage choisi · <output id="workshop-profile-code" for="workshop-level workshop-archetype workshop-role">N01-FAUNE-OFFENSIF</output>. Repère de composition uniquement, sans valeur de code canonique.</p>
               <label for="workshop-description">Description <span class="muted">· facultative</span></label>
               <textarea id="workshop-description" name="description" rows="3" maxlength="1500"></textarea>
               <button id="workshop-generate" type="submit" disabled>Prévisualiser le profil</button>
