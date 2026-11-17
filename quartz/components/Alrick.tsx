@@ -4,6 +4,8 @@ import bestiaryCatalog from "../../studio-local/catalogue-bestiaire.json"
 // @ts-ignore — Quartz bundles .inline.ts imports as browser script strings.
 import script from "./scripts/alrick.inline"
 
+const campaignOnly = process.env.PUBLICATION_PROFILE === "orin-campaign"
+
 export const sections = [
   ["monde", "Le Monde", "Cosmologie", "◇"],
   ["univers", "Explorer l’univers", "Univers", "✦"],
@@ -42,6 +44,20 @@ export const Brand: QuartzComponent = (props) => (
 export const Navigation: QuartzComponent = (props) => {
   const base = root(props)
   const current = props.fileData.slug?.split("/")[0]
+  if (campaignOnly) return <nav class="archive-nav" aria-label="L’Odyssée d’Orin">
+    <span class="nav-caption">ARCHIVES DE CAMPAGNE</span>
+    {[["/", "Accueil de l’Odyssée"], ["/odyssee/", "Lire l’Odyssée"], ["/bibliotheque", "Fiches de la campagne"], ["/a-propos", "Sources et mises à jour"]].map(([url, label]) =>
+      <a class="internal" href={`${base}${url}`} key={url}>{label}</a>)}
+    <details class="nav-domains"><summary>Personnes, lieux et mémoire</summary><div class="nav-domains-links">
+      {sections.filter(([slug]) => props.allFiles.some(file => file.slug === `${slug}/index`)).map(([slug, title, , icon]) =>
+        <a class="internal" href={`${base}/${slug}/`} key={slug}><span aria-hidden="true">{icon}</span>{title}</a>)}
+    </div></details>
+    <details class="nav-domains nav-secrets"><summary>Continuité · révélations</summary><div class="nav-domains-links">
+      <a class="internal" href={`${base}/jdr-alrick/`}>Dossier d’Orin / Alrick</a>
+      <a class="internal" href={`${base}/mj/`}>Dossiers MJ de campagne</a>
+    </div></details>
+    <div class="nav-colophon"><p>Une campagne.<br />Sa mémoire, ses rencontres.</p></div>
+  </nav>
   const mainLinks = [
     ["index", "/", "Accueil", "⌂"],
     ["univers", "/univers/", "Découvrir le monde", "✦"],
@@ -88,7 +104,7 @@ export const Navigation: QuartzComponent = (props) => {
 export const Topbar: QuartzComponent = (props) => (
   <div class="archive-topbar">
     <span>LES ARCHIVES D’ALRICK <i>/</i> <span>{props.fileData.slug === "index" ? "ACCUEIL" : props.fileData.slug?.startsWith("mj/") ? "ARCHIVES DU MJ" : props.fileData.slug?.startsWith("jdr-alrick") ? "JDR D’ALRICK" : "ENCYCLOPÉDIE"}</span></span>
-    <span class="edition"><span aria-hidden="true">◇</span> Archives vivantes · CB43</span>
+    <span class="edition"><span aria-hidden="true">◇</span> {campaignOnly ? "L’Odyssée d’Orin · campagne" : "Archives vivantes · CB43"}</span>
   </div>
 )
 
@@ -116,6 +132,25 @@ export const Library: QuartzComponent = (props) => {
   const isBestiary = props.fileData.slug === "bestiaire"
   if (!isHome && !isCatalog && !isBestiary) return null
   const base = root(props)
+  if (campaignOnly && isHome) return <div id="archive-content" tabIndex={-1}>
+    <section class="archive-hero home-hero" aria-labelledby="alrick-home-title">
+      <div class="hero-engraving" aria-hidden="true" />
+      <div class="hero-copy"><span class="eyebrow">LES ARCHIVES D’ALRICK · MÉMOIRE DE CAMPAGNE</span>
+        <h1 id="alrick-home-title">L’Odyssée<br /><em>d’Orin</em></h1>
+        <p>Les pas d’un voyageur, les visages rencontrés et les choix qui ont changé son histoire. Retrouvez ici le récit et les documents de cette campagne.</p>
+        <div class="hero-actions"><a class="archive-button internal" href={`${base}/odyssee/`}>Reprendre le récit →</a>
+          <a class="internal text-button" href={`${base}/bibliotheque`}>Chercher une fiche →</a></div>
+      </div><span class="hero-caption">UNE HISTOIRE JOUÉE<br /><small>Faits, intentions et sources distingués</small></span>
+    </section>
+    <section class="home-paths" aria-labelledby="home-paths-title"><span class="eyebrow">LES FEUILLETS DE LA CAMPAGNE</span>
+      <h2 id="home-paths-title">Retrouver le fil</h2><div class="home-path-grid">
+        <a class="home-path internal" href={`${base}/odyssee/`}><span class="home-path-icon">☼</span><h3>Le récit d’Orin</h3><p>Lire les épisodes et retrouver le dernier point de reprise.</p><span class="home-path-link">Ouvrir l’Odyssée →</span></a>
+        <a class="home-path internal" href={`${base}/bibliotheque`}><span class="home-path-icon">☷</span><h3>La mémoire des rencontres</h3><p>Personnages, lieux, objets et engagements documentés dans la campagne.</p><span class="home-path-link">Parcourir les fiches →</span></a>
+        <a class="home-path internal" href={`${base}/jdr-alrick/`}><span class="home-path-icon">◇</span><h3>La continuité</h3><p>Événements récents, relations et suites ouvertes. Contient des révélations.</p><span class="home-path-link">Consulter le dossier →</span></a>
+        <a class="home-path internal" href={`${base}/a-propos`}><span class="home-path-icon">✧</span><h3>Les textes de campagne</h3><p>Comprendre les sources et ajouter les prochaines séances avec ChatGPT.</p><span class="home-path-link">Sources et mise à jour →</span></a>
+      </div>
+    </section>
+  </div>
   if (isBestiary) {
     // Une nouvelle fiche canonique, publique et illustrée est visible même avant son
     // raccordement au catalogue des copies du Studio. Les entrées déjà indexées

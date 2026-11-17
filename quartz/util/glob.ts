@@ -15,7 +15,9 @@ export async function glob(
     await globby(pattern, {
       cwd,
       ignore: ignorePatterns,
-      gitignore: true,
+      // Le profil Archives lit un répertoire généré par sa liste de sources,
+      // volontairement ignoré par Git pour ne jamais commiter le build.
+      gitignore: process.env.PUBLICATION_PROFILE !== "orin-campaign",
     })
   ).map(toPosixPath)
   return fps as FilePath[]

@@ -1,5 +1,7 @@
 node_modules/
 public/
+public-archives/
+.publication/
 .quartz/
 .quartz-cache/
 quartz/.quartz-cache/
