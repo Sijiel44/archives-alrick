@@ -67,6 +67,10 @@ for(const dice of [[1,2,3,4],[1,2,3,4,7],[0,2,3,4,5],
   assert.throws(()=>studio.previewIndexedOpposition({...roll,dice},
     card,runtime,selection),/cinq dés à six faces/)
 }
+assert.throws(()=>studio.previewIndexedOpposition({...roll,impactMode:'inconnu'},
+  card,runtime,selection),/Mode d’opposition inconnu/)
+assert.throws(()=>studio.previewIndexedOpposition({...roll,feasible:'false'},
+  card,runtime,selection),/Faisabilité MJ/)
 assert.throws(()=>studio.previewIndexedOpposition(roll,card,null,selection))
 assert.equal(JSON.stringify(card),beforeCard,'Carte défenseur immuable')
 assert.equal(JSON.stringify(roll),beforeRoll,'Action entrante immuable')
