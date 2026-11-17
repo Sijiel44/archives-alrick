@@ -1,7 +1,7 @@
 ---
-title: "ANT-DECH-012 — Déchus extrêmes et nécromancien historique à authentifier"
+title: "ANT-DECH-012 — Déchus extrêmes et raccord éditorial d'Istel avec l'Odyssée"
 date: 2026-11-17
-statut: "creation_originale_et_identification_historique_ouverte"
+statut: "creation_originale_et_raccord_identitaire_approuve_scene_source_ouverte"
 ---
 
 # ANT-DECH-012 — Trois ennemis qui choisissent la cruauté
@@ -15,7 +15,7 @@ L'horreur repose sur les décisions des personnages, les actes commis, les rites
 ## Pyramide effectivement constituée
 
 ```text
-Istel Rémor — N20, Abîme, nécromancien inédit
+Istel Rémor — N20, Abîme, identifié par choix du créateur au nécromancien de la première Odyssée
 ├─ Mavrine Selcor — N15, Déchéance
 │  ├─ Védran Ossal — N9, Rupture, Lieur
 │  │  └─ Léda Perne — N4, Fêlure, Chute liée véritable
@@ -41,9 +41,9 @@ Les Chutes liées sont **effectivement transformées par pacte puis liées par t
 
 La destruction des corps animés ne fait pas cesser toute la Déchéance ; l'annulation d'un tribut ne réanime ni n'endommage physiquement une porte. La sécurité des vivants, la restitution des dépouilles et la liberté des liés restent prioritaires.
 
-## Dossier distinct : nécromancien rencontré par Alrick/Orin
+## Décision de continuité : Istel et le nécromancien rencontré par Alrick/Orin
 
-**Statut : identifié par le témoignage du créateur, détails non vérifiés dans les sources disponibles.** Le créateur se souvient d'un praticien nécromancien rencontré au début de la campagne et d'un être ou objet ramené à la vie, sans en retenir la nature. Il serait trompeur d'inventer son nom, sa cible, ses intentions ou une Déchéance surnaturelle.
+**Nouvelle décision explicite du créateur — 17 novembre 2026 : Istel Rémor sera le nécromancien qu'Alrick a rencontré au début de l'Odyssée.** Le créateur souhaite pouvoir le faire revenir dans son récit. Il s'agit d'une **attribution d'identité éditoriale rétrospective**, légitime comme nouvelle création, et non d'une preuve documentaire sur ce que disait la scène d'origine. Le souvenir du créateur porte sur un praticien qui aurait ramené quelque chose ou quelqu'un à la vie, sans objet ou être identifié. Il serait trompeur d'en déduire une résurrection véritable, un lieu, un nom prononcé ou des rapports précis avec Alrick.
 
 Vérifications entreprises :
 
@@ -51,7 +51,7 @@ Vérifications entreprises :
 2. Source `sources/campagnes/README.md` : les quinze documents de campagne **sont recensés** mais leurs originaux et transcriptions ne sont **pas intégrés** dans `main`.
 3. Vérification de la tête historique de la PR #77 LORE : aucun original CB01 n'est présent sous `sources/campagnes` dans l'arbre consulté.
 
-**À rechercher en priorité :** CB01, premières scènes de rencontre ; nom ou description de l'homme, lieu de la confrontation, nature de l'être animé, différence entre apparence de résurrection et vie effectivement restituée, issue attestée de la rencontre. Si un passage est retrouvé, créer une fiche distincte avec statut de source, ancrage de paragraphes exact, continuité de l'Odyssée et un avertissement adapté. **Ne pas fusionner rétroactivement Istel avec ce personnage.** Un nécromancien n'est pas automatiquement Déchu : une Chute surnaturelle doit être établie séparément.
+**À rechercher en priorité :** CB01 et les premières scènes de rencontre ; description du praticien, lieu, nature de ce qui fut animé ou rappelé, différence entre apparence de résurrection et vie effectivement restituée, issue attestée de la rencontre. Lors de la récupération du texte, conserver dans un dossier de réconciliation les faits réellement joués et les détails originaux éventuellement incompatibles avec Istel ; ne pas réécrire le brut pour justifier la nouvelle identité. Les pouvoirs et la pyramide actuels d'Istel sont des **développements postérieurs**, non des événements historiquement joués. Le nécromancien de la scène ancienne n'est pas considéré automatiquement Déchu au moment de cette scène.
 
 ## Contrôles d'intégration
 
@@ -60,4 +60,4 @@ Vérifications entreprises :
 - Aucun nouveau profil 5d6 chiffré ni exposition de notes privées de campagne.
 - `npm test` et CI GitHub Actions sur la tête de PR ; recette Studio Chrome, contrôle des médias et publication Pages après fusion.
 
-**À revoir par :** LORE pour l'identification de l'ancien nécromancien ; INDEX/MATH pour tout profil de combat futur. **À valider par DG/créateur :** toute assimilation ultérieure du nécromancien historique à la Déchéance.
+**À revoir par :** LORE pour l'ancrage exact dans la campagne originelle et l'éventuelle réconciliation de contradictions ; INDEX/MATH pour tout profil de combat futur. **Décision créateur déjà donnée :** réemploi de l'identité d'Istel comme nécromancien rencontré par Alrick ; les actes, pouvoirs et rang de Déchéance de l'époque ancienne ne sont pas déterminés.

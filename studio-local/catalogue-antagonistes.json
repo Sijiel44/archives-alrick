@@ -3,7 +3,7 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "narrative_levels_only",
-  "version": 10,
+  "version": 11,
   "source": "Développement direct du JDR avec le créateur, 15–17 novembre 2026 ; ANT-DECH-005 à ANT-DECH-012, LAB-DECH-003 adapté",
   "entries": [
     {
@@ -457,11 +457,11 @@
       "tags": ["decheance", "seuil", "branches", "domination"]
     },
     {
-      "id": "PER-DECH-46", "positionNarrative": "Opposition possible", "version": "dc507321ac42bc16db9e1322ea7f318f4b225ea8",
+      "id": "PER-DECH-46", "positionNarrative": "Opposition possible", "version": "94e571ea326e1acd573f8b2bf81a488111dac728",
       "path": "content/personnages/PER-DECH-46.md", "image": "per-dech-46.webp",
       "artAlt": "Istel Rémor, nécromancien émacié en robe funéraire, coupe de sel et mausolée noyé, face à un corps enveloppé.",
       "name": "Istel Rémor", "levelIntent": 20, "corruptionStage": "Abîme",
-      "role": "Nécromancien inédit et maître d'une pyramide de tribut", "motivation": "Déposséder les morts de leur repos et les vivants du droit de leur dire adieu.",
+      "role": "Nécromancien désormais rattaché à l'ancienne rencontre d'Alrick, maître d'une pyramide de tribut", "motivation": "Déposséder les morts de leur repos et les vivants du droit de leur dire adieu.",
       "relations": ["PER-DECH-45", "PER-DECH-44"], "factions": [],
       "currentRegion": "Dépôts funéraires abandonnés du Méridien", "description": "Pacte d'animation brève sans retour à la vie ; son Abîme repose sur Mavrine et Edrive et leurs branches transformées.",
       "tags": ["abime", "necromancie", "pyramide", "pacte"]
