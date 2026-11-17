@@ -54,6 +54,16 @@ const authorized=index.resolve({action:{...attack,effects:[forged]},
 assert.equal(authorized.result.grossDamage,baseline.grossDamage+2)
 assert.equal(authorized.result.damage,baseline.damage+2)
 assert.equal(authorized.used.length,1)
+assert.deepEqual(registry.replayIndexM03Proof(attack,authorized.proof),authorized.result,
+  'Même M03 pour un événement autorisé conservé puis rejoué')
+const archivedImpact=JSON.parse(JSON.stringify(authorized.proof))
+assert.deepEqual(registry.replayIndexM03Proof(attack,archivedImpact),authorized.result)
+assert.throws(()=>registry.replayIndexM03Proof(attack,
+  {...archivedImpact,effects:[{...archivedImpact.effects[0],magnitude:3}]}),
+  /Justificatif historique M03 invalide/)
+assert.throws(()=>registry.replayIndexM03Proof(attack,
+  {...archivedImpact,effects:[{...archivedImpact.effects[0],approved:false}]}),
+  /Justificatif historique M03 invalide/)
 const another=index.resolve({action:attack,attackerId:'npc-b',
   attackRefs:[impact]})
 assert.equal(another.result.damage,baseline.damage,'Autorisation non transférée')
@@ -81,6 +91,8 @@ const withAbsorption=index.resolve({action:attack,attackerId:'npc-a',
 assert.equal(withAbsorption.result.specialAbsorption,2)
 assert.equal(withAbsorption.result.damage,baseline.damage-2)
 assert.equal(withAbsorption.result.penetrated,baseline.penetrated)
+assert.deepEqual(registry.replayIndexM03Proof(attack,withAbsorption.proof),
+  withAbsorption.result,'L’absorption est rejouée sans second calcul de touche')
 const wrongOwner=index.resolve({action:attack,attackerId:'npc-a',
   defenderId:'def-c',defenseRefs:[ward]})
 assert.equal(wrongOwner.result.damage,baseline.damage)
@@ -102,6 +114,11 @@ const divine=index.resolve({action:attack,attackerId:'npc-a',
 assert.equal(divine.result.intensityMultiplier,2)
 assert.equal(divine.result.grossDamage,baseline.grossDamage*2,
   'Multiplicateur seulement après habilitation de cet effet')
+assert.deepEqual(registry.replayIndexM03Proof(attack,divine.proof),divine.result,
+  'Intensité divine stable après archivage de la résolution')
+assert.throws(()=>registry.replayIndexM03Proof(attack,
+  {...divine.proof,intensity:{...divine.proof.intensity,approved:false}}),
+  /Justificatif d'intensité invalide/)
 const minor=index.resolve({action:attack,attackerId:'npc-a',
   intensityRef:flame,intensityTier:'mineure'})
 assert.equal(minor.result.intensityMultiplier,1)
