@@ -3,6 +3,8 @@ import { effectiveProtectionM03, resistanceScoreM03, resolveCombatM03 } from './
 
 const resistanceFor = mode => mode === 'melee' || mode === 'tir' ? 'physique' : mode;
 const resistanceLabels = { physique: 'physique', magie: 'magique', mental: 'mentale' };
+// Un export JSON d'aperçu n'est jamais une preuve de validation MJ.
+const localIndexPreviews = new WeakSet();
 
 export function describeDefense(mode, card) {
   const defender = toDefense(card);
@@ -69,5 +71,34 @@ export function previewIndexedOpposition(roll, card, indexSession, selections = 
     action, attackerId, defenderId, attackRefs, defenseRefs,
     intensityRef, intensityTier, heroicChoice,
   });
-  return Object.freeze({ status: 'preview', ...preview });
+  // Le journal historique recalcule seulement resolveCombatM03 et ne peut pas
+  // reconstituer une autorisation INDEX, une intensité ou un choix héroïque.
+  // Cette information aide l'interface à BLOQUER les commits incompatibles ;
+  // elle ne constitue jamais une permission de dépense ou de sauvegarde.
+  const journalGate = roll.feasible === false ? 'mj-blocked'
+    : preview.blocked.length ? 'approval-required'
+    : preview.used.length || preview.result.intensityMultiplier !== 1 ||
+      preview.result.specialAbsorption !== 0 || preview.result.heroicBenefit !== null
+      ? 'versioned-journal-required' : 'legacy-compatible';
+  const issued = Object.freeze({ status: 'preview', journalGate,
+    result: Object.freeze({ ...preview.result }),
+    used: Object.freeze([...preview.used]),
+    blocked: Object.freeze([...preview.blocked]) });
+  localIndexPreviews.add(issued);
+  return issued;
+}
+
+/**
+ * Garde explicitement la voie historique contre les effets INDEX non rejouables.
+ * N'enregistre rien : le stockage doit TOUJOURS vérifier la révision, la
+ * signature, la cible et recalculer M03 de son côté.
+ */
+export function requireLocalLegacyJournalPreview(preview) {
+  if (!preview || typeof preview !== 'object' || !localIndexPreviews.has(preview)) {
+    throw new Error('Aperçu INDEX local exigé ; un JSON importé ne suffit pas');
+  }
+  if (preview.journalGate !== 'legacy-compatible') {
+    throw new Error('Cette action ne peut pas utiliser le journal M03 historique');
+  }
+  return preview.result;
 }

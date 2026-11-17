@@ -37,6 +37,10 @@ runtime.importDefinition({reference:impact,provenance:'CAP pilote',
 const selection={attackerId:'pj-1',defenderId:'pnj-1',attackRefs:[impact]}
 const absent=studio.previewIndexedOpposition(roll,card,runtime,selection)
 assert.equal(absent.status,'preview')
+assert.equal(absent.journalGate,'approval-required',
+  'Une capacité importée non homologuée interdit le commit silencieux')
+assert.throws(()=>studio.requireLocalLegacyJournalPreview(absent),
+  /journal M03 historique/)
 assert.equal(absent.result.damage,legacy.damage,'Import non homologué : zéro bonus')
 assert.equal(absent.blocked.length,1)
 assert.equal(absent.used.length,0)
@@ -49,11 +53,27 @@ runtime.approveForHolder(impact,'pj-1',true)
 const allowed=studio.previewIndexedOpposition(roll,card,runtime,selection)
 assert.equal(allowed.result.damage,legacy.damage+2,'Impact homologué via INDEX/M03')
 assert.equal(allowed.used.length,1)
+assert.equal(allowed.journalGate,'versioned-journal-required',
+  'Un bonus INDEX ne doit pas emprunter le journal M03 historique')
+assert.throws(()=>studio.requireLocalLegacyJournalPreview(allowed),
+  /journal M03 historique/)
+const ordinary=studio.previewIndexedOpposition(roll,card,runtime,
+  {attackerId:'pj-1',defenderId:'pnj-1'})
+assert.equal(ordinary.journalGate,'legacy-compatible')
+assert.equal(ordinary.result.damage,legacy.damage)
+assert.equal(studio.requireLocalLegacyJournalPreview(ordinary).damage,legacy.damage)
+assert.throws(()=>studio.requireLocalLegacyJournalPreview({...ordinary}),
+  /Aperçu INDEX local exigé/)
+assert.throws(()=>studio.requireLocalLegacyJournalPreview(JSON.parse(JSON.stringify(ordinary))),
+  /Aperçu INDEX local exigé/)
+assert.throws(()=>ordinary.used.push(impact),TypeError,
+  'Un résultat d’aperçu ne doit pas être modifié après calcul')
 const repeated=studio.previewIndexedOpposition(roll,card,runtime,selection)
 assert.deepEqual(repeated,allowed,'Aperçu répété sans état d’engagement')
 const wrongOwner=studio.previewIndexedOpposition(roll,card,runtime,
   {...selection,attackerId:'pj-2'})
 assert.equal(wrongOwner.result.damage,legacy.damage,'Pas de transfert de permission')
+assert.equal(wrongOwner.journalGate,'approval-required')
 const mental=studio.previewIndexedOpposition({...roll,impactMode:'mental'},card,
   runtime,selection)
 assert.equal(mental.result.damage,0,'Mental sans PV')
@@ -62,6 +82,12 @@ const blockedByMJ=studio.previewIndexedOpposition({...roll,feasible:false},
   card,runtime,selection)
 assert.equal(blockedByMJ.result.success,false,'Faisabilité refusée par MJ')
 assert.equal(blockedByMJ.result.damage,0)
+assert.equal(blockedByMJ.journalGate,'mj-blocked')
+const heroic=studio.previewIndexedOpposition({...roll,dice:[6,6,6,5,5]},
+  card,runtime,{attackerId:'pj-1',heroicChoice:'impact'})
+assert.equal(heroic.result.heroicBenefit,'impact')
+assert.equal(heroic.journalGate,'versioned-journal-required',
+  'Un choix héroïque doit être journalisé explicitement')
 for(const dice of [[1,2,3,4],[1,2,3,4,7],[0,2,3,4,5],
   [1,2,3,4,5,6],['1',2,3,4,5]]) {
   assert.throws(()=>studio.previewIndexedOpposition({...roll,dice},
