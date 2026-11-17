@@ -3,8 +3,8 @@
   "visibility": "public",
   "status": "lore_valide",
   "rulesStatus": "narrative_levels_only",
-  "version": 8,
-  "source": "Développement direct du JDR avec le créateur, 15–17 novembre 2026 ; ANT-DECH-005 à ANT-DECH-010, LAB-DECH-003 adapté",
+  "version": 9,
+  "source": "Développement direct du JDR avec le créateur, 15–17 novembre 2026 ; ANT-DECH-005 à ANT-DECH-011, LAB-DECH-003 adapté",
   "entries": [
     {
       "id": "PER-DECH-01", "positionNarrative": "Rivalité / ambiguïté", "version": "eb33f9acc6e47c1a959d9f5852d139d649a7e739",
@@ -377,12 +377,12 @@
       "tags": ["direction", "arpentage", "non_dechu", "arbitrage"]
     },
     {
-      "id": "PER-DECH-38", "positionNarrative": "Opposition possible", "version": "12b6c879f1c8f2ce567a9cfd69f2216ffc58711d",
+      "id": "PER-DECH-38", "positionNarrative": "Opposition possible", "version": "7b4ba128caee5ad0c8e7c1498b8f8ab485fc3245",
       "path": "content/personnages/PER-DECH-38.md", "image": "per-dech-38.webp",
       "artAlt": "Tarek Osme, contremaître nain sombre tenant une corde de mesure aux lueurs violettes.",
       "name": "Tarek Osme", "levelIntent": 12, "corruptionStage": "Rupture",
       "role": "Chef des digues et Lieur au Pacte de l'Assise", "motivation": "Empêcher le moindre ouvrage de céder sans faire payer davantage de personnes.",
-      "relations": ["PER-DECH-37", "PER-DECH-39", "PER-DECH-40"], "factions": ["ORG-DECH-11"],
+      "relations": ["PER-DECH-37", "PER-DECH-39", "PER-DECH-40", "PER-DECH-41"], "factions": ["ORG-DECH-11"],
       "currentRegion": "Digues de la Table des Arpents", "description": "Lieur en Rupture dont la Chute liée effective de Cyrda Loven soutient un rite de maçonnerie local et limité.",
       "tags": ["digue", "nain", "rupture", "lieur", "tribut"]
     },
@@ -405,6 +405,36 @@
       "relations": ["PER-DECH-37", "PER-DECH-38", "PER-DECH-39"], "factions": ["ORG-DECH-11"],
       "currentRegion": "Chantiers d'Entre-Rives", "description": "Porteur d'une copie de relevé importante, utilisable dans des aventures de niveau 2 sans affrontement imposé.",
       "tags": ["apprenti", "non_dechu", "niveau2", "temoin"]
+    },
+    {
+      "id": "PER-DECH-41", "positionNarrative": "Rivalité / ambiguïté", "version": "aabcdf789a05a4434746adfa015fa0209f18d10c",
+      "path": "content/personnages/PER-DECH-41.md", "image": "per-dech-41.webp",
+      "artAlt": "Cyrda Loven, releveuse aux tresses blondes cendrées, pierre poreuse et coupelle près d'une écluse.",
+      "name": "Cyrda Loven", "levelIntent": 5, "corruptionStage": "Fêlure",
+      "role": "Releveuse des limons, Chute liée de Tarek", "motivation": "Défaire une dette cachée sans renoncer à défendre les habitants des rives.",
+      "relations": ["PER-DECH-38", "PER-DECH-37", "PER-DECH-39", "PER-DECH-40"], "factions": ["ORG-DECH-11"],
+      "currentRegion": "Écluses et berges d'Entre-Rives", "description": "Le don de limon limité de Cyrda est une véritable Fêlure liée au tribut de Tarek ; son futur reste ouvert.",
+      "tags": ["limon", "felure", "chute_liee", "arpentage"]
+    },
+    {
+      "id": "PER-DECH-42", "positionNarrative": "Opposition possible", "version": "eb263d60ed1001141666d431ab29628738dd6c32",
+      "path": "content/personnages/PER-DECH-42.md", "image": "per-dech-42.webp",
+      "artAlt": "Bérélan Voche, maître charpentier métis en manteau sombre, équerre de bois et fil violet.",
+      "name": "Bérélan Voche", "levelIntent": 10, "corruptionStage": "Rupture",
+      "role": "Formateur et Lieur de la branche de Ravi Folen", "motivation": "Transmettre un métier sans interdire aux apprentis de partir libres.",
+      "relations": ["PER-DECH-43", "PER-DECH-38"], "factions": [],
+      "currentRegion": "Ateliers itinérants d'Entre-Rives et Valbrume", "description": "Un maître généreux devenu Lieur après avoir effectivement transformé Ravi Folen en Chute liée.",
+      "tags": ["enseignement", "charpente", "rupture", "lieur"]
+    },
+    {
+      "id": "PER-DECH-43", "positionNarrative": "Opposition possible", "version": "d4cee28d5c1945d3c0edc56dc837583b156d7a96",
+      "path": "content/personnages/PER-DECH-43.md", "image": "per-dech-43.webp",
+      "artAlt": "Solvane Dercé, fondatrice aux longs cheveux argentés, habit indigo et parures cuivrées dans une école d'artisans.",
+      "name": "Solvane Dercé", "levelIntent": 16, "corruptionStage": "Déchéance",
+      "role": "Fondatrice d'ateliers, maîtresse de deux branches", "motivation": "Maintenir l'école ouverte tout en acceptant que ses élèves ne lui appartiennent pas.",
+      "relations": ["PER-DECH-42", "PER-DECH-37"], "factions": [],
+      "currentRegion": "Cour des Compagnons, ateliers itinérants", "description": "Bienfaitrice Déchue dont le tribut provient de deux Lieurs véritables, Bérélan et Isma, et non des élèves ordinaires.",
+      "tags": ["decheance", "apprentissage", "branches", "institution"]
     }
   ]
 }

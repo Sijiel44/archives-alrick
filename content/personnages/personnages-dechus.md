@@ -1,6 +1,6 @@
 ---
 publish: true
-title: "Visages des conflits de Déchéance — quarante personnages, niveaux 2 à 20"
+title: "Visages des conflits de Déchéance — quarante-trois personnages, niveaux 2 à 20"
 categorie: "personnage"
 canon_statut: "lore_valide"
 etat_editorial: valide
@@ -10,7 +10,7 @@ visibilite: "publique"
 portee: "univers_partage"
 public_cible: [lecteurs, joueurs, mj]
 usage_en_jeu: [reference, rencontre, scenario]
-description: "Quarante personnages liés aux conflits de Déchéance, dont des commerçants, secouristes et arpenteurs capables de devenir adversaires sans être Déchus."
+description: "Quarante-trois personnages liés aux conflits de Déchéance : des métiers, des écoles, des réseaux et des possibilités de rupture ou de retour."
 tags: [decheance, antagonistes, personnages, niveaux, pactes, chroniques]
 ---
 
@@ -20,7 +20,7 @@ tags: [decheance, antagonistes, personnages, niveaux, pactes, chroniques]
 
 Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont choisi un pacte peuvent être guérisseurs, artistes, greffiers, commerçants, archivistes ou artisans. Le bénéfice initial a souvent été **réel** ; le piège est de réclamer ensuite le droit de disposer de la vie d'autrui.
 
-**Quarante biographies appartiennent désormais au monde partagé.** Les vingt premières suivent des pactes et leurs conséquences ; douze autres éclairent les conflits de trois compagnies marchandes ; quatre montrent les dilemmes d'un office de refuge ; quatre autres forment la [[groupes/ORG-DECH-11|Table des Arpents]], qui reconstruit les berges tout en risquant de déposséder des familles. Leurs réussites et revers passés constituent le nouveau passé de ces personnes, sans attribuer de séance supplémentaire à l'Odyssée d'Orin ou à une campagne de joueurs. Leur situation est un **point de départ vivant** : chaque MJ peut déplacer un relais, nouer une alliance ou provoquer une défaite sans changer les autres tables.
+**Quarante-trois biographies appartiennent désormais au monde partagé.** Les vingt premières suivent des pactes et leurs conséquences ; douze autres éclairent les conflits de trois compagnies marchandes ; quatre montrent les dilemmes d'un office de refuge ; cinq sont liées à la [[groupes/ORG-DECH-11|Table des Arpents]], qui reconstruit les berges tout en risquant de déposséder des familles ; les deux dernières éclairent une école d'artisanat travaillée par la Déchéance. Leurs réussites et revers passés constituent le nouveau passé de ces personnes, sans attribuer de séance supplémentaire à l'Odyssée d'Orin ou à une campagne de joueurs. Leur situation est un **point de départ vivant** : chaque MJ peut déplacer un relais, nouer une alliance ou provoquer une défaite sans changer les autres tables.
 
 | Personnage | Niveau de référence¹ | État narratif | Branche / fonction | Faille à exploiter |
 | --- | ---: | --- | --- | --- |
@@ -64,6 +64,9 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 | [Tarek Osme](./PER-DECH-38.md) | **12** | Rupture | Chef d'ouvrage et Lieur en lien avec Cyrda Loven | Libérer la Chute liée et reconstruire sans tribut |
 | [Nolène Vassil](./PER-DECH-39.md) | **6** | Fêlure | Releveuse à l'Aiguille de retour | Rendre les plans et apprendre à supporter le doute |
 | [Erian Tolne](./PER-DECH-40.md) | **2** | Non Déchu | Apprenti porteur d'une copie de levé | Vérification indépendante et parole des riverains |
+| [Cyrda Loven](./PER-DECH-41.md) | **5** | Fêlure | Releveuse des limons et Chute liée effective de Tarek | Rompre le tribut, sauvegarder les mesures ordinaires |
+| [Bérélan Voche](./PER-DECH-42.md) | **10** | Rupture | Formateur et Lieur lié à Ravi Folen | Délier l'apprenti, rendre l'indépendance des ateliers |
+| [Solvane Dercé](./PER-DECH-43.md) | **16** | Déchéance | Bienfaitrice d'ateliers, deux branches de Lieurs | Restituer les certificats et renoncer aux branches |
 
 ¹ **Niveaux proposés pour calibrer les rencontres**, et non des profils calculés. Aucun bonus, PV, dégâts ou capacité 5d6 n'est accordé par cette page. **Le niveau 2–20 est distinct de l'Emprise et de la place dans la pyramide.** INDEX/MATH/PNJ devront établir les profils avant une opposition chiffrée.
 
@@ -88,6 +91,7 @@ Il n'existe pas une « race de Déchus » ni un adversaire type. Ceux qui ont ch
 - **La Première Ancre :** la [[groupes/GRP-ANC-01|coalition composite]] pourrait demander la copie d'un mandat ou des outils pour un seuil ; une commande n'établit pas l'appartenance d'une maison marchande. Les branches et les faits restent à vérifier séparément.
 - **Le lit refusé :** Aldiane a déjà ouvert des portes à des familles abandonnées, puis instauré un contrôle excessif. Teron veut une preuve écrite de tout, Mirel connaît des chemins mais refuse de vendre les itinéraires, et Ossian nourrit ceux qui ont été écartés. Les PJ peuvent négocier un secours, prouver une erreur, défendre le droit au départ ou établir un refuge concurrent.
 - **La rive déplacée :** Séliane protège un pont mais laisse des maisons derrière la digue ; Tarek tient un joint par une Chute liée réelle ; Nolène prend son instrument pour une vérité sans nuance et Erian transporte un autre levé. Une solution de chantier, la liberté de Cyrda et le droit des riverains peuvent prendre le pas sur le combat.
+- **Le droit de partir avec son métier :** Bérélan a réellement formé Ravi, puis transformé son parcours en Chute liée ; Isma entretient une autre branche au service de Solvane. Rompre chaque rite, ouvrir des ateliers libres et rendre les certificats retire une part du Tribut sans priver les familles d'enseignement. Cyrda, elle, peut montrer le coût d'une dette pactisée dissimulée au nom d'un secours.
 
 ## L'arc d'escalade sans scénario obligatoire
 

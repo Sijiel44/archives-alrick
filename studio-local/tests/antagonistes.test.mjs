@@ -17,7 +17,7 @@ test('Studio : portraits de Déchéance et copie PNJ sans notes projetées', { t
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
   await page.locator('#catalogue-origin').selectOption('archives');
-  await page.locator('#catalogue-count').getByText(/^40 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^43 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   const cards = page.locator('#catalogue-list article');
   assert.equal(await cards.count() > 6, true);
   const button = page.getByRole('button', { name: 'Voir la fiche de James Veyrel' });
@@ -96,7 +96,7 @@ test('Studio : compagnie marchande, membres non Déchus et copies isolées du jo
 
   await page.locator('#nav-library').click();
   await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
-  await page.locator('#catalogue-count').getByText(/^40 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^43 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.getByRole('button', { name: 'Voir la fiche de Maren Kess' }).click();
   assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), /\/blob\/main\/content\/personnages\/PER-DECH-22\.md$/);
   await page.keyboard.press('Escape');
@@ -169,7 +169,7 @@ test('Studio : Office des Itinérants, quatre profils et notes locales non proje
   await page.keyboard.press('Escape');
   await page.locator('#library-back').click();
   await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
-  await page.locator('#catalogue-count').getByText(/^40 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^43 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.locator('#catalogue-next').click();
   for (const [name, code] of [['Aldiane Réval', '33'], ['Teron Clarsac', '34'], ['Mirel Coten', '35'], ['Ossian Démer', '36']]) {
     await page.getByRole('button', { name: `Voir la fiche de ${name}` }).click();
@@ -209,9 +209,15 @@ test('Studio : Table des Arpents, quatre nouveaux portraits et rédemption réve
 
   await page.locator('#library-back').click();
   await page.locator('#library-shelves a[href="#rayon/antagonistes"]').click();
-  await page.locator('#catalogue-count').getByText(/^40 fiches(?: · page \d+ sur \d+)?$/).waitFor();
+  await page.locator('#catalogue-count').getByText(/^43 fiches(?: · page \d+ sur \d+)?$/).waitFor();
   await page.locator('#catalogue-next').click();
   for (const [name, code] of [['Séliane Mordin', '37'], ['Tarek Osme', '38'], ['Nolène Vassil', '39'], ['Erian Tolne', '40']]) {
+    await page.getByRole('button', { name: `Voir la fiche de ${name}` }).click();
+    assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), new RegExp(`PER-DECH-${code}\\.md$`));
+    await page.keyboard.press('Escape');
+  }
+  await page.locator('#catalogue-next').click();
+  for (const [name, code] of [['Cyrda Loven', '41'], ['Bérélan Voche', '42'], ['Solvane Dercé', '43']]) {
     await page.getByRole('button', { name: `Voir la fiche de ${name}` }).click();
     assert.match(await dialog.locator('#resource-source-link').getAttribute('href'), new RegExp(`PER-DECH-${code}\\.md$`));
     await page.keyboard.press('Escape');

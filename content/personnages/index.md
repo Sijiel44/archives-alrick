@@ -18,7 +18,7 @@ Les habitants du monde possèdent des métiers, des convictions et leurs propres
 
 ## Antagonistes et rivaux — rôles évolutifs
 
-[[antagonistes-et-rivaux|Explorer la catégorie « Antagonistes et rivaux »]] — quarante portraits, des repères colorés d'opposition ou d'ambivalence et des liens vers chaque fiche. Les couleurs sont **des suggestions narratives**, pas une condamnation morale : dans sa campagne, un MJ peut faire d'un rival un allié et modifier le repère.
+[[antagonistes-et-rivaux|Explorer la catégorie « Antagonistes et rivaux »]] — quarante-trois portraits, des repères colorés d'opposition ou d'ambivalence et des liens vers chaque fiche. Les couleurs sont **des suggestions narratives**, pas une condamnation morale : dans sa campagne, un MJ peut faire d'un rival un allié et modifier le repère.
 
 [[personnages-dechus|Dossier détaillé : visages des conflits de Déchéance]] — pactes, parcours, rivalités, métiers, lieux d'activité et alternatives à la confrontation ; les trois maisons marchandes et l'Office des Itinérants comptent aussi des personnes non Déchues.
 
