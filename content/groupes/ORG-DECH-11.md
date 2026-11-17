@@ -26,7 +26,7 @@ La **Table des Arpents** établit des relevés de terrain, calcule les pentes, s
 
 Elle possède des équipes mobiles dans les **bassins d'Entre-Rives**, avec des commandes ponctuelles vers Valbrume. Il n'existe pas de carte complète canonisée de ses implantations ; les chantiers secondaires peuvent être déplacés par chaque MJ.
 
-## Quatre postes, quatre idées de la justice
+## Cinq personnes, cinq idées de la justice
 
 | Personne | Niveau indicatif | Responsabilité et contradiction |
 | --- | ---: | --- |
@@ -34,6 +34,7 @@ Elle possède des équipes mobiles dans les **bassins d'Entre-Rives**, avec des 
 | [[personnages/PER-DECH-38|Tarek Osme]] | 12 | Chef des digues, **Lieur en Rupture** : sa méthode sauve de véritables ouvrages en alimentant une Chute liée. |
 | [[personnages/PER-DECH-39|Nolène Vassil]] | 6 | Releveuse en Fêlure, dont l'instrument surnaturel éclaire une anomalie mais efface progressivement le doute. |
 | [[personnages/PER-DECH-40|Erian Tolne]] | 2 | Apprenti non Déchu, porteur d'une copie oubliée et de la parole de riverains absents des réunions. |
+| [[personnages/PER-DECH-41|Cyrda Loven]] | 5 | Releveuse des limons en Fêlure et Chute liée effective de Tarek ; son pacte ne mesure que des infiltrations locales. |
 
 La **majorité des ouvriers et auxiliaires ne sont pas Déchus** et ignorent le pacte de Tarek. Leur salaire, leur pauvreté et leur participation à un chantier ne constituent pas des Chutes liées.
 
@@ -41,7 +42,7 @@ La **majorité des ouvriers et auxiliaires ne sont pas Déchus** et ignorent le 
 
 La première réussite reconnue de la Table fut une levée provisoire construite avec des pierres reprises à un gué effondré. Des maisons restèrent debout après une crue ; les familles appellent encore les arpenteurs quand l'eau monte. Lors d'un second contrat, une ligne de sécurité fut dessinée en écartant les cabanes d'un quartier de rive de la zone protégée. Les habitants ne contestèrent pas les mesures de pente, mais **le choix des vies que la Table avait décidé de financer**. Séliane institua alors une copie publique des relevés, sans aller jusqu'à accorder un véritable droit de recours.
 
-Plus récemment, Tarek empêcha une brèche sur un ouvrage ancien au prix d'un procédé qu'il garde caché. La digue tient, ses équipes le respectent, et la personne qui l'aide par pacte dépend désormais de sa réussite. Trois faits peuvent être vrais à la fois : des vies ont été sauvées, des droits ont été méprisés et une Déchéance surnaturelle s'est installée **dans une branche de la Table, pas dans l'institution tout entière**.
+Plus récemment, Tarek empêcha une brèche sur un ouvrage ancien au prix d'un procédé qu'il garde caché. La digue tient, ses équipes le respectent, et **Cyrda Loven** l'aide par un pacte dont il lui a caché les liens d'Emprise. Trois faits peuvent être vrais à la fois : des vies ont été sauvées, des droits ont été méprisés et une Déchéance surnaturelle s'est installée **dans une branche de la Table, pas dans l'institution tout entière**.
 
 ## Le conflit : mesurer une rive n'est pas posséder ses habitants
 

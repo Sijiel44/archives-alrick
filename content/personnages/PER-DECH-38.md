@@ -34,7 +34,7 @@ Un inconnu lui proposa le **Pacte de l'Assise**. Lorsque Tarek prépare lui-mêm
 
 ## Relations et contradictions
 
-- **Cyrda Loven :** personne liée, toujours vivante et capable de refuser de nouvelles tâches. Tarek lui doit la vérité, la fin du tribut et la réparation des usages qu'il lui a imposés. Elle n'est pas moralement coupable du tort que Tarek lui a dissimulé.
+- **[[PER-DECH-41|Cyrda Loven]] :** personne liée, toujours vivante et capable de refuser de nouvelles tâches. Tarek lui doit la vérité, la fin du tribut et la réparation des usages qu'il lui a imposés. Elle n'est pas moralement coupable du tort que Tarek lui a dissimulé. Son propre rite de lecture du limon est décrit dans sa fiche, avec ses limites et ses possibilités de refus.
 - **[[PER-DECH-37|Séliane Mordin]] :** il respecte sa formation et redoute qu'elle préfère fermer la Table plutôt qu'admettre l'utilité de son rite. Il a menti sur l'origine de certains relevés.
 - **[[PER-DECH-39|Nolène Vassil]] :** il admire sa précision ; il lui propose de suivre une corde préparée, première étape d'un recrutement qu'elle pourrait encore refuser.
 - **[[PER-DECH-40|Erian Tolne]] :** il l'a protégé d'un éboulement ; ce souvenir rend leurs désaccords plus douloureux. Erian a vu que le nœud se resserrait alors que personne ne le touchait.
@@ -51,4 +51,4 @@ Tarek condamne publiquement les chefs qui exposent leurs ouvriers pour respecter
 
 Un nouveau pacte pourrait mener à la Déchéance avancée, mais **Tarek n'y est pas aujourd'hui**. Une branche libérée réduit son accès au Tribut, **sans abaisser automatiquement son niveau 12 ni faire s'écrouler physiquement le barrage**.
 
-[[groupes/ORG-DECH-11|La Table des Arpents]] · [[PER-DECH-37|Séliane]] · [[PER-DECH-39|Nolène]] · [[monde/decheance-canon|Tribut des Chutes]]
+[[groupes/ORG-DECH-11|La Table des Arpents]] · [[PER-DECH-37|Séliane]] · [[PER-DECH-39|Nolène]] · [[PER-DECH-41|Cyrda]] · [[monde/decheance-canon|Tribut des Chutes]]
