@@ -3,6 +3,7 @@ public/
 public-archives/
 .publication/
 artifacts/separation/
+artifacts/library/
 .quartz/
 .quartz-cache/
 quartz/.quartz-cache/

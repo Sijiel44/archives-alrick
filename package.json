@@ -41,7 +41,7 @@
     "test:studio": "node --test --test-concurrency=3 studio-local/tests/*.test.mjs",
     "build:integration": "node ./quartz/bootstrap-cli.mjs build && node scripts/assemble-pages.mjs",
     "build:archives": "node scripts/build-archives.mjs",
-    "test:publication": "node --test scripts/publication-scope.test.mjs"
+    "test:publication": "node --test scripts/publication-scope.test.mjs publication/library-model.test.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",
