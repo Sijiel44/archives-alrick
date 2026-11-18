@@ -1,4 +1,4 @@
-name: Publier sur GitHub Pages (manuel)
+name: Publier les Archives de L’Odyssée d’Orin
 on:
   # Publication toujours manuelle dans l'interface GitHub, ou par signal explicite de lot revu.
   # Les modifications ordinaires des fiches ne déclenchent AUCUN déploiement.
@@ -36,7 +36,7 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: public
+          path: public-archives
           retention-days: 1
   deploy:
     needs: build
@@ -67,16 +67,7 @@ jobs:
           node-version-file: .node-version
           cache: npm
       - run: npm ci
-      - name: Recette Chrome complète sur l'URL PUBLIQUE
-        run: PUBLIC_BASE=https://sijiel44.github.io/archives-alrick npm run test:m04:browser
-      - name: Recette Studio, audio et vidéo sur l’URL publique
+      - name: Vérifier le périmètre campagne sur l’URL publique
         env:
           PUBLIC_BASE: https://sijiel44.github.io/archives-alrick
-        run: node --test studio-local/tests/pages.test.mjs
-      - name: Captures du site public (bureau/mobile/combat)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: recette-m041-pages
-          path: artifacts/m041/
-          if-no-files-found: ignore
+        run: node --test publication/archives-public.test.mjs

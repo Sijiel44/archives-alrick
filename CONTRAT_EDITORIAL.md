@@ -1,5 +1,11 @@
 # Contrat éditorial de continuité — Les Archives d’Alrick
 
+## Décision du créateur — séparation du 17 novembre 2026
+
+Les Archives publiées sur GitHub Pages sont exclusivement la mémoire de **L’Odyssée d’Orin**. Le jeu, son univers autonome et ses outils sont publiés sur le Site **Les Chroniques d’Entre-Rives** existant. Cette décision remplace la présentation historique des « quatre parcours » réunis sur Pages, conservée ci-dessous comme contexte. Voir [la séparation et sa maintenance](docs/SEPARATION_SITES_2026-11-17.md).
+
+Les travaux d’univers sont autorisés à publication par le créateur dans ce cadre. Ils n’ont pas besoin d’avoir été joués pour appartenir aux Chroniques. Leur statut reste explicite, sans inventer d’événements d’Orin. Les deux projets peuvent utiliser leurs sources respectives par adaptation éditoriale ; le lecteur des Chroniques consulte les fiches sur place, sans lien imposé vers GitHub ou les Archives.
+
 ## Principes non négociables
 
 1. Le **brut de campagne** est l'archive première ; les six volumes consolidés sont des synthèses et indices ; le site présente un état lisible et sourcé. Un ancien état n'est pas forcément le canon actuel.

@@ -1,5 +1,9 @@
 # Enrichir Les Chroniques d’Entre-Rives
 
+**Destination obligatoire depuis le 17 novembre 2026 :** GitHub Pages est réservé à **L’Odyssée d’Orin**. L’univers et les outils des **Chroniques d’Entre-Rives** se publient sur le projet Sites existant. Lire le [contrat de séparation et les commandes de maintenance](docs/SEPARATION_SITES_2026-11-17.md) avant tout changement. Ne jamais republier l’ancien assemblage `public/` sur Pages.
+
+Pour une nouvelle fiche, indiquer `portee: jdr_alrick` (campagne) ou `portee: univers_partage` (Chroniques). Une création d’univers autorisée par le créateur peut être publiée sans avoir été jouée dans la campagne. L’autorisation donnée dans la conversation prévaut sur le passage systématique en brouillon décrit ci-dessous ; elle ne s’étend pas aux secrets et sauvegardes privées.
+
 Les Archives d’Alrick servent de source à l’univers. Les fiches vivent dans `content/`. Les sources, décisions éditoriales et chemins de publication sont détaillés dans le [contrat éditorial](CONTRAT_EDITORIAL.md). Les contenus générés dans `public/` sont reconstruits par GitHub Actions.
 
 1. Dans Codex ou un assistant ChatGPT relié à GitHub, ouvrir le dépôt `Sijiel44/archives-alrick` si ton compte y a accès. Un contributeur externe peut proposer un changement depuis son fork GitHub. Travailler sur une branche dédiée à une fiche ou à un ensemble cohérent.

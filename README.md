@@ -1,8 +1,8 @@
 # Les Archives d’Alrick — L’Odyssée d’Orin
 
-Encyclopédie de jeu de rôle construite avec **Quartz 5**, dotée de quatre parcours : **Univers**, **Odyssée d’Orin**, **Jouer dans ce monde** et **MJ assisté par IA**. Le dépôt compte désormais **259 fiches codées approuvées**, dont quatre nouveaux dossiers Atlas détaillant l'Hiver, le Printemps, l'Été et l'Automne de l'Île des Divertissements. L’ancien décompte des fiches jaunes/rouges sur 285 entrées est un état historique, pas la classification actuelle des 645 sujets. L’index directeur documentaire v2.4 porte sur **645 sujets**, dont tous ne sont pas migrés au web.
+Archives de campagne construites avec **Quartz 5**. Le site GitHub Pages est exclusivement consacré au récit et aux documents de **L’Odyssée d’Orin**. Le dépôt conserve les sources historiques et techniques ; leur présence ici ne signifie pas leur publication dans les Archives.
 
-Le workflow GitHub Pages déploie les lots explicitement approuvés après fusion sur `main` lorsque le marqueur de publication est modifié. L’assemblage sert le portail des Chroniques à la racine, le Studio MJ sous `studio/` et l’ancien accueil des Archives sous `archives.html`. Les fiches gardent leurs adresses. [Proposer une contribution](CONTRIBUTING.md)
+**Les Chroniques d’Entre-Rives**, leur univers autonome, le Studio et l’espace joueur vivent sur le [Site Chroniques existant](https://chroniques-entre-rives-studio.adaptableclove.chatgpt.site/). Le workflow Pages publie uniquement `public-archives/`, après les contrôles et l’autorisation du créateur. Les anciens chemins `/studio/` servent à récupérer les sauvegardes locales, sans effacement. Lire [la séparation, les commandes et la feuille de route](docs/SEPARATION_SITES_2026-11-17.md). [Proposer une contribution](CONTRIBUTING.md)
 
 ## Continuité et sauvegardes
 
