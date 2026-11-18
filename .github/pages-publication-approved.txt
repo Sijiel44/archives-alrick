@@ -1,3 +1,10 @@
+# SEPARATION-ORIN-CHRONIQUES — 17 novembre 2026
+# Décision explicite du créateur : Pages réservé à L’Odyssée d’Orin ; jeu et univers sur le Site Chroniques.
+# Cette décision remplace les anciens périmètres de portail réunifié ci-dessous.
+# Site Chroniques v23 publié : f9e3862c52f7bb63f0e55ba33e1b0cd276418b42.
+# Déploiement Sites réussi appgdep_6afcbc0634988191a33c3e9ed0d2bf9b ; accueil et stockage Studio vérifiés en ligne.
+# npm test complet réussi ; Chrome 3/3 (migration, fiches, portails bureau/mobile).
+# Publier uniquement public-archives après CI verte. Conserver les pages de récupération des anciennes sauvegardes.
 # PNJ-009 — 16 novembre 2026 : publication du catalogue complet autorisée par le créateur.
 # Après CI verte : 102 fiches documentées, trois dragons conservés (105 entrées), Cabinet accessible aux joueurs, portraits Kelm/Ylva/Sévrane.
 # Statuts historiques et avertissements conservés ; pas de notes privées, pas de canonisation des propositions.
