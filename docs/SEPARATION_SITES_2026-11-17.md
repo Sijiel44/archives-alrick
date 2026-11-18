@@ -31,12 +31,24 @@ GitHub Pages et Sites ont des origines distinctes : leurs données ne peuvent pa
 ## Suite prioritaire
 
 1. Recette en séance avec un MJ et deux joueurs : sauvegarde, restauration, projection choisie et médias. Ce test humain reste à faire.
-2. Rapprocher les deux catalogues de lecture internes (parcours éditorial et références de jeu), sans perdre les fiches, leurs codes ni leurs statuts.
+2. Bibliothèque commune réalisée par le lot BIB-001 : entrée unique, catégories, recherche, lectures associées et retour aux filtres. Continuer les rapprochements éditoriaux lorsque deux identifiants différents désignent un même sujet ; ne pas les fusionner automatiquement.
 3. Progression des PJ : mentorat, décisions MJ, historique et rétablissement.
 4. Dossier joueur imprimable et exports de contenus approuvés.
 5. Enrichissement de l’Atlas et des renvois « utilisé dans ».
 6. Jeu distant : étude d’authentification, permissions et reconnexion avant développement. Le site actuel ne synchronise pas des parties entre appareils.
 
 Tests automatisés réussis et publication ne valent pas homologation en séance.
+
+## BIB-001 — bibliothèque commune
+
+La page `/bibliotheque.html` réunit les index de lecture et de jeu. Les identifiants identiques partagent une carte, avec deux accès et deux statuts si nécessaire. Aucun article, portrait, identifiant ou lien historique n’est supprimé. Les brouillons, fiches non répertoriées et références signalant des révélations sont exclus de ce nouvel index ; leur présence historique sur une autre page ne vaut pas autorisation de découverte publique.
+
+Sur le Site v31 de départ : 291 dossiers, 357 références ; après filtrage, **406 fiches distinctes et 103 doubles lectures**, dans 12 catégories. Ces nombres se recalculent à chaque intégration. Recherche sans accents, code exact prioritaire, filtres enregistrés dans l’adresse, chargement de 24 résultats à la fois, retour aux filtres depuis les deux lecteurs. Les Archives de campagne et les sauvegardes privées ne sont pas modifiées par ce lot.
+
+Maintenance : ouvrir la dernière source du Site existant, puis exécuter `node scripts/integrate-library-sites.mjs <checkout-Sites/dist>`. L’export complet du Studio le fait également lorsque le portail est présent. Le script lit les imports courants du catalogue : il ne fige pas les lots de lore ni leur nombre et ne remplace pas les articles par une ancienne copie.
+
+Contrôles : `npm test`, contrôle d’intégrité du Site `node scripts/check-public-library.mjs`, puis `SITES_CHECKOUT=<checkout-Sites> node --test publication/library-browser.test.mjs` (variable d’environnement à adapter au shell). La recette couvre les deux lecteurs, les filtres, leur remise à zéro, les états vides et erreur réseau, l’absence de liens GitHub et les largeurs 1365/390 pixels. Avec `PUBLIC_LIBRARY_URL`, elle peut être rejouée sur le domaine publié.
+
+Prochain développement fonctionnel : progression PJ (mentorat, validation MJ et historique rétablissable), après examen des fonctions existantes et des PR INDEX/M03. L’essai en séance avec des personnes reste une validation distincte.
 
 Recette du 17 novembre : périmètre 2/2 ; construction des Archives et 31 676 liens contrôlés ; Chrome 3/3 sur la récupération/restauration avec notes privées, le lecteur interne et les deux portails à 1365 et 390 pixels. Captures relues. Le débordement des codes documentaires sur mobile a été corrigé. Aucune donnée réelle utilisée.

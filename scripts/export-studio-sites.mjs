@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 import path from 'node:path';
+import { existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { readStudioAsset, studioAssets } from '../studio-local/serve.mjs';
 import { buildLibraryIndex } from '../studio-local/bibliotheque.mjs';
 import { contentDocuments, isPublicUniverse } from './publication-scope.mjs';
@@ -110,3 +112,8 @@ await writeFile(path.join(output, 'public-documents.json'), JSON.stringify({ ent
 await writeFile(path.join(output, 'publication.json'), JSON.stringify({ profile: 'chroniques-studio', generatedAt: new Date().toISOString(),
   entries: readable.size, source: 'studio-local allowlist', campaignPrivateData: false }));
 console.log(`CHRONIQUES · Studio exporté · ${readable.size} fiches internes · Univers existant préservé.`);
+// Actual Site checkouts have an editorial catalogue. Refresh its common entry point
+// after Studio exports without copying the repository's historical portal over it.
+if (existsSync(path.join(destination, 'app.mjs'))) {
+  execFileSync(process.execPath, ['scripts/integrate-library-sites.mjs', destination], { stdio: 'inherit' });
+}
