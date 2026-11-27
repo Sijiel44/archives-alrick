@@ -1,0 +1,291 @@
+{
+  "schema": "entre-rives.bestiaire.sites.manifest.v1",
+  "lot": "BEST-ER-008",
+  "version": "0.1.0",
+  "base": "e0746d762cd9c5953bd6a74ac126273781d48418",
+  "source": {
+    "path": "docs/bestiaire/BEST_ER_008_SITES/lot-v0.1.json",
+    "gitBlobSha": "33c5afe9538c50073e3121e123dc02dbcc906894"
+  },
+  "registry": {
+    "path": "docs/bestiaire/B002_CODES_VALIDES.json",
+    "gitBlobSha": "6b1d9e5b558bd98f6287344777f012851e71cccd"
+  },
+  "catalogue": {
+    "path": "studio-local/catalogue-bestiaire.json",
+    "gitBlobSha": "b7fce7aa100b7e50bc5ee566018f3744adbc164e",
+    "count": 35
+  },
+  "historicalInventory": {
+    "ref": "bestiaire/b0031-reconstruction-integration",
+    "gitBlobSha": "461256adac9ca666ba0e5849c3baa6b5b204b9d2",
+    "count": 41
+  },
+  "entries": [
+    {
+      "id": "BEST-ER-008-033",
+      "candidateRegistryId": "ESP-ER-033",
+      "registryStatus": "non_attribue",
+      "name": "Frélin des cendres",
+      "slug": "frelin-des-cendres",
+      "provenance": "Reconstitution d'une demande du 8 novembre 2026 ; texte original non retrouvé. Illustration originale identifiée par son titre, fichier non récupéré.",
+      "editorialStatus": "proposition_non_jouee",
+      "canonValidated": false,
+      "publish": false,
+      "illustration": {
+        "status": "original_signale_non_recupere",
+        "path": null,
+        "alt": "Mammifère anthracite dans un ancien foyer refroidi ; aucune flamme sur le corps. Réutiliser prioritairement la planche originale après contrôle.",
+        "brief": "Mammifère anthracite dans un ancien foyer refroidi ; aucune flamme sur le corps. Réutiliser prioritairement la planche originale après contrôle.",
+        "provenance": "Titre de fichier retrouvé : Frelin des cendres dans les terres volcaniques.png ; aucun binaire vérifié."
+      },
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "comparison": "P41 (garde-braise, reptile) ; INDC-ER-002 (renarde de brume, individu)."
+    },
+    {
+      "id": "BEST-ER-008-034",
+      "candidateRegistryId": "ESP-ER-034",
+      "registryStatus": "non_attribue",
+      "name": "Lièvre des vents",
+      "slug": "lievre-des-vents",
+      "provenance": "Création BEST-ER-008, proposition non jouée.",
+      "editorialStatus": "proposition_non_jouee",
+      "canonValidated": false,
+      "publish": false,
+      "illustration": {
+        "status": "a_produire",
+        "path": null,
+        "alt": "Lièvre argenté aux pattes longues, prairie de coteau balayée par le vent.",
+        "brief": "Lièvre argenté aux pattes longues, prairie de coteau balayée par le vent.",
+        "provenance": null
+      },
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "comparison": "P05 (lièvre des pentes froides) ; distinguer prairie venteuse et pente alpine après lecture intégrale."
+    },
+    {
+      "id": "BEST-ER-008-035",
+      "candidateRegistryId": "ESP-ER-035",
+      "registryStatus": "non_attribue",
+      "name": "Sanglier cuirasse",
+      "slug": "sanglier-cuirasse",
+      "provenance": "Création BEST-ER-008, proposition non jouée.",
+      "editorialStatus": "proposition_non_jouee",
+      "canonValidated": false,
+      "publish": false,
+      "illustration": {
+        "status": "a_produire",
+        "path": null,
+        "alt": "Sanglier brun puissant, plaques organiques superposées aux épaules, lisière pierreuse.",
+        "brief": "Sanglier brun puissant, plaques organiques superposées aux épaules, lisière pierreuse.",
+        "provenance": null
+      },
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "comparison": "ESP-ER-011 (crinière de silex, non minérale), P28 ; différencier les plaques anatomiques."
+    },
+    {
+      "id": "BEST-ER-008-036",
+      "candidateRegistryId": "ESP-ER-036",
+      "registryStatus": "non_attribue",
+      "name": "Luciole de veille",
+      "slug": "luciole-de-veille",
+      "provenance": "Création BEST-ER-008, proposition non jouée.",
+      "editorialStatus": "proposition_non_jouee",
+      "canonValidated": false,
+      "publish": false,
+      "illustration": {
+        "status": "a_produire",
+        "path": null,
+        "alt": "Macro de coléoptères aux petites lueurs bleutées dans les herbes nocturnes.",
+        "brief": "Macro de coléoptères aux petites lueurs bleutées dans les herbes nocturnes.",
+        "provenance": null
+      },
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "comparison": "ESP-ER-020, P23 ; habitat végétal et signaux bleutés distincts."
+    },
+    {
+      "id": "BEST-ER-008-037",
+      "candidateRegistryId": "ESP-ER-037",
+      "registryStatus": "non_attribue",
+      "name": "Mord-rive",
+      "slug": "mord-rive",
+      "provenance": "Création BEST-ER-008, proposition non jouée.",
+      "editorialStatus": "proposition_non_jouee",
+      "canonValidated": false,
+      "publish": false,
+      "illustration": {
+        "status": "a_produire",
+        "path": null,
+        "alt": "Reptile olive aplati à longue queue, gué profond sous un pont ancien.",
+        "brief": "Reptile olive aplati à longue queue, gué profond sous un pont ancien.",
+        "provenance": null
+      },
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "comparison": "ESP-ER-018 (Vautre des marais, prédateur différent), P29 (couleuvre)."
+    },
+    {
+      "id": "BEST-ER-008-038",
+      "candidateRegistryId": "ESP-ER-038",
+      "registryStatus": "non_attribue",
+      "name": "Corbeau des bornes",
+      "slug": "corbeau-des-bornes",
+      "provenance": "Création BEST-ER-008, proposition non jouée.",
+      "editorialStatus": "proposition_non_jouee",
+      "canonValidated": false,
+      "publish": false,
+      "illustration": {
+        "status": "a_produire",
+        "path": null,
+        "alt": "Corbeau noir à rémiges argentées sur une borne de pierre, chemins divergents.",
+        "brief": "Corbeau noir à rémiges argentées sur une borne de pierre, chemins divergents.",
+        "provenance": null
+      },
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "comparison": "ESP-ER-012 et P10 ; orientation plutôt qu'imitation vocale ou fréquentation des charrois."
+    },
+    {
+      "id": "BEST-ER-008-039",
+      "candidateRegistryId": "ESP-ER-039",
+      "registryStatus": "non_attribue",
+      "name": "Loup de brume",
+      "slug": "loup-de-brume",
+      "provenance": "Création BEST-ER-008, proposition non jouée.",
+      "editorialStatus": "proposition_non_jouee",
+      "canonValidated": false,
+      "publish": false,
+      "illustration": {
+        "status": "a_produire",
+        "path": null,
+        "alt": "Meute de loups pâles anatomiquement crédibles, vallée boisée dans une brume naturelle.",
+        "brief": "Meute de loups pâles anatomiquement crédibles, vallée boisée dans une brume naturelle.",
+        "provenance": null
+      },
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "comparison": "INDC-ER-002 (renarde de brume, individu distinct)."
+    },
+    {
+      "id": "BEST-ER-008-040",
+      "candidateRegistryId": "ESP-ER-040",
+      "registryStatus": "non_attribue",
+      "name": "Veilleur des racines",
+      "slug": "veilleur-des-racines",
+      "provenance": "Création BEST-ER-008, proposition non jouée ; origine et conscience ouvertes.",
+      "editorialStatus": "proposition_non_jouee",
+      "canonValidated": false,
+      "publish": false,
+      "illustration": {
+        "status": "a_produire",
+        "path": null,
+        "alt": "Petit être de racines nouées et de mousse, à proximité d'un arbre fragilisé.",
+        "brief": "Petit être de racines nouées et de mousse, à proximité d'un arbre fragilisé.",
+        "provenance": null
+      },
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "comparison": "ESP-ER-021 (fée consciente), distinguer nature et origine ; revue LORE obligatoire."
+    },
+    {
+      "id": "BEST-ER-008-041",
+      "candidateRegistryId": "ESP-ER-041",
+      "registryStatus": "non_attribue",
+      "name": "Héron d’orée",
+      "slug": "heron-d-oree",
+      "provenance": "Création BEST-ER-008, proposition non jouée.",
+      "editorialStatus": "proposition_non_jouee",
+      "canonValidated": false,
+      "publish": false,
+      "illustration": {
+        "status": "a_produire",
+        "path": null,
+        "alt": "Héron ocre doré en eau claire, lisière forestière au matin.",
+        "brief": "Héron ocre doré en eau claire, lisière forestière au matin.",
+        "provenance": null
+      },
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "comparison": "INDC-ER-003 (Héron des lanternes, individu), P31 (bassins froids)."
+    },
+    {
+      "id": "BEST-ER-008-042",
+      "candidateRegistryId": "ESP-ER-042",
+      "registryStatus": "non_attribue",
+      "name": "Fouisseur de schiste",
+      "slug": "fouisseur-de-schiste",
+      "provenance": "Création BEST-ER-008, proposition non jouée.",
+      "editorialStatus": "proposition_non_jouee",
+      "canonValidated": false,
+      "publish": false,
+      "illustration": {
+        "status": "a_produire",
+        "path": null,
+        "alt": "Mammifère gris aux fortes pattes dans une galerie de schiste fracturé.",
+        "brief": "Mammifère gris aux fortes pattes dans une galerie de schiste fracturé.",
+        "provenance": null
+      },
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "comparison": "ESP-ER-019 (ver d'argile), P36 (Échopode, comparaison nécessaire)."
+    }
+  ],
+  "checks": {
+    "entries": 10,
+    "uniqueIds": true,
+    "uniqueSlugs": true,
+    "uniqueRegistryCandidates": true,
+    "registryCandidateMentions": 0,
+    "catalogueExactIdCollisions": 0,
+    "catalogueNormalizedExactNameCollisions": 0,
+    "historicalTitlesScreened": 41,
+    "historicalExcerptsRead": [
+      "P05",
+      "P10",
+      "P23",
+      "P28",
+      "P31",
+      "P36",
+      "P41"
+    ],
+    "semanticDuplicateReview": "partial; P05/P10/P31 close, require editorial decision before assigning permanent ESP; no historical record modified",
+    "sitesCatalogue": "not accessible; no comparison or schema attestation",
+    "originalImagesVerified": 0,
+    "appTests": "not run",
+    "publication": "not performed"
+  },
+  "releaseGate": {
+    "ready": false,
+    "requires": [
+      "Review proposed taxonomy, especially P05/P10/P31 and Veilleur origin/conscience",
+      "Recover original Frélin artwork and original description if available",
+      "Produce and attach original media with provenance and integrity",
+      "Confirm Sites schema, identifiers, duplicate checks and permissions",
+      "Explicit canon validation per entry; no automatic promotion",
+      "Staging and desktop/mobile, filters, links, media; separate publication confirmation"
+    ]
+  }
+}
