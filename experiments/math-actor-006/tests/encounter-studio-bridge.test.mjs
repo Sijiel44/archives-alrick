@@ -12,7 +12,7 @@ function setup(repo=createMemoryEncounterRepository()){
  const catalog={list:async()=>[...store.values()].map(clone),read:async({actorId})=>clone(store.get(actorId)??null)};
  const make=()=>createEncounterStudioBridge({campaignId:'c1',encounterId:'s1',catalog,repository:repo,
    resolveM03:async ({action})=>({nativePortCalled:true,natural:action.dice.reduce((a,b)=>a+b,0)})});
- return {store,make,repo};
+ return {store,make,repo,catalog};
 }
 test('chargement sans aucune mutation',async()=>{
  const f=setup(),a=f.make();const x=await a.load();assert.equal(x.revision,0);
@@ -90,4 +90,42 @@ test('PNJ niveau 25 admis, niveau 26 refusé',async()=>{
  assert.equal(a.get().participants[0].level,25);
  const f2=setup();f2.store.get('pnj-7').level=26;f2.store.get('pnj-7').profileRef.level=26;
  const b=f2.make();await b.load();await assert.rejects(b.add({actorId:'pnj-7',side:'allies',role:'boss'}),/Niveau attendu/);
+});
+test('catalogue de sélection minimal : aucune métadonnée privée ni profil interne',async()=>{
+ const f=setup(),a=f.make();
+ f.store.get('pnj-7').profileRef.privateNote='SECRET_PROFILE';
+ const entries=await a.list();
+ const entry=entries.find(x=>x.id==='pnj-7');
+ assert.deepEqual(Object.keys(entry).sort(),['id','kind','label','level'].sort());
+ assert.doesNotMatch(JSON.stringify(entries),/SECRET_PROFILE|privateNote|SECRET/);
+});
+test('ajout refuse une fiche dont la réponse ne correspond pas à l’identité demandée',async()=>{
+ const f=setup(),a=f.make();
+ f.catalog.read=async()=>clone(f.store.get('creature-1'));
+ await a.load();
+ await assert.rejects(a.add({actorId:'pnj-7',side:'allies',role:'defense'}),/introuvable/);
+ assert.equal(a.get().participants.length,0);
+});
+test('prévisualisation refuse un moteur, niveau de profil ou libellé devenus obsolètes',async()=>{
+ const f=setup(),a=f.make();await a.load();
+ await a.add({actorId:'pnj-7',side:'allies',role:'defense'});
+ await a.add({actorId:'creature-1',side:'adversaries',role:'assaut'});
+ const p=f.store.get('pnj-7'),tryPreview=()=>a.preview({attackerId:'pnj-7',defenderId:'creature-1',dice:[1,2,3,4,5]});
+ p.profileRef.engine='legacy';await assert.rejects(tryPreview(),/modifiée/);
+ p.profileRef.engine='M03';p.profileRef.level=6;await assert.rejects(tryPreview(),/modifiée/);
+ p.profileRef.level=5;p.label='Renommé';await assert.rejects(tryPreview(),/modifiée/);
+});
+test('accusé de sauvegarde incohérent ne remplace pas le brouillon local',async()=>{
+ const backing=createMemoryEncounterRepository();
+ const repo={
+  read:params=>backing.read(params),
+  compareAndSwap:async params=>{
+   const response=await backing.compareAndSwap(params);
+   return {ok:true,draft:{...response.draft,revision:response.draft.revision+1}};
+  }
+ };
+ const f=setup(repo),a=f.make();await a.load();
+ await assert.rejects(a.add({actorId:'pnj-7',side:'allies',role:'defense'}),/incohérente/);
+ assert.equal(a.get().revision,0);
+ assert.equal(a.get().participants.length,0);
 });

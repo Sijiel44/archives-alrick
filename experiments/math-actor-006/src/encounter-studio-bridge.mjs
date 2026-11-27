@@ -6,7 +6,8 @@ const copy=x=>structuredClone(x);
 const label=(x,key)=>{if(typeof x!=='string'||!x.trim()||x.length>200)throw new TypeError(key+' invalide.');return x;};
 function verifySnapshot(participant,live,campaignId){
  if(!obj(live)||live.privateAccess===false||live.deleted===true||live.campaignId!==campaignId||
- live.id!==participant.actorId||live.kind!==participant.kind||live.level!==participant.level||
+ live.id!==participant.actorId||live.kind!==participant.kind||live.level!==participant.level||live.label!==participant.label||
+ live.profileRef?.engine!=='M03'||live.profileRef?.level!==participant.level||
  live.profileRef?.id!==participant.profileRef.id||live.profileRef?.version!==participant.profileRef.version||
  live.sourceRef?.id!==participant.sourceRef.id||live.sourceRef?.version!==participant.sourceRef.version)
  throw Error('Fiche modifiée ou inaccessible : revalider le participant dans le Studio.');
@@ -17,7 +18,8 @@ function checkDice(dice){
  return [...dice];
 }
 /**
- * catalog.list/read : accès MJ aux fiches de campagne, id/kind/level/label/sourceRef/profileRef.
+ * catalog.list/read : accès MJ aux fiches de campagne ; list renvoie id/kind/level/label uniquement.
+ * catalog.read : l'instance complète doit être filtrée par permissions et possède sourceRef/profileRef.
  * repository.read/compareAndSwap : CAS ATOMIQUE (une transaction IndexedDB).
  * resolveM03 : moteur natif officiel délégué, sans dépense ni écriture.
  */
@@ -38,21 +40,22 @@ export function createEncounterStudioBridge({campaignId,encounterId,catalog,repo
   const entries=await catalog.list({campaignId});
   if(!Array.isArray(entries))throw TypeError('Catalogue invalide.');
   return entries.filter(x=>obj(x)&&x.campaignId===campaignId&&x.privateAccess!==false&&x.deleted!==true)
-    .map(x=>({id:x.id,kind:x.kind,label:x.label,level:x.level,profileRef:copy(x.profileRef)}));
+    .map(x=>({id:x.id,kind:x.kind,label:x.label,level:x.level}));
  }
  async function save(build){
   const old=get(),next=build(old);
   const confirmation=await repository.compareAndSwap({campaignId,encounterId,expectedRevision:old.revision,nextDraft:copy(next)});
   if(!obj(confirmation)||confirmation.ok!==true)throw Error('Conflit de révision : actualiser la rencontre (aucune modification appliquée).');
-  draft=identity(importEncounterDraft(confirmation.draft));
-  if(draft.revision!==next.revision||exportEncounterDraft(draft)!==exportEncounterDraft(next))
+  const confirmed=identity(importEncounterDraft(confirmation.draft));
+  if(confirmed.revision!==next.revision||exportEncounterDraft(confirmed)!==exportEncounterDraft(next))
    throw Error('Confirmation de stockage incohérente : actualiser la rencontre.');
+  draft=confirmed;
   return get();
  }
  async function add({actorId,side,role}){
   label(actorId,'actorId');
   const record=await catalog.read({campaignId,actorId});
-  if(!obj(record)||record.campaignId!==campaignId||record.deleted===true||record.privateAccess===false)
+  if(!obj(record)||record.id!==actorId||record.campaignId!==campaignId||record.deleted===true||record.privateAccess===false)
    throw Error('Fiche introuvable ou non accessible dans cette campagne.');
   const selected={actorId:record.id,kind:record.kind,side,role,label:record.label,level:record.level,
    sourceRef:copy(record.sourceRef),profileRef:copy(record.profileRef)};
