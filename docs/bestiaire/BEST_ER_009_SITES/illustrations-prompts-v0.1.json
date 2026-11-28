@@ -1,0 +1,129 @@
+{
+  "schema": "entre-rives.bestiaire.illustrations-provenance.v1",
+  "lot": "BEST-ER-009",
+  "version": "0.1.0",
+  "date": "2026-11-26",
+  "notice": "Images originales générées ; prompts de création et retouches conservés. Les originaux PNG peuvent dépasser 3 Mio : utiliser les dérivés WebP pour une intégration web. Aucun modèle ni graine non retourné par l’outil n’est prétendu.",
+  "entries": [
+    {
+      "id": "BEST-ER-009-043",
+      "name": "Cloporte à chambres d’hiver",
+      "tool": "image_gen intégré",
+      "date": "2026-11-26",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale d’encyclopédie fantasy Entre-Rives BEST-ER-009. Primary request: Un isopode forestier long comme un avant-bras, quatorze petites pattes, carapace en plaques anthracite portant des loges translucides opalines remplies de givre ancien. L’animal entier rampe sur l’humus d’une forêt ancienne en été ; une petite zone de condensation froide près de ses plaques, feuilles brunes et graines alentour. Pas un scarabée, pas de glace massive. Style/medium: peinture naturaliste semi-réaliste détaillée, anatomie cohérente, merveilleux discret lisible, couleurs forestières profondes, lumière naturelle, image unique paysage 4:3 sans texte ni cadre ni filigrane ni diagramme. Composition: créature entière distincte et habitat, sujet bien visible, aucun personnage. Ne pas représenter une page de livre.",
+      "retouched": false,
+      "originalPath": "illustrations/originaux/BEST-ER-009-043.png",
+      "webPath": "illustrations/webp/BEST-ER-009-043.webp",
+      "originalSha256": "9ff7c34f0fd12020038606ad47c04b969debea663d7f2b3b2e65986267d89065",
+      "webSha256": "6c1bbc6b7113c3aa1c8a0ab699bb2b96fe77160af28947b71d31a1507e8652df"
+    },
+    {
+      "id": "BEST-ER-009-044",
+      "name": "Limace-vitrail des fougères",
+      "tool": "image_gen intégré",
+      "date": "2026-11-26",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale d’encyclopédie fantasy Entre-Rives BEST-ER-009. Primary request: Une grande limace sans coquille au corps translucide nacré traversé de fines membranes colorées comme verre dépoli, deux paires de tentacules souples, glissant sur fronde de fougère dans un sous-bois ancien. Un rayon filtré crée un spectre local sur une feuille, pas d’aura lumineuse artificielle. Corps entier anatomie de limace, aucun escargot à coquille. Style/medium: peinture naturaliste semi-réaliste détaillée, anatomie cohérente, merveilleux discret lisible, couleurs forestières profondes, lumière naturelle, image unique paysage 4:3 sans texte ni cadre ni filigrane ni diagramme. Composition: créature entière distincte et habitat, sujet bien visible, aucun personnage. Ne pas représenter une page de livre.",
+      "retouched": false,
+      "originalPath": "illustrations/originaux/BEST-ER-009-044.png",
+      "webPath": "illustrations/webp/BEST-ER-009-044.webp",
+      "originalSha256": "35032b2abcb65a6bfc36cae49b1f355ebe1c1208be1b40c930871ec7b9391ee9",
+      "webSha256": "ccbcb3a4946ab3e0700395bfed612f05229b73be41160897fd650b493a892f22"
+    },
+    {
+      "id": "BEST-ER-009-045",
+      "name": "Ronce-pèlerine",
+      "tool": "image_gen intégré",
+      "date": "2026-11-26",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale d’encyclopédie fantasy Entre-Rives BEST-ER-009. Primary request: Une plante buissonnante de ronce entièrement non humanoïde, longs arceaux épineux et petites feuilles vertes, racines fines disposées autour d’une motte sombre, quelques racines soulevées indiquant un déplacement très lent vers une trouée ensoleillée. Pas de visage, pas de mains ni de jambes, pas de gardien arbre, seulement un buisson vivant merveilleusement mobile au sol de vieille forêt. Style/medium: peinture naturaliste semi-réaliste détaillée, anatomie cohérente, merveilleux lisible, couleurs forestières profondes, lumière naturelle, image unique paysage 4:3 sans texte ni cadre ni filigrane. Composition: créature entière distincte et habitat naturel, sujet bien visible. Ne pas représenter une page de livre.",
+      "retouched": false,
+      "originalPath": "illustrations/originaux/BEST-ER-009-045.png",
+      "webPath": "illustrations/webp/BEST-ER-009-045.webp",
+      "originalSha256": "1e02c41678c05eab101b987fe5e9bb8e761bbf207dc7aa5e335ceec227fb6883",
+      "webSha256": "459d37ddb05fcfce97662dc78bc5b7bd108cc6a86ee1a21cd9390e6df85caa91"
+    },
+    {
+      "id": "BEST-ER-009-046",
+      "name": "Noctule à ombres déliées",
+      "tool": "image_gen intégré",
+      "date": "2026-11-26",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale d’encyclopédie fantasy Entre-Rives BEST-ER-009. Primary request: Une chauve-souris forestière sombre aux oreilles rousses en vol au-dessus d’une souche, membrane anatomiquement crédible, clair de lune entre les branches. Sur le tronc éclairé à proximité, deux silhouettes d’ombre légèrement décalées montrent un leurre temporaire tandis qu’un seul animal existe. Pas de démon, pas yeux lumineux, pas corps composé de fumée. Style/medium: peinture naturaliste semi-réaliste détaillée, anatomie cohérente, merveilleux lisible, couleurs forestières profondes, lumière naturelle, image unique paysage 4:3 sans texte ni cadre ni filigrane. Composition: créature entière distincte et habitat naturel, sujet bien visible. Ne pas représenter une page de livre.\nRetouche finale : Conserver la chauve-souris et toute la composition nocturne naturaliste semi-réaliste. Sur le grand tronc éclairé à droite ajouter une silhouette d’ombre plate, sombre et nettement lisible d’une chauve-souris aux ailes ouvertes, décalée de la position de l’animal réel comme un leurre surnaturel. Il ne doit y avoir qu’UN seul animal réel. Ombre entièrement plane collée à l’écorce, pas une seconde créature, pas une fumée. Garder forêt et pleine lune, sans texte.",
+      "retouched": true,
+      "originalPath": "illustrations/originaux/BEST-ER-009-046.png",
+      "webPath": "illustrations/webp/BEST-ER-009-046.webp",
+      "originalSha256": "a0b335d30f39a65374cf61e4129a12747514db5d77cbc8b6195558d98c1d7585",
+      "webSha256": "512eb95c01bb85a7835acf3a35ef5bf4b91e52a97ea641ce60296d38f932a185"
+    },
+    {
+      "id": "BEST-ER-009-047",
+      "name": "Méduse de canopée",
+      "tool": "image_gen intégré",
+      "date": "2026-11-26",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale d’encyclopédie fantasy Entre-Rives BEST-ER-009. Primary request: Un organisme aérien médusoïde unique flottant à hauteur basse sous la canopée humide d’une forêt ancienne, ombrelle translucide opaline, courtes franges et filaments perlés de condensation, petit ballon biologique crédible nourri de particules, pas océan ni eau sous le sujet. Sous-bois luxuriant brume légère et lumière filtrée, merveille calme sans foule d’animaux. Style/medium: peinture naturaliste semi-réaliste détaillée, anatomie cohérente, merveilleux lisible, couleurs forestières profondes, lumière naturelle, image unique paysage 4:3 sans texte ni cadre ni filigrane. Composition: créature entière distincte et habitat naturel, sujet bien visible. Ne pas représenter une page de livre.",
+      "retouched": false,
+      "originalPath": "illustrations/originaux/BEST-ER-009-047.png",
+      "webPath": "illustrations/webp/BEST-ER-009-047.webp",
+      "originalSha256": "daca1417d183932703a2f3af60cf1fc0a501121328a7d90b47d028f3d789967c",
+      "webSha256": "57678df43105fd0c5783dfccf9753203447de50b3ec2972821550c6151468ce0"
+    },
+    {
+      "id": "BEST-ER-009-048",
+      "name": "Mycélion porte-coupe",
+      "tool": "image_gen intégré",
+      "date": "2026-11-26",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale d’encyclopédie fantasy Entre-Rives BEST-ER-009. Primary request: Un petit organisme fongique ambulant non humanoïde : coupe de champignon ocre garnie de rosée, dessous dense touffe de filaments mycéliens épais servant à avancer sur bois pourri. Pas yeux ni bouche ni bras, pas bonhomme champignon. Un individu entier et un petit bourgeon attaché près d’une souche d’une forêt ancienne, texture fongique détaillée. Style/medium: peinture naturaliste semi-réaliste détaillée, anatomie cohérente, merveilleux lisible, couleurs forestières profondes, lumière naturelle, image unique paysage 4:3 sans texte ni cadre ni filigrane. Composition: créature entière distincte et habitat naturel, sujet bien visible. Ne pas représenter une page de livre.\nRetouche finale : Conserver le champignon mobile, la coupe concave, l’eau, les cordons crème et l’environnement exactement. Changer seulement la couleur du chapeau/coupe de l’ocre orangé vers un prune brun violacé naturel, avec bord et lamelles crème inchangés, eau ambrée visible dans la coupe. Texture naturaliste crédible, pas néon. Sans texte.",
+      "retouched": true,
+      "originalPath": "illustrations/originaux/BEST-ER-009-048.png",
+      "webPath": "illustrations/webp/BEST-ER-009-048.webp",
+      "originalSha256": "bb6865a9a8e8ad1da033ee9d317e04e8f18a697e4fef10bfc3a653aad1073cfd",
+      "webSha256": "a1e96e50feab16e21a12b2b392b220c01a492b9a3e2efbbba0efcff09fb7d1a7"
+    },
+    {
+      "id": "BEST-ER-009-049",
+      "name": "Nasse des ramées",
+      "tool": "image_gen intégré",
+      "date": "2026-11-26",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale d’encyclopédie fantasy Entre-Rives BEST-ER-009. Primary request: Un animal prédateur fixé sous une grosse branche de vieille forêt, corps central fuselé brun cuirassé d’écailles, petits appendices crampons accrochant l’écorce, exactement six longues membranes souples plissées gris-vert nervures pourpres ouvertes en corolle de nasse autour d’une bouche étroite. Camouflage feuilles mortes mais clairement animal, pas de racines ni tronc ni visage d’arbre, pas d’araignée, pas de victime humaine, vue de trois quarts du dessous pour anatomie lisible. Style/medium: peinture naturaliste semi-réaliste détaillée, anatomie cohérente, merveilleux lisible, couleurs forestières profondes, lumière naturelle, image unique paysage 4:3 sans texte ni cadre ni filigrane. Composition: créature entière distincte et habitat naturel, sujet bien visible. Ne pas représenter une page de livre.",
+      "retouched": false,
+      "originalPath": "illustrations/originaux/BEST-ER-009-049.png",
+      "webPath": "illustrations/webp/BEST-ER-009-049.webp",
+      "originalSha256": "0164ced85541885de97384e96468bc9740ef2598ec4b31d06e3cdd9d7c973cc8",
+      "webSha256": "fcea49304fcfc46f690ced1dc9e15083a3c1410340bdc348a8e0f6cf705d4661"
+    },
+    {
+      "id": "BEST-ER-009-050",
+      "name": "Noue-ciel des ramures",
+      "tool": "image_gen intégré",
+      "date": "2026-11-26",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale d’encyclopédie fantasy Entre-Rives BEST-ER-009. Primary request: Un animal rubané long et aplati bleu ardoise bordé de fines membranes cuivre pâle, tête animale étroite à deux yeux latéraux et courts barbillons, petites ventouses ventrales visibles. Son corps forme une boucle de nœud suspendue dans l’air entre deux branches très proches d’une canopée ancienne ; une extrémité touche le bois. Pas de portail ni rune ni dragon ni serpent à écailles, anatomie organique distincte, arrière-plan forêt. Style/medium: peinture naturaliste semi-réaliste détaillée, anatomie cohérente, merveilleux lisible, couleurs forestières profondes, lumière naturelle, image unique paysage 4:3 sans texte ni cadre ni filigrane. Composition: créature entière distincte et habitat naturel, sujet bien visible. Ne pas représenter une page de livre.",
+      "retouched": false,
+      "originalPath": "illustrations/originaux/BEST-ER-009-050.png",
+      "webPath": "illustrations/webp/BEST-ER-009-050.webp",
+      "originalSha256": "e4353a9b051218bc2bb95348935f84ba6c2da4ad42dfab314350ad2eefdb1370",
+      "webSha256": "51d6e6837665eb049539311a8e4d36b19be00449ff8f6447eedae88d22089c52"
+    },
+    {
+      "id": "BEST-ER-009-051",
+      "name": "Verrier des clairières",
+      "tool": "image_gen intégré",
+      "date": "2026-11-26",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale d’encyclopédie fantasy Entre-Rives BEST-ER-009. Primary request: Un petit reptile vert mousse mat à points crème et exactement six pattes courtes : trois paires de pattes attachées successivement au tronc, visibles en vue de trois quarts sur une branche, queue aplatie, petite crête basse faite de plaques translucides sur dos. Près du museau, une unique minuscule lamelle salivaire courbe claire tient sur une brindille et reflète le soleil. Clairière, fougères, pierres, corps non cristallin, pas armure de cristal. Style/medium: peinture naturaliste semi-réaliste détaillée, anatomie cohérente, merveilleux lisible, couleurs forestières profondes, lumière naturelle, image unique paysage 4:3 sans texte ni cadre ni filigrane. Composition: créature entière distincte et habitat naturel, sujet bien visible. Ne pas représenter une page de livre.\nRetouche finale : Conserver le petit reptile vert mousse, la branche, la forêt, la crête translucide et la queue aplatie. Corriger les pattes pour exactement SIX pattes organisées en TROIS paires bilatérales symétriques, trois points d’attache espacés sur chaque côté du corps (paire avant, paire médiane, paire arrière). Montrer clairement les trois pattes du côté proche et les trois correspondantes du côté opposé, aucune patte supplémentaire. Retirer le filament courbe ressemblant à une langue sortant de la bouche : bouche fermée ; placer à la place UNE petite lamelle transparente courbe collée sur la brindille près du museau, indépendante du corps. Garder le reste, peinture naturaliste sans texte.",
+      "retouched": true,
+      "originalPath": "illustrations/originaux/BEST-ER-009-051.png",
+      "webPath": "illustrations/webp/BEST-ER-009-051.webp",
+      "originalSha256": "b3e6699c090bb881d2a760c6d42eae0c9929d63aebbedbf434bf16375ebda87f",
+      "webSha256": "c2224647464178b4ebc1db4e8b3edd1a9def69af3a1e083262a6dbc90aac8402"
+    },
+    {
+      "id": "BEST-ER-009-052",
+      "name": "Dérobe-sentier",
+      "tool": "image_gen intégré",
+      "date": "2026-11-26",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale d’encyclopédie fantasy Entre-Rives BEST-ER-009. Primary request: Un petit groupe de papillons forestiers brun olive, ailes à bandes translucides gris étain entre les nervures, un grand individu au premier plan ailes ouvertes anatomiquement cohérentes. Ils volent sur un sentier sous vieille forêt en lumière oblique ; les bandes décalent subtilement les lignes de troncs vues à travers elles, mais le chemin de terre reste continu. Pas de portail, pas de personne, pas de nuée lumineuse. Style/medium: peinture naturaliste semi-réaliste détaillée, anatomie cohérente, merveilleux lisible, couleurs forestières profondes, lumière naturelle, image unique paysage 4:3 sans texte ni cadre ni filigrane. Composition: créature entière distincte et habitat naturel, sujet bien visible. Ne pas représenter une page de livre.",
+      "retouched": false,
+      "originalPath": "illustrations/originaux/BEST-ER-009-052.png",
+      "webPath": "illustrations/webp/BEST-ER-009-052.webp",
+      "originalSha256": "580979e4b187b07f57e5ecc100894346ec128c3597c2a03dde7d996eabae0cb6",
+      "webSha256": "9f5c236a64d05f584174b1f7e28d947660158c44fb7e28768e916c72efafdca7"
+    }
+  ]
+}

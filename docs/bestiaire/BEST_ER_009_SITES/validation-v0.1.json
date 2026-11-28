@@ -1,0 +1,81 @@
+{
+  "schema": "entre-rives.bestiaire.validation-preparation.v1",
+  "lot": "BEST-ER-009",
+  "version": "0.1.0",
+  "date": "2026-11-26",
+  "portee": "univers_partage",
+  "editorialDecision": "non_acquise_sur_les_dix_propositions",
+  "npmCi": {
+    "status": "passed",
+    "reportedVulnerabilities": 0
+  },
+  "npmTest": {
+    "status": "passed",
+    "scope": "branche isolée depuis BEST-ER-008, suite complète du dépôt, aucune publication",
+    "integrationPagesChecked": 1216,
+    "integrationLinksChecked": 94558,
+    "archivePagesChecked": 263,
+    "archiveLinksChecked": 31676
+  },
+  "artifactIntegrity": {
+    "status": "passed",
+    "command": "node verify-pack.mjs",
+    "scope": "tous les fichiers manifestés, champs, quatre amorces, images et collisions exactes ; rejoué après finalisation du manifeste"
+  },
+  "localPreview": {
+    "status": "passed",
+    "scope": "aperçu local de relecture, pas une intégration Sites",
+    "widths": [
+      {
+        "width": 1365,
+        "cards": 10,
+        "readers": 10,
+        "imagesLoaded": true,
+        "accentInsensitiveSearch": true,
+        "idSearch": true,
+        "emptyState": true,
+        "readerOpened": true,
+        "noHorizontalOverflow": true
+      },
+      {
+        "width": 390,
+        "cards": 10,
+        "readers": 10,
+        "imagesLoaded": true,
+        "accentInsensitiveSearch": true,
+        "idSearch": true,
+        "emptyState": true,
+        "readerOpened": true,
+        "noHorizontalOverflow": true
+      }
+    ],
+    "images": 20,
+    "externalRequests": 0,
+    "errors": [],
+    "screenshots": [
+      "recette/apercu-1365.png",
+      "recette/apercu-390.png",
+      "recette/fiche-1365.png",
+      "recette/fiche-390.png"
+    ],
+    "visualScreenshotsReviewed": true
+  },
+  "sites": {
+    "projectId": "appgprj_6aefa21ad1bc819198e86d83a74b3484",
+    "latestSavedVersion": 49,
+    "sourceCommit": "9e045dc12bed4ff6834639df48066c7b78773068",
+    "savedVersionId": "appgprj_6aefa21ad1bc819198e86d83a74b3484~appgver_b481b94715b08191bed843a77e2a5fa4",
+    "sourceReadAccess": true,
+    "publishRole": "owner",
+    "audience": "public",
+    "catalogueInspected": true,
+    "nativeImportPerformed": false,
+    "integrationBrowserRecipe": "not_run",
+    "newVersionSaved": false,
+    "deploymentAttempted": false,
+    "reason": "Propositions non approuvées ; mapper actuel force un statut validé. Recette intégration à faire après arbitrage et correction du contrat."
+  },
+  "canonicalIdsAssigned": 0,
+  "canonizations": 0,
+  "secretsIncluded": 0
+}

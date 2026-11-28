@@ -1,0 +1,317 @@
+{
+  "schema": "entre-rives.bestiaire.duplicate-control.v1",
+  "lot": "BEST-ER-009",
+  "version": "0.1.0",
+  "date": "2026-11-26",
+  "portee": "univers_partage",
+  "snapshot": {
+    "path": "snapshot-sources-v0.1.json",
+    "sha256": "3abb137627897726818f653407692eb2a78b726fe6fddbf285b845d22b18d72b"
+  },
+  "candidateIdentitySnapshotSha256": "43a9e962e396d9b08cae518348981968ae4197a61554588abf0438101c99dea3",
+  "sourceCommits": {
+    "githubCheckout": "eb34667f2b455d2eb24d1682c39da16059c4f24c",
+    "lot008": "6e439ad1755fd817b37a60e995b1fd8d9c82d2a1",
+    "historicalB0031": "643639b9b9783b1fdf48f5f6b887764eb486fdda",
+    "sitesV49": "9e045dc12bed4ff6834639df48066c7b78773068"
+  },
+  "checks": {
+    "idCollisions": 0,
+    "normalizedExactNameCollisions": 0,
+    "candidateIdsUnique": true,
+    "candidateNamesUnique": true,
+    "candidateSlugsUnique": true
+  },
+  "entries": [
+    {
+      "id": "BEST-ER-009-043",
+      "name": "Cloporte à chambres d’hiver",
+      "normalizedName": "cloporte a chambres d hiver",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-009-043",
+        "name": "Cloporte à chambres d’hiver",
+        "risk": "faible_a_moyen",
+        "related": [
+          "P23",
+          "P36",
+          "ESP-ER-006",
+          "ESP-ER-016"
+        ],
+        "assessment": "Isopode terrestre à nombreuses pattes et loges stockant une réserve hivernale. P23 est un crustacé aquatique bioluminescent ; P36 un arthropode cavernicole à six membres et antennes vibratoires ; ESP-ER-006 une tortue à carapace organique ; ESP-ER-016 ne produit aucun froid. Aucun homologue démontré. Réserve : valider la propriété merveilleuse locale, distincte d’une cryomancie et d’une stase temporelle.",
+        "decision": "proposition_distincte_defendable_sous_reserve_de_relecture_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-009-044",
+      "name": "Limace-vitrail des fougères",
+      "normalizedName": "limace vitrail des fougeres",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-009-044",
+        "name": "Limace-vitrail des fougères",
+        "risk": "moyen",
+        "related": [
+          "P14",
+          "ESP-ER-009"
+        ],
+        "assessment": "Gastéropodes humides détritivores apparentables par fonction. La Limace n’a pas de coquille ; manteau cloisonné déportant une lumière incidente, sans création de lumière. Aucune filiation ni nouvelle espèce biologiquement démontrée.",
+        "decision": "proposition_distincte_defendable_sous_reserve_de_relecture_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-009-045",
+      "name": "Ronce-pèlerine",
+      "normalizedName": "ronce pelerine",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-009-045",
+        "name": "Ronce-pèlerine",
+        "risk": "moyen_a_fort",
+        "related": [
+          "BEST-ER-008-040",
+          "ESP-ER-021"
+        ],
+        "assessment": "Végétal mobile voisin du Veilleur de racines. Texte distingue plante photosynthétique sans visage, déplacement très lent et recherche de ressources, sans mission de gardien ni soin magique. Ontologie et conscience restent à arbitrer ; pas de fusion automatique.",
+        "decision": "proposition_distincte_defendable_sous_reserve_de_relecture_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-009-046",
+      "name": "Noctule à ombres déliées",
+      "normalizedName": "noctule a ombres deliees",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-009-046",
+        "name": "Noctule à ombres déliées",
+        "risk": "faible_a_moyen",
+        "related": [
+          "P08",
+          "ESP-ER-023",
+          "INDC-ER-002"
+        ],
+        "assessment": "P08 chauve-souris cavernicole sans magie ; ESP-ER-023 est un mammifère planeur sans vol battu ; INDC-ER-002 un individu renarde distinct. Noctule forestière à ombre plate temporaire, sans corps double, téléportation ni filiation d’ombre divine.",
+        "decision": "proposition_distincte_defendable_sous_reserve_de_relecture_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-009-047",
+      "name": "Méduse de canopée",
+      "normalizedName": "meduse de canopee",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-009-047",
+        "name": "Méduse de canopée",
+        "risk": "faible",
+        "related": [
+          "P38",
+          "P23"
+        ],
+        "assessment": "Silhouette souple/translucide commune à des animaux aquatiques, mais méduse aérienne dépendante de l’humidité, sans origine lacustre fixée. Aucun homologue repéré ; métabolisme et portée de la flottaison à valider.",
+        "decision": "proposition_distincte_defendable_sous_reserve_de_relecture_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-009-048",
+      "name": "Mycélion porte-coupe",
+      "normalizedName": "mycelion porte coupe",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-009-048",
+        "name": "Mycélion porte-coupe",
+        "risk": "faible_a_moyen",
+        "related": [
+          "BEST-ER-008-040",
+          "ESP-ER-009",
+          "P36"
+        ],
+        "assessment": "Aucun organisme fongique ambulant dans le corpus comparé. Partage rôle de décomposition et mobilité organique ; coupe nutritive, contact local et absence de réseau de souvenirs distinguent la proposition. Conscience et classement restent ouverts.",
+        "decision": "proposition_distincte_defendable_sous_reserve_de_relecture_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-009-049",
+      "name": "Nasse des ramées",
+      "normalizedName": "nasse des ramees",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-009-049",
+        "name": "Nasse des ramées",
+        "risk": "moyen",
+        "related": [
+          "P22",
+          "ESP-ER-005",
+          "BEST-ER-008-040"
+        ],
+        "assessment": "Prédateur animal fixé par crampons, six membranes contractiles, sans racines ni soie. Distinct des araignées tisseuses et du gardien végétal malgré motif de piège camouflé. Éviter d’étendre sa prise descriptive à une entrave M03 automatique.",
+        "decision": "proposition_distincte_defendable_sous_reserve_de_relecture_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-009-050",
+      "name": "Noue-ciel des ramures",
+      "normalizedName": "noue ciel des ramures",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-009-050",
+        "name": "Noue-ciel des ramures",
+        "risk": "faible",
+        "related": [
+          "ESP-ER-023",
+          "P20",
+          "bestiaire-ver-des-frontieres"
+        ],
+        "assessment": "Animal ruban à appui d’air bref et attaché à son propre corps ; aucun homologue repéré. Planeur/faucon n’ont pas cette anatomie ; Ver concerne discontinuités de passage. Pas de portail, parenté draconique, contrôle météorologique ou transport de passager.",
+        "decision": "proposition_distincte_defendable_sous_reserve_de_relecture_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-009-051",
+      "name": "Verrier des clairières",
+      "normalizedName": "verrier des clairieres",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-009-051",
+        "name": "Verrier des clairières",
+        "risk": "faible_a_moyen",
+        "related": [
+          "P41",
+          "P37",
+          "bestiaire-mache-rune"
+        ],
+        "assessment": "P41 saurien volcanique, P37 caprin à cornes irisées ; Mâche-Rune prédateur d’inscriptions. Verrier à six pattes et petite sécrétion périssable ne mange pas de rune, ne forge pas un verre durable et n’hérite pas de pouvoirs draconiques.",
+        "decision": "proposition_distincte_defendable_sous_reserve_de_relecture_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-009-052",
+      "name": "Dérobe-sentier",
+      "normalizedName": "derobe sentier",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-009-052",
+        "name": "Dérobe-sentier",
+        "risk": "moyen",
+        "related": [
+          "P39",
+          "ESP-ER-003",
+          "ESP-ER-016",
+          "bestiaire-ver-des-frontieres"
+        ],
+        "assessment": "Papillon voisin de lépidoptères existants par silhouette ; mirage collectif local distinct de diffraction naturelle P39 et du froid absent ESP-ER-016. Terrain matériel intact, pas de mémoire volée ni géométrie réelle modifiée.",
+        "decision": "proposition_distincte_defendable_sous_reserve_de_relecture_editoriale"
+      }
+    }
+  ],
+  "sites": {
+    "readingCount": 306,
+    "libraryIndexCount": 411,
+    "libraryVariantCount": 514,
+    "bestiaryIndexCount": 49,
+    "bestiaryVariantCount": 84,
+    "publicDocumentCount": 357,
+    "bestiaryCatalogueCount": 35,
+    "lot008": [
+      {
+        "id": "BEST-ER-008-033",
+        "name": "Frélin des cendres",
+        "candidateRegistryId": "ESP-ER-033",
+        "idPresent": false,
+        "normalizedNamePresent": false
+      },
+      {
+        "id": "BEST-ER-008-034",
+        "name": "Lièvre des vents",
+        "candidateRegistryId": "ESP-ER-034",
+        "idPresent": false,
+        "normalizedNamePresent": false
+      },
+      {
+        "id": "BEST-ER-008-035",
+        "name": "Sanglier cuirasse",
+        "candidateRegistryId": "ESP-ER-035",
+        "idPresent": false,
+        "normalizedNamePresent": false
+      },
+      {
+        "id": "BEST-ER-008-036",
+        "name": "Luciole de veille",
+        "candidateRegistryId": "ESP-ER-036",
+        "idPresent": false,
+        "normalizedNamePresent": false
+      },
+      {
+        "id": "BEST-ER-008-037",
+        "name": "Mord-rive",
+        "candidateRegistryId": "ESP-ER-037",
+        "idPresent": false,
+        "normalizedNamePresent": false
+      },
+      {
+        "id": "BEST-ER-008-038",
+        "name": "Corbeau des bornes",
+        "candidateRegistryId": "ESP-ER-038",
+        "idPresent": false,
+        "normalizedNamePresent": false
+      },
+      {
+        "id": "BEST-ER-008-039",
+        "name": "Loup de brume",
+        "candidateRegistryId": "ESP-ER-039",
+        "idPresent": false,
+        "normalizedNamePresent": false
+      },
+      {
+        "id": "BEST-ER-008-040",
+        "name": "Veilleur des racines",
+        "candidateRegistryId": "ESP-ER-040",
+        "idPresent": false,
+        "normalizedNamePresent": false
+      },
+      {
+        "id": "BEST-ER-008-041",
+        "name": "Héron d’orée",
+        "candidateRegistryId": "ESP-ER-041",
+        "idPresent": false,
+        "normalizedNamePresent": false
+      },
+      {
+        "id": "BEST-ER-008-042",
+        "name": "Fouisseur de schiste",
+        "candidateRegistryId": "ESP-ER-042",
+        "idPresent": false,
+        "normalizedNamePresent": false
+      }
+    ],
+    "newLotPresent": false,
+    "desktopMobileRecipe": "non_executee",
+    "publication": "non_effectuee"
+  },
+  "limits": [
+    "Égalité exacte normalisée des noms/alias et IDs uniquement pour contrôle automatisé ; les risques sémantiques sont des analyses éditoriales distinctes.",
+    "Les lignes se recouvrent entre registres et catalogues ; ne pas additionner les corpus comme autant de créatures distinctes.",
+    "Sources publiques du dépôt et source Sites v49 ; aucun accès aux volumes/bruts privés complets revendiqué.",
+    "Une absence de collision ne valide pas une espèce, une provenance cosmologique, un code permanent, une illustration ou la publication.",
+    "L’index public peut inclure des propositions historiques expressément publiées ; cela ne vaut pas autorisation pour BEST-ER-009."
+  ],
+  "releaseGate": {
+    "ready": false,
+    "reasons": [
+      "Statuts proposés non approuvés fiche par fiche",
+      "Aucun code ESP attribué",
+      "Mapper bestiaire Sites actuel force un libellé de validation",
+      "Recette des fiches009 intégrées non effectuée",
+      "Aucune intégration ou publication du lot009 effectuée"
+    ]
+  }
+}
