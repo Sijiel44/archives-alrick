@@ -30,4 +30,6 @@ Les contrôles Sites `check-public-library.mjs` et `check-orinor-atlas.mjs` pass
 
 Le dépôt source Sites contient les scripts reproductibles `build-orinor-atlas.mjs`, `integrate-orinor-navigation.mjs`, `check-orinor-atlas.mjs` et `check-orinor-published.mjs`, ainsi que les copies des sources et leurs empreintes hors du répertoire déployé. Le dernier compare les ressources publiques aux fichiers de la version livrée.
 
+Après publication de la v51, le contrôle HTTP confirme **52 ressources conformes**, dont les 40 articles, les données, le nouvel index et les six illustrations. L’ajout technique Cloudflare à la fin du HTML est reconnu séparément ; le document est identique de part et d’autre de cet ajout. La recette sur le domaine public confirme les 36 cartes et quatre dossiers, aucune image en échec, la recherche d’Aubeseuil, son statut proposé, le retour avec filtre conservé et l’accès depuis l’accueil. Largeurs publiques contrôlées : 1365 et 390 pixels, sans débordement horizontal.
+
 **La PR #184 demeure non fusionnée.** Ses sources conservent `publish:false`. Ce compte rendu ne modifie ni les Archives de L’Odyssée d’Orin, ni leur configuration Pages, ni les données privées. Aucun nouveau Site n’a été créé.
