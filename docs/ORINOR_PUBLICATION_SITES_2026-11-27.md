@@ -8,9 +8,9 @@ Portée : `univers_partage`. Publication expressément demandée par le créateu
 - Parcours public : https://chroniques-entre-rives-studio.adaptableclove.chatgpt.site/atlas-orinor.html
 - Projet : `appgprj_6aefa21ad1bc819198e86d83a74b3484` ; audience publique conservée.
 - Départ : version **49**, source `9e045dc12bed4ff6834639df48066c7b78773068`.
-- Arrivée : version **50**, source Sites `1a2873022a46d069b8459fddea8cec14cbbdea3a`.
-- Version enregistrée : `appgprj_6aefa21ad1bc819198e86d83a74b3484~appgver_1c361573cbe88191ace395b7a6bbdb1f`.
-- Déploiement : `appgdep_6b0a3666c5248191a59e804836664049`, résultat Sites **succeeded**.
+- Arrivée : version **51**, source Sites `4dcd63af1fcd27caffdcb689d0b84dbbc1568514`.
+- Version enregistrée : `appgprj_6aefa21ad1bc819198e86d83a74b3484~appgver_456977c088bc8191bb6cd91c88e79549`.
+- Déploiement : `appgdep_6b0a37302cec819186637d9a45e2a18b`, résultat Sites **succeeded**. La version 50 conserve le premier état publié ; la 51 améliore la présentation des liens de source et le contrôle HTTP après publication.
 
 ## Contenu et continuité
 
