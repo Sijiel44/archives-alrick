@@ -1,0 +1,87 @@
+{
+  "schema": "entre-rives.bestiaire.validation-preparation.v1",
+  "lot": "BEST-ER-010",
+  "version": "0.1.0",
+  "date": "2026-11-27",
+  "portee": "univers_partage",
+  "editorialDecision": "non_acquise_sur_les_dix_propositions",
+  "npmCi": {
+    "status": "passed",
+    "reportedVulnerabilities": 0
+  },
+  "npmTest": {
+    "status": "passed",
+    "scope": "suite complète sur la branche de préparation ; aucun fichier content, Studio ou moteur changé",
+    "integrationPagesChecked": 1216,
+    "integrationLinksChecked": 94558,
+    "archivePagesChecked": 263,
+    "archiveLinksChecked": 31676
+  },
+  "artifactIntegrity": {
+    "status": "passed",
+    "command": "node verify-pack.mjs",
+    "scope": "Tous fichiers manifestés, trois capacités, deux variantes, forces, évolutions, quatre amorces, médias et comparaisons exactes ; vérification exécutée après finalisation."
+  },
+  "localPreview": {
+    "status": "passed",
+    "scope": "aperçu local de relecture, pas une intégration Sites",
+    "widths": [
+      {
+        "width": 1365,
+        "cards": 10,
+        "readers": 10,
+        "imagesLoaded": true,
+        "accentInsensitiveSearch": true,
+        "idSearch": true,
+        "emptyState": true,
+        "readerOpened": true,
+        "noHorizontalOverflow": true
+      },
+      {
+        "width": 390,
+        "cards": 10,
+        "readers": 10,
+        "imagesLoaded": true,
+        "accentInsensitiveSearch": true,
+        "idSearch": true,
+        "emptyState": true,
+        "readerOpened": true,
+        "noHorizontalOverflow": true
+      }
+    ],
+    "images": 20,
+    "externalRequests": 0,
+    "errors": [],
+    "screenshots": [
+      "recette/apercu-1365.png",
+      "recette/apercu-390.png",
+      "recette/fiche-1365.png",
+      "recette/fiche-390.png"
+    ],
+    "visualScreenshotsReviewed": true,
+    "exactIdPriority": true
+  },
+  "sites": {
+    "projectId": "appgprj_6aefa21ad1bc819198e86d83a74b3484",
+    "latestSavedVersion": 49,
+    "sourceCommit": "9e045dc12bed4ff6834639df48066c7b78773068",
+    "savedVersionId": "appgprj_6aefa21ad1bc819198e86d83a74b3484~appgver_b481b94715b08191bed843a77e2a5fa4",
+    "role": "owner",
+    "audience": "public",
+    "versionAndSourceReconfirmed": true,
+    "identitySnapshotFromPriorAudit": true,
+    "nativeImportPerformed": false,
+    "integrationBrowserRecipe": "not_run",
+    "newVersionSaved": false,
+    "deploymentAttempted": false,
+    "reason": "Statut des propositions à arbitrer, Nacreuse/P34 à départager ; mapper observé force validé et doit être adapté avant recette."
+  },
+  "canonicalIdsAssigned": 0,
+  "canonizations": 0,
+  "secretsIncluded": 0,
+  "semanticReservations": [
+    "Nacreuse/P34 : espèce ou variante non décidée.",
+    "Raie/Méduse/Noue-ciel : conditions et taxonomie à garder distinctes.",
+    "Battant/Lesteur : deux effets de charge différents, pas de système mécanique homologué."
+  ]
+}
