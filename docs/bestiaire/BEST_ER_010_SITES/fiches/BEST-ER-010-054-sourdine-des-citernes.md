@@ -150,6 +150,14 @@ Citernes abandonnées reliées à des anfractuosités humides, bassins souterrai
 
 **État des recettes et bonus :** aucune_recette_ni_bonus_valide
 
+**Piste alchimique proposée :** **Matière récupérable :** Fragment de mue gulaire déjà délaissé.
+
+**Usage expérimental :** Liant candidat pour une pastille amortissant un léger cliquetis à l’intérieur d’un étui.
+
+**Conditions :** Essai sur petit objet inerte ; aucune zone de silence ou protection d’une personne n’est acquise.
+
+**État :** proposition_non_jouee
+
 ## Quatre amorces de jeu — propositions non jouées
 
 **1. La chaîne sans tintement**

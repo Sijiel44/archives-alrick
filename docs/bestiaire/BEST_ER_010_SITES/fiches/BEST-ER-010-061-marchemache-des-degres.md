@@ -150,6 +150,14 @@ Anciennes galeries taillées, ressauts naturels à plaques superposées et passa
 
 **État des recettes et bonus :** aucune_recette_ni_bonus_valide
 
+**Piste alchimique proposée :** **Matière récupérable :** Poudre de plaque de mue trouvée hors d’un reposoir actif.
+
+**Usage expérimental :** Pigment candidat pour un enduit dont le relief rappellerait une roche usée.
+
+**Conditions :** L’effet pourrait être purement décoratif ; aucune métamorphose ou invisibilité n’en découle.
+
+**État :** proposition_non_jouee
+
 ## Quatre amorces de jeu — propositions non jouées
 
 **1. Le quatrième degré manque**

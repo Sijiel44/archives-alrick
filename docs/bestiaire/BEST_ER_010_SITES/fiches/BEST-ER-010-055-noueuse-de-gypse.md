@@ -150,6 +150,14 @@ Galeries humides riches en dépôts friables, petits ressauts et chambres où pa
 
 **État des recettes et bonus :** aucune_recette_ni_bonus_valide
 
+**Piste alchimique proposée :** **Matière récupérable :** Filaments secs tombés d’une arche abandonnée.
+
+**Usage expérimental :** Additif candidat à un mortier dont la prise dépendrait de l’humidité ambiante.
+
+**Conditions :** Tester prise, rupture et réversibilité sur échantillon, sans confier une charge humaine au résultat.
+
+**État :** proposition_non_jouee
+
 ## Quatre amorces de jeu — propositions non jouées
 
 **1. Le pont encore mou**

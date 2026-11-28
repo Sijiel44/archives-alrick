@@ -150,6 +150,14 @@ Petites chambres humides à l’abri des courants desséchants, proches d’un t
 
 **État des recettes et bonus :** aucune_recette_ni_bonus_valide
 
+**Piste alchimique proposée :** **Matière récupérable :** Dépôts nacrés déjà abandonnés par l’animal.
+
+**Usage expérimental :** Support candidat pour des encres à teinte changeante ou des projections très simples.
+
+**Conditions :** Aucun souvenir n’est extrait : l’essai peut ne produire qu’un pigment ordinaire sans rémanence.
+
+**État :** proposition_non_jouee
+
 ## Quatre amorces de jeu — propositions non jouées
 
 **1. La lampe inconnue**

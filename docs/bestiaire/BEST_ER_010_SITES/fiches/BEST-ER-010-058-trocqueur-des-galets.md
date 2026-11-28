@@ -150,6 +150,14 @@ Carrefours secs proches d’un apport d’eau, anciens postes de tri et cavités
 
 **État des recettes et bonus :** aucune_recette_ni_bonus_valide
 
+**Piste alchimique proposée :** **Matière récupérable :** Résidus présents sur un galet volontairement cédé.
+
+**Usage expérimental :** Étalon candidat pour un réactif distinguant un contact humide récent d’une surface restée sèche.
+
+**Conditions :** Le toucher de l’animal ne se transmet pas automatiquement ; les résidus peuvent rester banals.
+
+**État :** proposition_non_jouee
+
 ## Quatre amorces de jeu — propositions non jouées
 
 **1. La clef contre la cire**

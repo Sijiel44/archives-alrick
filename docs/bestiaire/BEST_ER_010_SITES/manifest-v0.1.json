@@ -9,7 +9,7 @@
   "reviewBaseBranch": "codex/best-er-009-sites",
   "source": {
     "path": "lot-v0.1.json",
-    "sha256": "f0f565e5a730c3f193ae2207676fcb8eec8e1789ff2b032599f0fca8d9307805"
+    "sha256": "14784c3f86b178c95f32e1a18066ca10146158cb67175caa06deb1c0d33cbdaf"
   },
   "publication": {
     "status": "non_publie_preparation_editoriale",
@@ -45,7 +45,8 @@
     "evolutionSections": 10,
     "permanentIdsAssigned": 0,
     "canonicalEntries": 0,
-    "publishedEntries": 0
+    "publishedEntries": 0,
+    "alchemyLeads": 10
   },
   "entries": [
     {
@@ -366,8 +367,8 @@
   "files": [
     {
       "path": "APERCU.html",
-      "sha256": "74eb744709cd786a9a564cef119fa6a5b0bef7d343586c1c26f2154285b0bd98",
-      "bytes": 405354
+      "sha256": "716de662560b882b695e4a89badaeafaeb02d4f10258f007605fb97484f4f85b",
+      "bytes": 418932
     },
     {
       "path": "CONTROLE_DOUBLONS.md",
@@ -381,53 +382,53 @@
     },
     {
       "path": "fiches/BEST-ER-010-053-battant-de-basalte.md",
-      "sha256": "c96df67e2ddf846153ced280aef718bbf5400a08749c226bf82f21e5c40e1c30",
-      "bytes": 11625
+      "sha256": "6b116d253bf4cca3d588483d3527298e2f4eedf134387b5129231040e22c1acd",
+      "bytes": 12022
     },
     {
       "path": "fiches/BEST-ER-010-054-sourdine-des-citernes.md",
-      "sha256": "020ab45b35820c7e471d9224dc68163a8feaf7b3fcd84a3d591b55258b5b9005",
-      "bytes": 11424
+      "sha256": "499d93cafdcbdca94a70c547a5f9d887131dbe22a8dad2eea33ed2fb215f0abd",
+      "bytes": 11809
     },
     {
       "path": "fiches/BEST-ER-010-055-noueuse-de-gypse.md",
-      "sha256": "2cd08703e6f8ec5606230ee607cc47146980eead2030e975cedf1f9ad2ef230f",
-      "bytes": 11568
+      "sha256": "b77b138a4b8ae27cd1abad9058ce95902429b2af3d10ec40d32bcb495a006f3e",
+      "bytes": 11950
     },
     {
       "path": "fiches/BEST-ER-010-056-raie-des-puits-secs.md",
-      "sha256": "d31964af86535561c2e16ab4d3c5cc90d6f4cb628d3625463370b803a9afe8ec",
-      "bytes": 11520
+      "sha256": "9a67fe40603b93cfc5fe319a165868e5c5e45fabf4a3aef1f39ee59e2a473e0c",
+      "bytes": 11893
     },
     {
       "path": "fiches/BEST-ER-010-057-mange-meche.md",
-      "sha256": "acc1c91f296056d773fc5e3cd0dfd0882525bf726ddb881276504a7b3e37174c",
-      "bytes": 11676
+      "sha256": "f24a20f8856d51471c7fad199b5978b7bc125ec56a2afbb466117b98c70f620f",
+      "bytes": 12054
     },
     {
       "path": "fiches/BEST-ER-010-058-trocqueur-des-galets.md",
-      "sha256": "82b31ad82a10252600f9de6b08d49a121197b9390645cac7c6060d8c16ede358",
-      "bytes": 11868
+      "sha256": "c7b783b47f087cc325fd4abab168fadf4ab4da03b52c9963ac64dfbe860abc74",
+      "bytes": 12268
     },
     {
       "path": "fiches/BEST-ER-010-059-nacreuse-des-siphons.md",
-      "sha256": "95c4be297c02b042435957cb2b9a221eefbd8991a3cea4b50ea09bd02367117a",
-      "bytes": 11741
+      "sha256": "14d7747ae11628cf57b7128fd51eff052898e69773b73b56d15dd4f1358ebd41",
+      "bytes": 12129
     },
     {
       "path": "fiches/BEST-ER-010-060-lesteur-des-fausses-marches.md",
-      "sha256": "6be2b0c0b1dc4f81874e233c95bf3cee888577915749deba09d9667b57ae9951",
-      "bytes": 11694
+      "sha256": "35e3f182777ad04c24bedbe65e24af7214ecdda2a77c18e420f64b4b0d50444a",
+      "bytes": 12098
     },
     {
       "path": "fiches/BEST-ER-010-061-marchemache-des-degres.md",
-      "sha256": "d4f7bb1fe085138eee433de64912da4b00fe1fb73171c2bfa36fd8013d24cb3d",
-      "bytes": 12194
+      "sha256": "7c0289fbe823d8c1cd50c797eb15ddcd163d07fdb82b0a12d42a069db9461484",
+      "bytes": 12577
     },
     {
       "path": "fiches/BEST-ER-010-062-oniride-des-chambres-closes.md",
-      "sha256": "879e8e837a8638c6388f18e777fa41703d5c03b5758e28cd66905f1e7c2c1a34",
-      "bytes": 12065
+      "sha256": "7239dc42568ee0d99b49c327a163aa815068b4319b855374a2c9f60ce7edb29e",
+      "bytes": 12451
     },
     {
       "path": "illustrations/originaux/BEST-ER-010-053.png",
@@ -541,8 +542,8 @@
     },
     {
       "path": "lot-v0.1.json",
-      "sha256": "f0f565e5a730c3f193ae2207676fcb8eec8e1789ff2b032599f0fca8d9307805",
-      "bytes": 113646
+      "sha256": "14784c3f86b178c95f32e1a18066ca10146158cb67175caa06deb1c0d33cbdaf",
+      "bytes": 117652
     },
     {
       "path": "PLANCHE.webp",
@@ -556,8 +557,8 @@
     },
     {
       "path": "RAPPORT.md",
-      "sha256": "1dc6e51075109469c8e299bad71ba687099780b982cd521ff9a1cb38486c4e13",
-      "bytes": 5554
+      "sha256": "e7e9a0340669c4d96a3b69607f6c0e6d9c1a4569029b58da24eb39a575494a68",
+      "bytes": 5702
     },
     {
       "path": "README.md",
@@ -586,8 +587,8 @@
     },
     {
       "path": "render-pack.mjs",
-      "sha256": "fefb341e719c0e1821073f6fee0c70190c15274c452d44446ba74aed585b10ea",
-      "bytes": 18243
+      "sha256": "98f168fc4b94c67c0b93d34baa6a3e3c5aa3b6391f0b04e1eaf6bb3ad77e0f70",
+      "bytes": 18348
     },
     {
       "path": "snapshot-sources-v0.1.json",
@@ -596,13 +597,13 @@
     },
     {
       "path": "validation-v0.1.json",
-      "sha256": "2fab86ac2a9e75545e51bfb653f30774f729d4e62fdc6ea80d1ca3727ed721b9",
-      "bytes": 2912
+      "sha256": "60799eef1f85b2ec1db29cc09ba0dd511e8dc4b9126e5b7882c70f323cbef5a4",
+      "bytes": 2942
     },
     {
       "path": "verify-pack.mjs",
-      "sha256": "633895daa518c2fb8b46e3b89f9d372383ee07ff80644adc58dba47ef39c68c7",
-      "bytes": 19508
+      "sha256": "3c026eb108082dc08b7c707d676cbc7b8c2d3a94aa9ef40bc53e28ab00f31510",
+      "bytes": 19853
     }
   ]
 }

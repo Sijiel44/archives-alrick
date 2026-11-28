@@ -150,6 +150,14 @@ Sols argileux sous des ressauts, replis d’anciennes marches et petits dépôts
 
 **État des recettes et bonus :** aucune_recette_ni_bonus_valide
 
+**Piste alchimique proposée :** **Matière récupérable :** Filaments rompus recueillis après le départ d’un individu.
+
+**Usage expérimental :** Armature candidate pour un liant indiquant une traction par changement de forme.
+
+**Conditions :** Tester hors de toute opération de levage ; aucune propriété de poids actif n’est présumée après séparation.
+
+**État :** proposition_non_jouee
+
 ## Quatre amorces de jeu — propositions non jouées
 
 **1. Le coffre qui retombe**

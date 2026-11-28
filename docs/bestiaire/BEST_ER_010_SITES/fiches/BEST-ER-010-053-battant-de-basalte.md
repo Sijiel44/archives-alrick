@@ -150,6 +150,14 @@ Galeries naturelles fracturées, anciennes chambres d’extraction et passages h
 
 **État des recettes et bonus :** aucune_recette_ni_bonus_valide
 
+**Piste alchimique proposée :** **Matière récupérable :** Poudre d’une écaille naturellement abandonnée.
+
+**Usage expérimental :** Support candidat pour une capsule d’alerte qui changerait de texture sous compression.
+
+**Conditions :** Comparer avec une poudre ordinaire ; ne pas confondre la matière morte avec la réserve active de l’organisme.
+
+**État :** proposition_non_jouee
+
 ## Quatre amorces de jeu — propositions non jouées
 
 **1. La cale qui respire**

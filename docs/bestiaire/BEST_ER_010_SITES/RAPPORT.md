@@ -22,7 +22,7 @@ Voir [le contrôle détaillé](CONTROLE_DOUBLONS.md), [l’instantané public mi
 
 ## Statuts et publication
 
-Toutes les fiches restent `proposition_non_jouee`, `en_chantier`, `publish:false`, `canonValidated:false`. Les codes permanents restent nuls ; aucune inscription nouvelle dans B002. `mechanics.profile:null` : aucun score, PV, dégâts, niveau ou profil M03 homologué déduit du récit. Les ressources séparent collecte renouvelable, prélèvements nuisibles et usages artisanaux/alchimiques seulement proposés.
+Toutes les fiches restent `proposition_non_jouee`, `en_chantier`, `publish:false`, `canonValidated:false`. Les codes permanents restent nuls ; aucune inscription nouvelle dans B002. `mechanics.profile:null` : aucun score, PV, dégâts, niveau ou profil M03 homologué déduit du récit. Les ressources séparent collecte renouvelable, prélèvements nuisibles et usages artisanaux seulement proposés. Une piste alchimique par créature précise matière récupérable, usage expérimental, conditions et statut de proposition ; aucun résultat n’est garanti.
 
 Aucun secret MJ réel, sauvegarde ou événement d’Orin inventé. Aucune filiation divine, origine de Faille, implantation dans une cité, loi générale de magie ou identité de responsable des incidents n’est imposée. Les amorces ne fixent ni leur solution ni une aventure déjà jouée.
 

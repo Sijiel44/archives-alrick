@@ -150,6 +150,14 @@ Bords immergés de siphons et passages noyés proches d’une arrivée occasionn
 
 **État des recettes et bonus :** aucune_recette_ni_bonus_valide
 
+**Piste alchimique proposée :** **Matière récupérable :** Poussière d’une coquille morte déjà libérée.
+
+**Usage expérimental :** Charge candidate pour un vernis aidant à observer la tenue de très petites bulles.
+
+**Conditions :** Comparer avec une coquille ordinaire ; aucune production d’air ou réserve respiratoire n’est garantie.
+
+**État :** proposition_non_jouee
+
 ## Quatre amorces de jeu — propositions non jouées
 
 **1. La bulle du dernier relais**

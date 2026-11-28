@@ -95,7 +95,13 @@
         "proposedUses": [
           "Étude proposée de joints amortissants et de cales articulées ; aucun matériau indestructible, étai magique ou remède validé."
         ],
-        "validation": "aucune_recette_ni_bonus_valide"
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Poudre d’une écaille naturellement abandonnée.",
+          "proposedUse": "Support candidat pour une capsule d’alerte qui changerait de texture sous compression.",
+          "conditions": "Comparer avec une poudre ordinaire ; ne pas confondre la matière morte avec la réserve active de l’organisme.",
+          "status": "proposition_non_jouee"
+        }
       },
       "quests": [
         {
@@ -254,7 +260,13 @@
         "proposedUses": [
           "Essais proposés d’absorbants acoustiques et d’habillages d’instruments ; aucune cape de silence ou préparation médicale homologuée."
         ],
-        "validation": "aucune_recette_ni_bonus_valide"
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Fragment de mue gulaire déjà délaissé.",
+          "proposedUse": "Liant candidat pour une pastille amortissant un léger cliquetis à l’intérieur d’un étui.",
+          "conditions": "Essai sur petit objet inerte ; aucune zone de silence ou protection d’une personne n’est acquise.",
+          "status": "proposition_non_jouee"
+        }
       },
       "quests": [
         {
@@ -413,7 +425,13 @@
         "proposedUses": [
           "Étude proposée de mortiers légers et de treillis poreux ; aucune colle universelle, résistance de bâtiment ou préparation alchimique certifiée."
         ],
-        "validation": "aucune_recette_ni_bonus_valide"
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Filaments secs tombés d’une arche abandonnée.",
+          "proposedUse": "Additif candidat à un mortier dont la prise dépendrait de l’humidité ambiante.",
+          "conditions": "Tester prise, rupture et réversibilité sur échantillon, sans confier une charge humaine au résultat.",
+          "status": "proposition_non_jouee"
+        }
       },
       "quests": [
         {
@@ -572,7 +590,13 @@
         "proposedUses": [
           "Étude proposée de voiles de freinage et de fanions sensibles aux courants ; aucun appareil de vol, harnais ou réactif validé."
         ],
-        "validation": "aucune_recette_ni_bonus_valide"
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Lamelles naturellement détachées des nageoires.",
+          "proposedUse": "Support candidat pour un pigment révélant le sens d’un souffle sur une bande souple.",
+          "conditions": "Comparer plusieurs courants réels ; aucun vol ou repérage d’une sortie n’est promis.",
+          "status": "proposition_non_jouee"
+        }
       },
       "quests": [
         {
@@ -736,7 +760,13 @@
         "proposedUses": [
           "Étude proposée de tampons thermiques et de liants supportant une chaleur faible ; aucune potion ignifuge ou recette de batterie magique validée."
         ],
-        "validation": "aucune_recette_ni_bonus_valide"
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Trace grasse laissée après un reposoir abandonné.",
+          "proposedUse": "Liant candidat à un témoin de chaleur faible sur un récipient d’atelier.",
+          "conditions": "Essai sur objet, avec source thermique séparée ; aucune protection contre le feu n’est démontrée.",
+          "status": "proposition_non_jouee"
+        }
       },
       "quests": [
         {
@@ -900,7 +930,13 @@
         "proposedUses": [
           "Motifs de tri pour artisans et étude d’un toucher sensible aux traces récentes ; aucune pierre de vérité, détection de propriétaire ou substance alchimique validée."
         ],
-        "validation": "aucune_recette_ni_bonus_valide"
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Résidus présents sur un galet volontairement cédé.",
+          "proposedUse": "Étalon candidat pour un réactif distinguant un contact humide récent d’une surface restée sèche.",
+          "conditions": "Le toucher de l’animal ne se transmet pas automatiquement ; les résidus peuvent rester banals.",
+          "status": "proposition_non_jouee"
+        }
       },
       "quests": [
         {
@@ -1059,7 +1095,13 @@
         "proposedUses": [
           "Étude proposée de membranes de rétention et de décors de nacre ; aucun appareil respiratoire, antidote ou perle magique homologué."
         ],
-        "validation": "aucune_recette_ni_bonus_valide"
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Poussière d’une coquille morte déjà libérée.",
+          "proposedUse": "Charge candidate pour un vernis aidant à observer la tenue de très petites bulles.",
+          "conditions": "Comparer avec une coquille ordinaire ; aucune production d’air ou réserve respiratoire n’est garantie.",
+          "status": "proposition_non_jouee"
+        }
       },
       "quests": [
         {
@@ -1223,7 +1265,13 @@
         "proposedUses": [
           "Étude proposée de répartition de charge et de ligatures ; aucune pierre d’apesanteur, colle ou préparation de lévitation validée."
         ],
-        "validation": "aucune_recette_ni_bonus_valide"
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Filaments rompus recueillis après le départ d’un individu.",
+          "proposedUse": "Armature candidate pour un liant indiquant une traction par changement de forme.",
+          "conditions": "Tester hors de toute opération de levage ; aucune propriété de poids actif n’est présumée après séparation.",
+          "status": "proposition_non_jouee"
+        }
       },
       "quests": [
         {
@@ -1382,7 +1430,13 @@
         "proposedUses": [
           "Étude proposée de panneaux articulés et de textures antidérapantes ; aucun blindage invulnérable ou réactif de métamorphose validé."
         ],
-        "validation": "aucune_recette_ni_bonus_valide"
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Poudre de plaque de mue trouvée hors d’un reposoir actif.",
+          "proposedUse": "Pigment candidat pour un enduit dont le relief rappellerait une roche usée.",
+          "conditions": "L’effet pourrait être purement décoratif ; aucune métamorphose ou invisibilité n’en découle.",
+          "status": "proposition_non_jouee"
+        }
       },
       "quests": [
         {
@@ -1546,7 +1600,13 @@
         "proposedUses": [
           "Étude proposée de pigments changeants et de supports de projection ; aucune potion de mémoire, lecture mentale ou archive fiable validée."
         ],
-        "validation": "aucune_recette_ni_bonus_valide"
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Dépôts nacrés déjà abandonnés par l’animal.",
+          "proposedUse": "Support candidat pour des encres à teinte changeante ou des projections très simples.",
+          "conditions": "Aucun souvenir n’est extrait : l’essai peut ne produire qu’un pigment ordinaire sans rémanence.",
+          "status": "proposition_non_jouee"
+        }
       },
       "quests": [
         {

@@ -150,6 +150,14 @@ Galeries fréquentées par des lampes, niches chauffées d’anciens ateliers et
 
 **État des recettes et bonus :** aucune_recette_ni_bonus_valide
 
+**Piste alchimique proposée :** **Matière récupérable :** Trace grasse laissée après un reposoir abandonné.
+
+**Usage expérimental :** Liant candidat à un témoin de chaleur faible sur un récipient d’atelier.
+
+**Conditions :** Essai sur objet, avec source thermique séparée ; aucune protection contre le feu n’est démontrée.
+
+**État :** proposition_non_jouee
+
 ## Quatre amorces de jeu — propositions non jouées
 
 **1. La troisième lampe**

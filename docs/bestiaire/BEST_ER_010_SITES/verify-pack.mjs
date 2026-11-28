@@ -84,6 +84,7 @@ function narrativeWords(entry) {
     ...(entry.variants ?? []).flatMap(item => [item.name, item.description]),
     ...(entry.resources?.renewable ?? []), ...(entry.resources?.harmful ?? []),
     ...(entry.resources?.proposedUses ?? []),
+    entry.resources?.alchemy?.material, entry.resources?.alchemy?.proposedUse, entry.resources?.alchemy?.conditions,
     ...(entry.quests ?? []).flatMap(item => ['title', 'situation', 'choice', 'openOutcome'].map(key => item[key]))];
   return parts.filter(nonempty).join(' ').trim().split(/\s+/u).filter(Boolean).length;
 }
@@ -222,6 +223,8 @@ for (const entry of entries) {
     check(variant.status === 'proposition_non_jouee', `${entry.id}: statut de variante incorrect`);
   }
   for (const key of ['renewable', 'harmful', 'proposedUses']) textArray(entry.resources?.[key], `${entry.id}.resources.${key}`);
+  fields(entry.resources?.alchemy, ['material','proposedUse','conditions'], `${entry.id}.resources.alchemy`);
+  check(entry.resources?.alchemy?.status === 'proposition_non_jouee', `${entry.id}: piste alchimique non proposée`);
   check(entry.resources?.validation === 'aucune_recette_ni_bonus_valide', `${entry.id}: validation de ressource indue`);
   check(Array.isArray(entry.quests) && entry.quests.length === 4, `${entry.id}: quatre amorces exigées`);
   for (const [i, quest] of (entry.quests ?? []).entries()) fields(quest, ['title', 'situation', 'choice', 'openOutcome'], `${entry.id}.amorce[${i}]`);

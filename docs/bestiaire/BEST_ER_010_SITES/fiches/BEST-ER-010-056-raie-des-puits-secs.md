@@ -150,6 +150,14 @@ Puits karstiques secs, hautes cheminées ventilées et chambres à gradins conne
 
 **État des recettes et bonus :** aucune_recette_ni_bonus_valide
 
+**Piste alchimique proposée :** **Matière récupérable :** Lamelles naturellement détachées des nageoires.
+
+**Usage expérimental :** Support candidat pour un pigment révélant le sens d’un souffle sur une bande souple.
+
+**Conditions :** Comparer plusieurs courants réels ; aucun vol ou repérage d’une sortie n’est promis.
+
+**État :** proposition_non_jouee
+
 ## Quatre amorces de jeu — propositions non jouées
 
 **1. Le courant coupé**
