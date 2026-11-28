@@ -1,0 +1,216 @@
+{
+  "schema": "entre-rives.bestiaire.duplicate-control.v1",
+  "lot": "BEST-ER-010",
+  "version": "0.1.0",
+  "date": "2026-11-27",
+  "portee": "univers_partage",
+  "snapshot": {
+    "path": "snapshot-sources-v0.1.json",
+    "sha256": "72bf7033b1c4d66977865cd26520b06c034f7ec5a6371f9cbc125da3a4ff5ff0"
+  },
+  "sourceCommits": {
+    "githubCheckout": "603fde12f0469474251cf06c9742f33911369caf",
+    "lot008": "6e439ad1755fd817b37a60e995b1fd8d9c82d2a1",
+    "historicalB0031": "643639b9b9783b1fdf48f5f6b887764eb486fdda",
+    "sitesV49": "9e045dc12bed4ff6834639df48066c7b78773068"
+  },
+  "checks": {
+    "idCollisions": 0,
+    "normalizedExactNameCollisions": 0,
+    "candidateIdsUnique": true,
+    "candidateNamesUnique": true,
+    "candidateSlugsUnique": true
+  },
+  "entries": [
+    {
+      "id": "BEST-ER-010-053",
+      "name": "Battant de basalte",
+      "normalizedName": "battant de basalte",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-010-053",
+        "name": "Battant de basalte",
+        "risk": "moyen",
+        "related": [
+          "BEST-ER-008-042",
+          "bestiaire-ver-des-frontieres"
+        ],
+        "assessment": "BEST-ER-008-042 : Organisme lithique à membranes, sans mammifère fouisseur ni creusement de roche intacte. Réserve : Même rôle d’indice de terrain : ne pas transférer les aptitudes du Fouisseur. bestiaire-ver-des-frontieres : Contrainte locale de plaques en contact, aucun passage ni lien aux Failles. Réserve : La portée merveilleuse et la nature du vivant minéral restent à arbitrer.",
+        "decision": "proposition_distincte_sous_reserve_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-010-054",
+      "name": "Sourdine des citernes",
+      "normalizedName": "sourdine des citernes",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-010-054",
+        "name": "Sourdine des citernes",
+        "risk": "moyen",
+        "related": [
+          "bestiaire-harpiste-creuse",
+          "bestiaire-lamproie-de-nacre"
+        ],
+        "assessment": "bestiaire-harpiste-creuse : Amphibien prédateur amortissant un son proche, sans voix imitée ni forme d’instrument. Réserve : Proximité d’horreur acoustique ; garder une silhouette et des indices distincts. bestiaire-lamproie-de-nacre : Quadrupède de berge à poche gulaire, distinct du corps serpentiforme à collerette. Réserve : Un bassin commun reste une hypothèse et ne prouve aucune parenté.",
+        "decision": "proposition_distincte_sous_reserve_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-010-055",
+      "name": "Noueuse de gypse",
+      "normalizedName": "noueuse de gypse",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-010-055",
+        "name": "Noueuse de gypse",
+        "risk": "moyen",
+        "related": [
+          "P36",
+          "ESP-ER-005"
+        ],
+        "assessment": "P36 : Huit pattes, sécrétion de filaments et bâtisseuse ; P36 décrit six membres, antennes vibratoires et détritivorie sans cette construction. Réserve : Même habitat d’arthropode cavernicole ; distinction morphologique à garder. ESP-ER-005 : Filaments minéraux fabriqués avec des grains, sans toile de roseaux ni fonction de capture. Réserve : Motif du tissage partagé, aucune fusion taxonomique décidée.",
+        "decision": "proposition_distincte_sous_reserve_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-010-056",
+      "name": "Raie des puits secs",
+      "normalizedName": "raie des puits secs",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-010-056",
+        "name": "Raie des puits secs",
+        "risk": "moyen",
+        "related": [
+          "BEST-ER-009-047",
+          "P38",
+          "BEST-ER-009-050"
+        ],
+        "assessment": "BEST-ER-009-047 : Planeur animal à nageoires et ascendances, distinct de l’organisme médusoïde d’air humide. Réserve : La flottaison aérienne se recoupe ; conditions et silhouette doivent rester différentes. P38 : Animal aérien dépendant des courants, et non poisson aquatique à nageoires nacrées. Réserve : Même vocabulaire de voile ; ne pas créer de parenté par l’image. BEST-ER-009-050 : Aucun nœud d’appui dans l’air ; le courant réel est indispensable. Réserve : Ne pas lui transmettre le pouvoir du Noue-ciel.",
+        "decision": "proposition_distincte_sous_reserve_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-010-057",
+      "name": "Mange-mèche",
+      "normalizedName": "mange meche",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-010-057",
+        "name": "Mange-mèche",
+        "risk": "faible_a_moyen",
+        "related": [
+          "P41",
+          "BEST-ER-008-033",
+          "BEST-ER-009-043"
+        ],
+        "assessment": "P41 : Organisme plat thermophage de contact, distinct du reptile insectivore des fumerolles refroidies. Réserve : Motif de braise partagé ; aucun remplacement du Garde-Braise. BEST-ER-008-033 : Ni mammifère ni repérage de résidus magiques ; la chaleur n’atteste aucune origine commune. Réserve : Aucune reconstruction du Frélin ni substitution de son illustration antérieure. BEST-ER-009-043 : Stockage de chaleur prélevée sur un foyer, sans réserve hivernale d’isopode. Réserve : Deux usages thermiques à distinguer ; aucune recette commune automatique.",
+        "decision": "proposition_distincte_sous_reserve_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-010-058",
+      "name": "Trocqueur des galets",
+      "normalizedName": "trocqueur des galets",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-010-058",
+        "name": "Trocqueur des galets",
+        "risk": "moyen",
+        "related": [
+          "P36",
+          "BEST-ER-009-048"
+        ],
+        "assessment": "P36 : Collecteur à quatre pattes et deux bras, stations d’échange et toucher des traces ; pas six membres marcheurs à antennes longues. Réserve : Arthropode cavernicole apparent par allure : classification à arbitrer. BEST-ER-009-048 : Aucun transport de coupe nutritive ou réseau fongique ; l’échange n’implique pas une conscience forestière. Réserve : Ne pas déduire une parenté ou un peuple des comportements observables.",
+        "decision": "proposition_distincte_sous_reserve_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-010-059",
+      "name": "Nacreuse des siphons",
+      "normalizedName": "nacreuse des siphons",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-010-059",
+        "name": "Nacreuse des siphons",
+        "risk": "moyen_a_fort",
+        "related": [
+          "P34",
+          "bestiaire-lamproie-de-nacre",
+          "P38"
+        ],
+        "assessment": "P34 : P34 est une filtreuse sombre aplatie sans pouvoir de rétention d’air ; la Nacreuse propose valves bombées et poche merveilleuse locale. Réserve : Risque moyen à fort de variante plutôt qu’espèce distincte : arbitrage obligatoire avant code. bestiaire-lamproie-de-nacre : Bivalve fixé filtreur, sans corps serpentiforme, bouche de prédateur ou traction d’une proie. Réserve : La nacre et le milieu ne démontrent pas une parenté. P38 : Aucun poisson mobile ni grandes nageoires ; la poche n’est pas une lumière propre. Réserve : Ne pas appeler perle permanente un reflet du manteau.",
+        "decision": "arbitrage_espece_ou_variante_obligatoire"
+      }
+    },
+    {
+      "id": "BEST-ER-010-060",
+      "name": "Lesteur des fausses marches",
+      "normalizedName": "lesteur des fausses marches",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-010-060",
+        "name": "Lesteur des fausses marches",
+        "risk": "moyen",
+        "related": [
+          "BEST-ER-010-053",
+          "P36"
+        ],
+        "assessment": "BEST-ER-010-053 : Le Battant restitue une poussée dans ses plaques ; le Lesteur déplace un poids apparent par filaments entre objet et corps. Réserve : Deux singularités de charge : ne pas les additionner en dispositif mécanique approuvé. P36 : Huit pattes courtes, plaques contrepoids et filaments ; pas le détritivore à six membres et longues antennes. Réserve : Apparence d’arthropode cavernicole à comparer sans fusion automatique.",
+        "decision": "proposition_distincte_sous_reserve_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-010-061",
+      "name": "Marchemâche des degrés",
+      "normalizedName": "marchemache des degres",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-010-061",
+        "name": "Marchemâche des degrés",
+        "risk": "moyen",
+        "related": [
+          "bestiaire-mache-rune",
+          "BEST-ER-009-049",
+          "BEST-ER-010-060"
+        ],
+        "assessment": "bestiaire-mache-rune : Arthropode à plaques étagées et camouflage, sans lézard, runes dévorées ou mâchoires de silex. Réserve : Proximité du mot mâche ; préserver la distinction dès le résumé. BEST-ER-009-049 : Prédateur mobile terrestre à six pattes, distinct de l’animal fixé sous une branche à membranes plissées. Réserve : Même fonction d’embuscade : ne pas recopier indices et contre-mesures. BEST-ER-010-060 : Pas de transfert de poids ; le profil de marche est un camouflage corporel. Réserve : Deux noms liés aux marches, mais silhouettes et effets différents à conserver.",
+        "decision": "proposition_distincte_sous_reserve_editoriale"
+      }
+    },
+    {
+      "id": "BEST-ER-010-062",
+      "name": "Oniride des chambres closes",
+      "normalizedName": "oniride des chambres closes",
+      "idCollisions": [],
+      "normalizedExactNameCollisions": [],
+      "semanticReview": {
+        "id": "BEST-ER-010-062",
+        "name": "Oniride des chambres closes",
+        "risk": "moyen",
+        "related": [
+          "bestiaire-harpiste-creuse",
+          "BEST-ER-009-052",
+          "BEST-ER-009-047"
+        ],
+        "assessment": "bestiaire-harpiste-creuse : Images de l’expérience propre d’un animal, sans voix humaine imitée ou piège vocal. Réserve : Motif du témoin trompeur à distinguer ; aucune nature spirituelle déduite. BEST-ER-009-052 : Rémanence locale figurative, pas réfraction d’essaim ni modification d’alignement du paysage. Réserve : Un seul nouveau mécanisme visuel dans ce lot ; ne pas lui donner les pouvoirs des quatre créations optiques009. BEST-ER-009-047 : Céphalopode terrestre à bras et manteau posé, sans organisme médusoïde flottant. Réserve : Silhouette molle ne prouve aucune parenté.",
+        "decision": "proposition_distincte_sous_reserve_editoriale"
+      }
+    }
+  ],
+  "limits": [
+    "Comparaison exacte ne prouve pas absence de parenté.",
+    "Nacreuse/P34 : arbitrage espèce ou variante obligatoire.",
+    "Pas de relecture exhaustive des sources privées ou de toutes les autres branches."
+  ]
+}

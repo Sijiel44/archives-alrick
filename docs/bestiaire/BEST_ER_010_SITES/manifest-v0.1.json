@@ -1,0 +1,609 @@
+{
+  "schema": "entre-rives.bestiaire.sites.manifest.v2",
+  "lot": "BEST-ER-010",
+  "version": "0.1.0",
+  "date": "2026-11-27",
+  "portee": "univers_partage",
+  "sourceBase": "603fde12f0469474251cf06c9742f33911369caf",
+  "branch": "codex/best-er-010-sites",
+  "reviewBaseBranch": "codex/best-er-009-sites",
+  "source": {
+    "path": "lot-v0.1.json",
+    "sha256": "14784c3f86b178c95f32e1a18066ca10146158cb67175caa06deb1c0d33cbdaf"
+  },
+  "publication": {
+    "status": "non_publie_preparation_editoriale",
+    "publish": false,
+    "canonical": false,
+    "productionImportable": false,
+    "targetProjectId": "appgprj_6aefa21ad1bc819198e86d83a74b3484",
+    "reason": "Statuts, codes éventuels et Nacreuse/P34 à arbitrer ; mapping et recette Sites à réaliser séparément."
+  },
+  "sources": {
+    "snapshot": {
+      "path": "snapshot-sources-v0.1.json",
+      "sha256": "72bf7033b1c4d66977865cd26520b06c034f7ec5a6371f9cbc125da3a4ff5ff0"
+    },
+    "duplicateControl": "controle-doublons-v0.1.json",
+    "priorLot": {
+      "branch": "codex/best-er-009-sites",
+      "commit": "603fde12f0469474251cf06c9742f33911369caf"
+    },
+    "site": {
+      "version": 49,
+      "commit": "9e045dc12bed4ff6834639df48066c7b78773068",
+      "inspection": "Instantané immuable réutilisé après confirmation de version et SHA."
+    }
+  },
+  "counts": {
+    "entries": 10,
+    "originalPng": 10,
+    "webp": 10,
+    "descriptiveAbilities": 30,
+    "variants": 20,
+    "questHooks": 40,
+    "evolutionSections": 10,
+    "permanentIdsAssigned": 0,
+    "canonicalEntries": 0,
+    "publishedEntries": 0,
+    "alchemyLeads": 10
+  },
+  "entries": [
+    {
+      "id": "BEST-ER-010-053",
+      "name": "Battant de basalte",
+      "slug": "battant-de-basalte",
+      "path": "fiches/BEST-ER-010-053-battant-de-basalte.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-053.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-053.png",
+        "alt": "Organisme non humanoïde de trois plaques de basalte à membranes cuivrées, calé dans une galerie.",
+        "brief": "Organisme lithique vivant non humanoïde, assemblage bas et massif de trois hautes plaques de basalte articulées sur des bourrelets organiques ocre sombre, fissures étroites montrant une membrane cuivrée qui bat, pas de lave. Il est calé de travers entre deux parois d’une galerie naturelle et porte son propre corps sur trois appuis trapus. Aucun visage, aucun bras, aucune rune, pas un golem humain. Graviers fins autour de ses appuis, mouvement de contraction perceptible.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "17b844a4e57f76e42c64d50bd5decfbbc2e3d5608b5f50c6850972529cf278b9",
+        "originalSha256": "ec8eb4c4848a1bffdc785f04beda8c6c38b88e9609115368304d9ed6f9ff7071",
+        "bytes": 424422,
+        "originalBytes": 3403654,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      }
+    },
+    {
+      "id": "BEST-ER-010-054",
+      "name": "Sourdine des citernes",
+      "slug": "sourdine-des-citernes",
+      "path": "fiches/BEST-ER-010-054-sourdine-des-citernes.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-054.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-054.png",
+        "alt": "Prédateur amphibie aveugle à quatre membres et poche gulaire ivoire, au bord d’une citerne.",
+        "brief": "Grand prédateur amphibie aveugle à quatre membres trapus, peau gris bleu mate humide, tête large sans yeux et énorme poche gulaire membraneuse ivoire tendue en disque sous la gorge. Couché au bord d’une ancienne citerne souterraine, petite zone de poussière immobile devant le disque suggérant absorption du son. Corps animal entier, doigts courts, queue épaisse, pas de visage humain ni de chauve-souris, aucune victime.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "e00490d95ccfe7c52e96acd5741189cd470958d7d8b49e716cc7ea7a7d95538d",
+        "originalSha256": "b1d3eb9fda5004ad384891d00e30e60ea607df077f2591c99eb764855fba2521",
+        "bytes": 404568,
+        "originalBytes": 3280093,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      }
+    },
+    {
+      "id": "BEST-ER-010-055",
+      "name": "Noueuse de gypse",
+      "slug": "noueuse-de-gypse",
+      "path": "fiches/BEST-ER-010-055-noueuse-de-gypse.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-055.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-055.png",
+        "alt": "Arthropode pâle à huit pattes construisant une petite arche poreuse de gypse dans une galerie.",
+        "brief": "Arthropode pâle cavernicole de la taille d’un panier, exactement huit pattes articulées et petites mandibules fines de tissage, abdomen étroit portant de petits sacs crayeux. Il construit une petite arche ramifiée en filaments de gypse humide entre deux roches, structure nervurée et poreuse très organique. Animal entier bien lisible au travail sur l’arche, parois mates de galerie, pas de toile avec gouttes ni de cristal lumineux ni de texte.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "d6f58bb3ddb330b15acfaf9e81e94f1ce2bf5daf8e7928137ae3f19ab9adf76c",
+        "originalSha256": "3533f5d65bcf39018948a5aee81dfc11732c3010e711c3fd08a17df49e65af40",
+        "bytes": 352240,
+        "originalBytes": 3139334,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      }
+    },
+    {
+      "id": "BEST-ER-010-056",
+      "name": "Raie des puits secs",
+      "slug": "raie-des-puits-secs",
+      "path": "fiches/BEST-ER-010-056-raie-des-puits-secs.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-056.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-056.png",
+        "alt": "Raie ardoise aux lamelles cuivrées planant dans l’air d’un puits karstique sec.",
+        "brief": "Animal aérien en forme de raie, corps plat brun ardoise et large paire de nageoires membraneuses plissées, petits organes respiratoires cuivre sous le ventre, yeux latéraux minuscules et courte queue. Il plane dans l’AIR d’un puits karstique sec vertical profond, un courant ascendant local soulève un peu de poussière, parois proches, roches et un rebord. Pas d’eau, pas d’ailes d’oiseau, pas de tentacules de méduse ni de portail. Vue trois-quarts corps entier en traversée.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "16aad4665f06ecf22fad21fcee577f00f611970fa9f3c384b494875b7f26ae9c",
+        "originalSha256": "78c521d1974088d043f8715f21453febefe388396849e43e8fb7b16771740122",
+        "bytes": 324880,
+        "originalBytes": 3041956,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      }
+    },
+    {
+      "id": "BEST-ER-010-057",
+      "name": "Mange-mèche",
+      "slug": "mange-meche",
+      "path": "fiches/BEST-ER-010-057-mange-meche.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-057.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-057.png",
+        "alt": "Petit organisme noir cuivré aux vésicules ambrées, en contact avec une mèche qui s’affaiblit.",
+        "brief": "Créature vermiforme aplatie noire à reflets cuivre, taille d’une main, quatre franges latérales courtes sans pattes, bouche ventrale minuscule adhérant à une mèche d’une lampe à huile abandonnée. Son dos porte une chaîne de petites vésicules ambrées tièdes ; l’unique flamme diminue près de son contact, sans feu sur l’animal. Intérieur de galerie ancienne sombre mais éclairage suffisant pour voir l’anatomie, aucun personnage ni texte.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "4036da5b0bad82fe92d2828cbc287bb41027abf0ebaf299aa99007307f6dd26e",
+        "originalSha256": "7a1d25ff687e40a971926a39701eee69340aa00ed1bbbc2d4447121d47d36ad0",
+        "bytes": 275898,
+        "originalBytes": 2718242,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      }
+    },
+    {
+      "id": "BEST-ER-010-058",
+      "name": "Trocqueur des galets",
+      "slug": "trocqueur-des-galets",
+      "path": "fiches/BEST-ER-010-058-trocqueur-des-galets.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-058.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-058.png",
+        "alt": "Petit animal brun à quatre pattes et deux bras, proposant un galet devant une station de tri.",
+        "brief": "Étrange petit animal cavernicole trapu, carapace douce brun argile à plaques rondes comme galets, tête basse et petites antennes sensorielles, exactement six membres : quatre pattes de marche basses et deux petits bras antérieurs manipulateurs. Accroupi devant deux tas ordonnés de galets et un fragment de cire, il avance une pierre plate avec un de ses bras comme un échange. Apparence animale non humanoïde, yeux noirs discrets, pas habits ni bijoux ni outils humains ni runes.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "75adacf1e689aca364af8a415049a9f1e4928c9914071b261f7fb3c969809122",
+        "originalSha256": "2649edf3bb398baad36cc034d72f41e1b8f551108fd64aba38f3411136a030ea",
+        "bytes": 366476,
+        "originalBytes": 3125403,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      }
+    },
+    {
+      "id": "BEST-ER-010-059",
+      "name": "Nacreuse des siphons",
+      "slug": "nacreuse-des-siphons",
+      "path": "fiches/BEST-ER-010-059-nacreuse-des-siphons.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-059.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-059.png",
+        "alt": "Bivalve bleu nuit fixé sous l’eau d’une grotte, retenant une poche d’air sous son manteau nacré.",
+        "brief": "Grand mollusque bivalve fixé à une roche IMMERGÉE dans un siphon de grotte, coquille bombée bleu nuit avec côtes crème cuivrées, deux valves entrouvertes découvrant un manteau nacré et UNE poche d’air brillante retenue sous une mince membrane près de l’ouverture. Vue sous l’eau assez claire pour lire le sujet, minces siphons biologiques, aucune perle-gemme ni trésor ni humain ni lumière propre excessive.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "5db3b4def8181269f4e6fe723a65793bd59e916454bcb85738e54fda4be28b5b",
+        "originalSha256": "a1ff35f00e1b223bc759209d5b4bd71811a2570bb6f78e3c2275b1f52c82408c",
+        "bytes": 379282,
+        "originalBytes": 3150165,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      }
+    },
+    {
+      "id": "BEST-ER-010-060",
+      "name": "Lesteur des fausses marches",
+      "slug": "lesteur-des-fausses-marches",
+      "path": "fiches/BEST-ER-010-060-lesteur-des-fausses-marches.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-060.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-060.png",
+        "alt": "Arthropode ferrugineux à huit pattes et plaques contrepoids, relié par filaments à un petit galet soulevé.",
+        "brief": "Arthropode souterrain bas et large brun ferrugineux, exactement huit pattes courtes, trois plaques dorsales épaisses décalées comme contrepoids. Sous le ventre, de minces filaments touchent un petit galet soulevé juste au-dessus du sol, l’animal s’enfonce légèrement dans l’argile en reprenant une part de son poids apparent. Galerie avec sol irrégulier, anatomie organique, ni machine ni aimant dessiné ni runes ni grandes pierres flottantes.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "ef570bdbbed6367af5523333690f55f5df272395a3446248ac8c600f83c813f7",
+        "originalSha256": "e322a17a6ef886660667eda7cc3996eb6e4d7d7623d93bdb50e0fc7c30663c72",
+        "bytes": 368466,
+        "originalBytes": 3115006,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      }
+    },
+    {
+      "id": "BEST-ER-010-061",
+      "name": "Marchemâche des degrés",
+      "slug": "marchemache-des-degres",
+      "path": "fiches/BEST-ER-010-061-marchemache-des-degres.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-061.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-061.png",
+        "alt": "Grand prédateur à trois plaques en forme de marches, six pattes en déploiement et dessous de cuir sombre.",
+        "brief": "Grand animal prédateur aplati dont le dos imite TROIS marches usées d’un escalier minéral. Le corps est montré de trois-quarts de côté : trois plaques crayeuses étagées, dessous de cuir souple sombre, six pattes puissantes repliées commencent à se déployer et une bouche horizontale sous l’avant est entrebâillée. Ancienne galerie taillée, pas d’escalier entier qui se transforme, pas de main humaine, aucun texte ou victime ni gore. Le monstre entier doit être distinct du vrai sol.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "47ece384ef7329b5cb930df0ba302419e440b40ec7d4e86ca8e35bd62f53ffc5",
+        "originalSha256": "ac9d3296eccb2d63903adfc1fa56c8eb940b866def35b790032885de8eb528dd",
+        "bytes": 410848,
+        "originalBytes": 3286874,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      }
+    },
+    {
+      "id": "BEST-ER-010-062",
+      "name": "Oniride des chambres closes",
+      "slug": "oniride-des-chambres-closes",
+      "path": "fiches/BEST-ER-010-062-oniride-des-chambres-closes.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-062.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-062.png",
+        "alt": "Céphalopode terrestre crème et mauve à huit bras, montrant près de son manteau une petite alcôve en image pâle.",
+        "brief": "Céphalopode terrestre merveilleux pâle, huit bras souples courts posés sur le sol humide d’une chambre de grotte, manteau bombé en porcelaine vivante crème et mauve, petit œil latéral calme, pores cuivrés sur la peau. À proximité de son manteau se forme UNE faible image aérienne translucide d’une petite alcôve rocheuse vue à hauteur d’animal, souvenir visuel limité, pas de portail. Animal entier, pas d’humain, pas de cerveau exposé ni de texte.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "a512192d7506fd7876fd957dddc6f5adb37da7a90b8d37487cd69d3088497187",
+        "originalSha256": "9bea53df93a6f7c6070e97dbd87f71a8d835f74563dc1bc4dcb2fa09fee4872a",
+        "bytes": 386002,
+        "originalBytes": 3197818,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      }
+    }
+  ],
+  "integrity": {
+    "algorithm": "SHA-256",
+    "scope": "Tous les fichiers du dossier sauf le manifeste lui-même ; après versionnement, l’objet Git ancre le manifeste."
+  },
+  "files": [
+    {
+      "path": "APERCU.html",
+      "sha256": "716de662560b882b695e4a89badaeafaeb02d4f10258f007605fb97484f4f85b",
+      "bytes": 418932
+    },
+    {
+      "path": "CONTROLE_DOUBLONS.md",
+      "sha256": "f834d3f4242187fdb89efb23acf048d4688f8c480a8af1a579067e51d3ba8960",
+      "bytes": 7594
+    },
+    {
+      "path": "controle-doublons-v0.1.json",
+      "sha256": "13750655ae4d87e7f51dfbe9293f322843f74a4e464cf4a3247820e06a94c36d",
+      "bytes": 11346
+    },
+    {
+      "path": "fiches/BEST-ER-010-053-battant-de-basalte.md",
+      "sha256": "6b116d253bf4cca3d588483d3527298e2f4eedf134387b5129231040e22c1acd",
+      "bytes": 12022
+    },
+    {
+      "path": "fiches/BEST-ER-010-054-sourdine-des-citernes.md",
+      "sha256": "499d93cafdcbdca94a70c547a5f9d887131dbe22a8dad2eea33ed2fb215f0abd",
+      "bytes": 11809
+    },
+    {
+      "path": "fiches/BEST-ER-010-055-noueuse-de-gypse.md",
+      "sha256": "b77b138a4b8ae27cd1abad9058ce95902429b2af3d10ec40d32bcb495a006f3e",
+      "bytes": 11950
+    },
+    {
+      "path": "fiches/BEST-ER-010-056-raie-des-puits-secs.md",
+      "sha256": "9a67fe40603b93cfc5fe319a165868e5c5e45fabf4a3aef1f39ee59e2a473e0c",
+      "bytes": 11893
+    },
+    {
+      "path": "fiches/BEST-ER-010-057-mange-meche.md",
+      "sha256": "f24a20f8856d51471c7fad199b5978b7bc125ec56a2afbb466117b98c70f620f",
+      "bytes": 12054
+    },
+    {
+      "path": "fiches/BEST-ER-010-058-trocqueur-des-galets.md",
+      "sha256": "c7b783b47f087cc325fd4abab168fadf4ab4da03b52c9963ac64dfbe860abc74",
+      "bytes": 12268
+    },
+    {
+      "path": "fiches/BEST-ER-010-059-nacreuse-des-siphons.md",
+      "sha256": "14d7747ae11628cf57b7128fd51eff052898e69773b73b56d15dd4f1358ebd41",
+      "bytes": 12129
+    },
+    {
+      "path": "fiches/BEST-ER-010-060-lesteur-des-fausses-marches.md",
+      "sha256": "35e3f182777ad04c24bedbe65e24af7214ecdda2a77c18e420f64b4b0d50444a",
+      "bytes": 12098
+    },
+    {
+      "path": "fiches/BEST-ER-010-061-marchemache-des-degres.md",
+      "sha256": "7c0289fbe823d8c1cd50c797eb15ddcd163d07fdb82b0a12d42a069db9461484",
+      "bytes": 12577
+    },
+    {
+      "path": "fiches/BEST-ER-010-062-oniride-des-chambres-closes.md",
+      "sha256": "7239dc42568ee0d99b49c327a163aa815068b4319b855374a2c9f60ce7edb29e",
+      "bytes": 12451
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-010-053.png",
+      "sha256": "ec8eb4c4848a1bffdc785f04beda8c6c38b88e9609115368304d9ed6f9ff7071",
+      "bytes": 3403654
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-010-054.png",
+      "sha256": "b1d3eb9fda5004ad384891d00e30e60ea607df077f2591c99eb764855fba2521",
+      "bytes": 3280093
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-010-055.png",
+      "sha256": "3533f5d65bcf39018948a5aee81dfc11732c3010e711c3fd08a17df49e65af40",
+      "bytes": 3139334
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-010-056.png",
+      "sha256": "78c521d1974088d043f8715f21453febefe388396849e43e8fb7b16771740122",
+      "bytes": 3041956
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-010-057.png",
+      "sha256": "7a1d25ff687e40a971926a39701eee69340aa00ed1bbbc2d4447121d47d36ad0",
+      "bytes": 2718242
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-010-058.png",
+      "sha256": "2649edf3bb398baad36cc034d72f41e1b8f551108fd64aba38f3411136a030ea",
+      "bytes": 3125403
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-010-059.png",
+      "sha256": "a1ff35f00e1b223bc759209d5b4bd71811a2570bb6f78e3c2275b1f52c82408c",
+      "bytes": 3150165
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-010-060.png",
+      "sha256": "e322a17a6ef886660667eda7cc3996eb6e4d7d7623d93bdb50e0fc7c30663c72",
+      "bytes": 3115006
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-010-061.png",
+      "sha256": "ac9d3296eccb2d63903adfc1fa56c8eb940b866def35b790032885de8eb528dd",
+      "bytes": 3286874
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-010-062.png",
+      "sha256": "9bea53df93a6f7c6070e97dbd87f71a8d835f74563dc1bc4dcb2fa09fee4872a",
+      "bytes": 3197818
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-010-053.webp",
+      "sha256": "17b844a4e57f76e42c64d50bd5decfbbc2e3d5608b5f50c6850972529cf278b9",
+      "bytes": 424422
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-010-054.webp",
+      "sha256": "e00490d95ccfe7c52e96acd5741189cd470958d7d8b49e716cc7ea7a7d95538d",
+      "bytes": 404568
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-010-055.webp",
+      "sha256": "d6f58bb3ddb330b15acfaf9e81e94f1ce2bf5daf8e7928137ae3f19ab9adf76c",
+      "bytes": 352240
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-010-056.webp",
+      "sha256": "16aad4665f06ecf22fad21fcee577f00f611970fa9f3c384b494875b7f26ae9c",
+      "bytes": 324880
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-010-057.webp",
+      "sha256": "4036da5b0bad82fe92d2828cbc287bb41027abf0ebaf299aa99007307f6dd26e",
+      "bytes": 275898
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-010-058.webp",
+      "sha256": "75adacf1e689aca364af8a415049a9f1e4928c9914071b261f7fb3c969809122",
+      "bytes": 366476
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-010-059.webp",
+      "sha256": "5db3b4def8181269f4e6fe723a65793bd59e916454bcb85738e54fda4be28b5b",
+      "bytes": 379282
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-010-060.webp",
+      "sha256": "ef570bdbbed6367af5523333690f55f5df272395a3446248ac8c600f83c813f7",
+      "bytes": 368466
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-010-061.webp",
+      "sha256": "47ece384ef7329b5cb930df0ba302419e440b40ec7d4e86ca8e35bd62f53ffc5",
+      "bytes": 410848
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-010-062.webp",
+      "sha256": "a512192d7506fd7876fd957dddc6f5adb37da7a90b8d37487cd69d3088497187",
+      "bytes": 386002
+    },
+    {
+      "path": "illustrations-prompts-v0.1.json",
+      "sha256": "277f6bad3412bac2f8d2cceff35bcc08866d7ee3925e2a0618d1eda6b4429666",
+      "bytes": 15907
+    },
+    {
+      "path": "INTEGRATION_SITES.md",
+      "sha256": "a2a0218b9d478195018fb1094898ce48af1aa99ff80d133f1c43adcfac1dfd84",
+      "bytes": 7486
+    },
+    {
+      "path": "lot-v0.1.json",
+      "sha256": "14784c3f86b178c95f32e1a18066ca10146158cb67175caa06deb1c0d33cbdaf",
+      "bytes": 117652
+    },
+    {
+      "path": "PLANCHE.webp",
+      "sha256": "6e525b1e595bbdbe394346c5791295d4c384d614c4ba99ae180c9d0d11c8bf77",
+      "bytes": 445848
+    },
+    {
+      "path": "PROGRAMME.md",
+      "sha256": "fab2485428bc774e08cfd1556a4525a61a5bffee006be20113fe3b65fd458003",
+      "bytes": 1882
+    },
+    {
+      "path": "RAPPORT.md",
+      "sha256": "e7e9a0340669c4d96a3b69607f6c0e6d9c1a4569029b58da24eb39a575494a68",
+      "bytes": 5702
+    },
+    {
+      "path": "README.md",
+      "sha256": "fe4234e79ca85225a22f3d73071cce0e27c6f3b10ed28ca7805602c3b51f9353",
+      "bytes": 3096
+    },
+    {
+      "path": "recette/apercu-1365.png",
+      "sha256": "16b6aff9aca7f6c029553f620f5f947be0d7dc8cf7af35e3b4dfcc46530e2736",
+      "bytes": 655548
+    },
+    {
+      "path": "recette/apercu-390.png",
+      "sha256": "a92baec3be94a419ea36c78333cbb2757f21214b15026c40e224bcfcdda06de0",
+      "bytes": 137396
+    },
+    {
+      "path": "recette/fiche-1365.png",
+      "sha256": "a54cf8a2fbf05780697bbb7b919566cdf055b25e9c6f8c8eb611e06833fbfe94",
+      "bytes": 1185284
+    },
+    {
+      "path": "recette/fiche-390.png",
+      "sha256": "7c3ef7f8afa55f925e36d79a2a9bd1ff21243839d20b9210003cdd2ead5e133e",
+      "bytes": 197661
+    },
+    {
+      "path": "render-pack.mjs",
+      "sha256": "98f168fc4b94c67c0b93d34baa6a3e3c5aa3b6391f0b04e1eaf6bb3ad77e0f70",
+      "bytes": 18348
+    },
+    {
+      "path": "snapshot-sources-v0.1.json",
+      "sha256": "72bf7033b1c4d66977865cd26520b06c034f7ec5a6371f9cbc125da3a4ff5ff0",
+      "bytes": 394226
+    },
+    {
+      "path": "validation-v0.1.json",
+      "sha256": "60799eef1f85b2ec1db29cc09ba0dd511e8dc4b9126e5b7882c70f323cbef5a4",
+      "bytes": 2942
+    },
+    {
+      "path": "verify-pack.mjs",
+      "sha256": "3c026eb108082dc08b7c707d676cbc7b8c2d3a94aa9ef40bc53e28ab00f31510",
+      "bytes": 19853
+    }
+  ]
+}

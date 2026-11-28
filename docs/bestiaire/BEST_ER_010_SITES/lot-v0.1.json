@@ -1,0 +1,1689 @@
+{
+  "schema": "entre-rives.bestiaire.sites.preparation.v2",
+  "lot": "BEST-ER-010",
+  "version": "0.1.0",
+  "date": "2026-11-27",
+  "theme": "Les profondeurs et les souterrains",
+  "target": "ChatGPT Sites indépendant — projet existant appgprj_6aefa21ad1bc819198e86d83a74b3484",
+  "portee": "univers_partage",
+  "sourceBase": "603fde12f0469474251cf06c9742f33911369caf",
+  "status": "preparation_editoriale_non_importable_en_production",
+  "notice": "Dix concepts originaux proposés, sans attribution de code ESP. Schéma de préparation v2 enrichi de forces, rôles et évolutions possibles ; aucun import natif de production ni statistique homologuée. Répartition et biologie restent proposées.",
+  "entries": [
+    {
+      "id": "BEST-ER-010-053",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "name": "Battant de basalte",
+      "slug": "battant-de-basalte",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "family": "Organisme lithique articulé — classement proposé",
+      "size": "Masse basse occupant la largeur d’une petite galerie",
+      "gameRoles": [
+        "obstacle vivant",
+        "présage matériel",
+        "sauvetage"
+      ],
+      "description": "Trois plaques de basalte s’inclinent lentement autour d’une fente cuivrée. Entre elles, une membrane sombre se gonfle et se vide avec la régularité d’un cœur. Le Battant n’a ni visage ni bras : ses appuis trapus avancent en décalant son poids, laissant des empreintes plates dans la poussière. Un visiteur peut d’abord le prendre pour une cale de roche, jusqu’à voir les graviers tressaillir au rythme de sa contraction.",
+      "habitat": "Galeries naturelles fracturées, anciennes chambres d’extraction et passages humides où une arrivée de débris organiques reste possible. Aucune population n’est placée dans un lieu nommé de l’Atlas.",
+      "ecology": {
+        "diet": "Absorbe des biofilms et des matières organiques prises dans la boue de ses jointures. Les grains minéraux entretiennent ses plaques mais ne constituent pas une nourriture suffisante à eux seuls.",
+        "lifeCycle": "Un petit nodule souple grandit dans une fissure, puis forme des plaques séparées. Le jeune reste longtemps fixé ; l’adulte détache périodiquement une écaille et déplace ses appuis pour éviter l’envasement.",
+        "role": "Crée des abris sous ses plaques et retient une partie des sédiments. Sa présence peut soutenir un petit éboulis ou au contraire déplacer une pierre mal assise ; elle ne certifie jamais la stabilité du terrain.",
+        "seasonality": "Réagit aux variations de ruissellement venues de la surface. Une saison sèche ralentit les battements ; une crue peut ensevelir ses membranes et forcer un déplacement."
+      },
+      "behavior": {
+        "ordinary": "Alterne de longues immobilités et de courts repositionnements. Plusieurs individus peuvent partager un étranglement sans former un mur organisé ou obéir à un gardien.",
+        "warningSigns": "La poussière saute sur les plaques ; un raclement sourd précède le relèvement d’un appui. Une membrane presque noire indique surtout un repli, pas une colère lisible.",
+        "firstContact": "Tolère une observation éloignée. Poser une charge sur son dos déclenche une contraction et peut compromettre un passage qu’on croyait inerte.",
+        "escalation": "S’il est coincé, il resserre ses plaques puis décale brutalement son centre d’appui. Le danger vient de l’écrasement et des débris ; il ne poursuit pas les fuyards.",
+        "retreat": "Cherche une zone humide peu vibrante, même si cette direction ferme momentanément le chemin des visiteurs.",
+        "coexistence": "Garder les charges sur des appuis indépendants, conserver un détour et interrompre les coups de pioche permet de travailler près de lui."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Réserve de contrainte",
+          "effect": "Retient puis restitue une part de la poussée subie par ses propres plaques.",
+          "conditions": "Contact réel entre plaques, membranes vivantes et pression progressive.",
+          "limits": "Ne commande pas la montagne et ne retient pas un effondrement sans fin ; une plaque peut casser.",
+          "counterplay": "Décharger progressivement et caler le terrain sans utiliser son corps comme étai."
+        },
+        {
+          "name": "Pulsation d’avertissement",
+          "effect": "Transmet un battement dans les pierres qui touchent ses appuis.",
+          "conditions": "Sol continu et appuis posés.",
+          "limits": "Le rythme ne traduit ni parole ni annonce certaine d’un séisme.",
+          "counterplay": "Comparer plusieurs supports, écouter à distance et garder des repères mécaniques."
+        },
+        {
+          "name": "Retrait des joints",
+          "effect": "Protège ses parties souples en rapprochant les plaques.",
+          "conditions": "Un espace libre pour les faire coulisser.",
+          "limits": "Les membranes restent vulnérables à la dessiccation et à une pointe prise dans un joint.",
+          "counterplay": "Cesser de presser l’animal et lui laisser le temps de rouvrir une issue."
+        }
+      ],
+      "weaknesses": [
+        "Les chocs répétés fissurent les plaques et peuvent blesser ce qui les relie.",
+        "Boue compacte, air sec et perte de matière nutritive compromettent sa survie."
+      ],
+      "variants": [
+        {
+          "name": "Battant en éventail",
+          "description": "Plaques fines et écartées dans les galeries peu chargées ; posture plus large et mobilité limitée.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Battant à joints roux",
+          "description": "Dépôts ferrugineux visibles autour des membranes ; aucune résistance au feu ajoutée.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "evolution": {
+        "naturalStages": "Nodule fixé, jeune à plaques incomplètes, adulte capable de déplacer ses appuis ; ces stades ne sont pas des niveaux de combat.",
+        "possibleAdaptations": "Un individu longtemps soumis à des poussées régulières pourrait développer une plaque dissymétrique et un rythme de détente particulier.",
+        "limits": "La forme « Porte-charge » serait une histoire individuelle à valider, sans croissance infinie, mission de gardien ni bonus automatique."
+      },
+      "resources": {
+        "renewable": [
+          "Écailles abandonnées et relevés de pulsation, sans extraire de membrane."
+        ],
+        "harmful": [
+          "Briser un appui ou prélever le tissu cuivré vivant risque de tuer l’organisme et de déplacer les débris."
+        ],
+        "proposedUses": [
+          "Étude proposée de joints amortissants et de cales articulées ; aucun matériau indestructible, étai magique ou remède validé."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Poudre d’une écaille naturellement abandonnée.",
+          "proposedUse": "Support candidat pour une capsule d’alerte qui changerait de texture sous compression.",
+          "conditions": "Comparer avec une poudre ordinaire ; ne pas confondre la matière morte avec la réserve active de l’organisme.",
+          "status": "proposition_non_jouee"
+        }
+      },
+      "quests": [
+        {
+          "title": "La cale qui respire",
+          "situation": "Un treuil repose sur un Battant pris pour une pierre ; le prochain déplacement doit emporter un blessé.",
+          "choice": "Installer un appui indépendant, alléger la charge ou chercher une autre sortie.",
+          "openOutcome": "La stabilité des débris et la patience de l’équipe restent à éprouver."
+        },
+        {
+          "title": "Le battement interrompu",
+          "situation": "Des ouvriers n’entendent plus le rythme habituel derrière une paroi récemment maçonnée.",
+          "choice": "Vérifier l’humidité et la maçonnerie sans supposer une malédiction.",
+          "openOutcome": "Travaux, déplacement naturel ou blessure sont des causes possibles à choisir."
+        },
+        {
+          "title": "Un passage pour deux",
+          "situation": "Deux groupes veulent emprunter un étranglement au moment où plusieurs Battants se déplacent.",
+          "choice": "Négocier l’ordre de passage, préparer un détour ou attendre hors de l’axe.",
+          "openOutcome": "L’accord et l’ouverture effective du corridor demeurent incertains."
+        },
+        {
+          "title": "Le faux cœur de forge",
+          "situation": "Un acheteur réclame une membrane capable, selon lui, de faire fonctionner une machine sans énergie.",
+          "choice": "Examiner une écaille morte, contester la promesse ou financer une étude non destructive.",
+          "openOutcome": "Aucune découverte de moteur perpétuel n’est assurée."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "BEST-ER-008-042",
+          "distinction": "Organisme lithique à membranes, sans mammifère fouisseur ni creusement de roche intacte.",
+          "residualRisk": "Même rôle d’indice de terrain : ne pas transférer les aptitudes du Fouisseur."
+        },
+        {
+          "reference": "bestiaire-ver-des-frontieres",
+          "distinction": "Contrainte locale de plaques en contact, aucun passage ni lien aux Failles.",
+          "residualRisk": "La portée merveilleuse et la nature du vivant minéral restent à arbitrer."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-053.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-053.png",
+        "alt": "Organisme non humanoïde de trois plaques de basalte à membranes cuivrées, calé dans une galerie.",
+        "brief": "Organisme lithique vivant non humanoïde, assemblage bas et massif de trois hautes plaques de basalte articulées sur des bourrelets organiques ocre sombre, fissures étroites montrant une membrane cuivrée qui bat, pas de lave. Il est calé de travers entre deux parois d’une galerie naturelle et porte son propre corps sur trois appuis trapus. Aucun visage, aucun bras, aucune rune, pas un golem humain. Graviers fins autour de ses appuis, mouvement de contraction perceptible.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "17b844a4e57f76e42c64d50bd5decfbbc2e3d5608b5f50c6850972529cf278b9",
+        "originalSha256": "ec8eb4c4848a1bffdc785f04beda8c6c38b88e9609115368304d9ed6f9ff7071",
+        "bytes": 424422,
+        "originalBytes": 3403654,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      },
+      "strengths": [
+        "Ses plaques articulées répartissent des poussées modestes et offrent un abri aux petites formes de vie.",
+        "Un rythme observable rend possible une approche patiente, un détournement du passage ou un sauvetage préparé."
+      ]
+    },
+    {
+      "id": "BEST-ER-010-054",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "name": "Sourdine des citernes",
+      "slug": "sourdine-des-citernes",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "family": "Prédateur amphibie à poche acoustique — classement proposé",
+      "size": "Animal bas, plus long qu’un grand chien",
+      "gameRoles": [
+        "embuscade annoncée",
+        "sauvetage",
+        "exploration silencieuse"
+      ],
+      "description": "La Sourdine possède une tête aplatie sans yeux visibles, quatre membres écartés et une queue épaisse. Sous sa gorge pend une poche ivoire qui se tend en disque lorsqu’elle chasse. Les gouttes tombent toujours, mais leur tintement paraît soudain lointain auprès de cette membrane. Le corps, gris bleu et moucheté de calcaire, reste matériel : on distingue ses traces de ventre sur la berge et ses doigts dans la vase.",
+      "habitat": "Citernes abandonnées reliées à des anfractuosités humides, bassins souterrains et berges basses couvertes de refuges. Ni ruine particulière ni présence dans une installation habitée ne sont imposées.",
+      "ecology": {
+        "diet": "Capture petits animaux de berge et invertébrés. Les proies apportent l’énergie nécessaire à sa poche ; elle ne se nourrit ni de voix, ni de peur, ni de silence.",
+        "lifeCycle": "Dépose ses œufs dans un repli humide hors des courants forts. Les jeunes ont une poche réduite et chassent près du substrat ; les adultes occupent des reposoirs séparés.",
+        "role": "Prélève des animaux qui fréquentent la limite de l’eau et laisse des restes accessibles aux détritivores. Elle peut se rencontrer près d’une réserve d’eau sans en être propriétaire ou gardienne.",
+        "seasonality": "L’activité suit le niveau des bassins et l’abondance des proies. Un pompage rapide peut la pousser dans une rigole étroite où elle devient plus défensive."
+      },
+      "behavior": {
+        "ordinary": "Reste immobile sur un rebord, gorge repliée, puis avance pendant les vibrations du courant. Elle s’oriente par contact et par les mouvements du support.",
+        "warningSigns": "Traces de ventre, petits os groupés et sons soudain amortis autour d’un même reposoir. L’absence de bruit seule n’identifie pas sûrement l’espèce.",
+        "firstContact": "Se plaque contre la berge si les visiteurs restent loin. Une perche frappant l’eau peut attirer son attention plutôt que l’effrayer.",
+        "escalation": "Déploie sa poche avant une avancée courte. Si elle saisit un équipement, la chute et la séparation du groupe comptent davantage que l’effet silencieux lui-même.",
+        "retreat": "Relâche la membrane pour plonger vers une fissure connue ; une poursuite aveugle dans l’eau est risquée.",
+        "coexistence": "Observer les rives, maintenir un lien visuel et garder libres ses issues réduit les contacts dangereux. Le silence n’interdit aucun geste ou signal lumineux."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Poche sourde",
+          "effect": "Amortit localement les sons qui traversent la membrane déployée.",
+          "conditions": "Animal immobile ou lent, poche humide tendue, source sonore proche.",
+          "limits": "Ne supprime ni vibration du sol, ni pensée, ni tout son d’une salle ; aucune annulation générale de magie.",
+          "counterplay": "Sortir de l’axe de la poche et convenir de signes visuels ou tactiles."
+        },
+        {
+          "name": "Lecture de berge",
+          "effect": "Repère les mouvements transmis par le support où elle repose.",
+          "conditions": "Contact avec la même berge ou une eau calme connectée.",
+          "limits": "Débris, courant et supports séparés rendent l’information imprécise.",
+          "counterplay": "Varier les appuis et éviter de provoquer une charge près d’une pente glissante."
+        },
+        {
+          "name": "Saisie de repli",
+          "effect": "Tient une petite proie ou un objet entre ses mâchoires avant de reculer vers l’eau.",
+          "conditions": "Cible à portée et chemin de recul libre.",
+          "limits": "Aucune entrave M03 garantie ; une charge trop lourde peut être abandonnée.",
+          "counterplay": "Lâcher un sac, stabiliser la personne et conserver une voie de retrait commune."
+        }
+      ],
+      "weaknesses": [
+        "Une membrane sèche se rétracte et peut se déchirer.",
+        "Elle perçoit mal un obstacle sur un support séparé ; ses membres ne sont pas faits pour une longue poursuite sèche."
+      ],
+      "variants": [
+        {
+          "name": "Sourdine à gorge plissée",
+          "description": "Poche large, repliée en nombreux plis, adaptée aux berges étroites.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Sourdine des bassins froids",
+          "description": "Corps plus trapu et longues périodes d’immobilité ; aucune affinité de glace présumée.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "evolution": {
+        "naturalStages": "Les jeunes apprennent la chasse de berge avant que leur poche devienne pleinement fonctionnelle ; les vieux portent des cicatrices et des replis irréguliers.",
+        "possibleAdaptations": "Une adulte pourrait connaître plusieurs refuges et choisir de ne déployer qu’une partie de sa poche dans une rigole.",
+        "limits": "Une telle expérience ne donne ni imitation de voix, ni télépathie, ni champ de silence universel, ni transformation liée à l’XP."
+      },
+      "resources": {
+        "renewable": [
+          "Fragments de mue abandonnée après un reposoir délaissé."
+        ],
+        "harmful": [
+          "Prélèvement de poche vivante ou assèchement d’une ponte."
+        ],
+        "proposedUses": [
+          "Essais proposés d’absorbants acoustiques et d’habillages d’instruments ; aucune cape de silence ou préparation médicale homologuée."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Fragment de mue gulaire déjà délaissé.",
+          "proposedUse": "Liant candidat pour une pastille amortissant un léger cliquetis à l’intérieur d’un étui.",
+          "conditions": "Essai sur petit objet inerte ; aucune zone de silence ou protection d’une personne n’est acquise.",
+          "status": "proposition_non_jouee"
+        }
+      },
+      "quests": [
+        {
+          "title": "La chaîne sans tintement",
+          "situation": "Un sauveteur travaille sur une échelle près de l’eau ; les appels semblent ne plus lui parvenir.",
+          "choice": "Passer aux signaux visuels, sécuriser l’échelle et examiner la berge.",
+          "openOutcome": "La Sourdine peut être présente sans expliquer l’accident initial."
+        },
+        {
+          "title": "Le bassin qu’on vide",
+          "situation": "Le pompage d’une citerne menace d’enfermer plusieurs animaux dans un conduit utilisé par les ouvriers.",
+          "choice": "Échelonner le pompage, ménager une sortie ou fermer temporairement le passage humain.",
+          "openOutcome": "Les contraintes du chantier et les déplacements restent à résoudre en jeu."
+        },
+        {
+          "title": "Le témoin du reposoir",
+          "situation": "Un témoin jure n’avoir entendu aucune dispute au fond d’une salle voisine.",
+          "choice": "Reconstituer les positions et les supports avant d’accuser qui que ce soit.",
+          "openOutcome": "Le récit peut être exact, incomplet ou indépendant du phénomène acoustique."
+        },
+        {
+          "title": "La poche du musicien",
+          "situation": "Un facteur d’instruments reçoit commande d’un étouffoir merveilleux sans capture vivante.",
+          "choice": "Trouver une mue, observer une membrane ou revoir la commande.",
+          "openOutcome": "Le résultat sonore ne vaut pas découverte d’un objet magique."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "bestiaire-harpiste-creuse",
+          "distinction": "Amphibien prédateur amortissant un son proche, sans voix imitée ni forme d’instrument.",
+          "residualRisk": "Proximité d’horreur acoustique ; garder une silhouette et des indices distincts."
+        },
+        {
+          "reference": "bestiaire-lamproie-de-nacre",
+          "distinction": "Quadrupède de berge à poche gulaire, distinct du corps serpentiforme à collerette.",
+          "residualRisk": "Un bassin commun reste une hypothèse et ne prouve aucune parenté."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-054.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-054.png",
+        "alt": "Prédateur amphibie aveugle à quatre membres et poche gulaire ivoire, au bord d’une citerne.",
+        "brief": "Grand prédateur amphibie aveugle à quatre membres trapus, peau gris bleu mate humide, tête large sans yeux et énorme poche gulaire membraneuse ivoire tendue en disque sous la gorge. Couché au bord d’une ancienne citerne souterraine, petite zone de poussière immobile devant le disque suggérant absorption du son. Corps animal entier, doigts courts, queue épaisse, pas de visage humain ni de chauve-souris, aucune victime.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "e00490d95ccfe7c52e96acd5741189cd470958d7d8b49e716cc7ea7a7d95538d",
+        "originalSha256": "b1d3eb9fda5004ad384891d00e30e60ea607df077f2591c99eb764855fba2521",
+        "bytes": 404568,
+        "originalBytes": 3280093,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      },
+      "strengths": [
+        "Elle chasse dans une zone où les proies se reposent sur leurs appels, ce qui en fait une menace d’embuscade singulière.",
+        "Sa poche lui donne un avantage de proximité sans effacer les indices matériels que peuvent lire des éclaireurs."
+      ]
+    },
+    {
+      "id": "BEST-ER-010-055",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "name": "Noueuse de gypse",
+      "slug": "noueuse-de-gypse",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "family": "Arthropode bâtisseur cavernicole — classement proposé",
+      "size": "Corps de la taille d’un panier, longues pattes fines",
+      "gameRoles": [
+        "bâtisseur ambigu",
+        "traversée",
+        "négociation de chantier"
+      ],
+      "description": "Huit pattes pâles enjambent une arche plus délicate qu’un os de poisson. L’abdomen étroit porte plusieurs poches crayeuses ; les mandibules de la Noueuse réunissent des grains humides en filaments qui se nouent puis durcissent. Sa carapace est mate, presque farineuse, avec des articulations brun miel. De près, la prétendue dentelle minérale révèle des nervures de réparation, des ouvertures d’aération et de minuscules niches sous lesquelles les jeunes se cachent.",
+      "habitat": "Galeries humides riches en dépôts friables, petits ressauts et chambres où parviennent des débris nutritifs. Elle ne bâtit pas dans tout souterrain et ne crée pas un réseau routier canonique.",
+      "ecology": {
+        "diet": "Consomme champignons, matières végétales entraînées par l’eau et petits restes organiques. Elle collecte le gypse comme matériau ; le minéral n’assure pas seul son métabolisme.",
+        "lifeCycle": "Les œufs sont fixés sous une arche de couvée. Les jeunes restent proches des réserves et produisent des filaments mous ; après plusieurs mues, ils peuvent établir un ouvrage séparé.",
+        "role": "Retient des sédiments et crée de petits refuges secs. Ses constructions peuvent stabiliser un ressaut léger, mais aussi barrer une rigole ou détourner une infiltration vers un passage occupé.",
+        "seasonality": "Répare davantage après une arrivée d’eau chargée de grains. La sécheresse interrompt la prise des filaments ; une crue puissante détruit des ouvrages et disperse les groupes."
+      },
+      "behavior": {
+        "ordinary": "Travaille en petits groupes autour d’un même dépôt sans architecte omniscient. Chacune prolonge les appuis qu’elle touche et peut abandonner une jonction mal alimentée.",
+        "warningSigns": "Taches de poudre fraîche, filaments collants bas et petits claquements de mandibules. Une arche brillante au toucher vient probablement d’être réparée et reste fragile.",
+        "firstContact": "Recule sous une nervure puis reprend son travail si le support cesse de vibrer. Un voyageur peut franchir une zone sans être pris pour une proie.",
+        "escalation": "Un ouvrage piétiné provoque une agitation collective et des morsures de proximité. Les individus peuvent relier maladroitement des outils ou cordages laissés dans l’axe.",
+        "retreat": "Gagne les niches sous les appuis ; si le chantier est détruit, le groupe cherche d’autres grains plutôt que de poursuivre les visiteurs.",
+        "coexistence": "Offrir une zone de collecte distincte et protéger les couloirs humains permet une cohabitation à tester, sans commandement magique."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Filament de prise",
+          "effect": "Lie de petits grains en nervures minérales après sécrétion et nouage.",
+          "conditions": "Gypse friable disponible, eau, nourriture et travail patient.",
+          "limits": "Pas de matériau créé du néant ; la prise reste fragile et ne soutient pas n’importe quelle charge.",
+          "counterplay": "Tester un ouvrage sans y engager une personne et garder un appui indépendant."
+        },
+        {
+          "name": "Lecture des jonctions",
+          "effect": "Perçoit une déformation qui se transmet à la nervure touchée.",
+          "conditions": "Contact direct avec sa construction.",
+          "limits": "Ne connaît pas toute la roche ni les dommages derrière une cloison.",
+          "counterplay": "Distinguer réaction locale et diagnostic de stabilité par un spécialiste."
+        },
+        {
+          "name": "Nouage de réparation",
+          "effect": "Ajoute plusieurs couches autour d’une fente accessible de son propre ouvrage.",
+          "conditions": "Bords encore solides, circulation possible et matière à proximité.",
+          "limits": "Ne referme ni gouffre, ni Faille, ni blessure vivante.",
+          "counterplay": "Déplacer un obstacle hors de la zone réparée et empêcher une liaison à l’équipement."
+        }
+      ],
+      "weaknesses": [
+        "Les filaments frais rompent sous un choc ; les ouvrages secs deviennent cassants.",
+        "Une pénurie organique affaiblit le groupe même si la galerie contient beaucoup de gypse."
+      ],
+      "variants": [
+        {
+          "name": "Noueuse à ponts bas",
+          "description": "Constructions étalées entre des ressauts proches, avec niches latérales.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Noueuse à corbeilles",
+          "description": "Ouvrages suspendus sous un rebord ; mode de couvée proposé, sans code séparé.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "evolution": {
+        "naturalStages": "Jeune sous une arche de couvée, bâtisseuse de petit support, adulte réparant plusieurs jonctions locales.",
+        "possibleAdaptations": "Un individu de longue vie pourrait produire des nœuds plus espacés ou favoriser des arches dissymétriques après des ruptures répétées.",
+        "limits": "Une « Maîtresse d’arche » resterait une forme individuelle proposée, sans calcul architectural infaillible, grade social établi ou mutation automatique."
+      },
+      "resources": {
+        "renewable": [
+          "Fragments secs tombés d’un ouvrage abandonné, après contrôle de l’absence de couvée."
+        ],
+        "harmful": [
+          "Arracher une arche active ou vider les sacs de sécrétion endommage le groupe."
+        ],
+        "proposedUses": [
+          "Étude proposée de mortiers légers et de treillis poreux ; aucune colle universelle, résistance de bâtiment ou préparation alchimique certifiée."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Filaments secs tombés d’une arche abandonnée.",
+          "proposedUse": "Additif candidat à un mortier dont la prise dépendrait de l’humidité ambiante.",
+          "conditions": "Tester prise, rupture et réversibilité sur échantillon, sans confier une charge humaine au résultat.",
+          "status": "proposition_non_jouee"
+        }
+      },
+      "quests": [
+        {
+          "title": "Le pont encore mou",
+          "situation": "Une route de repli aboutit à une arche neuve au-dessus d’une rigole en crue.",
+          "choice": "Installer une ligne indépendante, attendre ou traverser par un détour exposé.",
+          "openOutcome": "La présence des Noueuses ne garantit pas la solidité pour les aventuriers."
+        },
+        {
+          "title": "Le treuil pris dans la dentelle",
+          "situation": "Des filaments relient un treuil abandonné à une arche occupée par une couvée.",
+          "choice": "Libérer les pièces une à une, changer de mécanisme ou négocier le délai du chantier.",
+          "openOutcome": "Le sauvetage du matériel et celui de l’ouvrage peuvent entrer en conflit."
+        },
+        {
+          "title": "La citerne qui déborde",
+          "situation": "Un ouvrage détourne un mince ruissellement vers une réserve de vivres.",
+          "choice": "Cartographier les écoulements et préparer un support de remplacement.",
+          "openOutcome": "Aucune intention de sabotage n’est attribuée à la colonie."
+        },
+        {
+          "title": "Les arches vendues au poids",
+          "situation": "Un fournisseur revend des morceaux frais comme des étais miraculeux.",
+          "choice": "Tester un échantillon, prévenir les acheteurs ou organiser une collecte d’abandons.",
+          "openOutcome": "La fraude éventuelle et la réparation du tort restent à déterminer."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "P36",
+          "distinction": "Huit pattes, sécrétion de filaments et bâtisseuse ; P36 décrit six membres, antennes vibratoires et détritivorie sans cette construction.",
+          "residualRisk": "Même habitat d’arthropode cavernicole ; distinction morphologique à garder."
+        },
+        {
+          "reference": "ESP-ER-005",
+          "distinction": "Filaments minéraux fabriqués avec des grains, sans toile de roseaux ni fonction de capture.",
+          "residualRisk": "Motif du tissage partagé, aucune fusion taxonomique décidée."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-055.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-055.png",
+        "alt": "Arthropode pâle à huit pattes construisant une petite arche poreuse de gypse dans une galerie.",
+        "brief": "Arthropode pâle cavernicole de la taille d’un panier, exactement huit pattes articulées et petites mandibules fines de tissage, abdomen étroit portant de petits sacs crayeux. Il construit une petite arche ramifiée en filaments de gypse humide entre deux roches, structure nervurée et poreuse très organique. Animal entier bien lisible au travail sur l’arche, parois mates de galerie, pas de toile avec gouttes ni de cristal lumineux ni de texte.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "d6f58bb3ddb330b15acfaf9e81e94f1ce2bf5daf8e7928137ae3f19ab9adf76c",
+        "originalSha256": "3533f5d65bcf39018948a5aee81dfc11732c3010e711c3fd08a17df49e65af40",
+        "bytes": 352240,
+        "originalBytes": 3139334,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      },
+      "strengths": [
+        "Un groupe peut réparer de petits supports à partir de grains disponibles et créer des refuges là où l’eau remanie le sol.",
+        "Son ouvrage laisse des étapes visibles : on peut l’étudier, l’accompagner ou le détourner au lieu de combattre."
+      ]
+    },
+    {
+      "id": "BEST-ER-010-056",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "name": "Raie des puits secs",
+      "slug": "raie-des-puits-secs",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "family": "Planeur aérien des courants ascendants — classement proposé",
+      "size": "Envergure d’un manteau déployé",
+      "gameRoles": [
+        "merveille de traversée",
+        "indice d’aération",
+        "sauvetage vertical"
+      ],
+      "description": "Une silhouette plate se détache du vide avec un lent mouvement de nageoires. La Raie est ardoise sur le dos, cuivre pâle dessous ; ses bords souples portent des lamelles qui frémissent dans l’air. Deux yeux latéraux minuscules suivent le rebord, tandis qu’une courte queue corrige l’approche. Elle ne vole pas comme un oiseau : chaque changement de hauteur dépend d’une nappe d’air qu’elle cherche ou perd, parfois au prix d’une chute jusqu’au prochain appui.",
+      "habitat": "Puits karstiques secs, hautes cheminées ventilées et chambres à gradins connectées par des ascendances. Un puits privé d’air renouvelé ne constitue pas un habitat viable.",
+      "ecology": {
+        "diet": "Capture de petits invertébrés entraînés par les courants et prélève des dépôts organiques sur les rebords. Elle boit le ruissellement des parois ; l’air chaud n’est pas une nourriture.",
+        "lifeCycle": "Les œufs restent dans une poche de paroi. Les jeunes rampent et effectuent de courtes descentes ; les grandes traversées apparaissent après le développement des lamelles.",
+        "role": "Transporte quelques graines et particules coincées sous son ventre. Sa trajectoire peut révéler une ascendance locale, sans indiquer une sortie habitable ni un air sans danger.",
+        "seasonality": "Les changements de ventilation liés à la température et aux ouvertures de surface modifient ses trajets. Elle se pose pendant les longues périodes sans ascendance."
+      },
+      "behavior": {
+        "ordinary": "Décrit des boucles lentes autour d’une cheminée, puis se plaque sur un rebord pour se nourrir. Plusieurs Raies partagent un courant sans former une monture collective.",
+        "warningSigns": "Poussière remontante, lamelles perdues sur les corniches et traces larges sans griffes. Des individus posés très bas peuvent signaler la disparition d’un courant, mais aussi une période de repos.",
+        "firstContact": "Contourne une personne stable. Une corde tendue en plein axe ou une lampe agitée peut la faire dévier vers une paroi.",
+        "escalation": "Prise dans un filet, elle bat ses nageoires et peut déséquilibrer celui qui la tient. Le vide devient alors le principal danger.",
+        "retreat": "Cherche un contact de paroi pour finir sa descente ; elle ne crée pas une bourrasque pour écarter les visiteurs.",
+        "coexistence": "Laisser libres des zones d’approche, placer les cordes contre la roche et observer plusieurs passages avant de traverser."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Portance retenue",
+          "effect": "Prolonge brièvement son appui sur une nappe d’air montante, au-delà d’un simple plané ordinaire.",
+          "conditions": "Ascendance réelle, lamelles intactes et corps sans charge.",
+          "limits": "Ne lévite pas dans une salle close, ne porte pas une personne et ne crée pas son propre vent.",
+          "counterplay": "Observer l’air, garder ses propres ancrages et ne pas extrapoler son trajet à celui d’un humain."
+        },
+        {
+          "name": "Frein de paroi",
+          "effect": "Déploie les lamelles près d’un relief pour ralentir son approche.",
+          "conditions": "Rebord assez large, vitesse limitée et air mobile.",
+          "limits": "Un choc, une corde ou une membrane déchirée peuvent empêcher l’arrêt.",
+          "counterplay": "Libérer l’axe plutôt que tendre un obstacle devant la tête."
+        },
+        {
+          "name": "Plaquage de repos",
+          "effect": "Répartit son corps contre une surface irrégulière humide.",
+          "conditions": "Appui rugueux et contact du ventre.",
+          "limits": "Ni adhérence sur toute matière ni suspension durable avec une charge.",
+          "counterplay": "Déplacer son support si un sauvetage est nécessaire, sans tirer les nageoires."
+        }
+      ],
+      "weaknesses": [
+        "Le froid stable et l’absence d’ascendance limitent les déplacements.",
+        "Poussières abrasives, filets et arêtes coupantes déchirent ses lamelles."
+      ],
+      "variants": [
+        {
+          "name": "Raie à bords roux",
+          "description": "Lamelles cuivrées épaisses et trajets proches des cheminées tièdes.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Raie des grandes salles",
+          "description": "Membranes plus larges, préférant des boucles ouvertes ; aucun gigantisme sans limite.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "evolution": {
+        "naturalStages": "Jeune rampant, planeur de corniche puis adulte capable de chercher une ascendance à distance visuelle.",
+        "possibleAdaptations": "Une vieille Raie pourrait mémoriser plusieurs refuges et changer de cheminée quand une porte modifie la circulation d’air.",
+        "limits": "Une forme « Haute-voile » demeure une variation proposée, sans passage dimensionnel, immunité au vide ou promotion au statut de monture."
+      },
+      "resources": {
+        "renewable": [
+          "Lamelles naturellement détachées et relevés de trajectoires."
+        ],
+        "harmful": [
+          "Couper une nageoire pour prélever une grande membrane prive l’animal de déplacement."
+        ],
+        "proposedUses": [
+          "Étude proposée de voiles de freinage et de fanions sensibles aux courants ; aucun appareil de vol, harnais ou réactif validé."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Lamelles naturellement détachées des nageoires.",
+          "proposedUse": "Support candidat pour un pigment révélant le sens d’un souffle sur une bande souple.",
+          "conditions": "Comparer plusieurs courants réels ; aucun vol ou repérage d’une sortie n’est promis.",
+          "status": "proposition_non_jouee"
+        }
+      },
+      "quests": [
+        {
+          "title": "Le courant coupé",
+          "situation": "Une porte nouvelle immobilise plusieurs Raies sur une corniche proche de la voie de descente.",
+          "choice": "Revoir l’aération, changer le calendrier ou déplacer une porte provisoire.",
+          "openOutcome": "L’air renouvelé doit aussi être contrôlé pour les travailleurs."
+        },
+        {
+          "title": "La corde dans le vol",
+          "situation": "Un équipement suspendu accroche une nageoire tandis qu’un équipier dépend du même ancrage.",
+          "choice": "Sécuriser la personne, donner du mou ou abandonner une partie du matériel.",
+          "openOutcome": "Le sauvetage peut réussir sans capturer ou apprivoiser la Raie."
+        },
+        {
+          "title": "L’ascenseur promis",
+          "situation": "Un prospecteur vend un trajet fondé sur les passages réguliers des animaux.",
+          "choice": "Examiner les horaires et les ancrages plutôt que suivre aveuglément la démonstration.",
+          "openOutcome": "La route peut être praticable, périmée ou impropre aux humains."
+        },
+        {
+          "title": "Le rebord désert",
+          "situation": "Une colonie a quitté son reposoir ; des ouvriers cherchent déjà une nouvelle sortie derrière lui.",
+          "choice": "Comparer courants, nourriture et refuges avant de percer la paroi.",
+          "openOutcome": "Déplacement naturel et modification du chantier restent des explications ouvertes."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "BEST-ER-009-047",
+          "distinction": "Planeur animal à nageoires et ascendances, distinct de l’organisme médusoïde d’air humide.",
+          "residualRisk": "La flottaison aérienne se recoupe ; conditions et silhouette doivent rester différentes."
+        },
+        {
+          "reference": "P38",
+          "distinction": "Animal aérien dépendant des courants, et non poisson aquatique à nageoires nacrées.",
+          "residualRisk": "Même vocabulaire de voile ; ne pas créer de parenté par l’image."
+        },
+        {
+          "reference": "BEST-ER-009-050",
+          "distinction": "Aucun nœud d’appui dans l’air ; le courant réel est indispensable.",
+          "residualRisk": "Ne pas lui transmettre le pouvoir du Noue-ciel."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-056.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-056.png",
+        "alt": "Raie ardoise aux lamelles cuivrées planant dans l’air d’un puits karstique sec.",
+        "brief": "Animal aérien en forme de raie, corps plat brun ardoise et large paire de nageoires membraneuses plissées, petits organes respiratoires cuivre sous le ventre, yeux latéraux minuscules et courte queue. Il plane dans l’AIR d’un puits karstique sec vertical profond, un courant ascendant local soulève un peu de poussière, parois proches, roches et un rebord. Pas d’eau, pas d’ailes d’oiseau, pas de tentacules de méduse ni de portail. Vue trois-quarts corps entier en traversée.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "16aad4665f06ecf22fad21fcee577f00f611970fa9f3c384b494875b7f26ae9c",
+        "originalSha256": "78c521d1974088d043f8715f21453febefe388396849e43e8fb7b16771740122",
+        "bytes": 324880,
+        "originalBytes": 3041956,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      },
+      "strengths": [
+        "Elle exploite des nappes d’air que les voyageurs perçoivent mal et atteint des corniches séparées par le vide.",
+        "Ses approches lentes offrent une scène d’émerveillement et des indices pour comprendre la circulation locale."
+      ]
+    },
+    {
+      "id": "BEST-ER-010-057",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "name": "Mange-mèche",
+      "slug": "mange-meche",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "family": "Organisme thermophage de contact — classement proposé",
+      "size": "Corps plat de la longueur d’une main",
+      "gameRoles": [
+        "danger de lumière",
+        "enquête matérielle",
+        "choix de ressources"
+      ],
+      "description": "Le Mange-mèche ressemble à un ruban de cuir noir bordé de quatre franges courtes. Une chaîne de vésicules ambrées gonfle le long du dos lorsqu’il approche d’un foyer modeste. Sa bouche ventrale adhère à une mèche ; la flamme baisse et les vésicules deviennent plus claires. Il se retire ensuite dans une jointure tiède, laissant une trace grasse et une lampe intacte en apparence. Sa peau n’est ni une braise vivante ni un métal fondu.",
+      "habitat": "Galeries fréquentées par des lampes, niches chauffées d’anciens ateliers et cavités où subsistent des apports organiques. Un souterrain froid, propre et jamais éclairé ne suffit pas à sa présence.",
+      "ecology": {
+        "diet": "Prélève des résidus organiques et de petites matières grasses. Le transfert merveilleux de chaleur complète son activité, sans remplacer toute alimentation ni lui permettre de vivre d’un symbole de feu.",
+        "lifeCycle": "Des capsules adhèrent à une fissure tiède. Les jeunes récupèrent des résidus avant de supporter le contact d’une mèche ; les adultes se dispersent après une recharge puis digèrent au repos.",
+        "role": "Consomme des dépôts près des éclairages. Il peut profiter d’un chantier et en gêner la sécurité sans chercher à affamer ou punir les mineurs.",
+        "seasonality": "L’activité dépend surtout des foyers disponibles. Une interruption du chantier provoque une longue torpeur, puis une dispersion si les réserves diminuent."
+      },
+      "behavior": {
+        "ordinary": "Rampe sous les supports et rejoint une chaleur faible par contacts successifs. Il reste caché après s’être alimenté ; les vésicules se résorbent lentement.",
+        "warningSigns": "Trace de mucus sombre, mèche nette mais inexplicablement affaiblie et petite poche ambrée dans une fissure. Un combustible défectueux peut produire des signes semblables.",
+        "firstContact": "Se replie si le support est déplacé doucement. Une saisie brusque près de la flamme peut provoquer une brûlure du visiteur.",
+        "escalation": "S’accroche au support chaud et étale ses franges. Il ne saute pas vers toutes les sources de lumière et ne poursuit pas les porteurs dans une salle froide.",
+        "retreat": "Cherche une jointure humide mais tiède ; un feu trop grand le fait fuir plutôt que grossir instantanément.",
+        "coexistence": "Examiner les lampes hors de l’axe de circulation, conserver un éclairage de secours indépendant et retirer l’animal avec son petit support."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Prélèvement thermique",
+          "effect": "Affaiblit une petite flamme au contact en stockant une part de chaleur dans ses vésicules.",
+          "conditions": "Contact réel avec la mèche ou son support immédiat, réserves encore disponibles.",
+          "limits": "Pas d’extinction à distance, d’absorption de mana ou de feu magique universel ; un foyer intense le brûle.",
+          "counterplay": "Écarter le support, couper le contact ou employer une autre source à distance."
+        },
+        {
+          "name": "Torpeur tiède",
+          "effect": "Ralentit son activité en utilisant progressivement la réserve acquise.",
+          "conditions": "Refuge stable et humidité suffisante.",
+          "limits": "La réserve s’épuise ; aucune survie indéfinie ni chauffage de salle.",
+          "counterplay": "Observer une fissure après l’extinction plutôt que supposer sa disparition."
+        },
+        {
+          "name": "Franges d’ancrage",
+          "effect": "Répartit une adhérence souple sur un petit support.",
+          "conditions": "Surface proche et franges humides.",
+          "limits": "Ne résiste pas à tout arrachement ; la peau peut se déchirer.",
+          "counterplay": "Soulever le support ou interposer une lame émoussée humide sans toucher la flamme."
+        }
+      ],
+      "weaknesses": [
+        "Un grand feu, une surface brûlante prolongée et l’air sec sont dangereux.",
+        "Il ne se déplace pas vite sur un sol froid et irrégulier ; ses vésicules exposées se blessent facilement."
+      ],
+      "variants": [
+        {
+          "name": "Mange-mèche cuivré",
+          "description": "Vésicules plus visibles sur une peau brune, activité proche des petits ateliers.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Mange-mèche des niches froides",
+          "description": "Franges épaisses et torpeur prolongée ; aucun pouvoir de froid transmis.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "evolution": {
+        "naturalStages": "Capsule fixée, jeune consommateur de résidus puis adulte capable d’un prélèvement de chaleur limité.",
+        "possibleAdaptations": "Une vieille forme dite « Lanternaire » pourrait posséder des vésicules plus séparées, lui permettant d’utiliser sa réserve par petites séquences.",
+        "limits": "Hypothèse individuelle sans gain automatique avec un niveau, sans immunité au feu et sans conversion en combustible inépuisable."
+      },
+      "resources": {
+        "renewable": [
+          "Traces laissées sur un support abandonné et enveloppes de capsules vides."
+        ],
+        "harmful": [
+          "Percer les vésicules vivantes ou maintenir l’animal de force sur un foyer le blesse."
+        ],
+        "proposedUses": [
+          "Étude proposée de tampons thermiques et de liants supportant une chaleur faible ; aucune potion ignifuge ou recette de batterie magique validée."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Trace grasse laissée après un reposoir abandonné.",
+          "proposedUse": "Liant candidat à un témoin de chaleur faible sur un récipient d’atelier.",
+          "conditions": "Essai sur objet, avec source thermique séparée ; aucune protection contre le feu n’est démontrée.",
+          "status": "proposition_non_jouee"
+        }
+      },
+      "quests": [
+        {
+          "title": "La troisième lampe",
+          "situation": "Les deux premières lampes s’affaiblissent dans une montée où un blessé ne peut attendre.",
+          "choice": "Partager l’éclairage de secours, s’arrêter sur un palier sûr ou abandonner une charge.",
+          "openOutcome": "Un Mange-mèche peut expliquer une panne sans expliquer toutes les autres."
+        },
+        {
+          "title": "Le sabotage trop commode",
+          "situation": "Un contremaître accuse une équipe rivale d’avoir préparé de mauvaises mèches.",
+          "choice": "Comparer supports, combustible et traces avant de choisir une accusation.",
+          "openOutcome": "Erreur, organisme et malveillance peuvent rester des pistes concurrentes."
+        },
+        {
+          "title": "Le coffre tiède",
+          "situation": "Une cargaison de lampes transporte des capsules dans les joints de rangement.",
+          "choice": "Isoler les supports concernés, négocier le retard ou organiser une inspection commune.",
+          "openOutcome": "La survie des capsules et le coût du traitement se décident en jeu."
+        },
+        {
+          "title": "La chaleur à vendre",
+          "situation": "Une artisane cherche un matériau tampon et se voit proposer des animaux enfermés.",
+          "choice": "Tester des résidus, observer une torpeur ou revoir l’approvisionnement.",
+          "openOutcome": "L’expérience peut échouer sans justifier une exploitation rentable."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "P41",
+          "distinction": "Organisme plat thermophage de contact, distinct du reptile insectivore des fumerolles refroidies.",
+          "residualRisk": "Motif de braise partagé ; aucun remplacement du Garde-Braise."
+        },
+        {
+          "reference": "BEST-ER-008-033",
+          "distinction": "Ni mammifère ni repérage de résidus magiques ; la chaleur n’atteste aucune origine commune.",
+          "residualRisk": "Aucune reconstruction du Frélin ni substitution de son illustration antérieure."
+        },
+        {
+          "reference": "BEST-ER-009-043",
+          "distinction": "Stockage de chaleur prélevée sur un foyer, sans réserve hivernale d’isopode.",
+          "residualRisk": "Deux usages thermiques à distinguer ; aucune recette commune automatique."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-057.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-057.png",
+        "alt": "Petit organisme noir cuivré aux vésicules ambrées, en contact avec une mèche qui s’affaiblit.",
+        "brief": "Créature vermiforme aplatie noire à reflets cuivre, taille d’une main, quatre franges latérales courtes sans pattes, bouche ventrale minuscule adhérant à une mèche d’une lampe à huile abandonnée. Son dos porte une chaîne de petites vésicules ambrées tièdes ; l’unique flamme diminue près de son contact, sans feu sur l’animal. Intérieur de galerie ancienne sombre mais éclairage suffisant pour voir l’anatomie, aucun personnage ni texte.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "4036da5b0bad82fe92d2828cbc287bb41027abf0ebaf299aa99007307f6dd26e",
+        "originalSha256": "7a1d25ff687e40a971926a39701eee69340aa00ed1bbbc2d4447121d47d36ad0",
+        "bytes": 275898,
+        "originalBytes": 2718242,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      },
+      "strengths": [
+        "Il peut se glisser sur des supports étroits et rester longtemps caché après un prélèvement de chaleur.",
+        "Son action transforme la gestion d’un éclairage en enjeu concret, avec traces, temps de réaction et solutions matérielles."
+      ]
+    },
+    {
+      "id": "BEST-ER-010-058",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "name": "Trocqueur des galets",
+      "slug": "trocqueur-des-galets",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "family": "Collecteur cavernicole à membres manipulateurs — classement proposé",
+      "size": "Animal trapu de la hauteur d’un petit tabouret",
+      "gameRoles": [
+        "échange",
+        "témoin indirect",
+        "conflit de ressources"
+      ],
+      "description": "Sa carapace brun argile ressemble à un assemblage de galets arrondis, mais les jointures se plissent comme du cuir. Quatre pattes basses portent le corps ; deux petits bras antérieurs roulent, comparent et déposent des objets. Le museau presque caché porte des antennes courtes et de petits yeux noirs. Devant lui, deux tas restent soigneusement séparés. Lorsqu’une offrande l’intéresse, il pousse une pierre vers le visiteur et attend, sans transformer ce geste en contrat compris de tous.",
+      "habitat": "Carrefours secs proches d’un apport d’eau, anciens postes de tri et cavités fréquentées où circulent des objets transportables. L’existence d’une société souterraine organisée n’est pas postulée.",
+      "ecology": {
+        "diet": "Petits invertébrés, champignons tendres et matières grasses trouvées sur les objets. Les galets servent de repères et de surfaces de collecte, pas de nourriture minérale miraculeuse.",
+        "lifeCycle": "Les jeunes restent dans une niche commune et manipulent des débris sans pratiquer un échange stable. Les adultes établissent leurs propres stations ; les dépôts abandonnés peuvent être repris par d’autres.",
+        "role": "Déplace et classe de petits objets. Il peut dégager une rigole ou retirer un outil dont un humain a besoin, sans distinction certaine entre déchet et bien personnel.",
+        "seasonality": "Ses déplacements suivent les apports du chantier et les crues qui remanient les dépôts. Une station désertée ne signifie ni migration de tout le groupe ni mort de son occupant."
+      },
+      "behavior": {
+        "ordinary": "Explore avec ses bras, rapproche deux textures et garde des éléments appréciés derrière ses pattes. Il accepte parfois un échange puis le refuse un autre jour.",
+        "warningSigns": "Paires de galets rangées, marques de roulage et objets gras déplacés vers une fissure. Ce rangement n’est ni une écriture connue ni une indication de propriété juridiquement établie.",
+        "firstContact": "Recule derrière son dépôt puis avance un objet sur une zone libre. Il faut laisser du temps et une possibilité réelle de refus.",
+        "escalation": "Protège sa niche avec ses pattes et peut pincer une main qui prend tout le tas. Une offrande ne le rend ni docile ni redevable.",
+        "retreat": "Emporte un objet favori et fuit vers une ouverture basse ; il peut abandonner le reste pour ne pas être enfermé.",
+        "coexistence": "Déposer les propositions hors de ses refuges, marquer les outils indispensables et accepter un échange incompris comme une tentative, non comme un pacte."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Empreinte de contact",
+          "effect": "Distingue brièvement des objets encore marqués par une chaleur ou une humidité récente grâce à ses bras.",
+          "conditions": "Contact direct, trace récente et comparaison patiente.",
+          "limits": "Ne lit ni souvenirs, ni identité du porteur, ni mensonge ; une trace peut venir d’une autre source.",
+          "counterplay": "Isoler plusieurs causes possibles et ne pas traiter son choix comme une expertise infaillible."
+        },
+        {
+          "name": "Échange retenu",
+          "effect": "Pose un objet puis attend une réponse avant de reprendre ou d’accepter une autre pièce.",
+          "conditions": "Animal calme, issue libre et interlocuteur visible.",
+          "limits": "Aucune traduction universelle, monnaie officielle ou obligation magique.",
+          "counterplay": "Proposer une seule chose à la fois, observer et permettre au Trocqueur de se retirer."
+        },
+        {
+          "name": "Tri de niche",
+          "effect": "Mémorise la disposition de quelques dépôts qu’il utilise régulièrement.",
+          "conditions": "Repères locaux stables et accès physique à la station.",
+          "limits": "Pas de carte de toutes les galeries, de mémoire collective ou de localisation à distance.",
+          "counterplay": "Comparer sa station avec des marques indépendantes plutôt que déplacer ses repères."
+        }
+      ],
+      "weaknesses": [
+        "Le vacarme, la foule et la disparition soudaine de ses issues interrompent l’échange.",
+        "Ses bras souples sont exposés ; les plaques ne protègent pas tout le ventre."
+      ],
+      "variants": [
+        {
+          "name": "Trocqueur aux galets pâles",
+          "description": "Privilégie des pierres claires dans ses dépôts, sans valeur commune démontrée.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Trocqueur des stations humides",
+          "description": "Conserve des objets sur des rebords plus hauts ; préférence locale, pas caste.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "evolution": {
+        "naturalStages": "Jeune manipulateur, adulte tenant une station, vieil individu capable de changer son rangement après une perturbation.",
+        "possibleAdaptations": "Un échange répété pourrait établir une convention particulière avec une personne ou un groupe, limitée aux objets et gestes réellement observés.",
+        "limits": "La forme « Garde-dépôt » ne constitue ni rang politique ni allégeance. Conscience et langage demandent un arbitrage séparé ; aucune promotion par niveau."
+      },
+      "resources": {
+        "renewable": [
+          "Galets ou fragments explicitement laissés à l’échange, avec possibilité de refus."
+        ],
+        "harmful": [
+          "Piller une niche ou prélever une plaque vivante détruit la confiance et peut blesser l’animal."
+        ],
+        "proposedUses": [
+          "Motifs de tri pour artisans et étude d’un toucher sensible aux traces récentes ; aucune pierre de vérité, détection de propriétaire ou substance alchimique validée."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Résidus présents sur un galet volontairement cédé.",
+          "proposedUse": "Étalon candidat pour un réactif distinguant un contact humide récent d’une surface restée sèche.",
+          "conditions": "Le toucher de l’animal ne se transmet pas automatiquement ; les résidus peuvent rester banals.",
+          "status": "proposition_non_jouee"
+        }
+      },
+      "quests": [
+        {
+          "title": "La clef contre la cire",
+          "situation": "Une clef de treuil apparaît dans un dépôt alors qu’un transport attend derrière une grille.",
+          "choice": "Proposer un échange, expliquer par des gestes ou chercher un autre mécanisme.",
+          "openOutcome": "La clef peut avoir été trouvée sans vol intentionnel ; l’accord n’est pas garanti."
+        },
+        {
+          "title": "L’accusation chaude",
+          "situation": "Un enquêteur veut utiliser le choix du Trocqueur pour désigner le dernier porteur d’un outil.",
+          "choice": "Comparer chaleur, eau et manipulations récentes avant de conclure.",
+          "openOutcome": "Le comportement ne fournit aucune identité certaine ni vérité judiciaire."
+        },
+        {
+          "title": "Le carrefour déplacé",
+          "situation": "Des travaux ont mélangé les dépôts ; l’animal emporte désormais des objets vers une zone dangereuse.",
+          "choice": "Restaurer quelques repères, protéger les accès ou accepter le déplacement de sa station.",
+          "openOutcome": "Aucun itinéraire secret ou trésor n’est promis par son rangement."
+        },
+        {
+          "title": "Le marché des visiteurs",
+          "situation": "Deux équipes attribuent des valeurs incompatibles aux mêmes galets et réclament priorité.",
+          "choice": "Mettre en place des essais séparés et reconnaître le droit de refus du Trocqueur.",
+          "openOutcome": "Une convention locale peut naître sans devenir règle de tous les échanges."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "P36",
+          "distinction": "Collecteur à quatre pattes et deux bras, stations d’échange et toucher des traces ; pas six membres marcheurs à antennes longues.",
+          "residualRisk": "Arthropode cavernicole apparent par allure : classification à arbitrer."
+        },
+        {
+          "reference": "BEST-ER-009-048",
+          "distinction": "Aucun transport de coupe nutritive ou réseau fongique ; l’échange n’implique pas une conscience forestière.",
+          "residualRisk": "Ne pas déduire une parenté ou un peuple des comportements observables."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-058.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-058.png",
+        "alt": "Petit animal brun à quatre pattes et deux bras, proposant un galet devant une station de tri.",
+        "brief": "Étrange petit animal cavernicole trapu, carapace douce brun argile à plaques rondes comme galets, tête basse et petites antennes sensorielles, exactement six membres : quatre pattes de marche basses et deux petits bras antérieurs manipulateurs. Accroupi devant deux tas ordonnés de galets et un fragment de cire, il avance une pierre plate avec un de ses bras comme un échange. Apparence animale non humanoïde, yeux noirs discrets, pas habits ni bijoux ni outils humains ni runes.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "75adacf1e689aca364af8a415049a9f1e4928c9914071b261f7fb3c969809122",
+        "originalSha256": "2649edf3bb398baad36cc034d72f41e1b8f551108fd64aba38f3411136a030ea",
+        "bytes": 366476,
+        "originalBytes": 3125403,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      },
+      "strengths": [
+        "Ses bras fins et son attention aux dispositions favorisent des échanges progressifs, propres à chaque station.",
+        "Il peut fournir un objet utile ou un indice matériel sans devenir un témoin omniscient ni un compagnon soumis."
+      ]
+    },
+    {
+      "id": "BEST-ER-010-059",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "name": "Nacreuse des siphons",
+      "slug": "nacreuse-des-siphons",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "family": "Bivalve à poche aérienne retenue — classement proposé",
+      "size": "Coquille large comme un petit coffre",
+      "gameRoles": [
+        "passage submergé",
+        "ressource incertaine",
+        "sauvetage"
+      ],
+      "description": "Deux valves bleu nuit se soulèvent à peine sur une roche immergée. Leurs côtes crème convergent vers un bord cuivré ; le manteau intérieur porte une poche argentée retenue sous une membrane fine. Cette poche n’est pas une perle : elle se déforme comme une bulle et peut disparaître lorsque l’animal ferme sa coquille. Autour de la fixation, les siphons suivent le courant et ramènent de petites particules vers les lèvres souples.",
+      "habitat": "Bords immergés de siphons et passages noyés proches d’une arrivée occasionnelle d’air. Elle n’habite pas nécessairement chaque lac profond et aucune colonie n’est attribuée à Nacrecombe.",
+      "ecology": {
+        "diet": "Filtre des particules organiques et de petits organismes transportés par l’eau. Sans apports suffisants, le bivalve dépérit même si une poche d’air reste visible.",
+        "lifeCycle": "Les jeunes s’installent sur une surface rugueuse puis épaississent leurs valves. Leur poche apparaît après la formation d’un manteau capable de retenir une bulle venue d’une fissure ou d’un courant.",
+        "role": "Crée des supports secondaires et prélève une petite part des particules. Des animaux utilisent les creux de coquilles mortes ; elle ne purifie pas un bassin ni ses poisons.",
+        "seasonality": "Les crues renouvellent parfois air et nourriture mais apportent aussi des sédiments. Une baisse d’eau peut exposer les valves et menacer l’ensemble du groupe."
+      },
+      "behavior": {
+        "ordinary": "Ouvre un mince espace pour filtrer puis referme devant les vibrations. Elle conserve l’air près de son manteau sans le céder volontairement aux visiteurs.",
+        "warningSigns": "Coquilles à demi enfouies, ligne argentée qui bouge sous le bord et bulles retenues contre le courant. Une poche brillante peut être déjà appauvrie.",
+        "firstContact": "Se ferme si une main touche le manteau. Une observation patiente et distante permet de voir la poche sans risquer de coincer les doigts.",
+        "escalation": "Un objet forcé entre les valves déclenche une fermeture et peut déchirer la membrane ; l’animal ne poursuit personne mais l’équipement peut rester pris.",
+        "retreat": "Rétracte siphons et poche sous la coquille. Les jeunes fixés ne peuvent évacuer rapidement une eau devenue défavorable.",
+        "coexistence": "Écarter les lignes de traction des colonies, maintenir une réserve respiratoire indépendante et ne pas considérer une bulle animale comme un poste de secours."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Bulle retenue",
+          "effect": "Maintient près du manteau une poche d’air malgré un courant qui la disperserait normalement.",
+          "conditions": "Air réellement arrivé au contact, membrane intacte, animal vivant et peu agité.",
+          "limits": "Ne fabrique pas d’oxygène et ne garantit ni volume respirable ni qualité de l’air.",
+          "counterplay": "Prévoir son propre équipement et contrôler une poche sans y engager immédiatement une respiration."
+        },
+        {
+          "name": "Soupape de manteau",
+          "effect": "Relâche une partie de la poche quand une pression devient trop forte.",
+          "conditions": "Bulle présente et valves capables de s’entrouvrir.",
+          "limits": "Une décharge peut vider la réserve ; aucun passage noyé n’est asséché.",
+          "counterplay": "Observer le mouvement du courant et garder le visage hors d’un jet de sédiments."
+        },
+        {
+          "name": "Fermeture défensive",
+          "effect": "Protège ses tissus en rapprochant les valves sur leur bord épais.",
+          "conditions": "Fixation stable et absence de débris empêchant le mouvement.",
+          "limits": "Pas d’armure absolue ; la charnière et le manteau restent fragiles.",
+          "counterplay": "Retirer doucement un objet libre plutôt que faire levier sur la coquille."
+        }
+      ],
+      "weaknesses": [
+        "Anoxie prolongée, sédimentation et rupture du renouvellement nutritif.",
+        "Une poche trop souvent vidée ne se reconstitue pas sans nouvel apport réel d’air."
+      ],
+      "variants": [
+        {
+          "name": "Nacreuse à lèvres hautes",
+          "description": "Valves plus bombées retenant la poche sous un bord marqué.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Nacreuse des courants lents",
+          "description": "Large manteau et siphons plus longs ; préférence de station, sans purification magique.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "evolution": {
+        "naturalStages": "Jeune fixé à petite coquille, adulte filtreur puis vieil individu dont les valves portent des concrétions.",
+        "possibleAdaptations": "Une « Porte-bulle » exceptionnelle pourrait développer un repli protecteur particulier après plusieurs variations de niveau d’eau.",
+        "limits": "Ni réserve infinie ni adaptation instantanée aux plongées des aventuriers. Une forme proposée ne devient pas espèce nouvelle ou profil 5d6."
+      },
+      "resources": {
+        "renewable": [
+          "Coquilles mortes naturellement libérées, après vérification de leur rôle d’abri."
+        ],
+        "harmful": [
+          "Percer le manteau, arracher une fixation ou vider systématiquement les poches."
+        ],
+        "proposedUses": [
+          "Étude proposée de membranes de rétention et de décors de nacre ; aucun appareil respiratoire, antidote ou perle magique homologué."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Poussière d’une coquille morte déjà libérée.",
+          "proposedUse": "Charge candidate pour un vernis aidant à observer la tenue de très petites bulles.",
+          "conditions": "Comparer avec une coquille ordinaire ; aucune production d’air ou réserve respiratoire n’est garantie.",
+          "status": "proposition_non_jouee"
+        }
+      },
+      "quests": [
+        {
+          "title": "La bulle du dernier relais",
+          "situation": "Un passage noyé devient plus long après une variation d’eau ; un guide compte sur une poche qu’il a déjà vue.",
+          "choice": "Revoir le trajet, rebrousser chemin ou apporter une réserve indépendante.",
+          "openOutcome": "La présence d’une Nacreuse ne garantit aucune bouffée de secours."
+        },
+        {
+          "title": "Le câble et la charnière",
+          "situation": "Une ligne de récupération s’est prise entre deux valves, près d’un outil indispensable.",
+          "choice": "Sécuriser la personne, délester la ligne ou abandonner une pièce.",
+          "openOutcome": "La récupération et la survie du bivalve dépendent des gestes et du courant."
+        },
+        {
+          "title": "Les coquilles sans argent",
+          "situation": "Les poches disparaissent autour d’un conduit récemment fermé.",
+          "choice": "Suivre les arrivées d’air et les apports nutritifs avant d’ouvrir ailleurs.",
+          "openOutcome": "Le chantier peut être en cause sans exclure d’autres variations du milieu."
+        },
+        {
+          "title": "La perle qui éclate",
+          "situation": "Une vente promet une réserve d’air transportable dans une coquille morte.",
+          "choice": "Tester la promesse sans mettre un plongeur en danger ou chercher le fournisseur.",
+          "openOutcome": "Erreur technique et fraude demeurent des explications à établir."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "P34",
+          "distinction": "P34 est une filtreuse sombre aplatie sans pouvoir de rétention d’air ; la Nacreuse propose valves bombées et poche merveilleuse locale.",
+          "residualRisk": "Risque moyen à fort de variante plutôt qu’espèce distincte : arbitrage obligatoire avant code."
+        },
+        {
+          "reference": "bestiaire-lamproie-de-nacre",
+          "distinction": "Bivalve fixé filtreur, sans corps serpentiforme, bouche de prédateur ou traction d’une proie.",
+          "residualRisk": "La nacre et le milieu ne démontrent pas une parenté."
+        },
+        {
+          "reference": "P38",
+          "distinction": "Aucun poisson mobile ni grandes nageoires ; la poche n’est pas une lumière propre.",
+          "residualRisk": "Ne pas appeler perle permanente un reflet du manteau."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-059.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-059.png",
+        "alt": "Bivalve bleu nuit fixé sous l’eau d’une grotte, retenant une poche d’air sous son manteau nacré.",
+        "brief": "Grand mollusque bivalve fixé à une roche IMMERGÉE dans un siphon de grotte, coquille bombée bleu nuit avec côtes crème cuivrées, deux valves entrouvertes découvrant un manteau nacré et UNE poche d’air brillante retenue sous une mince membrane près de l’ouverture. Vue sous l’eau assez claire pour lire le sujet, minces siphons biologiques, aucune perle-gemme ni trésor ni humain ni lumière propre excessive.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "5db3b4def8181269f4e6fe723a65793bd59e916454bcb85738e54fda4be28b5b",
+        "originalSha256": "a1ff35f00e1b223bc759209d5b4bd71811a2570bb6f78e3c2275b1f52c82408c",
+        "bytes": 379282,
+        "originalBytes": 3150165,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      },
+      "strengths": [
+        "Son manteau maintient une poche d’air qui aurait normalement été dispersée, phénomène rare et observable.",
+        "Une coquille stable offre des microhabitats et peut signaler un apport d’air à étudier, sans promettre une route sûre."
+      ]
+    },
+    {
+      "id": "BEST-ER-010-060",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "name": "Lesteur des fausses marches",
+      "slug": "lesteur-des-fausses-marches",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "family": "Arthropode à transfert de poids local — classement proposé",
+      "size": "Corps bas de la largeur d’un sac de voyage",
+      "gameRoles": [
+        "piège de terrain",
+        "enquête de charge",
+        "dégagement"
+      ],
+      "description": "Huit pattes courtes portent trois plaques brun ferrugineux qui coulissent comme de petits contrepoids. Sous le ventre, des filaments descendent vers les graviers ; l’un paraît soudain trop léger tandis que l’animal s’enfonce davantage dans l’argile. Ses antennes se cachent sous la plaque avant. Lorsqu’il coupe le contact, le galet retombe avec un bruit ordinaire. Le Lesteur n’emporte pas un champ invisible dans toute la galerie : son corps et ses contacts restent au centre du phénomène.",
+      "habitat": "Sols argileux sous des ressauts, replis d’anciennes marches et petits dépôts meubles où circulent des proies. Il ne creuse pas la pierre massive et ne choisit pas seulement des ouvrages humains.",
+      "ecology": {
+        "diet": "Invertébrés et débris organiques pris sous les pierres qu’il déplace. Les grains ingérés complètent les plaques sans remplacer ce régime.",
+        "lifeCycle": "Les jeunes naissent sous un repli de plaque puis vivent parmi de petits graviers. Leur transfert de poids reste limité à des éléments minuscules ; les plaques épaississent au cours des mues.",
+        "role": "Remanie superficiellement le sol et ouvre de petits refuges. Ses déplacements peuvent déstabiliser un appui déjà mal posé, sans provoquer automatiquement l’effondrement d’un ouvrage sain.",
+        "seasonality": "Préfère une argile assez humide pour marquer les contacts. Quand le sol sèche, il se réfugie plus bas ; une crue peut arracher les filaments et disperser les proies."
+      },
+      "behavior": {
+        "ordinary": "Soulève très peu un élément, inspecte dessous puis le laisse retomber. Plusieurs Lesteurs sur un même dépôt ne coordonnent pas leurs transferts.",
+        "warningSigns": "Empreintes anormalement profondes près d’un galet peu enfoncé, filaments rompus et petits cliquetis de plaques. Une marche branlante n’est pas une preuve suffisante.",
+        "firstContact": "Se fige sous une pierre et cesse souvent de transférer le poids. Un pied posé sans voir peut rompre l’équilibre et faire glisser le galet.",
+        "escalation": "Acculé, il étend davantage de filaments vers le support proche. Un équipement peut devenir difficile à lever ou retomber soudain, sans immobilisation garantie de son porteur.",
+        "retreat": "Coupe les filaments et rampe sous un rebord bas, retrouvant son poids ordinaire.",
+        "coexistence": "Garder les appuis humains sur des surfaces vérifiées et déplacer les charges avec des points indépendants plutôt que tirer sur un objet encore relié."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Lest de contact",
+          "effect": "Transfère temporairement vers ses plaques une partie du poids apparent d’un petit objet relié à ses filaments.",
+          "conditions": "Contact continu, plaques en appui et objet qu’il peut réellement atteindre.",
+          "limits": "Portée strictement locale ; pas d’annulation de masse, de transfert illimité ou de manipulation d’une personne à distance.",
+          "counterplay": "Rompre doucement le contact en sécurisant d’abord tout ce qui pourrait retomber."
+        },
+        {
+          "name": "Répartition d’appuis",
+          "effect": "Écarte ses pattes pour supporter la surcharge reçue.",
+          "conditions": "Sol assez stable et pattes libres.",
+          "limits": "Une argile molle peut l’engloutir ; les plaques ne portent pas une voûte entière.",
+          "counterplay": "Étudier les empreintes et ne pas lui ajouter une charge pour tester ses limites."
+        },
+        {
+          "name": "Lâcher de repli",
+          "effect": "Interrompt le transfert en rétractant ses filaments.",
+          "conditions": "Filaments non coincés et issue basse disponible.",
+          "limits": "Le retour du poids est réel ; aucune protection automatique des objets ou des visiteurs.",
+          "counterplay": "Prévenir les autres, soutenir l’objet et lui laisser une sortie avant d’intervenir."
+        }
+      ],
+      "weaknesses": [
+        "Les filaments se déchirent et la surcharge fatigue les appuis.",
+        "Les supports lisses ou secs empêchent souvent l’ancrage ; l’animal n’a aucune maîtrise de la pesanteur universelle."
+      ],
+      "variants": [
+        {
+          "name": "Lesteur à plaques larges",
+          "description": "Corps étalé sur les terrains meubles ; il répartit davantage ses appuis sans devenir invulnérable.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Lesteur des ressauts secs",
+          "description": "Filaments courts et déplacements plus fréquents vers des replis frais.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "evolution": {
+        "naturalStages": "Jeune des graviers, adulte sous petits blocs, vieil individu à plaques usées ; aucune étape n’est assignée à un niveau.",
+        "possibleAdaptations": "Une forme « Contrepoids » pourrait connaître les appuis d’un même dépôt et choisir des objets mieux proportionnés à son corps.",
+        "limits": "Aucune augmentation automatique de charge, aucun levage de montagne ni forme de monstre régional déduite de son âge."
+      },
+      "resources": {
+        "renewable": [
+          "Plaques de mue abandonnées et filaments déjà rompus, sans pouvoir actif garanti après séparation."
+        ],
+        "harmful": [
+          "Maintenir un transfert jusqu’à l’épuisement ou arracher les plaques vivantes."
+        ],
+        "proposedUses": [
+          "Étude proposée de répartition de charge et de ligatures ; aucune pierre d’apesanteur, colle ou préparation de lévitation validée."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Filaments rompus recueillis après le départ d’un individu.",
+          "proposedUse": "Armature candidate pour un liant indiquant une traction par changement de forme.",
+          "conditions": "Tester hors de toute opération de levage ; aucune propriété de poids actif n’est présumée après séparation.",
+          "status": "proposition_non_jouee"
+        }
+      },
+      "quests": [
+        {
+          "title": "Le coffre qui retombe",
+          "situation": "Un coffre paraît léger puis reprend son poids au milieu d’une opération de récupération.",
+          "choice": "Sécuriser le palan, chercher les contacts et suspendre les manipulations improvisées.",
+          "openOutcome": "Le contenu n’est pas automatiquement magique et la suite du sauvetage reste ouverte."
+        },
+        {
+          "title": "La marche menteuse",
+          "situation": "Une marche d’argile change d’inclinaison au passage d’un groupe pressé.",
+          "choice": "Sonder les appuis, contourner ou préparer une traversée avec relais.",
+          "openOutcome": "La créature peut n’être qu’un facteur parmi plusieurs défauts du passage."
+        },
+        {
+          "title": "L’essai du maître de levage",
+          "situation": "Un commanditaire exige une démonstration avec une charge excessive.",
+          "choice": "Refuser, revoir le protocole ou montrer des traces de terrain plutôt qu’utiliser un animal captif.",
+          "openOutcome": "Le contrat et ses coûts restent négociables, sans découverte technique garantie."
+        },
+        {
+          "title": "Le dépôt scellé",
+          "situation": "Des filaments disparaissent sous une caisse qui bloque l’unique issue des animaux.",
+          "choice": "Dégager par étapes, étayer la caisse ou renoncer à son déplacement immédiat.",
+          "openOutcome": "L’urgence peut concerner les visiteurs autant que les Lesteurs."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "BEST-ER-010-053",
+          "distinction": "Le Battant restitue une poussée dans ses plaques ; le Lesteur déplace un poids apparent par filaments entre objet et corps.",
+          "residualRisk": "Deux singularités de charge : ne pas les additionner en dispositif mécanique approuvé."
+        },
+        {
+          "reference": "P36",
+          "distinction": "Huit pattes courtes, plaques contrepoids et filaments ; pas le détritivore à six membres et longues antennes.",
+          "residualRisk": "Apparence d’arthropode cavernicole à comparer sans fusion automatique."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-060.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-060.png",
+        "alt": "Arthropode ferrugineux à huit pattes et plaques contrepoids, relié par filaments à un petit galet soulevé.",
+        "brief": "Arthropode souterrain bas et large brun ferrugineux, exactement huit pattes courtes, trois plaques dorsales épaisses décalées comme contrepoids. Sous le ventre, de minces filaments touchent un petit galet soulevé juste au-dessus du sol, l’animal s’enfonce légèrement dans l’argile en reprenant une part de son poids apparent. Galerie avec sol irrégulier, anatomie organique, ni machine ni aimant dessiné ni runes ni grandes pierres flottantes.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "ef570bdbbed6367af5523333690f55f5df272395a3446248ac8c600f83c813f7",
+        "originalSha256": "e322a17a6ef886660667eda7cc3996eb6e4d7d7623d93bdb50e0fc7c30663c72",
+        "bytes": 368466,
+        "originalBytes": 3115006,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      },
+      "strengths": [
+        "Ses plaques et filaments permettent une recherche de nourriture sous de petites pierres autrement difficiles à remuer.",
+        "Les changements de charge laissent des traces qui récompensent l’observation et la préparation des appuis."
+      ]
+    },
+    {
+      "id": "BEST-ER-010-061",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "name": "Marchemâche des degrés",
+      "slug": "marchemache-des-degres",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "family": "Grand prédateur à plaques étagées — classement proposé",
+      "size": "Animal large occupant quelques degrés d’un passage étroit",
+      "gameRoles": [
+        "embuscade",
+        "repli",
+        "lecture des indices"
+      ],
+      "description": "Trois plaques étagées dessinent des marches trop régulières dans une galerie ancienne. Sur leur côté affleure pourtant un cuir souple sombre, et la poussière n’entre pas dans les jointures. Le Marchemâche cache six pattes puissantes sous ce dos minéral d’apparence. Sa bouche horizontale s’ouvre sous l’avant ; lorsqu’il se déploie, les marches deviennent des panneaux articulés et non un escalier entier arraché au sol. Son camouflage repose autant sur l’immobilité que sur la lumière pauvre.",
+      "habitat": "Anciennes galeries taillées, ressauts naturels à plaques superposées et passages où circulent de petits animaux. Les ouvrages ruinés sont des habitats possibles, sans infestation imposée d’un lieu connu.",
+      "ecology": {
+        "diet": "Capture des animaux qui franchissent son dos ou passent près de sa bouche. Il peut consommer une carcasse accessible, mais ne digère ni un bâtiment entier ni les runes actives.",
+        "lifeCycle": "Les jeunes possèdent des plaques peu étagées et se cachent dans les gravats. Les adultes recherchent un site proportionné à leur corps ; les pontes sont déposées dans une cache séparée.",
+        "role": "Prédateur d’un passage restreint, il peut modifier les trajets d’autres animaux. Ses restes nourrissent des détritivores ; son absence ne rétablit pas automatiquement la sécurité de la galerie.",
+        "seasonality": "L’activité suit les circulations de proies et les périodes de travaux. Un chantier calme peut lui offrir un reposoir, tandis que les vibrations répétées le poussent à changer de site."
+      },
+      "behavior": {
+        "ordinary": "Reste immobile sur un sol réel, qu’il touche par ses pattes repliées. Il peut se déplacer pendant une longue accalmie puis retrouver un profil étagé ailleurs.",
+        "warningSigns": "Jointures sans poussière, léger mouvement d’un bord, traces de déplacement latérales et petites pièces organiques sous le premier degré. Un escalier ordinaire ne respire pas sous sa rive.",
+        "firstContact": "Peut laisser passer une présence trop lourde ou trop bruyante, ou se replier si elle approche de côté. Aucun déclenchement certain au premier pied posé.",
+        "escalation": "Relève ses plaques, déploie ses pattes et tente une saisie brève dans son axe. Une attaque peut briser un outil ou faire chuter ; aucune morsure fatale n’est acquise.",
+        "retreat": "Se tasse, tourne difficilement dans un passage étroit puis cherche un renfoncement. Il poursuit peu sur une longue surface dégagée.",
+        "coexistence": "Repérer une voie latérale, éclairer les jointures et annoncer une retraite commune permet d’éviter de transformer la découverte en combat frontal."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Profil de degrés",
+          "effect": "Présente une silhouette en trois marches et maintient ses articulations dans l’ombre.",
+          "conditions": "Terrain compatible, immobilité et poussière environnante.",
+          "limits": "Aucune métamorphose en matière, illusion parfaite ou imitation de tout objet.",
+          "counterplay": "Sonder depuis un appui sûr, éclairer de côté et chercher les bords du corps."
+        },
+        {
+          "name": "Déploiement d’embuscade",
+          "effect": "Déplie pattes et plaques en une poussée courte vers un passage à portée.",
+          "conditions": "Corps reposé, espace devant lui et appuis dégagés.",
+          "limits": "Son axe et ses articulations limitent le mouvement ; pas d’attaque ou entrave M03 automatique.",
+          "counterplay": "Éviter l’axe, conserver un retrait et lâcher un équipement pris plutôt que basculer avec lui."
+        },
+        {
+          "name": "Plaques de parade",
+          "effect": "Interpose ses panneaux dorsaux devant une menace proche.",
+          "conditions": "Plaques intactes et angle favorable.",
+          "limits": "Côtés, dessous et jointures restent exposés ; rien ne prouve une absorption chiffrée.",
+          "counterplay": "Privilégier le détour et le recul plutôt que frapper une plaque porteuse au-dessus de soi."
+        }
+      ],
+      "weaknesses": [
+        "Virage lent en couloir étroit et mauvaise poursuite sur une longue distance.",
+        "La peau entre les plaques se dessèche ; ses panneaux endommagés ne se reforment pas instantanément."
+      ],
+      "variants": [
+        {
+          "name": "Marchemâche des degrés pâles",
+          "description": "Plaques crayeuses et bords arrondis, visibles dans des ressauts calcaires.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Marchemâche à marches basses",
+          "description": "Profil plus étalé dans les gravats ; aucune capacité nouvelle de transformation.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "evolution": {
+        "naturalStages": "Jeune dissimulé parmi les gravats, adulte au dos étagé, vieil animal portant des panneaux dissymétriques et des cicatrices.",
+        "possibleAdaptations": "Une forme « Seuil usé » pourrait connaître deux ou trois reposoirs et attendre différemment après une rencontre dangereuse.",
+        "limits": "Expérience individuelle seulement : pas de don de copie universelle, d’évolution par meurtre ou de niveau fixé à toute l’espèce."
+      },
+      "resources": {
+        "renewable": [
+          "Petites écailles et plaques de mue trouvées hors d’un reposoir actif."
+        ],
+        "harmful": [
+          "Lever les panneaux vivants ou chasser un individu sans vérifier la stabilité du site."
+        ],
+        "proposedUses": [
+          "Étude proposée de panneaux articulés et de textures antidérapantes ; aucun blindage invulnérable ou réactif de métamorphose validé."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Poudre de plaque de mue trouvée hors d’un reposoir actif.",
+          "proposedUse": "Pigment candidat pour un enduit dont le relief rappellerait une roche usée.",
+          "conditions": "L’effet pourrait être purement décoratif ; aucune métamorphose ou invisibilité n’en découle.",
+          "status": "proposition_non_jouee"
+        }
+      },
+      "quests": [
+        {
+          "title": "Le quatrième degré manque",
+          "situation": "Un plan ancien compte une marche de moins que le passage observé par les éclaireurs.",
+          "choice": "Vérifier à distance, contourner ou préparer un dégagement sans marcher sur la différence.",
+          "openOutcome": "Plan erroné, travaux et animal restent des hypothèses avant observation."
+        },
+        {
+          "title": "Le blessé au-dessus",
+          "situation": "Une équipe doit descendre une civière tandis qu’un prédateur occupe la voie la plus courte.",
+          "choice": "Ouvrir un détour, gagner du temps ou attirer l’animal sans exposer le blessé.",
+          "openOutcome": "Aucune chasse obligatoire ni issue unique n’est imposée."
+        },
+        {
+          "title": "La chasse dans les gravats",
+          "situation": "Un commanditaire veut détruire tous les individus supposés d’un réseau mal cartographié.",
+          "choice": "Exiger des indices, baliser les sites et négocier un objectif limité.",
+          "openOutcome": "Le nombre d’animaux et la cause des disparitions sont à établir."
+        },
+        {
+          "title": "Les plaques du maître artisan",
+          "situation": "Un artisan souhaite étudier un panneau tombé près d’un reposoir récemment abandonné.",
+          "choice": "Sécuriser le terrain, rechercher une mue ou renoncer à une pièce encore attachée.",
+          "openOutcome": "L’échantillon peut être banal et aucun ouvrage magique n’en découle automatiquement."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "bestiaire-mache-rune",
+          "distinction": "Arthropode à plaques étagées et camouflage, sans lézard, runes dévorées ou mâchoires de silex.",
+          "residualRisk": "Proximité du mot mâche ; préserver la distinction dès le résumé."
+        },
+        {
+          "reference": "BEST-ER-009-049",
+          "distinction": "Prédateur mobile terrestre à six pattes, distinct de l’animal fixé sous une branche à membranes plissées.",
+          "residualRisk": "Même fonction d’embuscade : ne pas recopier indices et contre-mesures."
+        },
+        {
+          "reference": "BEST-ER-010-060",
+          "distinction": "Pas de transfert de poids ; le profil de marche est un camouflage corporel.",
+          "residualRisk": "Deux noms liés aux marches, mais silhouettes et effets différents à conserver."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-061.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-061.png",
+        "alt": "Grand prédateur à trois plaques en forme de marches, six pattes en déploiement et dessous de cuir sombre.",
+        "brief": "Grand animal prédateur aplati dont le dos imite TROIS marches usées d’un escalier minéral. Le corps est montré de trois-quarts de côté : trois plaques crayeuses étagées, dessous de cuir souple sombre, six pattes puissantes repliées commencent à se déployer et une bouche horizontale sous l’avant est entrebâillée. Ancienne galerie taillée, pas d’escalier entier qui se transforme, pas de main humaine, aucun texte ou victime ni gore. Le monstre entier doit être distinct du vrai sol.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "47ece384ef7329b5cb930df0ba302419e440b40ec7d4e86ca8e35bd62f53ffc5",
+        "originalSha256": "ac9d3296eccb2d63903adfc1fa56c8eb940b866def35b790032885de8eb528dd",
+        "bytes": 410848,
+        "originalBytes": 3286874,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      },
+      "strengths": [
+        "Le profil étagé et l’immobilité rendent l’approche inquiétante dans les galeries mal éclairées.",
+        "Ses panneaux articulés protègent un axe d’attaque et obligent à lire le terrain plutôt qu’à charger sans reconnaissance."
+      ]
+    },
+    {
+      "id": "BEST-ER-010-062",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "name": "Oniride des chambres closes",
+      "slug": "oniride-des-chambres-closes",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "family": "Céphalopode terrestre à rémanence visuelle — classement proposé",
+      "size": "Manteau large comme une bassine, bras courts déployés autour",
+      "gameRoles": [
+        "mystère",
+        "témoin limité",
+        "rencontre sensible"
+      ],
+      "description": "Huit bras courts s’étalent autour d’un manteau bombé couleur porcelaine et mauve. De petits pores cuivrés se contractent près d’un œil latéral. Quand l’Oniride demeure longtemps au calme, une image pâle peut se former tout près de sa peau : un angle de niche, une lampe basse, une roche vue depuis le sol. Les détails se répètent puis se défont. La scène appartient à son expérience possible ; ce n’est ni une fenêtre ouverte sur une autre salle ni le rêve d’une personne présente.",
+      "habitat": "Petites chambres humides à l’abri des courants desséchants, proches d’un trajet nutritif et de refuges sombres. Aucun lien à une Couronne, un sanctuaire ou une Faille n’est établi.",
+      "ecology": {
+        "diet": "Petits invertébrés, champignons riches et matières organiques accessibles. Les images ne constituent pas sa nourriture ; il ne consomme ni rêves, ni noms, ni souvenirs humains.",
+        "lifeCycle": "Des œufs protégés dans un repli donnent des jeunes surtout tactiles. Les rémanences apparaissent avec l’expérience visuelle et restent irrégulières ; les adultes changent parfois de chambre.",
+        "role": "Prédateur et consommateur discret de petits organismes, il laisse des dépôts nutritifs pour les décomposeurs. Ses refuges peuvent intéresser des voyageurs sans être des oracles ni des lieux de soin.",
+        "seasonality": "L’humidité et les apports extérieurs commandent son activité. Une sécheresse le fait se refermer dans un repli ; les images cessent généralement lorsque la fatigue augmente."
+      },
+      "behavior": {
+        "ordinary": "Explore par contacts successifs, observe un objet puis retourne vers une niche connue. Ses pauses peuvent durer longtemps sans projection visible.",
+        "warningSigns": "Empreintes de bras, dépôts nacrés non lumineux et répétition d’un même petit angle de paroi près du manteau. Un reflet ordinaire reste une autre explication à vérifier.",
+        "firstContact": "Cache une partie de son corps et présente parfois une rémanence peu nette. Une personne peut proposer une lumière douce ou un objet, sans exiger une réponse.",
+        "escalation": "Se recroqueville, brouille ses motifs et peut pincer avec son petit bec si on force ses bras. L’image agitée n’impose ni peur ni comportement aux visiteurs.",
+        "retreat": "Se glisse vers une cache assez large pour son manteau, en cessant ses projections.",
+        "coexistence": "Laisser une sortie, limiter le bruit et accepter de ne rien comprendre évite de transformer l’observation en interrogation forcée."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Rémanence de peau",
+          "effect": "Projette près du manteau quelques fragments visuels qu’il a lui-même perçus.",
+          "conditions": "Repos, humidité, expérience propre et lumière modérée.",
+          "limits": "Pas de lecture des pensées, de scène humaine choisie sur commande, de vérité garantie ou de vision à distance.",
+          "counterplay": "Comparer les détails avec le terrain et laisser possible une superposition de moments différents."
+        },
+        {
+          "name": "Motif d’échange",
+          "effect": "Modifie un motif cutané après le contact volontaire d’un objet familier.",
+          "conditions": "Objet présenté sans contrainte et animal disponible.",
+          "limits": "Aucun langage traduit, lien mental ou compréhension de tous les symboles.",
+          "counterplay": "Changer un seul élément à la fois et respecter le refus ou l’interruption."
+        },
+        {
+          "name": "Repli humide",
+          "effect": "Protège son manteau entre les bras et retient un film humide pendant un déplacement bref.",
+          "conditions": "Bras libres et refuge proche.",
+          "limits": "Ne survit pas indéfiniment en air sec, ne traverse pas les murs et ne devient pas immatériel.",
+          "counterplay": "Ouvrir une voie au sol et déplacer un obstacle plutôt que tirer sur ses bras."
+        }
+      ],
+      "weaknesses": [
+        "L’air sec et la chaleur directe menacent ses tissus.",
+        "Fatigue, éclairage brutal et foule rendent les rémanences confuses ou absentes."
+      ],
+      "variants": [
+        {
+          "name": "Oniride aux motifs cuivre",
+          "description": "Pores cuivrés très visibles ; images contrastées sans précision accrue garantie.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Oniride des niches mauves",
+          "description": "Pigmentation plus sombre dans les refuges ombragés ; aucun pouvoir nocturne supplémentaire.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "evolution": {
+        "naturalStages": "Jeune tactile, adulte explorant quelques chambres, vieil individu aux motifs superposés et parfois moins lisibles.",
+        "possibleAdaptations": "Une forme « Porte-angle » pourrait reconnaître des objets présentés régulièrement et produire plus souvent un même fragment après leur contact.",
+        "limits": "La conscience et la portée de ces échanges restent à arbitrer. Aucun oracle, accès aux morts, mémoire du monde ou arbre de pouvoirs lié au niveau."
+      },
+      "resources": {
+        "renewable": [
+          "Dépôts déjà abandonnés et dessins d’images observées sans capture."
+        ],
+        "harmful": [
+          "Arracher un bras, prélever le manteau ou provoquer des projections jusqu’à l’épuisement."
+        ],
+        "proposedUses": [
+          "Étude proposée de pigments changeants et de supports de projection ; aucune potion de mémoire, lecture mentale ou archive fiable validée."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide",
+        "alchemy": {
+          "material": "Dépôts nacrés déjà abandonnés par l’animal.",
+          "proposedUse": "Support candidat pour des encres à teinte changeante ou des projections très simples.",
+          "conditions": "Aucun souvenir n’est extrait : l’essai peut ne produire qu’un pigment ordinaire sans rémanence.",
+          "status": "proposition_non_jouee"
+        }
+      },
+      "quests": [
+        {
+          "title": "La lampe inconnue",
+          "situation": "Une rémanence montre une lampe basse ressemblant à celle d’un groupe disparu, mais sans visage ni chronologie.",
+          "choice": "Comparer les modèles, les angles et les lieux plutôt que déclarer un témoignage complet.",
+          "openOutcome": "L’image peut orienter l’enquête sans prouver la présence ou le sort d’une personne."
+        },
+        {
+          "title": "L’angle derrière la cloison",
+          "situation": "Un fragment paraît correspondre à une niche inaccessible après des travaux.",
+          "choice": "Relever la géométrie, chercher un autre accès ou renoncer à percer sans étude.",
+          "openOutcome": "Souvenir ancien, détail semblable et véritable passage restent possibles."
+        },
+        {
+          "title": "L’objet qu’il refuse",
+          "situation": "Un commanditaire exige une projection à partir d’un objet que l’Oniride écarte.",
+          "choice": "Accepter le refus, présenter autre chose ou revoir la demande.",
+          "openOutcome": "Aucune culpabilité ou intention précise n’est déduite du comportement."
+        },
+        {
+          "title": "Le témoin à déplacer",
+          "situation": "Un chantier menace une chambre ; plusieurs personnes veulent conserver l’accès aux images.",
+          "choice": "Préparer un refuge, déplacer le travail ou accepter la perte d’un indice.",
+          "openOutcome": "La survie et le choix de l’animal priment sur une promesse d’archive permanente."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "bestiaire-harpiste-creuse",
+          "distinction": "Images de l’expérience propre d’un animal, sans voix humaine imitée ou piège vocal.",
+          "residualRisk": "Motif du témoin trompeur à distinguer ; aucune nature spirituelle déduite."
+        },
+        {
+          "reference": "BEST-ER-009-052",
+          "distinction": "Rémanence locale figurative, pas réfraction d’essaim ni modification d’alignement du paysage.",
+          "residualRisk": "Un seul nouveau mécanisme visuel dans ce lot ; ne pas lui donner les pouvoirs des quatre créations optiques009."
+        },
+        {
+          "reference": "BEST-ER-009-047",
+          "distinction": "Céphalopode terrestre à bras et manteau posé, sans organisme médusoïde flottant.",
+          "residualRisk": "Silhouette molle ne prouve aucune parenté."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-010 du 27 novembre 2026, sur demande du créateur : profondeurs et souterrains. Identité, biologie, singularités et rencontres proposées ; aucune attestation de campagne ou source CB inventée. Les références comparées contrôlent les doublons et ne prouvent pas l’existence de la création.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-010-062.webp",
+        "originalPath": "illustrations/originaux/BEST-ER-010-062.png",
+        "alt": "Céphalopode terrestre crème et mauve à huit bras, montrant près de son manteau une petite alcôve en image pâle.",
+        "brief": "Céphalopode terrestre merveilleux pâle, huit bras souples courts posés sur le sol humide d’une chambre de grotte, manteau bombé en porcelaine vivante crème et mauve, petit œil latéral calme, pores cuivrés sur la peau. À proximité de son manteau se forme UNE faible image aérienne translucide d’une petite alcôve rocheuse vue à hauteur d’animal, souvenir visuel limité, pas de portail. Animal entier, pas d’humain, pas de cerveau exposé ni de texte.",
+        "provenance": "Création originale avec l’outil intégré image_gen pour BEST-ER-010 ; dérivé WebP par conversion de format. Direction et relecture Codex, validation éditoriale du créateur en attente.",
+        "sha256": "a512192d7506fd7876fd957dddc6f5adb37da7a90b8d37487cd69d3088497187",
+        "originalSha256": "9bea53df93a6f7c6070e97dbd87f71a8d835f74563dc1bc4dcb2fa09fee4872a",
+        "bytes": 386002,
+        "originalBytes": 3197818,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus, absence de texte et de filigrane vérifiée. Illustration d’ambiance, sans homologation anatomique."
+      },
+      "strengths": [
+        "Les rémanences offrent des indices visuels inaccessibles à un visiteur ordinaire, à interpréter avec prudence.",
+        "Ses motifs et réactions autorisent une rencontre patiente dont l’enjeu est l’échange et le choix d’un refuge."
+      ]
+    }
+  ]
+}

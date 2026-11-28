@@ -1,0 +1,119 @@
+{
+  "schema": "entre-rives.bestiaire.illustrations-provenance.v1",
+  "lot": "BEST-ER-010",
+  "version": "0.1.0",
+  "date": "2026-11-27",
+  "notice": "Dix originaux générés et dix dérivés web. Modèle précis et graine non retournés par l’outil, donc non inventés. Les PNG originaux peuvent dépasser 3 Mio ; utiliser les WebP pour une future intégration.",
+  "entries": [
+    {
+      "id": "BEST-ER-010-053",
+      "name": "Battant de basalte",
+      "tool": "image_gen intégré",
+      "date": "2026-11-27",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale pour l’encyclopédie fantasy Entre-Rives, BEST-ER-010. Subject: Organisme lithique vivant non humanoïde, assemblage bas et massif de trois hautes plaques de basalte articulées sur des bourrelets organiques ocre sombre, fissures étroites montrant une membrane cuivrée qui bat, pas de lave. Il est calé de travers entre deux parois d’une galerie naturelle et porte son propre corps sur trois appuis trapus. Aucun visage, aucun bras, aucune rune, pas un golem humain. Graviers fins autour de ses appuis, mouvement de contraction perceptible. Style/medium: peinture naturaliste de fantasy semi-réaliste hautement détaillée, matériaux organiques crédibles et merveilleux marqué, couleurs minérales ardoise/ivoire/cuivre, composition paysage 4:3, sujet principal entier et visible. Décor souterrain sans forêt ni ciel extérieur, lumière d’ambiance lisible et contrastée sans aplat noir. Contraintes: illustration unique sans texte, sans lettres, sans cadre, sans filigrane, sans interface, sans planche de livre.",
+      "originalPath": "illustrations/originaux/BEST-ER-010-053.png",
+      "webPath": "illustrations/webp/BEST-ER-010-053.webp",
+      "originalSha256": "ec8eb4c4848a1bffdc785f04beda8c6c38b88e9609115368304d9ed6f9ff7071",
+      "webSha256": "17b844a4e57f76e42c64d50bd5decfbbc2e3d5608b5f50c6850972529cf278b9"
+    },
+    {
+      "id": "BEST-ER-010-054",
+      "name": "Sourdine des citernes",
+      "tool": "image_gen intégré",
+      "date": "2026-11-27",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale pour l’encyclopédie fantasy Entre-Rives, BEST-ER-010. Subject: Grand prédateur amphibie aveugle à quatre membres trapus, peau gris bleu mate humide, tête large sans yeux et énorme poche gulaire membraneuse ivoire tendue en disque sous la gorge. Couché au bord d’une ancienne citerne souterraine, petite zone de poussière immobile devant le disque suggérant absorption du son. Corps animal entier, doigts courts, queue épaisse, pas de visage humain ni de chauve-souris, aucune victime. Style/medium: peinture naturaliste de fantasy semi-réaliste hautement détaillée, matériaux organiques crédibles et merveilleux marqué, couleurs minérales ardoise/ivoire/cuivre, composition paysage 4:3, sujet principal entier et visible. Décor souterrain sans forêt ni ciel extérieur, lumière d’ambiance lisible et contrastée sans aplat noir. Contraintes: illustration unique sans texte, sans lettres, sans cadre, sans filigrane, sans interface, sans planche de livre.",
+      "originalPath": "illustrations/originaux/BEST-ER-010-054.png",
+      "webPath": "illustrations/webp/BEST-ER-010-054.webp",
+      "originalSha256": "b1d3eb9fda5004ad384891d00e30e60ea607df077f2591c99eb764855fba2521",
+      "webSha256": "e00490d95ccfe7c52e96acd5741189cd470958d7d8b49e716cc7ea7a7d95538d"
+    },
+    {
+      "id": "BEST-ER-010-055",
+      "name": "Noueuse de gypse",
+      "tool": "image_gen intégré",
+      "date": "2026-11-27",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale pour l’encyclopédie fantasy Entre-Rives, BEST-ER-010. Subject: Arthropode pâle cavernicole de la taille d’un panier, exactement huit pattes articulées et petites mandibules fines de tissage, abdomen étroit portant de petits sacs crayeux. Il construit une petite arche ramifiée en filaments de gypse humide entre deux roches, structure nervurée et poreuse très organique. Animal entier bien lisible au travail sur l’arche, parois mates de galerie, pas de toile avec gouttes ni de cristal lumineux ni de texte. Style/medium: peinture naturaliste de fantasy semi-réaliste hautement détaillée, matériaux organiques crédibles et merveilleux marqué, couleurs minérales ardoise/ivoire/cuivre, composition paysage 4:3, sujet principal entier et visible. Décor souterrain sans forêt ni ciel extérieur, lumière d’ambiance lisible et contrastée sans aplat noir. Contraintes: illustration unique sans texte, sans lettres, sans cadre, sans filigrane, sans interface, sans planche de livre.",
+      "originalPath": "illustrations/originaux/BEST-ER-010-055.png",
+      "webPath": "illustrations/webp/BEST-ER-010-055.webp",
+      "originalSha256": "3533f5d65bcf39018948a5aee81dfc11732c3010e711c3fd08a17df49e65af40",
+      "webSha256": "d6f58bb3ddb330b15acfaf9e81e94f1ce2bf5daf8e7928137ae3f19ab9adf76c"
+    },
+    {
+      "id": "BEST-ER-010-056",
+      "name": "Raie des puits secs",
+      "tool": "image_gen intégré",
+      "date": "2026-11-27",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale pour l’encyclopédie fantasy Entre-Rives, BEST-ER-010. Subject: Animal aérien en forme de raie, corps plat brun ardoise et large paire de nageoires membraneuses plissées, petits organes respiratoires cuivre sous le ventre, yeux latéraux minuscules et courte queue. Il plane dans l’AIR d’un puits karstique sec vertical profond, un courant ascendant local soulève un peu de poussière, parois proches, roches et un rebord. Pas d’eau, pas d’ailes d’oiseau, pas de tentacules de méduse ni de portail. Vue trois-quarts corps entier en traversée. Style/medium: peinture naturaliste de fantasy semi-réaliste hautement détaillée, matériaux organiques crédibles et merveilleux marqué, couleurs minérales ardoise/ivoire/cuivre, composition paysage 4:3, sujet principal entier et visible. Décor souterrain sans forêt ni ciel extérieur, lumière d’ambiance lisible et contrastée sans aplat noir. Contraintes: illustration unique sans texte, sans lettres, sans cadre, sans filigrane, sans interface, sans planche de livre.",
+      "originalPath": "illustrations/originaux/BEST-ER-010-056.png",
+      "webPath": "illustrations/webp/BEST-ER-010-056.webp",
+      "originalSha256": "78c521d1974088d043f8715f21453febefe388396849e43e8fb7b16771740122",
+      "webSha256": "16aad4665f06ecf22fad21fcee577f00f611970fa9f3c384b494875b7f26ae9c"
+    },
+    {
+      "id": "BEST-ER-010-057",
+      "name": "Mange-mèche",
+      "tool": "image_gen intégré",
+      "date": "2026-11-27",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale pour l’encyclopédie fantasy Entre-Rives, BEST-ER-010. Subject: Créature vermiforme aplatie noire à reflets cuivre, taille d’une main, quatre franges latérales courtes sans pattes, bouche ventrale minuscule adhérant à une mèche d’une lampe à huile abandonnée. Son dos porte une chaîne de petites vésicules ambrées tièdes ; l’unique flamme diminue près de son contact, sans feu sur l’animal. Intérieur de galerie ancienne sombre mais éclairage suffisant pour voir l’anatomie, aucun personnage ni texte. Style/medium: peinture naturaliste de fantasy semi-réaliste hautement détaillée, matériaux organiques crédibles et merveilleux marqué, couleurs minérales ardoise/ivoire/cuivre, composition paysage 4:3, sujet principal entier et visible. Décor souterrain sans forêt ni ciel extérieur, lumière d’ambiance lisible et contrastée sans aplat noir. Contraintes: illustration unique sans texte, sans lettres, sans cadre, sans filigrane, sans interface, sans planche de livre.",
+      "originalPath": "illustrations/originaux/BEST-ER-010-057.png",
+      "webPath": "illustrations/webp/BEST-ER-010-057.webp",
+      "originalSha256": "7a1d25ff687e40a971926a39701eee69340aa00ed1bbbc2d4447121d47d36ad0",
+      "webSha256": "4036da5b0bad82fe92d2828cbc287bb41027abf0ebaf299aa99007307f6dd26e"
+    },
+    {
+      "id": "BEST-ER-010-058",
+      "name": "Trocqueur des galets",
+      "tool": "image_gen intégré",
+      "date": "2026-11-27",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale pour l’encyclopédie fantasy Entre-Rives, BEST-ER-010. Subject: Étrange petit animal cavernicole trapu, carapace douce brun argile à plaques rondes comme galets, tête basse et petites antennes sensorielles, exactement six membres : quatre pattes de marche basses et deux petits bras antérieurs manipulateurs. Accroupi devant deux tas ordonnés de galets et un fragment de cire, il avance une pierre plate avec un de ses bras comme un échange. Apparence animale non humanoïde, yeux noirs discrets, pas habits ni bijoux ni outils humains ni runes. Style/medium: peinture naturaliste de fantasy semi-réaliste hautement détaillée, matériaux organiques crédibles et merveilleux marqué, couleurs minérales ardoise/ivoire/cuivre, composition paysage 4:3, sujet principal entier et visible. Décor souterrain sans forêt ni ciel extérieur, lumière d’ambiance lisible et contrastée sans aplat noir. Contraintes: illustration unique sans texte, sans lettres, sans cadre, sans filigrane, sans interface, sans planche de livre.",
+      "originalPath": "illustrations/originaux/BEST-ER-010-058.png",
+      "webPath": "illustrations/webp/BEST-ER-010-058.webp",
+      "originalSha256": "2649edf3bb398baad36cc034d72f41e1b8f551108fd64aba38f3411136a030ea",
+      "webSha256": "75adacf1e689aca364af8a415049a9f1e4928c9914071b261f7fb3c969809122"
+    },
+    {
+      "id": "BEST-ER-010-059",
+      "name": "Nacreuse des siphons",
+      "tool": "image_gen intégré",
+      "date": "2026-11-27",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale pour l’encyclopédie fantasy Entre-Rives, BEST-ER-010. Subject: Grand mollusque bivalve fixé à une roche IMMERGÉE dans un siphon de grotte, coquille bombée bleu nuit avec côtes crème cuivrées, deux valves entrouvertes découvrant un manteau nacré et UNE poche d’air brillante retenue sous une mince membrane près de l’ouverture. Vue sous l’eau assez claire pour lire le sujet, minces siphons biologiques, aucune perle-gemme ni trésor ni humain ni lumière propre excessive. Style/medium: peinture naturaliste de fantasy semi-réaliste hautement détaillée, matériaux organiques crédibles et merveilleux marqué, couleurs minérales ardoise/ivoire/cuivre, composition paysage 4:3, sujet principal entier et visible. Décor souterrain sans forêt ni ciel extérieur, lumière d’ambiance lisible et contrastée sans aplat noir. Contraintes: illustration unique sans texte, sans lettres, sans cadre, sans filigrane, sans interface, sans planche de livre.",
+      "originalPath": "illustrations/originaux/BEST-ER-010-059.png",
+      "webPath": "illustrations/webp/BEST-ER-010-059.webp",
+      "originalSha256": "a1ff35f00e1b223bc759209d5b4bd71811a2570bb6f78e3c2275b1f52c82408c",
+      "webSha256": "5db3b4def8181269f4e6fe723a65793bd59e916454bcb85738e54fda4be28b5b"
+    },
+    {
+      "id": "BEST-ER-010-060",
+      "name": "Lesteur des fausses marches",
+      "tool": "image_gen intégré",
+      "date": "2026-11-27",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale pour l’encyclopédie fantasy Entre-Rives, BEST-ER-010. Subject: Arthropode souterrain bas et large brun ferrugineux, exactement huit pattes courtes, trois plaques dorsales épaisses décalées comme contrepoids. Sous le ventre, de minces filaments touchent un petit galet soulevé juste au-dessus du sol, l’animal s’enfonce légèrement dans l’argile en reprenant une part de son poids apparent. Galerie avec sol irrégulier, anatomie organique, ni machine ni aimant dessiné ni runes ni grandes pierres flottantes. Style/medium: peinture naturaliste de fantasy semi-réaliste hautement détaillée, matériaux organiques crédibles et merveilleux marqué, couleurs minérales ardoise/ivoire/cuivre, composition paysage 4:3, sujet principal entier et visible. Décor souterrain sans forêt ni ciel extérieur, lumière d’ambiance lisible et contrastée sans aplat noir. Contraintes: illustration unique sans texte, sans lettres, sans cadre, sans filigrane, sans interface, sans planche de livre.",
+      "originalPath": "illustrations/originaux/BEST-ER-010-060.png",
+      "webPath": "illustrations/webp/BEST-ER-010-060.webp",
+      "originalSha256": "e322a17a6ef886660667eda7cc3996eb6e4d7d7623d93bdb50e0fc7c30663c72",
+      "webSha256": "ef570bdbbed6367af5523333690f55f5df272395a3446248ac8c600f83c813f7"
+    },
+    {
+      "id": "BEST-ER-010-061",
+      "name": "Marchemâche des degrés",
+      "tool": "image_gen intégré",
+      "date": "2026-11-27",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale pour l’encyclopédie fantasy Entre-Rives, BEST-ER-010. Subject: Grand animal prédateur aplati dont le dos imite TROIS marches usées d’un escalier minéral. Le corps est montré de trois-quarts de côté : trois plaques crayeuses étagées, dessous de cuir souple sombre, six pattes puissantes repliées commencent à se déployer et une bouche horizontale sous l’avant est entrebâillée. Ancienne galerie taillée, pas d’escalier entier qui se transforme, pas de main humaine, aucun texte ou victime ni gore. Le monstre entier doit être distinct du vrai sol. Style/medium: peinture naturaliste de fantasy semi-réaliste hautement détaillée, matériaux organiques crédibles et merveilleux marqué, couleurs minérales ardoise/ivoire/cuivre, composition paysage 4:3, sujet principal entier et visible. Décor souterrain sans forêt ni ciel extérieur, lumière d’ambiance lisible et contrastée sans aplat noir. Contraintes: illustration unique sans texte, sans lettres, sans cadre, sans filigrane, sans interface, sans planche de livre.",
+      "originalPath": "illustrations/originaux/BEST-ER-010-061.png",
+      "webPath": "illustrations/webp/BEST-ER-010-061.webp",
+      "originalSha256": "ac9d3296eccb2d63903adfc1fa56c8eb940b866def35b790032885de8eb528dd",
+      "webSha256": "47ece384ef7329b5cb930df0ba302419e440b40ec7d4e86ca8e35bd62f53ffc5"
+    },
+    {
+      "id": "BEST-ER-010-062",
+      "name": "Oniride des chambres closes",
+      "tool": "image_gen intégré",
+      "date": "2026-11-27",
+      "prompt": "Use case: stylized-concept. Asset type: illustration originale pour l’encyclopédie fantasy Entre-Rives, BEST-ER-010. Subject: Céphalopode terrestre merveilleux pâle, huit bras souples courts posés sur le sol humide d’une chambre de grotte, manteau bombé en porcelaine vivante crème et mauve, petit œil latéral calme, pores cuivrés sur la peau. À proximité de son manteau se forme UNE faible image aérienne translucide d’une petite alcôve rocheuse vue à hauteur d’animal, souvenir visuel limité, pas de portail. Animal entier, pas d’humain, pas de cerveau exposé ni de texte. Style/medium: peinture naturaliste de fantasy semi-réaliste hautement détaillée, matériaux organiques crédibles et merveilleux marqué, couleurs minérales ardoise/ivoire/cuivre, composition paysage 4:3, sujet principal entier et visible. Décor souterrain sans forêt ni ciel extérieur, lumière d’ambiance lisible et contrastée sans aplat noir. Contraintes: illustration unique sans texte, sans lettres, sans cadre, sans filigrane, sans interface, sans planche de livre.",
+      "originalPath": "illustrations/originaux/BEST-ER-010-062.png",
+      "webPath": "illustrations/webp/BEST-ER-010-062.webp",
+      "originalSha256": "9bea53df93a6f7c6070e97dbd87f71a8d835f74563dc1bc4dcb2fa09fee4872a",
+      "webSha256": "a512192d7506fd7876fd957dddc6f5adb37da7a90b8d37487cd69d3088497187"
+    }
+  ]
+}
