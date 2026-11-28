@@ -1,4 +1,4 @@
-# Index des 21 premières fiches — à publier plus tard
+# Index des 36 fiches de travail — à publier plus tard
 
 ## Orignac
 
@@ -42,3 +42,35 @@
 ## Après ce lot
 
 Les nouveaux bourgs et villages seront ajoutés dans une seconde série d’approfondissement, sur cette même branche, sans les canoniser automatiquement.
+
+## Seconde série — 15 localités à discuter
+
+### Orignac
+
+- [Solombre](fiches/ori-loc-011.md) — La cité des terrasses et de la lumière (**nom et détails proposés**)
+- [Elsac-des-Brumes](fiches/ori-loc-012.md) — Les blancs aromatiques sous la montagne (**nom et détails proposés**)
+- [Arvège-sur-Lande](fiches/ori-loc-013.md) — Le pays des longues tablées (**nom et détails proposés**)
+
+### Côtes lumineuses
+
+- [Marévelle](fiches/ori-loc-014.md) — La promenade des artistes de la mer (**nom et détails proposés**)
+- [Néréa-des-Criques](fiches/ori-loc-015.md) — Le village au rythme des barques (**nom et détails proposés**)
+- [Sableclair](fiches/ori-loc-016.md) — Les dunes et les bains de soleil (**nom et détails proposés**)
+
+### Hautes Terres brumeuses
+
+- [Viellebrume](fiches/ori-loc-017.md) — Les archives du vent et de la pluie (**nom et détails proposés**)
+- [Haut-Pont-des-Landes](fiches/ori-loc-018.md) — Le franchissement des caravanes (**nom et détails proposés**)
+- [Les Trois-Foyers](fiches/ori-loc-019.md) — Trois maisons d'accueil sur la lande (**nom et détails proposés**)
+
+### Bassins de la Reprise
+
+- [Verranne](fiches/ori-loc-020.md) — La ville des verrières et des machines délicates (**nom et détails proposés**)
+- [Rivegran](fiches/ori-loc-021.md) — Le marché des bateaux et des grains (**nom et détails proposés**)
+- [Ferroue](fiches/ori-loc-022.md) — Le village où l'eau entraîne le métal (**nom et détails proposés**)
+
+### Marches des Passages
+
+- [Aubeseuil](fiches/ori-loc-023.md) — La place où l'on apprend à se comprendre (**nom et détails proposés**)
+- [L'Orme-des-Hôtes](fiches/ori-loc-024.md) — Une halte de jardins et de chambres (**nom et détails proposés**)
+- [Lanterive](fiches/ori-loc-025.md) — La rive des lanternes et des diplomates (**nom et détails proposés**)

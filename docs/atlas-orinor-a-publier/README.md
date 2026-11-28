@@ -22,3 +22,11 @@ Les SVG de `illustrations/` sont des **illustrations vectorielles conceptuelles*
 - **À vérifier** : nom et localisation exacts de la capitale, chronologie précise du Congrès et de la visite d’Orin, règles et tracés des passages, carte officielle.
 
 Ne pas exporter les présentes pages dans les Archives de l'Odyssée. Les fiches accessibles aux lecteurs des Chroniques devront être **affichées directement sur le Studio** sans renvoi obligatoire vers GitHub.
+
+## Extension de développement — 15 nouvelles localités
+
+Trois localités nouvelles par région ont été ajoutées, chacune avec une fiche complète, un personnage proposé, une situation de jeu et un visuel SVG. **36 fiches de lieux** sont désormais disponibles (5 régions + 6 centres urbains dont la capitale + 25 localités). Toutes restent `publish: false` et ne sont pas des événements joués.
+
+- [Réseaux, accueil et échanges](RESEAUX_ET_HOSPITALITE.md)
+- [Carnet des personnages locaux proposés](PERSONNAGES_LOCAUX_PROPOSES.md)
+- [Parcours d'aventure](PARCOURS_DE_JEU.md)
