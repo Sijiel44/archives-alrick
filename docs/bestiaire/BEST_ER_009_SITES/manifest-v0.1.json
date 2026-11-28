@@ -1,0 +1,611 @@
+{
+  "schema": "entre-rives.bestiaire.sites.manifest.v2",
+  "lot": "BEST-ER-009",
+  "version": "0.1.0",
+  "date": "2026-11-26",
+  "portee": "univers_partage",
+  "sourceBase": "6e439ad1755fd817b37a60e995b1fd8d9c82d2a1",
+  "branch": "codex/best-er-009-sites",
+  "reviewBaseBranch": "bestiaire/best-er-008-sites",
+  "source": {
+    "path": "lot-v0.1.json",
+    "sha256": "e742e557faa3b677d01602e4a1ec36ab85c0abd10cd3f85932ca5af5a363ddc5"
+  },
+  "publication": {
+    "status": "non_publie_preparation_editoriale",
+    "publish": false,
+    "canonical": false,
+    "productionImportable": false,
+    "reason": "Validation du statut des dix fiches et attribution individuelle éventuelle non acquises. Mapper Sites incompatible avec le maintien du brouillon ; recette intégration non exécutée.",
+    "targetProjectId": "appgprj_6aefa21ad1bc819198e86d83a74b3484"
+  },
+  "sources": {
+    "snapshot": {
+      "path": "snapshot-sources-v0.1.json",
+      "sha256": "3abb137627897726818f653407692eb2a78b726fe6fddbf285b845d22b18d72b"
+    },
+    "duplicateControl": "controle-doublons-v0.1.json",
+    "priorLot": {
+      "branch": "bestiaire/best-er-008-sites",
+      "commit": "6e439ad1755fd817b37a60e995b1fd8d9c82d2a1"
+    },
+    "site": {
+      "version": 49,
+      "commit": "9e045dc12bed4ff6834639df48066c7b78773068"
+    }
+  },
+  "counts": {
+    "entries": 10,
+    "originalPng": 10,
+    "webp": 10,
+    "descriptiveAbilities": 30,
+    "variants": 20,
+    "questHooks": 40,
+    "permanentIdsAssigned": 0,
+    "canonicalEntries": 0,
+    "publishedEntries": 0
+  },
+  "entries": [
+    {
+      "id": "BEST-ER-009-043",
+      "name": "Cloporte à chambres d’hiver",
+      "slug": "cloporte-a-chambres-d-hiver",
+      "path": "fiches/BEST-ER-009-043-cloporte-a-chambres-d-hiver.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-009 du 26 novembre 2026, thème des forêts anciennes. Proposition sans source de campagne ; aucune attestation dans les aventures d’Orin. Les références rapprochées servent au contrôle des identités, pas de preuve d’existence.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-043.webp",
+        "alt": "Grand cloporte gris perle, carapace à loges givrées entrouvertes, sous une souche estivale humide.",
+        "brief": "Illustration naturaliste fantasy semi-réaliste, grand isopode aux nombreuses petites pattes, carapace gris perle portant des loges translucides avec givre interne, buée fraîche très locale sur humus estival, bois ancien, anatomie crédible, sans texte ni cadre.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-043.png",
+        "sha256": "6c1bbc6b7113c3aa1c8a0ab699bb2b96fe77160af28947b71d31a1507e8652df",
+        "originalSha256": "9ff7c34f0fd12020038606ad47c04b969debea663d7f2b3b2e65986267d89065",
+        "bytes": 371148,
+        "originalBytes": 3062333,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      }
+    },
+    {
+      "id": "BEST-ER-009-044",
+      "name": "Limace-vitrail des fougères",
+      "slug": "limace-vitrail-des-fougeres",
+      "path": "fiches/BEST-ER-009-044-limace-vitrail-des-fougeres.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-009 du 26 novembre 2026, thème des forêts anciennes. Proposition sans source de campagne ; aucune attestation dans les aventures d’Orin. Les références rapprochées servent au contrôle des identités, pas de preuve d’existence.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-044.webp",
+        "alt": "Limace translucide aux nervures violettes sur une feuille humide, projetant une tache colorée décalée.",
+        "brief": "Illustration naturaliste fantasy semi-réaliste, limace aplatie sans coquille, manteau translucide cloisonné violet et vert, fougères et bois humide, rayon du matin réfracté sur une feuille voisine, sans texte ni bijou.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-044.png",
+        "sha256": "ccbcb3a4946ab3e0700395bfed612f05229b73be41160897fd650b493a892f22",
+        "originalSha256": "35032b2abcb65a6bfc36cae49b1f355ebe1c1208be1b40c930871ec7b9391ee9",
+        "bytes": 326602,
+        "originalBytes": 2839113,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      }
+    },
+    {
+      "id": "BEST-ER-009-045",
+      "name": "Ronce-pèlerine",
+      "slug": "ronce-pelerine",
+      "path": "fiches/BEST-ER-009-045-ronce-pelerine.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-009 du 26 novembre 2026, thème des forêts anciennes. Proposition sans source de campagne ; aucune attestation dans les aventures d’Orin. Les références rapprochées servent au contrôle des identités, pas de preuve d’existence.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-045.webp",
+        "alt": "Buisson épineux sans visage soulevant ses racines autour d’une motte d’humus dans une clairière.",
+        "brief": "Planche naturaliste fantasy semi-réaliste, ronce ambulante basse, rameaux épineux rouges et racines charnues portant une motte de terre, clairière humide, sans visage ni membres humains, sans texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-045.png",
+        "sha256": "459d37ddb05fcfce97662dc78bc5b7bd108cc6a86ee1a21cd9390e6df85caa91",
+        "originalSha256": "1e02c41678c05eab101b987fe5e9bb8e761bbf207dc7aa5e335ceec227fb6883",
+        "bytes": 426648,
+        "originalBytes": 3206367,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      }
+    },
+    {
+      "id": "BEST-ER-009-046",
+      "name": "Noctule à ombres déliées",
+      "slug": "noctule-a-ombres-deliees",
+      "path": "fiches/BEST-ER-009-046-noctule-a-ombres-deliees.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-009 du 26 novembre 2026, thème des forêts anciennes. Proposition sans source de campagne ; aucune attestation dans les aventures d’Orin. Les références rapprochées servent au contrôle des identités, pas de preuve d’existence.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-046.webp",
+        "alt": "Chauve-souris brun fumée virant devant un tronc ; une ombre plate continue dans l’autre direction.",
+        "brief": "Illustration naturaliste fantasy semi-réaliste nocturne, chauve-souris à oreilles gaufrées et membranes bordées d’ivoire, rayon de lune unique, corps en vol et ombre décalée sur le tronc, sans second animal, sans texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-046.png",
+        "sha256": "512eb95c01bb85a7835acf3a35ef5bf4b91e52a97ea641ce60296d38f932a185",
+        "originalSha256": "a0b335d30f39a65374cf61e4129a12747514db5d77cbc8b6195558d98c1d7585",
+        "bytes": 314292,
+        "originalBytes": 2813709,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": true
+      }
+    },
+    {
+      "id": "BEST-ER-009-047",
+      "name": "Méduse de canopée",
+      "slug": "meduse-de-canopee",
+      "path": "fiches/BEST-ER-009-047-meduse-de-canopee.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-009 du 26 novembre 2026, thème des forêts anciennes. Proposition sans source de campagne ; aucune attestation dans les aventures d’Orin. Les références rapprochées servent au contrôle des identités, pas de preuve d’existence.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-047.webp",
+        "alt": "Cloche laiteuse aux nervures vertes flottant dans les branches humides, filaments translucides au-dessus des fougères.",
+        "brief": "Planche naturaliste fantasy semi-réaliste, unique organisme aérien en forme de méduse, cloche laiteuse nervurée de vert et longs filaments, sous-bois ancien humide, suspension basse au-dessus des fougères, aucune eau ni personnage, sans texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-047.png",
+        "sha256": "57678df43105fd0c5783dfccf9753203447de50b3ec2972821550c6151468ce0",
+        "originalSha256": "daca1417d183932703a2f3af60cf1fc0a501121328a7d90b47d028f3d789967c",
+        "bytes": 367338,
+        "originalBytes": 2938448,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      }
+    },
+    {
+      "id": "BEST-ER-009-048",
+      "name": "Mycélion porte-coupe",
+      "slug": "mycelion-porte-coupe",
+      "path": "fiches/BEST-ER-009-048-mycelion-porte-coupe.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-009, 26 novembre 2026, à partir du mandat de forêts anciennes merveilleuses ; aucune attestation de campagne ni source CB attribuée à cet organisme.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-048.webp",
+        "alt": "Organisme fongique à coupe prune emplie d’eau ambrée, avançant sur des cordons crème parmi les souches moussues.",
+        "brief": "Illustration naturaliste fantasy semi-réaliste sans texte : corps fongique mobile, coupe concave prune et eau ambrée retenue par une frange crème, cordons locomoteurs sur racine humide, forêt ancienne, anatomie lisible, aucune figure humaine ni visage humain.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-048.png",
+        "sha256": "a1e96e50feab16e21a12b2b392b220c01a492b9a3e2efbbba0efcff09fb7d1a7",
+        "originalSha256": "bb6865a9a8e8ad1da033ee9d317e04e8f18a697e4fef10bfc3a653aad1073cfd",
+        "bytes": 395732,
+        "originalBytes": 3149849,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": true
+      }
+    },
+    {
+      "id": "BEST-ER-009-049",
+      "name": "Nasse des ramées",
+      "slug": "nasse-des-ramees",
+      "path": "fiches/BEST-ER-009-049-nasse-des-ramees.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-009, 26 novembre 2026 ; prédateur forestier proposé sans attestation de campagne, implantation géographique nominative ni source CB inventée.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-049.webp",
+        "alt": "Prédateur brun suspendu sous une branche, six membranes nervurées déployées comme une corolle au-dessus de la litière.",
+        "brief": "Fantasy naturaliste semi-réaliste, animal sessile sous une grosse branche ancienne, corps central brun avec crampons, six membranes plissées gris-vert à nervures pourpres, corolle déployée, forêt ombragée, aucun visage d’arbre, aucune victime humaine, sans texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-049.png",
+        "sha256": "fcea49304fcfc46f690ced1dc9e15083a3c1410340bdc348a8e0f6cf705d4661",
+        "originalSha256": "0164ced85541885de97384e96468bc9740ef2598ec4b31d06e3cdd9d7c973cc8",
+        "bytes": 351300,
+        "originalBytes": 2997013,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      }
+    },
+    {
+      "id": "BEST-ER-009-050",
+      "name": "Noue-ciel des ramures",
+      "slug": "noue-ciel-des-ramures",
+      "path": "fiches/BEST-ER-009-050-noue-ciel-des-ramures.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-009, 26 novembre 2026 ; animal rubané merveilleux proposé, sans attestation de campagne, filiation divine ni mécanique de Faille.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-050.webp",
+        "alt": "Animal rubané bleu ardoise aux membranes cuivrées, formant une boucle dans l’air entre deux branches proches.",
+        "brief": "Illustration fantasy naturaliste semi-réaliste, animal long et aplati bleu ardoise, petite tête animale à yeux latéraux et barbillons courts, bords membraneux cuivre pâle, ventouses ventrales, boucle aérienne entre deux branches rapprochées dans une canopée ancienne, sans portail ni runes ni texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-050.png",
+        "sha256": "51d6e6837665eb049539311a8e4d36b19be00449ff8f6447eedae88d22089c52",
+        "originalSha256": "e4353a9b051218bc2bb95348935f84ba6c2da4ad42dfab314350ad2eefdb1370",
+        "bytes": 313376,
+        "originalBytes": 2752816,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      }
+    },
+    {
+      "id": "BEST-ER-009-051",
+      "name": "Verrier des clairières",
+      "slug": "verrier-des-clairieres",
+      "path": "fiches/BEST-ER-009-051-verrier-des-clairieres.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-009, 26 novembre 2026 ; reptile merveilleux proposé, sans attestation de campagne, recette validée ni source CB attribuée.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-051.webp",
+        "alt": "Petit reptile vert mousse à six pattes et crête translucide, près d’une lamelle courbe réfléchissant le soleil dans une clairière.",
+        "brief": "Fantasy naturaliste semi-réaliste, petit reptile vert mousse mat à exactement six pattes courtes, queue aplatie, crête basse de plaques translucides, minuscule lamelle salivaire courbe sur une brindille, clairière avec fougères et pierres, éclairage doux, aucune armure de cristal ni texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-051.png",
+        "sha256": "c2224647464178b4ebc1db4e8b3edd1a9def69af3a1e083262a6dbc90aac8402",
+        "originalSha256": "b3e6699c090bb881d2a760c6d42eae0c9929d63aebbedbf434bf16375ebda87f",
+        "bytes": 404646,
+        "originalBytes": 3125651,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": true
+      }
+    },
+    {
+      "id": "BEST-ER-009-052",
+      "name": "Dérobe-sentier",
+      "slug": "derobe-sentier",
+      "path": "fiches/BEST-ER-009-052-derobe-sentier.md",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "publish": false,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "provenance": "Création originale BEST-ER-009, 26 novembre 2026 ; papillon forestier merveilleux proposé, sans attestation de campagne, sort homologué ni implantation dans un lieu historique nommé.",
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-052.webp",
+        "alt": "Papillons brun olive aux bandes translucides volant au-dessus d’un sentier ancien, avec un léger décalage optique des troncs derrière leurs ailes.",
+        "brief": "Fantasy naturaliste semi-réaliste, papillons brun olive à bandes translucides étain entre nervures, petit groupe en vol dans un chemin forestier ancien, lumière oblique du matin, subtile réfraction locale des lignes derrière les ailes, sol continu bien visible, aucun portail, sans texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-052.png",
+        "sha256": "9f5c236a64d05f584174b1f7e28d947660158c44fb7e28768e916c72efafdca7",
+        "originalSha256": "580979e4b187b07f57e5ecc100894346ec128c3597c2a03dde7d996eabae0cb6",
+        "bytes": 403550,
+        "originalBytes": 3236005,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      }
+    }
+  ],
+  "integrity": {
+    "algorithm": "SHA-256",
+    "scope": "Tous les fichiers du dossier sauf manifest-v0.1.json lui-même. Après commit, son blob Git et le commit ancrent le manifeste."
+  },
+  "files": [
+    {
+      "path": "APERCU.html",
+      "sha256": "6c6612a0058e63bf600dd9dd3018ae9e4e29cc3fd4873b9305cf7ce04d72e979",
+      "bytes": 348130
+    },
+    {
+      "path": "CONTROLE_DOUBLONS.md",
+      "sha256": "2d27cc164be6904d1889b0e31547b6507abddbcad713fe6333581d7bbc96f370",
+      "bytes": 10889
+    },
+    {
+      "path": "controle-doublons-v0.1.json",
+      "sha256": "cf810f9180883b05a5c306dbe73577fb061a56dc81a686f8293a9ddd56b68934",
+      "bytes": 12525
+    },
+    {
+      "path": "fiches/BEST-ER-009-043-cloporte-a-chambres-d-hiver.md",
+      "sha256": "c52f688663123b0a4b4ad86d5a37a985152757f56b480d09d8006a4b266d907e",
+      "bytes": 9805
+    },
+    {
+      "path": "fiches/BEST-ER-009-044-limace-vitrail-des-fougeres.md",
+      "sha256": "63273a07bd9b1695b835a34509106c6c9cf9a16cddf5cc846111b182bb293140",
+      "bytes": 9242
+    },
+    {
+      "path": "fiches/BEST-ER-009-045-ronce-pelerine.md",
+      "sha256": "642ff88af9531cd621980bc7eb19869b55285dd1339a89b355e0a6c66ead924b",
+      "bytes": 9185
+    },
+    {
+      "path": "fiches/BEST-ER-009-046-noctule-a-ombres-deliees.md",
+      "sha256": "1f5a1ab1a0fc20bbccd8ebc19ae9f42dc847bee682aef70dbd0c09afba1699a4",
+      "bytes": 9186
+    },
+    {
+      "path": "fiches/BEST-ER-009-047-meduse-de-canopee.md",
+      "sha256": "7a8d481e9fd3ca3b4f280331c1efa2e294137c0a80b6ee509adeace3c406ad58",
+      "bytes": 9214
+    },
+    {
+      "path": "fiches/BEST-ER-009-048-mycelion-porte-coupe.md",
+      "sha256": "cbcdd903e91be8c74115086c7f6031e28777cc6a423700ffaa0bbece5bcb118d",
+      "bytes": 9983
+    },
+    {
+      "path": "fiches/BEST-ER-009-049-nasse-des-ramees.md",
+      "sha256": "ba3f751a91e27ae837b009598f55cde2c88eeaed2190533db1a669efb6f5c408",
+      "bytes": 10040
+    },
+    {
+      "path": "fiches/BEST-ER-009-050-noue-ciel-des-ramures.md",
+      "sha256": "5372ccafcdcd692d53ea737606aa08ca04666f39f6d3b6fbc1872e866b971d9c",
+      "bytes": 10048
+    },
+    {
+      "path": "fiches/BEST-ER-009-051-verrier-des-clairieres.md",
+      "sha256": "e7cbf5ab2fdb14935148b84c17493feef106a4cd4fe6962a4f0e33da3a63f771",
+      "bytes": 10689
+    },
+    {
+      "path": "fiches/BEST-ER-009-052-derobe-sentier.md",
+      "sha256": "9a00d58ae96755ba6c1feca67cca0ebdb04fb9127a1d4c4a9c147c927fae327a",
+      "bytes": 11497
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-009-043.png",
+      "sha256": "9ff7c34f0fd12020038606ad47c04b969debea663d7f2b3b2e65986267d89065",
+      "bytes": 3062333
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-009-044.png",
+      "sha256": "35032b2abcb65a6bfc36cae49b1f355ebe1c1208be1b40c930871ec7b9391ee9",
+      "bytes": 2839113
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-009-045.png",
+      "sha256": "1e02c41678c05eab101b987fe5e9bb8e761bbf207dc7aa5e335ceec227fb6883",
+      "bytes": 3206367
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-009-046.png",
+      "sha256": "a0b335d30f39a65374cf61e4129a12747514db5d77cbc8b6195558d98c1d7585",
+      "bytes": 2813709
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-009-047.png",
+      "sha256": "daca1417d183932703a2f3af60cf1fc0a501121328a7d90b47d028f3d789967c",
+      "bytes": 2938448
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-009-048.png",
+      "sha256": "bb6865a9a8e8ad1da033ee9d317e04e8f18a697e4fef10bfc3a653aad1073cfd",
+      "bytes": 3149849
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-009-049.png",
+      "sha256": "0164ced85541885de97384e96468bc9740ef2598ec4b31d06e3cdd9d7c973cc8",
+      "bytes": 2997013
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-009-050.png",
+      "sha256": "e4353a9b051218bc2bb95348935f84ba6c2da4ad42dfab314350ad2eefdb1370",
+      "bytes": 2752816
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-009-051.png",
+      "sha256": "b3e6699c090bb881d2a760c6d42eae0c9929d63aebbedbf434bf16375ebda87f",
+      "bytes": 3125651
+    },
+    {
+      "path": "illustrations/originaux/BEST-ER-009-052.png",
+      "sha256": "580979e4b187b07f57e5ecc100894346ec128c3597c2a03dde7d996eabae0cb6",
+      "bytes": 3236005
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-009-043.webp",
+      "sha256": "6c1bbc6b7113c3aa1c8a0ab699bb2b96fe77160af28947b71d31a1507e8652df",
+      "bytes": 371148
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-009-044.webp",
+      "sha256": "ccbcb3a4946ab3e0700395bfed612f05229b73be41160897fd650b493a892f22",
+      "bytes": 326602
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-009-045.webp",
+      "sha256": "459d37ddb05fcfce97662dc78bc5b7bd108cc6a86ee1a21cd9390e6df85caa91",
+      "bytes": 426648
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-009-046.webp",
+      "sha256": "512eb95c01bb85a7835acf3a35ef5bf4b91e52a97ea641ce60296d38f932a185",
+      "bytes": 314292
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-009-047.webp",
+      "sha256": "57678df43105fd0c5783dfccf9753203447de50b3ec2972821550c6151468ce0",
+      "bytes": 367338
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-009-048.webp",
+      "sha256": "a1e96e50feab16e21a12b2b392b220c01a492b9a3e2efbbba0efcff09fb7d1a7",
+      "bytes": 395732
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-009-049.webp",
+      "sha256": "fcea49304fcfc46f690ced1dc9e15083a3c1410340bdc348a8e0f6cf705d4661",
+      "bytes": 351300
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-009-050.webp",
+      "sha256": "51d6e6837665eb049539311a8e4d36b19be00449ff8f6447eedae88d22089c52",
+      "bytes": 313376
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-009-051.webp",
+      "sha256": "c2224647464178b4ebc1db4e8b3edd1a9def69af3a1e083262a6dbc90aac8402",
+      "bytes": 404646
+    },
+    {
+      "path": "illustrations/webp/BEST-ER-009-052.webp",
+      "sha256": "9f5c236a64d05f584174b1f7e28d947660158c44fb7e28768e916c72efafdca7",
+      "bytes": 403550
+    },
+    {
+      "path": "illustrations-prompts-v0.1.json",
+      "sha256": "4c537208d76e9a6a1d57c717daffa137383b9644837485c6b71ad4e972b92ac1",
+      "bytes": 15912
+    },
+    {
+      "path": "INTEGRATION_SITES.md",
+      "sha256": "181c2dc2b6cb4195978512dc096a510fd89ded5505362ee2f34cb83cde909ef0",
+      "bytes": 7351
+    },
+    {
+      "path": "lot-v0.1.json",
+      "sha256": "e742e557faa3b677d01602e4a1ec36ab85c0abd10cd3f85932ca5af5a363ddc5",
+      "bytes": 95140
+    },
+    {
+      "path": "PLANCHE.webp",
+      "sha256": "9013a3e39944ad2fbddecce37e9b6f3dcd7354591679c84554f4282f97eef6cc",
+      "bytes": 520422
+    },
+    {
+      "path": "RAPPORT.md",
+      "sha256": "afc8160f9f6283cec1ce894ecb826bd3866200c89144dd2083cda539d529f0cb",
+      "bytes": 6387
+    },
+    {
+      "path": "README.md",
+      "sha256": "90f7e9a8536aade420dd5ed2f36e45a06949c787859dedbc07e0540e716dfc39",
+      "bytes": 3110
+    },
+    {
+      "path": "recette/apercu-1365.png",
+      "sha256": "55e0d16d2065e68b060bda08e4a627b078f6bc0468dce57518e8b95d7fb960ad",
+      "bytes": 687826
+    },
+    {
+      "path": "recette/apercu-390.png",
+      "sha256": "f9c8bc8bfb6e0301a13fbd5dec632e6f8888614a1dae8625e3d78ab15880e87f",
+      "bytes": 163996
+    },
+    {
+      "path": "recette/fiche-1365.png",
+      "sha256": "21a6daf596e4afd58d71f41d4eec59cd5551f281abb8d40ca8318e35b891336c",
+      "bytes": 1161434
+    },
+    {
+      "path": "recette/fiche-390.png",
+      "sha256": "c52bc0f27b4331aa86e2e347e5362e17469f9f6c4d4a361f60425f02ed83b2d8",
+      "bytes": 206028
+    },
+    {
+      "path": "render-pack.mjs",
+      "sha256": "ee82873db6518b960958ad5ed77db756cc81e59638ae14c1eaf03eadcad6e00b",
+      "bytes": 17794
+    },
+    {
+      "path": "snapshot-sources-v0.1.json",
+      "sha256": "3abb137627897726818f653407692eb2a78b726fe6fddbf285b845d22b18d72b",
+      "bytes": 813507
+    },
+    {
+      "path": "validation-v0.1.json",
+      "sha256": "d2eb7cb1fa16362c6aa4314c8dde3c96e177febedbda5373ff25342c0f87dbf7",
+      "bytes": 2545
+    },
+    {
+      "path": "verify-pack.mjs",
+      "sha256": "0afd724de8326783592c5e16edbc3464d4bd75f5397af089e815338c2cbe88b9",
+      "bytes": 19271
+    }
+  ]
+}

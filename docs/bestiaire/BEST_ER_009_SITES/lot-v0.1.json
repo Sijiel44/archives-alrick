@@ -1,0 +1,1504 @@
+{
+  "schema": "entre-rives.bestiaire.sites.preparation.v2",
+  "version": "0.1.0",
+  "lot": "BEST-ER-009",
+  "date": "2026-11-26",
+  "theme": "Les mystères des forêts anciennes",
+  "target": "ChatGPT Sites indépendant — projet existant appgprj_6aefa21ad1bc819198e86d83a74b3484",
+  "portee": "univers_partage",
+  "sourceBase": "6e439ad1755fd817b37a60e995b1fd8d9c82d2a1",
+  "status": "preparation_editoriale_non_importable_en_production",
+  "notice": "Dix créations proposées ; les identifiants de travail ne réservent aucun ESP. Ce schéma de préparation v2 conserve les noms de champs usuels du lot 008 mais structure écologie, comportements, capacités et amorces. Ce n’est pas un contrat natif Sites.",
+  "entries": [
+    {
+      "id": "BEST-ER-009-043",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "slug": "cloporte-a-chambres-d-hiver",
+      "name": "Cloporte à chambres d’hiver",
+      "family": "Isopode des bois frais — classement proposé",
+      "size": "Corps de la longueur d’un avant-bras",
+      "description": "Sous une souche tiède se déplie un grand cloporte gris perle. Des loges translucides bombent chaque plaque de sa carapace ; leur intérieur porte encore des aiguilles de givre au cœur de l’été. Lorsque ses flancs s’écartent, une buée rase roule sur les feuilles et laisse les graines voisines fraîches au toucher. Ses antennes restent courtes, ses nombreuses pattes discrètes, et sa tête se rétracte sous la première plaque.",
+      "habitat": "Bois anciens connaissant un hiver froid, avec souches profondes et humus épais ; les stations proposées restent locales, sans emplacement canonique attribué.",
+      "ecology": {
+        "diet": "Bois très décomposé, champignons superficiels et feuilles humides. Il évite les tissus vivants et les racines saines.",
+        "lifeCycle": "Les jeunes naissent sous la protection ventrale d’un adulte, puis occupent des fissures humides. Leurs loges ne retiennent du froid qu’après un premier hiver ; une mue emporte une partie de la réserve.",
+        "role": "Décompose la litière et crée de petits refuges frais. Des rongeurs peuvent déposer des graines près de lui, sans pacte conscient ni conservation garantie.",
+        "seasonality": "Charge ses loges au froid hivernal et économise cette réserve durant les chaleurs. Une longue saison douce laisse les chambres presque vides."
+      },
+      "behavior": {
+        "ordinary": "Broute sous les souches et conserve un corridor de feuilles entre abris. Plusieurs individus peuvent dormir ensemble sans hiérarchie proposée.",
+        "warningSigns": "Les plaques se rapprochent avec de petits claquements ; un voile de condensation apparaît avant une décharge de fraîcheur.",
+        "firstContact": "S’immobilise, antennes ramenées ; une personne patiente peut l’observer sortir sans attirer son agressivité.",
+        "escalation": "Se roule sur lui-même et évacue une part de sa réserve pour décourager une saisie.",
+        "retreat": "Cherche une fente profonde ou s’enfouit dans l’humus ; il ne poursuit pas les visiteurs.",
+        "coexistence": "Conserver les souches et laisser libres les fissures humides permet une proximité sans apprivoisement."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Chambres d’hiver",
+          "effect": "Retient une réserve de froid acquise pendant les périodes froides.",
+          "conditions": "Loges intactes, exposition hivernale et repos suffisant.",
+          "limits": "Ne produit pas du froid sans réserve ; aucune immobilisation du temps.",
+          "counterplay": "Évaluer condensation et état des loges avant toute manipulation."
+        },
+        {
+          "name": "Souffle de fraîcheur",
+          "effect": "Refroidit brièvement l’air au voisinage immédiat des plaques ouvertes.",
+          "conditions": "Réserve disponible et déploiement des flancs.",
+          "limits": "Ne gèle ni rivière ni adversaire à volonté ; les chambres s’épuisent.",
+          "counterplay": "Reculer et attendre la dissipation ; ne pas enfermer l’animal contre la peau."
+        },
+        {
+          "name": "Bouclier roulé",
+          "effect": "Protège ventre et antennes en repliant ses plaques.",
+          "conditions": "Sol stable et espace pour se fermer.",
+          "limits": "Articulations exposées aux outils ; aucune invulnérabilité.",
+          "counterplay": "Le laisser se rouvrir au calme ou déplacer son support entier."
+        }
+      ],
+      "weaknesses": [
+        "Chaleur prolongée, feu et sécheresse vident ses réserves puis menacent son corps.",
+        "Une carapace endommagée ne conserve plus le froid ; son absence n’est pas compensée par une source magique universelle."
+      ],
+      "variants": [
+        {
+          "name": "Cloporte perlé",
+          "description": "Loges petites et nombreuses, réserve répartie entre les plaques.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Cloporte des grosses souches",
+          "description": "Plaques larges et chambres moins nombreuses ; abris profonds recherchés.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "resources": {
+        "renewable": [
+          "Plaques d’une mue entièrement abandonnée, après vérification qu’aucun jeune ne s’y abrite."
+        ],
+        "harmful": [
+          "Extraire les chambres vivantes blesse l’animal et détruit son autonomie thermique."
+        ],
+        "proposedUses": [
+          "Essais d’isolation et de conservation inspirés des loges ; aucune glacière perpétuelle, potion ou bonus validé."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide"
+      },
+      "quests": [
+        {
+          "title": "Les graines qui patientent",
+          "situation": "Une pépiniériste trouve des graines fraîches près d’une souche occupée.",
+          "choice": "Observer l’association ou déplacer ses réserves sans capturer le cloporte.",
+          "openOutcome": "L’utilité réelle et la survie des graines restent à vérifier."
+        },
+        {
+          "title": "L’été sans hiver",
+          "situation": "Les chambres restent troubles après une saison anormalement douce.",
+          "choice": "Rechercher des abris plus frais ou laisser les individus se disperser.",
+          "openOutcome": "L’ampleur du déclin et la cause du climat ne sont pas fixées."
+        },
+        {
+          "title": "Le faux coffre froid",
+          "situation": "Un courtier promet qu’une mue refroidira une cave entière.",
+          "choice": "Tester sa promesse et négocier une réparation pour les acheteurs.",
+          "openOutcome": "Erreur, fraude ou extrapolation restent des issues possibles."
+        },
+        {
+          "title": "La souche au milieu du chemin",
+          "situation": "Une équipe veut enlever l’unique abri frais d’un passage fréquenté.",
+          "choice": "Contourner, conserver une partie du bois ou préparer un autre refuge.",
+          "openOutcome": "Le coût et la réussite du déplacement dépendent des choix du groupe."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "ESP-ER-009",
+          "distinction": "Isopode à nombreuses pattes et carapace compartimentée, distinct de l’Escargot des souches d’ambre.",
+          "residualRisk": "Même niche de décomposeur ; contrôler la distinction écologique."
+        },
+        {
+          "reference": "P22 — Araignée tisse-gouttes",
+          "distinction": "Aucune toile ni suspension d’eau ; concept substitué au Tisse-pluie abandonné pour éviter le doublon.",
+          "residualRisk": "La capacité thermique doit encore être examinée en revue LORE."
+        }
+      ],
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-043.webp",
+        "alt": "Grand cloporte gris perle, carapace à loges givrées entrouvertes, sous une souche estivale humide.",
+        "brief": "Illustration naturaliste fantasy semi-réaliste, grand isopode aux nombreuses petites pattes, carapace gris perle portant des loges translucides avec givre interne, buée fraîche très locale sur humus estival, bois ancien, anatomie crédible, sans texte ni cadre.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-043.png",
+        "sha256": "6c1bbc6b7113c3aa1c8a0ab699bb2b96fe77160af28947b71d31a1507e8652df",
+        "originalSha256": "9ff7c34f0fd12020038606ad47c04b969debea663d7f2b3b2e65986267d89065",
+        "bytes": 371148,
+        "originalBytes": 3062333,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      },
+      "provenance": "Création originale BEST-ER-009 du 26 novembre 2026, thème des forêts anciennes. Proposition sans source de campagne ; aucune attestation dans les aventures d’Orin. Les références rapprochées servent au contrôle des identités, pas de preuve d’existence.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      }
+    },
+    {
+      "id": "BEST-ER-009-044",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "slug": "limace-vitrail-des-fougeres",
+      "name": "Limace-vitrail des fougères",
+      "family": "Gastéropode réfracteur merveilleux — classement proposé",
+      "size": "Longueur d’une main ouverte",
+      "description": "Une limace plate glisse sous les crosses de fougères ; son manteau translucide est cloisonné de nervures violettes, comme un vitrail souple. Une bande de soleil la traverse et réapparaît sur une feuille voisine sous la forme d’une tache colorée décalée. Son ventre reste opaque, granuleux et vulnérable. Au repos, le manteau se replie jusqu’à ne laisser voir qu’une mince lame sombre.",
+      "habitat": "Sous-bois anciens à trouées étroites, humus humide et couvert de fougères. Aucun emplacement régional permanent n’est attribué.",
+      "ecology": {
+        "diet": "Algues de surface, biofilms et champignons tendres sur le bois mort. Elle broute de petites plages plutôt que de dévorer les plantes vivantes.",
+        "lifeCycle": "Ponte dans des replis humides ; jeunes opaques dont les cloisons du manteau se dessinent en grandissant. Les pontes restent couvertes de feuilles mortes.",
+        "role": "Recycle les biofilms et sert de proie aux oiseaux ; les taches réfractées détournent parfois leur bec sans rendre l’animal invisible.",
+        "seasonality": "Sort après la pluie, surtout lorsque des rayons bas traversent les feuilles ; disparaît sous terre lors des sécheresses."
+      },
+      "behavior": {
+        "ordinary": "Suit les surfaces humides et conserve un contact entre son pied et l’écorce ; ne recherche pas volontairement les voyageurs.",
+        "warningSigns": "Les nervures virent au violet sombre et la silhouette s’aplatit avant un repli.",
+        "firstContact": "S’immobilise sous une feuille ; une lanterne déplacée lentement révèle son jeu de couleurs.",
+        "escalation": "Multiplie les taches lumineuses puis s’enfouit ; une saisie brutale déchire son manteau.",
+        "retreat": "Se glisse dans une fissure opaque où la réfraction cesse.",
+        "coexistence": "Maintenir l’humidité et observer sans lampe brûlante ni prélèvement forcé."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Déport de lumière",
+          "effect": "Reporte une tache colorée sur une surface proche au lieu de laisser passer le rayon tout droit.",
+          "conditions": "Rayon incident étroit et manteau humide déployé.",
+          "limits": "Ne déplace aucun objet, ne rend pas invisible et ne crée pas de lumière.",
+          "counterplay": "Éclairer de plusieurs directions ou observer la trace de mucus."
+        },
+        {
+          "name": "Éclatement prismatique",
+          "effect": "Divise une lueur en éclats mobiles gênant un prédateur proche.",
+          "conditions": "Lumière suffisante et effort de contraction.",
+          "limits": "Effet bref, sans aveuglement garanti ; cesse dans le noir.",
+          "counterplay": "Détourner la lampe ou couvrir sa flamme."
+        },
+        {
+          "name": "Glissement sous couvert",
+          "effect": "Passe sous les feuilles en conservant son film humide.",
+          "conditions": "Support continu, frais et rugueux.",
+          "limits": "Ni traversée de matière ni adhérence universelle.",
+          "counterplay": "Une planche humide permet un déplacement doux avec le support."
+        }
+      ],
+      "weaknesses": [
+        "Le manteau se trouble en air sec ; la chaleur prolongée est dangereuse.",
+        "Le corps n’a aucune carapace et les couleurs n’arrêtent pas un choc."
+      ],
+      "variants": [
+        {
+          "name": "Vitrail mauve",
+          "description": "Cloisons violettes et déports bleus, surtout dans les fougéraies sombres.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Vitrail d’orée",
+          "description": "Manteau ambré et vert ; réfraction plus lisible sur les feuilles pâles.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "resources": {
+        "renewable": [
+          "Mucus déjà abandonné, en quantité minime, sans retourner les pontes."
+        ],
+        "harmful": [
+          "Prélever le manteau tue l’animal ; déplacer toutes les limaces fragilise une population isolée."
+        ],
+        "proposedUses": [
+          "Pigment ou vernis expérimental ; aucun verre magique, camouflage ou effet médicinal n’est validé."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide"
+      },
+      "quests": [
+        {
+          "title": "Le signal impossible",
+          "situation": "Un garde voit un signal coloré sur le mauvais côté d’un arbre.",
+          "choice": "Vérifier les sources de lumière avant de suivre la direction indiquée.",
+          "openOutcome": "Message réel, erreur de lecture et limaces peuvent se combiner librement."
+        },
+        {
+          "title": "Le vitrail vivant",
+          "situation": "Une artisane veut reproduire les couleurs sans tuer d’animal.",
+          "choice": "Observer sur place ou négocier une collecte de mucus déjà déposé.",
+          "openOutcome": "La réussite esthétique et ses coûts restent à jouer."
+        },
+        {
+          "title": "Le bois trop propre",
+          "situation": "Un propriétaire enlève tout le bois mort autour d’une fougéraie.",
+          "choice": "Documenter les refuges et proposer une gestion différente.",
+          "openOutcome": "Les intérêts du chantier et du milieu peuvent rester opposés."
+        },
+        {
+          "title": "Les lanternes du cortège",
+          "situation": "Un cortège nocturne prend les reflets pour des marques protectrices.",
+          "choice": "Accompagner, expliquer ou étudier le phénomène sans imposer une croyance.",
+          "openOutcome": "Aucun présage ni autorité spirituelle n’est fixé par la fiche."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "ESP-ER-009",
+          "distinction": "Sans coquille, manteau réfracteur à taches déportées, distinct de l’Escargot des souches d’ambre non magique.",
+          "residualRisk": "Proximité gastéropode forestier à revoir."
+        },
+        {
+          "reference": "ESP-ER-029",
+          "distinction": "Aucune lumière propre et aucun habitat de tourbière imposé, distinct du Porte-lanterne.",
+          "residualRisk": "Ne pas présenter les deux comme variantes sans décision."
+        }
+      ],
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-044.webp",
+        "alt": "Limace translucide aux nervures violettes sur une feuille humide, projetant une tache colorée décalée.",
+        "brief": "Illustration naturaliste fantasy semi-réaliste, limace aplatie sans coquille, manteau translucide cloisonné violet et vert, fougères et bois humide, rayon du matin réfracté sur une feuille voisine, sans texte ni bijou.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-044.png",
+        "sha256": "ccbcb3a4946ab3e0700395bfed612f05229b73be41160897fd650b493a892f22",
+        "originalSha256": "35032b2abcb65a6bfc36cae49b1f355ebe1c1208be1b40c930871ec7b9391ee9",
+        "bytes": 326602,
+        "originalBytes": 2839113,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      },
+      "provenance": "Création originale BEST-ER-009 du 26 novembre 2026, thème des forêts anciennes. Proposition sans source de campagne ; aucune attestation dans les aventures d’Orin. Les références rapprochées servent au contrôle des identités, pas de preuve d’existence.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      }
+    },
+    {
+      "id": "BEST-ER-009-045",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "slug": "ronce-pelerine",
+      "name": "Ronce-pèlerine",
+      "family": "Plante ambulante — classement proposé",
+      "size": "Buisson bas, plus large qu’un panier",
+      "description": "Au petit matin, un buisson d’épines quitte lentement la bande de terre où il s’était enraciné. Ses racines épaisses se soulèvent l’une après l’autre, entraînant un pain d’humus retenu dans leurs fibres. Des vrilles rouges cherchent un appui ; derrière lui demeurent des empreintes étoilées. La plante n’a ni visage, ni mains, ni silhouette humaine. Son déplacement évoque une suite de décollements laborieux plutôt qu’une marche souple.",
+      "habitat": "Clairières vieillissantes, chablis et sols forestiers riches en humus, à distance des talus secs. Les populations proposées restent locales et discontinues.",
+      "ecology": {
+        "diet": "Lumière diffuse, eau et nutriments du sol ; quelques racines captent la matière en décomposition sans chasse à la chair.",
+        "lifeCycle": "Fleurit une fois installée, puis produit des fruits transportés par des animaux. Un jeune plant reste enraciné avant de former des racines capables de se relever.",
+        "role": "Transporte des poches d’humus et abrite des invertébrés ; peut étouffer des semis si plusieurs plantes stationnent ensemble.",
+        "seasonality": "Se déplace surtout quand le sol est détrempé ; demeure immobile durant les périodes froides et sèches."
+      },
+      "behavior": {
+        "ordinary": "Alterne de longs arrêts et de très lentes traversées. Sa direction suit humidité et lumière ; elle ne patrouille pas une frontière.",
+        "warningSigns": "Les vrilles se rétractent, les épines s’écartent et le pain de terre se soulève.",
+        "firstContact": "Une personne immobile peut la laisser passer ; aucune réponse verbale n’est proposée.",
+        "escalation": "Resserre ses vrilles autour d’un obstacle qui la presse, ce qui peut prendre un vêtement.",
+        "retreat": "Se plaque au sol et s’ancre ; les vrilles se relâchent progressivement si la pression cesse.",
+        "coexistence": "Une bande d’humus humide permet de détourner le trajet sans tirer sur les racines."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Marche racinaire",
+          "effect": "Déplace son buisson avec une motte protectrice.",
+          "conditions": "Racines réhydratées et support de terre ou de feuilles.",
+          "limits": "Très lente ; ne poursuit pas une personne courant et ne franchit pas un mur.",
+          "counterplay": "S’écarter, aménager une bande de terre ou patienter."
+        },
+        {
+          "name": "Vrilles d’ancrage",
+          "effect": "S’accroche à un support pour stabiliser la motte.",
+          "conditions": "Contact direct avec un objet ou une branche.",
+          "limits": "Ne distingue pas assaillant et obstacle ; ne vise pas à distance.",
+          "counterplay": "Cesser de tirer, soutenir la branche et dénouer avec une perche."
+        },
+        {
+          "name": "Fermeture des épines",
+          "effect": "Rabat ses rameaux pour protéger les jeunes pousses.",
+          "conditions": "Pression, secousse ou dessèchement.",
+          "limits": "Protection végétale vulnérable aux outils ; aucune armure absolue.",
+          "counterplay": "Utiliser un écran rigide et laisser une issue."
+        }
+      ],
+      "weaknesses": [
+        "Sol minéral, sécheresse et racines sectionnées empêchent la marche.",
+        "L’ombre totale prolongée épuise les réserves ; la motte n’est pas inépuisable."
+      ],
+      "variants": [
+        {
+          "name": "Pèlerine à fruits noirs",
+          "description": "Rameaux souples et petits fruits sombres dont la comestibilité n’est pas établie.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Pèlerine des chablis",
+          "description": "Racines trapues, port bas ; préfère les débris de branches.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "resources": {
+        "renewable": [
+          "Épines tombées et rameaux secs détachés, après inspection des nids."
+        ],
+        "harmful": [
+          "Arracher les racines porteuses immobilise la plante et détruit sa motte-refuge."
+        ],
+        "proposedUses": [
+          "Vannerie ou essais de haie mobile ; aucune obéissance, potion de croissance ou propriété alimentaire garantie."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide"
+      },
+      "quests": [
+        {
+          "title": "La clôture s’en va",
+          "situation": "Une clôture vivante quitte un jardin ouvert sur le bois.",
+          "choice": "Retenir la plante, aménager un autre sol ou revoir la limite.",
+          "openOutcome": "Le conflit de voisinage et le trajet futur restent ouverts."
+        },
+        {
+          "title": "Le vêtement retenu",
+          "situation": "Un enfant a laissé son manteau pris dans les vrilles près d’un chablis.",
+          "choice": "Le récupérer calmement ou attendre que la plante se desserre.",
+          "openOutcome": "Aucun enfant caché ni prédateur responsable n’est imposé."
+        },
+        {
+          "title": "Une route d’humus",
+          "situation": "Un marchand propose d’exploiter les buissons pour transporter de la terre.",
+          "choice": "Évaluer le projet, les pertes et une collecte moins intrusive.",
+          "openOutcome": "Un usage viable n’est pas présumé par la marche."
+        },
+        {
+          "title": "Les semis étouffés",
+          "situation": "De jeunes arbres dépérissent où stationnent plusieurs pèlerines.",
+          "choice": "Observer le sol, déplacer les plantes ou éclaircir autrement.",
+          "openOutcome": "Concurrence, maladie et mauvais drainage restent à distinguer."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "BEST-ER-008-040",
+          "distinction": "Plante à reproduction végétale, sans esprit gardien ni conscience attribuée ; distincte du Veilleur des racines.",
+          "residualRisk": "Revue LORE si une future version lui donne langage ou volonté."
+        },
+        {
+          "reference": "ESP-ER-021",
+          "distinction": "Aucun statut de personne féerique ni origine liée à Orin.",
+          "residualRisk": "Ne pas convertir une réaction locale en intention."
+        }
+      ],
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-045.webp",
+        "alt": "Buisson épineux sans visage soulevant ses racines autour d’une motte d’humus dans une clairière.",
+        "brief": "Planche naturaliste fantasy semi-réaliste, ronce ambulante basse, rameaux épineux rouges et racines charnues portant une motte de terre, clairière humide, sans visage ni membres humains, sans texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-045.png",
+        "sha256": "459d37ddb05fcfce97662dc78bc5b7bd108cc6a86ee1a21cd9390e6df85caa91",
+        "originalSha256": "1e02c41678c05eab101b987fe5e9bb8e761bbf207dc7aa5e335ceec227fb6883",
+        "bytes": 426648,
+        "originalBytes": 3206367,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      },
+      "provenance": "Création originale BEST-ER-009 du 26 novembre 2026, thème des forêts anciennes. Proposition sans source de campagne ; aucune attestation dans les aventures d’Orin. Les références rapprochées servent au contrôle des identités, pas de preuve d’existence.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      }
+    },
+    {
+      "id": "BEST-ER-009-046",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "slug": "noctule-a-ombres-deliees",
+      "name": "Noctule à ombres déliées",
+      "family": "Chiroptère des trouées nocturnes — classement proposé",
+      "size": "Petit mammifère tenant dans deux mains",
+      "description": "Accrochée sous une écorce, la Noctule ressemble à une chauve-souris brun fumée aux grandes oreilles gaufrées. Ses membranes portent un liseré pâle. Lorsqu’elle traverse un rayon de lune, son ombre continue seule sur le tronc pendant qu’elle vire vers le feuillage. Ce leurre plat s’effiloche dès qu’une seconde lumière le traverse. Les griffes, le museau et le battement d’ailes appartiennent toujours au corps réel.",
+      "habitat": "Arbres creux et trouées de forêts anciennes ; chasse entre branches espacées plutôt qu’au ras d’une brume. Aucun gîte nommé n’est inventé.",
+      "ecology": {
+        "diet": "Papillons nocturnes, coléoptères et autres insectes volants. Boit aux mares calmes en frôlant la surface.",
+        "lifeCycle": "Petites colonies de repos dans des cavités sèches. Les jeunes restent au gîte avant leurs premières sorties ; le leurre accompagne l’apprentissage du vol et ne s’active pas au repos.",
+        "role": "Limite certains insectes nocturnes et nourrit rapaces et mustélidés ; le leurre aide à survivre sans supprimer la prédation.",
+        "seasonality": "Suit l’abondance des insectes ; se rassemble en cavités protégées lorsque le froid réduit la chasse."
+      },
+      "behavior": {
+        "ordinary": "Chasse par boucles entre des perchoirs, revient aux mêmes creux et se toilette longuement.",
+        "warningSigns": "Claquement sec des membranes et agitation à l’entrée du gîte signalent un dérangement.",
+        "firstContact": "Contourne une personne ou se plaque sous l’écorce ; ne cherche pas à montrer un chemin.",
+        "escalation": "Déploie une ombre leurre puis fuit ; mord seulement si maintenue dans la main.",
+        "retreat": "Gagne une cavité ou le couvert opaque, où l’ombre détachée cesse.",
+        "coexistence": "Conserver les arbres creux et éviter les lampes braquées dans les gîtes."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Ombre déliée",
+          "effect": "Laisse une silhouette plate poursuivre brièvement un trajet trompeur sur un support.",
+          "conditions": "Source lumineuse dominante et tronc, sol ou feuillage recevant l’ombre.",
+          "limits": "Aucun double matériel, téléportation ou dissimulation des sons.",
+          "counterplay": "Croiser deux lumières, regarder le corps plutôt que le support."
+        },
+        {
+          "name": "Virage sous couvert",
+          "effect": "Change brusquement de direction pendant que le leurre attire le regard.",
+          "conditions": "Espace de vol suffisant entre les branches.",
+          "limits": "Ne traverse pas un obstacle et ne porte pas une charge humaine.",
+          "counterplay": "Laisser libre la sortie ; éviter une poursuite dans les rameaux."
+        },
+        {
+          "name": "Repérage acoustique",
+          "effect": "Localise insectes et obstacles par de brefs cris.",
+          "conditions": "Air non saturé de bruit et cavités accessibles.",
+          "limits": "Ne comprend pas les paroles et ne lit pas les pensées.",
+          "counterplay": "Réduire le bruit facilite son passage et l’observation."
+        }
+      ],
+      "weaknesses": [
+        "Les lumières multiples rendent le leurre confus.",
+        "Membranes fragiles, fumée et fermeture des cavités menacent les colonies."
+      ],
+      "variants": [
+        {
+          "name": "Noctule argentée",
+          "description": "Liseré clair ; ombre surtout lisible au clair de lune.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Noctule de cuivre",
+          "description": "Oreilles rousses ; leurre plus marqué sous une flamme isolée.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "resources": {
+        "renewable": [
+          "Poils perdus dans un gîte temporairement vide, sans déranger la colonie."
+        ],
+        "harmful": [
+          "Prélever une membrane mutile ; enfumer un gîte tue ou disperse les jeunes."
+        ],
+        "proposedUses": [
+          "Étude des illusions et pigments inspirés des membranes ; aucun sort d’ombre validé issu des restes."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide"
+      },
+      "quests": [
+        {
+          "title": "L’ombre à contre-courant",
+          "situation": "Un veilleur poursuit une silhouette filant chaque nuit vers un arbre creux.",
+          "choice": "Observer sous plusieurs lumières ou continuer la poursuite.",
+          "openOutcome": "Les noctules peuvent expliquer certains témoignages, sans résoudre tout le mystère."
+        },
+        {
+          "title": "Les arbres marqués",
+          "situation": "Une coupe doit enlever des arbres servant de gîtes.",
+          "choice": "Recenser les cavités, négocier un délai ou déplacer le tracé.",
+          "openOutcome": "La solution dépend du chantier et de la saison."
+        },
+        {
+          "title": "Le spectacle des lanternes",
+          "situation": "Un montreur veut enfermer une colonie pour créer des ombres dansantes.",
+          "choice": "Proposer une observation sur place ou examiner les conditions de capture.",
+          "openOutcome": "Reproduction en captivité et coopération ne sont pas garanties."
+        },
+        {
+          "title": "Le verger silencieux",
+          "situation": "Les insectes envahissent un verger dont les noctules ont disparu.",
+          "choice": "Rechercher les gîtes et comparer éclairage, fumée et travaux récents.",
+          "openOutcome": "Aucune malédiction ni culpabilité n’est fixée d’avance."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "ESP-ER-023",
+          "distinction": "Vol battu et leurre d’ombre, distinct du Murin planeur sans magie de brume.",
+          "residualRisk": "Le terme murin peut prêter à confusion ; maintenir des silhouettes distinctes."
+        },
+        {
+          "reference": "INDC-ER-002",
+          "distinction": "Espèce proposée sans brouillard ni filiation avec la Renarde de brume individuelle.",
+          "residualRisk": "Aucune transmission de capacités entre ces identités."
+        }
+      ],
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-046.webp",
+        "alt": "Chauve-souris brun fumée virant devant un tronc ; une ombre plate continue dans l’autre direction.",
+        "brief": "Illustration naturaliste fantasy semi-réaliste nocturne, chauve-souris à oreilles gaufrées et membranes bordées d’ivoire, rayon de lune unique, corps en vol et ombre décalée sur le tronc, sans second animal, sans texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-046.png",
+        "sha256": "512eb95c01bb85a7835acf3a35ef5bf4b91e52a97ea641ce60296d38f932a185",
+        "originalSha256": "a0b335d30f39a65374cf61e4129a12747514db5d77cbc8b6195558d98c1d7585",
+        "bytes": 314292,
+        "originalBytes": 2813709,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": true
+      },
+      "provenance": "Création originale BEST-ER-009 du 26 novembre 2026, thème des forêts anciennes. Proposition sans source de campagne ; aucune attestation dans les aventures d’Orin. Les références rapprochées servent au contrôle des identités, pas de preuve d’existence.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      }
+    },
+    {
+      "id": "BEST-ER-009-047",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "category": "bestiaire",
+      "portee": "univers_partage",
+      "slug": "meduse-de-canopee",
+      "name": "Méduse de canopée",
+      "family": "Organisme aérien forestier — classement proposé",
+      "size": "Cloche large comme un chapeau, filaments pendants",
+      "description": "Une cloche laiteuse nervurée de vert flotte entre deux fougères à hauteur de visage. Ses filaments translucides ramassent poussière et spores. Sous elle, un fin réseau de nervures se gonfle puis s’affaisse au rythme des pulsations. Sa vie proposée se déroule dans les couches d’air humide du bois ; elle ne provient pas d’une mare. La cloche se pose, molle et plissée, quand la chaleur gagne le sous-bois.",
+      "habitat": "Poches d’air calmes sous une canopée continue, au-dessus de tapis d’humus ; fuit les couloirs venteux et les forêts desséchées.",
+      "ecology": {
+        "diet": "Spores, pollen et particules organiques recueillis par les filaments ; absorbe l’eau condensée sur la cloche.",
+        "lifeCycle": "Des bourgeons se détachent d’adultes au repos et se fixent sur du bois pourri humide. Ils ne flottent qu’après développement de la cloche ; aucune génération spontanée n’est supposée.",
+        "role": "Prélève et redistribue des spores locales en retombant sur le bois mort. De petits insectes broutent les dépôts des filaments.",
+        "seasonality": "Active durant les périodes humides et calmes ; repose sur un support par grand vent ou air sec."
+      },
+      "behavior": {
+        "ordinary": "Dérive lentement et se rassemble dans les mêmes poches d’air ; les filaments palpent les branches avant la cloche.",
+        "warningSigns": "La cloche s’opacifie et les filaments se raccourcissent lorsqu’elle est poussée ou chauffée.",
+        "firstContact": "Se déporte avec le courant d’air du visiteur ; ne reconnaît pas une personne comme interlocutrice.",
+        "escalation": "Rétracte ses filaments puis les déploie en un voile irritant pour se dégager.",
+        "retreat": "Se laisse tomber sur une souche humide et rabat la cloche.",
+        "coexistence": "Passer lentement sous le vent et préserver des zones sans fumée évite les contacts."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Flottaison humide",
+          "effect": "Maintient son corps au-dessus du sol dans un air suffisamment humide.",
+          "conditions": "Cloche intacte, hydratée, en air calme.",
+          "limits": "Ne soulève ni voyageur ni charge lourde ; aucun vol rapide contre le vent.",
+          "counterplay": "Créer doucement un courant latéral ou attendre la dérive."
+        },
+        {
+          "name": "Voile de filaments",
+          "effect": "Accroche des particules ; peut irriter yeux et peau au contact.",
+          "conditions": "Filaments déployés et contact direct.",
+          "limits": "Aucun venin chiffré, paralysie ou contamination automatique.",
+          "counterplay": "Protéger les yeux, s’écarter et rincer selon les usages de la table."
+        },
+        {
+          "name": "Repos en coupe",
+          "effect": "Rabat sa cloche pour conserver l’humidité sur un support.",
+          "conditions": "Bois mouillé ou mousse stable.",
+          "limits": "Immobile au repos et vulnérable à l’écrasement.",
+          "counterplay": "Contourner le support ; déplacer l’ensemble seulement si nécessaire."
+        }
+      ],
+      "weaknesses": [
+        "Vent, feu et air sec empêchent la flottaison.",
+        "La cloche se déchire sur les épines ; une dérive groupée n’implique aucune conscience collective."
+      ],
+      "variants": [
+        {
+          "name": "Cloche de mousse",
+          "description": "Teinte verte et filaments courts près des souches basses.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Cloche des hautes fourches",
+          "description": "Cloche pâle et filaments longs dans les branches humides abritées.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "resources": {
+        "renewable": [
+          "Filaments naturellement détachés et dépôts collectés après le départ du groupe."
+        ],
+        "harmful": [
+          "Percer la cloche fait chuter l’organisme ; retirer les jeunes interrompt sa reproduction."
+        ],
+        "proposedUses": [
+          "Étude de filtres à pollen et fibres légères ; aucun composant de lévitation ni traitement alchimique confirmé."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide"
+      },
+      "quests": [
+        {
+          "title": "La récolte dans les airs",
+          "situation": "Un apiculteur veut dégager un passage occupé par des cloches aériennes.",
+          "choice": "Créer un courant doux, déplacer l’accès ou observer leur cycle.",
+          "openOutcome": "La cohabitation reste à négocier selon la durée de présence."
+        },
+        {
+          "title": "La caisse qui descend",
+          "situation": "Un collectionneur découvre que ses méduses captives ne flottent plus.",
+          "choice": "Restituer le groupe, recréer son milieu ou comprendre l’échec.",
+          "openOutcome": "Aucun sabotage ni remède certain n’est présumé."
+        },
+        {
+          "title": "Le plafond vivant",
+          "situation": "Des voyageurs confondent une nappe de méduses avec un passage impossible.",
+          "choice": "Contourner, ralentir ou ouvrir un couloir d’air sans écraser les organismes.",
+          "openOutcome": "Le temps perdu et la réaction du groupe restent à jouer."
+        },
+        {
+          "title": "Les souches sans bourgeons",
+          "situation": "Une recherche trouve des adultes mais aucun jeune sur le bois mort.",
+          "choice": "Comparer humidité, prélèvements et état des supports.",
+          "openOutcome": "Cause et ampleur du déclin demeurent ouvertes."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "ESP-ER-029",
+          "distinction": "Organisme flottant sans coquille et sans lumière-guide, distinct du Porte-lanterne.",
+          "residualRisk": "Ne pas déduire une parenté du seul aspect translucide."
+        },
+        {
+          "reference": "BEST-ER-008-040",
+          "distinction": "Cycle proposé sans esprit forestier ni mandat de gardien.",
+          "residualRisk": "Nature à examiner en revue LORE ; aucune origine cosmologique fixée."
+        }
+      ],
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-047.webp",
+        "alt": "Cloche laiteuse aux nervures vertes flottant dans les branches humides, filaments translucides au-dessus des fougères.",
+        "brief": "Planche naturaliste fantasy semi-réaliste, unique organisme aérien en forme de méduse, cloche laiteuse nervurée de vert et longs filaments, sous-bois ancien humide, suspension basse au-dessus des fougères, aucune eau ni personnage, sans texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-047.png",
+        "sha256": "57678df43105fd0c5783dfccf9753203447de50b3ec2972821550c6151468ce0",
+        "originalSha256": "daca1417d183932703a2f3af60cf1fc0a501121328a7d90b47d028f3d789967c",
+        "bytes": 367338,
+        "originalBytes": 2938448,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      },
+      "provenance": "Création originale BEST-ER-009 du 26 novembre 2026, thème des forêts anciennes. Proposition sans source de campagne ; aucune attestation dans les aventures d’Orin. Les références rapprochées servent au contrôle des identités, pas de preuve d’existence.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      }
+    },
+    {
+      "id": "BEST-ER-009-048",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "slug": "mycelion-porte-coupe",
+      "name": "Mycélion porte-coupe",
+      "category": "bestiaire",
+      "family": "Organismes fongiques mobiles, classement descriptif proposé",
+      "size": "Petit, du volume d’un panier lorsqu’il déploie sa coupe",
+      "portee": "univers_partage",
+      "description": "Sous un chapeau concave couleur de prune, le Mycélion porte une eau ambrée dans laquelle flottent des fragments de feuilles. Son pied se divise en cordons épais qui se soulèvent successivement, avec le soin hésitant d’un marcheur sur des braises. Une frange de lamelles crème protège le liquide quand il franchit une racine. Les vieux portent des lichens, sans mémoire humaine établie. Le mouvement est proposé comme une propriété merveilleuse locale de cet organisme, sans trancher sa conscience ni créer un peuple fongique.",
+      "habitat": "Creux humides des forêts anciennes, bois tombés très décomposés et cuvettes de feuilles. Une colonie occupe un petit ensemble de souches contiguës ; elle ne relie ni des bois éloignés ni tous les champignons d’une région.",
+      "ecology": {
+        "diet": "Il dissout les débris végétaux dans sa coupe et absorbe des matières nutritives par ses cordons. Il délaisse la chair fraîche et les arbres sains.",
+        "lifeCycle": "Des spores s’établissent d’abord en croûte immobile. Certaines croûtes produisent ensuite un corps mobile, qui revient déposer ses débris dans le même îlot de bois mort avant de se dessécher.",
+        "role": "Ses trajets redistribuent la matière humide entre souches. Des limaces consomment ses tissus fragiles.",
+        "seasonality": "Les sorties suivent plusieurs nuits humides. En sécheresse, les coupes se referment et les cordons restent sous la litière ; leur absence visible ne prouve pas la disparition de la colonie."
+      },
+      "behavior": {
+        "ordinary": "Plusieurs individus suivent les mêmes passages, sans chef identifié. Ils s’immobilisent longtemps autour d’un morceau de bois favorable.",
+        "warningSigns": "Petits anneaux humides sur les racines, feuilles grignotées au bord d’une souche et traces parallèles de cordons.",
+        "firstContact": "Il s’écarte d’un pied posé devant lui. Une main tendue déclenche la fermeture de la frange, non une invitation à boire.",
+        "escalation": "Coincé, il renverse sa coupe en une nappe glissante puis replie ses tissus. Cette défense peut provoquer une chute, sans toxine ou maladie automatique.",
+        "retreat": "Il regagne une fissure humide et devient difficile à distinguer d’une excroissance ordinaire.",
+        "coexistence": "Laisser du bois mort, franchir ses couloirs sans les tasser et observer à distance évite la plupart des conflits."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Coupe retenue",
+          "effect": "Le liquide demeure dans la coupe malgré ses inclinaisons modérées, comme accroché aux lamelles.",
+          "conditions": "La frange doit rester intacte et le corps humide.",
+          "limits": "Un choc ou un renversement franc le vide ; il ne porte pas une réserve sans fond.",
+          "counterplay": "Déplacer lentement un obstacle plutôt que secouer l’animal évite une flaque."
+        },
+        {
+          "name": "Relais nutritif",
+          "effect": "Deux individus accolés échangent un peu de liquide par leurs cordons.",
+          "conditions": "Contact direct, immobile, sur une surface humide.",
+          "limits": "Aucun message, souvenir, ordre ou lien à distance n’est établi.",
+          "counterplay": "Contourner le groupe ou interrompre doucement le contact laisse un passage."
+        },
+        {
+          "name": "Pas de souche",
+          "effect": "Les cordons saisissent les aspérités et soulèvent le corps au-dessus de petites racines.",
+          "conditions": "Bois poreux ou litière souple.",
+          "limits": "Il ne gravit pas une paroi sèche et ne poursuit pas un voyageur.",
+          "counterplay": "Une planche lisse peut guider son déplacement sans l’emprisonner."
+        }
+      ],
+      "weaknesses": [
+        "Air sec et chaleur prolongée contractent ses tissus.",
+        "Les cordons supportent mal la traction ; porter le corps par son chapeau le déchire."
+      ],
+      "variants": [
+        {
+          "name": "Coupe pâle",
+          "description": "Forme de bois de bouleau au bord presque blanc, à comparer avant toute distinction d’espèce.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Coupe ourlée",
+          "description": "Vieux corps à frange épaissie, moins mobile et plus sensible aux chocs.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "resources": {
+        "renewable": [
+          "Fragments de frange déjà desséchés et détachés, après observation du retour de la colonie."
+        ],
+        "harmful": [
+          "Vider les coupes vivantes ou arracher les croûtes nourricières compromet la reproduction locale."
+        ],
+        "proposedUses": [
+          "Essais proposés de teinture et étude des films retenant l’eau ; ni boisson sûre, ni remède, ni effet alchimique validé."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide"
+      },
+      "quests": [
+        {
+          "title": "Les paniers qui marchent",
+          "situation": "Un ramasseur emporte des coupes prises pour des champignons comestibles.",
+          "choice": "Le rejoindre, examiner ses prélèvements ou négocier leur restitution.",
+          "openOutcome": "Le devenir des corps transportés et la réaction du ramasseur restent à jouer."
+        },
+        {
+          "title": "La souche du chantier",
+          "situation": "Un passage de charroi traverse l’îlot nourricier.",
+          "choice": "Dévier la route, tenter un déplacement prudent ou documenter les pertes.",
+          "openOutcome": "Aucun transfert réussi de colonie n’est garanti."
+        },
+        {
+          "title": "Le tronc traversant",
+          "situation": "Une crue laisse pour seul passage proche un tronc creux parcouru de coupes glissantes.",
+          "choice": "Préparer la traversée, dégager une voie ou chercher un détour.",
+          "openOutcome": "Le niveau d’eau et la stabilité du bois sont à examiner en scène."
+        },
+        {
+          "title": "Le pari du teinturier",
+          "situation": "Un artisan finance une étude des franges tombées.",
+          "choice": "Limiter la collecte, partager les observations ou refuser une commande excessive.",
+          "openOutcome": "La couleur obtenue et l’accord économique restent ouverts."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "ESP-ER-009",
+          "distinction": "L’Escargot des souches d’ambre est un gastéropode détritivore ; le Mycélion est un organisme fongique mobile proposé.",
+          "residualRisk": "Milieu et rôle de décomposition communs, sans synonymie présumée."
+        },
+        {
+          "reference": "BEST-ER-008-040",
+          "distinction": "Le Veilleur des racines n’est pas adopté comme origine, parent ou conscience de la colonie.",
+          "residualRisk": "Mobilité végétale ou fongique à relire lors de la validation cosmologique."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-009, 26 novembre 2026, à partir du mandat de forêts anciennes merveilleuses ; aucune attestation de campagne ni source CB attribuée à cet organisme.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-048.webp",
+        "alt": "Organisme fongique à coupe prune emplie d’eau ambrée, avançant sur des cordons crème parmi les souches moussues.",
+        "brief": "Illustration naturaliste fantasy semi-réaliste sans texte : corps fongique mobile, coupe concave prune et eau ambrée retenue par une frange crème, cordons locomoteurs sur racine humide, forêt ancienne, anatomie lisible, aucune figure humaine ni visage humain.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-048.png",
+        "sha256": "a1e96e50feab16e21a12b2b392b220c01a492b9a3e2efbbba0efcff09fb7d1a7",
+        "originalSha256": "bb6865a9a8e8ad1da033ee9d317e04e8f18a697e4fef10bfc3a653aad1073cfd",
+        "bytes": 395732,
+        "originalBytes": 3149849,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": true
+      }
+    },
+    {
+      "id": "BEST-ER-009-049",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "slug": "nasse-des-ramees",
+      "name": "Nasse des ramées",
+      "category": "bestiaire",
+      "family": "Prédateurs sessiles de canopée, classement descriptif proposé",
+      "size": "Corps central de la taille d’un sac ; membranes largement déployables",
+      "portee": "univers_partage",
+      "description": "La Nasse évoque des feuilles mortes suspendues sous une branche. Au centre se cache un corps fuselé, cuirassé d’écailles brunes, retenu par des appendices en forme de crampons. Six longues membranes plissées entourent une bouche étroite. Ouvertes, elles dessinent une corolle gris verdâtre dont le revers porte des nervures pourpres. L’animal ne possède ni tronc, ni racines, ni visage d’écorce : sa ressemblance végétale est un camouflage de prédateur. Sa corolle se contracte silencieusement.",
+      "habitat": "Branches basses au-dessus de coulées animales, fourches ombragées et chablis encore solides. Elle délaisse les arbres trop secs, les passages battus par le vent et les grandes trouées.",
+      "ecology": {
+        "diet": "Capture surtout de petits animaux attirés par des débris de fruits retenus dans ses plis. Une proie trop lourde est relâchée ; elle n’engloutit pas automatiquement un humain.",
+        "lifeCycle": "Les jeunes se déplacent sur les branches avant de choisir un point d’attache. Les adultes quittent parfois un support usé pendant une nuit humide, au prix d’une forte dépense.",
+        "role": "Elle prélève des proies dans les couloirs du sous-bois. Ses restes nourrissent les insectes ; des oiseaux peuvent percer ses membranes.",
+        "seasonality": "Les jeunes se dispersent après les pluies douces. En période froide, les adultes replient leur corolle et vivent sur leurs réserves."
+      },
+      "behavior": {
+        "ordinary": "Elle reste suspendue et réajuste ses plis aux vibrations, sans défendre de territoire.",
+        "warningSigns": "Fruits suspendus sans pédoncule, fragments de pelage dans une fourche et absence de feuilles sous une seule branche.",
+        "firstContact": "Un voyageur éloigné ne la déclenche pas. Un objet qui touche les franges peut être saisi par réflexe.",
+        "escalation": "Sous une secousse proche, les membranes s’abattent et se resserrent. Elle maintient la prise puis cherche à s’en dégager si celle-ci résiste fortement.",
+        "retreat": "L’adulte lâche sa proie, referme ses plis et remonte contre le support ; détaché, il rampe maladroitement vers un abri.",
+        "coexistence": "Repérer et baliser un support occupé permet de déplacer un chemin avant d’envisager une destruction."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Corolle rabattue",
+          "effect": "Les membranes enveloppent une petite proie ou entravent brièvement un membre.",
+          "conditions": "La cible doit passer à portée des franges ; l’animal doit être solidement fixé.",
+          "limits": "Pas de prise à distance ni de contention infaillible ; une charge lourde arrache les crampons.",
+          "counterplay": "Soutenir le membre pris, écarter les plis avec un bâton et reculer ensemble."
+        },
+        {
+          "name": "Pli d’adhérence",
+          "effect": "Une pellicule visqueuse retient feuilles et objets légers sur les membranes.",
+          "conditions": "Surface fraîche, non couverte de poussière sèche.",
+          "limits": "La matière sature rapidement et ne colle pas durablement la pierre ou une armure entière.",
+          "counterplay": "Interposer un tissu ou une branche feuillue pour occuper la surface."
+        },
+        {
+          "name": "Écoute du support",
+          "effect": "Ses crampons perçoivent les vibrations circulant dans sa branche.",
+          "conditions": "Contact physique avec un même support.",
+          "limits": "Elle ne lit pas les intentions et ne perçoit pas toute la forêt.",
+          "counterplay": "Observer depuis le sol stable et éviter de secouer le support avant d’agir."
+        }
+      ],
+      "weaknesses": [
+        "Le vent et les pluies violentes déforment la corolle et perturbent ses captures.",
+        "Ses attaches sont solides mais localisées ; tirer brutalement peut aussi faire tomber la branche."
+      ],
+      "variants": [
+        {
+          "name": "Nasse rousse",
+          "description": "Forme de couvert sec à plis rouille, plus profondément cachée dans les fourches.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Nasse à franges longues",
+          "description": "Forme de ravin humide aux membranes étroites, sensible aux brusques courants d’air.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "resources": {
+        "renewable": [
+          "Écailles et petits fragments de membrane naturellement rejetés, relevés sur le sol sans toucher le support."
+        ],
+        "harmful": [
+          "Prélever le mucus ou découper les plis vivants blesse l’animal et peut provoquer sa chute."
+        ],
+        "proposedUses": [
+          "Étude proposée d’adhésifs temporaires et de tissus pliants ; aucune colle, substance anesthésiante ou recette alchimique homologuée."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide"
+      },
+      "quests": [
+        {
+          "title": "La besace suspendue",
+          "situation": "Un courrier est retenu par sa besace saisie tandis que la branche craque.",
+          "choice": "Soutenir le courrier, couper la sangle ou ouvrir les plis.",
+          "openOutcome": "Sauvetage, bagage et stabilité du support restent à résoudre en scène."
+        },
+        {
+          "title": "Une route sous les nasses",
+          "situation": "Des supports occupés bordent un nouveau chemin de portage.",
+          "choice": "Baliser, modifier le tracé ou tenter un déplacement encadré.",
+          "openOutcome": "Aucune méthode de transplantation adulte n’est garantie."
+        },
+        {
+          "title": "Le jeune sur l’échelle",
+          "situation": "Une jeune Nasse choisit l’échelle d’un chantier comme support.",
+          "choice": "Suspendre le chantier, l’aider à gagner une branche ou démonter l’échelle progressivement.",
+          "openOutcome": "L’équipe peut négocier coûts et délais sans adversaire obligatoire."
+        },
+        {
+          "title": "La branche usée",
+          "situation": "Un support fissuré surplombe un abri fréquenté.",
+          "choice": "Évacuer, étayer ou séparer l’animal avant de couper.",
+          "openOutcome": "L’état du bois et la réaction de la Nasse décident des suites."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "BEST-ER-008-040",
+          "distinction": "Prédateur animal fixé et sans rôle de gardien, distinct du Veilleur des racines végétal proposé.",
+          "residualRisk": "Ressemblance de camouflage végétal seulement ; aucune filiation suggérée."
+        },
+        {
+          "reference": "content/creatures/bestiaire-chasses-faim.md",
+          "distinction": "Prédateur solitaire fixé sous une branche, distinct de la meute mobile à longues pattes des Chasses-Faim.",
+          "residualRisk": "Comparer les signes de prédation avant adoption définitive."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-009, 26 novembre 2026 ; prédateur forestier proposé sans attestation de campagne, implantation géographique nominative ni source CB inventée.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-049.webp",
+        "alt": "Prédateur brun suspendu sous une branche, six membranes nervurées déployées comme une corolle au-dessus de la litière.",
+        "brief": "Fantasy naturaliste semi-réaliste, animal sessile sous une grosse branche ancienne, corps central brun avec crampons, six membranes plissées gris-vert à nervures pourpres, corolle déployée, forêt ombragée, aucun visage d’arbre, aucune victime humaine, sans texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-049.png",
+        "sha256": "fcea49304fcfc46f690ced1dc9e15083a3c1410340bdc348a8e0f6cf705d4661",
+        "originalSha256": "0164ced85541885de97384e96468bc9740ef2598ec4b31d06e3cdd9d7c973cc8",
+        "bytes": 351300,
+        "originalBytes": 2997013,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      }
+    },
+    {
+      "id": "BEST-ER-009-050",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "slug": "noue-ciel-des-ramures",
+      "name": "Noue-ciel des ramures",
+      "category": "bestiaire",
+      "family": "Planeurs rubanés merveilleux, classement descriptif proposé",
+      "size": "Long et très mince ; corps comparable à une longue écharpe",
+      "portee": "univers_partage",
+      "description": "Le Noue-ciel possède un corps aplati bleu ardoise, bordé de membranes cuivre pâle. Sa tête étroite porte deux yeux latéraux et des barbillons courts ; une rangée de petites ventouses longe son ventre. Au repos, il s’enroule autour d’une branche en laissant pendre sa queue. Lorsqu’il traverse une trouée, son corps décrit parfois un nœud qui semble retenir l’air. Ce geste merveilleux ne perce aucun passage : il trouve un bref appui entre deux branches proches, puis doit reprendre contact avec le bois. Sa silhouette reste animale.",
+      "habitat": "Canopées anciennes aux branches rapprochées, ravins boisés abrités et couverts irréguliers. Les grandes clairières, les coupes récentes et les crêtes venteuses interrompent ses trajets.",
+      "ecology": {
+        "diet": "Capture les insectes du couvert, lèche les sucs de fruits fendus et boit les gouttes déposées sur les feuilles.",
+        "lifeCycle": "Les œufs sont dissimulés dans une enveloppe fibreuse fixée sous une fourche. Les jeunes rampent longtemps avant de maîtriser leurs appuis aériens ; aucun parent ne les transporte automatiquement.",
+        "role": "Il participe au contrôle d’insectes arboricoles et sert de proie à des rapaces. Les trouées le contraignent à des détours coûteux.",
+        "seasonality": "Les déplacements s’allongent pendant les nuits douces et calmes. Le froid le maintient enroulé au cœur de ramures épaisses."
+      },
+      "behavior": {
+        "ordinary": "Solitaire, il suit des circuits d’alimentation et se repose en boucles lâches. Deux adultes se croisent en écartant leurs membranes.",
+        "warningSigns": "Courtes marques humides sous les branches et balancement sans vent d’une queue presque invisible dans l’ombre.",
+        "firstContact": "Il observe d’en haut puis rejoint un couvert plus épais. Il ne cherche ni à guider ni à juger les voyageurs.",
+        "escalation": "Surpris à portée, il fouette l’air de sa queue et se laisse glisser latéralement. L’enroulement défensif peut gêner une main qui l’a saisi.",
+        "retreat": "Il rompt son appui aérien et plane jusqu’au prochain support ; au sol, il rampe vers un tronc.",
+        "coexistence": "Préserver quelques branches de liaison au-dessus d’une voie suffit parfois à maintenir son circuit sans bloquer le passage des personnes."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Nœud d’air",
+          "effect": "Un enroulement serré donne brièvement prise à son propre corps dans l’air immobile.",
+          "conditions": "Deux supports proches, membranes déployées et air peu agité.",
+          "limits": "Pas de suspension durable, transport de passager, vol vertical ou appui détachable.",
+          "counterplay": "Attendre qu’il rejoigne une branche ; une agitation d’air dissipe l’appui mais peut le faire chuter."
+        },
+        {
+          "name": "Glisse de ramure",
+          "effect": "Ses bords membraneux orientent une descente oblique.",
+          "conditions": "Départ depuis une hauteur suffisante et surface corporelle intacte.",
+          "limits": "Il perd de l’altitude et ne franchit pas une distance indéfinie.",
+          "counterplay": "Laisser une issue vers un support bas évite une fuite paniquée."
+        },
+        {
+          "name": "Prise ventrale",
+          "effect": "Les ventouses retiennent le corps sur du bois régulier même sous une branche.",
+          "conditions": "Contact direct, bois peu poussiéreux.",
+          "limits": "Il ne colle pas autrui, ne fixe aucun objet à distance et glisse sur une écorce qui se détache.",
+          "counterplay": "Proposer une perche stable pour un déplacement au lieu de tirer sur la queue."
+        }
+      ],
+      "weaknesses": [
+        "Vent turbulent et membranes déchirées rendent ses appuis dangereux.",
+        "Il s’épuise vite lorsqu’une coupe l’oblige à revenir fréquemment au sol."
+      ],
+      "variants": [
+        {
+          "name": "Noue-ciel cuivré",
+          "description": "Forme de hauts feuillus aux membranes presque dorées et aux repos très dissimulés.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Noue-ciel de ravin",
+          "description": "Forme ardoise aux bords plus larges, qui privilégie les trajets descendants.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "resources": {
+        "renewable": [
+          "Mues fines trouvées sur une branche abandonnée ; dessins des trajectoires sans capture."
+        ],
+        "harmful": [
+          "Arracher les ventouses ou tendre l’animal pour tester son appui provoque des lésions et des chutes."
+        ],
+        "proposedUses": [
+          "Études proposées de voiles souples et d’attaches temporaires ; les mues ne produisent pas de lévitation ni d’objet magique attesté."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide"
+      },
+      "quests": [
+        {
+          "title": "Le dernier pont de branches",
+          "situation": "Une coupe annoncée doit enlever la seule liaison d’un couvert.",
+          "choice": "Négocier une arche vivante, observer un autre trajet ou revoir le calendrier.",
+          "openOutcome": "L’accord et l’usage réel du passage restent à vérifier."
+        },
+        {
+          "title": "L’écharpe sur le clocher",
+          "situation": "Un couvreur poursuit un Noue-ciel échappé du bois livré sur une charpente instable.",
+          "choice": "Arrêter la poursuite, sécuriser le retour ou guider l’animal.",
+          "openOutcome": "Ni l’appui aérien ni le couvert ne garantissent le sauvetage."
+        },
+        {
+          "title": "La preuve impossible",
+          "situation": "Un mécène exige une démonstration avec une charge suspendue.",
+          "choice": "Refuser l’épreuve, proposer l’observation ou faire modifier le contrat.",
+          "openOutcome": "Aucune découverte de levage aérien n’est assurée."
+        },
+        {
+          "title": "Le jeune tombé",
+          "situation": "Un jeune rampe au pied d’un arbre pendant une rafale.",
+          "choice": "Le protéger sur place, chercher une branche basse ou patienter à l’abri.",
+          "openOutcome": "Sa blessure éventuelle et son retour au couvert sont à jouer."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "content/creatures/bestiaire-ver-des-frontieres.md",
+          "distinction": "Appui corporel aérien local et non discontinuité spatiale ; aucun lien obligatoire avec une Faille.",
+          "residualRisk": "Vocabulaire du passage à surveiller pour éviter une lecture de téléportation."
+        },
+        {
+          "reference": "BEST-ER-008-042",
+          "distinction": "Aucun fouissage ni anatomie de Fouisseur de schiste ; les circuits de canopée sont propres à ce concept.",
+          "residualRisk": "Absence de parenté taxonomique revendiquée."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-009, 26 novembre 2026 ; animal rubané merveilleux proposé, sans attestation de campagne, filiation divine ni mécanique de Faille.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-050.webp",
+        "alt": "Animal rubané bleu ardoise aux membranes cuivrées, formant une boucle dans l’air entre deux branches proches.",
+        "brief": "Illustration fantasy naturaliste semi-réaliste, animal long et aplati bleu ardoise, petite tête animale à yeux latéraux et barbillons courts, bords membraneux cuivre pâle, ventouses ventrales, boucle aérienne entre deux branches rapprochées dans une canopée ancienne, sans portail ni runes ni texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-050.png",
+        "sha256": "51d6e6837665eb049539311a8e4d36b19be00449ff8f6447eedae88d22089c52",
+        "originalSha256": "e4353a9b051218bc2bb95348935f84ba6c2da4ad42dfab314350ad2eefdb1370",
+        "bytes": 313376,
+        "originalBytes": 2752816,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      }
+    },
+    {
+      "id": "BEST-ER-009-051",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "slug": "verrier-des-clairieres",
+      "name": "Verrier des clairières",
+      "category": "bestiaire",
+      "family": "Petits reptiles hexapodes merveilleux, classement descriptif proposé",
+      "size": "Petit, corps long comme un avant-bras hors queue",
+      "portee": "univers_partage",
+      "description": "Le Verrier court sur six pattes courtes, avec une queue aplatie qui lui sert de contrepoids. Sa peau vert mousse porte des points crème ; une crête basse de plaques translucides se poursuit du front au dos. Il frotte parfois son museau contre une branche et y dépose une lamelle claire, courbe comme un pétale de verre. Sa salive se raidit au contact de l’air puis redevient friable. Ce phénomène merveilleux produit un éclat fugitif, non une réserve de cristal précieux. Le corps demeure mat, sauf la crête.",
+      "habitat": "Clairières anciennes à sol siliceux, ourlets de fougères et lisières alternant soleil et refuge frais. Il recherche des perchoirs bas à proximité immédiate d’une fuite couverte.",
+      "ecology": {
+        "diet": "Petits invertébrés, sucs de fruits tombés et grains minéraux léchés sur des pierres humides ; le minéral ne remplace pas sa nourriture.",
+        "lifeCycle": "La ponte repose sous des feuilles lâches. Les jeunes ont une crête souple et ne produisent d’abord que des films opaques ; les adultes muent par plaques disjointes.",
+        "role": "Il consomme des insectes de clairière et ses œufs nourrissent des fouisseurs. Ses lamelles se défont au sol sans former de gisement.",
+        "seasonality": "Les dépôts optiques sont surtout visibles aux périodes douces. La sécheresse réduit leur production ; le froid ralentit l’animal."
+      },
+      "behavior": {
+        "ordinary": "Il choisit plusieurs postes de guet et inspecte les lamelles laissées la veille. Ces objets attirent parfois ses congénères sans constituer une écriture.",
+        "warningSigns": "Éclats translucides fragiles, petites traces à six pattes et pierre localement polie par le léchage.",
+        "firstContact": "Il fige son corps contre le sol puis court vers les fougères si l’observateur approche.",
+        "escalation": "Acculé, il dépose un film brillant près de sa tête et change de côté ; une main insistante risque une morsure défensive.",
+        "retreat": "Il abandonne les dépôts pour gagner une cache fraîche et accessible par plusieurs ouvertures.",
+        "coexistence": "Observer depuis l’ombre et conserver pierres, feuilles et refuges évite de transformer une collecte en capture permanente."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Salive verrière",
+          "effect": "Un dépôt mince devient une lamelle claire qui tient brièvement sur une branche.",
+          "conditions": "Animal hydraté, surface sèche et temps suffisant sans agitation.",
+          "limits": "Petite production, fragile et périssable ; aucune lame durable ni transformation de matière voisine.",
+          "counterplay": "Un écran mat supprime le reflet ; mieux vaut attendre la désagrégation que frotter le museau."
+        },
+        {
+          "name": "Éclat de leurre",
+          "effect": "La courbure d’une lamelle dévie un reflet et détourne momentanément le regard d’un prédateur.",
+          "conditions": "Lumière incidente dans le bon angle.",
+          "limits": "Aucun aveuglement garanti, effet dans l’obscurité ou contrôle de l’attention.",
+          "counterplay": "Changer d’angle et suivre le corps plutôt que le point lumineux."
+        },
+        {
+          "name": "Appuis décalés",
+          "effect": "Les six pattes prennent successivement les irrégularités du sol et des branches basses.",
+          "conditions": "Support rugueux et passage assez large.",
+          "limits": "Ni marche au plafond, ni adhérence magique, ni franchissement d’une vitre verticale.",
+          "counterplay": "Laisser un corridor au sol permet de le guider sans poursuivre sa queue."
+        }
+      ],
+      "weaknesses": [
+        "Le manque d’eau compromet la salive et l’activité générale.",
+        "La crête peut se fissurer ; elle ne constitue ni armure intégrale ni source d’énergie."
+      ],
+      "variants": [
+        {
+          "name": "Verrier à crête fumée",
+          "description": "Forme aux plaques grisâtres et aux lamelles moins transparentes, sans rang supérieur présumé.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Verrier des clairières froides",
+          "description": "Forme trapue qui gagne les zones ensoleillées plus tard dans la journée.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "resources": {
+        "renewable": [
+          "Mues déjà abandonnées ; observation ou dessin d’une lamelle sans la prélever vivante."
+        ],
+        "harmful": [
+          "Traire la salive, arracher la crête ou supprimer les pierres de léchage épuise ou blesse les individus."
+        ],
+        "proposedUses": [
+          "Recherche proposée sur des films optiques périssables et motifs d’émail ; aucune lentille commerciale, gemme ou substance alchimique validée."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide"
+      },
+      "quests": [
+        {
+          "title": "Le verre qui disparaît",
+          "situation": "Un marchand vend une collection dont les lamelles s’effritent.",
+          "choice": "Étudier la matière, revoir la promesse ou organiser une restitution.",
+          "openOutcome": "L’intention du marchand et l’accord restent à déterminer."
+        },
+        {
+          "title": "La carrière miniature",
+          "situation": "Des prospecteurs retirent toutes les pierres d’une clairière occupée.",
+          "choice": "Documenter les besoins du Verrier, garder un îlot ou chercher un autre gisement.",
+          "openOutcome": "La compatibilité du chantier et des animaux n’est pas acquise."
+        },
+        {
+          "title": "Les signes de la ruine",
+          "situation": "Dans une ruine forestière, des lamelles font briller plusieurs marques apparemment identiques.",
+          "choice": "Examiner les gravures, déplacer l’éclairage ou chercher un autre accès.",
+          "openOutcome": "Le sens des marques et la sûreté du passage restent à découvrir."
+        },
+        {
+          "title": "Les cages opaques",
+          "situation": "Des Verriers transportés ne produisent plus de lamelles.",
+          "choice": "Revoir leur maintien, les ramener ou contester le contrat de collecte.",
+          "openOutcome": "Leur rétablissement doit être observé, sans recette de soin garantie."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "ESP-ER-009",
+          "distinction": "Reptile à six pattes et dépôt salivaire périssable, distinct du gastéropode à coquille ambrée non magique.",
+          "residualRisk": "Métaphores de verre et ambre à distinguer dans les résumés et illustrations."
+        },
+        {
+          "reference": "ESP-ER-026",
+          "distinction": "Aucun lien de parenté ou symbiose établi avec l’Abeille des fleurs de verre.",
+          "residualRisk": "Le terme verre ne doit pas créer une filière de matériaux partagée."
+        },
+        {
+          "reference": "BEST-ER-009-044",
+          "distinction": "Le Verrier dépose une lamelle externe périssable ; la Limace-vitrail déporte les rayons dans son manteau vivant.",
+          "residualRisk": "Deux leurres optiques individuels ; garder matière, silhouette et limites distinctes."
+        },
+        {
+          "reference": "BEST-ER-009-052",
+          "distinction": "Reflet ponctuel d’une lamelle immobile, distinct de la réfraction collective de papillons en vol.",
+          "residualRisk": "Même thème de lumière trompeuse, sans parenté ou recette commune."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-009, 26 novembre 2026 ; reptile merveilleux proposé, sans attestation de campagne, recette validée ni source CB attribuée.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-051.webp",
+        "alt": "Petit reptile vert mousse à six pattes et crête translucide, près d’une lamelle courbe réfléchissant le soleil dans une clairière.",
+        "brief": "Fantasy naturaliste semi-réaliste, petit reptile vert mousse mat à exactement six pattes courtes, queue aplatie, crête basse de plaques translucides, minuscule lamelle salivaire courbe sur une brindille, clairière avec fougères et pierres, éclairage doux, aucune armure de cristal ni texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-051.png",
+        "sha256": "c2224647464178b4ebc1db4e8b3edd1a9def69af3a1e083262a6dbc90aac8402",
+        "originalSha256": "b3e6699c090bb881d2a760c6d42eae0c9929d63aebbedbf434bf16375ebda87f",
+        "bytes": 404646,
+        "originalBytes": 3125651,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": true
+      }
+    },
+    {
+      "id": "BEST-ER-009-052",
+      "candidateRegistryId": null,
+      "registryStatus": "non_attribue",
+      "slug": "derobe-sentier",
+      "name": "Dérobe-sentier",
+      "category": "bestiaire",
+      "family": "Papillons réfracteurs forestiers, classement descriptif proposé",
+      "size": "Insecte de la largeur d’une paume ; rassemblements diffus",
+      "portee": "univers_partage",
+      "description": "Chaque Dérobe-sentier possède des ailes brun olive traversées de bandes translucides, comme des fenêtres entre les nervures. Au repos, il disparaît dans les feuilles sèches. En vol groupé, les bandes prennent une teinte d’étain et les troncs semblent glisser légèrement les uns devant les autres. La singularité merveilleuse se manifeste dans l’air compris entre les ailes proches : un alignement paraît rompu, une trouée semble se refermer. Le sentier matériel demeure à sa place. Les insectes ne volent ni souvenir, ni nom, ni volonté ; le voyageur peut simplement se tromper sur ce qu’il voit.",
+      "habitat": "Sentiers étroits sous couvert ancien, goulets entre troncs et entrées de clairières à lumière oblique. Les essaims quittent les couloirs trop ouverts ou régulièrement agités.",
+      "ecology": {
+        "diet": "Les adultes boivent les sucs des fruits ouverts et certaines exsudations végétales. Les larves consomment des feuilles déjà tombées dans des replis humides.",
+        "lifeCycle": "Les cocons restent attachés au revers de feuilles mortes retenues dans les fourches. Des émergences proches produisent les rassemblements ; aucun chef ou esprit collectif n’est établi.",
+        "role": "Les larves décomposent la litière et les adultes nourrissent les oiseaux. La réfraction collective gêne parfois leurs propres prédateurs.",
+        "seasonality": "Rassemblements surtout après les émergences douces, visibles à l’aube ou au soir ; vent et pluie les dispersent."
+      },
+      "behavior": {
+        "ordinary": "Ils suivent des courants abrités entre arbres et reviennent aux mêmes ressources, sans intention de piéger les voyageurs.",
+        "warningSigns": "Reflets d’étain flottants, troncs dédoublés seulement depuis un point précis et cocons plats parmi les feuilles suspendues.",
+        "firstContact": "Un passant lent peut traverser le rassemblement ; un geste brusque le fait tournoyer et accentue temporairement les décalages.",
+        "escalation": "Des insectes effrayés se rapprochent d’un abri commun. L’effet visuel peut cacher une racine ou une bifurcation et augmenter le risque de chute.",
+        "retreat": "Ils se posent, replient les bandes translucides et cessent de réfracter collectivement la lumière.",
+        "coexistence": "Conserver un repère tactile sur un chemin fréquenté et patienter pendant le passage d’un essaim permet de circuler sans le détruire."
+      },
+      "abilitiesDescriptive": [
+        {
+          "name": "Alignement dérobé",
+          "effect": "Des ailes proches décalent l’apparence des lignes derrière le rassemblement.",
+          "conditions": "Groupe en vol, lumière oblique et regard traversant son volume.",
+          "limits": "Portée locale, aucun changement de terrain, portail ou contrôle mental ; un insecte isolé ne masque pas une route.",
+          "counterplay": "Changer d’angle, regarder au ras du sol ou suivre un repère tactile."
+        },
+        {
+          "name": "Feuille au repos",
+          "effect": "Le brun des ailes repliées se confond avec la litière suspendue.",
+          "conditions": "Immobilité sur un support de teinte voisine.",
+          "limits": "L’animal reste matériel et visible à l’examen rapproché.",
+          "counterplay": "Observer les antennes et éviter de secouer toutes les branches."
+        },
+        {
+          "name": "Vol de repli",
+          "effect": "Des trajectoires convergentes rapprochent les individus vers une zone abritée.",
+          "conditions": "Présence d’un couvert à proximité.",
+          "limits": "Aucune coordination omnisciente ; un vent contraire fragmente le groupe.",
+          "counterplay": "Laisser libre l’issue couverte et attendre leur pose."
+        }
+      ],
+      "weaknesses": [
+        "Les pluies fortes et le vent interrompent l’effet collectif.",
+        "Les bandes dépendent de l’angle lumineux ; ombre dense et repères tactiles réduisent les erreurs d’orientation."
+      ],
+      "variants": [
+        {
+          "name": "Dérobe-sentier d’étain",
+          "description": "Forme aux bandes gris argent, surtout visible à la lumière froide du matin.",
+          "status": "proposition_non_jouee"
+        },
+        {
+          "name": "Dérobe-sentier de cuivre",
+          "description": "Forme aux bandes ambrées qui se rassemble au bord des clairières du soir.",
+          "status": "proposition_non_jouee"
+        }
+      ],
+      "resources": {
+        "renewable": [
+          "Ailes trouvées après mort naturelle et cocons vides ; relevés de lumière sans capture."
+        ],
+        "harmful": [
+          "Prélever les écailles sur des adultes vivants les blesse ; capturer tout un rassemblement interrompt sa reproduction locale."
+        ],
+        "proposedUses": [
+          "Études proposées de motifs d’émail et d’écrans optiques ; aucune poudre d’invisibilité ni recette de désorientation validée."
+        ],
+        "validation": "aucune_recette_ni_bonus_valide"
+      },
+      "quests": [
+        {
+          "title": "La borne qu’on ne voit plus",
+          "situation": "Un carrefour devient difficile à lire au passage d’un essaim.",
+          "choice": "Installer une main courante, revoir les marques ou attendre un autre horaire.",
+          "openOutcome": "L’origine des erreurs anciennes reste à vérifier plutôt qu’attribuée d’office aux papillons."
+        },
+        {
+          "title": "Le convoi au bord",
+          "situation": "Un convoi s’immobilise près d’un talus pendant qu’un essaim brouille le virage.",
+          "choice": "Guider à pied, sécuriser les roues ou attendre la dispersion.",
+          "openOutcome": "La marge du chemin et le temps disponible restent à vérifier."
+        },
+        {
+          "title": "Le guide accusé",
+          "situation": "Un guide perd ses repères devant des témoins mécontents.",
+          "choice": "Reconstituer les angles de vue, chercher d’autres causes ou négocier un nouveau trajet.",
+          "openOutcome": "Aucune faute, tromperie ou innocence n’est imposée."
+        },
+        {
+          "title": "L’aile sous verre",
+          "situation": "Une collection promet de conserver le phénomène dans un cadre.",
+          "choice": "Étudier des ailes tombées ou expliquer la dépendance au vol collectif.",
+          "openOutcome": "La réussite artistique ne garantit aucun objet magique."
+        }
+      ],
+      "relatedReferencesToReview": [
+        {
+          "reference": "ESP-ER-003",
+          "distinction": "La Phalène des celliers est non magique et liée aux caves ; le Dérobe-sentier propose une réfraction collective forestière.",
+          "residualRisk": "Même ordre descriptif d’insectes, mais aucune identité ou variante régionale démontrée."
+        },
+        {
+          "reference": "ESP-ER-016",
+          "distinction": "La Phalène de givre des fruitiers ne commande pas le froid et n’a pas de réfraction attestée.",
+          "residualRisk": "Illustration et résumé doivent conserver les bandes translucides et le couvert forestier."
+        },
+        {
+          "reference": "content/creatures/bestiaire-ver-des-frontieres.md",
+          "distinction": "Le terrain ne change pas ; aucun passage spatial ni relation aux Failles.",
+          "residualRisk": "Le nom Dérobe-sentier pourrait être pris pour un pouvoir de vol ou de téléportation ; limite à afficher."
+        },
+        {
+          "reference": "BEST-ER-009-044",
+          "distinction": "Réfraction collective d’alignements derrière un essaim, distincte d’une tache déportée par le manteau d’une limace.",
+          "residualRisk": "Même thème optique ; ne pas attribuer le pouvoir collectif à un papillon isolé."
+        },
+        {
+          "reference": "BEST-ER-009-046",
+          "distinction": "Décalage visuel de lignes réelles, distinct d’une ombre leurre détachée sur un support.",
+          "residualRisk": "Ne pas décrire un double autonome ou une dissimulation des sons."
+        },
+        {
+          "reference": "BEST-ER-009-051",
+          "distinction": "Le Dérobe-sentier ne fabrique ni lamelle ni matière vitreuse.",
+          "residualRisk": "Les ressources ne conservent pas automatiquement l’effet vivant."
+        }
+      ],
+      "provenance": "Création originale BEST-ER-009, 26 novembre 2026 ; papillon forestier merveilleux proposé, sans attestation de campagne, sort homologué ni implantation dans un lieu historique nommé.",
+      "editorialStatus": "proposition_non_jouee",
+      "canon_statut": "proposition_non_jouee",
+      "etat_editorial": "en_chantier",
+      "canonValidated": false,
+      "publish": false,
+      "prototype": false,
+      "visibility": "preparation_editoriale_non_secrete",
+      "playedFact": false,
+      "mjSecrets": null,
+      "mechanics": {
+        "status": "non_valide",
+        "profile": null
+      },
+      "illustration": {
+        "status": "originale_produite_relecture_artistique_effectuee_non_validee_editorialement",
+        "path": "illustrations/webp/BEST-ER-009-052.webp",
+        "alt": "Papillons brun olive aux bandes translucides volant au-dessus d’un sentier ancien, avec un léger décalage optique des troncs derrière leurs ailes.",
+        "brief": "Fantasy naturaliste semi-réaliste, papillons brun olive à bandes translucides étain entre nervures, petit groupe en vol dans un chemin forestier ancien, lumière oblique du matin, subtile réfraction locale des lignes derrière les ailes, sol continu bien visible, aucun portail, sans texte.",
+        "provenance": "Illustration originale produite pour BEST-ER-009 avec l’outil intégré image_gen, puis conversion WebP sans modification de composition. Direction et relecture par Codex ; validation éditoriale du créateur en attente.",
+        "originalPath": "illustrations/originaux/BEST-ER-009-052.png",
+        "sha256": "9f5c236a64d05f584174b1f7e28d947660158c44fb7e28768e916c72efafdca7",
+        "originalSha256": "580979e4b187b07f57e5ecc100894346ec128c3597c2a03dde7d996eabae0cb6",
+        "bytes": 403550,
+        "originalBytes": 3236005,
+        "width": 1448,
+        "height": 1086,
+        "visualReview": "Sujet et silhouette relus ; absence de texte et de filigrane vérifiée. Illustration d’ambiance, pas une planche anatomique homologuée.",
+        "retouched": false
+      }
+    }
+  ]
+}
